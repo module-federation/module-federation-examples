@@ -2,8 +2,8 @@
 
 This example demos bi-directional hosts each with their own remote `Button` components.
 
-- `app1` exposes `<button>App 1 Button</button>` component.
-- `app2` exposes `<button>App 2 Button</button>` component.
+- `app1` exposes a red `<button>App 1 Button</button>` component.
+- `app2` exposes a blue `<button>App 2 Button</button>` component.
 
 # Running Demo
 

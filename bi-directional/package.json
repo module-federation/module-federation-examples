@@ -1,12 +1,7 @@
 {
-  "name": "bi-directional-root",
-  "version": "0.0.0",
   "scripts": {
-    "start": "concurrently \"yarn workspace bi-directional-app1 start\" \"yarn workspace bi-directional-app2 start\"",
-    "build": "concurrently \"yarn workspace bi-directional-app1 build\" \"yarn workspace bi-directional-app2 build\"",
-    "serve": "concurrently \"yarn workspace bi-directional-app1 serve\" \"yarn workspace bi-directional-app2 serve\""
-  },
-  "devDependencies": {
-    "concurrently": "^5.1.0"
+    "start": "lerna run --scope @bi-directional/* --parallel start",
+    "build": "lerna run --scope @bi-directional/* build",
+    "serve": "lerna run --scope @bi-directional/* --parallel serve"
   }
 }
