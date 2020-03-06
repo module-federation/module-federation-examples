@@ -34,7 +34,8 @@ module.exports = {
       exposes: {
         Button: "./src/Button"
       },
-      shared: ["react", "react-dom"]
+      // app2 is expecting "styled-components" as a shared dependency
+      shared: ["react", "react-dom", "styled-components"]
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html"

@@ -31,6 +31,7 @@ module.exports = {
       remotes: {
         app2: "app2"
       },
+      // app2 is expecting "styled-components" shared dependency
       shared: ["react", "react-dom"]
     }),
     new HtmlWebpackPlugin({
