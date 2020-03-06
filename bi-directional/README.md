@@ -1,4 +1,4 @@
-# Bi-Directional Hosts
+# Bi-Directional Hosts Example
 
 This example demos bi-directional hosts each with their own remote `Button` components.
 
