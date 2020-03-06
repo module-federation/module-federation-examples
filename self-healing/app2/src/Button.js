@@ -1,5 +1,12 @@
 import React from "react";
+import styled from "styled-components";
 
-const Button = () => <button>App 2 Button</button>;
+const StyledButton = styled.button`
+  background: palevioletred;
+  color: white;
+  padding: 8px 20px;
+`;
+
+const Button = () => <StyledButton>&#128133; Button</StyledButton>;
 
 export default Button;
