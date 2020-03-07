@@ -14,5 +14,5 @@ This repository is to showcase examples on Webpack 5's new Module Federation can
 - [ ] Routing
 - [ ] Nested
 - [ ] Version discrepancy
-- [ ] Typescript
+- [x] [TypeScript](./typescript/README.md) &mdash; Simple host/remote example using TypeScript.
 - [ ] NextJS
