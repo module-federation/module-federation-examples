@@ -1,7 +1,6 @@
 import * as React from "react";
 
-// TODO: look into better way of supressing "Cannot find module" #2307 error .
-const RemoteButton = React.lazy(() => import("app2/Button" as string));
+const RemoteButton = React.lazy(() => import("app2/Button"));
 
 const App = () => (
   <div>
