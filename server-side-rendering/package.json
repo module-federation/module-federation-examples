@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "lerna run --scope @server-side-rendering/* --parallel start",
+    "build": "lerna run --scope @server-side-rendering/* build",
+    "serve": "lerna run --scope @server-side-rendering/* --parallel serve"
+  }
+}
