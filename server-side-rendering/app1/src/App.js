@@ -6,9 +6,9 @@ const App = () => (
   <div>
     <h1>Server-Side Rendering</h1>
     <h2>App 1</h2>
-    <React.Suspense fallback="Loading Button">
+    {/* <React.Suspense fallback="Loading Button">
       <RemoteButton />
-    </React.Suspense>
+    </React.Suspense> */}
   </div>
 );
 
