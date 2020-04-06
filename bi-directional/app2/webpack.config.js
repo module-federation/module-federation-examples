@@ -1,7 +1,10 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const path = require("path");
-
+const sharedReduce = ["react","react-dom"].reduce((shared,pkg)=>{
+  Object.assign(shared,{[`${pkg}-${require(pkg).version}`]:pkg});
+  return shared
+},{});
 module.exports = {
   entry: "./src/index",
   mode: "development",
@@ -34,7 +37,7 @@ module.exports = {
       exposes: {
         Button: "./src/Button"
       },
-      shared: ["react", "react-dom"]
+      shared: sharedReduce
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html"
