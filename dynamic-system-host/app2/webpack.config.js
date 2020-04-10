@@ -1,10 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const path = require("path");
-const sharedReduce = ["react","react-dom"].reduce((shared,pkg)=>{
-  Object.assign(shared,{[`${pkg}-${require(pkg).version}`]:pkg});
-  return shared
-},{});
+
 module.exports = {
   entry: "./src/index",
   mode: "development",
@@ -31,13 +28,10 @@ module.exports = {
       name: "app2",
       library: { type: "var", name: "app2" },
       filename: "remoteEntry.js",
-      remotes: {
-        app1: "app1"
-      },
       exposes: {
-        Button: "./src/Button"
+        Widget: "./src/Widget",
       },
-      shared: sharedReduce
+      shared: ["react", "react-dom"]
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html"
