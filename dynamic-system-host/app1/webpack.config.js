@@ -1,19 +1,16 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const path = require("path");
-const sharedReduce = ["react","react-dom"].reduce((shared,pkg)=>{
-  Object.assign(shared,{[`${pkg}-${require(pkg).version}`]:pkg});
-  return shared
-},{});
+
 module.exports = {
   entry: "./src/index",
   mode: "development",
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    port: 3002
+    port: 3001
   },
   output: {
-    publicPath: "http://localhost:3002/"
+    publicPath: "http://localhost:3001/"
   },
   module: {
     rules: [
@@ -28,16 +25,9 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "app2",
-      library: { type: "var", name: "app2" },
-      filename: "remoteEntry.js",
-      remotes: {
-        app1: "app1"
-      },
-      exposes: {
-        Button: "./src/Button"
-      },
-      shared: sharedReduce
+      name: "app1",
+      library: { type: "var", name: "app1" },
+      shared: ["react", "react-dom"]
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html"
