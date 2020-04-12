@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import { orders } from "./data";
+import { useServiceContext } from "shell/Service";
 
 function preventDefault(event) {
   event.preventDefault();
@@ -58,6 +59,10 @@ const useStyles = makeStyles(theme => ({
 
 export default function OrderService() {
   const classes = useStyles();
+  const serviceContext = useServiceContext();
+  React.useEffect(() => {
+    serviceContext.setService({ title: "Orders" });
+  }, []);
   return (
     <main className={classes.content}>
       <div className={classes.appBarSpacer} />
