@@ -1,0 +1,16 @@
+{
+  "name": "webpack-module-federation-hooks",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "start": "concurrently \"wsrun --parallel start\" \"wsrun --parallel serve\""
+  },
+  "devDependencies": {
+    "wsrun": "^5.2.0"
+  },
+  "dependencies": {
+    "concurrently": "^5.1.0"
+  }
+}
