@@ -1,10 +1,6 @@
-import Box from "@material-ui/core/Box";
-import Link from "@material-ui/core/Link";
-import { Paper } from "@material-ui/core";
 import React from "react";
+import { Paper, Link, Typography, withStyles } from "@material-ui/core";
 import ReactMarkdown from "markdown-to-jsx";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   listItem: {

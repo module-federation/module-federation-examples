@@ -1,5 +1,5 @@
 {
-  "name": "@dynamic-system-host/app3",
+  "name": "@shared-routing/core",
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
@@ -13,15 +13,14 @@
     "webpack-dev-server": "^3.10.3"
   },
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --port 3002",
     "build": "webpack --mode production",
-    "serve": "serve dist -p 3003"
+    "serve": "serve dist -p 3002"
   },
   "dependencies": {
-    "moment": "^2.24.0",
+    "@material-ui/core": "^4.9.10",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "react-redux": "^7.2.0",
-    "redux": "^4.0.5"
+    "react-router": "^5.1.2"
   }
 }
