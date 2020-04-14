@@ -1,0 +1,31 @@
+{
+  "name": "@shared-routing/profile",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "file-loader": "^6.0.0",
+    "find-up": "^4.1.0",
+    "html-webpack-plugin": "git://github.com/ScriptedAlchemy/html-webpack-plugin#master",
+    "serve": "^11.3.0",
+    "webpack": "git://github.com/webpack/webpack.git#dev-1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --port 3004",
+    "build": "webpack --mode production",
+    "serve": "serve dist -p 3004"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.9.10",
+    "@material-ui/icons": "^4.9.1",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-router": "6.0.0-alpha.2",
+    "react-router-dom": "6.0.0-alpha.2",
+    "recharts": "^1.8.5"
+  }
+}

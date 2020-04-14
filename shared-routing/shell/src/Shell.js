@@ -9,6 +9,7 @@ import { ServiceProvider } from "./Service";
 
 const DashboardService = React.lazy(() => import("dashboard/DashboardService"));
 const OrderService = React.lazy(() => import("order/OrderService"));
+const ProfilePage = React.lazy(() => import("profile/ProfilePage"));
 
 function useDrawer() {
   const { value, setItem } = useLocalStorageSync(
@@ -40,6 +41,7 @@ export default function Shell() {
               <Routes>
                 <Route path="dashboard/*" element={<DashboardService />} />
                 <Route path="orders/*" element={<OrderService />} />
+                <Route path="profile/*" element={<ProfilePage />} />
                 <Route
                   path="*"
                   element={<Navigate to="/dashboard" replace />}
