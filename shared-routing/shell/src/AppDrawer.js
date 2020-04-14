@@ -12,7 +12,8 @@ import {
 import {
   ChevronLeft as ChevronLeftIcon,
   Dashboard as DashboardIcon,
-  ShoppingCart as ShoppingCartIcon
+  ShoppingCart as ShoppingCartIcon,
+  Person as UserIcon
 } from "@material-ui/icons";
 import clsx from "clsx";
 
@@ -73,6 +74,7 @@ function Menu() {
     <List>
       <ListItemLink to="dashboard" icon={<DashboardIcon />} text="Dashboard" />
       <ListItemLink to="orders" icon={<ShoppingCartIcon />} text="Orders" />
+      <ListItemLink to="profile" icon={<UserIcon />} text="Profile" />
     </List>
   );
 }
