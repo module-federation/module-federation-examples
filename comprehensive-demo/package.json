@@ -6,9 +6,15 @@
     "serve": "wsrun --parallel serve",
     "start": "concurrently \"wsrun --parallel start\" \"wsrun --parallel serve\""
   },
-  "workspaces": [
-    "app-*"
-  ],
+  "workspaces": {
+    "packages": ["app-*"],
+    "nohoist": [
+      "**/svelte", 
+      "**/svelte/**",
+      "**/svelte-loader", 
+      "**/svelte-loader/**"    
+    ]
+  },
   "devDependencies": {
     "concurrently": "^5.1.0",
     "wsrun": "^5.2.0"
