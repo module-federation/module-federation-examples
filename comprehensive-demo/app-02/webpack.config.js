@@ -6,7 +6,7 @@ module.exports = {
   cache: false,
 
   mode: "development",
-  devtool: "source-map"
+  devtool: "source-map",
 
   optimization: {
     minimize: false

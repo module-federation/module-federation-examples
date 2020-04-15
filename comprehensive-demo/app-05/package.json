@@ -1,0 +1,23 @@
+{
+  "name": "app-05",
+  "version": "1.0.0",
+  "description": "boilerplate LitElement setup with TypeScript",
+  "private": true,
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack",
+    "start": "webpack --watch",
+    "dev": "webpack-dev-server --content-base public",
+    "serve": "serve public -p 3005"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "lit-element": "^2.3.1",
+    "ts-loader": "^5.4.5",
+    "typescript": "^3.8.3",
+    "html-webpack-plugin": "git://github.com/ScriptedAlchemy/html-webpack-plugin#master",
+    "webpack": "git://github.com/webpack/webpack.git#dev-1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.3.1",
+    "serve": "^11.3.0"
+  }
+}

@@ -43,7 +43,9 @@ module.exports = {
       filename: "remoteEntry.js",
       remotes: {
         app_02: "app_02",
-        app_03: "app_03"
+        app_03: "app_03",
+        app_04: "app_04",
+        app_05: "app_05",
       },
       exposes: {
         SideNav: "./src/SideNav",
