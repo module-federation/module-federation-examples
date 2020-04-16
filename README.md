@@ -17,7 +17,7 @@ This repository is to showcase examples on Webpack 5's new Module Federation can
 - [x] [Redux Reducer Injection](./redux-reducer-injection.md) &mdash; Dynamically inject reducers to host store at runtime.
 - [x] [Shared Routes](./shared-routes2) &mdash; Compose federated routes for a seamless user experience.
 - [ ] Nested Interleaved Components
-- [x] Share State/Context Providers
+- [x] [Share Context Provider](./shared-context/README.md) &mdash; App1 and App2 with shared Context Provider.
 - [ ] Non-UI Module
 - [x] Routing
 - [ ] Nested
