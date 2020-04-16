@@ -21,6 +21,6 @@ This repository is to showcase examples on Webpack 5's new Module Federation can
 - [ ] Non-UI Module
 - [x] Routing
 - [ ] Nested
-- [x] Version Discrepancy
+- [x] [Version Discrepancy](./version-discrepancy/README.md) &mdash; Federated apps depending on different versions of a dependency without side-effects.
 - [x] [TypeScript](./typescript/README.md) &mdash; Simple host/remote example using TypeScript.
 - [ ] NextJS
