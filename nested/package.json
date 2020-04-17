@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "lerna run --scope @nested/* --parallel start",
+    "build": "lerna run --scope @nested/* build",
+    "serve": "lerna run --scope @nested/* --parallel serve"
+  }
+}
