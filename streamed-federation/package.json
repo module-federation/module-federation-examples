@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "yarn build && yarn serve",
+    "build": "lerna run --scope @streamed-federation/* build",
+    "serve": "lerna run --scope @streamed-federation/* --parallel serve"
+  }
+}
