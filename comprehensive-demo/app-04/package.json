@@ -19,6 +19,7 @@
     "build": "cross-env NODE_ENV=production webpack",
     "start": "webpack --watch",
     "dev": "webpack-dev-server --content-base public",
-    "serve": "serve public -p 3004"
+    "serve": "serve public -p 3004",
+    "clean": "rm -rf dist"
   }
 }

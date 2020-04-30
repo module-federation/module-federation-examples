@@ -10,10 +10,10 @@ module.exports = {
     port: 3004,
     historyApiFallback: true,
     hot: false,
-    hotOnly: false
+    hotOnly: false,
   },
   output: {
-    publicPath: "http://localhost:3004/"
+    publicPath: "http://localhost:3004/",
   },
   module: {
     rules: [
@@ -22,18 +22,18 @@ module.exports = {
         loader: "babel-loader",
         exclude: /node_modules/,
         options: {
-          presets: ["@babel/preset-react"]
-        }
+          presets: ["@babel/preset-react"],
+        },
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
           },
         ],
       },
-    ]
+    ],
   },
   plugins: [
     new ModuleFederationPlugin({
@@ -41,15 +41,15 @@ module.exports = {
       library: { type: "var", name: "profile" },
       filename: "remoteEntry.js",
       remotes: {
-        shell: "shell"
+        shell: "shell",
       },
       exposes: {
         ProfilePage: "./src/ProfilePage",
       },
-      shared: ["react", "react-dom", "@material-ui/core", "@material-ui/icons"]
+      shared: ["react", "react-dom", "@material-ui/core", "@material-ui/icons"],
     }),
     new HtmlWebpackPlugin({
-      template: "./public/index.html"
-    })
-  ]
+      template: "./public/index.html",
+    }),
+  ],
 };

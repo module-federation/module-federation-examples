@@ -1,4 +1,8 @@
-import React from 'react'
-import Header from './SomeComponent'
+import React from "react";
+import Header from "./SomeComponent";
 
-export default () => <div><Header /></div>
+export default () => (
+  <div>
+    <Header />
+  </div>
+);

@@ -15,7 +15,8 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack --mode production",
-    "serve": "serve dist -p 3001"
+    "serve": "serve dist -p 3001",
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "lodash": "4.10.0",

@@ -1,3 +1,3 @@
 module.exports = {
-  extensions: ['.js', '.mjs', '.jsx', '.css'],
-}
+  extensions: [".js", ".mjs", ".jsx", ".css"],
+};

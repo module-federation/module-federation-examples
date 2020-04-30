@@ -5,7 +5,8 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "concurrently \"wsrun --parallel start\" \"wsrun --parallel serve\""
+    "start": "concurrently \"wsrun --parallel start\" \"wsrun --parallel serve\"",
+    "clean": "concurrently \"wsrun --parallel start\" \"wsrun --parallel clean\""
   },
   "devDependencies": {
     "wsrun": "^5.2.0"

@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 // material-ui components
 import { makeStyles } from "@material-ui/core/styles";
-import {Button} from "@material-ui/core";
+import { Button } from "@material-ui/core";
 
 import styles from "../../assets/jss/material-dashboard-react/components/buttonStyle.js";
 
@@ -38,7 +38,7 @@ export default function RegularButton(props) {
     [classes.block]: block,
     [classes.link]: link,
     [classes.justIcon]: justIcon,
-    [className]: className
+    [className]: className,
   });
   return (
     <Button {...rest} classes={muiClasses} className={btnClasses}>
@@ -56,7 +56,7 @@ RegularButton.propTypes = {
     "danger",
     "rose",
     "white",
-    "transparent"
+    "transparent",
   ]),
   size: PropTypes.oneOf(["sm", "lg"]),
   simple: PropTypes.bool,
@@ -68,5 +68,5 @@ RegularButton.propTypes = {
   className: PropTypes.string,
   // use this to pass the classes props from Material-UI
   muiClasses: PropTypes.object,
-  children: PropTypes.node
+  children: PropTypes.node,
 };

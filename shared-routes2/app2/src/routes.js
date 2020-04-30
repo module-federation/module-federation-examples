@@ -5,8 +5,8 @@ const AboutPage = React.lazy(() => import("./AboutPage"));
 const routes = [
   {
     path: "/about",
-    component: AboutPage
-  }
+    component: AboutPage,
+  },
 ];
 
 export default routes;

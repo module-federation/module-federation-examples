@@ -2,16 +2,16 @@ import {
   successColor,
   whiteColor,
   grayColor,
-  hexToRgb
+  hexToRgb,
 } from "./assets/jss/material-dashboard-react.js";
 
 const rtlStyle = {
   successText: {
-    color: successColor[0]
+    color: successColor[0],
   },
   upArrowCardCategory: {
     width: "16px",
-    height: "16px"
+    height: "16px",
   },
   stats: {
     color: grayColor[0],
@@ -24,15 +24,15 @@ const rtlStyle = {
       height: "16px",
       position: "relative",
       marginRight: "3px",
-      marginLeft: "3px"
+      marginLeft: "3px",
     },
     "& .fab,& .fas,& .far,& .fal,& .material-icons": {
       top: "4px",
       fontSize: "16px",
       position: "relative",
       marginRight: "3px",
-      marginLeft: "3px"
-    }
+      marginLeft: "3px",
+    },
   },
   cardCategory: {
     color: grayColor[0],
@@ -40,7 +40,7 @@ const rtlStyle = {
     fontSize: "14px",
     marginTop: "0",
     paddingTop: "10px",
-    marginBottom: "0"
+    marginBottom: "0",
   },
   cardCategoryWhite: {
     color: "rgba(" + hexToRgb(whiteColor) + ",.62)",
@@ -49,8 +49,8 @@ const rtlStyle = {
     marginTop: "0",
     marginBottom: "0",
     "& a": {
-      color: whiteColor
-    }
+      color: whiteColor,
+    },
   },
   cardTitle: {
     color: grayColor[2],
@@ -63,8 +63,8 @@ const rtlStyle = {
     "& small": {
       color: grayColor[1],
       fontWeight: "400",
-      lineHeight: "1"
-    }
+      lineHeight: "1",
+    },
   },
   cardTitleWhite: {
     color: whiteColor,
@@ -77,9 +77,9 @@ const rtlStyle = {
     "& small": {
       color: grayColor[1],
       fontWeight: "400",
-      lineHeight: "1"
-    }
-  }
+      lineHeight: "1",
+    },
+  },
 };
 
 export default rtlStyle;

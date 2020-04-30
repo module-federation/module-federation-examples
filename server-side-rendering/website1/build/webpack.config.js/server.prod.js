@@ -1,6 +1,6 @@
-const config = require('./server.base')
+const config = require("./server.base");
 
 module.exports = {
   ...config,
-  mode: 'production',
-}
+  mode: "production",
+};

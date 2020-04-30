@@ -19,7 +19,8 @@
     "lint": "eslint --fix src server build",
     "format": "prettier --single-quote --semi=false --write '{src,server,webpack}/**/*.js' && npm run lint",
     "deploy": "yarn build && ./deploy-heroku.sh",
-    "production:test": "yarn run build && rm -rf node_modules && NODE_ENV=production npm install --production && yarn serve"
+    "production:test": "yarn run build && rm -rf node_modules && NODE_ENV=production npm install --production && yarn serve",
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",

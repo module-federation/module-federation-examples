@@ -10,7 +10,7 @@ function App() {
   );
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     alignItems: "center",
@@ -20,11 +20,11 @@ const useStyles = makeStyles(theme => ({
     top: 0,
     left: 0,
     width: "100%",
-    height: "100%"
+    height: "100%",
   },
   text: {
-    marginTop: theme.spacing(3)
-  }
+    marginTop: theme.spacing(3),
+  },
 }));
 
 function LoadingShell() {

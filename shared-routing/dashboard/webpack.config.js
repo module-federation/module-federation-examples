@@ -10,10 +10,10 @@ module.exports = {
     port: 3001,
     historyApiFallback: true,
     hot: false,
-    hotOnly: false
+    hotOnly: false,
   },
   output: {
-    publicPath: "http://localhost:3001/"
+    publicPath: "http://localhost:3001/",
   },
   module: {
     rules: [
@@ -22,10 +22,10 @@ module.exports = {
         loader: "babel-loader",
         exclude: /node_modules/,
         options: {
-          presets: ["@babel/preset-react"]
-        }
-      }
-    ]
+          presets: ["@babel/preset-react"],
+        },
+      },
+    ],
   },
   plugins: [
     new ModuleFederationPlugin({
@@ -35,15 +35,15 @@ module.exports = {
       remotes: {
         order: "order",
         sales: "sales",
-        shell: "shell"
+        shell: "shell",
       },
       exposes: {
-        DashboardService: "./src/DashboardService"
+        DashboardService: "./src/DashboardService",
       },
-      shared: ["react", "react-dom", "@material-ui/core", "@material-ui/icons"]
+      shared: ["react", "react-dom", "@material-ui/core", "@material-ui/icons"],
     }),
     new HtmlWebpackPlugin({
-      template: "./public/index.html"
-    })
-  ]
+      template: "./public/index.html",
+    }),
+  ],
 };

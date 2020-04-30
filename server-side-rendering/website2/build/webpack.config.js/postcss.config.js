@@ -2,11 +2,11 @@ module.exports = {
   sourcemaps: true,
   plugins: {
     autoprefixer: {
-      browsers: ['last 4 versions', 'Safari >= 7', 'Firefox ESR', 'not ie < 9'],
+      browsers: ["last 4 versions", "Safari >= 7", "Firefox ESR", "not ie < 9"],
       flexbox: true,
     },
-    'postcss-import': {},
-    'postcss-flexbugs-fixes': {},
+    "postcss-import": {},
+    "postcss-flexbugs-fixes": {},
     cssnano: {
       safe: true,
       autoprefixer: true,
@@ -44,4 +44,4 @@ module.exports = {
       zindex: true,
     },
   },
-}
+};

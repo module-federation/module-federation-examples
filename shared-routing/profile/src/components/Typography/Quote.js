@@ -20,5 +20,5 @@ export default function Quote(props) {
 
 Quote.propTypes = {
   text: PropTypes.node,
-  author: PropTypes.node
+  author: PropTypes.node,
 };

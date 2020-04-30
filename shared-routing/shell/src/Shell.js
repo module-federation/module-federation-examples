@@ -23,7 +23,7 @@ function useDrawer() {
     },
     openDrawer() {
       setItem(true);
-    }
+    },
   };
 }
 

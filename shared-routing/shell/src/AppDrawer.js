@@ -7,25 +7,25 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText
+  ListItemText,
 } from "@material-ui/core";
 import {
   ChevronLeft as ChevronLeftIcon,
   Dashboard as DashboardIcon,
   ShoppingCart as ShoppingCartIcon,
-  Person as UserIcon
+  Person as UserIcon,
 } from "@material-ui/icons";
 import clsx from "clsx";
 
 import { Link, useMatch } from "react-router-dom";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   toolbarIcon: {
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
     padding: "0 8px",
-    ...theme.mixins.toolbar
+    ...theme.mixins.toolbar,
   },
   drawerPaper: {
     position: "relative",
@@ -33,20 +33,20 @@ const useStyles = makeStyles(theme => ({
     width: 240,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
   drawerPaperClose: {
     overflowX: "hidden",
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
+      duration: theme.transitions.duration.leavingScreen,
     }),
     width: theme.spacing(7),
     [theme.breakpoints.up("sm")]: {
-      width: theme.spacing(9)
-    }
-  }
+      width: theme.spacing(9),
+    },
+  },
 }));
 
 function ListItemLink(props) {
@@ -89,7 +89,7 @@ export default function AppDrawer(props) {
         paper: clsx(
           classes.drawerPaper,
           !props.drawer.open && classes.drawerPaperClose
-        )
+        ),
       }}
       open={props.open}
     >

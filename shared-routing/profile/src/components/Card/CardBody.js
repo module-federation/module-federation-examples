@@ -19,7 +19,7 @@ export default function CardBody(props) {
     [classes.cardBody]: true,
     [classes.cardBodyPlain]: plain,
     [classes.cardBodyProfile]: profile,
-    [className]: className !== undefined
+    [className]: className !== undefined,
   });
   return (
     <div className={cardBodyClasses} {...rest}>
@@ -32,5 +32,5 @@ CardBody.propTypes = {
   className: PropTypes.string,
   plain: PropTypes.bool,
   profile: PropTypes.bool,
-  children: PropTypes.node
+  children: PropTypes.node,
 };

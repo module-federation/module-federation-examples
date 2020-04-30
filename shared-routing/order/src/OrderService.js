@@ -8,7 +8,7 @@ import {
   TableHead,
   TableRow,
   Typography,
-  Paper
+  Paper,
 } from "@material-ui/core";
 import React from "react";
 import { orders } from "./data";
@@ -38,23 +38,23 @@ function OrderRow(props) {
   );
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
     height: "100vh",
-    overflow: "auto"
+    overflow: "auto",
   },
   container: {
     paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4)
+    paddingBottom: theme.spacing(4),
   },
   paper: {
     padding: theme.spacing(2),
     display: "flex",
     flexDirection: "column",
-    overflow: "auto"
-  }
+    overflow: "auto",
+  },
 }));
 
 export default function OrderService() {
@@ -88,7 +88,7 @@ export default function OrderService() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {orders.map(order => (
+                {orders.map((order) => (
                   <OrderRow order={order} key={order.id} />
                 ))}
               </TableBody>

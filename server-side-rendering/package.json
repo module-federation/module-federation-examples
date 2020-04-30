@@ -3,6 +3,7 @@
   "scripts": {
     "start": "yarn build && yarn serve",
     "build": "lerna run --scope @server-side-rendering/* build",
-    "serve": "lerna run --scope @server-side-rendering/* --parallel serve"
+    "serve": "lerna run --scope @server-side-rendering/* --parallel serve",
+    "clean": "lerna run --scope @server-side-rendering/* --parallel clean"
   }
 }

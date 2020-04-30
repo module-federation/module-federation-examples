@@ -7,10 +7,10 @@ module.exports = {
   mode: "development",
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    port: 3002
+    port: 3002,
   },
   output: {
-    publicPath: "http://localhost:3002/"
+    publicPath: "http://localhost:3002/",
   },
   module: {
     rules: [
@@ -19,10 +19,10 @@ module.exports = {
         loader: "babel-loader",
         exclude: /node_modules/,
         options: {
-          presets: ["@babel/preset-react"]
-        }
-      }
-    ]
+          presets: ["@babel/preset-react"],
+        },
+      },
+    ],
   },
   plugins: [
     new ModuleFederationPlugin({
@@ -30,12 +30,12 @@ module.exports = {
       library: { type: "var", name: "app2" },
       filename: "remoteEntry.js",
       exposes: {
-        Button: "./src/Button"
+        Button: "./src/Button",
       },
-      shared: ["react", "react-dom"]
+      shared: ["react", "react-dom"],
     }),
     new HtmlWebpackPlugin({
-      template: "./public/index.html"
-    })
-  ]
+      template: "./public/index.html",
+    }),
+  ],
 };

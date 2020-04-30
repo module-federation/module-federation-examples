@@ -9,15 +9,15 @@ module.exports = {
   devtool: "source-map",
 
   optimization: {
-    minimize: false
+    minimize: false,
   },
 
   output: {
-    publicPath: "http://localhost:3001/"
+    publicPath: "http://localhost:3001/",
   },
 
   resolve: {
-    extensions: [".jsx", ".js", ".json"]
+    extensions: [".jsx", ".js", ".json"],
   },
 
   module: {
@@ -26,14 +26,14 @@ module.exports = {
         test: /\.jsx?$/,
         loader: require.resolve("babel-loader"),
         options: {
-          presets: [require.resolve("@babel/preset-react")]
-        }
+          presets: [require.resolve("@babel/preset-react")],
+        },
       },
       {
         test: /\.md$/,
-        loader: "raw-loader"
-      }
-    ]
+        loader: "raw-loader",
+      },
+    ],
   },
 
   plugins: [
@@ -49,12 +49,12 @@ module.exports = {
       },
       exposes: {
         SideNav: "./src/SideNav",
-        Page: "./src/Page"
+        Page: "./src/Page",
       },
-      shared: ["react", "react-dom", "@material-ui/core", "react-router-dom"]
+      shared: ["react", "react-dom", "@material-ui/core", "react-router-dom"],
     }),
     new HtmlWebpackPlugin({
-      template: "./public/index.html"
-    })
-  ]
+      template: "./public/index.html",
+    }),
+  ],
 };
