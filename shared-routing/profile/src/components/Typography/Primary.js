@@ -18,5 +18,5 @@ export default function Primary(props) {
 }
 
 Primary.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };

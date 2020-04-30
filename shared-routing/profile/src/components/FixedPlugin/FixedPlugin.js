@@ -22,7 +22,7 @@ export default function FixedPlugin(props) {
   return (
     <div
       className={classnames("fixed-plugin", {
-        "rtl-fixed-plugin": props.rtlActive
+        "rtl-fixed-plugin": props.rtlActive,
       })}
     >
       <div id="fixedPluginClasses" className={props.fixedClasses}>
@@ -186,5 +186,5 @@ FixedPlugin.propTypes = {
   fixedClasses: PropTypes.string,
   bgColor: PropTypes.oneOf(["purple", "blue", "green", "orange", "red"]),
   handleColorClick: PropTypes.func,
-  handleImageClick: PropTypes.func
+  handleImageClick: PropTypes.func,
 };

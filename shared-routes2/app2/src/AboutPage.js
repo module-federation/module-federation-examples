@@ -4,7 +4,7 @@ const style = {
   height: 400,
   backgroundColor: "#3f51b5",
   color: "white",
-  padding: 12
+  padding: 12,
 };
 
 const AboutPage = () => (

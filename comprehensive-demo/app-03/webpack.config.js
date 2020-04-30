@@ -9,15 +9,15 @@ module.exports = {
   devtool: "source-map",
 
   optimization: {
-    minimize: false
+    minimize: false,
   },
 
   output: {
-    publicPath: "http://localhost:3003/"
+    publicPath: "http://localhost:3003/",
   },
 
   resolve: {
-    extensions: [".jsx", ".js", ".json"]
+    extensions: [".jsx", ".js", ".json"],
   },
 
   module: {
@@ -26,10 +26,10 @@ module.exports = {
         test: /\.jsx?$/,
         loader: require.resolve("babel-loader"),
         options: {
-          presets: [require.resolve("@babel/preset-react")]
-        }
-      }
-    ]
+          presets: [require.resolve("@babel/preset-react")],
+        },
+      },
+    ],
   },
 
   plugins: [
@@ -38,15 +38,15 @@ module.exports = {
       library: { type: "var", name: "app_03" },
       filename: "remoteEntry.js",
       remotes: {
-        app_01: "app_01"
+        app_01: "app_01",
       },
       exposes: {
-        Button: "./src/Button"
+        Button: "./src/Button",
       },
-      shared: ["react", "react-dom"]
+      shared: ["react", "react-dom"],
     }),
     new HtmlWebpackPlugin({
-      template: "./public/index.html"
-    })
-  ]
+      template: "./public/index.html",
+    }),
+  ],
 };

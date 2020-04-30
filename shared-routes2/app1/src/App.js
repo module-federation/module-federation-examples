@@ -14,7 +14,7 @@ const App = () => (
       <Navigation />
       <React.Suspense fallback={<div>Loading...</div>}>
         <Switch>
-          {routes.map(route => (
+          {routes.map((route) => (
             <Route
               key={route.path}
               path={route.path}

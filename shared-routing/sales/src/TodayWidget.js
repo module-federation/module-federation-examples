@@ -6,7 +6,7 @@ import {
   XAxis,
   YAxis,
   Label,
-  ResponsiveContainer
+  ResponsiveContainer,
 } from "recharts";
 
 // Generate Sales Data
@@ -23,7 +23,7 @@ const data = [
   createData("15:00", 2000),
   createData("18:00", 2400),
   createData("21:00", 2400),
-  createData("24:00", undefined)
+  createData("24:00", undefined),
 ];
 
 export default function TodayWidget() {
@@ -41,7 +41,7 @@ export default function TodayWidget() {
             top: 16,
             right: 16,
             bottom: 0,
-            left: 24
+            left: 24,
           }}
         >
           <XAxis dataKey="time" stroke={theme.palette.text.secondary} />

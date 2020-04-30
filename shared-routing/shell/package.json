@@ -16,7 +16,8 @@
   "scripts": {
     "start": "webpack-dev-server --port 3000",
     "build": "webpack --mode production",
-    "serve": "serve dist -p 3000"
+    "serve": "serve dist -p 3000",
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.10",

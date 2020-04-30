@@ -14,6 +14,6 @@ export function useLocalStorageSync(key) {
 
   return {
     value,
-    setItem
+    setItem,
   };
 }

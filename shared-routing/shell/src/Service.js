@@ -7,7 +7,7 @@ function useService() {
 
   return {
     ...service,
-    setService
+    setService,
   };
 }
 

@@ -17,7 +17,7 @@ export default function Snackbar(props) {
   const { message, color, close, icon, place, open, rtlActive } = props;
   var action = [];
   const messageClasses = classNames({
-    [classes.iconMessage]: icon !== undefined
+    [classes.iconMessage]: icon !== undefined,
   });
   if (close !== undefined) {
     action = [
@@ -29,7 +29,7 @@ export default function Snackbar(props) {
         onClick={() => props.closeNotification()}
       >
         <Close className={classes.close} />
-      </IconButton>
+      </IconButton>,
     ];
   }
   return (
@@ -41,7 +41,7 @@ export default function Snackbar(props) {
             ? "left"
             : place.indexOf("c") !== -1
             ? "center"
-            : "right"
+            : "right",
       }}
       open={open}
       message={
@@ -55,8 +55,8 @@ export default function Snackbar(props) {
         classes: {
           root: classes.root + " " + classes[color],
           message: classes.message,
-          action: classNames({ [classes.actionRTL]: rtlActive })
-        }
+          action: classNames({ [classes.actionRTL]: rtlActive }),
+        },
       }}
     />
   );
@@ -70,5 +70,5 @@ Snackbar.propTypes = {
   place: PropTypes.oneOf(["tl", "tr", "tc", "br", "bl", "bc"]),
   open: PropTypes.bool,
   rtlActive: PropTypes.bool,
-  closeNotification: PropTypes.func
+  closeNotification: PropTypes.func,
 };

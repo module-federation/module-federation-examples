@@ -7,10 +7,10 @@ module.exports = {
   mode: "development",
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    port: 3001
+    port: 3001,
   },
   output: {
-    publicPath: "http://localhost:3001/"
+    publicPath: "http://localhost:3001/",
   },
   module: {
     rules: [
@@ -18,10 +18,10 @@ module.exports = {
         test: /\.jsx?$/,
         loader: "babel-loader",
         options: {
-          presets: ["@babel/preset-react"]
-        }
-      }
-    ]
+          presets: ["@babel/preset-react"],
+        },
+      },
+    ],
   },
   plugins: [
     new ModuleFederationPlugin({
@@ -29,12 +29,12 @@ module.exports = {
       library: { type: "var", name: "app1" },
       remotes: {
         app2: "app2",
-        app3: "app3"
+        app3: "app3",
       },
-      shared: ["react", "react-dom"]
+      shared: ["react", "react-dom"],
     }),
     new HtmlWebpackPlugin({
-      template: "./public/index.html"
-    })
-  ]
+      template: "./public/index.html",
+    }),
+  ],
 };

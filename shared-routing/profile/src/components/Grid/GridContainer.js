@@ -8,8 +8,8 @@ import Grid from "@material-ui/core/Grid";
 const styles = {
   grid: {
     margin: "0 -15px !important",
-    width: "unset"
-  }
+    width: "unset",
+  },
 };
 
 const useStyles = makeStyles(styles);
@@ -25,5 +25,5 @@ export default function GridContainer(props) {
 }
 
 GridContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };

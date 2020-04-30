@@ -7,7 +7,8 @@
     "build": "cross-env NODE_ENV=production webpack",
     "start": "webpack --watch",
     "dev": "webpack-dev-server --content-base public",
-    "serve": "serve public -p 3005"
+    "serve": "serve public -p 3005",
+    "clean": "rm -rf dist"
   },
   "devDependencies": {
     "cross-env": "^5.2.0",

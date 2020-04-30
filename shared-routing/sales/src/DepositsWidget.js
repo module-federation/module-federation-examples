@@ -3,8 +3,8 @@ import { Box, Button, Typography, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
   depositContext: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });
 
 export default function DepositsWidget() {

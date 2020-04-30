@@ -18,5 +18,5 @@ export default function Warning(props) {
 }
 
 Warning.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };

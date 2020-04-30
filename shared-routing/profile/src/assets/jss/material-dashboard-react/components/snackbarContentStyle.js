@@ -15,7 +15,7 @@ import {
   roseColor,
   primaryColor,
   warningColor,
-  hexToRgb
+  hexToRgb,
 } from "../../material-dashboard-react.js";
 
 const snackbarContentStyle = {
@@ -39,57 +39,57 @@ const snackbarContentStyle = {
       hexToRgb(blackColor) +
       ", 0.12), 0 7px 8px -5px rgba(" +
       hexToRgb(whiteColor) +
-      ", 0.2)"
+      ", 0.2)",
   },
   top20: {
-    top: "20px"
+    top: "20px",
   },
   top40: {
-    top: "40px"
+    top: "40px",
   },
   info: {
     backgroundColor: infoColor[3],
     color: whiteColor,
-    ...infoBoxShadow
+    ...infoBoxShadow,
   },
   success: {
     backgroundColor: successColor[3],
     color: whiteColor,
-    ...successBoxShadow
+    ...successBoxShadow,
   },
   warning: {
     backgroundColor: warningColor[3],
     color: whiteColor,
-    ...warningBoxShadow
+    ...warningBoxShadow,
   },
   danger: {
     backgroundColor: dangerColor[3],
     color: whiteColor,
-    ...dangerBoxShadow
+    ...dangerBoxShadow,
   },
   primary: {
     backgroundColor: primaryColor[3],
     color: whiteColor,
-    ...primaryBoxShadow
+    ...primaryBoxShadow,
   },
   rose: {
     backgroundColor: roseColor[3],
     color: whiteColor,
-    ...roseBoxShadow
+    ...roseBoxShadow,
   },
   message: {
     padding: "0",
     display: "block",
-    maxWidth: "89%"
+    maxWidth: "89%",
   },
   close: {
     width: "11px",
-    height: "11px"
+    height: "11px",
   },
   iconButton: {
     width: "24px",
     height: "24px",
-    padding: "0px"
+    padding: "0px",
   },
   icon: {
     display: "block",
@@ -98,34 +98,34 @@ const snackbarContentStyle = {
     top: "50%",
     marginTop: "-15px",
     width: "30px",
-    height: "30px"
+    height: "30px",
   },
   infoIcon: {
-    color: infoColor[3]
+    color: infoColor[3],
   },
   successIcon: {
-    color: successColor[3]
+    color: successColor[3],
   },
   warningIcon: {
-    color: warningColor[3]
+    color: warningColor[3],
   },
   dangerIcon: {
-    color: dangerColor[3]
+    color: dangerColor[3],
   },
   primaryIcon: {
-    color: primaryColor[3]
+    color: primaryColor[3],
   },
   roseIcon: {
-    color: roseColor[3]
+    color: roseColor[3],
   },
   iconMessage: {
     paddingLeft: "50px",
-    display: "block"
+    display: "block",
   },
   actionRTL: {
     marginLeft: "-8px",
-    marginRight: "auto"
-  }
+    marginRight: "auto",
+  },
 };
 
 export default snackbarContentStyle;

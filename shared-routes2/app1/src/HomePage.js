@@ -4,7 +4,7 @@ const style = {
   height: 400,
   backgroundColor: "#673ab7",
   color: "white",
-  padding: 12
+  padding: 12,
 };
 
 const HomePage = () => (

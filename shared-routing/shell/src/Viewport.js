@@ -6,21 +6,21 @@ const useGlobalStyles = makeStyles(
     "@global": {
       "*:-webkit-full-screen": {
         height: "100%",
-        width: "100%"
+        width: "100%",
       },
       html: {
-        position: "fixed"
+        position: "fixed",
       },
       "html, body": {
         height: "100%",
-        width: "100%"
+        width: "100%",
       },
       "#root": {
         height: "100%",
         display: "flex",
-        flexDirection: "column"
-      }
-    }
+        flexDirection: "column",
+      },
+    },
   }),
   { name: "ViewportGlobals" }
 );

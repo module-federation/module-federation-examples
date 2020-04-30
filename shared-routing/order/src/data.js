@@ -42,5 +42,5 @@ export const orders = [
     "Long Branch, NJ",
     "VISA ⠀•••• 5919",
     212.79
-  )
+  ),
 ];

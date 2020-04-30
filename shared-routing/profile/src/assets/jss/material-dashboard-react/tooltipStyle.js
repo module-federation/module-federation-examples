@@ -28,7 +28,7 @@ const tooltipStyle = {
     wordSpacing: "normal",
     wordWrap: "normal",
     whiteSpace: "normal",
-    lineBreak: "auto"
-  }
+    lineBreak: "auto",
+  },
 };
 export default tooltipStyle;

@@ -22,7 +22,7 @@ const useStyles = makeStyles(styles);
 export default function Tasks(props) {
   const classes = useStyles();
   const [checked, setChecked] = React.useState([...props.checkedIndexes]);
-  const handleToggle = value => {
+  const handleToggle = (value) => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
     if (currentIndex === -1) {
@@ -34,12 +34,12 @@ export default function Tasks(props) {
   };
   const { tasksIndexes, tasks, rtlActive } = props;
   const tableCellClasses = classnames(classes.tableCell, {
-    [classes.tableCellRTL]: rtlActive
+    [classes.tableCellRTL]: rtlActive,
   });
   return (
     <Table className={classes.table}>
       <TableBody>
-        {tasksIndexes.map(value => (
+        {tasksIndexes.map((value) => (
           <TableRow key={value} className={classes.tableRow}>
             <TableCell className={tableCellClasses}>
               <Checkbox
@@ -50,7 +50,7 @@ export default function Tasks(props) {
                 icon={<Check className={classes.uncheckedIcon} />}
                 classes={{
                   checked: classes.checked,
-                  root: classes.root
+                  root: classes.root,
                 }}
               />
             </TableCell>
@@ -102,5 +102,5 @@ Tasks.propTypes = {
   tasksIndexes: PropTypes.arrayOf(PropTypes.number),
   tasks: PropTypes.arrayOf(PropTypes.node),
   rtlActive: PropTypes.bool,
-  checkedIndexes: PropTypes.array
+  checkedIndexes: PropTypes.array,
 };

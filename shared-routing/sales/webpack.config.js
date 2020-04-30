@@ -10,10 +10,10 @@ module.exports = {
     port: 3003,
     historyApiFallback: true,
     hot: false,
-    hotOnly: false
+    hotOnly: false,
   },
   output: {
-    publicPath: "http://localhost:3003/"
+    publicPath: "http://localhost:3003/",
   },
   module: {
     rules: [
@@ -22,10 +22,10 @@ module.exports = {
         loader: "babel-loader",
         exclude: /node_modules/,
         options: {
-          presets: ["@babel/preset-react"]
-        }
-      }
-    ]
+          presets: ["@babel/preset-react"],
+        },
+      },
+    ],
   },
   plugins: [
     new ModuleFederationPlugin({
@@ -33,16 +33,16 @@ module.exports = {
       library: { type: "var", name: "sales" },
       filename: "remoteEntry.js",
       remotes: {
-        shell: "shell"
+        shell: "shell",
       },
       exposes: {
         TodayWidget: "./src/TodayWidget",
-        DepositsWidget: "./src/DepositsWidget"
+        DepositsWidget: "./src/DepositsWidget",
       },
-      shared: ["react", "react-dom", "@material-ui/core", "@material-ui/icons"]
+      shared: ["react", "react-dom", "@material-ui/core", "@material-ui/icons"],
     }),
     new HtmlWebpackPlugin({
-      template: "./public/index.html"
-    })
-  ]
+      template: "./public/index.html",
+    }),
+  ],
 };
