@@ -1,2 +1,5 @@
-// https://github.com/webpack/webpack/issues/10352#issuecomment-622016042
-import("./bootstrap");
+import App from "./App";
+import React from "react";
+import ReactDOM from "react-dom";
+
+ReactDOM.render(<App />, document.getElementById("root"));
