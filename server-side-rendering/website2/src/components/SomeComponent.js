@@ -8,6 +8,7 @@ const SomeComponent = () => (
       border: "1px solid black",
       backgroundColor: "#ccc",
     }}
+    onClick={() => alert("website2 is interactive")}
   >
     Header
   </div>
