@@ -6,26 +6,35 @@
   "author": "Zack Jackson <zackary.l.jackson@gmail.com> (https://github.com/ScriptedAlchemy)",
   "license": "MIT",
   "private": true,
-  "workspaces": [
-    "basic-host-remote/*",
-    "bi-directional/*",
-    "self-healing/*",
-    "comprehensive-demo/*",
-    "server-side-rendering/*",
-    "dynamic-system-host/*",
-    "shared-context/*",
-    "shared-routing/*",
-    "shared-routes2/*",
-    "typescript/*",
-    "version-discrepancy/*",
-    "redux-reducer-injection/*",
-    "no-import-bootstrap/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "basic-host-remote/*",
+      "bi-directional/*",
+      "self-healing/*",
+      "comprehensive-demo/*",
+      "server-side-rendering/*",
+      "dynamic-system-host/*",
+      "shared-context/*",
+      "shared-routing/*",
+      "shared-routes2/*",
+      "typescript/*",
+      "version-discrepancy/*",
+      "redux-reducer-injection/*",
+      "no-import-bootstrap/*"
+    ],
+    "nohoist": [
+      "**/svelte",
+      "**/svelte/**",
+      "**/svelte-loader",
+      "**/svelte-loader/**"
+    ]
+  },
   "devDependencies": {
     "husky": "4.2.5",
     "lerna": "3.20.2",
     "prettier": "2.0.4",
-    "pretty-quick": "2.0.1"
+    "pretty-quick": "2.0.1",
+    "concurrently": "5.2.0"
   },
   "scripts": {
     "prettier": "prettier --write \"**/*.{js,json,md,ts,tsx}\"",
