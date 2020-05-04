@@ -40,6 +40,7 @@ module.exports = {
         AlertBox: "./src/components/alert-box.ts",
         components: "./src/index.ts",
       },
+      shared: [],
     }),
     new HtmlWebpackPlugin({
       title: "LitHTML Typescript Example",

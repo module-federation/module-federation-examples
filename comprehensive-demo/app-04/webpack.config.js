@@ -57,6 +57,7 @@ module.exports = {
         App: "./src/main.js",
         loadApp: "./src/loadApp.js",
       },
+      shared: [],
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
