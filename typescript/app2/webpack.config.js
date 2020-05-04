@@ -20,6 +20,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loader: "babel-loader",
+        exclude: /node_modules/,
         options: {
           presets: ["@babel/preset-react", "@babel/preset-typescript"],
         },
