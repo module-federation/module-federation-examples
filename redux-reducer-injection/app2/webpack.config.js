@@ -21,6 +21,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: require.resolve('babel-loader'),
+        exclude: /node_modules/,
         options: {
           presets: [require.resolve('@babel/preset-react')],
         },

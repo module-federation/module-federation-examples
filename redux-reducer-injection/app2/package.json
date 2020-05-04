@@ -1,5 +1,5 @@
 {
-  "name": "app1",
+  "name": "@redux-reducer-injection/app2",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
@@ -11,8 +11,6 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-redux": "^7.2.0",
-    "react-router-dom": "^5.1.2",
-    "redux": "^4.0.5",
     "serve": "^11.3.0",
     "webpack": "git://github.com/webpack/webpack.git#dev-1",
     "webpack-cli": "^3.3.11"
@@ -20,7 +18,7 @@
   "scripts": {
     "start": "webpack --watch",
     "build": "webpack --mode production",
-    "serve": "serve dist -p 3001",
+    "serve": "serve dist -p 3002",
     "clean": "rm -rf dist"
   }
 }
