@@ -1,17 +1,9 @@
 {
-  "name": "webpack-module-federation-hooks",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
-    "start": "concurrently \"wsrun --parallel start\" \"wsrun --parallel serve\"",
-    "clean": "concurrently \"wsrun --parallel start\" \"wsrun --parallel clean\""
-  },
-  "devDependencies": {
-    "wsrun": "5.2.0"
-  },
-  "dependencies": {
-    "concurrently": "^5.1.0"
+    "start": "concurrently \"lerna run --scope @redux-reducer-injection/* --parallel start\" \"yarn serve\"",
+    "build": "lerna run --scope @redux-reducer-injection/* build",
+    "serve": "lerna run --scope @redux-reducer-injection/* --parallel serve",
+    "clean": "lerna run --scope @redux-reducer-injection/* --parallel clean"
   }
 }

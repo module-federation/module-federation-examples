@@ -41,7 +41,7 @@ const RemoteAppWrapper = (props) => {
   }, []);
 
   return (
-    <Provider store={store}>
+    <Provider store={store || {}}>
       <RemoteApp />
     </Provider>
   );
