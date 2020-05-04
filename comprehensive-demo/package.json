@@ -1,25 +1,9 @@
 {
-  "name": "mfe-demo-root",
   "private": true,
   "scripts": {
-    "build": "yarn workspaces run build",
-    "serve": "wsrun --parallel serve",
-    "clean": "wsrun --parallel clean",
-    "start": "concurrently \"wsrun --parallel start\" \"wsrun --parallel serve\""
-  },
-  "workspaces": {
-    "packages": [
-      "app-*"
-    ],
-    "nohoist": [
-      "**/svelte",
-      "**/svelte/**",
-      "**/svelte-loader",
-      "**/svelte-loader/**"
-    ]
-  },
-  "devDependencies": {
-    "concurrently": "5.2.0",
-    "wsrun": "5.2.0"
+    "start": "concurrently \"lerna run --scope @comprehensive-demo/* --parallel start\" \"yarn serve\"",
+    "build": "lerna run --scope @comprehensive-demo/* build",
+    "serve": "lerna run --scope @comprehensive-demo/* --parallel serve",
+    "clean": "lerna run --scope @comprehensive-demo/* --parallel clean"
   }
 }
