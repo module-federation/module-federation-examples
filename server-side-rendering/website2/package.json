@@ -8,7 +8,7 @@
   "scripts": {
     "start": "npm run clean && cross-env NODE_ENV=development babel-node server/index.js",
     "start:prod": "npm run build && npm run serve",
-    "serve": "cross-env NODE_ENV=production node buildServer/main.js",
+    "serve": "cross-env NODE_ENV=production node --enable-source-maps buildServer/main.js",
     "build": "npm run build:server && npm run build:client",
     "build:client": "rimraf buildClient && cross-env NODE_ENV=production webpack --progress -p --config build/webpack.config.js/client.prod.js --profile --json > buildServer/stats.json",
     "build:server": "cross-env NODE_ENV=production webpack --progress -p --config build/webpack.config.js/server.prod.js",
