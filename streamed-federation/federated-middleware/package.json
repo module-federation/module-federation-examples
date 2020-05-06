@@ -15,13 +15,15 @@
   "dependencies": {
     "express": "^4.17.1"
   },
+  "optionalDependencies": {
+    "@module-federation/propriatery-tools": "git+ssh://git@github.com:module-federation/proprietary-tools.git"
+  },
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "babel-loader": "^8.1.0",
     "copy-webpack-plugin": "^5.1.1",
     "serverless": "^1.69.0",
     "webpack": "^5.0.0-beta.16",
-    "webpack-cli": "^3.3.11",
-    "@module-federation/propriatery-tools": "git+ssh://git@github.com:module-federation/proprietary-tools.git"
+    "webpack-cli": "^3.3.11"
   }
 }
