@@ -1,6 +1,7 @@
 const path = require("path");
 const dist = path.resolve(__dirname, "dist");
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const ModuleFederationPlugin = require("webpack").container
+  .ModuleFederationPlugin;
 
 const mode = process.env.NODE_ENV || "development";
 const prod = mode === "production";
