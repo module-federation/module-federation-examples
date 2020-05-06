@@ -1,14 +1,5 @@
 const StreamedFederationPlugin = require("@module-federation/propriatery-tools/packages/remote-federation-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const path = require("path");
-
-const externals = [
-  require("./package.json"),
-  require("../federated-middleware/package.json"),
-].reduce(
-  (p, c) => [...p, ...Object.keys(c.dependencies).map((d) => ({ [d]: d }))],
-  []
-);
 
 module.exports = {
   mode: "production",
@@ -59,7 +50,7 @@ module.exports = {
       name: "app1",
       library: { type: "var" },
       filename: "remoteEntry.js",
-      shared: externals,
+      shared: ["react", "react-dom", "react-redux", "redux", "redux-thunk"],
       remotes: {
         "@streamed-federation/federated-middleware":
           "@streamed-federation/federated-middleware/remoteEntry.js",
