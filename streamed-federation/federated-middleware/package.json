@@ -1,0 +1,27 @@
+{
+  "private": true,
+  "name": "@streamed-federation/federated-middleware",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack",
+    "deploy": "aws --endpoint-url=http://localhost:4568 s3 cp ./dist s3://federated-lambda-streaming-federated-middleware/ --recursive",
+    "deploy:local": "aws --profile federation --endpoint-url=http://localhost:4568 s3 cp ./dist s3://federated-lambda-streaming-federated-middleware/ --recursive",
+    "setup": "aws --endpoint-url=http://localhost:4568 s3 mb s3://federated-lambda-streaming-federated-middleware",
+    "setup:local": "aws --profile federation --endpoint-url=http://localhost:4568 s3 mb s3://federated-lambda-streaming-federated-middleware",
+    "test": "echo noop"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "babel-loader": "^8.1.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "serverless": "^1.69.0",
+    "webpack": "^5.0.0-beta.16",
+    "webpack-cli": "^3.3.11",
+    "@module-federation/propriatery-tools": "git+ssh://git@github.com:module-federation/proprietary-tools.git"
+  }
+}
