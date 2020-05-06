@@ -16,7 +16,6 @@ module.exports = {
   entry: { client: "./src/client.js" },
   name: "app1",
   output: {
-    path: path.join(__dirname, "dist/client"),
     library: "app1",
     libraryTarget: "var",
   },

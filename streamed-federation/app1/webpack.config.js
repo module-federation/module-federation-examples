@@ -14,8 +14,9 @@ module.exports = {
   target: "async-node",
   entry: { server: "./src/server.js" },
   output: {
-    path: path.join(__dirname, "dist/server"),
     libraryTarget: "commonjs2",
+    filename: "[name].js",
+    chunkFilename: "[name].[contenthash].js",
   },
   optimization: {
     minimize: true,

@@ -5,7 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "dotenv -- node dist/server/server.js",
+    "start": "dotenv -- node dist/server.js",
     "build": "webpack && webpack --config webpack.client.config.js",
     "package": "node ./scripts/get-deps.js && (cd dist && npm install --production && serverless package)",
     "deploy": "aws --endpoint-url=http://localhost:4568 s3 cp ./dist s3://federated-lambda-streaming-app1/ --recursive",
