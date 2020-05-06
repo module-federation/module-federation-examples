@@ -18,7 +18,7 @@ module.exports = {
     libraryTarget: "commonjs2",
   },
   optimization: {
-    minimize: false,
+    minimize: true,
   },
   resolve: {
     extensions: [".mjs", ".js", ".json"],
@@ -59,7 +59,7 @@ module.exports = {
       name: "app1",
       library: { type: "commonjs2" },
       filename: "remoteEntry.js",
-      shared: externals,
+      shared: ["react", "react-dom", "react-redux", "redux", "redux-thunk"],
       remotes: {
         "@streamed-federation/federated-middleware":
           "@streamed-federation/federated-middleware/remoteEntry.js",

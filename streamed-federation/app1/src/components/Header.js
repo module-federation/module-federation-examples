@@ -20,7 +20,7 @@ const Header = ({ loggedIn }) => (
     )}
 
     <a href="/federated" className="link">
-      Secret
+      Federated Route
     </a>
   </div>
 );
