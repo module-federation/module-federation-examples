@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "lerna run --scope @streamed-federation/* --parallel start",
+    "build": "lerna run --scope @streamed-federation/* --parallel build",
+    "serve": "lerna run --scope @streamed-federation/* --parallel serve",
+    "clean": "lerna run --scope @streamed-federation/* --parallel clean",
+    "setup": "lerna run --scope @streamed-federation/* --parallel setup",
+    "deploy:local": "lerna run --scope @streamed-federation/* --parallel deploy:local",
+    "setup:local": "lerna run --scope @streamed-federation/* --parallel setup:local",
+    "start:s3": "s3rver -d ./.s3rver"
+  },
+  "dependencies": {
+    "s3rver": "^3.5.0",
+    "serverless": "^1.69.0",
+    "wsrun": "^5.2.0"
+  }
+}
