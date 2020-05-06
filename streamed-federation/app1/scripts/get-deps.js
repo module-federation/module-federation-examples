@@ -26,9 +26,7 @@ async function run() {
   //     return remotePackage.dependencies;
   // }));
   const remoteDependencies = [
-    require("../../dataloaders/package.json").dependencies,
-    require("../../movies/package.json").dependencies,
-    require("../../people/package.json").dependencies,
+    require("../../federated-middleware/package.json").dependencies,
   ];
 
   const dependencies = [
