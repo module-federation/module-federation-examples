@@ -18,6 +18,10 @@ const Header = ({ loggedIn }) => (
         Secret
       </Link>
     )}
+
+    <a href="/federated" className="link">
+      Secret
+    </a>
   </div>
 );
 

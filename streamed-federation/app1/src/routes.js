@@ -24,4 +24,8 @@ export default [
     component: Secret,
     exact: true,
   },
+  {
+    path: "/federation",
+    exact: true,
+  },
 ];
