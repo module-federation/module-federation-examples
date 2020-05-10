@@ -1,7 +1,8 @@
 # Module Federation Examples
 
 This repository is to showcase examples on Webpack 5's new Module Federation can be used.
-If you need support, consider looking at my sponsor profile https://github.com/sponsors/ScriptedAlchemy
+
+If you need **support**, consider looking at my sponsor profile https://github.com/sponsors/ScriptedAlchemy
 
 # Examples
 
