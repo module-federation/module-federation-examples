@@ -1,7 +1,7 @@
 const path = require("path");
 const merge = require("webpack-merge");
 const fs = require("fs");
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const ModuleFederationPlugin = require("webpack").container.ModuleFederationPlugin;
 const common = require("./common.base");
 const { server: serverLoaders } = require("./loaders");
 const plugins = require("./plugins");

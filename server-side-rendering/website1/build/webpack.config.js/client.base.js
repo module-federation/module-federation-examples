@@ -1,6 +1,6 @@
 const path = require("path");
 const merge = require("webpack-merge");
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const ModuleFederationPlugin = require("webpack").container.ModuleFederationPlugin;
 const { client: clientLoaders } = require("./loaders");
 const plugins = require("./plugins");
 const common = require("./common.base");
