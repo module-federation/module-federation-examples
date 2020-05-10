@@ -14,8 +14,8 @@
     "@module-federation/propriatery-tools": "git+ssh://git@github.com:module-federation/proprietary-tools.git#wip-dshboard"
   },
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack --mode production",
+    "start": "node --inspect ../../node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "build": "node ../../node_modules/webpack/bin/webpack.js --mode production",
     "serve": "serve dist -p 3001",
     "clean": "rm -rf dist"
   },

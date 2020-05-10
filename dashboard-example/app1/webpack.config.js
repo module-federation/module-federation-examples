@@ -48,6 +48,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
-    new BuildHashPlugin({ filename: "build.hash" }),
+    new BuildHashPlugin({
+      filename: "stats.json",
+      reportFunction: (data) => {
+        console.log("afterDone", data);
+      },
+    }),
   ],
 };
