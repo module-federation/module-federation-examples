@@ -49,8 +49,6 @@ module.exports = {
         "@material-ui/icons",
         "react-router",
         "react-router-dom",
-        // workaround to ensure code is provided before booting app
-        "./src/Service",
       ],
     }),
     new HtmlWebpackPlugin({
