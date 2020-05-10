@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const ModuleFederationPlugin = require("webpack").container
+  .ModuleFederationPlugin;
 const path = require("path");
 
 module.exports = {
@@ -48,8 +49,6 @@ module.exports = {
         "@material-ui/icons",
         "react-router",
         "react-router-dom",
-        // workaround to ensure code is provided before booting app
-        "./src/Service",
       ],
     }),
     new HtmlWebpackPlugin({
