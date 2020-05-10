@@ -35,7 +35,7 @@ module.exports = merge.smart(common, {
       exposes: {
         SomeComponent: "./src/components/SomeComponent",
       },
-      shared: ["react", "react-dom"],
+      shared: ["react", "react-dom", "@loadable/component", "@loadable/server"],
     }),
   ],
   stats: {

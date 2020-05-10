@@ -38,7 +38,7 @@ module.exports = merge.smart(common, {
           "../../../website2/buildServer/container.js"
         ),
       },
-      shared: ["react", "react-dom"],
+      shared: ["react", "react-dom", "@loadable/component", "@loadable/server"],
     }),
   ],
   stats: {
