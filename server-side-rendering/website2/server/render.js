@@ -9,7 +9,10 @@ const statsFile = path.resolve("./buildClient/static/stats.json");
 
 export default async (req, res, next) => {
   try {
-    const extractor = new ChunkExtractor({ statsFile });
+    const extractor = new ChunkExtractor({
+      statsFile,
+      entrypoints: ["mainWebsite2"],
+    });
     // Wrap your application using "collectChunks"
     const jsx = extractor.collectChunks(createApp(App));
 

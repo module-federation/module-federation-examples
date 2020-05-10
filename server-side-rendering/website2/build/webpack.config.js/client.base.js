@@ -8,7 +8,12 @@ const common = require("./common.base");
 module.exports = merge.smart(common, {
   name: "client",
   target: "web",
-  entry: ["@babel/polyfill", path.resolve(__dirname, "../../src/index.js")],
+  entry: {
+    mainWebsite2: [
+      "@babel/polyfill",
+      path.resolve(__dirname, "../../src/index.js"),
+    ],
+  },
   output: {
     publicPath: "http://localhost:3002/static/",
   },
