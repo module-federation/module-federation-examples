@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const BuildHashPlugin = require("@module-federation/propriatery-tools/packages/dashboard-plugin");
 const ModuleFederationPlugin = require("webpack").container
   .ModuleFederationPlugin;
 const path = require("path");
@@ -46,6 +47,12 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
+    }),
+    new BuildHashPlugin({
+      filename: "dashboard.json",
+      reportFunction: (data) => {
+        console.log("afterDone", data);
+      },
     }),
   ],
 };
