@@ -49,7 +49,7 @@ module.exports = {
       template: "./public/index.html",
     }),
     new BuildHashPlugin({
-      filename: "stats.json",
+      filename: "dashboard.json",
       reportFunction: (data) => {
         console.log("afterDone", data);
       },
