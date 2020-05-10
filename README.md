@@ -1,6 +1,7 @@
 # Module Federation Examples
 
 This repository is to showcase examples on Webpack 5's new Module Federation can be used.
+If you need support, consider looking at my sponsor profile https://github.com/sponsors/ScriptedAlchemy
 
 # Examples
 
@@ -20,7 +21,7 @@ This repository is to showcase examples on Webpack 5's new Module Federation can
 - [x] [Nested Components](./nested/README.md) &mdash; Nested remote components.
 - [x] [Share Context Provider](./shared-context/README.md) &mdash; App1 and App2 with shared Context Provider.
 - [x] 🔒 [Streaming Federated Code ](./streamed-federation/README.md) &mdash; App1 and federated-middleware deploy to s3. App1 then stream's federated code directly from S3
-- [ ] Non-UI Module
+- [x] Non-UI Module
 - [x] Routing
 - [x] [Version Discrepancy](./version-discrepancy/README.md) &mdash; Federated apps depending on different versions of a dependency without side-effects.
 - [x] [TypeScript](./typescript/README.md) &mdash; Simple host/remote example using TypeScript.
