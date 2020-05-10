@@ -12,7 +12,7 @@ const { serverPath } = config[process.env.NODE_ENV || "development"];
 module.exports = merge.smart(common, {
   name: "server",
   devtool: "source-map",
-  target: "async-node",
+  target: "node",
   entry: ["@babel/polyfill", path.resolve(__dirname, "../../server/index.js")],
   output: {
     path: serverPath,
