@@ -25,7 +25,7 @@ module.exports = merge.smart(common, {
       remotes: {
         website2: "website2",
       },
-      shared: ["react", "react-dom"],
+      shared: ["react", "react-dom", "@loadable/component"],
     }),
   ],
 });
