@@ -21,7 +21,6 @@ module.exports = merge.smart(common, {
     new ModuleFederationPlugin({
       name: "website1",
       library: { type: "var", name: "website1" },
-      filename: "container.js",
       remotes: {
         website2: "website2",
       },

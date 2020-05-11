@@ -95,7 +95,7 @@ export default async (req, res, next) => {
             ${helmet.title.toString()}
             ${helmet.meta.toString()}
             ${helmet.link.toString()}
-          <script src="http://localhost:3002/static/container.js"></script>
+            <script src="http://localhost:3002/static/remoteEntry.js"></script>
             <link rel="shortcut icon" href="data:;base64,=">
             ${styleTags}
         </head>

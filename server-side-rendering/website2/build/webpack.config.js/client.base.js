@@ -26,7 +26,7 @@ module.exports = merge.smart(common, {
     new ModuleFederationPlugin({
       name: "website2",
       library: { type: "var", name: "website2" },
-      filename: "container.js",
+      filename: "remoteEntry.js",
       exposes: {
         SomeComponent: "./src/components/SomeComponent",
       },
