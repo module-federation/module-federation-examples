@@ -24,6 +24,7 @@ const useDynamicScript = (args) => {
     element.async = true;
 
     setReady(false);
+    setFailed(false);
 
     element.onload = () => {
       console.log(`Dynamic Script Loaded: ${args.url}`);
