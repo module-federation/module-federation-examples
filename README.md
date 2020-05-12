@@ -10,6 +10,8 @@ If you need **support**, consider looking at my sponsor profile https://github.c
 
 **Official Docs from @sokra** https://github.com/webpack/changelog-v5/blob/master/guides/module-federation.md
 
+**Shim for partial Webpack 4 and non webpack users** https://gist.github.com/ScriptedAlchemy/d386a094832dbd9a04324862d26570e9
+
 # Examples
 
 > Legend:
