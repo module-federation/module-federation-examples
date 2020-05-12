@@ -5,7 +5,9 @@ This repository is to showcase examples on Webpack 5's new Module Federation can
 If you need **support**, consider looking at my sponsor profile https://github.com/sponsors/ScriptedAlchemy
 
 **Youtube Screencasts** https://www.youtube.com/playlist?list=PLWSiF9YHHK-DqsFHGYbeAMwbd9xcZbEWJ
+
 **WIP info site** http://federated-libraries-next.now.sh/
+
 **Official Docs from @sokra** https://github.com/webpack/changelog-v5/blob/master/guides/module-federation.md
 
 # Examples
