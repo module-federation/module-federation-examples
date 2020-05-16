@@ -8,11 +8,13 @@ If you need **support**, consider looking at my sponsor profile https://github.c
 
 **WIP info site** http://federated-libraries-next.now.sh/
 
-**Official Docs from @sokra** https://github.com/webpack/changelog-v5/blob/master/guides/module-federation.md
+**Official Docs** https://webpack.js.org/concepts/module-federation/
 
 **Shim for partial Webpack 4 and non webpack users** https://gist.github.com/ScriptedAlchemy/d386a094832dbd9a04324862d26570e9
 
 **Original Webpack Issue** https://github.com/webpack/webpack/issues/10352
+
+**Medium post** https://link.medium.com/xzFgBBtAx6
 
 # Examples
 
