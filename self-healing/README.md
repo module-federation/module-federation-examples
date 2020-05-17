@@ -30,3 +30,4 @@ Run `yarn start`. This will build and serve both `app1` and `app2` on ports 3001
 - REMOTE: [localhost:3002](http://localhost:3002/)
 
 Notice that the button in both apps are the same even though the host app didn't provide `styled-components` as a dependency. If you open DevTools and checkout the "Network" tab you can see 2 requests were made to `app2`; the remote `<Button />` component and the missing `styled-components` vendor code.
+<img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/SelfHealing">
