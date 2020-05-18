@@ -2,11 +2,11 @@
 
 This repository is to showcase examples on Webpack 5's new Module Federation can be used.
 
-If you need **support**, consider looking at my sponsor profile [https://github.com/sponsors/ScriptedAlchemy](https://federated-libraries-next.now.sh/?utm_source=ModuleFederationExamples&utm_medium=https://github.com/sponsors/ScriptedAlchemy&utm_campaign=sponsor_link)
+If you need **support**, consider looking at my sponsor profile [https://github.com/sponsors/ScriptedAlchemy](https://federated-libraries-next.now.sh/redirect?utm_source=ModuleFederationExamples&utm_medium=https://github.com/sponsors/ScriptedAlchemy&utm_campaign=sponsor_link)
 
-**Youtube Screencasts** [https://www.youtube.com/playlist?list=PLWSiF9YHHK-DqsFHGYbeAMwbd9xcZbEWJ](https://federated-libraries-next.now.sh/?utm_source=ModuleFederationExamples&utm_medium=https%3A%2F%2Fwww.youtube.com%2Fplaylist%3Flist%3DPLWSiF9YHHK-DqsFHGYbeAMwbd9xcZbEWJ&utm_campaign=youtube_playlist)
+**Youtube Screencasts** [https://www.youtube.com/playlist?list=PLWSiF9YHHK-DqsFHGYbeAMwbd9xcZbEWJ](https://federated-libraries-next.now.sh/redirect?utm_source=ModuleFederationExamples&utm_medium=https%3A%2F%2Fwww.youtube.com%2Fplaylist%3Flist%3DPLWSiF9YHHK-DqsFHGYbeAMwbd9xcZbEWJ&utm_campaign=youtube_playlist)
 
-**WIP info site** [http://federated-libraries-next.now.sh](https://federated-libraries-next.now.sh/?utm_source=ModuleFederationExamples&utm_campaign=docs_site&utm_medium=false)
+**WIP info site** [http://federated-libraries-next.now.sh](https://federated-libraries-next.now.sh/redirect?utm_source=ModuleFederationExamples&utm_campaign=docs_site&utm_medium=false)
 
 **Official Docs** https://webpack.js.org/concepts/module-federation/
 
