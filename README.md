@@ -2,11 +2,11 @@
 
 This repository is to showcase examples on Webpack 5's new Module Federation can be used.
 
-If you need **support**, consider looking at my sponsor profile https://github.com/sponsors/ScriptedAlchemy
+If you need **support**, consider looking at my sponsor profile [https://github.com/sponsors/ScriptedAlchemy](https://federated-libraries-next.now.sh/?utm_source=ModuleFederationExamples&utm_medium=https://github.com/sponsors/ScriptedAlchemy&utm_campaign=sponsor_link)
 
-**Youtube Screencasts** https://www.youtube.com/playlist?list=PLWSiF9YHHK-DqsFHGYbeAMwbd9xcZbEWJ
+**Youtube Screencasts** [https://www.youtube.com/playlist?list=PLWSiF9YHHK-DqsFHGYbeAMwbd9xcZbEWJ](https://federated-libraries-next.now.sh/?utm_source=ModuleFederationExamples&utm_medium=https://www.youtube.com/playlist?list=PLWSiF9YHHK-DqsFHGYbeAMwbd9xcZbEW&utm_campaign=youtube_playlist)
 
-**WIP info site** http://federated-libraries-next.now.sh/
+**WIP info site** [http://federated-libraries-next.now.sh](https://federated-libraries-next.now.sh/?utm_source=ModuleFederationExamples&utm_campaign=docs_site&utm_medium=false)
 
 **Official Docs** https://webpack.js.org/concepts/module-federation/
 
@@ -31,7 +31,7 @@ If you need **support**, consider looking at my sponsor profile https://github.c
 - [x] [Dynamic System Host](./dynamic-system-host/README.md) &mdash; Swap between remotes at runtime.
 - [x] [Redux Reducer Injection](./redux-reducer-injection.md) &mdash; Dynamically inject reducers to host store at runtime.
 - [x] [Shared Routes](./shared-routes2) &mdash; Compose federated routes for a seamless user experience.
-- [x] [Nested Components](./nested/README.md) &mdash; Nested remote components.
+- [x] [Nested Components](./nested/README.md) &mdash; Nested remote components.[link to Google!](http://google.com)
 - [x] [Share Context Provider](./shared-context/README.md) &mdash; App1 and App2 with shared Context Provider.
 - [x] 🔒 [Streaming Federated Code ](./streamed-federation/README.md) &mdash; App1 and federated-middleware deploy to s3. App1 then stream's federated code directly from S3
 - [x] Non-UI Module
