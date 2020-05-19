@@ -2,19 +2,20 @@
 
 This repository is to showcase examples on Webpack 5's new Module Federation can be used.
 
-If you need **support**, consider looking at my sponsor profile [https://github.com/sponsors/ScriptedAlchemy](https://federated-libraries-next.now.sh/redirect?utm_source=ModuleFederationExamples&utm_medium=https://github.com/sponsors/ScriptedAlchemy&utm_campaign=sponsor_link)
+If you need **support**, consider looking at my sponsor profile [https://github.com/sponsors/ScriptedAlchemy](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_medium=https://github.com/sponsors/ScriptedAlchemy&utm_campaign=sponsor_link)
 
-**Youtube Screencasts** [https://www.youtube.com/playlist?list=PLWSiF9YHHK-DqsFHGYbeAMwbd9xcZbEWJ](https://federated-libraries-next.now.sh/redirect?utm_source=ModuleFederationExamples&utm_medium=https%3A%2F%2Fwww.youtube.com%2Fplaylist%3Flist%3DPLWSiF9YHHK-DqsFHGYbeAMwbd9xcZbEWJ&utm_campaign=youtube_playlist)
+**Youtube Screencasts** [https://www.youtube.com/playlist?list=PLWSiF9YHHK-DqsFHGYbeAMwbd9xcZbEWJ](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_medium=https%3A%2F%2Fwww.youtube.com%2Fplaylist%3Flist%3DPLWSiF9YHHK-DqsFHGYbeAMwbd9xcZbEWJ&utm_campaign=youtube_playlist)
 
-**WIP info site** [http://federated-libraries-next.now.sh](https://federated-libraries-next.now.sh/redirect?utm_source=ModuleFederationExamples&utm_campaign=docs_site&utm_medium=false)
+**WIP info site** [https://module-federation.github.io/](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_campaign=github_pages&utm_medium=https://module-federation.github.io/)
 
-**Official Docs** https://webpack.js.org/concepts/module-federation/
+**Official Docs** [https://webpack.js.org/concepts/module-federation](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_campaign=webpack_docs&utm_medium=https://webpack.js.org/concepts/module-federation)
 
-**Shim for partial Webpack 4 and non webpack users** https://gist.github.com/ScriptedAlchemy/d386a094832dbd9a04324862d26570e9
+**Shim for partial Webpack 4 and non webpack users** [https://gist.github.com/ScriptedAlchemy/d386a094832dbd9a04324862d26570e9](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_campaign=webpack_4_shim&utm_medium=https://gist.github.com/ScriptedAlchemy/d386a094832dbd9a04324862d26570e9)
 
-**Original Webpack Issue** https://github.com/webpack/webpack/issues/10352
+**Original Webpack Issue** [https://github.com/webpack/webpack/issues/10352](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_campaign=merge_proposal_issue&utm_medium=https://github.com/webpack/webpack/issues/10352)
 
-**Medium post** https://link.medium.com/xzFgBBtAx6
+**Medium post** **Original Webpack Issue** [https://link.medium.com/xzFgBBtAx6](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_campaign=game_changer_medium_post&utm_medium=https://link.medium.com/xzFgBBtAx6)
+
 
 # Examples
 
