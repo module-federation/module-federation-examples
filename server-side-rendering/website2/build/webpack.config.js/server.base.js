@@ -1,6 +1,7 @@
 const path = require("path");
 const merge = require("webpack-merge");
 const fs = require("fs");
+const webpack = require("webpack");
 const ModuleFederationPlugin = require("webpack").container
   .ModuleFederationPlugin;
 const common = require("./common.base");
@@ -28,6 +29,7 @@ module.exports = merge.smart(common, {
   },
   plugins: [
     ...plugins.server,
+    new webpack.HotModuleReplacementPlugin(),
     new ModuleFederationPlugin({
       name: "website2",
       library: { type: "commonjs2" },
