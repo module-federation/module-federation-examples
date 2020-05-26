@@ -5,7 +5,7 @@ const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const {ContextReplacementPlugin} = require('webpack');
 
 module.exports = (env = {}) => {
-    const buildFolder = resolve('./dist/host-app/server');
+    const buildFolder = resolve('./dist/server');
 
     return {
         entry: ['./server.js'],

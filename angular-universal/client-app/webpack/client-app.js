@@ -1,9 +1,10 @@
+const path = require('path');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const {resolve} = require('path');
 const {AngularCompilerPlugin} = require('@ngtools/webpack');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ContainerReferencePlugin = require('webpack/lib/container/ContainerReferencePlugin');
+const ContainerPlugin = require('webpack/lib/container/ContainerPlugin');
 
 module.exports = (env = {}) => {
     const buildFolder = resolve('./dist');
@@ -12,7 +13,8 @@ module.exports = (env = {}) => {
         entry: ['./src/polyfills.ts', './src/main.ts'],
         mode: 'development',
         output: {
-            path: resolve(__dirname, buildFolder),
+            publicPath: 'http://localhost:5000/',
+            path: path.resolve(__dirname, buildFolder),
         },
         plugins: [
             new CleanWebpackPlugin({
@@ -24,16 +26,21 @@ module.exports = (env = {}) => {
                     template: resolve(__dirname, '../src/index.html'),
                 },
             ),
-            new ContainerReferencePlugin({
-                remoteType: 'var',
-                remotes: {clientWeather: 'clientWeather'},
-                overrides: ['@angular/core', '@angular/common', '@angular/router']
+            new ContainerPlugin({
+                name: 'clientApp',
+                filename: 'remoteEntry.js',
+                exposes: {
+                    Component: './src/app/client-weather/client-weather-city/client-weather-city.component.ts',
+                    Module: './src/app/client-weather/client-weather.module.ts'
+                },
+                library: {type: 'var', name: 'clientApp'},
+                overridables: ['@angular/core', '@angular/common', '@angular/router']
             }),
             new AngularCompilerPlugin({
                 tsConfigPath: './tsconfig.app.json',
                 entryModule: './src/app/app.module#AppModule',
                 skipCodeGeneration: true,
-                directTemplateLoading: false,
+                directTemplateLoading: false
             }),
         ],
         module: {
