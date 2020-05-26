@@ -10,7 +10,7 @@ module.exports = (env = {}) => {
 
     return {
         entry: ['./src/polyfills.ts', './src/main.ts'],
-        mode: 'development',
+        mode: 'production',
         output: {
             path: resolve(__dirname, buildFolder),
         },
@@ -26,7 +26,7 @@ module.exports = (env = {}) => {
             ),
             new ContainerReferencePlugin({
                 remoteType: 'var',
-                remotes: {clientWeather: 'clientWeather'},
+                remotes: {clientApp: 'clientApp'},
                 overrides: ['@angular/core', '@angular/common', '@angular/router']
             }),
             new AngularCompilerPlugin({

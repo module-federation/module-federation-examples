@@ -8,10 +8,10 @@ const routes: Routes = [
         loadChildren: () => import('./host-lazy-module/host-lazy-module.module')
             .then(x => x.HostLazyModuleModule)
     },
-    // {
-    //     path:         'weather',
-    //     loadChildren: () => import('clientWeather/Module').then(x => x.ClientWeatherModule)
-    // }
+    {
+        path:         'weather',
+        loadChildren: () => import('clientApp/Module').then(x => x.ClientWeatherModule)
+    }
 ];
 
 @NgModule({

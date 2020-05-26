@@ -2,17 +2,16 @@
   "name": "host-app",
   "version": "0.0.0",
   "scripts": {
-    "build:federation": "webpack",
+    "build:federation": "webpack && yarn serve:federation",
+    "serve:federation": "node dist/server/main.js",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
     "dev:ssr": "ng run host-app:serve-ssr",
     "serve:ssr": "node dist/host-app/server/main.js",
-    "build:ssr": "ng build --prod && ng run host-app:server:production",
-    "prerender": "ng run host-app:prerender"
+    "build:ssr": "ng build --prod && ng run host-app:server:production"
   },
   "private": true,
   "dependencies": {

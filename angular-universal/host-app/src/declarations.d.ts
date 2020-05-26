@@ -1,3 +1,3 @@
-declare module 'clientWeather/Component';
-declare module 'clientWeather/Module';
+declare module 'clientApp/Component';
+declare module 'clientApp/Module';
 

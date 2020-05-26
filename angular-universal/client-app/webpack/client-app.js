@@ -1,6 +1,5 @@
-const path = require('path');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const {resolve} = require('path');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const {AngularCompilerPlugin} = require('@ngtools/webpack');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -11,21 +10,15 @@ module.exports = (env = {}) => {
 
     return {
         entry: ['./src/polyfills.ts', './src/main.ts'],
-        mode: 'development',
+        mode: 'production',
         output: {
             publicPath: 'http://localhost:5000/',
-            path: path.resolve(__dirname, buildFolder),
+            path: resolve(__dirname, buildFolder),
         },
         plugins: [
-            new CleanWebpackPlugin({
-                cleanOnceBeforeBuildPatterns: [buildFolder]
-            }),
             new ProgressPlugin(),
-            new HtmlWebpackPlugin(
-                {
-                    template: resolve(__dirname, '../src/index.html'),
-                },
-            ),
+            new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: [buildFolder]}),
+            new HtmlWebpackPlugin({template: resolve(__dirname, '../src/index.html')}),
             new ContainerPlugin({
                 name: 'clientApp',
                 filename: 'remoteEntry.js',
@@ -43,25 +36,12 @@ module.exports = (env = {}) => {
                 directTemplateLoading: false
             }),
         ],
+        devServer: {
+            contentBase: buildFolder,
+            port: 5000
+        },
         module: {
-            rules: [
-                {
-                    test: /\.scss$/,
-                    use: ['raw-loader', 'sass-loader']
-                },
-                {
-                    test: /\.css$/,
-                    loader: 'raw-loader'
-                },
-                {
-                    test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
-                    loader: '@ngtools/webpack',
-                },
-                {
-                    test: /\.html$/,
-                    loader: 'raw-loader'
-                },
-            ],
+            rules: [ ...require('./_loaders') ]
         },
     };
 };

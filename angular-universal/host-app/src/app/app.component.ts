@@ -20,7 +20,5 @@ export class AppComponent implements OnInit {
     }
     
     public ngOnInit(): void {
-        // import('clientWeather/Module').then(x => console.log('Loaded', x));
-        // this.httpClient.get('https://www.google.com').subscribe();
     }
 }

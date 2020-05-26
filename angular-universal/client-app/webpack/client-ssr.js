@@ -8,33 +8,17 @@ module.exports = (env = {}) => {
 
     return {
         entry: ['./src/main.ts'],
-        mode: 'development',
+        mode: 'production',
         resolve: {
-            mainFields: ['es2015', 'module', 'main']
+            mainFields: ['browser', 'module', 'main']
+        },
+        output: {
+            filename: '[name].js',
+            path: resolve(__dirname, buildFolder),
+            chunkFilename: '[id].[chunkhash].js',
+            libraryTarget: 'commonjs2',
         },
         target: 'node',
-        optimization: {minimize: false},
-        module: {
-            rules: [
-                {
-                    test: /\.scss$/,
-                    use: ['raw-loader', 'sass-loader']
-                },
-                {
-                    test: /\.css$/,
-                    loader: 'raw-loader'
-                },
-                {
-                    test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
-                    loader: '@ngtools/webpack',
-                },
-                {
-                    test: /\.html$/,
-                    loader: 'raw-loader'
-                },
-            ]
-        },
-        externals: ['enhanced-resolve'],
         plugins: [
             new ProgressPlugin(),
             new ContainerPlugin({
@@ -44,24 +28,19 @@ module.exports = (env = {}) => {
                     Component: './src/app/client-weather/client-weather-city/client-weather-city.component.ts',
                     Module: './src/app/client-weather/client-weather.module.ts'
                 },
-                library: {type: 'commonjs2', name: 'clientApp'},
+                library: {type: 'commonjs2'},
                 overridables: ['@angular/core', '@angular/common', '@angular/router']
             }),
             new AngularCompilerPlugin({
                 entryModule: resolve(__dirname, '../src/app/app.module#AppModule'),
                 tsConfigPath: './tsconfig.app.json',
-                platform: PLATFORM.Browser,
                 skipCodeGeneration: true,
                 directTemplateLoading: false,
             })
         ],
-
-        output: {
-            filename: '[name].js',
-            path: resolve(__dirname, buildFolder),
-            chunkFilename: '[id].[chunkhash].js',
-            libraryTarget: 'commonjs2',
-        },
+        module: {
+            rules: [ ...require('./_loaders') ]
+        }
     };
 }
 
