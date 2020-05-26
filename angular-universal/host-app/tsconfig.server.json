@@ -3,13 +3,14 @@
   "compilerOptions": {
     "outDir": "./out-tsc/app-server",
     "module": "commonjs",
+    "allowJs": true,
     "types": [
       "node"
     ]
   },
   "files": [
     "src/main.server.ts",
-    "server.ts"
+    "server-bootstrap.ts"
   ],
   "angularCompilerOptions": {
     "entryModule": "./src/app/app.server.module#AppServerModule"
