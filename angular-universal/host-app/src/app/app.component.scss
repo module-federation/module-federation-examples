@@ -1,0 +1,29 @@
+:host {
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+
+  input, button {
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .route-container {
+    margin: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+
+  .navigation {
+    text-align: center;
+    a {
+      color: #000;
+      margin-right: 5px;
+      text-decoration: none;
+
+      &:hover, &.active {
+        text-decoration: underline;
+      }
+    }
+  }
+}

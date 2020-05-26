@@ -1,0 +1,15 @@
+ul {
+  list-style: none;
+
+  li {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+}

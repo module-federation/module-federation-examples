@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ClientHomeComponent } from './client-home/client-home.component';
+import { HostLazyHomeComponent } from './host-lazy-home/host-lazy-home.component';
 
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: ClientHomeComponent
+    component: HostLazyHomeComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class HostLazyModuleRoutingModule { }
