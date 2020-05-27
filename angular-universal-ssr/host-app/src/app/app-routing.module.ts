@@ -1,9 +1,15 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { HomeComponent } from "./home/home.component";
 
 const routes: Routes = [
   {
     path: "",
+    pathMatch: "full",
+    component: HomeComponent,
+  },
+  {
+    path: "lazy",
     pathMatch: "full",
     loadChildren: () =>
       import("./host-lazy-module/host-lazy-module.module").then(
@@ -11,7 +17,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: "weather",
+    path: "federation",
     loadChildren: () =>
       import("clientApp/Module").then((x) => x.ClientWeatherModule),
   },
