@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { ClientWeatherHomeComponent } from "./client-weather-home/client-weather-home.component";
+import { ClientCitiesHomeComponent } from "./client-cities-home/client-cities-home.component";
 
 const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
-    component: ClientWeatherHomeComponent,
+    component: ClientCitiesHomeComponent,
   },
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ClientWeatherRoutingModule {}
+export class ClientCitiesRoutingModule {}

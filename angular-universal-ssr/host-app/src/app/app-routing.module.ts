@@ -19,7 +19,7 @@ const routes: Routes = [
   {
     path: "federation",
     loadChildren: () =>
-      import("clientApp/Module").then((x) => x.ClientWeatherModule),
+      import("clientApp/Module").then((x) => x.ClientCitiesModule),
   },
 ];
 

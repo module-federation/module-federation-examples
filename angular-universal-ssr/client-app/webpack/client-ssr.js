@@ -26,8 +26,8 @@ module.exports = (env = {}) => {
         filename: "remoteEntry.js",
         exposes: {
           Component:
-            "./src/app/client-weather/client-weather-city/client-weather-city.component.ts",
-          Module: "./src/app/client-weather/client-weather.module.ts",
+            "./src/app/client-cities/client-city/client-city.component.ts",
+          Module: "./src/app/client-cities/client-cities.module.ts",
         },
         library: { type: "commonjs2" },
         overridables: ["@angular/core", "@angular/common", "@angular/router"],

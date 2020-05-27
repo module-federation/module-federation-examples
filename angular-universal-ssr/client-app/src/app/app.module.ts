@@ -4,11 +4,11 @@ import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ClientHomeComponent } from "./client-home/client-home.component";
-import { ClientWeatherModule } from "./client-weather/client-weather.module";
+import { ClientCitiesModule } from "./client-cities/client-cities.module";
 
 @NgModule({
   declarations: [AppComponent, ClientHomeComponent],
-  imports: [BrowserModule, AppRoutingModule, ClientWeatherModule],
+  imports: [BrowserModule, AppRoutingModule, ClientCitiesModule],
   providers: [],
   bootstrap: [AppComponent],
 })
