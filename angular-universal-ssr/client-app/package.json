@@ -1,0 +1,46 @@
+{
+  "name": "@angular-universal-ssr/client-app",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "serve:federation": "serve dist -l 5000 -s",
+    "build:federation": "webpack",
+    "clean": "rm -rf dist"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~9.1.9",
+    "@angular/common": "~9.1.9",
+    "@angular/compiler": "~9.1.9",
+    "@angular/core": "~9.1.9",
+    "@angular/forms": "~9.1.9",
+    "@angular/platform-browser": "~9.1.9",
+    "@angular/platform-browser-dynamic": "~9.1.9",
+    "@angular/router": "~9.1.9",
+    "rxjs": "~6.5.4",
+    "serve": "^11.3.1",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.10.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.901.7",
+    "@angular/cli": "~9.1.7",
+    "@angular/compiler-cli": "~9.1.9",
+    "@ngtools/webpack": "file:../patched_packages/_ngtools_webpack.tgz",
+    "@types/node": "^12.11.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "git://github.com/ScriptedAlchemy/html-webpack-plugin#master",
+    "raw-loader": "^4.0.1",
+    "sass-loader": "^8.0.2",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "typescript": "~3.8.3",
+    "webpack": "file:../patched_packages/webpack-5.0.0-beta.16.tgz",
+    "webpack-cli": "^3.3.11"
+  }
+}
