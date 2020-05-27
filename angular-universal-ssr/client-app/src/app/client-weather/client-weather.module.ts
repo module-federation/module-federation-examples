@@ -1,6 +1,5 @@
-import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { ClientWeatherCityComponent } from "./client-weather-city/client-weather-city.component";
+import { NgModule } from "@angular/core";
 import { ClientWeatherHomeComponent } from "./client-weather-home/client-weather-home.component";
 import { ClientWeatherRoutingModule } from "./client-weather-routing.module";
 

@@ -7,7 +7,6 @@ import {
   ViewChild,
   ViewContainerRef,
 } from "@angular/core";
-import { ClientWeatherCityComponent } from "../client-weather-city/client-weather-city.component";
 
 @Component({
   selector: "app-client-weather-home",
