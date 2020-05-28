@@ -44,12 +44,14 @@ module.exports = {
         app1: "app1",
       },
       exposes: {
-        Button: "./src/Button",
+        "./Button": "./src/Button",
       },
       shared: {
         ...deps,
         react: {
-          requiredVersion: deps.react,
+          singleton: true,
+        },
+        "react-dom": {
           singleton: true,
         },
       },

@@ -1,6 +1,6 @@
 # Bi-Directional Hosts Example
 
-This example demos bi-directional hosts each with their own remote `Button` components.
+This example demos automatic-vendor-sharing, each host/remote will share all vendors possible, with react listed as a singleton
 
 - `app1` exposes a red `<button>App 1 Button</button>` component.
 - `app2` exposes a blue `<button>App 2 Button</button>` component.
