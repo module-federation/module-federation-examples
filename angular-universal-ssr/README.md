@@ -17,5 +17,6 @@ Run `yarn start`. This will build and serve both `host` and `client` on ports 40
 - Package `@ngtools/webpack` has been patched, as it doesn't support Webpack 5
 - Webpack 5 beta 16 is patched because of [https://github.com/webpack/webpack/issues/10830](https://github.com/webpack/webpack/issues/10830)
 - Client bundle size
+- Warnings
 
 <img src="https://ssl.google-analytics.com/collect?v=1&ec=email&ea=open&t=event&tid=UA-167830327-1&cid=555&dp=/email/Angular&dt=ModuleFederationExamples">

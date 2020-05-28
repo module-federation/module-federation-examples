@@ -13,28 +13,14 @@ module.exports = (env = {}) => {
     resolve: {
       mainFields: ["es2015", "module", "main"],
     },
+    output: {
+      filename: "[name].js",
+      path: resolve(__dirname, buildFolder),
+      chunkFilename: "[id].[chunkhash].js",
+      libraryTarget: "commonjs2",
+    },
     target: "node",
     optimization: { minimize: false },
-    module: {
-      rules: [
-        {
-          test: /\.scss$/,
-          use: ["raw-loader", "sass-loader"],
-        },
-        {
-          test: /\.css$/,
-          loader: "raw-loader",
-        },
-        {
-          test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
-          loader: "@ngtools/webpack",
-        },
-        {
-          test: /\.html$/,
-          loader: "raw-loader",
-        },
-      ],
-    },
     externals: ["enhanced-resolve"],
     plugins: [
       new ProgressPlugin(),
@@ -62,11 +48,8 @@ module.exports = (env = {}) => {
       }),
     ],
 
-    output: {
-      filename: "[name].js",
-      path: resolve(__dirname, buildFolder),
-      chunkFilename: "[id].[chunkhash].js",
-      libraryTarget: "commonjs2",
-    },
+    module: {
+      rules: [ ...require('./_loaders') ]
+    }
   };
 };
