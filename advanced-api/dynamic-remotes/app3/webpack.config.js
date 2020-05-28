@@ -33,7 +33,20 @@ module.exports = {
       exposes: {
         "./Widget": "./src/Widget",
       },
-      shared: ["react", "react-dom", "moment"],
+      // adds react as shared module
+      // version is inferred from package.json
+      // there is no version check for the required version
+      // so it will always use the higher version found
+      shared: [
+        "react",
+        "react-dom",
+        // adds moment as shared module
+        // version is inferred from package.json
+        // it will use the highest moment version that is >= 2.20 and < 3
+        {
+          moment: "^2.24.0",
+        },
+      ],
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",

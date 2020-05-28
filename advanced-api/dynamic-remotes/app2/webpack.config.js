@@ -34,14 +34,10 @@ module.exports = {
       },
       shared: {
         react: {
-          // can be referenced by import "my-vue"
-          import: "react", // the "vue" package will be used a provided and fallback module
+          import: "react", // the "react" package will be used a provided and fallback module
           shareKey: "react", // under this name the shared module will be placed in the share scope
           shareScope: "default", // share scope with this name will be used
           singleton: true, // only a single version of the shared module is allowed
-          // strictVersion: true, // don't use shared version when version isn't valid. Singleton or modules without fallback will throw, otherwise fallback is used
-          // version: "1.2.3", // the version of the shared module
-          // requiredVersion: ^1.0.0" // the required version of the shared module
         },
       },
     }),
