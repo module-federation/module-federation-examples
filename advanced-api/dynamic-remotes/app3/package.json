@@ -1,5 +1,5 @@
 {
-  "name": "@advanced-bi-directional/app1",
+  "name": "@dynamic-remotes/app3",
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
@@ -7,19 +7,22 @@
     "@babel/preset-react": "7.9.4",
     "babel-loader": "8.1.0",
     "html-webpack-plugin": "git://github.com/ScriptedAlchemy/html-webpack-plugin#master",
-    "webpack": "git://github.com/webpack/webpack#master",
     "serve": "11.3.0",
+    "webpack": "git://github.com/webpack/webpack#mf/refactor-overridables",
     "webpack-cli": "3.3.11",
     "webpack-dev-server": "3.11.0"
   },
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack --mode production",
-    "serve": "serve dist -p 3001",
+    "serve": "serve dist -p 3003",
     "clean": "rm -rf dist"
   },
   "dependencies": {
+    "moment": "^2.24.0",
     "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "react-dom": "^16.13.0",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5"
   }
 }
