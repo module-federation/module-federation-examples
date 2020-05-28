@@ -1,8 +1,16 @@
-Cities:
 <div class="container">
-  <ul>
-    <li *ngFor="let city of cities" (click)="onClickCity(city)">{{ city }}</li>
-  </ul>
+  <div class="vertical-container">
+    <div class="hint">Select a city:</div>
+    <ul>
+      <li
+        *ngFor="let city of cities"
+        (click)="onClickCity(city)"
+        [class.active]="city === currentCity"
+      >
+        {{ city }}
+      </li>
+    </ul>
+  </div>
   <div class="city-weather-info">
     <ng-container #container></ng-container>
   </div>

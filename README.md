@@ -16,7 +16,6 @@ If you need **support**, consider looking at my sponsor profile [https://github.
 
 **Medium post** **Original Webpack Issue** [https://link.medium.com/xzFgBBtAx6](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_campaign=game_changer_medium_post&utm_medium=https://link.medium.com/xzFgBBtAx6)
 
-
 # Examples
 
 > Legend:
@@ -39,6 +38,7 @@ If you need **support**, consider looking at my sponsor profile [https://github.
 - [x] Routing
 - [x] [Version Discrepancy](./version-discrepancy/README.md) &mdash; Federated apps depending on different versions of a dependency without side-effects.
 - [x] [TypeScript](./typescript/README.md) &mdash; Simple host/remote example using TypeScript.
+- [x] ⚠️ [Angular Universal](./angular-universal-ssr/README.md) &mdash; Remote and Host app with SSR, lazy modules and components.
 - [ ] NextJS
 
 <img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/ModuleFederationExamplesRoot">

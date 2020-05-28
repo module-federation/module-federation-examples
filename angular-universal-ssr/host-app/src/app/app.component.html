@@ -1,4 +1,4 @@
-<div>Hey this is a root component</div>
+<div class="title">Root component</div>
 <br />
 <div>
   <input #input type="text" (keydown.enter)="addValue(input.value)" />
@@ -8,7 +8,12 @@
   <li *ngFor="let item of arr">{{ item }}</li>
 </ul>
 <div class="navigation">
-  <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+  <a
+    routerLink=""
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >Home</a
+  >
   <a routerLink="lazy" routerLinkActive="active">Angular lazy module</a>
   <a routerLink="federation" routerLinkActive="active"
     >Federation lazy module</a

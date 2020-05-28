@@ -3,13 +3,30 @@ ul {
 
   li {
     cursor: pointer;
-    &:hover {
+    margin-bottom: 5px;
+    color: #333;
+    &:hover,
+    &.active {
       text-decoration: underline;
+      color: #000;
     }
   }
 }
 
 .container {
   display: flex;
-  justify-content: space-around;
+
+  .vertical-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hint {
+    color: #333;
+    font-style: italic;
+  }
+
+  .city-weather-info {
+    margin-left: 35px;
+  }
 }

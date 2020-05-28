@@ -18,6 +18,7 @@ export class ClientCitiesHomeComponent implements OnInit {
   viewContainer: ViewContainerRef;
 
   public cities = ["Prague", "Saint-Petersburg"];
+  public currentCity = null;
 
   constructor(
     @Inject(Injector) private readonly injector,
@@ -28,8 +29,7 @@ export class ClientCitiesHomeComponent implements OnInit {
 
   public async onClickCity(city: string) {
     import("../client-city/client-city.component").then((module) => {
-      console.log("Lazy component loaded");
-
+      this.currentCity = city;
       this.viewContainer.clear();
       const factory = this.componentFactoryResolver.resolveComponentFactory(
         module.ClientCityComponent
