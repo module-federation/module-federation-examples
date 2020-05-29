@@ -61,21 +61,3 @@ module.exports = {
     }),
   ],
 };
-new ModuleFederationPlugin({
-  name: "app1",
-  library: { type: "var", name: "app1" },
-  filename: "remoteEntry.js",
-  remotes: {
-    app2: {
-      external: "app2@http://loalhost:3002/remoteEntry.js",
-    },
-  },
-  exposes: {
-    Button: {
-      import: "./src/Button",
-      // someMeta: ""
-    },
-  },
-  // sharing code based on the installed version, to allow for multiple vendors with different versions
-  shared: { ...deps },
-});
