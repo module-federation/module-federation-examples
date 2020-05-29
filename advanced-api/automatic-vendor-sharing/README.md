@@ -2,6 +2,9 @@
 
 This example demos automatic-vendor-sharing, each host/remote will share all vendors possible, with react listed as a singleton
 
+##Read More:
+https://github.com/webpack/webpack/pull/10960
+
 - `app1` exposes a red `<button>App 1 Button</button>` component.
 - `app2` exposes a blue `<button>App 2 Button</button>` component.
 

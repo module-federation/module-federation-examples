@@ -42,7 +42,7 @@ module.exports = {
         "react-dom",
         // adds moment as shared module
         // version is inferred from package.json
-        // it will use the highest moment version that is >= 2.20 and < 3
+        // it will use the highest moment version that is >= 2.24 and < 3
         {
           moment: "^2.24.0",
         },

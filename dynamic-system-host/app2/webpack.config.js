@@ -33,7 +33,7 @@ module.exports = {
       exposes: {
         Widget: "./src/Widget",
       },
-      shared: ["react", "react-dom"],
+      shared: ["react", "react-dom", "moment"],
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",

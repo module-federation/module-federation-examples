@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 export default function Widget() {
   return (
@@ -11,6 +12,7 @@ export default function Widget() {
       }}
     >
       <h2>App 2 Widget</h2>
+      <p>App2 Moment Dep: {moment().format("MMMM Do YYYY, h:mm:ss a")}</p>
     </div>
   );
 }
