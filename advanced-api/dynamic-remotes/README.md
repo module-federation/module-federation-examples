@@ -1,6 +1,6 @@
-# Dynamic System Host Example
+# Dynamic Remote Vendor Sharing Example
 
-This example demos a basic host application loading remote component.
+This example demos a basic host application loading remote component and sharing vendor code dynamically between unknown remotes
 
 - `app1` is the host application.
 - `app2` standalone application which exposes `Widget` component.
