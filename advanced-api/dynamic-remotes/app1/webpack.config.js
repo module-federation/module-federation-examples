@@ -8,10 +8,10 @@ module.exports = {
   mode: "development",
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    port: 3002,
+    port: 3001,
   },
   output: {
-    publicPath: "http://localhost:3002/",
+    publicPath: "http://localhost:3001/",
   },
   module: {
     rules: [
@@ -27,13 +27,13 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "app2",
-      library: { type: "var", name: "app2" },
-      filename: "remoteEntry.js",
-      exposes: {
-        Widget: "./src/Widget",
-      },
-      shared: ["react", "react-dom", "moment"],
+      name: "app1",
+      library: { type: "var", name: "app1" },
+      // adds react as shared module
+      // version is inferred from package.json
+      // there is no version check for the required version
+      // so it will always use the higher version found
+      shared: ["react", "react-dom"],
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",

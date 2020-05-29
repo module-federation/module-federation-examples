@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ModuleFederationPlugin = require("webpack").container
-  .ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
 
 module.exports = {
@@ -31,9 +30,18 @@ module.exports = {
       library: { type: "var", name: "app2" },
       filename: "remoteEntry.js",
       exposes: {
-        Widget: "./src/Widget",
+        "./Widget": "./src/Widget",
       },
-      shared: ["react", "react-dom", "moment"],
+      shared: {
+        "react-dom": "react-dom",
+        moment: "^2.24.0",
+        react: {
+          import: "react", // the "react" package will be used a provided and fallback module
+          shareKey: "react", // under this name the shared module will be placed in the share scope
+          shareScope: "default", // share scope with this name will be used
+          singleton: true, // only a single version of the shared module is allowed
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
