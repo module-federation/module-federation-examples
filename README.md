@@ -38,6 +38,7 @@ If you need **support**, consider looking at my sponsor profile [https://github.
 - [x] Routing
 - [x] [Version Discrepancy](./version-discrepancy/README.md) &mdash; Federated apps depending on different versions of a dependency without side-effects.
 - [x] [TypeScript](./typescript/README.md) &mdash; Simple host/remote example using TypeScript.
+- [x] ⚠️ [Angular Universal](./angular-universal-ssr/README.md) &mdash; Remote and Host app with SSR, lazy modules and components.
 - [ ] NextJS
 
 # Notes

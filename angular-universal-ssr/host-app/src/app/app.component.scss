@@ -1,0 +1,42 @@
+::ng-deep * {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+:host {
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+
+  input,
+  button {
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .route-container {
+    margin: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+
+  .navigation {
+    text-align: center;
+    a {
+      color: #333;
+      margin-right: 15px;
+      text-decoration: none;
+      font-size: 15px;
+
+      &:hover,
+      &.active {
+        color: #000;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .title {
+    text-align: center;
+  }
+}
