@@ -1,0 +1,24 @@
+<div class="title">Root component</div>
+<br />
+<div>
+  <input #input type="text" (keydown.enter)="addValue(input.value)" />
+  <button (click)="addValue(input.value)">Add value</button>
+</div>
+<ul>
+  <li *ngFor="let item of arr">{{ item }}</li>
+</ul>
+<div class="navigation">
+  <a
+    routerLink=""
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >Home</a
+  >
+  <a routerLink="lazy" routerLinkActive="active">Angular lazy module</a>
+  <a routerLink="federation" routerLinkActive="active"
+    >Federation lazy module</a
+  >
+</div>
+<div class="route-container">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "yarn build && yarn serve",
+    "build": "lerna run --scope @angular-universal-ssr/* build:federation",
+    "serve": "lerna run --scope @angular-universal-ssr/* --parallel serve:federation",
+    "clean": "lerna run --scope @angular-universal-ssr/* --parallel clean"
+  }
+}

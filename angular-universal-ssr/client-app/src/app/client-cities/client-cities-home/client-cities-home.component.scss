@@ -1,0 +1,32 @@
+ul {
+  list-style: none;
+
+  li {
+    cursor: pointer;
+    margin-bottom: 5px;
+    color: #333;
+    &:hover,
+    &.active {
+      text-decoration: underline;
+      color: #000;
+    }
+  }
+}
+
+.container {
+  display: flex;
+
+  .vertical-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hint {
+    color: #333;
+    font-style: italic;
+  }
+
+  .city-weather-info {
+    margin-left: 35px;
+  }
+}
