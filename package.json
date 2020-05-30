@@ -21,20 +21,25 @@
       "nested/*",
       "version-discrepancy/*",
       "redux-reducer-injection/*",
-      "dashboard-example/*",
-      "angular-universal-ssr/*"
+      "angular-universal-ssr/*",
+      "advanced-api/dynamic-remotes/*",
+      "advanced-api/automatic-vendor-sharing/*"
     ],
     "nohoist": [
       "**/svelte",
       "**/svelte/**",
       "**/svelte-loader",
-      "**/svelte-loader/**"
+      "**/svelte-loader/**",
+      "**/webpack",
+      "**/webpack/**",
+      "**/enhanced-resolve",
+      "**/enhanced-resolve/**"
     ]
   },
   "devDependencies": {
     "husky": "4.2.5",
-    "lerna": "3.20.2",
-    "prettier": "2.0.4",
+    "lerna": "3.22.0",
+    "prettier": "2.0.5",
     "pretty-quick": "2.0.1",
     "concurrently": "5.2.0"
   },

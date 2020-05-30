@@ -41,4 +41,9 @@ If you need **support**, consider looking at my sponsor profile [https://github.
 - [x] ⚠️ [Angular Universal](./angular-universal-ssr/README.md) &mdash; Remote and Host app with SSR, lazy modules and components.
 - [ ] NextJS
 
+# Notes
+
+To run from a git checkout locally, remove all of the proprietary example directories and then run `yarn` at the repo root.
+You can then run `yarn start` from any of the non-proprietary examples.
+
 <img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/ModuleFederationExamplesRoot">

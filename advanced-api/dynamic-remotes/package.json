@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "lerna run --scope @dynamic-remotes/* --parallel start",
+    "build": "lerna run --scope @dynamic-remotes/* build",
+    "serve": "lerna run --scope @dynamic-remotes/* --parallel serve",
+    "clean": "lerna run --scope @dynamic-remotes/* --parallel clean"
+  }
+}
