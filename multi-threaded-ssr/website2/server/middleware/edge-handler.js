@@ -1,15 +1,15 @@
-import { renderToString } from "react-dom/server";
-import express from "express";
+const { renderToString } = require("react-dom/server");
+const express = require("express");
 
-import createRemoteEntry from "./remote-entry";
-import createEdgeChunks from "./edge-chunks";
+const createRemoteEntry = require("./remote-entry");
+const createEdgeChunks = require("./edge-chunks");
 
 function createEdgeHandler(modules) {
   const app = express();
 
   const remoteEntry = createRemoteEntry(modules);
 
-  app.use("/remote-entry", (req, res) => {
+  app.get("/remote-entry.js", (req, res) => {
     res.setHeader("Content-Type", "text/javascript");
     res.status(200).send(remoteEntry);
   });
@@ -19,4 +19,4 @@ function createEdgeHandler(modules) {
   return app;
 }
 
-export default createEdgeHandler;
+module.exports = createEdgeHandler;

@@ -14,10 +14,7 @@ const config = require("../config");
 const { serverPath } = config[process.env.NODE_ENV || "development"];
 
 const remotes = {
-  website2: path.resolve(
-    __dirname,
-    "../../../website2/buildServer/container.js"
-  ),
+  website2: "http://localhost:3001/edge/remote-entry.js",
 };
 
 module.exports = merge.smart(common, {
