@@ -40,7 +40,13 @@ module.exports = {
         TodayWidget: "./src/TodayWidget",
         DepositsWidget: "./src/DepositsWidget",
       },
-      shared: ["react", "react-dom", "@material-ui/core", "@material-ui/icons"],
+      shared: [
+        "react",
+        "react-dom",
+        "@material-ui/core",
+        "@material-ui/icons",
+        "recharts",
+      ],
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
