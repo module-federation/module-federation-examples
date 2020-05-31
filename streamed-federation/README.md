@@ -2,7 +2,7 @@
 
 Workspace containing the example code for streaming server code from s3
 
-# This Depends on Proprietary software
+# This Depends on Proprietary software and WILL NOT RUN
 
 This example runs, but only if users have access to the @module-federation/proprietary-tools
 <img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/StreamedFederation">
@@ -10,6 +10,10 @@ This example runs, but only if users have access to the @module-federation/propr
 ## Getting Started
 
 Install dependencies
+
+```shell script
+> echo "THIS ISNT GOING TO WORK FOR YOU. THERE ARE PROPRIATERY PACKAGES THAT YOU DO NOT HAVE ACCESS TO"
+```
 
 ```shell script
 > yarn
