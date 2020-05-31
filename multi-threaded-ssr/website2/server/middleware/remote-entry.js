@@ -1,18 +1,17 @@
-export default function createRemoteEntry(modules) {
-  const moduleMap = `
-		{${modules
-      .map(
-        (mod, index) => `
-			${JSON.stringify(mod.name)}: () => {
-				return __webpack_require__.e(${
-          index + 1
-        }).then(() => () => __webpack_require__(${index + 1}));
-			}`
-      )
-      .join("\n")}
-		}`;
+module.exports = function createRemoteEntry(modules) {
+  const moduleMap = `{${modules
+    .map(
+      (mod, index) => `
+	${JSON.stringify(mod.name)}: () => {
+		return __webpack_require__.e(${
+      index + 1
+    }).then(() => () => __webpack_require__(${index + 1}));
+	},`
+    )
+    .join("\n")}
+}`;
 
-  const template = `
+  return `
 module.exports =
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
@@ -172,11 +171,12 @@ __webpack_require__.d(exports, {
 /******/ 								// load the chunk and return promise to it
 /******/ 								var promise = new Promise(function(resolve, reject) {
 /******/ 									installedChunkData = installedChunks[chunkId] = [resolve, reject];
-/******/ 									var filename = require('path').join(__dirname, __webpack_require__.u(chunkId));
+/******/ 									var filename = "http://localhost:3001/edge/" + __webpack_require__.u(chunkId);
+console.log("here>>>>>", filename);
 /******/ 									readFile(filename, 'utf-8', function(err, content) {
 /******/ 										if(err) return reject(err);
 /******/ 										var chunk = {};
-/******/ 										require('vm').runInThisContext('(function(exports, require, __dirname, __filename) {' + content + '\n})', filename)(chunk, require, require('path').dirname(filename), filename);
+/******/ 										require('vm').runInThisContext('(function(exports, require, __dirname, __filename) {' + content + '\\n})', filename)(chunk, require, require('path').dirname(filename), filename);
 /******/ 										var moreModules = chunk.modules, chunkIds = chunk.ids, runtime = chunk.runtime;
 /******/ 										for(var moduleId in moreModules) {
 /******/ 											if(__webpack_require__.o(moreModules, moduleId)) {
@@ -231,7 +231,7 @@ __webpack_require__.d(exports, {
 /******/ 							require('fs').readFile(filename, 'utf-8', function(err, content) {
 /******/ 								if(err) return reject(err);
 /******/ 								var chunk = {};
-/******/ 								require('vm').runInThisContext('(function(exports, require, __dirname, __filename) {' + content + '\n})', filename)(chunk, require, require('path').dirname(filename), filename);
+/******/ 								require('vm').runInThisContext('(function(exports, require, __dirname, __filename) {' + content + '\\n})', filename)(chunk, require, require('path').dirname(filename), filename);
 /******/ 								var moreModules = chunk.modules, chunkIds = chunk.ids, runtime = chunk.runtime;
 /******/ 								for(var moduleId in moreModules) {
 /******/ 									if(__webpack_require__.o(moreModules, moduleId)) {
@@ -268,4 +268,4 @@ __webpack_require__.d(exports, {
 /******/ })()
 ;
 `;
-}
+};

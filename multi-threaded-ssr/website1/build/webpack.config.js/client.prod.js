@@ -7,7 +7,7 @@ const config = require("../config");
 const { publicPath, clientPath } = config[env.raw.NODE_ENV || "production"];
 
 module.exports = merge.smart(baseConfig, {
-  mode: "production",
+  mode: "development",
   devtool: "source-map",
   output: {
     path: path.join(clientPath, publicPath),

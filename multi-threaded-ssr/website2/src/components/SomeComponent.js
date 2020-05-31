@@ -1,6 +1,6 @@
 import React from "react";
 
-const SomeComponent = () => (
+const SomeComponent = ({ text }) => (
   <div
     style={{
       padding: "1em",
@@ -10,7 +10,7 @@ const SomeComponent = () => (
     }}
     onClick={() => alert("website2 is interactive")}
   >
-    Header
+    {text || "Header"}
   </div>
 );
 

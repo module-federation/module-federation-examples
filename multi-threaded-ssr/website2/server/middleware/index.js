@@ -1,4 +1,4 @@
-import SomeComponent from "../../src/components/SomeComponent";
+const SomeComponent = require("../../src/components/SomeComponent").default;
 
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -12,9 +12,6 @@ module.exports = (express, app, done) => {
 
   app.use(cookieParser());
 
-  // environment based middlewares
-  envMiddleware(express, app, done);
-
   app.use(
     "/edge",
     createEdgeHandler([
@@ -24,6 +21,9 @@ module.exports = (express, app, done) => {
       },
     ])
   );
+
+  // environment based middlewares
+  envMiddleware(express, app, done);
 
   app.use((req, res, next) => {
     const cookie = req.cookies.jwToken;
