@@ -4,12 +4,21 @@ const merge = require("webpack-merge");
 const fs = require("fs");
 const ModuleFederationPlugin = require("webpack").container
   .ModuleFederationPlugin;
+const FederatedRuntimePlugin = require("../plugins/FederatedRuntimePlugin");
+const HttpRuntime = require("../plugins/HttpRuntime");
 const common = require("./common.base");
 const { server: serverLoaders } = require("./loaders");
 const plugins = require("./plugins");
 const config = require("../config");
 
 const { serverPath } = config[process.env.NODE_ENV || "development"];
+
+const remotes = {
+  website2: path.resolve(
+    __dirname,
+    "../../../website2/buildServer/container.js"
+  ),
+};
 
 module.exports = merge.smart(common, {
   name: "server",
@@ -34,13 +43,12 @@ module.exports = merge.smart(common, {
       name: "website1",
       library: { type: "commonjs2" },
       filename: "container.js",
-      remotes: {
-        website2: path.resolve(
-          __dirname,
-          "../../../website2/buildServer/container.js"
-        ),
-      },
+      remotes,
       shared: ["react", "react-dom"],
+    }),
+    new FederatedRuntimePlugin({
+      remotes,
+      runtimes: [HttpRuntime],
     }),
   ],
   stats: {

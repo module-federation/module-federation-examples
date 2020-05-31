@@ -2,8 +2,7 @@ const path = require("path");
 const merge = require("webpack-merge");
 const fs = require("fs");
 const webpack = require("webpack");
-const ModuleFederationPlugin = require("webpack").container
-  .ModuleFederationPlugin;
+const ModuleFederationPlugin = require("@module-federation/propriatery-tools/packages/remote-federation-plugin/plugin/ModuleFederationPlugin");
 const common = require("./common.base");
 const { server: serverLoaders } = require("./loaders");
 const plugins = require("./plugins");
