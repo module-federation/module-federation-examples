@@ -13,14 +13,13 @@
     "build:client": "rimraf buildClient && cross-env NODE_ENV=production webpack --progress -p --config build/webpack.config.js/client.prod.js --profile --json > buildServer/stats.json",
     "build:server": "cross-env NODE_ENV=production webpack --progress -p --config build/webpack.config.js/server.prod.js",
     "build:node": "cross-env NODE_ENV=production babel server -d buildServer",
-    "clean": "rimraf buildClient",
+    "clean": "rimraf buildClient && rm -rf dist",
     "precommit": "lint-staged",
     "cm": "git-cz",
     "lint": "eslint --fix src server build",
     "format": "prettier --single-quote --semi=false --write '{src,server,webpack}/**/*.js' && npm run lint",
     "deploy": "yarn build && ./deploy-heroku.sh",
-    "production:test": "yarn run build && rm -rf node_modules && NODE_ENV=production npm install --production && yarn serve",
-    "clean": "rm -rf dist"
+    "production:test": "yarn run build && rm -rf node_modules && NODE_ENV=production npm install --production && yarn serve"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
@@ -57,6 +56,7 @@
     "@babel/preset-env": "7.10.0",
     "@babel/preset-react": "7.10.0",
     "@module-federation/remote-federation-plugin": "*",
+    "@module-federation/federated-runtime-plugin": "*",
     "autoprefixer": "9.8.0",
     "babel-eslint": "10.1.0",
     "babel-loader": "8.1.0",

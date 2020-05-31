@@ -8,7 +8,7 @@ import ReactDomServer from "react-dom/server";
 import { StaticRouter, matchPath } from "react-router-dom";
 import { Provider as ReduxProvider } from "react-redux";
 import { Helmet } from "react-helmet";
-import { initializeFederatedImports } from "@module-federation/propriatery-tools/packages/remote-federation-plugin/lib/s3-federated-imports";
+import { initializeFederatedImports } from "@module-federation/remote-federation-plugin/lib/s3-federated-imports";
 const { performance, PerformanceObserver } = require("perf_hooks");
 
 import routes from "./routes";

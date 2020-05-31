@@ -2,8 +2,7 @@
   "private": true,
   "scripts": {
     "start": "yarn build && yarn serve",
-    "build": "lerna run --scope @multi-threaded-ssr/icarus-2 build && lerna run --scope @multi-threaded-ssr/icarus-1 build",
-    "serve": "lerna run --scope @multi-threaded-ssr/* --parallel serve",
+    "build": "lerna run build --parallel --scope @multi-threaded-ssr/icarus-2 --scope @multi-threaded-ssr/icarus-1",
     "clean": "lerna run --scope @multi-threaded-ssr/* --parallel clean"
   }
 }
