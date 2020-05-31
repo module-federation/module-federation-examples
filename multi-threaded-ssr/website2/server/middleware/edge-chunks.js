@@ -20,7 +20,10 @@ exports.modules = {
 /***/ ((module) => {
 const React = require("react");
 const children = require("html-react-parser")(${JSON.stringify(html)});
-module.exports = () => React.createElement(React.Fragment, {}, children);
+module.exports = () => {
+  console.log("I Rendered on the server!!!");
+  return React.createElement(React.Fragment, {}, children);
+};
 
 
 /***/ })

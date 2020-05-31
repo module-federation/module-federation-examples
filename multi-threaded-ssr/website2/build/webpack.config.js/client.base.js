@@ -11,7 +11,7 @@ module.exports = merge.smart(common, {
   target: "web",
   entry: ["@babel/polyfill", path.resolve(__dirname, "../../src/index.js")],
   output: {
-    publicPath: "http://localhost:3002/static/",
+    publicPath: "http://localhost:3001/static/",
   },
   module: {
     rules: clientLoaders,
