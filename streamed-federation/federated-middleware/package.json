@@ -3,7 +3,7 @@
   "name": "@streamed-federation/federated-middleware",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT",
+  "license": "CC BY-NC-ND 4.0",
   "scripts": {
     "build": "webpack",
     "deploy": "aws --endpoint-url=http://localhost:4568 s3 cp ./dist s3://federated-lambda-streaming-federated-middleware/ --recursive",
