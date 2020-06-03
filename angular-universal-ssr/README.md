@@ -9,6 +9,8 @@ Run `yarn start`. This will build and serve both `host` and `client` on ports 40
 - [localhost:4000](http://localhost:4000/) – Angular host-app with SSR
 - [localhost:5000](http://localhost:5000/) – Standalone client app
 
+note: If you are running this example for the first time, run `ngcc` at the repo root before start.
+
 ## Known issues
 
 - Hot reloading – work in progress
