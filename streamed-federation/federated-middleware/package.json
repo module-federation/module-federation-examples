@@ -3,7 +3,7 @@
   "name": "@streamed-federation/federated-middleware",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT",
+  "license": "CC BY-NC-ND 4.0",
   "scripts": {
     "build": "webpack",
     "deploy": "aws --endpoint-url=http://localhost:4568 s3 cp ./dist s3://federated-lambda-streaming-federated-middleware/ --recursive",
@@ -17,10 +17,10 @@
   },
   "devDependencies": {
     "@module-federation/propriatery-tools": "git+ssh://git@github.com:module-federation/proprietary-tools.git",
-    "@babel/core": "7.10.0",
+    "@babel/core": "7.10.2",
     "babel-loader": "8.1.0",
     "copy-webpack-plugin": "6.0.1",
-    "serverless": "1.70.0",
+    "serverless": "1.71.3",
     "webpack": "5.0.0-beta.16",
     "webpack-cli": "3.3.11"
   }

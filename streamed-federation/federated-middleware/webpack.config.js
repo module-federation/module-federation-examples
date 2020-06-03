@@ -1,5 +1,5 @@
 const CopyPlugin = require("copy-webpack-plugin");
-const StreamedFederationPlugin = require("@module-federation/propriatery-tools/packages/remote-federation-plugin");
+const StreamedFederationPlugin = require("@module-federation/remote-federation-plugin");
 
 const pkg = require("./package.json");
 
