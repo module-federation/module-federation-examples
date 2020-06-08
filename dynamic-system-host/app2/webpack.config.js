@@ -31,7 +31,7 @@ module.exports = {
       library: { type: "var", name: "app2" },
       filename: "remoteEntry.js",
       exposes: {
-        Widget: "./src/Widget",
+        "./Widget": "./src/Widget",
       },
       shared: ["react", "react-dom", "moment"],
     }),
