@@ -2,6 +2,9 @@ import React from "react";
 
 function loadComponent(scope, module) {
   return async () => {
+    console.log(__webpack_require__.S);
+    window[scope].init(__webpack_require__.S.default);
+
     const factory = await window[scope].get(module);
     const Module = factory();
     return Module;
