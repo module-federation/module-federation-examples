@@ -1,4 +1,4 @@
-const StreamedFederationPlugin = require("@module-federation/propriatery-tools/packages/remote-federation-plugin");
+const StreamedFederationPlugin = require("@module-federation/remote-federation-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 const externals = [
