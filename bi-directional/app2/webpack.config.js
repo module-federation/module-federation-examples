@@ -35,7 +35,7 @@ module.exports = {
       exposes: {
         "./Button": "./src/Button",
       },
-      shared: require("package.json").dependencies,
+      shared: require("./package.json").dependencies,
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",

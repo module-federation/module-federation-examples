@@ -15748,11 +15748,12 @@ webpack@4.42.0:
     watchpack "^1.6.0"
     webpack-sources "^1.4.1"
 
-webpack@5.0.0-beta.16:
-  version "5.0.0-beta.16"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.0.0-beta.16.tgz#9702c3fa4d1ff8ee1d50d88de34f8c41af64195e"
-  integrity sha512-O6YzI5H7XDPoXFrdC338P0GsSdhmYvz0//HL8LxVFHuRSbtHcV8mfx5U8ouWihFqwyvbfy27Bqoz2KY62kME9Q==
+webpack@5.0.0-beta.17, webpack@^5.0.0-beta.17:
+  version "5.0.0-beta.17"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.0.0-beta.17.tgz#ba9d3a2cc97c376f51f6ffa38e0b2053632f4ecb"
+  integrity sha512-V1aogUEyFplYGE7lP8+fExf8/NS6xqUaGs8T2mDOZSDYe3bstWoVwAniju4hw1xNJVx096S4Ivm9pfsejzUY+w==
   dependencies:
+    "@types/estree" "0.0.42"
     "@webassemblyjs/ast" "1.9.0"
     "@webassemblyjs/helper-module-context" "1.9.0"
     "@webassemblyjs/wasm-edit" "1.9.0"
@@ -15766,13 +15767,12 @@ webpack@5.0.0-beta.16:
     graceful-fs "^4.1.15"
     json-parse-better-errors "^1.0.2"
     loader-runner "^3.1.0"
-    loader-utils "^1.2.3"
     mime-types "^2.1.26"
     neo-async "^2.6.1"
     pkg-dir "^4.2.0"
     schema-utils "^2.5.0"
     tapable "2.0.0-beta.9"
-    terser-webpack-plugin "^2.3.6"
+    terser-webpack-plugin "^3.0.2"
     watchpack "2.0.0-beta.13"
     webpack-sources "2.0.0-beta.8"
 
@@ -15800,33 +15800,6 @@ webpack@5.0.0-beta.16:
     schema-utils "^2.5.0"
     tapable "2.0.0-beta.9"
     terser-webpack-plugin "^2.3.6"
-    watchpack "2.0.0-beta.13"
-    webpack-sources "2.0.0-beta.8"
-
-"webpack@git://github.com/webpack/webpack#master":
-  version "5.0.0-beta.17"
-  resolved "git://github.com/webpack/webpack#a0716cf6bc074ec0d21fe72120cda103dabf8f9a"
-  dependencies:
-    "@types/estree" "0.0.42"
-    "@webassemblyjs/ast" "1.9.0"
-    "@webassemblyjs/helper-module-context" "1.9.0"
-    "@webassemblyjs/wasm-edit" "1.9.0"
-    "@webassemblyjs/wasm-parser" "1.9.0"
-    acorn "^7.0.0"
-    chrome-trace-event "^1.0.2"
-    enhanced-resolve "5.0.0-beta.4"
-    eslint-scope "^5.0.0"
-    events "^3.0.0"
-    glob-to-regexp "^0.4.1"
-    graceful-fs "^4.1.15"
-    json-parse-better-errors "^1.0.2"
-    loader-runner "^3.1.0"
-    mime-types "^2.1.26"
-    neo-async "^2.6.1"
-    pkg-dir "^4.2.0"
-    schema-utils "^2.5.0"
-    tapable "2.0.0-beta.9"
-    terser-webpack-plugin "^3.0.2"
     watchpack "2.0.0-beta.13"
     webpack-sources "2.0.0-beta.8"
 
