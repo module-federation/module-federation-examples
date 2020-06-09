@@ -6,7 +6,7 @@
   "author": "Zack Jackson <zack@ScriptedAlchemy.com>",
   "license": "MIT",
   "scripts": {
-    "start": "npm run clean && cross-env NODE_ENV=development babel-node server/index.js",
+    "start": "npm run clean && cross-env NODE_ENV=development PORT=3002 babel-node server/index.js",
     "start:prod": "npm run build && npm run serve",
     "serve": "cross-env NODE_ENV=production node buildServer/main.js",
     "build": "npm run build:server && npm run build:client",
