@@ -91,7 +91,7 @@ function App() {
     setSystem({
       url: "http://localhost:3002/remoteEntry.js",
       scope: "app2",
-      module: "Widget",
+      module: "./Widget",
     });
   }
 
@@ -99,7 +99,7 @@ function App() {
     setSystem({
       url: "http://localhost:3003/remoteEntry.js",
       scope: "app3",
-      module: "Widget",
+      module: "./Widget",
     });
   }
 
