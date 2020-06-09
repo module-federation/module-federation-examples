@@ -37,9 +37,9 @@ module.exports = {
       library: { type: "var", name: "app_05" },
       filename: "remoteEntry.js",
       exposes: {
-        ActionButton: "./src/components/action-button.ts",
-        AlertBox: "./src/components/alert-box.ts",
-        components: "./src/index.ts",
+        "./ActionButton": "./src/components/action-button.ts",
+        "./AlertBox": "./src/components/alert-box.ts",
+        "./components": "./src/index.ts",
       },
       shared: [],
     }),

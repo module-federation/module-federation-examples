@@ -44,8 +44,8 @@ module.exports = {
         app_03: "app_03",
       },
       exposes: {
-        Dialog: "./src/Dialog",
-        Tabs: "./src/Tabs",
+        "./Dialog": "./src/Dialog",
+        "./Tabs": "./src/Tabs",
       },
       shared: ["react", "react-dom", "@material-ui/core", "react-router-dom"],
     }),
