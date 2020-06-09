@@ -34,7 +34,7 @@ module.exports = {
         app1: "app1",
       },
       exposes: {
-        routes: "./src/routes",
+        "./routes": "./src/routes",
       },
       shared: ["react", "react-dom", "react-router-dom"],
     }),
