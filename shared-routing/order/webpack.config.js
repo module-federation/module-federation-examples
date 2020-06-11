@@ -16,6 +16,11 @@ module.exports = {
   output: {
     publicPath: "http://localhost:3002/",
   },
+  resolve: {
+    alias: {
+      // events: false
+    },
+  },
   module: {
     rules: [
       {
@@ -37,8 +42,8 @@ module.exports = {
         shell: "shell",
       },
       exposes: {
-        RecentOrdersWidget: "./src/RecentOrdersWidget",
-        OrderService: "./src/OrderService",
+        "./RecentOrdersWidget": "./src/RecentOrdersWidget",
+        "./OrderService": "./src/OrderService",
       },
       shared: ["react", "react-dom", "@material-ui/core", "@material-ui/icons"],
     }),

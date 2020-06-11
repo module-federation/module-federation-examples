@@ -16,6 +16,11 @@ module.exports = {
   output: {
     publicPath: "http://localhost:3003/",
   },
+  resolve: {
+    alias: {
+      // events: false
+    },
+  },
   module: {
     rules: [
       {
@@ -37,8 +42,8 @@ module.exports = {
         shell: "shell",
       },
       exposes: {
-        TodayWidget: "./src/TodayWidget",
-        DepositsWidget: "./src/DepositsWidget",
+        "./TodayWidget": "./src/TodayWidget",
+        "./DepositsWidget": "./src/DepositsWidget",
       },
       shared: [
         "react",

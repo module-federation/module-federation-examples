@@ -13,6 +13,11 @@ module.exports = {
     hot: false,
     hotOnly: false,
   },
+  resolve: {
+    alias: {
+      // events: false
+    },
+  },
   output: {
     publicPath: "http://localhost:3004/",
   },
@@ -45,7 +50,7 @@ module.exports = {
         shell: "shell",
       },
       exposes: {
-        ProfilePage: "./src/ProfilePage",
+        "./ProfilePage": "./src/ProfilePage",
       },
       shared: ["react", "react-dom", "@material-ui/core", "@material-ui/icons"],
     }),

@@ -1,13 +1,13 @@
 import React from "react";
 import { Box, Typography, useTheme } from "@material-ui/core";
-// import {
-//   LineChart,
-//   Line,
-//   XAxis,
-//   YAxis,
-//   Label,
-//   ResponsiveContainer,
-// } from "recharts";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Label,
+  ResponsiveContainer,
+} from "recharts";
 
 // Generate Sales Data
 function createData(time, amount) {

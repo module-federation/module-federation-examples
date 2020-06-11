@@ -13,6 +13,11 @@ module.exports = {
     hot: false,
     hotOnly: false,
   },
+  resolve: {
+    alias: {
+      // events: false
+    },
+  },
   output: {
     publicPath: "http://localhost:3000/",
   },
@@ -39,8 +44,8 @@ module.exports = {
         profile: "profile",
       },
       exposes: {
-        Shell: "./src/Shell",
-        Service: "./src/Service",
+        "./Shell": "./src/Shell",
+        "./Service": "./src/Service",
       },
       shared: [
         "react",

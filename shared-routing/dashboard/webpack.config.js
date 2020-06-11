@@ -16,6 +16,11 @@ module.exports = {
   output: {
     publicPath: "http://localhost:3001/",
   },
+  resolve: {
+    alias: {
+      // events: false
+    },
+  },
   module: {
     rules: [
       {
@@ -39,7 +44,7 @@ module.exports = {
         shell: "shell",
       },
       exposes: {
-        DashboardService: "./src/DashboardService",
+        "./DashboardService": "./src/DashboardService",
       },
       shared: ["react", "react-dom", "@material-ui/core", "@material-ui/icons"],
     }),
