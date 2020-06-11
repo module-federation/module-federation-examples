@@ -45,7 +45,7 @@ module.exports = {
         shell: "shell",
       },
       exposes: {
-        ProfilePage: "./src/ProfilePage",
+        "./ProfilePage": "./src/ProfilePage",
       },
       shared: ["react", "react-dom", "@material-ui/core", "@material-ui/icons"],
     }),

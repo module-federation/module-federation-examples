@@ -23,7 +23,7 @@ module.exports = merge.smart(common, {
       library: { type: "var", name: "website2" },
       filename: "container.js",
       exposes: {
-        SomeComponent: "./src/components/SomeComponent",
+        "./SomeComponent": "./src/components/SomeComponent",
       },
       remotes: {
         website1: "website1",
