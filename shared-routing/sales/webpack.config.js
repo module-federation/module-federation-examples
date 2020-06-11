@@ -38,6 +38,9 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    alias: { events: "events" },
+  },
   plugins: [
     new ModuleFederationPlugin({
       name: "sales",
