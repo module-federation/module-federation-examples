@@ -31,7 +31,7 @@ module.exports = (env = {}) => {
       }),
     ],
     module: {
-      rules: [ ...require('./_loaders') ],
+      rules: [...require("./_loaders")],
     },
   };
 };

@@ -13,6 +13,7 @@ module.exports = {
   output: {
     publicPath: "http://localhost:3002/",
   },
+
   module: {
     rules: [
       {
@@ -31,7 +32,7 @@ module.exports = {
       library: { type: "var", name: "app2" },
       filename: "remoteEntry.js",
       exposes: {
-        Example: "./src/Example",
+        "./Example": "./src/Example",
       },
       shared: {
         react: "react",

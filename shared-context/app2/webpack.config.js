@@ -31,7 +31,7 @@ module.exports = {
       library: { type: "var", name: "app2" },
       filename: "remoteEntry.js",
       exposes: {
-        Welcome: "./src/Welcome",
+        "./Welcome": "./src/Welcome",
       },
       shared: ["react", "react-dom", "@shared-context/shared-library"],
     }),

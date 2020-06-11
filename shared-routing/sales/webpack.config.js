@@ -16,6 +16,16 @@ module.exports = {
   output: {
     publicPath: "http://localhost:3003/",
   },
+  resolve: {
+    alias: {
+      events: "events",
+    },
+  },
+  resolve: {
+    alias: {
+      events: "events",
+    },
+  },
   module: {
     rules: [
       {
@@ -28,6 +38,9 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    alias: { events: "events" },
+  },
   plugins: [
     new ModuleFederationPlugin({
       name: "sales",
@@ -37,8 +50,8 @@ module.exports = {
         shell: "shell",
       },
       exposes: {
-        TodayWidget: "./src/TodayWidget",
-        DepositsWidget: "./src/DepositsWidget",
+        "./TodayWidget": "./src/TodayWidget",
+        "./DepositsWidget": "./src/DepositsWidget",
       },
       shared: [
         "react",

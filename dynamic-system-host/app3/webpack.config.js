@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ModuleFederationPlugin = require("webpack").container
-  .ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
 
 module.exports = {
@@ -31,7 +30,7 @@ module.exports = {
       library: { type: "var", name: "app3" },
       filename: "remoteEntry.js",
       exposes: {
-        Widget: "./src/Widget",
+        "./Widget": "./src/Widget",
       },
       shared: ["react", "react-dom", "moment"],
     }),
