@@ -10,7 +10,7 @@ If you need **support**, consider looking at my sponsor profile [https://github.
 
 **Official Docs** [https://webpack.js.org/concepts/module-federation](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_campaign=webpack_docs&utm_medium=https://webpack.js.org/concepts/module-federation)
 
-**Shim for partial Webpack 4 and non webpack users** [https://gist.github.com/ScriptedAlchemy/d386a094832dbd9a04324862d26570e9](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_campaign=webpack_4_shim&utm_medium=https://gist.github.com/ScriptedAlchemy/d386a094832dbd9a04324862d26570e9)
+**Shim for partial Webpack 4 and non webpack users** (needs update to work with 5.beta.17) [https://gist.github.com/ScriptedAlchemy/d386a094832dbd9a04324862d26570e9](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_campaign=webpack_4_shim&utm_medium=https://gist.github.com/ScriptedAlchemy/d386a094832dbd9a04324862d26570e9)
 
 **Original Webpack Issue** [https://github.com/webpack/webpack/issues/10352](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_campaign=merge_proposal_issue&utm_medium=https://github.com/webpack/webpack/issues/10352)
 
