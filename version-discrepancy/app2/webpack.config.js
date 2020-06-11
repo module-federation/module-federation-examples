@@ -13,6 +13,7 @@ module.exports = {
   output: {
     publicPath: "http://localhost:3002/",
   },
+
   module: {
     rules: [
       {

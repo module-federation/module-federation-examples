@@ -15,7 +15,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      // events: false
+      events: "events",
     },
   },
   output: {
@@ -54,6 +54,7 @@ module.exports = {
         "@material-ui/icons",
         "react-router",
         "react-router-dom",
+        "./src/Service",
       ],
     }),
     new HtmlWebpackPlugin({

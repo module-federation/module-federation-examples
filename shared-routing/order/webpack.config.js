@@ -18,7 +18,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      // events: false
+      events: "events",
     },
   },
   module: {
