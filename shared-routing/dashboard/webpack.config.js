@@ -21,11 +21,6 @@ module.exports = {
       events: "events",
     },
   },
-  resolve: {
-    alias: {
-      events: "events",
-    },
-  },
   module: {
     rules: [
       {
