@@ -16,10 +16,11 @@ If you need **support**, consider looking at my sponsor profile [https://github.
 
 **Medium post** **Original Webpack Issue** [https://link.medium.com/xzFgBBtAx6](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_campaign=game_changer_medium_post&utm_medium=https://link.medium.com/xzFgBBtAx6)
 
-# Check out our published book
-
+# Check out our book
+<img src="./docs/MFCover.png" alt='Practical Module Federation Book' width="50%"/>
 We will be actively updating this book over the next year as we learn more about best practices and what issues people are running into with Module Federation, as well as with every release of Webpack as it moves towards a release candidate and release. So with your one purchase you are buying a whole year of updates.
-![Practical Module Federation Book](./docs/MFCover.png  =500px)
+
+
 # Examples
 
 > Legend:
@@ -38,7 +39,7 @@ We will be actively updating this book over the next year as we learn more about
 - [x] [Nested Components](./nested/README.md) &mdash; Nested remote components.[link to Google!](http://google.com)
 - [x] [Share Context Provider](./shared-context/README.md) &mdash; App1 and App2 with shared Context Provider.
 - [x] 🔒 [Streaming Federated Code ](./streamed-federation/README.md) &mdash; App1 and federated-middleware deploy to s3. App1 then stream's federated code directly from S3
-- [x] Non-UI Module
+- [x] Non-UI Modul
 - [x] Routing
 - [x] [Version Discrepancy](./version-discrepancy/README.md) &mdash; Federated apps depending on different versions of a dependency without side-effects.
 - [x] [TypeScript](./typescript/README.md) &mdash; Simple host/remote example using TypeScript.
