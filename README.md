@@ -16,6 +16,10 @@ If you need **support**, consider looking at my sponsor profile [https://github.
 
 **Medium post** **Original Webpack Issue** [https://link.medium.com/xzFgBBtAx6](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_campaign=game_changer_medium_post&utm_medium=https://link.medium.com/xzFgBBtAx6)
 
+# Check out our published book
+
+We will be actively updating this book over the next year as we learn more about best practices and what issues people are running into with Module Federation, as well as with every release of Webpack as it moves towards a release candidate and release. So with your one purchase you are buying a whole year of updates.
+![Practical Module Federation Book](./docs/MFCover.png  =500px)
 # Examples
 
 > Legend:
