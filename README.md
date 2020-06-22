@@ -29,6 +29,7 @@ If you need **support**, consider looking at my sponsor profile [https://github.
 > - ⚠️: In Progress/Incomplete
 > - 🔒: Depends on proprietary code that isn't free.
 
+- [x] [Advanced API](./advanced-api) &mdash; showcasing advanced API use, also seen in other examples
 - [x] [Basic Host-Remote](./basic-host-remote/README.md) &mdash; App 1 consumes remote components from App2.
 - [x] [Bi-Directional Hosts](./bi-directional/README.md) &mdash; App1 consumes App2 components; App2 consumes App1 components.
 - [x] [Self-Healing](./self-healing/README.md) &mdash; Fallback to remote apps vendors if a dependency fails to load.
@@ -37,14 +38,15 @@ If you need **support**, consider looking at my sponsor profile [https://github.
 - [x] [Dynamic System Host](./dynamic-system-host/README.md) &mdash; Swap between remotes at runtime.
 - [x] [Redux Reducer Injection](./redux-reducer-injection.md) &mdash; Dynamically inject reducers to host store at runtime.
 - [x] [Shared Routes](./shared-routes2) &mdash; Compose federated routes for a seamless user experience.
-- [x] [Nested Components](./nested/README.md) &mdash; Nested remote components.[link to Google!](http://google.com)
+- [x] [Nested Components](./nested/README.md) &mdash; Nested remote components.
 - [x] [Share Context Provider](./shared-context/README.md) &mdash; App1 and App2 with shared Context Provider.
-- [x] 🔒 [Streaming Federated Code ](./streamed-federation/README.md) &mdash; App1 and federated-middleware deploy to s3. App1 then stream's federated code directly from S3
-- [x] Non-UI Modul
-- [x] Routing
+- [x] [Federation Dashboard Example](./dashboard-example/README.md) &mdash; Single example implementing [Module Federation Dashboard](https://www.npmjs.com/package/@module-federation/dashboard-plugin)
+- [x] 🔒 [Streaming Federated Code](./streamed-federation/README.md) &mdash; App1 and federated-middleware deploy to s3. App1 then stream's federated code directly from S3
+- [x] Non-UI Module
+- [x] [Routing](./shared-routing/README.md) &mdash; An example of sharing router context. Also worth looking at - [Routing 2](./shared-routes2/README.md)
 - [x] [Version Discrepancy](./version-discrepancy/README.md) &mdash; Federated apps depending on different versions of a dependency without side-effects.
 - [x] [TypeScript](./typescript/README.md) &mdash; Simple host/remote example using TypeScript.
-- [x] ⚠️ [Angular Universal](./angular-universal-ssr/README.md) &mdash; Remote and Host app with SSR, lazy modules and components.
+- [x] ⚠️ [Angular Universal](./angular-universal-ssr/README.md) &mdash; Remote and Host app with SSR, lazy modules and components. (Not working with WP beta.18)
 - [ ] NextJS
 
 # Notes
