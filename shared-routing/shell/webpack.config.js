@@ -13,6 +13,11 @@ module.exports = {
     hot: false,
     hotOnly: false,
   },
+  resolve: {
+    alias: {
+      events: "events",
+    },
+  },
   output: {
     publicPath: "http://localhost:3000/",
   },
@@ -39,8 +44,8 @@ module.exports = {
         profile: "profile",
       },
       exposes: {
-        Shell: "./src/Shell",
-        Service: "./src/Service",
+        "./Shell": "./src/Shell",
+        "./Service": "./src/Service",
       },
       shared: [
         "react",
@@ -49,6 +54,7 @@ module.exports = {
         "@material-ui/icons",
         "react-router",
         "react-router-dom",
+        "./src/Service",
       ],
     }),
     new HtmlWebpackPlugin({

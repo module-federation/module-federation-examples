@@ -35,7 +35,7 @@ module.exports = merge.smart(common, {
       library: { type: "commonjs2" },
       filename: "container.js",
       exposes: {
-        SomeComponent: "./src/components/SomeComponent",
+        "./SomeComponent": "./src/components/SomeComponent",
       },
       shared: ["react", "react-dom"],
     }),

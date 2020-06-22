@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const BuildHashPlugin = require("@module-federation/propriatery-tools/packages/dashboard-plugin");
+const DashboardPlugin = require("@module-federation/dashboard-plugin");
 const ModuleFederationPlugin = require("webpack").container
   .ModuleFederationPlugin;
 const path = require("path");
@@ -38,20 +38,20 @@ module.exports = {
         Button: "./src/Button",
       },
       // sharing code based on the installed version, to allow for multiple vendors with different versions
-      shared: ["react", "react-dom"].reduce((shared, pkg) => {
-        // you can also trim the patch version off so you share at the feature version level
-        // react-16.8, not react-16.8.3, Better vendor sharing will be available as you'd share 16.8.x
-        Object.assign(shared, { [`${pkg}-${require(pkg).version}`]: pkg });
-        return shared;
-      }, {}),
+      shared: require("package.json").dependencies,
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
-    new BuildHashPlugin({
+    new DashboardPlugin({
       filename: "dashboard.json",
-      reportFunction: (data) => {
-        console.log("afterDone", data);
+      dashboardURL: "http://localhost:3000/api/update",
+      metadata: {
+        source: {
+          url:
+            "https://github.com/module-federation/module-federation-examples/tree/master/dashboard-example/app1",
+        },
+        remote: "http://localhost:3001/remoteEntry.js",
       },
     }),
   ],

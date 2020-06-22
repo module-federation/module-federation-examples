@@ -34,7 +34,7 @@ module.exports = {
         app1: "app1",
       },
       exposes: {
-        Button: "./src/Button",
+        "./Button": "./src/Button",
       },
       // app2 is expecting "styled-components" as a shared dependency
       shared: ["react", "react-dom", "styled-components"],

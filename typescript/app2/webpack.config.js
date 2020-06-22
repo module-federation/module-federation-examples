@@ -19,6 +19,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /bootstrap\.tsx$/,
+        loader: "bundle-loader",
+        options: {
+          lazy: true,
+        },
+      },
+      {
         test: /\.tsx?$/,
         loader: "babel-loader",
         exclude: /node_modules/,
@@ -34,7 +41,7 @@ module.exports = {
       library: { type: "var", name: "app2" },
       filename: "remoteEntry.js",
       exposes: {
-        Button: "./src/Button",
+        "./Button": "./src/Button",
       },
       shared: ["react", "react-dom"],
     }),
