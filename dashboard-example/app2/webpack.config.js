@@ -1,8 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const BuildHashPlugin = require("@module-federation/propriatery-tools/packages/dashboard-plugin");
+const DashboardPlugin = require("@module-federation/dashboard-plugin");
+const { ModuleFederationPlugin } = require("webpack").container;
 
-const ModuleFederationPlugin = require("webpack").container
-  .ModuleFederationPlugin;
 const path = require("path");
 const sharedReduce = ["react", "react-dom"].reduce((shared, pkg) => {
   Object.assign(shared, { [`${pkg}-${require(pkg).version}`]: pkg });
@@ -46,10 +45,15 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
-    new BuildHashPlugin({
+    new DashboardPlugin({
       filename: "dashboard.json",
-      reportFunction: (data) => {
-        console.log("afterDone", data);
+      dashboardURL: "http://localhost:3000/api/update",
+      metadata: {
+        source: {
+          url:
+            "https://github.com/module-federation/module-federation-examples/tree/master/dashboard-example/app2",
+        },
+        remote: "http://localhost:3002/remoteEntry.js",
       },
     }),
   ],
