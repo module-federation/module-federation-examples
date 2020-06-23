@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack").container
   .ModuleFederationPlugin;
 const path = require("path");
-
+const deps = require("./package.json").dependencies;
 module.exports = {
   entry: "./src/index",
   mode: "development",
@@ -15,11 +15,7 @@ module.exports = {
   },
   output: {
     publicPath: "http://localhost:3003/",
-  },
-  resolve: {
-    alias: {
-      events: "events",
-    },
+    chunkFilename: "[id].[contenthash].js",
   },
   resolve: {
     alias: {
@@ -54,11 +50,17 @@ module.exports = {
         "./DepositsWidget": "./src/DepositsWidget",
       },
       shared: [
-        "react",
-        "react-dom",
-        "@material-ui/core",
-        "@material-ui/icons",
-        "recharts",
+        {
+          ...deps,
+          react: {
+            singleton: true,
+            requiredVersion: deps.react,
+          },
+          "react-dom": {
+            singleton: true,
+            requiredVersion: deps["react-dom"],
+          },
+        },
       ],
     }),
     new HtmlWebpackPlugin({
