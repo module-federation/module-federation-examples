@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack").container
   .ModuleFederationPlugin;
 const path = require("path");
-
+const deps = require("./package.json").dependencies;
 module.exports = {
   entry: "./src/index",
   mode: "development",
@@ -20,6 +20,7 @@ module.exports = {
   },
   output: {
     publicPath: "http://localhost:3000/",
+    chunkFilename: "[id].[contenthash].js",
   },
   module: {
     rules: [
@@ -48,13 +49,17 @@ module.exports = {
         "./Service": "./src/Service",
       },
       shared: [
-        "react",
-        "react-dom",
-        "@material-ui/core",
-        "@material-ui/icons",
-        "react-router",
-        "react-router-dom",
-        "./src/Service",
+        {
+          ...deps,
+          react: {
+            singleton: true,
+            requiredVersion: deps.react,
+          },
+          "react-dom": {
+            singleton: true,
+            requiredVersion: deps["react-dom"],
+          },
+        },
       ],
     }),
     new HtmlWebpackPlugin({
