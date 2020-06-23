@@ -47,6 +47,7 @@ If you need **support**, consider looking at my sponsor profile [https://github.
 - [x] [Version Discrepancy](./version-discrepancy/README.md) &mdash; Federated apps depending on different versions of a dependency without side-effects.
 - [x] [TypeScript](./typescript/README.md) &mdash; Simple host/remote example using TypeScript.
 - [x] ⚠️ [Angular Universal](./angular-universal-ssr/README.md) &mdash; Remote and Host app with SSR, lazy modules and components. (Not working with WP beta.18)
+- [x] [NextJS Sidecar Build](./nextjs-sidecar/README.md) &mdash; Sidecar build to enable module-federation alongside Next codebases
 - [ ] NextJS
 
 # Notes
