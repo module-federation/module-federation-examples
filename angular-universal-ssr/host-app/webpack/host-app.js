@@ -2,7 +2,8 @@ const { resolve } = require("path");
 const { AngularCompilerPlugin } = require("@ngtools/webpack");
 const ProgressPlugin = require("webpack/lib/ProgressPlugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ContainerReferencePlugin = require("webpack/lib/container/ContainerReferencePlugin");
+const ModuleFederationPlugin = require("webpack").container
+  .ModuleFederationPlugin;
 
 module.exports = (env = {}) => {
   const buildFolder = resolve("./dist");
@@ -18,11 +19,25 @@ module.exports = (env = {}) => {
       new HtmlWebpackPlugin({
         template: resolve(__dirname, "../src/index.html"),
       }),
-      new ContainerReferencePlugin({
-        remoteType: "var",
-        remotes: { clientApp: "clientApp" },
-        overrides: ["@angular/core", "@angular/common", "@angular/router"],
+
+      // new ContainerReferencePlugin({
+      //   remoteType: "var",
+      //   remotes: { clientApp: "clientApp" },
+      //   overrides: ["@angular/core", "@angular/common", "@angular/router"],
+      // }),
+
+      new ModuleFederationPlugin({
+        library: { type: "var", name: "hostApp" },
+        remotes: {
+          clientApp: "clientApp",
+        },
+        shared: [
+          { "@angular/core": { singleton: true, eager: true } },
+          { "@angular/common": { singleton: true, eager: true } },
+          { "@angular/router": { singleton: true, eager: true } },
+        ],
       }),
+
       new AngularCompilerPlugin({
         tsConfigPath: "./tsconfig.app.json",
         entryModule: "./src/app/app.module#AppModule",

@@ -1,7 +1,8 @@
 const { AngularCompilerPlugin, PLATFORM } = require("@ngtools/webpack");
 const { resolve } = require("path");
 const ProgressPlugin = require("webpack/lib/ProgressPlugin");
-const ContainerPlugin = require("webpack/lib/container/ContainerPlugin");
+const ModuleFederationPlugin = require("webpack").container
+  .ModuleFederationPlugin;
 
 module.exports = (env = {}) => {
   const buildFolder = resolve("./dist/server");
@@ -18,19 +19,23 @@ module.exports = (env = {}) => {
       chunkFilename: "[id].[chunkhash].js",
       libraryTarget: "commonjs2",
     },
-    target: "node",
+    target: "async-node",
     plugins: [
       new ProgressPlugin(),
-      new ContainerPlugin({
+      new ModuleFederationPlugin({
         name: "clientApp",
         filename: "remoteEntry.js",
+        library: { type: "commonjs2", name: "clientApp" },
         exposes: {
-          Component:
+          "./Component":
             "./src/app/client-cities/client-city/client-city.component.ts",
-          Module: "./src/app/client-cities/client-cities.module.ts",
+          "./Module": "./src/app/client-cities/client-cities.module.ts",
         },
-        library: { type: "commonjs2" },
-        overridables: ["@angular/core", "@angular/common", "@angular/router"],
+        shared: [
+          { "@angular/core": { singleton: true, eager: true } },
+          { "@angular/common": { singleton: true, eager: true } },
+          { "@angular/router": { singleton: true, eager: true } },
+        ],
       }),
       new AngularCompilerPlugin({
         entryModule: resolve(__dirname, "../src/app/app.module#AppModule"),
