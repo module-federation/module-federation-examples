@@ -38,7 +38,7 @@ module.exports = {
         Button: "./src/Button",
       },
       // sharing code based on the installed version, to allow for multiple vendors with different versions
-      shared: require("package.json").dependencies,
+      shared: require("./package.json").dependencies,
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
