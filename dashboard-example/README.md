@@ -9,6 +9,10 @@ Please follow instructions here to boot and run the dashboard: https://www.npmjs
 
 # Running Demo
 
+Run the Dashboard Docker container as per [instructions](https://www.npmjs.com/package/@module-federation/dashboard-plugin).
+
+Then run `yarn build` and reload the dashboard to see the end result
+
 Run `yarn start`. This will build and serve both `app1` and `app2` on ports 3001 and 3002 respectively.
 
 - [localhost:3001](http://localhost:3001/)
