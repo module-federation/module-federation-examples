@@ -2727,7 +2727,6 @@
 
 "@ngtools/webpack@file:angular-universal-ssr/patched_packages/_ngtools_webpack.tgz":
   version "10.0.0-rc.0"
-  uid "726492aa150be5ce9e9465e7a75e6e52f1248a50"
   resolved "file:angular-universal-ssr/patched_packages/_ngtools_webpack.tgz#726492aa150be5ce9e9465e7a75e6e52f1248a50"
   dependencies:
     "@angular-devkit/core" "10.0.0-rc.0+5.27d1200.with-local-changes"
@@ -3166,10 +3165,18 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@16.9.38":
+"@types/react@*":
   version "16.9.38"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.38.tgz#868405dace93a4095d3e054f4c4a1de7a1ac0680"
   integrity sha512-pHAeZbjjNRa/hxyNuLrvbxhhnKyKNiLC6I5fRF2Zr/t/S6zS41MiyzH4+c+1I9vVfvuRt1VS2Lodjr4ZWnxrdA==
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
+
+"@types/react@16.9.41":
+  version "16.9.41"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.41.tgz#925137ee4d2ff406a0ecf29e8e9237390844002e"
+  integrity sha512-6cFei7F7L4wwuM+IND/Q2cV1koQUvJ8iSV+Gwn0c3kvABZ691g7sp3hfEQHOUBJtccl1gPi+EyNjMIl9nGA0ug==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -16578,7 +16585,6 @@ webpack@5.0.0-beta.18, webpack@^5.0.0-beta.18:
 
 "webpack@file:angular-universal-ssr/patched_packages/webpack-5.0.0-beta.16.tgz":
   version "5.0.0-beta.16"
-  uid e749f8255c400f98a4bf46c1d28a5bc107776dc4
   resolved "file:angular-universal-ssr/patched_packages/webpack-5.0.0-beta.16.tgz#e749f8255c400f98a4bf46c1d28a5bc107776dc4"
   dependencies:
     "@webassemblyjs/ast" "1.9.0"
