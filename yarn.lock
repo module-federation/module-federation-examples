@@ -2672,6 +2672,20 @@
     prop-types "^15.7.2"
     react-is "^16.8.0"
 
+"@module-federation/automatic-vendor-federation@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@module-federation/automatic-vendor-federation/-/automatic-vendor-federation-1.0.1.tgz#02e0852442684ae9fd34986a58ffa19748e23147"
+  integrity sha512-UMTIh4u/vaKLkaKnXunJrgXlIWXMaG7UYzkHgDVAsd66TVYmr1SnX8WC0rDhO3TTE+ohS2AOdoJQNcJPH5pwbQ==
+
+"@module-federation/dashboard-plugin@@module-federation/dashboard-plugin":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@module-federation/dashboard-plugin/-/dashboard-plugin-1.1.0.tgz#c1ad5ab6c4c30da60cbd3ef19e72d9986953cc5a"
+  integrity sha512-2OBVIBUfrO4NBMbF/ZhmVlIOh04vNV32VTcfq0NvR6BV1aMghO10hjfPL7PCGn4yVIgsGEhgVal0GdhbDSUOVA==
+  dependencies:
+    "@module-federation/automatic-vendor-federation" "^1.0.1"
+    flatted "^2.0.2"
+    node-fetch "^2.6.0"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -2713,6 +2727,7 @@
 
 "@ngtools/webpack@file:angular-universal-ssr/patched_packages/_ngtools_webpack.tgz":
   version "10.0.0-rc.0"
+  uid "726492aa150be5ce9e9465e7a75e6e52f1248a50"
   resolved "file:angular-universal-ssr/patched_packages/_ngtools_webpack.tgz#726492aa150be5ce9e9465e7a75e6e52f1248a50"
   dependencies:
     "@angular-devkit/core" "10.0.0-rc.0+5.27d1200.with-local-changes"
@@ -7730,7 +7745,7 @@ flat-cache@^2.0.1:
     rimraf "2.6.3"
     write "1.0.3"
 
-flatted@^2.0.0:
+flatted@^2.0.0, flatted@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-2.0.2.tgz#4575b21e2bcee7434aa9be662f4b7b5f9c2b5138"
   integrity sha512-r5wGx7YeOwNWNlCA0wQ86zKyDLMQr+/RB8xy74M4hTphfmjlijTSSXGuH8rnvKZnfT9i+75zmd8jcKdMR4O6jA==
@@ -11333,7 +11348,7 @@ node-fetch-npm@^2.0.2:
     json-parse-better-errors "^1.0.0"
     safe-buffer "^5.1.1"
 
-node-fetch@2.6.0, node-fetch@^2.3.0, node-fetch@^2.5.0:
+node-fetch@2.6.0, node-fetch@^2.3.0, node-fetch@^2.5.0, node-fetch@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
   integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
@@ -16563,6 +16578,7 @@ webpack@5.0.0-beta.18, webpack@^5.0.0-beta.18:
 
 "webpack@file:angular-universal-ssr/patched_packages/webpack-5.0.0-beta.16.tgz":
   version "5.0.0-beta.16"
+  uid e749f8255c400f98a4bf46c1d28a5bc107776dc4
   resolved "file:angular-universal-ssr/patched_packages/webpack-5.0.0-beta.16.tgz#e749f8255c400f98a4bf46c1d28a5bc107776dc4"
   dependencies:
     "@webassemblyjs/ast" "1.9.0"
