@@ -1,4 +1,4 @@
-# Dashboard Edample
+# Dashboard Example
 
 This example shows the dashboard running in read-only mode.
 
