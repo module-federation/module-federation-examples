@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "rollup-federation-demo",
+  "workspaces": [
+    "rollup-spa",
+    "webpack-spa"
+  ],
+  "scripts": {
+    "start": "wsrun start",
+    "build": "wsrun build",
+    "serve": "wsrun serve",
+    "clean": "wsrun clean",
+    "postinstall": "cp -a ./node_modules/react/. ./rollup-spa/node_modules/react && cp -a ./node_modules/react-dom/. ./rollup-spa/node_modules/react-dom"
+  },
+  "devDependencies": {
+    "wsrun": "^5.2.1"
+  }
+}
