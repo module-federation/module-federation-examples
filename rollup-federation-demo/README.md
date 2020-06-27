@@ -8,5 +8,5 @@ This example demos consumption of federated modules from a Rollup bundle. `rollu
 
 Run `yarn start`. This will build and serve both `webpack-spa` and `rollup-spa` on ports 8081 and 8082 respectively.
 
-- HOST (webpack-spa): [localhost:8081](http://localhost:8081/)
-- REMOTE (rollup-spa): [localhost:8082](http://localhost:8082/)
+- REMOTE (webpack-spa): [localhost:8081](http://localhost:8081/)
+- HOST (rollup-spa): [localhost:8082](http://localhost:8082/)
