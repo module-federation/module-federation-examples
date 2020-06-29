@@ -1,16 +1,17 @@
 import LocalButton from "./Button";
 import React from "react";
 
-const RemoteButton = React.lazy(() => import("app2/Button"));
+import Button from "./Button";
+const Header = React.lazy(() => import("rollup_spa/Header"));
 
 const App = () => (
   <div>
-    <h1>Bi-Directional</h1>
-    <h2>App 1</h2>
-    <LocalButton />
-    <React.Suspense fallback="Loading Button">
-      <RemoteButton />
+    <React.Suspense fallback={<div>Loading the header</div>}>
+      <Header />
     </React.Suspense>
+    <h1>Webpack Remote</h1>
+
+    <Button />
   </div>
 );
 
