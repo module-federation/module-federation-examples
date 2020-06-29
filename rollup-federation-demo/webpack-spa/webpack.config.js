@@ -1,17 +1,18 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
 
-const pkg = require('./package.json');
+const { ModuleFederationPlugin } = require("webpack").container;
 
+const pkg = require("./package.json");
+
+/** @type {import('webpack').Configuration} */
 module.exports = {
   entry: "./src/index",
   mode: "production",
-  target: 'web',
+  target: "web",
   devtool: false,
   output: {
-    libraryTarget: 'system',
-    libraryExport: 'main',
+    libraryTarget: "system",
+    libraryExport: "main",
     publicPath: "http://localhost:8081/",
   },
   optimization: {
@@ -29,17 +30,17 @@ module.exports = {
       },
     ],
   },
-  // externals: ['react', 'react-dom'],
+  externals: ["react", "react-dom"],
   plugins: [
     new ModuleFederationPlugin({
-      name: "app1",
+      name: "rwebpackremote",
       library: { type: "system" },
       filename: "remoteEntry.js",
+      remotes: {
+        rollup_spa: "rollup_spa",
+      },
       exposes: {
         "./Button": "./src/Button",
-      },
-      remotes: {
-        'app2': './remoteEntry.js'
       },
       shared: {
         react: {
@@ -51,20 +52,18 @@ module.exports = {
           eager: true,
           singleton: true,
           requiredVersion: pkg.dependencies["react-dom"],
-        }
+        },
       },
-    }),
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
     }),
   ],
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: path.join(__dirname),
     port: 8081,
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-    }
-  }
+      "Access-Control-Allow-Headers":
+        "X-Requested-With, content-type, Authorization",
+    },
+  },
 };
