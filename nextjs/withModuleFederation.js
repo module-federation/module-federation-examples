@@ -10,6 +10,7 @@ const withModuleFederation = (webpack) => {
       if (!options.shared) {
         return;
       }
+      return;
       if (Array.isArray(options.shared)) {
         if (
           options.shared.includes("react") ||
