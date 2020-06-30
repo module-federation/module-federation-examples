@@ -1,5 +1,4 @@
 const { moduleFederationPlugin } = require("./withModuleFederation");
-const withPlugins = require("next-compose-plugins");
 const deps = require("./package.json").dependencies;
 module.exports = {
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
@@ -11,16 +10,27 @@ module.exports = {
       // not currently supported in Webpack 5
       return plugin.constructor.name !== "ReactFreshWebpackPlugin";
     });
+    console.log(config.entry().then(console.log));
     const ModuleFederationPlugin = moduleFederationPlugin(webpack);
     W5Plugins.push(
       new ModuleFederationPlugin({
         name: "app1",
         library: { type: "var", name: "app1" },
-        filename: "remoteEntry.js",
+        filename: "static/runtime/remoteEntry.js",
         exposes: {
           "./nav": "./components/nav",
         },
-        shared: {},
+        shared: {
+          reactRexport: {
+            import: "./react",
+            shareKey: "react",
+            shareScope: "default",
+            singleton: true,
+            // strictVersion: true, // don't use shared version when version isn't valid. Singleton or modules without fallback will throw, otherwise fallback is used
+            version: require("react").version,
+            requiredVersion: require("./package.json").dependencies["react"],
+          },
+        },
       })
     );
 
