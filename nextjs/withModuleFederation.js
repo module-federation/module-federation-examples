@@ -4,6 +4,7 @@ const withModuleFederation = (webpack) => {
       "Module Federation is only available in Webpack 5, it cannot be back-ported."
     );
   }
+  // probbably dont need this, a function that throws will be enough if i proxy the options through to MF
   class WithModuleFederation extends webpack.container.ModuleFederationPlugin {
     constructor(options) {
       super(options);
