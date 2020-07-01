@@ -1,18 +1,45 @@
 import React, { Fragment } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-const Nav = dynamic(() => import("../components/nav"));
+import Nav from "../components/nav";
+import LazyHydrate from "../components/LazyHydration";
 
 const RemoteTitle = dynamic(
-  () => {
-    return import("next1/exposedTitle").then((Module) => {
-      return Module;
-    });
+  async () => {
+    try {
+      require("next1/exposedTitle");
+    } catch (e) {}
+    if (!process.browser) {
+      const container = await __webpack_require__(
+        "webpack/container/reference/next1"
+      ).next1;
+      return await container.get("./exposedTitle").then((factory) => {
+        const Module = factory();
+        return {
+          __esModule: true,
+          ...Module,
+        };
+      });
+    } else {
+      try {
+        return await window.next1.get("./exposedTitle").then((factory) => {
+          const Module = factory();
+          return {
+            __esModule: true,
+            ...Module,
+          };
+        });
+      } catch (e) {
+        console.log(e);
+      }
+
+      // window.next1.get('./exposedTitle').then(console.log)
+    }
   },
-  { ssr: false }
+  { ssr: true }
 );
 
-const Home = ({ Fed }) => {
+const Home = ({ loaded }) => {
   return (
     <div>
       <Head>
@@ -30,7 +57,9 @@ const Home = ({ Fed }) => {
           To get started, edit <code>pages/index.js</code> and save to reload.
         </p>
 
-        {Fed ? <Fed /> : <RemoteTitle />}
+        <LazyHydrate remoteImport="next1/exposedTitle">
+          <RemoteTitle />
+        </LazyHydrate>
 
         <div className="row">
           <a href="https://nextjs.org/docs" className="card">
@@ -102,22 +131,18 @@ const Home = ({ Fed }) => {
 };
 //
 Home.getInitialProps = async (ctx) => {
-  if (!process.browser) {
-    // const {wipeCache} = require('wipe-node-cache')
-    // wipeCache(null, function(){return true;})
-    // delete __webpack_modules__['webpack/container/reference/next1']
-    await __webpack_init_sharing__("default");
+  return new Promise((resolve) => {
+    console.log("attempting to load");
 
-    const container = await __webpack_require__(
-      "webpack/container/reference/next1"
-    ).next1;
-    const remotecomponent = await container.get("./exposedTitle");
-    return {
-      Fed: remotecomponent().default,
-    };
-  }
-
-  return {};
+    if (!process.browser) {
+      resolve({});
+    }
+    resolve(
+      window.next1.get("./exposedTitle").then(() => {
+        return { loaded: true };
+      })
+    );
+  });
 };
 
 export default Home;

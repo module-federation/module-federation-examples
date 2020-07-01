@@ -12,12 +12,14 @@ module.exports = {
       // not currently supported in Webpack 5
       return plugin.constructor.name !== "ReactFreshWebpackPlugin";
     });
+    config.experiments = {
+      importAsync: true,
+      topLevelAwait: true,
+      importAwait: true,
+    };
     if (!isServer) {
       config.output.publicPath = "http://localhost:3001/_next/";
       config.output.library = "next2";
-      config.experiments = {
-        importAsync: true,
-      };
 
       // config.externals = {
       //   "react":

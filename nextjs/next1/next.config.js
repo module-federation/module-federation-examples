@@ -10,10 +10,10 @@ module.exports = {
       // not currently supported in Webpack 5
       return plugin.constructor.name !== "ReactFreshWebpackPlugin";
     });
+    config.output.library = "next1";
 
     if (!isServer) {
       config.output.publicPath = "http://localhost:3000/_next/";
-      config.output.library = "next1";
       config.experiments = {
         importAsync: true,
       };
