@@ -1,21 +1,13 @@
 {
-  "name": "nextjs",
-  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "resolutions": {
-    "webpack": "^5.0.0-beta.20",
-    "next": "^9.4.5-canary.23"
+    "start": "concurrently \"cd next1; yarn dev \" \"cd next2; yarn dev\"",
+    "build": "lerna run --scope @nested/* build",
+    "serve": "lerna run --scope @nested/* --parallel serve",
+    "clean": "lerna run --scope @nested/* --parallel clean",
+    "postinstall": "concurrently \"cd ./next1 && yarn\" \"cd next2 && yarn \""
   },
   "dependencies": {
-    "next": "^9.4.5-canary.23",
-    "next-compose-plugins": "^2.2.0",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "webpack": "^5.0.0-beta.20"
+    "concurrently": "^5.2.0"
   }
 }
