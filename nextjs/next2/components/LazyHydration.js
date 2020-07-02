@@ -53,8 +53,7 @@ const LazyHydrate = function (props) {
   } = props;
   React.useEffect(() => {
     const check = async () => {
-      return null;
-      const remoteImport = propos.remote;
+      const remoteImport = props.remote;
       const split = remoteImport.split("/");
       const [scope] = split.splice(0, 1);
       const request = split.join("/");

@@ -20,27 +20,8 @@ module.exports = {
     if (!isServer) {
       config.output.publicPath = "http://localhost:3001/_next/";
       config.output.library = "next2";
-
-      // config.externals = {
-      //   "react":
-      //     "script http://   new Promise(resolve => {\n" +
-      //     "      var findScope = setInterval(()=>{\n" +
-      //     "        if(window.next1 && window.next1.get) {\n" +
-      //     "          resolve(window.next1.get('./reactRexport').then(Module => {\n" +
-      //     "            return Module\n" +
-      //     "          }))\n" +
-      //     "          clearInterval(findScope)\n" +
-      //     "        }\n" +
-      //     "      },100)\n" +
-      //     "    })",
-      // }
-    } else {
-      // config.target = "async-node";
     }
 
-    // console.log('ZACK')
-    // console.log(require('../next1/.next/server/static/runtime/remoteEntry.js'))
-    // console.log('ZACK')
     const ModuleFederationPlugin = moduleFederationPlugin(webpack);
     W5Plugins.push(
       new ModuleFederationPlugin({
