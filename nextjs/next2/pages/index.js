@@ -29,11 +29,7 @@ const RemoteTitle = dynamic(
             ...Module,
           };
         });
-      } catch (e) {
-        console.log(e);
-      }
-
-      // window.next1.get('./exposedTitle').then(console.log)
+      } catch (e) {}
     }
   },
   { ssr: true }

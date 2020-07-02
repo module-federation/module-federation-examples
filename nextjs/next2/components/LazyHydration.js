@@ -11,11 +11,19 @@ const LazyHydrate = function (props) {
   const [hydrated, setHydrated] = React.useState(!isBrowser);
   const [remoteReady, setRemoteStatus] = React.useState(!isBrowser);
 
-  const { ssrOnly, whenIdle, whenVisible, on = [], children, ...rest } = props;
+  const {
+    remoteImport,
+    ssrOnly,
+    whenIdle,
+    whenVisible,
+    on = [],
+    children,
+    ...rest
+  } = props;
 
   React.useEffect(() => {
     const check = async () => {
-      const split = props.remoteImport.split("/");
+      const split = remoteImport.split("/");
       const [scope] = split.splice(0, 1);
       const request = split.join("/");
       window[scope].get(`./${request}`).then((factory) => {
@@ -31,7 +39,8 @@ const LazyHydrate = function (props) {
     !ssrOnly &&
     !whenIdle &&
     !whenVisible &&
-    !on.length
+    !on.length &&
+    !remoteImport
   ) {
     console.error(
       `LazyHydration: Enable atleast one trigger for hydration.\n` +
