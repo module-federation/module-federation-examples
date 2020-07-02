@@ -2,34 +2,14 @@ import React, { Fragment } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import Nav from "../components/nav";
-import LazyHydrate from "../components/LazyHydration";
+import LazyHydrate, { handleFederation } from "../components/LazyHydration";
 
 const RemoteTitle = dynamic(
   async () => {
     try {
       require("next1/exposedTitle");
-    } catch (e) {}
-    if (!process.browser) {
-      const container = await __webpack_require__(
-        "webpack/container/reference/next1"
-      ).next1;
-      return await container.get("./exposedTitle").then((factory) => {
-        const Module = factory();
-        return {
-          __esModule: true,
-          ...Module,
-        };
-      });
-    } else {
-      try {
-        return await window.next1.get("./exposedTitle").then((factory) => {
-          const Module = factory();
-          return {
-            __esModule: true,
-            ...Module,
-          };
-        });
-      } catch (e) {}
+    } catch (e) {
+      return handleFederation("next1/exposedTitle");
     }
   },
   { ssr: true }
@@ -53,7 +33,7 @@ const Home = ({ loaded }) => {
           To get started, edit <code>pages/index.js</code> and save to reload.
         </p>
 
-        <LazyHydrate remoteImport="next1/exposedTitle">
+        <LazyHydrate remote="next1/exposedTitle">
           <RemoteTitle />
         </LazyHydrate>
 
@@ -127,18 +107,7 @@ const Home = ({ loaded }) => {
 };
 //
 Home.getInitialProps = async (ctx) => {
-  return new Promise((resolve) => {
-    console.log("attempting to load");
-
-    if (!process.browser) {
-      resolve({});
-    }
-    resolve(
-      window.next1.get("./exposedTitle").then(() => {
-        return { loaded: true };
-      })
-    );
-  });
+  return {};
 };
 
 export default Home;

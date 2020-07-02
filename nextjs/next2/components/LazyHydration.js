@@ -3,6 +3,36 @@ const isBrowser = process.browser;
 const useIsomorphicLayoutEffect = isBrowser
   ? React.useLayoutEffect
   : React.useEffect;
+export const handleFederation = async (remoteImport) => {
+  const split = remoteImport.split("/");
+  const [scope] = split.splice(0, 1);
+  const request = split.join("/");
+  if (!process.browser) {
+    const container = await __webpack_require__(
+      `webpack/container/reference/${scope}`
+    ).next1;
+    return await container.get("./" + request).then((factory) => {
+      const Module = factory();
+      return {
+        __esModule: true,
+        request: remoteImport,
+        ...Module,
+      };
+    });
+  } else {
+    try {
+      return await window.next1.get("./" + request).then((factory) => {
+        const Module = factory();
+        return {
+          __esModule: true,
+          ...Module,
+        };
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+};
 
 const LazyHydrate = function (props) {
   const childRef = React.useRef(null);
@@ -12,17 +42,19 @@ const LazyHydrate = function (props) {
   const [remoteReady, setRemoteStatus] = React.useState(!isBrowser);
 
   const {
-    remoteImport,
+    // federation = true,
     ssrOnly,
     whenIdle,
     whenVisible,
     on = [],
     children,
+    remote,
     ...rest
   } = props;
-
   React.useEffect(() => {
     const check = async () => {
+      return null;
+      const remoteImport = propos.remote;
       const split = remoteImport.split("/");
       const [scope] = split.splice(0, 1);
       const request = split.join("/");
@@ -40,7 +72,7 @@ const LazyHydrate = function (props) {
     !whenIdle &&
     !whenVisible &&
     !on.length &&
-    !remoteImport
+    !remote
   ) {
     console.error(
       `LazyHydration: Enable atleast one trigger for hydration.\n` +
