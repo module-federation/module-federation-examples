@@ -34,7 +34,6 @@ module.exports = {
     }
     //http://localhost:3000/_next/static/chunks/components_exposedTitle_js.js
     //http://localhost:3000/_static/chunks/components_exposedTitle_js.js
-    console.log(config.output);
     const ModuleFederationPlugin = moduleFederationPlugin(webpack);
     W5Plugins.push(
       new ModuleFederationPlugin({

@@ -20,8 +20,8 @@ module.exports = {
     if (!isServer) {
       config.output.publicPath = "http://localhost:3001/_next/";
       config.output.library = "next2";
+    } else {
     }
-
     const ModuleFederationPlugin = moduleFederationPlugin(webpack);
     W5Plugins.push(
       new ModuleFederationPlugin({
@@ -40,18 +40,9 @@ module.exports = {
         exposes: {
           "./nav": "./components/nav",
         },
-        shared: {
-          reactRexport: {
-            import: "react",
-            shareKey: "react",
-            shareScope: "default",
-            singleton: true,
-            eager: true,
-            // strictVersion: true, // don't use shared version when version isn't valid. Singleton or modules without fallback will throw, otherwise fallback is used
-            version: require("react").version,
-            requiredVersion: require("./package.json").dependencies["react"],
-          },
-        },
+        // shared: {
+        //   react: isServer ? {} : {singleton:true}
+        // },
       })
     );
 
