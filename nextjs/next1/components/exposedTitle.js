@@ -1,6 +1,8 @@
 import React from "react";
-
 const ExportredTitle = () => {
+  // useEffect(() => {
+  //   console.log("HOOKS WORKS");
+  // }, []);
   return (
     <div className="hero">
       <h1 className="title">

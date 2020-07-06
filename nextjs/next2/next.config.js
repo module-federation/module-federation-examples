@@ -1,4 +1,4 @@
-const { moduleFederationPlugin } = require("./withModuleFederation");
+const { ModuleFederationPlugin } = require("webpack").container;
 const deps = require("./package.json").dependencies;
 const path = require("path");
 
@@ -22,8 +22,10 @@ module.exports = {
       config.output.library = "next2";
     } else {
     }
-    const ModuleFederationPlugin = moduleFederationPlugin(webpack);
-    W5Plugins.push(
+    config.plugins.push(
+      // new webpack.ProvidePlugin({
+      //   'global.React': 'react'
+      // }),
       new ModuleFederationPlugin({
         name: "next2",
         library: { type: config.output.libraryTarget, name: "next2" },
@@ -46,7 +48,6 @@ module.exports = {
       })
     );
 
-    config.plugins = W5Plugins;
     return config;
   },
   webpackDevMiddleware: (config) => {
