@@ -5,23 +5,7 @@ module.exports = {
     if (!isServer) {
       config.output.library = "next1";
       config.output.publicPath = "http://localhost:3000/_next/";
-      config.experiments = {
-        importAsync: true,
-      };
-      //
-      //   config.externals = {
-      //     "react":
-      //       "promise new Promise(resolve => {\n" +
-      //       "      var findScope = setInterval(()=>{\n" +
-      //       "        if(window.next1 && window.next1.get) {\n" +
-      //       "          resolve(window.next1.get('./reactRexport').then(Module => {\n" +
-      //       "            return Module\n" +
-      //       "          }))\n" +
-      //       "          clearInterval(findScope)\n" +
-      //       "        }\n" +
-      //       "      },100)\n" +
-      //       "    })",
-      //   }
+    } else {
     }
     config.plugins.push(
       // new webpack.ProvidePlugin({
