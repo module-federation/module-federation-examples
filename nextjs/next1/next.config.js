@@ -2,37 +2,41 @@ const deps = require("./package.json").dependencies;
 const { ModuleFederationPlugin } = require("webpack").container;
 module.exports = {
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    const mfConf = {
+      name: "next1",
+      library: { type: config.output.libraryTarget, name: "next1" },
+      filename: "static/runtime/remoteEntry.js",
+      exposes: {
+        "./nav": "./components/nav",
+        "./exposedTitle": "./components/exposedTitle",
+      },
+      shared: {},
+    };
     if (!isServer) {
       config.output.library = "next1";
       config.output.publicPath = "http://localhost:3000/_next/";
     } else {
+      // is server
+      Object.assign(mfConf, {
+        shared: {
+          react: {
+            import: false,
+            shareKey: "react",
+            shareScope: "default",
+            singleton: true,
+            eager: true,
+            strictVersion: true,
+            version: require("react").version,
+            requiredVersion: require("./package.json").dependencies["react"],
+          },
+        },
+      });
     }
     config.plugins.push(
-      // new webpack.ProvidePlugin({
-      //   'global.React': 'react'
-      // }),
-      new ModuleFederationPlugin({
-        name: "next1",
-        library: { type: config.output.libraryTarget, name: "next1" },
-        filename: "static/runtime/remoteEntry.js",
-        exposes: {
-          "./nav": "./components/nav",
-          "./exposedTitle": "./components/exposedTitle",
-          "./react": "react",
-        },
-        shared: {
-          // react: {
-          //   import: 'react',
-          //   shareKey: "react",
-          //   shareScope: "default",
-          //   singleton: true,
-          //   eager: true,
-          //   // strictVersion: true, // don't use shared version when version isn't valid. Singleton or modules without fallback will throw, otherwise fallback is used
-          //   version: require("react").version,
-          //   requiredVersion: require("./package.json").dependencies["react"],
-          // },
-        },
-      })
+      new webpack.ProvidePlugin({
+        "global.React": "react",
+      }),
+      new ModuleFederationPlugin(mfConf)
     );
 
     return config;
