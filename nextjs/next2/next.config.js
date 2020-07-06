@@ -4,19 +4,6 @@ const path = require("path");
 
 module.exports = {
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    // Note: we provide webpack above so you should not `require` it
-    // Perform customizations to webpack config
-    // Important: return the modified config
-
-    const W5Plugins = config.plugins.filter((plugin) => {
-      // not currently supported in Webpack 5
-      return plugin.constructor.name !== "ReactFreshWebpackPlugin";
-    });
-    config.experiments = {
-      importAsync: true,
-      topLevelAwait: true,
-      importAwait: true,
-    };
     if (!isServer) {
       config.output.publicPath = "http://localhost:3001/_next/";
       config.output.library = "next2";
