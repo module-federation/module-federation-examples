@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 const ExportredTitle = () => {
   console.log("---------loading remote component---------");
+  console.log(global.React);
   console.log(Object.is(global.React.useEffect, React.useEffect));
   useEffect(() => {
     console.log("HOOKS WORKS");
