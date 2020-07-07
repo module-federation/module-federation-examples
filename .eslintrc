@@ -1,0 +1,212 @@
+{
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "globals": {
+        "document": true,
+        "window": true,
+        "process": true
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "jest": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "comma-dangle": [
+            2,
+            "never"
+        ],
+        "import/extensions": 0,
+        "no-restricted-syntax": 0,
+        "no-console": 1,
+        "no-debugger": 1,
+        "no-extra-parens": 0,
+        "no-extra-semi": 1,
+        "no-func-assign": 2,
+        "no-return-assign": 0,
+        "no-inner-declarations": [
+            2,
+            "functions"
+        ],
+        "no-invalid-regexp": 2,
+        "no-irregular-whitespace": 2,
+        "no-negated-in-lhs": 2,
+        "no-plusplus": 0,
+        "no-sparse-arrays": 2,
+        "no-unreachable": 2,
+        "import/no-unresolved": 0,
+        "use-isnan": 2,
+        "valid-typeof": 2,
+        "jsx-a11y/anchor-is-valid": 0,
+        "jsx-a11y/label-has-associated-control": 0,
+        "jsx-a11y/label-has-for": 0,
+        "jsx-a11y/media-has-caption": 0,
+        "jsx-a11y/no-autofocus": 0,
+        "import/no-extraneous-dependencies": 0,
+        "react/button-has-type": 0,
+        "react/no-danger": 0,
+        "react/destructuring-assignment": 0,
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        ],
+        "react/react-in-jsx-scope": 0,
+        "react/jsx-indent": [ 2, 4 ],
+        "react/jsx-indent-props": [2, "first" ],
+        "react/jsx-props-no-spreading": 0,
+        "react/no-array-index-key": 0,
+        "react/forbid-prop-types": 0,
+        "react/jsx-boolean-value": 0,
+        "react/jsx-one-expression-per-line": 0,
+        "react/jsx-closing-bracket-location": [
+            1,
+            "after-props"
+        ],
+        "react/jsx-curly-spacing": [
+            2,
+            {
+                "when": "always",
+                "children": true
+            }
+        ],
+        "global-require": 0,
+        "newline-per-chained-call": 0,
+        "no-underscore-dangle": 0,
+        "accessor-pairs": [
+            2,
+            {
+                "getWithoutSet": true,
+                "setWithoutGet": true
+            }
+        ],
+        "curly": [
+            2,
+            "all"
+        ],
+        "default-case": 2,
+        "dot-notation": [
+            2,
+            {
+                "allowKeywords": true,
+                "allowPattern": "^[a-z]+(_[a-z]+)+$"
+            }
+        ],
+        "dot-location": [
+            2,
+            "property"
+        ],
+        "no-alert": 2,
+        "no-else-return": 2,
+        "no-multi-spaces": 2,
+        "no-delete-var": 2,
+        "no-undef-init": 2,
+        "no-unused-vars": 2,
+        "multiline-ternary": 0,
+        "no-nested-ternary": 0,
+        "no-param-reassign": 0,
+        "no-unused-expressions": [
+            0,
+            {
+                "allowShortCircuit": true,
+                "allowTernary": true,
+                "allowTaggedTemplates": true
+            }
+        ],
+        "array-bracket-spacing": [
+            1,
+            "always",
+            {
+                "singleValue": true,
+                "objectsInArrays": true,
+                "arraysInArrays": true
+            }
+        ],
+        "brace-style": [
+            2,
+            "stroustrup",
+            {}
+        ],
+        "camelcase": [
+            1,
+            {
+                "properties": "always"
+            }
+        ],
+        "comma-spacing": [
+            2,
+            {
+                "after": true
+            }
+        ],
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "key-spacing": [
+            2,
+            {
+                "afterColon": true
+            }
+        ],
+        "operator-assignment": [
+            2,
+            "always"
+        ],
+        "padded-blocks": [
+            "warn",
+            {
+                "classes": "always"
+            }
+        ],
+        "class-methods-use-this": "off",
+        "object-curly-newline": "off",
+        "eol-last": 0,
+        "max-len": "off",
+        "semi-spacing": [
+            2,
+            {
+                "after": true
+            }
+        ],
+        "space-before-function-paren": 2,
+        "arrow-parens": [
+            2,
+            "as-needed"
+        ],
+        "arrow-spacing": [
+            2,
+            {
+                "before": true,
+                "after": true
+            }
+        ],
+        "constructor-super": 2,
+        "no-const-assign": 2,
+        "no-var": 2,
+        "object-shorthand": [
+            2,
+            "always"
+        ],
+        "prefer-spread": 2,
+        "template-curly-spacing": ["error", "never"],
+        "react/prop-types": 0
+    }
+}

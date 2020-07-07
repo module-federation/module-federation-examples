@@ -1,5 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const { ModuleFederationPlugin } = require("webpack").container;
+const { dependencies } = require("./package.json");
 
 module.exports = {
   output: {
@@ -7,7 +8,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".jsx", ".js", ".json"],
+    extensions: [".js"],
   },
 
   devServer: {
@@ -41,7 +42,12 @@ module.exports = {
       exposes: {
         "./DogName": "./src/DogName",
       },
-      shared: ["react"],
+      shared: {
+        ...dependencies,
+        react: {
+          singleton: true,
+        },
+      },
     }),
     new HtmlWebPackPlugin({
       template: "./src/index.html",
