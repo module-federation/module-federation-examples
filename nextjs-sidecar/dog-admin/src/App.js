@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Dog from "dogs/Dog";
+import DogName from "./DogName";
 
 import "./index.css";
-import Dog from "dogs/Dog";
 
 const App = () => (
   <div style={{ width: 800, margin: "auto" }}>
-    <div>This is a cute dog</div>
+    <DogName name="Puppies!" />
     <Dog />
   </div>
 );
