@@ -15,20 +15,6 @@ module.exports = {
     if (!isServer) {
       config.output.library = "next1";
       config.output.publicPath = "http://localhost:3000/_next/";
-      // Object.assign(mfConf, {
-      //   shared: {
-      //     react: {
-      //       import: "./react.js",
-      //       shareKey: "react",
-      //       shareScope: "default",
-      //       singleton: true,
-      //       eager: true,
-      //       strictVersion: true,
-      //       version: require("react").version,
-      //       requiredVersion: require("./package.json").dependencies["react"],
-      //     },
-      //   },
-      // });
     } else {
       config.externals = {
         react: require.resolve("./react.js"),
