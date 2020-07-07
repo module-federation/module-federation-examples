@@ -34,12 +34,7 @@ module.exports = {
         react: require.resolve("./react.js"),
       };
     }
-    config.plugins.push(
-      // new webpack.ProvidePlugin({
-      //   "global.React": "react",
-      // }),
-      new ModuleFederationPlugin(mfConf)
-    );
+    config.plugins.push(new ModuleFederationPlugin(mfConf));
 
     return config;
   },
