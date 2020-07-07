@@ -36,6 +36,7 @@ module.exports = {
             shared: {
                 ...dependencies,
                 react: {
+                    import: false,
                     singleton: true
                 }
             }
