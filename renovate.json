@@ -17,5 +17,11 @@
     "helpers:disableTypesNodeMajor",
     ":pinAllExceptPeerDependencies",
     ":pinOnlyDevDependencies"
+  ],
+  "packageRules": [
+    {
+      "paths": ["version-discrepancy/app1/package.json"],
+      "ignoreDeps": ["lodash"]
+    }
   ]
 }
