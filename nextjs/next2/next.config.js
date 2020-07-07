@@ -33,11 +33,15 @@ module.exports = {
           ),
         },
       });
+      config.externals = {
+        react: require.resolve("./react.js"),
+      };
     }
+
     config.plugins.push(
-      new webpack.ProvidePlugin({
-        "global.React": "react",
-      }),
+      // new webpack.ProvidePlugin({
+      //   "global.React": "react",
+      // }),
       new ModuleFederationPlugin(mfConf)
     );
 
