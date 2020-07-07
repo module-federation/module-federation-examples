@@ -9,6 +9,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
+        {/* dirty workaround to ensure one react is available upfront. async boundary usually handles this kind of stuff & internally, not with externals */}
         <script src="https://unpkg.com/react@16.13.1/umd/react.development.js" />
         <Head />
         <body>

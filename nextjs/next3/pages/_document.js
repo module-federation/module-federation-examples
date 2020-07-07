@@ -9,7 +9,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        {/*pilling in the runtime from our remote, to attempt import*/}
+        {/*pulling in the runtime from our remote, to attempt import*/}
         <script src="http://localhost:3000/_next/static/runtime/webpack.js" />
         <script src="http://localhost:3000/_next/static/runtime/remoteEntry.js" />
         <Head />
