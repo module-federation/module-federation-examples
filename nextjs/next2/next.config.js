@@ -18,6 +18,14 @@ module.exports = {
     if (!isServer) {
       config.output.publicPath = "http://localhost:3001/_next/";
       config.output.library = "next2";
+      config.plugins.push(
+        new webpack.ProvidePlugin({
+          React: "react",
+        })
+      );
+      Object.assign(config.resolve.alias, {
+        react: path.resolve(__dirname, "./react.js"),
+      });
       Object.assign(mfConf, {
         remotes: {
           next1: "next1",

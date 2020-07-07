@@ -9,6 +9,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
+        <script src="https://unpkg.com/react@16.13.1/umd/react.development.js" />
         <Head />
         <body>
           <Main />

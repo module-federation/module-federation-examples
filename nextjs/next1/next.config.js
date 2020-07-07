@@ -1,5 +1,6 @@
 const deps = require("./package.json").dependencies;
 const { ModuleFederationPlugin } = require("webpack").container;
+const path = require("path");
 module.exports = {
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     const mfConf = {
@@ -15,6 +16,14 @@ module.exports = {
     if (!isServer) {
       config.output.library = "next1";
       config.output.publicPath = "http://localhost:3000/_next/";
+      config.plugins.push(
+        new webpack.ProvidePlugin({
+          React: "react",
+        })
+      );
+      Object.assign(config.resolve.alias, {
+        react: path.resolve(__dirname, "./react.js"),
+      });
     } else {
       config.externals = {
         react: require.resolve("./react.js"),
