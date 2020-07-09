@@ -28,16 +28,18 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "app2",
-      library: { type: "var", name: "app2" },
       filename: "remoteEntry.js",
       remotes: {
-        app1: "app1",
+        app1: "app1@http://localhost:3001/remoteEntry.js",
       },
       exposes: {
         "./Button": "./src/Button",
       },
       // app2 is expecting "styled-components" as a shared dependency
-      shared: ["react", "react-dom", "styled-components"],
+      shared: [
+        "styled-components",
+        { react: { singleton: true }, "react-dom": { singleton: true } },
+      ],
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
