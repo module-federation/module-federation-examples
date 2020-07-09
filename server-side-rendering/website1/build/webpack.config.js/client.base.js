@@ -20,10 +20,9 @@ module.exports = merge.smart(common, {
     ...plugins.client,
     new ModuleFederationPlugin({
       name: "website1",
-      library: { type: "var", name: "website1" },
       filename: "container.js",
       remotes: {
-        website2: "website2",
+        website2: "website2@http://localhost:3002/remoteEntry.js",
       },
       shared: ["react", "react-dom"],
     }),

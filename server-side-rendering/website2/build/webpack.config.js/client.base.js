@@ -26,7 +26,7 @@ module.exports = merge.smart(common, {
         "./SomeComponent": "./src/components/SomeComponent",
       },
       remotes: {
-        website1: "website1",
+        website1: "website1@http://localhost:3001/remoteEntry.js",
       },
       shared: ["react", "react-dom"],
     }),
