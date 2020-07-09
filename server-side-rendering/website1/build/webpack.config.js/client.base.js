@@ -22,7 +22,7 @@ module.exports = merge.smart(common, {
       name: "website1",
       filename: "container.js",
       remotes: {
-        website2: "website2@http://localhost:3002/remoteEntry.js",
+        website2: "website2@http://localhost:3002/static/container.js",
       },
       shared: ["react", "react-dom"],
     }),
