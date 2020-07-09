@@ -33,7 +33,9 @@ module.exports = {
         "./Widget": "./src/Widget",
       },
       shared: {
-        "react-dom": "react-dom",
+        "react-dom": {
+          singleton: true,
+        },
         moment: "^2.24.0",
         react: {
           import: "react", // the "react" package will be used a provided and fallback module

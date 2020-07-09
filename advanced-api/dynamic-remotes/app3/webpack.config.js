@@ -38,12 +38,19 @@ module.exports = {
       // there is no version check for the required version
       // so it will always use the higher version found
       shared: [
-        "react",
-        "react-dom",
-        // adds moment as shared module
-        // version is inferred from package.json
-        // it will use the highest moment version that is >= 2.24 and < 3
         {
+          react: {
+            import: "react", // the "react" package will be used a provided and fallback module
+            shareKey: "react", // under this name the shared module will be placed in the share scope
+            shareScope: "default", // share scope with this name will be used
+            singleton: true, // only a single version of the shared module is allowed
+          },
+          "react-dom": {
+            singleton: true, // only a single version of the shared module is allowed
+          },
+          // adds moment as shared module
+          // version is inferred from package.json
+          // it will use the highest moment version that is >= 2.24 and < 3
           moment: "^2.24.0",
         },
       ],
