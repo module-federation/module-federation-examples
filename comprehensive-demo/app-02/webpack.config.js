@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack").container
   .ModuleFederationPlugin;
-
+const deps = require("./package.json").dependencies;
 module.exports = {
   entry: "./src/index",
   cache: false,
@@ -37,17 +37,30 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "app_02",
-      library: { type: "var", name: "app_02" },
       filename: "remoteEntry.js",
       remotes: {
-        app_01: "app_01",
-        app_03: "app_03",
+        app_01: "app_01@http://localhost:3001/remoteEntry.js",
+        app_03: "app_03@http://localhost:3003/remoteEntry.js",
       },
       exposes: {
         "./Dialog": "./src/Dialog",
         "./Tabs": "./src/Tabs",
       },
-      shared: ["react", "react-dom", "@material-ui/core", "react-router-dom"],
+      shared: {
+        ...deps,
+        "@material-ui/core": {
+          singleton: true,
+        },
+        "react-router-dom": {
+          singleton: true,
+        },
+        "react-dom": {
+          singleton: true,
+        },
+        react: {
+          singleton: true,
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
