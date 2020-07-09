@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { dependencies } from "../../package.json";
 
 const RemoteComponent = ({ scope, module, ...props }) => {
   if (!global[scope]) {
@@ -7,10 +8,9 @@ const RemoteComponent = ({ scope, module, ...props }) => {
 
   global[scope].init({
     react: {
-      get: () => Promise.resolve().then(() => () => require("react")),
-      loaded: true,
-      singleton: true,
-      version: [16, 13, 1],
+      [dependencies.react]: {
+        get: () => Promise.resolve().then(() => () => require("react")),
+      },
     },
   });
 

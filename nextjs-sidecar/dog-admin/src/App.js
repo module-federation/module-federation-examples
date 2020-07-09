@@ -1,14 +1,15 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom";
-import Dog from "dogs/Dog";
 import DogName from "./DogName";
 
-import "./index.css";
+const RemoteDog = lazy(() => import("dogs/Dog"));
 
 const App = () => (
   <div style={{ width: 800, margin: "auto" }}>
     <DogName name="Puppies!" />
-    <Dog />
+    <Suspense fallback="Loading dogs">
+      <RemoteDog />
+    </Suspense>
   </div>
 );
 
