@@ -1,26 +1,25 @@
 const { ModuleFederationPlugin } = require("webpack").container;
-const { dependencies } = require("../package.json");
+const path = require("path");
+const { dependencies } = require("./package.json");
 
 module.exports = {
+  entry: "./src/index",
+  mode: "development",
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    port: 8080,
+  },
   output: {
     publicPath: "http://localhost:8080/",
-  },
-  resolve: {
-    extensions: [".jsx", ".js"],
-  },
-  devServer: {
-    port: 8081,
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
+        loader: "babel-loader",
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-react", "@babel/preset-env"],
-          },
+        options: {
+          presets: ["@babel/preset-react"],
         },
       },
     ],
@@ -28,7 +27,6 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "dogs",
-      library: { type: "var", name: "dogs" },
       filename: "remoteEntry.js",
       exposes: {
         "./Dog": "../src/components/Dog",
@@ -37,6 +35,7 @@ module.exports = {
         ...dependencies,
         react: {
           singleton: true,
+          requiredVersion: dependencies.react,
         },
       },
     }),
