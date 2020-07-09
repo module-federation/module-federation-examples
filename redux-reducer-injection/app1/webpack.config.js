@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const deps = require('./package.json').dependencies;
 
 module.exports = {
   entry: './src/index',
@@ -38,7 +39,15 @@ module.exports = {
       name: 'app1',
       library: { type: 'var', name: 'app1' },
       filename: 'remoteEntry.js',
-      shared: ['react', 'react-dom'],
+      shared: {
+        ...deps,
+        react: {
+          singleton: true,
+        },
+        'react-dom': {
+          singleton: true,
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
