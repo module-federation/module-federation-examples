@@ -27,7 +27,6 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "app2",
-      library: { type: "var", name: "app2" },
       filename: "remoteEntry.js",
       remotes: {
         app1: "app1",
@@ -35,19 +34,19 @@ module.exports = {
       exposes: {
         "./Button": "./src/Button",
       },
-      shared: {
-        ...deps,
-        react: {
-          eager: true,
-          singleton: true,
-          requiredVersion: deps.react,
+      shared: [
+        {
+          ...deps,
+          react: {
+            // eager: true,
+            singleton: true,
+          },
+          "react-dom": {
+            // eager: true,
+            singleton: true,
+          },
         },
-        "react-dom": {
-          eager: true,
-          singleton: true,
-          requiredVersion: deps["react-dom"],
-        },
-      },
+      ],
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
