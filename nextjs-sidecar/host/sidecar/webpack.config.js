@@ -31,15 +31,13 @@ module.exports = {
       exposes: {
         "./Dog": "../src/components/Dog",
       },
-      shared: [
-        {
-          ...dependencies,
-          react: {
-            singleton: true,
-            requiredVersion: dependencies.react,
-          },
+      shared: {
+        ...dependencies,
+        react: {
+          singleton: true,
+          requiredVersion: dependencies.react,
         },
-      ],
+      },
     }),
   ],
 };
