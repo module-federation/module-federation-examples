@@ -29,7 +29,7 @@ module.exports = {
       name: "app1",
       filename: "remoteEntry.js",
       remotes: {
-        app2: "app2",
+        app2: "app2@http://localhost:3002/remoteEntry.js",
       },
       exposes: {
         "./Button": "./src/Button",
@@ -41,10 +41,12 @@ module.exports = {
           react: {
             // eager: true,
             singleton: true,
+            requiredVersion: deps.react,
           },
           "react-dom": {
             // eager: true,
             singleton: true,
+            requiredVersion: deps["react-dom"],
           },
         },
       ],
