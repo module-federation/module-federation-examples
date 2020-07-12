@@ -50,7 +50,7 @@ If you need **support**, consider looking at my sponsor profile [https://github.
 - [x] [TypeScript](./typescript/README.md) &mdash; Simple host/remote example using TypeScript.
 - [x] ⚠️ [Angular Universal](./angular-universal-ssr/README.md) &mdash; Remote and Host app with SSR, lazy modules and components. (Not working with WP beta.18)
 - [x] [NextJS Sidecar Build](./nextjs-sidecar/README.md) &mdash; Sidecar build to enable module-federation alongside Next codebases
-- [ ] NextJS
+- [ ] ⚠️ NextJS &mdash; Operation, with workarounds. Currently standing as an open pull requrest
 - [x] [Building A Plugin-based Workflow Designer With Angular and Module Federation](https://github.com/manfredsteyer/module-federation-with-angular-dynamic-workflow-designer) &mdash; External Example
 
 # Notes
