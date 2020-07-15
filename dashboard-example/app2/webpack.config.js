@@ -35,7 +35,7 @@ module.exports = {
       library: { type: "var", name: "app2" },
       filename: "remoteEntry.js",
       remotes: {
-        app1: "app1",
+        app1: "app1@http://localhost:3001/remoteEntry.js",
       },
       exposes: {
         Button: "./src/Button",

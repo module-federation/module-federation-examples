@@ -28,15 +28,14 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "app2",
-      library: { type: "var", name: "app2" },
       filename: "remoteEntry.js",
       exposes: {
         "./ButtonContainer": "./src/ButtonContainer",
       },
       remotes: {
-        app3: "app3",
+        app3: "app3@http://localhost:3003/remoteEntry.js",
       },
-      shared: ["react", "react-dom"],
+      shared: { react: { singleton: true }, "react-dom": { singleton: true } },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",

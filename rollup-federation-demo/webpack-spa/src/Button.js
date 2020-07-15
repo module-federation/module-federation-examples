@@ -6,10 +6,6 @@ const style = {
   padding: 12,
 };
 
-const Button = () => (
-  <button style={style}>
-    Webpack Remote Button
-  </button>
-);
+const Button = () => <button style={style}>Webpack Remote Button</button>;
 
 export default Button;

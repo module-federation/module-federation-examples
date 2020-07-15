@@ -32,7 +32,7 @@ module.exports = {
       exposes: {
         "./Button": "./src/Button",
       },
-      shared: ["react", "react-dom"],
+      shared: { react: { singleton: true }, "react-dom": { singleton: true } },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
