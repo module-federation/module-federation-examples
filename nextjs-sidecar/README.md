@@ -28,7 +28,7 @@ Once NextJS supports Webpack 5 the sidecar application can be removed, and the s
 
 # Running the example
 
-Build and run the code in three seperate terminals:
+Build and run the code in three separate terminals:
 
 ```shell script
 > cd dog-admin
@@ -41,6 +41,6 @@ Build and run the code in three seperate terminals:
 ```
 
 ```shell script
-> cd host/wp5-sidecar
+> cd host/sidecar
 > yarn && yarn build && yarn start
 ```

@@ -28,12 +28,11 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "app1",
-      library: { type: "var", name: "app1" },
       remotes: {
-        app2: "app2",
-        app3: "app3",
+        app2: "app2@http://localhost:3002/remoteEntry.js",
+        app3: "app3@http://localhost:3003/remoteEntry.js",
       },
-      shared: ["react", "react-dom"],
+      shared: { react: { singleton: true }, "react-dom": { singleton: true } },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
