@@ -25,7 +25,7 @@ module.exports = (env = {}) => {
       new ModuleFederationPlugin({
         name: "clientApp",
         filename: "remoteEntry.js",
-        library: { type: "commonjs2", name: "clientApp" },
+        library: { type: "commonjs2" },
         exposes: {
           "./Component":
             "./src/app/client-cities/client-city/client-city.component.ts",

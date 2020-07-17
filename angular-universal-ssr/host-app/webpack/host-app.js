@@ -27,7 +27,7 @@ module.exports = (env = {}) => {
       // }),
 
       new ModuleFederationPlugin({
-        library: { type: "var", name: "hostApp" },
+        library: { type: "var" },
         remotes: {
           clientApp: "clientApp",
         },

@@ -26,19 +26,10 @@ module.exports = (env = {}) => {
     plugins: [
       new ProgressPlugin(),
 
-      // new ContainerReferencePlugin({
-      //   remoteType: "commonjs2",
-      //   remotes: {
-      //     clientApp: resolve(
-      //       __dirname,
-      //       "../../client-app/dist/server/remoteEntry.js"
-      //     ),
-      //   },
-      //   overrides: ["@angular/core", "@angular/common", "@angular/router"],
-      // }),
-
       new ModuleFederationPlugin({
-        library: { type: "commonjs2", name: "hostApp" },
+        name: "hostApp",
+        filename: "remoteEntry.js",
+        library: { type: "commonjs2" },
         remotes: {
           clientApp: resolve(
             __dirname,
