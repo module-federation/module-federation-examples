@@ -1,4 +1,4 @@
-# Dashboard Edample
+# Dashboard Example
 
 This example shows the dashboard running in read-only mode.
 
@@ -8,6 +8,10 @@ Please follow instructions here to boot and run the dashboard: https://www.npmjs
 - `app2` exposes a blue `<button>App 2 Button</button>` component.
 
 # Running Demo
+
+Run the Dashboard Docker container as per [instructions](https://www.npmjs.com/package/@module-federation/dashboard-plugin).
+
+Then run `yarn build` and reload the dashboard to see the end result
 
 Run `yarn start`. This will build and serve both `app1` and `app2` on ports 3001 and 3002 respectively.
 

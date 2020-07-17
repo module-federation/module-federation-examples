@@ -34,7 +34,6 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "app_05",
-      library: { type: "var", name: "app_05" },
       filename: "remoteEntry.js",
       exposes: {
         "./ActionButton": "./src/components/action-button.ts",
