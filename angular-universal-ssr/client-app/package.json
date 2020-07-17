@@ -18,7 +18,6 @@
     "@angular/common": "~10.0.4",
     "@angular/compiler": "~10.0.4",
     "@angular/core": "~10.0.4",
-    "@ngtools/webpack": "^10.0.3",
     "@angular/forms": "~10.0.4",
     "@angular/platform-browser": "~10.0.4",
     "@angular/platform-browser-dynamic": "~10.0.4",
@@ -29,6 +28,7 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
+    "@ngtools/webpack": "file:../patched_packages/_ngtools_webpack.tgz",
     "@angular-devkit/build-angular": "0.1000.3",
     "@angular/cli": "10.0.3",
     "@angular/compiler-cli": "10.0.4",
