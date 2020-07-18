@@ -1,9 +1,0 @@
-{
-  "private": true,
-  "scripts": {
-    "start": "yarn build && yarn serve",
-    "build": "lerna run --scope @server-side-rendering/icarus-2 build && lerna run --scope @server-side-rendering/icarus-1 build",
-    "serve": "lerna run --scope @server-side-rendering/* --parallel serve",
-    "clean": "lerna run --scope @server-side-rendering/* --parallel clean"
-  }
-}
