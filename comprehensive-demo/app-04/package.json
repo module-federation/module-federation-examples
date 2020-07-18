@@ -1,0 +1,25 @@
+{
+  "name": "@comprehensive-demo/app-04",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "cross-env": "7.0.2",
+    "css-loader": "3.6.0",
+    "mini-css-extract-plugin": "0.9.0",
+    "style-loader": "1.2.1",
+    "svelte": "3.24.0",
+    "svelte-loader": "2.13.6",
+    "html-webpack-plugin": "git://github.com/ScriptedAlchemy/html-webpack-plugin#master",
+    "webpack": "5.0.0-beta.22",
+    "webpack-cli": "3.3.12",
+    "webpack-dev-server": "3.11.0",
+    "serve": "11.3.2"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack",
+    "start": "webpack --watch",
+    "dev": "webpack-dev-server --content-base public",
+    "serve": "serve public -p 3004",
+    "clean": "rm -rf dist"
+  }
+}

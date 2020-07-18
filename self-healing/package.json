@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "lerna run --scope @self-healing/* --parallel start",
+    "build": "lerna run --scope @self-healing/* build",
+    "serve": "lerna run --scope @self-healing/* --parallel serve",
+    "clean": "lerna run --scope @self-healing/* --parallel clean"
+  }
+}

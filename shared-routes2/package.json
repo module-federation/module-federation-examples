@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "lerna run --scope @shared-routes2/* --parallel start",
+    "build": "lerna run --scope @shared-routes2/* build",
+    "serve": "lerna run --scope @shared-routes2/* --parallel serve",
+    "clean": "lerna run --scope @shared-routes2/* --parallel clean"
+  }
+}
