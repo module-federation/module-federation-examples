@@ -1,5 +1,31 @@
 import Head from "next/head";
 import GreetingAppOne from "../components/GreetingAppOne";
+import { dependencies } from "../package.json";
+
+const RemoteComponent = ({ scope, module, ...props }) => {
+  console.log(global);
+  if (!global[scope]) {
+    return null;
+  }
+
+  global[scope].init({
+    react: {
+      [dependencies.react]: {
+        get: () => Promise.resolve().then(() => () => require("react")),
+      },
+    },
+  });
+
+  const Component = lazy(() =>
+    global[scope].get(module).then((factory) => factory())
+  );
+
+  return (
+    <Suspense fallback={null}>
+      <Component {...props} />
+    </Suspense>
+  );
+};
 
 export default function Home() {
   return (
@@ -9,6 +35,7 @@ export default function Home() {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
         <GreetingAppOne />
+        <RemoteComponent scope="app2" module="./GreetingAppTwo" />
       </main>
 
       <footer>
