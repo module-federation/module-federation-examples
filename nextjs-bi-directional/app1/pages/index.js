@@ -3,7 +3,6 @@ import GreetingAppOne from "../components/GreetingAppOne";
 import { dependencies } from "../package.json";
 
 const RemoteComponent = ({ scope, module, ...props }) => {
-  console.log(global);
   if (!global[scope]) {
     return null;
   }
