@@ -2,8 +2,8 @@ import React from "react";
 
 const GreetingAppOne = () => {
   return (
-    <React.Fragment>
-      <p className="description">Hello 👋🏼 from App One</p>
+    <p className="description">
+      Hello 👋🏼 from App One
       <style jsx>{`
         .description {
           color: #742a2a;
@@ -18,7 +18,7 @@ const GreetingAppOne = () => {
           font-size: 1.5rem;
         }
       `}</style>
-    </React.Fragment>
+    </p>
   );
 };
 

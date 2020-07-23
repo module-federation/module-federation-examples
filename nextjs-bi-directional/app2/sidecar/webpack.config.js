@@ -34,13 +34,7 @@ module.exports = {
       exposes: {
         "./GreetingAppTwo": "../components/GreetingAppTwo",
       },
-      shared: {
-        ...dependencies,
-        react: {
-          singleton: true,
-          requiredVersion: dependencies.react,
-        },
-      },
+      shared: dependencies,
     }),
   ],
 };

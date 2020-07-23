@@ -1,9 +1,9 @@
 import React from "react";
 
-const GreetingAppOne = () => {
+const GreetingAppTwo = ({ greeting = "Hello 👋🏼 from App Two" }) => {
   return (
-    <React.Fragment>
-      <p className="description">Hello 👋🏼 from App Two</p>
+    <p className="description">
+      {greeting}
       <style jsx>{`
         .description {
           color: #234e52;
@@ -18,8 +18,8 @@ const GreetingAppOne = () => {
           font-size: 1.5rem;
         }
       `}</style>
-    </React.Fragment>
+    </p>
   );
 };
 
-export default GreetingAppOne;
+export default GreetingAppTwo;
