@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"cd next1; yarn dev \" \"cd next2; yarn dev\" \"cd next3; yarn dev\"",
+    "postinstall": "concurrently \"cd ./next1 && yarn\" \"cd next2 && yarn \" \"cd next3 && yarn \""
+  },
+  "dependencies": {
+    "concurrently": "^5.2.0"
+  }
+}
