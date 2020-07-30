@@ -60,6 +60,7 @@ module.exports = {
             requiredVersion: deps["react-dom"],
           },
         },
+        "./src/Service",
       ],
     }),
     new HtmlWebpackPlugin({
