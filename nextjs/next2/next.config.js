@@ -13,7 +13,7 @@ module.exports = {
         "./nav": "./components/nav",
       },
       shared: {},
-      // typically, shared would look something like this
+      // typically, shareed would look something like this
       // https://github.com/webpack/webpack/pull/10960
       // shared: [
       //   {

@@ -57,7 +57,6 @@ const LazyHydrate = function (props) {
       const split = remoteImport.split("/");
       const [scope] = split.splice(0, 1);
       const request = split.join("/");
-      console.log(window[scope])
       window[scope].get(`./${request}`).then((factory) => {
         factory();
         ssrOnly ? null : setHydrated(true);
