@@ -1,0 +1,24 @@
+{
+  "name": "webpack-spa-systemjs",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack --mode production",
+    "serve": "webpack-dev-server",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.11.0",
+    "@babel/preset-react": "7.10.4",
+    "babel-loader": "8.1.0",
+    "npm-run-all": "4.1.5",
+    "webpack": "5.0.0-beta.22",
+    "webpack-cli": "3.3.12",
+    "webpack-dev-server": "3.11.0"
+  }
+}

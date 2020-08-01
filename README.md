@@ -16,6 +16,8 @@ If you need **support**, consider looking at my sponsor profile [https://github.
 
 **Medium post** **Original Webpack Issue** [https://link.medium.com/xzFgBBtAx6](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_campaign=game_changer_medium_post&utm_medium=https://link.medium.com/xzFgBBtAx6)
 
+**JSNation Presentation** https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5.md
+
 # Check out our book
 
 | <a href="https://module-federation.myshopify.com/products/practical-module-federation" target="_blank"><img src="./docs/MFCover.png" alt='Practical Module Federation Book' width="95%"/></a> | <a href="https://module-federation.myshopify.com/products/practical-module-federation" target="_blank">We will be actively updating this book over the next year as we learn more about best practices and what issues people are running into with Module Federation, as well as with every release of Webpack as it moves towards a release candidate and release. So with your one purchase you are buying a whole year of updates.</a> |
@@ -46,9 +48,10 @@ If you need **support**, consider looking at my sponsor profile [https://github.
 - [x] [Routing](./shared-routing/README.md) &mdash; An example of sharing router context. Also worth looking at - [Routing 2](./shared-routes2/README.md)
 - [x] [Version Discrepancy](./version-discrepancy/README.md) &mdash; Federated apps depending on different versions of a dependency without side-effects.
 - [x] [TypeScript](./typescript/README.md) &mdash; Simple host/remote example using TypeScript.
-- [x] ⚠️ [Angular Universal](./angular-universal-ssr/README.md) &mdash; Remote and Host app with SSR, lazy modules and components. (Not working with WP beta.18)
+- [x] ⚠️ [Angular Universal](./angular-universal-ssr/README.md) &mdash; Remote and Host app with SSR, lazy modules and components.
 - [x] [NextJS Sidecar Build](./nextjs-sidecar/README.md) &mdash; Sidecar build to enable module-federation alongside Next codebases
-- [ ] NextJS
+- [ ] ⚠️ NextJS &mdash; Operation, with workarounds. Currently standing as an open pull requrest
+- [x] [Building A Plugin-based Workflow Designer With Angular and Module Federation](https://github.com/manfredsteyer/module-federation-with-angular-dynamic-workflow-designer) &mdash; External Example
 
 # Notes
 

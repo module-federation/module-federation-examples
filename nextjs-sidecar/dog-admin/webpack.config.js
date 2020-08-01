@@ -1,19 +1,19 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const { ModuleFederationPlugin } = require("webpack").container;
+const { dependencies } = require("./package.json");
 
 module.exports = {
+  entry: "./src/index",
+  mode: "development",
   output: {
     publicPath: "http://localhost:8081/",
   },
-
   resolve: {
-    extensions: [".jsx", ".js", ".json"],
+    extensions: [".js"],
   },
-
   devServer: {
     port: 8081,
   },
-
   module: {
     rules: [
       {
@@ -33,18 +33,23 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "dog_admin",
-      library: { type: "var", name: "dog_admin" },
       filename: "remoteEntry.js",
       remotes: {
-        dogs: "dogs",
+        dogs: "dogs@http://localhost:8080/remoteEntry.js",
       },
       exposes: {
         "./DogName": "./src/DogName",
       },
-      shared: ["react"],
+      shared: {
+        ...dependencies,
+        react: {
+          singleton: true,
+          requiredVersion: dependencies.react,
+        },
+      },
     }),
     new HtmlWebPackPlugin({
-      template: "./src/index.html",
+      template: "./public/index.html",
     }),
   ],
 };
