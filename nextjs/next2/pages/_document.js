@@ -9,6 +9,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
+        <script src="https://unpkg.com/react@16.13.1/umd/react.development.js" />
         <script src="http://localhost:3000/_next/static/runtime/webpack.js" />
         <script src="http://localhost:3000/_next/static/runtime/remoteEntry.js" />
         <Head />

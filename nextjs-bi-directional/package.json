@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "lerna run --scope @nextjs-bi-directional/* --parallel start",
+    "build": "lerna run --scope @nextjs-bi-directional/* build",
+    "serve": "lerna run --scope @nextjs-bi-directional/* --parallel serve",
+    "clean": "lerna run --scope @nextjs-bi-directional/* --parallel clean",
+    "dev": "lerna run --scope @nextjs-bi-directional/* --parallel dev"
+  }
+}

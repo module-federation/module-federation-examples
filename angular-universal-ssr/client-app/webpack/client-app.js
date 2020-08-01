@@ -2,7 +2,8 @@ const { resolve } = require("path");
 const { AngularCompilerPlugin } = require("@ngtools/webpack");
 const ProgressPlugin = require("webpack/lib/ProgressPlugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ContainerPlugin = require("webpack/lib/container/ContainerPlugin");
+const ModuleFederationPlugin = require("webpack").container
+  .ModuleFederationPlugin;
 
 module.exports = (env = {}) => {
   const buildFolder = resolve("./dist");
@@ -19,17 +20,22 @@ module.exports = (env = {}) => {
       new HtmlWebpackPlugin({
         template: resolve(__dirname, "../src/index.html"),
       }),
-      new ContainerPlugin({
+      new ModuleFederationPlugin({
         name: "clientApp",
         filename: "remoteEntry.js",
-        exposes: {
-          Component:
-            "./src/app/client-cities/client-city/client-city.component.ts",
-          Module: "./src/app/client-cities/client-cities.module.ts",
-        },
         library: { type: "var", name: "clientApp" },
-        overridables: ["@angular/core", "@angular/common", "@angular/router"],
+        exposes: {
+          "./Component":
+            "./src/app/client-cities/client-city/client-city.component.ts",
+          "./Module": "./src/app/client-cities/client-cities.module.ts",
+        },
+        shared: [
+          { "@angular/core": { singleton: true, eager: true } },
+          { "@angular/common": { singleton: true, eager: true } },
+          { "@angular/router": { singleton: true, eager: true } },
+        ],
       }),
+
       new AngularCompilerPlugin({
         tsConfigPath: "./tsconfig.app.json",
         entryModule: "./src/app/app.module#AppModule",

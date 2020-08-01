@@ -1,8 +1,9 @@
 const { resolve } = require("path");
 const { AngularCompilerPlugin, PLATFORM } = require("@ngtools/webpack");
 const { ContextReplacementPlugin } = require("webpack");
-const ContainerReferencePlugin = require("webpack/lib/container/ContainerReferencePlugin");
 const ProgressPlugin = require("webpack/lib/ProgressPlugin");
+const ModuleFederationPlugin = require("webpack").container
+  .ModuleFederationPlugin;
 
 module.exports = (env = {}) => {
   const buildFolder = resolve("./dist/server");
@@ -19,21 +20,29 @@ module.exports = (env = {}) => {
       chunkFilename: "[id].[chunkhash].js",
       libraryTarget: "commonjs2",
     },
-    target: "node",
+    target: "async-node",
     optimization: { minimize: false },
     externals: ["enhanced-resolve"],
     plugins: [
       new ProgressPlugin(),
-      new ContainerReferencePlugin({
-        remoteType: "commonjs2",
+
+      new ModuleFederationPlugin({
+        name: "hostApp",
+        filename: "remoteEntry.js",
+        library: { type: "commonjs2" },
         remotes: {
           clientApp: resolve(
             __dirname,
             "../../client-app/dist/server/remoteEntry.js"
           ),
         },
-        overrides: ["@angular/core", "@angular/common", "@angular/router"],
+        shared: [
+          { "@angular/core": { singleton: true, eager: true } },
+          { "@angular/common": { singleton: true, eager: true } },
+          { "@angular/router": { singleton: true, eager: true } },
+        ],
       }),
+
       new ContextReplacementPlugin(/@?hapi(\\|\/)/),
       new ContextReplacementPlugin(/express(\\|\/)/),
       new AngularCompilerPlugin({
