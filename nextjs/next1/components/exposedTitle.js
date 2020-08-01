@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 const ExportredTitle = () => {
   console.log("---------loading remote component---------");
-  console.log(Object.is(global.React, React));
+  console.log("React is not dubplicated:", Object.is(global.React, React));
   useEffect(() => {
     console.log("HOOKS WORKS");
   }, []);
