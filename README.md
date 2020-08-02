@@ -24,6 +24,12 @@ If you need **support**, consider looking at my sponsor profile [https://github.
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 
 
+<p align="center">
+  <a href="https://github.com/module-federation/module-federation-examples">Module Federation Examples</a> is being sponsored by the following tool; please help to support us by taking a look and signing up to a free trial
+  <br><br>
+  <a href="https://tracking.gitads.io/?repo=module-federation/module-federation-examples"> <img src="https://images.gitads.io/module-federation/module-federation-examples" alt="GitAds"/> </a>
+</p>
+
 # Examples
 
 > Legend:
