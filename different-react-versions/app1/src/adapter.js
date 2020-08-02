@@ -27,7 +27,7 @@ class Adapter extends React.Component {
   }
 
   render() {
-    return <div ref={(ref) => (this.refHold = ref)} />;
+    return <div style={{ color: "red" }} ref={(ref) => (this.refHold = ref)} />;
   }
 }
 
