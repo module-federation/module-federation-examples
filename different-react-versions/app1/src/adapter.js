@@ -5,7 +5,7 @@ class Adapter extends React.Component {
     super(props);
     this.refHold;
   }
-
+  x;
   componentDidMount() {
     const init = async () => {
       const ReactDOM = (await import("app2/newReactDOM")).default;
