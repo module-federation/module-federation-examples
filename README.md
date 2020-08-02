@@ -53,6 +53,7 @@ If you need **support**, consider looking at my sponsor profile [https://github.
 - [x] [NextJS Sidecar Build](./nextjs-sidecar/README.md) &mdash; Sidecar build to enable module-federation alongside Next codebases
 - [x] ⚠️ [NextJS](./nextjs/README.md) &mdash; Operation, with workarounds. Currently standing as an open pull requrest
 - [x] [Building A Plugin-based Workflow Designer With Angular and Module Federation](https://github.com/manfredsteyer/module-federation-with-angular-dynamic-workflow-designer) &mdash; External Example
+- [x] [Vue.js](./vue3-demo/README.md) &mdash; Simple host/remote (render function / sfc) example using Vue 3.0.
 
 # Notes
 
