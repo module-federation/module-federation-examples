@@ -22,6 +22,10 @@
     {
       "paths": ["version-discrepancy/app1/package.json"],
       "ignoreDeps": ["lodash"]
+    },
+    {
+      "paths": [" angular-universal-ssr/*/package.json"],
+      "ignoreDeps": ["@angular/cli", "@angular-devkit/build-angular"]
     }
   ]
 }
