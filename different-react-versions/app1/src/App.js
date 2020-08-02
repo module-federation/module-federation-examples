@@ -7,9 +7,12 @@ const RemoteButton = React.lazy(() => import("app2/Button"));
 const App = () => {
   return (
     <div>
-      <Adapter importer={() => import("app2/ModernComponent")}></Adapter>
       <h1>Basic Host-Remote</h1>
       <h2>App 1, Uses react version not compatible with hooks</h2>
+      <Adapter importer={() => import("app2/ModernComponent")}>
+        <h3>And these are children passed into it from the legacy app</h3>
+      </Adapter>
+
       {/*<HookComponent/>*/}
       <React.Suspense fallback="Loading Button">
         <RemoteButton />
