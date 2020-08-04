@@ -3,14 +3,17 @@ const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
 
 module.exports = {
-  entry: "./src/index",
+  entry: {
+    // app1:'./src/setPublicPath',
+    main: "./src/index",
+  },
   mode: "development",
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     port: 3001,
   },
   output: {
-    publicPath: "http://localhost:3001/",
+    publicPath: "/",
   },
   module: {
     rules: [
