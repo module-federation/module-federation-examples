@@ -4,7 +4,7 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    // app1:'./src/setPublicPath',
+    app1: "./src/setPublicPath",
     main: "./src/index",
   },
   mode: "development",
