@@ -87,5 +87,7 @@ const Home = () => (
     `}</style>
   </div>
 );
-
+Home.getInitialProps = async () => {
+  return {};
+};
 export default Home;

@@ -9,16 +9,13 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
+        <script src="http://localhost:3001/_next/static/runtime/remoteEntry.js" />
         {/* dirty workaround to ensure one react is available upfront. async boundary usually handles this kind of stuff & internally, not with externals */}
-        <script src="https://unpkg.com/react@16.13.1/umd/react.development.js" />
         <Head />
         <body>
           <Main />
           <NextScript />
-          <script
-            async
-            src="http://localhost:3000/_next/static/runtime/remoteEntry.js"
-          />
+          <script src="http://localhost:3000/_next/static/runtime/remoteEntry.js" />
         </body>
       </Html>
     );

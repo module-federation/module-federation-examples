@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "start": "concurrently \"cd next1; yarn dev \" \"cd next2; yarn dev\"",
+    "prod": "concurrently \"cd next1; yarn build && yarn start \" \"cd next2; yarn build && yarn start\"",
     "postinstall": "concurrently \"cd ./next1 && yarn\" \"cd next2 && yarn \""
   },
   "dependencies": {

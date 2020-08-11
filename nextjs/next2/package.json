@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev -p 3001",
-    "build": "NEXT_TELEMETRY_DISABLED=1 next build",
-    "start": "next start"
+    "build": "NEXT_TELEMETRY_DISABLED=1 next build ",
+    "start": "next start -p 3001"
   },
   "resolutions": {
     "webpack": "5.0.0-beta.25",

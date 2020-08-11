@@ -33,9 +33,9 @@ const Home = ({ loaded }) => {
           To get started, edit <code>pages/index.js</code> and save to reload.
         </p>
 
-        <LazyHydrate remote="next1/exposedTitle">
-          <RemoteTitle />
-        </LazyHydrate>
+        {/*<LazyHydrate remote="next1/exposedTitle">*/}
+        {/*  <RemoteTitle />*/}
+        {/*</LazyHydrate>*/}
 
         <div className="row">
           <a href="https://nextjs.org/docs" className="card">
