@@ -44,7 +44,7 @@ module.exports = {
       // });
 
       Object.assign(mfConf, {
-        library: { type: "assign", name: "nextapp2" },
+        library: { type: "assign", name: "next2" },
         remoteType: "script",
         remotes: {
           next1: "next1",
