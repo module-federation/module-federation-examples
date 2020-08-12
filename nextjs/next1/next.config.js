@@ -17,15 +17,12 @@ module.exports = {
       // https://github.com/webpack/webpack/pull/10960
       shared: [
         {
-          ...deps,
           react: {
             singleton: true,
-            eager: true,
             requiredVersion: deps.react,
           },
           "react-dom": {
             singleton: true,
-            eager: true,
             requiredVersion: deps["react-dom"],
           },
         },

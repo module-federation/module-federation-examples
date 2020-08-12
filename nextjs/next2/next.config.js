@@ -15,7 +15,6 @@ module.exports = {
       // https://github.com/webpack/webpack/pull/10960
       shared: [
         {
-          ...deps,
           react: {
             singleton: true,
             requiredVersion: deps.react,
@@ -45,9 +44,10 @@ module.exports = {
       // });
 
       Object.assign(mfConf, {
+        library: { type: "assign", name: "nextapp2" },
+        remoteType: "script",
         remotes: {
-          next1:
-            "next1@http://localhost:3000/_next/static/runtime/remoteEntry.js",
+          next1: "next1",
         },
       });
     } else {
