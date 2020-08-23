@@ -6,15 +6,11 @@ import LazyHydrate, { handleFederation } from "../components/LazyHydration";
 
 const RemoteTitle = dynamic(
   async () => {
-    try {
-      require("next1/exposedTitle");
-    } catch (e) {
-      return handleFederation("next1/exposedTitle");
-    }
+    const component = await handleFederation("next1/exposedTitle");
+    return component;
   },
   { ssr: true }
 );
-
 const Home = ({ loaded }) => {
   return (
     <div>
