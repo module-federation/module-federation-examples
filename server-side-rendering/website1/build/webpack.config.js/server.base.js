@@ -10,7 +10,10 @@ const plugins = require("./plugins");
 const config = require("../config");
 
 const { serverPath } = config[process.env.NODE_ENV || "development"];
-
+const remotePath = path.resolve(
+    __dirname,
+    "../../../website2/buildServer/container.js"
+)
 module.exports = merge.smart(common, {
   name: "server",
   target: "async-node",
@@ -20,7 +23,9 @@ module.exports = merge.smart(common, {
     filename: "[name].js",
     libraryTarget: "commonjs2",
   },
-  externals: ["enhanced-resolve"],
+  externals: ["enhanced-resolve", {
+    special: path.resolve(__dirname,'../../src/external.js')
+  }],
   module: {
     rules: serverLoaders,
   },
@@ -35,10 +40,9 @@ module.exports = merge.smart(common, {
       library: { type: "commonjs2" },
       filename: "container.js",
       remotes: {
-        website2: path.resolve(
-          __dirname,
-          "../../../website2/buildServer/container.js"
-        ),
+        website2: {
+          external: `promise new Promise((resolve)=>{ console.log('requring remote');delete require.cache['${remotePath}']; resolve(require('${remotePath}')) })`
+        },
       },
       shared: ["react", "react-dom"],
     }),
