@@ -10,7 +10,7 @@ const SomeComponent = () => (
     }}
     onClick={() => alert("website2 is interactive")}
   >
-    Header from website2
+    Header from website29u98u998u
   </div>
 );
 

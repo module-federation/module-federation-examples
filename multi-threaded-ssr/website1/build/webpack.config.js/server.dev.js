@@ -2,10 +2,11 @@ const webpack = require("webpack");
 
 const merge = require("webpack-merge");
 const baseConfig = require("./server.base");
+// const WriteFileWebpackPlugin = require('write-file-webpack-plugin')
 
 const config = merge.smart(baseConfig, {
   plugins: [
-    new WriteFileWebpackPlugin(),
+    // new WriteFileWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
   ],
   mode: "development",
