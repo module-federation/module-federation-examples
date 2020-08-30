@@ -23,9 +23,7 @@ module.exports = merge.smart(common, {
     filename: "[name].js",
     libraryTarget: "commonjs2",
   },
-  externals: ["enhanced-resolve", {
-    special: path.resolve(__dirname,'../../src/external.js')
-  }],
+  externals: ["enhanced-resolve"],
   module: {
     rules: serverLoaders,
   },
@@ -41,6 +39,7 @@ module.exports = merge.smart(common, {
       filename: "container.js",
       remotes: {
         website2: {
+          // we dont need to do this, just intersting to see in action
           external: `promise new Promise((resolve)=>{ console.log('requring remote');delete require.cache['${remotePath}']; resolve(require('${remotePath}')) })`
         },
       },
