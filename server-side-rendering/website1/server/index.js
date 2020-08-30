@@ -9,6 +9,8 @@ const app = express();
 /**
  * All application expressjs middleware
  */
+// likely dont need to track running server since im not stopping express, but webpack.
+// might be useful to time the restart for when whatever the current request is complete
 let runningServer;
 const done = () => {
   runningServer = app.listen(env.PORT, () => {
