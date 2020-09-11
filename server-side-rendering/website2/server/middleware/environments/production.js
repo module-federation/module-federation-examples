@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const config = require("../../../build/config");
+const fetch = require("node-fetch").default;
 
 const { serverPath, clientPath, publicPath } = config[
   process.env.NODE_ENV || "production"
@@ -12,6 +13,11 @@ module.exports = async (express, app, done) => {
     "/static",
     express.static(path.join(__dirname, "../buildClient/static"))
   );
+  try {
+    fetch("http://localhost:3001/restart");
+  } catch (e) {
+    console.error(e);
+  }
 
   const rederThunk = require("../../server-entry").default; // eslint-disable-line import/no-unresolved
   const clientStats = JSON.parse(

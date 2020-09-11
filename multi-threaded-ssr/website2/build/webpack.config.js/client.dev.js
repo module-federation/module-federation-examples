@@ -1,5 +1,5 @@
 const webpack = require("webpack");
-const WriteFileWebpackPlugin = require("write-file-webpack-plugin");
+
 const merge = require("webpack-merge");
 const baseConfig = require("./client.base");
 
