@@ -51,14 +51,16 @@ module.exports = {
       });
     } else {
       // is server
-      Object.assign(mfConf, {
-        remotes: {
-          next1: path.resolve(
-            __dirname,
-            "../next1/.next/server/static/runtime/remoteEntry.js"
-          ),
-        },
-      });
+      // should use remotes, but async issues on server. Manually implementing what webpack would do
+      // the manual implementation is in components/LazyHydration
+      // Object.assign(mfConf, {
+      //   remotes: {
+      //     next1: path.resolve(
+      //       __dirname,
+      //       "../next1/.next/server/static/runtime/remoteEntry.js"
+      //     ),
+      //   },
+      // });
 
       // shouldnt have to do this
       config.externals = {
