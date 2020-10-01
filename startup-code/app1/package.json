@@ -1,0 +1,25 @@
+{
+  "name": "@startup-code/app1",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "7.11.0",
+    "@babel/preset-react": "7.10.4",
+    "babel-loader": "8.1.0",
+    "html-webpack-plugin": "^4.5.0",
+    "serve": "^11.3.2",
+    "webpack": "^5.0.0-rc.3",
+    "webpack-cli": "^4.0.0-rc.0",
+    "webpack-dev-server": "3.11.0"
+  },
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack --mode production",
+    "serve": "serve dist -p 3001",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  }
+}
