@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "start": "lerna run --scope @startup-code/* --parallel start",
+    "start": "echo \"Dev server currently has bugs with entrypoint ordering. Use 'yarn build && yarn serve' instead.\"",
+    "start:force": "lerna run --scope @startup-code/* --parallel start",
     "build": "lerna run --scope @startup-code/* build",
     "serve": "lerna run --scope @startup-code/* --parallel serve",
     "clean": "lerna run --scope @startup-code/* --parallel clean"
