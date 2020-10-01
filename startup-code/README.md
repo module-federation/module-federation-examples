@@ -8,7 +8,10 @@ This is s basic host remote example, with startup code that sets the remotes pub
 
 # Running Demo
 
-Run `yarn start`. This will build and serve both `app1` and `app2` on ports 3001 and 3002 respectively.
+Run `yarn build && yarn serve`. This will build and serve both `app1` and `app2` on ports 3001 and 3002 respectively.
+Currently, webpack-dev-server has a bug that incorrectly appends an entrypoint to the end of the remote.
+
+This prevents us from attaching remotes correctly to the internal scope.
 
 - [localhost:3001](http://localhost:3001/) (HOST)
 - [localhost:3002](http://localhost:3002/) (STANDALONE REMOTE)
