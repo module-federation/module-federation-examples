@@ -4,6 +4,9 @@ const path = require("path");
 
 module.exports = {
   entry: {
+    // we add an entrypoint with the same name as our name in ModuleFederationPlugin.
+    // This merges the two "chunks" together. When a remoteEntry is placed on the page,
+    // the code in this app1 entrypoint will execute as part of the remoteEntry startup.
     app1: "./src/setPublicPath",
     main: "./src/index",
   },
@@ -13,6 +16,7 @@ module.exports = {
     port: 3001,
   },
   output: {
+    // public path can be what it normally is, not a absolute, hardcoded url
     publicPath: "/",
   },
   module: {
