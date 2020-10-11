@@ -9,7 +9,7 @@ var serverConfig = {
   output: {
     path: path.resolve(__dirname, "public/server"),
     filename: "server.js",
-    publicPath: "/",
+    publicPath: "auto",
   },
   externals: ["enhanced-resolve"],
   resolve: {
