@@ -1,8 +1,8 @@
 const webpack = require("webpack");
-const merge = require("webpack-merge");
+const {merge} = require("webpack-merge");
 const baseConfig = require("./client.base");
 
-const config = merge.smart(baseConfig, {
+const config = merge(baseConfig, {
   entry: [
     "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false",
   ],

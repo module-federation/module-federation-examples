@@ -1,12 +1,12 @@
 const path = require("path");
-const merge = require("webpack-merge");
+const {merge} = require("webpack-merge");
 const ModuleFederationPlugin = require("webpack").container
   .ModuleFederationPlugin;
 const { client: clientLoaders } = require("./loaders");
 const plugins = require("./plugins");
 const common = require("./common.base");
 
-module.exports = merge.smart(common, {
+module.exports = merge(common, {
   name: "client",
   target: "web",
   entry: ["@babel/polyfill", path.resolve(__dirname, "../../src/index.js")],

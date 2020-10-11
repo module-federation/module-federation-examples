@@ -2551,14 +2551,14 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@loadable/babel-plugin@^5.12.0":
+"@loadable/babel-plugin@^5.13.2":
   version "5.13.2"
   resolved "https://registry.yarnpkg.com/@loadable/babel-plugin/-/babel-plugin-5.13.2.tgz#373cddc64ee5437814f7dca1c1b6a7b2c1665a9f"
   integrity sha512-vSZUVeTH1S1sDbk8Tzft0plZSkN7W4zmVR5w/Bmy4UmvBiu9lin7ztrDpoUTUzxpoups+OJbTc/OosvN0aMXWg==
   dependencies:
     "@babel/plugin-syntax-dynamic-import" "^7.7.4"
 
-"@loadable/component@^5.12.0":
+"@loadable/component@^5.13.2":
   version "5.13.2"
   resolved "https://registry.yarnpkg.com/@loadable/component/-/component-5.13.2.tgz#219b679c9e76bb5dd247923a3195ad3ef92cf977"
   integrity sha512-eCtJhCFfUg7dzEBc5O4ZNfG0wftCLVSzpfOw9qPYJ16T/bmvrGRDdY8q/ARM4o90MOFlJzIRepnuXnqxB5ZUyQ==
@@ -2567,14 +2567,14 @@
     hoist-non-react-statics "^3.3.1"
     react-is "^16.12.0"
 
-"@loadable/server@^5.12.0":
+"@loadable/server@^5.13.2":
   version "5.13.2"
   resolved "https://registry.yarnpkg.com/@loadable/server/-/server-5.13.2.tgz#e8a4e9bb08a3112772d5d171c0fa905e0c13c8c9"
   integrity sha512-2Nn4YdpAuXngP5H3OQ1TlmdILLx35jyCZ0iOVWAf0ihdkWBYXbAiwOTYt+r2vQiXIGeAaQc44GkKgod8Vp5S8g==
   dependencies:
     lodash "^4.17.15"
 
-"@loadable/webpack-plugin@^5.12.0":
+"@loadable/webpack-plugin@^5.13.0":
   version "5.13.0"
   resolved "https://registry.yarnpkg.com/@loadable/webpack-plugin/-/webpack-plugin-5.13.0.tgz#40af22f0955dbb669498a65fbf90c07e3c829538"
   integrity sha512-MrMnpci590POKdmyTTaj/hv8A5BhGfG3Sg8WJ9M/HxEPnjoOFGWWSnV0yqBEi05etILE0Gl9xL5GSK/nZQbdOw==
@@ -13507,7 +13507,7 @@ postcss-flexbugs-fixes@4.2.1:
   dependencies:
     postcss "^7.0.26"
 
-postcss-import@12.0.1:
+postcss-import@12.0.1, postcss-import@^12.0.1:
   version "12.0.1"
   resolved "https://registry.yarnpkg.com/postcss-import/-/postcss-import-12.0.1.tgz#cf8c7ab0b5ccab5649024536e565f841928b7153"
   integrity sha512-3Gti33dmCjyKBgimqGxL3vcV8w9+bsHwO5UrBawp796+jdardbcFl4RP5w/76BwNL7aGzpKstIfF9I+kdE8pTw==
@@ -13535,7 +13535,7 @@ postcss-loader@3.0.0:
     postcss-load-config "^2.0.0"
     schema-utils "^1.0.0"
 
-postcss-loader@4.0.4:
+postcss-loader@4.0.4, postcss-loader@^4.0.4:
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/postcss-loader/-/postcss-loader-4.0.4.tgz#b2d005b52e008a44991cf8123bee207e635eb53e"
   integrity sha512-pntA9zIR14drQo84yGTjQJg1m7T0DkXR4vXYHBngiRZdJtEeCrojL6lOpqUanMzG375lIJbT4Yug85zC/AJWGw==
@@ -14242,7 +14242,7 @@ react-helmet@^6.0.0:
     react-fast-compare "^3.1.1"
     react-side-effect "^2.1.0"
 
-react-hot-loader@4.13.0:
+react-hot-loader@4.13.0, react-hot-loader@^4.13.0:
   version "4.13.0"
   resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.13.0.tgz#c27e9408581c2a678f5316e69c061b226dc6a202"
   integrity sha512-JrLlvUPqh6wIkrK2hZDfOyq/Uh/WeVEr8nc7hkn2/3Ul0sx1Kr5y4kOGNacNRoj7RhwLNcQ3Udf1KJXrqc0ZtA==
@@ -17677,7 +17677,7 @@ webpack-dev-middleware@3.7.2, webpack-dev-middleware@^3.7.2:
     range-parser "^1.2.1"
     webpack-log "^2.0.0"
 
-webpack-dev-middleware@4.0.0-rc.3:
+webpack-dev-middleware@4.0.0-rc.3, webpack-dev-middleware@^4.0.0-rc.3:
   version "4.0.0-rc.3"
   resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-4.0.0-rc.3.tgz#986c047d579a320499e6217c96562265c2438abe"
   integrity sha512-nuZHcVtI1qVJxGYWEnCeN9UiQesOTUYQZQiJnrt1ma5FSYK1OTH0ySG45yUE44aVSFrN+teZX7WQTH6hF2vgFA==
@@ -17727,7 +17727,7 @@ webpack-dev-server@3.11.0:
     ws "^6.2.1"
     yargs "^13.3.2"
 
-webpack-hot-middleware@2.25.0:
+webpack-hot-middleware@2.25.0, webpack-hot-middleware@^2.25.0:
   version "2.25.0"
   resolved "https://registry.yarnpkg.com/webpack-hot-middleware/-/webpack-hot-middleware-2.25.0.tgz#4528a0a63ec37f8f8ef565cf9e534d57d09fe706"
   integrity sha512-xs5dPOrGPCzuRXNi8F6rwhawWvQQkeli5Ro48PRuQh8pYPCPmNnltP9itiUPT4xI8oW+y0m59lyyeQk54s5VgA==
@@ -17737,7 +17737,7 @@ webpack-hot-middleware@2.25.0:
     querystring "^0.2.0"
     strip-ansi "^3.0.0"
 
-webpack-hot-server-middleware@0.6.1:
+webpack-hot-server-middleware@0.6.1, webpack-hot-server-middleware@^0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/webpack-hot-server-middleware/-/webpack-hot-server-middleware-0.6.1.tgz#1515b2d5db3277b583b01fc59bb0d5b87dc46494"
   integrity sha512-YOKwdS0hnmADsNCsReGkMOBkoz2YVrQZvnVcViM2TDXlK9NnaOGXmnrLFjzwsHFa0/iuJy/QJFEoMxzk8R1Mgg==
@@ -17761,7 +17761,15 @@ webpack-merge@4.2.2, webpack-merge@^4.2.2:
   dependencies:
     lodash "^4.17.15"
 
-webpack-node-externals@2.5.2:
+webpack-merge@5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-5.2.0.tgz#31cbcc954f8f89cd4b06ca8d97a38549f7f3f0c9"
+  integrity sha512-QBglJBg5+lItm3/Lopv8KDDK01+hjdg2azEwi/4vKJ8ZmGPdtJsTpjtNNOW3a4WiqzXdCATtTudOZJngE7RKkA==
+  dependencies:
+    clone-deep "^4.0.1"
+    wildcard "^2.0.0"
+
+webpack-node-externals@2.5.2, webpack-node-externals@^2.5.2:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/webpack-node-externals/-/webpack-node-externals-2.5.2.tgz#178e017a24fec6015bc9e672c77958a6afac861d"
   integrity sha512-aHdl/y2N7PW2Sx7K+r3AxpJO+aDMcYzMQd60Qxefq3+EwhewSbTBqNumOsCE1JsCUNoyfGj5465N0sSf6hc/5w==
@@ -17977,6 +17985,11 @@ widest-line@^3.1.0:
   integrity sha512-NsmoXalsWVDMGupxZ5R08ka9flZjjiLvHVAWYOKtiKM8ujtZWr9cRffak+uSE48+Ob8ObalXpwyeUiyDD6QFgg==
   dependencies:
     string-width "^4.0.0"
+
+wildcard@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/wildcard/-/wildcard-2.0.0.tgz#a77d20e5200c6faaac979e4b3aadc7b3dd7f8fec"
+  integrity sha512-JcKqAHLPxcdb9KM49dufGXn2x3ssnfjbcaQdLlfZsL9rH9wgDQjUtDxbo8NE0F6SFvydeu1VhZe7hZuHsB2/pw==
 
 windows-release@^3.1.0:
   version "3.3.3"
