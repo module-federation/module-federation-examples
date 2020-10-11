@@ -25,7 +25,13 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.m?js$/, type: "javascript/auto" },
+      {
+        test: /\.m?js$/,
+        type: "javascript/auto",
+        resolve: {
+          fullySpecified: false,
+        },
+      },
       {
         test: /\.svelte$/,
         use: {

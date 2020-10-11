@@ -23,7 +23,13 @@ module.exports = {
 
   module: {
     rules: [
-      { test: /\.m?js$/, type: "javascript/auto" },
+      {
+        test: /\.m?js$/,
+        type: "javascript/auto",
+        resolve: {
+          fullySpecified: false,
+        },
+      },
       {
         test: /\.jsx?$/,
         loader: require.resolve("babel-loader"),

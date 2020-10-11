@@ -11,7 +11,13 @@ module.exports = {
   entry: "./src/index.ts",
   module: {
     rules: [
-      { test: /\.m?js$/, type: "javascript/auto" },
+      {
+        test: /\.m?js$/,
+        type: "javascript/auto",
+        resolve: {
+          fullySpecified: false,
+        },
+      },
       {
         test: /\.tsx?$/,
         loader: "ts-loader",
