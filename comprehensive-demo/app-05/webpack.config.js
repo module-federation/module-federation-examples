@@ -11,6 +11,7 @@ module.exports = {
   entry: "./src/index.ts",
   module: {
     rules: [
+      { test: /\.m?js$/, type: "javascript/auto" },
       {
         test: /\.tsx?$/,
         loader: "ts-loader",
@@ -22,13 +23,13 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: [".tsx", ".ts", ".js", ".mjs"],
   },
   output: {
     path: __dirname + "/public",
     filename: "[name].js",
     chunkFilename: "[name].[id].js",
-    publicPath: "http://localhost:3005/",
+    publicPath: "auto",
   },
   mode,
   plugins: [

@@ -14,15 +14,16 @@ module.exports = {
   },
 
   output: {
-    publicPath: "http://localhost:3002/",
+    publicPath: "auto",
   },
 
   resolve: {
-    extensions: [".jsx", ".js", ".json"],
+    extensions: [".jsx", ".js", ".json", ".mjs"],
   },
 
   module: {
     rules: [
+      { test: /\.m?js$/, type: "javascript/auto" },
       {
         test: /\.jsx?$/,
         loader: require.resolve("babel-loader"),
