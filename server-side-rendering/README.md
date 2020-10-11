@@ -1,5 +1,26 @@
 # Basic SSR Example
 
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+
+## This Example is currently broken
+
+`@loadable/components` `ChunkExtractor`
+
+Has lost compatibility with Webpack 5 Stable Release.
+While the convention in their does work. You'll need to find an alternative to SSR code splitting until its fixed by @theKashey. react-imported-component could be a solution.
+
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+
 This example demos a basic host application loading remote component.
 
 - `website1` is the host application.
