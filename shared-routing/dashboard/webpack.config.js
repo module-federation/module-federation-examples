@@ -14,16 +14,25 @@ module.exports = {
     hotOnly: false,
   },
   output: {
-    publicPath: "http://localhost:3001/",
+    publicPath: "auto",
     chunkFilename: "[id].[contenthash].js",
   },
   resolve: {
+    extensions: [".js", ".mjs", ".jsx", ".css"],
     alias: {
       events: "events",
     },
   },
+
   module: {
     rules: [
+      {
+        test: /\.m?js$/,
+        type: "javascript/auto",
+        resolve: {
+          fullySpecified: false,
+        },
+      },
       {
         test: /\.jsx?$/,
         loader: "babel-loader",
@@ -37,12 +46,12 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "dashboard",
-      library: { type: "var", name: "dashboard" },
       filename: "remoteEntry.js",
       remotes: {
-        order: "order",
-        sales: "sales",
-        shell: "shell",
+        order: "order@http://localhost:3002/remoteEntry.js",
+        sales: "sales@http://localhost:3003/remoteEntry.js",
+        shell: "shell@http://localhost:3000/remoteEntry.js",
+        dashboard: "dashboard@http://localhost:3001/remoteEntry.js",
       },
       exposes: {
         "./DashboardService": "./src/DashboardService",

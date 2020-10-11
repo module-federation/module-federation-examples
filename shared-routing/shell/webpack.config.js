@@ -12,18 +12,32 @@ module.exports = {
     historyApiFallback: true,
     hot: false,
     hotOnly: false,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers":
+        "X-Requested-With, content-type, Authorization",
+    },
   },
   resolve: {
+    extensions: [".js", ".mjs", ".jsx", ".css"],
     alias: {
       events: "events",
     },
   },
   output: {
-    publicPath: "http://localhost:3000/",
+    publicPath: "auto",
     chunkFilename: "[id].[contenthash].js",
   },
   module: {
     rules: [
+      {
+        test: /\.m?js$/,
+        type: "javascript/auto",
+        resolve: {
+          fullySpecified: false,
+        },
+      },
       {
         test: /\.jsx?$/,
         loader: "babel-loader",
@@ -37,12 +51,12 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "shell",
-      library: { type: "var", name: "shell" },
       filename: "remoteEntry.js",
       remotes: {
-        order: "order",
-        dashboard: "dashboard",
-        profile: "profile",
+        order: "order@http://localhost:3002/remoteEntry.js",
+        dashboard: "dashboard@http://localhost:3001/remoteEntry.js",
+        profile: "profile@http://localhost:3004/remoteEntry.js",
+        shell: "shell@http://localhost:3000/remoteEntry.js",
       },
       exposes: {
         "./Shell": "./src/Shell",
