@@ -3,18 +3,17 @@
 This repository is to showcase examples on Webpack 5's new Module Federation can be used.
 
 If you need **support**, consider looking at my sponsor profile [https://github.com/sponsors/ScriptedAlchemy](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_medium=https://github.com/sponsors/ScriptedAlchemy&utm_campaign=sponsor_link)
+For companies that require consultations, contact me on twitter or email (on github profile)
 
 **Youtube Screencasts** [https://www.youtube.com/playlist?list=PLWSiF9YHHK-DqsFHGYbeAMwbd9xcZbEWJ](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_medium=https%3A%2F%2Fwww.youtube.com%2Fplaylist%3Flist%3DPLWSiF9YHHK-DqsFHGYbeAMwbd9xcZbEWJ&utm_campaign=youtube_playlist)
 
-**WIP info site** [https://module-federation.github.io/](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_campaign=github_pages&utm_medium=https://module-federation.github.io/)
+**Info site** [https://module-federation.github.io/](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_campaign=github_pages&utm_medium=https://module-federation.github.io/)
 
 **Official Docs** [https://webpack.js.org/concepts/module-federation](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_campaign=webpack_docs&utm_medium=https://webpack.js.org/concepts/module-federation)
 
-**Shim for partial Webpack 4 and non webpack users** (needs update to work with 5.beta.17) [https://gist.github.com/ScriptedAlchemy/d386a094832dbd9a04324862d26570e9](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_campaign=webpack_4_shim&utm_medium=https://gist.github.com/ScriptedAlchemy/d386a094832dbd9a04324862d26570e9)
-
 **Original Webpack Issue** [https://github.com/webpack/webpack/issues/10352](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_campaign=merge_proposal_issue&utm_medium=https://github.com/webpack/webpack/issues/10352)
 
-**Medium post** **Original Webpack Issue** [https://link.medium.com/xzFgBBtAx6](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_campaign=game_changer_medium_post&utm_medium=https://link.medium.com/xzFgBBtAx6)
+**Medium post** [https://link.medium.com/xzFgBBtAx6](https://module-federation.github.io/redirect?utm_source=ModuleFederationExamples&utm_campaign=game_changer_medium_post&utm_medium=https://link.medium.com/xzFgBBtAx6)
 
 **JSNation Presentation** https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5.md
 
@@ -52,7 +51,7 @@ If you need **support**, consider looking at my sponsor profile [https://github.
 - [x] [TypeScript](./typescript/README.md) &mdash; Simple host/remote example using TypeScript.
 - [x] [Angular Universal](./angular-universal-ssr/README.md) &mdash; Remote and Host app with SSR, lazy modules and components.
 - [x] [NextJS Sidecar Build](./nextjs-sidecar/README.md) &mdash; Sidecar build to enable module-federation alongside Next codebases
-- [x] ⚠️ [NextJS](./nextjs/README.md) &mdash; Operation, with workarounds. Currently standing as an open pull requrest
+- [x] ⚠️ [NextJS](./nextjs/README.md) &mdash; Operation, with workarounds. v10 will support async
 - [x] [Building A Plugin-based Workflow Designer With Angular and Module Federation](https://github.com/manfredsteyer/module-federation-with-angular-dynamic-workflow-designer) &mdash; External Example
 - [x] [Vue.js](./vue3-demo/README.md) &mdash; Simple host/remote (render function / sfc) example using Vue 3.0.
 
@@ -62,3 +61,5 @@ To run from a git checkout locally, remove all of the proprietary example direct
 You can then run `yarn && yarn start` from any of the non-proprietary examples.
 
 <img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/ModuleFederationExamplesRoot">
+
+Module federation will work with any type of file that youre able to import, that webpack underestands how to process. It is not a JS only, or react only feature. Images, CSS, JSON, WASM, and anything else can be federated. 
