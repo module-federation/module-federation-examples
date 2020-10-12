@@ -17,7 +17,7 @@ module.exports = (env = {}) => ({
   //   publicPath: '/dist/'
   // },
   output: {
-    publicPath: "http://localhost:3001/",
+    publicPath: "auto",
   },
   resolve: {
     extensions: [".vue", ".jsx", ".js", ".json"],
@@ -60,10 +60,9 @@ module.exports = (env = {}) => ({
     }),
     new ModuleFederationPlugin({
       name: "layout",
-      library: { type: "var", name: "layout" },
       filename: "remoteEntry.js",
       remotes: {
-        home: "home",
+        home: "home@http://localhost:3002/remoteEntry.js",
       },
       exposes: {},
     }),

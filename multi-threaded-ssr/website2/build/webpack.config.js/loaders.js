@@ -127,7 +127,7 @@ const externalCssLoaderServer = {
 // Native ES6 Modules need to be interpreted correctly within webpack
 // https://github.com/apollographql/react-apollo/issues/1737#issuecomment-372946515
 const mjsLoader = {
-  test: /\.mjs$/,
+  test: /\.m?js$/,
   include: /node_modules/,
   type: "javascript/auto",
 };

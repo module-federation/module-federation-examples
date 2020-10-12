@@ -7,6 +7,6 @@ console.log(
 // since i just added a other module to the runtime, it ends up being the last module returned to the scope.
 // For now, we need to re-export the container to the scope.
 // you could use webpack internals to make this more dynamic, bue we will likely provide a internalized solution to attach a startup module
-Object.assign(window, {
+Object.assign(self, {
   app2: __webpack_require__("webpack/container/entry/app2"),
 });
