@@ -6,12 +6,13 @@ const path = require("path");
 module.exports = {
   entry: "./src/index",
   mode: "development",
+  target: "web",
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     port: 3001,
   },
   output: {
-    publicPath: "http://localhost:3001/",
+    publicPath: "auto",
   },
   module: {
     rules: [
@@ -28,7 +29,6 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "app1",
-      library: { type: "var", name: "app1" },
       // adds react as shared module
       // version is inferred from package.json
       // there is no version check for the required version

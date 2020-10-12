@@ -1,6 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
-const merge = require("webpack-merge");
+const {merge} = require("webpack-merge");
 const fs = require("fs");
 const ModuleFederationPlugin = require("webpack").container
   .ModuleFederationPlugin;
@@ -17,7 +17,7 @@ const remotes = {
   website2: "http://localhost:3001/edge/remote-entry.js",
 };
 
-module.exports = merge.smart(common, {
+module.exports = merge(common, {
   name: "server",
   target: "async-node",
   entry: ["@babel/polyfill", path.resolve(__dirname, "../../server/index.js")],

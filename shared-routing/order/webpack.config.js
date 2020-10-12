@@ -14,16 +14,24 @@ module.exports = {
     hotOnly: false,
   },
   output: {
-    publicPath: "http://localhost:3002/",
+    publicPath: "auto",
     chunkFilename: "[id].[contenthash].js",
   },
   resolve: {
+    extensions: [".js", ".mjs", ".jsx", ".css"],
     alias: {
       events: "events",
     },
   },
   module: {
     rules: [
+      {
+        test: /\.m?js$/,
+        type: "javascript/auto",
+        resolve: {
+          fullySpecified: false,
+        },
+      },
       {
         test: /\.jsx?$/,
         loader: "babel-loader",
@@ -37,10 +45,9 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "order",
-      library: { type: "var", name: "order" },
       filename: "remoteEntry.js",
       remotes: {
-        shell: "shell",
+        shell: "shell@http://localhost:3000/remoteEntry.js",
       },
       exposes: {
         "./RecentOrdersWidget": "./src/RecentOrdersWidget",

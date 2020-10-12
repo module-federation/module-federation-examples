@@ -1,5 +1,26 @@
 # Basic SSR Example
 
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+
+## This Example is currently broken
+
+`@loadable/components` `ChunkExtractor`
+
+Has lost compatibility with Webpack 5 Stable Release.
+While the convention in their does work. You'll need to find an alternative to SSR code splitting until its fixed by @theKashey. react-imported-component could be a solution.
+
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)
+
 This example demos a basic host application loading remote component.
 
 - `website1` is the host application.
@@ -7,7 +28,7 @@ This example demos a basic host application loading remote component.
 
 # Running Demo
 
-Run `yarn start`. This will build and serve both `website1` and `website2` on ports 3001 and 3002 respectively.
+Run `yarn build && yarn serve`. This will build and serve both `website1` and `website2` on ports 3001 and 3002 respectively.
 
 - [localhost:3001](http://localhost:3001/) (HOST)
 - [localhost:3002](http://localhost:3002/) (STANDALONE REMOTE)

@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack").container
   .ModuleFederationPlugin;
 const path = require("path");
-
+const deps = require("./package.json").dependencies;
 module.exports = {
   entry: "./src/index",
   mode: "development",
@@ -11,10 +11,17 @@ module.exports = {
     port: 3002,
   },
   output: {
-    publicPath: "http://localhost:3002/",
+    publicPath: "auto",
   },
   module: {
     rules: [
+      {
+        test: /\.m?js$/,
+        type: "javascript/auto",
+        resolve: {
+          fullySpecified: false,
+        },
+      },
       {
         test: /\.jsx?$/,
         loader: "babel-loader",
@@ -33,8 +40,10 @@ module.exports = {
         "./Widget": "./src/Widget",
       },
       shared: [
-        { react: { singleton: true }, "react-dom": { singleton: true } },
-        "moment",
+        {
+          react: { singleton: true },
+          "react-dom": { singleton: true },
+        },
       ],
     }),
     new HtmlWebpackPlugin({

@@ -11,7 +11,7 @@ module.exports = {
     port: 3002,
   },
   output: {
-    publicPath: "http://localhost:3002/",
+    publicPath: "auto",
   },
 
   module: {

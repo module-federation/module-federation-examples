@@ -1,5 +1,5 @@
 const path = require("path");
-const merge = require("webpack-merge");
+const {merge} = require("webpack-merge");
 const fs = require("fs");
 const webpack = require("webpack");
 const ModuleFederationPlugin = require("webpack").container
@@ -8,10 +8,10 @@ const common = require("./common.base");
 const { server: serverLoaders } = require("./loaders");
 const plugins = require("./plugins");
 const config = require("../config");
-
+const deps = require('../../package.json').dependencies
 const { serverPath } = config[process.env.NODE_ENV || "development"];
 
-module.exports = merge.smart(common, {
+module.exports = merge(common, {
   name: "server",
   target: "async-node",
   entry: ["@babel/polyfill", path.resolve(__dirname, "../../server/index.js")],
@@ -37,7 +37,7 @@ module.exports = merge.smart(common, {
       exposes: {
         "./SomeComponent": "./src/components/SomeComponent",
       },
-      shared: ["react", "react-dom"],
+                  shared: [{"react":deps.react, "react-dom":deps["react-dom"]}],
     }),
   ],
   stats: {

@@ -14,16 +14,18 @@ module.exports = {
     hotOnly: false,
   },
   output: {
-    publicPath: "http://localhost:3003/",
+    publicPath: "auto",
     chunkFilename: "[id].[contenthash].js",
-  },
-  resolve: {
-    alias: {
-      events: "events",
-    },
   },
   module: {
     rules: [
+      {
+        test: /\.m?js$/,
+        type: "javascript/auto",
+        resolve: {
+          fullySpecified: false,
+        },
+      },
       {
         test: /\.jsx?$/,
         loader: "babel-loader",
@@ -35,15 +37,15 @@ module.exports = {
     ],
   },
   resolve: {
+    extensions: [".js", ".mjs", ".jsx", ".css"],
     alias: { events: "events" },
   },
   plugins: [
     new ModuleFederationPlugin({
       name: "sales",
-      library: { type: "var", name: "sales" },
       filename: "remoteEntry.js",
       remotes: {
-        shell: "shell",
+        shell: "shell@http://localhost:3000/remoteEntry.js",
       },
       exposes: {
         "./TodayWidget": "./src/TodayWidget",

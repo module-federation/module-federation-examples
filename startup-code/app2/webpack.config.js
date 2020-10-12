@@ -4,7 +4,6 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    app2: "./src/setPublicPath",
     main: "./src/index",
   },
   mode: "development",
@@ -13,7 +12,7 @@ module.exports = {
     port: 3002,
   },
   output: {
-    publicPath: "/",
+    publicPath: "auto",
   },
   module: {
     rules: [
