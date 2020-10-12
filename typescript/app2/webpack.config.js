@@ -11,7 +11,7 @@ module.exports = {
     port: 3002,
   },
   output: {
-    publicPath: "http://localhost:3002/",
+    publicPath: "auto",
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
@@ -38,7 +38,6 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "app2",
-      library: { type: "var", name: "app2" },
       filename: "remoteEntry.js",
       exposes: {
         "./Button": "./src/Button",
