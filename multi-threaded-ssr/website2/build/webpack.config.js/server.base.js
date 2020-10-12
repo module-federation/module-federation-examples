@@ -1,5 +1,5 @@
 const path = require("path");
-const merge = require("webpack-merge");
+const {merge} = require("webpack-merge");
 const fs = require("fs");
 const webpack = require("webpack");
 const ModuleFederationPlugin = require("@module-federation/remote-federation-plugin/plugin/ModuleFederationPlugin");
@@ -10,7 +10,7 @@ const config = require("../config");
 
 const { serverPath } = config[process.env.NODE_ENV || "development"];
 
-module.exports = merge.smart(common, {
+module.exports = merge(common, {
   name: "server",
   target: "async-node",
   entry: ["@babel/polyfill", path.resolve(__dirname, "../../server/index.js")],

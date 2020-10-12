@@ -21,10 +21,17 @@ module.exports = {
     path: __dirname + "/public",
     filename: "[name].js",
     chunkFilename: "[name].[id].js",
-    publicPath: "http://localhost:3004/",
+    publicPath: "auto",
   },
   module: {
     rules: [
+      {
+        test: /\.m?js$/,
+        type: "javascript/auto",
+        resolve: {
+          fullySpecified: false,
+        },
+      },
       {
         test: /\.svelte$/,
         use: {

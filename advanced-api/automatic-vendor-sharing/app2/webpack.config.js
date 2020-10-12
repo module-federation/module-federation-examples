@@ -20,8 +20,9 @@ module.exports = {
     contentBase: path.join(__dirname, "dist"),
     port: 3002,
   },
+  target: "web",
   output: {
-    publicPath: "http://localhost:3002/",
+    publicPath: "auto",
   },
   module: {
     rules: [

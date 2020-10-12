@@ -10,10 +10,17 @@ module.exports = {
     port: 3001,
   },
   output: {
-    publicPath: "http://localhost:3001/",
+    publicPath: "auto",
   },
   module: {
     rules: [
+      {
+        test: /\.m?js$/,
+        type: "javascript/auto",
+        resolve: {
+          fullySpecified: false,
+        },
+      },
       {
         test: /\.jsx?$/,
         loader: "babel-loader",
