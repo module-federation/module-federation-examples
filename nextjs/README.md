@@ -98,9 +98,3 @@ Useful files in the SSR build.
 The async import middleware is where i keep the async boundary, this is also the only point of reference where React is import into scope.
 
 By doing so, I can ensure that webpack has time to initialize and load anything it might need before attempting to actually require, and render the application.
-
-<p align="center">
-  <a href="https://github.com/module-federation/module-federation-examples">Module Federation Examples</a> is being sponsored by the following tool; please help to support us by taking a look and signing up to a free trial
-  <br><br>
-  <a href="https://tracking.gitads.io/?repo=module-federation/module-federation-examples"> <img src="https://images.gitads.io/module-federation/module-federation-examples" alt="GitAds"/> </a>
-</p>
