@@ -47,6 +47,7 @@
     "concurrently": "5.3.0"
   },
   "scripts": {
+    "build": "lerna run --parallel build",
     "submodules": "git pull --recurse-submodules",
     "prettier": "prettier --write \"**/*.{js,json,md,ts,tsx}\"",
     "prettier:check": "prettier --list-different \"**/*.{js,json,md,ts,tsx}\""
