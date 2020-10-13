@@ -47,6 +47,7 @@
     "concurrently": "5.3.0"
   },
   "scripts": {
+    "bootstrap": "lerna bootstrap --ignore-scripts",
     "build": "lerna run --parallel build",
     "submodules": "git pull --recurse-submodules",
     "prettier": "prettier --write \"**/*.{js,json,md,ts,tsx}\"",
