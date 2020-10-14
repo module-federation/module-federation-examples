@@ -71,10 +71,10 @@ function getFiles(source) {
 
 for (const folder of folders) {
   describe(`${folder}`, () => {
-    const testFolders = getFiles(resolve(__dirname, "..", folder));
-    for (dir of testFolders) {
-      it(`${dir} should build`, async () => {
-        const result = await spawnAsPromise("yarn", ["build"], { cwd: dir });
+    const apps = getFiles(resolve(__dirname, "..", folder));
+    for (app of apps) {
+      it(`${app} should build`, async () => {
+        const result = await spawnAsPromise("yarn", ["build"], { cwd: app });
         expect(result).toEqual(true);
       });
     }
