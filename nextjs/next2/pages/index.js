@@ -2,15 +2,19 @@ import React, { Fragment } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import Nav from "../components/nav";
-import LazyHydrate, { handleFederation } from "../components/LazyHydration";
-
-const RemoteTitle = dynamic(
-  async () => {
-    const component = await handleFederation("next1/exposedTitle");
-    return component;
-  },
-  { ssr: true }
-);
+const RemoteTitle = (await import("next1/exposedTitle")).default;
+console.log(RemoteTitle);
+// const RemoteTitle = dynamic(()=>import('next1/exposedTitle'))
+// const RemoteTitle = dynamic(
+//   async () => {
+//
+//
+//     const component = await handleFederation("next1/exposedTitle");
+//    console.log(component)
+//     return component;
+//   },
+//   { ssr: true }
+// );
 const Home = ({ loaded }) => {
   return (
     <div>
@@ -29,9 +33,7 @@ const Home = ({ loaded }) => {
           To get started, edit <code>pages/index.js</code> and save to reload.
         </p>
 
-        <LazyHydrate remote="next1/exposedTitle">
-          <RemoteTitle />
-        </LazyHydrate>
+        <RemoteTitle />
 
         <div className="row">
           <a href="https://nextjs.org/docs" className="card">

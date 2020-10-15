@@ -1,5 +1,9 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-
+import path from "path";
+import fs from "fs";
+const reactPath = path.dirname(require.resolve("../node_modules/react"));
+const umdReact = path.join(reactPath, "umd/react.development.js");
+const stringReact = fs.readFileSync(umdReact, "utf-8");
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
@@ -9,8 +13,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        {/* dirty workaround to ensure one react is available upfront. async boundary usually handles this kind of stuff & internally, not with externals */}
-        <script src="https://unpkg.com/react@16.13.1/umd/react.development.js" />
+        <script dangerouslySetInnerHTML={{ __html: stringReact }} />
         <Head />
         <body>
           <Main />

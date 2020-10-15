@@ -1,8 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import dynamic from "next/dynamic";
-const Nav = dynamic(() => import("../components/nav"));
-
+const Nav = (await import("../components/nav")).default;
 const Home = () => (
   <div>
     <Head>

@@ -4,6 +4,8 @@ const path = require("path");
 
 module.exports = {
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    config.experiments = { topLevelAwait: true };
+
     const mfConf = {
       name: "next2",
       library: { type: config.output.libraryTarget, name: "next2" },
@@ -12,7 +14,14 @@ module.exports = {
       exposes: {
         "./nav": "./components/nav",
       },
-      shared: {},
+      shared: {
+        "shared-react": {
+          import: "./react",
+          shareKey: "react",
+          packageName: "react",
+          singleton: true,
+        },
+      },
       // typically, shared would look something like this
       // https://github.com/webpack/webpack/pull/10960
       // shared: [
@@ -32,17 +41,19 @@ module.exports = {
 
     if (!isServer) {
       config.output.publicPath = "http://localhost:3001/_next/";
-      config.output.library = "next2";
+      config.externals = {
+        react: "React",
+      };
       // shouldnt have to do this
-      config.plugins.push(
-        new webpack.ProvidePlugin({
-          React: "react",
-        })
-      );
+      // config.plugins.push(
+      //   new webpack.ProvidePlugin({
+      //     React: "react",
+      //   })
+      // );
       // shouldnt have to do this
-      Object.assign(config.resolve.alias, {
-        react: path.resolve(__dirname, "./react.js"),
-      });
+      // Object.assign(config.resolve.alias, {
+      //   react: path.resolve(__dirname, "./react.js"),
+      // });
 
       Object.assign(mfConf, {
         remotes: {
@@ -61,6 +72,22 @@ module.exports = {
       //     ),
       //   },
       // });
+      const rpat = path.resolve(
+        __dirname,
+        "../next1/.next/server/static/runtime/remoteEntry.js"
+      );
+      Object.assign(mfConf, {
+        remotes: {
+          next1: {
+            external: `external new Promise((res)=>{
+          
+        const mode = require('${rpat}')
+        const proxy = {get:(request)=> {console.log(request); return mode.next1.get(request)}, init:(scope)=>{try {mode.next1.init(scope)} catch(e){console.log('already initialized')}}}
+        res(proxy)
+          })`,
+          },
+        },
+      });
 
       // shouldnt have to do this
       config.externals = {
