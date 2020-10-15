@@ -5,7 +5,7 @@ if (global.React) {
   module.exports = window.React;
 } else if (process.browser) {
   console.log("should provide react");
-  window.React = require("./node_modules/react");
+  window.React = require("react");
   module.exports = window.React;
 } else {
   console.log("no condiitons met");
