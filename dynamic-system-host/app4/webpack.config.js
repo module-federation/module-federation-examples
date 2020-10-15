@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { ModuleFederationPlugin } = require("webpack").container;
+const ModuleFederationPlugin = require("webpack").container
+  .ModuleFederationPlugin;
 const path = require("path");
 
 module.exports = {
@@ -7,7 +8,7 @@ module.exports = {
   mode: "development",
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    port: 3003,
+    port: 3004,
   },
   output: {
     publicPath: "auto",
@@ -33,19 +34,13 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "app3",
+      name: "app4",
       filename: "remoteEntry.js",
       exposes: {
-        "./Widget": "./src/Widget",
         "./home": "./src/home.js",
+        "./admin": "./src/admin.js",
       },
-      shared: [
-        { react: { singleton: true }, "react-dom": { singleton: true } },
-        "moment",
-      ],
-      remotes: {
-        app4: "app4",
-      },
+      shared: { react: { singleton: true }, "react-dom": { singleton: true } },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
