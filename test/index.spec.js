@@ -32,6 +32,7 @@ const folders = [
   "advanced-api/automatic-vendor-sharing",
   "nextjs-bi-directional",
   "vue3-demo",
+  "nextjs",
 ];
 
 function spawnAsPromise(cmd, args, options) {
