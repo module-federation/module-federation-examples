@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import { shareReact } from "../../nextFederationUtils";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -9,8 +10,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        {/* dirty workaround to ensure one react is available upfront. async boundary usually handles this kind of stuff & internally, not with externals */}
-        <script src="https://unpkg.com/react@16.13.1/umd/react.development.js" />
+        {shareReact()}
         <Head />
         <body>
           <Main />

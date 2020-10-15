@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import { shareReact } from "../../nextFederationUtils";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -9,14 +10,13 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <script src="https://unpkg.com/react@16.13.1/umd/react.development.js" />
+        {shareReact()}
         <script src="http://localhost:3000/_next/static/chunks/webpack.js" />
         <script src="http://localhost:3000/_next/static/runtime/remoteEntry.js" />
         <Head />
         <body>
           <Main />
           <NextScript />
-          <script src="http://localhost:3001/_next/static/runtime/remoteEntry.js" />
         </body>
       </Html>
     );
