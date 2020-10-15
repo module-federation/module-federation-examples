@@ -9,25 +9,8 @@ module.exports = {
       library: { type: config.output.libraryTarget, name: "next1" },
       filename: "static/runtime/remoteEntry.js",
       exposes: {
-        // "./nav": "./components/nav",
         "./exposedTitle": "./components/exposedTitle",
       },
-
-      // typically, shared would look something like this
-      // https://github.com/webpack/webpack/pull/10960
-      // shared: [
-      //   {
-      //     ...deps,
-      //     react: {
-      //       singleton: true,
-      //       requiredVersion: deps.react,
-      //     },
-      //     "react-dom": {
-      //       singleton: true,
-      //       requiredVersion: deps["react-dom"],
-      //     },
-      //   },
-      // ],
     };
     if (!isServer) {
       config.output.library = "next1";
@@ -36,27 +19,10 @@ module.exports = {
         react: "React",
       };
     } else {
-      Object.assign(mfConf, {
-        remotes: {
-          next1: {
-            external: "next2",
-          },
-        },
-      });
-
       // shouldnt have to do this
       config.externals = {
         react: require.resolve("./react.js"),
       };
-
-      Object.assign(mfConf, {
-        remotes: {
-          next1: path.resolve(
-            __dirname,
-            "../next1/.next/server/static/runtime/remoteEntry.js"
-          ),
-        },
-      });
     }
     config.plugins.push(new ModuleFederationPlugin(mfConf));
 

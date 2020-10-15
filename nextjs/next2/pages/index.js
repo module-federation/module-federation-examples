@@ -3,18 +3,7 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import Nav from "../components/nav";
 const RemoteTitle = (await import("next1/exposedTitle")).default;
-console.log(RemoteTitle);
-// const RemoteTitle = dynamic(()=>import('next1/exposedTitle'))
-// const RemoteTitle = dynamic(
-//   async () => {
-//
-//
-//     const component = await handleFederation("next1/exposedTitle");
-//    console.log(component)
-//     return component;
-//   },
-//   { ssr: true }
-// );
+
 const Home = ({ loaded }) => {
   return (
     <div>

@@ -1,6 +1,7 @@
 const { ModuleFederationPlugin } = require("webpack").container;
 const deps = require("./package.json").dependencies;
 const path = require("path");
+const { nextServerRemote } = require("../nextFederationUtils");
 
 module.exports = {
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
@@ -10,7 +11,16 @@ module.exports = {
       name: "next2",
       library: { type: config.output.libraryTarget, name: "next2" },
       filename: "static/runtime/remoteEntry.js",
-      remotes: {},
+      remotes: isServer
+        ? nextServerRemote({
+            next1: path.resolve(
+              __dirname,
+              "../next1/.next/server/static/runtime/remoteEntry.js"
+            ),
+          })
+        : {
+            next1: "next1",
+          },
       exposes: {
         "./nav": "./components/nav",
       },
@@ -21,26 +31,7 @@ module.exports = {
       config.externals = {
         react: "React",
       };
-
-      Object.assign(mfConf, {
-        remotes: {
-          next1: "next1",
-        },
-      });
     } else {
-      const { nextServerRemote } = require("../nextFederationUtils");
-
-      const SSRRemotes = nextServerRemote({
-        next1: path.resolve(
-          __dirname,
-          "../next1/.next/server/static/runtime/remoteEntry.js"
-        ),
-      });
-
-      Object.assign(mfConf, {
-        remotes: SSRRemotes,
-      });
-
       config.externals = {
         react: path.resolve(__dirname, "./react.js"),
       };
