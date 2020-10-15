@@ -24,6 +24,7 @@ module.exports = {
       exposes: {
         "./nav": "./components/nav",
       },
+      shared: ["lodash"],
     };
 
     if (!isServer) {
