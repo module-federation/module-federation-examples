@@ -14,29 +14,6 @@ module.exports = {
       exposes: {
         "./nav": "./components/nav",
       },
-      shared: {
-        "shared-react": {
-          import: "./react",
-          shareKey: "react",
-          packageName: "react",
-          singleton: true,
-        },
-      },
-      // typically, shared would look something like this
-      // https://github.com/webpack/webpack/pull/10960
-      // shared: [
-      //   {
-      //     ...deps,
-      //     react: {
-      //       singleton: true,
-      //       requiredVersion: deps.react,
-      //     },
-      //     "react-dom": {
-      //       singleton: true,
-      //       requiredVersion: deps["react-dom"],
-      //     },
-      //   },
-      // ],
     };
 
     if (!isServer) {
@@ -44,16 +21,6 @@ module.exports = {
       config.externals = {
         react: "React",
       };
-      // shouldnt have to do this
-      // config.plugins.push(
-      //   new webpack.ProvidePlugin({
-      //     React: "react",
-      //   })
-      // );
-      // shouldnt have to do this
-      // Object.assign(config.resolve.alias, {
-      //   react: path.resolve(__dirname, "./react.js"),
-      // });
 
       Object.assign(mfConf, {
         remotes: {
@@ -61,37 +28,21 @@ module.exports = {
         },
       });
     } else {
-      // is server
-      // should use remotes, but async issues on server. Manually implementing what webpack would do
-      // the manual implementation is in components/LazyHydration
-      // Object.assign(mfConf, {
-      //   remotes: {
-      //     next1: path.resolve(
-      //       __dirname,
-      //       "../next1/.next/server/static/runtime/remoteEntry.js"
-      //     ),
-      //   },
-      // });
-      const rpat = path.resolve(
-        __dirname,
-        "../next1/.next/server/static/runtime/remoteEntry.js"
-      );
-      Object.assign(mfConf, {
-        remotes: {
-          next1: {
-            external: `external new Promise((res)=>{
-          
-        const mode = require('${rpat}')
-        const proxy = {get:(request)=> {console.log(request); return mode.next1.get(request)}, init:(scope)=>{try {mode.next1.init(scope)} catch(e){console.log('already initialized')}}}
-        res(proxy)
-          })`,
-          },
-        },
+      const { nextServerRemote } = require("../nextFederationUtils");
+
+      const SSRRemotes = nextServerRemote({
+        next1: path.resolve(
+          __dirname,
+          "../next1/.next/server/static/runtime/remoteEntry.js"
+        ),
       });
 
-      // shouldnt have to do this
+      Object.assign(mfConf, {
+        remotes: SSRRemotes,
+      });
+
       config.externals = {
-        react: require.resolve("./react.js"),
+        react: path.resolve(__dirname, "./react.js"),
       };
     }
 

@@ -35,17 +35,6 @@ module.exports = {
       config.externals = {
         react: "React",
       };
-      // shouldnt have to do this
-      // config.plugins.push(
-      //   new webpack.ProvidePlugin({
-      //     React: "react",
-      //   })
-      // );
-
-      // shouldnt have to do this
-      Object.assign(config.resolve.alias, {
-        react: path.resolve(__dirname, "./react.js"),
-      });
     } else {
       Object.assign(mfConf, {
         remotes: {
