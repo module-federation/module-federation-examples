@@ -1,3 +1,6 @@
+const path = require("path");
+const fs = require("fs");
+
 module.exports.nextServerRemote = (remoteObject) => {
   return Object.entries(remoteObject).reduce((acc, [name, config]) => {
     acc[name] = {
@@ -15,4 +18,19 @@ module.exports.nextServerRemote = (remoteObject) => {
     };
     return acc;
   }, {});
+};
+
+module.exports.shareReact = () => {
+  const React = require("react");
+  const reactPath = path.dirname(__non_webpack_require__.resolve("react"));
+  const umdReact =
+    process.env.NODE_ENV === "production"
+      ? path.join(reactPath, "umd/react.production.js")
+      : path.join(reactPath, "umd/react.development.js");
+  const stringReact = fs.readFileSync(umdReact, "utf-8");
+  return React.createElement("script", {
+    dangerouslySetInnerHTML: {
+      __html: stringReact,
+    },
+  });
 };
