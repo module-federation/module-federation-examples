@@ -1,5 +1,5 @@
 {
     "hooks": {
-        "pre-commit": "pretty-quick --staged"
+        "pre-commit": "yarn test && pretty-quick --staged"
     }
 }
