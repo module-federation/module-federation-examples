@@ -37,15 +37,11 @@ module.exports = {
       filename: "remoteEntry.js",
       exposes: {
         "./Widget": "./src/Widget",
-        "./home": "./src/home.js",
       },
       shared: [
         { react: { singleton: true }, "react-dom": { singleton: true } },
         "moment",
       ],
-      remotes: {
-        app4: "app4",
-      },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",

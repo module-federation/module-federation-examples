@@ -16,7 +16,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.m?(js|jsx)$/,
+        test: /\.m?js$/,
         type: "javascript/auto",
         resolve: {
           fullySpecified: false,
