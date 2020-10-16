@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "start": "concurrently \"cd next1; yarn dev \" \"cd next2; yarn dev\""
+    "start": "concurrently \"cd next1; yarn dev \" \"cd next2; yarn dev\"",
+    "build": "concurrently \"cd next1; yarn build \" \"cd next2; yarn build\""
   },
   "dependencies": {
     "concurrently": "^5.2.0"
