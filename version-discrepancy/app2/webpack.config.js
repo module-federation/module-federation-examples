@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack").container
   .ModuleFederationPlugin;
+const deps = require("./package.json").dependencies;
 const path = require("path");
 
 module.exports = {
@@ -36,7 +37,9 @@ module.exports = {
       shared: {
         react: "react",
         "react-dom": "react-dom",
-        [`lodash-${require("lodash").VERSION}`]: "lodash",
+        lodash: {
+          requiredVersion: deps["lodash"],
+        },
       },
     }),
     new HtmlWebpackPlugin({
