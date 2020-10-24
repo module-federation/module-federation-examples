@@ -5,6 +5,7 @@ import Nav from "../components/nav";
 const RemoteTitle = (await import("next1/exposedTitle")).default;
 const _ = await import("lodash");
 console.log("lodash is shared", _);
+console.log(RemoteTitle);
 const Home = ({ loaded }) => {
   return (
     <div>
@@ -23,7 +24,7 @@ const Home = ({ loaded }) => {
           To get started, edit <code>pages/index.js</code> and save to reload.
         </p>
 
-        {/*<RemoteTitle />*/}
+        <RemoteTitle />
 
         <div className="row">
           <a href="https://nextjs.org/docs" className="card">
