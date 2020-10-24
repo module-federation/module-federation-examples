@@ -1,9 +1,8 @@
+const { ModuleFederationPlugin } = require("webpack").container;
 const deps = require("./package.json").dependencies;
 const path = require("path");
-const {
-  withModuleFederation,
-  MergeRuntime,
-} = require("@module-federation/nextjs-mf");
+const { nextServerRemote } = require("../nextFederationUtils");
+const withFederation = require("nextjs-with-module-federation/withModuleFederation");
 module.exports = {
   webpack: (config, options) => {
     const { buildId, dev, isServer, defaultLoaders, webpack } = options;
@@ -25,17 +24,14 @@ module.exports = {
       shared: ["lodash"],
     };
 
-    withModuleFederation(config, options, mfConf);
+    withFederation(config, options, mfConf);
 
     if (!isServer) {
       config.output.publicPath = "http://localhost:3001/_next/";
     }
 
-    config.plugins.push(new MergeRuntime());
-
     return config;
   },
-
   webpackDevMiddleware: (config) => {
     // Perform customizations to webpack dev middleware config
     // Important: return the modified config
