@@ -2,43 +2,33 @@ const { ModuleFederationPlugin } = require("webpack").container;
 const deps = require("./package.json").dependencies;
 const path = require("path");
 const { nextServerRemote } = require("../nextFederationUtils");
-
+const withFederation = require("nextjs-with-module-federation/withModuleFederation");
 module.exports = {
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    config.experiments = { topLevelAwait: true };
-
+  webpack: (config, options) => {
+    const { buildId, dev, isServer, defaultLoaders, webpack } = options;
     const mfConf = {
       name: "next2",
       library: { type: config.output.libraryTarget, name: "next2" },
       filename: "static/runtime/remoteEntry.js",
-      remotes: isServer
-        ? nextServerRemote({
-            next1: path.resolve(
+      remotes: {
+        next1: isServer
+          ? path.resolve(
               __dirname,
               "../next1/.next/server/static/runtime/remoteEntry.js"
-            ),
-          })
-        : {
-            next1: "next1",
-          },
+            )
+          : "next1",
+      },
       exposes: {
         "./nav": "./components/nav",
       },
       shared: ["lodash"],
     };
 
+    withFederation(config, options, mfConf);
+
     if (!isServer) {
       config.output.publicPath = "http://localhost:3001/_next/";
-      config.externals = {
-        react: "React",
-      };
-    } else {
-      config.externals = {
-        react: path.resolve(__dirname, "./react.js"),
-      };
     }
-
-    config.plugins.push(new ModuleFederationPlugin(mfConf));
 
     return config;
   },

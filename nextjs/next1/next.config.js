@@ -1,9 +1,11 @@
 const deps = require("./package.json").dependencies;
 const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
+const withFederation = require("nextjs-with-module-federation/withModuleFederation");
+
 module.exports = {
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    config.experiments = { topLevelAwait: true };
+  webpack: (config, options) => {
+    const { buildId, dev, isServer, defaultLoaders, webpack } = options;
     const mfConf = {
       name: "next1",
       library: { type: config.output.libraryTarget, name: "next1" },
@@ -11,21 +13,19 @@ module.exports = {
       exposes: {
         "./exposedTitle": "./components/exposedTitle",
       },
+      remotes: {
+        next2: isServer
+          ? path.resolve(
+              __dirname,
+              "../next2/.next/server/static/runtime/remoteEntry.js"
+            )
+          : "next2",
+      },
     };
     if (!isServer) {
-      config.output.library = "next1";
       config.output.publicPath = "http://localhost:3000/_next/";
-      config.externals = {
-        react: "React",
-      };
-    } else {
-      // shouldnt have to do this
-      config.externals = {
-        react: require.resolve("./react.js"),
-      };
     }
-    config.plugins.push(new ModuleFederationPlugin(mfConf));
-
+    withFederation(config, options, mfConf);
     return config;
   },
   webpackDevMiddleware: (config) => {
