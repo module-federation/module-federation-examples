@@ -24,7 +24,7 @@ const Home = ({ loaded }) => {
           To get started, edit <code>pages/index.js</code> and save to reload.
         </p>
 
-        {/*<RemoteTitle />*/}
+        <RemoteTitle />
 
         <div className="row">
           <a href="https://nextjs.org/docs" className="card">
