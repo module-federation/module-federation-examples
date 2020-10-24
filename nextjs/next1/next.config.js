@@ -1,5 +1,3 @@
-const deps = require("./package.json").dependencies;
-const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
 const withFederation = require("nextjs-with-module-federation/withModuleFederation");
 
