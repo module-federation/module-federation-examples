@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { shareReact } from "../../nextFederationUtils";
+const sharePatch = require("nextjs-with-module-federation/patchSharing");
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -10,7 +10,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        {shareReact()}
+        {sharePatch()}
         <script src="http://localhost:3000/_next/static/chunks/webpack.js" />
         <script src="http://localhost:3000/_next/static/runtime/remoteEntry.js" />
         <Head />
