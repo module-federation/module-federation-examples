@@ -1,7 +1,9 @@
-const { ModuleFederationPlugin } = require("webpack").container;
 const deps = require("./package.json").dependencies;
 const path = require("path");
-const withFederation = require("@module-federation/nextjs-mf/withModuleFederation");
+const {
+  withFederation,
+  MergeRuntime,
+} = require("@module-federation/nextjs-mf");
 module.exports = {
   webpack: (config, options) => {
     const { buildId, dev, isServer, defaultLoaders, webpack } = options;
@@ -28,6 +30,8 @@ module.exports = {
     if (!isServer) {
       config.output.publicPath = "http://localhost:3001/_next/";
     }
+
+    config.plugins.push(new MergeRuntime());
 
     return config;
   },
