@@ -1,5 +1,5 @@
 const path = require("path");
-const withFederation = require("@module-federation/nexjs-mf/withModuleFederation");
+const withFederation = require("@module-federation/nextjs-mf/withModuleFederation");
 
 module.exports = {
   webpack: (config, options) => {

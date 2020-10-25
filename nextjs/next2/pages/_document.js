@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-const sharePatch = require("@module-federation/nexjs-mf/patchSharing");
+const sharePatch = require("@module-federation/nextjs-mf/patchSharing");
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
