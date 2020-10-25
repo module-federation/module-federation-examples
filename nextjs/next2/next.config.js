@@ -1,7 +1,7 @@
 const { ModuleFederationPlugin } = require("webpack").container;
 const deps = require("./package.json").dependencies;
 const path = require("path");
-const withFederation = require("@module-federation/nexjs-mf/withModuleFederation");
+const withFederation = require("@module-federation/nextjs-mf/withModuleFederation");
 module.exports = {
   webpack: (config, options) => {
     const { buildId, dev, isServer, defaultLoaders, webpack } = options;
