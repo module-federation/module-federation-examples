@@ -1,7 +1,7 @@
 const path = require("path");
 const {
   MergeRuntime,
-  withFederation,
+  withModuleFederation,
 } = require("@module-federation/nextjs-mf");
 
 module.exports = {
@@ -26,7 +26,7 @@ module.exports = {
     if (!isServer) {
       config.output.publicPath = "http://localhost:3000/_next/";
     }
-    withFederation(config, options, mfConf);
+    withModuleFederation(config, options, mfConf);
     config.plugins.push(new MergeRuntime());
     return config;
   },
