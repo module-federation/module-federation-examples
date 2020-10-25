@@ -1,8 +1,7 @@
 const { ModuleFederationPlugin } = require("webpack").container;
 const deps = require("./package.json").dependencies;
 const path = require("path");
-const { nextServerRemote } = require("../nextFederationUtils");
-const withFederation = require("@module-federattion/nextjs-with-module-federation/withModuleFederation");
+const withFederation = require("@module-federation/nexjs-mf/withModuleFederation");
 module.exports = {
   webpack: (config, options) => {
     const { buildId, dev, isServer, defaultLoaders, webpack } = options;
