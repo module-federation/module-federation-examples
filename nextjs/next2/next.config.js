@@ -1,7 +1,7 @@
 const deps = require("./package.json").dependencies;
 const path = require("path");
 const {
-  withFederation,
+  withModuleFederation,
   MergeRuntime,
 } = require("@module-federation/nextjs-mf");
 module.exports = {
@@ -25,7 +25,7 @@ module.exports = {
       shared: ["lodash"],
     };
 
-    withFederation(config, options, mfConf);
+    withModuleFederation(config, options, mfConf);
 
     if (!isServer) {
       config.output.publicPath = "http://localhost:3001/_next/";

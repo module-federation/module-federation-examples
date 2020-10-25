@@ -11,8 +11,10 @@ class MyDocument extends Document {
     return (
       <Html>
         {sharePatch()}
-        <script src="http://localhost:3000/_next/static/chunks/webpack.js" />
-        <script src="http://localhost:3000/_next/static/runtime/remoteEntry.js" />
+        <script
+          async
+          src="http://localhost:3000/_next/static/remoteEntryMerged.js"
+        />
         <Head />
         <body>
           <Main />
