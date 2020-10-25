@@ -5,6 +5,7 @@ import Nav from "../components/nav";
 const RemoteTitle = (await import("next1/exposedTitle")).default;
 const _ = await import("lodash");
 console.log("lodash is shared", _);
+console.log(RemoteTitle);
 const Home = ({ loaded }) => {
   return (
     <div>
