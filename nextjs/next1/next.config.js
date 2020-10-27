@@ -8,6 +8,7 @@ module.exports = {
   webpack: (config, options) => {
     const { buildId, dev, isServer, defaultLoaders, webpack } = options;
     const mfConf = {
+      mergeRuntime: true, //experimental
       name: "next1",
       library: { type: config.output.libraryTarget, name: "next1" },
       filename: "static/runtime/remoteEntry.js",
@@ -27,7 +28,6 @@ module.exports = {
       config.output.publicPath = "http://localhost:3000/_next/";
     }
     withModuleFederation(config, options, mfConf);
-    config.plugins.push(new MergeRuntime());
     return config;
   },
   webpackDevMiddleware: (config) => {
