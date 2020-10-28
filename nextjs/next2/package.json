@@ -5,21 +5,20 @@
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev -p 3001",
     "build": "NEXT_TELEMETRY_DISABLED=1 next build",
-    "start": "next start"
+    "start": "next start -p 3001"
   },
   "resolutions": {
     "webpack": "^5.2.0",
-    "next": "9.5.5"
+    "next": "^10.0.0"
   },
   "dependencies": {
     "webpack": "^5.2.0",
-    "@module-federation/nextjs-mf": "0.0.1-beta.4",
-    "next": "^9.5.6-canary.14",
+    "@module-federation/nextjs-mf": "0.0.2",
+    "next": "^10.0.0",
     "next-compose-plugins": "^2.2.0",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-lazy-hydration": "^0.0.11",
-    "webpack": "5.2.0",
     "wipe-node-cache": "^2.1.2",
     "lodash": "4.17.20"
   }
