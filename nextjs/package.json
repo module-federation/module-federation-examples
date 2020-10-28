@@ -3,6 +3,7 @@
   "scripts": {
     "start": "concurrently \"cd next1; yarn dev \" \"cd next2; yarn dev\"",
     "build": "concurrently \"cd next1; yarn build\" \"cd next2; yarn build\"",
+    "serve": "concurrently \"cd next1; yarn start\" \"cd next2; yarn start\"",
     "postinstall": "concurrently \"cd next1; yarn\" \"cd next2; yarn\""
   },
   "dependencies": {
