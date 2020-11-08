@@ -50,6 +50,7 @@ For companies that require consultations, contact me on twitter or email (on git
 - [x] [Version Discrepancy](./version-discrepancy/README.md) &mdash; Federated apps depending on different versions of a dependency without side-effects.
 - [x] [TypeScript](./typescript/README.md) &mdash; Simple host/remote example using TypeScript.
 - [x] [Angular Universal](./angular-universal-ssr/README.md) &mdash; Remote and Host app with SSR, lazy modules and components.
+- [x] [Angular NGXS](./angular11-microfrontends-ngxs/README.md) &mdash; Remote and Host app use the application state and component in the shared library.
 - [x] [NextJS Sidecar Build](./nextjs-sidecar/README.md) &mdash; Sidecar build to enable module-federation alongside Next codebases
 - [x] ⚠️ [NextJS](./nextjs/README.md) &mdash; Operation, with workarounds. v10 will support async
 - [x] [Building A Plugin-based Workflow Designer With Angular and Module Federation](https://github.com/manfredsteyer/module-federation-with-angular-dynamic-workflow-designer) &mdash; External Example
