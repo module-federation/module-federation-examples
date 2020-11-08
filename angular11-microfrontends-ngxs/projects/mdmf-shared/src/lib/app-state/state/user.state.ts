@@ -1,6 +1,6 @@
 import { State, Action, StateContext, Selector, NgxsOnInit } from '@ngxs/store';
 import { User } from '../models/User';
-import { AddUser } from '../actions/user.action';
+import { AddUser, RemoveUser } from '../actions/user.action';
 
 export class UserStateModel {
     users: User[];
@@ -21,7 +21,6 @@ export class UserState {
 
     @Action(AddUser)
     add({getState, patchState, setState }: StateContext<UserStateModel>, { payload }: AddUser) {
-        console.log("Action AddUser reaches the store with payload: ", payload);
         const state = getState();
         if (state && state.users) {
             patchState({
@@ -35,4 +34,14 @@ export class UserState {
         }    
     }
 
+    @Action(RemoveUser)
+    remove({getState, setState }: StateContext<UserStateModel>, { payload }: AddUser) {
+        const state = getState();        
+        if (state && state.users) {
+            setState({
+                users: state.users.filter(u => !(u.email === payload.email && u.name === payload.name))
+            });
+        }
+  
+    }    
 }

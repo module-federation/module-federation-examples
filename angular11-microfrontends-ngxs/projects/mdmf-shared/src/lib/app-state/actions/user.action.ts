@@ -5,3 +5,9 @@ export class AddUser {
 
     constructor(public payload: User) {}
 }
+
+export class RemoveUser {
+    static readonly type = '[User] Remove';
+
+    constructor(public payload: User) {}
+}

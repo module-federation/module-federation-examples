@@ -23,7 +23,8 @@ This project shows an example of using Webpack 5 Module Federation with Angular 
 - Open the shell http://localhost:4200
 - Click the profile navigation link to load the remote Microfrontend
 
-![Shell and Microfronted Screenshot](microfrontend-shell-profile.jpg)
+![Shell Screenshot](shell.png)
+![Profile Screenshot](profile.png)
 
 ## Usage
 

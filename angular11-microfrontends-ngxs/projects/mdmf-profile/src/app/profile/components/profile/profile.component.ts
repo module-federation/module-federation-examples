@@ -24,7 +24,6 @@ export class ProfileComponent implements OnInit {
   }
 
   addUser(name, email) {
-    console.log('addUser: ', name, email);
     this.store.dispatch(new AddUser({ name, email}));
   }
 
