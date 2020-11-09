@@ -5,12 +5,7 @@ import { loadRemoteModule } from "./utils/federation-utils";
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
-  // { path: "home", component: HomeComponent },
-  {
-    path: "home",
-    loadChildren: () =>
-      import("./shell/shell-routing.module").then((m) => m.ProfileRoutingModule),      
-  },  
+  { path: "home", component: HomeComponent },
   {
     path: "profile",
     loadChildren: () =>
