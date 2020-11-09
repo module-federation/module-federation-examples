@@ -17,9 +17,9 @@ This project shows an example of using Webpack 5 Module Federation with Angular 
 ## Running the demo
 
 - Install packages: `yarn install`
-- Build the shared library `ng build mdmf-shared`
-- Start the mdmf-shell: `yarn start:shell` or `ng serve mdmf-shell`
-- Start the Microfrontend: `yarn start:profile` or `ng serve mdmf-profile`
+- Build the shared library `yarn build:shared`
+- Start the mdmf-shell: `yarn start:shell`
+- Start the Microfrontend: `yarn start:profile`
 - Open the shell http://localhost:4200
 - Click the profile navigation link to load the remote Microfrontend
 
