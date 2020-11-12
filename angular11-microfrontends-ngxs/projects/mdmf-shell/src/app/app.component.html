@@ -1,0 +1,10 @@
+<nav>
+  <ul class="nav-list">
+    <li class="nav-item"><a href="http://mellondev.net" target="_blank"><img width="148px" height="29px" src="../assets/md-shell-logo.png" /></a>
+    </li>
+    <li class="nav-item"><a routerLink="home">Home</a></li>
+    <li class="nav-item" *ngFor="let microfrontend of mfService.microfrontends"><a
+        [routerLink]="microfrontend.routePath">{{ microfrontend.displayName }}</a></li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>
