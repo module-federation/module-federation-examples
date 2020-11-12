@@ -6,29 +6,30 @@ import { UserState } from 'projects/mdmf-shared/src/lib/app-state/state/user.sta
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'list-user-shell',
-  templateUrl: './list-user-shell.component.html',
-  styleUrls: ['./list-user-shell.component.css']
+  selector: 'app-profile-list-user',
+  templateUrl: './list-user.component.html',
+  styleUrls: ['./list-user.component.css']
 })
-export class ListUserShellComponent implements OnInit {
-  
-  constructor(private store: Store) {}
-  ngOnInit() {}
+export class ListUserComponent implements OnInit {
 
   @Select(UserState.getUsers) users: Observable<User[]>;
 
+  constructor(private store: Store) {}
+
+  ngOnInit(): void {}
+
   /**
    * Handle the remove user when the "Remove User" button is clicked
-   * @param user
+   * @param user: the user info
    */
-  removeUser(user: User) {
+  removeUser(user: User): void {
     this.store.dispatch(new RemoveUser(user));
   }
 
   /**
    * Get the users for unit testing purposes
    */
-  getUsers() {
+  getUsers(): User[] {
     return this.store.selectSnapshot<User []>((state) => state.users.users);
   }
 

@@ -1,47 +1,47 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxsModule } from '@ngxs/store';
 import { ProfileComponent } from 'projects/mdmf-profile/src/app/profile/components/profile/profile.component';
 import { User } from 'projects/mdmf-shared/src/lib/app-state/models/User';
 import { UserState } from 'projects/mdmf-shared/src/lib/app-state/state/user.state';
-import { MdmfSharedModule } from 'projects/mdmf-shared/src/lib/mdmf-shared.module';
-import { ListUserShellComponent } from './list-user-shell.component';
+import { MdmfSharedModule } from 'projects/mdmf-shared/src/lib/modules/mdmf-shared.module';
+import { ListUserComponent } from './list-user.component';
 
-describe("ListUserShellComponent", () => {
-  let component: ListUserShellComponent;
-  let fixture: ComponentFixture<ListUserShellComponent>;
+describe('ListUserShellComponent', () => {
+  let component: ListUserComponent;
+  let fixture: ComponentFixture<ListUserComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
         imports: [
             ReactiveFormsModule,
-            FormsModule,            
+            FormsModule,
             MdmfSharedModule,
             NgxsModule.forRoot([UserState])
-          ],        
-      declarations: [ListUserShellComponent],
+          ],
+      declarations: [ListUserComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListUserShellComponent);
+    fixture = TestBed.createComponent(ListUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
 
-  it("should create the component", () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 
-  it("should render h2 element", () => {
-    const element = fixture.debugElement.nativeElement.querySelector("h2");
+  it('should render h2 element', () => {
+    const element = fixture.debugElement.nativeElement.querySelector('h2');
     expect(element.textContent).toContain(
-      "List users from the shared application state"
+      'List users from the shared application state'
     );
   });
 
-  it("should remove an User from the store", () => {
+  it('should remove an User from the store', () => {
     const user: User = {name: 'Mr. A', email: 'a@company.com'};
 
     // add User into the store
@@ -52,6 +52,6 @@ describe("ListUserShellComponent", () => {
     // remove the User from the store
     component.removeUser(user);
     expect(component.getUsers().length).toEqual(0);
-  }); 
+  });
 
 });

@@ -1,13 +1,13 @@
-import { APP_INITIALIZER, NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { RouterModule } from "@angular/router";
+import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 import { ShellModule } from './shell/shell.module';
-import { AppComponent } from "./app.component";
-import { APP_ROUTES } from "./app.routes";
-import { MicrofrontendService } from "./microfrontends/microfrontend.service";
+import { AppComponent } from './app.component';
+import { APP_ROUTES } from './app.routes';
+import { MicrofrontendService } from './microfrontends/microfrontend.service';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
-import { MdmfSharedModule } from 'projects/mdmf-shared/src/lib/mdmf-shared.module';
+import { MdmfSharedModule } from 'projects/mdmf-shared/src/lib/modules/mdmf-shared.module';
 import { NgxsModule } from '@ngxs/store';
 import { UserState } from 'projects/mdmf-shared/src/lib/app-state/state/user.state';
 
@@ -25,8 +25,7 @@ export function initializeApp(
     NgxsModule.forRoot([
       UserState
     ]),
-    ShellModule,
-    MdmfSharedModule, 
+    MdmfSharedModule,
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot()
   ],
@@ -38,7 +37,7 @@ export function initializeApp(
       multi: true,
       deps: [MicrofrontendService],
     },
-  ],  
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -8,14 +8,9 @@
     "build:shared": "ng build mdmf-shared",
     "build:shell": "ng build mdmf-shell --prod",
     "build:profile": "ng build mdmf-profile --prod",
-    "test:state": "ts-node node_modules/jasmine/bin/jasmine.js projects/mdmf-shared/src/lib/app-state/state/user.state.spec.ts",
-    "test:shared": "ng test mdmf-shared",
-    "test:profile": "ng test mdmf-profile",
-    "test:shell": "ng test mdmf-shell",    
-    "test:all": "ng test mdmf-shared & ng test mdmf-profile & ng test mdmf-shell",
-    "test-coverage": "ng test mdmf-shared --no-watch --code-coverage",
+    "test": "ng test mdmf-shared & ng test mdmf-profile & ng test mdmf-shell",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e mdmf-profile & ng e2e mdmf-shell"
   },
   "private": true,
   "resolutions": {

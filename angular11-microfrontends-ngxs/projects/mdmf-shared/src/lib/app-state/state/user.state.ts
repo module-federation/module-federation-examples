@@ -17,25 +17,25 @@ export class UserStateModel {
     }
 })
 @Injectable()
-export class UserState { 
+export class UserState {
 
     /**
      * Selector to get users from the application state
-     * @param state
+     * @param state: the application state
      */
     @Selector()
-    static getUsers(state: UserStateModel) {
+    static getUsers(state: UserStateModel): User[] {
         return state.users;
     }
 
     /**
      * Add an user to the application state
-     * 
-     * @param param0 
-     * @param param1 
+     *
+     * @param param0: state context
+     * @param param1: playload of AddUser action
      */
     @Action(AddUser)
-    add({getState, patchState, setState }: StateContext<UserStateModel>, { payload }: AddUser) {
+    add({getState, patchState, setState }: StateContext<UserStateModel>, { payload }: AddUser): void {
         const state = getState();
         if (state && state.users) {
             patchState({
@@ -46,22 +46,23 @@ export class UserState {
             setState({
                 users: [payload]
             });
-        }    
+        }
     }
 
     /**
-     * 
-     * @param param0 
-     * @param param1 
+     * Remove an user from the application state
+     *
+     * @param param0: state context
+     * @param param1: playload of AddUser action
      */
     @Action(RemoveUser)
-    remove({getState, setState }: StateContext<UserStateModel>, { payload }: AddUser) {
-        const state = getState();        
+    remove({getState, setState }: StateContext<UserStateModel>, { payload }: AddUser): void {
+        const state = getState();
         if (state && state.users) {
             setState({
                 users: state.users.filter(u => !(u.email === payload.email && u.name === payload.name))
             });
         }
-  
-    }    
+    }
+
 }

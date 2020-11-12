@@ -19,7 +19,15 @@ describe('MdmfSharedComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the shared component', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render h2 element', () => {
+    const element = fixture.debugElement.nativeElement.querySelector('h2');
+    expect(element.textContent).toContain(
+      'Component from shared module'
+    );
+  });
+
 });
