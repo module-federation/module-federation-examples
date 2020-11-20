@@ -38,7 +38,7 @@ module.exports = {
         app2: "app2@http://localhost:3002/remoteEntry.js",
       },
       shared: {
-        react: { singleton: true, reqiuiredVersion: deps.react },
+        react: { singleton: true, requiredVersion: deps.react },
         "react-dom": { singleton: true, requiredVersion: deps["react-dom"] },
       },
     }),
