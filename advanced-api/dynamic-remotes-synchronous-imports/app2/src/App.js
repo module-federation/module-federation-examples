@@ -1,16 +1,18 @@
-import { loadFromRemote } from "./loader";
 import Widget from "./Widget";
-import React, { lazy, Suspense } from "react";
+import React, { Suspense } from "react";
+import WidgetRemote from "app3/Widget";
 
-const WidgetRemote = lazy(async () => {
-  const component = await loadFromRemote({
-    component: "Widget", remote: {
-      url: "http://localhost:3003/remoteEntry.js",
-      name: "app3",
-    },
-  });
-  return component();
-});
+// Working example of loading component at runtime
+// import { loadFromRemote } from "./loader";
+// const WidgetRemote = React.lazy(async () => {
+//   const component = await loadFromRemote({
+//     component: "Widget", remote: {
+//       url: "http://localhost:3003/remoteEntry.js",
+//       name: "app3",
+//     },
+//   });
+//   return component();
+// });
 
 const App = () => (
   <div>

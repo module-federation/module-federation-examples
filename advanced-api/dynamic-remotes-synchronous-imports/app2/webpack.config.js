@@ -2,8 +2,13 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
 const deps = require("./package.json").dependencies;
+
 module.exports = {
-  entry: "./src/index",
+  entry: [
+    "./src/index",
+    // This seems necessary for module to even be available
+    "./src/loader.js"
+  ],
   mode: "development",
   target: "web",
   devServer: {
@@ -31,6 +36,12 @@ module.exports = {
       filename: "remoteEntry.js",
       exposes: {
         "./Widget": "./src/Widget",
+      },
+      remotes: {
+        app3: "internal ./src/loader.js"
+        // Use remote entry below to see working example with synchronous
+        // imports
+        // app3: "app3@//localhost:3003/remoteEntry.js"
       },
       shared: {
         moment: deps.moment,

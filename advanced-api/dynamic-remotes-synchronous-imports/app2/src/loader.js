@@ -86,3 +86,11 @@ export const loadFromRemote = ({
   };
 };
 
+const container = (async () => {
+  return await loadAndInitiateWebpackContainer({
+    name: "app3",
+    url: "http://localhost:3003/remoteEntry.js",
+  });
+})();
+
+export default container;
