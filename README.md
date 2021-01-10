@@ -39,7 +39,7 @@ For companies that require consultations, contact me on twitter or email (on git
 - [x] [Server-Side Rendering (simplified)](./server-side-render-only/README.md) &mdash; Less complex boilerplate.
 - [x] [Multi UI Framework Federation](./comprehensive-demo/README.md) &mdash; Multiple Apps in different technologies federated.
 - [x] [Dynamic System Host](./dynamic-system-host/README.md) &mdash; Swap between remotes at runtime.
-- [x] [Redux Reducer Injection](./redux-reducer-injection.md) &mdash; Dynamically inject reducers to host store at runtime.
+- [x] [Redux Reducer Injection](./redux-reducer-injection/README.md) &mdash; Dynamically inject reducers to host store at runtime.
 - [x] [Shared Routes](./shared-routes2) &mdash; Compose federated routes for a seamless user experience.
 - [x] [Nested Components](./nested/README.md) &mdash; Nested remote components.
 - [x] [Share Context Provider](./shared-context/README.md) &mdash; App1 and App2 with shared Context Provider.
