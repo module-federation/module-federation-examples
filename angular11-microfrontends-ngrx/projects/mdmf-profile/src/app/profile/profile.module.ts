@@ -14,7 +14,7 @@ import { ListUserComponent } from "./components/list-user/list-user.component";
   imports: [
     CommonModule,
     ProfileRoutingModule,
-    StoreDevtoolsModule,
+    // StoreDevtoolsModule,
     FormsModule,
     ReactiveFormsModule,
     MdmfSharedModule,
