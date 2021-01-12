@@ -11,6 +11,7 @@ import { MdmfSharedModule } from 'projects/mdmf-shared/src/lib/modules/mdmf-shar
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ROOT_REDUCERS, metaReducers } from 'projects/mdmf-shared/src/lib/app-state/reducer';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 export function initializeApp(
   mfService: MicrofrontendService
@@ -39,6 +40,8 @@ export function initializeApp(
       // In a production build you would want to disable the Store Devtools
       // logOnly: environment.production,
     }),
+    // Connects RouterModule with StoreModule, uses MinimalRouterStateSerializer by default
+    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [
     MicrofrontendService,

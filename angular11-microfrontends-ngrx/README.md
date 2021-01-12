@@ -45,7 +45,7 @@ The package.json contains the following section to override webpack to use versi
 
 The shell project located in: `projects/mdmf-shell` folder, its contains the shell application which is used to load remote Microfrontends using dynamic routing constructed from the Microfrontend array. The list of Microfrontends can be loaded from a config if required, but for the example it is just an hardcoded array.
 
-The share libraries and Angular library (`mdmf-shared`) are configured within the Module Federation config:
+The shared libraries and Angular library (`mdmf-shared`) are configured within the Module Federation config:
 
 ```js
   plugins: [
@@ -54,7 +54,8 @@ The share libraries and Angular library (`mdmf-shared`) are configured within th
         "@angular/core": { eager: true, singleton: true },
         "@angular/common": { eager: true, singleton: true },
         "@angular/router": { eager: true, singleton: true },
-        "@ngrx/store": {singleton: true, eager: true },
+        "@ngrx/store": { singleton: true, eager: true },
+        "@ngrx/router-store": { singleton: true, eager: true },
         "mdmf-shared": { singleton: true, eager: true },
       },
     }),
@@ -81,7 +82,8 @@ plugins: [
         "@angular/core": { singleton: true, eager: true },
         "@angular/common": { singleton: true, eager: true },
         "@angular/router": { singleton: true, eager: true },
-        "@ngrx/store": {singleton: true, eager: true },
+        "@ngrx/store": { singleton: true, eager: true },
+        "@ngrx/router-store": { singleton: true, eager: true },
         "mdmf-shared": { singleton: true, eager: true }
     },
   }),
@@ -96,7 +98,8 @@ plugins: [
   - the dependencies installation 
     ```bash
     yarn add @ngrx/store
-    ## for browswer devtools
+    yarn add @ngrx/router-store
+    ## for browser devtools
     yarn add --dev @ngrx/store-devtools
     ```
   - need to build the library first before running shell and profile projects 

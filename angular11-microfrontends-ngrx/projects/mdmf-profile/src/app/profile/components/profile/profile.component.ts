@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { UserActions } from 'projects/mdmf-shared/src/lib/app-state/actions';
 import { User } from 'projects/mdmf-shared/src/lib/app-state/models/User';
+import { selectUsers } from 'projects/mdmf-shared/src/lib/app-state/reducer';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -10,8 +12,9 @@ import { User } from 'projects/mdmf-shared/src/lib/app-state/models/User';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
+  users: Observable<User[]> = this.store.select(selectUsers);
   angForm: FormGroup;
-
+  
   ngOnInit(): void {}
 
   constructor(private fb: FormBuilder, private store: Store) {
@@ -35,13 +38,6 @@ export class ProfileComponent implements OnInit {
    */
   addUser(name: string, email: string): void {
     this.store.dispatch(UserActions.addUser({ user: { name, email }}));
-  }
-
-  /**
-   * Get the users for unit testing purposes
-   */
-  getUsers(): User[] {
-    return []; // this.store.selectSnapshot<User[]>((state) => state.users.users);
   }
 
 }

@@ -16,6 +16,7 @@ module.exports = {
         "@angular/common": { eager: true, singleton: true },
         "@angular/router": { eager: true, singleton: true },
         "@ngrx/store": { singleton: true, eager: true },
+        "@ngrx/router-store": { singleton: true, eager: true },
         "mdmf-shared": { singleton: true, eager: true },
       },
     }),

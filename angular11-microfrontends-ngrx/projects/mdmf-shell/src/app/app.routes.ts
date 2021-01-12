@@ -7,6 +7,6 @@ export const APP_ROUTES: Routes = [
   {
     path: 'home',
     loadChildren: () =>
-      import('./shell/shell-routing.module').then((m) => m.ProfileRoutingModule),
+      import('./shell/shell-routing.module').then((m) => m.ShellRoutingModule),
   },
 ];
