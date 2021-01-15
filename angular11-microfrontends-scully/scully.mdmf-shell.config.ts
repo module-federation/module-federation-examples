@@ -1,5 +1,6 @@
 import { httpGetJson, ScullyConfig } from "@scullyio/scully";
 
+/*
 const mainPages = Promise.resolve(["/home", "/profile", "/product"]);
 
 const productPages = httpGetJson(
@@ -10,6 +11,7 @@ const extraRoutesPromise = Promise.all([
   mainPages,
   productPages,
 ]).then((responses) => [].concat.apply([], responses));
+*/
 
 export const config: Promise<ScullyConfig> = (async () => {
   return {
@@ -18,11 +20,11 @@ export const config: Promise<ScullyConfig> = (async () => {
     outDir: "./dist/static",
     appPort: 4200,
     // the extraRoutes config traverses routes from external source (MF)
-    extraRoutes: extraRoutesPromise,
+    // extraRoutes: extraRoutesPromise, // this solution is also working
+    extraRoutes: ["/home", "/profile", "/product", "/product/detail/:productId"],
     // the routes config traverses the local source only (NO MF)
     routes: {
       // https://github.com/scullyio/scully/issues/1203
-      /*
       "/product/detail/:productId": {
         type: "json",
         productId: {
@@ -32,7 +34,6 @@ export const config: Promise<ScullyConfig> = (async () => {
           property: "id",
         },
       },
-      */
     },
   } as ScullyConfig;
 })();
