@@ -1,0 +1,24 @@
+<div class="container">
+  <a routerLink="/product">Back</a>
+
+  <div *ngIf="{ product: product$ | async } as vm">
+    <!-- loading -->
+    <div *ngIf="!vm.product">Loading...</div>
+
+    <!-- loaded -->
+    <div *ngIf="vm.product">
+      <h2>{{ vm.product.title }}</h2>
+      <h3>{{ vm.product.category }}</h3>
+      <h4>{{ vm.product.price }} CHF</h4>
+      <button class="add-to-cart" (click)="addToCart(vm.product)">
+        Add to cart
+      </button>
+      <p>
+        {{ vm.product.description }}
+      </p>
+      <p class="short">
+        <img [src]="vm.product.image" />
+      </p>
+    </div>
+  </div>
+</div>
