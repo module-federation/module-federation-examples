@@ -1,12 +1,13 @@
-import { Routes } from '@angular/router';
-import { HomeComponent } from './shell/components/home/home.component';
-
+import { Routes } from "@angular/router";
+import { HomeComponent } from "./shell/components/home/home.component";
 
 export const APP_ROUTES: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: "", redirectTo: "home", pathMatch: "full" },
   {
-    path: 'home',
+    path: "home",
     loadChildren: () =>
-      import('./shell/shell-routing.module').then((m) => m.ProfileRoutingModule),
+      import("./shell/shell-routing.module").then(
+        (m) => m.ProfileRoutingModule
+      ),
   },
 ];

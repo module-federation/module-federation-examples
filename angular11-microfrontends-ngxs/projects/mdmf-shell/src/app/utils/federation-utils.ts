@@ -18,7 +18,7 @@ function loadRemoteEntry(remoteEntry: string): Promise<void> {
       return;
     }
 
-    const script = document.createElement('script');
+    const script = document.createElement("script");
     script.src = remoteEntry;
 
     script.onerror = reject;
@@ -37,7 +37,7 @@ async function lookupExposedModule<T>(
   exposedModule: string
 ): Promise<T> {
   // Initializes the share scope. This fills it with known provided modules from this build and all remotes
-  await __webpack_init_sharing__('default');
+  await __webpack_init_sharing__("default");
   const container = window[remoteName] as Container; // or get the container somewhere else
   // Initialize the container, it may provide shared modules
 
