@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { MdmfSharedComponent } from './mdmf-shared.component';
+import { MdmfSharedComponent } from "./mdmf-shared.component";
 
-describe('MdmfSharedComponent', () => {
+describe("MdmfSharedComponent", () => {
   let component: MdmfSharedComponent;
   let fixture: ComponentFixture<MdmfSharedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MdmfSharedComponent ]
-    })
-    .compileComponents();
+      declarations: [MdmfSharedComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,15 +18,12 @@ describe('MdmfSharedComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create the shared component', () => {
+  it("should create the shared component", () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render h2 element', () => {
-    const element = fixture.debugElement.nativeElement.querySelector('h2');
-    expect(element.textContent).toContain(
-      'Component from shared module'
-    );
+  it("should render h2 element", () => {
+    const element = fixture.debugElement.nativeElement.querySelector("h2");
+    expect(element.textContent).toContain("Component from shared module");
   });
-
 });
