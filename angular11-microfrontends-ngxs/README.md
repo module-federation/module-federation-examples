@@ -76,14 +76,14 @@ plugins: [
         "./projects/mdmf-profile/src/app/profile/profile.module.ts",
     },
     shared: {
-        "@angular/core": { singleton: true, eager: true },
-        "@angular/common": { singleton: true, eager: true },
-        "@angular/router": { singleton: true, eager: true },
-        "@ngxs/store": {singleton: true, eager: true },
-        "mdmf-shared": { singleton: true, eager: true }
+      "@angular/core": { singleton: true, eager: true },
+      "@angular/common": { singleton: true, eager: true },
+      "@angular/router": { singleton: true, eager: true },
+      "@ngxs/store": { singleton: true, eager: true },
+      "mdmf-shared": { singleton: true, eager: true },
     },
   }),
-]
+];
 ```
 
 ### Shared library (mdmf-shared)
@@ -91,13 +91,14 @@ plugins: [
 - the shared library is a typical Angular library created by `ng generate library mdmf-shared`
 
 - it uses state management library `ngxs`
-  - the dependencies installation 
+
+  - the dependencies installation
     ```bash
     yarn add @ngxs/store
     ## for loggin and browswer devtools
     yarn add --dev @ngxs/logger-plugin @ngxs/devtools-plugin
     ```
-  - need to build the library first before running shell and profile projects 
+  - need to build the library first before running shell and profile projects
     ```bash
     ng build mdmf-shared
     ```

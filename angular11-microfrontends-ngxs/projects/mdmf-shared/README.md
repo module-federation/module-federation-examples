@@ -5,7 +5,8 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 ## Code scaffolding
 
 Run `ng generate component component-name --project mdmf-shared` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project mdmf-shared`.
-> Note: Don't forget to add `--project mdmf-shared` or else it will be added to the default project in your `angular.json` file. 
+
+> Note: Don't forget to add `--project mdmf-shared` or else it will be added to the default project in your `angular.json` file.
 
 ## Build
 
