@@ -7,15 +7,15 @@ export default function Widget() {
       style={{
         borderRadius: "4px",
         padding: "2em",
-        backgroundColor: "red",
+        backgroundColor: "purple",
         color: "white",
       }}
     >
       <h2>App 2 Widget</h2>
       <p>
-        Moment shouldn't download twice, the host has no moment.js <br />{" "}
-        {moment().format("MMMM Do YYYY, h:mm:ss a")}
+        Using <strong>momentjs</strong> to format the date
       </p>
+      <p>{moment().format("MMMM Do YYYY, h:mm:ss a")}</p>
     </div>
   );
 }

@@ -1,20 +1,18 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { ModuleFederationPlugin } = require("webpack").container;
+const ModuleFederationPlugin = require("webpack").container
+  .ModuleFederationPlugin;
 const path = require("path");
+const { app2Module } = require("../moduleConfig");
 const deps = require("./package.json").dependencies;
 
 module.exports = {
-  entry: [
-    "./src/index",
-    // This seems necessary for module to even be available
-    "./src/loader.js"
-  ],
+  entry: "./src/index",
   mode: "development",
-  target: "web",
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    port: 3002,
+    port: app2Module.port,
   },
+  target: "web",
   output: {
     publicPath: "auto",
   },
@@ -32,19 +30,17 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "app2",
-      filename: "remoteEntry.js",
+      name: app2Module.name,
+      library: { type: "var", name: app2Module.name },
+      filename: app2Module.fileName,
       exposes: {
         "./Widget": "./src/Widget",
       },
-      remotes: {
-        app3: "internal ./src/loader.js"
-        // Use remote entry below to see working example with synchronous
-        // imports
-        // app3: "app3@//localhost:3003/remoteEntry.js"
-      },
+      // adds react as shared module
+      // version is inferred from package.json
+      // there is no version check for the required version
+      // so it will always use the higher version found
       shared: {
-        moment: deps.moment,
         react: {
           requiredVersion: deps.react,
           import: "react", // the "react" package will be used a provided and fallback module
@@ -56,6 +52,10 @@ module.exports = {
           requiredVersion: deps["react-dom"],
           singleton: true, // only a single version of the shared module is allowed
         },
+        // adds moment as shared module
+        // version is inferred from package.json
+        // it will use the highest moment version that is >= 2.24 and < 3
+        moment: deps.moment,
       },
     }),
     new HtmlWebpackPlugin({

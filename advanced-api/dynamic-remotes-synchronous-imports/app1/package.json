@@ -1,5 +1,5 @@
 {
-  "name": "@dynamic-remotes/app3",
+  "name": "@dynamic-remotes/app2",
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
@@ -15,14 +15,12 @@
   "scripts": {
     "start": "webpack-cli serve",
     "build": "webpack --mode production",
-    "serve": "serve dist -p 3003",
+    "serve": "serve dist -p 3002",
     "clean": "rm -rf dist"
   },
   "dependencies": {
     "moment": "^2.24.0",
     "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "react-redux": "^7.2.0",
-    "redux": "^4.0.5"
+    "react-dom": "^16.13.0"
   }
 }

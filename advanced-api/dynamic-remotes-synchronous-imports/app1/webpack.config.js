@@ -1,16 +1,20 @@
+const ExternalTemplateRemotesPlugin = require("./ExternalTemplateRemotesPlugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ModuleFederationPlugin = require("webpack").container
-  .ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
 const deps = require("./package.json").dependencies;
+const { app2Module, app1Module } = require("../moduleConfig");
+
 module.exports = {
-  entry: "./src/index",
+  entry: [
+    "./src/index",
+  ],
   mode: "development",
+  target: "web",
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    port: 3003,
+    port: app1Module.port,
   },
-  target: "web",
   output: {
     publicPath: "auto",
   },
@@ -28,17 +32,13 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "app3",
-      library: { type: "var", name: "app3" },
-      filename: "remoteEntry.js",
-      exposes: {
-        "./Widget": "./src/Widget",
+      name: app1Module.name,
+      filename: app1Module.fileName,
+      remotes: {
+        app2: app2Module.federationConfig,
       },
-      // adds react as shared module
-      // version is inferred from package.json
-      // there is no version check for the required version
-      // so it will always use the higher version found
       shared: {
+        moment: deps.moment,
         react: {
           requiredVersion: deps.react,
           import: "react", // the "react" package will be used a provided and fallback module
@@ -50,12 +50,9 @@ module.exports = {
           requiredVersion: deps["react-dom"],
           singleton: true, // only a single version of the shared module is allowed
         },
-        // adds moment as shared module
-        // version is inferred from package.json
-        // it will use the highest moment version that is >= 2.24 and < 3
-        moment: deps.moment,
       },
     }),
+    new ExternalTemplateRemotesPlugin(),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
