@@ -38,7 +38,7 @@ module.exports = {
         app1: "app1@http://localhost:3001/remoteEntry.js",
       },
       exposes: {
-        Button: "./src/Button",
+        "./Button": "./src/Button",
       },
       shared: sharedReduce,
     }),

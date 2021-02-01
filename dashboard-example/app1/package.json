@@ -14,8 +14,8 @@
     "@module-federation/dashboard-plugin": "2.1.0"
   },
   "scripts": {
-    "start": "node --inspect ../../node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "build": "node ../../node_modules/webpack/bin/webpack.js --mode production",
+    "start": "webpack-cli serve",
+    "build": "webpack --mode production",
     "serve": "serve dist -p 3001",
     "clean": "rm -rf dist"
   },
