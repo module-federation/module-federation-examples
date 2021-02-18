@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { HomeComponent } from './shell/components/home/home.component';
+import { HomeComponent } from "./shell/components/home/home.component";
 import { loadRemoteModule } from "./utils/federation-utils";
 
 const routes: Routes = [

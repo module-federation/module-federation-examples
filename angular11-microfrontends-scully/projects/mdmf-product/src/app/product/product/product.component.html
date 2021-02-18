@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>Product (Microfrontend)</h2>
+  <p>
+    This product component is being remotely loaded into the application using
+    Module Federation, angular is shared so the download is minimal for the
+    frontend
+  </p>
+
+  <ng-container *ngIf="{ products: products$ | async } as vm">
+    <!-- loading -->
+    <div *ngIf="!vm.products">Loading...</div>
+
+    <!-- loaded -->
+    <div *ngFor="let product of vm.products">
+      {{ product.title }} ({{ product.price }} CHF)
+      <a [routerLink]="['/product/detail', product.id]">>> Detail</a>
+    </div>
+  </ng-container>
+</div>
