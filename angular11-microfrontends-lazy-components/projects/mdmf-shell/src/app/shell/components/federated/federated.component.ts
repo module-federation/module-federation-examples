@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, Injector, OnInit, ViewChild, ViewContainerRef } from "@angular/core";
+import { Component, Input, ComponentFactoryResolver, Injector, OnInit, ViewChild, ViewContainerRef } from "@angular/core";
 import { loadRemoteModule } from "../../../utils/federation-utils";
 
 @Component({
@@ -8,14 +8,20 @@ import { loadRemoteModule } from "../../../utils/federation-utils";
 })
 export class FederatedComponent implements OnInit {
   @ViewChild('federatedComponent', { read: ViewContainerRef }) federatedComponent: ViewContainerRef;
+  @Input() remoteEntry: string;
+  @Input() remoteName: string;
+  @Input() exposedModule: string;
+  @Input() componentName: string;
+
   constructor(private injector: Injector, private cfr: ComponentFactoryResolver) { }
   ngOnInit(): void {
     loadRemoteModule({
-      remoteEntry: "http://localhost:4201/remoteEntry.js",
-      remoteName: "profile",
-      exposedModule: "ProfileModule",
+      remoteEntry: this.remoteEntry,
+      remoteName: this.remoteName,
+      exposedModule: this.exposedModule,
     }).then(profileListUserComponent => {
-      const componentFactory = this.cfr.resolveComponentFactory(profileListUserComponent.ProfileModule.ɵmod.exports[0]);
+      console.log(profileListUserComponent.ProfileModule.ɵmod)
+      const componentFactory = this.cfr.resolveComponentFactory(profileListUserComponent.ProfileModule.ɵmod.exports.find((e) => e.name === this.componentName));
       const { instance } = this.federatedComponent.createComponent(componentFactory, null, this.injector);
     });
   }
