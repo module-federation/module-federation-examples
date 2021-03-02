@@ -20,7 +20,6 @@ export class FederatedComponent implements OnInit {
       remoteName: this.remoteName,
       exposedModule: this.exposedModule,
     }).then(profileListUserComponent => {
-      console.log(profileListUserComponent.ProfileModule.ɵmod)
       const componentFactory = this.cfr.resolveComponentFactory(profileListUserComponent.ProfileModule.ɵmod.exports.find((e) => e.name === this.componentName));
       const { instance } = this.federatedComponent.createComponent(componentFactory, null, this.injector);
     });
