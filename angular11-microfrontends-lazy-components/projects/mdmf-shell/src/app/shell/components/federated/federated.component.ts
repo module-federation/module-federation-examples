@@ -1,4 +1,4 @@
-import { Component, Input, ComponentFactoryResolver, Injector, OnInit, ViewChild, ViewContainerRef } from "@angular/core";
+import { Component, Input, ComponentFactoryResolver, Injector, OnInit, ViewChild, ViewContainerRef, ɵcreateInjector } from "@angular/core";
 import { loadRemoteModule } from "../../../utils/federation-utils";
 
 @Component({
@@ -19,9 +19,9 @@ export class FederatedComponent implements OnInit {
       remoteEntry: this.remoteEntry,
       remoteName: this.remoteName,
       exposedModule: this.exposedModule,
-    }).then(profileListUserComponent => {
-      const componentFactory = this.cfr.resolveComponentFactory(profileListUserComponent.ProfileModule.ɵmod.exports.find((e) => e.name === this.componentName));
-      const { instance } = this.federatedComponent.createComponent(componentFactory, null, this.injector);
+    }).then(federated => {
+      const componentFactory = this.cfr.resolveComponentFactory(federated[this.exposedModule].ɵmod.exports.find((e) => e.name === this.componentName));
+      const { instance } = this.federatedComponent.createComponent(componentFactory, null, ɵcreateInjector(federated[this.exposedModule], this.injector));
     });
   }
 }
