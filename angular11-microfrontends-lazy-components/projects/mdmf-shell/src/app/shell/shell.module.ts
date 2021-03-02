@@ -5,10 +5,11 @@ import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ProfileRoutingModule } from "./shell-routing.module";
 import { HomeComponent } from "./components/home/home.component";
+import { FederatedComponent } from "./components/federated/federated.component";
 import { MdmfSharedModule } from "projects/mdmf-shared/src/lib/modules/mdmf-shared.module";
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, FederatedComponent],
   imports: [
     CommonModule,
     ProfileRoutingModule,
