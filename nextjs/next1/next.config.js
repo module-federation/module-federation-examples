@@ -5,6 +5,7 @@ const {
 } = require("@module-federation/nextjs-mf");
 
 module.exports = {
+  future: { webpack5: true },
   webpack: (config, options) => {
     const { buildId, dev, isServer, defaultLoaders, webpack } = options;
     const mfConf = {
