@@ -1,0 +1,16 @@
+{
+    "private": true,
+    "scripts": {
+        "start": "lerna run --scope @mf-env/* --parallel start",
+        "build": "lerna run --scope @mf-env/* build",
+        "serve": "lerna run --scope @mf-env/* --parallel serve",
+        "clean": "lerna run --scope @mf-env/* --parallel clean",
+        "docker:build": "lerna run --scope @mf-env/* --parallel docker:build",
+        "docker:run": "lerna run --scope @mf-env/* --parallel docker:run",
+        "docker:rm": "lerna run --scope @mf-env/* --parallel docker:rm"
+    },
+    "devDependencies": {
+        "lerna": "^4.0.0"
+    },
+    "name": "mf-env"
+}
