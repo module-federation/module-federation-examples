@@ -1,8 +1,6 @@
 const ModuleFederationPlugin = require("webpack").container
   .ModuleFederationPlugin;
 
-const deps = require("./package.json").dependencies;
-
 module.exports = {
   publicPath: "http://localhost:8080/",
   configureWebpack: {
