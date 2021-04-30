@@ -1,0 +1,56 @@
+{
+  "name": "ng-microfrontends",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start:shell": "ng serve",
+    "start:profile": "ng serve mdmf-profile",
+    "build:shell": "ng build mdmf-shell --prod",
+    "build:profile": "ng build mdmf-profile --prod",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+  "private": true,
+  "resolutions": {
+    "webpack": "5.33.0"
+  },
+  "dependencies": {
+    "@angular/animations": "11.2.12",
+    "@angular/cdk": "8.2.3",
+    "@angular/material": "8.2.3",
+    "@angular/common": "11.2.12",
+    "@angular/compiler": "11.2.12",
+    "@angular/core": "11.2.12",
+    "@angular/forms": "11.2.12",
+    "@angular/platform-browser": "11.2.12",
+    "@angular/platform-browser-dynamic": "11.2.12",
+    "@angular/router": "11.2.12",
+    "hammerjs": "^2.0.8",
+    "rxjs": "~6.6.0",
+    "tslib": "^2.2.0",
+    "zone.js": "~0.11.4"
+  },
+  "devDependencies": {
+    "@angular-builders/custom-webpack": "10.0.1",
+    "@angular-devkit/build-angular": "0.1102.11",
+    "@angular/cli": "11.2.11",
+    "@angular/compiler-cli": "11.2.12",
+    "@types/jasmine": "3.6.3",
+    "@types/jasminewd2": "2.0.8",
+    "@types/node": "12.19.15",
+    "codelyzer": "6.0.1",
+    "jasmine-core": "3.6.0",
+    "jasmine-spec-reporter": "5.0.2",
+    "karma": "5.2.3",
+    "karma-chrome-launcher": "3.1.0",
+    "karma-coverage": "2.0.3",
+    "karma-jasmine": "4.0.1",
+    "karma-jasmine-html-reporter": "1.5.4",
+    "ngx-build-plus": "10.1.1",
+    "protractor": "7.0.0",
+    "ts-node": "9.1.1",
+    "tslint": "6.1.3",
+    "typescript": "4.0.3"
+  }
+}
