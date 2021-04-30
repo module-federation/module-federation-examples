@@ -22,6 +22,8 @@ module.exports = {
         "@angular/core": { eager: true, singleton: true },
         "@angular/common": { eager: true, singleton: true },
         "@angular/router": { eager: true, singleton: true },
+        "@angular/cdk": { eager: true, singleton: true },
+        "@angular/material": { eager: true, singleton: true }
       },
     }),
   ],
