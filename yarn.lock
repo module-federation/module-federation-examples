@@ -10927,7 +10927,7 @@ html-webpack-plugin@4.5.1, html-webpack-plugin@^4.5.0:
     tapable "^1.1.3"
     util.promisify "1.0.0"
 
-html-webpack-plugin@^5.1.0:
+html-webpack-plugin@^5.1.0, html-webpack-plugin@^5.3.1:
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-5.3.1.tgz#8797327548e3de438e3494e0c6d06f181a7f20d1"
   integrity sha512-rZsVvPXUYFyME0cuGkyOHfx9hmkFa4pWfxY/mdY38PsBEaVNsRoA+Id+8z6DBDgyv3zaw6XQszdF8HLwfQvcdQ==
@@ -18685,13 +18685,19 @@ svelte-dev-helper@^1.1.9:
   resolved "https://registry.yarnpkg.com/svelte-dev-helper/-/svelte-dev-helper-1.1.9.tgz#7d187db5c6cdbbd64d75a32f91b8998bde3273c3"
   integrity sha1-fRh9tcbNu9ZNdaMvkbiZi94yc8M=
 
-svelte-loader@2.13.6:
-  version "2.13.6"
-  resolved "https://registry.yarnpkg.com/svelte-loader/-/svelte-loader-2.13.6.tgz#3d5efd5886c2bab034606d5af0cce659da3ee555"
-  integrity sha512-7uf7ZQdPAl+lwb1ldUYJFY/raZRUCuaNx7lMJ+F16jrVwN1+c35C2pBMGIY0mCqdKm5sm45jqELJJLGM3UG9Pw==
+svelte-hmr@^0.12.3:
+  version "0.12.9"
+  resolved "https://registry.yarnpkg.com/svelte-hmr/-/svelte-hmr-0.12.9.tgz#e323b71062a59bf4b73d2d5a7cc80dba256217e1"
+  integrity sha512-SGE7Odznj4dqZtUVIWcoPCvZ9gHImxVIIjrz+O3DDSi0j4OaSLim6MRF4UdhlBKeW3glSRc+tXNSKYvM5x+Dyw==
+
+svelte-loader@3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/svelte-loader/-/svelte-loader-3.1.1.tgz#cb03541214b164edee58e4c98d4303f76df9013d"
+  integrity sha512-JU7qo1yBdDeJ3Aw23WoGKXrVaSn3KeWkM9KMl43HuMVFrsPNHIzZHTsf1ARJX/Abm3jeqNjigaO35RVbixhmWg==
   dependencies:
-    loader-utils "^1.1.0"
+    loader-utils "^2.0.0"
     svelte-dev-helper "^1.1.9"
+    svelte-hmr "^0.12.3"
 
 svelte@3.32.0:
   version "3.32.0"
