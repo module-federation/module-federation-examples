@@ -22,7 +22,6 @@ const app2Module = {
   },
 };
 
-
 module.exports = {
   app1Module,
   app2Module,

@@ -11,7 +11,10 @@ module.exports = {
     const mfConf = {
       mergeRuntime: true, //experimental
       name: "next1",
-      library: { type: config.output.libraryTarget, name: "next1" },
+      library: {
+        type: config.output.libraryTarget,
+        name: "next1",
+      },
       filename: "static/runtime/remoteEntry.js",
       exposes: {
         "./exposedTitle": "./components/exposedTitle",
@@ -20,14 +23,16 @@ module.exports = {
         next2: isServer
           ? path.resolve(
               __dirname,
-              "../next2/.next/server/static/runtime/remoteEntry.js"
+              "../next2/.next/server/chunks/static/runtime/remoteEntry.js"
             )
           : "next2",
       },
     };
+    config.cache = false;
     if (!isServer) {
       config.output.publicPath = "http://localhost:3000/_next/";
     }
+
     withModuleFederation(config, options, mfConf);
     return config;
   },

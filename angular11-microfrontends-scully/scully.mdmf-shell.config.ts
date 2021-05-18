@@ -21,7 +21,12 @@ export const config: Promise<ScullyConfig> = (async () => {
     appPort: 4200,
     // the extraRoutes config traverses routes from external source (MF)
     // extraRoutes: extraRoutesPromise, // this solution is also working
-    extraRoutes: ["/home", "/profile", "/product", "/product/detail/:productId"],
+    extraRoutes: [
+      "/home",
+      "/profile",
+      "/product",
+      "/product/detail/:productId",
+    ],
     // the routes config traverses the local source only (NO MF)
     routes: {
       // https://github.com/scullyio/scully/issues/1203

@@ -11,10 +11,7 @@ class MyDocument extends Document {
     return (
       <Html>
         {sharePatch()}
-        <script
-          async
-          src="http://localhost:3000/_next/static/remoteEntryMerged.js"
-        />
+        <script src="http://localhost:3000/_next/static/runtime/remoteEntry.js" />
         <Head />
         <body>
           <Main />

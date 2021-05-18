@@ -1,30 +1,30 @@
 {
-  "name": "@mf-env/remote",
-  "version": "0.0.0",
-  "private": true,
-  "devDependencies": {
-    "@babel/core": "7.12.3",
-    "@babel/preset-react": "7.12.1",
-    "babel-loader": "8.1.0",
-    "html-webpack-plugin": "4.5.0",
-    "serve": "11.3.2",
-    "webpack": "5.36.2",
-    "webpack-cli": "4.7.0",
-    "webpack-dev-server": "3.11.2"
-  },
-  "scripts": {
-    "start": "chmod +x ./env.sh && ./env.sh && cp env-config.json ./public/ && webpack-cli serve",
-    "build": "webpack --mode production",
-    "serve": "serve dist -p 3001",
-    "clean": "rm -rf dist",
-    "docker:build": "docker build . -t csr-env/remote:0.0.0",
-    "docker:run": "docker run -it --name csr-env-remote -p 3001:80 -d -e API_URL=https://remote.com/api csr-env/remote:0.0.0",
-    "docker:rm": "docker rm -f csr-env-remote"
-  },
-  "dependencies": {
-    "copy-webpack-plugin": "^8.1.0",
-    "moment": "^2.24.0",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0"
-  }
+    "name": "@mf-env/remote",
+    "version": "0.0.0",
+    "private": true,
+    "devDependencies": {
+        "@babel/core": "7.12.3",
+        "@babel/preset-react": "7.12.1",
+        "babel-loader": "8.1.0",
+        "html-webpack-plugin": "4.5.0",
+        "serve": "11.3.2",
+        "webpack": "5.36.2",
+        "webpack-cli": "4.7.0",
+        "webpack-dev-server": "3.11.2"
+    },
+    "scripts": {
+        "start": "chmod +x ./env.sh && ./env.sh && cp env-config.json ./public/ && webpack-cli serve",
+        "build": "webpack --mode production",
+        "serve": "serve dist -p 3001",
+        "clean": "rm -rf dist",
+        "docker:build": "docker build . -t csr-env/remote:0.0.0",
+        "docker:run": "docker run -it --name csr-env-remote -p 3001:80 -d -e API_URL=https://remote.com/api csr-env/remote:0.0.0",
+        "docker:rm": "docker rm -f csr-env-remote"
+    },
+    "dependencies": {
+        "copy-webpack-plugin": "^8.1.0",
+        "moment": "^2.24.0",
+        "react": "^16.13.0",
+        "react-dom": "^16.13.0"
+    }
 }
