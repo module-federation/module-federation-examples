@@ -33,7 +33,7 @@ const folders = [
   "nextjs-bi-directional",
   "vue3-demo",
   "nextjs",
-  "vue-cli"
+  "vue-cli",
 ];
 
 function spawnAsPromise(cmd, args, options) {
