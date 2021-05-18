@@ -51,6 +51,52 @@ module.exports = {
         },
       ],
     }),
+    new ModuleFederationPlugin({
+      name: "header",
+      filename: "header.js",
+      exposes: {
+        "./start": "./src/header.appjsx",
+      },
+      // sharing code based on the installed version, to allow for multiple vendors with different versions
+      shared: [
+        {
+          ...deps,
+          react: {
+            // eager: true,
+            singleton: true,
+            requiredVersion: deps.react,
+          },
+          "react-dom": {
+            // eager: true,
+            singleton: true,
+            requiredVersion: deps["react-dom"],
+          },
+        },
+      ],
+    }),
+    new ModuleFederationPlugin({
+      name: "footer",
+      filename: "footer.js",
+      exposes: {
+        "./start": "./src/components/app.jsx",
+      },
+      // sharing code based on the installed version, to allow for multiple vendors with different versions
+      shared: [
+        {
+          ...deps,
+          react: {
+            // eager: true,
+            singleton: true,
+            requiredVersion: deps.react,
+          },
+          "react-dom": {
+            // eager: true,
+            singleton: true,
+            requiredVersion: deps["react-dom"],
+          },
+        },
+      ],
+    }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),

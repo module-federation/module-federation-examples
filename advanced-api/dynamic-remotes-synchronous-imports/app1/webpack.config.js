@@ -6,9 +6,7 @@ const deps = require("./package.json").dependencies;
 const { app2Module, app1Module } = require("../moduleConfig");
 
 module.exports = {
-  entry: [
-    "./src/index",
-  ],
+  entry: ["./src/index"],
   mode: "development",
   target: "web",
   devServer: {

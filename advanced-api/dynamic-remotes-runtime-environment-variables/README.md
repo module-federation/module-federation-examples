@@ -8,7 +8,6 @@ This example shows how to implement runtime environment variables when using dyn
 The runtime environment variables when using Client-Side-Rendering solution was inspired by this article:
 [https://www.freecodecamp.org/news/how-to-implement-runtime-environment-variables-with-create-react-app-docker-and-nginx-7f9d42a91d70/]
 
-
 # Running Demo
 
 Run `yarn start`. This will build and serve both `host` and `remote` on ports 3000 and 3001 respectively.

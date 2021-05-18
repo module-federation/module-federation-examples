@@ -47,7 +47,7 @@ module.exports = {
 };
 
 function getRemoteEntryUrl(port) {
-  const { CODESANDBOX_SSE, HOSTNAME = '' } = process.env;
+  const { CODESANDBOX_SSE, HOSTNAME = "" } = process.env;
 
   // Check if the example is running on codesandbox
   // https://codesandbox.io/docs/environment
@@ -55,8 +55,8 @@ function getRemoteEntryUrl(port) {
     return `//localhost:${port}/remoteEntry.js`;
   }
 
-  const parts = HOSTNAME.split('-')
-  const codesandboxId = parts[parts.length - 1]
+  const parts = HOSTNAME.split("-");
+  const codesandboxId = parts[parts.length - 1];
 
   return `//${codesandboxId}-${port}.sse.codesandbox.io/remoteEntry.js`;
 }

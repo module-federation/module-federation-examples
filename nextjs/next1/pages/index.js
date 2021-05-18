@@ -1,6 +1,8 @@
 import React from "react";
 import Head from "next/head";
-const Nav = (await import("../components/nav")).default;
+const Nav = process.browser
+  ? (await import("../components/nav")).default
+  : () => null;
 const _ = await import("lodash");
 console.log("lodash is shared", _);
 const Home = () => (

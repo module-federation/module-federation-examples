@@ -21,6 +21,6 @@ import { ListUserComponent } from "./components/list-user/list-user.component";
     ReactiveFormsModule,
     MdmfSharedModule,
   ],
-  exports: [ListUserComponent]
+  exports: [ListUserComponent],
 })
 export class ProfileModule {}
