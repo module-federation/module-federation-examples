@@ -1,5 +1,6 @@
 # react-webpack-MF
-[English](./READEME.md)
+[English](./README.md)
+
 一个相对完整的应用`Webpack Module Federation`的React项目案例
 # 目录结构
 ## lib-app
