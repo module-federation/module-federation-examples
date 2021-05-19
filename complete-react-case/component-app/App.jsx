@@ -30,7 +30,7 @@ export default class App extends React.Component{
       <Button/>
       <br/>
       
-      <button onClick={this.handleClick}>打开对话框</button>
+      <button onClick={this.handleClick}>click to open dialog</button>
       <Dialog switchVisible={this.HanldeSwitchVisible} visible={this.state.dialogVisible}/>
     </div>)
   }
