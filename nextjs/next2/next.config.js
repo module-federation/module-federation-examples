@@ -27,7 +27,7 @@ module.exports = {
       exposes: {
         "./nav": "./components/nav",
       },
-      shared: ["lodash"],
+      shared: [],
     };
     config.cache = false;
     withModuleFederation(config, options, mfConf);
