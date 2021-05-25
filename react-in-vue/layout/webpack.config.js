@@ -18,6 +18,9 @@ module.exports = (env = {}) => ({
   resolve: {
     extensions: [".vue", ".jsx", ".js", ".json"],
   },
+  experiments: {
+    topLevelAwait: true
+  },
   module: {
     rules: [
         {

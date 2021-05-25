@@ -7,22 +7,28 @@
     <img src="./logo.png" width="30" />
     <h1>Layout App 1</h1>
     <div class="remote-component">
-      <!-- remote-component REMOTE -->
       <div class="app-label">
         #remote-component [REMOTE]
       </div>
-    </div>
-    <Button />
+    </div>  
+      <!-- remote-component REMOTE -->
+    <div v-html="button"></div>
   </div>
 </template>
 
 <script>
-import Button from './Button'
-console.log('xx n')
+import ReactDOMServer from "react-dom/server";
+const Button = (await import('home/Button')).default
+
 export default {
-    components: {
-        Button
-    },
+data() {
+    return {
+        button: ReactDOMServer.renderToString(Button({
+            caption: 'React Button in vue'
+        }))
+    };
+  },
+    
 };
 </script>
 
