@@ -9,7 +9,7 @@ Please follow instructions here to boot and run the dashboard: https://www.npmjs
 
 # Running Demo
 
-Run the Dashboard Docker container as per [instructions](https://www.npmjs.com/package/@module-federation/dashboard-plugin).
+Run the Dashboard Docker container as per [instructions](https://www.npmjs.com/package/@module-federation/dashboard-plugin), the docker image and instructions can be found at [hub.docker](https://hub.docker.com/r/scriptedalchemy/mf-dashboard)
 
 Then run `yarn build` and reload the dashboard to see the end result
 
