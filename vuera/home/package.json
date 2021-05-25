@@ -1,0 +1,25 @@
+{
+  "name": "@vuera/home",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "7.14.3",
+    "@babel/preset-react": "7.13.13",
+    "babel-loader": "8.2.2",
+    "html-webpack-plugin": "5.3.1",
+    "serve": "11.3.2",
+    "webpack": "5.36.2",
+    "webpack-cli": "4.7.0",
+    "webpack-dev-server": "3.11.2"
+  },
+  "scripts": {
+    "start": "webpack-cli serve",
+    "build": "webpack --mode production",
+    "serve": "serve dist -p 3002",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "@vuera/layout",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "webpack-cli serve",
+    "serve": "serve dist -p 3001",
+    "build": "webpack --mode production",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@babel/core": "^7.11.0",
+    "@vue/compiler-sfc": "^3.0.11",
+    "babel-loader": "^8.1.0",
+    "serve": "^11.3.2",
+    "vue": "^3.0.11",
+    "@cloudbees/vuera": "^0.2.7",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  },
+  "devDependencies": {
+    "css-loader": "3.6.0",
+    "file-loader": "6.2.0",
+    "html-webpack-plugin": "5.3.1",
+    "mini-css-extract-plugin": "1.6.0",
+    "url-loader": "4.1.1",
+    "vue-loader": "16.2.0",
+    "webpack": "5.36.2",
+    "webpack-cli": "4.7.0",
+    "webpack-dev-server": "3.11.2"
+  }
+}

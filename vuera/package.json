@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "lerna run --scope @vuera/* --parallel start",
+    "build": "lerna run --scope @vuera/* build",
+    "serve": "lerna run --scope @vuera/* --parallel serve",
+    "clean": "lerna run --scope @vuera/* --parallel clean"
+  },
+  "devDependencies": {
+    "lerna": "3.22.1"
+  }
+}
