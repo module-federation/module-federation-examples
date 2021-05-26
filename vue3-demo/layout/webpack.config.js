@@ -12,10 +12,6 @@ module.exports = (env = {}) => ({
   },
   target: "web",
   entry: path.resolve(__dirname, "./src/main.js"),
-  // output: {
-  //   path: path.resolve(__dirname, './dist'),
-  //   publicPath: '/dist/'
-  // },
   output: {
     publicPath: "auto",
   },
