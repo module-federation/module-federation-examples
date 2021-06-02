@@ -3,9 +3,9 @@ import Head from "next/head";
 import LoadNextMF from "../components/LoadNextMF";
 import Nav from "../components/Nav";
 
-const Home = () => {
+export default function Home() {
   return (
-    <div>
+    <>
       <Head>
         <title>Home</title>
         <link rel="icon" href="/favicon.ico" />
@@ -16,12 +16,6 @@ const Home = () => {
         scope="reception"
         module="./App"
       />
-    </div>
+    </>
   );
-};
-
-Home.getInitialProps = async (ctx) => {
-  return {};
-};
-
-export default Home;
+}

@@ -3,25 +3,33 @@ import Head from "next/head";
 import LoadNextMF from "../components/LoadNextMF";
 import Nav from "../components/Nav";
 
-const Home = () => {
+export default function Chat({ featureFlags = {} }) {
   return (
-    <div>
+    <>
       <Head>
         <title>Chat App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Nav />
-      <LoadNextMF
-        url="http://localhost:8888/remoteEntry.js"
-        scope="chat"
-        module="./App"
-      />
-    </div>
+      {featureFlags.disableChat ? (
+        <p>Chat is disabled</p>
+      ) : (
+        <LoadNextMF
+          url="http://localhost:8888/remoteEntry.js"
+          scope="chat"
+          module="./App"
+        />
+      )}
+    </>
   );
-};
+}
 
-Home.getInitialProps = async (ctx) => {
-  return {};
-};
-
-export default Home;
+export async function getServerSideProps() {
+  return {
+    props: {
+      featureFlags: {
+        disableChat: process.env.DISABLE_CHAT === "true", // this would be fetched from an API
+      },
+    },
+  };
+}
