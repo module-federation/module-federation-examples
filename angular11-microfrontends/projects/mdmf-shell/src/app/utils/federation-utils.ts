@@ -12,7 +12,7 @@ declare const __webpack_share_scopes__: { default: Scope };
 const moduleMap = {};
 
 function loadRemoteEntry(remoteEntry: string): Promise<void> {
-  return new Promise<any>((resolve, reject) => {
+  return new Promise<void>((resolve, reject) => {
     if (moduleMap[remoteEntry]) {
       resolve();
       return;
