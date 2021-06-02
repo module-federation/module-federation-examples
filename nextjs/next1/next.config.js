@@ -19,6 +19,7 @@ module.exports = {
       exposes: {
         "./exposedTitle": "./components/exposedTitle",
       },
+      shared: ["lodash"],
       remotes: {
         next2: isServer
           ? path.resolve(

@@ -2,9 +2,7 @@ import React, { Fragment } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import Nav from "../components/nav";
-const RemoteTitle = process.browser
-  ? (await import("next1/exposedTitle")).default
-  : () => null;
+const RemoteTitle = (await import("next1/exposedTitle")).default;
 const _ = await import("lodash");
 console.log(RemoteTitle);
 const Home = ({ loaded }) => {
