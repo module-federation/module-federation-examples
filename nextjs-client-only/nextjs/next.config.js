@@ -11,11 +11,12 @@ module.exports = {
       shared: {
         ...packageJsonDeps,
         react: {
-          eager: true,
+          eager: true, // we need this to fix "Uncaught Error: Shared module is not available for eager consumption"
           requiredVersion: packageJsonDeps.react,
+          // singleton: true, we don't need singleton true because we are using React 17
         },
         "react-dom": {
-          eager: true,
+          eager: true, // we need this to fix "Uncaught Error: Shared module is not available for eager consumption"
           requiredVersion: packageJsonDeps["react-dom"],
         },
       },

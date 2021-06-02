@@ -2,88 +2,58 @@
 
 ## Getting Started
 
-1. run `yarn` to install from this directory. Lerna.js will install dependencies in each subdirectory.
-2. run `yarn start` and browse to:
+1. Run `yarn` from this directory to install all the dependencies. Lerna.js will install dependencies in each subdirectory.
+2. Run `yarn start` and browse to:
+ - http://localhost:3001. It displays the `nextjs` app (host).
  - http://localhost:8886. It displays the `chat` app (remote).
  - http://localhost:8888. It displays the `reception` app (remote).
- - http://localhost:3001. It displays the `nextjs` app (host).
+
+## Requirements
+
+1) The remotes don't need to be server-side rendered. 
+2) A package should not be donwloaded more than once if the package is shared between host and/or remotes. 
+3) We don't want to expose React components directly from the remotes. Each remote should expose a function that can mount React components in a given DOM element.
+
 
 ## Context
 
-We have 1 next.js applications that hosts 2 React remote applications.
+We have 1 Next.js application that hosts 2 React remote applications. The Next.js app works as a shell that renders some layout and provides cross-cutting concerns such as feature flags. 
 
-- `next1` - port 3000
-- `next2` - port 3001
+The "main" application that is federating code (the host) is the `nextjs` folder. Visiting http://localhost:3001 should show you "This a Next.js host 🚀" at the top left corner of the page + the remote reception app.
 
-The "main" application that is federating code (the host) is next2, visiting http://localhost:3001 should show you "This came fom next1 !!!"
-
-I am using hooks here to ensure multiple copies of react are not loaded into scope on server or client.
+The `reception` folder contains a React app that exposes some modules. The `chat` folder contains a React app that exposes some modules.
 
 ## Challenges
+### Consuming Remotes
+
+Webpack needs an async boundary to figure out which modules are shared. Since Next.js v10.2.3 does not have an async boundary Webpack doesn't seem to resolve modules in the shared scope. 
+
+E.g. `nextjs` and `reception` use the same version of React. If you navigate to http://localhost:3001 only 1 copy of React should be downloaded. However, the shared scope doesn't work when using `dynamic from "next/dynamic"` resulting in React being downloaded twice.
+
+
+Inside `nextjs/components/LoadNextMF.jsx` there is a workaround using the Dynamic Remote Vendor Sharing API. The workaround is based on [this example](https://github.com/module-federation/module-federation-examples/blob/master/advanced-api/dynamic-remotes/app1/src/App.js).
+
+You can see how we use the workaround in `nextjs/pages/index.js`:
+```jsx
+<LoadNextMF
+  url="http://localhost:8886/remoteEntry.js"
+  scope="reception"
+  module="./App"
+/>
+```
+
+This workaround enables Webpack to use the shared scope between:
+1. The host and the remote. e.g. navigating to http://localhost:3001 doesn't download React from http://localhost:8888.
+2. Two remotes. e.g. navigating from http://localhost:3001 to http://localhost:3001/chat doesn't download dependencies shared only between the two remotes, such as React Router in this example.
 
 ### Sharing
 
-Next.js does not have an async boundary. Between the entrypoint and the shared code.
-Read this for more context: https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5.md
+Sharing federated modules from Next.js doesn't seem to work and this example doesn't address the issue. More on the issue [here](module-federation-examples/tree/nextjs-client-only/nextjs-client-only#sharing).
 
-In order for webpack to figure out who shares what, an async boundary is typically needed somewhere before the module is used.
-Usually, we can work around async boundaries for things like `react` by specifying the following
-
-https://medium.com/dev-genius/module-federation-advanced-api-inwebpack-5-0-0-beta-17-71cd4d42e534?source=friends_link&sk=70658eb0bf58dfcc5ce534cb1cd78b1f
-
-```js
-const config = {
-  shared: {
-    react: {
-      eager: true,
-      singleton: true,
-    },
-  },
-};
-```
-
-However, in the case of Next.js - this does not seem to work. I have also created a clean app, called `next3` which does absolutely nothing but usalize module federation to showcase immediate errors when attempting to use eager true
-
-### Consuming Remotes
-
-While sharing is one issue, the consuming a remote with the native `import` syntax also seems to run into issues.
-
-> I did note, that i can get rid of emitting a secondary entry chunk if module federation uses name. webpack-runtime-next1 and i also change the runtimeChunk `name` to be the same. But this did not resolve my issues client or server
-
-Inside `next2/pages/index.js` youll see i am using a hack workaround
-
-```js
-const RemoteTitle = dynamic(
-  async () => {
-    try {
-      // seems to make webpack start loading the chunk, but fails
-      require("next1/exposedTitle");
-    } catch (e) {
-      // will still fail if i try to requre it again, but can access via low level api?
-      return handleFederation("next1/exposedTitle");
-    }
-  },
-  { ssr: true }
-);
-```
-
-If you try loading in next3, I have ssr set to false, which will work if sharing is working correctly. (or comment out with no hooks)
-
-However on the server side, because i am missing async boundaries - I get the classic
-
-```
-[2] TypeError: fn is not a function
-[2] while loading "./exposedTitle" from webpack/container/reference/next1
-```
-
-Which shows up when a remote container is not yet available.
+In this example we share modules from React apps (`reception` and `chat`) to Next.js.
 
 ## Reference Points
 
 Module Federation specific:
 
 - https://github.com/module-federation/module-federation-examples/blob/master/advanced-api/dynamic-remotes/app1/src/App.js
-<!-- 
-The async import middleware is where i keep the async boundary, this is also the only point of reference where React is import into scope.
-
-By doing so, I can ensure that webpack has time to initialize and load anything it might need before attempting to actually require, and render the application. -->
