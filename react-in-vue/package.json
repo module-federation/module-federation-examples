@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {
+    "ls": "lerna ls",
+    "start": "lerna run --scope @react-in-vue/* --parallel start",
+    "build": "lerna run --scope @react-in-vue/* build",
+    "serve": "lerna run --scope @react-in-vue/* --parallel serve",
+    "clean": "lerna run --scope @react-in-vue/* --parallel clean"
+  },
+  "devDependencies": {
+    "lerna": "3.22.1"
+  }
+}
