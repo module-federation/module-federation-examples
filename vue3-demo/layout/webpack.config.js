@@ -12,10 +12,6 @@ module.exports = (env = {}) => ({
   },
   target: "web",
   entry: path.resolve(__dirname, "./src/main.js"),
-  // output: {
-  //   path: path.resolve(__dirname, './dist'),
-  //   publicPath: '/dist/'
-  // },
   output: {
     publicPath: "auto",
   },
@@ -47,7 +43,7 @@ module.exports = (env = {}) => ({
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            options: { },
+            options: {},
           },
           "css-loader",
         ],
