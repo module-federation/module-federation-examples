@@ -2,16 +2,16 @@
 
 ## Getting Started
 
-1. Run `yarn` from this directory to install all the dependencies. Lerna.js will install dependencies in each subdirectory.
+1. Run `yarn` from this directory to install all the dependencies. `lerna` will install dependencies in each subdirectory.
 2. Run `yarn start` and browse to:
- - http://localhost:3001. It displays the `nextjs` app (host).
- - http://localhost:8886. It displays the `chat` app (remote).
- - http://localhost:8888. It displays the `reception` app (remote).
+ - http://localhost:3001 displays the `nextjs` app (host).
+ - http://localhost:8886 displays the `chat` app (remote).
+ - http://localhost:8888 displays the `reception` app (remote).
 
 ## Requirements
 
 1) The remotes don't need to be server-side rendered. 
-2) A package should not be donwloaded more than once if the package is shared between host and/or remotes. 
+2) A package should not be downloaded more than once if the package is shared between host and/or remotes. 
 3) We don't want to expose React components directly from the remotes. Each remote should expose a function that can mount React components in a given DOM element.
 
 
@@ -48,7 +48,7 @@ This workaround enables Webpack to use the shared scope between:
 
 ### Sharing
 
-Sharing federated modules from Next.js doesn't seem to work and this example doesn't address the issue. More on the issue [here](module-federation-examples/tree/nextjs-client-only/nextjs-client-only#sharing).
+Sharing federated modules from Next.js v10.2.3 doesn't seem to work and this example doesn't address the issue. More on the issue [here](module-federation-examples/tree/nextjs-client-only/nextjs-client-only#sharing).
 
 In this example we share modules from React apps (`reception` and `chat`) to Next.js.
 
