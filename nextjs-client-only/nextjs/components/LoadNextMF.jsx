@@ -36,8 +36,6 @@ function useDynamicScript({ url }) {
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
 
-  if (typeof window === "undefined") return { ready, failed };
-
   useEffect(() => {
     if (!url) {
       return;
