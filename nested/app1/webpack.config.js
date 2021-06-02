@@ -30,7 +30,6 @@ module.exports = {
       name: "app1",
       remotes: {
         app2: `app2@${getRemoteEntryUrl(3002)}`,
-        app3: `app3@${getRemoteEntryUrl(3003)}`,
       },
       shared: { react: { singleton: true }, "react-dom": { singleton: true } },
     }),
