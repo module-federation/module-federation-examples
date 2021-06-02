@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 async function loadModule(scope, module) {
   await __webpack_init_sharing__("default");
@@ -34,6 +35,8 @@ function MountMF({ mount }) {
 function useDynamicScript({ url }) {
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
+
+  if (typeof window === "undefined") return { ready, failed };
 
   useEffect(() => {
     if (!url) {
@@ -76,8 +79,6 @@ export default React.memo(function LoadNextMF({
   errorComponent: ErrorComponent = () => "There was an error",
   loadingComponent: LoadingComponent = () => "...",
 }) {
-  if (typeof window === "undefined") return <LoadingComponent />;
-
   const { ready: scriptReady, failed: scriptFailed } = useDynamicScript({
     url,
   });
@@ -87,15 +88,24 @@ export default React.memo(function LoadNextMF({
   useEffect(() => {
     scriptReady &&
       loadModule(scope, module)
-        .then(({ default: mountFn }) =>  setMount(() => mountFn))
+        .then(({ default: mountFn }) => setMount(() => mountFn))
         .catch(() => setModuleFailed(true));
   }, [scriptReady, module, scope]);
 
-  if (mount) {
-    return <MountMF mount={mount} />;
-  } else if (scriptFailed || moduleFailed) {
-    return <ErrorComponent />;
-  } else {
-    return <LoadingComponent />;
-  }
+  const children = mount ? (
+    <MountMF mount={mount} />
+  ) : scriptFailed || moduleFailed ? (
+    <ErrorComponent />
+  ) : (
+    <LoadingComponent />
+  );
+
+  return (
+    <>
+      <Head>
+        <link rel="preload" as="script" href={url} />
+      </Head>
+      {children}
+    </>
+  );
 });
