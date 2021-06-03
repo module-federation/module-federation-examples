@@ -1,4 +1,4 @@
-# Microfrontends Angular 11
+# Microfrontends Angular 12
 
 This project shows an example of using Webpack 5 Module Federation with Angular v11-next.5, note the use of **yarn**, this is required to override the webpack version for the angular cli
 
@@ -11,17 +11,6 @@ This project shows an example of using Webpack 5 Module Federation with Angular 
 - Click the profile navigation link to load the remote Microfrontend
 
 ![Shell and Microfronted Screenshot](microfrontend-shell-profile.jpg)
-
-## Usage
-
-To enable use of Webpack 5 with the angular cli you **must** use **yarn** as your package manager, it allows you to override the webpack dependencies for the CLI.
-The package.json contains the following section to override webpack to use version 5 instead of 4:
-
-```json
-  "resolutions": {
-    "webpack": "5.0.0"
-  },
-```
 
 ## Project Structure
 
