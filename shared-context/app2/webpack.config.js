@@ -32,7 +32,16 @@ module.exports = {
       exposes: {
         "./Welcome": "./src/Welcome",
       },
-      shared: ["react", "react-dom", "@shared-context/shared-library"],
+      shared: [
+        "react",
+        "react-dom",
+        {
+          "@shared-context/shared-library": {
+            import: "@shared-context/shared-library",
+            requiredVersion: require("../shared-library/package.json").version,
+          },
+        },
+      ],
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
