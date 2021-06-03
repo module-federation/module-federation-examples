@@ -31,7 +31,16 @@ module.exports = {
       remotes: {
         app2: "app2@http://localhost:3002/remoteEntry.js",
       },
-      shared: ["react", "react-dom", "@shared-context/shared-library"],
+      shared: [
+        "react",
+        "react-dom",
+        {
+          "@shared-context/shared-library": {
+            import: "@shared-context/shared-library",
+            requiredVersion: require("../shared-library/package.json").version,
+          },
+        },
+      ],
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
