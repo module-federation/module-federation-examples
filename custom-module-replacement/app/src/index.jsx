@@ -18,13 +18,12 @@ window.getFoo = {
     data,
     getScope,
   ) => {
-    console.log(data);
-    console.log(getScope);
     return new Promise(res => {
-
+      const params = new URLSearchParams(location.search);
       res(() => {
         return {
-          hello: 'Test'
+          hello: 'Test',
+          name: params.get('name') || 'Unnamed'
         }
       })
 
@@ -32,9 +31,7 @@ window.getFoo = {
   }
 }
 
-function start() {
-  import("./bootstrap");
-}
+import("./bootstrap");
 
-window.start = start;
+// window.start = start;
 

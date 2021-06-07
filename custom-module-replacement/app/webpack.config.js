@@ -62,6 +62,9 @@ module.exports = {
       remotes: {
         'app2': {
           external: 'getFoo',
+        },
+        "./replacement": {
+          external: 'getFoo',
         }
       }
     }),
@@ -69,7 +72,7 @@ module.exports = {
       name: "app_01",
       filename: "remoteEntry.js",
       remotes: {
-        app2: `app2@http://localhost:3002/remoteEntry.js'`,
+        // app2: `app2@http://localhost:3002/remoteEntry.js'`,
       },
       exposes: {
       },
