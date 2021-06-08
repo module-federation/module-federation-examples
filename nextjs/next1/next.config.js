@@ -18,6 +18,7 @@ module.exports = {
       filename: "static/runtime/remoteEntry.js",
       exposes: {
         "./exposedTitle": "./components/exposedTitle",
+        "./federatedPage": "./pages/federated",
       },
       shared: ["lodash"],
       remotes: {
