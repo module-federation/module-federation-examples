@@ -2,23 +2,24 @@
   "name": "nextjs2",
   "version": "0.1.0",
   "private": true,
+  "workspaces": {
+    "nohoist": ["@module-federation/nextjs-mf"]
+  },
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev -p 3001",
     "build": "NEXT_TELEMETRY_DISABLED=1 next build",
     "start": "next start -p 3001"
   },
   "resolutions": {
-    "webpack": "5.36.2"
+    "webpack": "5.38.1"
   },
   "dependencies": {
-    "@module-federation/nextjs-mf": "1.0.0",
-    "lodash": "4.17.20",
+    "@module-federation/nextjs-mf": "1.1.1",
+    "lodash": "4.17.21",
     "next": "^10.2.3",
-    "next-compose-plugins": "^2.2.0",
-    "react": "16.14.0",
-    "react-dom": "16.14.0",
-    "react-lazy-hydration": "^0.0.12",
-    "webpack": "5.36.2",
-    "wipe-node-cache": "^2.1.2"
+    "next-compose-plugins": "^2.2.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "webpack": "5.38.1"
   }
 }
