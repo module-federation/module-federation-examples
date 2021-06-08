@@ -1,18 +1,27 @@
 import { useRouter } from "next/router";
-import React from "react";
+import { useEffect, useState } from "react";
 
 const CatchAll = ({ Page, ...props }) => {
-  console.log(props);
-  const router = useRouter();
-  const slug = router.query.slug || [];
-  if (!process.browser || !Page) return <h1>Slug: {slug.join("/")}</h1>;
+  const [lazyProps, setProps] = useState({});
+  useEffect(async () => {
+    if (props.pageName) {
+      const federatedProps = await CatchAll.getInitialProps(props);
+      setProps({ ...federatedProps });
+    }
+  }, []);
+  let RemoteComponent = Page || lazyProps.Page;
+
+  if (!process.browser || !RemoteComponent) return null;
+
+  const componentProps = lazyProps || props;
+
   return (
     <>
-      <Page {...props} />
+      <RemoteComponent {...componentProps} />
     </>
   );
 };
-CatchAll.getInitialProps = async (props) => {
+CatchAll.getInitialProps = async ({ err, req, res, AppTree, ...props }) => {
   const pageName = `./${props.query.slug}Page`;
   if (process.browser) {
     console.log("getting Exposed Module", pageName);
@@ -25,6 +34,7 @@ CatchAll.getInitialProps = async (props) => {
     const federatedProps = await page.default.getInitialProps(props);
     return { ...federatedProps, Page: page.default };
   }
-  return {};
+  console.log(props);
+  return { pageName, ...props };
 };
 export default CatchAll;
