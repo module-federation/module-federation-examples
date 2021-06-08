@@ -14,7 +14,7 @@ export function initializeApp(
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
-  imports: [BrowserModule, RouterModule.forRoot(APP_ROUTES)],
+  imports: [BrowserModule, RouterModule.forRoot(APP_ROUTES, { relativeLinkResolution: 'legacy' })],
   providers: [
     MicrofrontendService,
     {
