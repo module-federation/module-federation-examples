@@ -25,7 +25,7 @@ module.exports = {
         next2: isServer
           ? path.resolve(
               __dirname,
-              "../next2/.next/server/static/runtime/remoteEntry.js"
+              "../next2/.next/server/chunks/static/runtime/remoteEntry.js"
             )
           : "next2",
       },

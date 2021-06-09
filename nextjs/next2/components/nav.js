@@ -16,7 +16,7 @@ const Nav = () => (
         <Link href="/">
           <a>Home</a>
         </Link>
-        <Link href="/federated">
+        <Link href="/platform">
           <a>Federated Page</a>
         </Link>
       </li>

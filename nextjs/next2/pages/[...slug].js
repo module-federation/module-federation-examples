@@ -13,7 +13,7 @@ const CatchAll = ({ Page, ...props }) => {
 
   if (!process.browser || !RemoteComponent) return null;
 
-  const componentProps = lazyProps || props;
+  const componentProps = Object.assign({}, lazyProps, props);
 
   return (
     <>
@@ -22,11 +22,11 @@ const CatchAll = ({ Page, ...props }) => {
   );
 };
 CatchAll.getInitialProps = async ({ err, req, res, AppTree, ...props }) => {
-  const pageName = `./${props.query.slug}Page`;
+  const pageName = `./${props.query.slug}`;
   if (process.browser) {
     console.log("getting Exposed Module", pageName);
 
-    const page = await window.next1.get(pageName).then((factory) => {
+    const page = await window.platform.get(pageName).then((factory) => {
       const Module = factory();
       return Module;
     });
@@ -34,7 +34,6 @@ CatchAll.getInitialProps = async ({ err, req, res, AppTree, ...props }) => {
     const federatedProps = await page.default.getInitialProps(props);
     return { ...federatedProps, Page: page.default };
   }
-  console.log(props);
   return { pageName, ...props };
 };
 export default CatchAll;
