@@ -1,14 +1,8 @@
 import React from "react";
-import Head from "next/head";
-const Nav = (await import("../components/nav")).default;
+import Nav from "../components/nav";
 
 const Federated = (props) => (
   <div>
-    <Head>
-      <title>Home</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-
     <Nav />
 
     <div className="hero">
@@ -41,10 +35,10 @@ const Federated = (props) => (
     `}</style>
   </div>
 );
-Federated.getInitialProps = async () => {
-  const swapi = await fetch("https://swapi.dev/api/people/1").then((res) =>
-    res.json()
-  );
-  return swapi;
-};
+// Federated.getInitialProps = async () => {
+//   const swapi = await fetch("https://swapi.dev/api/people/1").then((res) =>
+//     res.json()
+//   );
+//   return swapi;
+// };
 export default Federated;

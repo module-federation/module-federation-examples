@@ -8,8 +8,9 @@ module.exports = {
   future: { webpack5: true },
   webpack: (config, options) => {
     const { buildId, dev, isServer, defaultLoaders, webpack } = options;
+    config.output.uniqueName = "next1";
     const mfConf = {
-      mergeRuntime: true, //experimental
+      // mergeRuntime: true, //experimental
       name: "next2",
       library: {
         type: config.output.libraryTarget,
@@ -27,12 +28,22 @@ module.exports = {
       exposes: {
         "./nav": "./components/nav",
       },
-      shared: ["lodash"],
+      shared: [
+        {
+          react: {
+            requiredVersion: false,
+            eager: true,
+          },
+        },
+      ],
     };
     config.cache = false;
-    withModuleFederation(config, options, mfConf);
+    // withModuleFederation(config, options, mfConf);
+    config.experiments = { topLevelAwait: true };
+
     if (!isServer) {
       config.output.publicPath = "http://localhost:3001/_next/";
+      config.plugins.push(new webpack.container.ModuleFederationPlugin(mfConf));
     }
 
     return config;

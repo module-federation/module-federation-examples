@@ -8,9 +8,8 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <script src="http://localhost:3000/_next/static/runtime/remoteEntry.js" />
-        <script src="http://localhost:9000/eana-remoteEntry.js" />
         <Head />
+
         <body>
           <Main />
           <NextScript />
