@@ -1,0 +1,16 @@
+{
+  "name": "remote",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "webpack serve --mode=development",
+    "test": "cargo test && wasm-pack test --headless"
+  },
+  "devDependencies": {
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2",
+    "@wasm-tool/wasm-pack-plugin": "^1.1.0",
+    "copy-webpack-plugin": "^5.0.3",
+    "rimraf": "^3.0.0"
+  }
+}
