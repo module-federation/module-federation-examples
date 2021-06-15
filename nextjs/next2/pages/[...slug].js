@@ -26,7 +26,7 @@ CatchAll.getInitialProps = async ({ err, req, res, AppTree, ...props }) => {
   if (process.browser) {
     console.log("getting Exposed Module", pageName);
 
-    const page = await window.platform.get(pageName).then((factory) => {
+    const page = await window.next1.get(pageName).then((factory) => {
       const Module = factory();
       return Module;
     });
