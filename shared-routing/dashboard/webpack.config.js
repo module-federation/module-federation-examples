@@ -56,19 +56,17 @@ module.exports = {
       exposes: {
         "./DashboardService": "./src/DashboardService",
       },
-      shared: [
-        {
-          ...deps,
-          react: {
-            singleton: true,
-            requiredVersion: deps.react,
-          },
-          "react-dom": {
-            singleton: true,
-            requiredVersion: deps["react-dom"],
-          },
+      shared: {
+        ...deps,
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
         },
-      ],
+        "react-dom": {
+          singleton: true,
+          requiredVersion: deps["react-dom"],
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
