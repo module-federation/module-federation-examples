@@ -22,8 +22,8 @@ class ExternalTemplateRemotesPlugin {
         scriptExternalModules.map((module) => {
           const urlTemplate = extractUrlAndGlobal(module.request)[0];
           const urlExpression = toExpression(urlTemplate);
-          const sourceMap = compilation.codeGenerationResults.get(module)
-            .sources;
+          const sourceMap =
+            compilation.codeGenerationResults.get(module).sources;
           const rawSource = sourceMap.get("javascript");
           sourceMap.set(
             "javascript",

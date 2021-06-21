@@ -1,17 +1,17 @@
 import React, { Fragment } from "react";
-import Head from "next/head";
+// import Head from "next/head";
+import("next/head").then(console.log);
 import dynamic from "next/dynamic";
 import Nav from "../components/nav";
-const RemoteTitle = (await import("next1/exposedTitle")).default;
-const _ = await import("lodash");
-console.log(RemoteTitle);
+// const RemoteTitle = dynamic(()=>import("next1/exposedTitle"),{ssr:false});
+
 const Home = ({ loaded }) => {
   return (
     <div>
-      <Head>
-        <title>Home</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      {/*<Head>*/}
+      {/*  <title>Home</title>*/}
+      {/*  <link rel="icon" href="/favicon.ico" />*/}
+      {/*</Head>*/}
 
       <Nav />
 
@@ -23,7 +23,7 @@ const Home = ({ loaded }) => {
           To get started, edit <code>pages/index.js</code> and save to reload.
         </p>
 
-        <RemoteTitle />
+        {/*<RemoteTitle />*/}
 
         <div className="row">
           <a href="https://nextjs.org/docs" className="card">

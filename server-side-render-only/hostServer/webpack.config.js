@@ -1,6 +1,6 @@
 var path = require("path");
-const ModuleFederationPlugin = require("webpack").container
-  .ModuleFederationPlugin;
+const ModuleFederationPlugin =
+  require("webpack").container.ModuleFederationPlugin;
 
 var serverConfig = {
   entry: ["@babel/polyfill", path.resolve(__dirname, "server.js")],

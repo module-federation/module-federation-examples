@@ -1,45 +1,60 @@
-const path = require("path");
-const {
-  MergeRuntime,
-  withModuleFederation,
-} = require("@module-federation/nextjs-mf");
+const { withFederatedSidecar } = require("@module-federation/nextjs-mf");
 
-module.exports = {
-  future: { webpack5: true },
-  webpack: (config, options) => {
-    const { buildId, dev, isServer, defaultLoaders, webpack } = options;
-    const mfConf = {
-      mergeRuntime: true, //experimental
-      name: "next1",
-      library: {
-        type: config.output.libraryTarget,
-        name: "next1",
-      },
-      filename: "static/runtime/remoteEntry.js",
-      exposes: {
-        "./exposedTitle": "./components/exposedTitle",
-      },
-      shared: ["lodash"],
-      remotes: {
-        next2: isServer
-          ? path.resolve(
-              __dirname,
-              "../next2/.next/server/static/runtime/remoteEntry.js"
-            )
-          : "next2",
-      },
-    };
-    config.cache = false;
-    if (!isServer) {
-      config.output.publicPath = "http://localhost:3000/_next/";
-    }
+module.exports = withFederatedSidecar({
+  name: "next1",
+  filename: "static/chunks/remoteEntry.js",
+  exposes: {
+    "./nav": "./components/nav.js",
+  },
+  shared: {
+    react: {
+      // Notice shared are NOT eager here.
+      requiredVersion: false,
+      singleton: true,
+    },
+    "next/dynamic": {
+      requiredVersion: false,
+      singleton: true,
+    },
+    "next/link": {
+      requiredVersion: false,
+      singleton: true,
+    },
+  },
+})({
+  future: {
+    webpack5: true,
+  },
+  webpack(config, options) {
+    const { webpack } = options;
+    config.experiments = { topLevelAwait: true };
+    config.plugins.push(
+      new webpack.container.ModuleFederationPlugin({
+        remoteType: "var",
+        remotes: {
+          next2: "next2",
+        },
+        shared: {
+          react: {
+            // Notice shared ARE eager here.
+            eager: true,
+            singleton: true,
+            requiredVersion: false,
+          },
+          "next/dynamic": {
+            eager: true,
+            singleton: true,
+            requiredVersion: false,
+          },
+          "next/link": {
+            eager: true,
+            singleton: true,
+            requiredVersion: false,
+          },
+        },
+      })
+    );
 
-    withModuleFederation(config, options, mfConf);
     return config;
   },
-  webpackDevMiddleware: (config) => {
-    // Perform customizations to webpack dev middleware config
-    // Important: return the modified config
-    return config;
-  },
-};
+});

@@ -26,8 +26,9 @@ describe("AppComponent", () => {
   it("should render title", () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const element = fixture.debugElement.query(By.css(".content span"))
-      .nativeElement;
+    const element = fixture.debugElement.query(
+      By.css(".content span")
+    ).nativeElement;
     expect(element.textContent).toContain("mdmf-profile app is running!");
   });
 });

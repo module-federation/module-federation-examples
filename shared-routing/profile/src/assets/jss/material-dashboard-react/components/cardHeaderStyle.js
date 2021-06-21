@@ -15,22 +15,24 @@ const cardHeaderStyle = {
     borderBottom: "none",
     background: "transparent",
     zIndex: "3 !important",
-    "&$cardHeaderPlain,&$cardHeaderIcon,&$cardHeaderStats,&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader": {
-      margin: "0 15px",
-      padding: "0",
-      position: "relative",
-      color: whiteColor,
-    },
+    "&$cardHeaderPlain,&$cardHeaderIcon,&$cardHeaderStats,&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader":
+      {
+        margin: "0 15px",
+        padding: "0",
+        position: "relative",
+        color: whiteColor,
+      },
     "&:first-child": {
       borderRadius: "calc(.25rem - 1px) calc(.25rem - 1px) 0 0",
     },
-    "&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader": {
-      "&:not($cardHeaderIcon)": {
-        borderRadius: "3px",
-        marginTop: "-20px",
-        padding: "15px",
+    "&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader":
+      {
+        "&:not($cardHeaderIcon)": {
+          borderRadius: "3px",
+          marginTop: "-20px",
+          padding: "15px",
+        },
       },
-    },
     "&$cardHeaderStats svg": {
       fontSize: "36px",
       lineHeight: "56px",
@@ -65,10 +67,11 @@ const cardHeaderStyle = {
     },
   },
   cardHeaderIcon: {
-    "&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader": {
-      background: "transparent",
-      boxShadow: "none",
-    },
+    "&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader":
+      {
+        background: "transparent",
+        boxShadow: "none",
+      },
     "& i,& .material-icons": {
       width: "33px",
       height: "33px",

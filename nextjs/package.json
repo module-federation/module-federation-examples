@@ -1,6 +1,9 @@
 {
   "private": true,
-  "workspaces": ["next1", "next2"],
+  "workspaces": [
+    "next1",
+    "next2"
+  ],
   "scripts": {
     "start": "concurrently \"cd next1; yarn dev \" \"cd next2; yarn dev\"",
     "build": "concurrently \"cd next1; yarn build\" \"cd next2; yarn build\"",

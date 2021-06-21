@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "workspaces": {
-    "nohoist": ["@module-federation/nextjs-mf"]
+    "nohoist": [
+      "@module-federation/nextjs-mf"
+    ]
   },
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev -p 3001",
@@ -11,15 +13,14 @@
     "start": "next start -p 3001"
   },
   "resolutions": {
-    "webpack": "5.38.1"
+    "webpack": "5.40.0"
   },
   "dependencies": {
-    "@module-federation/nextjs-mf": "1.1.1",
+    "@module-federation/nextjs-mf": "2.0.0",
     "lodash": "4.17.21",
-    "next": "^10.2.3",
+    "next": "10.2.3",
     "next-compose-plugins": "^2.2.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "webpack": "5.38.1"
+    "react-dom": "17.0.2"
   }
 }
