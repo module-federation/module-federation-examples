@@ -2,9 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const config = require("../../../build/config");
 
-const { serverPath, clientPath, publicPath } = config[
-  process.env.NODE_ENV || "production"
-];
+const { serverPath, clientPath, publicPath } =
+  config[process.env.NODE_ENV || "production"];
 
 // Production specific middleware for express
 module.exports = async (express, app, done) => {
