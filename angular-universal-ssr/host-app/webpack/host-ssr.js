@@ -2,8 +2,8 @@ const { resolve } = require("path");
 const { AngularCompilerPlugin, PLATFORM } = require("@ngtools/webpack");
 const { ContextReplacementPlugin } = require("webpack");
 const ProgressPlugin = require("webpack/lib/ProgressPlugin");
-const ModuleFederationPlugin = require("webpack").container
-  .ModuleFederationPlugin;
+const ModuleFederationPlugin =
+  require("webpack").container.ModuleFederationPlugin;
 
 module.exports = (env = {}) => {
   const buildFolder = resolve("./dist/server");

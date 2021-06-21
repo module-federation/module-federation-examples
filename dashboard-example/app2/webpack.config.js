@@ -50,8 +50,7 @@ module.exports = {
       dashboardURL: "http://localhost:3000/api/update",
       metadata: {
         source: {
-          url:
-            "https://github.com/module-federation/module-federation-examples/tree/master/dashboard-example/app2",
+          url: "https://github.com/module-federation/module-federation-examples/tree/master/dashboard-example/app2",
         },
         remote: "http://localhost:3002/remoteEntry.js",
       },

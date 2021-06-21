@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const DashboardPlugin = require("@module-federation/dashboard-plugin");
-const ModuleFederationPlugin = require("webpack").container
-  .ModuleFederationPlugin;
+const ModuleFederationPlugin =
+  require("webpack").container.ModuleFederationPlugin;
 const path = require("path");
 
 module.exports = {
@@ -47,8 +47,7 @@ module.exports = {
       dashboardURL: "http://localhost:3000/api/update",
       metadata: {
         source: {
-          url:
-            "https://github.com/module-federation/module-federation-examples/tree/master/dashboard-example/app1",
+          url: "https://github.com/module-federation/module-federation-examples/tree/master/dashboard-example/app1",
         },
         remote: "http://localhost:3001/remoteEntry.js",
       },
