@@ -1,5 +1,5 @@
-const ModuleFederationPlugin = require("webpack").container
-  .ModuleFederationPlugin;
+const ModuleFederationPlugin =
+  require("webpack").container.ModuleFederationPlugin;
 
 const deps = require("./package.json").dependencies;
 
