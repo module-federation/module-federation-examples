@@ -29,7 +29,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "app1",
       remotes: {
-        "@module-federation/commmon-3rd-libs": `moduleFederationCommmon_3rdLibs@http://localhost:3100/browser/remote-entry.js`,
+        "@module-federation/common-3rd-libs": `moduleFederationCommon_3rdLibs@https://unpkg.com/@module-federation/common-3rd-libs@1.0.4/dist/browser/remote-entry.js`,
       },
       shared: { react: { singleton: true }, "react-dom": { singleton: true } },
     }),
