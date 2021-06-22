@@ -20,6 +20,10 @@ module.exports = withFederatedSidecar({
       requiredVersion: false,
       singleton: true,
     },
+    "next/head": {
+      requiredVersion: false,
+      singleton: true,
+    },
   },
 })({
   future: {

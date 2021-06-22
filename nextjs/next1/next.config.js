@@ -20,6 +20,10 @@ module.exports = withFederatedSidecar({
       requiredVersion: false,
       singleton: true,
     },
+    "next/head": {
+      requiredVersion: false,
+      singleton: true,
+    },
   },
 })({
   future: {
@@ -47,6 +51,11 @@ module.exports = withFederatedSidecar({
             requiredVersion: false,
           },
           "next/link": {
+            eager: true,
+            singleton: true,
+            requiredVersion: false,
+          },
+          "next/head": {
             eager: true,
             singleton: true,
             requiredVersion: false,
