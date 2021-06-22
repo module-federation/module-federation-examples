@@ -30,41 +30,43 @@ module.exports = withFederatedSidecar({
     webpack5: true,
   },
   webpack(config, options) {
-    const { webpack } = options;
+    const { webpack, isServer } = options;
     config.experiments = { topLevelAwait: true };
-
-    config.plugins.push(
-      new webpack.container.ModuleFederationPlugin({
-        remoteType: "var",
-        remotes: {
-          next1: "next1",
-        },
-        shared: {
-          react: {
-            // Notice shared ARE eager here.
-            eager: true,
-            singleton: true,
-            requiredVersion: false,
+    if (isServer) {
+      Object.assign(config.resolve.alias, { next1: false });
+    } else {
+      config.plugins.push(
+        new webpack.container.ModuleFederationPlugin({
+          remoteType: "var",
+          remotes: {
+            next1: "next1",
           },
-          "next/dynamic": {
-            eager: true,
-            singleton: true,
-            requiredVersion: false,
+          shared: {
+            react: {
+              // Notice shared ARE eager here.
+              eager: true,
+              singleton: true,
+              requiredVersion: false,
+            },
+            "next/dynamic": {
+              eager: true,
+              singleton: true,
+              requiredVersion: false,
+            },
+            "next/link": {
+              eager: true,
+              singleton: true,
+              requiredVersion: false,
+            },
+            "next/head": {
+              eager: true,
+              singleton: true,
+              requiredVersion: false,
+            },
           },
-          "next/link": {
-            eager: true,
-            singleton: true,
-            requiredVersion: false,
-          },
-          "next/head": {
-            eager: true,
-            singleton: true,
-            requiredVersion: false,
-          },
-        },
-      })
-    );
-
+        })
+      );
+    }
     return config;
   },
 });
