@@ -9,19 +9,7 @@ module.exports = withFederatedSidecar({
   shared: {
     react: {
       // Notice shared are NOT eager here.
-      requiredVersion: deps.next,
-      singleton: true,
-    },
-    "next/dynamic": {
-      requiredVersion: deps.next,
-      singleton: true,
-    },
-    "next/link": {
-      requiredVersion: deps.next,
-      singleton: true,
-    },
-    "next/head": {
-      requiredVersion: deps.next,
+      requiredVersion: false,
       singleton: true,
     },
   },

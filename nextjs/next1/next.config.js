@@ -13,18 +13,6 @@ module.exports = withFederatedSidecar({
       requiredVersion: false,
       singleton: true,
     },
-    "next/dynamic": {
-      requiredVersion: deps.next,
-      singleton: true,
-    },
-    "next/link": {
-      requiredVersion: deps.next,
-      singleton: true,
-    },
-    "next/head": {
-      requiredVersion: deps.next,
-      singleton: true,
-    },
   },
 })({
   future: {
