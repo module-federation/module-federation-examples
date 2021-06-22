@@ -8,11 +8,14 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <script src="http://localhost:3000/_next/static/runtime/remoteEntry.js" />
         <Head />
         <body>
           <Main />
           <NextScript />
+          <script
+            data-webpack="next1"
+            src="http://localhost:3000/_next/static/chunks/remoteEntry.js"
+          />
         </body>
       </Html>
     );
