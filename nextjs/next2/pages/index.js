@@ -3,7 +3,8 @@ const Head = (await import("next/head")).default;
 const dynamic = (await import("next/dynamic")).default;
 
 import Nav from "../components/nav";
-const RemoteTitle = dynamic(() => import("next1/exposedTitle"), { ssr: false });
+const RemoteTitle = dynamic(() => import("next1/title"), { ssr: false });
+
 const Home = ({ loaded }) => {
   return (
     <div>
