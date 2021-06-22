@@ -1,10 +1,13 @@
+console.log(__webpack_share_scopes__.default);
 import React, { Fragment } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import Nav from "../components/nav";
-const RemoteTitle = (await import("next1/exposedTitle")).default;
-const _ = await import("lodash");
-console.log(RemoteTitle);
+
+const RemoteTitle = dynamic(() => import("next1/title"), {
+  ssr: false,
+});
+
 const Home = ({ loaded }) => {
   return (
     <div>
