@@ -1,5 +1,5 @@
 const { withFederatedSidecar } = require("@module-federation/nextjs-mf");
-
+const deps = require("./package.json").dependencies;
 module.exports = withFederatedSidecar({
   name: "next1",
   filename: "static/chunks/remoteEntry.js",
@@ -14,15 +14,15 @@ module.exports = withFederatedSidecar({
       singleton: true,
     },
     "next/dynamic": {
-      requiredVersion: false,
+      requiredVersion: deps.next,
       singleton: true,
     },
     "next/link": {
-      requiredVersion: false,
+      requiredVersion: deps.next,
       singleton: true,
     },
     "next/head": {
-      requiredVersion: false,
+      requiredVersion: deps.next,
       singleton: true,
     },
   },
@@ -42,21 +42,6 @@ module.exports = withFederatedSidecar({
         shared: {
           react: {
             // Notice shared ARE eager here.
-            eager: true,
-            singleton: true,
-            requiredVersion: false,
-          },
-          "next/dynamic": {
-            eager: true,
-            singleton: true,
-            requiredVersion: false,
-          },
-          "next/link": {
-            eager: true,
-            singleton: true,
-            requiredVersion: false,
-          },
-          "next/head": {
             eager: true,
             singleton: true,
             requiredVersion: false,

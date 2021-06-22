@@ -1,5 +1,5 @@
 import React from "react";
-const Link = (await import("next/link")).default;
+import Link from "next/link";
 
 const links = [
   { href: "https://zeit.co/now", label: "ZEIT" },
@@ -16,7 +16,7 @@ const Nav = () => (
         <Link href="/">
           <a>Home</a>
         </Link>
-        <Link href="/platform">
+        <Link href="/federatedPage">
           <a>Federated Page</a>
         </Link>
       </li>

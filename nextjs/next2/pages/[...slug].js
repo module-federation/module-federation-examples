@@ -25,7 +25,11 @@ CatchAll.getInitialProps = async ({ err, req, res, AppTree, ...props }) => {
   const pageName = `./${props.query.slug}`;
   if (process.browser) {
     console.log("getting Exposed Module", pageName);
-
+    try {
+      await window.next1.init(__webpack_share_scopes___.default);
+    } catch {
+      // swollow error
+    }
     const page = await window.next1.get(pageName).then((factory) => {
       const Module = factory();
       return Module;
