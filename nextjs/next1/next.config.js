@@ -1,4 +1,7 @@
-const { withFederatedSidecar } = require("@module-federation/nextjs-mf");
+const {
+  withFederatedSidecar,
+  federationLoader,
+} = require("@module-federation/nextjs-mf");
 const deps = require("./package.json").dependencies;
 module.exports = withFederatedSidecar({
   name: "next1",
@@ -21,6 +24,10 @@ module.exports = withFederatedSidecar({
   webpack(config, options) {
     const { webpack } = options;
     config.experiments = { topLevelAwait: true };
+    config.module.rules.push({
+      test: /_app.js/,
+      loader: "@module-federation/nextjs-mf/lib/federation-loader.js",
+    });
     config.plugins.push(
       new webpack.container.ModuleFederationPlugin({
         remoteType: "var",

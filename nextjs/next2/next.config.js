@@ -20,6 +20,10 @@ module.exports = withFederatedSidecar({
   webpack(config, options) {
     const { webpack, isServer } = options;
     config.experiments = { topLevelAwait: true };
+    config.module.rules.push({
+      test: /_app.js/,
+      loader: "@module-federation/nextjs-mf/lib/federation-loader.js",
+    });
     if (isServer) {
       // ignore it on SSR, realistically you probably wont be SSRing Fmodules
       Object.assign(config.resolve.alias, { next1: false });
