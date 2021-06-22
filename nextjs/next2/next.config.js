@@ -35,10 +35,10 @@ module.exports = withFederatedSidecar({
 
     config.plugins.push(
       new webpack.container.ModuleFederationPlugin({
-        // remoteType: "var",
-        // remotes: {
-        //   next1: "next1",
-        // },
+        remoteType: "var",
+        remotes: {
+          next1: "next1",
+        },
         shared: {
           react: {
             // Notice shared ARE eager here.
