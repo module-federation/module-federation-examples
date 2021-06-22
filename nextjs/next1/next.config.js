@@ -5,6 +5,7 @@ module.exports = withFederatedSidecar({
   filename: "static/chunks/remoteEntry.js",
   exposes: {
     "./title": "./components/exposedTitle.js",
+    "./federatedPage": "./pages/federated",
   },
   shared: {
     react: {
