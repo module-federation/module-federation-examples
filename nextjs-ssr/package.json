@@ -1,0 +1,18 @@
+{
+  "name": "node-mf-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"npm run buildRemote\" \"npm run startRemote\" \"npm run startHost\"",
+    "startHost": "npm run --prefix host dev",
+    "buildRemote": "npm run --prefix remoteLib build",
+    "startRemote": "npm --prefix remoteLib start"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.0"
+  },
+  "author": "Andrii Telenko",
+  "license": "MIT"
+}
