@@ -1,7 +1,6 @@
 const packageJsonDeps = require("./package.json").dependencies;
 
 module.exports = {
-  future: { webpack5: true },
   webpack: (config, options) => {
     const federationConfig = {
       remotes: {
