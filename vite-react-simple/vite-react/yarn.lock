@@ -14,10 +14,10 @@
   resolved "https://r.cnpmjs.org/@babel/compat-data/download/@babel/compat-data-7.14.5.tgz#8ef4c18e58e801c5c95d3c1c0f2874a2680fadea"
   integrity sha1-jvTBjljoAcXJXTwcDyh0omgPreo=
 
-"@babel/core@^7.12.13":
+"@babel/core@^7.14.6":
   version "7.14.6"
-  resolved "https://r.cnpmjs.org/@babel/core/download/@babel/core-7.14.6.tgz#e0814ec1a950032ff16c13a2721de39a8416fcab"
-  integrity sha1-4IFOwalQAy/xbBOich3jmoQW/Ks=
+  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.14.6.tgz#e0814ec1a950032ff16c13a2721de39a8416fcab"
+  integrity sha512-gJnOEWSqTk96qG5BoIrl5bVtc23DCycmIePPYnamY9RboYdI4nFy5vAQMSl81O5K/W0sLDWfGysnOECC+KUUCA==
   dependencies:
     "@babel/code-frame" "^7.14.5"
     "@babel/generator" "^7.14.5"
@@ -174,17 +174,17 @@
   resolved "https://r.cnpmjs.org/@babel/parser/download/@babel/parser-7.14.6.tgz#d85cc68ca3cac84eae384c06f032921f5227f4b2"
   integrity sha1-2FzGjKPKyE6uOEwG8DKSH1In9LI=
 
-"@babel/plugin-transform-react-jsx-self@^7.12.13":
+"@babel/plugin-transform-react-jsx-self@^7.14.5":
   version "7.14.5"
-  resolved "https://r.cnpmjs.org/@babel/plugin-transform-react-jsx-self/download/@babel/plugin-transform-react-jsx-self-7.14.5.tgz#703b5d1edccd342179c2a99ee8c7065c2b4403cc"
-  integrity sha1-cDtdHtzNNCF5wqme6McGXCtEA8w=
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx-self/-/plugin-transform-react-jsx-self-7.14.5.tgz#703b5d1edccd342179c2a99ee8c7065c2b4403cc"
+  integrity sha512-M/fmDX6n0cfHK/NLTcPmrfVAORKDhK8tyjDhyxlUjYyPYYO8FRWwuxBA3WBx8kWN/uBUuwGa3s/0+hQ9JIN3Tg==
   dependencies:
     "@babel/helper-plugin-utils" "^7.14.5"
 
-"@babel/plugin-transform-react-jsx-source@^7.12.13":
+"@babel/plugin-transform-react-jsx-source@^7.14.5":
   version "7.14.5"
-  resolved "https://r.cnpmjs.org/@babel/plugin-transform-react-jsx-source/download/@babel/plugin-transform-react-jsx-source-7.14.5.tgz#79f728e60e6dbd31a2b860b0bf6c9765918acf1d"
-  integrity sha1-efco5g5tvTGiuGCwv2yXZZGKzx0=
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx-source/-/plugin-transform-react-jsx-source-7.14.5.tgz#79f728e60e6dbd31a2b860b0bf6c9765918acf1d"
+  integrity sha512-1TpSDnD9XR/rQ2tzunBVPThF5poaYT9GqP+of8fAtguYuI/dm2RkrMBDemsxtY0XBzvW7nXjYM0hRyKX9QYj7Q==
   dependencies:
     "@babel/helper-plugin-utils" "^7.14.5"
 
@@ -224,6 +224,14 @@
   version "2.0.3"
   resolved "https://r.cnpmjs.org/@rollup/plugin-virtual/download/@rollup/plugin-virtual-2.0.3.tgz#0afc88d75c1e1378ab290b8e9898d4edb5be0d74"
   integrity sha1-CvyI11weE3irKQuOmJjU7bW+DXQ=
+
+"@rollup/pluginutils@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-4.1.0.tgz#0dcc61c780e39257554feb7f77207dceca13c838"
+  integrity sha512-TrBhfJkFxA+ER+ew2U2/fHbebhLT/l/2pRk0hfj9KusXUuRXd2v0R58AfaZK9VXDQ4TogOSEmICVrQAA3zFnHQ==
+  dependencies:
+    estree-walker "^2.0.1"
+    picomatch "^2.2.2"
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
@@ -275,14 +283,15 @@
   resolved "https://r.cnpmjs.org/@types/scheduler/download/@types/scheduler-0.16.1.tgz#18845205e86ff0038517aab7a18a62a6b9f71275"
   integrity sha1-GIRSBehv8AOFF6q3oYpiprn3EnU=
 
-"@vitejs/plugin-react-refresh@^1.3.1":
-  version "1.3.3"
-  resolved "https://r.cnpmjs.org/@vitejs/plugin-react-refresh/download/@vitejs/plugin-react-refresh-1.3.3.tgz#d5afb3e0463f368a8afadfdd7305fe5c5fe78a6a"
-  integrity sha1-1a+z4EY/NoqK+t/dcwX+XF/nimo=
+"@vitejs/plugin-react-refresh@1.3.4":
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/@vitejs/plugin-react-refresh/-/plugin-react-refresh-1.3.4.tgz#d38fe876b0067df981181f318d90fb9b41605f81"
+  integrity sha512-ArYbVo74P0tBSeNeDf3IdUZ3iMe8hE4eOLsXiefkCeffC9D8bhzj7FNOwvy4vuvAGNV6LPBcbVdlYuEwrUO5Aw==
   dependencies:
-    "@babel/core" "^7.12.13"
-    "@babel/plugin-transform-react-jsx-self" "^7.12.13"
-    "@babel/plugin-transform-react-jsx-source" "^7.12.13"
+    "@babel/core" "^7.14.6"
+    "@babel/plugin-transform-react-jsx-self" "^7.14.5"
+    "@babel/plugin-transform-react-jsx-source" "^7.14.5"
+    "@rollup/pluginutils" "^4.1.0"
     react-refresh "^0.9.0"
 
 abbrev@1:
@@ -742,6 +751,11 @@ estree-walker@1.0.1:
   version "1.0.1"
   resolved "https://r.cnpmjs.org/estree-walker/download/estree-walker-1.0.1.tgz#31bc5d612c96b704106b477e6dd5d8aa138cb700"
   integrity sha1-MbxdYSyWtwQQa0d+bdXYqhOMtwA=
+
+estree-walker@^2.0.1:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-2.0.2.tgz#52f010178c2a4c117a7757cfe942adb7d2da4cac"
+  integrity sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==
 
 etag@~1.8.1:
   version "1.8.1"
@@ -1314,10 +1328,10 @@ path-to-regexp@0.1.7:
   resolved "https://r.cnpmjs.org/path-to-regexp/download/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
   integrity sha1-32BBeABfUi8V60SQ5yR6G/qmf4w=
 
-picomatch@^2.0.4, picomatch@^2.2.1:
+picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.2:
   version "2.3.0"
-  resolved "https://r.cnpmjs.org/picomatch/download/picomatch-2.3.0.tgz#f1f061de8f6a4bf022892e2d128234fb98302972"
-  integrity sha1-8fBh3o9qS/AiiS4tEoI0+5gwKXI=
+  resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.0.tgz#f1f061de8f6a4bf022892e2d128234fb98302972"
+  integrity sha512-lY1Q/PiJGC2zOv/z391WOTD+Z02bCgsFfvxoXXf6h7kv9o+WmsmzYqrAwY63sNgOxE4xEdq0WyUnXfKeBrSvYw==
 
 postcss@^8.3.0:
   version "8.3.5"
