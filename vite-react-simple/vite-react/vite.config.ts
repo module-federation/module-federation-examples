@@ -8,6 +8,9 @@ import transformHtml from './plugins/vite-plugin-transform-html';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  optimizeDeps:{
+    exclude:["foo_app1","foo_rollup_spa"]
+  },
   plugins: [
     viteExternalsPlugin({
       react: 'React',
