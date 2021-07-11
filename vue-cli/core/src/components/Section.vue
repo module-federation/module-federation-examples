@@ -1,7 +1,7 @@
 <template>
   <section class="section">
     <h1>
-      This is a section from CORE.
+      This is a section from /code.
     </h1>
 
     <slot />
