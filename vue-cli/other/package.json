@@ -1,5 +1,5 @@
 {
-  "name": "@vue-cli/consumer",
+  "name": "@vue-cli/other",
   "version": "0.2.0",
   "private": true,
   "scripts": {
@@ -7,10 +7,11 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "clean": "rm -rf dist",
-    "start": "http-server -c-1 -p 8080 ./dist"
+    "start": "http-server -c-1 -p 9001 ./dist"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "http-server": "^0.12.3",
     "vue": "^2.6.11"
   },
   "devDependencies": {
