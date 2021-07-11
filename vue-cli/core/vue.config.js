@@ -1,8 +1,6 @@
 const ModuleFederationPlugin =
   require("webpack").container.ModuleFederationPlugin;
 
-const deps = require("./package.json").dependencies;
-
 module.exports = {
   publicPath: "http://localhost:9000/",
   configureWebpack: {
@@ -14,6 +12,7 @@ module.exports = {
           "./Button": "./src/components/Button",
           "./Section": "./src/components/Section",
         },
+        shared: require("./package.json").dependencies,
       }),
     ],
   },
