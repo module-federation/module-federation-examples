@@ -4,7 +4,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
-    "start": "webpack-dev-server --open --mode development",
+    "start": "webpack serve --open --mode development",
     "start:live": "webpack-dev-server --open --mode development --liveReload"
   },
   "license": "MIT",
@@ -21,7 +21,7 @@
     "html-webpack-plugin": "5.3.1",
     "style-loader": "2.0.0",
     "webpack": "5.36.2",
-    "webpack-cli": "4.7.0",
+    "webpack-cli": "^4.7.0",
     "webpack-dev-server": "3.11.2"
   },
   "dependencies": {
