@@ -44,8 +44,8 @@ describe("ListUserShellComponent", () => {
     const user: User = { name: "Mr. A", email: "a@company.com" };
 
     // add User into the store
-    const profileComponent = TestBed.createComponent(ProfileComponent)
-      .componentInstance;
+    const profileComponent =
+      TestBed.createComponent(ProfileComponent).componentInstance;
     profileComponent.addUser(user.name, user.email);
     expect(
       component

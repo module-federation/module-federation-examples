@@ -16,6 +16,9 @@ const Nav = () => (
         <Link href="/">
           <a>Home</a>
         </Link>
+        <Link href="/federatedPage">
+          <a>Federated Page</a>
+        </Link>
       </li>
       {links.map(({ key, href, label }) => (
         <li key={key}>
@@ -48,6 +51,7 @@ const Nav = () => (
         color: #067df7;
         text-decoration: none;
         font-size: 13px;
+        padding-right: 10px;
       }
     `}</style>
   </nav>

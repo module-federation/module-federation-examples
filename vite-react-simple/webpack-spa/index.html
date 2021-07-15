@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    <title>Webpack Remote</title>
+</head>
+
+<body>
+<div id="root"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/systemjs/dist/system.js"></script>
+
+<script type="systemjs-importmap">
+      {
+        "imports": {
+          "react": "./node_modules/react/umd/react.production.min.js",
+          "react-dom": "./node_modules/react-dom/umd/react-dom.production.min.js",
+          "rollup_spa": "http://localhost:8080/remoteEntry.js",
+          "main": "./main.js"
+        }
+      }
+    </script>
+
+<script type="systemjs-module" src="import:main"></script>
+</body>
+</html>

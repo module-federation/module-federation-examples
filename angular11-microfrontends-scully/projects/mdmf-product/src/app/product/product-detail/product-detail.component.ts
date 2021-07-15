@@ -24,12 +24,13 @@ import { ProductActions } from "projects/mdmf-shared/src/lib/app-state/actions";
 })
 export class ProductDetailComponent implements OnInit {
   //
-  public readonly productId$: Observable<number> = this.activatedRoute.params.pipe(
-    pluck("productId"),
-    filter((val) => ![undefined, null].includes(val)),
-    map((val) => parseInt(val, 10)),
-    shareReplay(1)
-  );
+  public readonly productId$: Observable<number> =
+    this.activatedRoute.params.pipe(
+      pluck("productId"),
+      filter((val) => ![undefined, null].includes(val)),
+      map((val) => parseInt(val, 10)),
+      shareReplay(1)
+    );
 
   public readonly apiProduct$ = this.productId$.pipe(
     switchMap((id) =>

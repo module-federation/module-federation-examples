@@ -54,8 +54,8 @@ describe("ListUserShellComponent", () => {
     const user: User = { name: "Mr. A", email: "a@company.com" };
 
     // add User into the store
-    const profileComponent = TestBed.createComponent(ProfileComponent)
-      .componentInstance;
+    const profileComponent =
+      TestBed.createComponent(ProfileComponent).componentInstance;
     profileComponent.addUser(user.name, user.email);
     // fixture.detectChanges();
     const usersAdded = await component.users.pipe(take(1)).toPromise();

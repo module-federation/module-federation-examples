@@ -1,23 +1,32 @@
 <template>
   <div id="app">
-    The content below is from the CORE
-    <Section>
-      <Button>Button of the CORE</Button>
+    This is /consumer.
 
-      I'm inside the Section component which is loaded from CORE!
+    <hr />
+    <h4>The content below is imported from /core</h4>
+    <Section>
+      <Button>Button imported from /core</Button>
+      <br />
+      I'm inside the Section component loaded from /core, but my text is defined
+      in /consumer
     </Section>
+
+    <hr />
+    <h4>The content below is imported from /other</h4>
+
+    <MainComponent />
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Button: () => import('core/Button'),
-    Section: () => import('core/Section'),
-  }
-}
+    Button: () => import("core/Button"),
+    Section: () => import("core/Section"),
+    MainComponent: () => import("other/MainComponent"),
+  },
+};
 </script>
 
 <style>
