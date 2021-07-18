@@ -11,9 +11,9 @@ module.exports = {
       remotes: {
         remoteLib: isServer
           ? "remoteLib@http://localhost:3002/node/remoteEntry.js"
-          //This is a hack (I cannot run successfully MF in client-side with NextJS and React, maybe doing smth wrong)
-          : {
-            external: `external new Promise((r, j) => {
+          : //This is a hack (I cannot run successfully MF in client-side with NextJS and React, maybe doing smth wrong)
+            {
+              external: `external new Promise((r, j) => {
               window['remoteLib'].init({
                 react: {
                   "${packageJsonDeps.react}": {
@@ -25,9 +25,9 @@ module.exports = {
                 get: (request) => window['remoteLib'].get(request),
                 init: (args) => {}
               });
-            })`
-          }
-          // : "remoteLib@http://localhost:3001/remoteEntry.js",
+            })`,
+            },
+        // : "remoteLib@http://localhost:3001/remoteEntry.js",
       },
       shared: {
         react: {

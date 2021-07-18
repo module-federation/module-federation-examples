@@ -18,12 +18,11 @@ module.exports = withFederatedSidecar({
     },
   },
 })({
-  future: {
-    webpack5: true,
-  },
+  webpack5: true,
   webpack(config, options) {
     const { webpack } = options;
     config.experiments = { topLevelAwait: true };
+    config.output.publicPath = "auto";
     config.module.rules.push({
       test: /_app.js/,
       loader: "@module-federation/nextjs-mf/lib/federation-loader.js",
