@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 const Button = React.lazy(() => import("foo_app1/Button"));
 const Header = React.lazy(() => import("foo_rollup_spa/Header"));
 
-
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
   return (
     <div className="App">
       <header className="App-header">
@@ -34,7 +33,7 @@ function App() {
           >
             Learn React
           </a>
-          {' | '}
+          {" | "}
           <a
             className="App-link"
             href="https://vitejs.dev/guide/features.html"
@@ -46,7 +45,7 @@ function App() {
         </p>
       </header>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

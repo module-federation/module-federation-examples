@@ -14,9 +14,7 @@ module.exports = withFederatedSidecar({
     },
   },
 })({
-  future: {
-    webpack5: true,
-  },
+  webpack5: true,
   webpack(config, options) {
     const { webpack, isServer } = options;
     config.experiments = { topLevelAwait: true };
@@ -25,9 +23,10 @@ module.exports = withFederatedSidecar({
       loader: "@module-federation/nextjs-mf/lib/federation-loader.js",
     });
     if (isServer) {
-      // ignore it on SSR, realistically you probably wont be SSRing Fmodules
+      // ignore it on SSR, realistically you probably wont be SSRing Fmodules, without paid support from @ScriptedAlchemy
       Object.assign(config.resolve.alias, { next1: false });
     } else {
+      config.output.publicPath = "auto";
       config.plugins.push(
         new webpack.container.ModuleFederationPlugin({
           remoteType: "var",
