@@ -1,12 +1,21 @@
-console.log(__webpack_share_scopes__.default);
 import React, { Fragment } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import Nav from "../components/nav";
-
-const RemoteTitle = dynamic(() => import("next1/title"), {
-  ssr: false,
-});
+let RemoteTitle = () => null;
+// console.log(import('next1/title'))
+if (process.browser) {
+  // window.next1.init(__webpack_share_scopes__.default)
+  RemoteTitle = dynamic(() =>
+    window.next1.get("./title").then((factory) => {
+      return factory();
+    })
+  );
+  //  RemoteTitle = dynamic(() => , {
+  //   ssr: false,
+  // }
+} else {
+}
 
 const Home = ({ loaded }) => {
   return (
@@ -19,14 +28,13 @@ const Home = ({ loaded }) => {
       <Nav />
 
       <div className="hero">
+        <RemoteTitle />
         <h1 className="title">
           Welcome to Next.js on Webpack 5! <code>next2</code>
         </h1>
         <p className="description">
           To get started, edit <code>pages/index.js</code> and save to reload.
         </p>
-
-        <RemoteTitle />
 
         <div className="row">
           <a href="https://nextjs.org/docs" className="card">

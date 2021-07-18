@@ -11,18 +11,24 @@ module.exports = withFederatedSidecar({
       // Notice shared are NOT eager here.
       requiredVersion: false,
       singleton: true,
+      import: false,
     },
   },
 })({
-  future: {
-    webpack5: true,
-  },
+  webpack5: true,
   webpack(config, options) {
     const { webpack, isServer } = options;
     config.experiments = { topLevelAwait: true };
     config.module.rules.push({
+      test: /next-dev.js/,
+      loader: "@module-federation/nextjs-mf/lib/client-loader.js",
+    });
+    config.module.rules.push({
       test: /_app.js/,
       loader: "@module-federation/nextjs-mf/lib/federation-loader.js",
+    });
+    Object.assign(config.output, {
+      publicPath: "auto",
     });
     if (isServer) {
       // ignore it on SSR, realistically you probably wont be SSRing Fmodules
@@ -35,11 +41,8 @@ module.exports = withFederatedSidecar({
             next1: "next1",
           },
           shared: {
-            react: {
-              // Notice shared ARE eager here.
-              eager: true,
-              singleton: true,
-              requiredVersion: false,
+            "@module-federation/nextjs-mf/lib/noop": {
+              eager: false,
             },
           },
         })
