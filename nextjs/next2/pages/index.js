@@ -2,20 +2,11 @@ import React, { Fragment } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import Nav from "../components/nav";
-let RemoteTitle = () => null;
-// console.log(import('next1/title'))
 if (process.browser) {
-  // window.next1.init(__webpack_share_scopes__.default)
-  RemoteTitle = dynamic(() =>
-    window.next1.get("./title").then((factory) => {
-      return factory();
-    })
-  );
-  //  RemoteTitle = dynamic(() => , {
-  //   ssr: false,
-  // }
+  window.next1.init(__webpack_share_scopes__.default);
 } else {
 }
+let RemoteTitle = dynamic(() => import("next1/title"), { ssr: false });
 
 const Home = ({ loaded }) => {
   return (

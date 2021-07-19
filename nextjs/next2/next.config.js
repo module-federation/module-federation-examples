@@ -11,7 +11,6 @@ module.exports = withFederatedSidecar({
       // Notice shared are NOT eager here.
       requiredVersion: false,
       singleton: true,
-      import: false,
     },
   },
 })({
@@ -19,10 +18,6 @@ module.exports = withFederatedSidecar({
   webpack(config, options) {
     const { webpack, isServer } = options;
     config.experiments = { topLevelAwait: true };
-    config.module.rules.push({
-      test: /next-dev.js/,
-      loader: "@module-federation/nextjs-mf/lib/client-loader.js",
-    });
     config.module.rules.push({
       test: /_app.js/,
       loader: "@module-federation/nextjs-mf/lib/federation-loader.js",
@@ -43,6 +38,11 @@ module.exports = withFederatedSidecar({
           shared: {
             "@module-federation/nextjs-mf/lib/noop": {
               eager: false,
+            },
+            react: {
+              singleton: true,
+              eager: true,
+              requiredVersion: false,
             },
           },
         })

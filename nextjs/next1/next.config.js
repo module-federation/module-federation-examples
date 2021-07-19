@@ -3,6 +3,8 @@ const {
   federationLoader,
 } = require("@module-federation/nextjs-mf");
 const deps = require("./package.json").dependencies;
+let merge = require("webpack-merge");
+
 module.exports = withFederatedSidecar({
   name: "next1",
   filename: "static/chunks/remoteEntry.js",
@@ -14,18 +16,14 @@ module.exports = withFederatedSidecar({
     react: {
       requiredVersion: false,
       singleton: true,
-      import: false,
     },
   },
 })({
   webpack5: true,
   webpack(config, options) {
     const { webpack } = options;
+
     config.experiments = { topLevelAwait: true };
-    config.module.rules.push({
-      test: /next-dev.js/,
-      loader: "@module-federation/nextjs-mf/lib/client-loader.js",
-    });
     config.module.rules.push({
       test: /_app.js/,
       loader: "@module-federation/nextjs-mf/lib/federation-loader.js",
@@ -39,10 +37,21 @@ module.exports = withFederatedSidecar({
           "@module-federation/nextjs-mf/lib/noop": {
             eager: false,
           },
+          react: {
+            singleton: true,
+            eager: true,
+            requiredVersion: false,
+          },
         },
       })
     );
 
-    return config;
+    return merge.merge(config, {
+      entry() {
+        return config.entry().then((entry) => {
+          return entry;
+        });
+      },
+    });
   },
 });
