@@ -26,9 +26,10 @@ module.exports = withFederatedSidecar({
       publicPath: "auto",
     });
     if (isServer) {
-      // ignore it on SSR, realistically you probably wont be SSRing Fmodules
+      // ignore it on SSR, realistically you probably wont be SSRing Fmodules, without paid support from @ScriptedAlchemy
       Object.assign(config.resolve.alias, { next1: false });
     } else {
+      config.output.publicPath = "auto";
       config.plugins.push(
         new webpack.container.ModuleFederationPlugin({
           remoteType: "var",

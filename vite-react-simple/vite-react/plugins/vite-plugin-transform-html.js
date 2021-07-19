@@ -1,5 +1,5 @@
-const transformHtml = function(url){
-return `  
+const transformHtml = function (url) {
+  return `  
     <script>
         System.import("react").then(function(){
               System.import("react-dom").then(function(){
@@ -9,18 +9,21 @@ return `
                 document.body.appendChild(script)
           })
         })
-    </script>`
-}
+    </script>`;
+};
 export default function htmlPlugin() {
-  let isProd = process.env.NODE_ENV === 'production'
+  let isProd = process.env.NODE_ENV === "production";
   return {
-    name: 'html-transform',
+    name: "html-transform",
     transformIndexHtml(html) {
-      if(!isProd){
-        html =  html.replace(/(react(-dom)?).production.min/g,`$1.development`)
+      if (!isProd) {
+        html = html.replace(/(react(-dom)?).production.min/g, `$1.development`);
       }
-      html =  html.replace(/<script.*type="module".*src=\"(.*)\"><\/script>/,transformHtml(`$1`))
-      return html
-    }
-  }
+      html = html.replace(
+        /<script.*type="module".*src=\"(.*)\"><\/script>/,
+        transformHtml(`$1`)
+      );
+      return html;
+    },
+  };
 }

@@ -1,9 +1,8 @@
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const path = require("path")
+const path = require("path");
 const pkg = require("./package.json");
 
 module.exports = {
-
   entry: "./src/index",
   mode: "production",
   target: "web",
@@ -57,6 +56,6 @@ module.exports = {
         "./Header": "./src/Header",
       },
       shared: require("./package.json").dependencies,
-    })
+    }),
   ],
 };

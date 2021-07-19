@@ -24,6 +24,7 @@ module.exports = withFederatedSidecar({
     const { webpack } = options;
 
     config.experiments = { topLevelAwait: true };
+    config.output.publicPath = "auto";
     config.module.rules.push({
       test: /_app.js/,
       loader: "@module-federation/nextjs-mf/lib/federation-loader.js",
