@@ -1,15 +1,17 @@
 {
   "private": true,
   "workspaces": [
-    "/next1",
-    "/next2"
+    "./info",
+    "./home",
+    "./about"
   ],
   "scripts": {
-    "start": "concurrently \"cd next1; yarn dev \" \"cd next2; yarn dev\"",
-    "build": "concurrently \"cd next1; yarn build\" \"cd next2; yarn build\"",
-    "serve": "concurrently \"cd next1; yarn start\" \"cd next2; yarn start\""
+    "start": "concurrently \"cd info; npm run dev \" \"cd home; npm run dev\" \"cd about; npm run dev\"",
+    "build": "concurrently \"cd info; npm run build\" \"cd home; npm run build\" \"cd about; npm run build\"",
+    "serve": "concurrently \"cd info; npm run start\" \"cd home; npm run start\" \"cd about; npm run start\""
   },
   "dependencies": {
+    "@module-federation/nextjs-mf": "^3.1.0",
     "concurrently": "^6.2.0"
   }
 }

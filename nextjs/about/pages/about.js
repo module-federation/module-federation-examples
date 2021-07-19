@@ -1,26 +1,18 @@
 import React from "react";
 import Head from "next/head";
-const Nav = (await import("../components/nav")).default;
 
-const Federated = (props) => (
+const About = (props) => (
   <div>
     <Head>
-      <title>Home</title>
+      <title>About</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <Nav />
-
     <div className="hero">
+      <h1>About Page</h1>
       <h3 className="title">
-        This is a federated page, consumed by localhost:3001 (next2)
+        This is a federated page, consumed by localhost:3002
       </h3>
-      <span>
-        {" "}
-        Data from federated <pre>getInitalProps</pre>
-      </span>
-      <br />
-      <pre>{JSON.stringify(props, null, 2)}</pre>
     </div>
     <style jsx>{`
       .hero {
@@ -41,10 +33,10 @@ const Federated = (props) => (
     `}</style>
   </div>
 );
-Federated.getInitialProps = async () => {
+About.getInitialProps = async () => {
   const swapi = await fetch("https://swapi.dev/api/people/1").then((res) =>
     res.json()
   );
   return swapi;
 };
-export default Federated;
+export default About;

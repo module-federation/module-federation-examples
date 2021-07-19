@@ -21,16 +21,33 @@ const CatchAll = ({ Page, ...props }) => {
     </>
   );
 };
+
 CatchAll.getInitialProps = async ({ err, req, res, AppTree, ...props }) => {
   const pageName = `./${props.query.slug}`;
+
   if (process.browser) {
+    let container;
+    console.log("page", `${props.query.slug}`);
+    switch (`${props.query.slug}`) {
+      case "info":
+        container = "info";
+        break;
+      case "about":
+        container = "about";
+        break;
+      default:
+        container = null;
+    }
+
+    console.log(container);
+
     console.log("getting Exposed Module", pageName);
     try {
-      await window.next1.init(__webpack_share_scopes___.default);
+      await window[container].init(__webpack_share_scopes___.default);
     } catch {
       // swollow error
     }
-    const page = await window.next1.get(pageName).then((factory) => {
+    const page = await window[container].get(pageName).then((factory) => {
       const Module = factory();
       return Module;
     });

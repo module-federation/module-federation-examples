@@ -1,12 +1,8 @@
 import React, { Fragment } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import Nav from "../components/nav";
-if (process.browser) {
-  window.next1.init(__webpack_share_scopes__.default);
-} else {
-}
-let RemoteTitle = dynamic(() => import("next1/title"), { ssr: false });
+
+let RemoteTitle = dynamic(() => import("info/title"), { ssr: false });
 
 const Home = ({ loaded }) => {
   return (
@@ -16,12 +12,10 @@ const Home = ({ loaded }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Nav />
-
       <div className="hero">
         <RemoteTitle />
         <h1 className="title">
-          Welcome to Next.js on Webpack 5! <code>next2</code>
+          Welcome to Next.js on Webpack 5! <code>home</code>
         </h1>
         <p className="description">
           To get started, edit <code>pages/index.js</code> and save to reload.

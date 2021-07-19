@@ -8,7 +8,7 @@ const ExportredTitle = () => {
     <div className="hero">
       <h1 className="title">
         {" "}
-        This came fom <code>next1</code> !!!
+        This came fom <code>about</code> !!!
       </h1>
       <p className="description">And it works like a charm v2</p>
     </div>
