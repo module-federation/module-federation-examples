@@ -6,10 +6,10 @@ const deps = require("./package.json").dependencies;
 let merge = require("webpack-merge");
 
 module.exports = withFederatedSidecar({
-  name: "about",
+  name: "shop",
   filename: "static/chunks/remoteEntry.js",
   exposes: {
-    "./about": "./pages/about",
+    "./shop": "./pages/shop",
   },
   shared: {
     react: {
@@ -39,7 +39,7 @@ module.exports = withFederatedSidecar({
           remoteType: "var",
           remotes: {
             home: "home",
-            about: "about",
+            shop: "shop",
             info: "info",
           },
           shared: {

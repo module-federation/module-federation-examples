@@ -28,14 +28,14 @@ module.exports = withFederatedSidecar({
       loader: "@module-federation/nextjs-mf/lib/federation-loader.js",
     });
     if (options.isServer) {
-      Object.assign(config.resolve.alias, { about: false, home: false });
+      Object.assign(config.resolve.alias, { shop: false, home: false });
     } else {
       config.plugins.push(
         new webpack.container.ModuleFederationPlugin({
           remoteType: "var",
           remotes: {
             home: "home",
-            about: "about",
+            shop: "shop",
             info: "info",
           },
           shared: {

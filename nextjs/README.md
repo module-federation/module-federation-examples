@@ -23,7 +23,7 @@ We have three next.js applications
 
 - `info` - port 3000
 - `home` - port 3001
-- `about` - port 3002
+- `shop` - port 3002
 
 The applications utilize omnidirectional routing and pages or components are able to be federated between applications like a SPA
 

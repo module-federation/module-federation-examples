@@ -32,8 +32,8 @@ CatchAll.getInitialProps = async ({ err, req, res, AppTree, ...props }) => {
       case "info":
         container = "info";
         break;
-      case "about":
-        container = "about";
+      case "shop":
+        container = "shop";
         break;
       default:
         container = null;

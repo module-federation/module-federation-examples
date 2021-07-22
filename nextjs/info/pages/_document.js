@@ -15,7 +15,7 @@ class MyDocument extends Document {
             src="http://localhost:3000/_next/static/chunks/remoteEntry.js"
           />
           <script
-            data-webpack="about"
+            data-webpack="shop"
             src="http://localhost:3002/_next/static/chunks/remoteEntry.js"
           />
           <script

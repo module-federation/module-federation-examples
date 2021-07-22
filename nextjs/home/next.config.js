@@ -35,7 +35,7 @@ module.exports = withFederatedSidecar({
           remoteType: "var",
           remotes: {
             home: "home",
-            about: "about",
+            shop: "shop",
             info: "info",
           },
           shared: {
