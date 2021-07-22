@@ -3,11 +3,11 @@ const deps = require("./package.json").dependencies;
 let merge = require("webpack-merge");
 
 module.exports = withFederatedSidecar({
-  name: "info",
+  name: "checkout",
   filename: "static/chunks/remoteEntry.js",
   exposes: {
     "./title": "./components/exposedTitle.js",
-    "./info": "./pages/info",
+    "./checkout": "./pages/checkout",
   },
   shared: {
     react: {
@@ -36,7 +36,7 @@ module.exports = withFederatedSidecar({
           remotes: {
             home: "home",
             shop: "shop",
-            info: "info",
+            checkout: "checkout",
           },
           shared: {
             "@module-federation/nextjs-mf/lib/noop": {

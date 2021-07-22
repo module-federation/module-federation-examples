@@ -31,7 +31,7 @@ module.exports = withFederatedSidecar({
 
     if (isServer) {
       // ignore it on SSR, realistically you probably wont be SSRing Fmodules, without paid support from @ScriptedAlchemy
-      Object.assign(config.resolve.alias, { info: false, home: false });
+      Object.assign(config.resolve.alias, { checkout: false, home: false });
     } else {
       config.output.publicPath = "auto";
       config.plugins.push(
@@ -40,7 +40,7 @@ module.exports = withFederatedSidecar({
           remotes: {
             home: "home",
             shop: "shop",
-            info: "info",
+            checkout: "checkout",
           },
           shared: {
             "@module-federation/nextjs-mf/lib/noop": {

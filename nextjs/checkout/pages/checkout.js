@@ -4,12 +4,12 @@ import Head from "next/head";
 const Federated = (props) => (
   <div>
     <Head>
-      <title>Info</title>
+      <title>checkout</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
     <div className="hero">
-      <h1>Info page</h1>
+      <h1>checkout page</h1>
       <h3 className="title">
         This is a federated page, consumed by localhost:3001
       </h3>

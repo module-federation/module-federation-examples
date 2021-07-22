@@ -21,7 +21,7 @@ All solutions for next.js currently require a paid access or paid plugin
 
 We have three next.js applications
 
-- `info` - port 3000
+- `checkout` - port 3000
 - `home` - port 3001
 - `shop` - port 3002
 

@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 
-let RemoteTitle = dynamic(() => import("info/title"), { ssr: false });
+let RemoteTitle = dynamic(() => import("checkout/title"), { ssr: false });
 
 const Home = ({ loaded }) => {
   return (

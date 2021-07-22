@@ -11,7 +11,7 @@ class MyDocument extends Document {
         <Head />
         <body>
           <script
-            data-webpack="info"
+            data-webpack="checkout"
             src="http://localhost:3000/_next/static/chunks/remoteEntry.js"
           />
           <script

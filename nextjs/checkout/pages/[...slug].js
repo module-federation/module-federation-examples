@@ -29,8 +29,8 @@ CatchAll.getInitialProps = async ({ err, req, res, AppTree, ...props }) => {
     let container;
     console.log("page", `${props.query.slug}`);
     switch (`${props.query.slug}`) {
-      case "info":
-        container = "info";
+      case "checkout":
+        container = "checkout";
         break;
       case "shop":
         container = "shop";

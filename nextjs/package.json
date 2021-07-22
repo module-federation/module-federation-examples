@@ -1,14 +1,14 @@
 {
   "private": true,
   "workspaces": [
-    "./info",
+    "./checkout",
     "./home",
     "./shop"
   ],
   "scripts": {
-    "start": "concurrently \"cd info; npm run dev \" \"cd home; npm run dev\" \"cd shop; npm run dev\"",
-    "build": "concurrently \"cd info; npm run build\" \"cd home; npm run build\" \"cd shop; npm run build\"",
-    "serve": "concurrently \"cd info; npm run start\" \"cd home; npm run start\" \"cd shop; npm run start\""
+    "start": "concurrently \"cd checkout; npm run dev\" \"cd home; npm run dev\" \"cd shop; npm run dev\"",
+    "build": "concurrently \"cd checkout; npm run build\" \"cd home; npm run build\" \"cd shop; npm run build\"",
+    "serve": "concurrently \"cd checkout; npm run start\" \"cd home; npm run start\" \"cd shop; npm run start\""
   },
   "dependencies": {
     "@module-federation/nextjs-mf": "^3.1.0",
