@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 
-const About = (props) => (
+const Shop = (props) => (
   <div>
     <Head>
       <title>Shop</title>
@@ -11,7 +11,7 @@ const About = (props) => (
     <div className="hero">
       <h1>Shop Page</h1>
       <h3 className="title">
-        This is a federated page, consumed by localhost:3002
+        This is a federated page owned by localhost:3002
       </h3>
     </div>
     <style jsx>{`
@@ -33,10 +33,10 @@ const About = (props) => (
     `}</style>
   </div>
 );
-About.getInitialProps = async () => {
+Shop.getInitialProps = async () => {
   const swapi = await fetch("https://swapi.dev/api/people/1").then((res) =>
     res.json()
   );
   return swapi;
 };
-export default About;
+export default Shop;

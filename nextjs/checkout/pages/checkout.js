@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 
-const Federated = (props) => (
+const Checkout = (props) => (
   <div>
     <Head>
       <title>checkout</title>
@@ -11,7 +11,7 @@ const Federated = (props) => (
     <div className="hero">
       <h1>checkout page</h1>
       <h3 className="title">
-        This is a federated page, consumed by localhost:3001
+        This is a federated page owned by localhost:3000
       </h3>
       <span>
         {" "}
@@ -39,10 +39,10 @@ const Federated = (props) => (
     `}</style>
   </div>
 );
-Federated.getInitialProps = async () => {
+Checkout.getInitialProps = async () => {
   const swapi = await fetch("https://swapi.dev/api/people/1").then((res) =>
     res.json()
   );
   return swapi;
 };
-export default Federated;
+export default Checkout;

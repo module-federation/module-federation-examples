@@ -8,6 +8,7 @@ module.exports = withFederatedSidecar({
   exposes: {
     "./title": "./components/exposedTitle.js",
     "./checkout": "./pages/checkout",
+    "./pages-map": "./pages-map.js",
   },
   shared: {
     react: {
