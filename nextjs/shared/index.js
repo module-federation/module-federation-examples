@@ -2,9 +2,14 @@ import React from "react";
 import createMatcher from "feather-route-matcher";
 
 export async function matchFederatedPage(remotes, path) {
-  const maps = await Promise.all(remotes.map(
-    remote => window[remote].get("./pages-map").then(factory => ({ remote, config: factory().default })).catch(() => null)
-  ));
+  const maps = await Promise.all(
+    remotes.map((remote) =>
+      window[remote]
+        .get("./pages-map")
+        .then((factory) => ({ remote, config: factory().default }))
+        .catch(() => null)
+    )
+  );
 
   const config = {};
 
@@ -15,7 +20,7 @@ export async function matchFederatedPage(remotes, path) {
       config[path] = {
         remote: map.remote,
         module: mod,
-      }
+      };
     }
   }
 
@@ -29,7 +34,10 @@ export function createFederatedCatchAll(remotes) {
   const FederatedCatchAll = (initialProps) => {
     const [lazyProps, setProps] = React.useState({});
 
-    const { FederatedPage, render404, renderError, needsReload, ...props } = {...lazyProps, ...initialProps};
+    const { FederatedPage, render404, renderError, needsReload, ...props } = {
+      ...lazyProps,
+      ...initialProps,
+    };
 
     React.useEffect(async () => {
       if (needsReload) {
@@ -61,16 +69,16 @@ export function createFederatedCatchAll(remotes) {
       // TODO: Run getInitialProps for error page
       return { renderError: true, ...props };
     }
-    
+
     if (!process.browser) {
-      return { needsReload: true, ...props }
+      return { needsReload: true, ...props };
     }
 
     try {
       const matchedPage = await matchFederatedPage(remotes, ctx.asPath);
       console.log("matchedPage", matchedPage);
 
-      const remote = matchedPage?.value?.remote
+      const remote = matchedPage?.value?.remote;
       const mod = matchedPage?.value?.module;
 
       if (!remote || !mod) {
@@ -84,11 +92,13 @@ export function createFederatedCatchAll(remotes) {
           window[remote].__initialized = true;
           await window[remote].init(__webpack_share_scopes__.default);
         }
-      } catch(initErr) {
+      } catch (initErr) {
         console.log("initErr", initErr);
       }
 
-      const FederatedPage = await window[remote].get(mod).then(factory => factory().default);
+      const FederatedPage = await window[remote]
+        .get(mod)
+        .then((factory) => factory().default);
       console.log("FederatedPage", FederatedPage);
       if (!FederatedPage) {
         // TODO: Run getInitialProps for 404 page
@@ -99,14 +109,15 @@ export function createFederatedCatchAll(remotes) {
         ...ctx,
         query: matchedPage.params,
       };
-      const federatedPageProps = await FederatedPage.getInitialProps?.(modifiedContext) || {};
-      return { ...federatedPageProps, FederatedPage }
+      const federatedPageProps =
+        (await FederatedPage.getInitialProps?.(modifiedContext)) || {};
+      return { ...federatedPageProps, FederatedPage };
     } catch (err) {
       console.log("err", err);
       // TODO: Run getInitialProps for error page
       return { renderError: true, ...props };
     }
-  }
+  };
 
   return FederatedCatchAll;
 }
