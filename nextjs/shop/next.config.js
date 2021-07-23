@@ -33,7 +33,11 @@ module.exports = withFederatedSidecar({
 
     if (isServer) {
       // ignore it on SSR, realistically you probably wont be SSRing Fmodules, without paid support from @ScriptedAlchemy
-      Object.assign(config.resolve.alias, { checkout: false, home: false });
+      Object.assign(config.resolve.alias, {
+        checkout: false,
+        home: false,
+        shop: false,
+      });
     } else {
       config.output.publicPath = "auto";
       config.plugins.push(

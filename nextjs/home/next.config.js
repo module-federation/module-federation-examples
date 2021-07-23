@@ -6,7 +6,7 @@ module.exports = withFederatedSidecar({
   exposes: {
     "./nav": "./components/nav.js",
     "./home": "./pages/index.js",
-    "./pages-map": "./pages-map.js"
+    "./pages-map": "./pages-map.js",
   },
   shared: {
     react: {
@@ -20,7 +20,6 @@ module.exports = withFederatedSidecar({
   webpack(config, options) {
     const { webpack, isServer } = options;
     config.experiments = { topLevelAwait: true };
-    config.output.publicPath = "auto";
 
     config.module.rules.push({
       test: /_app.js/,
@@ -29,7 +28,11 @@ module.exports = withFederatedSidecar({
 
     if (isServer) {
       // ignore it on SSR, realistically you probably wont be SSRing Fmodules, without paid support from @ScriptedAlchemy
-      Object.assign(config.resolve.alias, { checkout: false });
+      Object.assign(config.resolve.alias, {
+        checkout: false,
+        home: false,
+        shop: false,
+      });
     } else {
       config.output.publicPath = "auto";
       config.plugins.push(

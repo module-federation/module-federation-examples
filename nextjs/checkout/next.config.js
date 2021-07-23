@@ -29,7 +29,11 @@ module.exports = withFederatedSidecar({
       loader: "@module-federation/nextjs-mf/lib/federation-loader.js",
     });
     if (options.isServer) {
-      Object.assign(config.resolve.alias, { shop: false, home: false });
+      Object.assign(config.resolve.alias, {
+        checkout: false,
+        home: false,
+        shop: false,
+      });
     } else {
       config.plugins.push(
         new webpack.container.ModuleFederationPlugin({
