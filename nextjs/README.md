@@ -1,22 +1,33 @@
 # Next.js with Module Federation
 
+Module Federation in Next.js depends on <a href="https://app.privjs.com/buy/packageDetail?pkg=@module-federation/nextjs-mf">@module-federation/nextjs-mf</a> It will not work unless you have access to this plugin, which is not free.
+
+Due to the effort to support Next.js and funding constraints, I have moved the plugin to a paid model.
+
 ## Getting Started
 
-1. run `yarn` to install from this directory, a `postinstall` script will perform the install in each next directory
-2. run `yarn start` and browse to `http://localhost:3000` and `http://localhost:3001`
+1. run `npm install @module-federation/nextjs-mf --registry https://r.privjs.com` with npm 7 or install it directly in each folder/app, note the plugin is not free.
+2. run `yarn start` and browse to `http://localhost:3000`, `http://localhost:3001`, or `http://localhot:3002`
+
+# We are available to consult
+
+Looking for SSR over `fetch()` or architecture support and designs for module federation and Next.js?
+
+Contact me <a href="mailto:zackary.l.jackson@gmail.com">zackary.l.jackson@gmail.com</a> or <a href="https://twitter.com/scriptedalchemy">@ScriptedAlchemy</a> on Twitter
+
+All solutions for next.js currently require a paid access or paid plugin
 
 ## Context
 
-We have two next.js applications
+We have three next.js applications
 
-- `next1` - port 3000
-- `next2` - port 3001
+- `checkout` - port 3000
+- `home` - port 3001
+- `shop` - port 3002
 
-The "main" application that is federating code (the host) is next2, visiting http://localhost:3001 should show you "This came fom next1 !!!"
+The applications utilize omnidirectional routing and pages or components are able to be federated between applications like a SPA
 
 I am using hooks here to ensure multiple copies of react are not loaded into scope on server or client.
-
-## Challenges
 
 ### Sharing
 
@@ -39,41 +50,7 @@ const config = {
 };
 ```
 
-However, in the case of Next.js - this does not seem to work. I have also created a clean app, called `next3` which does absolutely nothing but usalize module federation to showcase immediate errors when attempting to use eager true
-
-### Consuming Remotes
-
-While sharing is one issue, the consuming a remote with the native `import` syntax also seems to run into issues.
-
-> I did note, that i can get rid of emitting a secondary entry chunk if module federation uses name. webpack-runtime-next1 and i also change the runtimeChunk `name` to be the same. But this did not resolve my issues client or server
-
-Inside `next2/pages/index.js` youll see i am using a hack workaround
-
-```js
-const RemoteTitle = dynamic(
-  async () => {
-    try {
-      // seems to make webpack start loading the chunk, but fails
-      require("next1/exposedTitle");
-    } catch (e) {
-      // will still fail if i try to requre it again, but can access via low level api?
-      return handleFederation("next1/exposedTitle");
-    }
-  },
-  { ssr: true }
-);
-```
-
-If you try loading in next3, I have ssr set to false, which will work if sharing is working correctly. (or comment out with no hooks)
-
-However on the server side, because i am missing async boundaries - I get the classic
-
-```
-[2] TypeError: fn is not a function
-[2] while loading "./exposedTitle" from webpack/container/reference/next1
-```
-
-Which shows up when a remote container is not yet available.
+However, in the case of Next.js - you need to use <a href="https://app.privjs.com/buy/packageDetail?pkg=@module-federation/nextjs-mf">@module-federation/nextjs-mf</a>
 
 ## Reference Points
 
