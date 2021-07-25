@@ -57,12 +57,5 @@ module.exports = withFederatedSidecar({
       );
     }
     return config;
-    return merge.merge(config, {
-      entry() {
-        return config.entry().then((entry) => {
-          return entry;
-        });
-      },
-    });
   },
 });
