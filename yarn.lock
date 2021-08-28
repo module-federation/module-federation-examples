@@ -6059,7 +6059,7 @@ axe-core@^4.0.2:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.2.1.tgz#2e50bcf10ee5b819014f6e342e41e45096239e34"
   integrity sha512-evY7DN8qSIbsW2H/TWQ1bX3sXN1d4MNb5Vb4n7BzPuCwRHdkZ1H2eNLuSh73EoQqkGKUtju2G2HCcjCfhvZIAA==
 
-axios@0.21.1:
+axios@0.21.1, axios@^0.21.1:
   version "0.21.1"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
   integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
@@ -7523,10 +7523,10 @@ concat-stream@^2.0.0:
     readable-stream "^3.0.2"
     typedarray "^0.0.6"
 
-concurrently@6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/concurrently/-/concurrently-6.2.0.tgz#587e2cb8afca7234172d8ea55176088632c4c56d"
-  integrity sha512-v9I4Y3wFoXCSY2L73yYgwA9ESrQMpRn80jMcqMgHx720Hecz2GZAvTI6bREVST6lkddNypDKRN22qhK0X8Y00g==
+concurrently@6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/concurrently/-/concurrently-6.2.1.tgz#d880fc1d77559084732fa514092a3d5109a0d5bf"
+  integrity sha512-emgwhH+ezkuYKSHZQ+AkgEpoUZZlbpPVYCVv7YZx0r+T7fny1H03r2nYRebpi2DudHR4n1Rgbo2YTxKOxVJ4+g==
   dependencies:
     chalk "^4.1.0"
     date-fns "^2.16.1"
@@ -20060,6 +20060,16 @@ webpack-dev-server@3.11.2, webpack-dev-server@^3.11.2:
     webpack-log "^2.0.0"
     ws "^6.2.1"
     yargs "^13.3.2"
+
+webpack-federation-module-id-plugin@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/webpack-federation-module-id-plugin/-/webpack-federation-module-id-plugin-1.0.0.tgz#ab4f708f24f3bdd6cf7d49bd9175eb4ff948962e"
+  integrity sha512-I+9Gu6+YkXt55PxgRMiYDASjfLkbDyEXMpT5NvEOBkQBENZZu8sJlUx9/EyL6YZSQJWk9B2b3Ri6Qb5KXGMAsA==
+
+webpack-federation-stats-plugin@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/webpack-federation-stats-plugin/-/webpack-federation-stats-plugin-1.0.1.tgz#2273bc1446c2b16712fd3a733777da21fab89ee0"
+  integrity sha512-nFV1Oku9Z57zw9Ei72MwCZz3WTTZysO/F+d2DWopj5UWSv0qN1s9e1SKnWlw47CrOFvY0352WCHABfdenCSOyg==
 
 webpack-hot-middleware@2.25.0:
   version "2.25.0"
