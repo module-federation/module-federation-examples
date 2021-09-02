@@ -13,5 +13,5 @@ export default ({ text = "Home Button", onClick }) => {
 
   console.log("Button.js: rendered.");
 
-  return <button onClick={onClickHandler}>{text}</button>
+  return <button onClick={onClickHandler}>{text}</button>;
 };
