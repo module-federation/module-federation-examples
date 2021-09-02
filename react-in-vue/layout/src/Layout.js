@@ -1,49 +1,47 @@
-import { computed, ref } from "vue";
-import ReactDOMServer from "react-dom/server";
-
-async function fetchImport() {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const res = (await import("home/Button")).default;
-      resolve(
-        ReactDOMServer.renderToString(
-          res({
-            caption: "React Button in vue",
-          })
-        )
-      );
-    } catch (err) {
-      reject(err);
-    }
-  });
-}
+import { ref } from "vue";
+import ReactButton from "./ReactButton";
 
 export default {
   name: "Layout",
-  async setup() {
-    const data = ref(null);
+  components: { ReactButton },
+  setup() {
+    const showButton = ref(true);
+    const buttonText = ref("React button");
+    const clickedCount = ref(0);
 
-    data.value = await fetchImport();
+    const incrementCount = () => clickedCount.value += 1;
 
-    return {
-      button: computed(() => {
-        return data.value;
-      }),
-    };
+    return { showButton, buttonText, clickedCount, incrementCount };
   },
   template: `
     <div class="layout-app">
-        <div class="app-label">
-        <h1>home App vue based</h1>
-        # Hosting App [vue based]
+      <div>
+        <h2>Vue State/Input</h2>
+        <div>
+          <label>
+            <span>Show button:</span>
+            <input v-model="showButton" type="checkbox" />
+          </label>
         </div>
-        <h1>Layout App react based</h1>
+        <div>
+          <label>
+            <span>Button text:</span>
+            <input v-model="buttonText" type="text" />
+          </label>
+        </div>
+        <div>
+          <label>
+            <span>Times button clicked: </span>
+            <input disabled type="number" :value="clickedCount" />
+          </label>
+        </div>
+      </div>
+      <div>
+        <h2>React Button - loaded via Module Federation</h2>
         <div class="remote-component">
-        <div class="app-label">
-            #remote-component [REMOTE]
+          <react-button v-if="showButton" :text="buttonText" :onClick="incrementCount" />
         </div>
-        </div>  
-        <div v-html="button"></div>
-  </div>
+      </div>
+    </div>
   `,
 };
