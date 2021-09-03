@@ -9,7 +9,9 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        static: {
+            directory: path.join(__dirname, "dist"),
+        },
         port: 3001,
         headers: {
             // Enable wide open CORS
