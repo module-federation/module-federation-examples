@@ -9,7 +9,9 @@ module.exports = {
   entry: "./src/index",
   mode: "development",
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
     port: app2Module.port,
   },
   target: "web",
