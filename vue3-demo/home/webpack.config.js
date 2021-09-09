@@ -76,7 +76,7 @@ module.exports = (env = {}) => ({
   ],
   devServer: {
     static: {
-      directory: path.join(__dirname,
+      directory: path.join(__dirname),
     },
     compress: true,
     port: 3002,
