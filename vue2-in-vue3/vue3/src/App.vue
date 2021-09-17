@@ -28,7 +28,7 @@ export default {
 
     return {
       count,
-      inc
+      inc,
     };
   }
 };

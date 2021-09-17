@@ -8,20 +8,16 @@
 
 <script>
 import Content from "./components/Content";
-import Button from './components/Button'
+import Button from './components/Button';
 
 export default {
-  // components: {
-  //   Content: defineAsyncComponent(() => import("./components/Content")),
-  //   Button: defineAsyncComponent(() => import("./components/Button")),
-  // },
   components: {
     Content,
     Button,
   },
   data() {
     return {
-      count: 0
+      count: 0,
     }
   },
   methods: {
