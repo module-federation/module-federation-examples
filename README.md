@@ -65,3 +65,5 @@ You can then run `yarn && yarn start` from any of the non-proprietary examples.
 <img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/ModuleFederationExamplesRoot">
 
 Module federation will work with any type of file that youre able to import, that webpack underestands how to process. It is not a JS only, or react only feature. Images, CSS, JSON, WASM, and anything else can be federated.
+
+<p style="display:none"><img src="https://federation-dashboard-alpha.vercel.app/api/get-remote?token=d9a72038-a1cd-4069-85e2-d8f56d84372e&currentHost=home&remoteName=dsl" /></p>
