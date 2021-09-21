@@ -12,6 +12,8 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 | **JSNation Presentation**                                                                                                                                                                                                                                                        | [https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5.md](https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5.md)                                                                                                                         |
 | **Post about Dynamic Remotes**                                                                                                                                                                                                                                                   | [https://h3manth.com/posts/dynamic-remotes-webpack-module-federation/](https://h3manth.com/posts/dynamic-remotes-webpack-module-federation/)                                                                                                                                               |
 
+<p style="display:none"><img src="https://federation-dashboard-alpha.vercel.app/api/get-remote?token=d9a72038-a1cd-4069-85e2-d8f56d84372e&currentHost=home&remoteName=dsl" /></p>
+
 # Check out our book
 
 | <a href="https://module-federation.myshopify.com/products/practical-module-federation" target="_blank"><img src="./docs/MFCover.png" alt='Practical Module Federation Book' width="95%"/></a> | <a href="https://module-federation.myshopify.com/products/practical-module-federation" target="_blank">We will be actively updating this book over the next year as we learn more about best practices and what issues people are running into with Module Federation, as well as with every release of Webpack as it moves towards a release candidate and release. So with your one purchase you are buying a whole year of updates.</a> |
@@ -65,5 +67,3 @@ You can then run `yarn && yarn start` from any of the non-proprietary examples.
 <img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/ModuleFederationExamplesRoot">
 
 Module federation will work with any type of file that youre able to import, that webpack underestands how to process. It is not a JS only, or react only feature. Images, CSS, JSON, WASM, and anything else can be federated.
-
-<p style="display:none"><img src="https://federation-dashboard-alpha.vercel.app/api/get-remote?token=d9a72038-a1cd-4069-85e2-d8f56d84372e&currentHost=home&remoteName=dsl" /></p>
