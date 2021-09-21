@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "lerna run --scope @vue2-in-vue3/* --parallel start",
+    "build": "lerna run --scope @vue2-in-vue3/* build",
+    "serve": "lerna run --scope @vue2-in-vue3/* --parallel serve",
+    "clean": "lerna run --scope @vue2-in-vue3/* --parallel clean"
+  },
+  "devDependencies": {
+    "lerna": "3.22.1"
+  }
+}
