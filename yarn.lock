@@ -4025,11 +4025,15 @@
   dependencies:
     find-package-json "^1.2.0"
 
-"@module-federation/dashboard-plugin@2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@module-federation/dashboard-plugin/-/dashboard-plugin-2.2.0.tgz#341df775cb3df4b2776db9f19794deaff78620ae"
-  integrity sha512-Mu7rgyOA4XiaqMlxtKN9SkWv/Oj81atv1XQdO+bkUkp3GyebitgsyFS3YoxBp8gPNQDRrNWd62A3/HCMnOnFGA==
+"@module-federation/dashboard-plugin@2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@module-federation/dashboard-plugin/-/dashboard-plugin-2.3.0.tgz#a17197115697217ae7be8a22cf215cc62179cdde"
+  integrity sha512-BFTnNzCLCna8+Mr14GgIKiAR/aJ3Uw8BOqQJp0MzYwU3aSv298OnQQLze6tpOA1EvV+hccvgrMfFCf+fMoNfoA==
   dependencies:
+    "@babel/generator" "^7.15.4"
+    "@babel/parser" "^7.15.5"
+    "@babel/traverse" "^7.15.4"
+    "@babel/types" "^7.15.4"
     "@module-federation/automatic-vendor-federation" "^1.2.1"
     flatted "^3.0.0"
     node-fetch "^2.6.0"
