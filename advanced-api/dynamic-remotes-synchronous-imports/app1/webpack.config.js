@@ -10,7 +10,9 @@ module.exports = {
   mode: "development",
   target: "web",
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
     port: app1Module.port,
   },
   output: {

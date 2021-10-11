@@ -17,7 +17,9 @@ module.exports = {
   },
   devServer: {
     port: 8081,
-    contentBase: path.resolve(__dirname, "dist"),
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
     headers: {
       "Access-Control-Allow-Origin": "http://localhost:8080",
     },
