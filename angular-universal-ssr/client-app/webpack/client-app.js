@@ -44,7 +44,9 @@ module.exports = (env = {}) => {
       }),
     ],
     devServer: {
-      contentBase: buildFolder,
+      static: {
+        directory: buildFolder,
+      },
       port: 5000,
     },
     module: {

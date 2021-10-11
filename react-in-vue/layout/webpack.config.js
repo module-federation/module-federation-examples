@@ -3,6 +3,8 @@ const { VueLoaderPlugin } = require("vue-loader");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
+const deps = require("./package.json").dependencies;
+
 module.exports = (env = {}) => ({
   mode: "development",
   cache: false,
@@ -11,7 +13,7 @@ module.exports = (env = {}) => ({
     minimize: false,
   },
   target: "web",
-  entry: path.resolve(__dirname, "./src/main.js"),
+  entry: path.resolve(__dirname, "./src/bootstrap.js"),
   output: {
     publicPath: "auto",
   },
@@ -63,11 +65,20 @@ module.exports = (env = {}) => ({
     }),
     new ModuleFederationPlugin({
       name: "layout",
-      filename: "remoteEntry.js",
       remotes: {
         home: "home@http://localhost:3002/remoteEntry.js",
       },
-      exposes: {},
+      shared: {
+        ...deps,
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: deps["react-dom"],
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "./index.html"),
@@ -76,7 +87,9 @@ module.exports = (env = {}) => ({
     new VueLoaderPlugin(),
   ],
   devServer: {
-    contentBase: path.join(__dirname),
+    static: {
+      directory: path.join(__dirname),
+    },
     compress: true,
     port: 3001,
     hot: true,

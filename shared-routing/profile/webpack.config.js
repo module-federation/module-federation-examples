@@ -7,11 +7,12 @@ module.exports = {
   entry: "./src/index",
   mode: "development",
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
     port: 3004,
     historyApiFallback: true,
-    hot: false,
-    hotOnly: false,
+    hot: 'only',
   },
   output: {
     publicPath: "auto",
