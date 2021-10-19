@@ -10,8 +10,12 @@ import { ProfileRoutingModule } from "./profile-routing.module";
 import { ProfileComponent } from "./components/profile/profile.component";
 import { ListUserComponent } from "./components/list-user/list-user.component";
 
+const EXPORTS = [
+  ListUserComponent
+];
+
 @NgModule({
-  declarations: [ProfileComponent, ListUserComponent],
+  declarations: [ProfileComponent, ...EXPORTS],
   imports: [
     CommonModule,
     ProfileRoutingModule,
@@ -21,6 +25,8 @@ import { ListUserComponent } from "./components/list-user/list-user.component";
     ReactiveFormsModule,
     MdmfSharedModule,
   ],
-  exports: [ListUserComponent],
+  exports: [...EXPORTS],
 })
-export class ProfileModule {}
+export class ProfileModule {
+  static exports = EXPORTS; // prevents from components being tree-shaked in production
+}

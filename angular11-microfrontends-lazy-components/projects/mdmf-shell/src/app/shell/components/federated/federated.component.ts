@@ -34,8 +34,8 @@ export class FederatedComponent implements OnInit {
       exposedModule: this.exposedModule,
     }).then((federated) => {
       const componentFactory = this.cfr.resolveComponentFactory(
-        federated[this.exposedModule].ɵmod.exports.find(
-          (e) => e.name === this.componentName
+        federated[this.exposedModule].exports.find(
+          (e) => e.ɵcmp.exportAs[0] === this.componentName
         )
       );
       const { instance } = this.federatedComponent.createComponent(
