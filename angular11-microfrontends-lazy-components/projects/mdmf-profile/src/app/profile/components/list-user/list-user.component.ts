@@ -9,6 +9,7 @@ import { Observable } from "rxjs";
   selector: "app-profile-list-user",
   templateUrl: "./list-user.component.html",
   styleUrls: ["./list-user.component.css"],
+  exportAs: 'ListUserComponent'
 })
 export class ListUserComponent implements OnInit {
   @Select(UserState.getUsers) users: Observable<User[]>;
