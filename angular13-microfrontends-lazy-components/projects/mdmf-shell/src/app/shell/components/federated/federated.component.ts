@@ -1,7 +1,6 @@
 import {
   Component,
   Input,
-  ComponentFactoryResolver,
   Injector,
   OnInit,
   ViewChild,
@@ -23,25 +22,18 @@ export class FederatedComponent implements OnInit {
   @Input() exposedModule: string;
   @Input() componentName: string;
 
-  constructor(
-    private injector: Injector,
-    private cfr: ComponentFactoryResolver
-  ) {}
+  constructor(private injector: Injector) {}
   ngOnInit(): void {
     loadRemoteModule({
       remoteEntry: this.remoteEntry,
       remoteName: this.remoteName,
       exposedModule: this.exposedModule,
     }).then((federated) => {
-      const componentFactory = this.cfr.resolveComponentFactory(
+      const { instance } = this.federatedComponent.createComponent(
         federated[this.exposedModule].exports.find(
           (e) => e.ɵcmp?.exportAs[0] === this.componentName
-        )
-      );
-      const { instance } = this.federatedComponent.createComponent(
-        componentFactory,
-        null,
-        ɵcreateInjector(federated[this.exposedModule], this.injector)
+        ),
+        { injector: ɵcreateInjector(federated[this.exposedModule], this.injector) }
       );
     });
   }
