@@ -1,8 +1,5 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-
-import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
-import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MdmfSharedModule } from "../../../../mdmf-shared/src/public-api";
 
@@ -19,8 +16,6 @@ const EXPORTS = [
   imports: [
     CommonModule,
     ProfileRoutingModule,
-    NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     MdmfSharedModule,

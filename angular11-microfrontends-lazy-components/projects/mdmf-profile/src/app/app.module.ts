@@ -5,8 +5,6 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 
 import { NgxsModule } from "@ngxs/store";
-import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
-import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
 import { UserState } from "../../../mdmf-shared/src/lib/app-state/state/user.state";
 
 @NgModule({
@@ -14,9 +12,7 @@ import { UserState } from "../../../mdmf-shared/src/lib/app-state/state/user.sta
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxsModule.forRoot([UserState]),
-    NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot(),
+    NgxsModule.forRoot([UserState])
   ],
   providers: [],
   bootstrap: [AppComponent],
