@@ -1,6 +1,6 @@
-# Microfrontends Angular 12
+# Microfrontends Angular 13
 
-This project shows an example of using Webpack 5 Module Federation with Angular `12.2.13` using shared module and NGXS state management.
+This project shows an example of using Webpack 5 Module Federation with Angular `13.0.2` using shared module and NGXS state management.
 
 - note the use of **yarn**, this is required to override the webpack version for the angular cli
 - the project was developed based on the the example `angular11-microfrontends`
