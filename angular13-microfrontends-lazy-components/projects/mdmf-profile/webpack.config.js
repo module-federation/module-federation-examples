@@ -5,6 +5,7 @@ module.exports = {
   output: {
     publicPath: "http://localhost:4201/",
     uniqueName: "mdmfprofile",
+    scriptType: 'text/javascript'
   },
   optimization: {
     runtimeChunk: false,

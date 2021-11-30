@@ -5,6 +5,7 @@ module.exports = {
   output: {
     publicPath: "http://localhost:4200/",
     uniqueName: "shell",
+    scriptType: 'text/javascript'
   },
   optimization: {
     runtimeChunk: false,
