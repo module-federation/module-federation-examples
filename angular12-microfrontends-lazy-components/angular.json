@@ -101,17 +101,6 @@
             "extraWebpackConfig": "projects/mdmf-shell/webpack.config.js"
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/mdmf-shell/tsconfig.app.json",
-              "projects/mdmf-shell/tsconfig.spec.json",
-              "projects/mdmf-shell/e2e/tsconfig.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
@@ -221,17 +210,6 @@
             "extraWebpackConfig": "projects/mdmf-profile/webpack.config.js"
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/mdmf-profile/tsconfig.app.json",
-              "projects/mdmf-profile/tsconfig.spec.json",
-              "projects/mdmf-profile/e2e/tsconfig.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
@@ -270,16 +248,6 @@
             "main": "projects/mdmf-shared/src/test.ts",
             "tsConfig": "projects/mdmf-shared/tsconfig.spec.json",
             "karmaConfig": "projects/mdmf-shared/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/mdmf-shared/tsconfig.lib.json",
-              "projects/mdmf-shared/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
           }
         }
       }
