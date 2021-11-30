@@ -1,6 +1,6 @@
-# Microfrontends Angular 11
+# Microfrontends Angular 12
 
-This project shows an example of using Webpack 5 Module Federation with Angular `11.0.0-rc.2` using shared module and NGXS state management.
+This project shows an example of using Webpack 5 Module Federation with Angular `12.2.13` using shared module and NGXS state management.
 
 - note the use of **yarn**, this is required to override the webpack version for the angular cli
 - the project was developed based on the the example `angular11-microfrontends`
@@ -29,13 +29,6 @@ This project shows an example of using Webpack 5 Module Federation with Angular 
 ## Usage
 
 To enable use of Webpack 5 with the angular cli you **must** use **yarn** as your package manager, it allows you to override the webpack dependencies for the CLI.
-The package.json contains the following section to override webpack to use version 5 instead of 4:
-
-```json
-  "resolutions": {
-    "webpack": "5.4.0"
-  },
-```
 
 ## Project Structure
 
