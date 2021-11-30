@@ -26,10 +26,6 @@ This project shows an example of using Webpack 5 Module Federation with Angular 
 ![Shell Screenshot](shell.png)
 ![Profile Screenshot](profile.png)
 
-## Usage
-
-To enable use of Webpack 5 with the angular cli you **must** use **yarn** as your package manager, it allows you to override the webpack dependencies for the CLI.
-
 ## Project Structure
 
 ### Shell (mdmf-shell)
