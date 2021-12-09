@@ -9,7 +9,7 @@ export default class App extends React.Component{
         dialogVisible:false
       }
       this.handleClick = this.handleClick.bind(this);
-      this.HanldeSwitchVisible = this.HanldeSwitchVisible.bind(this);
+      this.handleSwitchVisible = this.handleSwitchVisible.bind(this);
     }
     handleClick(ev){
       console.log(ev);
@@ -17,7 +17,7 @@ export default class App extends React.Component{
         dialogVisible:true
       })
     }
-    HanldeSwitchVisible(visible){
+    handleSwitchVisible(visible){
       this.setState({
         dialogVisible:visible
       })
@@ -39,7 +39,7 @@ export default class App extends React.Component{
           Dialog:
         </h4>
         <button onClick={this.handleClick}>click me to open Dialog</button>
-        <Dialog switchVisible={this.HanldeSwitchVisible} visible={this.state.dialogVisible}/>
+        <Dialog switchVisible={this.handleSwitchVisible} visible={this.state.dialogVisible}/>
         <h4>hover me please!</h4>
         <ToolTip content="hover me please" message="Hello,world!"/>
       </div>)
