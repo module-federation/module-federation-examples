@@ -1,5 +1,6 @@
 import React from "react";
+import lodash from 'lodash';
 
-const Button = () => <button>App 2 Button</button>;
+const Button = () => <div>REMOTE lodash@{lodash.VERSION}</div>;
 
 export default Button;

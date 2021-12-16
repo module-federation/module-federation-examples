@@ -1,6 +1,22 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
+const packageJson = require("./package.json");
+
+const shared = {
+  ...packageJson.dependencies,
+  react: { singleton: true },
+  "react-dom": { singleton: true },
+  lodash: {
+    singleton: true,
+    version: packageJson.dependencies["lodash"],
+    requiredVersion: packageJson.dependencies["lodash"],
+    strictVersion: true,
+    eager: true
+  },
+};
+
+console.info("HOST SHARE SCOPE", shared);
 
 module.exports = {
   entry: "./src/index",
@@ -40,7 +56,7 @@ module.exports = {
       remotes: {
         app2: `app2@${getRemoteEntryUrl(3002)}`,
       },
-      shared: { react: { singleton: true }, "react-dom": { singleton: true } },
+      shared,
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
