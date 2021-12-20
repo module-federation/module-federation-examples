@@ -7,10 +7,15 @@
   "author": "burhanuday",
   "license": "MIT",
   "private": false,
-  "devDependencies": {
-    "lerna": "4.0.0"
+  "workspaces": {
+    "packages": [
+      "host", "libs", "remote1"
+    ]
   },
   "scripts": {
-    "start": "npx lerna run start --parallel"
+    "start": "concurrently \"cd libs; yarn start\" \"cd remote1; yarn start\" \"cd host; yarn start\""
+  },
+  "devDependencies": {
+    "concurrently": "^6.5.1"
   }
 }
