@@ -5,23 +5,9 @@ This repo uses Webpack5 Module Federation plugin to build a React microfrontend
 ## Get started
 
 ```shell
-# Terminal 1
-cd packages/host
-npm i
-npm start
-
-# Terminal 2
-cd packages/remote1
-npm i
-npm start
-```
-
-With lerna
-
-```shell
-# make sure you have installed dependencies
-npm start
-```
+yarn install
+yarn start
+````
 
 Host runs at http://localhost:3000 (live reload only)
 Remote1 runs at http://localhost:3001 (HMR supported)
