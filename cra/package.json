@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "host",
+      "remote"
+    ]
+  },
+  "scripts": {
+    "start": "lerna run --parallel start",
+    "build": "lerna run build",
+    "serve": "lerna run --parallel serve",
+    "clean": "lerna run --parallel clean"
+  },
+  "devDependencies": {
+    "lerna": "4.0.0"
+  }
+}
