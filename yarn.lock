@@ -11471,6 +11471,13 @@ history@^5.0.0:
   dependencies:
     "@babel/runtime" "^7.7.6"
 
+history@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/history/-/history-5.2.0.tgz#7cdd31cf9bac3c5d31f09c231c9928fad0007b7c"
+  integrity sha512-uPSF6lAJb3nSePJ43hN3eKj1dTWpN9gMod0ZssbFTIsen+WehTmEadgL+kg78xLJFdRfrrC//SavDzmRVdE+Ig==
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+
 hmac-drbg@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
@@ -17253,12 +17260,13 @@ react-resize-detector@^2.3.0:
     prop-types "^15.6.0"
     resize-observer-polyfill "^1.5.0"
 
-react-router-dom@6.0.0-beta.6:
-  version "6.0.0-beta.6"
-  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.0.0-beta.6.tgz#326c39382674c337b27f5d183026cdbab6373034"
-  integrity sha512-8pca4/YgQi+azEoY4KtfQMuhkIgRurmqa+mBXIICZRp71nPQX/x1lAnTw6Q2/J5dFu2rIRx1V+HA4hZ1AV0x2Q==
+react-router-dom@6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.2.1.tgz#32ec81829152fbb8a7b045bf593a22eadf019bec"
+  integrity sha512-I6Zax+/TH/cZMDpj3/4Fl2eaNdcvoxxHoH1tYOREsQ22OKDYofGebrNm6CTPUcvLvZm63NL/vzCYdjf9CUhqmA==
   dependencies:
-    react-router "6.0.0-beta.6"
+    history "^5.2.0"
+    react-router "6.2.1"
 
 react-router-dom@^5.1.2:
   version "5.2.0"
@@ -17318,10 +17326,12 @@ react-router@5.2.1:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react-router@6.0.0-beta.6:
-  version "6.0.0-beta.6"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.0.0-beta.6.tgz#147e8313d3ce5b4a53b8fc1dae6f20664f5df69a"
-  integrity sha512-wuwkFWb464LwWcGuO75kYfzWPE9f5Wgj9/cRVVh8kh/IjOIDpM+8nYCs11ukMJwnwT+3pIps9t/lB9Hnk67zpw==
+react-router@6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.2.1.tgz#be2a97a6006ce1d9123c28934e604faef51448a3"
+  integrity sha512-2fG0udBtxou9lXtK97eJeET2ki5//UWfQSl1rlJ7quwe6jrktK9FCCc8dQb5QY6jAv3jua8bBQRhhDOM/kVRsg==
+  dependencies:
+    history "^5.2.0"
 
 react-side-effect@^2.1.0:
   version "2.1.1"
