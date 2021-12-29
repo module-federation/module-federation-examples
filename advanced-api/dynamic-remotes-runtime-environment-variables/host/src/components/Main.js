@@ -1,10 +1,11 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState } from 'react';
+
+import { useFederatedComponent } from '../hooks/useFederatedComponent'
 import { EnvContext } from './App'
-import System from './System'
 
 const Main = () => {
     const ENV = useContext(EnvContext)
-    const [system, setSystem] = useState(undefined)
+    const [{module, scope, url }, setSystem] = useState({});
 
     const loadRemoteWidget = () => {
         setSystem({
@@ -12,7 +13,9 @@ const Main = () => {
             scope: 'remote',
             module: './Widget',
         })
-    }
+    };
+
+    const { Component: FederatedComponent, errorLoading } = useFederatedComponent(url, scope, module);
 
     return (
         <div
@@ -30,10 +33,12 @@ const Main = () => {
             </p>
             <button onClick={loadRemoteWidget}>Load Remote Widget</button>
             <div style={{ marginTop: '2em' }}>
-                <System system={system} />
+            <React.Suspense fallback="Loading System">
+                {errorLoading ? `Error loading module "${module}"` : (FederatedComponent && <FederatedComponent />)}
+            </React.Suspense>
             </div>
         </div>
     )
 }
 
-export default Main
+export default Main;
