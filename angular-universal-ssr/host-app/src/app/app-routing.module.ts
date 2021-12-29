@@ -1,32 +1,29 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { HomeComponent } from "./home/home.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
-    path: "",
-    pathMatch: "full",
+    path: '',
+    pathMatch: 'full',
     component: HomeComponent,
   },
   {
-    path: "lazy",
-    pathMatch: "full",
+    path: 'lazy',
+    pathMatch: 'full',
     loadChildren: () =>
-      import("./host-lazy-module/host-lazy-module.module").then(
-        (x) => x.HostLazyModuleModule
-      ),
+      import('./host-lazy-module/host-lazy-module.module').then(x => x.HostLazyModuleModule),
   },
   {
-    path: "federation",
-    loadChildren: () =>
-      import("clientApp/Module").then((x) => x.ClientCitiesModule),
+    path: 'federation',
+    loadChildren: () => import('clientApp/Module').then(x => x.ClientCitiesModule),
   },
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      initialNavigation: "enabled",
+      initialNavigation: 'enabled',
     }),
   ],
   exports: [RouterModule],

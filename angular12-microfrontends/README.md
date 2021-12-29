@@ -25,14 +25,13 @@ The profile project located in: `projects/mdmf-profile` contains a profile modul
 ```js
 plugins: [
   new ModuleFederationPlugin({
-    name: "profile",
-    library: { type: "var", name: "profile" },
-    filename: "remoteEntry.js",
+    name: 'profile',
+    library: { type: 'var', name: 'profile' },
+    filename: 'remoteEntry.js',
     exposes: {
-      ProfileModule:
-        "./projects/mdmf-profile/src/app/profile/profile.module.ts",
+      ProfileModule: './projects/mdmf-profile/src/app/profile/profile.module.ts',
     },
-    shared: ["@angular/core", "@angular/common", "@angular/router"],
+    shared: ['@angular/core', '@angular/common', '@angular/router'],
   }),
 ];
 ```

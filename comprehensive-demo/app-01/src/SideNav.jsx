@@ -8,14 +8,14 @@ import {
   Typography,
   createStyles,
   makeStyles,
-} from "@material-ui/core";
+} from '@material-ui/core';
 
-import { Link } from "react-router-dom";
-import React from "react";
+import { Link } from 'react-router-dom';
+import React from 'react';
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme) =>
+const useStyles = makeStyles(theme =>
   createStyles({
     drawer: {
       width: drawerWidth,
@@ -26,11 +26,11 @@ const useStyles = makeStyles((theme) =>
     },
     toolbar: {
       ...theme.mixins.toolbar,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
-  })
+  }),
 );
 
 export default function SideNav() {

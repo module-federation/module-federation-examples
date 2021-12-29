@@ -1,11 +1,9 @@
-import * as wasm from "./index_bg.wasm";
+import * as wasm from './index_bg.wasm';
 
 const lTextDecoder =
-  typeof TextDecoder === "undefined"
-    ? (0, module.require)("util").TextDecoder
-    : TextDecoder;
+  typeof TextDecoder === 'undefined' ? (0, module.require)('util').TextDecoder : TextDecoder;
 
-let cachedTextDecoder = new lTextDecoder("utf-8", {
+let cachedTextDecoder = new lTextDecoder('utf-8', {
   ignoreBOM: true,
   fatal: true,
 });
@@ -14,10 +12,7 @@ cachedTextDecoder.decode();
 
 let cachegetUint8Memory0 = null;
 function getUint8Memory0() {
-  if (
-    cachegetUint8Memory0 === null ||
-    cachegetUint8Memory0.buffer !== wasm.memory.buffer
-  ) {
+  if (cachegetUint8Memory0 === null || cachegetUint8Memory0.buffer !== wasm.memory.buffer) {
     cachegetUint8Memory0 = new Uint8Array(wasm.memory.buffer);
   }
   return cachegetUint8Memory0;
@@ -38,7 +33,7 @@ function addHeapObject(obj) {
   const idx = heap_next;
   heap_next = heap[idx];
 
-  if (typeof heap_next !== "number") throw new Error("corrupt heap");
+  if (typeof heap_next !== 'number') throw new Error('corrupt heap');
 
   heap[idx] = obj;
   return idx;
@@ -61,15 +56,12 @@ function takeObject(idx) {
 }
 
 function _assertNum(n) {
-  if (typeof n !== "number") throw new Error("expected a number argument");
+  if (typeof n !== 'number') throw new Error('expected a number argument');
 }
 
 let cachegetInt32Memory0 = null;
 function getInt32Memory0() {
-  if (
-    cachegetInt32Memory0 === null ||
-    cachegetInt32Memory0.buffer !== wasm.memory.buffer
-  ) {
+  if (cachegetInt32Memory0 === null || cachegetInt32Memory0.buffer !== wasm.memory.buffer) {
     cachegetInt32Memory0 = new Int32Array(wasm.memory.buffer);
   }
   return cachegetInt32Memory0;
@@ -82,16 +74,14 @@ function logError(f) {
     } catch (e) {
       let error = (function () {
         try {
-          return e instanceof Error
-            ? `${e.message}\n\nStack:\n${e.stack}`
-            : e.toString();
+          return e instanceof Error ? `${e.message}\n\nStack:\n${e.stack}` : e.toString();
         } catch (_) {
-          return "<failed to stringify thrown value>";
+          return '<failed to stringify thrown value>';
         }
       })();
       console.error(
-        "wasm-bindgen: imported JS function that was not marked as `catch` threw an error:",
-        error
+        'wasm-bindgen: imported JS function that was not marked as `catch` threw an error:',
+        error,
       );
       throw e;
     }
@@ -101,14 +91,12 @@ function logError(f) {
 let WASM_VECTOR_LEN = 0;
 
 const lTextEncoder =
-  typeof TextEncoder === "undefined"
-    ? (0, module.require)("util").TextEncoder
-    : TextEncoder;
+  typeof TextEncoder === 'undefined' ? (0, module.require)('util').TextEncoder : TextEncoder;
 
-let cachedTextEncoder = new lTextEncoder("utf-8");
+let cachedTextEncoder = new lTextEncoder('utf-8');
 
 const encodeString =
-  typeof cachedTextEncoder.encodeInto === "function"
+  typeof cachedTextEncoder.encodeInto === 'function'
     ? function (arg, view) {
         return cachedTextEncoder.encodeInto(arg, view);
       }
@@ -122,7 +110,7 @@ const encodeString =
       };
 
 function passStringToWasm0(arg, malloc, realloc) {
-  if (typeof arg !== "string") throw new Error("expected a string argument");
+  if (typeof arg !== 'string') throw new Error('expected a string argument');
 
   if (realloc === undefined) {
     const buf = cachedTextEncoder.encode(arg);
@@ -154,7 +142,7 @@ function passStringToWasm0(arg, malloc, realloc) {
     ptr = realloc(ptr, len, (len = offset + arg.length * 3));
     const view = getUint8Memory0().subarray(ptr + offset, ptr + len);
     const ret = encodeString(arg, view);
-    if (ret.read !== arg.length) throw new Error("failed to pass whole string");
+    if (ret.read !== arg.length) throw new Error('failed to pass whole string');
     offset += ret.written;
   }
 
@@ -165,11 +153,7 @@ function passStringToWasm0(arg, malloc, realloc) {
  * @param {string} string
  */
 export function greet(string) {
-  var ptr0 = passStringToWasm0(
-    string,
-    wasm.__wbindgen_malloc,
-    wasm.__wbindgen_realloc
-  );
+  var ptr0 = passStringToWasm0(string, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
   var len0 = WASM_VECTOR_LEN;
   wasm.greet(ptr0, len0);
 }
@@ -182,12 +166,12 @@ export function main_js() {
 
 /**
  */
-export const Cell = Object.freeze({ Dead: 0, 0: "Dead", Alive: 1, 1: "Alive" });
+export const Cell = Object.freeze({ Dead: 0, 0: 'Dead', Alive: 1, 1: 'Alive' });
 /**
  */
 export class Universe {
   constructor() {
-    throw new Error("cannot invoke `new` directly");
+    throw new Error('cannot invoke `new` directly');
   }
 
   static __wrap(ptr) {
@@ -218,14 +202,14 @@ export class Universe {
   /**
    */
   tick() {
-    if (this.ptr == 0) throw new Error("Attempt to use a moved value");
+    if (this.ptr == 0) throw new Error('Attempt to use a moved value');
     _assertNum(this.ptr);
     wasm.universe_tick(this.ptr);
   }
   /**
    */
   reset() {
-    if (this.ptr == 0) throw new Error("Attempt to use a moved value");
+    if (this.ptr == 0) throw new Error('Attempt to use a moved value');
     _assertNum(this.ptr);
     wasm.universe_reset(this.ptr);
   }
@@ -234,7 +218,7 @@ export class Universe {
    */
   render() {
     try {
-      if (this.ptr == 0) throw new Error("Attempt to use a moved value");
+      if (this.ptr == 0) throw new Error('Attempt to use a moved value');
       const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
       _assertNum(this.ptr);
       wasm.universe_render(retptr, this.ptr);
@@ -272,11 +256,7 @@ export const __wbg_new_59cb74e423758ede = logError(function () {
 
 export const __wbg_stack_558ba5917b466edd = logError(function (arg0, arg1) {
   var ret = getObject(arg1).stack;
-  var ptr0 = passStringToWasm0(
-    ret,
-    wasm.__wbindgen_malloc,
-    wasm.__wbindgen_realloc
-  );
+  var ptr0 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
   var len0 = WASM_VECTOR_LEN;
   getInt32Memory0()[arg0 / 4 + 1] = len0;
   getInt32Memory0()[arg0 / 4 + 0] = ptr0;

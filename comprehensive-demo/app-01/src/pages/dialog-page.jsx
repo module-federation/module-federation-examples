@@ -1,11 +1,11 @@
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 
-import DialogMarkdown from "../docs/Dialog.md";
-import Markdown from "markdown-to-jsx";
-import Page from "../Page";
-import React from "react";
+import DialogMarkdown from '../docs/Dialog.md';
+import Markdown from 'markdown-to-jsx';
+import Page from '../Page';
+import React from 'react';
 
-const Dialog = React.lazy(() => import("app_02/Dialog"));
+const Dialog = React.lazy(() => import('app_02/Dialog'));
 
 const DialogPage = () => (
   <Page title="Dialog Demo">

@@ -1,5 +1,5 @@
-import React from "react";
-import SharedComponent from "./SharedComponent";
+import React from 'react';
+import SharedComponent from './SharedComponent';
 
 const App = () => (
   <div>

@@ -1,4 +1,4 @@
-const SmartButton = (await import("remoteLib/SmartButton")).default;
+const SmartButton = (await import('remoteLib/SmartButton')).default;
 
 const Page = () => {
   return (

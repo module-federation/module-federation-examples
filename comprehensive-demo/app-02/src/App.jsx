@@ -1,12 +1,12 @@
-import { Divider, ThemeProvider, Typography } from "@material-ui/core";
+import { Divider, ThemeProvider, Typography } from '@material-ui/core';
 
-import Dialog from "./Dialog";
-import { HashRouter } from "react-router-dom";
-import React from "react";
-import Tabs from "./Tabs";
-import { theme } from "./theme";
+import Dialog from './Dialog';
+import { HashRouter } from 'react-router-dom';
+import React from 'react';
+import Tabs from './Tabs';
+import { theme } from './theme';
 
-const Page = React.lazy(() => import("app_01/Page"));
+const Page = React.lazy(() => import('app_01/Page'));
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <Page title="Material UI App">
             <Typography variant="h6">Dialog Component</Typography>
             <Dialog />
-            <Divider style={{ margin: "16px 0" }} />
+            <Divider style={{ margin: '16px 0' }} />
             <Typography variant="h6">Tabs Component</Typography>
             <Tabs />
           </Page>

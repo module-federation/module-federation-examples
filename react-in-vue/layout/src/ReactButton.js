@@ -1,8 +1,8 @@
-import { ref, onMounted, onBeforeUnmount, onUpdated } from "vue";
-import ReactDOM from "react-dom";
-import React from "react";
+import { ref, onMounted, onBeforeUnmount, onUpdated } from 'vue';
+import ReactDOM from 'react-dom';
+import React from 'react';
 
-const firstLoad = new Promise((resolve) => setTimeout(resolve, 1000));
+const firstLoad = new Promise(resolve => setTimeout(resolve, 1000));
 
 async function fetchButton() {
   // simulate long network delay
@@ -11,11 +11,11 @@ async function fetchButton() {
   // uncomment to simulate failed load
   // throw new Error("Failed to load button from remote.");
 
-  return (await import("home/Button")).default;
+  return (await import('home/Button')).default;
 }
 
 export default {
-  name: "ReactButton",
+  name: 'ReactButton',
   props: {
     text: String,
     onClick: Function,
@@ -28,10 +28,7 @@ export default {
     function updateReactComponent() {
       if (!ButtonComponent.value || !!error.value) return;
 
-      ReactDOM.render(
-        React.createElement(ButtonComponent.value, props),
-        root.value
-      );
+      ReactDOM.render(React.createElement(ButtonComponent.value, props), root.value);
     }
 
     function unmountReactComponent() {
@@ -43,11 +40,11 @@ export default {
     onBeforeUnmount(unmountReactComponent);
 
     fetchButton()
-      .then((b) => {
+      .then(b => {
         ButtonComponent.value = b;
         updateReactComponent();
       })
-      .catch((e) => {
+      .catch(e => {
         error.value = e;
       });
 

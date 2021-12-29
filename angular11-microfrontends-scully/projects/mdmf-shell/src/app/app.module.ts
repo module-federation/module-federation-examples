@@ -1,26 +1,21 @@
-import { APP_INITIALIZER, NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { HttpClientModule } from "@angular/common/http";
-import { RouterModule } from "@angular/router";
-import { ShellModule } from "./shell/shell.module";
-import { AppComponent } from "./app.component";
-import { APP_ROUTES } from "./app.routes";
-import { MicrofrontendService } from "./microfrontends/microfrontend.service";
+import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { ShellModule } from './shell/shell.module';
+import { AppComponent } from './app.component';
+import { APP_ROUTES } from './app.routes';
+import { MicrofrontendService } from './microfrontends/microfrontend.service';
 
-import { MdmfSharedModule } from "projects/mdmf-shared/src/lib/modules/mdmf-shared.module";
+import { MdmfSharedModule } from 'projects/mdmf-shared/src/lib/modules/mdmf-shared.module';
 
-import { StoreModule } from "@ngrx/store";
-import { StoreDevtoolsModule } from "@ngrx/store-devtools";
-import {
-  ROOT_REDUCERS,
-  metaReducers,
-} from "projects/mdmf-shared/src/lib/app-state/reducer";
-import { StoreRouterConnectingModule } from "@ngrx/router-store";
-import { ScullyLibModule } from "@scullyio/ng-lib";
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ROOT_REDUCERS, metaReducers } from 'projects/mdmf-shared/src/lib/app-state/reducer';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { ScullyLibModule } from '@scullyio/ng-lib';
 
-export function initializeApp(
-  mfService: MicrofrontendService
-): () => Promise<void> {
+export function initializeApp(mfService: MicrofrontendService): () => Promise<void> {
   return () => mfService.initialise();
 }
 
@@ -42,7 +37,7 @@ export function initializeApp(
       },
     }),
     StoreDevtoolsModule.instrument({
-      name: "NgRx example",
+      name: 'NgRx example',
       // In a production build you would want to disable the Store Devtools
       // logOnly: environment.production,
     }),

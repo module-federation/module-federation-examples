@@ -4,7 +4,7 @@ const initialState = {
 
 const CHANGE_APP_NAME = 'CHANGE_APP_NAME';
 
-const changeAppNameAction = (appName) => {
+const changeAppNameAction = appName => {
   return { type: CHANGE_APP_NAME, payload: appName };
 };
 

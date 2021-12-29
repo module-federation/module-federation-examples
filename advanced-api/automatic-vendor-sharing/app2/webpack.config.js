@@ -1,6 +1,6 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { ModuleFederationPlugin } = require("webpack").container;
-const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { ModuleFederationPlugin } = require('webpack').container;
+const path = require('path');
 
 // adds all your dependencies as shared modules
 // version is inferred from package.json in the dependencies
@@ -11,55 +11,55 @@ const path = require("path");
 // Note that this will not affect nested paths like "lodash/pluck"
 // Note that this will disable some optimization on these packages
 // with might lead the bundle size problems
-const deps = require("./package.json").dependencies;
+const deps = require('./package.json').dependencies;
 
 module.exports = {
-  entry: "./src/index",
-  mode: "development",
+  entry: './src/index',
+  mode: 'development',
   devServer: {
     static: {
-      directory: path.join(__dirname, "dist"),
+      directory: path.join(__dirname, 'dist'),
     },
     port: 3002,
   },
-  target: "web",
+  target: 'web',
   output: {
-    publicPath: "auto",
+    publicPath: 'auto',
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          presets: ["@babel/preset-react"],
+          presets: ['@babel/preset-react'],
         },
       },
     ],
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "app2",
-      filename: "remoteEntry.js",
+      name: 'app2',
+      filename: 'remoteEntry.js',
       remotes: {
-        app1: "app1@http://localhost:3001/remoteEntry.js",
+        app1: 'app1@http://localhost:3001/remoteEntry.js',
       },
       exposes: {
-        "./Button": "./src/Button",
+        './Button': './src/Button',
       },
       shared: {
         ...deps,
         react: {
           singleton: true,
         },
-        "react-dom": {
+        'react-dom': {
           singleton: true,
         },
       },
     }),
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
+      template: './public/index.html',
     }),
   ],
 };

@@ -1,31 +1,31 @@
-import Home from "./components/Home";
-import About from "./components/About";
-import Contact from "./components/Contact";
-import Secret from "./components/Secret";
+import Home from './components/Home';
+import About from './components/About';
+import Contact from './components/Contact';
+import Secret from './components/Secret';
 
 export default [
   {
-    path: "/",
+    path: '/',
     component: Home,
     exact: true,
   },
   {
-    path: "/about",
+    path: '/about',
     component: About,
     exact: true,
   },
   {
-    path: "/contact",
+    path: '/contact',
     component: Contact,
     exact: true,
   },
   {
-    path: "/secret",
+    path: '/secret',
     component: Secret,
     exact: true,
   },
   {
-    path: "/federation",
+    path: '/federation',
     exact: true,
   },
 ];

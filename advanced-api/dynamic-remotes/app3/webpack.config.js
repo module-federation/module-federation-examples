@@ -1,40 +1,39 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ModuleFederationPlugin =
-  require("webpack").container.ModuleFederationPlugin;
-const path = require("path");
-const deps = require("./package.json").dependencies;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const path = require('path');
+const deps = require('./package.json').dependencies;
 module.exports = {
-  entry: "./src/index",
-  mode: "development",
+  entry: './src/index',
+  mode: 'development',
   devServer: {
     static: {
-      directory: path.join(__dirname, "dist"),
+      directory: path.join(__dirname, 'dist'),
     },
     port: 3003,
   },
-  target: "web",
+  target: 'web',
   output: {
-    publicPath: "auto",
+    publicPath: 'auto',
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          presets: ["@babel/preset-react"],
+          presets: ['@babel/preset-react'],
         },
       },
     ],
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "app3",
-      library: { type: "var", name: "app3" },
-      filename: "remoteEntry.js",
+      name: 'app3',
+      library: { type: 'var', name: 'app3' },
+      filename: 'remoteEntry.js',
       exposes: {
-        "./Widget": "./src/Widget",
+        './Widget': './src/Widget',
       },
       // adds react as shared module
       // version is inferred from package.json
@@ -43,13 +42,13 @@ module.exports = {
       shared: {
         react: {
           requiredVersion: deps.react,
-          import: "react", // the "react" package will be used a provided and fallback module
-          shareKey: "react", // under this name the shared module will be placed in the share scope
-          shareScope: "default", // share scope with this name will be used
+          import: 'react', // the "react" package will be used a provided and fallback module
+          shareKey: 'react', // under this name the shared module will be placed in the share scope
+          shareScope: 'default', // share scope with this name will be used
           singleton: true, // only a single version of the shared module is allowed
         },
-        "react-dom": {
-          requiredVersion: deps["react-dom"],
+        'react-dom': {
+          requiredVersion: deps['react-dom'],
           singleton: true, // only a single version of the shared module is allowed
         },
         // adds moment as shared module
@@ -59,7 +58,7 @@ module.exports = {
       },
     }),
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
+      template: './public/index.html',
     }),
   ],
 };

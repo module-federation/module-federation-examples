@@ -1,17 +1,16 @@
-const ModuleFederationPlugin =
-  require("webpack").container.ModuleFederationPlugin;
+const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
 
 module.exports = {
-  publicPath: "http://localhost:9001/",
+  publicPath: 'http://localhost:9001/',
   configureWebpack: {
     plugins: [
       new ModuleFederationPlugin({
-        name: "other",
-        filename: "remoteEntry.js",
+        name: 'other',
+        filename: 'remoteEntry.js',
         exposes: {
-          "./MainComponent": "./src/components/MainComponent",
+          './MainComponent': './src/components/MainComponent',
         },
-        shared: require("./package.json").dependencies,
+        shared: require('./package.json').dependencies,
       }),
     ],
   },

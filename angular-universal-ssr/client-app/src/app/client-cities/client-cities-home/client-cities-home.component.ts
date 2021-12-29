@@ -6,38 +6,38 @@ import {
   OnInit,
   ViewChild,
   ViewContainerRef,
-} from "@angular/core";
+} from '@angular/core';
 
 @Component({
-  selector: "app-client-cities-home",
-  templateUrl: "./client-cities-home.component.html",
-  styleUrls: ["./client-cities-home.component.scss"],
+  selector: 'app-client-cities-home',
+  templateUrl: './client-cities-home.component.html',
+  styleUrls: ['./client-cities-home.component.scss'],
 })
 export class ClientCitiesHomeComponent implements OnInit {
-  @ViewChild("container", { read: ViewContainerRef, static: true })
+  @ViewChild('container', { read: ViewContainerRef, static: true })
   viewContainer: ViewContainerRef;
 
-  public cities = ["Prague", "Saint-Petersburg"];
+  public cities = ['Prague', 'Saint-Petersburg'];
   public currentCity = null;
 
   constructor(
     @Inject(Injector) private readonly injector,
-    @Inject(ComponentFactoryResolver) private readonly componentFactoryResolver
+    @Inject(ComponentFactoryResolver) private readonly componentFactoryResolver,
   ) {}
 
   public ngOnInit(): void {}
 
   public async onClickCity(city: string) {
-    import("../client-city/client-city.component").then((module) => {
+    import('../client-city/client-city.component').then(module => {
       this.currentCity = city;
       this.viewContainer.clear();
       const factory = this.componentFactoryResolver.resolveComponentFactory(
-        module.ClientCityComponent
+        module.ClientCityComponent,
       );
       const componentInstance = this.viewContainer.createComponent(
         factory,
         null,
-        this.injector
+        this.injector,
       ).instance;
       (componentInstance as any).city = city;
     });

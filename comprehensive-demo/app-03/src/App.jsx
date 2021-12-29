@@ -1,7 +1,7 @@
-import Button from "./Button";
-import React from "react";
+import Button from './Button';
+import React from 'react';
 
-const Page = React.lazy(() => import("app_01/Page"));
+const Page = React.lazy(() => import('app_01/Page'));
 
 function App() {
   return (

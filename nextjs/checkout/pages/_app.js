@@ -1,11 +1,11 @@
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 const Nav = dynamic(
   () => {
-    const mod = import("home/nav");
+    const mod = import('home/nav');
     console.log(mod);
     return mod;
   },
-  { ssr: false }
+  { ssr: false },
 );
 
 function MyApp({ Component, pageProps }) {

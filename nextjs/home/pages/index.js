@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
-import Head from "next/head";
-import dynamic from "next/dynamic";
+import React, { Fragment } from 'react';
+import Head from 'next/head';
+import dynamic from 'next/dynamic';
 const RemoteTitle = dynamic(
   () => {
-    return window.checkout?.get("./title").then((factory) => factory());
+    return window.checkout?.get('./title').then(factory => factory());
   },
-  { ssr: false }
+  { ssr: false },
 );
 
 const Home = ({ loaded }) => {
@@ -34,10 +34,7 @@ const Home = ({ loaded }) => {
             <h3>Next.js Learn &rarr;</h3>
             <p>Learn about Next.js by following an interactive tutorial!</p>
           </a>
-          <a
-            href="https://github.com/zeit/next.js/tree/master/examples"
-            className="card"
-          >
+          <a href="https://github.com/zeit/next.js/tree/master/examples" className="card">
             <h3>Examples &rarr;</h3>
             <p>Find other example boilerplates on the Next.js GitHub.</p>
           </a>
@@ -94,7 +91,7 @@ const Home = ({ loaded }) => {
   );
 };
 //
-Home.getInitialProps = async (ctx) => {
+Home.getInitialProps = async ctx => {
   return {};
 };
 

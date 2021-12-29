@@ -1,5 +1,5 @@
-import LocalExample from "./Example";
-import React from "react";
+import LocalExample from './Example';
+import React from 'react';
 
 const App = () => (
   <div>

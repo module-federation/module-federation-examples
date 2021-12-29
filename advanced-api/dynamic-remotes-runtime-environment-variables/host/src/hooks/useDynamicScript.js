@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const urlCache = new Set();
-const useDynamicScript = (url) => {
+const useDynamicScript = url => {
   const [ready, setReady] = useState(false);
   const [errorLoading, setErrorLoading] = useState(false);
 
@@ -22,8 +22,6 @@ const useDynamicScript = (url) => {
     element.src = url;
     element.type = 'text/javascript';
     element.async = true;
-
-
 
     element.onload = () => {
       urlCache.add(url);

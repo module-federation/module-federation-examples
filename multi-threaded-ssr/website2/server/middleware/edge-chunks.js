@@ -1,5 +1,5 @@
-const React = require("react");
-const { renderToString } = require("react-dom/server");
+const React = require('react');
+const { renderToString } = require('react-dom/server');
 
 module.exports = function createEdgeChunks(app, modules) {
   modules.forEach((mod, index) => {
@@ -10,7 +10,7 @@ module.exports = function createEdgeChunks(app, modules) {
       console.log(mod.Component);
       const html = renderToString(React.createElement(mod.Component, props));
 
-      res.setHeader("Content-Type", "text/javascript");
+      res.setHeader('Content-Type', 'text/javascript');
       res.status(200).send(`
 exports.id = ${modId};
 exports.ids = [${modId}];

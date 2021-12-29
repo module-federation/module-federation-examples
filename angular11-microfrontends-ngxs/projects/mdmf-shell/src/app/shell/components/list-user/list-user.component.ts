@@ -1,14 +1,14 @@
-import { Component, OnInit } from "@angular/core";
-import { Select, Store } from "@ngxs/store";
-import { RemoveUser } from "projects/mdmf-shared/src/lib/app-state/actions/user.action";
-import { User } from "projects/mdmf-shared/src/lib/app-state/models/User";
-import { UserState } from "projects/mdmf-shared/src/lib/app-state/state/user.state";
-import { Observable } from "rxjs";
+import { Component, OnInit } from '@angular/core';
+import { Select, Store } from '@ngxs/store';
+import { RemoveUser } from 'projects/mdmf-shared/src/lib/app-state/actions/user.action';
+import { User } from 'projects/mdmf-shared/src/lib/app-state/models/User';
+import { UserState } from 'projects/mdmf-shared/src/lib/app-state/state/user.state';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: "app-shell-list-user",
-  templateUrl: "./list-user.component.html",
-  styleUrls: ["./list-user.component.css"],
+  selector: 'app-shell-list-user',
+  templateUrl: './list-user.component.html',
+  styleUrls: ['./list-user.component.css'],
 })
 export class ListUserComponent implements OnInit {
   @Select(UserState.getUsers) users: Observable<User[]>;
@@ -29,6 +29,6 @@ export class ListUserComponent implements OnInit {
    * Get the users for unit testing purposes
    */
   getUsers(): User[] {
-    return this.store.selectSnapshot<User[]>((state) => state.users.users);
+    return this.store.selectSnapshot<User[]>(state => state.users.users);
   }
 }

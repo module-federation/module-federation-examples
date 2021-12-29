@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function loadComponent(scope, module) {
   return async () => {
@@ -14,7 +14,7 @@ function loadComponent(scope, module) {
 }
 
 const urlCache = new Set();
-const useDynamicScript = (url) => {
+const useDynamicScript = url => {
   const [ready, setReady] = React.useState(false);
   const [errorLoading, setErrorLoading] = React.useState(false);
 
@@ -35,8 +35,6 @@ const useDynamicScript = (url) => {
     element.src = url;
     element.type = 'text/javascript';
     element.async = true;
-
-
 
     element.onload = () => {
       urlCache.add(url);
@@ -65,9 +63,7 @@ const useDynamicScript = (url) => {
 const componentCache = new Map();
 export const useFederatedComponent = (remoteUrl, scope, module) => {
   const key = `${remoteUrl}-${scope}-${module}`;
-  const [Component, setComponent] = React.useState(
-    null,
-  );
+  const [Component, setComponent] = React.useState(null);
 
   const { ready, errorLoading } = useDynamicScript(remoteUrl);
   React.useEffect(() => {
@@ -87,23 +83,22 @@ export const useFederatedComponent = (remoteUrl, scope, module) => {
   return { errorLoading, Component };
 };
 
-
 function App() {
   const [{ module, scope, url }, setSystem] = React.useState({});
 
   function setApp2() {
     setSystem({
-      url: "http://localhost:3002/remoteEntry.js",
-      scope: "app2",
-      module: "./Widget",
+      url: 'http://localhost:3002/remoteEntry.js',
+      scope: 'app2',
+      module: './Widget',
     });
   }
 
   function setApp3() {
     setSystem({
-      url: "http://localhost:3003/remoteEntry.js",
-      scope: "app3",
-      module: "./Widget",
+      url: 'http://localhost:3003/remoteEntry.js',
+      scope: 'app3',
+      module: './Widget',
     });
   }
 
@@ -119,15 +114,16 @@ function App() {
       <h1>Dynamic System Host</h1>
       <h2>App 1</h2>
       <p>
-        The Dynamic System will take advantage Module Federation{" "}
-        <strong>remotes</strong> and <strong>exposes</strong>. It will no load
-        components that have been loaded already.
+        The Dynamic System will take advantage Module Federation <strong>remotes</strong> and{' '}
+        <strong>exposes</strong>. It will no load components that have been loaded already.
       </p>
       <button onClick={setApp2}>Load App 2 Widget</button>
       <button onClick={setApp3}>Load App 3 Widget</button>
-      <div style={{ marginTop: "2em" }}>
+      <div style={{ marginTop: '2em' }}>
         <React.Suspense fallback="Loading System">
-          {errorLoading ? `Error loading module "${module}"` : (FederatedComponent && <FederatedComponent />)}
+          {errorLoading
+            ? `Error loading module "${module}"`
+            : FederatedComponent && <FederatedComponent />}
         </React.Suspense>
       </div>
     </div>

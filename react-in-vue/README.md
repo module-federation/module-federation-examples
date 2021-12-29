@@ -1,6 +1,6 @@
 # React in Vue - Module Federation Demo
 
-This demo is a simple proof of concept approach for fetching a React component from a *"remote"* React app and mounting it within a Vue *"host"* app using module federation.
+This demo is a simple proof of concept approach for fetching a React component from a _"remote"_ React app and mounting it within a Vue _"host"_ app using module federation.
 
 The Vue app fetches and renders a **React button which can be used to increment a counter controlled by Vue**. The button text can be manipulated via a text input and it can also be unmounted/mounted using a checkbox.
 

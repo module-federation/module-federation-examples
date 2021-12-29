@@ -1,33 +1,32 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const ModuleFederationPlugin =
-  require("webpack").container.ModuleFederationPlugin;
-const path = require("path");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const path = require('path');
 
-const mode = process.env.NODE_ENV || "development";
-const prod = mode === "production";
+const mode = process.env.NODE_ENV || 'development';
+const prod = mode === 'production';
 
 module.exports = {
   entry: {
-    bundle: ["./src/main.js"],
+    bundle: ['./src/main.js'],
   },
   resolve: {
     alias: {
-      svelte: path.resolve("node_modules", "svelte"),
+      svelte: path.resolve('node_modules', 'svelte'),
     },
-    extensions: [".mjs", ".js", ".svelte"],
-    mainFields: ["svelte", "browser", "module", "main"],
+    extensions: ['.mjs', '.js', '.svelte'],
+    mainFields: ['svelte', 'browser', 'module', 'main'],
   },
   output: {
-    path: __dirname + "/public",
-    filename: "[name].js",
-    chunkFilename: "[name].[id].js",
-    publicPath: "auto",
+    path: __dirname + '/public',
+    filename: '[name].js',
+    chunkFilename: '[name].[id].js',
+    publicPath: 'auto',
   },
   module: {
     rules: [
       {
         test: /\.m?js$/,
-        type: "javascript/auto",
+        type: 'javascript/auto',
         resolve: {
           fullySpecified: false,
         },
@@ -35,7 +34,7 @@ module.exports = {
       {
         test: /\.svelte$/,
         use: {
-          loader: "svelte-loader",
+          loader: 'svelte-loader',
           options: {
             emitCss: true,
             hotReload: true,
@@ -49,8 +48,8 @@ module.exports = {
            * MiniCssExtractPlugin doesn't support HMR.
            * For developing, use 'style-loader' instead.
            * */
-          prod ? MiniCssExtractPlugin.loader : "style-loader",
-          "css-loader",
+          prod ? MiniCssExtractPlugin.loader : 'style-loader',
+          'css-loader',
         ],
       },
     ],
@@ -58,17 +57,17 @@ module.exports = {
   mode,
   plugins: [
     new ModuleFederationPlugin({
-      name: "app_04",
-      filename: "remoteEntry.js",
+      name: 'app_04',
+      filename: 'remoteEntry.js',
       exposes: {
-        "./App": "./src/main.js",
-        "./loadApp": "./src/loadApp.js",
+        './App': './src/main.js',
+        './loadApp': './src/loadApp.js',
       },
       shared: [],
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
+      filename: '[name].css',
     }),
   ],
-  devtool: prod ? false : "source-map",
+  devtool: prod ? false : 'source-map',
 };

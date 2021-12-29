@@ -1,4 +1,4 @@
-import { LoadRemoteModuleOptions } from "../utils/federation-utils";
+import { LoadRemoteModuleOptions } from '../utils/federation-utils';
 
 export type Microfrontend = LoadRemoteModuleOptions & {
   displayName: string;

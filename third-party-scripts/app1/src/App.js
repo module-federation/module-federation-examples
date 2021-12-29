@@ -1,18 +1,18 @@
-import React from "react";
-import("@module-federation/common-3rd-libs/google-analytics").then((ga) => {
-  ga("create", "UA-XXXXX-Y", "auto");
-  ga("send", "pageview");
+import React from 'react';
+import('@module-federation/common-3rd-libs/google-analytics').then(ga => {
+  ga('create', 'UA-XXXXX-Y', 'auto');
+  ga('send', 'pageview');
 });
-import("@module-federation/common-3rd-libs/facebook").then((fbq) => {
+import('@module-federation/common-3rd-libs/facebook').then(fbq => {
   console.log(fbq);
-  fbq("init", "12341234");
-  fbq("track", "PageView");
+  fbq('init', '12341234');
+  fbq('track', 'PageView');
 });
-import("@module-federation/common-3rd-libs/bing").then((UET) => {
+import('@module-federation/common-3rd-libs/bing').then(UET => {
   console.log(UET);
-  var o = { ti: "TAG_ID_HERE" };
+  var o = { ti: 'TAG_ID_HERE' };
   window.uetq = new UET(o);
-  window.uetq.push("pageLoad");
+  window.uetq.push('pageLoad');
 });
 
 const App = () => (

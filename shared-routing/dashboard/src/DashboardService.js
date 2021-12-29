@@ -1,11 +1,11 @@
-import { Container, Grid, makeStyles } from "@material-ui/core";
-import React from "react";
-import Widget from "./Widget";
-import { useServiceContext } from "shell/Service";
+import { Container, Grid, makeStyles } from '@material-ui/core';
+import React from 'react';
+import Widget from './Widget';
+import { useServiceContext } from 'shell/Service';
 
-const RecentOrders = React.lazy(() => import("order/RecentOrdersWidget"));
-const SalesDeposits = React.lazy(() => import("sales/DepositsWidget"));
-const SalesToday = React.lazy(() => import("sales/TodayWidget"));
+const RecentOrders = React.lazy(() => import('order/RecentOrdersWidget'));
+const SalesDeposits = React.lazy(() => import('sales/DepositsWidget'));
+const SalesToday = React.lazy(() => import('sales/TodayWidget'));
 
 const RecentOrderWidget = () => (
   <Widget height="500px">
@@ -25,12 +25,12 @@ const SalesTodayWidget = () => (
   </Widget>
 );
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    height: "100vh",
-    overflow: "auto",
+    height: '100vh',
+    overflow: 'auto',
   },
   container: {
     paddingTop: theme.spacing(4),
@@ -42,7 +42,7 @@ export default function Dashboard() {
   const classes = useStyles();
   const serviceContext = useServiceContext();
   React.useEffect(() => {
-    serviceContext.setService({ title: "Dashboard" });
+    serviceContext.setService({ title: 'Dashboard' });
   }, []);
 
   return (

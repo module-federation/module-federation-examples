@@ -1,13 +1,13 @@
-import { render, h } from "vue";
+import { render, h } from 'vue';
 const button = {
-  name: "btn-component",
+  name: 'btn-component',
   render() {
     return h(
-      "button",
+      'button',
       {
-        id: "btn-primary",
+        id: 'btn-primary',
       },
-      "Hello World"
+      'Hello World',
     );
   },
 };

@@ -1,11 +1,11 @@
-import React from "react";
-import { CircularProgress, makeStyles, Paper, Box } from "@material-ui/core";
+import React from 'react';
+import { CircularProgress, makeStyles, Paper, Box } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2),
-    display: "flex",
-    overflow: "auto",
+    display: 'flex',
+    overflow: 'auto',
   },
 }));
 

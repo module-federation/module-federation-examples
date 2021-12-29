@@ -1,14 +1,14 @@
-const { withFederatedSidecar } = require("@module-federation/nextjs-mf");
-const deps = require("./package.json").dependencies;
-let merge = require("webpack-merge");
+const { withFederatedSidecar } = require('@module-federation/nextjs-mf');
+const deps = require('./package.json').dependencies;
+let merge = require('webpack-merge');
 
 module.exports = withFederatedSidecar({
-  name: "checkout",
-  filename: "static/chunks/remoteEntry.js",
+  name: 'checkout',
+  filename: 'static/chunks/remoteEntry.js',
   exposes: {
-    "./title": "./components/exposedTitle.js",
-    "./checkout": "./pages/checkout",
-    "./pages-map": "./pages-map.js",
+    './title': './components/exposedTitle.js',
+    './checkout': './pages/checkout',
+    './pages-map': './pages-map.js',
   },
   shared: {
     react: {
@@ -22,11 +22,11 @@ module.exports = withFederatedSidecar({
     const { webpack } = options;
 
     config.experiments = { topLevelAwait: true };
-    config.output.publicPath = "auto";
+    config.output.publicPath = 'auto';
 
     config.module.rules.push({
       test: /_app.js/,
-      loader: "@module-federation/nextjs-mf/lib/federation-loader.js",
+      loader: '@module-federation/nextjs-mf/lib/federation-loader.js',
     });
     if (options.isServer) {
       Object.assign(config.resolve.alias, {
@@ -37,14 +37,14 @@ module.exports = withFederatedSidecar({
     } else {
       config.plugins.push(
         new webpack.container.ModuleFederationPlugin({
-          remoteType: "var",
+          remoteType: 'var',
           remotes: {
-            home: "home",
-            shop: "shop",
-            checkout: "checkout",
+            home: 'home',
+            shop: 'shop',
+            checkout: 'checkout',
           },
           shared: {
-            "@module-federation/nextjs-mf/lib/noop": {
+            '@module-federation/nextjs-mf/lib/noop': {
               eager: false,
             },
             react: {
@@ -53,7 +53,7 @@ module.exports = withFederatedSidecar({
               requiredVersion: false,
             },
           },
-        })
+        }),
       );
     }
     return config;

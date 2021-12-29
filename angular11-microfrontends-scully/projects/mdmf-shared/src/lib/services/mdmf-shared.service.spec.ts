@@ -1,8 +1,8 @@
-import { TestBed } from "@angular/core/testing";
+import { TestBed } from '@angular/core/testing';
 
-import { MdmfSharedService } from "./mdmf-shared.service";
+import { MdmfSharedService } from './mdmf-shared.service';
 
-describe("MdmfSharedService", () => {
+describe('MdmfSharedService', () => {
   let service: MdmfSharedService;
 
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe("MdmfSharedService", () => {
     service = TestBed.inject(MdmfSharedService);
   });
 
-  it("should be created", () => {
+  it('should be created', () => {
     expect(service).toBeTruthy();
   });
 });

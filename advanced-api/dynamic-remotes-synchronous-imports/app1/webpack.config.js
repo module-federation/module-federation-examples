@@ -1,31 +1,31 @@
-const ExternalTemplateRemotesPlugin = require("./ExternalTemplateRemotesPlugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { ModuleFederationPlugin } = require("webpack").container;
-const path = require("path");
-const deps = require("./package.json").dependencies;
-const { app2Module, app1Module } = require("../moduleConfig");
+const ExternalTemplateRemotesPlugin = require('./ExternalTemplateRemotesPlugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { ModuleFederationPlugin } = require('webpack').container;
+const path = require('path');
+const deps = require('./package.json').dependencies;
+const { app2Module, app1Module } = require('../moduleConfig');
 
 module.exports = {
-  entry: ["./src/index"],
-  mode: "development",
-  target: "web",
+  entry: ['./src/index'],
+  mode: 'development',
+  target: 'web',
   devServer: {
     static: {
-      directory: path.join(__dirname, "dist"),
+      directory: path.join(__dirname, 'dist'),
     },
     port: app1Module.port,
   },
   output: {
-    publicPath: "auto",
+    publicPath: 'auto',
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          presets: ["@babel/preset-react"],
+          presets: ['@babel/preset-react'],
         },
       },
     ],
@@ -41,20 +41,20 @@ module.exports = {
         moment: deps.moment,
         react: {
           requiredVersion: deps.react,
-          import: "react", // the "react" package will be used a provided and fallback module
-          shareKey: "react", // under this name the shared module will be placed in the share scope
-          shareScope: "default", // share scope with this name will be used
+          import: 'react', // the "react" package will be used a provided and fallback module
+          shareKey: 'react', // under this name the shared module will be placed in the share scope
+          shareScope: 'default', // share scope with this name will be used
           singleton: true, // only a single version of the shared module is allowed
         },
-        "react-dom": {
-          requiredVersion: deps["react-dom"],
+        'react-dom': {
+          requiredVersion: deps['react-dom'],
           singleton: true, // only a single version of the shared module is allowed
         },
       },
     }),
     new ExternalTemplateRemotesPlugin(),
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
+      template: './public/index.html',
     }),
   ],
 };

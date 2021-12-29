@@ -3,12 +3,10 @@ module.exports = function createRemoteEntry(modules) {
     .map(
       (mod, index) => `
 	${JSON.stringify(mod.name)}: () => {
-		return __webpack_require__.e(${
-      index + 1
-    }).then(() => () => __webpack_require__(${index + 1}));
-	},`
+		return __webpack_require__.e(${index + 1}).then(() => () => __webpack_require__(${index + 1}));
+	},`,
     )
-    .join("\n")}
+    .join('\n')}
 }`;
 
   return `

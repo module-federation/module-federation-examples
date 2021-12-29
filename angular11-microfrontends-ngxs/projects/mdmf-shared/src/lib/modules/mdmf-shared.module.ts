@@ -1,6 +1,6 @@
-import { NgModule } from "@angular/core";
-import { MdmfSharedComponent } from "../components/mdmf-shared.component";
-import { CommonModule } from "@angular/common";
+import { NgModule } from '@angular/core';
+import { MdmfSharedComponent } from '../components/mdmf-shared.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   // declarations: [MdmfSharedComponent, ListUserComponent],

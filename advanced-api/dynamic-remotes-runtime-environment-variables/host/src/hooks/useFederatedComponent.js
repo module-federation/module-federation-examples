@@ -1,6 +1,6 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
-import useDynamicScript from "./useDynamicScript";
+import useDynamicScript from './useDynamicScript';
 
 function loadComponent(scope, module) {
   return async () => {
@@ -18,9 +18,7 @@ function loadComponent(scope, module) {
 const componentCache = new Map();
 export const useFederatedComponent = (remoteUrl, scope, module) => {
   const key = `${remoteUrl}-${scope}-${module}`;
-  const [Component, setComponent] = useState(
-    null,
-  );
+  const [Component, setComponent] = useState(null);
 
   const { ready, errorLoading } = useDynamicScript(remoteUrl);
   useEffect(() => {
