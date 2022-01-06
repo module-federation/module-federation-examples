@@ -8,8 +8,8 @@ NOTE: There seems to be a problem with css-in-js sharing between federated modul
 
 ## Getting Started
 
-1. run `npm install @module-federation/nextjs-mf --registry https://r.privjs.com` with npm 7 or install it directly in each folder/app, note the plugin is not free.
-2. run `yarn start` and browse to `http://localhost:3000`, `http://localhost:3001`, or `http://localhot:3002`
+1. run `npm install @module-federation/nextjs-mf --registry https://r.privjs.com` with npm 7 (yarn probbably better) or install it directly in each folder/app, note the plugin is not free.
+2. run `yarn start` and browse to `http://localhost:3001`
 
 # We are available to consult
 
