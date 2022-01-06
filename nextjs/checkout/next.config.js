@@ -1,6 +1,4 @@
 const { withFederatedSidecar } = require('@module-federation/nextjs-mf');
-const deps = require('./package.json').dependencies;
-let merge = require('webpack-merge');
 
 module.exports = withFederatedSidecar({
   name: 'checkout',
@@ -22,7 +20,7 @@ module.exports = withFederatedSidecar({
     const { webpack } = options;
 
     config.experiments = { topLevelAwait: true };
-    config.output.publicPath = 'auto';
+    
 
     config.module.rules.push({
       test: /_app.js/,
@@ -44,9 +42,6 @@ module.exports = withFederatedSidecar({
             checkout: 'checkout',
           },
           shared: {
-            '@module-federation/nextjs-mf/lib/noop': {
-              eager: false,
-            },
             react: {
               singleton: true,
               eager: true,
