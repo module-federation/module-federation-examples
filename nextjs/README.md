@@ -4,10 +4,12 @@ Module Federation in Next.js depends on <a href="https://app.privjs.com/buy/pack
 
 Due to the effort to support Next.js and funding constraints, I have moved the plugin to a paid model.
 
+NOTE: There seems to be a problem with css-in-js sharing between federated modules. This is likely due to some internal module not being shared as a singleton. PR is welcome
+
 ## Getting Started
 
-1. run `npm install @module-federation/nextjs-mf --registry https://r.privjs.com` with npm 7 or install it directly in each folder/app, note the plugin is not free.
-2. run `yarn start` and browse to `http://localhost:3000`, `http://localhost:3001`, or `http://localhot:3002`
+1. run `npm install @module-federation/nextjs-mf --registry https://r.privjs.com` with npm 7 (yarn probbably better) or install it directly in each folder/app, note the plugin is not free.
+2. run `yarn start` and browse to `http://localhost:3001`
 
 # We are available to consult
 
