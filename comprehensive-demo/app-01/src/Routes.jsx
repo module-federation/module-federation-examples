@@ -1,11 +1,11 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch } from 'react-router-dom';
 
-import DialogPage from "./pages/dialog-page";
-import IndexPage from "./pages/index-page";
-import React from "react";
-import RoutingPage from "./pages/routing-page";
-import SveltePage from "./pages/svelte-page";
-import UiLibraryPage from "./pages/ui-library-page";
+import DialogPage from './pages/dialog-page';
+import IndexPage from './pages/index-page';
+import React from 'react';
+import RoutingPage from './pages/routing-page';
+import SveltePage from './pages/svelte-page';
+import UiLibraryPage from './pages/ui-library-page';
 
 const Routes = () => (
   <Switch>

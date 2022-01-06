@@ -1,16 +1,16 @@
-import { CssBaseline, createStyles, makeStyles } from "@material-ui/core";
+import { CssBaseline, createStyles, makeStyles } from '@material-ui/core';
 
-import { HashRouter } from "react-router-dom";
-import React from "react";
-import Routes from "./Routes";
-import SideNav from "./SideNav";
+import { HashRouter } from 'react-router-dom';
+import React from 'react';
+import Routes from './Routes';
+import SideNav from './SideNav';
 
 const useStyles = makeStyles(theme =>
   createStyles({
     root: {
-      display: "flex"
-    }
-  })
+      display: 'flex',
+    },
+  }),
 );
 
 function App() {

@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 function loadComponent(scope, module) {
   return async () => {
     // Initializes the share scope. This fills it with known provided modules from this build and all remotes
-    await __webpack_init_sharing__("default");
+    await __webpack_init_sharing__('default');
     const container = window[scope]; // or get the container somewhere else
     // Initialize the container, it may provide shared modules
     await container.init(__webpack_share_scopes__.default);
@@ -13,7 +13,7 @@ function loadComponent(scope, module) {
   };
 }
 
-const useDynamicScript = (args) => {
+const useDynamicScript = args => {
   const [ready, setReady] = React.useState(false);
   const [failed, setFailed] = React.useState(false);
 
@@ -22,10 +22,10 @@ const useDynamicScript = (args) => {
       return;
     }
 
-    const element = document.createElement("script");
+    const element = document.createElement('script');
 
     element.src = args.url;
-    element.type = "text/javascript";
+    element.type = 'text/javascript';
     element.async = true;
 
     setReady(false);
@@ -73,9 +73,7 @@ function System(props) {
     return <h2>Failed to load dynamic script: {props.system.url}</h2>;
   }
 
-  const Component = React.lazy(
-    loadComponent(props.system.scope, props.system.module)
-  );
+  const Component = React.lazy(loadComponent(props.system.scope, props.system.module));
 
   return (
     <React.Suspense fallback="Loading System">
@@ -89,17 +87,17 @@ function App() {
 
   function setApp2() {
     setSystem({
-      url: "http://localhost:3002/remoteEntry.js",
-      scope: "app2",
-      module: "./Widget",
+      url: 'http://localhost:3002/remoteEntry.js',
+      scope: 'app2',
+      module: './Widget',
     });
   }
 
   function setApp3() {
     setSystem({
-      url: "http://localhost:3003/remoteEntry.js",
-      scope: "app3",
-      module: "./Widget",
+      url: 'http://localhost:3003/remoteEntry.js',
+      scope: 'app3',
+      module: './Widget',
     });
   }
 
@@ -113,13 +111,12 @@ function App() {
       <h1>Dynamic System Host</h1>
       <h2>App 1</h2>
       <p>
-        The Dynamic System will take advantage Module Federation{" "}
-        <strong>remotes</strong> and <strong>exposes</strong>. It will no load
-        components that have been loaded already.
+        The Dynamic System will take advantage Module Federation <strong>remotes</strong> and{' '}
+        <strong>exposes</strong>. It will no load components that have been loaded already.
       </p>
       <button onClick={setApp2}>Load App 2 Widget</button>
       <button onClick={setApp3}>Load App 3 Widget</button>
-      <div style={{ marginTop: "2em" }}>
+      <div style={{ marginTop: '2em' }}>
         <System system={system} />
       </div>
     </div>

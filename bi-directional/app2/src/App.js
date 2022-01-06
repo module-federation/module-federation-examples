@@ -1,7 +1,7 @@
-import LocalButton from "./Button";
-import React from "react";
+import LocalButton from './Button';
+import React from 'react';
 
-const RemoteButton = React.lazy(() => import("app1/Button"));
+const RemoteButton = React.lazy(() => import('app1/Button'));
 
 const App = () => (
   <div>

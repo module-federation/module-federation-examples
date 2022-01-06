@@ -1,4 +1,4 @@
-import express from "express";
+import express from 'express';
 const app = express();
-app.use((req, res) => res.send("Hello Federated Route Middleware!"));
+app.use((req, res) => res.send('Hello Federated Route Middleware!'));
 export default app;

@@ -1,7 +1,7 @@
-import { NameContextProvider } from "@shared-context/shared-library";
-import React from "react";
+import { NameContextProvider } from '@shared-context/shared-library';
+import React from 'react';
 
-const Welcome = React.lazy(() => import("app2/Welcome"));
+const Welcome = React.lazy(() => import('app2/Welcome'));
 
 const App = () => (
   <div>

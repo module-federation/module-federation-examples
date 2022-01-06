@@ -1,1 +1,1 @@
-export * from "./NameContextProvider";
+export * from './NameContextProvider';

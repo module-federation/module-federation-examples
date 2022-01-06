@@ -1,8 +1,8 @@
-const express = require("express");
-const chalk = require("chalk");
-const initMiddleware = require("./middleware");
+const express = require('express');
+const chalk = require('chalk');
+const initMiddleware = require('./middleware');
 
-const { raw: env } = require("../build/env")();
+const { raw: env } = require('../build/env')();
 
 const app = express();
 
@@ -16,24 +16,24 @@ const done = () => {
   runningServer = app.listen(env.PORT, () => {
     console.info(
       `[${new Date().toISOString()}]`,
-      chalk.blue(`App is running: 🌎 http://localhost:${env.PORT}`)
+      chalk.blue(`App is running: 🌎 http://localhost:${env.PORT}`),
     );
   });
 };
 
-app.use("/restart", (req, res) => {
-  process.on("exit", function () {
-    require("child_process").spawn(process.argv.shift(), process.argv, {
+app.use('/restart', (req, res) => {
+  process.on('exit', function () {
+    require('child_process').spawn(process.argv.shift(), process.argv, {
       cwd: process.cwd(),
       detached: false,
-      stdio: "inherit",
+      stdio: 'inherit',
     });
   });
 
   res.status = 200;
   res.send();
-  res.on("finish", function () {
-    console.log("OK response sent, killing and restarting application");
+  res.on('finish', function () {
+    console.log('OK response sent, killing and restarting application');
 
     process.exit();
   });
@@ -81,13 +81,13 @@ app.use("/restart", (req, res) => {
 });
 if (module.hot) {
   // module.hot.dispose(console.log)
-  module.hot.accept("./index", () => {
-    console.log("is hot reloading");
+  module.hot.accept('./index', () => {
+    console.log('is hot reloading');
     // eslint-disable-next-line
-    require("./index");
+    require('./index');
   });
 }
-console.log("basline app");
+console.log('basline app');
 initMiddleware(express, app, done);
 
 module.exports = app;

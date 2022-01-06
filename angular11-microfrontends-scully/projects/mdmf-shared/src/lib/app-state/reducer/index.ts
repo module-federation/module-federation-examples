@@ -5,9 +5,9 @@ import {
   MetaReducer,
   Action,
   ActionReducerMap,
-} from "@ngrx/store";
-import * as fromRouter from "@ngrx/router-store";
-import { InjectionToken } from "@angular/core";
+} from '@ngrx/store';
+import * as fromRouter from '@ngrx/router-store';
+import { InjectionToken } from '@angular/core';
 
 /**
  * Every reducer module's default export is the reducer function itself. In
@@ -16,8 +16,8 @@ import { InjectionToken } from "@angular/core";
  * notation packages up all of the exports into a single object.
  */
 
-import * as fromUser from "./user.reducer";
-import * as fromProduct from "./product.reducer";
+import * as fromUser from './user.reducer';
+import * as fromProduct from './product.reducer';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
@@ -34,24 +34,25 @@ export interface State {
  * These reducer functions are called with each dispatched action
  * and the current or initial state and return a new immutable state.
  */
-export const ROOT_REDUCERS = new InjectionToken<
-  ActionReducerMap<State, Action>
->("Root reducers token", {
-  factory: () => ({
-    [fromUser.userFeatureKey]: fromUser.reducer,
-    [fromProduct.productFeatureKey]: fromProduct.reducer,
-    router: fromRouter.routerReducer,
-  }),
-});
+export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<State, Action>>(
+  'Root reducers token',
+  {
+    factory: () => ({
+      [fromUser.userFeatureKey]: fromUser.reducer,
+      [fromProduct.productFeatureKey]: fromProduct.reducer,
+      router: fromRouter.routerReducer,
+    }),
+  },
+);
 
 // console.log all actions
 export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
   return (state, action) => {
     const result = reducer(state, action);
     console.groupCollapsed(action.type);
-    console.log("prev state", state);
-    console.log("action", action);
-    console.log("next state", result);
+    console.log('prev state', state);
+    console.log('action', action);
+    console.log('next state', result);
     console.groupEnd();
 
     return result;
@@ -70,35 +71,24 @@ export const metaReducers: MetaReducer<State>[] = !isProd ? [logger] : [];
 /**
  * User Selectors
  */
-export const selectUserState = createFeatureSelector<
-  State,
-  fromUser.UserStateModel
->(fromUser.userFeatureKey);
-
-export const selectUsers = createSelector(
-  selectUserState,
-  fromUser.selectUsers
+export const selectUserState = createFeatureSelector<State, fromUser.UserStateModel>(
+  fromUser.userFeatureKey,
 );
+
+export const selectUsers = createSelector(selectUserState, fromUser.selectUsers);
 
 /**
  * Product Selectors
  */
-export const selectProductState = createFeatureSelector<
-  State,
-  fromProduct.ProductStateModel
->(fromProduct.productFeatureKey);
-
-export const selectProducts = createSelector(
-  selectProductState,
-  fromProduct.selectProducts
+export const selectProductState = createFeatureSelector<State, fromProduct.ProductStateModel>(
+  fromProduct.productFeatureKey,
 );
+
+export const selectProducts = createSelector(selectProductState, fromProduct.selectProducts);
 
 /**
  * Router Selectors
  */
-export const selectRouter = createFeatureSelector<
-  State,
-  fromRouter.RouterReducerState
->("router");
+export const selectRouter = createFeatureSelector<State, fromRouter.RouterReducerState>('router');
 
 export const { selectRouteData } = fromRouter.getSelectors(selectRouter);

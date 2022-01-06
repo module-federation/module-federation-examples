@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-const Button = React.lazy(() => import("foo_app1/Button"));
-const Header = React.lazy(() => import("foo_rollup_spa/Header"));
+const Button = React.lazy(() => import('foo_app1/Button'));
+const Header = React.lazy(() => import('foo_rollup_spa/Header'));
 
 const App = () => {
   return (

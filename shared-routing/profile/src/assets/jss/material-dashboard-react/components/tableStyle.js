@@ -7,9 +7,9 @@ import {
   roseColor,
   grayColor,
   defaultFont,
-} from "../../material-dashboard-react.js";
+} from '../../material-dashboard-react.js';
 
-const tableStyle = (theme) => ({
+const tableStyle = theme => ({
   warningTableHeader: {
     color: warningColor[0],
   },
@@ -32,45 +32,45 @@ const tableStyle = (theme) => ({
     color: grayColor[0],
   },
   table: {
-    marginBottom: "0",
-    width: "100%",
-    maxWidth: "100%",
-    backgroundColor: "transparent",
-    borderSpacing: "0",
-    borderCollapse: "collapse",
+    marginBottom: '0',
+    width: '100%',
+    maxWidth: '100%',
+    backgroundColor: 'transparent',
+    borderSpacing: '0',
+    borderCollapse: 'collapse',
   },
   tableHeadCell: {
-    color: "inherit",
+    color: 'inherit',
     ...defaultFont,
-    "&, &$tableCell": {
-      fontSize: "1em",
+    '&, &$tableCell': {
+      fontSize: '1em',
     },
   },
   tableCell: {
     ...defaultFont,
-    lineHeight: "1.42857143",
-    padding: "12px 8px",
-    verticalAlign: "middle",
-    fontSize: "0.8125rem",
+    lineHeight: '1.42857143',
+    padding: '12px 8px',
+    verticalAlign: 'middle',
+    fontSize: '0.8125rem',
   },
   tableResponsive: {
-    width: "100%",
+    width: '100%',
     marginTop: theme.spacing(3),
-    overflowX: "auto",
+    overflowX: 'auto',
   },
   tableHeadRow: {
-    height: "56px",
-    color: "inherit",
-    display: "table-row",
-    outline: "none",
-    verticalAlign: "middle",
+    height: '56px',
+    color: 'inherit',
+    display: 'table-row',
+    outline: 'none',
+    verticalAlign: 'middle',
   },
   tableBodyRow: {
-    height: "48px",
-    color: "inherit",
-    display: "table-row",
-    outline: "none",
-    verticalAlign: "middle",
+    height: '48px',
+    color: 'inherit',
+    display: 'table-row',
+    outline: 'none',
+    verticalAlign: 'middle',
   },
 });
 

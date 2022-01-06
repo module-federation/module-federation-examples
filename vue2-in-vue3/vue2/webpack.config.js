@@ -1,21 +1,21 @@
-const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
-const { ModuleFederationPlugin } = require("webpack").container;
+const { ModuleFederationPlugin } = require('webpack').container;
 module.exports = (env = {}) => ({
-  mode: "development",
+  mode: 'development',
   cache: false,
-  devtool: "source-map",
+  devtool: 'source-map',
   optimization: {
     minimize: false,
   },
-  entry: path.resolve(__dirname, "./src/main.js"),
+  entry: path.resolve(__dirname, './src/main.js'),
   output: {
-    publicPath: "auto",
+    publicPath: 'auto',
   },
   resolve: {
-    extensions: [".vue", ".jsx", ".js", ".json"],
+    extensions: ['.vue', '.jsx', '.js', '.json'],
     alias: {
       vue$: 'vue/dist/vue.common.js',
     },
@@ -24,7 +24,7 @@ module.exports = (env = {}) => ({
     rules: [
       {
         test: /\.vue$/,
-        use: "vue-loader",
+        use: 'vue-loader',
       },
       {
         test: /\.css$/,
@@ -33,7 +33,7 @@ module.exports = (env = {}) => ({
             loader: MiniCssExtractPlugin.loader,
             options: {},
           },
-          "css-loader",
+          'css-loader',
         ],
       },
     ],
@@ -41,20 +41,20 @@ module.exports = (env = {}) => ({
   plugins: [
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
+      filename: '[name].css',
     }),
     new ModuleFederationPlugin({
-      name: "vue2App",
-      filename: "remoteEntry.js",
+      name: 'vue2App',
+      filename: 'remoteEntry.js',
       library: { type: 'var', name: 'vue2App' },
       exposes: {
-        "./vue2": "./node_modules/vue/dist/vue",
-        "./Button": "./src/components/Button",
+        './vue2': './node_modules/vue/dist/vue',
+        './Button': './src/components/Button',
       },
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "./index.html"),
-    })
+      template: path.resolve(__dirname, './index.html'),
+    }),
   ],
   devServer: {
     static: {
@@ -64,10 +64,9 @@ module.exports = (env = {}) => ({
     port: 3001,
     hot: true,
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers":
-        "X-Requested-With, content-type, Authorization",
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
     },
   },
 });

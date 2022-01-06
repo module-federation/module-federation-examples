@@ -1,5 +1,5 @@
-import { NameContextProvider } from "@shared-context/shared-library";
-import React from "react";
+import { NameContextProvider } from '@shared-context/shared-library';
+import React from 'react';
 
 const Welcome = () => {
   const name = React.useContext(NameContextProvider);

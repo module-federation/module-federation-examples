@@ -1,8 +1,8 @@
 export default async (express, app, done) => {
-  const renderThunk = require("./serverEntry").default;
+  const renderThunk = require('./serverEntry').default;
 
   const serverRender = renderThunk();
-  app.get("/*", serverRender);
+  app.get('/*', serverRender);
 
   done();
 };

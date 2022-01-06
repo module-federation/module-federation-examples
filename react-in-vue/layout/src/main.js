@@ -1,5 +1,5 @@
-import { createApp, ref } from "vue";
-import Layout from "./Layout";
+import { createApp, ref } from 'vue';
+import Layout from './Layout';
 
 const App = {
   components: {
@@ -13,4 +13,4 @@ const App = {
   `,
 };
 
-createApp(App).mount("#app");
+createApp(App).mount('#app');

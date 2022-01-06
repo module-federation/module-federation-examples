@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: "app-client-city",
-  templateUrl: "./client-city.component.html",
-  styleUrls: ["./client-city.component.scss"],
+  selector: 'app-client-city',
+  templateUrl: './client-city.component.html',
+  styleUrls: ['./client-city.component.scss'],
 })
 export class ClientCityComponent implements OnInit {
   @Input()

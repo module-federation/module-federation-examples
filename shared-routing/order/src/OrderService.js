@@ -9,10 +9,10 @@ import {
   TableRow,
   Typography,
   Paper,
-} from "@material-ui/core";
-import React from "react";
-import { orders } from "./data";
-import { useServiceContext } from "shell/Service";
+} from '@material-ui/core';
+import React from 'react';
+import { orders } from './data';
+import { useServiceContext } from 'shell/Service';
 
 function preventDefault(event) {
   event.preventDefault();
@@ -38,12 +38,12 @@ function OrderRow(props) {
   );
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    height: "100vh",
-    overflow: "auto",
+    height: '100vh',
+    overflow: 'auto',
   },
   container: {
     paddingTop: theme.spacing(4),
@@ -51,9 +51,9 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    display: "flex",
-    flexDirection: "column",
-    overflow: "auto",
+    display: 'flex',
+    flexDirection: 'column',
+    overflow: 'auto',
   },
 }));
 
@@ -61,7 +61,7 @@ export default function OrderService() {
   const classes = useStyles();
   const serviceContext = useServiceContext();
   React.useEffect(() => {
-    serviceContext.setService({ title: "Orders" });
+    serviceContext.setService({ title: 'Orders' });
   }, []);
   return (
     <main className={classes.content}>
@@ -69,12 +69,7 @@ export default function OrderService() {
       <Container maxWidth="lg" className={classes.container}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <Typography
-              component="h1"
-              variant="h6"
-              color="primary"
-              gutterBottom
-            >
+            <Typography component="h1" variant="h6" color="primary" gutterBottom>
               Orders
             </Typography>
             <Table>
@@ -88,7 +83,7 @@ export default function OrderService() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {orders.map((order) => (
+                {orders.map(order => (
                   <OrderRow order={order} key={order.id} />
                 ))}
               </TableBody>

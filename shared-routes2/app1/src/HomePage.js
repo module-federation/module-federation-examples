@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 const style = {
   height: 400,
-  backgroundColor: "#673ab7",
-  color: "white",
+  backgroundColor: '#673ab7',
+  color: 'white',
   padding: 12,
 };
 

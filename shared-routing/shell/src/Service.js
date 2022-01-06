@@ -1,9 +1,9 @@
-import * as React from "react";
+import * as React from 'react';
 
 export const Context = React.createContext(undefined);
 
 function useService() {
-  const [service, setService] = React.useState({ title: "" });
+  const [service, setService] = React.useState({ title: '' });
 
   return {
     ...service,
@@ -16,7 +16,7 @@ export function useServiceContext() {
 
   if (context === undefined) {
     throw new Error(
-      "ServiceContext value is undefined. Make sure you use the ServiceProvider before using the context."
+      'ServiceContext value is undefined. Make sure you use the ServiceProvider before using the context.',
     );
   }
 

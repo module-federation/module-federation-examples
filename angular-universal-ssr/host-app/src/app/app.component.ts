@@ -1,14 +1,14 @@
-import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  public title = "host";
-  public arr = ["one", "two", "three"];
+  public title = 'host';
+  public arr = ['one', 'two', 'three'];
 
   constructor(private readonly httpClient: HttpClient) {}
 

@@ -1,5 +1,5 @@
-import LocalButton from "./Widget";
-import React from "react";
+import LocalButton from './Widget';
+import React from 'react';
 
 const App = () => (
   <div>

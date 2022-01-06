@@ -1,6 +1,6 @@
-import React from "react";
-import { connect } from "react-redux";
-import { fetchData } from "../store";
+import React from 'react';
+import { connect } from 'react-redux';
+import { fetchData } from '../store';
 
 class Home extends React.Component {
   componentDidMount() {
@@ -28,7 +28,7 @@ class Home extends React.Component {
 }
 Home.serverFetch = fetchData; // static declaration of data requirements
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   circuits: state.data,
 });
 

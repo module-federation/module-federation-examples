@@ -1,6 +1,6 @@
-import React from "react";
-import { makeStyles, CircularProgress, Typography } from "@material-ui/core";
-const Shell = React.lazy(() => import("shell/Shell"));
+import React from 'react';
+import { makeStyles, CircularProgress, Typography } from '@material-ui/core';
+const Shell = React.lazy(() => import('shell/Shell'));
 
 function App() {
   return (
@@ -10,17 +10,17 @@ function App() {
   );
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column",
-    position: "fixed",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    position: 'fixed',
     top: 0,
     left: 0,
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
   },
   text: {
     marginTop: theme.spacing(3),

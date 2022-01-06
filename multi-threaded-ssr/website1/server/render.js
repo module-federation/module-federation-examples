@@ -1,11 +1,11 @@
-import React from "react";
-import { renderToString } from "react-dom/server";
-import { Helmet } from "react-helmet";
-import { ChunkExtractor } from "@loadable/server";
-import path from "path";
-import App from "../src/components/App";
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { Helmet } from 'react-helmet';
+import { ChunkExtractor } from '@loadable/server';
+import path from 'path';
+import App from '../src/components/App';
 
-const statsFile = path.resolve("./buildClient/static/stats.json");
+const statsFile = path.resolve('./buildClient/static/stats.json');
 
 export default async (req, res, next) => {
   try {
@@ -53,4 +53,4 @@ export default async (req, res, next) => {
   }
 };
 
-const createApp = (App) => <App />;
+const createApp = App => <App />;

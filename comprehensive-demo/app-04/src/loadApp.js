@@ -1,4 +1,4 @@
-import App from "./App.svelte";
+import App from './App.svelte';
 
 const loadApp = (id, name) => {
   return new App({

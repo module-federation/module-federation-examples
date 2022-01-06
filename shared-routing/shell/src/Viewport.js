@@ -1,28 +1,28 @@
-import React from "react";
-import { CssBaseline, makeStyles } from "@material-ui/core";
+import React from 'react';
+import { CssBaseline, makeStyles } from '@material-ui/core';
 
 const useGlobalStyles = makeStyles(
   () => ({
-    "@global": {
-      "*:-webkit-full-screen": {
-        height: "100%",
-        width: "100%",
+    '@global': {
+      '*:-webkit-full-screen': {
+        height: '100%',
+        width: '100%',
       },
       html: {
-        position: "fixed",
+        position: 'fixed',
       },
-      "html, body": {
-        height: "100%",
-        width: "100%",
+      'html, body': {
+        height: '100%',
+        width: '100%',
       },
-      "#root": {
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
+      '#root': {
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
       },
     },
   }),
-  { name: "ViewportGlobals" }
+  { name: 'ViewportGlobals' },
 );
 
 export default function Viewport(props) {

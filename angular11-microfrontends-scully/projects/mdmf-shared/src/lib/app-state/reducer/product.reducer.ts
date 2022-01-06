@@ -1,8 +1,8 @@
-import { createReducer, on } from "@ngrx/store";
-import { ProductActions } from "projects/mdmf-shared/src/lib/app-state/actions";
-import { Product } from "../models/product.model";
+import { createReducer, on } from '@ngrx/store';
+import { ProductActions } from 'projects/mdmf-shared/src/lib/app-state/actions';
+import { Product } from '../models/product.model';
 
-export const productFeatureKey = "product";
+export const productFeatureKey = 'product';
 
 export class ProductStateModel {
   products: Product[];
@@ -18,8 +18,8 @@ export const reducer = createReducer(
     products: [...state.products, product],
   })),
   on(ProductActions.removeProduct, (state, { product }) => ({
-    products: state.products.filter((p) => !(p.id === product.id)),
-  }))
+    products: state.products.filter(p => !(p.id === product.id)),
+  })),
 );
 
 export const selectProducts = (state: ProductStateModel) => state.products;

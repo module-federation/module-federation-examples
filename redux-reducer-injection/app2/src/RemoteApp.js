@@ -8,21 +8,19 @@ const remoteAppScope = 'remoteApp';
 
 const RemoteApp = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state[remoteAppScope]);
+  const state = useSelector(state => state[remoteAppScope]);
   const [remoteAppInput, setRemoteAppInput] = useState('');
 
   return (
     <div style={{ marginTop: '10px' }}>
       <div>RemoteApp</div>
-      <div>
-        RemoteApp's name from the redux store : {state && state.appName}
-      </div>
+      <div>RemoteApp's name from the redux store : {state && state.appName}</div>
 
       <div>
         <input
           style={{ marginRight: '10px' }}
           type="text"
-          onChange={(e) => {
+          onChange={e => {
             setRemoteAppInput(e.target.value);
           }}
         />
@@ -34,7 +32,7 @@ const RemoteApp = () => {
   );
 };
 
-const RemoteAppWrapper = (props) => {
+const RemoteAppWrapper = props => {
   const { store } = props;
   useEffect(() => {
     store.injectReducer(remoteAppScope, reducer);

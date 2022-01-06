@@ -1,2 +1,2 @@
-declare module "clientApp/Component";
-declare module "clientApp/Module";
+declare module 'clientApp/Component';
+declare module 'clientApp/Module';

@@ -1,8 +1,8 @@
 /* eslint-disable consistent-return */
 
-import virtual from "@rollup/plugin-virtual";
-import { walk } from "estree-walker";
-import MagicString from "magic-string";
+import virtual from '@rollup/plugin-virtual';
+import { walk } from 'estree-walker';
+import MagicString from 'magic-string';
 
 /** @typedef {{ [key:string]: string }} FederatedRemotes */
 
@@ -17,35 +17,29 @@ import MagicString from "magic-string";
  * @param {FederationOptions} options
  */
 export default function federation(options) {
-  const sourceMap =
-    typeof options.sourceMap !== "undefined" ? options.sourceMap : true;
+  const sourceMap = typeof options.sourceMap !== 'undefined' ? options.sourceMap : true;
   const providedRemotes = options.remotes || {};
   /** @type {Array<{ id: string, config: any }>} */
   const remotes = [];
-  Object.keys(providedRemotes).forEach((id) => {
+  Object.keys(providedRemotes).forEach(id => {
     remotes.push(Object.assign({}, { id, config: providedRemotes[id] }));
   });
   const shared = options.shared || {};
 
   const eagerShared = Object.entries(shared).filter(
-    ([_, version]) => typeof version === "object" && version.eager
+    ([_, version]) => typeof version === 'object' && version.eager,
   );
   const virtualMod = virtual({
     __federation__: `${eagerShared
-      .map(
-        ([toShare, version], idx) =>
-          `import eager${idx} from ${JSON.stringify(toShare)}`
-      )
-      .join("\n")}
+      .map(([toShare, version], idx) => `import eager${idx} from ${JSON.stringify(toShare)}`)
+      .join('\n')}
 const remotesMap = {
   ${remotes
     .map(
-      (remote) =>
-        `${JSON.stringify(remote.id)}: () => System.import(${JSON.stringify(
-          remote.config
-        )})`
+      remote =>
+        `${JSON.stringify(remote.id)}: () => System.import(${JSON.stringify(remote.config)})`,
     )
-    .join(",\n  ")}
+    .join(',\n  ')}
 };
 
 const processModule = (mod) => {
@@ -62,34 +56,28 @@ const shareScope = {
       ([toShare, version]) => `${JSON.stringify(toShare)}: {
 				
     ${
-      typeof version === "object" && version.eager
+      typeof version === 'object' && version.eager
         ? `get: () => () => processModule(${`eager${eagerShared.findIndex(
-            (e) => e[0] === toShare
+            e => e[0] === toShare,
           )}`}),`
-        : `get: () => System.import(${JSON.stringify(
-            toShare
-          )}).then(r => () => processModule(r)),`
+        : `get: () => System.import(${JSON.stringify(toShare)}).then(r => () => processModule(r)),`
     }
-    loaded: ${JSON.stringify(
-      (typeof version === "object" && version.eager) || false
-    )},
-    singleton: ${JSON.stringify(
-      (typeof version === "object" && version.singleton) || false
-    )},
+    loaded: ${JSON.stringify((typeof version === 'object' && version.eager) || false)},
+    singleton: ${JSON.stringify((typeof version === 'object' && version.singleton) || false)},
     version: ${JSON.stringify(
-      ((typeof version === "object" && version.requiredVersion) || version)
-        .split(".")
+      ((typeof version === 'object' && version.requiredVersion) || version)
+        .split('.')
         .reduce((p, c) => {
-          const parsed = Number.parseInt(c.replace(/\D/g, ""), 10);
+          const parsed = Number.parseInt(c.replace(/\D/g, ''), 10);
           if (Number.isSafeInteger(parsed)) {
             p.push(parsed);
           }
           return p;
-        }, [])
+        }, []),
     )}
-  }`
+  }`,
     )
-    .join(",\n  ")}
+    .join(',\n  ')}
 };
 
 const initMap = {};
@@ -110,7 +98,7 @@ export default {
   });
 
   return {
-    name: "federation",
+    name: 'federation',
 
     resolveId(...args) {
       const v = virtualMod.resolveId.call(this, ...args);
@@ -142,10 +130,10 @@ export default {
       let requiresRuntime = false;
       walk(ast, {
         enter(node) {
-          if (node.type === "ImportExpression") {
+          if (node.type === 'ImportExpression') {
             if (node.source && node.source.value) {
               const moduleId = node.source.value;
-              const remote = remotes.find((r) => moduleId.startsWith(r.id));
+              const remote = remotes.find(r => moduleId.startsWith(r.id));
 
               if (remote) {
                 requiresRuntime = true;
@@ -155,10 +143,10 @@ export default {
                   node.start,
                   node.end,
                   `__federation__.ensure(${JSON.stringify(
-                    remote.id
+                    remote.id,
                   )}).then((remote) => remote.get(${JSON.stringify(
-                    modName
-                  )})).then((factory) => factory())`
+                    modName,
+                  )})).then((factory) => factory())`,
                 );
               }
             }

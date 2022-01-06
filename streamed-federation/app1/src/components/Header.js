@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const Header = ({ loggedIn }) => (
   <div>
@@ -25,7 +25,7 @@ const Header = ({ loggedIn }) => (
   </div>
 );
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   loggedIn: state.loggedIn,
 });
 

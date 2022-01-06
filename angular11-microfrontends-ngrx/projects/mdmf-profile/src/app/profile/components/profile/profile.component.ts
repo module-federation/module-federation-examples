@@ -1,15 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { Store } from "@ngrx/store";
-import { UserActions } from "projects/mdmf-shared/src/lib/app-state/actions";
-import { User } from "projects/mdmf-shared/src/lib/app-state/models/User";
-import { selectUsers } from "projects/mdmf-shared/src/lib/app-state/reducer";
-import { Observable } from "rxjs";
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { UserActions } from 'projects/mdmf-shared/src/lib/app-state/actions';
+import { User } from 'projects/mdmf-shared/src/lib/app-state/models/User';
+import { selectUsers } from 'projects/mdmf-shared/src/lib/app-state/reducer';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: "app-profile",
-  templateUrl: "./profile.component.html",
-  styleUrls: ["./profile.component.css"],
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
   users: Observable<User[]> = this.store.select(selectUsers);
@@ -26,8 +26,8 @@ export class ProfileComponent implements OnInit {
    */
   createForm(): FormGroup {
     return this.fb.group({
-      name: ["", Validators.required],
-      email: ["", Validators.required],
+      name: ['', Validators.required],
+      email: ['', Validators.required],
     });
   }
 

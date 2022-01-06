@@ -1,16 +1,16 @@
-import App from "./App.svelte";
+import App from './App.svelte';
 
 const app = new App({
-  target: document.querySelector("#app_04"),
+  target: document.querySelector('#app_04'),
   props: {
-    name: "world",
+    name: 'world',
   },
 });
 
-export const loadApp = (id) => {
+export const loadApp = id => {
   return new App({
-    target: document.querySelector("#app_04"),
-    props: { name: "world" },
+    target: document.querySelector('#app_04'),
+    props: { name: 'world' },
   });
 };
 

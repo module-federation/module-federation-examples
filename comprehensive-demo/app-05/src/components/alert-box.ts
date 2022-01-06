@@ -1,9 +1,9 @@
-import { LitElement, html, customElement, property, css } from "lit-element";
+import { LitElement, html, customElement, property, css } from 'lit-element';
 
-@customElement("alert-box")
+@customElement('alert-box')
 export class AlertBox extends LitElement {
-  @property({ type: String }) content: string = "";
-  @property({ type: String }) id: string = "";
+  @property({ type: String }) content: string = '';
+  @property({ type: String }) id: string = '';
 
   static get styles() {
     return css`
@@ -32,11 +32,7 @@ export class AlertBox extends LitElement {
   render() {
     return html`
       <div id="${this.id}" class="alert">
-        <span
-          class="closebtn"
-          onclick="this.parentElement.style.display='none';"
-          >&times;</span
-        >
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         ${this.content}
       </div>
     `;

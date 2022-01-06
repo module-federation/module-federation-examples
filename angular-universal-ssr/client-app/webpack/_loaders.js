@@ -1,18 +1,18 @@
 module.exports = [
   {
     test: /\.scss$/,
-    use: ["raw-loader", "sass-loader"],
+    use: ['raw-loader', 'sass-loader'],
   },
   {
     test: /\.css$/,
-    loader: "raw-loader",
+    loader: 'raw-loader',
   },
   {
     test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
-    loader: "@ngtools/webpack",
+    loader: '@ngtools/webpack',
   },
   {
     test: /\.html$/,
-    loader: "raw-loader",
+    loader: 'raw-loader',
   },
 ];

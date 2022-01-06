@@ -1,6 +1,6 @@
-import Widget from "./Widget";
-import React, { Suspense } from "react";
-import WidgetRemote from "app2/Widget";
+import Widget from './Widget';
+import React, { Suspense } from 'react';
+import WidgetRemote from 'app2/Widget';
 
 const App = () => (
   <div>
