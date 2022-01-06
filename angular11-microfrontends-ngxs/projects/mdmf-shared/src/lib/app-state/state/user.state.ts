@@ -1,7 +1,7 @@
-import { State, Action, StateContext, Selector } from "@ngxs/store";
-import { User } from "../models/User";
-import { AddUser, RemoveUser } from "../actions/user.action";
-import { Injectable } from "@angular/core";
+import { State, Action, StateContext, Selector } from '@ngxs/store';
+import { User } from '../models/User';
+import { AddUser, RemoveUser } from '../actions/user.action';
+import { Injectable } from '@angular/core';
 
 export class UserStateModel {
   users: User[];
@@ -11,7 +11,7 @@ export class UserStateModel {
  * The UserState
  */
 @State<UserStateModel>({
-  name: "users",
+  name: 'users',
   defaults: {
     users: [],
   },
@@ -36,7 +36,7 @@ export class UserState {
   @Action(AddUser)
   add(
     { getState, patchState, setState }: StateContext<UserStateModel>,
-    { payload }: AddUser
+    { payload }: AddUser,
   ): void {
     const state = getState();
     if (state && state.users) {
@@ -57,16 +57,11 @@ export class UserState {
    * @param param1: playload of AddUser action
    */
   @Action(RemoveUser)
-  remove(
-    { getState, setState }: StateContext<UserStateModel>,
-    { payload }: AddUser
-  ): void {
+  remove({ getState, setState }: StateContext<UserStateModel>, { payload }: AddUser): void {
     const state = getState();
     if (state && state.users) {
       setState({
-        users: state.users.filter(
-          (u) => !(u.email === payload.email && u.name === payload.name)
-        ),
+        users: state.users.filter(u => !(u.email === payload.email && u.name === payload.name)),
       });
     }
   }

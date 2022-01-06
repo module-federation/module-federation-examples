@@ -1,51 +1,51 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { ModuleFederationPlugin } = require("webpack").container;
-const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
-const path = require("path");
-const LiveReloadPlugin = require("webpack-livereload-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { ModuleFederationPlugin } = require('webpack').container;
+const ExternalTemplateRemotesPlugin = require('external-remotes-plugin');
+const path = require('path');
+const LiveReloadPlugin = require('webpack-livereload-plugin');
 
 module.exports = {
-  entry: "./src/index",
-  mode: "development",
-  devtool: "source-map",
+  entry: './src/index',
+  mode: 'development',
+  devtool: 'source-map',
   optimization: {
     minimize: false,
   },
   devServer: {
     hot: false,
-    static: path.join(__dirname, "dist"),
+    static: path.join(__dirname, 'dist'),
     port: 3000,
     historyApiFallback: {
-      index: "index.html",
+      index: 'index.html',
     },
   },
   output: {
-    publicPath: "auto",
+    publicPath: 'auto',
     clean: true,
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          presets: ["@babel/preset-react"],
+          presets: ['@babel/preset-react'],
         },
       },
     ],
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "host",
+      name: 'host',
       remotes: {
-        remote1: "remote1@[remote1Url]/remoteEntry.js",
-        libs: "libs@[libsUrl]/remoteEntry.js",
+        remote1: 'remote1@[remote1Url]/remoteEntry.js',
+        libs: 'libs@[libsUrl]/remoteEntry.js',
       },
     }),
     new ExternalTemplateRemotesPlugin(),
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
+      template: './public/index.html',
     }),
     new LiveReloadPlugin({
       port: 35729,

@@ -1,8 +1,8 @@
-import { createReducer, on } from "@ngrx/store";
-import { UserActions } from "projects/mdmf-shared/src/lib/app-state/actions";
-import { User } from "../models/User";
+import { createReducer, on } from '@ngrx/store';
+import { UserActions } from 'projects/mdmf-shared/src/lib/app-state/actions';
+import { User } from '../models/User';
 
-export const userFeatureKey = "user";
+export const userFeatureKey = 'user';
 
 export class UserStateModel {
   users: User[];
@@ -18,10 +18,8 @@ export const reducer = createReducer(
     users: [...state.users, user],
   })),
   on(UserActions.removeUser, (state, { user }) => ({
-    users: state.users.filter(
-      (u) => !(u.email === user.email && u.name === user.name)
-    ),
-  }))
+    users: state.users.filter(u => !(u.email === user.email && u.name === user.name)),
+  })),
 );
 
 export const selectUsers = (state: UserStateModel) => state.users;

@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-const RemoteButton = React.lazy(() => import("app3/Button"));
+const RemoteButton = React.lazy(() => import('app3/Button'));
 
 const style = {
   padding: 12,
-  backgroundColor: "#cccccc",
+  backgroundColor: '#cccccc',
 };
 
 const ButtonContainer = () => (

@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { Store } from "@ngxs/store";
-import { AddUser } from "projects/mdmf-shared/src/lib/app-state/actions/user.action";
-import { User } from "projects/mdmf-shared/src/lib/app-state/models/User";
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Store } from '@ngxs/store';
+import { AddUser } from 'projects/mdmf-shared/src/lib/app-state/actions/user.action';
+import { User } from 'projects/mdmf-shared/src/lib/app-state/models/User';
 
 @Component({
-  selector: "app-profile",
-  templateUrl: "./profile.component.html",
-  styleUrls: ["./profile.component.css"],
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
   angForm: FormGroup;
@@ -23,8 +23,8 @@ export class ProfileComponent implements OnInit {
    */
   createForm(): FormGroup {
     return this.fb.group({
-      name: ["", Validators.required],
-      email: ["", Validators.required],
+      name: ['', Validators.required],
+      email: ['', Validators.required],
     });
   }
 
@@ -41,6 +41,6 @@ export class ProfileComponent implements OnInit {
    * Get the users for unit testing purposes
    */
   getUsers(): User[] {
-    return this.store.selectSnapshot<User[]>((state) => state.users.users);
+    return this.store.selectSnapshot<User[]>(state => state.users.users);
   }
 }

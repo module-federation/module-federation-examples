@@ -1,5 +1,5 @@
-import LocalButton from "./Button";
-import React from "react";
+import LocalButton from './Button';
+import React from 'react';
 
 const App = () => (
   <div>

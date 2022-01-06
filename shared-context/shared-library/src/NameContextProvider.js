@@ -1,3 +1,3 @@
-import React from "react";
+import React from 'react';
 
-export const NameContextProvider = React.createContext("No name provided");
+export const NameContextProvider = React.createContext('No name provided');

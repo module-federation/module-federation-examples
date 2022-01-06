@@ -1,31 +1,31 @@
-import React from "react";
+import React from 'react';
 // @material-ui/core components
-import InputLabel from "@material-ui/core/InputLabel";
-import { Container, Grid, makeStyles, Typography } from "@material-ui/core";
-import { useServiceContext } from "shell/Service";
+import InputLabel from '@material-ui/core/InputLabel';
+import { Container, Grid, makeStyles, Typography } from '@material-ui/core';
+import { useServiceContext } from 'shell/Service';
 
 // core components
-import GridItem from "./components/Grid/GridItem.js";
-import GridContainer from "./components/Grid/GridContainer.js";
-import CustomInput from "./components/CustomInput/CustomInput.js";
-import Button from "./components/CustomButtons/Button.js";
-import Card from "./components/Card/Card.js";
-import CardHeader from "./components/Card/CardHeader.js";
-import CardAvatar from "./components/Card/CardAvatar.js";
-import CardBody from "./components/Card/CardBody.js";
-import CardFooter from "./components/Card/CardFooter.js";
+import GridItem from './components/Grid/GridItem.js';
+import GridContainer from './components/Grid/GridContainer.js';
+import CustomInput from './components/CustomInput/CustomInput.js';
+import Button from './components/CustomButtons/Button.js';
+import Card from './components/Card/Card.js';
+import CardHeader from './components/Card/CardHeader.js';
+import CardAvatar from './components/Card/CardAvatar.js';
+import CardBody from './components/Card/CardBody.js';
+import CardFooter from './components/Card/CardFooter.js';
 
-import avatar from "./assets/img/faces/zack.jpg";
+import avatar from './assets/img/faces/zack.jpg';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    height: "100vh",
-    overflow: "auto",
+    height: '100vh',
+    overflow: 'auto',
   },
   avatarPic: {
-    marginTop: "-10px",
+    marginTop: '-10px',
   },
   container: {
     paddingTop: theme.spacing(4),
@@ -33,25 +33,25 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    display: "flex",
-    flexDirection: "column",
-    overflow: "auto",
+    display: 'flex',
+    flexDirection: 'column',
+    overflow: 'auto',
   },
   cardCategoryWhite: {
-    color: "rgba(255,255,255,.62)",
-    margin: "0",
-    fontSize: "14px",
-    marginTop: "0",
-    marginBottom: "0",
+    color: 'rgba(255,255,255,.62)',
+    margin: '0',
+    fontSize: '14px',
+    marginTop: '0',
+    marginBottom: '0',
   },
   cardTitleWhite: {
-    color: "#FFFFFF",
-    marginTop: "0px",
-    minHeight: "auto",
-    fontWeight: "300",
+    color: '#FFFFFF',
+    marginTop: '0px',
+    minHeight: 'auto',
+    fontWeight: '300',
     fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
-    marginBottom: "3px",
-    textDecoration: "none",
+    marginBottom: '3px',
+    textDecoration: 'none',
   },
 }));
 
@@ -59,7 +59,7 @@ export default function UserProfile() {
   const classes = useStyles();
   const serviceContext = useServiceContext();
   React.useEffect(() => {
-    serviceContext.setService({ title: "Profile" });
+    serviceContext.setService({ title: 'Profile' });
   }, []);
   return (
     <main className={classes.content}>
@@ -70,20 +70,10 @@ export default function UserProfile() {
             <GridItem xs={12} sm={12} md={8}>
               <Card>
                 <CardHeader>
-                  <Typography
-                    component="h1"
-                    variant="h6"
-                    color="primary"
-                    gutterBottom
-                  >
+                  <Typography component="h1" variant="h6" color="primary" gutterBottom>
                     Edit Profile
                   </Typography>
-                  <Typography
-                    component="p"
-                    variant="subtitle1"
-                    color="primary"
-                    gutterBottom
-                  >
+                  <Typography component="p" variant="subtitle1" color="primary" gutterBottom>
                     Complete your profile
                   </Typography>
                 </CardHeader>
@@ -162,9 +152,7 @@ export default function UserProfile() {
                   </GridContainer>
                   <GridContainer>
                     <GridItem xs={12} sm={12} md={12}>
-                      <InputLabel style={{ color: "#AAAAAA" }}>
-                        About me
-                      </InputLabel>
+                      <InputLabel style={{ color: '#AAAAAA' }}>About me</InputLabel>
 
                       <CustomInput
                         labelText="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
@@ -189,7 +177,7 @@ export default function UserProfile() {
             <GridItem xs={12} sm={12} md={4}>
               <Card profile>
                 <CardAvatar profile>
-                  <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                  <a href="#pablo" onClick={e => e.preventDefault()}>
                     <img src={avatar} className={classes.avatarPic} alt="..." />
                   </a>
                 </CardAvatar>
@@ -198,8 +186,8 @@ export default function UserProfile() {
                   <h4 className={classes.cardTitle}>Zack Jackson</h4>
                   <p className={classes.description}>
                     Principal Engineer at lululemon <br />
-                    Distributed JavaScript Orchestration at scale. Maintainer of
-                    Webpack, inventor of Module Federation.
+                    Distributed JavaScript Orchestration at scale. Maintainer of Webpack, inventor
+                    of Module Federation.
                   </p>
                   <Button color="primary" round>
                     Follow

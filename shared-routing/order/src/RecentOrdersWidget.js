@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Box,
   Button,
@@ -8,8 +8,8 @@ import {
   TableHead,
   TableRow,
   Typography,
-} from "@material-ui/core";
-import { orders } from "./data";
+} from '@material-ui/core';
+import { orders } from './data';
 
 function Title() {
   return (
@@ -47,7 +47,7 @@ export default function RecentOrdersWidget() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {orders.map((order) => (
+            {orders.map(order => (
               <OrderRow order={order} key={order.id} />
             ))}
           </TableBody>

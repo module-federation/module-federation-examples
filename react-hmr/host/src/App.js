@@ -1,14 +1,9 @@
-import React, { Suspense } from "libs/react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-} from "libs/react-router-dom";
+import React, { Suspense } from 'libs/react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'libs/react-router-dom';
 
-import Heading from "remote1/Heading";
+import Heading from 'remote1/Heading';
 
-const Button = React.lazy(() => import("remote1/Button"));
+const Button = React.lazy(() => import('remote1/Button'));
 
 const App = () => {
   return (
@@ -16,15 +11,14 @@ const App = () => {
       <div>
         <div
           style={{
-            margin: "10px",
-            padding: "10px",
-            textAlign: "center",
-            backgroundColor: "greenyellow",
+            margin: '10px',
+            padding: '10px',
+            textAlign: 'center',
+            backgroundColor: 'greenyellow',
           }}
         >
           <h1>HOST</h1>
-          HOST ONLY SUPPORTS LIVE RELOAD. GO TO http://localhost:3001 to try out
-          HMR
+          HOST ONLY SUPPORTS LIVE RELOAD. GO TO http://localhost:3001 to try out HMR
         </div>
         <nav>
           <ul>
@@ -39,7 +33,7 @@ const App = () => {
             </li>
           </ul>
         </nav>
-        <Suspense fallback={"loading..."}>
+        <Suspense fallback={'loading...'}>
           <Switch>
             <Route path="/button">
               <Button />

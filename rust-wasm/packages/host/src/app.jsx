@@ -1,5 +1,5 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
-import * as GameOfLife from "GameOfLifeModule/GameOfLifeModule";
+import React, { useLayoutEffect, useRef, useState } from 'react';
+import * as GameOfLife from 'GameOfLifeModule/GameOfLifeModule';
 
 const App = () => {
   const [cells, setCells] = useState(undefined);
@@ -50,7 +50,7 @@ const App = () => {
   return (
     <main>
       <h1>Host App</h1>
-      <button onClick={toggle}>{isPlaying ? "Stop 🛑" : "Play ▶️"}</button>
+      <button onClick={toggle}>{isPlaying ? 'Stop 🛑' : 'Play ▶️'}</button>
       <button onClick={tick}>Tick 🔂</button>
       <button onClick={reset}>Reset ♻️</button>
       <div ref={board} />

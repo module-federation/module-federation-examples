@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const RemoteButton = React.lazy(() => import("remote/Button"));
+const RemoteButton = React.lazy(() => import('remote/Button'));
 
 const App = () => (
   <div>

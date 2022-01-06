@@ -1,10 +1,10 @@
-const webpack = require("webpack");
-const path = require("path");
-const webpackDevMiddleware = require("webpack-dev-middleware").default;
-const webpackHotMiddleware = require("webpack-hot-middleware");
-const webpackHotServerMiddleware = require("webpack-hot-server-middleware");
-const clientConfig = require("../../../build/webpack.config.js/client.dev");
-const serverConfig = require("../../../build/webpack.config.js/server.dev");
+const webpack = require('webpack');
+const path = require('path');
+const webpackDevMiddleware = require('webpack-dev-middleware').default;
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const webpackHotServerMiddleware = require('webpack-hot-server-middleware');
+const clientConfig = require('../../../build/webpack.config.js/client.dev');
+const serverConfig = require('../../../build/webpack.config.js/server.dev');
 
 module.exports = (express, app, done) => {
   const compiler = webpack([clientConfig, serverConfig]);
@@ -16,8 +16,8 @@ module.exports = (express, app, done) => {
 
   const devMiddleware = webpackDevMiddleware(compiler, options);
 
-  app.use("/favicon.ico", (req, res) => {
-    res.send("");
+  app.use('/favicon.ico', (req, res) => {
+    res.send('');
   });
 
   // into our middleware along with the webpack compiler
@@ -32,7 +32,7 @@ module.exports = (express, app, done) => {
   // once the compile is done, we boot up the actual server with the done() function.
   // This is the same method we run for production as well.
   devMiddleware.waitUntilValid(() => {
-    console.info("Done Building, Server Will Start");
+    console.info('Done Building, Server Will Start');
     done();
   });
 };

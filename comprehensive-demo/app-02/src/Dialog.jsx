@@ -4,10 +4,10 @@ import {
   DialogActions,
   DialogContent,
   DialogContentText,
-  DialogTitle
-} from "@material-ui/core";
+  DialogTitle,
+} from '@material-ui/core';
 
-import React from "react";
+import React from 'react';
 
 function DialogComponent() {
   const [open, setOpen] = React.useState(false);
@@ -29,17 +29,11 @@ function DialogComponent() {
         <DialogTitle>Dialog Example</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            This is a dialog from the Material UI app rendered in a React{" "}
-            <code>Portal</code>.
+            This is a dialog from the Material UI app rendered in a React <code>Portal</code>.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button
-            onClick={handleClose}
-            variant="contained"
-            color="primary"
-            autoFocus
-          >
+          <Button onClick={handleClose} variant="contained" color="primary" autoFocus>
             Nice
           </Button>
         </DialogActions>

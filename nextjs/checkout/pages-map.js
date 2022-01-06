@@ -1,3 +1,3 @@
 export default {
-  "/checkout": "./checkout",
+  '/checkout': './checkout',
 };

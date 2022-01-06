@@ -1,8 +1,8 @@
-import LocalButton from "./Button";
-import React from "react";
+import LocalButton from './Button';
+import React from 'react';
 
-import Button from "./Button";
-const Header = React.lazy(() => import("rollup_spa/Header"));
+import Button from './Button';
+const Header = React.lazy(() => import('rollup_spa/Header'));
 
 const App = () => (
   <div>

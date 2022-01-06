@@ -1,6 +1,6 @@
-import { LitElement, html, customElement, property, css } from "lit-element";
+import { LitElement, html, customElement, property, css } from 'lit-element';
 
-@customElement("action-button")
+@customElement('action-button')
 export class ActionButton extends LitElement {
   @property({ type: String }) foo: string;
 
@@ -21,7 +21,7 @@ export class ActionButton extends LitElement {
   }
 
   alert() {
-    alert("You have pressed a button.");
+    alert('You have pressed a button.');
   }
 
   render() {

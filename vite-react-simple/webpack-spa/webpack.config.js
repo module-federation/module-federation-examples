@@ -1,19 +1,19 @@
-const path = require("path");
+const path = require('path');
 
-const { ModuleFederationPlugin } = require("webpack").container;
+const { ModuleFederationPlugin } = require('webpack').container;
 
-const pkg = require("./package.json");
+const pkg = require('./package.json');
 
 /** @type {import('webpack').Configuration} */
 module.exports = {
-  entry: "./src/index",
-  mode: "production",
-  target: "web",
-  devtool: "eval-source-map",
+  entry: './src/index',
+  mode: 'production',
+  target: 'web',
+  devtool: 'eval-source-map',
   output: {
-    libraryTarget: "system",
-    libraryExport: "main",
-    publicPath: "http://localhost:8081/",
+    libraryTarget: 'system',
+    libraryExport: 'main',
+    publicPath: 'http://localhost:8081/',
   },
   optimization: {
     minimize: true,
@@ -22,24 +22,24 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          presets: ["@babel/preset-react"],
+          presets: ['@babel/preset-react'],
         },
       },
     ],
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "rwebpackremote",
-      library: { type: "system" },
-      filename: "remoteEntry.js",
+      name: 'rwebpackremote',
+      library: { type: 'system' },
+      filename: 'remoteEntry.js',
       remotes: {
-        rollup_spa: "rollup_spa",
+        rollup_spa: 'rollup_spa',
       },
       exposes: {
-        "./Button": "./src/Button",
+        './Button': './src/Button',
       },
       shared: {
         react: {
@@ -47,10 +47,10 @@ module.exports = {
           singleton: true,
           requiredVersion: pkg.dependencies.react,
         },
-        "react-dom": {
+        'react-dom': {
           eager: true,
           singleton: true,
-          requiredVersion: pkg.dependencies["react-dom"],
+          requiredVersion: pkg.dependencies['react-dom'],
         },
       },
     }),
@@ -61,10 +61,9 @@ module.exports = {
     },
     port: 8081,
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers":
-        "X-Requested-With, content-type, Authorization",
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
     },
   },
 };

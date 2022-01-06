@@ -1,23 +1,22 @@
-const { resolve } = require("path");
-const { AngularCompilerPlugin } = require("@ngtools/webpack");
-const ProgressPlugin = require("webpack/lib/ProgressPlugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ModuleFederationPlugin =
-  require("webpack").container.ModuleFederationPlugin;
+const { resolve } = require('path');
+const { AngularCompilerPlugin } = require('@ngtools/webpack');
+const ProgressPlugin = require('webpack/lib/ProgressPlugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
 
 module.exports = (env = {}) => {
-  const buildFolder = resolve("./dist");
+  const buildFolder = resolve('./dist');
 
   return {
-    entry: ["./src/polyfills.ts", "./src/main.ts"],
-    mode: "production",
+    entry: ['./src/polyfills.ts', './src/main.ts'],
+    mode: 'production',
     output: {
       path: resolve(__dirname, buildFolder),
     },
     plugins: [
       new ProgressPlugin(),
       new HtmlWebpackPlugin({
-        template: resolve(__dirname, "../src/index.html"),
+        template: resolve(__dirname, '../src/index.html'),
       }),
 
       // new ContainerReferencePlugin({
@@ -27,26 +26,26 @@ module.exports = (env = {}) => {
       // }),
 
       new ModuleFederationPlugin({
-        library: { type: "var" },
+        library: { type: 'var' },
         remotes: {
-          clientApp: "clientApp",
+          clientApp: 'clientApp',
         },
         shared: [
-          { "@angular/core": { singleton: true, eager: true } },
-          { "@angular/common": { singleton: true, eager: true } },
-          { "@angular/router": { singleton: true, eager: true } },
+          { '@angular/core': { singleton: true, eager: true } },
+          { '@angular/common': { singleton: true, eager: true } },
+          { '@angular/router': { singleton: true, eager: true } },
         ],
       }),
 
       new AngularCompilerPlugin({
-        tsConfigPath: "./tsconfig.app.json",
-        entryModule: "./src/app/app.module#AppModule",
+        tsConfigPath: './tsconfig.app.json',
+        entryModule: './src/app/app.module#AppModule',
         skipCodeGeneration: true,
         directTemplateLoading: false,
       }),
     ],
     module: {
-      rules: [...require("./_loaders")],
+      rules: [...require('./_loaders')],
     },
   };
 };

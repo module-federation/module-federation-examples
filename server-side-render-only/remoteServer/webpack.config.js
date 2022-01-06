@@ -1,33 +1,32 @@
-var path = require("path");
-var webpack = require("webpack");
-const ModuleFederationPlugin =
-  require("webpack").container.ModuleFederationPlugin;
+var path = require('path');
+var webpack = require('webpack');
+const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
 
 var serverConfig = {
-  entry: path.resolve(__dirname, "server.js"),
-  target: "node",
+  entry: path.resolve(__dirname, 'server.js'),
+  target: 'node',
   output: {
-    path: path.resolve(__dirname, "public/server"),
-    filename: "server.js",
-    publicPath: "auto",
+    path: path.resolve(__dirname, 'public/server'),
+    filename: 'server.js',
+    publicPath: 'auto',
   },
-  externals: ["enhanced-resolve"],
+  externals: ['enhanced-resolve'],
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: ['.js', '.jsx'],
   },
   optimization: {
     minimize: false,
   },
-  mode: "development",
+  mode: 'development',
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|GeneralJS|Global)/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
+            presets: ['@babel/preset-env', '@babel/preset-react'],
           },
         },
       },
@@ -35,12 +34,12 @@ var serverConfig = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "website2",
-      library: { type: "commonjs-module" },
-      filename: "container.js",
+      name: 'website2',
+      library: { type: 'commonjs-module' },
+      filename: 'container.js',
 
       exposes: {
-        "./SharedComponent": "./remoteServer/SharedComponent",
+        './SharedComponent': './remoteServer/SharedComponent',
       },
       //shared: ["react", "react-dom"],
     }),

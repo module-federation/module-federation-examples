@@ -57,8 +57,8 @@
     "bootstrap": "lerna bootstrap --ignore-scripts",
     "build": "lerna run --parallel build",
     "submodules": "git pull --recurse-submodules",
-    "prettier": "prettier --write \"**/*.{js,json,md,ts,tsx}\"",
-    "prettier:check": "prettier --list-different \"**/*.{js,json,md,ts,tsx}\"",
+    "prettier": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\"",
+    "prettier:check": "prettier --list-different \"**/*.{js,jsx,json,md,ts,tsx}\"",
     "test": "jest test/index.spec.js --maxWorkers=2"
   }
 }

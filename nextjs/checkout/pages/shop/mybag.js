@@ -1,7 +1,7 @@
-import React from "react";
-import Head from "next/head";
+import React from 'react';
+import Head from 'next/head';
 
-const MyBag = (props) => (
+const MyBag = props => (
   <div>
     <Head>
       <title>My Bag</title>
@@ -10,9 +10,7 @@ const MyBag = (props) => (
 
     <div className="hero">
       <h1>my bag page</h1>
-      <h3 className="title">
-        This is a federated page, consumed by localhost:3001
-      </h3>
+      <h3 className="title">This is a federated page, consumed by localhost:3001</h3>
       <br />
     </div>
     <style jsx>{`
@@ -35,9 +33,7 @@ const MyBag = (props) => (
   </div>
 );
 MyBag.getInitialProps = async () => {
-  const swapi = await fetch("https://swapi.dev/api/people/1").then((res) =>
-    res.json()
-  );
+  const swapi = await fetch('https://swapi.dev/api/people/1').then(res => res.json());
   return swapi;
 };
 export default MyBag;

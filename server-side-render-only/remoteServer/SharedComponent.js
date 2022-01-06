@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SharedComponent = () => <div>Shared Component2222</div>;
 

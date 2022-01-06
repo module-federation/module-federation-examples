@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export function useLocalStorageSync(key) {
   const [value, setValue] = React.useState(loadFromLocalStorage);

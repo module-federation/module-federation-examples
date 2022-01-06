@@ -1,6 +1,6 @@
-import express from "express";
-import React from "react";
-import initMiddleware from "./middleware";
+import express from 'express';
+import React from 'react';
+import initMiddleware from './middleware';
 
 const app = express();
 

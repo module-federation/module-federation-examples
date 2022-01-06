@@ -1,5 +1,5 @@
-System.register(["react", "react-dom"], function (exports, module) {
-  "use strict";
+System.register(['react', 'react-dom'], function (exports, module) {
+  'use strict';
   var React, ReactDOM;
   return {
     setters: [
@@ -12,7 +12,7 @@ System.register(["react", "react-dom"], function (exports, module) {
     ],
     execute: function () {
       (function () {
-        const env = { NODE_ENV: "production" };
+        const env = { NODE_ENV: 'production' };
         try {
           if (process) {
             process.env = Object.assign({}, process.env);
@@ -24,11 +24,11 @@ System.register(["react", "react-dom"], function (exports, module) {
       })();
 
       const remotesMap = {
-        foo_app1: () => module.import("rwebpackremote"),
-        foo_rollup_spa: () => module.import("rollup_spa"),
+        foo_app1: () => module.import('rwebpackremote'),
+        foo_rollup_spa: () => module.import('rollup_spa'),
       };
 
-      const processModule = (mod) => {
+      const processModule = mod => {
         if (mod && mod.__useDefault) {
           return mod.default;
         }
@@ -38,14 +38,13 @@ System.register(["react", "react-dom"], function (exports, module) {
 
       const shareScope = {
         react: {
-          get: () => module.import("react").then((r) => () => processModule(r)),
+          get: () => module.import('react').then(r => () => processModule(r)),
           loaded: false,
           singleton: true,
           version: [16, 13, 1],
         },
-        "react-dom": {
-          get: () =>
-            module.import("react-dom").then((r) => () => processModule(r)),
+        'react-dom': {
+          get: () => module.import('react-dom').then(r => () => processModule(r)),
           loaded: false,
           singleton: true,
           version: [16, 13, 1],
@@ -55,7 +54,7 @@ System.register(["react", "react-dom"], function (exports, module) {
       const initMap = {};
 
       var __federation__ = {
-        ensure: async (remoteId) => {
+        ensure: async remoteId => {
           const remote = await remotesMap[remoteId]();
 
           if (!initMap[remoteId]) {
@@ -69,15 +68,15 @@ System.register(["react", "react-dom"], function (exports, module) {
 
       var Button = /*#__PURE__*/ React.lazy(function () {
         return __federation__
-          .ensure("foo_app1")
-          .then((remote) => remote.get("./Button"))
-          .then((factory) => factory());
+          .ensure('foo_app1')
+          .then(remote => remote.get('./Button'))
+          .then(factory => factory());
       });
       var Header = /*#__PURE__*/ React.lazy(function () {
         return __federation__
-          .ensure("foo_rollup_spa")
-          .then((remote) => remote.get("./Header"))
-          .then((factory) => factory());
+          .ensure('foo_rollup_spa')
+          .then(remote => remote.get('./Header'))
+          .then(factory => factory());
       });
 
       var App = function App() {
@@ -85,17 +84,17 @@ System.register(["react", "react-dom"], function (exports, module) {
         return /*#__PURE__*/ React.createElement(
           React.Suspense,
           {
-            fallback: "Loading App...",
+            fallback: 'Loading App...',
           },
           /*#__PURE__*/ React.createElement(Header, null),
-          /*#__PURE__*/ React.createElement("h1", null, "Rollup Host"),
-          /*#__PURE__*/ React.createElement(Button, null)
+          /*#__PURE__*/ React.createElement('h1', null, 'Rollup Host'),
+          /*#__PURE__*/ React.createElement(Button, null),
         );
       };
 
       ReactDOM.render(
         /*#__PURE__*/ React.createElement(App, null),
-        document.getElementById("root")
+        document.getElementById('root'),
       );
     },
   };

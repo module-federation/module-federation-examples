@@ -6,16 +6,16 @@ import {
   ViewChild,
   ViewContainerRef,
   ɵcreateInjector,
-} from "@angular/core";
-import { loadRemoteModule } from "../../../utils/federation-utils";
+} from '@angular/core';
+import { loadRemoteModule } from '../../../utils/federation-utils';
 
 @Component({
-  selector: "federated-component",
-  templateUrl: "./federated.component.html",
-  styleUrls: ["./federated.component.scss"],
+  selector: 'federated-component',
+  templateUrl: './federated.component.html',
+  styleUrls: ['./federated.component.scss'],
 })
 export class FederatedComponent implements OnInit {
-  @ViewChild("federatedComponent", { read: ViewContainerRef })
+  @ViewChild('federatedComponent', { read: ViewContainerRef })
   federatedComponent: ViewContainerRef;
   @Input() remoteEntry: string;
   @Input() remoteName: string;
@@ -28,12 +28,10 @@ export class FederatedComponent implements OnInit {
       remoteEntry: this.remoteEntry,
       remoteName: this.remoteName,
       exposedModule: this.exposedModule,
-    }).then((federated) => {
+    }).then(federated => {
       const { instance } = this.federatedComponent.createComponent(
-        federated[this.exposedModule].exports.find(
-          (e) => e.ɵcmp?.exportAs[0] === this.componentName
-        ),
-        { injector: ɵcreateInjector(federated[this.exposedModule], this.injector) }
+        federated[this.exposedModule].exports.find(e => e.ɵcmp?.exportAs[0] === this.componentName),
+        { injector: ɵcreateInjector(federated[this.exposedModule], this.injector) },
       );
     });
   }

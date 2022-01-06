@@ -1,12 +1,12 @@
-import React from "react";
-import { renderToString } from "react-dom/server";
-import { Helmet } from "react-helmet";
-import { ChunkExtractor } from "@loadable/server";
-import path from "path";
-import App from "../src/components/App";
-import { getMfChunks, createScriptTag, createStyleTag } from "./mfFunctions";
-import SomeComponent from "website2/SomeComponent";
-const statsFile = path.resolve("./buildClient/static/stats.json");
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { Helmet } from 'react-helmet';
+import { ChunkExtractor } from '@loadable/server';
+import path from 'path';
+import App from '../src/components/App';
+import { getMfChunks, createScriptTag, createStyleTag } from './mfFunctions';
+import SomeComponent from 'website2/SomeComponent';
+const statsFile = path.resolve('./buildClient/static/stats.json');
 
 export default async (req, res, next) => {
   try {
@@ -42,13 +42,13 @@ export default async (req, res, next) => {
             ${helmet.meta.toString()}
             ${helmet.link.toString()}
             <link rel="shortcut icon" href="data:;base64,=">
-            ${mfRequiredStyles.map(createStyleTag).join("")}
+            ${mfRequiredStyles.map(createStyleTag).join('')}
             ${styleTags}
         </head>
        
         <body ${helmet.bodyAttributes.toString()}>
           <div id="root">${html}</div>
-          ${mfRequiredScripts.map(createScriptTag).join("")}
+          ${mfRequiredScripts.map(createScriptTag).join('')}
           ${scriptTags}
         </body>
       </html>`);
@@ -57,4 +57,4 @@ export default async (req, res, next) => {
   }
 };
 
-const createApp = (App) => <App />;
+const createApp = App => <App />;

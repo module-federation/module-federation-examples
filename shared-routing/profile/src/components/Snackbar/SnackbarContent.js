@@ -1,14 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import Snack from "@material-ui/core/SnackbarContent";
-import IconButton from "@material-ui/core/IconButton";
+import { makeStyles } from '@material-ui/core/styles';
+import Snack from '@material-ui/core/SnackbarContent';
+import IconButton from '@material-ui/core/IconButton';
 // @material-ui/icons
-import Close from "@material-ui/icons/Close";
+import Close from '@material-ui/icons/Close';
 // core components
-import styles from "../../assets/jss/material-dashboard-react/components/snackbarContentStyle.js";
+import styles from '../../assets/jss/material-dashboard-react/components/snackbarContentStyle.js';
 
 const useStyles = makeStyles(styles);
 
@@ -21,12 +21,7 @@ export default function SnackbarContent(props) {
   });
   if (close !== undefined) {
     action = [
-      <IconButton
-        className={classes.iconButton}
-        key="close"
-        aria-label="Close"
-        color="inherit"
-      >
+      <IconButton className={classes.iconButton} key="close" aria-label="Close" color="inherit">
         <Close className={classes.close} />
       </IconButton>,
     ];
@@ -40,7 +35,7 @@ export default function SnackbarContent(props) {
         </div>
       }
       classes={{
-        root: classes.root + " " + classes[color],
+        root: classes.root + ' ' + classes[color],
         message: classes.message,
         action: classNames({ [classes.actionRTL]: rtlActive }),
       }}
@@ -51,7 +46,7 @@ export default function SnackbarContent(props) {
 
 SnackbarContent.propTypes = {
   message: PropTypes.node.isRequired,
-  color: PropTypes.oneOf(["info", "success", "warning", "danger", "primary"]),
+  color: PropTypes.oneOf(['info', 'success', 'warning', 'danger', 'primary']),
   close: PropTypes.bool,
   icon: PropTypes.object,
   rtlActive: PropTypes.bool,

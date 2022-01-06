@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FederatedComponent } from "./federated.component";
+import { FederatedComponent } from './federated.component';
 
-describe("HomeComponent", () => {
+describe('HomeComponent', () => {
   let component: FederatedComponent;
   let fixture: ComponentFixture<FederatedComponent>;
 
@@ -18,7 +18,7 @@ describe("HomeComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

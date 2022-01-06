@@ -1,8 +1,8 @@
-const express = require("express");
-const chalk = require("chalk");
-const initMiddleware = require("./middleware");
+const express = require('express');
+const chalk = require('chalk');
+const initMiddleware = require('./middleware');
 
-const { raw: env } = require("../build/env")();
+const { raw: env } = require('../build/env')();
 
 const app = express();
 
@@ -14,7 +14,7 @@ const done = () => {
   app.listen(env.PORT, () => {
     console.info(
       `[${new Date().toISOString()}]`,
-      chalk.blue(`App is running: 🌎 http://localhost:${env.PORT}`)
+      chalk.blue(`App is running: 🌎 http://localhost:${env.PORT}`),
     );
   });
 };

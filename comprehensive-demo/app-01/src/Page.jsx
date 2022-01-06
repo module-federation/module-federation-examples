@@ -1,24 +1,18 @@
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  createStyles,
-  makeStyles
-} from "@material-ui/core";
+import { AppBar, Toolbar, Typography, createStyles, makeStyles } from '@material-ui/core';
 
-import React from "react";
+import React from 'react';
 
 const useStyles = makeStyles(theme =>
   createStyles({
     root: {
-      flex: 1
+      flex: 1,
     },
     content: {
       flexGrow: 1,
       backgroundColor: theme.palette.background.default,
-      padding: theme.spacing(3)
-    }
-  })
+      padding: theme.spacing(3),
+    },
+  }),
 );
 
 function Page({ title, children }) {

@@ -1,7 +1,7 @@
-const packageJsonDeps = require("./package.json").dependencies;
-const { NodeModuleFederation } = require("@telenko/node-mf");
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const path = require("path");
+const packageJsonDeps = require('./package.json').dependencies;
+const { NodeModuleFederation } = require('@telenko/node-mf');
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const path = require('path');
 
 module.exports = {
   future: { webpack5: true },
@@ -10,7 +10,7 @@ module.exports = {
     const mfConf = {
       remotes: {
         remoteLib: isServer
-          ? "remoteLib@http://localhost:3002/node/remoteEntry.js"
+          ? 'remoteLib@http://localhost:3002/node/remoteEntry.js'
           : //This is a hack (I cannot run successfully MF in client-side with NextJS and React, maybe doing smth wrong)
             {
               external: `external new Promise((r, j) => {
@@ -32,12 +32,12 @@ module.exports = {
       shared: {
         react: {
           eager: true,
-          requiredVersion: packageJsonDeps["react"],
+          requiredVersion: packageJsonDeps['react'],
           singleton: true,
         },
-        "react-dom": {
+        'react-dom': {
           eager: true,
-          requiredVersion: packageJsonDeps["react-dom"],
+          requiredVersion: packageJsonDeps['react-dom'],
           singleton: true,
         },
       },
@@ -52,7 +52,7 @@ module.exports = {
     };
   },
 
-  webpackDevMiddleware: (config) => {
+  webpackDevMiddleware: config => {
     // Perform customizations to webpack dev middleware config
     // Important: return the modified config
     return config;

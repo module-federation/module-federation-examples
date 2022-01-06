@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { useState } from 'react';
+import logo from './logo.svg';
+import './App.css';
 
-const Button = React.lazy(() => import("foo_app1/Button"));
-const Header = React.lazy(() => import("foo_rollup_spa/Header"));
+const Button = React.lazy(() => import('foo_app1/Button'));
+const Header = React.lazy(() => import('foo_rollup_spa/Header'));
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,7 +17,7 @@ function App() {
           <Button />
         </React.Suspense>
         <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
+          <button type="button" onClick={() => setCount(count => count + 1)}>
             count is: {count}
           </button>
         </p>
@@ -33,7 +33,7 @@ function App() {
           >
             Learn React
           </a>
-          {" | "}
+          {' | '}
           <a
             className="App-link"
             href="https://vitejs.dev/guide/features.html"

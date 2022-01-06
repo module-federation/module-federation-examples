@@ -1,26 +1,26 @@
-const path = require("path");
-const { VueLoaderPlugin } = require("vue-loader");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { ModuleFederationPlugin } = require("webpack").container;
-const deps = require("./package.json").dependencies;
+const path = require('path');
+const { VueLoaderPlugin } = require('vue-loader');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { ModuleFederationPlugin } = require('webpack').container;
+const deps = require('./package.json').dependencies;
 
 module.exports = (env = {}) => ({
-  mode: "development",
+  mode: 'development',
   cache: false,
-  devtool: "source-map",
+  devtool: 'source-map',
   optimization: {
     minimize: false,
   },
-  target: "web",
-  entry: path.resolve(__dirname, "./src/bootstrap.js"),
+  target: 'web',
+  entry: path.resolve(__dirname, './src/bootstrap.js'),
   output: {
-    publicPath: "auto",
+    publicPath: 'auto',
   },
   resolve: {
-    extensions: [".vue", ".jsx", ".js", ".json"],
+    extensions: ['.vue', '.jsx', '.js', '.json'],
     alias: {
-      vue: "vue/dist/vue.esm-bundler.js",
+      vue: 'vue/dist/vue.esm-bundler.js',
     },
   },
   experiments: {
@@ -30,20 +30,20 @@ module.exports = (env = {}) => ({
     rules: [
       {
         test: /\.jsx?$/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          presets: ["@babel/preset-react"],
+          presets: ['@babel/preset-react'],
         },
       },
       {
         test: /\.vue$/,
-        use: "vue-loader",
+        use: 'vue-loader',
       },
       {
         test: /\.png$/,
         use: {
-          loader: "url-loader",
+          loader: 'url-loader',
           options: { limit: 8192 },
         },
       },
@@ -54,19 +54,19 @@ module.exports = (env = {}) => ({
             loader: MiniCssExtractPlugin.loader,
             options: {},
           },
-          "css-loader",
+          'css-loader',
         ],
       },
     ],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "[name].css",
+      filename: '[name].css',
     }),
     new ModuleFederationPlugin({
-      name: "layout",
+      name: 'layout',
       remotes: {
-        home: "home@http://localhost:3002/remoteEntry.js",
+        home: 'home@http://localhost:3002/remoteEntry.js',
       },
       shared: {
         ...deps,
@@ -74,15 +74,15 @@ module.exports = (env = {}) => ({
           singleton: true,
           requiredVersion: deps.react,
         },
-        "react-dom": {
+        'react-dom': {
           singleton: true,
-          requiredVersion: deps["react-dom"],
+          requiredVersion: deps['react-dom'],
         },
       },
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "./index.html"),
-      chunks: ["main"],
+      template: path.resolve(__dirname, './index.html'),
+      chunks: ['main'],
     }),
     new VueLoaderPlugin(),
   ],
@@ -94,10 +94,9 @@ module.exports = (env = {}) => ({
     port: 3001,
     hot: true,
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers":
-        "X-Requested-With, content-type, Authorization",
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
     },
   },
 });

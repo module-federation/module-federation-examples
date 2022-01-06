@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const Button = () => <button>Dynamically Loaded With new plugin</button>;
 

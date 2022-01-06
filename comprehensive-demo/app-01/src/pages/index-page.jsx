@@ -1,8 +1,8 @@
-import Markdown from "../Markdown";
-import Page from "../Page";
-import React from "react";
-import Welcome from "../docs/Welcome.md";
-import "app_05/components";
+import Markdown from '../Markdown';
+import Page from '../Page';
+import React from 'react';
+import Welcome from '../docs/Welcome.md';
+import 'app_05/components';
 
 const IndexPage = () => (
   <Page title="Module Federation Demo">

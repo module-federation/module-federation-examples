@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   makeStyles,
   Divider,
@@ -8,42 +8,42 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-} from "@material-ui/core";
+} from '@material-ui/core';
 import {
   ChevronLeft as ChevronLeftIcon,
   Dashboard as DashboardIcon,
   ShoppingCart as ShoppingCartIcon,
   Person as UserIcon,
-} from "@material-ui/icons";
-import clsx from "clsx";
+} from '@material-ui/icons';
+import clsx from 'clsx';
 
-import { Link, useMatch } from "react-router-dom";
+import { Link, useMatch } from 'react-router-dom';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   toolbarIcon: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    padding: "0 8px",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: '0 8px',
     ...theme.mixins.toolbar,
   },
   drawerPaper: {
-    position: "relative",
-    whiteSpace: "nowrap",
+    position: 'relative',
+    whiteSpace: 'nowrap',
     width: 240,
-    transition: theme.transitions.create("width", {
+    transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
   drawerPaperClose: {
-    overflowX: "hidden",
-    transition: theme.transitions.create("width", {
+    overflowX: 'hidden',
+    transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
     width: theme.spacing(7),
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up('sm')]: {
       width: theme.spacing(9),
     },
   },
@@ -52,11 +52,8 @@ const useStyles = makeStyles((theme) => ({
 function ListItemLink(props) {
   const selected = useMatch(props.to);
   const CustomLink = React.useMemo(
-    () =>
-      React.forwardRef((linkProps, ref) => (
-        <Link ref={ref} to={props.to} {...linkProps} />
-      )),
-    [props.to]
+    () => React.forwardRef((linkProps, ref) => <Link ref={ref} to={props.to} {...linkProps} />),
+    [props.to],
   );
 
   return (
@@ -86,10 +83,7 @@ export default function AppDrawer(props) {
     <Drawer
       variant="permanent"
       classes={{
-        paper: clsx(
-          classes.drawerPaper,
-          !props.drawer.open && classes.drawerPaperClose
-        ),
+        paper: clsx(classes.drawerPaper, !props.drawer.open && classes.drawerPaperClose),
       }}
       open={props.open}
     >

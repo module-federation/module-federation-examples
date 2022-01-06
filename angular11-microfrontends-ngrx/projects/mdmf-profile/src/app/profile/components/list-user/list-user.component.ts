@@ -1,14 +1,14 @@
-import { Component, OnInit } from "@angular/core";
-import { Store } from "@ngrx/store";
-import { User } from "projects/mdmf-shared/src/lib/app-state/models/User";
-import { UserActions } from "projects/mdmf-shared/src/lib/app-state/actions";
-import { Observable } from "rxjs";
-import { selectUsers } from "projects/mdmf-shared/src/lib/app-state/reducer";
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { User } from 'projects/mdmf-shared/src/lib/app-state/models/User';
+import { UserActions } from 'projects/mdmf-shared/src/lib/app-state/actions';
+import { Observable } from 'rxjs';
+import { selectUsers } from 'projects/mdmf-shared/src/lib/app-state/reducer';
 
 @Component({
-  selector: "app-profile-list-user",
-  templateUrl: "./list-user.component.html",
-  styleUrls: ["./list-user.component.css"],
+  selector: 'app-profile-list-user',
+  templateUrl: './list-user.component.html',
+  styleUrls: ['./list-user.component.css'],
 })
 export class ListUserComponent implements OnInit {
   users: Observable<User[]> = this.store.select(selectUsers);

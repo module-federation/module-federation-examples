@@ -1,8 +1,8 @@
-import { VERSION, nth } from "lodash";
+import { VERSION, nth } from 'lodash';
 
-import React from "react";
+import React from 'react';
 
-const RemoteExample = React.lazy(() => import("app2/Example"));
+const RemoteExample = React.lazy(() => import('app2/Example'));
 
 const App = () => {
   return (
