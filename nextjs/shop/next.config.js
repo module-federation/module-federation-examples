@@ -51,6 +51,11 @@ module.exports = withFederatedSidecar({
               eager: true,
               requiredVersion: false,
             },
+            "styled-jsx": {
+              requiredVersion: false,
+              singleton: true,
+              eager:true
+            },
           },
         }),
       );

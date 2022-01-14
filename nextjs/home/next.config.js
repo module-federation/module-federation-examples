@@ -44,6 +44,11 @@ module.exports = withFederatedSidecar({
             checkout: 'checkout',
           },
           shared: {
+            "styled-jsx": {
+              requiredVersion: false,
+              singleton: true,
+              eager:true
+            },
             react: {
               singleton: true,
               eager: true,
