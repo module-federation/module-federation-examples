@@ -22,7 +22,7 @@ module.exports = withFederatedSidecar({
     const { webpack, isServer } = options;
 
     config.experiments = { topLevelAwait: true };
-    
+
     config.module.rules.push({
       test: /_app.js/,
       loader: '@module-federation/nextjs-mf/lib/federation-loader.js',
@@ -36,7 +36,6 @@ module.exports = withFederatedSidecar({
         shop: false,
       });
     } else {
-      
       config.plugins.push(
         new webpack.container.ModuleFederationPlugin({
           remoteType: 'var',
@@ -51,10 +50,10 @@ module.exports = withFederatedSidecar({
               eager: true,
               requiredVersion: false,
             },
-            "styled-jsx": {
+            'styled-jsx': {
               requiredVersion: false,
               singleton: true,
-              eager:true
+              eager: true,
             },
           },
         }),
