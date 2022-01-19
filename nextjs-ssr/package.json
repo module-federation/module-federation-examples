@@ -1,18 +1,17 @@
 {
-  "name": "node-mf-example",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "./checkout",
+    "./home",
+    "./shared",
+    "./shop"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"npm run buildRemote\" \"npm run startRemote\" \"npm run startHost\"",
-    "startHost": "npm run --prefix host dev",
-    "buildRemote": "npm run --prefix remoteLib build",
-    "startRemote": "npm --prefix remoteLib start"
+    "start": "concurrently \"cd checkout; npm run dev\" \"cd home; npm run dev\" \"cd shop; npm run dev\"",
+    "build": "concurrently \"cd checkout; npm run build\" \"cd home; npm run build\" \"cd shop; npm run build\"",
+    "serve": "concurrently \"cd checkout; npm run start\" \"cd home; npm run start\" \"cd shop; npm run start\""
   },
-  "devDependencies": {
-    "concurrently": "6.5.1"
-  },
-  "author": "Andrii Telenko",
-  "license": "MIT"
+  "dependencies": {
+    "concurrently": "^6.2.0"
+  }
 }
