@@ -13,8 +13,8 @@ module.exports = withFederatedSidecar({
   name: 'shop',
   filename: 'static/chunks/remoteEntry.js',
   exposes: {
-    './shop': './pages/shop',
-    './pdp': './pages/p/[...slug].js',
+    // './shop': './pages/shop',
+    // './pdp': './pages/p/[...slug].js',
     './pages-map': './pages-map.js',
   },
   remotes,
@@ -29,7 +29,7 @@ module.exports = withFederatedSidecar({
   webpack(config, options) {
     config.module.rules.push({
       test: /_app.js/,
-      loader: '@module-federation/nextjs-mf/lib/federation-loader.js',
+      loader: '@module-federation/nextjs-ssr/lib/federation-loader.js',
     });
 
     return config;

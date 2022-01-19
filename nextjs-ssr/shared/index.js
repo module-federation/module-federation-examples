@@ -14,9 +14,9 @@ export async function matchFederatedPage(remotes, path) {
         return container
           .get('./pages-map')
           .then(factory => ({ remote, config: factory().default }))
-          .catch((error) => {
-            console.error(error)
-            return null
+          .catch(error => {
+            console.error(error);
+            return null;
           });
       });
     }),
