@@ -5,16 +5,19 @@ export async function matchFederatedPage(remotes, path) {
   if (!remotes) {
     console.error('No __REMOTES__ webpack global defined or no remotes passed to catchAll');
   }
-  console.log(remotes);
   const maps = await Promise.all(
     Object.entries(remotes).map(([remote, loadRemote]) => {
       console.log('page map', remote, loadRemote);
       const loadOrReferenceRemote = !window[remote] ? loadRemote() : window[remote];
       return Promise.resolve(loadOrReferenceRemote).then(container => {
+        console.log(container);
         return container
           .get('./pages-map')
           .then(factory => ({ remote, config: factory().default }))
-          .catch(() => null);
+          .catch(error => {
+            console.error(error);
+            return null;
+          });
       });
     }),
   );

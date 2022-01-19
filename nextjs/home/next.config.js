@@ -34,7 +34,6 @@ module.exports = withFederatedSidecar({
         shop: false,
       });
     } else {
-
       config.plugins.push(
         new webpack.container.ModuleFederationPlugin({
           remoteType: 'var',
@@ -44,10 +43,10 @@ module.exports = withFederatedSidecar({
             checkout: 'checkout',
           },
           shared: {
-            "styled-jsx": {
+            'styled-jsx': {
               requiredVersion: false,
               singleton: true,
-              eager:true
+              eager: true,
             },
             react: {
               singleton: true,

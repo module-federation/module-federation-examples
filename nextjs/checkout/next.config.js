@@ -20,7 +20,6 @@ module.exports = withFederatedSidecar({
     const { webpack } = options;
 
     config.experiments = { topLevelAwait: true };
-    
 
     config.module.rules.push({
       test: /_app.js/,
@@ -42,10 +41,10 @@ module.exports = withFederatedSidecar({
             checkout: 'checkout',
           },
           shared: {
-            "styled-jsx": {
+            'styled-jsx': {
               requiredVersion: false,
               singleton: true,
-              eager:true
+              eager: true,
             },
             react: {
               singleton: true,
