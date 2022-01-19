@@ -27,14 +27,12 @@
     "@babel/helper-validator-identifier" "^7.14.9"
     to-fast-properties "^2.0.0"
 
-"@module-federation/nextjs-ssr@0.0.1-beta.7":
-  version "0.0.1-beta.7"
-  resolved "http://r.privjs.com/@module-federation%2fnextjs-ssr/-/nextjs-ssr-0.0.1-beta.7.tgz#fcfdaa5a30cff59eec34b71e2cb1b77c6486205f"
-  integrity sha512-Umh9ExNeKUtL+gV0/NdRPNl5+NKTHbPGrkpryVORN2e7ws5NHilaOdaCKf+Fp3F2fdZupt8VN4GJQKZxZuL7yA==
+"@module-federation/nextjs-mf@^3.3.0":
+  version "3.3.0"
+  resolved "http://r.privjs.com/@module-federation%2fnextjs-mf/-/nextjs-mf-3.3.0.tgz#b9a4e2dc3a27419efa35bbdf5a7e32dc2f95749e"
+  integrity sha512-R6HpypjX0ollrFt+TDbzbrN7b4vpxqKziLxFYFfWkBP9MtuMe1vnrwdUR/FsqAHAqg9aBRYK2UvLilPybgV8og==
   dependencies:
-    bytenode "^1.3.4"
-    chalk "4.1.2"
-    webpack-federated-stats-plugin "2.0.8"
+    chalk "^4.0.0"
 
 "@next/env@12.0.8":
   version "12.0.8"
@@ -321,11 +319,6 @@ buffer-from@^1.0.0:
   resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.2.tgz#2b146a6fd72e80b4f55d255f35ed59a3a9a41bd5"
   integrity sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==
 
-bytenode@^1.3.4:
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/bytenode/-/bytenode-1.3.4.tgz#6ab5830d70341de6ae9ae08ccafbd092faa0bade"
-  integrity sha512-e1F9H0tjwNGSRrv4CwcEXsvHGrY60/ATIJTlph51igLKME1vJpllyaIBXJhUuXbL+TGZsaMA3JsMewZdIbVFoA==
-
 caniuse-lite@^1.0.30001283:
   version "1.0.30001299"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001299.tgz#d753bf6444ed401eb503cbbe17aa3e1451b5a68c"
@@ -336,7 +329,7 @@ caniuse-lite@^1.0.30001286:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001296.tgz#d99f0f3bee66544800b93d261c4be55a35f1cec8"
   integrity sha512-WfrtPEoNSoeATDlf4y3QvkwiELl9GyPLISV5GejTbbQRtQx4LhsXmc9IQ6XCL2d7UxCyEzToEZNMeqR79OUw8Q==
 
-chalk@4.1.2, chalk@^4.1.0:
+chalk@^4.0.0, chalk@^4.1.0:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
   integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
@@ -965,11 +958,6 @@ watchpack@^2.2.0:
   dependencies:
     glob-to-regexp "^0.4.1"
     graceful-fs "^4.1.2"
-
-webpack-federated-stats-plugin@2.0.8:
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/webpack-federated-stats-plugin/-/webpack-federated-stats-plugin-2.0.8.tgz#97bcffe885fa88411a387fbe059673fe405d0c17"
-  integrity sha512-N/lcCFS+GlF3r2Yi5i8tJM7iej3Z7OihzUquKlv98+1TArGATd7KP8h3uwcXuZ0Du+KMIFcbyXUoURqncJZpxA==
 
 webpack-merge@^5.8.0:
   version "5.8.0"
