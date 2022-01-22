@@ -8,4 +8,3 @@ const ComponentWithHook = () => {
 };
 
 export default ComponentWithHook;
-a;
