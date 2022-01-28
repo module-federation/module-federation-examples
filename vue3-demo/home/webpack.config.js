@@ -11,7 +11,7 @@ module.exports = (env = {}) => ({
     minimize: false,
   },
   target: 'web',
-  entry: path.resolve(__dirname, './src/main.js'),
+  entry: path.resolve(__dirname, './src/index.js'),
   // output: {
   //   path: path.resolve(__dirname, './dist'),
   //   publicPath: '/dist/'
@@ -67,6 +67,11 @@ module.exports = (env = {}) => ({
       exposes: {
         './Content': './src/components/Content',
         './Button': './src/components/Button',
+      },
+      shared: {
+        vue: {
+          singleton: true,
+        },
       },
     }),
     new HtmlWebpackPlugin({
