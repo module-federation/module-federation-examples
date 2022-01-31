@@ -5,6 +5,11 @@ let merge = require('webpack-merge');
 module.exports = withFederatedSidecar({
   name: 'shop',
   filename: 'static/chunks/remoteEntry.js',
+  remotes: {
+    home: 'home@http://localhost:3001/_next/static/chunks/remoteEntry.js',
+    shop: 'shop@http://localhost:3002/_next/static/chunks/remoteEntry.js',
+    checkout: 'checkout@http://localhost:3000/_next/static/chunks/remoteEntry.js',
+  },
   exposes: {
     './shop': './pages/shop',
     './pdp': './pages/p/[...slug].js',
@@ -38,11 +43,10 @@ module.exports = withFederatedSidecar({
     } else {
       config.plugins.push(
         new webpack.container.ModuleFederationPlugin({
-          remoteType: 'var',
           remotes: {
-            home: 'home',
-            shop: 'shop',
-            checkout: 'checkout',
+            home: 'home@http://localhost:3001/_next/static/chunks/remoteEntry.js',
+            shop: 'shop@http://localhost:3002/_next/static/chunks/remoteEntry.js',
+            checkout: 'checkout@http://localhost:3000/_next/static/chunks/remoteEntry.js',
           },
           shared: {
             react: {

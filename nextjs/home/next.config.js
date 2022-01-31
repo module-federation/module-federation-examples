@@ -1,8 +1,12 @@
 const { withFederatedSidecar } = require('@module-federation/nextjs-mf');
-const deps = require('./package.json').dependencies;
 module.exports = withFederatedSidecar({
   name: 'home',
   filename: 'static/chunks/remoteEntry.js',
+  remotes: {
+    home: 'home@http://localhost:3001/_next/static/chunks/remoteEntry.js',
+    shop: 'shop@http://localhost:3002/_next/static/chunks/remoteEntry.js',
+    checkout: 'checkout@http://localhost:3000/_next/static/chunks/remoteEntry.js',
+  },
   exposes: {
     './nav': './components/nav.js',
     './home': './pages/index.js',
@@ -26,37 +30,27 @@ module.exports = withFederatedSidecar({
       loader: '@module-federation/nextjs-mf/lib/federation-loader.js',
     });
 
-    if (isServer) {
-      // ignore it on SSR, realistically you probably wont be SSRing Fmodules, without paid support from @ScriptedAlchemy
-      Object.assign(config.resolve.alias, {
-        checkout: false,
-        home: false,
-        shop: false,
-      });
-    } else {
-      config.plugins.push(
-        new webpack.container.ModuleFederationPlugin({
-          remoteType: 'var',
-          remotes: {
-            home: 'home',
-            shop: 'shop',
-            checkout: 'checkout',
+    config.plugins.push(
+      new webpack.container.ModuleFederationPlugin({
+        remotes: {
+          home: 'home@http://localhost:3001/_next/static/chunks/remoteEntry.js',
+          shop: 'shop@http://localhost:3002/_next/static/chunks/remoteEntry.js',
+          checkout: 'checkout@http://localhost:3000/_next/static/chunks/remoteEntry.js',
+        },
+        shared: {
+          'styled-jsx': {
+            requiredVersion: false,
+            singleton: true,
+            eager: true,
           },
-          shared: {
-            'styled-jsx': {
-              requiredVersion: false,
-              singleton: true,
-              eager: true,
-            },
-            react: {
-              singleton: true,
-              eager: true,
-              requiredVersion: false,
-            },
+          react: {
+            singleton: true,
+            eager: true,
+            requiredVersion: false,
           },
-        }),
-      );
-    }
+        },
+      }),
+    );
     return config;
   },
 });

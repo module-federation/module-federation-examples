@@ -8,6 +8,11 @@ module.exports = withFederatedSidecar({
     './checkout': './pages/checkout',
     './pages-map': './pages-map.js',
   },
+  remotes: {
+    home: 'home@http://localhost:3001/_next/static/chunks/remoteEntry.js',
+    shop: 'shop@http://localhost:3002/_next/static/chunks/remoteEntry.js',
+    checkout: 'checkout@http://localhost:3000/_next/static/chunks/remoteEntry.js',
+  },
   shared: {
     react: {
       requiredVersion: false,
@@ -25,36 +30,28 @@ module.exports = withFederatedSidecar({
       test: /_app.js/,
       loader: '@module-federation/nextjs-mf/lib/federation-loader.js',
     });
-    if (options.isServer) {
-      Object.assign(config.resolve.alias, {
-        checkout: false,
-        home: false,
-        shop: false,
-      });
-    } else {
-      config.plugins.push(
-        new webpack.container.ModuleFederationPlugin({
-          remoteType: 'var',
-          remotes: {
-            home: 'home',
-            shop: 'shop',
-            checkout: 'checkout',
+
+    config.plugins.push(
+      new webpack.container.ModuleFederationPlugin({
+        remotes: {
+          home: 'home@http://localhost:3001/_next/static/chunks/remoteEntry.js',
+          shop: 'shop@http://localhost:3002/_next/static/chunks/remoteEntry.js',
+          checkout: 'checkout@http://localhost:3000/_next/static/chunks/remoteEntry.js',
+        },
+        shared: {
+          'styled-jsx': {
+            requiredVersion: false,
+            singleton: true,
+            eager: true,
           },
-          shared: {
-            'styled-jsx': {
-              requiredVersion: false,
-              singleton: true,
-              eager: true,
-            },
-            react: {
-              singleton: true,
-              eager: true,
-              requiredVersion: false,
-            },
+          react: {
+            singleton: true,
+            eager: true,
+            requiredVersion: false,
           },
-        }),
-      );
-    }
+        },
+      }),
+    );
     return config;
   },
 });
