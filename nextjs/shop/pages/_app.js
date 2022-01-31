@@ -2,7 +2,6 @@ import dynamic from 'next/dynamic';
 const Nav = dynamic(
   () => {
     const mod = import('home/nav');
-    console.log(mod);
     return mod;
   },
   { ssr: false },
