@@ -11,7 +11,7 @@ module.exports = (env = {}) => ({
     minimize: false,
   },
   target: 'web',
-  entry: path.resolve(__dirname, './src/main.js'),
+  entry: path.resolve(__dirname, './src/index.js'),
   output: {
     publicPath: 'auto',
   },
@@ -61,6 +61,11 @@ module.exports = (env = {}) => ({
         home: 'home@http://localhost:3002/remoteEntry.js',
       },
       exposes: {},
+      shared: {
+        vue: {
+          singleton: true,
+        }
+      }
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './index.html'),
