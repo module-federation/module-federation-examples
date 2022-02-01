@@ -3,7 +3,7 @@ import Head from 'next/head';
 import dynamic from 'next/dynamic';
 const RemoteTitle = dynamic(
   () => {
-    return import('checkout/title')
+    return import('checkout/title');
   },
   { ssr: false },
 );
