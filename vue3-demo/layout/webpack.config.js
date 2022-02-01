@@ -64,8 +64,8 @@ module.exports = (env = {}) => ({
       shared: {
         vue: {
           singleton: true,
-        }
-      }
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './index.html'),

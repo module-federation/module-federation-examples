@@ -9,23 +9,30 @@ const remotes = isServer => {
     checkout: `checkout@http://localhost:3000/_next/static/${location}/remoteEntry.js?${Date.now()}`,
   };
 };
-module.exports = withFederatedSidecar({
-  name: 'home',
-  filename: 'static/chunks/remoteEntry.js',
-  exposes: {
-    './nav': './components/nav.js',
-    './home': './pages/index.js',
-    './pages-map': './pages-map.js',
-  },
-  remotes,
-  shared: {
-    react: {
-      // Notice shared are NOT eager here.
-      requiredVersion: false,
-      singleton: true,
+module.exports = withFederatedSidecar(
+  {
+    name: 'home',
+    filename: 'static/chunks/remoteEntry.js',
+    exposes: {
+      './nav': './components/nav.js',
+      './home': './pages/index.js',
+      './pages-map': './pages-map.js',
+    },
+    remotes,
+    shared: {
+      react: {
+        // Notice shared are NOT eager here.
+        requiredVersion: false,
+        singleton: true,
+      },
     },
   },
-})({
+  {
+    experiments: {
+      flushChunks: true,
+    },
+  },
+)({
   webpack5: true,
   webpack(config, options) {
     config.module.rules.push({
