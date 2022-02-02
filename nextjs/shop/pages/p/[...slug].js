@@ -1,6 +1,12 @@
-export default function PDP() {
-  return <h1>PDP!!!</h1>;
+import dynamic from 'next/dynamic'
+const page = import('../../realPages/p/[...slug]')
+
+const Page = dynamic(()=>page);
+Page.getInitialProps = async (ctx)=> {
+  const getInitialProps = await page.default?.getInitialProps
+  if (getInitialProps) {
+    return getInitialProps(ctx)
+  }
+  return  {}
 }
-PDP.getInitialProps = async () => {
-  return {};
-};
+export default Page
