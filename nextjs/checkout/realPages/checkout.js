@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-const page = import('../realPages/[...slug]')
+const page = import('../realPages/checkout')
 
 const Page = dynamic(()=>page);
 Page.getInitialProps = async (ctx)=> {
