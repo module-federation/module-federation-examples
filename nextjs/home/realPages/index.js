@@ -3,7 +3,7 @@ import Head from 'next/head';
 import dynamic from 'next/dynamic';
 let useCustomHook
 if(process.browser) {
-  useCustomHook = (await import('shop/customHook')).default
+  useCustomHook = require('shop/customHook').default
 }
 const RemoteTitle = dynamic(
   () => {
