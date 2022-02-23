@@ -10,7 +10,6 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/about',
     name: 'about',
-    // eslint-disable-next-line import/no-unresolved
     component: () => import('app_exposes/AboutView.vue'),
   },
 ];

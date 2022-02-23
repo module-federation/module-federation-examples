@@ -1,5 +1,10 @@
 # app-general
 
+## Pay attention
+- Fix eslint `import/no-unresolved` [./.eslintrc.js](./.eslintrc.js)
+- Example MF Component in router: [./src/router/index.ts](./src/router/index.ts)
+- Example MF Component in other component: [./src/views/HomeView.vue](./src/views/HomeView.vue)
+
 ## Project setup
 ```
 npm install

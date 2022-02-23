@@ -12,7 +12,6 @@ import { defineAsyncComponent, ref } from 'vue';
 
 const isLoadingComponent = ref(true);
 
-// eslint-disable-next-line import/no-unresolved
 const HelloWorld = defineAsyncComponent(() => import('app_exposes/HelloWorld.vue')
   .finally(() => {
     isLoadingComponent.value = false;
