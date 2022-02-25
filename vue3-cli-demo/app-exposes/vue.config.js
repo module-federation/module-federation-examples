@@ -7,10 +7,8 @@ module.exports = defineConfig({
       entry: './src/index.ts',
     },
   },
+  publicPath: 'auto',
   configureWebpack: {
-    output: {
-      publicPath: 'auto',
-    },
     optimization: {
       splitChunks: false,
     },
