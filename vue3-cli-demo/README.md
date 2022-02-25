@@ -1,12 +1,15 @@
 # vue-cli@5.x.x Module Federation
 
+### App exposes
 Init and start first app
 ```bash
 cd app-exposes;
 npm i;
 npm run serve;
 ```
+More information [./app-exposes/README.md](./app-exposes/README.md)
 
+### App general (host)
 Init and start second app
 ```bash
 cd app-general;
@@ -16,5 +19,4 @@ npm run serve;
 After that open
 http://localhost:8081
 
-P.s. app-exposes have a temporary fix.
-More information [./app-exposes/README.md](./app-exposes/README.md)
+More information [./app-general/README.md](./app-general/README.md)
