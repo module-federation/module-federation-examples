@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_OPTIONS='--inspect' next dev -p 3001",
-    "build": "NEXT_TELEMETRY_DISABLED=1 next build",
-    "start": "next start -p 3001"
+    "dev": "PORT=3001 node ./server.js",
+    "build": "next build",
+    "start": "PORT=3001 NODE_ENV=production node ./server.js"
   },
   "dependencies": {
     "nextjs-shared": "*",
-    "@module-federation/nextjs-ssr": "0.0.1-beta.21",
+    "@module-federation/nextjs-ssr": "0.0.3-beta.2",
     "lodash": "4.17.21",
     "next": "12.1.0",
     "next-compose-plugins": "^2.2.1",

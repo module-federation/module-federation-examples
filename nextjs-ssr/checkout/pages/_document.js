@@ -1,14 +1,28 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import React from "react";
-import { flushChunks, ExtendedHead } from "@module-federation/nextjs-ssr/flushChunks";
+import {
+  ExtendedHead,
+  revalidate,
+  flushChunks,
+  DevHotScript,
+} from "@module-federation/nextjs-ssr/flushChunks";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
+    ctx.res.on("finish", () => {
+      revalidate().then(() => {
+        if(process.env.NODE_ENV === 'development') {
+          setTimeout(() => {
+            process.exit(1);
+          }, 50);
+        }
+      });
+    });
+    const remotes = await flushChunks(process.env.REMOTES);
     const initialProps = await Document.getInitialProps(ctx);
-
     return {
       ...initialProps,
-      remoteChunks: await flushChunks(process.env.REMOTES),
+      remoteChunks: remotes,
     };
   }
 
@@ -17,8 +31,9 @@ class MyDocument extends Document {
       <Html>
         <ExtendedHead>
           <meta name="robots" content="noindex" />
-          {this.props.remoteChunks}
+          {Object.values(this.props.remoteChunks)}
         </ExtendedHead>
+        <DevHotScript />
         <body className="bg-background-grey">
         <Main />
         <NextScript />

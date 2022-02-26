@@ -1,4 +1,4 @@
-const { withFederatedSidecar } = require('@module-federation/nextjs-ssr');
+const { withFederatedSidecar } = require('@module-federation/nextjs-ssr/bundle');
 // this enables you to use import() and the webpack parser
 // loading remotes on demand, not ideal for SSR
 const remotes = isServer => {
@@ -15,7 +15,7 @@ module.exports = withFederatedSidecar(
     filename: 'static/chunks/remoteEntry.js',
     exposes: {
       './title': './components/exposedTitle.js',
-      './checkout': './pages/checkout',
+      './checkout': './async-pages/checkout',
       './pages-map': './pages-map.js',
     },
     remotes,
@@ -29,6 +29,7 @@ module.exports = withFederatedSidecar(
   {
     experiments: {
       flushChunks: true,
+      hot:true
     },
   },
 )({

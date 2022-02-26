@@ -1,15 +1,12 @@
-import dynamic from 'next/dynamic';
-const Nav = dynamic(() => {
-  return import('home/nav');
-});
+import dynamic from "next/dynamic";
+const page = import("../async-pages/_app");
 
-function MyApp({ Component, pageProps }) {
-  return (
-    <>
-      <Nav />
-      <Component {...pageProps} />
-    </>
-  );
-}
-
-export default MyApp;
+const Page = dynamic(() => import("../async-pages/_app"));
+Page.getInitialProps = async (ctx) => {
+  const getInitialProps = (await page).default?.getInitialProps;
+  if (getInitialProps) {
+    return getInitialProps(ctx);
+  }
+  return {};
+};
+export default Page;
