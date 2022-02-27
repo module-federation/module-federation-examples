@@ -14,7 +14,7 @@ class MyDocument extends Document {
         if(process.env.NODE_ENV === 'development') {
           setTimeout(() => {
             process.exit(1);
-          }, 50);
+          }, 100);
         }
       });
     });
