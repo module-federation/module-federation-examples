@@ -14,8 +14,8 @@ module.exports = withFederatedSidecar(
     name: 'shop',
     filename: 'static/chunks/remoteEntry.js',
     exposes: {
-      './shop': './pages/shop',
-      './pdp': './pages/p/[...slug].js',
+      './shop': './async-pages/shop',
+      './pdp': './async-pages/p/[...slug].js',
       './pages-map': './pages-map.js',
     },
     remotes,
@@ -29,6 +29,7 @@ module.exports = withFederatedSidecar(
   {
     experiments: {
       flushChunks: true,
+      hot:true
     },
   },
 )({
