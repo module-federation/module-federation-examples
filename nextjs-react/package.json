@@ -1,0 +1,16 @@
+{
+  "name": "nextjs-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install:apps": "concurrently \"cd host-app; npm install\" \"cd remote-app; npm install\"",
+    "start": "concurrently \"cd remote-app; npm start\" \"cd host-app; npm run dev\""
+  },
+  "keywords": [],
+  "author": "rahulteja-dev",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.0.0"
+  }
+}
