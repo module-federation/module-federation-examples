@@ -1,0 +1,20 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "sourceMap": false,
+        "noEmit": false,
+        "target": "ES2018",
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "declaration": false,
+        "declarationDir": null,
+        "esModuleInterop": true,
+        "outDir": "./dist"
+    },
+    "exclude": [
+        "dist",
+        "types",
+        "src"
+    ]
+}
