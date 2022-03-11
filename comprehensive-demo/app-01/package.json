@@ -17,8 +17,8 @@
     "webpack-cli": "^4.0.0"
   },
   "scripts": {
-    "start": "webpack --watch",
-    "build": "webpack --mode production",
+    "start": "node build.js",
+    "build": "cross-env NODE_ENV=production node build.prod.js",
     "serve": "serve dist -p 3001",
     "clean": "rm -rf dist"
   },

@@ -16,9 +16,8 @@
     "serve": "13.0.2"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack",
-    "start": "webpack --watch",
-    "dev": "webpack-dev-server --content-base public",
+    "start": "node build.js",
+    "build": "cross-env NODE_ENV=production node build.prod.js",
     "serve": "serve public -p 3004",
     "clean": "rm -rf dist"
   }

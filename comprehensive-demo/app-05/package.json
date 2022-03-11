@@ -4,8 +4,8 @@
   "description": "boilerplate LitElement setup with TypeScript",
   "private": true,
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack",
-    "start": "webpack --watch",
+    "start": "node build.js",
+    "build": "cross-env NODE_ENV=production node build.prod.js",
     "dev": "webpack-dev-server --content-base public",
     "serve": "serve public -p 3005",
     "clean": "rm -rf dist"
