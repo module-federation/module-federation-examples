@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node ./server.js",
+    "dev": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production node ./server.js"
+    "start": "NODE_ENV=production next start"
   },
   "dependencies": {
     "nextjs-shared": "*",
-    "@module-federation/nextjs-ssr": "0.0.5-beta.2",
+    "@module-federation/nextjs-ssr": "0.0.7-beta.5",
     "lodash": "4.17.21",
     "next": "12.1.0",
     "next-compose-plugins": "^2.2.1",

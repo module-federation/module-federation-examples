@@ -4,18 +4,13 @@ import {
   ExtendedHead,
   revalidate,
   flushChunks,
-  DevHotScript,
 } from "@module-federation/nextjs-ssr/flushChunks";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     ctx.res.on("finish", () => {
-      revalidate().then(() => {
-        if(process.env.NODE_ENV === 'development') {
-          setTimeout(() => {
-            process.exit(1);
-          }, 100);
-        }
+      revalidate().then((shouldReload) => {
+        // do whatever else
       });
     });
     const remotes = await flushChunks(process.env.REMOTES);
@@ -33,7 +28,6 @@ class MyDocument extends Document {
           <meta name="robots" content="noindex" />
           {Object.values(this.props.remoteChunks)}
         </ExtendedHead>
-        <DevHotScript />
         <body className="bg-background-grey">
         <Main />
         <NextScript />
