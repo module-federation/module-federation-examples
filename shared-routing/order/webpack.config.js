@@ -54,7 +54,7 @@ module.exports = {
         './OrderService': './src/OrderService',
       },
       shared: {
-        ...deps,
+        // ...deps,
         react: {
           singleton: true,
           requiredVersion: deps.react,
