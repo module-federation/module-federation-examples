@@ -52,7 +52,7 @@ module.exports = {
         './DepositsWidget': './src/DepositsWidget',
       },
       shared: {
-        ...deps,
+        // ...deps,
         react: {
           singleton: true,
           requiredVersion: deps.react,

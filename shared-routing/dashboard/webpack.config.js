@@ -57,7 +57,7 @@ module.exports = {
         './DashboardService': './src/DashboardService',
       },
       shared: {
-        ...deps,
+        // ...deps,
         react: {
           singleton: true,
           requiredVersion: deps.react,
