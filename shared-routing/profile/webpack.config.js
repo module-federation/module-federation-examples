@@ -58,7 +58,7 @@ module.exports = {
         './ProfilePage': './src/ProfilePage',
       },
       shared: {
-        ...deps,
+        // ...deps,
         react: {
           singleton: true,
           requiredVersion: deps.react,
