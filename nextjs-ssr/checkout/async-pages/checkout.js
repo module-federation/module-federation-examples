@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import Head from 'next/head';
 
@@ -42,7 +40,7 @@ const Checkout = props => (
 Checkout.getInitialProps = async () => {
   const swapi = await fetch('https://jsonplaceholder.typicode.com/todos/1').then(res => res.json());
   console.log(swapi);
-  console.log('swapi')
+  console.log('swapi');
   return swapi;
 };
 export default Checkout;

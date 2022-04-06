@@ -36,7 +36,11 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: 'app1',
-      shared: { react: { singleton: true }, 'react-dom': { singleton: true }, moment: { singleton: true }, },
+      shared: {
+        react: { singleton: true },
+        'react-dom': { singleton: true },
+        moment: { singleton: true },
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',

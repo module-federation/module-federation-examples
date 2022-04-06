@@ -12,7 +12,9 @@ export default function Widget() {
       }}
     >
       <h2>App 2 Widget</h2>
-      <p>App2 Moment Dep ({moment.version}): {moment().format('MMMM Do YYYY, h:mm:ss a')}</p>
+      <p>
+        App2 Moment Dep ({moment.version}): {moment().format('MMMM Do YYYY, h:mm:ss a')}
+      </p>
     </div>
   );
 }
