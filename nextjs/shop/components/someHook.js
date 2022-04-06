@@ -4,7 +4,7 @@ function customHook(friendID) {
   const [isOnline, setIsOnline] = useState(null);
 
   useEffect(() => {
-console.log('some custom hook')
-  },[]);
+    console.log('some custom hook');
+  }, []);
 }
-export default customHook
+export default customHook;

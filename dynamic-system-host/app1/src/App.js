@@ -2,7 +2,10 @@ import React from 'react';
 import { loadComponent } from './utils/loadComponent';
 
 function System(props) {
-  const { system, system: { remote, url, module } } = props;
+  const {
+    system,
+    system: { remote, url, module },
+  } = props;
 
   if (!system || !remote || !url || !module) {
     return <h2>No system specified</h2>;
@@ -47,7 +50,8 @@ function App() {
       <h2>App 1</h2>
       <p>
         The Dynamic System will take advantage Module Federation <strong>remotes</strong> and{' '}
-        <strong>exposes</strong>. It will not load any components or modules that have been loaded already.
+        <strong>exposes</strong>. It will not load any components or modules that have been loaded
+        already.
       </p>
       <button onClick={setApp2}>Load App 2 Widget</button>
       <button onClick={setApp3}>Load App 3 Widget</button>

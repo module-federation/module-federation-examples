@@ -29,7 +29,7 @@ module.exports = withFederatedSidecar(
   {
     experiments: {
       flushChunks: true,
-      hot:true
+      hot: true,
     },
   },
 )({

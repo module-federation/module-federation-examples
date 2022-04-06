@@ -40,7 +40,11 @@ module.exports = {
       exposes: {
         './Widget': './src/Widget',
       },
-      shared: { react: { singleton: true }, 'react-dom': { singleton: true }, moment: { singleton: true }, }
+      shared: {
+        react: { singleton: true },
+        'react-dom': { singleton: true },
+        moment: { singleton: true },
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',

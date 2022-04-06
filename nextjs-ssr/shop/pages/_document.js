@@ -1,15 +1,11 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
-import React from "react";
-import {
-  ExtendedHead,
-  revalidate,
-  flushChunks,
-} from "@module-federation/nextjs-ssr/flushChunks";
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import React from 'react';
+import { ExtendedHead, revalidate, flushChunks } from '@module-federation/nextjs-ssr/flushChunks';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
-    ctx.res.on("finish", () => {
-      revalidate().then((shouldReload) => {
+    ctx.res.on('finish', () => {
+      revalidate().then(shouldReload => {
         // do whatever else
       });
     });
@@ -29,8 +25,8 @@ class MyDocument extends Document {
           {Object.values(this.props.remoteChunks)}
         </ExtendedHead>
         <body className="bg-background-grey">
-        <Main />
-        <NextScript />
+          <Main />
+          <NextScript />
         </body>
       </Html>
     );

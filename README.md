@@ -12,21 +12,6 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 | **JSNation Presentation**                                                                                                                                                                                                                                                        | [https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5.md](https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5.md)                                                                                                                         |
 | **Post about Dynamic Remotes**                                                                                                                                                                                                                                                   | [https://h3manth.com/posts/dynamic-remotes-webpack-module-federation/](https://h3manth.com/posts/dynamic-remotes-webpack-module-federation/)                                                                                                                                               |
 
-<p style="display:none"><img src="https://federation-dashboard-alpha.vercel.app/api/get-remote?token=d9a72038-a1cd-4069-85e2-d8f56d84372e&currentHost=home&remoteName=dsl" /></p>
-
-# Check out our book
-
-| <a href="https://module-federation.myshopify.com/products/practical-module-federation" target="_blank"><img src="./docs/MFCover.png" alt='Practical Module Federation Book' width="95%"/></a> | <a href="https://module-federation.myshopify.com/products/practical-module-federation" target="_blank">We will be actively updating this book over the next year as we learn more about best practices and what issues people are running into with Module Federation, as well as with every release of Webpack as it moves towards a release candidate and release. So with your one purchase you are buying a whole year of updates.</a> |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-
-# Consultations
-
-| <a href="https://calendly.com/scripted-alchemy/1-hr-group-consult" target="_blank">1 Hour group consultation</a> | \$100        |
-| ---------------------------------------------------------------------------------------------------------------- | ------------ |
-| <a href="https://calendly.com/scripted-alchemy/30-meeting-1-1" target="_blank">30 Min 1:1 consultation</a>       | \$60         |
-| <a href="https://cb.run/WIVv" target="_blank">15 Min 1:1 consultation</a>                                        | \$30         |
-| Bespoke API modifications and hands on code                                                                      | $300-$500/hr |
-
 # Examples
 
 > Legend:
@@ -62,6 +47,19 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 - [x] [Building A Plugin-based Workflow Designer With Angular and Module Federation](https://github.com/manfredsteyer/module-federation-with-angular-dynamic-workflow-designer) &mdash; External Example
 - [x] [Vue.js](./vue3-demo/README.md) &mdash; Simple host/remote (render function / sfc) example using Vue 3.0.
 - [x] [Vue2 SSR](./genesis/README.md) &mdash; This example demonstrates module as a service
+
+# Check out our book
+
+| <a href="https://module-federation.myshopify.com/products/practical-module-federation" target="_blank"><img src="./docs/MFCover.png" alt='Practical Module Federation Book' width="95%"/></a> | <a href="https://module-federation.myshopify.com/products/practical-module-federation" target="_blank">We will be actively updating this book over the next year as we learn more about best practices and what issues people are running into with Module Federation, as well as with every release of Webpack as it moves towards a release candidate and release. So with your one purchase you are buying a whole year of updates.</a> |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+
+# Consultations
+
+| <a href="https://calendly.com/scripted-alchemy/1-hr-group-consult" target="_blank">1 Hour group consultation</a> | \$100        |
+| ---------------------------------------------------------------------------------------------------------------- | ------------ |
+| <a href="https://calendly.com/scripted-alchemy/30-meeting-1-1" target="_blank">30 Min 1:1 consultation</a>       | \$60         |
+| <a href="https://cb.run/WIVv" target="_blank">15 Min 1:1 consultation</a>                                        | \$30         |
+| Bespoke API modifications and hands on code                                                                      | $300-$500/hr |
 
 # Notes
 

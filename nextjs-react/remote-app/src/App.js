@@ -1,7 +1,6 @@
 import Button from './Button';
 import React from 'react';
 
-
 const App = () => (
   <div>
     <h1>Next JS with React</h1>

@@ -49,11 +49,11 @@ export function createFederatedCatchAll(remotes) {
       ...initialProps,
     };
 
-    console.log('in catchall', {initialProps});
+    console.log('in catchall', { initialProps });
 
     React.useEffect(async () => {
       if (needsReload) {
-        console.log('needs reload')
+        console.log('needs reload');
         const federatedProps = await FederatedCatchAll.getInitialProps(props);
         setProps(federatedProps);
       }
@@ -77,7 +77,7 @@ export function createFederatedCatchAll(remotes) {
 
   FederatedCatchAll.getInitialProps = async ctx => {
     const { err, req, res, AppTree, ...props } = ctx;
-console.log('in initial props');
+    console.log('in initial props');
     if (err) {
       // TODO: Run getInitialProps for error page
       return { renderError: true, ...props };

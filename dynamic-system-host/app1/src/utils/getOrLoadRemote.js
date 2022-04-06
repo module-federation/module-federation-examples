@@ -2,7 +2,7 @@
  * The Right Way to Load Dynamic Remotes
  * @author ScriptedAlchemy <zackary.l.jackson@gmail.com>
  * @see {@link https://gist.github.com/ScriptedAlchemy/3a24008ef60adc47fad1af7d3299a063}
- * 
+ *
  * @param {string} remote - the remote global name
  * @param {object | string} shareScope - the shareScope Object OR scope key
  * @param {string} remoteFallbackUrl - fallback url for remote module
@@ -13,15 +13,13 @@ export const getOrLoadRemote = (remote, shareScope, remoteFallbackUrl = undefine
     // check if remote exists on window
     if (!window[remote]) {
       // search dom to see if remote tag exists, but might still be loading (async)
-      const existingRemote = document.querySelector(
-        `[data-webpack="${remote}"]`
-      );
+      const existingRemote = document.querySelector(`[data-webpack="${remote}"]`);
       // when remote is loaded..
       const onload = async () => {
         // check if it was initialized
         if (!window[remote].__initialized) {
           // if share scope doesnt exist (like in webpack 4) then expect shareScope to be a manual object
-          if (typeof __webpack_share_scopes__ === "undefined") {
+          if (typeof __webpack_share_scopes__ === 'undefined') {
             // use default share scope object passed in manually
             await window[remote].init(shareScope.default);
           } else {
@@ -43,15 +41,15 @@ export const getOrLoadRemote = (remote, shareScope, remoteFallbackUrl = undefine
       } else if (remoteFallbackUrl) {
         // inject remote if a fallback exists and call the same onload function
         var d = document,
-          script = d.createElement("script");
-        script.type = "text/javascript";
+          script = d.createElement('script');
+        script.type = 'text/javascript';
         // mark as data-webpack so runtime can track it internally
-        script.setAttribute("data-webpack", `${remote}`);
+        script.setAttribute('data-webpack', `${remote}`);
         script.async = true;
         script.onerror = reject;
         script.onload = onload;
         script.src = remoteFallbackUrl;
-        d.getElementsByTagName("head")[0].appendChild(script);
+        d.getElementsByTagName('head')[0].appendChild(script);
       } else {
         // no remote and no fallback exist, reject
         reject(`Cannot Find Remote ${remote} to inject`);
@@ -60,4 +58,4 @@ export const getOrLoadRemote = (remote, shareScope, remoteFallbackUrl = undefine
       // remote already instantiated, resolve
       resolve();
     }
-  })
+  });
