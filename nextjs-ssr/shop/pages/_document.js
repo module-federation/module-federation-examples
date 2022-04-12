@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, { Html, Main, NextScript } from 'next/document';
 import React from 'react';
 import { ExtendedHead, revalidate, flushChunks } from '@module-federation/nextjs-ssr/flushChunks';
 
