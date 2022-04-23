@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
-const page = import('../../async-pages/shop/mybag');
+const page = import('checkout/checkout');
 
-const Page = dynamic(() => import('../../async-pages/shop/mybag'));
+const Page = dynamic(() => import('checkout/checkout'));
 Page.getInitialProps = async ctx => {
   const getInitialProps = (await page).default?.getInitialProps;
   if (getInitialProps) {
