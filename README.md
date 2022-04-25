@@ -46,6 +46,7 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 - [x] [NextJS SSR](./nextjs-ssr/README.md) &mdash; Powered by software streams, with [nextjs-ssr](https://github.com/module-federation/module-federation-examples/tree/master/nextjs-ssr) (currently in closed beta testing)
 - [x] [Building A Plugin-based Workflow Designer With Angular and Module Federation](https://github.com/manfredsteyer/module-federation-with-angular-dynamic-workflow-designer) &mdash; External Example
 - [x] [Vue.js](./vue3-demo/README.md) &mdash; Simple host/remote (render function / sfc) example using Vue 3.0.
+- [x] [Vue 2 in Vue 3](./vue2-in-vue3/README.md) &mdash; Vue 3 application loading remote Vue 2 component.
 - [x] [Vue2 SSR](./genesis/README.md) &mdash; This example demonstrates module as a service
 
 # Check out our book
