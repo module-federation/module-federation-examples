@@ -20,7 +20,7 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 > - 🔒: Depends on access controled source
 > - 💰: commercially avaliable
 
-- [x] [Advanced API](./advanced-api) &mdash; showcasing advanced API use, also seen in other examples
+- [x] [Advanced API](./advanced-api) &mdash; Showcasing advanced API use, also seen in other examples.
 - [x] [Basic Host-Remote](./basic-host-remote/README.md) &mdash; App 1 consumes remote components from App2.
 - [x] [Create React App](./cra/README.md) &mdash; Module Federation using CRA.
 - [x] [HMR Remotes](./react-hmr/README.md) &mdash; Hot Reloading Remotes inside Hosts.
@@ -36,19 +36,19 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 - [x] [Nested Components](./nested/README.md) &mdash; Nested remote components.
 - [x] [Share Context Provider](./shared-context/README.md) &mdash; App1 and App2 with shared Context Provider.
 - [x] [Federation Dashboard Example](./dashboard-example/README.md) &mdash; Single example implementing [Module Federation Dashboard](https://www.npmjs.com/package/@module-federation/dashboard-plugin)
-- [x] 🔒 [Streaming Federated Code](./streamed-federation/README.md) &mdash; App1 and federated-middleware deploy to s3. App1 then stream's federated code directly from S3
+- [x] 🔒 [Streaming Federated Code](./streamed-federation/README.md) &mdash; App1 and federated-middleware deploy to s3. App1 then stream's federated code directly from S3.
 - [x] Non-UI Module
 - [x] [Routing](./shared-routing/README.md) &mdash; An example of sharing router context. Also worth looking at - [Routing 2](./shared-routes2/README.md)
 - [x] [Version Discrepancy](./version-discrepancy/README.md) &mdash; Federated apps depending on different versions of a dependency without side-effects.
 - [x] [TypeScript](./typescript/README.md) &mdash; Simple host/remote example using TypeScript.
 - [x] [Angular Universal](./angular-universal-ssr/README.md) &mdash; Remote and Host app with SSR, lazy modules and components.
-- [x] [NextJS Sidecar Build](./nextjs-sidecar/README.md) &mdash; Sidecar build to enable module-federation alongside Next codebases
+- [x] [NextJS Sidecar Build](./nextjs-sidecar/README.md) &mdash; Sidecar build to enable module-federation alongside Next codebases.
 - [x] 💰[NextJS](./nextjs/README.md) &mdash; Operation, with [nextjs-mf](https://app.privjs.com/buy/packageDetail?pkg=@module-federation/nextjs-mf).
 - [x] 💰[NextJS SSR](./nextjs-ssr/README.md) &mdash; Powered by software streams, with [nextjs-ssr](https://app.privjs.com/buy/packageDetail?pkg=@module-federation/nextjs-ssr) 
 - [x] [Building A Plugin-based Workflow Designer With Angular and Module Federation](https://github.com/manfredsteyer/module-federation-with-angular-dynamic-workflow-designer) &mdash; External Example
 - [x] [Vue.js](./vue3-demo/README.md) &mdash; Simple host/remote (render function / sfc) example using Vue 3.0.
 - [x] [Vue 2 in Vue 3](./vue2-in-vue3/README.md) &mdash; Vue 3 application loading remote Vue 2 component.
-- [x] [Vue2 SSR](./genesis/README.md) &mdash; This example demonstrates module as a service
+- [x] [Vue2 SSR](./genesis/README.md) &mdash; This example demonstrates module as a service.
 
 # Check out our book
 
@@ -70,7 +70,7 @@ You can then run `yarn && yarn start` from any of the non-proprietary examples.
 
 <img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/ModuleFederationExamplesRoot">
 
-Module federation will work with any type of file that youre able to import, that webpack underestands how to process. It is not a JS only, or react only feature. Images, CSS, JSON, WASM, and anything else can be federated.
+Module federation will work with any type of file that youre able to import, that Webpack understands how to process. It is not a JS only, or React only feature. Images, CSS, JSON, WASM, and anything else can be federated.
 
 # Companies using Module Federation
 
