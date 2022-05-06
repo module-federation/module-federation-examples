@@ -1,0 +1,28 @@
+{
+  "name": "host",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^5.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.6",
+    "@babel/preset-react": "^7.8.3",
+    "@emotion/react": "^11.9.0",
+    "babel-loader": "^8.0.6",
+    "concurrently": "^7.1.0",
+    "html-webpack-plugin": "^5.3.1",
+    "serve": "^13.0.0",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run start\" \"npm run serve\"",
+    "start": "webpack --watch",
+    "build": "webpack --mode production",
+    "serve": "serve dist -p 8080",
+    "clean": "rm -rf dist"
+  }
+}
