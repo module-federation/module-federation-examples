@@ -6,7 +6,7 @@ module.exports = {
   entry: {
     app: {
       import: './src/index',
-    }
+    },
   },
   cache: false,
 
@@ -54,8 +54,7 @@ module.exports = {
         // './react-dom': 'react-dom',
         './Nav': './src/components/Nav',
       },
-      shared: {
-      },
+      shared: {},
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',

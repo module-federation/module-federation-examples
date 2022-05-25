@@ -1,3 +1,3 @@
 export const HelloWorld = () => {
-    return <>Hello World</>
-}
+  return <>Hello World</>;
+};

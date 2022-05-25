@@ -6,7 +6,7 @@ module.exports = {
   entry: {
     app: {
       import: './src/index',
-    }
+    },
   },
   cache: false,
 
@@ -44,7 +44,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
@@ -62,8 +62,7 @@ module.exports = {
         // no see the case but its possible
         // './App': './src/index',
       },
-      shared: {
-      },
+      shared: {},
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
