@@ -13,7 +13,8 @@ const NextjsRemoteComponent = () => {
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: '24px',
-      }}>
+      }}
+    >
       Hello from Remote Nextjs component
     </nav>
   );

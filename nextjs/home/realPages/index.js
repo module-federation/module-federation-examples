@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Suspense } from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 let useCustomHook;

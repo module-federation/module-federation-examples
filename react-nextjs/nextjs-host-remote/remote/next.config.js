@@ -1,10 +1,10 @@
-const { withFederatedSidecar } = require("@module-federation/nextjs-mf");
+const { withFederatedSidecar } = require('@module-federation/nextjs-mf');
 
 module.exports = withFederatedSidecar({
-  name: "remote",
-  filename: "static/chunks/remoteEntry.js",
+  name: 'remote',
+  filename: 'static/chunks/remoteEntry.js',
   exposes: {
-    "./nextjs-remote-component": "./components/nextjs-remote-component.js",
+    './nextjs-remote-component': './components/nextjs-remote-component.js',
   },
   shared: {
     react: {

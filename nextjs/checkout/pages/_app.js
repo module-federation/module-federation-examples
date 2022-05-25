@@ -1,20 +1,19 @@
+import { Suspense } from 'react';
+import App from 'next/app';
 import dynamic from 'next/dynamic';
-const Nav = dynamic(
-  () => {
-    const mod = import('home/nav');
-    console.log(mod);
-    return mod;
-  },
-  { ssr: false },
-);
+const page = import('../realPages/_app');
 
-function MyApp({ Component, pageProps }) {
-  return (
-    <>
-      <Nav />
-      <Component {...pageProps} />
-    </>
-  );
-}
+const Page = dynamic(() => import('../realPages/_app'));
+Page.getInitialProps = async ctx => {
+  const appProps = await App.getInitialProps(ctx);
 
-export default MyApp;
+  const getInitialProps = (await page).default?.getInitialProps;
+  if (getInitialProps) {
+    return {
+      ...appProps,
+      ...getInitialProps(ctx),
+    };
+  }
+  return { ...appProps };
+};
+export default Page;
