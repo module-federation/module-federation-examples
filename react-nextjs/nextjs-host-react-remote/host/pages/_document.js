@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -12,7 +12,8 @@ class MyDocument extends Document {
         <Head />
         <body>
           <Main />
-          Scipt is only needed if you are not using the federation @ syntax when setting your remotes. 
+          Scipt is only needed if you are not using the federation @ syntax when setting your
+          remotes.
           <script src="http://localhost:8081/_next/static/chunks/remoteEntry.js" />
           <NextScript />
         </body>

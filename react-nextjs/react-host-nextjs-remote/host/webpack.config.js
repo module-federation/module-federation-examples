@@ -6,7 +6,7 @@ module.exports = {
   entry: {
     app: {
       import: './src/index',
-    }
+    },
   },
   cache: false,
 
@@ -50,10 +50,9 @@ module.exports = {
       name: 'host',
       filename: 'remoteEntry.js',
       remotes: {
-        remote: 'remote@http://localhost:8081/_next/static/chunks/remoteEntry.js'
+        remote: 'remote@http://localhost:8081/_next/static/chunks/remoteEntry.js',
       },
-      exposes: {
-      },
+      exposes: {},
       shared: {
         react: {
           // Notice shared are NOT eager here.

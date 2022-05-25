@@ -1,12 +1,24 @@
+import { Suspense } from 'react';
+import App from 'next/app';
 import dynamic from 'next/dynamic';
 const page = import('../realPages/_app');
 
-const Page = dynamic(() => page);
+const Home = dynamic(() => import('../realPages/_app'), { suspense: true });
+const Page = props => (
+  <Suspense>
+    <Home {...props} />
+  </Suspense>
+);
 Page.getInitialProps = async ctx => {
-  const getInitialProps = await page.default?.getInitialProps;
+  const appProps = await App.getInitialProps(ctx);
+
+  const getInitialProps = (await page).default?.getInitialProps;
   if (getInitialProps) {
-    return getInitialProps(ctx);
+    return {
+      ...appProps,
+      ...getInitialProps(ctx),
+    };
   }
-  return {};
+  return { ...appProps };
 };
 export default Page;

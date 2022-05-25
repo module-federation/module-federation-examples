@@ -3,12 +3,13 @@ import createMatcher from 'feather-route-matcher';
 
 export async function matchFederatedPage(remotes, path) {
   const maps = await Promise.all(
-    remotes.map(remote =>
-      window[remote]
+    remotes.map(remote => {
+      console.log(window[remote]);
+      return window[remote]
         .get('./pages-map')
         .then(factory => ({ remote, config: factory().default }))
-        .catch(() => null),
-    ),
+        .catch(() => null);
+    }),
   );
 
   const config = {};
@@ -38,11 +39,15 @@ export function createFederatedCatchAll(remotes) {
       ...lazyProps,
       ...initialProps,
     };
-
-    React.useEffect(async () => {
+    console.log(initialProps);
+    React.useEffect(() => {
+      console.log(needsReload);
       if (needsReload) {
-        const federatedProps = await FederatedCatchAll.getInitialProps(props);
-        setProps(federatedProps);
+        const runUnderlayingGIP = async () => {
+          const federatedProps = await FederatedCatchAll.getInitialProps(props);
+          setProps(federatedProps);
+        };
+        runUnderlayingGIP();
       }
     }, []);
 
@@ -64,16 +69,14 @@ export function createFederatedCatchAll(remotes) {
 
   FederatedCatchAll.getInitialProps = async ctx => {
     const { err, req, res, AppTree, ...props } = ctx;
-
     if (err) {
       // TODO: Run getInitialProps for error page
       return { renderError: true, ...props };
     }
-
     if (!process.browser) {
       return { needsReload: true, ...props };
     }
-
+    console.log('in browser');
     try {
       const matchedPage = await matchFederatedPage(remotes, ctx.asPath);
       console.log('matchedPage', matchedPage);

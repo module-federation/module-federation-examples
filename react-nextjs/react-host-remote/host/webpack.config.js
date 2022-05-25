@@ -6,7 +6,7 @@ module.exports = {
   entry: {
     app: {
       import: './src/index',
-    }
+    },
   },
   cache: false,
 
@@ -52,10 +52,8 @@ module.exports = {
       remotes: {
         remote: 'remote@http://localhost:8081/remoteEntry.js',
       },
-      exposes: {
-      },
-      shared: {
-      },
+      exposes: {},
+      shared: {},
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
