@@ -7,12 +7,12 @@
     ]
   },
   "scripts": {
-    "start": "lerna run --parallel start",
-    "build": "lerna run build",
-    "serve": "lerna run --parallel serve",
-    "clean": "lerna run --parallel clean"
+    "start": "concurrently 'cd ./host && yarn start' 'cd ./remote && yarn start'",
+    "build": "concurrently 'cd ./host && yarn build' 'cd ./remote && yarn build'",
+    "serve": "concurrently 'cd ./host && yarn serve' 'cd ./remote && yarn serve'",
+    "clean": "concurrently 'cd ./host && yarn clean' 'cd ./remote && yarn clean'"
   },
   "devDependencies": {
-    "lerna": "4.0.0"
+    "concurrently": "7.2.1"
   }
 }
