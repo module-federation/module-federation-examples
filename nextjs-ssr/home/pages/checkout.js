@@ -1,6 +1,11 @@
 import dynamic from 'next/dynamic';
-
-const Page = dynamic(() => import('checkout/checkout'));
+import React, { Suspense } from 'react';
+const Component = dynamic(() => import('checkout/checkout'), { suspense: true });
+const Page = props => (
+  <Suspense>
+    <Component {...props} />
+  </Suspense>
+);
 Page.getInitialProps = async ctx => {
   const page = import('checkout/checkout');
   const getInitialProps = (await page).default?.getInitialProps;

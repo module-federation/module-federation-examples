@@ -34,7 +34,9 @@ module.exports = withFederatedSidecar(
     },
   },
 )({
-  webpack5: true,
+  experimental: {
+    reactRoot: true,
+  },
   webpack(config, options) {
     config.module.rules.push({
       test: /_app.js/,

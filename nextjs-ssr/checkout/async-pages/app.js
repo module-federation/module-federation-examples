@@ -1,13 +1,14 @@
 import App from 'next/app';
+import React, { Suspense } from 'react';
 import dynamic from 'next/dynamic';
-const Nav = dynamic(() => {
-  return import('home/nav');
-});
+const Nav = dynamic(() => import('home/nav'), { suspense: true });
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Nav />
+      <Suspense>
+        <Nav />
+      </Suspense>
       <Component {...pageProps} />
     </>
   );
