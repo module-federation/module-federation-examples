@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "lerna run --scope @typescript-project-references/* --parallel start",
+    "build": "lerna run --scope @typescript-project-references/* build",
+    "serve": "lerna run --scope @typescript-project-references/* --parallel serve",
+    "clean": "lerna run --scope @typescript-project-references/* --parallel clean"
+  },
+  "devDependencies": {
+    "lerna": "3.22.1"
+  }
+}
