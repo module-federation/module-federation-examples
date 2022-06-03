@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "react-counter",
+      "vue-counter",
+      "shared-store",
+      "shell"
+    ]
+  },
+  "scripts": {
+    "start": "lerna run --parallel start",
+    "build": "lerna run build",
+    "serve": "lerna run --parallel serve",
+    "clean": "lerna run --parallel clean"
+  },
+  "devDependencies": {
+    "lerna": "3.22.1"
+  }
+}
