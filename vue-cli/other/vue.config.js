@@ -7,6 +7,7 @@ module.exports = {
       new ModuleFederationPlugin({
         name: 'other',
         filename: 'remoteEntry.js',
+        library: { type: 'var', name: 'other' },
         exposes: {
           './MainComponent': './src/components/MainComponent',
         },
