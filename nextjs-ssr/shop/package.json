@@ -8,8 +8,8 @@
     "start": "NODE_ENV=production next start -p 3002"
   },
   "dependencies": {
-    "nextjs-shared": "*",
-    "@module-federation/nextjs-ssr": "0.2.0-rc.0",
+    "nextjs-shared": "file:../shared",
+    "@module-federation/nextjs-ssr": "0.2.0-rc.1",
     "lodash": "4.17.21",
     "next": "12.1.6",
     "next-compose-plugins": "^2.2.1",
