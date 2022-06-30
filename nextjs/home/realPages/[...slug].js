@@ -1,3 +1,3 @@
 import { createFederatedCatchAll } from 'nextjs-shared';
 
-export default createFederatedCatchAll(['checkout', 'shop']);
+export default createFederatedCatchAll();

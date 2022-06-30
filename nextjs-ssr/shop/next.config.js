@@ -13,7 +13,7 @@ module.exports = withFederatedSidecar(
   {
     name: 'shop',
     filename: 'static/chunks/remoteEntry.js',
-      // suidecar build this
+    // suidecar build this
     exposes: {
       './shop': './async-pages/shop.js',
       './pdp': './async-pages/p/[...slug].js',
