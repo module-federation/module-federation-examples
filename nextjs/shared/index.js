@@ -1,15 +1,16 @@
 import React from 'react';
 import createMatcher from 'feather-route-matcher';
-
-export async function matchFederatedPage(remotes, path) {
+const remotes = process.env.REMOTES
+export async function matchFederatedPage(path) {
   const maps = await Promise.all(
-    remotes.map(remote => {
-      console.log(window[remote]);
-      return window[remote]
-        .get('./pages-map')
-        .then(factory => ({ remote, config: factory().default }))
-        .catch(() => null);
-    }),
+    Object.keys(remotes).map(async remote => {
+      const foundContainer = remotes[remote]()
+      const container = await foundContainer
+
+      return container.get('./pages-map')
+             .then(factory => ({ remote, config: factory().default }))
+             .catch(() => null);
+       })
   );
 
   const config = {};
@@ -31,7 +32,7 @@ export async function matchFederatedPage(remotes, path) {
   return match;
 }
 
-export function createFederatedCatchAll(remotes) {
+export function createFederatedCatchAll() {
   const FederatedCatchAll = initialProps => {
     const [lazyProps, setProps] = React.useState({});
 
@@ -39,9 +40,7 @@ export function createFederatedCatchAll(remotes) {
       ...lazyProps,
       ...initialProps,
     };
-    console.log(initialProps);
     React.useEffect(() => {
-      console.log(needsReload);
       if (needsReload) {
         const runUnderlayingGIP = async () => {
           const federatedProps = await FederatedCatchAll.getInitialProps(props);
@@ -76,11 +75,12 @@ export function createFederatedCatchAll(remotes) {
     if (!process.browser) {
       return { needsReload: true, ...props };
     }
-    console.log('in browser');
-    try {
-      const matchedPage = await matchFederatedPage(remotes, ctx.asPath);
-      console.log('matchedPage', matchedPage);
 
+    console.log('in browser');
+
+    try {
+      const matchedPage = await matchFederatedPage(ctx.asPath);
+      console.log('matchedPage', matchedPage);
       const remote = matchedPage?.value?.remote;
       const mod = matchedPage?.value?.module;
 
@@ -90,16 +90,8 @@ export function createFederatedCatchAll(remotes) {
       }
 
       console.log('loading exposed module', mod, 'from remote', remote);
-      try {
-        if (!window[remote].__initialized) {
-          window[remote].__initialized = true;
-          await window[remote].init(__webpack_share_scopes__.default);
-        }
-      } catch (initErr) {
-        console.log('initErr', initErr);
-      }
-
-      const FederatedPage = await window[remote].get(mod).then(factory => factory().default);
+      const container = await remotes[remote]()
+      const FederatedPage = await container.get(mod).then(factory => factory().default);
       console.log('FederatedPage', FederatedPage);
       if (!FederatedPage) {
         // TODO: Run getInitialProps for 404 page

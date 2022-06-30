@@ -14,13 +14,9 @@ module.exports = withFederatedSidecar({
     checkout: 'checkout@http://localhost:3000/_next/static/chunks/remoteEntry.js',
   },
   shared: {
-    react: {
-      requiredVersion: false,
-      singleton: true,
-    },
+
   },
 })({
-  webpack5: true,
   webpack(config, options) {
     const { webpack } = options;
 
@@ -31,27 +27,6 @@ module.exports = withFederatedSidecar({
       loader: '@module-federation/nextjs-mf/lib/federation-loader.js',
     });
 
-    config.plugins.push(
-      new webpack.container.ModuleFederationPlugin({
-        remotes: {
-          home: 'home@http://localhost:3001/_next/static/chunks/remoteEntry.js',
-          shop: 'shop@http://localhost:3002/_next/static/chunks/remoteEntry.js',
-          checkout: 'checkout@http://localhost:3000/_next/static/chunks/remoteEntry.js',
-        },
-        shared: {
-          'styled-jsx': {
-            requiredVersion: false,
-            singleton: true,
-            eager: true,
-          },
-          react: {
-            singleton: true,
-            eager: true,
-            requiredVersion: false,
-          },
-        },
-      }),
-    );
     return config;
   },
 });
