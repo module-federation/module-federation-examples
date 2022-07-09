@@ -4,9 +4,8 @@ module.exports = {
   webpack: (config, options) => {
     config.plugins.push(
       new options.webpack.container.ModuleFederationPlugin({
-        remoteType: 'var',
         remotes: {
-          remote: 'remote',
+          remote: 'remote@http://localhost:3001/remote.js',
         },
         shared: {
           react: {
