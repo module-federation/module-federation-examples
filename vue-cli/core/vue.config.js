@@ -7,6 +7,7 @@ module.exports = {
       new ModuleFederationPlugin({
         name: 'core',
         filename: 'remoteEntry.js',
+        library: { type: 'var', name: 'core' },
         exposes: {
           './Button': './src/components/Button',
           './Section': './src/components/Section',
