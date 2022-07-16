@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install:apps": "concurrently \"cd host-app; npm install\" \"cd remote-app; npm install\"",
+    "install:apps": "concurrently \"cd host-app; yarn\" \"cd remote-app; yarn\"",
     "start": "concurrently \"cd remote-app; npm start\" \"cd host-app; npm run dev\""
   },
   "keywords": [],

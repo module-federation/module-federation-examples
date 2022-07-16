@@ -1,23 +1,14 @@
+const { withFederatedSidecar } = require("@module-federation/nextjs-mf");
+
 /** @type {import('next').NextConfig} */
-
-module.exports = {
-  webpack: (config, options) => {
-    config.plugins.push(
-      new options.webpack.container.ModuleFederationPlugin({
-        remoteType: 'var',
-        remotes: {
-          remote: 'remote',
-        },
-        shared: {
-          react: {
-            eager: true,
-            singleton: true,
-            requiredVersion: false,
-          },
-        },
-      }),
-    );
-
+module.exports = withFederatedSidecar({
+  name: 'host',
+  remotes: {
+    remote: 'remote@http://localhost:3001/remote.js'
+  },
+  shared: {},
+})({
+  webpack: (config, _options) => {
     config.module.rules.push({
       test: /_app.js/,
       loader: '@module-federation/nextjs-mf/lib/federation-loader.js',
@@ -25,4 +16,4 @@ module.exports = {
 
     return config;
   },
-};
+});
