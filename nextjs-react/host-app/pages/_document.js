@@ -12,7 +12,6 @@ class MyDocument extends Document {
         <Head />
         <body>
           <Main />
-          <script src="http://localhost:3001/remote.js" />
           <NextScript />
         </body>
       </Html>
