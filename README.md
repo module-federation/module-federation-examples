@@ -96,6 +96,8 @@ Module federation will work with any type of file that youre able to import, tha
 - Telia
 - Amazon
 - Sony
+- Paypal
+- OVO Energy
 - MGM
 - Lowes
 - Home Depot
