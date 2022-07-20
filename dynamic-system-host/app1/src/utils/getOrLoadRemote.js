@@ -15,7 +15,7 @@ export const getOrLoadRemote = (remote, shareScope, remoteFallbackUrl = undefine
       // search dom to see if remote tag exists, but might still be loading (async)
       const existingRemote = document.querySelector(`[data-webpack="${remote}"]`);
       // when remote is loaded..
-      const onload = async () => {
+      const onload = originOnload => async () => {
         // check if it was initialized
         if (!window[remote].__initialized) {
           // if share scope doesnt exist (like in webpack 4) then expect shareScope to be a manual object
@@ -31,10 +31,11 @@ export const getOrLoadRemote = (remote, shareScope, remoteFallbackUrl = undefine
         }
         // resolve promise so marking remote as loaded
         resolve();
+        originOnload && originOnload();
       };
       if (existingRemote) {
         // if existing remote but not loaded, hook into its onload and wait for it to be ready
-        existingRemote.onload = onload;
+        existingRemote.onload = onload(existingRemote.onload);
         existingRemote.onerror = reject;
         // check if remote fallback exists as param passed to function
         // TODO: should scan public config for a matching key if no override exists
@@ -47,7 +48,7 @@ export const getOrLoadRemote = (remote, shareScope, remoteFallbackUrl = undefine
         script.setAttribute('data-webpack', `${remote}`);
         script.async = true;
         script.onerror = reject;
-        script.onload = onload;
+        script.onload = onload(null);
         script.src = remoteFallbackUrl;
         d.getElementsByTagName('head')[0].appendChild(script);
       } else {
