@@ -104,4 +104,5 @@ Module federation will work with any type of file that youre able to import, tha
 - Epic Games
 - ExpediaGroup
 - Verizon
+- MindTickle
 - and many more I cant remember
