@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "PORT=3002 next dev",
+    "dev": "rm -rf .next && PORT=3002 next dev",
     "build": "next build",
     "start": "PORT=3002 next start"
   },
   "dependencies": {
     "nextjs-shared": "*",
-    "@module-federation/nextjs-mf": "^3.5.0",
+    "@module-federation/nextjs-mf": "^4.0.2",
     "lodash": "4.17.21",
     "next": "12.1.6",
     "next-compose-plugins": "^2.2.1",
