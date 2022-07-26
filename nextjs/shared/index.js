@@ -1,5 +1,6 @@
 import React from 'react';
 import createMatcher from 'feather-route-matcher';
+import {injectScript} from '@module-federation/nextjs-mf/beta/utils'
 const remoteVars = process.env.REMOTES || {};
 const remotes = Object.entries(remoteVars).reduce((acc, item) => {
   const [key, value] = item;
@@ -11,39 +12,39 @@ const remotes = Object.entries(remoteVars).reduce((acc, item) => {
   return acc;
 }, {});
 
-const injectScript = async key => {
-  var __webpack_error__ = new Error();
-  const remoteGlobal = remotes[key].global;
-  return new Promise(function (resolve, reject) {
-    if (typeof window[remoteGlobal] !== 'undefined') return resolve();
-    __webpack_require__.l(
-      remotes[key].url,
-      function (event) {
-        if (typeof window[remoteGlobal] !== 'undefined') return resolve();
-        var errorType = event && (event.type === 'load' ? 'missing' : event.type);
-        var realSrc = event && event.target && event.target.src;
-        __webpack_error__.message = 'Loading script failed.\n(' + errorType + ': ' + realSrc + ')';
-        __webpack_error__.name = 'ScriptExternalLoadError';
-        __webpack_error__.type = errorType;
-        __webpack_error__.request = realSrc;
-        reject(__webpack_error__);
-      },
-      'glo' + remoteGlobal,
-    );
-  }).then(() => {
-    return new Promise(function (res, rej) {
-      try {
-        res(window[remoteGlobal].init(__webpack_share_scopes__.default));
-      } catch (e) {
-        console.log(e);
-        res();
-      }
-    }).then(function () {
-      console.log('resolving', remoteGlobal);
-      return window[remoteGlobal];
-    });
-  });
-};
+// const injectScript = async key => {
+//   var __webpack_error__ = new Error();
+//   const remoteGlobal = remotes[key].global;
+//   return new Promise(function (resolve, reject) {
+//     if (typeof window[remoteGlobal] !== 'undefined') return resolve();
+//     __webpack_require__.l(
+//       remotes[key].url,
+//       function (event) {
+//         if (typeof window[remoteGlobal] !== 'undefined') return resolve();
+//         var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+//         var realSrc = event && event.target && event.target.src;
+//         __webpack_error__.message = 'Loading script failed.\n(' + errorType + ': ' + realSrc + ')';
+//         __webpack_error__.name = 'ScriptExternalLoadError';
+//         __webpack_error__.type = errorType;
+//         __webpack_error__.request = realSrc;
+//         reject(__webpack_error__);
+//       },
+//       'glo' + remoteGlobal,
+//     );
+//   }).then(() => {
+//     return new Promise(function (res, rej) {
+//       try {
+//         res(window[remoteGlobal].init(__webpack_share_scopes__.default));
+//       } catch (e) {
+//         console.log(e);
+//         res();
+//       }
+//     }).then(function () {
+//       console.log('resolving', remoteGlobal);
+//       return window[remoteGlobal];
+//     });
+//   });
+// };
 
 export async function matchFederatedPage(path) {
   const maps = await Promise.all(
