@@ -15,7 +15,7 @@ There are 2 applications,
 
 # Setup
 
-- run `npm install` - Install all the dependencies to run the apps in parallel.
+- run `yarn` - Install all the dependencies to run the apps in parallel.
 - run `npm run install:apps` - Install all the required dependencies on both `host-app` and `remote-app`
 - run `npm run start` - Start both `host-app` and `remote-app`
 - `host-app` on `localhost:3000`

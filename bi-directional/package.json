@@ -6,9 +6,6 @@
     "serve": "concurrently \"cd app1; yarn serve\" \"cd app2; yarn serve\"",
     "clean": "concurrently \"cd app1; yarn clean\" \"cd app2; yarn clean\""
   },
-  "devDependencies": {
-    "@webpack-cli/serve": "^1.7.0"
-  },
   "workspaces": {
     "packages": [
       "./app1",
