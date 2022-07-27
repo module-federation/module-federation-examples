@@ -1,12 +1,15 @@
 {
   "private": true,
   "scripts": {
-    "start": "lerna run --scope @bi-directional/* --parallel start",
-    "build": "lerna run --scope @bi-directional/* build",
-    "serve": "lerna run --scope @bi-directional/* --parallel serve",
-    "clean": "lerna run --scope @bi-directional/* --parallel clean"
+    "start": "yarn build && yarn serve",
+    "build": "concurrently \"cd app1; yarn build\" \"cd app2; yarn build\"",
+    "serve": "concurrently \"cd app1; yarn serve\" \"cd app2; yarn serve\"",
+    "clean": "concurrently \"cd app1; yarn clean\" \"cd app2; yarn clean\""
   },
-  "devDependencies": {
-    "lerna": "3.22.1"
+  "workspaces": {
+    "packages": [
+      "./app1",
+      "./app2"
+    ]
   }
 }
