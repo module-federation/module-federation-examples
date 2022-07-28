@@ -1,5 +1,4 @@
 import '@module-federation/nextjs-mf/beta/include-defaults'
-console.log(__webpack_share_scopes__)
 import dynamic from 'next/dynamic';
 const page = import('../realPages/_app');
 const AppPage = dynamic(() => import('../realPages/_app'));
