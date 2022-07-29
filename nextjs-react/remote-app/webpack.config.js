@@ -33,7 +33,7 @@ module.exports = {
             library: { type: 'var', name: 'remote' },
             filename: 'remote.js',
             exposes: {
-                './Button': './src/Button',
+                './Button': './src/Button'
             },
             shared: {
                 '@stitches/react': {
@@ -48,10 +48,10 @@ module.exports = {
                     singleton: true,
                     version: '0'
                 }
-            },
+            }
         }),
         new HtmlWebpackPlugin({
-            template: './public/index.html',
-        }),
-    ],
+            template: './public/index.html'
+        })
+    ]
 };
