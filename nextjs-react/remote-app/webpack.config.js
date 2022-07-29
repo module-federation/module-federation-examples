@@ -38,11 +38,12 @@ module.exports = {
       shared: {
         react: {
           singleton: true,
-          requiredVersion: deps.react,
+          version: '0',
         },
         'react-dom': {
           singleton: true,
-          requiredVersion: deps['react-dom'],
+          version: '0',
+          requiredVersion: false,
         },
       },
     }),

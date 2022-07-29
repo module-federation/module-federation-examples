@@ -8,7 +8,7 @@ module.exports = {
           name:'host',
           remotes: {
             remote: 'remote@http://localhost:3001/remote.js',
-          }
+          },
         }),
       )
     }
