@@ -16,12 +16,9 @@ module.exports = withFederatedSidecar({
     './pages-map': './pages-map.js',
     './customHook': './components/someHook.js',
   },
-  shared: {
-
-  },
+  shared: {},
 })({
   webpack(config, options) {
-
     config.experiments = { topLevelAwait: true };
 
     config.module.rules.push({
@@ -29,7 +26,6 @@ module.exports = withFederatedSidecar({
       loader: '@module-federation/nextjs-mf/lib/federation-loader.js',
     });
 
-    return config
-
+    return config;
   },
 });

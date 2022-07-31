@@ -13,9 +13,7 @@ module.exports = withFederatedSidecar({
     shop: 'shop@http://localhost:3002/_next/static/chunks/remoteEntry.js',
     checkout: 'checkout@http://localhost:3000/_next/static/chunks/remoteEntry.js',
   },
-  shared: {
-
-  },
+  shared: {},
 })({
   webpack(config, options) {
     const { webpack } = options;

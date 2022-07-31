@@ -1,16 +1,17 @@
 import React from 'react';
 import createMatcher from 'feather-route-matcher';
-const remotes = process.env.REMOTES
+const remotes = process.env.REMOTES;
 export async function matchFederatedPage(path) {
   const maps = await Promise.all(
     Object.keys(remotes).map(async remote => {
-      const foundContainer = remotes[remote]()
-      const container = await foundContainer
+      const foundContainer = remotes[remote]();
+      const container = await foundContainer;
 
-      return container.get('./pages-map')
-             .then(factory => ({ remote, config: factory().default }))
-             .catch(() => null);
-       })
+      return container
+        .get('./pages-map')
+        .then(factory => ({ remote, config: factory().default }))
+        .catch(() => null);
+    }),
   );
 
   const config = {};
@@ -90,7 +91,7 @@ export function createFederatedCatchAll() {
       }
 
       console.log('loading exposed module', mod, 'from remote', remote);
-      const container = await remotes[remote]()
+      const container = await remotes[remote]();
       const FederatedPage = await container.get(mod).then(factory => factory().default);
       console.log('FederatedPage', FederatedPage);
       if (!FederatedPage) {

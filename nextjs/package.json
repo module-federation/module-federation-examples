@@ -11,9 +11,6 @@
     "build": "concurrently \"cd checkout; npm run build\" \"cd home; npm run build\" \"cd shop; npm run build\"",
     "serve": "concurrently \"cd checkout; npm run start\" \"cd home; npm run start\" \"cd shop; npm run start\""
   },
-  "resolutions": {
-    "@module-federation/nextjs-mf": "file:../../nextjs-mf"
-  },
   "dependencies": {
     "concurrently": "^7.0.0"
   }
