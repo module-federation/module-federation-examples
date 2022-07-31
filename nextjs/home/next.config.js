@@ -12,8 +12,7 @@ module.exports = withFederatedSidecar({
     './home': './pages/index.js',
     './pages-map': './pages-map.js',
   },
-  shared: {
-  },
+  shared: {},
 })({
   webpack5: true,
   webpack(config, options) {
