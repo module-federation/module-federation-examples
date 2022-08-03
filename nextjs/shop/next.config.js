@@ -1,4 +1,4 @@
-const NextFederationPlugin= require('@module-federation/nextjs-mf/beta/NextFederationPlugin');
+const NextFederationPlugin= require('@module-federation/nextjs-mf');
 
 
 module.exports ={

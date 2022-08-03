@@ -1,4 +1,4 @@
-require('@module-federation/nextjs-mf/beta/include-defaults')
+require('@module-federation/nextjs-mf/lib/include-defaults')
 // if(process.browser && (typeof __webpack_share_scopes__ === "undefined" || !__webpack_share_scopes__.default)) {
 //   __webpack_init_sharing__('default');
 // }
