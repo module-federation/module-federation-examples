@@ -1,3 +1,4 @@
+require('@module-federation/nextjs-mf/lib/include-defaults');
 import App from 'next/app';
 import dynamic from 'next/dynamic';
 const page = import('../realPages/_app');
