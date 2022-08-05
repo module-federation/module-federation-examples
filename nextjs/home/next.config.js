@@ -13,7 +13,7 @@ module.exports = {
             checkout: 'checkout@http://localhost:3002/_next/static/chunks/remoteEntry.js',
           },
           exposes: {
-            './nav': './components/nav.js',
+            './SharedNav': './components/SharedNav.js',
             './home': './realPages/index.js',
             './pages-map': './pages-map.js',
           },

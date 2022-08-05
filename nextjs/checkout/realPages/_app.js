@@ -1,8 +1,10 @@
 import App from 'next/app';
+import { MantineProvider, AppShell as MantineLayout, Navbar, Text } from '@mantine/core';
 import dynamic from 'next/dynamic';
-const Nav = dynamic(
+
+const SharedNav = dynamic(
   () => {
-    const mod = import('home/nav').catch(console.error);
+    const mod = import('home/SharedNav').catch(console.error);
     return mod;
   },
   { ssr: false },
@@ -10,10 +12,21 @@ const Nav = dynamic(
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
-      <Nav />
-      <Component {...pageProps} />
-    </>
+    <MantineProvider withGlobalStyles>
+      <MantineLayout
+        padding="md"
+        header={<SharedNav />}
+        navbar={
+          <Navbar p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
+            <Text size="lg" weight="bold">
+              Checkout menu
+            </Text>
+          </Navbar>
+        }
+      >
+        <Component {...pageProps} />
+      </MantineLayout>
+    </MantineProvider>
   );
 }
 MyApp.getInitialProps = async ctx => {

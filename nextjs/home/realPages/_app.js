@@ -1,13 +1,24 @@
-import Nav from '../components/nav';
 import App from 'next/app';
-import dynamic from 'next/dynamic';
+import { MantineProvider, AppShell as MantineLayout, Navbar, Text } from '@mantine/core';
+import SharedNav from '../components/SharedNav';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
-      <Nav />
-      <Component {...pageProps} />
-    </>
+    <MantineProvider withGlobalStyles>
+      <MantineLayout
+        padding="md"
+        header={<SharedNav />}
+        navbar={
+          <Navbar p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
+            <Text size="lg" weight="bold">
+              Home menu
+            </Text>
+          </Navbar>
+        }
+      >
+        <Component {...pageProps} />
+      </MantineLayout>
+    </MantineProvider>
   );
 }
 MyApp.getInitialProps = async ctx => {
