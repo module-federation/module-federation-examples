@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "rm -rf .next && PORT=3002 next dev",
+    "dev": "rm -rf .next && next dev -p 3001",
     "build": "next build",
-    "start": "PORT=3002 next start"
+    "start": "next start -p 3001"
   },
   "dependencies": {
     "nextjs-shared": "*",

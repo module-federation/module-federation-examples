@@ -8,17 +8,16 @@ module.exports = {
           name: 'home',
           filename: 'static/chunks/remoteEntry.js',
           remotes: {
-            home: 'home@http://localhost:3001/_next/static/chunks/remoteEntry.js',
-            shop: 'shop@http://localhost:3002/_next/static/chunks/remoteEntry.js',
-            checkout: 'checkout@http://localhost:3000/_next/static/chunks/remoteEntry.js',
+            home: 'home@http://localhost:3000/_next/static/chunks/remoteEntry.js',
+            shop: 'shop@http://localhost:3001/_next/static/chunks/remoteEntry.js',
+            checkout: 'checkout@http://localhost:3002/_next/static/chunks/remoteEntry.js',
           },
           exposes: {
             './nav': './components/nav.js',
             './home': './realPages/index.js',
             './pages-map': './pages-map.js',
           },
-          shared: {
-          }
+          shared: {},
         }),
       );
     }

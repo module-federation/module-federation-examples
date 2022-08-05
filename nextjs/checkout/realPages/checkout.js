@@ -10,7 +10,7 @@ const Checkout = props => (
 
     <div className="hero">
       <h1>checkout page</h1>
-      <h3 className="title">This is a federated page owned by localhost:3000</h3>
+      <h3 className="title">This is a federated page owned by localhost:3002</h3>
       <span>
         {' '}
         Data from federated <pre>getInitalProps</pre>

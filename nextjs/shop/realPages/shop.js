@@ -10,7 +10,7 @@ const Shop = props => (
 
     <div className="hero">
       <h1>Shop Page</h1>
-      <h3 className="title">This is a federated page owned by localhost:3002</h3>
+      <h3 className="title">This is a federated page owned by localhost:3001</h3>
     </div>
     <style jsx>{`
       .hero {
