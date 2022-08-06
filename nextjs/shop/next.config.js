@@ -16,7 +16,7 @@ module.exports = {
             './shop': './pages/shop',
             './pdp': './pages/p/[...slug].js',
             './pages-map': './pages-map.js',
-            './customHook': './components/someHook.js',
+            './useCustomRemoteHook': './components/useCustomRemoteHook.js',
           },
         }),
       );
