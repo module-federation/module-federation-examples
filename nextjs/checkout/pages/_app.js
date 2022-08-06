@@ -1,10 +1,12 @@
-import '@module-federation/nextjs-mf/lib/include-defaults'
+import '@module-federation/nextjs-mf/lib/include-defaults';
 import dynamic from 'next/dynamic';
-const page = import('../realPages/_app');
-const AppPage = dynamic(() => import('../realPages/_app'));
-const Page = (props)=>{
-  return <AppPage {...props}/>
-}
+import 'antd/dist/antd.css';
+
+const page = import('./_app.real');
+const AppPage = dynamic(() => import('./_app.real'));
+const Page = props => {
+  return <AppPage {...props} />;
+};
 Page.getInitialProps = async ctx => {
   const getInitialProps = (await page).default?.getInitialProps;
   if (getInitialProps) {

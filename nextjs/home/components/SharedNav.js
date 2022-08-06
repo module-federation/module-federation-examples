@@ -1,45 +1,80 @@
 import React from 'react';
-import Link from 'next/link';
-import { Header, Space, Text, Title } from '@mantine/core';
+import { Menu, Layout } from 'antd';
 import { useRouter } from 'next/router';
 
-const HeadLink = ({ href, children, sup }) => {
-  const { pathname } = useRouter();
-  const isActive = pathname === href;
+const SharedNav = () => {
+  const { pathname, push } = useRouter();
+
+  let activeMenu;
+  if (pathname === '/') {
+    activeMenu = '/';
+  } else if (pathname.startsWith('/shop')) {
+    activeMenu = '/shop';
+  } else if (pathname.startsWith('/checkout')) {
+    activeMenu = '/checkout';
+  } else if (pathname.startsWith('/p/something')) {
+    activeMenu = '/p/something';
+  }
 
   return (
-    <>
-      <Link href={href}>
-        <a style={{ fontWeight: isActive ? 700 : 400 }}>{children}</a>
-      </Link>
-      {!!sup && (
-        <Text size="xs" color="dimmed">
-          &nbsp;
-          {sup}
-        </Text>
-      )}
-      <Space w="lg" />
-    </>
+    <Layout.Header>
+      <div className="header-logo">nextjs-mf</div>
+      <Menu
+        theme="dark"
+        mode="horizontal"
+        selectedKeys={activeMenu ? [activeMenu] : undefined}
+        onClick={({ key }) => {
+          push(key);
+        }}
+        items={[
+          {
+            label: (
+              <>
+                Home <sup>3000</sup>
+              </>
+            ),
+            key: '/',
+          },
+          {
+            label: (
+              <>
+                Shop <sup>3001</sup>
+              </>
+            ),
+            key: '/shop',
+          },
+          {
+            label: (
+              <>
+                Checkout <sup>3002</sup>
+              </>
+            ),
+            key: '/checkout',
+          },
+          {
+            label: (
+              <>
+                Federated Catch All <sup>3001</sup>
+              </>
+            ),
+            key: '/p/something',
+          },
+        ]}
+      />
+      <style jsx>
+        {`
+          .header-logo {
+            float: left;
+            width: 200px;
+            height: 31px;
+            margin-right: 24px;
+            color: white;
+            font-size: 2rem;
+          }
+        `}
+      </style>
+    </Layout.Header>
   );
 };
-
-const SharedNav = () => (
-  <Header fixed height={70} p="md" style={{ display: 'flex', alignItems: 'center' }}>
-    <Title order={2}>nextjs-mf</Title>
-    <Space w="lg" />
-    <HeadLink href="/" sup="(from 3000)">
-      Home
-    </HeadLink>
-    <HeadLink href="/shop" sup="(from 3001)">
-      Shop
-    </HeadLink>
-    <HeadLink href="/checkout" sup="(from 3002)">
-      Checkout
-    </HeadLink>
-    <HeadLink href="/p/something" sup="(from 3001)">
-      Federated Catch All
-    </HeadLink>
-  </Header>
-);
 
 export default SharedNav;
