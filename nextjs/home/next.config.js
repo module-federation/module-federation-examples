@@ -14,7 +14,8 @@ module.exports = {
           },
           exposes: {
             './SharedNav': './components/SharedNav.js',
-            './home': './realPages/index.js',
+            './home': './pages/index.js',
+            './menu': './pages/_menu.js',
             './pages-map': './pages-map.js',
           },
           shared: {},

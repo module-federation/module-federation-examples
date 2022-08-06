@@ -18,6 +18,7 @@ module.exports = {
           exposes: {
             './CheckoutTitle': './components/CheckoutTitle.js',
             './checkout': './pages/checkout.js',
+            './menu': './pages/_menu.js',
             './pages-map': './pages-map.js',
           },
           shared: {},

@@ -1,6 +1,6 @@
 import React from 'react';
 import createMatcher from 'feather-route-matcher';
-import {injectScript} from '@module-federation/nextjs-mf/lib/utils'
+import { injectScript } from '@module-federation/nextjs-mf/lib/utils';
 const remoteVars = process.env.REMOTES || {};
 const remotes = Object.entries(remoteVars).reduce((acc, item) => {
   const [key, value] = item;
@@ -139,8 +139,18 @@ export function createFederatedCatchAll() {
 
       console.log('loading exposed module', mod, 'from remote', remote);
       const container = await injectScript(remote);
-      const FederatedPage = await container.get(mod).then(factory => factory().default);
-      console.log('FederatedPage', FederatedPage);
+      const [FederatedPage, FederatedMenu] = await Promise.all([
+        container.get(mod).then(factory => factory().default),
+        container.get('./menu').then(factory => factory().default),
+      ]);
+
+      console.log({ FederatedMenu });
+
+      // Send new menu via event, _app will listen to this and render the new menu
+      if (typeof window !== 'undefined' && FederatedMenu) {
+        window.dispatchEvent(new CustomEvent('federated-menu', { detail: FederatedMenu }));
+      }
+
       if (!FederatedPage) {
         // TODO: Run getInitialProps for 404 page
         return { render404: true, ...props };

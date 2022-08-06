@@ -15,6 +15,7 @@ module.exports = {
           exposes: {
             './shop': './pages/shop',
             './pdp': './pages/p/[...slug].js',
+            './menu': './pages/_menu.js',
             './pages-map': './pages-map.js',
             './useCustomRemoteHook': './components/useCustomRemoteHook.js',
           },
