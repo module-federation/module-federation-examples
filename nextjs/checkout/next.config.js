@@ -1,30 +1,34 @@
-const { withFederatedSidecar } = require('@module-federation/nextjs-mf');
+const NextFederationPlugin = require('@module-federation/nextjs-mf');
 
-module.exports = withFederatedSidecar({
-  name: 'checkout',
-  filename: 'static/chunks/remoteEntry.js',
-  exposes: {
-    './title': './components/exposedTitle.js',
-    './checkout': './pages/checkout',
-    './pages-map': './pages-map.js',
-  },
-  remotes: {
-    home: 'home@http://localhost:3001/_next/static/chunks/remoteEntry.js',
-    shop: 'shop@http://localhost:3002/_next/static/chunks/remoteEntry.js',
-    checkout: 'checkout@http://localhost:3000/_next/static/chunks/remoteEntry.js',
-  },
-  shared: {},
-})({
+module.exports = {
   webpack(config, options) {
-    const { webpack } = options;
+    const {webpack} = options;
+    Object.assign(config.experiments, {topLevelAwait: true});
+    if (!options.isServer) {
 
-    config.experiments = { topLevelAwait: true };
+      //config.cache=false
+      config.plugins.push(
+        new NextFederationPlugin({
+          name:'checkout',
+          remotes: {
+            home: `home@http://localhost:3001/_next/static/chunks/remoteEntry.js`,
+            shop: 'shop@http://localhost:3002/_next/static/chunks/remoteEntry.js'
+          },
+          filename: 'static/chunks/remoteEntry.js',
+          exposes: {
+            './title': './components/exposedTitle.js',
+            './checkout': './pages/checkout',
+            './pages-map': './pages-map.js',
+          },
+          shared: {
 
-    config.module.rules.push({
-      test: /_app.js/,
-      loader: '@module-federation/nextjs-mf/lib/federation-loader.js',
-    });
+          }
+        }),
+      )
+
+    }
+
 
     return config;
   },
-});
+}
