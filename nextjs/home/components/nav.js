@@ -19,6 +19,9 @@ const Nav = () => (
         <Link href="/shop">
           <a>Shop</a>
         </Link>
+        <Link href="/p/something">
+          <a>Federated Catch All</a>
+        </Link>
         <Link href="/checkout">
           <a>Checkout</a>
         </Link>
