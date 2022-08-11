@@ -11,7 +11,7 @@
 
 # Running Demo
 
-Run `yarn start`. This will build and serve both `app1` and `app2` on ports 3001 and 3002 respectively.
+Run `yarn build && yarn serve`
 
 - [Home is on localhost:3001](http://localhost:3001/)
 - [DSL is on localhost:3002](http://localhost:3002/)
