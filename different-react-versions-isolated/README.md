@@ -1,9 +1,9 @@
 # Basic One-Way Example
 
-This example demos host and remote applications running in isolation with two different react versions and no shared libraries
+This example demos host and remote applications running in isolation with two different React versions and no shared libraries
 
-- `app1` is the host application.
-- `app2` standalone application which exposes an injector function.
+- `app1` is the host application using one version of React and ReactDOM.
+- `app2` is the guest application using a different version of React and ReactDOM. It exposes an injector function which lets the host application (app1) import it and inject it into a div element.
 
 # Running Demo
 
