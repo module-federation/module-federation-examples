@@ -74,10 +74,11 @@ module.exports = {
     }),
     new DashboardPlugin({
       versionStrategy: `${Date.now()}`,
+      environment: process.env.VERCEL ? 'production' : 'development',
       dashboardURL: `${process.env.DASHBOARD_BASE_URL}/update?token=${process.env.DASHBOARD_WRITE_TOKEN}`,
       filename: "dashboard.json",
       metadata: {
-        baseUrl: "http://localhost:3005",
+        baseUrl: process.env.VERCEL_URL ? process.env.VERCEL_URL : "http://localhost:3005",
         source: {
           url: "https://github.com/module-federation/federation-dashboard/tree/master/dashboard-example/utils",
         },
