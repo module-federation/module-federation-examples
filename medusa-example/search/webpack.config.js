@@ -17,7 +17,7 @@ if(!process.env.DASHBOARD_WRITE_TOKEN) {
 }
 
 if(!process.env.DASHBOARD_READ_TOKEN) {
-  process.env.DASHBOARD_READ_TOKEN = tokens.find(
+  process.env.DASHBOARD_READ_TOKEN = env.find(
     ([k]) => k === "DASHBOARD_READ_TOKEN"
   )[1];
 }
