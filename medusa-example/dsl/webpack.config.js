@@ -8,13 +8,14 @@ const env = readFileSync(__dirname + "/../.env")
   .toString("utf-8")
   .split("\n")
   .map((v) => v.trim().split("="));
-
-process.env.DASHBOARD_WRITE_TOKEN = env.find(
-  ([k]) => k === "DASHBOARD_WRITE_TOKEN"
-)[1];
+if(!process.env.DASHBOARD_WRITE_TOKEN) {
+  process.env.DASHBOARD_WRITE_TOKEN = env.find(
+    ([k]) => k === "DASHBOARD_WRITE_TOKEN"
+  )[1];
+}
 process.env.DASHBOARD_BASE_URL = env.find(
   ([k]) => k === "DASHBOARD_BASE_URL"
-)[1];
+)[1] || 'https://api.medusa.codes'
 
 module.exports = {
   entry: "./src/index",

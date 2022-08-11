@@ -4,20 +4,26 @@ const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
 
 const { readFileSync } = require("fs");
-const tokens = readFileSync(__dirname + "/../.env")
+const env = readFileSync(__dirname + "/../.env")
   .toString("utf-8")
   .split("\n")
   .map((v) => v.trim().split("="));
-console.log("TOKENS", tokens);
-process.env.DASHBOARD_READ_TOKEN = tokens.find(
-  ([k]) => k === "DASHBOARD_READ_TOKEN"
-)[1];
-process.env.DASHBOARD_WRITE_TOKEN = tokens.find(
-  ([k]) => k === "DASHBOARD_WRITE_TOKEN"
-)[1];
-process.env.DASHBOARD_BASE_URL = tokens.find(
+
+if(!process.env.DASHBOARD_WRITE_TOKEN) {
+  process.env.DASHBOARD_WRITE_TOKEN = env.find(
+    ([k]) => k === "DASHBOARD_WRITE_TOKEN"
+  )[1];
+}
+
+if(!process.env.DASHBOARD_READ_TOKEN) {
+  process.env.DASHBOARD_READ_TOKEN = tokens.find(
+    ([k]) => k === "DASHBOARD_READ_TOKEN"
+  )[1];
+}
+
+process.env.DASHBOARD_BASE_URL = env.find(
   ([k]) => k === "DASHBOARD_BASE_URL"
-)[1];
+)[1] || 'https://api.medusa.codes'
 
 module.exports = {
   entry: "./src/index",
