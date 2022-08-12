@@ -50,6 +50,7 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 - [x] [Vue 2 in Vue 3](./vue2-in-vue3/README.md) &mdash; Vue 3 application loading remote Vue 2 component.
 - [x] [Vue2 SSR](./genesis/README.md) &mdash; This example demonstrates module as a service.
 - [x] [React - Host/Remote and NextJS Host/Remote](./react-nextjs/README.md) &mdash; These examples demonstrates react/nextjs as host/remote and react/nextjs are host/remote
+- [x] [Different React Versions in Isolation](./different-react-versions-isolated/README.md) &mdash; Simple host/remote example where the apps have different React and ReactDOM versions and don't share any dependencies.
 
 # Check out our book
 
