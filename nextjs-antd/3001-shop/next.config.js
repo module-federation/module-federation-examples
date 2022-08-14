@@ -18,6 +18,8 @@ module.exports = {
             './menu': './pages/_menu.js',
             './pages-map': './pages-map.js',
             './useCustomRemoteHook': './components/useCustomRemoteHook.js',
+            './WebpackSvg': './components/WebpackSvg.js',
+            './WebpackPng': './components/WebpackPng.js',
           },
         }),
       );

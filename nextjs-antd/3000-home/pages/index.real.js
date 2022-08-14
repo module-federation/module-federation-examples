@@ -16,6 +16,9 @@ const CheckoutTitle = dynamic(
   { ssr: false },
 );
 
+const WebpackSvgRemote = dynamic(() => import('shop/WebpackSvg'), { ssr: false });
+const WebpackPngRemote = dynamic(() => import('shop/WebpackPng'), { ssr: false });
+
 const Home = () => {
   return (
     <>
@@ -83,23 +86,27 @@ const Home = () => {
             <td>
               Loading remote component with PNG image from localhost:3001
               <br />
-              <blockquote></blockquote>
+              <blockquote>(check publicPath fix in image-loader)</blockquote>
             </td>
             <td>
               <img src="./webpack.png" />
             </td>
-            <td>TODO:</td>
+            <td>
+              <WebpackPngRemote />
+            </td>
           </tr>
           <tr>
             <td>
               Loading remote component with SVG from localhost:3001
               <br />
-              <blockquote></blockquote>
+              <blockquote>(check publicPath fix in url-loader)</blockquote>
             </td>
             <td>
               <img src="./webpack.svg" />
             </td>
-            <td>TODO:</td>
+            <td>
+              <WebpackSvgRemote />
+            </td>
           </tr>
           <tr>
             <td>Load federated component from checkout with old antd version</td>
