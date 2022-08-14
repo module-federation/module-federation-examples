@@ -1,15 +1,15 @@
 {
   "private": true,
   "workspaces": [
-    "./checkout",
-    "./home",
-    "./shared",
-    "./shop"
+    "./3000-home",
+    "./3001-shop",
+    "./3002-checkout",
+    "./shared"
   ],
   "scripts": {
-    "start": "concurrently \"cd home; npm run dev\" \"cd shop; npm run dev\" \"cd checkout; npm run dev\"",
-    "build": "concurrently \"cd home; npm run build\" \"cd shop; npm run build\" \"cd checkout; npm run build\"",
-    "serve": "concurrently \"cd home; npm run start\" \"cd shop; npm run start\" \"cd checkout; npm run start\""
+    "start": "concurrently \"cd 3000-home; npm run dev\" \"cd 3001-shop; npm run dev\" \"cd 3002-checkout; npm run dev\"",
+    "build": "concurrently \"cd 3000-home; npm run build\" \"cd 3001-shop; npm run build\" \"cd 3002-checkout; npm run build\"",
+    "serve": "concurrently \"cd 3000-home; npm run start\" \"cd 3001-shop; npm run start\" \"cd 3002-checkout; npm run start\""
   },
   "dependencies": {
     "concurrently": "^7.0.0"

@@ -101,6 +101,11 @@ const Home = () => {
             </td>
             <td>TODO:</td>
           </tr>
+          <tr>
+            <td>Load federated component from checkout with old antd version</td>
+            <td>[Button from antd@4.20.0]</td>
+            <td>TODO:</td>
+          </tr>
         </tbody>
       </table>
     </>
