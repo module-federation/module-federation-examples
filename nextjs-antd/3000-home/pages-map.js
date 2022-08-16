@@ -1,3 +1,4 @@
 export default {
-  '/': './home',
+  '/': './main-index',
+  '/home/testRemoteHook': './testRemoteHook',
 };

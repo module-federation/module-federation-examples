@@ -16,8 +16,14 @@ module.exports = {
           },
           filename: 'static/chunks/remoteEntry.js',
           exposes: {
+            // pages
+            './index': './pages/checkout/index.js',
+            './check-button': './pages/checkout/check-button.js',
+            './title': './pages/checkout/title.js',
+            // components
             './CheckoutTitle': './components/CheckoutTitle.js',
-            './checkout': './pages/checkout.js',
+            './ButtonOldAnt': './components/ButtonOldAnt.js',
+            // utilities
             './menu': './pages/_menu.js',
             './pages-map': './pages-map.js',
           },

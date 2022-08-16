@@ -1,4 +1,6 @@
 export default {
-  '/shop': './shop',
-  '/p/*': './pdp',
+  '/shop': './index',
+  '/shop/webpack-png': './webpack-png',
+  '/shop/webpack-svg': './webpack-svg',
+  '/shop/products/*': './products/[...slug]',
 };

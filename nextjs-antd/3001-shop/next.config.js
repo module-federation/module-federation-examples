@@ -13,13 +13,18 @@ module.exports = {
             checkout: 'checkout@http://localhost:3002/_next/static/chunks/remoteEntry.js',
           },
           exposes: {
-            './shop': './pages/shop',
-            './pdp': './pages/p/[...slug].js',
-            './menu': './pages/_menu.js',
-            './pages-map': './pages-map.js',
+            // pages
+            './index': './pages/shop/index.js',
+            './products/[...slug]': './pages/shop/products/[...slug].js',
+            './webpack-png': './pages/shop/webpack-png.js',
+            './webpack-svg': './pages/shop/webpack-svg.js',
+            // components
             './useCustomRemoteHook': './components/useCustomRemoteHook.js',
             './WebpackSvg': './components/WebpackSvg.js',
             './WebpackPng': './components/WebpackPng.js',
+            // utilities
+            './menu': './pages/_menu.js',
+            './pages-map': './pages-map.js',
           },
         }),
       );

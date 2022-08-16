@@ -3,17 +3,15 @@ import { Menu, Layout } from 'antd';
 import { useRouter } from 'next/router';
 
 const SharedNav = () => {
-  const { pathname, push } = useRouter();
+  const { asPath, push } = useRouter();
 
   let activeMenu;
-  if (pathname === '/') {
+  if (asPath === '/' || asPath.startsWith('/home')) {
     activeMenu = '/';
-  } else if (pathname.startsWith('/shop')) {
+  } else if (asPath.startsWith('/shop')) {
     activeMenu = '/shop';
-  } else if (pathname.startsWith('/checkout')) {
+  } else if (asPath.startsWith('/checkout')) {
     activeMenu = '/checkout';
-  } else if (pathname.startsWith('/p/something')) {
-    activeMenu = '/p/something';
   }
 
   return (
@@ -50,14 +48,6 @@ const SharedNav = () => {
               </>
             ),
             key: '/checkout',
-          },
-          {
-            label: (
-              <>
-                Federated Catch All <sup>3001</sup>
-              </>
-            ),
-            key: '/p/something',
           },
         ]}
       />

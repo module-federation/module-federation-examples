@@ -1,3 +1,5 @@
 export default {
-  '/checkout': './checkout',
+  '/checkout': './index',
+  '/checkout/check-button': './check-button',
+  '/checkout/title': './title',
 };

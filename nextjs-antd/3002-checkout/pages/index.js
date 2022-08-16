@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 
 const Home = dynamic(import('home/home'), { ssr: false });
+
 const Page = props => {
   const router = useRouter();
   useEffect(() => {
@@ -16,6 +17,7 @@ const Page = props => {
   }
   return <Home {...props} />;
 };
+
 Page.getInitialProps = async ctx => {
   if (process.browser) {
     const page = (await import('home/home')).default;
@@ -28,4 +30,5 @@ Page.getInitialProps = async ctx => {
     needsPush: true,
   };
 };
+
 export default Page;

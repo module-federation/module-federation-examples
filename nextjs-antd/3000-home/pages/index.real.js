@@ -1,21 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
+import { Alert } from 'antd';
 
-// TODO: discuss with Zack that making all pages dynamic is not a good idea
-//   Downsides
-//     - such code looks ugly
-//     - it enforces developers to create `realPages` with same structure of pages. In big apps, this become a huge problem.
-//   How to solve it?
-//     - just create a dynamic page as testRemoteHook.js & testRemoteHook.real.js when it really needed
-
-const CheckoutTitle = dynamic(
-  () => {
-    return import('checkout/CheckoutTitle');
-  },
-  { ssr: false },
-);
-
+const CheckoutTitle = dynamic(() => import('checkout/CheckoutTitle'), { ssr: false });
+const ButtonOldAnt = dynamic(() => import('checkout/ButtonOldAnt'), { ssr: false });
 const WebpackSvgRemote = dynamic(() => import('shop/WebpackSvg'), { ssr: false });
 const WebpackPngRemote = dynamic(() => import('shop/WebpackPng'), { ssr: false });
 
@@ -27,42 +16,43 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="hero">
-        <h1>This is SPA combined from 3 different nextjs applications.</h1>
-        <p className="description">
-          They utilize omnidirectional routing and pages or components are able to be federated
-          between applications.
-        </p>
-        <p>You may open any application by clicking on the links below:</p>
-        <ul>
-          <li>
-            <a href="#reloadPage" onClick={() => (window.location = 'http://localhost:3000')}>
-              localhost:3000
-            </a>
-            {' – '}
-            <b>home</b>
-          </li>
-          <li>
-            <a href="#reloadPage" onClick={() => (window.location = 'http://localhost:3001')}>
-              localhost:3001
-            </a>
-            {' – '}
-            <b>shop</b>
-          </li>
-          <li>
-            <a href="#reloadPage" onClick={() => (window.location = 'http://localhost:3002')}>
-              localhost:3002
-            </a>
-            {' – '}
-            <b>checkout</b>
-          </li>
-        </ul>
-      </div>
+      <h1 style={{ fontSize: '2em' }}>
+        This is SPA combined from 3 different nextjs applications.
+      </h1>
+      <p className="description">
+        They utilize omnidirectional routing and pages or components are able to be federated
+        between applications.
+      </p>
+      <p>You may open any application by clicking on the links below:</p>
+      <ul>
+        <li>
+          <a href="#reloadPage" onClick={() => (window.location = 'http://localhost:3000')}>
+            localhost:3000
+          </a>
+          {' – '}
+          <b>home</b>
+        </li>
+        <li>
+          <a href="#reloadPage" onClick={() => (window.location = 'http://localhost:3001')}>
+            localhost:3001
+          </a>
+          {' – '}
+          <b>shop</b>
+        </li>
+        <li>
+          <a href="#reloadPage" onClick={() => (window.location = 'http://localhost:3002')}>
+            localhost:3002
+          </a>
+          {' – '}
+          <b>checkout</b>
+        </li>
+      </ul>
 
-      <h2>Federation test cases</h2>
-      <table>
+      <h2 style={{ marginTop: '30px' }}>Federation test cases</h2>
+      <table border="1" cellPadding={5}>
         <thead>
           <tr>
+            <td></td>
             <td>Test case</td>
             <td>Expected</td>
             <td>Actual</td>
@@ -70,6 +60,7 @@ const Home = () => {
         </thead>
         <tbody>
           <tr>
+            <td>✅</td>
             <td>
               Loading remote component (CheckoutTitle) from localhost:3002
               <br />
@@ -83,6 +74,15 @@ const Home = () => {
             </td>
           </tr>
           <tr>
+            <td>✅</td>
+            <td>Load federated component from checkout with old antd version</td>
+            <td>[Button from antd@4.20.0]</td>
+            <td>
+              <ButtonOldAnt />
+            </td>
+          </tr>
+          <tr>
+            <td>🐞</td>
             <td>
               Loading remote component with PNG image from localhost:3001
               <br />
@@ -93,9 +93,11 @@ const Home = () => {
             </td>
             <td>
               <WebpackPngRemote />
+              <Alert message="Need to write a fix for image-loader" type="error" />
             </td>
           </tr>
           <tr>
+            <td>🐞</td>
             <td>
               Loading remote component with SVG from localhost:3001
               <br />
@@ -106,15 +108,24 @@ const Home = () => {
             </td>
             <td>
               <WebpackSvgRemote />
+              <Alert message="Need to write a fix for url-loader" type="error" />
             </td>
-          </tr>
-          <tr>
-            <td>Load federated component from checkout with old antd version</td>
-            <td>[Button from antd@4.20.0]</td>
-            <td>TODO:</td>
           </tr>
         </tbody>
       </table>
+
+      <h2 style={{ marginTop: '30px' }}>Other problems to fix:</h2>
+      <ul>
+        <li>🐞 Menu do not work correctly (home menu do not return back for / path)</li>
+        <li>
+          🐞 Incorrectly exposed modules in next.config.js (e.g. typo in path) do not throw an error
+          in console
+        </li>
+        <li>
+          🐞 <a href="http://localhost:3000/shop/products/A">localhost:3000/shop/products/A</a> do
+          not obtain correct router path. So in this case page cannot receive `slug` value.
+        </li>
+      </ul>
     </>
   );
 };
