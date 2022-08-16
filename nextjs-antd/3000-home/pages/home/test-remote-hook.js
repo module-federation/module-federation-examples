@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 
-const page = import('./testRemoteHook.real');
-const Page = dynamic(() => import('./testRemoteHook.real'), { ssr: false });
+const page = import('./test-remote-hook.real');
+const Page = dynamic(() => import('./test-remote-hook.real'), { ssr: false });
 
 Page.getInitialProps = async ctx => {
   const getInitialProps = (await page).default?.getInitialProps;

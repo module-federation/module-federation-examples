@@ -5,8 +5,13 @@ const menuItems = [
   { label: 'Main shop', key: '/shop' },
   { label: 'Product A', key: '/shop/products/A' },
   { label: 'Product B', key: '/shop/products/B' },
-  { label: 'Webpack svg', key: '/shop/webpack-svg' },
-  { label: 'Webpack png', key: '/shop/webpack-png' },
+  {
+    label: 'Exposed components',
+    children: [
+      { label: 'shop/WebpackSvg', key: '/shop/test-webpack-svg' },
+      { label: 'shop/WebpackPng', key: '/shop/test-webpack-png' },
+    ],
+  },
 ];
 
 export default function AppMenu() {

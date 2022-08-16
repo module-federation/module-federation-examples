@@ -1,5 +1,5 @@
 export default {
-  '/checkout': './index',
-  '/checkout/check-button': './check-button',
-  '/checkout/title': './title',
+  '/checkout': './pages/checkout/index',
+  '/checkout/test-check-button': './pages/checkout/test-check-button',
+  '/checkout/test-title': './pages/checkout/test-title',
 };

@@ -1,5 +1,14 @@
 import { useRouter } from 'next/router';
-import { Menu, Badge } from 'antd';
+import { Menu } from 'antd';
+
+const menuItems = [
+  { label: 'Main home', key: '/' },
+  { label: 'Test hook from remote', key: '/home/test-remote-hook' },
+  {
+    label: 'Exposed components',
+    children: [{ label: 'home/SharedNav', key: '/home/test-shared-nav' }],
+  },
+];
 
 export default function AppMenu() {
   const router = useRouter();
@@ -12,10 +21,7 @@ export default function AppMenu() {
         selectedKeys={[router.asPath]}
         style={{ height: '100%' }}
         onClick={({ key }) => router.push(key)}
-        items={[
-          { label: 'Main home', key: '/' },
-          { label: 'Test hook from remote', key: '/home/testRemoteHook' },
-        ]}
+        items={menuItems}
       />
     </>
   );

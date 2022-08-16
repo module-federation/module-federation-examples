@@ -14,8 +14,9 @@ module.exports = {
           },
           exposes: {
             // pages
-            './main-index': './pages/index.js',
-            './testRemoteHook': './pages/home/testRemoteHook.js',
+            './pages/index': './pages/index.js',
+            './pages/home/test-remote-hook': './pages/home/test-remote-hook.js',
+            './pages/home/test-shared-nav': './pages/home/test-shared-nav.js',
             // components
             './SharedNav': './components/SharedNav.js',
             // utilities

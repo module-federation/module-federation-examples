@@ -14,10 +14,10 @@ module.exports = {
           },
           exposes: {
             // pages
-            './index': './pages/shop/index.js',
-            './products/[...slug]': './pages/shop/products/[...slug].js',
-            './webpack-png': './pages/shop/webpack-png.js',
-            './webpack-svg': './pages/shop/webpack-svg.js',
+            './pages/shop/index': './pages/shop/index.js',
+            './pages/shop/products/[...slug]': './pages/shop/products/[...slug].js',
+            './pages/shop/test-webpack-png': './pages/shop/test-webpack-png.js',
+            './pages/shop/test-webpack-svg': './pages/shop/test-webpack-svg.js',
             // components
             './useCustomRemoteHook': './components/useCustomRemoteHook.js',
             './WebpackSvg': './components/WebpackSvg.js',

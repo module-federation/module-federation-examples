@@ -1,6 +1,17 @@
 import { useRouter } from 'next/router';
 import { Menu } from 'antd';
 
+const menuItems = [
+  { label: 'Main checkout', key: '/checkout' },
+  {
+    label: 'Exposed components',
+    children: [
+      { label: 'checkout/CheckoutTitle', key: '/checkout/test-title' },
+      { label: 'checkout/ButtonOldAnt', key: '/checkout/test-check-button' },
+    ],
+  },
+];
+
 export default function AppMenu() {
   const router = useRouter();
 
@@ -14,11 +25,7 @@ export default function AppMenu() {
         selectedKeys={[router.asPath]}
         style={{ height: '100%' }}
         onClick={({ key }) => router.push(key)}
-        items={[
-          { label: 'Main checkout', key: '/checkout' },
-          { label: 'Checkout title', key: '/checkout/title' },
-          { label: 'Check button', key: '/checkout/check-button' },
-        ]}
+        items={menuItems}
       />
     </>
   );
