@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
 const path = require('path');
 const deps = require('./package.json').dependencies;
-const dummyModule = require('./src/placeholder');
+const AddRuntimeRequiremetToPromiseExternalPlugin = require('./AddRuntimeRequiremetToPromiseExternal');
 
 module.exports = {
   entry: './src/index',
@@ -29,38 +29,42 @@ module.exports = {
     ],
   },
   plugins: [
+    new AddRuntimeRequiremetToPromiseExternalPlugin(),
     new ModuleFederationPlugin({
       name: 'app1',
       filename: 'remoteEntry.js',
       remotes: {
-        app2: `promise new Promise((resolve, reject) => {
-          const script = document.createElement('script')
-          script.src = "http://localhost:3002/remoteEntry.js"
-          script.onload = () => {
-            // the injected script has loaded and is available on window
-            // we can now resolve this Promise
-            const proxy = {
-              get: (request) => window.app2.get(request),
-              init: (arg) => {
-                try {
-                  return window.app2.init(arg)
-                } catch(e) {
-                  console.log('remote container already initialized')
-                }
-              }
-            }
-            resolve(proxy)
+        app2: `promise new Promise(function (resolve, reject) {
+          var __webpack_error__ = new Error()
+          if (typeof window["app2"] !== 'undefined') return resolve();
+          __webpack_require__.l(
+            "http://localhost:3002/remoteEntry.js",
+            function (event) {
+              if (typeof app2 !== 'undefined') return resolve();
+              var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+              var realSrc = event && event.target && event.target.src;
+              __webpack_error__.message =
+                'Loading script failed.\\n(' + errorType + ': ' + realSrc + ')';
+              __webpack_error__.name = 'ScriptExternalLoadError';
+              __webpack_error__.type = errorType;
+              __webpack_error__.request = realSrc;
+              reject(__webpack_error__);
+            },
+            "app2",
+          );
+        }).then(function(){
+         var proxy = {
+         get: app2.get,
+         init: app2.init
+         }
+         return proxy
+        }).catch(function(e) {
+          console.log('rejected');
+          let newProxy = {
+            get: (module, scope) => () => [],
+            init: () => {}
           }
-          script.onerror = () => {
-            // script failed to load, return a placeholder module
-            console.log('app2 script failed to load, falling back to placeholder module');
-            let newProxy = {
-              get: (module, scope) => ${dummyModule},
-              init: () => {}
-            }
-            resolve(newProxy);
-          }
-          document.head.appendChild(script);
+          return(newProxy); 
         })`
       },
       exposes: {
