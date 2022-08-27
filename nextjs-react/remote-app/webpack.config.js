@@ -41,7 +41,8 @@ module.exports = {
                 },
                 react: {
                     singleton: true,
-                    version: '0'
+                    version: '0',
+                    requiredVersion: false,
                 },
                 'react-dom': {
                     requiredVersion: false,

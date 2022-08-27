@@ -1,5 +1,6 @@
 import { styled } from '@stitches/react';
-import React from 'react';
+import React, {useEffect} from 'react';
+
 
 const StyledButton = styled('button', {
     background: '#4b4be8',
@@ -7,10 +8,15 @@ const StyledButton = styled('button', {
     padding: 12,
 });
 
-const Button = props => (
+const Button = props => {
+  useEffect(()=>{
+    console.log('hooks work')
+  },[])
+  return (
     <StyledButton>
-        Remote Button
+      Remote Button
     </StyledButton>
-);
+  );
+}
 
 export default Button;

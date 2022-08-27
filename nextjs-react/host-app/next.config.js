@@ -1,4 +1,4 @@
-const NextFederationPlugin = require('@module-federation/nextjs-mf/NextFederationPlugin');
+const NextFederationPlugin = require('@module-federation/nextjs-mf/lib/NextFederationPlugin');
 const { dependencies } = require('./package.json')
 
 module.exports = {
@@ -17,3 +17,4 @@ module.exports = {
         return config;
     }
 }
+
