@@ -20,6 +20,7 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 > - 🔒: Depends on access controled source
 > - 💰: commercially avaliable
 
+- [x] [Native Federation](./native-federation-core-microfrontend) &mdash; Module Federation using esBuild, ESM, Import Maps. Concept ported to other bundlers!! 
 - [x] [Advanced API](./advanced-api) &mdash; Showcasing advanced API use, also seen in other examples.
 - [x] [Basic Host-Remote](./basic-host-remote/README.md) &mdash; App 1 consumes remote components from App2.
 - [x] [Create React App](./cra/README.md) &mdash; Module Federation using CRA.

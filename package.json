@@ -63,6 +63,7 @@
     "submodules": "git pull --recurse-submodules",
     "prettier": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\"",
     "prettier:check": "prettier --list-different \"**/*.{js,jsx,json,md,ts,tsx}\"",
-    "test": "jest test/index.spec.js --maxWorkers=2"
+    "test": "jest test/index.spec.js --maxWorkers=2",
+    "postinstall": "git pull --recurse-submodules"
   }
 }
