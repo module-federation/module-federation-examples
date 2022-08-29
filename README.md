@@ -40,7 +40,7 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 - [x] Non-UI Module
 - [x] [Routing](./shared-routing/README.md) &mdash; An example of sharing router context. Also worth looking at - [Routing 2](./shared-routes2/README.md)
 - [x] [Version Discrepancy](./version-discrepancy/README.md) &mdash; Federated apps depending on different versions of a dependency without side-effects.
-- [x] [TypeScript](./typescript/README.md) &mdash; Simple host/remote example using TypeScript.
+- [x] [TypeScript](./typescript/README.md) &mdash; Streaming TypeScript between module-federation apps.
 - [x] [Angular Universal](./angular-universal-ssr/README.md) &mdash; Remote and Host app with SSR, lazy modules and components.
 - [x] [NextJS Sidecar Build](./nextjs-sidecar/README.md) &mdash; Sidecar build to enable module-federation alongside Next codebases.
 - [x] 💰[NextJS](./nextjs/README.md) &mdash; Operation, with [nextjs-mf](https://app.privjs.com/buy/packageDetail?pkg=@module-federation/nextjs-mf).
