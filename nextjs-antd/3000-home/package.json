@@ -1,0 +1,22 @@
+{
+  "name": "home",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "rm -rf .next && NODE_OPTIONS='--inspect' next dev -p 3000",
+    "build": "NEXT_TELEMETRY_DISABLED=1 next build",
+    "start": "next start -p 3000"
+  },
+  "dependencies": {
+    "@module-federation/nextjs-mf": "^5.1.2",
+    "antd": "^4.22.3",
+    "lodash": "4.17.21",
+    "next": "12.2.2",
+    "next-compose-plugins": "^2.2.1",
+    "nextjs-shared": "link:../shared",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "webpack": "5.72.1",
+    "webpack-merge": "^5.8.0"
+  }
+}

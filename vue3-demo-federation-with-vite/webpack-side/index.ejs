@@ -1,0 +1,11 @@
+<html>
+<head>
+
+    <% for (key in htmlWebpackPlugin.files.js) { %>
+    <script type="module" src="<%= htmlWebpackPlugin.files.js[key] %>"></script>
+    <% } %>
+</head>
+<body>
+<div id="app"></div>
+</body>
+</html>

@@ -40,7 +40,7 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 - [x] Non-UI Module
 - [x] [Routing](./shared-routing/README.md) &mdash; An example of sharing router context. Also worth looking at - [Routing 2](./shared-routes2/README.md)
 - [x] [Version Discrepancy](./version-discrepancy/README.md) &mdash; Federated apps depending on different versions of a dependency without side-effects.
-- [x] [TypeScript](./typescript/README.md) &mdash; Simple host/remote example using TypeScript.
+- [x] [TypeScript](./typescript/README.md) &mdash; Streaming TypeScript between module-federation apps.
 - [x] [Angular Universal](./angular-universal-ssr/README.md) &mdash; Remote and Host app with SSR, lazy modules and components.
 - [x] [NextJS Sidecar Build](./nextjs-sidecar/README.md) &mdash; Sidecar build to enable module-federation alongside Next codebases.
 - [x] 💰[NextJS](./nextjs/README.md) &mdash; Operation, with [nextjs-mf](https://app.privjs.com/buy/packageDetail?pkg=@module-federation/nextjs-mf).
@@ -50,6 +50,8 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 - [x] [Vue 2 in Vue 3](./vue2-in-vue3/README.md) &mdash; Vue 3 application loading remote Vue 2 component.
 - [x] [Vue2 SSR](./genesis/README.md) &mdash; This example demonstrates module as a service.
 - [x] [React - Host/Remote and NextJS Host/Remote](./react-nextjs/README.md) &mdash; These examples demonstrates react/nextjs as host/remote and react/nextjs are host/remote
+- [x] [Different React Versions in Isolation](./different-react-versions-isolated/README.md) &mdash; Simple host/remote example where the apps have different React and ReactDOM versions and don't share any dependencies.
+- [x] [vue3-demo-federation-with-vite](./vue3-demo-federation-with-vite/README.md) &mdash; wepack and vite federation integrated projects, webpack/vite both play the role of host and remote 
 
 # Check out our book
 
