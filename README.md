@@ -78,6 +78,10 @@ Module federation will work with any type of file that youre able to import, tha
 # Companies using Module Federation
 
 - Netflix
+- Auth0
+- Best Buy
+- SAP
+- AWS
 - Microsoft
 - Lululemon
 - Housing.com
