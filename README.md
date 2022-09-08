@@ -82,6 +82,7 @@ Module federation will work with any type of file that youre able to import, tha
 - Best Buy
 - SAP
 - AWS
+- JPMorgan Chase
 - Microsoft
 - Lululemon
 - Housing.com
