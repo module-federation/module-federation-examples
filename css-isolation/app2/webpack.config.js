@@ -26,7 +26,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: [{
+          loader:"style-loader",
+          options: {
+            insert: function insertInShadowRoot(style) {
+              const element = document.getElementById("parent");
+              element.appendChild(style);
+            }
+          }
+        }, "css-loader"],
       },
     ],
   },
