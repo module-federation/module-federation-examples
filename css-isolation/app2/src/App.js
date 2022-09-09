@@ -1,5 +1,6 @@
 import LocalButton from "./Button";
 import React from "react";
+import "./styles.css";
 
 const App = () => (
   <div style={{ border: "1px red solid" }}>
