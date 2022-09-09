@@ -1,5 +1,5 @@
-import React from "https://esm.sh/react";
-import ReactDOM from "https://esm.sh/react-dom";
+import React from "react";
+import ReactDOM from "react-dom";
 import { App } from "./react-app";
 // import "./index.css";
 

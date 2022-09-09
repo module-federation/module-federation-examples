@@ -1,4 +1,4 @@
-import React from "https://esm.sh/react";
+import React from "react";
 import { loadRemoteModule } from '@softarc/native-federation';
 
 // import "./App.css";
