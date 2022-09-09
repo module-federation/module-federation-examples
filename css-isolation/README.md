@@ -1,6 +1,6 @@
-# Different React Versions in Isolation
+# Example of CSS isolation
 
-This example demos host and remote applications running in isolation with two different React versions and no shared libraries
+This example shows one way to fully isolate CSS from leaking between the host and remote applications using a Shadow DOM wrapper. It builds upon the [Different React Versions in Isolation](../different-react-versions-isolated/README.md) example in the same repo.
 
 - `app1` is the host application using one version of React and ReactDOM.
 - `app2` is the guest application using a different version of React and ReactDOM. It exposes an injector function which lets the host application (app1) import it and inject it into a div element.
