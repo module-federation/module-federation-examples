@@ -21,6 +21,7 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 > - 💰: commercially avaliable
 
 - [x] [Native Federation](./native-federation-core-microfrontend) &mdash; Module Federation using esBuild, ESM, Import Maps. Concept ported to other bundlers!! 
+- [x] [Native Federation React](./native-federation-react) &mdash; React Example of Module Federation using esBuild, ESM, Import Maps. Concept ported to other bundlers!! 
 - [x] [Advanced API](./advanced-api) &mdash; Showcasing advanced API use, also seen in other examples.
 - [x] [Basic Host-Remote](./basic-host-remote/README.md) &mdash; App 1 consumes remote components from App2.
 - [x] [Create React App](./cra/README.md) &mdash; Module Federation using CRA.
@@ -44,7 +45,7 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 - [x] [TypeScript](./typescript/README.md) &mdash; Simple host/remote example using TypeScript.
 - [x] [Angular Universal](./angular-universal-ssr/README.md) &mdash; Remote and Host app with SSR, lazy modules and components.
 - [x] [NextJS Sidecar Build](./nextjs-sidecar/README.md) &mdash; Sidecar build to enable module-federation alongside Next codebases.
-- [x] 💰[NextJS](./nextjs/README.md) &mdash; Operation, with [nextjs-mf](https://app.privjs.com/buy/packageDetail?pkg=@module-federation/nextjs-mf).
+- [x] [NextJS](./nextjs/README.md) &mdash; Operation, with [nextjs-mf](https://app.privjs.com/buy/packageDetail?pkg=@module-federation/nextjs-mf).
 - [x] 💰[NextJS SSR](./nextjs-ssr/README.md) &mdash; Powered by software streams, with [nextjs-ssr](https://app.privjs.com/buy/packageDetail?pkg=@module-federation/nextjs-ssr)
 - [x] [Building A Plugin-based Workflow Designer With Angular and Module Federation](https://github.com/manfredsteyer/module-federation-with-angular-dynamic-workflow-designer) &mdash; External Example
 - [x] [Vue.js](./vue3-demo/README.md) &mdash; Simple host/remote (render function / sfc) example using Vue 3.0.
