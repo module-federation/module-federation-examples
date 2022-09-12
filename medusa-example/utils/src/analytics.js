@@ -1,5 +1,5 @@
-console.log("Loading sendAnalytics");
+console.log('Loading sendAnalytics');
 
-export const sendAnalyticsMessage = (message) => {
+export const sendAnalyticsMessage = message => {
   console.log(message);
 };

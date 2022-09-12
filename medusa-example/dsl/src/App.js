@@ -1,9 +1,9 @@
-import React from "react";
-import Button from "./Button";
-import Carousel from "./Carousel";
-import TextField from "./TextField";
+import React from 'react';
+import Button from './Button';
+import Carousel from './Carousel';
+import TextField from './TextField';
 
-import "antd/dist/antd.less";
+import 'antd/dist/antd.less';
 
 const App = () => (
   <div>

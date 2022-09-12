@@ -1,3 +1,5 @@
+require('@module-federation/nextjs-mf/lib/include-defaults');
+
 import dynamic from 'next/dynamic';
 const page = import('../async-pages/app');
 

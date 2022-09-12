@@ -2,7 +2,10 @@ import React from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
-export const HelloWorld = dynamic(() => import('./helloWorld').then(mod => mod.HelloWorld), {
+export const HelloWorld = dynamic(() => import('./helloWorld').then(mod => {
+  console.log(mod);
+  return mod.HelloWorld
+}), {
   ssr: true,
 });
 const links = [

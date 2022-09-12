@@ -1,7 +1,9 @@
 import React, { Fragment } from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-const RemoteTitle = dynamic(() => import('checkout/title'));
+const RemoteTitle = dynamic(() =>
+  import('checkout/title')
+);
 
 const Home = ({ loaded }) => {
   return (

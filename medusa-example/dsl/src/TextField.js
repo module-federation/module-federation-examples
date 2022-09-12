@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { Input } from "antd";
+import { Input } from 'antd';
 
-const TextField = (props) => <Input {...props} />;
+const TextField = props => <Input {...props} />;
 
 export default TextField;

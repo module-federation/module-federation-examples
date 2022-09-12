@@ -10,7 +10,7 @@ module.exports = defineConfig({
   publicPath: 'auto',
   configureWebpack: {
     optimization: {
-      splitChunks:  {
+      splitChunks: {
         cacheGroups: {
           defaultVendors: {
             name: 'chunk-vendors',
