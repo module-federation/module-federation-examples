@@ -1,8 +1,8 @@
-import React from "react";
-import { Row, Col } from "antd";
+import React from 'react';
+import { Row, Col } from 'antd';
 
-const TextField = React.lazy(() => import("dsl/TextField"));
-const Button = React.lazy(() => import("dsl/Button"));
+const TextField = React.lazy(() => import('dsl/TextField'));
+const Button = React.lazy(() => import('dsl/Button'));
 
 const SearchList = () => (
   <>

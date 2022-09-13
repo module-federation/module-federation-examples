@@ -7,8 +7,7 @@ const weekday = format(date, 'EEE');
 console.log(`${isoDate} is a ${weekday}.`);
 
 if (isLongWeekend(date)) {
-    console.log('Long weekend 😎')
-}
-else {
-    console.log('No long weekend ☹')
+  console.log('Long weekend 😎');
+} else {
+  console.log('No long weekend ☹');
 }

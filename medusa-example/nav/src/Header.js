@@ -1,15 +1,11 @@
 /** @jsx jsx */
-import { css, jsx } from "@emotion/react";
-import React from "react";
-import { Layout, Row, Col, Menu } from "antd";
-import {
-  UploadOutlined,
-  UserOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
-console.log(import("search/MiniSearch"));
-const MiniSearch = React.lazy(() => import("search/MiniSearch"));
-const Button = React.lazy(() => import("dsl/Button"));
+import { css, jsx } from '@emotion/react';
+import React from 'react';
+import { Layout, Row, Col, Menu } from 'antd';
+import { UploadOutlined, UserOutlined, SettingOutlined } from '@ant-design/icons';
+console.log(import('search/MiniSearch'));
+const MiniSearch = React.lazy(() => import('search/MiniSearch'));
+const Button = React.lazy(() => import('dsl/Button'));
 const { SubMenu } = Menu;
 
 const Header = ({ children }) => (

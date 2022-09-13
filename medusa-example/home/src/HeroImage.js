@@ -1,8 +1,8 @@
-import React from "react";
-import { sendMessage } from "./analytics";
+import React from 'react';
+import { sendMessage } from './analytics';
 
-const HeroImage = (props) => {
-  sendMessage("loaded");
+const HeroImage = props => {
+  sendMessage('loaded');
   return <img {...props} />;
 };
 
