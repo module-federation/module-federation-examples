@@ -3,6 +3,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { esBuildAdapter } from './esbuild-adapter';
 import { federationBuilder } from '@softarc/native-federation/build';
+import { build as buildCjs } from './build-cjs';
 
 export async function buildProject(projectName) {
 
@@ -42,16 +43,14 @@ export async function buildProject(projectName) {
 
     await federationBuilder.build();
 
-    await cjsToEsm(workspaceRoot, outputPath, {
-        tsconfig: tsConfig
-    })
+    // Manifest should be ready by now! Apparently federationBuilder.build() does
+    // not wait until all internal promises are fulfilled.
+    await waitForManifest(workspaceRoot, outputPath);
+
+    await cjsToEsm(workspaceRoot, outputPath)
 }
 
-async function cjsToEsm(
-    workspaceRoot,
-    outputPath,
-    esbuildOptions
-) {
+async function waitForManifest(workspaceRoot, outputPath) {
     const manifestPath = path.join(workspaceRoot, outputPath, 'remoteEntry.json');
 
     // Manifest should be ready by now! Apparently federationBuilder.build() does
@@ -59,27 +58,22 @@ async function cjsToEsm(
     while (!fs.existsSync(manifestPath)) {
         await sleep(1000);
     }
+}
 
+async function cjsToEsm(
+    workspaceRoot,
+    outputPath
+) {
+    const manifestPath = path.join(workspaceRoot, outputPath, 'remoteEntry.json');
     const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+    const external = manifest.shared.map((module) => module.packageName);
 
-    const entryPoints = manifest.shared.reduce((acc, module) => {
-        acc[module.outFileName.replace(/\.js$/, '')] = module.packageName;
+    await Promise.all(manifest.shared.map(mod => {
+        const outFile = path.join(workspaceRoot, outputPath, mod.outFileName);
+        const finalExternal = external.filter(externalName => externalName !== mod.packageName);
 
-        return acc
-    }, {});
-
-    return esbuild.build({
-        entryPoints,
-        outdir: outputPath,
-        bundle: true,
-        platform: 'browser',
-        format: 'esm',
-        mainFields: ['es2020', 'browser', 'module', 'main'],
-        conditions: ['es2020', 'es2015', 'module'],
-        resolveExtensions: ['.ts', '.tsx', '.mjs', '.js'],
-        splitting: false,
-        ...esbuildOptions
-    });
+        return buildCjs(mod.packageName, outFile, workspaceRoot, finalExternal);
+    }));
 }
 
 function sleep(ms) {

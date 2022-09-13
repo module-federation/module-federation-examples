@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, lazy } from "react";
 import { loadRemoteModule } from '@softarc/native-federation';
 
 // import "./App.css";
@@ -6,16 +6,19 @@ const reactAppMod = loadRemoteModule({
   remoteName: 'remote',
   exposedModule: './react-remote'
 });
-const RemoteComponent = React.lazy(()=>reactAppMod.then(c=>{
+const RemoteComponent = lazy(()=>reactAppMod.then(c=>{
  console.log(c);
   return {default: c.App}
 }))
 export function App() {
-  
+  const [count, setCount] = useState(0);
 
   return (
     <div className="App">
       <header className="App-header">
+        <div>
+          Host button: <button onClick={() => setCount(count => count + 1)}>click me {count}</button>
+        </div>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
