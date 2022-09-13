@@ -68,7 +68,7 @@ module.exports = {
         '@material-ui/core': {
           singleton: true,
           requiredVersion: deps['@material-ui/core'],
-        }
+        },
       },
     }),
     new HtmlWebpackPlugin({

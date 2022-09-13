@@ -1,3 +1,3 @@
 export interface RemoteType {
-    isLongWeekend(date): boolean;
+  isLongWeekend(date): boolean;
 }

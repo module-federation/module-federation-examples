@@ -5,7 +5,11 @@
   "main": "index.js",
   "private": true,
   "workspaces": {
-    "packages": ["lib-app", "component-app", "main-app"]
+    "packages": [
+      "lib-app",
+      "component-app",
+      "main-app"
+    ]
   },
   "scripts": {
     "start": "concurrently 'cd ./component-app && yarn start' 'cd ./lib-app && yarn start' 'cd ./main-app && yarn start'"
