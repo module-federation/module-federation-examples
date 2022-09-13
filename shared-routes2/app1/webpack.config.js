@@ -65,7 +65,7 @@ module.exports = {
             init: () => {}
           }
           return(newProxy); 
-        })`
+        })`,
       },
       exposes: {
         './Navigation': './src/Navigation',

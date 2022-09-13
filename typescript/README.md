@@ -3,7 +3,9 @@
 This example demos a basic host/remote application with TypeScript and also streams types.
 
 # Installation
+
 You can grab a free license for this plugin via privjs.com: [https://app.privjs.com/buy/packageDetail?pkg=@module-federation/typescript](https://app.privjs.com/buy/packageDetail?pkg=@module-federation/typescript). Then run the following commands:
+
 ```bash
 $ npm config set @module-federation:registry https://r.privjs.com
 $ npm i @module-federation/typescript

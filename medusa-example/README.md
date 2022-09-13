@@ -2,12 +2,12 @@
 
 # Setup
 
-1) `yarn install`
-2) Login to medusa https://medusa.codes/
-2) Generate Read/Write Tokens and save https://app.medusa.codes/settings
-3) Copy Read/Write Tokens and add them to `.env` in the root of this directory. 
-4) Run a build with yarn start, then go check medusa.
-5) If you want to test out version management, change something in `dsl` and run `yarn build && yarn serve` again - you will now be able to control what remote/app uses what version at runtime 
+1. `yarn install`
+2. Login to medusa https://medusa.codes/
+3. Generate Read/Write Tokens and save https://app.medusa.codes/settings
+4. Copy Read/Write Tokens and add them to `.env` in the root of this directory.
+5. Run a build with yarn start, then go check medusa.
+6. If you want to test out version management, change something in `dsl` and run `yarn build && yarn serve` again - you will now be able to control what remote/app uses what version at runtime
 
 # Running Demo
 

@@ -1,9 +1,9 @@
-import { createApp} from "vue";
-import Layout from "./Layout.vue";
+import { createApp } from 'vue';
+import Layout from './Layout.vue';
 
-import webpackContent from  "webpack-side/Content";
+import webpackContent from 'webpack-side/Content';
 const app = createApp(Layout);
 
-app.component("webpack-content", webpackContent);
+app.component('webpack-content', webpackContent);
 
-app.mount("#root");
+app.mount('#root');
