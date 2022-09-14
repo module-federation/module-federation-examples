@@ -1,0 +1,16 @@
+{
+  "name": "mf-webpack4-demo",
+  "private": true,
+  "workspaces": {
+    "packages": [
+    ]
+  },
+  "scripts": {
+    "preinstall": "cd webpack4/app1 && npm install && cd ../app2 && npm install && cd ../../webpack5/app3 && npm install",
+    "start": "cd lernadir && npm run start",
+    "build": "cd lernadir && npm run build"
+  },
+  "devDependencies": {
+    "lerna": "4.0.0"
+  }
+}
