@@ -1,10 +1,12 @@
-import App from "./App";
-import React from "react";
-import ReactDOM from "react-dom";
+import App from './App';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createShadowContainer } from '../styleLoader';
 
-const injector = (parentElementId) => {
-  document.getElementById(parentElementId).appendChild(window["shadowWrapper"]);
-  ReactDOM.render(<App />, window["shadowWrapper"].shadowRoot.getElementById("app2-placeholder"));
-}
+const injector = parentElementId => {
+  const shadowContainer = createShadowContainer();
+  document.getElementById(parentElementId).appendChild(shadowContainer);
+  ReactDOM.render(<App />, shadowContainer.shadowRoot.getElementById('app-placeholder'));
+};
 
 export default injector;
