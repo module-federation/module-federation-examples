@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, useState } from 'react';
 import './styles.css';
 
-// Lazy load the button which imports another global CSS rule
+// Lazy load a dummy component which imports another global CSS rule
 const Dummy = lazy(() => import('./Dummy'));
 
 const App = () => {
