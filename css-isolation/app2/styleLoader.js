@@ -1,6 +1,7 @@
 const styles = [];
 const containers = [];
 
+// Create a shadow container with all styles and a placeholder for the app injection
 export const createShadowContainer = () => {
   const shadowContainer = document.createElement('div');
   shadowContainer.attachShadow({ mode: 'open', delegatesFocus: true });
@@ -15,7 +16,8 @@ export const createShadowContainer = () => {
 const insertStyle = style => {
   // Update the style list for newly created shadow containers
   styles.push(style);
-  // Update the style list for already existing shadow containers
+  // Update the style list for already existing shadow containers.
+  // This will update them if any new styles are lazy loaded.
   containers.forEach(container => {
     container.shadowRoot.appendChild(style);
   });
