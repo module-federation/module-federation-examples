@@ -46,7 +46,7 @@ module.exports = {
       library: { type: 'var', name: 'app2' },
       filename: 'remoteEntry.js',
       exposes: {
-        './injectApp': './src/injectApp',
+        './appInjector': './src/appInjector',
       },
     }),
     new HtmlWebpackPlugin({

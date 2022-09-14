@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
-import "./styles.css";
+import React, { useEffect } from 'react';
+import './styles.css';
+import { inject, cleanup } from 'app2/appInjector';
 
-const parentElementId = "parent";
+const parentElementId = 'parent';
 
 const App = () => {
   useEffect(() => {
-    import("app2/injectApp").then((injector) =>
-      injector.default(parentElementId)
-    );
+    inject(parentElementId);
+    return () => cleanup(parentElementId);
   }, []);
 
   // App2 will be injected in the div with parentElementId
