@@ -2,4 +2,5 @@ import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// Run the app in standalone mode
+ReactDOM.render(<App isStandalone />, document.getElementById('root'));
