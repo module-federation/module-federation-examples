@@ -4,9 +4,8 @@ import ReactDOM from 'react-dom';
 import { createShadowContainer, deleteShadowContainer } from '../styleLoader';
 
 export const inject = parentElementId => {
-  const shadowContainer = createShadowContainer(parentElementId);
-  document.getElementById(parentElementId).appendChild(shadowContainer);
-  ReactDOM.render(<App />, shadowContainer.shadowRoot.getElementById('app-placeholder'));
+  const appPlaceholder = createShadowContainer(parentElementId);
+  ReactDOM.render(<App />, appPlaceholder);
 };
 
 export const cleanup = parentElementId => {
