@@ -1,14 +1,14 @@
 import React from 'react';
 import createMatcher from 'feather-route-matcher';
-import {injectScript} from '@module-federation/nextjs-mf/lib/utils'
-const remoteVars = process.env.REMOTES || {}
+import { injectScript } from '@module-federation/nextjs-mf/lib/utils';
+const remoteVars = process.env.REMOTES || {};
 const remotes = Object.entries(remoteVars).reduce((acc, item) => {
   const [key, value] = item;
-  if(typeof value !=='string') {
+  if (typeof value !== 'string') {
     acc[key] = {
-      global:  value
+      global: value,
     };
-    return acc
+    return acc;
   }
   const [global, url] = value.split('@');
 

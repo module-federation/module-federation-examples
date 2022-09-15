@@ -11,6 +11,7 @@ This example demos a basic host application loading remote component.
 # Running Demo
 
 Run the following commands:
+
 1. `nvm use`
 2. `yarn lerna bootstrap --npm-client yarn`
 3. `yarn build`

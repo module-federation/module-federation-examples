@@ -9,23 +9,17 @@ const weekday = format(date, 'EEE');
 console.log(`${isoDate} is a ${weekday}.`);
 
 (async () => {
+  console.log('loading remote module ...');
+  const m = await loadRemoteModule<RemoteType>({
+    remoteName: 'remote',
+    exposedModule: './module',
+  });
 
+  console.log('got remote module: ', m);
 
-
-    console.log('loading remote module ...');
-    const m = await loadRemoteModule<RemoteType>({
-        remoteName: 'remote',
-        exposedModule: './module'
-    });
-
-
-    console.log('got remote module: ', m);
-
-    if (m.isLongWeekend(date)) {
-        console.log('Long weekend 😎');
-    }
-    else {
-        console.log('No long weekend ☹');
-    }
-
+  if (m.isLongWeekend(date)) {
+    console.log('Long weekend 😎');
+  } else {
+    console.log('No long weekend ☹');
+  }
 })();

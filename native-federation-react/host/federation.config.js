@@ -1,16 +1,13 @@
-const {
-  withNativeFederation,
-  shareAll,
-} = require("@softarc/native-federation/build");
+const { withNativeFederation, shareAll } = require('@softarc/native-federation/build');
 
 module.exports = withNativeFederation({
-  name: "host",
+  name: 'host',
 
   shared: {
     ...shareAll({
       singleton: true,
       strictVersion: true,
-      requiredVersion: "auto",
+      requiredVersion: 'auto',
       includeSecondaries: false,
     }),
   },
