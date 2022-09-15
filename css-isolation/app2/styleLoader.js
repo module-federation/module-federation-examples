@@ -7,7 +7,7 @@ export const createShadowContainer = parentElementId => {
   // Block all styles coming from the light DOM
   shadowContainer.style.all = 'initial';
   shadowContainer.attachShadow({ mode: 'open', delegatesFocus: true });
-  shadowContainer.shadowRoot.prepend(...styles);
+  shadowContainer.shadowRoot.prepend(...styles.map(style => style.cloneNode(true)));
   // Create a body element so that reboot CSS rules work in the shadow DOM
   const body = document.createElement('body');
   // Create a placeholder for the React app
@@ -27,9 +27,11 @@ const insertStyle = style => {
   // Update the style list for newly created shadow containers
   styles.push(style);
   // Update the style list for already existing shadow containers.
-  // This will update them if any new styles are lazy loaded.
-  Object.values(containers).forEach(container => {
-    container.shadowRoot.prepend(style);
+  // This will provide them with any lazy loaded styles.
+  Promise.resolve().then(() => {
+    Object.values(containers).forEach(container => {
+      container.shadowRoot.prepend(style.cloneNode(true));
+    });
   });
 };
 
