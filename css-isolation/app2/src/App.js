@@ -13,7 +13,7 @@ const App = () => {
       <h2>App 2</h2>
       <button onClick={() => setDummyLoaded(true)}>Make Everything Yellow</button>
       {dummyLoaded && (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={null}>
           <Dummy />
         </Suspense>
       )}
