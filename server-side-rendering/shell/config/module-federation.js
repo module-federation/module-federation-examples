@@ -1,32 +1,32 @@
 const deps = require("../package.json").dependencies;
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const path = require("path");
-
-const remotePath = path.resolve(
-    __dirname,
-    "../../remote1/dist/server/remoteEntry.js"
-)
+const { ModuleFederationPlugin } = require("webpack").container;
+const { NodeFederationPlugin, StreamingTargetPlugin } = require("@module-federation/node");
 
 module.exports = {
     client: new ModuleFederationPlugin({
         name: "shell",
         filename: "container.js",
         remotes: {
-            remote1: "remote1@http://localhost:3001/client/remoteEntry.js",
+            remote1: "remote1@http://localhost:3001/client/remoteEntry.js",            
         },
         shared: [{ "react": deps.react, "react-dom": deps["react-dom"] }],
     }),
-    server: new ModuleFederationPlugin({
-        name: "shell",
-        library: { type: "commonjs2" },
-        filename: "remoteEntry.js",
-        remotes: {
-            // remote1: remotePath
-            remote1: {
-                // we dont need to do this, just intersting to see in action
-                external: `promise new Promise((resolve)=>{ console.log('shell: requiring remote1');delete require.cache['${remotePath}']; resolve(require('${remotePath}')) })`
+    server: [
+        new NodeFederationPlugin({
+            name: "shell",
+            library: { type: "commonjs-module" },
+            filename: "remoteEntry.js",
+            remotes: {
+                remote1: "remote1@http://localhost:3001/server/remoteEntry.js"
             },
-        },
-        shared: [{ "react": deps.react, "react-dom": deps["react-dom"] }],
-    })
+            shared: [{ "react": deps.react, "react-dom": deps["react-dom"] }],
+        }),
+        new StreamingTargetPlugin({
+            name: "shell",
+            library: { type: "commonjs-module" },            
+            remotes: {
+                remote1: "remote1@http://localhost:3001/server/remoteEntry.js"
+            },
+        }),
+    ]
 }

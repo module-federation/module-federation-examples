@@ -7,11 +7,11 @@ module.exports = merge(sharedWebpackConfig, {
   output: {
     path: path.resolve(__dirname, "../dist/server"),
     filename: "[name].js",
-    libraryTarget: "commonjs2",
+    libraryTarget: "commonjs-module",
   },
-  target: "async-node",
+  target: false,
   name: "server",
   plugins: [
-    moduleFederationPlugin.server
+    ...moduleFederationPlugin.server
   ],
 });
