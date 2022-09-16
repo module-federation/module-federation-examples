@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"cd dsl; yarn start\" \"cd home; yarn start\" \"cd nav; yarn start\" \"cd search; yarn start\" \"cd utils; yarn start\"",
+    "build": "concurrently \"cd dsl; yarn build\" \"cd home; yarn build\" \"cd nav; yarn build\" \"cd search; yarn build\" \"cd utils; yarn build\"",
+    "serve": "concurrently \"cd dsl; yarn serve\" \"cd home; yarn serve\" \"cd nav; yarn serve\" \"cd search; yarn serve\" \"cd utils; yarn serve\"",
+    "clean": "lerna run --scope @dashboard/* --parallel clean"
+  },
+  "workspaces": {
+    "packages": [
+      "dsl",
+      "home",
+      "nav",
+      "search",
+      "utils"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "6.2.1"
+  }
+}

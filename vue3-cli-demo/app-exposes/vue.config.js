@@ -10,7 +10,24 @@ module.exports = defineConfig({
   publicPath: 'auto',
   configureWebpack: {
     optimization: {
-      splitChunks: false,
+      splitChunks: {
+        cacheGroups: {
+          defaultVendors: {
+            name: 'chunk-vendors',
+            test: /[\\/]node_modules[\\/]/,
+            priority: -10,
+            chunks: 'async',
+            reuseExistingChunk: true,
+          },
+          common: {
+            name: 'chunk-common',
+            minChunks: 2,
+            priority: -20,
+            chunks: 'async',
+            reuseExistingChunk: true,
+          },
+        },
+      },
     },
     plugins: [
       new webpack.container.ModuleFederationPlugin({

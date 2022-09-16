@@ -1,0 +1,32 @@
+{
+  "name": "core-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:remote": "tsc build/build-remote.ts --outDir dist && node dist/build-remote.js",
+    "build:host": "tsc build/build-host.ts --outDir dist && node dist/build-host.js",
+    "build": "npm run build:remote && npm run build:host",
+    "start:remote": "serve dist/remote -l 3001 --cors",
+    "start:host": "serve dist/host -l 3000",
+    "start": "concurrently \"npm run start:remote\" \"npm run start:host\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@hyrious/esbuild-plugin-commonjs": "0.2.1",
+    "@softarc/native-federation": "0.9.2-beta.7",
+    "@softarc/native-federation-runtime": "0.9.2-beta.7",
+    "@types/node": "18.7.17",
+    "concurrently": "7.4.0",
+    "esbuild": "0.15.7",
+    "json5": "2.2.1",
+    "serve": "14.0.1"
+  },
+  "dependencies": {
+    "date-fns": "^2.29.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}

@@ -58,7 +58,6 @@ module.exports = {
         './ProfilePage': './src/ProfilePage',
       },
       shared: {
-        // ...deps,
         react: {
           singleton: true,
           requiredVersion: deps.react,
@@ -67,10 +66,15 @@ module.exports = {
           singleton: true,
           requiredVersion: deps['react-dom'],
         },
+        '@material-ui/core': {
+          singleton: true,
+          requiredVersion: deps['@material-ui/core'],
+        },
       },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
+      publicPath: '/',
     }),
   ],
 };

@@ -4,6 +4,9 @@
   "description": "Examples showcasing Webpack 5's Module Federation",
   "repository": "https://github.com/module-federation/module-federation-examples.git",
   "author": "Zack Jackson <zackary.l.jackson@gmail.com> (https://github.com/ScriptedAlchemy)",
+  "contributors": [
+    "Prasanna Mestha <prasanna@privjs.com> (https://github.com/prasannamestha)"
+  ],
   "license": "MIT",
   "private": true,
   "workspaces": {
@@ -13,6 +16,7 @@
       "./bi-directional/*",
       "./startup-code/*",
       "./different-react-versions/*",
+      "./native-federation-react/*",
       "./self-healing/*",
       "./react-hmr/*",
       "./comprehensive-demo/*",
@@ -22,6 +26,7 @@
       "./shared-context/*",
       "./shared-routing/*",
       "./shared-routes2/*",
+      "./shared-store-cross-framework/*",
       "./typescript/*",
       "./typescript-project-references/*",
       "./nested/*",
@@ -40,6 +45,8 @@
       "./genesis/*"
     ],
     "nohoist": [
+      "**/@types",
+      "**/@types/**",
       "**/svelte",
       "**/svelte/**",
       "**/svelte-loader",
@@ -47,14 +54,14 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "7.1.0",
+    "concurrently": "7.3.0",
     "cross-spawn": "7.0.3",
     "husky": "7.0.4",
     "jest": "26.6.3",
     "lerna": "3.22.1",
-    "prettier": "2.6.2",
+    "prettier": "2.7.1",
     "pretty-quick": "3.1.3",
-    "@vue/compiler-sfc": "3.2.33"
+    "@vue/compiler-sfc": "3.2.37"
   },
   "scripts": {
     "bootstrap": "lerna bootstrap --ignore-scripts",
@@ -62,6 +69,7 @@
     "submodules": "git pull --recurse-submodules",
     "prettier": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\"",
     "prettier:check": "prettier --list-different \"**/*.{js,jsx,json,md,ts,tsx}\"",
-    "test": "jest test/index.spec.js --maxWorkers=2"
+    "test": "jest test/index.spec.js --maxWorkers=2",
+    "postinstall": "git pull --recurse-submodules"
   }
 }

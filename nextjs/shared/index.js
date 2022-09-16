@@ -1,11 +1,31 @@
 import React from 'react';
 import createMatcher from 'feather-route-matcher';
+import { injectScript } from '@module-federation/nextjs-mf/lib/utils';
+const remoteVars = process.env.REMOTES || {};
+const remotes = Object.entries(remoteVars).reduce((acc, item) => {
+  const [key, value] = item;
+  if (typeof value !== 'string') {
+    acc[key] = {
+      global: value,
+    };
+    return acc;
+  }
+  const [global, url] = value.split('@');
 
-export async function matchFederatedPage(remotes, path) {
+  acc[key] = {
+    url,
+    global,
+  };
+  return acc;
+}, {});
+
+export async function matchFederatedPage(path) {
   const maps = await Promise.all(
-    remotes.map(remote => {
-      console.log(window[remote]);
-      return window[remote]
+    Object.keys(remotes).map(async remote => {
+      const foundContainer = injectScript(remote);
+      const container = await foundContainer;
+
+      return container
         .get('./pages-map')
         .then(factory => ({ remote, config: factory().default }))
         .catch(() => null);
@@ -25,13 +45,15 @@ export async function matchFederatedPage(remotes, path) {
     }
   }
 
+  console.log(config);
+
   const matcher = createMatcher(config);
   const match = matcher(path);
 
   return match;
 }
 
-export function createFederatedCatchAll(remotes) {
+export function createFederatedCatchAll() {
   const FederatedCatchAll = initialProps => {
     const [lazyProps, setProps] = React.useState({});
 
@@ -39,9 +61,7 @@ export function createFederatedCatchAll(remotes) {
       ...lazyProps,
       ...initialProps,
     };
-    console.log(initialProps);
     React.useEffect(() => {
-      console.log(needsReload);
       if (needsReload) {
         const runUnderlayingGIP = async () => {
           const federatedProps = await FederatedCatchAll.getInitialProps(props);
@@ -76,11 +96,12 @@ export function createFederatedCatchAll(remotes) {
     if (!process.browser) {
       return { needsReload: true, ...props };
     }
-    console.log('in browser');
-    try {
-      const matchedPage = await matchFederatedPage(remotes, ctx.asPath);
-      console.log('matchedPage', matchedPage);
 
+    console.log('in browser');
+    const matchedPage = await matchFederatedPage(ctx.asPath);
+
+    try {
+      console.log('matchedPage', matchedPage);
       const remote = matchedPage?.value?.remote;
       const mod = matchedPage?.value?.module;
 
@@ -90,16 +111,8 @@ export function createFederatedCatchAll(remotes) {
       }
 
       console.log('loading exposed module', mod, 'from remote', remote);
-      try {
-        if (!window[remote].__initialized) {
-          window[remote].__initialized = true;
-          await window[remote].init(__webpack_share_scopes__.default);
-        }
-      } catch (initErr) {
-        console.log('initErr', initErr);
-      }
-
-      const FederatedPage = await window[remote].get(mod).then(factory => factory().default);
+      const container = await injectScript(remote);
+      const FederatedPage = await container.get(mod).then(factory => factory().default);
       console.log('FederatedPage', FederatedPage);
       if (!FederatedPage) {
         // TODO: Run getInitialProps for 404 page

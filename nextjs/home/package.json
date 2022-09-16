@@ -3,15 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_OPTIONS='--inspect' next dev -p 3001",
+    "dev": "rm -rf .next && NODE_OPTIONS='--inspect' next dev -p 3001",
     "build": "NEXT_TELEMETRY_DISABLED=1 next build",
     "start": "next start -p 3001"
   },
   "dependencies": {
     "nextjs-shared": "*",
-    "@module-federation/nextjs-mf": "^3.5.0",
+    "@module-federation/nextjs-mf": "^5.1.2",
     "lodash": "4.17.21",
-    "next": "12.1.6",
+    "next": "12.2.2",
     "next-compose-plugins": "^2.2.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",

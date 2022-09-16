@@ -6,13 +6,11 @@ module.exports = {
   entry: './src/index',
   mode: 'development',
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist'),
-    },
+    contentBase: path.join(__dirname, 'dist'),
     port: 3001,
   },
   output: {
-    publicPath: 'auto',
+    publicPath: 'http://localhost:3001/',
   },
   module: {
     rules: [
@@ -35,52 +33,6 @@ module.exports = {
       },
       exposes: {
         './Button': './src/Button',
-      },
-      // sharing code based on the installed version, to allow for multiple vendors with different versions
-      shared: [
-        {
-          ...deps,
-          react: {
-            // eager: true,
-            singleton: true,
-            requiredVersion: deps.react,
-          },
-          'react-dom': {
-            // eager: true,
-            singleton: true,
-            requiredVersion: deps['react-dom'],
-          },
-        },
-      ],
-    }),
-    new ModuleFederationPlugin({
-      name: 'header',
-      filename: 'header.js',
-      exposes: {
-        './start': './src/header.appjsx',
-      },
-      // sharing code based on the installed version, to allow for multiple vendors with different versions
-      shared: [
-        {
-          ...deps,
-          react: {
-            // eager: true,
-            singleton: true,
-            requiredVersion: deps.react,
-          },
-          'react-dom': {
-            // eager: true,
-            singleton: true,
-            requiredVersion: deps['react-dom'],
-          },
-        },
-      ],
-    }),
-    new ModuleFederationPlugin({
-      name: 'footer',
-      filename: 'footer.js',
-      exposes: {
-        './start': './src/components/app.jsx',
       },
       // sharing code based on the installed version, to allow for multiple vendors with different versions
       shared: [

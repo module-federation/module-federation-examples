@@ -8,8 +8,8 @@
     "react-scripts": "5.0.1"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
+    "start": "PORT=3002 node ./scripts/start.js",
+    "build": "node ./scripts/build.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -17,10 +17,6 @@
     "extends": [
       "react-app"
     ]
-  },
-  "devDependencies": {
-    "@craco/craco": "6.4.3",
-    "craco-module-federation": "1.1.0"
   },
   "browserslist": {
     "production": [

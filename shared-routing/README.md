@@ -10,7 +10,13 @@ This example demos a basic host application loading remote component.
 
 # Running Demo
 
-Run `yarn start`. This will build all the apps `shell`, `dashboard`, `order`, `profile`, `sales` on different ports as shown below
+Run the following commands:
+
+1. `nvm use`
+2. `yarn lerna bootstrap --npm-client yarn`
+3. `yarn build`
+
+To run the applicatio, run `yarn start`. This will build all the apps `shell`, `dashboard`, `order`, `profile`, `sales` on different ports as shown below
 
 - [localhost:3000](http://localhost:3000/) (HOST) - `shell`
 - [localhost:3001](http://localhost:3001/) (STANDALONE REMOTE) - `dashboard`

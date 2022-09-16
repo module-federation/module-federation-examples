@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
-const deps = require('./package.json').dependencies;
+const { dependencies } = require('./package.json');
 
 module.exports = {
   entry: './src/index',
@@ -36,13 +36,18 @@ module.exports = {
         './Button': './src/Button',
       },
       shared: {
+        '@stitches/react': {
+          singleton: true,
+        },
         react: {
           singleton: true,
-          requiredVersion: deps.react,
+          version: '0',
+          requiredVersion: false,
         },
         'react-dom': {
+          requiredVersion: false,
           singleton: true,
-          requiredVersion: deps['react-dom'],
+          version: '0',
         },
       },
     }),

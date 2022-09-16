@@ -11,7 +11,7 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 | **Medium post**                                                                                                                                                                                                                                                                  | [https://link.medium.com/xzFgBBtAx6](https://link.medium.com/xzFgBBtAx6)                                                                                                                                                                                                                   |
 | **JSNation Presentation**                                                                                                                                                                                                                                                        | [https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5.md](https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5.md)                                                                                                                         |
 | **Post about Dynamic Remotes**                                                                                                                                                                                                                                                   | [https://h3manth.com/posts/dynamic-remotes-webpack-module-federation/](https://h3manth.com/posts/dynamic-remotes-webpack-module-federation/)                                                                                                                                               |
-
+<p align="center"><a href="https://medusa.codes" target="_blank"><img src="https://pbs.twimg.com/media/Fcets1xXgAY3wZf?format=jpg&name=medium" width="800"/><a><p>
 # Examples
 
 > Legend:
@@ -20,6 +20,8 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 > - 🔒: Depends on access controled source
 > - 💰: commercially avaliable
 
+- [x] [Native Federation](./native-federation-core-microfrontend) &mdash; Module Federation using esBuild, ESM, Import Maps. Concept ported to other bundlers!!
+- [x] [Native Federation React](./native-federation-react) &mdash; React Example of Module Federation using esBuild, ESM, Import Maps. Concept ported to other bundlers!!
 - [x] [Advanced API](./advanced-api) &mdash; Showcasing advanced API use, also seen in other examples.
 - [x] [Basic Host-Remote](./basic-host-remote/README.md) &mdash; App 1 consumes remote components from App2.
 - [x] [Create React App](./cra/README.md) &mdash; Module Federation using CRA.
@@ -40,16 +42,18 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 - [x] Non-UI Module
 - [x] [Routing](./shared-routing/README.md) &mdash; An example of sharing router context. Also worth looking at - [Routing 2](./shared-routes2/README.md)
 - [x] [Version Discrepancy](./version-discrepancy/README.md) &mdash; Federated apps depending on different versions of a dependency without side-effects.
-- [x] [TypeScript](./typescript/README.md) &mdash; Simple host/remote example using TypeScript.
+- [x] [TypeScript](./typescript/README.md) &mdash; Streaming TypeScript between module-federation apps.
 - [x] [Angular Universal](./angular-universal-ssr/README.md) &mdash; Remote and Host app with SSR, lazy modules and components.
 - [x] [NextJS Sidecar Build](./nextjs-sidecar/README.md) &mdash; Sidecar build to enable module-federation alongside Next codebases.
-- [x] 💰[NextJS](./nextjs/README.md) &mdash; Operation, with [nextjs-mf](https://app.privjs.com/buy/packageDetail?pkg=@module-federation/nextjs-mf).
+- [x] [NextJS](./nextjs/README.md) &mdash; Operation, with [nextjs-mf](https://app.privjs.com/buy/packageDetail?pkg=@module-federation/nextjs-mf).
 - [x] 💰[NextJS SSR](./nextjs-ssr/README.md) &mdash; Powered by software streams, with [nextjs-ssr](https://app.privjs.com/buy/packageDetail?pkg=@module-federation/nextjs-ssr)
 - [x] [Building A Plugin-based Workflow Designer With Angular and Module Federation](https://github.com/manfredsteyer/module-federation-with-angular-dynamic-workflow-designer) &mdash; External Example
 - [x] [Vue.js](./vue3-demo/README.md) &mdash; Simple host/remote (render function / sfc) example using Vue 3.0.
 - [x] [Vue 2 in Vue 3](./vue2-in-vue3/README.md) &mdash; Vue 3 application loading remote Vue 2 component.
 - [x] [Vue2 SSR](./genesis/README.md) &mdash; This example demonstrates module as a service.
 - [x] [React - Host/Remote and NextJS Host/Remote](./react-nextjs/README.md) &mdash; These examples demonstrates react/nextjs as host/remote and react/nextjs are host/remote
+- [x] [Different React Versions in Isolation](./different-react-versions-isolated/README.md) &mdash; Simple host/remote example where the apps have different React and ReactDOM versions and don't share any dependencies.
+- [x] [vue3-demo-federation-with-vite](./vue3-demo-federation-with-vite/README.md) &mdash; wepack and vite federation integrated projects, webpack/vite both play the role of host and remote
 
 # Check out our book
 
@@ -76,6 +80,11 @@ Module federation will work with any type of file that youre able to import, tha
 # Companies using Module Federation
 
 - Netflix
+- Auth0
+- Best Buy
+- SAP
+- AWS
+- JPMorgan Chase
 - Microsoft
 - Lululemon
 - Housing.com
@@ -96,10 +105,13 @@ Module federation will work with any type of file that youre able to import, tha
 - Telia
 - Amazon
 - Sony
+- Paypal
+- OVO Energy
 - MGM
 - Lowes
 - Home Depot
 - Epic Games
 - ExpediaGroup
 - Verizon
+- MindTickle
 - and many more I cant remember

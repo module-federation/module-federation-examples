@@ -1,27 +1,18 @@
-/** @type {import('next').NextConfig} */
+const NextFederationPlugin = require('@module-federation/nextjs-mf/lib/NextFederationPlugin');
+const { dependencies } = require('./package.json');
 
 module.exports = {
-  webpack: (config, options) => {
-    config.plugins.push(
-      new options.webpack.container.ModuleFederationPlugin({
-        remoteType: 'var',
-        remotes: {
-          remote: 'remote',
-        },
-        shared: {
-          react: {
-            eager: true,
-            singleton: true,
-            requiredVersion: false,
+  webpack(config, options) {
+    if (!options.isServer) {
+      config.plugins.push(
+        new NextFederationPlugin({
+          name: 'host',
+          remotes: {
+            remote: 'remote@http://localhost:3001/remote.js',
           },
-        },
-      }),
-    );
-
-    config.module.rules.push({
-      test: /_app.js/,
-      loader: '@module-federation/nextjs-mf/lib/federation-loader.js',
-    });
+        }),
+      );
+    }
 
     return config;
   },

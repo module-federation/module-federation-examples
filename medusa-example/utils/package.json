@@ -1,0 +1,22 @@
+{
+  "name": "@dashboard/utils",
+  "version": "0.0.3",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "7.15.5",
+    "@babel/preset-react": "7.14.5",
+    "@module-federation/dashboard-plugin": "2.6.4",
+    "@webpack-cli/serve": "1.5.2",
+    "babel-loader": "8.2.2",
+    "serve": "13.0.4",
+    "webpack": "5.61.0",
+    "webpack-cli": "4.7.2",
+    "webpack-dev-server": "4.9.3"
+  },
+  "scripts": {
+    "start": "webpack-cli serve  --liveReload",
+    "build": "webpack --mode production",
+    "serve": "serve dist -p 3005",
+    "clean": "rm -rf dist"
+  }
+}

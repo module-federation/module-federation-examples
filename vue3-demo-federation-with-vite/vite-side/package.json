@@ -1,0 +1,21 @@
+{
+  "name": "@vue3-demo-federation-with-vite/vite-side",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite --port 5000 --strictPort",
+    "serve": "vite preview --port 5000 --strictPort",
+    "build": "vite build",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "vue": "^3.1.5",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@originjs/vite-plugin-federation": "1.1.9",
+    "@vitejs/plugin-vue": "3.1.0",
+    "@vue/compiler-sfc": "3.2.39",
+    "vite": "3.1.0"
+  }
+}

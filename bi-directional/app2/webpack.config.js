@@ -17,7 +17,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.js?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
@@ -31,7 +31,7 @@ module.exports = {
       name: 'app2',
       filename: 'remoteEntry.js',
       remotes: {
-        app1: 'app1@http://localhost:3001/remoteEntry.js',
+        app1: ['app1@http://localhost:3001/remoteEntry.js'],
       },
       exposes: {
         './Button': './src/Button',

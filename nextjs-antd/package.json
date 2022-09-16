@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "workspaces": [
+    "./3000-home",
+    "./3001-shop",
+    "./3002-checkout",
+    "./shared"
+  ],
+  "scripts": {
+    "clear": "cd 3000-home && rm -rf node_modules && rm -rf .next && cd ../3001-shop && rm -rf node_modules && rm -rf .next && cd ../3002-checkout && rm -rf node_modules && rm -rf .next",
+    "start": "yarn dev",
+    "dev": "yarn install && concurrently \"cd 3000-home; npm run dev\" \"cd 3001-shop; npm run dev\" \"cd 3002-checkout; npm run dev\"",
+    "build": "concurrently \"cd 3000-home; npm run build\" \"cd 3001-shop; npm run build\" \"cd 3002-checkout; npm run build\"",
+    "serve": "concurrently \"cd 3000-home; npm run start\" \"cd 3001-shop; npm run start\" \"cd 3002-checkout; npm run start\""
+  },
+  "dependencies": {
+    "concurrently": "^7.0.0",
+    "cpx": "1.5.0"
+  }
+}

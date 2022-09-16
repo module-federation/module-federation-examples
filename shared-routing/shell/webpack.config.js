@@ -63,7 +63,6 @@ module.exports = {
       },
       shared: [
         {
-          // ...deps,
           react: {
             singleton: true,
             requiredVersion: deps.react,
@@ -72,6 +71,10 @@ module.exports = {
             singleton: true,
             requiredVersion: deps['react-dom'],
           },
+          '@material-ui/core': {
+            singleton: true,
+            requiredVersion: deps['@material-ui/core'],
+          },
         },
         // Workaround explaination: https://www.youtube.com/watch?v=-LNcpralkjM&t=540
         './src/Service',
@@ -79,6 +82,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
+      publicPath: '/',
     }),
   ],
 };

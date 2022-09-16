@@ -1,3 +1,3 @@
-import { createFederatedCatchAll } from 'nextjs-shared';
+import { createFederatedCatchAll } from '../../shared';
 
 export default createFederatedCatchAll(process.env.REMOTES);
