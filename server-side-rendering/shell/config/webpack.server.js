@@ -5,16 +5,16 @@ const moduleFederationPlugin = require("./module-federation");
 
 module.exports = merge(shared, {
   name: "server",
-  target: "async-node",
+  target: false,
   entry: ["@babel/polyfill", path.resolve(__dirname, "../server/index.js")],
   output: {
     path: path.resolve(__dirname, "../dist/server"),
     filename: "[name].js",
-    libraryTarget: "commonjs2",
+    libraryTarget: "commonjs-module",
   },
   mode: "production",
   plugins: [
-    moduleFederationPlugin.server,
+    ...moduleFederationPlugin.server,
   ],
   stats: {
     colors: true,
