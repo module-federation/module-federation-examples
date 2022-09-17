@@ -1,0 +1,32 @@
+{
+  "name": "@server-side-rendering/remote2",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "yarn build:client && yarn build:server",
+    "build:client": "webpack --mode production --config config/webpack.client.js",
+    "build:server": "webpack --mode production --config config/webpack.server.js",
+    "serve": "npx serve dist/ -p 3002",
+    "start": "yarn build && yarn serve"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Adam Hammad",
+    "email": "mail@adamham.dev"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/plugin-transform-runtime": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "@module-federation/node": "^0.0.1",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.57.1",
+    "webpack-cli": "^4.9.0",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.13.10",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  }
+}
