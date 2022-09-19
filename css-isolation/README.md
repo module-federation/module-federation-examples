@@ -1,6 +1,6 @@
 # Example of CSS isolation
 
-This example shows one way to fully isolate CSS from leaking between the host and remote applications using a Shadow DOM wrapper. It builds upon the [Different React Versions in Isolation](../different-react-versions-isolated/README.md) example in the same repo.
+This example shows a way to fully isolate CSS from leaking between the host and remote applications using a [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) wrapper. The same idea is used in [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components). Basically a Web Component renders a piece of HTML within a web document which contains its own isolated DOM (a.k.a the Shadow DOM). This enables it to have separate CSS rules from the outside document. In this example the same concept is used together with Module Federation. We have two applications - `app1` (the host) and `app2` (the remote). `app1` loads `app2` using Module Federation and then, upon loading, `app2` wraps itself with a Shadow DOM container. One could say it dynamically puts itself in a Web Component to achieve CSS isolation. For more technical details check the [Isolation Technique](#isolation-technique) section below. The example builds upon the [Different React Versions in Isolation](../different-react-versions-isolated/README.md) example in the same repo.
 
 - `app1` is the host application using one version of React and ReactDOM.
 - `app2` is the remote application using a different version of React and ReactDOM. It exposes an injector function which lets the host application (app1) import it and inject it into a div element.
@@ -11,7 +11,7 @@ Usually when creating microfrontend apps from scratch the best way to isolate th
 
 ### 1. Render the remote app inside a Shadow DOM container
 
-The container will isolate the CSS rules in the remote app from leaking into the host app. Webcomponents use the same technique.
+The container will isolate the CSS rules in the remote app from leaking into the host app. Web Components use the same technique.
 
 ### 2. Put an element with style `all: initial;` around the Shadow DOM container.
 
