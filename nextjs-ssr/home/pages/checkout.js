@@ -1,11 +1,12 @@
 import dynamic from 'next/dynamic';
 
 const Page = dynamic(() => import('checkout/checkout'));
-Page.getInitialProps = async ctx => {
+
+export const getServerSideProps = async ctx => {
   const page = import('checkout/checkout');
-  const getInitialProps = (await page).default?.getInitialProps;
-  if (getInitialProps) {
-    return getInitialProps(ctx);
+  const getServerSideProps = (await page).getServerSideProps;
+  if (getServerSideProps) {
+    return getServerSideProps(ctx);
   }
   return {};
 };
