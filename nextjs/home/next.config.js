@@ -17,8 +17,7 @@ module.exports = {
             './home': './realPages/index.js',
             './pages-map': './pages-map.js',
           },
-          shared: {
-          }
+          shared: {},
         }),
       );
     }

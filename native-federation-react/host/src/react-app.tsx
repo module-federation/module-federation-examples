@@ -1,17 +1,21 @@
+
 import React, { useState, lazy } from "react";
+
 import { loadRemoteModule } from '@softarc/native-federation';
 
 // import "./App.css";
 const reactAppMod = loadRemoteModule({
   remoteName: 'remote',
-  exposedModule: './react-remote'
+  exposedModule: './react-remote',
 });
+
 const RemoteComponent = lazy(()=>reactAppMod.then(c=>{
  console.log(c);
   return {default: c.App}
 }))
 export function App() {
   const [count, setCount] = useState(0);
+
 
   return (
     <div className="App">
@@ -23,7 +27,7 @@ export function App() {
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
         <React.Suspense fallback="loading federated">
-          <RemoteComponent/>
+          <RemoteComponent />
         </React.Suspense>
         <a
           className="App-link"

@@ -1,20 +1,31 @@
-const { withFederatedSidecar } = require('@module-federation/nextjs-mf');
+const NextFederationPlugin = require('@module-federation/nextjs-mf/lib/NextFederationPlugin');
 
-module.exports = withFederatedSidecar({
-  name: 'remote',
-  filename: 'static/chunks/remoteEntry.js',
-  exposes: {
-    './nextjs-remote-component': './components/nextjs-remote-component.js',
-    './nextjs-remote-page': './pages/index.js',
+module.exports = {
+  webpack(config, options) {
+    if (!options.isServer) {
+      config.plugins.push(
+        new NextFederationPlugin({
+          name: 'remote',
+          remotes: {},
+          filename: 'static/chunks/remoteEntry.js',
+          exposes: {
+            './nextjs-remote-component': './components/nextjs-remote-component.js',
+            './nextjs-remote-page': './pages/index.js',
+          },
+          shared: {
+            react: {
+              requiredVersion: false,
+              singleton: true,
+            },
+          },
+          extraOptions: {
+            skipSharingNextInternals: true,
+          },
+        }),
+      );
+    }
+    return config;
   },
-  shared: {
-    // react: {
-    //   // Notice shared are NOT eager here.
-    //   requiredVersion: false,
-    //   singleton: true,
-    // },
-  },
-})({
   // your original next.config.js export
   reactStrictMode: true,
-});
+};

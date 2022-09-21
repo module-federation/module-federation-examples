@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const TextField = React.lazy(() => import("dsl/TextField"));
+const TextField = React.lazy(() => import('dsl/TextField'));
 
 const MiniSearch = ({ inputProps = {} }) => (
   <React.Suspense fallback={<span />}>

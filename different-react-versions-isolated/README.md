@@ -1,4 +1,4 @@
-# Basic One-Way Example
+# Different React Versions in Isolation
 
 This example demos host and remote applications running in isolation with two different React versions and no shared libraries
 
