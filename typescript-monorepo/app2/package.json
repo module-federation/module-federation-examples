@@ -1,0 +1,36 @@
+{
+  "name": "@typescript-monorepo/app2",
+  "version": "0.0.0",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "private": true,
+  "typesVersions": {
+    "*": {
+      "Button": ["./src/Button.tsx"]
+    }
+  },
+  "devDependencies": {
+    "@babel/core": "7.18.9",
+    "@babel/preset-react": "7.18.6",
+    "@babel/preset-typescript": "7.18.6",
+    "@types/react": "18.0.19",
+    "@types/react-dom": "18.0.6",
+    "babel-loader": "8.2.5",
+    "html-webpack-plugin": "5.5.0",
+    "serve": "13.0.4",
+    "typescript": "4.3.5",
+    "webpack": "5.72.1",
+    "webpack-cli": "4.9.2",
+    "webpack-dev-server": "4.9.3"
+  },
+  "scripts": {
+    "start": "webpack-cli serve",
+    "build": "webpack --mode production",
+    "serve": "serve dist -p 3002",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  }
+}

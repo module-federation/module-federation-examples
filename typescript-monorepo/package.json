@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "lerna run --scope @typescript-monorepo/* --parallel start",
+    "build": "lerna run --scope @typescript-monorepo/* build",
+    "serve": "lerna run --scope @typescript-monorepo/* --parallel serve",
+    "clean": "lerna run --scope @typescript-monorepo/* --parallel clean"
+  },
+  "devDependencies": {
+    "lerna": "3.22.1"
+  },
+  "workspaces": ["app1/*", "app2/*"]
+
+}
