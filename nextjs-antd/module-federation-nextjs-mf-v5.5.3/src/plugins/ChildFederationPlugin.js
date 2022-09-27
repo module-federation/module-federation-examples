@@ -4,8 +4,8 @@ const nextPageMapLoader = require("../loaders/nextPageMapLoader");
 const helpers = require("../loaders/helpers");
 const CHILD_PLUGIN_NAME = 'ChildFederationPlugin';
 const path = require('path')
-const NodeFederationPlugin = require('@module-federation/node/src/plugins/NodeFederationPlugin')
-const StreamingTargetPlugin = require('@module-federation/node/src/plugins/StreamingTargetPlugin')
+const NodeFederationPlugin = require('@module-federation/node/src/plugins/NodeFederationPlugin').default
+const StreamingTargetPlugin = require('@module-federation/node/src/plugins/StreamingTargetPlugin').default
 function createRuntimeVariables(remotes) {
     return Object.entries(remotes).reduce((acc, remote) => {
         // handle promise new promise and external new promise
