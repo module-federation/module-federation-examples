@@ -1,6 +1,6 @@
 import React from 'react';
 import createMatcher from 'feather-route-matcher';
-import { injectScript, remotes } from '@module-federation/nextjs-mf/lib/utils';
+import { injectScript, remotes } from '@module-federation/nextjs-mf/utils';
 
 export async function matchFederatedPage(path) {
   console.log(remotes);

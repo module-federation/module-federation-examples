@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { injectScript } from '@module-federation/nextjs-mf/lib/utils';
+import { injectScript } from '@module-federation/nextjs-mf/utils';
 
 export default function ExposedPages() {
   const [pageMap, setPageMap] = useState('');

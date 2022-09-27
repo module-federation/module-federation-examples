@@ -9,4 +9,5 @@ Page.getInitialProps = async ctx => {
   }
   return {};
 };
+Page.Layout = dynamic(() => import('home/home').then(mod => mod.Layout));
 export default Page;

@@ -1,4 +1,3 @@
-import '@module-federation/nextjs-mf/lib/include-defaults';
 import dynamic from 'next/dynamic';
 import 'antd/dist/antd.css';
 

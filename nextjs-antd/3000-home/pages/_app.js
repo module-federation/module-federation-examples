@@ -1,8 +1,3 @@
-require('@module-federation/nextjs-mf/lib/include-defaults');
-
-// console.log(__webpack_init_sharing__('default'));
-// console.log(__webpack_share_scopes__);
-
 import dynamic from 'next/dynamic';
 import 'antd/dist/antd.css';
 
