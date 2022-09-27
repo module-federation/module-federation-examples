@@ -1,5 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 class ModuleFederationPlugin {
     constructor(options) {
         this._options = options;
@@ -46,5 +45,5 @@ class ModuleFederationPlugin {
         }
     }
 }
-exports.default = ModuleFederationPlugin;
+module.exports = ModuleFederationPlugin;
 //# sourceMappingURL=ModuleFederationPlugin.js.map

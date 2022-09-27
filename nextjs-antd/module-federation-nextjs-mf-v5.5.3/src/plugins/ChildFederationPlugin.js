@@ -4,7 +4,8 @@ const nextPageMapLoader = require("../loaders/nextPageMapLoader");
 const helpers = require("../loaders/helpers");
 const CHILD_PLUGIN_NAME = 'ChildFederationPlugin';
 const path = require('path')
-const {NodeFederationPlugin, StreamingTargetPlugin} = require('@module-federation/node')
+const NodeFederationPlugin = require('@module-federation/node/src/plugins/NodeFederationPlugin')
+const StreamingTargetPlugin = require('@module-federation/node/src/plugins/StreamingTargetPlugin')
 function createRuntimeVariables(remotes) {
     return Object.entries(remotes).reduce((acc, remote) => {
         // handle promise new promise and external new promise
@@ -78,7 +79,7 @@ class ChildFederationPlugin {
             };
 
             // using ModuleFederationPlugin does not work, i had to fork because of afterPlugins hook on containerPlugin.
-            const FederationPlugin = ModuleFederationPlugin["default"];
+            const FederationPlugin = ModuleFederationPlugin;
 
             const federationPluginOptions = {
                 // library: {type: 'var', name: buildName},
@@ -153,7 +154,7 @@ class ChildFederationPlugin {
                   helpers.hasLoader(rule, 'next-image-loader')
                 ) {
                     helpers.injectRuleLoader(rule, {
-                        loader: path.resolve(__dirname, './loaders/fixImageLoader.js'),
+                        loader: path.resolve(__dirname, '../loaders/fixImageLoader.js'),
                     });
                 }
 
@@ -163,7 +164,7 @@ class ChildFederationPlugin {
                   helpers.hasLoader(rule, 'url-loader')
                 ) {
                     helpers.injectRuleLoader({
-                        loader: path.resolve(__dirname, './loaders/fixUrlLoader.js'),
+                        loader: path.resolve(__dirname, '../loaders/fixUrlLoader.js'),
                     });
                 }
             });

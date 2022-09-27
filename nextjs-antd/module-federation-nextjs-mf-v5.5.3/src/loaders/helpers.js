@@ -1,6 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.hasLoader = exports.injectRuleLoader = void 0;
 /**
  * Inject a loader into the current module rule.
  * This function mutates `rule` argument!
@@ -17,7 +15,7 @@ function injectRuleLoader(rule, loader = {}) {
         }
     }
 }
-exports.injectRuleLoader = injectRuleLoader;
+module.exports.injectRuleLoader = injectRuleLoader;
 /**
  * Check that current module rule has a loader with the provided name.
  */
@@ -42,5 +40,5 @@ function hasLoader(rule, loaderName) {
     }
     return false;
 }
-exports.hasLoader = hasLoader;
+module.exports.hasLoader = hasLoader;
 //# sourceMappingURL=helpers.js.map

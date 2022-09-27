@@ -126,7 +126,7 @@ class ChildFederationPlugin_old {
             };
 
             // using ModuleFederationPlugin does not work, i had to fork because of afterPlugins hook on containerPlugin.
-            const FederationPlugin = ModuleFederationPlugin["default"];
+            const FederationPlugin = ModuleFederationPlugin;
 
             const federationPluginOptions = {
                 // library: {type: 'var', name: buildName},
@@ -201,7 +201,7 @@ class ChildFederationPlugin_old {
                   helpers.hasLoader(rule, 'next-image-loader')
                 ) {
                     helpers.injectRuleLoader(rule, {
-                        loader: path__default["default"].resolve(__dirname, './loaders/fixImageLoader.js'),
+                        loader: path__default["default"].resolve(__dirname, '../loaders/fixImageLoader.js'),
                     });
                 }
 
@@ -211,7 +211,7 @@ class ChildFederationPlugin_old {
                   helpers.hasLoader(rule, 'url-loader')
                 ) {
                     helpers.injectRuleLoader({
-                        loader: path__default["default"].resolve(__dirname, './loaders/fixUrlLoader.js'),
+                        loader: path__default["default"].resolve(__dirname, '../loaders/fixUrlLoader.js'),
                     });
                 }
             });
@@ -454,7 +454,7 @@ class NextFederationPlugin {
             if (this._extraOptions.automaticPageStitching) {
                 compiler.options.module.rules.push({
                     test: /next[\\/]dist[\\/]client[\\/]page-loader\.js$/,
-                    loader: path__default["default"].resolve(__dirname, './loaders/patchNextClientPageLoader'),
+                    loader: path__default["default"].resolve(__dirname, '../loaders/patchNextClientPageLoader'),
                 });
             }
 
