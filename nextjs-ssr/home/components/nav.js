@@ -1,13 +1,10 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
 export const HelloWorld = dynamic(() => import('./helloWorld').then(mod => {
-  console.log(mod);
-  return mod.HelloWorld
-}), {
-  ssr: true,
-});
+  return {default: mod.HelloWorld}
+}),{suspense: true});
 const links = [
   { href: 'https://zeit.co/now', label: 'ZEIT' },
   { href: 'https://github.com/zeit/next.js', label: 'GitHub' },
@@ -18,7 +15,9 @@ const links = [
 
 const Nav = () => (
   <nav>
+    <Suspense>
     <HelloWorld />
+    </Suspense>
     <ul>
       <li>
         <Link href="/">

@@ -21,10 +21,7 @@ module.exports = {
           './pages-map': './pages-map.js',
         },
         remotes: remotes(options.isServer),
-        shared: {},
-        extraOptions: {
-          automaticPageStitching: true
-        }
+        shared: {}
       }),
     );
 
