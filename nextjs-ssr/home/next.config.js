@@ -1,4 +1,4 @@
-const { withFederatedSidecar } = require('@module-federation/nextjs-ssr');
+const NextFederationPlugin = require('@module-federation/nextjs-mf');
 // this enables you to use import() and the webpack parser
 // loading remotes on demand, not ideal for SSR
 const remotes = isServer => {
@@ -9,38 +9,23 @@ const remotes = isServer => {
     checkout: `checkout@http://localhost:3000/_next/static/${location}/remoteEntry.js`,
   };
 };
-module.exports = withFederatedSidecar(
-  {
-    name: 'home',
-    filename: 'static/chunks/remoteEntry.js',
-    exposes: {
-      './nav': './components/nav.js',
-      './home': './async-pages/index.js',
-      './pages-map': './pages-map.js',
-    },
-    remotes,
-    shared: {
-      react: {
-        // Notice shared are NOT eager here.
-        requiredVersion: false,
-        singleton: true,
-      },
-    },
-  },
-  {
-    experiments: {
-      flushChunks: true,
-      hot: true,
-    },
-  },
-)({
+module.exports = {
   webpack5: true,
   webpack(config, options) {
-    config.module.rules.push({
-      test: /_app.js/,
-      loader: '@module-federation/nextjs-ssr/lib/federation-loader.js',
-    });
+    config.plugins.push(
+      new NextFederationPlugin({
+        name: 'home',
+        filename: 'static/chunks/remoteEntry.js',
+        exposes: {
+          './nav': './components/nav.js',
+          './home': './async-pages/index.js',
+          './pages-map': './pages-map.js',
+        },
+        remotes: remotes(options.isServer),
+        shared: {},
+      }),
+    );
 
     return config;
   },
-});
+};
