@@ -1,0 +1,31 @@
+{
+  "name": "next-host",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "rm -rf .next && PORT=3000 next dev",
+    "build": "next build",
+    "start": "PORT=3000 next start"
+  },
+  "author": {
+    "name": "Frédéric JAMMES"
+  },
+  "dependencies": {
+    "i18next": "^21.10.0",
+    "i18next-browser-languagedetector": "^6.1.8",
+    "i18next-shared-lib": "*",
+    "next": "12.3.1",
+    "react": "^18.2.0",
+    "react-dom": "18.2.0",
+    "react-i18next": "^11.18.6"
+  },
+  "devDependencies": {
+    "@module-federation/nextjs-mf": "^5.9.10",
+    "@types/node": "18.8.4",
+    "@types/react": "18.0.21",
+    "@types/react-dom": "18.0.6",
+    "eslint": "8.25.0",
+    "eslint-config-next": "12.3.1",
+    "typescript": "4.8.4"
+  }
+}
