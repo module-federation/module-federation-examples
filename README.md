@@ -115,4 +115,6 @@ Module federation will work with any type of file that youre able to import, tha
 - ExpediaGroup
 - Verizon
 - MindTickle
+- Experian
+- Herodevs
 - and many more I cant remember
