@@ -1,0 +1,22 @@
+{
+  "name": "i18next-nextjs-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"cd next-host; npm run dev\" \"cd react-host; npm run start:live\" \"cd react-remote; npm run start:live\" \"cd i18next-shared-lib; npm run dev\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "workspaces": [
+    "next-host",
+    "react-host",
+    "react-remote",
+    "i18next-shared-lib"
+  ],
+  "author": "Frédéric JAMMES",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "latest"
+  }
+}
