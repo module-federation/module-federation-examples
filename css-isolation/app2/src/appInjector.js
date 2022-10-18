@@ -10,4 +10,5 @@ export const inject = parentElementId => {
 
 export const cleanup = parentElementId => {
   deleteShadowContainer(parentElementId);
+  ReactDOM.unmountComponentAtNode(document.getElementById(parentElementId));
 };
