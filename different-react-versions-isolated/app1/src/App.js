@@ -1,16 +1,12 @@
 import React, { useEffect } from 'react';
+import { inject, cleanup } from 'app2/appInjector';
 
 const parentElementId = 'parent';
 
 const App = () => {
   useEffect(() => {
-    let cleanup;
-    import('app2/appInjector').then(({ inject, unmount }) => {
-      inject(parentElementId);
-      cleanup = unmount;
-    });
-
-    return () => cleanup && cleanup(parentElementId);
+    inject(parentElementId);
+    return () => cleanup(parentElementId);
   }, []);
 
   // App2 will be injected in the div with parentElementId
