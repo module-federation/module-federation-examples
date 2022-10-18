@@ -4,7 +4,13 @@ const parentElementId = 'parent';
 
 const App = () => {
   useEffect(() => {
-    import('app2/injectApp').then(injector => injector.default(parentElementId));
+    let cleanup;
+    import('app2/appInjector').then(({ inject, unmount }) => {
+      inject(parentElementId);
+      cleanup = unmount;
+    });
+
+    return () => cleanup && cleanup(parentElementId);
   }, []);
 
   // App2 will be injected in the div with parentElementId
