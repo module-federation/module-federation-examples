@@ -1,12 +1,6 @@
-import dynamic from 'next/dynamic';
-const page = import('../../async-pages/p/[...slug]');
-
-const Page = dynamic(() => import('../../async-pages/p/[...slug]'));
-Page.getInitialProps = async ctx => {
-  const getInitialProps = (await page).default?.getInitialProps;
-  if (getInitialProps) {
-    return getInitialProps(ctx);
-  }
+export default function PDP() {
+  return <h1>PDP!!!</h1>;
+}
+PDP.getInitialProps = async () => {
   return {};
 };
-export default Page;

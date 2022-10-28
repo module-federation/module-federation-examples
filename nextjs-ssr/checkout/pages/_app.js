@@ -1,12 +1,23 @@
+import {Suspense,lazy} from "react";
+import App from 'next/app';
 import dynamic from 'next/dynamic';
-const page = import('../async-pages/app');
+const Nav = dynamic(() => {
+  return import('home/nav');
+},{suspense:true});
 
-const Page = dynamic(() => import('../async-pages/app'));
-Page.getInitialProps = async ctx => {
-  const getInitialProps = (await page).default?.getInitialProps;
-  if (getInitialProps) {
-    return getInitialProps(ctx);
-  }
-  return {};
+function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <Suspense fallback={'loading'}>
+      <Nav />
+      </Suspense>
+      <Component {...pageProps} />
+    </>
+  );
+}
+
+MyApp.getInitialProps = async ctx => {
+  const appProps = await App.getInitialProps(ctx);
+  return appProps;
 };
-export default Page;
+export default MyApp;
