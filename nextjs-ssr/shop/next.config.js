@@ -16,12 +16,15 @@ module.exports = {
         name: 'shop',
         filename: 'static/chunks/remoteEntry.js',
         exposes: {
-          './shop': './async-pages/shop.js',
-          './pdp': './async-pages/p/[...slug].js',
+          './shop': './pages/shop.js',
+          './pdp': './pages/p/[...slug].js',
           './pages-map': './pages-map.js',
         },
         remotes: remotes(options.isServer),
-        shared: {}
+        shared: {},
+        extraOptions:{
+          automaticAsyncBoundary: true
+        }
       }),
     );
 
