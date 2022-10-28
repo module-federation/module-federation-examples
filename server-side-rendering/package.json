@@ -1,16 +1,16 @@
 {
+  "name": "@server-side-rendering/react-18-suspense-mf",
+  "version": "1.0.0",
+  "description": "Example of server side rendering with module federation using React 18 and Suspense",
+  "author": "Adam Hammad <mail@adamham.dev>",
+  "license": "MIT",
   "private": true,
+  "workspaces": [
+    "remote1",
+    "remote2",
+    "shell"
+  ],
   "scripts": {
-    "start": "yarn build && yarn serve:hot",
-    "serve:hot": "concurrently \"lerna run --scope @server-side-rendering/icarus-1 serve\" \"lerna run --scope @server-side-rendering/icarus-2 hmr --parallel\"",
-    "build": "lerna run --scope @server-side-rendering/icarus-2 build && lerna run --scope @server-side-rendering/icarus-1 build",
-    "serve": "lerna run --scope @server-side-rendering/* --parallel serve",
-    "clean": "lerna run --scope @server-side-rendering/* --parallel clean"
-  },
-  "devDependencies": {
-    "lerna": "3.22.1"
-  },
-  "dependencies": {
-    "nodemon": "^2.0.4"
+    "build": "yarn workspaces run build"
   }
 }

@@ -11,7 +11,7 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 | **Medium post**                                                                                                                                                                                                                                                                  | [https://link.medium.com/xzFgBBtAx6](https://link.medium.com/xzFgBBtAx6)                                                                                                                                                                                                                   |
 | **JSNation Presentation**                                                                                                                                                                                                                                                        | [https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5.md](https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5.md)                                                                                                                         |
 | **Post about Dynamic Remotes**                                                                                                                                                                                                                                                   | [https://h3manth.com/posts/dynamic-remotes-webpack-module-federation/](https://h3manth.com/posts/dynamic-remotes-webpack-module-federation/)                                                                                                                                               |
-
+<p align="center"><a href="https://medusa.codes" target="_blank"><img src="https://pbs.twimg.com/media/Fcets1xXgAY3wZf?format=jpg&name=medium" width="800"/><a><p>
 # Examples
 
 > Legend:
@@ -53,6 +53,7 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 - [x] [Vue2 SSR](./genesis/README.md) &mdash; This example demonstrates module as a service.
 - [x] [React - Host/Remote and NextJS Host/Remote](./react-nextjs/README.md) &mdash; These examples demonstrates react/nextjs as host/remote and react/nextjs are host/remote
 - [x] [Different React Versions in Isolation](./different-react-versions-isolated/README.md) &mdash; Simple host/remote example where the apps have different React and ReactDOM versions and don't share any dependencies.
+- [x] [CSS Isolated Host and Remote](./css-isolation/README.md) &mdash; Example on how to prevent CSS from leaking between federated applications.
 - [x] [vue3-demo-federation-with-vite](./vue3-demo-federation-with-vite/README.md) &mdash; wepack and vite federation integrated projects, webpack/vite both play the role of host and remote
 
 # Check out our book
@@ -114,4 +115,6 @@ Module federation will work with any type of file that youre able to import, tha
 - ExpediaGroup
 - Verizon
 - MindTickle
+- Experian
+- Herodevs
 - and many more I cant remember
