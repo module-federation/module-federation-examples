@@ -17,11 +17,14 @@ module.exports = {
         filename: 'static/chunks/remoteEntry.js',
         exposes: {
           './title': './components/exposedTitle.js',
-          './checkout': './async-pages/checkout.js',
+          './checkout': './pages/checkout.js',
           './pages-map': './pages-map.js',
         },
         remotes: remotes(options.isServer),
         shared: {},
+        extraOptions:{
+          automaticAsyncBoundary: true
+        }
       }),
     );
 

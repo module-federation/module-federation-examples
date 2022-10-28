@@ -18,11 +18,14 @@ module.exports = {
         filename: 'static/chunks/remoteEntry.js',
         exposes: {
           './nav': './components/nav.js',
-          './home': './async-pages/index.js',
+          './home': './pages/index.js',
           './pages-map': './pages-map.js',
         },
         remotes: remotes(options.isServer),
         shared: {},
+        extraOptions:{
+          automaticAsyncBoundary: true
+        }
       }),
     );
 
