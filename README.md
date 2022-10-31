@@ -55,6 +55,7 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 - [x] [Different React Versions in Isolation](./different-react-versions-isolated/README.md) &mdash; Simple host/remote example where the apps have different React and ReactDOM versions and don't share any dependencies.
 - [x] [CSS Isolated Host and Remote](./css-isolation/README.md) &mdash; Example on how to prevent CSS from leaking between federated applications.
 - [x] [vue3-demo-federation-with-vite](./vue3-demo-federation-with-vite/README.md) &mdash; wepack and vite federation integrated projects, webpack/vite both play the role of host and remote
+- [x] [webpack4](./webpack4/README.md) &mdash; webpack4 + webpack5
 
 # Check out our book
 
