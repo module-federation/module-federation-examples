@@ -22,7 +22,8 @@ const App = () => {
         <SearchList />
         <Divider>More Dogs</Divider>
         <React.Suspense fallback={<div />}>
-          <ProductCarousel />
+          {/* TODO: Figure out why this is broken */}
+          {/*<ProductCarousel />*/}
         </React.Suspense>
       </Layout.Content>
       <React.Suspense fallback={<div />}>
