@@ -1,5 +1,5 @@
 import React from 'react';
-import Adapter from './adapter';
+import ReactAdapterConsumer from './ReactAdapterConsumer';
 
 const RemoteButton = React.lazy(() => import('app2/Button'));
 
@@ -19,23 +19,32 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(__webpack_share_scopes__);
     return (
       <div>
         <h1>Basic Host-Remote</h1>
         <h2>App 1, Uses react version not compatible with hooks</h2>
         <input onChange={this.setValue} placeholder="Type something into this input" />
-        <Adapter
-          // any other props, passed to ModernComponent
-          {...this.state}
-          importer={() => import('app2/ModernComponent')}
-        >
-          <h3>And these are children passed into it from the legacy app</h3>
-        </Adapter>
+
+        <div style={{ border: '1px red solid', padding: '10px', margin: '20px 0' }}>
+          <ReactAdapterConsumer
+            // any other props, passed to ModernComponent
+            {...this.state}
+            importer={() => import('app2/ModernComponent')}
+          >
+            <h3>And these are children passed into it from the legacy app</h3>
+          </ReactAdapterConsumer>
+        </div>
+
         {/*This will Fail*/}
         {/*<HookComponent/>*/}
-        <React.Suspense fallback="Loading Button">
-          <RemoteButton />
-        </React.Suspense>
+
+        <div style={{ border: '1px red solid', padding: '10px', margin: '20px 0' }}>
+          <React.Suspense fallback="Loading Button">
+            <RemoteButton />
+          </React.Suspense>
+        </div>
+
         {/*This will fail without Adapter*/}
         {/*<React.Suspense fallback="Loading Button">*/}
         {/*  <ModernComponent />*/}
