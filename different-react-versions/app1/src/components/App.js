@@ -19,7 +19,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(__webpack_share_scopes__);
     return (
       <div>
         <h1>Basic Host-Remote</h1>
