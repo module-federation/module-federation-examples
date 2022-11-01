@@ -1,8 +1,6 @@
 import React from 'react';
 import { Layout, Tabs, Divider } from 'antd';
 
-const { TabPane } = Tabs;
-
 import './index.less';
 
 import HeroImage from './HeroImage';
@@ -18,7 +16,12 @@ const Header = React.lazy(() => import('nav/Header'));
 const Footer = React.lazy(() => import('nav/Footer'));
 
 const SearchList = React.lazy(() => import('search/SearchList'));
-
+const items = [
+  { label: 'Sally', key:'1', children:<PageSally />},
+  { label: 'Little Guy', key:'2', children:<PageLG />},
+  { label: 'Mimi', key:'3', children:<PageMimi />},
+  { label: 'Sammy', key:'4', children:<PageSammy />}
+]
 const App = () => {
   sendMessage('Application loaded');
   return (
@@ -32,20 +35,7 @@ const App = () => {
 
         <HeroImage src="https://placedog.net/800/280?random" style={{ margin: 'auto' }} />
 
-        <Tabs defaultActiveKey="1">
-          <TabPane tab="Sally" key="1">
-            <PageSally />
-          </TabPane>
-          <TabPane tab="Little Guy" key="2">
-            <PageLG />
-          </TabPane>
-          <TabPane tab="Mimi" key="3">
-            <PageMimi />
-          </TabPane>
-          <TabPane tab="Sammy" key="4">
-            <PageSammy />
-          </TabPane>
-        </Tabs>
+        <Tabs defaultActiveKey="1" items={items} />
 
         <Divider>Search</Divider>
 
