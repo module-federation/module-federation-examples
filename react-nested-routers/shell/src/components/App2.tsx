@@ -1,47 +1,67 @@
-import React, { useEffect, useRef } from 'react';
-import { mount } from 'app2/App2Index';
-import { app2RoutingPrefix, shellBrowserHistory } from '../routing/constants';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useRef } from "react";
+import { mount } from "app2/App2Index";
+import { app2RoutingPrefix } from "../routing/constants";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const app2Basename = `/${app2RoutingPrefix}`;
 
 export default () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
+  // Listen to navigation events dispatched inside app2 mfe.
   useEffect(() => {
-    // Listen to navigation events dispatched inside app2 mfe.
     const app2NavigationEventHandler = (event: Event) => {
       const pathname = (event as CustomEvent<string>).detail;
       const newPathname = `${app2Basename}${pathname}`;
-      if (newPathname === shellBrowserHistory.location.pathname) {
+      if (newPathname === location.pathname) {
         return;
       }
       navigate(newPathname);
     };
-    window.addEventListener('[app2] navigated', app2NavigationEventHandler);
-
-    // Listen to navigation events in shell app to notifify app2 mfe.
-    const unlistenHistoryChanges = shellBrowserHistory.listen(({ location }) => {
-      if (location.pathname.startsWith(app2Basename)) {
-        window.dispatchEvent(
-          new CustomEvent('[shell] navigated', {
-            detail: location.pathname.replace(app2Basename, ''),
-          }),
-        );
-      }
-    });
-
-    mount({
-      mountPoint: wrapperRef.current!,
-      initialPathname: shellBrowserHistory.location.pathname.replace(app2Basename, ''),
-    });
+    window.addEventListener("[app2] navigated", app2NavigationEventHandler);
 
     return () => {
-      window.removeEventListener('[app2] navigated', app2NavigationEventHandler);
-      unlistenHistoryChanges();
+      window.removeEventListener(
+        "[app2] navigated",
+        app2NavigationEventHandler
+      );
     };
-  }, []);
+  }, [location]);
 
-  return <div ref={wrapperRef} />;
+  // Listen for shell location changes and dispatch a notification.
+  useEffect(
+    () => {
+      if (location.pathname.startsWith(app2Basename)) {
+        window.dispatchEvent(
+          new CustomEvent("[shell] navigated", {
+            detail: location.pathname.replace(app2Basename, ""),
+          })
+        );
+      }
+    },
+    [location],
+  );
+
+  const isFirstRunRef = useRef(true);
+  // Mount app1 MFE
+  useEffect(
+    () => {
+      if (!isFirstRunRef.current) {
+        return;
+      }
+      mount({
+        mountPoint: wrapperRef.current!,
+        initialPathname: location.pathname.replace(
+          app2Basename,
+          ''
+        ),
+      });
+      isFirstRunRef.current = false;
+    },
+    [location],
+  );
+
+  return <div ref={wrapperRef} id="app2-mfe" />;
 };
