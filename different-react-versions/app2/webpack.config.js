@@ -39,8 +39,8 @@ module.exports = {
       library: { type: 'var', name: 'app2' },
       filename: 'remoteEntry.js',
       exposes: {
-        './Button': './src/Button',
-        './ModernComponent': './src/ModernReactComponent',
+        './Button': './src/components/Button',
+        './ModernComponent': './src/components/ModernReactComponent',
         './newReact': require.resolve('react'),
         './newReactDOM': require.resolve('react-dom'),
       },
