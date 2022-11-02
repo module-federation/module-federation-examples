@@ -1,26 +1,22 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { createMemoryHistory } from 'history';
-import { App } from './App';
-import { HistoryStrategy } from './types';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { RouterProvider } from "react-router-dom";
+import { createRouter } from "./routing/router-factory";
+import { RoutingStrategy } from "./routing/types";
+import "./index.css";
 
 const mount = ({
   mountPoint,
   initialPathname,
-  historyStrategy,
+  routingStrategy,
 }: {
   mountPoint: HTMLElement;
   initialPathname?: string;
-  historyStrategy?: HistoryStrategy;
+  routingStrategy?: RoutingStrategy;
 }) => {
-  const history =
-    historyStrategy ||
-    createMemoryHistory({
-      initialEntries: [initialPathname || '/'],
-    });
-
+  const router = createRouter({ strategy: routingStrategy, initialPathname });
   const root = createRoot(mountPoint);
-  root.render(<App history={history} />);
+  root.render(<RouterProvider router={router} />);
 };
 
 export { mount };
