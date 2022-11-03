@@ -1,6 +1,7 @@
 <template>
   <div @click="click">
     Webpack Content
+    <slot></slot>
   </div>
 </template>
 <script>
