@@ -115,3 +115,7 @@ Module federation will work with any type of file that youre able to import, tha
 - Verizon
 - MindTickle
 - and many more I cant remember
+
+# Contribution to this repo
+
+You decided to contribute to this project? Great, thanks a lot for pushing it!
