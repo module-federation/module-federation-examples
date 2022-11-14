@@ -23,8 +23,7 @@ export const ListUserReactComponent: FunctionComponent<IListUserProps> = (props:
   return (
     <div className="container">
       {
-       !props.users.length ? <h3 className='empty-list-message'>----- Create user to see data here -----</h3> :
-          (<table>
+       props.users.length ? (<table>
             <thead>
               <tr>
                 <th>Name</th>
@@ -42,7 +41,6 @@ export const ListUserReactComponent: FunctionComponent<IListUserProps> = (props:
                   </td>
                 </tr>)}
             </tbody>
-          </table>)
-    
+          </table>): <h3 className='empty-list-message'>----- Create user to see data here -----</h3> 
       } </div>);
 }

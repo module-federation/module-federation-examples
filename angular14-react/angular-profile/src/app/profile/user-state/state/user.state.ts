@@ -40,7 +40,7 @@ export class UserState {
     { payload }: AddUser,
   ): void {
     const state = getState();
-    if (state && state.users) {
+    if (state?.users) {
       patchState({
         users: [...state.users, payload],
       });
@@ -60,7 +60,7 @@ export class UserState {
   @Action(RemoveUser)
   remove({ getState, setState }: StateContext<UserStateModel>, { payload }: AddUser): void {
     const state = getState();
-    if (state && state.users) {
+    if (state?.users) {
       setState({
         users: state.users.filter(u => !(u.email === payload.email && u.name === payload.name)),
       });
