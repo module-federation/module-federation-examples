@@ -1,0 +1,43 @@
+
+.profile-container {
+  margin: 20px;
+}
+
+form {
+  display: flex;
+  width: 780px;
+  justify-content: space-between;
+}
+
+button {
+    background-color: transparent;
+    cursor: pointer;
+    font-family: Inter, sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    min-width: 64px;
+    padding: 10px 21px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border: 1px solid rgba(55, 125, 255, 0.5);
+    color: rgb(55, 125, 255);
+    font-weight: 400;
+    border-radius: 5px;
+}
+
+h2 {
+  color: cadetblue;
+}
+
+input {
+    width: 250px;
+    margin: 0px;
+    -webkit-tap-highlight-color: transparent;
+    display: block;
+    min-width: 0px;
+    padding: 14.5px 14px;
+    border-radius: 5px;
+    border: 1px solid rgb(224, 224, 224);
+    font-family: Inter, sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+}

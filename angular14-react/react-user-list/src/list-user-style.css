@@ -1,0 +1,40 @@
+table {
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    line-height: 1.43;
+    margin-top: 15px;
+}
+
+thead {
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+td, th {
+    width: 250px;
+    border-bottom: 1px solid rgb(224, 224, 224);
+    text-align: center;
+    padding: 16px;
+    font-weight: 300;
+}
+
+.empty-list-message {
+    font-family: Inter, sans-serif;
+    color: rgb(207, 202, 202);
+    font-weight: 300;
+}
+
+button {
+    background-color: transparent;
+    cursor: pointer;
+    font-family: Inter, sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    min-width: 64px;
+    padding: 10px 21px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border: 1px solid rgba(55, 125, 255, 0.5);
+    color: rgb(55, 125, 255);
+    font-weight: 400;
+    border-radius: 5px;
+}
