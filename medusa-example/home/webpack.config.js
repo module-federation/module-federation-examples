@@ -1,20 +1,14 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DashboardPlugin = require('@module-federation/dashboard-plugin');
-const { readFileSync } = require('fs');
-const tokens = readFileSync(__dirname + '/../.env')
-  .toString('utf-8')
-  .split('\n')
-  .map(v => v.trim().split('='));
-process.env.DASHBOARD_READ_TOKEN = tokens.find(([k]) => k === 'DASHBOARD_READ_TOKEN')[1];
-process.env.DASHBOARD_WRITE_TOKEN = tokens.find(([k]) => k === 'DASHBOARD_WRITE_TOKEN')[1];
-process.env.DASHBOARD_BASE_URL = tokens.find(([k]) => k === 'DASHBOARD_BASE_URL')[1];
+
+Object.assign(process.env, require('../read-envs')());
 
 const {
   container: { ModuleFederationPlugin },
 } = require('webpack');
 const path = require('path');
 
-const dashboardURL = `${process.env.DASHBOARD_BASE_URL}/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`;
+const dashboardURL = `${process.env.DASHBOARD_BASE_URL}/env/${process.env.DASHBOARD_ENVIRONMENT}/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`;
 
 module.exports = {
   entry: './src/index',
@@ -112,6 +106,7 @@ module.exports = {
     new DashboardPlugin({
       versionStrategy: `${Date.now()}`,
       filename: 'dashboard.json',
+      environment: 'pusha',
       dashboardURL: `${process.env.DASHBOARD_BASE_URL}/update?token=${process.env.DASHBOARD_WRITE_TOKEN}`,
       versionChangeWebhook: 'http://cnn.com/',
       metadata: {

@@ -3,15 +3,7 @@ const DashboardPlugin = require('@module-federation/dashboard-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
 
-const { readFileSync } = require('fs');
-const tokens = readFileSync(__dirname + '/../.env')
-  .toString('utf-8')
-  .split('\n')
-  .map(v => v.trim().split('='));
-console.log('TOKENS', tokens);
-process.env.DASHBOARD_READ_TOKEN = tokens.find(([k]) => k === 'DASHBOARD_READ_TOKEN')[1];
-process.env.DASHBOARD_WRITE_TOKEN = tokens.find(([k]) => k === 'DASHBOARD_WRITE_TOKEN')[1];
-process.env.DASHBOARD_BASE_URL = tokens.find(([k]) => k === 'DASHBOARD_BASE_URL')[1];
+Object.assign(process.env, require('../read-envs')());
 
 module.exports = {
   entry: './src/index',
@@ -64,6 +56,7 @@ module.exports = {
     }),
     new DashboardPlugin({
       versionStrategy: `${Date.now()}`,
+      environment: 'pusha',
       dashboardURL: `${process.env.DASHBOARD_BASE_URL}/update?token=${process.env.DASHBOARD_WRITE_TOKEN}`,
       filename: 'dashboard.json',
       metadata: {

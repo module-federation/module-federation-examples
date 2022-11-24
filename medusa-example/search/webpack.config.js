@@ -3,14 +3,9 @@ const DashboardPlugin = require('@module-federation/dashboard-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
 
-const { readFileSync } = require('fs');
-const tokens = readFileSync(__dirname + '/../.env')
-  .toString('utf-8')
-  .split('\n')
-  .map(v => v.trim().split('='));
-process.env.DASHBOARD_READ_TOKEN = tokens.find(([k]) => k === 'DASHBOARD_READ_TOKEN')[1];
-process.env.DASHBOARD_WRITE_TOKEN = tokens.find(([k]) => k === 'DASHBOARD_WRITE_TOKEN')[1];
-process.env.DASHBOARD_BASE_URL = tokens.find(([k]) => k === 'DASHBOARD_BASE_URL')[1];
+Object.assign(process.env, require('../read-envs')());
+
+const dashboardURL = `${process.env.DASHBOARD_BASE_URL}/env/${process.env.DASHBOARD_ENVIRONMENT}/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`;
 
 module.exports = {
   entry: './src/index',
@@ -75,23 +70,23 @@ module.exports = {
         nav: DashboardPlugin.clientVersion({
           currentHost: 'search',
           remoteName: 'nav',
-          dashboardURL: `${process.env.DASHBOARD_BASE_URL}/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`,
+          dashboardURL
         }),
         dsl: DashboardPlugin.clientVersion({
           currentHost: 'search',
           remoteName: 'dsl',
-          dashboardURL: `${process.env.DASHBOARD_BASE_URL}/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`,
+          dashboardURL
         }),
 
         home: DashboardPlugin.clientVersion({
           currentHost: 'search',
           remoteName: 'home',
-          dashboardURL: `${process.env.DASHBOARD_BASE_URL}/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`,
+          dashboardURL
         }),
         utils: DashboardPlugin.clientVersion({
           currentHost: 'search',
           remoteName: 'utils',
-          dashboardURL: `${process.env.DASHBOARD_BASE_URL}/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`,
+          dashboardURL
         }),
       },
       exposes: {
@@ -106,6 +101,7 @@ module.exports = {
     new DashboardPlugin({
       versionStrategy: `${Date.now()}`,
       filename: 'dashboard.json',
+      environment: 'pusha',
       dashboardURL: `${process.env.DASHBOARD_BASE_URL}/update?token=${process.env.DASHBOARD_WRITE_TOKEN}`,
       metadata: {
         baseUrl: 'http://localhost:3004',
