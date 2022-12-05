@@ -2,7 +2,9 @@ import {Constants} from "../fixtures/constants";
 
 export const baseSelectors = {
     button: 'button',
-    divElement: 'div'
+    divElement: 'div',
+    h1: 'h1',
+    h2: 'h2'
 }
 
 export const selectors = {
