@@ -8,7 +8,7 @@ This project is a mix of `webpack-federation` and `vite-federation`
 
 ## weboack-side
 
-`webpack` as a packaging tool, host using `webpack`, remote uses `vite` project
+[comment]: <> (`webpack` as a packaging tool, host using `webpack`, remote uses `vite` project)
 
 ## how to run
 
