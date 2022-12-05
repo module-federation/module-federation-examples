@@ -20,7 +20,9 @@ export default defineConfig({
     setupNodeEvents(on, config) {
     },
     env: {
-      localhost3001: "http://localhost:3001"
+      localhost3001: "http://localhost:3001",
+      localhost5000: "http://localhost:5000",
+      localhost5001: "http://localhost:5001"
     }
   },
 });
