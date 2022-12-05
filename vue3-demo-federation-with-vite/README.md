@@ -4,7 +4,7 @@ This project is a mix of `webpack-federation` and `vite-federation`
 
 ## vite-side
 
-`vite` as a packaging, host uses `vite`, remote uses `webpack` project
+`vite` as a packaging tool, host uses `vite`, remote uses `webpack` project
 
 ## weboack-side
 
