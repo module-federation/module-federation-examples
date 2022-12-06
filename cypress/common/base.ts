@@ -1,4 +1,3 @@
-
 export class BaseMethods {
 
     public buildTheSample(path: string):void {
@@ -31,7 +30,7 @@ export class BaseMethods {
     public clickElementBySelector(selector: string, isForce: boolean = false): void {
         cy.get(selector).click({force: isForce})
     }
-
+    
     public clickElementWithText({
         selector,
         text,
@@ -52,7 +51,7 @@ export class BaseMethods {
         isVisible = true,
         visibilityState =  'exist',
         notVisibleState = 'not.exist'
-    }: {
+    }: {    
         selector: string,
         text: string,
         isVisible?: boolean,
@@ -63,6 +62,16 @@ export class BaseMethods {
             .get(selector)
             .contains(text)
             .should(isVisible ? visibilityState : notVisibleState);
+    }
+
+    public checkElementContainText(
+        selector: string,
+        text: string,
+        contain: boolean = true
+    ): Cypress.Chainable<JQuery<HTMLElement>> {
+        return cy
+            .get(selector)
+            .should(contain ? 'contain.text' : 'not.contain.text', text);
     }
 
     public checkChildElementVisibility(
@@ -127,4 +136,3 @@ export class BaseMethods {
             .should('have.text', text)
     }
 }
-
