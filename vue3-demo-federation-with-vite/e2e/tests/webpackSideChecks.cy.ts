@@ -8,7 +8,6 @@ const methodsPage: Vue3DemoFederationWithViteMethods = new Vue3DemoFederationWit
 
 describe("It checks webpack side app", () => {
     before(() => {
-        basePage.buildTheSample(Constants.samplesPath.vue3DemoFederationWithVite)
         basePage.openLocalhost(5001)
     })
 

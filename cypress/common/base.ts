@@ -1,9 +1,5 @@
 export class BaseMethods {
 
-    public buildTheSample(path: string): void {
-        cy.exec(`cd ${path} && make build && pwd`, {failOnNonZeroExit: false})
-    }
-
     public openLocalhost(number: number): Cypress.Chainable<Cypress.AUTWindow> {
         return cy.visit(Cypress.env(`localhost${number}`));
     }

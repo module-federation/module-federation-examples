@@ -5,10 +5,6 @@ import { Constants } from "../../../cypress/fixtures/constants";
 const basePage: BaseMethods = new BaseMethods()
 
 describe('It checks buttons with text visibility and position for both apps', function () {
-    before(() => {
-        basePage.buildTheSample(Constants.samplesPath.vue3DemoFederationWithVite)
-    })
-
     let appsData = [
         {
             parentSelector: selectors.vueAppButtonsBlock,
