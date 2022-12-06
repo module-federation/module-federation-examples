@@ -11,6 +11,7 @@ export const baseSelectors = {
     image: 'img',
     navigation: 'nav',
     linkTag: 'a',
+    root: '#root',
 }
 
 export const selectors = {

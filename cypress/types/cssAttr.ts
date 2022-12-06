@@ -1,3 +1,4 @@
 export const enum CssAttr {
-    backgroundColor = 'background-color'
+    backgroundColor = 'background-color',
+    background = 'background'
 }
