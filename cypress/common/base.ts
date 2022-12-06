@@ -13,15 +13,44 @@ export class BaseMethods {
         return cy.visit(Cypress.env(`localhost${number}`));
     }
 
+    public checkElementExist({
+        selector,
+        isVisible = true,
+        notVisibleState = 'not.exist',
+        visibleState = 'be.visible',
+    }: {
+        selector: string,
+        isVisible?: boolean,
+        notVisibleState?: string,
+        visibleState?: string,
+    }): Cypress.Chainable<JQuery<HTMLElement>> {
+        return cy.get(selector)
+        .should(isVisible ? visibleState : notVisibleState);
+    }
+
     public clickElementBySelector(selector: string, isForce: boolean = false): void {
         cy.get(selector).click({force: isForce})
+    }
+
+    public clickElementWithText({
+        selector,
+        text,
+        isForce = false
+    }: {
+        selector: string,
+        text: string,
+        isForce?: boolean
+    }): void {
+        cy.get(selector)
+            .contains(text)
+            .click({force: isForce})
     }
 
     public checkElementWithTextPresence({
         selector,
         text,
         isVisible = true,
-        visibilityState = 'exist',
+        visibilityState =  'exist',
         notVisibleState = 'not.exist'
     }: {
         selector: string,
@@ -59,6 +88,21 @@ export class BaseMethods {
             .find(childSelector)
             .eq(index)
             .should(isContain ? 'contain.text' : 'not.contain.text', text);
+    }
+
+    public checkElementHaveCssProperty({
+        selector,
+        cssProp,
+        cssPropValue
+    }: {
+        selector: string,
+        cssProp: string,
+        cssPropValue: string
+    }
+    ): void {
+        cy.get(selector)
+            .invoke('css', cssProp)
+            .should('include', cssPropValue)
     }
 
     public checkElementWithTextHaveCssProperty(

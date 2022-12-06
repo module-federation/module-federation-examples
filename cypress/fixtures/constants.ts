@@ -14,12 +14,30 @@ export class Constants {
         webpackContent: 'Webpack Content',
         automaticVendorContent: 'Bi-Directional',
         automaticVendorFirstAppName: 'App 1',
-        automaticVendorSecondAppName: 'App 2'
+        automaticVendorSecondAppName: 'App 2',
+        dynamicRemotesHeader: 'Dynamic System Host',
+        dynamicRemotesFirstAppName: 'App 1',
+        dynamicRemotesSecondAppName: 'App 2',
+        dynamicRemotesThirdAppName: 'App 3',
+        dynamicRemotesButtonsText: [
+            'Load App 2 Widget',
+            'Load App 3 Widget',
+        ],
+        dynamicRemotesWidgetName: [
+            'App 2 Widget',
+            'App 3 Widget'
+        ]
     }
 
     public static readonly commonPhrases = {
+        button: 'Button',
+        paragraphText: 'The Dynamic System will take advantage Module Federation remotes and exposes. It will no load components that have been loaded already.',
         viteGreeting: 'im from Vite',
         webpackGreeting: 'im from Webpack',
+        dynamicRemotesWidgetParagraphText: [
+            'Moment shouldn\'t download twice, the host has no moment.js',
+            'Using momentjs for format the date'
+        ]
     }
 
     public static readonly commonText = {
@@ -29,6 +47,10 @@ export class Constants {
 
     public static readonly color = {
         red: 'rgb(136, 0, 0)',
-        blue: 'rgb(0, 0, 204)'
+        blue: 'rgb(0, 0, 204)',
+        dynamicRemotesWidgetColor: [
+            'rgb(255, 0, 0)',
+            'rgb(128, 0, 128)'
+        ]
     }
 }

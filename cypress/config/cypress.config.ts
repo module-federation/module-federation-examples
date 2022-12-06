@@ -28,6 +28,7 @@ export default defineConfig({
     env: {
       localhost3001: "http://localhost:3001",
       localhost3002: "http://localhost:3002",
+      localhost3003: "http://localhost:3003",
       localhost5000: "http://localhost:5000",
       localhost5001: "http://localhost:5001"
     },
