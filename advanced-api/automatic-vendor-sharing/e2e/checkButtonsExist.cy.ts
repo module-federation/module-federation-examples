@@ -1,5 +1,5 @@
 import { BaseMethods } from '../../../cypress/common/base';
-import { Base } from '../../../cypress/common/selectors';
+import { baseSelectors } from '../../../cypress/common/selectors';
 
 const basePage: BaseMethods = new BaseMethods()
 
@@ -9,7 +9,7 @@ describe("Check button exist", () => {
     })
 
     it('Check buttons exist', () => {
-        basePage.checkElementExistWithText(Base.button, 'App 1 Button')
-        basePage.checkElementExistWithText(Base.button, 'App 2 Button')
+        basePage.checkElementWithTextPresence(baseSelectors.button, 'App 1 Button')
+        basePage.checkElementWithTextPresence(baseSelectors.button, 'App 2 Button')
     })
 })
