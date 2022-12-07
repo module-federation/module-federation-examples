@@ -7,7 +7,7 @@ const basePage: BaseMethods = new BaseMethods()
 const methodsPage: Vue3DemoFederationWithViteMethods = new Vue3DemoFederationWithViteMethods()
 
 describe("It checks vite side app", () => {
-    before(() => {
+    beforeEach(() => {
         basePage.openLocalhost(5000)
     })
 

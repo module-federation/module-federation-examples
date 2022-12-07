@@ -26,10 +26,16 @@ describe('It checks buttons with text visibility and position for both apps', fu
 
         it('Checks buttons with text visibility', () => {
             basePage.openLocalhost(property.host)
-            basePage.checkElementWithTextPresence(property.selector, property.text,
-                true, 'be.visible')
-            basePage.checkElementWithTextPresence(secondButtonSelector, secondButtonText,
-                true, 'be.visible')
+            basePage.checkElementWithTextPresence({
+                selector: property.selector,
+                text: property.text,
+                visibilityState: 'be.visible'
+            })
+            basePage.checkElementWithTextPresence({
+                selector: secondButtonSelector,
+                text: secondButtonText,
+                visibilityState: 'be.visible'
+            })
         })
 
         it('Checks that both buttons are in the same block', () => {
