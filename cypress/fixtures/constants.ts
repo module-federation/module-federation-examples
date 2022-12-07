@@ -2,7 +2,8 @@ export class Constants {
     public static readonly samplesPath = {
         AdvancedApiAutomaticVendorSharing: 'advanced-api/automatic-vendor-sharing/',
         vue3DemoFederationWithVite: 'vue3-demo-federation-with-vite/',
-        i18nextNextjsReact: 'i18next-nextjs-react'
+        i18nextNextjsReact: 'i18next-nextjs-react',
+        vue3CliDemo: 'vue3-cli-demo/',
     }
 
     public static readonly vueAppButtonTypes = {
@@ -34,15 +35,26 @@ export class Constants {
         ]
     }
 
+    public static readonly tabsNames = {
+        aboutTab: 'About',
+        homeTab: 'Home',
+    }
+
     public static readonly commonPhrases = {
-        button: 'Button',
-        paragraphText: 'The Dynamic System will take advantage Module Federation remotes and exposes. It will no load components that have been loaded already.',
         viteGreeting: 'im from Vite',
         webpackGreeting: 'im from Webpack',
+        button: 'Button',
+        paragraphText: 'The Dynamic System will take advantage Module Federation remotes and exposes. It will no load components that have been loaded already.',
         dynamicRemotesWidgetParagraphText: [
             'Moment shouldn\'t download twice, the host has no moment.js',
             'Using momentjs for format the date'
-        ]
+        ],
+        vueCliAppWelcomeMessage: 'Welcome to Your Vue.js + TypeScript App',
+        vueCliAppConfigurationMessage: 'For a guide and recipes on how to configure / customize this project, check out the vue-cli documentation.',
+        vueCliAppInstalledCliPluginsMessage: 'Installed CLI Plugins',
+        vueCliAppEssentialLinksMessage: 'Essential Links',
+        vueCliAppEcosystemLinksMessage: 'Ecosystem',
+        vueCliAppAboutTabMessage: 'This is an about page'
     }
 
     public static readonly commonText = {
@@ -79,5 +91,43 @@ export class Constants {
         nextHostButtonFr: 'changer la langue depuis from Next Host',
         nextHostTextFr: 'Ceci est le texte principal de Next Host',
         nextHostTitleFr: 'Voici mon micro frontend remote child :',
+    }
+
+    public static readonly hrefs = {
+        vueCliAppDocumentationLink: 'https://cli.vuejs.org',
+        vueCliAppBabelLink: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel',
+        vueCliAppRouterLink: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router',
+        vueCliAppVuexLink: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-vuex',
+        vueCliAppEsLintLink: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint',
+        vueCliAppTypeScriptLink: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript',
+        vueCliAppCoreDocsLink: 'https://vuejs.org',
+        vueCliAppForumLink: 'https://forum.vuejs.org',
+        vueCliAppCommunityChatLink: 'https://chat.vuejs.org',
+        vueCliAppTwitterLink: 'https://twitter.com/vuejs',
+        vueCliAppNewsLink: 'https://news.vuejs.org',
+        vueCliAppVueRouterLink: 'https://router.vuejs.org',
+        vueCliAppEcosystemVuexLink: 'https://vuex.vuejs.org',
+        vueCliAppVueDevToolsLink: 'https://github.com/vuejs/vue-devtools#vue-devtools',
+        vueCliAppVueLoaderLink: 'https://vue-loader.vuejs.org',
+        vueCliAppAwesomeVueLink: 'https://github.com/vuejs/awesome-vue',
+        vueCliAppAboutTabLink: '#/about',
+        vueCliAppHomeTabLink: '#/',
+    }
+    public static readonly linksNames = {
+        vueCliAppDocumentationLinkName: 'vue-cli documentation',
+        vueCliAppBabelLinkName: 'babel',
+        vueCliAppRouterLinkName: 'router',
+        vueCliAppVuexLinkName: 'vuex',
+        vueCliAppEsLintLinkName: 'eslint',
+        vueCliAppTypeScriptLinkName: 'typescript',
+        vueCliAppCoreDocsLinkName: 'Core Docs',
+        vueCliAppForumLinkName: 'Forum',
+        vueCliAppCommunityChatLinkName: 'Community Chat',
+        vueCliAppTwitterLinkName: 'Twitter',
+        vueCliAppNewsLinkName: 'News',
+        vueCliAppVueRouterLinkName: 'vue-router',
+        vueCliAppVueDevtoolsLinkName: 'vue-devtools',
+        vueCliAppVueLoaderLinkName: 'vue-loader',
+        vueCliAppAwesomeVueLinkName: 'awesome-vue',
     }
 }
