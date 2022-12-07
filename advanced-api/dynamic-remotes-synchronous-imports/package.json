@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "lerna run --scope @dynamic-remotes-synchronous-imports/* --parallel start",
+    "build": "lerna run --scope @dynamic-remotes-synchronous-imports/* build",
+    "serve": "lerna run --scope @dynamic-remotes-synchronous-imports/* --parallel serve",
+    "clean": "lerna run --scope @dynamic-remotes-synchronous-imports/* --parallel clean"
+  },
+  "devDependencies": {
+    "lerna": "3.22.1"
+  }
+}

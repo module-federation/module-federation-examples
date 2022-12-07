@@ -26,6 +26,10 @@ export class Constants {
         dynamicRemotesWidgetName: [
             'App 2 Widget',
             'App 3 Widget'
+        ],
+        dynamicRemotesSynchronousImportWidgetName: [
+            'App 1 Widget',
+            'App 2 Widget'
         ]
     }
 
@@ -42,7 +46,8 @@ export class Constants {
 
     public static readonly commonText = {
         button: 'Button',
-        background: 'background'
+        background: 'background',
+        widget: 'Widget'
     }
 
     public static readonly color = {
