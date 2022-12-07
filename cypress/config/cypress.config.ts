@@ -26,6 +26,7 @@ export default defineConfig({
       runMode: 1,
     },
     env: {
+      localhost3000: "http://localhost:3000",
       localhost3001: "http://localhost:3001",
       localhost3002: "http://localhost:3002",
       localhost3003: "http://localhost:3003",

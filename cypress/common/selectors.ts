@@ -5,7 +5,9 @@ export const baseSelectors = {
     divElement: 'div',
     h1: 'h1',
     h2: 'h2',
-    paragraph: 'p'
+    paragraph: 'p',
+    section: 'section',
+    appId: '#app'
 }
 
 export const selectors = {

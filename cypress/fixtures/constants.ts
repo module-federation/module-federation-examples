@@ -1,7 +1,8 @@
 export class Constants {
     public static readonly samplesPath = {
         AdvancedApiAutomaticVendorSharing: 'advanced-api/automatic-vendor-sharing/',
-        vue3DemoFederationWithVite: 'vue3-demo-federation-with-vite/'
+        vue3DemoFederationWithVite: 'vue3-demo-federation-with-vite/',
+        i18nextNextjsReact: 'i18next-nextjs-react'
     }
 
     public static readonly vueAppButtonTypes = {
@@ -57,5 +58,26 @@ export class Constants {
             'rgb(255, 0, 0)',
             'rgb(128, 0, 128)'
         ]
+    }
+
+    public static readonly translation = {
+        reactRemoteTitleEn: 'React Remote : Title',
+        reactRemoteButtonEn: 'React Remote : change language',
+        reactRemoteTextEn: 'React Remote : I\'m the remote child !',
+        reactRemoteTitleFr: 'React Remote : Titre',
+        reactRemoteButtonFr: 'React Remote : changer la langue',
+        reactRemoteTextFr: 'React Remote : Je suis le remote child',
+        reactHostButtonEn: 'React Host : change language',
+        reactHostTextEn: 'React Host : This is the main text',
+        reactHostTitleEn: 'React Host : Here\'s my micro frontend remote child :',
+        reactHostButtonFr: 'React Host : changer la langue',
+        reactHostTextFr: 'React Host : Ceci est le texte principal',
+        reactHostTitleFr: 'React Host : Voici mon micro frontend remote child :',
+        nextHostButtonEn: 'change language from Next Host',
+        nextHostTextEn: 'This is the main text of Next Host',
+        nextHostTitleEn: 'Here\'s my micro frontend remote child :',
+        nextHostButtonFr: 'changer la langue depuis from Next Host',
+        nextHostTextFr: 'Ceci est le texte principal de Next Host',
+        nextHostTitleFr: 'Voici mon micro frontend remote child :',
     }
 }
