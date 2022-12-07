@@ -13,6 +13,7 @@ export default function Widget() {
         backgroundColor: 'purple',
         color: 'white',
       }}
+      data-e2e="APP_3__WIDGET"
     >
       <h2>App 3 Widget</h2>
       <p>
