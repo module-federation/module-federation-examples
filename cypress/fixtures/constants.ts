@@ -6,6 +6,7 @@ export class Constants {
         vue3CliDemo: 'vue3-cli-demo/',
         nested: 'nested',
     }
+
     public static readonly vueAppButtonTypes = {
         viteType: 'vite',
         webpackType: 'webpack'
@@ -35,7 +36,8 @@ export class Constants {
         ],
         nestedApp3Button: 'App 3 Button',
         nestedApp2Container: 'App 2 Container',
-        nesterApp1Text: 'app 1 body'
+        nesterApp1Text: 'app 1 body',
+        vue2AppButtonText: 'vue2 button click',
     }
 
     public static readonly tabsNames = {
@@ -57,7 +59,12 @@ export class Constants {
         vueCliAppInstalledCliPluginsMessage: 'Installed CLI Plugins',
         vueCliAppEssentialLinksMessage: 'Essential Links',
         vueCliAppEcosystemLinksMessage: 'Ecosystem',
-        vueCliAppAboutTabMessage: 'This is an about page'
+        vueCliAppAboutTabMessage: 'This is an about page',
+        vue2AppName: 'Vue2 App',
+        vue3AppName: 'Vue3 App',
+        vueAppsDefaultCounterText: 'count: 0',
+        vue2AppComponentState: 'Component in Action..',
+        vue3AppComponentState: 'Remote Component in Action..',
     }
 
     public static readonly commonText = {
@@ -73,6 +80,7 @@ export class Constants {
             'rgb(255, 0, 0)',
             'rgb(128, 0, 128)'
         ],
+        nonRgbRed: 'color: red;',
         aquamarine: 'rgb(127, 255, 212)',
         chineseSilver: 'rgb(204, 204, 204)'
     }

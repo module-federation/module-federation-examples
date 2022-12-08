@@ -22,6 +22,7 @@ export default defineConfig({
     pageLoadTimeout: 61000,
     taskTimeout: 61000,
     watchForFileChanges: false,
+    experimentalSessionAndOrigin: true,
     retries: {
       runMode: 1,
     },

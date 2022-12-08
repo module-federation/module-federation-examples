@@ -12,6 +12,7 @@ export const baseSelectors = {
     navigation: 'nav',
     linkTag: 'a',
     root: '#root',
+    style: '[style="{style}"]'
 }
 
 export const selectors = {
