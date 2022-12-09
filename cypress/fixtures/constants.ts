@@ -9,6 +9,7 @@ export class Constants {
         typeScriptMonoRepoPackageJsonPath: 'typescript-monorepo/package.json',
         selfHealingApp1WebpackConfigPath: 'self-healing/app1/webpack.config.js',
         selfHealingApp2WebpackConfigPath: 'self-healing/app2/webpack.config.js',
+        nextjsSsr: 'nextjs-ssr',
     }
 
     public static readonly vueAppButtonTypes = {
@@ -57,7 +58,27 @@ export class Constants {
         mdmfTableRowEmail: { name: 'Email', index: 1},
         mdmfTableRowAction: { name: 'Action', index: 2},
         typescriptProjectReferencesAppsButtonText: 'App 2 Button',
-        selfHealingAppButtonText: '💅 Button'
+        selfHealingAppButtonText: '💅 Button',
+        nextjsSsrHome: 'Home',
+        nextjsSsrShop: 'Shop',
+        nextjsSsrCheckout: 'Checkout',
+        nextjsSsrZeitText: 'ZEIT',
+        nextjsSsrGiHubText: 'GitHub',
+        nextjsSsrCheckoutPage: 'checkout page',
+        nextjsSsrWelcomeText: 'Hello World',
+        nextjsSsrMainWelcome: 'Welcome to Next.js on Webpack 5! ',
+        nextjsSsrMainCheckoutText: 'This is a federated page owned by localhost:3000',
+        nextjsSsrText1: 'Data from federated ',
+        nextjsSsrText2: 'getInitalProps',
+        nextjsSsrText3: 'This came fom checkout !!!',
+        nextjsSsrText4: 'And it works like a charm v2',
+        nextjsSsrText5: 'To get started, edit pages/index.js and save to reload.',
+        nextjsSsrShopPage: 'Shop Page',
+        nextjsSsrMainShopText: 'This is a federated page owned by localhost:3002',
+        nextjsSsrDocumentationTile: 'Documentation →',
+        nextjsSsrLearnTile: 'Next.js Learn →',
+        nextjsSsrExamplesTile: 'Examples →',
+        nextjsSsrJSON: '{\n  "userId": 1,\n  "id": 1,\n  "title": "delectus aut autem",\n  "completed": false\n}'
     }
 
     public static readonly tabsNames = {
@@ -184,6 +205,19 @@ export class Constants {
         vueCliAppAwesomeVueLink: 'https://github.com/vuejs/awesome-vue',
         vueCliAppAboutTabLink: '#/about',
         vueCliAppHomeTabLink: '#/',
+        nextjsSsrHomeLink: '/',
+        nextjsSsrShopLink: '/shop',
+        nextjsSsrCheckoutLink: '/checkout',
+        nextjsSsrGitHubLink: 'https://github.com/zeit/next.js',
+        nextjsSsrZeitLink: 'https://zeit.co/now',
+        nextjsSsrDocumentationLink: 'https://nextjs.org/docs',
+        nextjsSsrLearnLink: 'https://nextjs.org/learn',
+        nextjsSsrExamplesLink: 'https://github.com/zeit/next.js/tree/master/examples',
+        nextjsSsrGitHubUrl: 'https://github.com/vercel/next.js',
+        nextjsSsrZeitUrl: 'https://vercel.com/home',
+        nextjsSsrDocumentationUrl: 'https://nextjs.org/docs',
+        nextjsSsrLearnUrl: 'https://nextjs.org/learn/foundations/about-nextjs',
+        nextjsSsrExamplesUrl: 'https://github.com/vercel/next.js/tree/deprecated-main/examples',
     }
     public static readonly linksNames = {
         vueCliAppDocumentationLinkName: 'vue-cli documentation',

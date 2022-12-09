@@ -21,6 +21,11 @@ export const baseSelectors = {
     tableDataCell: 'td',
     tableHeader: 'th',
     input: 'input',
+    nextApp: '#__next',
+    listElement: 'li',
+    heroSection: '.hero',
+    preElement: 'pre',
+    cardElement: '.card',
 }
 
 export const selectors = {
@@ -40,7 +45,6 @@ export const updatedSelectors = {
     webpackButtonSelector: selectors.vueAppButton.replace('{appType}', Constants.vueAppButtonTypes.webpackType),
     vueAppCommonButtonSelector: `${baseSelectors.divElement}${selectors.vueAppAllButtonsClass}`,
     commonAppNameSelector: `${baseSelectors.divElement} ${baseSelectors.h2}`,
-    vueAppCommonButtonSelector: `${baseSelectors.divElement}${selectors.vueAppAllButtonsClass}`,
 }
 
 export const widgets = {

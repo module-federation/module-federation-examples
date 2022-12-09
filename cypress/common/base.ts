@@ -10,7 +10,7 @@ export class BaseMethods {
 
     public openLocalhost(number: number, path?: string): Cypress.Chainable<Cypress.AUTWindow> {
         return path ? 
-        cy.visit(Cypress.env(`localhost${number}/${path}`))
+        cy.visit(Cypress.env(`localhost${number}`) + path)
         :
         cy.visit(Cypress.env(`localhost${number}`));
     }
@@ -111,8 +111,16 @@ export class BaseMethods {
     public checkElementContainText(
         selector: string,
         text: string,
+        index: number = 0,
         contain: boolean = true
     ): Cypress.Chainable<JQuery<HTMLElement>> {
+        if (index) {
+        return cy
+            .get(selector)
+            .eq(index)
+            .should(contain ? 'contain.text' : 'not.contain.text', text)
+        } 
+
         return cy
             .get(selector)
             .should(contain ? 'contain.text' : 'not.contain.text', text);
