@@ -10,6 +10,7 @@ export const baseSelectors = {
     paragraph: 'p',
     section: 'section',
     appId: '#app',
+    input: 'input',
     image: 'img',
     linkTag: 'a',
     root: '#root',
