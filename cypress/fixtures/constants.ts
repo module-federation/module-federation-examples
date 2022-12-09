@@ -5,6 +5,7 @@ export class Constants {
         i18nextNextjsReact: 'i18next-nextjs-react',
         vue3CliDemo: 'vue3-cli-demo/',
         nested: 'nested',
+        nextjsReact: 'nextjs-react',
     }
 
     public static readonly vueAppButtonTypes = {
@@ -70,7 +71,9 @@ export class Constants {
     public static readonly commonText = {
         button: 'Button',
         background: 'background',
-        widget: 'Widget'
+        widget: 'Widget',
+        remoteButton: 'Remote Button',
+        nextJSButton: 'Next JS Button',
     }
 
     public static readonly color = {
@@ -82,7 +85,9 @@ export class Constants {
         ],
         nonRgbRed: 'color: red;',
         aquamarine: 'rgb(127, 255, 212)',
-        chineseSilver: 'rgb(204, 204, 204)'
+        chineseSilver: 'rgb(204, 204, 204)',
+        darkMutedBlue: 'rgb(75, 75, 232)',
+        lightSaturatedYellow: 'rgb(255, 198, 0)'
     }
 
     public static readonly translation = {
