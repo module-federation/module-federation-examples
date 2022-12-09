@@ -1,4 +1,5 @@
 {
+  "name": "typescript-monorepo",
   "private": true,
   "scripts": {
     "start": "lerna run --scope @typescript-monorepo/* --parallel start",
@@ -9,6 +10,8 @@
   "devDependencies": {
     "lerna": "3.22.1"
   },
-  "workspaces": ["app1/*", "app2/*"]
-
+  "workspaces": [
+    "app1/*",
+    "app2/*"
+  ]
 }
