@@ -35,6 +35,10 @@ export class Constants {
             'App 1 Widget',
             'App 2 Widget'
         ],
+        basicHostRemoteFirstAppName: 'App 1',
+        basicHostRemoteSecondAppName: 'App 2',
+        basicHostRemoteHeader: 'Basic Host-Remote',
+        basicHostRemoteButton: 'App 2 Button',
         nestedApp3Button: 'App 3 Button',
         nestedApp2Container: 'App 2 Container',
         nesterApp1Text: 'app 1 body',
