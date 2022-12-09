@@ -39,11 +39,23 @@ export class Constants {
         nestedApp2Container: 'App 2 Container',
         nesterApp1Text: 'app 1 body',
         vue2AppButtonText: 'vue2 button click',
+        mdmfShell: { name: 'MDMF SHELL', path: 'home' },
+        mdmfProfile: { name: 'MDMF PROFILE', path: 'profile' },
+        mdmfNavigationItemLogo: { link: 'http://mellondev.net', targetBlank: '_blank', index: 1 },
+        mdfmShellHeader: 'Microfrontend Shell',
+        mdfmProfileHeader: 'Profile (Microfrontend)',
+        mdmfSharedHeader: 'Component from shared module',
+        mdmfAppTableHeader: 'List users from the shared application state',
+        mdmfTableRowName: { name: 'Name', index: 0 },
+        mdmfTableRowEmail: { name: 'Email', index: 1},
+        mdmfTableRowAction: { name: 'Action', index: 2}
     }
 
     public static readonly tabsNames = {
         aboutTab: 'About',
         homeTab: 'Home',
+        mdmfNavigationItemHome: { name: 'Home', index: 1 },
+        mdmfNavigationItemProfile: { name: 'Profile', index: 2 },
     }
 
     public static readonly commonPhrases = {
@@ -61,19 +73,32 @@ export class Constants {
         vueCliAppEssentialLinksMessage: 'Essential Links',
         vueCliAppEcosystemLinksMessage: 'Ecosystem',
         vueCliAppAboutTabMessage: 'This is an about page',
+        mdmfShellWelcome: 'Welcome to the Angular 11 Microfrontend demo using Webpack 5 Module Federation',
+        mdmfShellParagraph: 'This component is part of the shell application, the Profile component that is linked from the `Profile` link at the top is a Microfrontend that is remotely loaded into the application. Check the network settings to see the remote being loaded.',
+        mdmfProfileParagraph: 'This profile component is being remotely loaded into the application using Module Federation, angular is shared so the download is minimal for the frontend',
+        mdmfSharedParagraph: 'mdmf-shared works!',
+        name: { text: 'Test Name', index: 0 },
+        email: { text: 'test@test.com', index: 1 },
+        secondName: { text: 'Test Name Second', index: 3 },
+        secondEmail: { text: 'testSecond@test.com', index: 4 },
+        nameIsRequired: 'Name is required.',
+        emailIsRequired: 'Email is required.',
         vue2AppName: 'Vue2 App',
         vue3AppName: 'Vue3 App',
         vueAppsDefaultCounterText: 'count: 0',
         vue2AppComponentState: 'Component in Action..',
-        vue3AppComponentState: 'Remote Component in Action..',
+        vue3AppComponentState: 'Remote Component in Action..'
     }
 
     public static readonly commonText = {
         button: 'Button',
         background: 'background',
         widget: 'Widget',
+        attr: 'attr',
+        href: 'href',
+        target: 'target',
         remoteButton: 'Remote Button',
-        nextJSButton: 'Next JS Button',
+        nextJSButton: 'Next JS Button'
     }
 
     public static readonly color = {

@@ -86,12 +86,12 @@ appsData.forEach(
                             selector: baseSelectors.paragraph,
                             text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm:ss a')
                         })
-                        basePage.checkElementHaveCssProperty({
+                        basePage.checkElementHaveProperty({
                             selector:widgets.dynamicRemotesWidget.replace(
                                 '{appQuantity}',
                                 (property.widgetName.indexOf(widget) + 1).toString()),
-                            cssProp: CssAttr.backgroundColor,
-                            cssPropValue: property.widgetColor[property.widgetName.indexOf(widget)]
+                            prop: CssAttr.backgroundColor,
+                            value: property.widgetColor[property.widgetName.indexOf(widget)]
                         })
                     })
                 } else {
@@ -112,12 +112,12 @@ appsData.forEach(
                         selector: baseSelectors.paragraph,
                         text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm:ss a')
                     })
-                    basePage.checkElementHaveCssProperty({
+                    basePage.checkElementHaveProperty({
                         selector:widgets.dynamicRemotesWidget.replace(
                             '{appQuantity}',
                             (widgetIndexNumber).toString()),
-                        cssProp: CssAttr.backgroundColor,
-                        cssPropValue: property.widgetColor[1]
+                        prop: CssAttr.backgroundColor,
+                        value: property.widgetColor[1]
                     })
                 }
             })

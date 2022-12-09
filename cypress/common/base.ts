@@ -8,8 +8,11 @@ export class BaseMethods {
         cy.exec(`cd ${path} && make shutdown`)
     }
 
-    public openLocalhost(number: number): Cypress.Chainable<Cypress.AUTWindow> {
-        return cy.visit(Cypress.env(`localhost${number}`));
+    public openLocalhost(number: number, path?: string): Cypress.Chainable<Cypress.AUTWindow> {
+        return path ? 
+        cy.visit(Cypress.env(`localhost${number}`) + `/${path}`)
+        :
+        cy.visit(Cypress.env(`localhost${number}`));
     }
 
     public checkUrlText(url: string, isInclude: boolean = false): void {
@@ -35,8 +38,20 @@ export class BaseMethods {
         .should(isVisible ? visibleState : notVisibleState);
     }
 
-    public clickElementBySelector(selector: string, isForce: boolean = false): void {
-        cy.get(selector).click({force: isForce})
+    public clickElementBySelector({
+        selector,
+        index = 0,
+        isForce = false
+    }: {
+        selector: string,
+        index?: number,
+        isForce?: boolean
+    }): Cypress.Chainable<JQuery<HTMLElement>>{
+        if (index) {
+            return cy.get(selector).eq(index).click({force: isForce})
+        }
+
+        return cy.get(selector).click({force: isForce})
     }
 
     public clickElementWithText({
@@ -116,31 +131,40 @@ export class BaseMethods {
             .should(isContain ? 'contain.text' : 'not.contain.text', text);
     }
 
-    public checkElementHaveCssProperty({
+    public checkElementHaveProperty({
         selector,
-        cssProp,
-        cssPropValue
+        attr = 'css',
+        prop,
+        value
     }: {
         selector: string,
-        cssProp: string,
-        cssPropValue: string
+        attr?: string,
+        prop: string,
+        value: string
     }
     ): void {
         cy.get(selector)
-            .invoke('css', cssProp)
-            .should('include', cssPropValue)
+            .invoke(attr, prop)
+            .should('include', value)
     }
 
-    public checkElementWithTextHaveCssProperty(
+    public checkElementWithTextHaveProperty({
+        selector,
+        text,
+        attr = 'css',
+        prop,
+        value
+    }: {
         selector: string,
         text: string,
-        cssProp: string,
-        cssPropValue: string
-    ): void {
+        attr?: string,
+        prop: string,
+        value: string
+    }): void {
         cy.get(selector)
             .contains(text)
-            .invoke('css', cssProp)
-            .should('include', cssPropValue)
+            .invoke(attr, prop)
+            .should('include', value)
     }
 
     public checkElementPositionbyText(
@@ -151,5 +175,39 @@ export class BaseMethods {
         cy.get(selector)
             .its(position)
             .should('have.text', text)
+    }
+
+    public checkElementQuantity({
+        selector,
+        quantity
+    }: {
+        selector: string,
+        quantity: number
+    }): void {
+        cy.get(selector)
+            .should('have.length', quantity)
+    }
+
+    public checkElementState({
+        selector,
+        state = 'be.disabled'
+    }: {
+        selector: string,
+        state?: string
+    }): void {
+        cy.get(selector)
+            .should(state)
+    }
+
+    public fillField({
+        selector,
+        text
+    }: {
+        selector: string,
+        text: string
+    }): void {
+        cy.get(selector)
+            .type('{selectall}{backspace}{backspace}')
+            .fill(text);
     }
 }

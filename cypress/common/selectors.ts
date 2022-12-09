@@ -9,10 +9,16 @@ export const baseSelectors = {
     section: 'section',
     appId: '#app',
     image: 'img',
-    navigation: 'nav',
     linkTag: 'a',
     root: '#root',
-    style: '[style="{style}"]'
+    style: '[style="{style}"]',
+    navigation: 'nav',
+    navigationItem: '.nav-item',
+    table: 'table',
+    tableRow: 'tr',
+    tableDataCell: 'td',
+    tableHeader: 'th',
+    input: 'input',
 }
 
 export const selectors = {
@@ -35,5 +41,24 @@ export const updatedSelectors = {
 
 export const widgets = {
     dynamicRemotesWidget: '[data-e2e="APP_{appQuantity}__WIDGET"]',
+}
+
+export const blocks = {
+    cardBody: '.card-body',
+    formGroup: '.form-group'
+}
+
+export const fields = {
+    nameField: '[data-e2e="FORM__FILED_NAME"]',
+    emailField: '[data-e2e="FORM__FILED_EMAIL"]'
+}
+
+export const buttons = {
+    buttonPrimary: '.btn-primary',
+    buttonDanger: '.btn-danger'
+}
+
+export const alertMessages = {
+    angularAlertMessage: '.alert-danger'
 }
 
