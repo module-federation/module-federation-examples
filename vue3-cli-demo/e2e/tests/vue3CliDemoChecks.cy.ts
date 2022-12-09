@@ -6,8 +6,8 @@ import {Vue3CliDemoMethods} from "../methods/methods";
 const basePage: BaseMethods = new BaseMethods()
 const methodsPage: Vue3CliDemoMethods = new Vue3CliDemoMethods()
 
-describe('It checks certain texted button contains link and not disabled', function () {
-    let textedLinks = [
+describe('It checks certain texted button contains link and not disabled', () => {
+    const textedLinks = [
         {
             text: Constants.linksNames.vueCliAppDocumentationLinkName,
             link: Constants.hrefs.vueCliAppDocumentationLink,
@@ -74,7 +74,7 @@ describe('It checks certain texted button contains link and not disabled', funct
         },
     ]
 
-    textedLinks.forEach(function (property: { text: string, link: string }) {
+    textedLinks.forEach((property: { text: string, link: string }) => {
         it(`Check that ${property.text} text includes link and not disabled`, () => {
             basePage.openLocalhost(8081)
             methodsPage.checkElementWithTextIncludesLink(updatedSelectors.vueCliAppLinkContainer, property.text, property.link)
@@ -82,8 +82,8 @@ describe('It checks certain texted button contains link and not disabled', funct
     });
 });
 
-describe('It checks messages on page visibility', function () {
-    let messages = [
+describe('It checks messages on page visibility', () => {
+    const messages = [
         {
             message: Constants.commonPhrases.vueCliAppWelcomeMessage
         },
@@ -101,7 +101,7 @@ describe('It checks messages on page visibility', function () {
         },
     ]
 
-    messages.forEach(function (property: { message: string }) {
+    messages.forEach((property: { message: string }) => {
         it(`Check that ${property.message} text is visible`, () => {
             basePage.openLocalhost(8081)
             basePage.checkElementWithTextPresence({
@@ -128,7 +128,7 @@ describe("Checks tabs and logo", () => {
                 text: Constants.tabsNames.aboutTab,
                isVisible: false
         })
-        basePage.checkUrlText(Constants.tabsNames.aboutTab.toLowerCase(), false)
+        basePage.checkUrlText(Constants.tabsNames.aboutTab.toLowerCase())
     })
 
     it('Checks that host link is contain `about` if `about` tab is active', () => {
@@ -137,8 +137,10 @@ describe("Checks tabs and logo", () => {
             text: Constants.tabsNames.aboutTab,
             isVisible: false
         })
-        basePage.checkUrlText(Constants.tabsNames.aboutTab.toLowerCase(), false)
-        basePage.clickElementBySelector(selectors.hrefSelector.replace('{link}', Constants.hrefs.vueCliAppAboutTabLink))
+        basePage.checkUrlText(Constants.tabsNames.aboutTab.toLowerCase())
+        basePage.clickElementBySelector({
+           selector: selectors.hrefSelector.replace('{link}', Constants.hrefs.vueCliAppAboutTabLink)
+        })
         basePage.checkElementWithTextPresence(  {
             selector: updatedSelectors.navigationActiveStateTab,
             text: Constants.tabsNames.aboutTab,
@@ -147,7 +149,9 @@ describe("Checks tabs and logo", () => {
     })
 
     it('Checks text on active about tab', () => {
-        basePage.clickElementBySelector(selectors.hrefSelector.replace('{link}', Constants.hrefs.vueCliAppAboutTabLink))
+        basePage.clickElementBySelector({
+            selector: selectors.hrefSelector.replace('{link}', Constants.hrefs.vueCliAppAboutTabLink)
+        })
         basePage.checkElementWithTextPresence(  {
             selector: updatedSelectors.navigationActiveStateTab,
             text: Constants.tabsNames.aboutTab,
@@ -160,14 +164,24 @@ describe("Checks tabs and logo", () => {
     })
 
     it('Checks that both tabs are not disabled', () => {
-        basePage.checkElementState(selectors.hrefSelector.replace('{link}', Constants.hrefs.vueCliAppAboutTabLink))
-        basePage.clickElementBySelector(selectors.hrefSelector.replace('{link}', Constants.hrefs.vueCliAppAboutTabLink))
+        basePage.checkElementState({
+           selector: selectors.hrefSelector.replace('{link}', Constants.hrefs.vueCliAppAboutTabLink),
+            state: 'not.be.disabled'
+        })
+        basePage.clickElementBySelector({
+           selector:  selectors.hrefSelector.replace('{link}', Constants.hrefs.vueCliAppAboutTabLink)
+        })
         basePage.checkElementWithTextPresence({
             selector: updatedSelectors.navigationActiveStateTab,
             text: Constants.tabsNames.aboutTab,
         })
-        basePage.checkElementState(selectors.hrefSelector.replace('{link}', Constants.hrefs.vueCliAppHomeTabLink))
-        basePage.clickElementBySelector(selectors.hrefSelector.replace('{link}', Constants.hrefs.vueCliAppHomeTabLink))
+        basePage.checkElementState({
+            selector: selectors.hrefSelector.replace('{link}', Constants.hrefs.vueCliAppHomeTabLink),
+            state: 'not.be.disabled'
+        })
+        basePage.clickElementBySelector({
+            selector: selectors.hrefSelector.replace('{link}', Constants.hrefs.vueCliAppHomeTabLink)
+        })
         basePage.checkElementWithTextPresence({
             selector: updatedSelectors.navigationActiveStateTab,
             text: Constants.tabsNames.homeTab,

@@ -91,7 +91,16 @@ export class Constants {
         vue3AppName: 'Vue3 App',
         vueAppsDefaultCounterText: 'count: 0',
         vue2AppComponentState: 'Component in Action..',
-        vue3AppComponentState: 'Remote Component in Action..'
+        vue3AppComponentState: 'Remote Component in Action..',
+        versionDiscrepancyApp1Name: 'App 1 Host',
+        versionDiscrepancyApp2Name: 'App 2: Remote',
+        versionDiscrepancyApp1LodashVersion: 'Lodash v4.10.0',
+        versionDiscrepancyApp2LodashVersion: 'Lodash v4.17.21',
+        lodashVersionNotAvailableMessage: '(lodash.nth not available until lodash@4.11)',
+        lodashVersionUndefinedVersionMessage: 'typeof lodash.nth// => undefined',
+        lodashVersionDefinedVersionMessage: 'typeof lodash.nth// => function',
+        ntxCode: 'nth([\'a\', \'b\'], -1)// => "b"',
+        lodashRemoteComponentHeader: 'Remote Component',
     }
 
     public static readonly commonText = {
@@ -116,7 +125,8 @@ export class Constants {
         aquamarine: 'rgb(127, 255, 212)',
         chineseSilver: 'rgb(204, 204, 204)',
         darkMutedBlue: 'rgb(75, 75, 232)',
-        lightSaturatedYellow: 'rgb(255, 198, 0)'
+        lightSaturatedYellow: 'rgb(255, 198, 0)',
+        nonRgbBorderBlack: 'border: 1px solid black; padding: 12px;'
     }
 
     public static readonly translation = {
