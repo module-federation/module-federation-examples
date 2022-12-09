@@ -31,7 +31,8 @@ export default defineConfig({
       localhost3002: "http://localhost:3002",
       localhost3003: "http://localhost:3003",
       localhost5000: "http://localhost:5000",
-      localhost5001: "http://localhost:5001"
+      localhost5001: "http://localhost:5001",
+      localhost8081: "http://localhost:8081"
     },
     setupNodeEvents
   },

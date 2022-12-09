@@ -12,6 +12,14 @@ export class BaseMethods {
         return cy.visit(Cypress.env(`localhost${number}`));
     }
 
+    public checkUrlText(url: string, isInclude: boolean = false): void {
+        cy.url().should(isInclude? 'include' : 'not.include', `${url}`);
+    }
+
+    public checkElementState(selector: string, isDisabled: boolean = false): void {
+        cy.get(selector).should(isDisabled? 'be.disabled' : 'not.be.disabled')
+    }
+
     public checkElementExist({
         selector,
         isVisible = true,
@@ -30,7 +38,7 @@ export class BaseMethods {
     public clickElementBySelector(selector: string, isForce: boolean = false): void {
         cy.get(selector).click({force: isForce})
     }
-    
+
     public clickElementWithText({
         selector,
         text,
@@ -51,7 +59,7 @@ export class BaseMethods {
         isVisible = true,
         visibilityState =  'exist',
         notVisibleState = 'not.exist'
-    }: {    
+    }: {
         selector: string,
         text: string,
         isVisible?: boolean,
@@ -72,6 +80,15 @@ export class BaseMethods {
         return cy
             .get(selector)
             .should(contain ? 'contain.text' : 'not.contain.text', text);
+    }
+
+    public checkElementVisibility(
+        selector: string,
+        isVisible: boolean = true
+    ): Cypress.Chainable<JQuery<HTMLElement>> {
+        return cy
+            .get(selector)
+            .should(isVisible ? 'be.visible' : 'not.be.visible');
     }
 
     public checkChildElementVisibility(
