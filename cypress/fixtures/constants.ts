@@ -4,8 +4,8 @@ export class Constants {
         vue3DemoFederationWithVite: 'vue3-demo-federation-with-vite/',
         i18nextNextjsReact: 'i18next-nextjs-react',
         vue3CliDemo: 'vue3-cli-demo/',
+        nested: 'nested',
     }
-
     public static readonly vueAppButtonTypes = {
         viteType: 'vite',
         webpackType: 'webpack'
@@ -32,7 +32,10 @@ export class Constants {
         dynamicRemotesSynchronousImportWidgetName: [
             'App 1 Widget',
             'App 2 Widget'
-        ]
+        ],
+        nestedApp3Button: 'App 3 Button',
+        nestedApp2Container: 'App 2 Container',
+        nesterApp1Text: 'app 1 body'
     }
 
     public static readonly tabsNames = {
@@ -69,7 +72,9 @@ export class Constants {
         dynamicRemotesWidgetColor: [
             'rgb(255, 0, 0)',
             'rgb(128, 0, 128)'
-        ]
+        ],
+        aquamarine: 'rgb(127, 255, 212)',
+        chineseSilver: 'rgb(204, 204, 204)'
     }
 
     public static readonly translation = {
