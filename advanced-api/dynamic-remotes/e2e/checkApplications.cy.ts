@@ -124,12 +124,12 @@ appsData.forEach(
                                 '{appQuantity}',
                                 (Constants.elementsText.dynamicRemotesButtonsText.indexOf(button) + 2).toString())
                         })
-                        basePage.checkElementHaveCssProperty({
+                        basePage.checkElementHaveProperty({
                             selector: widgets.dynamicRemotesWidget.replace(
                                 '{appQuantity}',
                                 (Constants.elementsText.dynamicRemotesButtonsText.indexOf(button) + 2).toString()),
-                            cssProp: CssAttr.backgroundColor,
-                            cssPropValue: property.widgetColor[Constants.elementsText.dynamicRemotesButtonsText.indexOf(button)]
+                            prop: CssAttr.backgroundColor,
+                            value: property.widgetColor[Constants.elementsText.dynamicRemotesButtonsText.indexOf(button)]
                         })
                         basePage.checkElementWithTextPresence({
                             selector: property.subHeaderSelector,
@@ -150,12 +150,12 @@ appsData.forEach(
                             '{appQuantity}',
                             (widget + 2).toString())
                     })
-                    basePage.checkElementHaveCssProperty({
+                    basePage.checkElementHaveProperty({
                         selector: widgets.dynamicRemotesWidget.replace(
                             '{appQuantity}',
                             (widget + 2).toString()),
-                        cssProp: 'background-color',
-                        cssPropValue: property.widgetColor[widget]
+                        prop: 'background-color',
+                        value: property.widgetColor[widget]
                     })
                     basePage.checkElementWithTextPresence({
                         selector: property.subHeaderSelector,

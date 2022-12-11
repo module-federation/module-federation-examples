@@ -35,3 +35,5 @@
 //     }
 //   }
 // }
+
+import 'cypress-fill-command';

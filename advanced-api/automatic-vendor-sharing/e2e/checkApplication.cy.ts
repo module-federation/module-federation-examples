@@ -77,12 +77,12 @@ appsData.forEach(
                 `${appName} ${Constants.commonText.button}`,
                 appButtonPosition
             )
-            basePage.checkElementWithTextHaveCssProperty(
-                property.buttonSelector,
-                `${appName} ${Constants.commonText.button}`,
-                Constants.commonText.background,
-                color
-            )
+            basePage.checkElementWithTextHaveProperty({
+                selector: property.buttonSelector,
+                text: `${appName} ${Constants.commonText.button}`,
+                prop: Constants.commonText.background,
+                value: color
+            })
         })
     })
 })
