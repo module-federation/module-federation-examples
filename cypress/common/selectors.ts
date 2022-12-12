@@ -11,17 +11,12 @@ export const baseSelectors = {
     section: 'section',
     appId: '#app',
     image: 'img',
+    navigation: 'nav',
     linkTag: 'a',
     root: '#root',
     style: '[style="{style}"]',
     code: 'code',
-    navigation: 'nav',
-    navigationItem: '.nav-item',
-    table: 'table',
-    tableRow: 'tr',
-    tableDataCell: 'td',
-    tableHeader: 'th',
-    input: 'input',
+    parent: '#parent',
     nextApp: '#__next',
     listElement: 'li',
     heroSection: '.hero',
@@ -54,6 +49,8 @@ export const selectors = {
     sharedRoutingAppSideMenuVisitPageButtonsBlock: '[data-e2e="VISIT_PAGE__BUTTONS_BLOCK"]',
     sharedRoutingAppInputShrinkAnimation: '[data-shrink="{state}"]',
     sharedRoutingAppCardProfileImage: '[data-e2e="CARD_PROFILE__IMAGE"]',
+    cssIsolationAppHeader: '#root h1',
+    cssIsolationAppName: '#root h2'
 }
 
 export const updatedSelectors = {

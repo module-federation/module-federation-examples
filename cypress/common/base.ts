@@ -380,5 +380,61 @@ export class BaseMethods {
         expect(text).to.be.eq(value)
 
     }
+
+    public clickElementInsideShadowRoot({
+        selector,
+        text,
+        isForce = false
+    }: {
+        selector: string,
+        text: string,
+        isForce?: boolean
+    }): void {
+        cy.get(selector)
+            .shadow()
+            .contains(text)
+            .click({force: isForce})
+    }
+
+    public checkElementInsideShadowRoot({
+        selector,
+        text,
+        isVisible = true,
+        visibilityState =  'exist',
+        notVisibleState = 'not.exist'
+    }: {
+        selector: string,
+        text: string,
+        isVisible?: boolean,
+        visibilityState?: string,
+        notVisibleState?: string
+    }): Cypress.Chainable<JQuery<HTMLElement>> {
+        return cy
+            .get(selector)
+            .shadow()
+            .contains(text)
+            .should(isVisible ? visibilityState : notVisibleState);
+    }
+
+    public checkElementPropertyInsideShadowRoot({
+        selector,
+        subSelector,
+        attr = 'css',
+        prop,
+        value
+    }: {
+        selector: string,
+        subSelector: string
+        attr?: string,
+        prop: string,
+        value: string
+    }
+    ): void {
+        cy.get(selector)
+            .shadow()
+            .find(subSelector)
+            .invoke(attr, prop)
+            .should('include', value)
+    }
 }
 

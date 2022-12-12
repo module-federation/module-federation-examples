@@ -214,6 +214,11 @@ export class Constants {
         sharedContextApp2H2: 'App 2',
         sharedContextApp1Paragraph: 'Welcome, Billy',
         sharedContextApp2Paragraph: 'Welcome, Susan',
+        cssIsolationApp1Name: 'App 1',
+        cssIsolationApp2Name: 'App 2',
+        cssIsolationApp1Header: 'Host Application - React Version',      
+        cssIsolationApp2Header: 'Remote Application - React Version',  
+
         reactNestedRoutersPage1App1: 'Page 1 from App1',
         reactNestedRoutersPage1App2: 'Page 1 from App2',
         reactNestedRoutersPage2App1: 'Page 2 from App1',
@@ -351,7 +356,8 @@ export class Constants {
         sharedStoreCrossFrameworkCounterValues: {
             zero: '0',
             two: '2'
-        }
+        },
+        cssIsolationButton: 'Make Everything Yellow'
     }
 
     public static readonly color = {
@@ -373,7 +379,9 @@ export class Constants {
         lightBlue: 'rgb(188, 225, 255)',
         lightGreen: 'rgb(136, 218, 153)',
         purple: 'rgb(63, 81, 181)',
-        deepPink: 'rgb(156, 39, 176)'
+        deepPink: 'rgb(156, 39, 176)',
+        yellow: 'rgb(255, 255, 0)',
+        green: 'rgb(0, 128, 0)'
     }
 
     public static readonly translation = {
