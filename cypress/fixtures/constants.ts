@@ -57,7 +57,13 @@ export class Constants {
         mdmfTableRowEmail: { name: 'Email', index: 1},
         mdmfTableRowAction: { name: 'Action', index: 2},
         typescriptProjectReferencesAppsButtonText: 'App 2 Button',
-        selfHealingAppButtonText: '💅 Button'
+        selfHealingAppButtonText: '💅 Button',
+        angularReactShellHeader: 'Profile (Angular Shell)',
+        angularReactShellSubHeader: 'User List (React Microfrontend)',
+        angularReactShellParagraph: 'This user list component is being remotely loaded into the application from React App using Webpack Module Federation',
+        angularReactShellEmptyTable: '----- Create user to see data here -----',
+        angularReactShellCreateUserButton: 'Create User',
+        angularReactShellRemoveUserButton: 'Remove User'
     }
 
     public static readonly tabsNames = {

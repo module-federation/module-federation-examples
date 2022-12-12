@@ -53,8 +53,8 @@ export const blocks = {
 }
 
 export const fields = {
-    nameField: '[data-e2e="FORM__FILED_NAME"]',
-    emailField: '[data-e2e="FORM__FILED_EMAIL"]'
+    nameField: '[data-e2e="FORM__FIELD_NAME"]',
+    emailField: '[data-e2e="FORM__FIELD_EMAIL"]'
 }
 
 export const buttons = {
