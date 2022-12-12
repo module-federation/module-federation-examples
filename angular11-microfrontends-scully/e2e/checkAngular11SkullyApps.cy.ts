@@ -1,5 +1,6 @@
 import { AngularMethods } from './../../cypress/common/angular_samples/methods';
-import { blocks, fields, buttons, baseSelectors, alertMessages } from './../../cypress/common/selectors';
+import { ProductList } from './fixtures/productList';
+import { blocks, fields, buttons, baseSelectors, alertMessages } from '../../cypress/common/selectors';
 import { Constants } from '../../cypress/fixtures/constants';
 import { BaseMethods } from '../../cypress/common/base';
 
@@ -68,13 +69,13 @@ appsData.forEach(
                 )
                 basePage.checkElementQuantity({
                     selector: baseSelectors.navigationItem,
-                    quantity: 3
+                    quantity: 4
                 })
                 basePage.checkElementHaveProperty({
                     selector: baseSelectors.linkTag,
                     attr: Constants.commonText.attr,
                     prop: Constants.commonText.href,
-                    value: Constants.elementsText.mdmfNavigationItemLogo.link
+                    value: Constants.elementsText.mdmfNavigationItemLogo.gitHubLink
                 })
                 basePage.checkElementHaveProperty({
                     selector: baseSelectors.linkTag,
@@ -93,6 +94,12 @@ appsData.forEach(
                     baseSelectors.navigationItem,
                     Constants.tabsNames.mdmfNavigationItemProfile.name,
                     Constants.tabsNames.mdmfNavigationItemProfile.index
+                )
+                basePage.checkChildElementContainText(
+                    baseSelectors.navigation,
+                    baseSelectors.navigationItem,
+                    Constants.tabsNames.mdmfNavigationItemProduct.name,
+                    Constants.tabsNames.mdmfNavigationItemProduct.index
                 )
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.h2,
@@ -134,7 +141,7 @@ appsData.forEach(
                         selector: buttons.buttonPrimary
                     })
                     basePage.checkElementState({
-                        selector: buttons.buttonPrimary
+                        selector: buttons.buttonPrimary,
                     })
                 }
                 if (property.sharedHeader) {
@@ -520,6 +527,91 @@ describe('Check Apps functionality', () => {
         basePage.checkElementWithTextPresence({
             selector: alertMessages.angularAlertMessage,
             text: Constants.commonPhrases.emailIsRequired
+        })
+    })
+})
+
+describe('Check Product Application', () => {
+    const productList = ProductList
+
+    beforeEach(() => {
+        basePage.openLocalhost(4200, '/product')
+    })
+
+    it('Check App build and running', () => {
+        basePage.checkElementWithTextPresence({
+            selector: baseSelectors.h2,
+            text: Constants.elementsText.mdfmProductHeader
+        })
+        basePage.checkElementWithTextPresence({
+            selector: baseSelectors.paragraph,
+            text: Constants.commonPhrases.mdmfProductParagraph
+        })
+        productList.forEach((product) => {
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.divElement,
+                text: product.name
+            })
+            basePage.checkChildElementWithTextHaveProperty({
+                selector: baseSelectors.divElement,
+                childSelector: baseSelectors.linkTag,
+                index: product.index,
+                text: Constants.commonPhrases.mdmfProductLinkText,
+                attr: Constants.commonText.attr,
+                prop: Constants.commonText.href,
+                value: product.link
+            })
+        })
+    })
+
+    it('Check Product page', () => {
+        basePage.checkElementWithTextPresence({
+            selector: baseSelectors.divElement,
+            text: Constants.commonPhrases.mdmfLoadingText,
+            isVisible: false
+        })
+        productList.forEach((product) => {
+            basePage.clickChildElementWithText({
+                selector: baseSelectors.divElement,
+                childSelector: baseSelectors.linkTag,
+                index: product.index,
+                text: Constants.commonPhrases.mdmfProductLinkText
+            })
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.linkTag,
+                text: Constants.commonPhrases.mdmfBackLink
+            })
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.h2,
+                text: product.productName
+            })
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.h3,
+                text: product.productType
+            })
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.h4,
+                text: product.productPrice
+            })
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.button,
+                text: product.productButtonName
+            })
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.paragraph,
+                text: product.productDescription
+            })
+            basePage.checkChildElementHaveProperty({
+                selector: baseSelectors.divElement,
+                childSelector: baseSelectors.image,
+                attr: Constants.commonText.attr,
+                prop: Constants.commonText.src,
+                value: product.productImageLink
+            })
+            basePage.clickElementWithText({
+                selector: baseSelectors.linkTag,
+                text: Constants.commonPhrases.mdmfBackLink
+            })
         })
     })
 })

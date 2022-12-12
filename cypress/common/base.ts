@@ -103,6 +103,33 @@ export class BaseMethods {
             .click({force: isForce})
     }
 
+    public clickChildElementWithText({
+        selector,
+        childSelector,
+        text,
+        isForce = false,
+        index
+    }: {
+        selector: string,
+        childSelector: string,
+        text: string,
+        isForce?: boolean,
+        index?: number
+    }): Cypress.Chainable<JQuery<HTMLElement>> {
+        if (index) {
+            return cy.get(selector)
+                .find(childSelector)
+                .eq(index)
+                .contains(text)
+                .click({force: isForce})
+        }
+
+        return cy.get(selector)
+            .find(childSelector)
+            .contains(text)
+            .click({force: isForce})
+    }
+
     public checkElementWithTextPresence({
          selector,
          text,
@@ -222,20 +249,86 @@ export class BaseMethods {
             .should('include', value)
     }
 
+    public checkChildElementHaveProperty({
+        selector,
+        childSelector,
+        attr = 'css',
+        prop,
+        value,
+        parentSelector
+    }: {
+        selector: string,
+        childSelector: string,
+        attr?: string,
+        prop: string,
+        value: string
+        parentSelector?: string
+    }
+    ): void {
+        if(parentSelector) {
+            cy.get(parentSelector)
+                .find(selector)
+                .invoke(attr, prop)
+                .should('include', value)
+
+            return;
+        }
+
+        cy.get(selector)
+            .find(childSelector)
+            .invoke(attr, prop)
+            .should('include', value)
+    }
+
     public checkElementWithTextHaveProperty({
         selector,
         text,
         attr = 'css',
         prop,
-        value
+        value,
+        index
     }: {
         selector: string,
         text: string,
         attr?: string,
         prop: string,
-        value: string
+        value: string,
+        index?: number
     }): void {
         cy.get(selector)
+            .contains(text)
+            .invoke(attr, prop)
+            .should('include', value)
+    }
+
+    public checkChildElementWithTextHaveProperty({
+        selector,
+        childSelector,
+        text,
+        attr = 'css',
+        prop,
+        value,
+        index
+    }: {
+        selector: string,
+        childSelector: string,
+        text: string,
+        attr?: string,
+        prop: string,
+        value: string,
+        index?: number
+    }): Cypress.Chainable<JQuery<HTMLElement>> {
+        if (index) {
+            return cy.get(selector)
+                .find(childSelector)
+                .eq(index)
+                .contains(text)
+                .invoke(attr, prop)
+                .should('include', value)
+        }
+
+        return cy.get(selector)
+            .find(childSelector)
             .contains(text)
             .invoke(attr, prop)
             .should('include', value)
