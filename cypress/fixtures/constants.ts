@@ -56,8 +56,12 @@ export class Constants {
         mdmfTableRowName: { name: 'Name', index: 0 },
         mdmfTableRowEmail: { name: 'Email', index: 1},
         mdmfTableRowAction: { name: 'Action', index: 2},
+        selfHealingAppButtonText: '💅 Button',
         typescriptProjectReferencesAppsButtonText: 'App 2 Button',
-        selfHealingAppButtonText: '💅 Button'
+        craHeader: 'Basic Host-Remote',
+        craHostParagraph: 'Host',
+        craRemoteParagraph: 'Remote',
+        craButtontext: 'Hello from remote'
     }
 
     public static readonly tabsNames = {
