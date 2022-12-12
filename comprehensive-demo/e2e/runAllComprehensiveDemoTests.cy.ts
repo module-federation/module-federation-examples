@@ -1,0 +1,5 @@
+import "./checkComrehensiveDemoApp1.cy"
+import "./checkComrehensiveDemoApp2.cy"
+import "./checkComrehensiveDemoApp3.cy"
+import "./checkComrehensiveDemoApp4.cy"
+import "./checkComrehensiveDemoApp5.cy"

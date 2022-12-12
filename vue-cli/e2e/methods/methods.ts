@@ -20,7 +20,12 @@ export class VueCliMethods extends BaseMethods {
         host: number,
         wait?: number
     }): void {
-        this.checkBrowserAlertByText(selector, message, isEqual, index)
+        this.checkBrowserAlertByText({
+            selector,
+            alertMessage: message,
+            isEqual,
+            index
+        })
          cy.origin(Cypress.env(`localhost${host}`), {args: {selector, message, wait}}, ({selector, message, wait}) => {
             cy.visit('/')
              cy.get(selector).wait(wait).click()

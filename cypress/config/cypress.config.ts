@@ -24,6 +24,7 @@ export default defineConfig({
     watchForFileChanges: false,
     experimentalSessionAndOrigin: true,
     chromeWebSecurity: false,
+    includeShadowDom: true,
     retries: {
       runMode: 1,
     },
@@ -33,6 +34,7 @@ export default defineConfig({
       localhost3002: "http://localhost:3002",
       localhost3003: "http://localhost:3003",
       localhost3004: "http://localhost:3004",
+      localhost3005: "http://localhost:3005",
       localhost4173: "http://localhost:4173",
       localhost4200: "http://localhost:4200",
       localhost4201: "http://localhost:4201",

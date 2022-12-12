@@ -10,11 +10,18 @@ describe("It checks webpack side app", () => {
     })
 
     it('Clicks on webpack content button and checks that wrong alert greeting is not displayed', () => {
-        basePage.checkBrowserAlertByText(updatedSelectors.webpackButtonSelector, Constants.commonPhrases.viteGreeting, false)
+        basePage.checkBrowserAlertByText({
+            selector: updatedSelectors.webpackButtonSelector,
+            alertMessage: Constants.commonPhrases.viteGreeting,
+            isEqual: false
+        })
     })
 
     it('Clicks on webpack content button and checks correct alert greeting', () => {
-        basePage.checkBrowserAlertByText(updatedSelectors.webpackButtonSelector, Constants.commonPhrases.webpackGreeting)
+        basePage.checkBrowserAlertByText({
+            selector: updatedSelectors.webpackButtonSelector,
+            alertMessage: Constants.commonPhrases.webpackGreeting
+        })
     })
 
     it('Checks that Webpack button stands as the first in the group', () => {

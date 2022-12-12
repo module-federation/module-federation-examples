@@ -44,7 +44,7 @@ describe('It checks self-healing apps', () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.button,
-                text: Constants.elementsText.selfHealingAppButtonText,
+                text: Constants.elementsText.commonButtonWithEmoji,
                 visibilityState: 'be.visible'
             })
         });

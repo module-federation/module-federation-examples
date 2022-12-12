@@ -1,5 +1,3 @@
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
-
 import DialogMarkdown from '../docs/Dialog.md';
 import Markdown from 'markdown-to-jsx';
 import Page from '../Page';
