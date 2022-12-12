@@ -55,6 +55,7 @@ export class Constants {
         mdmfTableRowName: { name: 'Name', index: 0 },
         mdmfTableRowEmail: { name: 'Email', index: 1},
         mdmfTableRowAction: { name: 'Action', index: 2},
+        typescriptProjectReferencesAppsButtonText: 'App 2 Button',
         selfHealingAppButtonText: '💅 Button'
     }
 
@@ -100,6 +101,9 @@ export class Constants {
         app2Name: 'App 2',
         selfHealingWebpackConfigSeparator: 'shared:',
         selfHealingWebpackConfigSearchedString: 'styled-components',
+        typescriptProjectReferencesAppsHeader: 'Typescript',
+        typescriptProjectReferencesAppsApp1Name: 'App 1',
+        typescriptProjectReferencesAppsApp2Name: 'App 2',
         versionDiscrepancyApp1Name: 'App 1 Host',
         versionDiscrepancyApp2Name: 'App 2: Remote',
         versionDiscrepancyApp1LodashVersion: 'Lodash v4.10.0',
