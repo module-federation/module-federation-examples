@@ -41,7 +41,6 @@ export const updatedSelectors = {
     vueAppCommonButtonSelector: `${baseSelectors.divElement}${selectors.vueAppAllButtonsClass}`,
     commonAppNameSelector: `${baseSelectors.divElement} ${baseSelectors.h2}`,
     vueAppCommonButtonSelector: `${baseSelectors.divElement}${selectors.vueAppAllButtonsClass}`,
-    typeScriptProjectReferencesCommonAppNameSelector: `${baseSelectors.divElement} ${baseSelectors.h2}`
 }
 
 export const widgets = {

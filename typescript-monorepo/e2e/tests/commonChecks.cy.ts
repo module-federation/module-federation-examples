@@ -4,7 +4,7 @@ import {Constants} from "../../../cypress/fixtures/constants";
 
 const basePage: BaseMethods = new BaseMethods()
 
-describe('It checks typescript-project-references apps', () => {
+describe('It checks typescript-monorepo apps', () => {
     const appsData = [
         {
             host: 3001,

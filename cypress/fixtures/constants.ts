@@ -6,6 +6,7 @@ export class Constants {
         vue3CliDemo: 'vue3-cli-demo/',
         nested: 'nested',
         nextjsReact: 'nextjs-react',
+        typeScriptMonoRepoPackageJsonPath: 'typescript-monorepo/package.json',
         selfHealingApp1WebpackConfigPath: 'self-healing/app1/webpack.config.js',
         selfHealingApp2WebpackConfigPath: 'self-healing/app2/webpack.config.js',
     }
@@ -123,7 +124,8 @@ export class Constants {
         href: 'href',
         target: 'target',
         remoteButton: 'Remote Button',
-        nextJSButton: 'Next JS Button'
+        nextJSButton: 'Next JS Button',
+        typeScriptMonoRepoYarnWorkspaceDependency: 'app1/*,app2/*'
     }
 
     public static readonly color = {
