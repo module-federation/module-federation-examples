@@ -94,14 +94,24 @@ export class BaseMethods {
         text,
         isVisible = true,
         visibilityState =  'exist',
-        notVisibleState = 'not.exist'
+        notVisibleState = 'not.exist',
+        index = 0
     }: {
         selector: string,
         text: string,
         isVisible?: boolean,
         visibilityState?: string,
         notVisibleState?: string
+        index?: number
     }): Cypress.Chainable<JQuery<HTMLElement>> {
+        if(index) {
+            return cy
+                .get(selector)
+                .eq(index)
+                .contains(text)
+                .should(isVisible ? visibilityState : notVisibleState);
+        }
+
         return cy
             .get(selector)
             .contains(text)

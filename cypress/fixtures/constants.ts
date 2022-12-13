@@ -57,6 +57,47 @@ export class Constants {
         mdmfTableRowEmail: { name: 'Email', index: 1},
         mdmfTableRowAction: { name: 'Action', index: 2},
         typescriptProjectReferencesAppsButtonText: 'App 2 Button',
+        reactNestedRoutersPage1App1: 'Page 1 from App1',
+        reactNestedRoutersPage1App2: 'Page 1 from App2',
+        reactNestedRoutersPage2App1: 'Page 2 from App1',
+        reactNestedRoutersPage2App2: 'Page 2 from App2',
+        reactNestedRoutersGoToPage: 'Go to Page',
+        reactNestedRoutersApp1: 'App 1',
+        reactNestedRoutersApp2: 'App 2',
+        reactNestedRoutersNav: [
+            {
+                name: 'App1 Page1',
+                link: '/app-1/page-1',
+                index: 0,
+                text: 'Page 1 from App1',
+                linkText: 'Go to Page 2',
+                linkRouting: '/page-2'
+            },
+            {
+                name: 'App1 Page2',
+                link: '/app-1/page-2',
+                index: 1,
+                text: 'Page 2 from App1',
+                linkText: 'Go to Page 1',
+                linkRouting: '/page-1'
+            },
+            {
+                name: 'App2 Page1',
+                link: '/app-2/page-1',
+                index: 2,
+                text: 'Page 1 from App2',
+                linkText: 'Go to Page 2',
+                linkRouting: '/page-2'
+            },
+            {
+                name: 'App2 Page2',
+                link: '/app-2/page-2',
+                index: 3,
+                text: 'Page 2 from App2',
+                linkText: 'Go to Page 1',
+                linkRouting: '/page-1'
+            }
+        ],
         selfHealingAppButtonText: '💅 Button'
     }
 
@@ -184,6 +225,7 @@ export class Constants {
         vueCliAppAwesomeVueLink: 'https://github.com/vuejs/awesome-vue',
         vueCliAppAboutTabLink: '#/about',
         vueCliAppHomeTabLink: '#/',
+        reactNestedRoutersPage2: '/page-2'
     }
     public static readonly linksNames = {
         vueCliAppDocumentationLinkName: 'vue-cli documentation',
