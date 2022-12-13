@@ -1,4 +1,4 @@
-import {baseSelectors} from "./selectors";
+import {baseSelectors, block} from "./selectors";
 import {Constants} from "../fixtures/constants";
 
 export class BaseMethods {
@@ -410,6 +410,10 @@ export class BaseMethods {
         return cy
             .get(selector)
             .type(text);
+    }
+
+    public getBlockSelector(blockType: string): string {
+        return block.commonReactBlock.replace('{blockType}', blockType);
     }
 
     private _checkInputValue(text: string, value: string, isLengthChecked: boolean = false): void {

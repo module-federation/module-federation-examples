@@ -59,6 +59,14 @@ export class Constants {
         mdmfTableRowAction: { name: 'Action', index: 2},
         selfHealingAppButtonText: '💅 Button',
         commonExposedButtonText: 'App 2 Button',
+        diferentReactVersionsHeader: 'Basic Host-Remote',
+        diferentReactVersionsApp1Subheader: 'App 1, Uses react version not compatible with hooks',
+        diferentReactVersionsApp2Subheader: 'App2',
+        diferentReactVersionsApp1ReactBlockParagraph: 'This Component uses hooks, if loaded on localhost:3001, it should work, even though that host does not support React Hooks',
+        diferentReactVersionsApp1ReactBlockHeader: 'Text form legacy React app:',
+        diferentReactVersionsApp1ReactBlockSubheader: 'And these are children passed into it from the legacy app',
+        diferentReactVersionsParagraph: 'More react components from App2 using non-legacy React to render',
+        diferentReactVersionsButtonName: 'App 2 Button',
         angularReactShellHeader: 'Profile (Angular Shell)',
         angularReactShellSubHeader: 'User List (React Microfrontend)',
         angularReactShellParagraph: 'This user list component is being remotely loaded into the application from React App using Webpack Module Federation',
@@ -371,6 +379,9 @@ export class Constants {
         remoteButton: 'Remote Button',
         nextJSButton: 'Next JS Button',
         typeScriptMonoRepoYarnWorkspaceDependency: 'app1/*,app2/*',
+        style: 'style',
+        border: 'border',
+        standartText: 'May The Force Be With You',
         sharedRoutingAppReplaceSelectorPart: 'RECENT_',
         sharedStoreCrossFrameworkAppComponentsTypes: {
             reactType: 'React',
@@ -409,7 +420,8 @@ export class Constants {
         lightBlue: 'rgb(188, 225, 255)',
         lightGreen: 'rgb(136, 218, 153)',
         purple: 'rgb(63, 81, 181)',
-        deepPink: 'rgb(156, 39, 176)'
+        deepPink: 'rgb(156, 39, 176)',
+        borderColorRed1px: '1px solid rgb(255, 0, 0)'
     }
 
     public static readonly translation = {
