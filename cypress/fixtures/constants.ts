@@ -57,7 +57,11 @@ export class Constants {
         mdmfTableRowEmail: { name: 'Email', index: 1},
         mdmfTableRowAction: { name: 'Action', index: 2},
         typescriptProjectReferencesAppsButtonText: 'App 2 Button',
-        selfHealingAppButtonText: '💅 Button'
+        selfHealingAppButtonText: '💅 Button',
+        serverSideRenderOnlyHeaderHost: 'Host Server',
+        serverSideRenderOnlyHeaderRemote: 'Remote Server',
+        serverSideRenderOnlySharedComponent: 'Shared Component2222',
+        serverSideRenderOnlyUpdatedSharedComponent: 'Updated Shared conponent in test'
     }
 
     public static readonly tabsNames = {
@@ -201,5 +205,10 @@ export class Constants {
         vueCliAppVueDevtoolsLinkName: 'vue-devtools',
         vueCliAppVueLoaderLinkName: 'vue-loader',
         vueCliAppAwesomeVueLinkName: 'awesome-vue',
+    }
+
+    public static readonly commands = {
+        cpSharedComponentFile: 'cp server-side-render-only/e2e/fixtures/SharedComponent.js server-side-render-only/remoteServer',
+        cpOriginalSharedComponentFile: 'cp server-side-render-only/e2e/fixtures/originalFile/SharedComponent.js server-side-render-only/remoteServer'
     }
 }
