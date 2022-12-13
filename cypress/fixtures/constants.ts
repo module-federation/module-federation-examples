@@ -57,6 +57,11 @@ export class Constants {
         mdmfTableRowEmail: { name: 'Email', index: 1},
         mdmfTableRowAction: { name: 'Action', index: 2},
         typescriptProjectReferencesAppsButtonText: 'App 2 Button',
+        differentReactIsolatedHeaderApp1: 'Host Application - React Version 17.0.2',
+        differentReactIsolatedApp1Name: 'App 1',
+        differentReactIsolatedHeaderApp2: 'Remote Application - React Version 16.14.0',
+        differentReactIsolatedApp2Name: 'App 2',
+        differentReactIsolatedApp2ButtonName: 'App 2 Button',
         selfHealingAppButtonText: '💅 Button'
     }
 

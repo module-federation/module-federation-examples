@@ -30,7 +30,9 @@ export const selectors = {
     hrefSelector: '[href="{link}"]',
     vueAppButton: '.{appType}-content div',
     vueAppButtonsBlock: '.main',
-    vueAppAllButtonsClass: '[class*= "content"]'
+    vueAppAllButtonsClass: '[class*= "content"]',
+    differentReactVersionsIsolatedDivParent: '#parent',
+    differentReactVersionsIsolatedDivRoot: '#root'
 }
 
 export const updatedSelectors = {
@@ -64,5 +66,9 @@ export const buttons = {
 
 export const alertMessages = {
     angularAlertMessage: '.alert-danger'
+}
+
+export const block = {
+    differentReactVersionsIsolatedSharedBlock: '[data-e2e="SHARED__REACT_BLOCK"]'
 }
 
