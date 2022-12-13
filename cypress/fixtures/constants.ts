@@ -6,6 +6,8 @@ export class Constants {
         vue3CliDemo: 'vue3-cli-demo/',
         nested: 'nested',
         nextjsReact: 'nextjs-react',
+        selfHealingApp1WebpackConfigPath: 'self-healing/app1/webpack.config.js',
+        selfHealingApp2WebpackConfigPath: 'self-healing/app2/webpack.config.js',
     }
 
     public static readonly vueAppButtonTypes = {
@@ -52,7 +54,8 @@ export class Constants {
         mdmfAppTableHeader: 'List users from the shared application state',
         mdmfTableRowName: { name: 'Name', index: 0 },
         mdmfTableRowEmail: { name: 'Email', index: 1},
-        mdmfTableRowAction: { name: 'Action', index: 2}
+        mdmfTableRowAction: { name: 'Action', index: 2},
+        selfHealingAppButtonText: '💅 Button'
     }
 
     public static readonly tabsNames = {
@@ -91,7 +94,12 @@ export class Constants {
         vue3AppName: 'Vue3 App',
         vueAppsDefaultCounterText: 'count: 0',
         vue2AppComponentState: 'Component in Action..',
-        vue3AppComponentState: 'Remote Component in Action..'
+        vue3AppComponentState: 'Remote Component in Action..',
+        selfHealingAppHeaderName: 'Self-Healing',
+        app1Name: 'App 1',
+        app2Name: 'App 2',
+        selfHealingWebpackConfigSeparator: 'shared:',
+        selfHealingWebpackConfigSearchedString: 'styled-components'
     }
 
     public static readonly commonText = {
@@ -116,7 +124,8 @@ export class Constants {
         aquamarine: 'rgb(127, 255, 212)',
         chineseSilver: 'rgb(204, 204, 204)',
         darkMutedBlue: 'rgb(75, 75, 232)',
-        lightSaturatedYellow: 'rgb(255, 198, 0)'
+        lightSaturatedYellow: 'rgb(255, 198, 0)',
+        pink: 'rgb(219, 112, 147)',
     }
 
     public static readonly translation = {

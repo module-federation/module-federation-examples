@@ -10,13 +10,34 @@ export class BaseMethods {
 
     public openLocalhost(number: number, path?: string): Cypress.Chainable<Cypress.AUTWindow> {
         return path ? 
-        cy.visit(Cypress.env(`localhost${number}`) + `/${path}`)
+        cy.visit(Cypress.env(`localhost${number}/${path}`))
         :
         cy.visit(Cypress.env(`localhost${number}`));
     }
 
+    public compareInfoBetweenHosts(selector: string, extraHost: number, isEqual: boolean = true): void {
+        cy.get(selector)
+            .invoke('text')
+            .then((baseText: string) => {
+                cy.origin(Cypress.env(`localhost${extraHost}`), {args: {baseText, selector, isEqual}}, ({baseText, selector, isEqual}) => {
+                    cy.visit('/')
+                    cy.get(selector)
+                        .invoke('text')
+                        .then((text: string) => {
+                            if(isEqual) {
+                                expect(text).to.be.eq(baseText)
+
+                                return;
+                            }
+
+                            expect(text).not.to.be.eq(baseText)
+                        });
+                });
+            });
+    }
+
     public checkUrlText(url: string, isInclude: boolean = false): void {
-        cy.url().should(isInclude? 'include' : 'not.include', `${url}`);
+         cy.url().should(isInclude? 'include' : 'not.include', url);
     }
 
     public checkElementState(selector: string, isDisabled: boolean = false): void {
