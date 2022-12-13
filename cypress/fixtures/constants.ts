@@ -91,7 +91,12 @@ export class Constants {
         vue3AppName: 'Vue3 App',
         vueAppsDefaultCounterText: 'count: 0',
         vue2AppComponentState: 'Component in Action..',
-        vue3AppComponentState: 'Remote Component in Action..'
+        vue3AppComponentState: 'Remote Component in Action..',
+        dynamicSytemHostParagraph: 'The Dynamic System will take advantage Module Federation ',
+        dynamicSystemHostParagraphText: [
+            'App2 Moment Dep',
+            'for format the date'
+        ]
     }
 
     public static readonly commonText = {
