@@ -100,6 +100,15 @@ export class Constants {
         app2Name: 'App 2',
         selfHealingWebpackConfigSeparator: 'shared:',
         selfHealingWebpackConfigSearchedString: 'styled-components'
+        versionDiscrepancyApp1Name: 'App 1 Host',
+        versionDiscrepancyApp2Name: 'App 2: Remote',
+        versionDiscrepancyApp1LodashVersion: 'Lodash v4.10.0',
+        versionDiscrepancyApp2LodashVersion: 'Lodash v4.17.21',
+        lodashVersionNotAvailableMessage: '(lodash.nth not available until lodash@4.11)',
+        lodashVersionUndefinedVersionMessage: 'typeof lodash.nth// => undefined',
+        lodashVersionDefinedVersionMessage: 'typeof lodash.nth// => function',
+        ntxCode: 'nth([\'a\', \'b\'], -1)// => "b"',
+        lodashRemoteComponentHeader: 'Remote Component',
     }
 
     public static readonly commonText = {
@@ -126,6 +135,7 @@ export class Constants {
         darkMutedBlue: 'rgb(75, 75, 232)',
         lightSaturatedYellow: 'rgb(255, 198, 0)',
         pink: 'rgb(219, 112, 147)',
+        nonRgbBorderBlack: 'border: 1px solid black; padding: 12px;'
     }
 
     public static readonly translation = {

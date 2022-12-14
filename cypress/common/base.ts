@@ -231,4 +231,18 @@ export class BaseMethods {
             .type('{selectall}{backspace}{backspace}')
             .fill(text);
     }
+
+    public checkInfoOnNonDefaultHost(
+        host: number,
+        element: string,
+        existedText: string,
+        notExistedText: string
+    ): Cypress.Chainable<JQuery<HTMLElement>> {
+        return cy.origin(Cypress.env(`localhost${host}`), {args: {element, existedText, notExistedText}}, ({element, existedText, notExistedText}) => {
+            cy.visit('/')
+            // do not get it as checkElementWithTextPresence() due to inability of origin to get outside methods
+            cy.get(element).contains(existedText).should('be.visible')
+            cy.get(element).contains(notExistedText).should('not.exist')
+        });
+    }
 }
