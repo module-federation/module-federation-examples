@@ -10,17 +10,13 @@ export class BaseMethods {
 
     public openLocalhost(number: number, path?: string): Cypress.Chainable<Cypress.AUTWindow> {
         return path ? 
-        cy.visit(Cypress.env(`localhost${number}`) + `/${path}`)
+        cy.visit(Cypress.env(`localhost${number}/${path}`))
         :
         cy.visit(Cypress.env(`localhost${number}`));
     }
 
     public checkUrlText(url: string, isInclude: boolean = false): void {
-        cy.url().should(isInclude? 'include' : 'not.include', `${url}`);
-    }
-
-    public checkElementState(selector: string, isDisabled: boolean = false): void {
-        cy.get(selector).should(isDisabled? 'be.disabled' : 'not.be.disabled')
+      cy.url().should(isInclude? 'include' : 'not.include', url);
     }
 
     public checkElementExist({
@@ -209,5 +205,19 @@ export class BaseMethods {
         cy.get(selector)
             .type('{selectall}{backspace}{backspace}')
             .fill(text);
+    }
+
+    public checkInfoOnNonDefaultHost(
+        host: number,
+        element: string,
+        existedText: string,
+        notExistedText: string
+    ): Cypress.Chainable<JQuery<HTMLElement>> {
+        return cy.origin(Cypress.env(`localhost${host}`), {args: {element, existedText, notExistedText}}, ({element, existedText, notExistedText}) => {
+            cy.visit('/')
+            // do not get it as checkElementWithTextPresence() due to inability of origin to get outside methods
+            cy.get(element).contains(existedText).should('be.visible')
+            cy.get(element).contains(notExistedText).should('not.exist')
+        });
     }
 }

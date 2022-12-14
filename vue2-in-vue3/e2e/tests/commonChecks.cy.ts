@@ -5,9 +5,10 @@ import {Vue2InVue3Methods} from "../methods/methods";
 
 const basePage: BaseMethods = new BaseMethods()
 const methodsPage: Vue2InVue3Methods = new Vue2InVue3Methods()
+const clicksCounter = 1;
 
-describe('It checks vue2-in-vue3 connection sample', function () {
-    let appsData = [
+describe('It checks vue2-in-vue3 connection sample', () => {
+    const appsData = [
         {
             headerName: Constants.commonPhrases.vue2AppName,
             componentState: Constants.commonPhrases.vue2AppComponentState,
@@ -20,7 +21,7 @@ describe('It checks vue2-in-vue3 connection sample', function () {
         }
     ]
 
-    appsData.forEach(function (property: { headerName: string, componentState: string, host: number }) {
+    appsData.forEach((property: { headerName: string, componentState: string, host: number }) => {
         it(`Check ${property.headerName} header visibility`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
@@ -41,7 +42,10 @@ describe('It checks vue2-in-vue3 connection sample', function () {
 
         it(`Check that in ${property.headerName} button is active`, () => {
             basePage.openLocalhost(property.host)
-            basePage.checkElementState(baseSelectors.button)
+            basePage.checkElementState({
+                selector: baseSelectors.button,
+                state: 'not.be.disabled'
+            })
         });
 
         it(`Check that in ${property.headerName} app by default counter set to 0`, () => {
@@ -114,15 +118,14 @@ describe('It checks vue2-in-vue3 connection sample', function () {
         });
 
         it(`Checks that clicks counter is not shared between apps`, () => {
-            let host = property.host === 3001 ? appsData[1].host : appsData[0].host;
-            let defaultCounterText = Constants.commonPhrases.vueAppsDefaultCounterText;
-            let clicksCounter = 1;
+            const host = property.host === 3001 ? appsData[1].host : appsData[0].host;
+            const defaultCounterText = Constants.commonPhrases.vueAppsDefaultCounterText;
 
             basePage.openLocalhost(property.host)
             methodsPage.checkCounterChangedAfterClick({
                 clicksCounter,
             })
-            methodsPage.checkCounterOnNonDefaultHost(host, baseSelectors.divElement,
+            basePage.checkInfoOnNonDefaultHost(host, baseSelectors.divElement,
                 defaultCounterText, defaultCounterText.replace(/[0-9]/g, clicksCounter.toString()))
         });
     });
