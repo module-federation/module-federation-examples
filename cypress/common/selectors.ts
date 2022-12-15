@@ -39,7 +39,8 @@ export const updatedSelectors = {
     viteButtonSelector: selectors.vueAppButton.replace('{appType}', Constants.vueAppButtonTypes.viteType),
     webpackButtonSelector: selectors.vueAppButton.replace('{appType}', Constants.vueAppButtonTypes.webpackType),
     vueAppCommonButtonSelector: `${baseSelectors.divElement}${selectors.vueAppAllButtonsClass}`,
-    commonAppNameSelector: `${baseSelectors.divElement} ${baseSelectors.h2}`
+    commonAppNameSelector: `${baseSelectors.divElement} ${baseSelectors.h2}`,
+    vueAppCommonButtonSelector: `${baseSelectors.divElement}${selectors.vueAppAllButtonsClass}`,
 }
 
 export const widgets = {
