@@ -1,14 +1,16 @@
 {
   "name": "@advanced-api/automatic-vendor-sharing",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": false,
   "scripts": {
     "start": "lerna run --scope @automatic-vendor-sharing/* --parallel start",
     "build": "lerna run --scope @automatic-vendor-sharing/* build",
     "serve": "lerna run --scope @automatic-vendor-sharing/* --parallel serve",
-    "clean": "lerna run --scope @automatic-vendor-sharing/* --parallel clean"
+    "clean": "lerna run --scope @automatic-vendor-sharing/* --parallel clean",
+    "e2e:ci": "echo 'Run tests'"
   },
   "devDependencies": {
     "lerna": "3.22.1"
-  }
+  },
+  "gitHead": "4c168f339d09d85543f33559c19356f93cb0e4c1"
 }
