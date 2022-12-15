@@ -50,13 +50,13 @@ export default function Dashboard() {
       <div className={classes.appBarSpacer} />
       <Container maxWidth="lg" className={classes.container}>
         <Grid container spacing={3}>
-          <Grid item xs={12} md={8} lg={9}>
+          <Grid data-e2e="WIDGET__CHART_BLOCK" item xs={12} md={8} lg={9}>
             <SalesTodayWidget />
           </Grid>
-          <Grid item xs={12} md={4} lg={3}>
+          <Grid data-e2e="WIDGET__RECENT_DEPOSITS_BLOCK" item xs={12} md={4} lg={3}>
             <SalesDepositsWidget />
           </Grid>
-          <Grid item xs={12}>
+          <Grid data-e2e="WIDGET__RECENT_ORDERS_BLOCK" item xs={12}>
             <RecentOrderWidget />
           </Grid>
         </Grid>

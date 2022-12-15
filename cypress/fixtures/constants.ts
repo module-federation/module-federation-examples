@@ -58,7 +58,93 @@ export class Constants {
         mdmfTableRowAction: { name: 'Action', index: 2},
         typescriptProjectReferencesAppsButtonText: 'App 2 Button',
         selfHealingAppButtonText: '💅 Button',
-        sharedStoreCrossFrameworkShellPageMark: 'Shell'
+        sharedStoreCrossFrameworkShellPageMark: 'Shell',
+        sharedRoutingAppEditProfileBlockInfo: {
+            editProfile: 'Edit Profile',
+            completeProfile: 'Complete your profile',
+        },
+        sharedRoutingAppChartInfo: {
+            today: 'Today',
+            sales: 'Sales ($)'
+        },
+        sharedRoutingAppHorizontalChartMarks: [
+            '00:00',
+            '03:00',
+            '06:00',
+            '09:00',
+            '12:00',
+            '15:00',
+            '18:00',
+            '21:00',
+            '24:00',
+        ],
+        sharedRoutingAppVerticalChartMarks: [
+            '0',
+            '600',
+            '1200',
+            '1800',
+            '2400',
+        ],
+        sharedRoutingAppSelectorsParts: {
+            chart: 'Chart',
+            recentDeposits: 'Recent_deposits',
+            recentOrders: 'Recent_orders',
+            editProfile: 'Edit_profile',
+            userInfo: 'User_info',
+            cardProfile: 'Card_profile',
+        },
+        sharedRoutingAppButtonTexts: {
+            viewBalance: 'View balance',
+            updateProfile: 'Update Profile',
+            follow: 'Follow',
+            seeMoreOrders: 'See more orders',
+        },
+        sharedRoutingAppPageHeaders: {
+            dashboard: 'Dashboard',
+            orders: 'Orders',
+            profile: 'Profile'
+        },
+        sharedRoutingAppRecentDepositsInfo: {
+            recentDeposits: 'Recent Deposits',
+            sum: '$3,024.00',
+            date: 'on 15 March, 2019',
+        },
+        sharedRoutingAppRecentOrdersHeader: 'Recent Orders',
+        sharedRoutingAppRecentOrdersTableColumnsHeaders: [
+            'Date',
+            'Name',
+            'Ship To',
+            'Payment Method',
+            'Sale Amount',
+        ],
+        sharedRoutingAppRecentOrderInfo: [
+            '16 Mar, 2019',
+            'Elvis Presley',
+            'Tupelo, MS',
+            'VISA ⠀•••• 3719',
+            '312.44',
+        ],
+        sharedRoutingAppSideMenuButtonsTypes: [
+            'Dashboard',
+            'Orders',
+            'Profile',
+        ],
+        sharedRoutingAppEditProfileBlockLabels: [
+            'Company (disabled)',
+            'Username',
+            'First Name',
+            'Last Name',
+            'City',
+            'Country',
+            'Postal Code',
+            'Lamborghini Mercy, Your chick she so thirsty, I\'m in that two seat Lambo.',
+            'About me',
+        ],
+        sharedRoutingAppAboutUser: {
+            shortProfession: 'PRINCIPAL ENGINEER',
+            name: 'Zack Jackson',
+            longProfession: 'Principal Engineer at lululemon Distributed JavaScript Orchestration at scale. Maintainer of Webpack, inventor of Module Federation.',
+        }
     }
 
     public static readonly tabsNames = {
@@ -115,6 +201,7 @@ export class Constants {
         lodashVersionDefinedVersionMessage: 'typeof lodash.nth// => function',
         ntxCode: 'nth([\'a\', \'b\'], -1)// => "b"',
         lodashRemoteComponentHeader: 'Remote Component',
+        randomSymbolsString: '@#$%^&*()_+',
     }
 
     public static readonly commonText = {
@@ -127,6 +214,7 @@ export class Constants {
         remoteButton: 'Remote Button',
         nextJSButton: 'Next JS Button',
         typeScriptMonoRepoYarnWorkspaceDependency: 'app1/*,app2/*',
+        sharedRoutingAppReplaceSelectorPart: 'RECENT_',
         sharedStoreCrossFrameworkAppComponentsTypes: {
             reactType: 'React',
             vueType: 'Vue',
@@ -160,7 +248,9 @@ export class Constants {
         pink: 'rgb(219, 112, 147)',
         nonRgbBorderBlack: 'border: 1px solid black; padding: 12px;',
         lightBlue: 'rgb(188, 225, 255)',
-        lightGreen: 'rgb(136, 218, 153)'
+        lightGreen: 'rgb(136, 218, 153)',
+        purple: 'rgb(63, 81, 181)',
+        deepPink: 'rgb(156, 39, 176)'
     }
 
     public static readonly translation = {
