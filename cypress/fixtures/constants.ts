@@ -55,6 +55,9 @@ export class Constants {
         mdmfTableRowName: { name: 'Name', index: 0 },
         mdmfTableRowEmail: { name: 'Email', index: 1},
         mdmfTableRowAction: { name: 'Action', index: 2},
+        biDirectionalHeader: 'Bi-Directional',
+        biDirectionalButton1: 'App 1 Button',
+        biDirectionalButton2: 'App 2 Button',
         selfHealingAppButtonText: '💅 Button'
     }
 
