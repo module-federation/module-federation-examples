@@ -64,8 +64,8 @@ describe('It checks self-healing apps', () => {
         });
 
         it(`Checks that only ${appsData[1].appName} webpack config includes shared styled components`, () => {
-            let { selfHealingWebpackConfigSeparator } = Constants.commonPhrases
-            let selfHealingWebpackConfigSearchedElement = Constants.commonPhrases.selfHealingWebpackConfigSearchedString
+            const { selfHealingWebpackConfigSeparator } = Constants.commonPhrases
+            const selfHealingWebpackConfigSearchedElement = Constants.commonPhrases.selfHealingWebpackConfigSearchedString
 
             if(property.webpackConfigPath.includes('1')) {
                 methodsPage.checkValueInWebpackConfig(property.webpackConfigPath, selfHealingWebpackConfigSeparator, selfHealingWebpackConfigSearchedElement, false)

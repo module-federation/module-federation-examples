@@ -99,7 +99,7 @@ export class Constants {
         app1Name: 'App 1',
         app2Name: 'App 2',
         selfHealingWebpackConfigSeparator: 'shared:',
-        selfHealingWebpackConfigSearchedString: 'styled-components'
+        selfHealingWebpackConfigSearchedString: 'styled-components',
         versionDiscrepancyApp1Name: 'App 1 Host',
         versionDiscrepancyApp2Name: 'App 2: Remote',
         versionDiscrepancyApp1LodashVersion: 'Lodash v4.10.0',
