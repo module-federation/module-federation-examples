@@ -220,4 +220,17 @@ export class BaseMethods {
             cy.get(element).contains(notExistedText).should('not.exist')
         });
     }
+
+    public sendInputText({
+        selector,
+        text
+    }: {    
+        selector: string,
+        text: string,
+    }){
+        return cy
+            .get(selector)
+            .type(text);
+    }
 }
+

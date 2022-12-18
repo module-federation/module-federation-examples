@@ -52,7 +52,18 @@ export class Constants {
         mdmfAppTableHeader: 'List users from the shared application state',
         mdmfTableRowName: { name: 'Name', index: 0 },
         mdmfTableRowEmail: { name: 'Email', index: 1},
-        mdmfTableRowAction: { name: 'Action', index: 2}
+        mdmfTableRowAction: { name: 'Action', index: 2},
+        competeReactCaseHeader: 'Open Dev Tool And Focus On Network,checkout resources details',
+        competeReactCaseFirstParagraph: 'lib-app',
+        competeReactCaseSecondParagraph: 'component-app',    
+        primaryButton: 'primary',
+        warningButton: 'warning',
+        clickToOpenDialogButton: 'click me to open Dialog',
+        h4Buttons: 'Buttons:',
+        h4Dialog: 'Dialog:',
+        h4HoverMePlease: 'hover me please',
+        compeateReactCaseWhatIsYourName: 'What is your name ?',
+        closeItButton: 'close It!'
     }
 
     public static readonly tabsNames = {
@@ -101,6 +112,7 @@ export class Constants {
         lodashVersionDefinedVersionMessage: 'typeof lodash.nth// => function',
         ntxCode: 'nth([\'a\', \'b\'], -1)// => "b"',
         lodashRemoteComponentHeader: 'Remote Component',
+        compleateReactCaseInput: 'Test Input'
     }
 
     public static readonly commonText = {
@@ -126,7 +138,9 @@ export class Constants {
         chineseSilver: 'rgb(204, 204, 204)',
         darkMutedBlue: 'rgb(75, 75, 232)',
         lightSaturatedYellow: 'rgb(255, 198, 0)',
-        nonRgbBorderBlack: 'border: 1px solid black; padding: 12px;'
+        nonRgbBorderBlack: 'border: 1px solid black; padding: 12px;',
+        lightWashedAzure: 'rgb(64, 158, 255)',
+        lightWashedOrange: 'rgb(230, 162, 60)'
     }
 
     public static readonly translation = {
