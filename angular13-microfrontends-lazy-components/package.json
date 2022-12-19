@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start:shell": "ng serve --live-reload false",
+    "start:shell": "ng serve mdmf-shell --live-reload false",
     "start:profile": "ng serve mdmf-profile",
     "build:shared": "ng build mdmf-shared",
-    "build:shell": "ng build mdmf-shell --prod",
+    "build:shell": "ng build mdmf-shell",
     "build:profile": "ng build mdmf-profile --prod",
     "test": "ng test mdmf-shared & ng test mdmf-profile & ng test mdmf-shell",
     "lint": "ng lint",
