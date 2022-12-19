@@ -64,7 +64,7 @@ module.exports = configure(function (ctx) {
             filename: 'remoteEntry.js',
             exposes: {},
             remotes: {
-              app_exposes: 'app_exposes@http://localhost:3001/remoteEntry.js'
+              app_exposes: 'app_exposes@http://localhost:3002/remoteEntry.js'
             },
             shared: {
               ...dependencies,
