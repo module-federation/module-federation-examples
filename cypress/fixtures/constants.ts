@@ -58,6 +58,12 @@ export class Constants {
         mdmfTableRowEmail: { name: 'Email', index: 1},
         mdmfTableRowAction: { name: 'Action', index: 2},
         selfHealingAppButtonText: '💅 Button',
+        reactHmrRemoteText: 'Remote 1\'s counter: ',
+        reactHmrRemoteButton: 'increment',
+        reactHmrHostHeaderText1: 'HOST',
+        reactHmrHostHeaderText2: 'HOST ONLY SUPPORTS LIVE RELOAD. GO TO http://localhost:3001 to try out HMR',
+        reactHmrHostHedingPageText: 'This is the heading',
+        reactHmrHostButtonPageText: 'from remote1: GO HOME',
         commonExposedButtonText: 'App 2 Button',
         angularReactShellHeader: 'Profile (Angular Shell)',
         angularReactShellSubHeader: 'User List (React Microfrontend)',
@@ -401,7 +407,8 @@ export class Constants {
         lightBlue: 'rgb(188, 225, 255)',
         lightGreen: 'rgb(136, 218, 153)',
         purple: 'rgb(63, 81, 181)',
-        deepPink: 'rgb(156, 39, 176)'
+        deepPink: 'rgb(156, 39, 176)',
+        greenyellow: 'rgb(173, 255, 47)',
     }
 
     public static readonly translation = {
@@ -458,6 +465,9 @@ export class Constants {
         nextjsSsrLearnUrl: 'https://nextjs.org/learn/foundations/about-nextjs',
         nextjsSsrExamplesUrl: 'https://github.com/vercel/next.js/tree/deprecated-main/examples',
         nativeFederationReactUrl: 'https://reactjs.org',
+        reactHmrHomeLink: '/',
+        reactHmrButtonLink: '/button',
+        reactHmrHeadingLink: '/heading',
     }
     public static readonly linksNames = {
         vueCliAppDocumentationLinkName: 'vue-cli documentation',
@@ -475,6 +485,9 @@ export class Constants {
         vueCliAppVueDevtoolsLinkName: 'vue-devtools',
         vueCliAppVueLoaderLinkName: 'vue-loader',
         vueCliAppAwesomeVueLinkName: 'awesome-vue',
+        reactHmrHostHomeText: 'Home',
+        reactHmrHostButtonText: 'Button',
+        reactHmrHostHeadingText: 'Heading',
     }
 
     public static readonly commands = {

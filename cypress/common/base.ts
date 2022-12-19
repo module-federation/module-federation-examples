@@ -275,6 +275,26 @@ export class BaseMethods {
             .should('include', value)
     }
 
+    public checkParentElementWithTextHaveProperty({
+        selector,
+        text,
+        attr = 'css',
+        prop,
+        value
+    }: {
+        selector: string,
+        text: string,
+        attr?: string,
+        prop: string,
+        value: string
+    }): void {
+        cy.get(selector)
+            .contains(text)
+            .parent()
+            .invoke(attr, prop)
+            .should('include', value)
+    }
+
     public checkElementPositionbyText(
         selector: string,
         text: string,
@@ -421,6 +441,20 @@ export class BaseMethods {
 
         expect(text).to.be.eq(value)
 
+    }
+
+    public checkElementWithTextContainsLink(
+        selector: string,
+        text: string,
+        link: string,
+    ): Cypress.Chainable<JQuery<HTMLElement>> {
+        return cy.get(selector)
+            .each((element: JQuery<HTMLElement>) => {
+                if(element.text() === text) {
+                    expect(element.attr('href')).to.be.eq(link)
+                    expect(element.is(':disabled')).to.be.eq(false)
+                }
+            });
     }
 }
 
