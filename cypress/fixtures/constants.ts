@@ -73,7 +73,6 @@ export class Constants {
         compeateReactCaseWhatIsYourName: 'What is your name ?',
         closeItButton: 'close It!',
         typescriptProjectReferencesAppsButtonText: 'App 2 Button',
-        selfHealingAppButtonText: '💅 Button',
         serverSideRenderOnlyHeaderHost: 'Host Server',
         serverSideRenderOnlyHeaderRemote: 'Remote Server',
         serverSideRenderOnlySharedComponent: 'Shared Component2222',
