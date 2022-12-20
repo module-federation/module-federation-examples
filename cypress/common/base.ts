@@ -1,16 +1,19 @@
+import {baseSelectors} from "./selectors";
+import {Constants} from "../fixtures/constants";
+
 export class BaseMethods {
 
-    public buildTheSample(path: string):void {
-        cy.exec(`cd ${path} && make build`, { failOnNonZeroExit: false })
+    public buildTheSample(path: string): void {
+        cy.exec(`cd ${path} && make build`, {failOnNonZeroExit: false})
     }
 
-    public shutdownTheSample(path: string):void {
+    public shutdownTheSample(path: string): void {
         cy.exec(`cd ${path} && make shutdown`)
     }
 
     public openLocalhost(number: number, path?: string): Cypress.Chainable<Cypress.AUTWindow> {
-        return path ? 
-        cy.visit(Cypress.env(`localhost${number}/${path}`))
+        return path ?
+        cy.visit(`${Cypress.env(`localhost${number}`)}/${path}`)
         :
         cy.visit(Cypress.env(`localhost${number}`));
     }
@@ -40,23 +43,19 @@ export class BaseMethods {
          cy.url().should(isInclude? 'include' : 'not.include', url);
     }
 
-    public checkElementState(selector: string, isDisabled: boolean = false): void {
-        cy.get(selector).should(isDisabled? 'be.disabled' : 'not.be.disabled')
-    }
-
     public checkElementExist({
-        selector,
-        isVisible = true,
-        notVisibleState = 'not.exist',
-        visibleState = 'be.visible',
-    }: {
+         selector,
+         isVisible = true,
+         notVisibleState = 'not.exist',
+         visibleState = 'be.visible',
+     }: {
         selector: string,
         isVisible?: boolean,
         notVisibleState?: string,
         visibleState?: string,
     }): Cypress.Chainable<JQuery<HTMLElement>> {
         return cy.get(selector)
-        .should(isVisible ? visibleState : notVisibleState);
+            .should(isVisible ? visibleState : notVisibleState);
     }
 
     public clickElementBySelector({
@@ -152,11 +151,12 @@ export class BaseMethods {
         selector: string,
         childSelector: string,
         isVisible: boolean = true,
+        visibilityState: string = 'be.visible'
     ): Cypress.Chainable<JQuery<HTMLElement>> {
         return cy
             .get(selector)
             .find(childSelector)
-            .should(isVisible ? 'be.visible' : 'not.exist');
+            .should(isVisible ? visibilityState : 'not.exist');
     }
 
     public checkChildElementContainText(
@@ -276,14 +276,48 @@ export class BaseMethods {
 
     public fillField({
         selector,
-        text
+        text,
+        parentSelector
     }: {
         selector: string,
-        text: string
+        text: string,
+        parentSelector?: string
     }): void {
+        if (parentSelector) {
+            cy.get(parentSelector)
+                .find(selector)
+                .type('{selectall}{backspace}{backspace}')
+                .fill(text);
+
+            return;
+        }
+
         cy.get(selector)
             .type('{selectall}{backspace}{backspace}')
             .fill(text);
+    }
+
+    public getInputSelector(selector: string): string {
+        return selector.includes(Constants.elementsText.sharedRoutingAppSelectorsParts.userInfo.toUpperCase()) ? baseSelectors.textarea : baseSelectors.input
+    }
+
+    public checkInputValue(value: string, parentElement?: string, isLengthChecked: boolean = false): void {
+        if (parentElement) {
+            cy.get(parentElement)
+                .find(this.getInputSelector(parentElement))
+                .invoke('val')
+                .then((text: any) => {
+                    this._checkInputValue(text, value, isLengthChecked)
+                });
+
+            return;
+        }
+
+        cy.get(baseSelectors.input)
+            .invoke('val')
+            .then((text: any) => {
+                this._checkInputValue(text, value, isLengthChecked)
+            });
     }
 
     public checkInfoOnNonDefaultHost(
@@ -298,5 +332,15 @@ export class BaseMethods {
             cy.get(element).contains(existedText).should('be.visible')
             cy.get(element).contains(notExistedText).should('not.exist')
         });
+    }
+
+    private _checkInputValue(text: string, value: string, isLengthChecked: boolean = false): void {
+        if(isLengthChecked) {
+            expect(text.length).to.be.eq(value.length)
+
+            return;
+        }
+
+        expect(text).to.be.eq(value)
     }
 }
