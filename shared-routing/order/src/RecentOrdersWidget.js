@@ -21,12 +21,12 @@ function Title() {
 
 function OrderRow(props) {
   return (
-    <TableRow key={props.order.id}>
-      <TableCell>{props.order.date}</TableCell>
-      <TableCell>{props.order.name}</TableCell>
-      <TableCell>{props.order.shipTo}</TableCell>
-      <TableCell>{props.order.paymentMethod}</TableCell>
-      <TableCell align="right">{props.order.amount}</TableCell>
+    <TableRow key={props.order.id} data-e2e="RECENT_ORDERS_WIDGET__ORDER_ROW">
+      <TableCell data-e2e="RECENT_ORDERS_WIDGET__DATE_CELL">{props.order.date}</TableCell>
+      <TableCell data-e2e="RECENT_ORDERS_WIDGET__NAME_CELL">{props.order.name}</TableCell>
+      <TableCell data-e2e="RECENT_ORDERS_WIDGET__SHIP_TO_CELL">{props.order.shipTo}</TableCell>
+      <TableCell data-e2e="RECENT_ORDERS_WIDGET__PAYMENT_METHOD_CELL">{props.order.paymentMethod}</TableCell>
+      <TableCell align="right" data-e2e="RECENT_ORDERS_WIDGET__SALE_AMOUNT_CELL">{props.order.amount}</TableCell>
     </TableRow>
   );
 }

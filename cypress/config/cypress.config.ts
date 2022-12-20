@@ -23,6 +23,7 @@ export default defineConfig({
     taskTimeout: 61_000,
     watchForFileChanges: false,
     experimentalSessionAndOrigin: true,
+    chromeWebSecurity: false,
     retries: {
       runMode: 1,
     },
@@ -31,6 +32,7 @@ export default defineConfig({
       localhost3001: "http://localhost:3001",
       localhost3002: "http://localhost:3002",
       localhost3003: "http://localhost:3003",
+      localhost3004: "http://localhost:3004",
       localhost4200: "http://localhost:4200",
       localhost4201: "http://localhost:4201",
       localhost4300: "http://localhost:4300",
