@@ -68,7 +68,7 @@ export default function UserProfile() {
         <Grid item xs={12}>
           <GridContainer>
             <GridItem xs={12} sm={12} md={8}>
-              <Card>
+              <Card data-e2e="WIDGET__EDIT_PROFILE_BLOCK">
                 <CardHeader>
                   <Typography component="h1" variant="h6" color="primary" gutterBottom>
                     Edit Profile
@@ -79,7 +79,7 @@ export default function UserProfile() {
                 </CardHeader>
                 <CardBody>
                   <GridContainer>
-                    <GridItem xs={12} sm={12} md={5}>
+                    <GridItem data-e2e="FORM_FIELD__COMPANY_DISABLED" xs={12} sm={12} md={5}>
                       <CustomInput
                         labelText="Company (disabled)"
                         id="company-disabled"
@@ -91,7 +91,7 @@ export default function UserProfile() {
                         }}
                       />
                     </GridItem>
-                    <GridItem xs={12} sm={12} md={3}>
+                    <GridItem data-e2e="FORM_FIELD__USERNAME" xs={12} sm={12} md={3}>
                       <CustomInput
                         labelText="Username"
                         id="username"
@@ -102,7 +102,7 @@ export default function UserProfile() {
                     </GridItem>
                   </GridContainer>
                   <GridContainer>
-                    <GridItem xs={12} sm={12} md={6}>
+                    <GridItem data-e2e="FORM_FIELD__FIRST_NAME" xs={12} sm={12} md={6}>
                       <CustomInput
                         labelText="First Name"
                         id="first-name"
@@ -111,7 +111,7 @@ export default function UserProfile() {
                         }}
                       />
                     </GridItem>
-                    <GridItem xs={12} sm={12} md={6}>
+                    <GridItem data-e2e="FORM_FIELD__LAST_NAME" xs={12} sm={12} md={6}>
                       <CustomInput
                         labelText="Last Name"
                         id="last-name"
@@ -122,7 +122,7 @@ export default function UserProfile() {
                     </GridItem>
                   </GridContainer>
                   <GridContainer>
-                    <GridItem xs={12} sm={12} md={4}>
+                    <GridItem data-e2e="FORM_FIELD__CITY" xs={12} sm={12} md={4}>
                       <CustomInput
                         labelText="City"
                         id="city"
@@ -131,7 +131,7 @@ export default function UserProfile() {
                         }}
                       />
                     </GridItem>
-                    <GridItem xs={12} sm={12} md={4}>
+                    <GridItem data-e2e="FORM_FIELD__COUNTRY" xs={12} sm={12} md={4}>
                       <CustomInput
                         labelText="Country"
                         id="country"
@@ -140,7 +140,7 @@ export default function UserProfile() {
                         }}
                       />
                     </GridItem>
-                    <GridItem xs={12} sm={12} md={4}>
+                    <GridItem data-e2e="FORM_FIELD__POSTAL_CODE" xs={12} sm={12} md={4}>
                       <CustomInput
                         labelText="Postal Code"
                         id="postal-code"
@@ -151,7 +151,7 @@ export default function UserProfile() {
                     </GridItem>
                   </GridContainer>
                   <GridContainer>
-                    <GridItem xs={12} sm={12} md={12}>
+                    <GridItem xs={12} sm={12} md={12} data-e2e="FORM_FIELD__USER_INFO">
                       <InputLabel style={{ color: '#AAAAAA' }}>About me</InputLabel>
 
                       <CustomInput
@@ -175,8 +175,8 @@ export default function UserProfile() {
               </Card>
             </GridItem>
             <GridItem xs={12} sm={12} md={4}>
-              <Card profile>
-                <CardAvatar profile>
+              <Card data-e2e="WIDGET__CARD_PROFILE_BLOCK" profile>
+                <CardAvatar data-e2e="CARD_PROFILE__IMAGE" profile>
                   <a href="#pablo" onClick={e => e.preventDefault()}>
                     <img src={avatar} className={classes.avatarPic} alt="..." />
                   </a>
