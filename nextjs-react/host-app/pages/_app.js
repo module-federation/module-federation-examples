@@ -1,4 +1,3 @@
-import '@module-federation/nextjs-mf/lib/include-defaults';
 import '../styles/globals.css';
 import dynamic from 'next/dynamic';
 console.log(__webpack_share_scopes__);

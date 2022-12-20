@@ -144,7 +144,23 @@ export class Constants {
             shortProfession: 'PRINCIPAL ENGINEER',
             name: 'Zack Jackson',
             longProfession: 'Principal Engineer at lululemon Distributed JavaScript Orchestration at scale. Maintainer of Webpack, inventor of Module Federation.',
-        }
+        },
+        dynamicSystemHostHeader: 'Dynamic System Host',
+        dynamicSystemHostHeaderH2: 'Host',
+        dynamicSystemRemoteHeaderH2: 'Remote',
+        dynamicSystemHostHeaderH3: 'my env is https://host.api.com',
+        dynamicSystemHostParagraph: 'The Dynamic System will take advantage Module Federation remotes and exposes. It will no load components that have been loaded already.',
+        dynamicSystemHostButton: 'Load Remote Widget',
+        dynamicSystemHostButtonH2: 'Remote Widget',
+        dynamicSystemHostButtonH2Second: 'My env is ',
+        dynamicSystemHostButtonParagraph: 'Using momentjs for format the date',
+        dynamicSystemHostLoading: 'Loading',
+        sharedContextApp1H1: 'Context Provider',
+        sharedContextApp1H2: 'App 1',
+        sharedContextApp2H2: 'App 2',
+        sharedContextApp1Paragraph: 'Welcome, Billy',
+        sharedContextApp2Paragraph: 'Welcome, Susan',
+        sharedStoreCrossFrameworkShellPageMark: 'Shell'
     }
 
     public static readonly tabsNames = {
