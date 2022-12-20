@@ -6,6 +6,7 @@ export class Constants {
         vue3CliDemo: 'vue3-cli-demo/',
         nested: 'nested',
         nextjsReact: 'nextjs-react',
+        typeScriptMonoRepoPackageJsonPath: 'typescript-monorepo/package.json',
         selfHealingApp1WebpackConfigPath: 'self-healing/app1/webpack.config.js',
         selfHealingApp2WebpackConfigPath: 'self-healing/app2/webpack.config.js',
     }
@@ -58,7 +59,123 @@ export class Constants {
         biDirectionalHeader: 'Bi-Directional',
         biDirectionalButton1: 'App 1 Button',
         biDirectionalButton2: 'App 2 Button',
-        selfHealingAppButtonText: '💅 Button'
+        selfHealingAppButtonText: '💅 Button',
+        competeReactCaseHeader: 'Open Dev Tool And Focus On Network,checkout resources details',
+        competeReactCaseFirstParagraph: 'lib-app',
+        competeReactCaseSecondParagraph: 'component-app',    
+        primaryButton: 'primary',
+        warningButton: 'warning',
+        clickToOpenDialogButton: 'click me to open Dialog',
+        h4Buttons: 'Buttons:',
+        h4Dialog: 'Dialog:',
+        h4HoverMePlease: 'hover me please',
+        compeateReactCaseWhatIsYourName: 'What is your name ?',
+        closeItButton: 'close It!',
+        typescriptProjectReferencesAppsButtonText: 'App 2 Button',
+        selfHealingAppButtonText: '💅 Button',
+        sharedStoreCrossFrameworkShellPageMark: 'Shell',
+        sharedRoutingAppEditProfileBlockInfo: {
+            editProfile: 'Edit Profile',
+            completeProfile: 'Complete your profile',
+        },
+        sharedRoutingAppChartInfo: {
+            today: 'Today',
+            sales: 'Sales ($)'
+        },
+        sharedRoutingAppHorizontalChartMarks: [
+            '00:00',
+            '03:00',
+            '06:00',
+            '09:00',
+            '12:00',
+            '15:00',
+            '18:00',
+            '21:00',
+            '24:00',
+        ],
+        sharedRoutingAppVerticalChartMarks: [
+            '0',
+            '600',
+            '1200',
+            '1800',
+            '2400',
+        ],
+        sharedRoutingAppSelectorsParts: {
+            chart: 'Chart',
+            recentDeposits: 'Recent_deposits',
+            recentOrders: 'Recent_orders',
+            editProfile: 'Edit_profile',
+            userInfo: 'User_info',
+            cardProfile: 'Card_profile',
+        },
+        sharedRoutingAppButtonTexts: {
+            viewBalance: 'View balance',
+            updateProfile: 'Update Profile',
+            follow: 'Follow',
+            seeMoreOrders: 'See more orders',
+        },
+        sharedRoutingAppPageHeaders: {
+            dashboard: 'Dashboard',
+            orders: 'Orders',
+            profile: 'Profile'
+        },
+        sharedRoutingAppRecentDepositsInfo: {
+            recentDeposits: 'Recent Deposits',
+            sum: '$3,024.00',
+            date: 'on 15 March, 2019',
+        },
+        sharedRoutingAppRecentOrdersHeader: 'Recent Orders',
+        sharedRoutingAppRecentOrdersTableColumnsHeaders: [
+            'Date',
+            'Name',
+            'Ship To',
+            'Payment Method',
+            'Sale Amount',
+        ],
+        sharedRoutingAppRecentOrderInfo: [
+            '16 Mar, 2019',
+            'Elvis Presley',
+            'Tupelo, MS',
+            'VISA ⠀•••• 3719',
+            '312.44',
+        ],
+        sharedRoutingAppSideMenuButtonsTypes: [
+            'Dashboard',
+            'Orders',
+            'Profile',
+        ],
+        sharedRoutingAppEditProfileBlockLabels: [
+            'Company (disabled)',
+            'Username',
+            'First Name',
+            'Last Name',
+            'City',
+            'Country',
+            'Postal Code',
+            'Lamborghini Mercy, Your chick she so thirsty, I\'m in that two seat Lambo.',
+            'About me',
+        ],
+        sharedRoutingAppAboutUser: {
+            shortProfession: 'PRINCIPAL ENGINEER',
+            name: 'Zack Jackson',
+            longProfession: 'Principal Engineer at lululemon Distributed JavaScript Orchestration at scale. Maintainer of Webpack, inventor of Module Federation.',
+        },
+        dynamicSystemHostHeader: 'Dynamic System Host',
+        dynamicSystemHostHeaderH2: 'Host',
+        dynamicSystemRemoteHeaderH2: 'Remote',
+        dynamicSystemHostHeaderH3: 'my env is https://host.api.com',
+        dynamicSystemHostParagraph: 'The Dynamic System will take advantage Module Federation remotes and exposes. It will no load components that have been loaded already.',
+        dynamicSystemHostButton: 'Load Remote Widget',
+        dynamicSystemHostButtonH2: 'Remote Widget',
+        dynamicSystemHostButtonH2Second: 'My env is ',
+        dynamicSystemHostButtonParagraph: 'Using momentjs for format the date',
+        dynamicSystemHostLoading: 'Loading',
+        sharedContextApp1H1: 'Context Provider',
+        sharedContextApp1H2: 'App 1',
+        sharedContextApp2H2: 'App 2',
+        sharedContextApp1Paragraph: 'Welcome, Billy',
+        sharedContextApp2Paragraph: 'Welcome, Susan',
+        sharedStoreCrossFrameworkShellPageMark: 'Shell'
     }
 
     public static readonly tabsNames = {
@@ -103,6 +220,9 @@ export class Constants {
         app2Name: 'App 2',
         selfHealingWebpackConfigSeparator: 'shared:',
         selfHealingWebpackConfigSearchedString: 'styled-components',
+        typescriptProjectReferencesAppsHeader: 'Typescript',
+        typescriptProjectReferencesAppsApp1Name: 'App 1',
+        typescriptProjectReferencesAppsApp2Name: 'App 2',
         versionDiscrepancyApp1Name: 'App 1 Host',
         versionDiscrepancyApp2Name: 'App 2: Remote',
         versionDiscrepancyApp1LodashVersion: 'Lodash v4.10.0',
@@ -112,6 +232,8 @@ export class Constants {
         lodashVersionDefinedVersionMessage: 'typeof lodash.nth// => function',
         ntxCode: 'nth([\'a\', \'b\'], -1)// => "b"',
         lodashRemoteComponentHeader: 'Remote Component',
+        compleateReactCaseInput: 'Test Input',
+        randomSymbolsString: '@#$%^&*()_+',
     }
 
     public static readonly commonText = {
@@ -122,7 +244,25 @@ export class Constants {
         href: 'href',
         target: 'target',
         remoteButton: 'Remote Button',
-        nextJSButton: 'Next JS Button'
+        nextJSButton: 'Next JS Button',
+        typeScriptMonoRepoYarnWorkspaceDependency: 'app1/*,app2/*',
+        sharedRoutingAppReplaceSelectorPart: 'RECENT_',
+        sharedStoreCrossFrameworkAppComponentsTypes: {
+            reactType: 'React',
+            vueType: 'Vue',
+        },
+        sharedStoreCrossFrameworkAppButtonsBlocksNames:  {
+            reactModule: 'Remote React module',
+            vueModule: 'Remote Vue module'
+        },
+        commonMathSigns: {
+            plusSign: '+',
+            minusSign: '-'
+        },
+        sharedStoreCrossFrameworkCounterValues: {
+            zero: '0',
+            two: '2'
+        }
     }
 
     public static readonly color = {
@@ -137,8 +277,15 @@ export class Constants {
         chineseSilver: 'rgb(204, 204, 204)',
         darkMutedBlue: 'rgb(75, 75, 232)',
         lightSaturatedYellow: 'rgb(255, 198, 0)',
+        nonRgbBorderBlack: 'border: 1px solid black; padding: 12px;',
+        lightWashedAzure: 'rgb(64, 158, 255)',
+        lightWashedOrange: 'rgb(230, 162, 60)',
         pink: 'rgb(219, 112, 147)',
-        nonRgbBorderBlack: 'border: 1px solid black; padding: 12px;'
+        nonRgbBorderBlack: 'border: 1px solid black; padding: 12px;',
+        lightBlue: 'rgb(188, 225, 255)',
+        lightGreen: 'rgb(136, 218, 153)',
+        purple: 'rgb(63, 81, 181)',
+        deepPink: 'rgb(156, 39, 176)'
     }
 
     public static readonly translation = {
