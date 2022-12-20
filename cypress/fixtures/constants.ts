@@ -57,7 +57,12 @@ export class Constants {
         mdmfTableRowEmail: { name: 'Email', index: 1},
         mdmfTableRowAction: { name: 'Action', index: 2},
         typescriptProjectReferencesAppsButtonText: 'App 2 Button',
-        selfHealingAppButtonText: '💅 Button'
+        selfHealingAppButtonText: '💅 Button',
+        sharedContextApp1H1: 'Context Provider',
+        sharedContextApp1H2: 'App 1',
+        sharedContextApp2H2: 'App 2',
+        sharedContextApp1Paragraph: 'Welcome, Billy',
+        sharedContextApp2Paragraph: 'Welcome, Susan'
     }
 
     public static readonly tabsNames = {
