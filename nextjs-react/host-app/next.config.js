@@ -1,5 +1,4 @@
-const NextFederationPlugin = require('@module-federation/nextjs-mf/lib/NextFederationPlugin');
-const { dependencies } = require('./package.json');
+const { NextFederationPlugin } = require('@module-federation/nextjs-mf');
 
 module.exports = {
   webpack(config, options) {
@@ -10,6 +9,7 @@ module.exports = {
           remotes: {
             remote: 'remote@http://localhost:3001/remote.js',
           },
+          filename: 'static/chunks/remoteEntry.js',
         }),
       );
     }

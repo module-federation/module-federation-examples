@@ -23,7 +23,7 @@ export class Vue2InVue3Methods extends BaseMethods {
         })
 
         for (let i: number = 0; i < clicksCounter; i++) {
-            this.clickElementBySelector(baseSelectors.button)
+            this.clickElementBySelector({selector: baseSelectors.button})
             counter++
         }
 
@@ -45,19 +45,5 @@ export class Vue2InVue3Methods extends BaseMethods {
                 visibilityState: 'be.visible'
             })
         }
-    }
-
-    public checkCounterOnNonDefaultHost(
-        host: number,
-        div: string,
-        defaultCounterText: string,
-        changedCounterText: string
-    ): Cypress.Chainable<JQuery<HTMLElement>> {
-        return cy.origin(Cypress.env(`localhost${host}`), {args: {div, defaultCounterText, changedCounterText}}, ({div, defaultCounterText, changedCounterText}) => {
-            cy.visit('/')
-            // do not get it as checkElementWithTextPresence() due to inability of origin to get outside methods
-            cy.get(div).contains(defaultCounterText).should('be.visible')
-            cy.get(div).contains(changedCounterText).should('not.exist')
-        });
     }
 }
