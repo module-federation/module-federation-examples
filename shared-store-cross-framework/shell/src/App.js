@@ -18,14 +18,14 @@ const App = () => {
     <Container className="main">
       <Label>Shell</Label>
       <Layout>
-        <Container>
+        <Container data-e2e="REMOTE_REACT__BUTTONS_BLOCK_MODULE">
           <Label>Remote React module</Label>
           <React.Suspense fallback="Loading ReactCounter">
             <ReactCounter />
           </React.Suspense>
         </Container>
-        <Counter>{counter}</Counter>
-        <Container>
+        <Counter data-e2e="CLICKS_COUNTER">{counter}</Counter>
+        <Container data-e2e="REMOTE_VUE__BUTTONS_BLOCK_MODULE">
           <Label>Remote Vue module</Label>
           <React.Suspense fallback="Loading VueCounter">
             <VueCounter />
