@@ -78,7 +78,6 @@ export class Constants {
         differentReactIsolatedHeaderApp2: 'Remote Application - React Version 16.14.0',
         differentReactIsolatedApp2Name: 'App 2',
         differentReactIsolatedApp2ButtonName: 'App 2 Button',
-        selfHealingAppButtonText: '💅 Button'
         serverSideRenderOnlyHeaderHost: 'Host Server',
         serverSideRenderOnlyHeaderRemote: 'Remote Server',
         serverSideRenderOnlySharedComponent: 'Shared Component2222',
