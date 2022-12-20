@@ -73,6 +73,12 @@ export class Constants {
         compeateReactCaseWhatIsYourName: 'What is your name ?',
         closeItButton: 'close It!',
         typescriptProjectReferencesAppsButtonText: 'App 2 Button',
+        differentReactIsolatedHeaderApp1: 'Host Application - React Version 17.0.2',
+        differentReactIsolatedApp1Name: 'App 1',
+        differentReactIsolatedHeaderApp2: 'Remote Application - React Version 16.14.0',
+        differentReactIsolatedApp2Name: 'App 2',
+        differentReactIsolatedApp2ButtonName: 'App 2 Button',
+        selfHealingAppButtonText: '💅 Button'
         serverSideRenderOnlyHeaderHost: 'Host Server',
         serverSideRenderOnlyHeaderRemote: 'Remote Server',
         serverSideRenderOnlySharedComponent: 'Shared Component2222',

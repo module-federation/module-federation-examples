@@ -43,6 +43,8 @@ export const selectors = {
     vueAppButton: '.{appType}-content div',
     vueAppButtonsBlock: '.main',
     vueAppAllButtonsClass: '[class*= "content"]',
+    differentReactVersionsIsolatedDivParent: '#parent',
+    differentReactVersionsIsolatedDivRoot: '#root',
     sharedStoreCrossFrameworkAppClicksCounter: '[data-e2e="CLICKS_COUNTER"]',
     sharedStoreCrossFrameworkAppButtonsBlock: '[data-e2e="REMOTE_{blockType}__BUTTONS_BLOCK_MODULE"]',
     sharedRoutingAppChart: '.recharts-surface',
@@ -92,5 +94,9 @@ export const buttons = {
 
 export const alertMessages = {
     angularAlertMessage: '.alert-danger'
+}
+
+export const block = {
+    differentReactVersionsIsolatedSharedBlock: '[data-e2e="SHARED__REACT_BLOCK"]'
 }
 
