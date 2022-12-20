@@ -11,6 +11,11 @@ export class BaseMethods {
         cy.exec(`cd ${path} && make shutdown`)
     }
 
+    public execTheCommand(command: string, wait: number = 100): void {
+        cy.exec(command)
+        cy.wait(wait)
+    }
+
     public openLocalhost(number: number, path?: string): Cypress.Chainable<Cypress.AUTWindow> {
         return path ? 
         cy.visit(Cypress.env(`localhost${number}`) + path)
@@ -341,6 +346,10 @@ export class BaseMethods {
             cy.get(element).contains(notExistedText).should('not.exist')
         });
     }
+
+
+    public reloadWindow(withoutCache: boolean = false): void {
+        cy.reload(withoutCache)
 
     public sendInputText({
         selector,

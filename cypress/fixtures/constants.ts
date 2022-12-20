@@ -73,6 +73,11 @@ export class Constants {
         compeateReactCaseWhatIsYourName: 'What is your name ?',
         closeItButton: 'close It!',
         typescriptProjectReferencesAppsButtonText: 'App 2 Button',
+        selfHealingAppButtonText: '💅 Button',
+        serverSideRenderOnlyHeaderHost: 'Host Server',
+        serverSideRenderOnlyHeaderRemote: 'Remote Server',
+        serverSideRenderOnlySharedComponent: 'Shared Component2222',
+        serverSideRenderOnlyUpdatedSharedComponent: 'Updated Shared conponent in test',
         nextjsSsrHome: 'Home',
         nextjsSsrShop: 'Shop',
         nextjsSsrCheckout: 'Checkout',
@@ -381,5 +386,10 @@ export class Constants {
         vueCliAppVueDevtoolsLinkName: 'vue-devtools',
         vueCliAppVueLoaderLinkName: 'vue-loader',
         vueCliAppAwesomeVueLinkName: 'awesome-vue',
+    }
+
+    public static readonly commands = {
+        cpSharedComponentFile: 'cp server-side-render-only/e2e/fixtures/SharedComponent.js server-side-render-only/remoteServer',
+        cpOriginalSharedComponentFile: 'cp server-side-render-only/e2e/fixtures/originalFile/SharedComponent.js server-side-render-only/remoteServer'
     }
 }
