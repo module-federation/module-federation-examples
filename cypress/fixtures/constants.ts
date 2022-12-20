@@ -62,7 +62,8 @@ export class Constants {
         sharedContextApp1H2: 'App 1',
         sharedContextApp2H2: 'App 2',
         sharedContextApp1Paragraph: 'Welcome, Billy',
-        sharedContextApp2Paragraph: 'Welcome, Susan'
+        sharedContextApp2Paragraph: 'Welcome, Susan',
+        sharedStoreCrossFrameworkShellPageMark: 'Shell'
     }
 
     public static readonly tabsNames = {
@@ -130,7 +131,23 @@ export class Constants {
         target: 'target',
         remoteButton: 'Remote Button',
         nextJSButton: 'Next JS Button',
-        typeScriptMonoRepoYarnWorkspaceDependency: 'app1/*,app2/*'
+        typeScriptMonoRepoYarnWorkspaceDependency: 'app1/*,app2/*',
+        sharedStoreCrossFrameworkAppComponentsTypes: {
+            reactType: 'React',
+            vueType: 'Vue',
+        },
+        sharedStoreCrossFrameworkAppButtonsBlocksNames:  {
+            reactModule: 'Remote React module',
+            vueModule: 'Remote Vue module'
+        },
+        commonMathSigns: {
+            plusSign: '+',
+            minusSign: '-'
+        },
+        sharedStoreCrossFrameworkCounterValues: {
+            zero: '0',
+            two: '2'
+        }
     }
 
     public static readonly color = {
@@ -146,7 +163,9 @@ export class Constants {
         darkMutedBlue: 'rgb(75, 75, 232)',
         lightSaturatedYellow: 'rgb(255, 198, 0)',
         pink: 'rgb(219, 112, 147)',
-        nonRgbBorderBlack: 'border: 1px solid black; padding: 12px;'
+        nonRgbBorderBlack: 'border: 1px solid black; padding: 12px;',
+        lightBlue: 'rgb(188, 225, 255)',
+        lightGreen: 'rgb(136, 218, 153)'
     }
 
     public static readonly translation = {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
 import { AddUser } from 'projects/mdmf-shared/src/lib/app-state/actions/user.action';
 import { User } from 'projects/mdmf-shared/src/lib/app-state/models/User';
@@ -10,18 +10,18 @@ import { User } from 'projects/mdmf-shared/src/lib/app-state/models/User';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  angForm: FormGroup;
+  angForm: UntypedFormGroup;
 
   ngOnInit(): void {}
 
-  constructor(private fb: FormBuilder, private store: Store) {
+  constructor(private fb: UntypedFormBuilder, private store: Store) {
     this.angForm = this.createForm();
   }
 
   /**
    * Initialize the form
    */
-  createForm(): FormGroup {
+  createForm(): UntypedFormGroup {
     return this.fb.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
