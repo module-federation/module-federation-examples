@@ -62,17 +62,27 @@ export class BaseMethods {
     public clickElementBySelector({
         selector,
         index = 0,
-        isForce = false
+        isForce = false,
+        parentSelector,
+        isMultiple = false,
+        wait = 0
     }: {
         selector: string,
         index?: number,
-        isForce?: boolean
-    }): Cypress.Chainable<JQuery<HTMLElement>>{
+        isForce?: boolean,
+        parentSelector? : string,
+        isMultiple?: boolean,
+        wait?: number
+    }): Cypress.Chainable<JQuery<HTMLElement>> {
         if (index) {
-            return cy.get(selector).eq(index).click({force: isForce})
+            return cy.get(selector).eq(index).wait(wait).click({force: isForce, multiple: isMultiple})
         }
 
-        return cy.get(selector).click({force: isForce})
+        if (parentSelector) {
+            return cy.get(parentSelector).find(selector).wait(wait).click({force: isForce, multiple: isMultiple})
+        }
+
+        return cy.get(selector).wait(wait).click({force: isForce, multiple: isMultiple})
     }
 
     public clickElementWithText({
@@ -89,21 +99,32 @@ export class BaseMethods {
             .click({force: isForce})
     }
 
-    public checkElementWithTextPresence({
-        selector,
-        text,
-        isVisible = true,
-        visibilityState =  'exist',
-        notVisibleState = 'not.exist'
+    public checkElementWithTextPresence
+    ({
+         selector,
+         text,
+         isVisible = true,
+         visibilityState =  'exist',
+         notVisibleState = 'not.exist',
+         parentSelector
     }: {
         selector: string,
         text: string,
         isVisible?: boolean,
         visibilityState?: string,
         notVisibleState?: string
-    }): Cypress.Chainable<JQuery<HTMLElement>> {
-        return cy
-            .get(selector)
+        parentSelector?: string
+    }): void {
+        if (parentSelector) {
+            cy.get(parentSelector)
+                .find(selector)
+                .contains(text)
+                .should(isVisible ? visibilityState : notVisibleState);
+
+            return;
+        }
+
+        cy.get(selector)
             .contains(text)
             .should(isVisible ? visibilityState : notVisibleState);
     }
@@ -152,18 +173,30 @@ export class BaseMethods {
             .should(isContain ? 'contain.text' : 'not.contain.text', text);
     }
 
-    public checkElementHaveProperty({
-        selector,
-        attr = 'css',
-        prop,
-        value
+    public checkElementHaveProperty
+    ({
+         selector,
+         attr = 'css',
+         prop,
+         value,
+         parentSelector
     }: {
         selector: string,
         attr?: string,
         prop: string,
         value: string
+        parentSelector?: string
     }
     ): void {
+        if(parentSelector) {
+            cy.get(parentSelector)
+                .find(selector)
+                .invoke(attr, prop)
+                .should('include', value)
+
+            return;
+        }
+
         cy.get(selector)
             .invoke(attr, prop)
             .should('include', value)
@@ -198,24 +231,45 @@ export class BaseMethods {
             .should('have.text', text)
     }
 
-    public checkElementQuantity({
-        selector,
-        quantity
+    public checkElementQuantity
+    ({
+         selector,
+         quantity,
+         parentSelector,
+         state = 'have.length'
     }: {
         selector: string,
-        quantity: number
+        quantity: number,
+        state?: string,
+        parentSelector? : string
     }): void {
-        cy.get(selector)
-            .should('have.length', quantity)
+        if(parentSelector) {
+            cy.get(parentSelector).find(selector).should(state, quantity)
+
+            return;
+        }
+
+        cy.get(selector).should(state, quantity)
     }
 
-    public checkElementState({
-        selector,
-        state = 'be.disabled'
+    public checkElementState
+    ({
+         selector,
+         state = 'be.disabled',
+         parentSelector
     }: {
         selector: string,
-        state?: string
+        state?: string,
+        parentSelector?: string
     }): void {
+        if(parentSelector) {
+            cy.get(parentSelector)
+                .find(selector)
+                .should(state)
+
+            return;
+        }
+
         cy.get(selector)
             .should(state)
     }

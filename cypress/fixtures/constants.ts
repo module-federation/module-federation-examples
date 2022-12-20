@@ -57,7 +57,8 @@ export class Constants {
         mdmfTableRowEmail: { name: 'Email', index: 1},
         mdmfTableRowAction: { name: 'Action', index: 2},
         typescriptProjectReferencesAppsButtonText: 'App 2 Button',
-        selfHealingAppButtonText: '💅 Button'
+        selfHealingAppButtonText: '💅 Button',
+        sharedStoreCrossFrameworkShellPageMark: 'Shell'
     }
 
     public static readonly tabsNames = {
@@ -125,7 +126,23 @@ export class Constants {
         target: 'target',
         remoteButton: 'Remote Button',
         nextJSButton: 'Next JS Button',
-        typeScriptMonoRepoYarnWorkspaceDependency: 'app1/*,app2/*'
+        typeScriptMonoRepoYarnWorkspaceDependency: 'app1/*,app2/*',
+        sharedStoreCrossFrameworkAppComponentsTypes: {
+            reactType: 'React',
+            vueType: 'Vue',
+        },
+        sharedStoreCrossFrameworkAppButtonsBlocksNames:  {
+            reactModule: 'Remote React module',
+            vueModule: 'Remote Vue module'
+        },
+        commonMathSigns: {
+            plusSign: '+',
+            minusSign: '-'
+        },
+        sharedStoreCrossFrameworkCounterValues: {
+            zero: '0',
+            two: '2'
+        }
     }
 
     public static readonly color = {
@@ -141,7 +158,9 @@ export class Constants {
         darkMutedBlue: 'rgb(75, 75, 232)',
         lightSaturatedYellow: 'rgb(255, 198, 0)',
         pink: 'rgb(219, 112, 147)',
-        nonRgbBorderBlack: 'border: 1px solid black; padding: 12px;'
+        nonRgbBorderBlack: 'border: 1px solid black; padding: 12px;',
+        lightBlue: 'rgb(188, 225, 255)',
+        lightGreen: 'rgb(136, 218, 153)'
     }
 
     public static readonly translation = {

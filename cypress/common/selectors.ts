@@ -30,7 +30,9 @@ export const selectors = {
     hrefSelector: '[href="{link}"]',
     vueAppButton: '.{appType}-content div',
     vueAppButtonsBlock: '.main',
-    vueAppAllButtonsClass: '[class*= "content"]'
+    vueAppAllButtonsClass: '[class*= "content"]',
+    sharedStoreCrossFrameworkAppClicksCounter: '[data-e2e="CLICKS_COUNTER"]',
+    sharedStoreCrossFrameworkAppButtonsBlock: '[data-e2e="REMOTE_{blockType}__BUTTONS_BLOCK_MODULE"]',
 }
 
 export const updatedSelectors = {
@@ -40,7 +42,6 @@ export const updatedSelectors = {
     webpackButtonSelector: selectors.vueAppButton.replace('{appType}', Constants.vueAppButtonTypes.webpackType),
     vueAppCommonButtonSelector: `${baseSelectors.divElement}${selectors.vueAppAllButtonsClass}`,
     commonAppNameSelector: `${baseSelectors.divElement} ${baseSelectors.h2}`,
-    vueAppCommonButtonSelector: `${baseSelectors.divElement}${selectors.vueAppAllButtonsClass}`,
 }
 
 export const widgets = {
@@ -59,7 +60,11 @@ export const fields = {
 
 export const buttons = {
     buttonPrimary: '.btn-primary',
-    buttonDanger: '.btn-danger'
+    buttonDanger: '.btn-danger',
+    sharedStoreCrossFrameworkAppActionsButtons: {
+        decrementButton: '[data-e2e="DECREMENT_BUTTON"]',
+        incrementButton: '[data-e2e="INCREMENT_BUTTON"]'
+    }
 }
 
 export const alertMessages = {
