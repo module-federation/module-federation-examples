@@ -334,6 +334,17 @@ export class BaseMethods {
         });
     }
 
+    public sendInputText({
+        selector,
+        text
+    }: {    
+        selector: string,
+        text: string,
+    }){
+        return cy
+            .get(selector)
+            .type(text);
+
     private _checkInputValue(text: string, value: string, isLengthChecked: boolean = false): void {
         if(isLengthChecked) {
             expect(text.length).to.be.eq(value.length)
@@ -342,5 +353,7 @@ export class BaseMethods {
         }
 
         expect(text).to.be.eq(value)
+
     }
 }
+
