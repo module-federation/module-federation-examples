@@ -1,4 +1,4 @@
-import { baseSelectors, widgets } from './../../../cypress/common/selectors';
+import { baseSelectors, widgets } from '../../../cypress/common/selectors';
 import { BaseMethods } from "../../../cypress/common/base";
 import { Constants } from "../../../cypress/fixtures/constants";
 import { getDateWithFormat } from "../../../cypress/helpers/base-helper";
@@ -51,7 +51,7 @@ const appsData = [
 ]
 
 appsData.forEach(
-    function (
+     (
         property: {
             headerSelector: string
             subHeaderSelector: string
@@ -65,10 +65,10 @@ appsData.forEach(
             widgetColor: string[]
             paragraph: boolean,
             host: number
-        }) {
-        let appName = property.host === 3001 ? appsData[0].appNameText : property.host === 3002 ? appsData[1].appNameText : appsData[2].appNameText;
-        let host = property.host === 3001 ? appsData[0].host : property.host === 3002 ? appsData[1].host : appsData[2].host;
-        let widget: number = property.host === 3002 ? Number(appsData[1].widgetQuantity) : Number(appsData[2].widgetQuantity);
+        }) => {
+        const appName = property.host === 3001 ? appsData[0].appNameText : property.host === 3002 ? appsData[1].appNameText : appsData[2].appNameText;
+        const host = property.host === 3001 ? appsData[0].host : property.host === 3002 ? appsData[1].host : appsData[2].host;
+        const widget: number = property.host === 3002 ? Number(appsData[1].widgetQuantity) : Number(appsData[2].widgetQuantity);
 
         describe(`Check ${appName}`, () => {
 
@@ -82,12 +82,14 @@ appsData.forEach(
                     selector: property.subHeaderSelector,
                     text: appName
                 })
-                property.paragraph ? 
+                if(property.paragraph) {
                     basePage.checkElementWithTextPresence({
                         selector: baseSelectors.paragraph,
                         text: Constants.commonPhrases.paragraphText
                     })
-                    :
+
+                    return;
+                }
                     basePage.checkElementWithTextPresence({
                         selector: baseSelectors.paragraph,
                         text: Constants.commonPhrases.paragraphText,
@@ -97,14 +99,17 @@ appsData.forEach(
 
             it(`Check buttons in ${appName} exist`, () => {
                 basePage.openLocalhost(host)
-                property.isButtonExist ?
-                Constants.elementsText.dynamicRemotesButtonsText.forEach(button => {
-                    basePage.checkElementWithTextPresence({
-                        selector: property.buttonSelector,
-                        text: button
-                    }) 
-                })
-                :
+                if(property.isButtonExist) {
+                    Constants.elementsText.dynamicRemotesButtonsText.forEach(button => {
+                        basePage.checkElementWithTextPresence({
+                            selector: property.buttonSelector,
+                            text: button
+                        })
+                    })
+
+                    return;
+                }
+
                 basePage.checkElementExist({
                     selector: property.buttonSelector,
                     isVisible: property.isButtonExist
@@ -144,7 +149,10 @@ appsData.forEach(
                             text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm:ss a')
                         })
                     })
-                } else {
+
+                    return;
+
+                }
                     basePage.checkElementExist({
                         selector: widgets.dynamicRemotesWidget.replace(
                             '{appQuantity}',
@@ -154,7 +162,7 @@ appsData.forEach(
                         selector: widgets.dynamicRemotesWidget.replace(
                             '{appQuantity}',
                             (widget + 2).toString()),
-                        prop: 'background-color',
+                        prop: CssAttr.backgroundColor,
                         value: property.widgetColor[widget]
                     })
                     basePage.checkElementWithTextPresence({
@@ -169,7 +177,6 @@ appsData.forEach(
                         selector: baseSelectors.paragraph,
                         text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm:ss a')
                     })
-                }
             })
         })
     }

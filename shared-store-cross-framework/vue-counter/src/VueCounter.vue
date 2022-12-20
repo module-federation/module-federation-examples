@@ -37,8 +37,8 @@ button + button {
 <template>
   <div class="container">
     <div>
-      <button @click="decrement">-</button>
-      <button @click="increment">+</button>
+      <button data-e2e="DECREMENT_BUTTON" @click="decrement">-</button>
+      <button data-e2e="INCREMENT_BUTTON" @click="increment">+</button>
     </div>
   </div>
 </template>
