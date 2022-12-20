@@ -23,6 +23,7 @@ export default defineConfig({
     taskTimeout: 61000,
     watchForFileChanges: false,
     experimentalSessionAndOrigin: true,
+    chromeWebSecurity: false,
     retries: {
       runMode: 1,
     },
