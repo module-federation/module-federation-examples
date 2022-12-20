@@ -63,7 +63,7 @@ export class Constants {
         selfHealingAppButtonText: '💅 Button',
         competeReactCaseHeader: 'Open Dev Tool And Focus On Network,checkout resources details',
         competeReactCaseFirstParagraph: 'lib-app',
-        competeReactCaseSecondParagraph: 'component-app',    
+        competeReactCaseSecondParagraph: 'component-app',
         primaryButton: 'primary',
         warningButton: 'warning',
         clickToOpenDialogButton: 'click me to open Dialog',
@@ -73,7 +73,6 @@ export class Constants {
         compeateReactCaseWhatIsYourName: 'What is your name ?',
         closeItButton: 'close It!',
         typescriptProjectReferencesAppsButtonText: 'App 2 Button',
-        selfHealingAppButtonText: '💅 Button',
         nextjsSsrHome: 'Home',
         nextjsSsrShop: 'Shop',
         nextjsSsrCheckout: 'Checkout',
@@ -196,7 +195,6 @@ export class Constants {
         sharedContextApp2H2: 'App 2',
         sharedContextApp1Paragraph: 'Welcome, Billy',
         sharedContextApp2Paragraph: 'Welcome, Susan',
-        sharedStoreCrossFrameworkShellPageMark: 'Shell'
     }
 
     public static readonly tabsNames = {
@@ -235,6 +233,11 @@ export class Constants {
         vue3AppName: 'Vue3 App',
         vueAppsDefaultCounterText: 'count: 0',
         vue2AppComponentState: 'Component in Action..',
+        dynamicSytemHostParagraph: 'The Dynamic System will take advantage Module Federation ',
+        dynamicSystemHostParagraphText: [
+            'App2 Moment Dep',
+            'for format the date'
+        ],
         vue3AppComponentState: 'Remote Component in Action..',
         selfHealingAppHeaderName: 'Self-Healing',
         app1Name: 'App 1',
@@ -302,7 +305,6 @@ export class Constants {
         lightWashedAzure: 'rgb(64, 158, 255)',
         lightWashedOrange: 'rgb(230, 162, 60)',
         pink: 'rgb(219, 112, 147)',
-        nonRgbBorderBlack: 'border: 1px solid black; padding: 12px;',
         lightBlue: 'rgb(188, 225, 255)',
         lightGreen: 'rgb(136, 218, 153)',
         purple: 'rgb(63, 81, 181)',
