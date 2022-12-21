@@ -32,7 +32,8 @@ export const baseSelectors = {
     textarea: 'textarea',
     tspan: 'tspan',
     header: 'header',
-    label: 'label'
+    label: 'label',
+    emphasis: 'em'
 }
 
 export const selectors = {

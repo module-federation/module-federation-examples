@@ -214,6 +214,11 @@ export class Constants {
         sharedContextApp2H2: 'App 2',
         sharedContextApp1Paragraph: 'Welcome, Billy',
         sharedContextApp2Paragraph: 'Welcome, Susan',
+        sharedRoutes2HomeButtonH1: 'Home Page',
+        sharedRoutes2AboutButtonH1: 'About Page',
+        sharedRoutes2HomeButtonH2: 'Welcome to the future!',
+        sharedRoutes2HomeButtonEM: 'a page being provided by App 1',
+        sharedRoutes2AboutButtonEM: 'a page being provided by App 2',
         reactNestedRoutersPage1App1: 'Page 1 from App1',
         reactNestedRoutersPage1App2: 'Page 1 from App2',
         reactNestedRoutersPage2App1: 'Page 2 from App1',
@@ -429,7 +434,6 @@ export class Constants {
         nextjsSsrDocumentationUrl: 'https://nextjs.org/docs',
         nextjsSsrLearnUrl: 'https://nextjs.org/learn/foundations/about-nextjs',
         nextjsSsrExamplesUrl: 'https://github.com/vercel/next.js/tree/deprecated-main/examples',
-        reactNestedRoutersPage2: '/page-2'
     }
     public static readonly linksNames = {
         vueCliAppDocumentationLinkName: 'vue-cli documentation',
