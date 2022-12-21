@@ -58,7 +58,7 @@ export class Constants {
         mdmfTableRowEmail: { name: 'Email', index: 1},
         mdmfTableRowAction: { name: 'Action', index: 2},
         selfHealingAppButtonText: '💅 Button',
-        typescriptProjectReferencesAppsButtonText: 'App 2 Button',
+        commonExposedButtonText: 'App 2 Button',
         angularReactShellHeader: 'Profile (Angular Shell)',
         angularReactShellSubHeader: 'User List (React Microfrontend)',
         angularReactShellParagraph: 'This user list component is being remotely loaded into the application from React App using Webpack Module Federation',
@@ -277,6 +277,11 @@ export class Constants {
         lodashRemoteComponentHeader: 'Remote Component',
         compleateReactCaseInput: 'Test Input',
         randomSymbolsString: '@#$%^&*()_+',
+        startupCodeAppsHeader: 'Basic Host-Remote',
+        startupCodeAppsNames : {
+            app1: 'App 1',
+            app2: 'App 2'
+        }
     }
 
     public static readonly commonText = {

@@ -4,17 +4,17 @@ import {Constants} from "../../../cypress/fixtures/constants";
 
 const basePage: BaseMethods = new BaseMethods()
 
-describe('It checks typescript-monorepo apps', () => {
+describe('It checks startup-code apps', () => {
     const appsData = [
         {
             host: 3001,
-            header: Constants.commonPhrases.typescriptProjectReferencesAppsHeader,
-            appName: Constants.commonPhrases.typescriptProjectReferencesAppsApp1Name
+            header: Constants.commonPhrases.startupCodeAppsHeader,
+            appName: Constants.commonPhrases.startupCodeAppsNames.app1
         },
         {
             host: 3002,
-            header: Constants.commonPhrases.typescriptProjectReferencesAppsHeader,
-            appName: Constants.commonPhrases.typescriptProjectReferencesAppsApp2Name
+            header: Constants.commonPhrases.startupCodeAppsHeader,
+            appName: Constants.commonPhrases.startupCodeAppsNames.app2
         }
     ]
 
@@ -27,6 +27,7 @@ describe('It checks typescript-monorepo apps', () => {
                 visibilityState: 'be.visible'
             })
         });
+
         it(`Check ${property.appName} app name visibility`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
@@ -35,6 +36,7 @@ describe('It checks typescript-monorepo apps', () => {
                 visibilityState: 'be.visible'
             })
         });
+
         it(`Check ${property.appName} contains button`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementVisibility(baseSelectors.button)

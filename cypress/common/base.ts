@@ -347,9 +347,9 @@ export class BaseMethods {
         });
     }
 
-
     public reloadWindow(withoutCache: boolean = false): void {
         cy.reload(withoutCache)
+    }
 
     public sendInputText({
         selector,
@@ -357,10 +357,11 @@ export class BaseMethods {
     }: {    
         selector: string,
         text: string,
-    }){
+    }) {
         return cy
             .get(selector)
             .type(text);
+    }
 
     private _checkInputValue(text: string, value: string, isLengthChecked: boolean = false): void {
         if(isLengthChecked) {
