@@ -14,13 +14,13 @@ export default defineConfig({
     specPattern: './**/e2e/**/*.cy.{js,jsx,ts,tsx}',
     supportFile: './cypress/support/e2e.ts',
     fixturesFolder: './cypress/fixtures',
-    defaultCommandTimeout: 10_000,
+    defaultCommandTimeout: 10000,
     video: true,
     videoUploadOnPasses: false,
     viewportWidth: 1920,
     viewportHeight: 1080,
-    pageLoadTimeout: 61_000,
-    taskTimeout: 61_000,
+    pageLoadTimeout: 61000,
+    taskTimeout: 61000,
     watchForFileChanges: false,
     experimentalSessionAndOrigin: true,
     chromeWebSecurity: false,
@@ -38,7 +38,9 @@ export default defineConfig({
       localhost4300: "http://localhost:4300",
       localhost5000: "http://localhost:5000",
       localhost5001: "http://localhost:5001",
-      localhost8081: "http://localhost:8081"
+      localhost8080: "http://localhost:8080",
+      localhost8081: "http://localhost:8081",
+      localhost8082: "http://localhost:8082"
     },
     setupNodeEvents
   },

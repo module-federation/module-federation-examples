@@ -214,6 +214,47 @@ export class Constants {
         sharedContextApp2H2: 'App 2',
         sharedContextApp1Paragraph: 'Welcome, Billy',
         sharedContextApp2Paragraph: 'Welcome, Susan',
+        reactNestedRoutersPage1App1: 'Page 1 from App1',
+        reactNestedRoutersPage1App2: 'Page 1 from App2',
+        reactNestedRoutersPage2App1: 'Page 2 from App1',
+        reactNestedRoutersPage2App2: 'Page 2 from App2',
+        reactNestedRoutersGoToPage: 'Go to Page',
+        reactNestedRoutersApp1: 'App 1',
+        reactNestedRoutersApp2: 'App 2',
+        reactNestedRoutersNav: [
+            {
+                name: 'App1 Page1',
+                link: '/app-1/page-1',
+                index: 0,
+                text: 'Page 1 from App1',
+                linkText: 'Go to Page 2',
+                linkRouting: '/page-2'
+            },
+            {
+                name: 'App1 Page2',
+                link: '/app-1/page-2',
+                index: 1,
+                text: 'Page 2 from App1',
+                linkText: 'Go to Page 1',
+                linkRouting: '/page-1'
+            },
+            {
+                name: 'App2 Page1',
+                link: '/app-2/page-1',
+                index: 2,
+                text: 'Page 1 from App2',
+                linkText: 'Go to Page 2',
+                linkRouting: '/page-2'
+            },
+            {
+                name: 'App2 Page2',
+                link: '/app-2/page-2',
+                index: 3,
+                text: 'Page 2 from App2',
+                linkText: 'Go to Page 1',
+                linkRouting: '/page-1'
+            }
+        ]
     }
 
     public static readonly tabsNames = {
@@ -388,6 +429,7 @@ export class Constants {
         nextjsSsrDocumentationUrl: 'https://nextjs.org/docs',
         nextjsSsrLearnUrl: 'https://nextjs.org/learn/foundations/about-nextjs',
         nextjsSsrExamplesUrl: 'https://github.com/vercel/next.js/tree/deprecated-main/examples',
+        reactNestedRoutersPage2: '/page-2'
     }
     public static readonly linksNames = {
         vueCliAppDocumentationLinkName: 'vue-cli documentation',

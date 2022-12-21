@@ -103,14 +103,14 @@ export class BaseMethods {
             .click({force: isForce})
     }
 
-    public checkElementWithTextPresence
-    ({
+    public checkElementWithTextPresence({
          selector,
          text,
          isVisible = true,
          visibilityState =  'exist',
          notVisibleState = 'not.exist',
-         parentSelector
+         parentSelector,
+         index = 0
     }: {
         selector: string,
         text: string,
@@ -118,17 +118,24 @@ export class BaseMethods {
         visibilityState?: string,
         notVisibleState?: string
         parentSelector?: string
-    }): void {
+        index?: number
+    }): Cypress.Chainable<JQuery<HTMLElement>> {
         if (parentSelector) {
-            cy.get(parentSelector)
+            return cy.get(parentSelector)
                 .find(selector)
                 .contains(text)
                 .should(isVisible ? visibilityState : notVisibleState);
-
-            return;
         }
 
-        cy.get(selector)
+        if(index) {
+            return cy
+                .get(selector)
+                .eq(index)
+                .contains(text)
+                .should(isVisible ? visibilityState : notVisibleState);
+        }
+
+        return cy.get(selector)
             .contains(text)
             .should(isVisible ? visibilityState : notVisibleState);
     }
