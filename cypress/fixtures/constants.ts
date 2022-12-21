@@ -411,4 +411,9 @@ export class Constants {
         cpSharedComponentFile: 'cp server-side-render-only/e2e/fixtures/SharedComponent.js server-side-render-only/remoteServer',
         cpOriginalSharedComponentFile: 'cp server-side-render-only/e2e/fixtures/originalFile/SharedComponent.js server-side-render-only/remoteServer'
     }
+
+    public static readonly fieldsNames = {
+        nameField: 'NAME',
+        emailField: 'EMAIL'
+    }
 }
