@@ -31,7 +31,7 @@ describe('It checks typescript-project-references apps', () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.divElement,
-                text: property.header,
+                text: property.appName,
                 visibilityState: 'be.visible'
             })
         });
@@ -52,7 +52,7 @@ describe('It checks typescript-project-references apps', () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.button,
-                text: Constants.elementsText.typescriptProjectReferencesAppsButtonText,
+                text: Constants.elementsText.commonExposedButtonText,
                 visibilityState: 'be.visible'
             })
         });
