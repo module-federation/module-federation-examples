@@ -79,8 +79,6 @@ export const blocks = {
 }
 
 export const fields = {
-    nameField: '[data-e2e="FORM__FILED_NAME"]',
-    emailField: '[data-e2e="FORM__FILED_EMAIL"]',
     commonField: '[data-e2e="FORM_FIELD__{fieldName}"]'
 }
 

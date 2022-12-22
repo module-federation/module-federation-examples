@@ -13,7 +13,7 @@
               formControlName="name"
               placeholder="Name"
               #name
-              data-e2e="FORM__FILED_NAME"
+              data-e2e="FORM_FIELD__NAME"
             />
             <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
               <div *ngIf="angForm.controls['name'].errors.required">
@@ -28,7 +28,7 @@
               formControlName="email"
               placeholder="Email"
               #email
-              data-e2e="FORM__FILED_EMAIL"
+              data-e2e="FORM_FIELD__EMAIL"
             />
             <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
               <div *ngIf="angForm.controls['email'].errors.required">

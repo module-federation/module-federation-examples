@@ -1,26 +1,10 @@
+import { AngularMethods } from './../../cypress/common/angular_samples/methods';
 import { Constants } from './../../cypress/fixtures/constants';
 import { alertMessages, baseSelectors, buttons, fields } from './../../cypress/common/selectors';
 import { BaseMethods } from "../../cypress/common/base";
 
 const basePage: BaseMethods = new BaseMethods()
-
-function addUser(name: string, email: string) {
-    basePage.fillField({
-        selector: fields.nameField,
-        text: name
-    })
-    basePage.fillField({
-        selector: fields.emailField,
-        text: email
-    })
-    basePage.checkElementState({
-        selector: baseSelectors.button,
-        state: 'not.be.disabled'
-    })
-    basePage.clickElementBySelector({
-        selector: baseSelectors.button
-    })
-}
+const angularMethods: AngularMethods = new AngularMethods()
 
 describe('Check Angular-React Application', () => {
     beforeEach(() => {
@@ -33,10 +17,10 @@ describe('Check Angular-React Application', () => {
             text: Constants.elementsText.angularReactShellHeader
         })
         basePage.checkElementExist({
-            selector: fields.nameField
+            selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.nameField)
         })
         basePage.checkElementExist({
-            selector: fields.nameField
+            selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.emailField)
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
@@ -57,7 +41,7 @@ describe('Check Angular-React Application', () => {
     })
 
     it('Add user to the table', () => {
-        addUser(
+        angularMethods.addUser(
             Constants.commonPhrases.name.text,
             Constants.commonPhrases.email.text
         )
@@ -91,7 +75,7 @@ describe('Check Angular-React Application', () => {
     })
 
     it('Remove user to the table', () => {
-        addUser(
+        angularMethods.addUser(
             Constants.commonPhrases.name.text,
             Constants.commonPhrases.email.text
         )
@@ -107,10 +91,10 @@ describe('Check Angular-React Application', () => {
 
     it('Check fileds validation', () => {
         basePage.clickElementBySelector({
-            selector: fields.nameField
+            selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.nameField)
         })
         basePage.clickElementBySelector({
-            selector: fields.emailField
+            selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.emailField)
         })
         basePage.clickElementBySelector({
             selector: baseSelectors.button,
