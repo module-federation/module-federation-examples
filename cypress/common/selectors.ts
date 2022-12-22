@@ -33,7 +33,8 @@ export const baseSelectors = {
     tspan: 'tspan',
     header: 'header',
     label: 'label',
-    emphasis: 'em'
+    emphasis: 'em',
+    body: 'body'
 }
 
 export const selectors = {
@@ -88,6 +89,10 @@ export const buttons = {
     sharedStoreCrossFrameworkAppActionsButtons: {
         decrementButton: '[data-e2e="DECREMENT_BUTTON"]',
         incrementButton: '[data-e2e="INCREMENT_BUTTON"]'
+    },
+    nativeFederationReactButtons: {
+        hostButton: '[data-e2e="HOST_BUTTON"]',
+        remoteButton: '[data-e2e="REMOTE_BUTTON"]'
     }
 }
 
