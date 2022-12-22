@@ -1,8 +1,10 @@
+import { AngularMethods } from './../../cypress/common/angular_samples/methods';
 import { blocks, fields, buttons, baseSelectors, alertMessages } from './../../cypress/common/selectors';
 import { Constants } from '../../cypress/fixtures/constants';
 import { BaseMethods } from '../../cypress/common/base';
 
 const basePage: BaseMethods = new BaseMethods()
+const angularMethods: AngularMethods = new AngularMethods()
 
 const appsData = [
     {
@@ -33,39 +35,20 @@ const appsData = [
     }
 ]
 
-function addUser(name: string, email: string) {
-    basePage.fillField({
-        selector: fields.nameField,
-        text: name
-    })
-    basePage.fillField({
-        selector: fields.emailField,
-        text: email
-    })
-    basePage.checkElementState({
-        selector: buttons.buttonPrimary,
-        state: 'not.be.disabled'
-    })
-    basePage.clickElementBySelector({
-        selector: buttons.buttonPrimary
-    })
-}
-
 appsData.forEach(
-    function (
-        property: {
-            appNameText: string,
-            headerText: string,
-            isWelcomeText: boolean,
-            welcomeText: string,
-            paragraphText: string,
-            tableHeaderText: string,
-            isCardBody: boolean
-            sharedHeader: string,
-            sharedParagraph: string,
-            path: string,
-            host: number
-        }) {
+    (property: {
+        appNameText: string,
+        headerText: string,
+        isWelcomeText: boolean,
+        welcomeText: string,
+        paragraphText: string,
+        tableHeaderText: string,
+        isCardBody: boolean
+        sharedHeader: string,
+        sharedParagraph: string,
+        path: string,
+        host: number
+    }) => {
         const appName = property.path === Constants.elementsText.mdmfShell.path ? appsData[0].appNameText : appsData[1].appNameText;
         const headerText = property.path === Constants.elementsText.mdmfShell.path ? appsData[0].headerText : appsData[1].headerText;
         const paragraphText = property.path === Constants.elementsText.mdmfShell.path ? appsData[0].paragraphText : appsData[1].paragraphText;
@@ -129,7 +112,7 @@ appsData.forEach(
                     selector: baseSelectors.h2,
                     text: property.tableHeaderText
                 })
-                if(property.isCardBody) {
+                if (property.isCardBody) {
                     basePage.checkElementExist({
                         selector: blocks.cardBody
                     })
@@ -142,10 +125,10 @@ appsData.forEach(
                         quantity: 3
                     })
                     basePage.checkElementExist({
-                        selector: fields.nameField
+                        selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.nameField)
                     })
                     basePage.checkElementExist({
-                        selector: fields.emailField
+                        selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.emailField)
                     })
                     basePage.checkElementExist({
                         selector: buttons.buttonPrimary
@@ -204,7 +187,7 @@ describe('Check Apps functionality', () => {
     })
 
     it('Check added user visible on both Apps', () => {
-        addUser(
+        angularMethods.addUser(
             Constants.commonPhrases.name.text,
             Constants.commonPhrases.email.text
         )
@@ -267,7 +250,7 @@ describe('Check Apps functionality', () => {
     })
 
     it('Check removing user from table (Remove form Profile)', () => {
-        addUser(
+        angularMethods.addUser(
             Constants.commonPhrases.name.text,
             Constants.commonPhrases.email.text
         )
@@ -292,7 +275,7 @@ describe('Check Apps functionality', () => {
         })
         basePage.clickElementWithText({
             selector: baseSelectors.navigationItem,
-            text: Constants.tabsNames.mdmfNavigationItemHome.name 
+            text: Constants.tabsNames.mdmfNavigationItemHome.name
         })
         basePage.checkElementExist({
             selector: buttons.buttonDanger,
@@ -313,13 +296,13 @@ describe('Check Apps functionality', () => {
     })
 
     it('Check removing user from table (Remove form Shell)', () => {
-        addUser(
+        angularMethods.addUser(
             Constants.commonPhrases.name.text,
             Constants.commonPhrases.email.text
         )
         basePage.clickElementWithText({
             selector: baseSelectors.navigationItem,
-            text: Constants.tabsNames.mdmfNavigationItemHome.name 
+            text: Constants.tabsNames.mdmfNavigationItemHome.name
         })
         basePage.clickElementBySelector({
             selector: buttons.buttonDanger
@@ -342,7 +325,7 @@ describe('Check Apps functionality', () => {
         })
         basePage.clickElementWithText({
             selector: baseSelectors.navigationItem,
-            text: Constants.tabsNames.mdmfNavigationItemProfile.name 
+            text: Constants.tabsNames.mdmfNavigationItemProfile.name
         })
         basePage.checkElementExist({
             selector: buttons.buttonDanger,
@@ -363,11 +346,11 @@ describe('Check Apps functionality', () => {
     })
 
     it('Check adding two users and delete one of them (Remove form Profile)', () => {
-        addUser(
+        angularMethods.addUser(
             Constants.commonPhrases.name.text,
             Constants.commonPhrases.email.text
         )
-        addUser(
+        angularMethods.addUser(
             Constants.commonPhrases.secondName.text,
             Constants.commonPhrases.secondEmail.text
         )
@@ -417,7 +400,7 @@ describe('Check Apps functionality', () => {
         })
         basePage.clickElementWithText({
             selector: baseSelectors.navigationItem,
-            text: Constants.tabsNames.mdmfNavigationItemHome.name 
+            text: Constants.tabsNames.mdmfNavigationItemHome.name
         })
         basePage.checkChildElementContainText(
             baseSelectors.table,
@@ -438,17 +421,17 @@ describe('Check Apps functionality', () => {
     })
 
     it('Check adding two users and delete one of them (Remove form Shell)', () => {
-        addUser(
+        angularMethods.addUser(
             Constants.commonPhrases.name.text,
             Constants.commonPhrases.email.text
         )
-        addUser(
+        angularMethods.addUser(
             Constants.commonPhrases.secondName.text,
             Constants.commonPhrases.secondEmail.text
         )
         basePage.clickElementWithText({
             selector: baseSelectors.navigationItem,
-            text: Constants.tabsNames.mdmfNavigationItemHome.name 
+            text: Constants.tabsNames.mdmfNavigationItemHome.name
         })
         basePage.checkChildElementContainText(
             baseSelectors.table,
@@ -496,7 +479,7 @@ describe('Check Apps functionality', () => {
         })
         basePage.clickElementWithText({
             selector: baseSelectors.navigationItem,
-            text: Constants.tabsNames.mdmfNavigationItemProfile.name 
+            text: Constants.tabsNames.mdmfNavigationItemProfile.name
         })
         basePage.checkChildElementContainText(
             baseSelectors.table,
@@ -518,10 +501,10 @@ describe('Check Apps functionality', () => {
 
     it('Check fileds validation', () => {
         basePage.clickElementBySelector({
-            selector: fields.nameField
+            selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.nameField)
         })
         basePage.clickElementBySelector({
-            selector: fields.emailField
+            selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.emailField)
         })
         basePage.clickElementBySelector({
             selector: buttons.buttonPrimary,

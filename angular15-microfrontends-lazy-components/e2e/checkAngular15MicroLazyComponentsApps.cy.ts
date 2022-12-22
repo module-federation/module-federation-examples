@@ -34,20 +34,19 @@ const appsData = [
 ]
 
 appsData.forEach(
-    function (
-        property: {
-            appNameText: string,
-            headerText: string,
-            isWelcomeText: boolean,
-            welcomeText: string,
-            paragraphText: string,
-            tableHeaderText: string,
-            isCardBody: boolean
-            sharedHeader?: string,
-            sharedParagraph?: string,
-            path: string,
-            host: number
-        }) {
+    (property: {
+        appNameText: string,
+        headerText: string,
+        isWelcomeText: boolean,
+        welcomeText: string,
+        paragraphText: string,
+        tableHeaderText: string,
+        isCardBody: boolean
+        sharedHeader?: string,
+        sharedParagraph?: string,
+        path: string,
+        host: number
+    }) => {
         const appName = property.path === Constants.elementsText.mdmfShell.path ? appsData[0].appNameText : appsData[1].appNameText;
         const headerText = property.path === Constants.elementsText.mdmfShell.path ? appsData[0].headerText : appsData[1].headerText;
         const paragraphText = property.path === Constants.elementsText.mdmfShell.path ? appsData[0].paragraphText : appsData[1].paragraphText;
@@ -111,7 +110,7 @@ appsData.forEach(
                     selector: baseSelectors.h2,
                     text: property.tableHeaderText
                 })
-                if(property.isCardBody) {
+                if (property.isCardBody) {
                     basePage.checkElementExist({
                         selector: blocks.cardBody
                     })
@@ -274,7 +273,7 @@ describe('Check Apps functionality', () => {
         })
         basePage.clickElementWithText({
             selector: baseSelectors.navigationItem,
-            text: Constants.tabsNames.mdmfNavigationItemHome.name 
+            text: Constants.tabsNames.mdmfNavigationItemHome.name
         })
         basePage.checkElementExist({
             selector: buttons.buttonDanger,
@@ -301,7 +300,7 @@ describe('Check Apps functionality', () => {
         )
         basePage.clickElementWithText({
             selector: baseSelectors.navigationItem,
-            text: Constants.tabsNames.mdmfNavigationItemHome.name 
+            text: Constants.tabsNames.mdmfNavigationItemHome.name
         })
         basePage.clickElementBySelector({
             selector: buttons.buttonDanger
@@ -324,7 +323,7 @@ describe('Check Apps functionality', () => {
         })
         basePage.clickElementWithText({
             selector: baseSelectors.navigationItem,
-            text: Constants.tabsNames.mdmfNavigationItemProfile.name 
+            text: Constants.tabsNames.mdmfNavigationItemProfile.name
         })
         basePage.checkElementExist({
             selector: buttons.buttonDanger,
@@ -399,7 +398,7 @@ describe('Check Apps functionality', () => {
         })
         basePage.clickElementWithText({
             selector: baseSelectors.navigationItem,
-            text: Constants.tabsNames.mdmfNavigationItemHome.name 
+            text: Constants.tabsNames.mdmfNavigationItemHome.name
         })
         basePage.checkChildElementContainText(
             baseSelectors.table,
@@ -430,7 +429,7 @@ describe('Check Apps functionality', () => {
         )
         basePage.clickElementWithText({
             selector: baseSelectors.navigationItem,
-            text: Constants.tabsNames.mdmfNavigationItemHome.name 
+            text: Constants.tabsNames.mdmfNavigationItemHome.name
         })
         basePage.checkChildElementContainText(
             baseSelectors.table,
@@ -478,7 +477,7 @@ describe('Check Apps functionality', () => {
         })
         basePage.clickElementWithText({
             selector: baseSelectors.navigationItem,
-            text: Constants.tabsNames.mdmfNavigationItemProfile.name 
+            text: Constants.tabsNames.mdmfNavigationItemProfile.name
         })
         basePage.checkChildElementContainText(
             baseSelectors.table,
