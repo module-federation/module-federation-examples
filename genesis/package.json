@@ -1,18 +1,12 @@
 {
-  "private": true,
+  "name": "genesis",
   "scripts": {
-    "dev": "concurrently --raw \"lerna run --scope=ssr-mf-about dev\" \"lerna run --scope=ssr-mf-home dev\"",
-    "build": "FORCE_COLOR=1 lerna run --scope=ssr-mf-about build && FORCE_COLOR=1 lerna run --scope=ssr-mf-home build",
-    "start": "concurrently --raw \"lerna run --scope=ssr-mf-about start\" \"lerna run --scope=ssr-mf-home start\""
+    "dev": "concurrently --raw \"lerna run --scope=genesis* dev\" \"lerna run --scope=ssr-mf-home dev\"",
+    "build": "FORCE_COLOR=1 lerna run --scope=genesis* build && FORCE_COLOR=1 lerna run --scope=ssr-mf-home build",
+    "start": "concurrently --raw \"lerna run --scope=genesis* start\" \"lerna run --scope=ssr-mf-home start\""
   },
   "devDependencies": {
     "concurrently": "7.3.0",
     "lerna": "4.0.0"
-  },
-  "workspaces": {
-    "packages": [
-      "ssr-mf-about",
-      "ssr-mf-home"
-    ]
   }
 }

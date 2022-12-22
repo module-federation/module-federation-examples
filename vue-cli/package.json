@@ -1,10 +1,10 @@
 {
-  "private": true,
+  "name": "vue-cli",
   "scripts": {
-    "start": "lerna run --scope @vue-cli/* --parallel start",
-    "build": "lerna run --scope @vue-cli/* build",
-    "serve": "lerna run --scope @vue-cli/* --parallel serve",
-    "clean": "lerna run --scope @vue-cli/* --parallel clean"
+    "start": "lerna run --scope=vue-cli* --parallel start",
+    "build": "lerna run --scope=vue-cli* --parallel build",
+    "serve": "lerna run --scope=vue-cli* --parallel serve",
+    "clean": "lerna run --scope=vue-cli* --parallel clean"
   },
   "devDependencies": {
     "lerna": "3.22.1"

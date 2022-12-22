@@ -1,9 +1,9 @@
 {
-  "private": true,
+  "name": "multi-threaded-ssr",
   "scripts": {
     "start": "yarn build && yarn serve",
-    "build": "lerna run build --parallel --scope @multi-threaded-ssr/icarus-2 --scope @multi-threaded-ssr/icarus-1",
-    "clean": "lerna run --scope @multi-threaded-ssr/* --parallel clean"
+    "build": "lerna run --scope=multi-threaded-ssr* --parallel build",
+    "clean": "lerna run --scope=multi-threaded-ssr* --parallel clean"
   },
   "devDependencies": {
     "lerna": "3.22.1"

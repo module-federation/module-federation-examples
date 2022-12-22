@@ -1,10 +1,10 @@
 {
-  "private": true,
+  "name": "redux-reducer-injection",
   "scripts": {
-    "start": "concurrently \"lerna run --scope @redux-reducer-injection/* --parallel start\" \"yarn serve\"",
-    "build": "lerna run --scope @redux-reducer-injection/* build",
-    "serve": "lerna run --scope @redux-reducer-injection/* --parallel serve",
-    "clean": "lerna run --scope @redux-reducer-injection/* --parallel clean"
+    "start": "concurrently \"lerna run --scope=redux-reducer-injection_app* --parallel start\" \"yarn serve\"",
+    "build": "lerna run --scope=redux-reducer-injection_app* --parallel build",
+    "serve": "lerna run --scope=redux-reducer-injection_app* --parallel serve",
+    "clean": "lerna run --scope=redux-reducer-injection_app* --parallel clean"
   },
   "devDependencies": {
     "lerna": "3.22.1",

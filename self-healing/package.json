@@ -1,10 +1,10 @@
 {
-  "private": true,
+  "name": "self-healing",
   "scripts": {
-    "start": "lerna run --scope @self-healing/* --parallel start",
-    "build": "lerna run --scope @self-healing/* build",
-    "serve": "lerna run --scope @self-healing/* --parallel serve",
-    "clean": "lerna run --scope @self-healing/* --parallel clean"
+    "start": "lerna run --scope=self-healing_app* --parallel start",
+    "build": "lerna run --scope=self-healing_app* --parallel build",
+    "serve": "lerna run --scope=self-healing_app* --parallel serve",
+    "clean": "lerna run --scope=self-healing_app* --parallel clean"
   },
   "devDependencies": {
     "lerna": "3.22.1"

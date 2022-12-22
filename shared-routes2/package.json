@@ -1,10 +1,10 @@
 {
-  "private": true,
+  "name": "shared-routes2",
   "scripts": {
-    "start": "lerna run --scope @shared-routes2/* --parallel start",
-    "build": "lerna run --scope @shared-routes2/* build",
-    "serve": "lerna run --scope @shared-routes2/* --parallel serve",
-    "clean": "lerna run --scope @shared-routes2/* --parallel clean"
+    "start": "lerna run --scope=shared-routes2_app* --parallel start",
+    "build": "lerna run --scope=shared-routes2_app* --parallel build",
+    "serve": "lerna run --scope=shared-routes2_app* --parallel serve",
+    "clean": "lerna run --scope=shared-routes2_app* --parallel clean"
   },
   "devDependencies": {
     "lerna": "3.22.1"

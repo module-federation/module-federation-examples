@@ -1,5 +1,5 @@
 {
-  "private": true,
+  "name": "css-isolation",
   "workspaces": {
     "packages": [
       "app1",
@@ -7,10 +7,10 @@
     ]
   },
   "scripts": {
-    "start": "lerna run --parallel start",
-    "build": "lerna run build",
-    "serve": "lerna run --parallel serve",
-    "clean": "lerna run --parallel clean"
+    "start": "lerna run --scope=css-isolation_app* --parallel start",
+    "build": "lerna run --scope=css-isolation_app* --parallel build",
+    "serve": "lerna run --scope=css-isolation_app* --parallel serve",
+    "clean": "lerna run --scope=css-isolation_app* --parallel clean"
   },
   "devDependencies": {
     "lerna": "3.22.1"

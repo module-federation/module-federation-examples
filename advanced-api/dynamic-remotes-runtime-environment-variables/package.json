@@ -1,14 +1,13 @@
 {
-  "name": "@advanced-api/dynamic-remotes-runtime-environment-variables",
-  "private": true,
+  "name": "dynamic-remotes-runtime-environment-variables",
   "scripts": {
-    "start": "lerna run --scope @dynamic-remotes-runtime-environment-variables/* --parallel start",
-    "build": "lerna run --scope @dynamic-remotes-runtime-environment-variables/* build",
-    "serve": "lerna run --scope @dynamic-remotes-runtime-environment-variables/* --parallel serve",
-    "clean": "lerna run --scope @dynamic-remotes-runtime-environment-variables/* --parallel clean",
-    "docker:build": "lerna run --scope @dynamic-remotes-runtime-environment-variables/* --parallel docker:build",
-    "docker:run": "lerna run --scope @dynamic-remotes-runtime-environment-variables/* --parallel docker:run",
-    "docker:rm": "lerna run --scope @dynamic-remotes-runtime-environment-variables/* --parallel docker:rm"
+    "start": "lerna run --scope=dynamic-remotes-runtime-environment-variables* --parallel start",
+    "build": "lerna run --scope=dynamic-remotes-runtime-environment-variables* build",
+    "serve": "lerna run --scope=dynamic-remotes-runtime-environment-variables* --parallel serve",
+    "clean": "lerna run --scope=dynamic-remotes-runtime-environment-variables* --parallel clean",
+    "docker:build": "lerna run --scope=dynamic-remotes-runtime-environment-variables_* --parallel docker:build",
+    "docker:run": "lerna run --scope=dynamic-remotes-runtime-environment-variables_* --parallel docker:run",
+    "docker:rm": "lerna run --scope=dynamic-remotes-runtime-environment-variables_* --parallel docker:rm"
   },
   "devDependencies": {
     "copy-webpack-plugin": "11.0.0",

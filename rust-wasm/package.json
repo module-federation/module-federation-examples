@@ -1,10 +1,10 @@
 {
-  "name": "wasm-federation-demo",
+  "name": "rust-wasm",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "lerna run start --stream"
+    "start": "lerna run --scope=rust-wasm* --parallel start"
   },
   "private": true,
   "workspaces": [

@@ -1,11 +1,5 @@
 {
-  "private": true,
-  "workspaces": [
-    "./checkout",
-    "./home",
-    "./shared",
-    "./shop"
-  ],
+  "name": "nextjs-ssr",
   "scripts": {
     "start": "concurrently \"cd checkout; npm run dev\" \"cd home; npm run dev\" \"cd shop; npm run dev\"",
     "build": "concurrently \"cd checkout; npm run build\" \"cd home; npm run build\" \"cd shop; npm run build\"",

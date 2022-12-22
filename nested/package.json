@@ -1,17 +1,10 @@
 {
-  "private": true,
-  "workspaces": {
-    "packages": [
-      "app1",
-      "app2",
-      "app3"
-    ]
-  },
+  "name": "nested",
   "scripts": {
-    "start": "lerna run --parallel start",
-    "build": "lerna run build",
-    "serve": "lerna run --parallel serve",
-    "clean": "lerna run --parallel clean"
+    "start": "lerna run --scope=nested_app* --parallel start",
+    "build": "lerna run --scope=nested_app* --parallel build",
+    "serve": "lerna run --scope=nested_app* --parallel serve",
+    "clean": "lerna run --scope=nested_app* --parallel clean"
   },
   "devDependencies": {
     "lerna": "3.22.1"

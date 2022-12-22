@@ -1,10 +1,10 @@
 {
-  "private": true,
+  "name": "dynamic-system-host",
   "scripts": {
-    "start": "lerna run --scope @dynamic-system-host/* --parallel start",
-    "build": "lerna run --scope @dynamic-system-host/* build",
-    "serve": "lerna run --scope @dynamic-system-host/* --parallel serve",
-    "clean": "lerna run --scope @dynamic-system-host/* --parallel clean"
+    "start": "lerna run --scope=dynamic-system-host_app* --parallel start",
+    "build": "lerna run --scope=dynamic-system-host_app* --parallel build",
+    "serve": "lerna run --scope=dynamic-system-host_app* --parallel serve",
+    "clean": "lerna run --scope=dynamic-system-host_app* --parallel clean"
   },
   "devDependencies": {
     "lerna": "3.22.1"

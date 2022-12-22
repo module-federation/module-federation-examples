@@ -1,10 +1,10 @@
 {
-  "private": true,
+  "name": "vue2-in-vue3",
   "scripts": {
-    "start": "lerna run --scope @vue2-in-vue3/* --parallel start",
-    "build": "lerna run --scope @vue2-in-vue3/* build",
-    "serve": "lerna run --scope @vue2-in-vue3/* --parallel serve",
-    "clean": "lerna run --scope @vue2-in-vue3/* --parallel clean"
+    "start": "lerna run --scope=vue2-in-vue3_vue* --parallel start",
+    "build": "lerna run --scope=vue2-in-vue3_vue* --parallel build",
+    "serve": "lerna run --scope=vue2-in-vue3_vue* --parallel serve",
+    "clean": "lerna run --scope=vue2-in-vue3_vue* --parallel clean"
   },
   "devDependencies": {
     "lerna": "3.22.1"

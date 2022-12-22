@@ -1,10 +1,10 @@
 {
-  "private": true,
+  "name": "comprehensive-demo",
   "scripts": {
-    "start": "concurrently \"lerna run --scope @comprehensive-demo/* --parallel start\" \"yarn serve\"",
-    "build": "lerna run --scope @comprehensive-demo/* build",
-    "serve": "lerna run --scope @comprehensive-demo/* --parallel serve",
-    "clean": "lerna run --scope @comprehensive-demo/* --parallel clean"
+    "start": "concurrently \"lerna run --scope=comprehensive-demo_app* --parallel start\" \"yarn serve\"",
+    "build": "lerna run --scope=comprehensive-demo_app* build",
+    "serve": "lerna run --scope=comprehensive-demo_app* --parallel serve",
+    "clean": "lerna run --scope=comprehensive-demo_app* --parallel clean"
   },
   "devDependencies": {
     "concurrently": "7.3.0",

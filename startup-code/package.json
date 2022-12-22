@@ -1,11 +1,11 @@
 {
-  "private": true,
+  "name": "startup-code",
   "scripts": {
     "start": "echo \"Dev server currently has bugs with entrypoint ordering. Use 'yarn build && yarn serve' instead.\"",
-    "start:force": "lerna run --scope @startup-code/* --parallel start",
-    "build": "lerna run --scope @startup-code/* build",
-    "serve": "lerna run --scope @startup-code/* --parallel serve",
-    "clean": "lerna run --scope @startup-code/* --parallel clean"
+    "start:force": "lerna run --scope=startup-code_app* --parallel start",
+    "build": "lerna run --scope=startup-code_app* --parallel build",
+    "serve": "lerna run --scope=startup-code_app* --parallel serve",
+    "clean": "lerna run --scope=startup-code_app* --parallel clean"
   },
   "devDependencies": {
     "lerna": "3.22.1"

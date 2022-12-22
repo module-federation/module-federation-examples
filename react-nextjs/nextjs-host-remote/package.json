@@ -7,11 +7,6 @@
     "start": "concurrently \"cd host; npm run dev\" \"cd remote; npm run dev\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "private": true,
-  "workspaces": [
-    "host",
-    "remote"
-  ],
   "author": "Omher",
   "license": "ISC",
   "devDependencies": {

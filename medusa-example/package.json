@@ -1,5 +1,5 @@
 {
-  "private": true,
+  "name": "medusa-example",
   "scripts": {
     "start": "concurrently \"cd dsl; yarn start\" \"cd home; yarn start\" \"cd nav; yarn start\" \"cd search; yarn start\" \"cd utils; yarn start\"",
     "stackblitzStart": "cd dsl; yarn build && cd ../home; yarn build && cd ../nav; yarn build && cd ../search; yarn build && cd ../utils; yarn build && yarn serve",
@@ -10,16 +10,7 @@
     "serve:nav": "cd nav; yarn serve",
     "serve:search": "cd search; yarn serve",
     "serve:utils": "cd utils; yarn serve",
-    "clean": "lerna run --scope @dashboard/* --parallel clean"
-  },
-  "workspaces": {
-    "packages": [
-      "dsl",
-      "home",
-      "nav",
-      "search",
-      "utils"
-    ]
+    "clean": "lerna run --scope=medusa-example* --parallel clean"
   },
   "devDependencies": {
     "concurrently": "7.5.0"

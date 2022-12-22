@@ -1,11 +1,5 @@
 {
-  "private": true,
-  "workspaces": [
-    "./3000-home",
-    "./3001-shop",
-    "./3002-checkout",
-    "./shared"
-  ],
+  "name": "nextjs-antd",
   "scripts": {
     "clear": "cd 3000-home && rm -rf node_modules && rm -rf .next && cd ../3001-shop && rm -rf node_modules && rm -rf .next && cd ../3002-checkout && rm -rf node_modules && rm -rf .next",
     "start": "yarn dev",

@@ -6,11 +6,6 @@
   "scripts": {
     "start": "concurrently \"cd host; npm run dev\" \"cd remote; npm run dev\""
   },
-  "private": true,
-  "workspaces": [
-    "host",
-    "remote"
-  ],
   "author": "Omher",
   "license": "ISC",
   "devDependencies": {
