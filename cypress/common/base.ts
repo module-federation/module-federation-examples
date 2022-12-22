@@ -18,7 +18,7 @@ export class BaseMethods {
 
     public openLocalhost(number: number, path?: string): Cypress.Chainable<Cypress.AUTWindow> {
         return path ? 
-        cy.visit(Cypress.env(`localhost${number}`) + path)
+        cy.visit(`${Cypress.env(`localhost${number}`)}/${path}`)
         :
         cy.visit(Cypress.env(`localhost${number}`));
     }
