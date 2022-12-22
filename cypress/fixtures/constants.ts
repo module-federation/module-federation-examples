@@ -259,7 +259,30 @@ export class Constants {
                 linkText: 'Go to Page 1',
                 linkRouting: '/page-1'
             }
-        ]
+        ],
+        nativeFederationReactConsoleMessages: {
+            dateMessage: '2023-01-01 is a Sun.',
+            weekendMessage: 'No long weekend ☹',
+            loadingModuleMessage: 'loading remote module ...',
+            remoteModuleMessage: 'got remote module: '
+        },
+        nativeFederationReactComponentsHeaders: {
+            host: 'Host',
+            remote: 'Remote'
+        },
+        nativeFederationReactPageMessages: {
+            checkConsoleMessage: 'Have a look into your JavaScript console ...',
+            remoteComponentGreeting: 'I\'m the remote\'s React Component!',
+            changeComponentMessage: 'Edit src/App.tsx and save to reload.',
+        },
+        nativeFederationElementsTexts: {
+            linkName: 'Learn React',
+            buttonText: 'click me 0',
+        },
+        nativeFederationReactButtonsNames: {
+            host: 'Host button: ',
+            remote: 'Remote button: '
+        },
     }
 
     public static readonly tabsNames = {
@@ -434,6 +457,7 @@ export class Constants {
         nextjsSsrDocumentationUrl: 'https://nextjs.org/docs',
         nextjsSsrLearnUrl: 'https://nextjs.org/learn/foundations/about-nextjs',
         nextjsSsrExamplesUrl: 'https://github.com/vercel/next.js/tree/deprecated-main/examples',
+        nativeFederationReactUrl: 'https://reactjs.org',
     }
     public static readonly linksNames = {
         vueCliAppDocumentationLinkName: 'vue-cli documentation',

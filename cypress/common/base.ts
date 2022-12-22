@@ -110,20 +110,25 @@ export class BaseMethods {
          visibilityState =  'exist',
          notVisibleState = 'not.exist',
          parentSelector,
+         isMultiple = false,
+         wait = 0,
          index = 0
     }: {
         selector: string,
         text: string,
         isVisible?: boolean,
         visibilityState?: string,
-        notVisibleState?: string
-        parentSelector?: string
+        notVisibleState?: string,
+        parentSelector?: string,
+        isMultiple?: boolean,
+        wait? : number
         index?: number
     }): Cypress.Chainable<JQuery<HTMLElement>> {
         if (parentSelector) {
             return cy.get(parentSelector)
                 .find(selector)
                 .contains(text)
+                .wait(wait)
                 .should(isVisible ? visibilityState : notVisibleState);
         }
 
@@ -132,11 +137,21 @@ export class BaseMethods {
                 .get(selector)
                 .eq(index)
                 .contains(text)
+                .wait(wait)
                 .should(isVisible ? visibilityState : notVisibleState);
+        }
+
+        if(isMultiple) {
+            return cy.get(selector)
+                .wait(wait)
+                .each((element: JQuery<HTMLElement>) => {
+                    expect(element.text()).to.include(text)
+                });
         }
 
         return cy.get(selector)
             .contains(text)
+            .wait(wait)
             .should(isVisible ? visibilityState : notVisibleState);
     }
 
@@ -171,8 +186,16 @@ export class BaseMethods {
         selector: string,
         childSelector: string,
         isVisible: boolean = true,
-        visibilityState: string = 'be.visible'
+        visibilityState: string = 'be.visible',
+        text? : string
     ): Cypress.Chainable<JQuery<HTMLElement>> {
+        if(text) {
+            return cy
+                .get(selector).contains(text)
+                .find(childSelector)
+                .should(isVisible ? visibilityState : 'not.exist');
+        }
+
         return cy
             .get(selector)
             .find(childSelector)
@@ -199,20 +222,31 @@ export class BaseMethods {
          attr = 'css',
          prop,
          value,
-         parentSelector
+         parentSelector,
+         isMultiple = false
     }: {
         selector: string,
         attr?: string,
         prop: string,
         value: string
-        parentSelector?: string
-    }
+        parentSelector?: string,
+        isMultiple? : boolean
+     }
     ): void {
         if(parentSelector) {
             cy.get(parentSelector)
                 .find(selector)
                 .invoke(attr, prop)
                 .should('include', value)
+
+            return;
+        }
+
+        if(isMultiple) {
+            cy.get(selector)
+                .each((element: JQuery<HTMLElement>) => {
+                    expect(element.attr(prop)).to.be.eq(value)
+                });
 
             return;
         }
@@ -256,15 +290,23 @@ export class BaseMethods {
          selector,
          quantity,
          parentSelector,
-         state = 'have.length'
+         state = 'have.length',
+         text
     }: {
         selector: string,
         quantity: number,
         state?: string,
         parentSelector? : string
+        text?: string
     }): void {
         if(parentSelector) {
             cy.get(parentSelector).find(selector).should(state, quantity)
+
+            return;
+        }
+
+        if(text) {
+            cy.get(selector).should('contain.text', text).and(state, quantity)
 
             return;
         }
