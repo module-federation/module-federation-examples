@@ -5,14 +5,13 @@
 	"main": "index.js",
 	"scripts": {
 		"install:deps": "npm --prefix ./host install && npm --prefix ./remote install",
+		"postinstall:deps": "npm --prefix ./host run build && npm --prefix ./remote run build",
 		"serve:host": "npm --prefix ./host run dev",
 		"serve:remote": "npm --prefix ./remote run dev",
-		"serve:host:preview": "npm --prefix ./host run build && npm --prefix ./host run preview",
-		"serve:remote:preview": "npm --prefix ./remote run build && npm --prefix ./remote run preview",
 		"build:host": "npm --prefix ./host run build",
 		"build:remote": "npm --prefix ./remote run build",
-		"serve:host:dist": "npx serve host/dist -l 5173",
-		"serve:remote:dist": "npx serve remote/dist -l 4173 --cors"
+		"preview:host": "npm --prefix ./host run build && npm --prefix ./host run preview",
+		"preview:remote": "npm --prefix ./remote run build && npm --prefix ./remote run preview"
 	},
 	"author": {
 		"name": "Giorgio Boa",
