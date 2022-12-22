@@ -15,8 +15,6 @@ const appsData = [
         paragraphText: Constants.commonPhrases.mdmfShellParagraph,
         tableHeaderText: Constants.elementsText.mdmfAppTableHeader,
         isCardBody: false,
-        sharedHeader: '',
-        sharedParagraph: '',
         path: Constants.elementsText.mdmfShell.path,
         host: 4200
     },
@@ -44,8 +42,8 @@ appsData.forEach(
         paragraphText: string,
         tableHeaderText: string,
         isCardBody: boolean
-        sharedHeader: string,
-        sharedParagraph: string,
+        sharedHeader?: string,
+        sharedParagraph?: string,
         path: string,
         host: number
     }) => {
