@@ -416,6 +416,10 @@ export class BaseMethods {
         return block.commonReactBlock.replace('{blockType}', blockType);
     }
 
+    public goBack(): void {
+        cy.go(-1)
+    }
+
     private _checkInputValue(text: string, value: string, isLengthChecked: boolean = false): void {
         if(isLengthChecked) {
             expect(text.length).to.be.eq(value.length)

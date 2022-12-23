@@ -291,6 +291,15 @@ export class Constants {
             host: 'Host button: ',
             remote: 'Remote button: '
         },
+
+        reactHostRemoteContainerHeader: 'This is the container App hosted at localhost:8080',
+        reactHostRemoteContainerDiv: 'This component is from the Host React App hosted at localhost:8081',
+        reactHostRemoteHostedDiv: 'This is the Remote App hosted at localhost:8081)',
+        reactHostRemoteHostedButtonNames: {
+            invoices: 'Invoices',
+            expenses: 'Expenses'
+        },
+
     }
 
     public static readonly tabsNames = {
