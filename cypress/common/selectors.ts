@@ -56,6 +56,10 @@ export const selectors = {
     sharedRoutingAppSideMenuVisitPageButtonsBlock: '[data-e2e="VISIT_PAGE__BUTTONS_BLOCK"]',
     sharedRoutingAppInputShrinkAnimation: '[data-shrink="{state}"]',
     sharedRoutingAppCardProfileImage: '[data-e2e="CARD_PROFILE__IMAGE"]',
+    vue3DemoComponents : {
+        remote: '.remote-component',
+        layout: '.layout-app',
+    }
 }
 
 export const updatedSelectors = {

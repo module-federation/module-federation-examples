@@ -98,7 +98,7 @@ export class Constants {
         nextjsSsrZeitText: 'ZEIT',
         nextjsSsrGiHubText: 'GitHub',
         nextjsSsrCheckoutPage: 'checkout page',
-        nextjsSsrWelcomeText: 'Hello World',
+        helloWorldMessage: 'Hello World',
         nextjsSsrMainWelcome: 'Welcome to Next.js on Webpack 5! ',
         nextjsSsrMainCheckoutText: 'This is a federated page owned by localhost:3000',
         nextjsSsrText1: 'Data from federated ',
@@ -326,7 +326,7 @@ export class Constants {
             'App2 Moment Dep',
             'for format the date'
         ],
-        vue3AppComponentState: 'Remote Component in Action..',
+        commonVueAppComponentState: 'Remote Component in Action..',
         selfHealingAppHeaderName: 'Self-Healing',
         app1Name: 'App 1',
         app2Name: 'App 2',
@@ -350,7 +350,15 @@ export class Constants {
         startupCodeAppsNames : {
             app1: 'App 1',
             app2: 'App 2'
-        }
+        },
+        vue3DemoLayoutAppHeaders : {
+            host: '# Hosting App [HOST]',
+            remote: '#remote-component [REMOTE]'
+        },
+        vue3DemoLayoutAppNames : {
+            layout: 'Layout App 1',
+            remote: 'Main App'
+        },
     }
 
     public static readonly commonText = {
@@ -458,6 +466,7 @@ export class Constants {
         nextjsSsrLearnUrl: 'https://nextjs.org/learn/foundations/about-nextjs',
         nextjsSsrExamplesUrl: 'https://github.com/vercel/next.js/tree/deprecated-main/examples',
         nativeFederationReactUrl: 'https://reactjs.org',
+        reactNestedRoutersPage2: '/page-2'
     }
     public static readonly linksNames = {
         vueCliAppDocumentationLinkName: 'vue-cli documentation',
