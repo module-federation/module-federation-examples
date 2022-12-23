@@ -1,0 +1,42 @@
+name: Cypress tests
+on: pull_request
+
+jobs:
+
+  cache:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Install dependencies
+        run: |
+          yarn install --frozen-lockfile
+      - name: Create matrix
+        id: set-matrix    
+        run: |
+          matrix="$(node checkChangedFiels.js)"
+          echo "matrix=$matrix" >> $GITHUB_OUTPUT
+      - name: Changed files
+        run: |
+          echo '${{ steps.set-matrix.outputs.matrix }}'
+     
+
+  run-e2e-test:
+    needs: cache
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: ${{fromJson(needs.cache.outputs.matrix)}}
+    steps:
+      - name: Run Tests
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - run: echo 'Run test'
