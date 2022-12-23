@@ -37,3 +37,17 @@
 // }
 
 import 'cypress-fill-command';
+
+declare global {
+    namespace Cypress {
+        interface Chainable {
+            skipWhen(condition: boolean): void;
+        }
+    }
+}
+
+Cypress.Commands.add('skipWhen', function (condition) {
+    if (condition) {
+        this.skip()
+    }
+})

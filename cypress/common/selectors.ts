@@ -69,7 +69,9 @@ export const updatedSelectors = {
     webpackButtonSelector: selectors.vueAppButton.replace('{appType}', Constants.vueAppButtonTypes.webpackType),
     vueAppCommonButtonSelector: `${baseSelectors.divElement}${selectors.vueAppAllButtonsClass}`,
     commonAppNameSelector: `${baseSelectors.divElement} ${baseSelectors.h2}`,
-    hamburgerMenuButton: `${baseSelectors.header} ${baseSelectors.button}`
+    hamburgerMenuButton: `${baseSelectors.header} ${baseSelectors.button}`,
+    sectionName: `${baseSelectors.section} ${baseSelectors.h1}`,
+    sectionButton: `${baseSelectors.section} ${baseSelectors.button}`
 }
 
 export const widgets = {
