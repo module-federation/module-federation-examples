@@ -105,6 +105,6 @@ export const alertMessages = {
 }
 
 export const block = {
-    differentReactVersionsIsolatedSharedBlock: '[data-e2e="SHARED__REACT_BLOCK"]'
+    differentReactVersionsIsolatedSharedBlock: '[data-e2e="SHARED__REACT_BLOCK"]',
+    commonReactBlock: '[data-e2e="REACT__{blockType}_BLOCK"]'
 }
-
