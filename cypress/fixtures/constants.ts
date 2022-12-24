@@ -49,9 +49,10 @@ export class Constants {
         vue2AppButtonText: 'vue2 button click',
         mdmfShell: { name: 'MDMF SHELL', path: 'home' },
         mdmfProfile: { name: 'MDMF PROFILE', path: 'profile' },
-        mdmfNavigationItemLogo: { link: 'http://mellondev.net', targetBlank: '_blank', index: 1 },
+        mdmfNavigationItemLogo: { link: 'http://mellondev.net', gitHubLink: 'https://github.com/pegaltier/', targetBlank: '_blank', index: 1 },
         mdfmShellHeader: 'Microfrontend Shell',
         mdfmProfileHeader: 'Profile (Microfrontend)',
+        mdfmProductHeader: 'Product (Microfrontend)',
         mdmfSharedHeader: 'Component from shared module',
         mdmfAppTableHeader: 'List users from the shared application state',
         mdmfTableRowName: { name: 'Name', index: 0 },
@@ -307,6 +308,7 @@ export class Constants {
         homeTab: 'Home',
         mdmfNavigationItemHome: { name: 'Home', index: 1 },
         mdmfNavigationItemProfile: { name: 'Profile', index: 2 },
+        mdmfNavigationItemProduct: { name: 'Product', index: 3 },
     }
 
     public static readonly commonPhrases = {
@@ -328,6 +330,10 @@ export class Constants {
         mdmfShellParagraph: 'This component is part of the shell application, the Profile component that is linked from the `Profile` link at the top is a Microfrontend that is remotely loaded into the application. Check the network settings to see the remote being loaded.',
         mdmfProfileParagraph: 'This profile component is being remotely loaded into the application using Module Federation, angular is shared so the download is minimal for the frontend',
         mdmfSharedParagraph: 'mdmf-shared works!',
+        mdmfProductParagraph: 'This product component is being remotely loaded into the application using Module Federation, angular is shared so the download is minimal for the frontend',
+        mdmfProductLinkText: 'Detail',
+        mdmfLoadingText: 'Loading...',
+        mdmfBackLink: 'Back',
         name: { text: 'Test Name', index: 0 },
         email: { text: 'test@test.com', index: 1 },
         secondName: { text: 'Test Name Second', index: 3 },
@@ -385,6 +391,7 @@ export class Constants {
         attr: 'attr',
         href: 'href',
         target: 'target',
+        src: 'src',
         remoteButton: 'Remote Button',
         nextJSButton: 'Next JS Button',
         typeScriptMonoRepoYarnWorkspaceDependency: 'app1/*,app2/*',

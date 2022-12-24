@@ -16,7 +16,6 @@ const appsData = [
     {
         headerText: Constants.elementsText.mdfmProfileHeader,
         paragraphText: Constants.commonPhrases.mdmfProfileParagraph,
-        additionlParagraph: '',
         appName: Constants.elementsText.mdmfProfile.name,
         appPath: Constants.elementsText.mdmfProfile.path,
         host: 4200
@@ -27,7 +26,7 @@ appsData.forEach((
     property: {
         headerText: string,
         paragraphText: string,
-        additionlParagraph: string
+        additionlParagraph?: string
         appName: string,
         appPath: string,
         host: number
