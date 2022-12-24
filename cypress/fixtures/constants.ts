@@ -43,6 +43,8 @@ export class Constants {
         basicHostRemoteSecondAppName: 'App 2',
         basicHostRemoteHeader: 'Basic Host-Remote',
         basicHostRemoteButton: 'App 2 Button',
+        dispatchRemoteAppNewNameButton: 'Dispatch RemoteApp new name',
+        dispatchRemoteAppNewNameInput: 'test input',
         nestedApp3Button: 'App 3 Button',
         nestedApp2Container: 'App 2 Container',
         nesterApp1Text: 'app 1 body',
@@ -335,6 +337,9 @@ export class Constants {
             'Moment shouldn\'t download twice, the host has no moment.js',
             'Using momentjs for format the date'
         ],
+        welcomeToHostApp: 'Welcome to Host App',
+        remoteAppText: 'RemoteApp',
+        remoteAppsNameFromReduxStore: "RemoteApp's name from the redux store : ",
         vueCliAppWelcomeMessage: 'Welcome to Your Vue.js + TypeScript App',
         vueCliAppConfigurationMessage: 'For a guide and recipes on how to configure / customize this project, check out the vue-cli documentation.',
         vueCliAppInstalledCliPluginsMessage: 'Installed CLI Plugins',
