@@ -300,7 +300,22 @@ export class Constants {
             invoices: 'Invoices',
             expenses: 'Expenses'
         },
-
+        vueCliSectionsDescriptions: {
+            otherSection: 'This is a component from /other-app.I am being imported.I also has my own behavior like fetching data',
+            coreSection: 'This is a section from /code.',
+            consumerCoreSection: 'I\'m inside the Section component loaded from /core, but my text is defined in /consumer'
+        },
+        vueCliButtonsText: {
+            otherSectionButton: 'Click to fetch from FakeApi',
+            coreSectionButton: 'Button',
+            consumerCoreSectionButton: 'Button imported from /core',
+        },
+        vueCliOtherSectionCodeBlock: '{ "userId": 1, "id": 1, "title": "delectus aut autem", "completed": false }',
+        vueCliConsumerSectionHeader: 'This is /consumer.',
+        vueCliConsumerImportMessages: {
+            coreImportMessage: 'The content below is imported from /core',
+            otherImportMessage: 'The content below is imported from /other'
+        },
     }
 
     public static readonly tabsNames = {
@@ -382,6 +397,7 @@ export class Constants {
             layout: 'Layout App 1',
             remote: 'Main App'
         },
+        vueCliOtherAppAlertMessage: 'Data fetched'
     }
 
     public static readonly commonText = {

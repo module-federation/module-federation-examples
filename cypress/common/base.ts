@@ -11,6 +11,10 @@ export class BaseMethods {
         cy.exec(`cd ${path} && make shutdown`)
     }
 
+    public skipTestByCondition(condition : any): void {
+        cy.skipWhen(condition)
+    }
+
     public execTheCommand(command: string, wait: number = 100): void {
         cy.exec(command)
         cy.wait(wait)
@@ -23,12 +27,17 @@ export class BaseMethods {
         cy.visit(Cypress.env(`localhost${number}`));
     }
 
-    public compareInfoBetweenHosts(selector: string, extraHost: number, isEqual: boolean = true): void {
+    public compareInfoBetweenHosts(selector: string, extraHost: number, isEqual: boolean = true, index: number = 0, clickSelector?: string, wait: number = 0): void {
         cy.get(selector)
+            .wait(wait)
+            .eq(index)
             .invoke('text')
             .then((baseText: string) => {
-                cy.origin(Cypress.env(`localhost${extraHost}`), {args: {baseText, selector, isEqual}}, ({baseText, selector, isEqual}) => {
+                cy.origin(Cypress.env(`localhost${extraHost}`), {args: {baseText, selector, isEqual, clickSelector, wait}}, ({baseText, selector, isEqual, clickSelector, wait}) => {
                     cy.visit('/')
+                    if(clickSelector) {
+                        cy.get(clickSelector).click().wait(wait)
+                    }
                     cy.get(selector)
                         .invoke('text')
                         .then((text: string) => {
@@ -92,15 +101,18 @@ export class BaseMethods {
     public clickElementWithText({
         selector,
         text,
-        isForce = false
+        isForce = false,
+        wait = 0
     }: {
         selector: string,
         text: string,
         isForce?: boolean
+        wait?: number
     }): void {
         cy.get(selector)
             .contains(text)
             .click({force: isForce})
+            .wait(wait)
     }
 
     public clickChildElementWithText({
@@ -214,19 +226,20 @@ export class BaseMethods {
         childSelector: string,
         isVisible: boolean = true,
         visibilityState: string = 'be.visible',
-        text? : string
-    ): Cypress.Chainable<JQuery<HTMLElement>> {
+        text? : string,
+        notVisibleState: string = 'not.exist',
+): Cypress.Chainable<JQuery<HTMLElement>> {
         if(text) {
             return cy
                 .get(selector).contains(text)
                 .find(childSelector)
-                .should(isVisible ? visibilityState : 'not.exist');
+                .should(isVisible ? visibilityState : notVisibleState);
         }
 
         return cy
             .get(selector)
             .find(childSelector)
-            .should(isVisible ? visibilityState : 'not.exist');
+            .should(isVisible ? visibilityState : notVisibleState);
     }
 
     public checkChildElementContainText(
@@ -411,16 +424,24 @@ export class BaseMethods {
     ({
          selector,
          state = 'be.disabled',
-         parentSelector
+         parentSelector,
+         text
     }: {
         selector: string,
         state?: string,
-        parentSelector?: string
+        parentSelector?: string,
+        text?: string
     }): void {
         if(parentSelector) {
             cy.get(parentSelector)
                 .find(selector)
                 .should(state)
+
+            return;
+        }
+
+        if(text) {
+            cy.get(selector).contains(text).should(state)
 
             return;
         }
@@ -487,6 +508,30 @@ export class BaseMethods {
             cy.get(element).contains(existedText).should('be.visible')
             cy.get(element).contains(notExistedText).should('not.exist')
         });
+    }
+
+    public checkBrowserAlertByText(selector: string, alertMessage: string, isEqual: boolean = true, index: number = 0): void {
+        this.clickElementBySelector({
+            selector,
+            index
+        })
+        cy.wrap(new Promise<void>((resolve, reject) => {
+            cy.on('window:alert', (alertText: string) => {
+                try {
+                    if(isEqual) {
+                        expect(alertText).to.be.eq(alertMessage)
+                    } else {
+                        expect(alertText).not.to.be.eq(alertMessage);
+                    }
+                } catch ( err ) {
+                    return reject(err);
+                }
+                resolve();
+            });
+            setTimeout(() => {
+                reject(new Error('window.confirm wasn\'t called within 3s'));
+            }, 3000);
+        }), { log: false });
     }
 
     public reloadWindow(withoutCache: boolean = false): void {

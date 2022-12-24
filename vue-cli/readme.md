@@ -9,6 +9,7 @@
 ## Running
 
 - Run
+  - `yarn`
   - `yarn serve`
 - Build
   - `yarn build`
