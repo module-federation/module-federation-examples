@@ -41,16 +41,7 @@ appsData.forEach(
         const appName = property.host === 3002 ? appsData[1].appNameText : appsData[0].appNameText;
         const color = property.host === 3002 ? appsData[1].buttonColor : appsData[0].buttonColor;
 
-        describe(`Check ${appName}`, () => {
-            // TODO cy.exec don't build the apps correctly cause lerna executes without exit code. Uncomment after fix this issue!
-            // before(() => {
-            //     basePage.buildTheSample(Constants.samplesPath.AdvancedApiAutomaticVendorSharing)
-            // })
-
-            // after(() => {
-            //     basePage.shutdownTheSample(Constants.samplesPath.AdvancedApiAutomaticVendorSharing)
-            // })
-
+        describe(`Check ${appName}`, () => {    
             it(`Check ${appName} built and running`, () => {
                 basePage.openLocalhost(host)
                 basePage.checkElementWithTextPresence({
@@ -72,6 +63,7 @@ appsData.forEach(
             })
 
             it(`Check button property in ${appName}`, () => {
+                basePage.openLocalhost(host)
                 basePage.checkElementPositionbyText(
                     property.buttonSelector,
                     `${appName} ${Constants.commonText.button}`,
