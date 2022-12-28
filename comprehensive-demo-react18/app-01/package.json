@@ -1,0 +1,28 @@
+{
+  "name": "@comprehensive-demo-react18/app-01",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@babel/core": "^7.8.6",
+    "@babel/preset-react": "^7.8.3",
+    "@material-ui/core": "^4.9.4",
+    "babel-loader": "^8.0.6",
+    "html-webpack-plugin": "^5.3.1",
+    "markdown-to-jsx": "^7.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "^5.1.2",
+    "serve": "^13.0.0",
+    "webpack": "5.72.1",
+    "webpack-cli": "^4.0.0"
+  },
+  "scripts": {
+    "start": "webpack --watch",
+    "build": "webpack --mode production",
+    "serve": "serve dist -p 3001",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "raw-loader": "4.0.2"
+  }
+}
