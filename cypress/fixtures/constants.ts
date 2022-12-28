@@ -408,9 +408,13 @@ export class Constants {
             coreImportMessage: 'The content below is imported from /core',
             otherImportMessage: 'The content below is imported from /other'
         },
-        umdFederationHeader1: 'Host App 1',
-        umdFederationHeader2: 'MF App 01',
-        umdFederationHeader3: 'UMD App2',
+        umdFederation: {
+            App1: {
+                firstHeader: 'Host App 1',
+                secondHeader: 'MF App 01',
+                thirdHeader: 'UMD App2'
+            }
+        },
         viteReactMicroFrontendsCardsMessages: {
             remoteCard: 'I\'m the remote app',
             hostCard: 'I\'m the host app'

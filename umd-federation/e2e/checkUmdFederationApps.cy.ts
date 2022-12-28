@@ -5,26 +5,22 @@ const basePage: BaseMethods = new BaseMethods()
 
 const appsData = [
     {
-        header1: Constants.elementsText.umdFederationHeader1,
-        header2: Constants.elementsText.umdFederationHeader2,
-        header3: Constants.elementsText.umdFederationHeader3,
+        header1: Constants.elementsText.umdFederation.App1.firstHeader,
+        header2: Constants.elementsText.umdFederation.App1.secondHeader,
+        header3: Constants.elementsText.umdFederation.App1.thirdHeader,
         host: 9001
     },
 
     {
-        header1: Constants.elementsText.umdFederationHeader1,
-        header2: Constants.elementsText.umdFederationHeader2,
-        header3: Constants.elementsText.umdFederationHeader3,
         host: 9002
-
     }
 ]
 
 appsData.forEach((
     property: {
-        header1: string,
-        header2: string,
-        header3: string,
+        header1?: string,
+        header2?: string,
+        header3?: string,
         host: number
     }
 ) => {
