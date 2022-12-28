@@ -37,7 +37,8 @@ export const baseSelectors = {
     emphasis: 'em',
     body: 'body',
     unorderedList: 'ul',
-    span: 'span'
+    span: 'span',
+    checkbox: 'input[type="checkbox"]'
 }
 
 export const selectors = {

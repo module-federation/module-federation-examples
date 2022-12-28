@@ -412,6 +412,23 @@ export class Constants {
         viteReactMicroFrontendsButtonsText: {
             hostButton: 'Host counter: 0',
             remoteButton: 'Remote counter: 0'
+        },
+        reactInVue: {
+            App1: {
+                header: 'React in Vue',
+                subHeader: 'Vue State/Input',
+                checkBoxText: 'Show button:',
+                buttonInputText: 'Button text:',
+                counterText: 'Times button clicked:',
+                buttonHeader: 'React Button - loaded via Module Federation',
+                buttonText: 'React button',
+                updatedButtonText: 'Make cool'
+            },
+            App2: {
+                header: 'Basic Host-Remote',
+                subHeader: 'Home',
+                buttonText: 'Home Button',
+            }
         }
     }
 

@@ -41,7 +41,12 @@ export class VueCliMethods extends BaseMethods {
 
     public checkCodeTagAppearance
     (): void {
-        this.checkElementContainText(baseSelectors.section, Constants.elementsText.vueCliOtherSectionCodeBlock, 0 , false)
+        this.checkElementContainText({
+            selector: baseSelectors.section,
+            text: Constants.elementsText.vueCliOtherSectionCodeBlock, 
+            index: 0 ,
+            contain: false
+        })
         this.clickElementWithText({
             selector: baseSelectors.button,
             text: Constants.elementsText.vueCliButtonsText.otherSectionButton,
@@ -54,7 +59,12 @@ export class VueCliMethods extends BaseMethods {
             visibilityState: 'be.visible'
         })
         this.reloadWindow()
-        this.checkElementContainText(baseSelectors.section, Constants.elementsText.vueCliOtherSectionCodeBlock, 0 , false)
+        this.checkElementContainText({
+            selector: baseSelectors.section,
+            text: Constants.elementsText.vueCliOtherSectionCodeBlock, 
+            index: 0 ,
+            contain: false
+        })
         this.checkChildElementVisibility(baseSelectors.section, baseSelectors.code, false,
             '', '', 'not.be.visible')
     }
