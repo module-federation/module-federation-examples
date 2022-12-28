@@ -104,11 +104,11 @@ export class Constants {
                         first: 'The following tab components are being imported remotely from "bravo-app".',
                         second: 'Notice that your browser\'s route is /routing/<foo|bar> depending on which tab is active.',
                         third: 'If you open http://localhost:3002 you will see the same tab components at the root level',
-                        forth: 'The "Bar" tab also lazily renders the styled-component Button from the UI Library demo only when rendered.' 
+                        forth: 'The "Bar" tab also lazily renders the styled-component Button from the UI Library demo only when rendered.'
                     }
                 },
                 sideNavHeaderText: 'SideNav'
-                
+
             },
             App2: {
                 headerText: 'Material UI App',
@@ -408,6 +408,9 @@ export class Constants {
             coreImportMessage: 'The content below is imported from /core',
             otherImportMessage: 'The content below is imported from /other'
         },
+        umdFederationHeader1: 'Host App 1',
+        umdFederationHeader2: 'MF App 01',
+        umdFederationHeader3: 'UMD App2',
         viteReactMicroFrontendsCardsMessages: {
             remoteCard: 'I\'m the remote app',
             hostCard: 'I\'m the host app'
