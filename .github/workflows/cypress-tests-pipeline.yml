@@ -2,6 +2,68 @@ name: Cypress e2e tests
 on: pull_request
 
 jobs:
+  forked_master_status:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+        env:
+          CURRENT_BRANCH: ${{ github.event.pull_request.head.ref }}
+          CURRENT_REPO: ${{ github.event.pull_request.head.repo.url }}
+          BASE_REPO_URL: ${{ github.event.pull_request.base.repo.url }}
+          BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
+      - if: ${{ github.event.repository.fork }} == 'false'
+        run: |
+          git remote add base https://github.com/${{github.repository}}
+          git remote -v
+          git fetch --all
+
+          echo "Latest commit on the forked master is $(git log -n 1 --pretty=format:"%H" origin/${{ github.event.pull_request.base.ref}})"
+          echo "Common ancestor of origin master and forked master is $(git merge-base base/${{ github.event.pull_request.base.ref }} origin/${{ github.event.pull_request.base.ref }})"
+
+          export FORKED_MASTER_SHA=$(git log -n 1 --pretty=format:"%H" origin/${{ github.event.pull_request.base.ref}})
+          export BASE_MASTER_SHA=$(git merge-base base/${{ github.event.pull_request.base.ref }} origin/${{ github.event.pull_request.base.ref }})
+
+          echo "$FORKED_MASTER_SHA"
+          echo "$BASE_MASTER_SHA"
+          
+          if [ "$FORKED_MASTER_SHA" == "$BASE_MASTER_SHA" ];
+          then
+            echo "The forked master is up to date with the base master branch"
+            exit 0
+          else
+            echo "The forked master branch is not up to date with the base master branch, Please update your fork!"
+            exit 1
+          fi
+
+  rebase:
+    runs-on: ubuntu-latest
+    needs: forked_master_status
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - run: |
+          git remote add base https://github.com/${{github.repository}}
+          git remote -v
+          git fetch --all
+
+          git config --global user.name "$(git --no-pager log --format=format:'%an' -n 1)"
+          git config --global user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
+
+          git rebase base/${{ github.event.pull_request.base.ref }}
+
+          if [[ ("$?" -eq "1") ]];
+          then
+            echo "Branch has confllicts! Please rebase the branch"
+          fi
 
   # install-deps:
   #   runs-on: ubuntu-latest
@@ -18,7 +80,7 @@ jobs:
 
   setup-matrix:
     runs-on: ubuntu-latest
-    # needs: install-deps
+    needs: rebase
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
