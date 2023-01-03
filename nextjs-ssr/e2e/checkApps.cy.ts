@@ -1,9 +1,6 @@
         import { BaseMethods } from '../../cypress/common/base';
         import { baseSelectors } from '../../cypress/common/selectors';
         import { Constants } from '../../cypress/fixtures/constants';
-        import {NextjsSsrMethods} from "./methods/methods";
-
-        const methodsPage: NextjsSsrMethods = new NextjsSsrMethods();
         const basePage: BaseMethods = new BaseMethods();
 
         const appsData = [
@@ -188,19 +185,19 @@
 
                 navigationTextedLinks.forEach((property: { text: string, link: string }) => {
                     it(`Check that ${property.text} text includes link, is not disabled`, () => {
-                        methodsPage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
+                        basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
                     })
                 })
 
                 commonTextedLinks.forEach((property: { text: string, link: string }) => {
                     it(`Check that ${property.text} text includes link, is not disabled`, () => {
-                        methodsPage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
+                        basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
                     })
                 })
 
                 tileTextedLinks.forEach((property: { text: string, link: string }) => {
                     it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                        methodsPage.checkParentElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
+                        basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link, true)
                     })
                 });
 
@@ -266,13 +263,13 @@
 
             navigationTextedLinks.forEach((property: { text: string, link: string }) => {
                 it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                    methodsPage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
+                    basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
                 })
             })
 
             commonTextedLinks.forEach((property: { text: string, link: string }) => {
                 it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                    methodsPage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
+                    basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
                 })
             })
 
@@ -352,13 +349,13 @@
 
         navigationTextedLinks.forEach((property: { text: string, link: string }) => {
             it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                methodsPage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
+                basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
             })
         })
 
         commonTextedLinks.forEach((property: { text: string, link: string }) => {
             it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                methodsPage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
+                basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
             })
         })
 
