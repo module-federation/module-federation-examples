@@ -4,12 +4,12 @@ import {CssAttr} from "../types/cssAttr";
 
 export class BaseMethods {
 
-    public buildTheSample(path: string): void {
-        cy.exec(`cd ${path} && make build`, {failOnNonZeroExit: false})
+    public buildTheSample(command: string): void {
+        cy.exec(command, {failOnNonZeroExit: false})
     }
 
-    public shutdownTheSample(path: string): void {
-        cy.exec(`cd ${path} && make shutdown`)
+    public shutdownTheSample(command: string): void {
+        cy.exec(command)
     }
 
     public skipTestByCondition(condition : any): void {
@@ -190,22 +190,29 @@ export class BaseMethods {
             .should(isVisible ? visibilityState : notVisibleState);
     }
 
-    public checkElementContainText(
+    public checkElementContainText({
+        selector,
+        text,
+        index = 0,
+        contain= true,
+        checkType = 'contain.text'
+    }: {
         selector: string,
-        text: string,
-        index: number = 0,
-        contain: boolean = true
-    ): Cypress.Chainable<JQuery<HTMLElement>> {
+        text?: string | number,
+        index?: number,
+        contain?: boolean,
+        checkType?: string
+    }): Cypress.Chainable<JQuery<HTMLElement>> {
         if (index) {
         return cy
             .get(selector)
             .eq(index)
-            .should(contain ? 'contain.text' : 'not.contain.text', text)
-        } 
+            .should(contain ? checkType : 'not.contain.text', text)
+        }
 
         return cy
             .get(selector)
-            .should(contain ? 'contain.text' : 'not.contain.text', text);
+            .should(contain ? checkType : 'not.contain.text', text);
     }
 
     public checkElementVisibility(

@@ -23,15 +23,27 @@ describe("Check Next host", () => {
             selector: baseSelectors.section,
             text: Constants.translation.nextHostButtonEn})
 
-        basePage.checkElementContainText(baseSelectors.section, Constants.translation.nextHostTextEn)
-        basePage.checkElementContainText(baseSelectors.section, Constants.translation.nextHostTitleEn)
+        basePage.checkElementContainText({
+            selector: baseSelectors.section, 
+            text: Constants.translation.nextHostTextEn
+        })
+        basePage.checkElementContainText({
+            selector: baseSelectors.section, 
+            text: Constants.translation.nextHostTitleEn
+        })
 
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.section,
             text: Constants.translation.reactRemoteButtonEn})
 
-        basePage.checkElementContainText(baseSelectors.section, Constants.translation.reactRemoteTitleEn)
-        basePage.checkElementContainText(baseSelectors.section, Constants.translation.reactRemoteTextEn)
+        basePage.checkElementContainText({
+            selector: baseSelectors.section, 
+            text: Constants.translation.reactRemoteTitleEn
+        })
+        basePage.checkElementContainText({
+            selector: baseSelectors.section, 
+            text: Constants.translation.reactRemoteTextEn
+        })
     })
 
     it('Check the language is changed from Next section', () => {
@@ -43,15 +55,27 @@ describe("Check Next host", () => {
             selector: baseSelectors.section,
             text: Constants.translation.nextHostButtonFr})
 
-        basePage.checkElementContainText(baseSelectors.section, Constants.translation.nextHostTextFr)
-        basePage.checkElementContainText(baseSelectors.section, Constants.translation.nextHostTitleFr)
+        basePage.checkElementContainText({
+            selector: baseSelectors.section, 
+            text: Constants.translation.nextHostTextFr
+        })
+        basePage.checkElementContainText({
+            selector: baseSelectors.section, 
+            text: Constants.translation.nextHostTitleFr
+        })
 
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.section,
             text: Constants.translation.reactRemoteButtonFr})
 
-        basePage.checkElementContainText(baseSelectors.section, Constants.translation.reactRemoteTitleFr)
-        basePage.checkElementContainText(baseSelectors.section, Constants.translation.reactRemoteTextFr)
+        basePage.checkElementContainText({
+            selector: baseSelectors.section, 
+            text: Constants.translation.reactRemoteTitleFr
+        })
+        basePage.checkElementContainText({
+            selector: baseSelectors.section, 
+            text: Constants.translation.reactRemoteTextFr
+        })
 
         basePage.clickElementWithText({
             selector: baseSelectors.section,
@@ -61,15 +85,27 @@ describe("Check Next host", () => {
             selector: baseSelectors.section,
             text: Constants.translation.nextHostButtonEn})
 
-        basePage.checkElementContainText(baseSelectors.section, Constants.translation.nextHostTextEn)
-        basePage.checkElementContainText(baseSelectors.section, Constants.translation.nextHostTitleEn)
+        basePage.checkElementContainText({
+            selector: baseSelectors.section, 
+            text: Constants.translation.nextHostTextEn
+        })
+        basePage.checkElementContainText({
+            selector: baseSelectors.section, 
+            text: Constants.translation.nextHostTitleEn
+        })
 
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.section,
             text: Constants.translation.reactRemoteButtonEn})
 
-        basePage.checkElementContainText(baseSelectors.section, Constants.translation.reactRemoteTitleEn)
-        basePage.checkElementContainText(baseSelectors.section, Constants.translation.reactRemoteTextEn)
+        basePage.checkElementContainText({
+            selector: baseSelectors.section, 
+            text: Constants.translation.reactRemoteTitleEn
+        })
+        basePage.checkElementContainText({
+            selector: baseSelectors.section, 
+            text: Constants.translation.reactRemoteTextEn
+        })
     })
 
     it('Check the language is changed from remote child section', () => {
@@ -81,15 +117,27 @@ describe("Check Next host", () => {
             selector: baseSelectors.section, 
             text: Constants.translation.nextHostButtonFr})
 
-        basePage.checkElementContainText(baseSelectors.section, Constants.translation.nextHostTextFr)
-        basePage.checkElementContainText(baseSelectors.section, Constants.translation.nextHostTitleFr)
+        basePage.checkElementContainText({
+            selector: baseSelectors.section, 
+            text: Constants.translation.nextHostTextFr
+        })
+        basePage.checkElementContainText({
+            selector: baseSelectors.section, 
+            text: Constants.translation.nextHostTitleFr
+        })
 
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.section,
             text: Constants.translation.reactRemoteButtonFr})
 
-        basePage.checkElementContainText(baseSelectors.section, Constants.translation.reactRemoteTitleFr)
-        basePage.checkElementContainText(baseSelectors.section, Constants.translation.reactRemoteTextFr)
+        basePage.checkElementContainText({
+            selector: baseSelectors.section, 
+            text: Constants.translation.reactRemoteTitleFr
+        })
+        basePage.checkElementContainText({
+            selector: baseSelectors.section, 
+            text: Constants.translation.reactRemoteTextFr
+        })
 
         basePage.clickElementWithText({
             selector: baseSelectors.section,
@@ -99,14 +147,26 @@ describe("Check Next host", () => {
             selector: baseSelectors.section,
             text: Constants.translation.nextHostButtonEn})
             
-        basePage.checkElementContainText(baseSelectors.section, Constants.translation.nextHostTextEn)
-        basePage.checkElementContainText(baseSelectors.section, Constants.translation.nextHostTitleEn)
+        basePage.checkElementContainText({
+            selector: baseSelectors.section, 
+            text: Constants.translation.nextHostTextEn
+        })
+        basePage.checkElementContainText({
+            selector: baseSelectors.section, 
+            text: Constants.translation.nextHostTitleEn
+        })
 
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.section,
             text: Constants.translation.reactRemoteButtonEn})
             
-        basePage.checkElementContainText(baseSelectors.section, Constants.translation.reactRemoteTitleEn)
-        basePage.checkElementContainText(baseSelectors.section, Constants.translation.reactRemoteTextEn)
+        basePage.checkElementContainText({
+            selector: baseSelectors.section, 
+            text: Constants.translation.reactRemoteTitleEn
+        })
+        basePage.checkElementContainText({
+            selector: baseSelectors.section, 
+            text: Constants.translation.reactRemoteTextEn
+        })
     })
 })
