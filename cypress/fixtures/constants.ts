@@ -389,6 +389,9 @@ export class Constants {
             invoices: 'Invoices',
             expenses: 'Expenses'
         },
+        reactHostNextJsRemoteHeader: 'This is the React container App hosted at localhost:8080',
+        reactHostNextJsRemoteNav: 'Hello from Remote Nextjs component hosted on localhost:8081',
+
         vueCliSectionsDescriptions: {
             otherSection: 'This is a component from /other-app.I am being imported.I also has my own behavior like fetching data',
             coreSection: 'This is a section from /code.',
