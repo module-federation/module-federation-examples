@@ -22,7 +22,6 @@ export const baseSelectors = {
     tableRow: 'tr',
     tableDataCell: 'td',
     tableHeader: 'th',
-    input: 'input',
     nextApp: '#__next',
     listElement: 'li',
     heroSection: '.hero',
@@ -60,7 +59,12 @@ export const selectors = {
     vue3DemoComponents : {
         remote: '.remote-component',
         layout: '.layout-app',
-    }
+    },
+    commonCardSelector: '[data-e2e="APP__CARD"]',
+    viteReactMicroFrontendsCardsSymbols : {
+        starSymbol: '[data-e2e="STAR__SYMBOL"]',
+        cloudSymbol: '[data-e2e="CLOUD__SYMBOL"]',
+    },
 }
 
 export const updatedSelectors = {
