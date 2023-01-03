@@ -12,7 +12,9 @@
   "workspaces": {
     "packages": [
       "./advanced-api/automatic-vendor-sharing",
-      "./advanced-api/automatic-vendor-sharing/*"
+      "./advanced-api/automatic-vendor-sharing/*",
+      "./advanced-api/dynamic-remotes",
+      "./advanced-api/dynamic-remotes/*"
     ],
     "nohoist": [
       "**/@types",
@@ -31,7 +33,7 @@
     "cypress-fill-command": "^1.0.2",
     "husky": "7.0.4",
     "jest": "26.6.3",
-    "lerna": "^6.1.0",
+    "lerna": "^3.22.1",
     "mocha": "^10.1.0",
     "prettier": "2.7.1",
     "pretty-quick": "3.1.3",
