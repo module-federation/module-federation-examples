@@ -7,6 +7,7 @@ export const baseSelectors = {
     h2: 'h2',
     h3: 'h3',
     h4: 'h4',
+    h6: 'h6',
     paragraph: 'p',
     section: 'section',
     appId: '#app',
@@ -34,7 +35,9 @@ export const baseSelectors = {
     header: 'header',
     label: 'label',
     emphasis: 'em',
-    body: 'body'
+    body: 'body',
+    unorderedList: 'ul',
+    span: 'span'
 }
 
 export const selectors = {
@@ -104,14 +107,27 @@ export const buttons = {
     nativeFederationReactButtons: {
         hostButton: '[data-e2e="HOST_BUTTON"]',
         remoteButton: '[data-e2e="REMOTE_BUTTON"]'
-    }
+    },
+    actionButton: 'action-button',
+    closeButton: '.closebtn'
 }
 
 export const alertMessages = {
-    angularAlertMessage: '.alert-danger'
+    angularAlertMessage: '.alert-danger',
+    alertBox: 'alert-box',
+    alert: '.alert'
 }
 
 export const block = {
+    comprehensiveDemoBlockSelectors: {
+        firstBlock: '.makeStyles-root-1',
+        secondBlock: '.makeStyles-content-2',
+        thirdBlock: '.makeStyles-root-3',
+        sideBarBlock: '.makeStyles-drawerPaper-3'
+    },
     differentReactVersionsIsolatedSharedBlock: '[data-e2e="SHARED__REACT_BLOCK"]',
     commonReactBlock: '[data-e2e="REACT__{blockType}_BLOCK"]'
+}
+export const dialogs = {
+    comprehensiveDemoDialogApp2: 'div[role="dialog"]'
 }

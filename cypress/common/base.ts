@@ -25,7 +25,7 @@ export class BaseMethods {
         return path ? 
         cy.visit(`${Cypress.env(`localhost${number}`)}/${path}`)
         :
-        cy.visit(Cypress.env(`localhost${number}`));
+            cy.visit(Cypress.env(`localhost${number}`));
     }
 
     public compareInfoBetweenHosts(selector: string, extraHost: number, isEqual: boolean = true, index: number = 0, clickSelector?: string, wait: number = 0): void {
@@ -259,35 +259,40 @@ export class BaseMethods {
          prop,
          value,
          parentSelector,
-         isMultiple = false
+         isMultiple = false,
+        index
     }: {
         selector: string,
         attr?: string,
         prop: string,
-        value: string
+        value: string,
+        index?: number
         parentSelector?: string,
         isMultiple? : boolean
      }
-    ): void {
+    ): Cypress.Chainable<JQuery<HTMLElement>> {
+        if(index) {
+            return cy.get(selector)
+                .eq(index)
+                .invoke(attr, prop)
+                .should('include', value)
+        }
+
         if(parentSelector) {
-            cy.get(parentSelector)
+            return cy.get(parentSelector)
                 .find(selector)
                 .invoke(attr, prop)
                 .should('include', value)
-
-            return;
         }
 
         if(isMultiple) {
-            cy.get(selector)
+            return cy.get(selector)
                 .each((element: JQuery<HTMLElement>) => {
                     this._checkCssValue(element, prop, value)
                 });
-
-            return;
         }
 
-        cy.get(selector)
+        return cy.get(selector)
             .invoke(attr, prop)
             .should('include', value)
     }
@@ -540,30 +545,6 @@ export class BaseMethods {
         });
     }
 
-    public checkBrowserAlertByText(selector: string, alertMessage: string, isEqual: boolean = true, index: number = 0): void {
-        this.clickElementBySelector({
-            selector,
-            index
-        })
-        cy.wrap(new Promise<void>((resolve, reject) => {
-            cy.on('window:alert', (alertText: string) => {
-                try {
-                    if(isEqual) {
-                        expect(alertText).to.be.eq(alertMessage)
-                    } else {
-                        expect(alertText).not.to.be.eq(alertMessage);
-                    }
-                } catch ( err ) {
-                    return reject(err);
-                }
-                resolve();
-            });
-            setTimeout(() => {
-                reject(new Error('window.confirm wasn\'t called within 3s'));
-            }, 3000);
-        }), { log: false });
-    }
-
     public reloadWindow(withoutCache: boolean = false): void {
         cy.reload(withoutCache)
     }
@@ -638,6 +619,40 @@ export class BaseMethods {
         } else {
             expect(element.attr(prop)).to.be.eq(value)
         }
+    }
+
+    public checkBrowserAlertByText({
+        selector,
+        alertMessage,
+        isEqual = true,
+        index = 0
+    }: {
+        selector: string,
+        alertMessage: string,
+        isEqual?: boolean,
+        index?: number
+    }): void {
+        this.clickElementBySelector({
+            selector,
+            index
+        })
+        cy.wrap(new Promise<void>((resolve, reject) => {
+            cy.on('window:alert', (alertText: string) => {
+                try {
+                    if(isEqual) {
+                        expect(alertText).to.be.eq(alertMessage);
+                    } else {
+                        expect(alertText).not.to.be.eq(alertMessage)
+                    }
+                } catch ( err ) {
+                    return reject(err);
+                }
+                resolve();
+            });
+            setTimeout(() => {
+                reject(new Error('window.confirm wasn\'t called within 1s'));
+            }, 3000);
+        }), { log: false });
     }
 }
 
