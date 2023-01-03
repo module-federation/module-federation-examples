@@ -318,6 +318,14 @@ export class Constants {
             coreImportMessage: 'The content below is imported from /core',
             otherImportMessage: 'The content below is imported from /other'
         },
+        viteReactMicroFrontendsCardsMessages: {
+            remoteCard: 'I\'m the remote app',
+            hostCard: 'I\'m the host app'
+        },
+        viteReactMicroFrontendsButtonsText: {
+            hostButton: 'Host counter: 0',
+            remoteButton: 'Remote counter: 0'
+        }
     }
 
     public static readonly tabsNames = {
@@ -352,7 +360,7 @@ export class Constants {
         mdmfSharedParagraph: 'mdmf-shared works!',
         mdmfProductParagraph: 'This product component is being remotely loaded into the application using Module Federation, angular is shared so the download is minimal for the frontend',
         mdmfProductLinkText: 'Detail',
-        mdmfLoadingText: 'Loading...',
+        commonLoadingText: 'Loading...',
         mdmfBackLink: 'Back',
         name: { text: 'Test Name', index: 0 },
         email: { text: 'test@test.com', index: 1 },
@@ -435,12 +443,20 @@ export class Constants {
         sharedStoreCrossFrameworkCounterValues: {
             zero: '0',
             two: '2'
+        },
+        viteReactMicroFrontendsCardsNames: {
+            hostCard: 'host',
+            remoteCard: 'remote'
+        },
+        viteReactMicroFrontendsCardsSymbolsNames: {
+            starSymbol: 'star',
+            cloudSymbol: 'cloud'
         }
     }
 
     public static readonly color = {
         red: 'rgb(136, 0, 0)',
-        blue: 'rgb(0, 0, 204)',
+        deepBlue: 'rgb(0, 0, 204)',
         dynamicRemotesWidgetColor: [
             'rgb(255, 0, 0)',
             'rgb(128, 0, 128)'
@@ -458,7 +474,10 @@ export class Constants {
         lightGreen: 'rgb(136, 218, 153)',
         purple: 'rgb(63, 81, 181)',
         deepPink: 'rgb(156, 39, 176)',
-        borderColorRed1px: '1px solid rgb(255, 0, 0)'
+        borderColorRed1px: '1px solid rgb(255, 0, 0)',
+        orange: 'rgb(246, 179, 82)',
+        blue: 'rgb(49, 120, 198)',
+        black: 'rgb(31, 33, 36)'
     }
 
     public static readonly translation = {

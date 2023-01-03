@@ -33,6 +33,7 @@ export default defineConfig({
       localhost3002: "http://localhost:3002",
       localhost3003: "http://localhost:3003",
       localhost3004: "http://localhost:3004",
+      localhost4173: "http://localhost:4173",
       localhost4200: "http://localhost:4200",
       localhost4201: "http://localhost:4201",
       localhost4300: "http://localhost:4300",

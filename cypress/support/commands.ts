@@ -37,6 +37,7 @@
 // }
 
 import 'cypress-fill-command';
+import 'cypress-wait-until';
 
 declare global {
     namespace Cypress {

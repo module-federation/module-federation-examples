@@ -1,5 +1,6 @@
 import {baseSelectors, block} from "./selectors";
 import {Constants} from "../fixtures/constants";
+import {CssAttr} from "../types/cssAttr";
 
 export class BaseMethods {
 
@@ -150,7 +151,6 @@ export class BaseMethods {
          notVisibleState = 'not.exist',
          parentSelector,
          isMultiple = false,
-         wait = 0,
          index = 0
     }: {
         selector: string,
@@ -167,7 +167,6 @@ export class BaseMethods {
             return cy.get(parentSelector)
                 .find(selector)
                 .contains(text)
-                .wait(wait)
                 .should(isVisible ? visibilityState : notVisibleState);
         }
 
@@ -176,13 +175,11 @@ export class BaseMethods {
                 .get(selector)
                 .eq(index)
                 .contains(text)
-                .wait(wait)
                 .should(isVisible ? visibilityState : notVisibleState);
         }
 
         if(isMultiple) {
             return cy.get(selector)
-                .wait(wait)
                 .each((element: JQuery<HTMLElement>) => {
                     expect(element.text()).to.include(text)
                 });
@@ -190,7 +187,6 @@ export class BaseMethods {
 
         return cy.get(selector)
             .contains(text)
-            .wait(wait)
             .should(isVisible ? visibilityState : notVisibleState);
     }
 
@@ -231,7 +227,7 @@ export class BaseMethods {
 ): Cypress.Chainable<JQuery<HTMLElement>> {
         if(text) {
             return cy
-                .get(selector).contains(text)
+                .get(selector).contains(text).parent(selector)
                 .find(childSelector)
                 .should(isVisible ? visibilityState : notVisibleState);
         }
@@ -259,7 +255,7 @@ export class BaseMethods {
     public checkElementHaveProperty
     ({
          selector,
-         attr = 'css',
+         attr = CssAttr.css,
          prop,
          value,
          parentSelector,
@@ -285,7 +281,7 @@ export class BaseMethods {
         if(isMultiple) {
             cy.get(selector)
                 .each((element: JQuery<HTMLElement>) => {
-                    expect(element.attr(prop)).to.be.eq(value)
+                    this._checkCssValue(element, prop, value)
                 });
 
             return;
@@ -299,7 +295,7 @@ export class BaseMethods {
     public checkChildElementHaveProperty({
         selector,
         childSelector,
-        attr = 'css',
+        attr = CssAttr.css,
         prop,
         value,
         parentSelector
@@ -330,18 +326,29 @@ export class BaseMethods {
     public checkElementWithTextHaveProperty({
         selector,
         text,
-        attr = 'css',
+        attr = CssAttr.css,
         prop,
         value,
-        index
+        checkType = 'contains'
     }: {
         selector: string,
         text: string,
         attr?: string,
         prop: string,
         value: string,
-        index?: number
+        checkType?: string
     }): void {
+        if(checkType !== 'contains') {
+            cy.get(selector)
+                .each((element: JQuery<HTMLElement>) => {
+                    if(element.text().includes(text)) {
+                        this._checkCssValue(element, prop, value)
+                    }
+                });
+
+            return;
+        }
+
         cy.get(selector)
             .contains(text)
             .invoke(attr, prop)
@@ -352,7 +359,7 @@ export class BaseMethods {
         selector,
         childSelector,
         text,
-        attr = 'css',
+        attr = CssAttr.css,
         prop,
         value,
         index
@@ -397,13 +404,15 @@ export class BaseMethods {
          quantity,
          parentSelector,
          state = 'have.length',
-         text
+         text,
+         waitUntil = false
     }: {
         selector: string,
         quantity: number,
         state?: string,
-        parentSelector? : string
+        parentSelector?: string,
         text?: string
+        waitUntil?: boolean
     }): void {
         if(parentSelector) {
             cy.get(parentSelector).find(selector).should(state, quantity)
@@ -417,6 +426,14 @@ export class BaseMethods {
             return;
         }
 
+        if(waitUntil) {
+            cy.waitUntil(() =>
+                cy.get(selector).should('have.length', quantity, { timeout: 2000 }),
+            );
+
+            return;
+        }
+
         cy.get(selector).should(state, quantity)
     }
 
@@ -425,12 +442,16 @@ export class BaseMethods {
          selector,
          state = 'be.disabled',
          parentSelector,
-         text
+         text,
+         isMultiple = false,
+         jqueryValue
     }: {
         selector: string,
         state?: string,
         parentSelector?: string,
-        text?: string
+        text?: string,
+        isMultiple?: boolean
+        jqueryValue?: any
     }): void {
         if(parentSelector) {
             cy.get(parentSelector)
@@ -446,7 +467,16 @@ export class BaseMethods {
             return;
         }
 
-        cy.get(selector)
+        if(isMultiple) {
+            cy.get(selector)
+                .each((element: JQuery<HTMLElement>) => {
+                    expect(element.is(state)).to.be.eq(jqueryValue)
+                });
+
+            return;
+        }
+
+         cy.get(selector)
             .should(state)
     }
 
@@ -558,6 +588,39 @@ export class BaseMethods {
         cy.go(-1)
     }
 
+    public checkCounterInButton(button: string, buttonText: string, buttonsCount?: number): void {
+        let counter = 0
+
+        this.checkElementWithTextPresence({
+            selector: button,
+            text: buttonText,
+            visibilityState: 'be.visible'
+        })
+        this.clickElementWithText({
+            selector: button,
+            text: buttonText
+        })
+        counter++
+        this.checkElementWithTextPresence({
+            selector: button,
+            text: buttonText.replace(/[0-9]+/, counter.toString()),
+            visibilityState: 'be.visible'
+        })
+        this.reloadWindow()
+        if(buttonsCount) {
+            this.checkElementQuantity({
+                selector: button,
+                quantity: buttonsCount,
+                waitUntil: true
+            })
+        }
+        this.checkElementWithTextPresence({
+            selector: button,
+            text: buttonText,
+            visibilityState: 'be.visible'
+        })
+    }
+
     private _checkInputValue(text: string, value: string, isLengthChecked: boolean = false): void {
         if(isLengthChecked) {
             expect(text.length).to.be.eq(value.length)
@@ -567,6 +630,14 @@ export class BaseMethods {
 
         expect(text).to.be.eq(value)
 
+    }
+
+    private _checkCssValue(element: JQuery<HTMLElement>, prop: string, value: string): void {
+        if(prop === CssAttr.css) {
+            expect(element.css(CssAttr.backgroundColor)).to.be.eq(value)
+        } else {
+            expect(element.attr(prop)).to.be.eq(value)
+        }
     }
 }
 

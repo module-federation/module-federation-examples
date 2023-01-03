@@ -565,7 +565,7 @@ describe('Check Product Application', () => {
     it('Check Product page', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.divElement,
-            text: Constants.commonPhrases.mdmfLoadingText,
+            text: Constants.commonPhrases.commonLoadingText,
             isVisible: false
         })
         productList.forEach((product) => {
