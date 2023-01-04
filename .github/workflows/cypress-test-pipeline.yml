@@ -135,3 +135,17 @@ jobs:
       - name: Run sample e2e tests
         run: 
           npx lerna run --scope=${{ matrix.container }} --parallel e2e:ci
+
+      - name: Create artifacts for Cypress screenshots
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: '**/${{ matrix.container }}/cypress/screenshots'
+
+      - name: Create artifacts for Cypress videos
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-videos
+          path: '**/${{ matrix.container }}/cypress/videos'
