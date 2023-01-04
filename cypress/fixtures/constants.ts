@@ -415,6 +415,29 @@ export class Constants {
                 thirdHeader: 'UMD App2'
             }
         },
+        quasarCli: {
+            appExposes: {
+                name: 'App Exposes',
+                list: 'List',
+                banner: 'App Exposes Home Page',
+                componentsButton: 'Components'
+            },
+            appGeneral: {
+                name: 'Child FE',
+                banner: 'App Remote Home Page',
+                routeButton: 'Route',
+                subheader1: 'Exposed from Child',
+                subheader2: 'Listening in Parent',
+                counter: 'Counter',
+                name1: 'Riyaz',
+                name2: 'Quy',
+                name3: 'Sang',
+                name4: 'Loris'
+            }
+        },
+        appButtonDiv: 'App Button',
+        appButtonClickMeButton: 'Click me',
+        appListDiv: 'AppList',
         viteReactMicroFrontendsCardsMessages: {
             remoteCard: 'I\'m the remote app',
             hostCard: 'I\'m the host app'

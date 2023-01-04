@@ -7,13 +7,13 @@
       <q-card-section>
         <q-list>
           <q-item :key="index" v-for="(item, index) in list">
-            <q-item-section>
+            <q-item-section data-e2e="exposesAppNames">
               <q-item-label lines="1">{{ item.label }}</q-item-label>
               <q-item-label caption>{{ item.createdAt }}</q-item-label>
             </q-item-section>
 
             <q-item-section side>
-              <q-btn
+              <q-btn data-e2e="exposesAppNamesClose"
                 icon="close"
                 round
                 flat

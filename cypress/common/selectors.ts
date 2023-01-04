@@ -7,6 +7,7 @@ export const baseSelectors = {
     h2: 'h2',
     h3: 'h3',
     h4: 'h4',
+    h5: 'h5',
     h6: 'h6',
     paragraph: 'p',
     section: 'section',
@@ -38,7 +39,7 @@ export const baseSelectors = {
     body: 'body',
     unorderedList: 'ul',
     span: 'span',
-    checkbox: 'input[type="checkbox"]'
+    checkbox: 'input[type="checkbox"]',
 }
 
 export const selectors = {
@@ -69,6 +70,11 @@ export const selectors = {
         starSymbol: '[data-e2e="STAR__SYMBOL"]',
         cloudSymbol: '[data-e2e="CLOUD__SYMBOL"]',
     },
+    appExposesCounter: '[data-cy="app-button-counter"]',
+    appExposesNames: '[data-e2e="exposesAppNames"]',
+    appExposesCloseName: '[data-e2e="exposesAppNamesClose"]',
+    appGeneralCounter: '[data-e2e="General-counter"]',
+    appExposesButton: '[data-cy="app-button"]'
 }
 
 export const updatedSelectors = {
@@ -110,7 +116,7 @@ export const buttons = {
         remoteButton: '[data-e2e="REMOTE_BUTTON"]'
     },
     actionButton: 'action-button',
-    closeButton: '.closebtn'
+    closeButton: '.closebtn',
 }
 
 export const alertMessages = {
