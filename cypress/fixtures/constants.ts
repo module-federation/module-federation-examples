@@ -104,11 +104,11 @@ export class Constants {
                         first: 'The following tab components are being imported remotely from "bravo-app".',
                         second: 'Notice that your browser\'s route is /routing/<foo|bar> depending on which tab is active.',
                         third: 'If you open http://localhost:3002 you will see the same tab components at the root level',
-                        forth: 'The "Bar" tab also lazily renders the styled-component Button from the UI Library demo only when rendered.' 
+                        forth: 'The "Bar" tab also lazily renders the styled-component Button from the UI Library demo only when rendered.'
                     }
                 },
                 sideNavHeaderText: 'SideNav'
-                
+
             },
             App2: {
                 headerText: 'Material UI App',
@@ -517,8 +517,13 @@ export class Constants {
             layout: 'Layout App 1',
             remote: 'Main App'
         },
+        standartText: 'May The Force Be With You',
         vueCliOtherAppAlertMessage: 'Data fetched',
-        standartText: 'May The Force Be With You'
+        viteSvelteMicroFrontEndsConsoleMessages: [
+            'I\'m RxJs from host',
+            'I\'m RxJs from remote',
+            'remote got message:'
+        ],
     }
 
     public static readonly commonText = {
