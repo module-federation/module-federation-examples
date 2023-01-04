@@ -1,14 +1,15 @@
 import {baseSelectors, block} from "./selectors";
 import {Constants} from "../fixtures/constants";
+import {CssAttr} from "../types/cssAttr";
 
 export class BaseMethods {
 
-    public buildTheSample(path: string): void {
-        cy.exec(`cd ${path} && make build`, {failOnNonZeroExit: false})
+    public buildTheSample(command: string): void {
+        cy.exec(command, {failOnNonZeroExit: false})
     }
 
-    public shutdownTheSample(path: string): void {
-        cy.exec(`cd ${path} && make shutdown`)
+    public shutdownTheSample(command: string): void {
+        cy.exec(command)
     }
 
     public skipTestByCondition(condition : any): void {
@@ -24,7 +25,7 @@ export class BaseMethods {
         return path ? 
         cy.visit(`${Cypress.env(`localhost${number}`)}/${path}`)
         :
-        cy.visit(Cypress.env(`localhost${number}`));
+            cy.visit(Cypress.env(`localhost${number}`));
     }
 
     public compareInfoBetweenHosts(selector: string, extraHost: number, isEqual: boolean = true, index: number = 0, clickSelector?: string, wait: number = 0): void {
@@ -150,7 +151,6 @@ export class BaseMethods {
          notVisibleState = 'not.exist',
          parentSelector,
          isMultiple = false,
-         wait = 0,
          index = 0
     }: {
         selector: string,
@@ -167,7 +167,6 @@ export class BaseMethods {
             return cy.get(parentSelector)
                 .find(selector)
                 .contains(text)
-                .wait(wait)
                 .should(isVisible ? visibilityState : notVisibleState);
         }
 
@@ -176,13 +175,11 @@ export class BaseMethods {
                 .get(selector)
                 .eq(index)
                 .contains(text)
-                .wait(wait)
                 .should(isVisible ? visibilityState : notVisibleState);
         }
 
         if(isMultiple) {
             return cy.get(selector)
-                .wait(wait)
                 .each((element: JQuery<HTMLElement>) => {
                     expect(element.text()).to.include(text)
                 });
@@ -190,26 +187,40 @@ export class BaseMethods {
 
         return cy.get(selector)
             .contains(text)
-            .wait(wait)
             .should(isVisible ? visibilityState : notVisibleState);
     }
 
-    public checkElementContainText(
+    public checkElementContainText({
+        selector,
+        text,
+        index = 0,
+        contain= true,
+        checkType = 'contain.text'
+    }: {
         selector: string,
-        text: string,
-        index: number = 0,
-        contain: boolean = true
-    ): Cypress.Chainable<JQuery<HTMLElement>> {
+        text?: string | number,
+        index?: number,
+        contain?: boolean,
+        checkType?: string
+    }): Cypress.Chainable<JQuery<HTMLElement>> {
         if (index) {
         return cy
             .get(selector)
             .eq(index)
-            .should(contain ? 'contain.text' : 'not.contain.text', text)
-        } 
+            .should(contain ? checkType : 'not.contain.text', text)
+        }
 
         return cy
             .get(selector)
-            .should(contain ? 'contain.text' : 'not.contain.text', text);
+            .should(contain ? checkType : 'not.contain.text', text);
+    }
+
+    public checkInfoInConsole(info: string): void {
+        cy.window().then((win) => {
+            cy.stub(win.console, "log").as('log')
+            cy.get('@log').should('be.calledWith', info)
+            this.reloadWindow()
+        })
     }
 
     public checkElementVisibility(
@@ -231,7 +242,7 @@ export class BaseMethods {
 ): Cypress.Chainable<JQuery<HTMLElement>> {
         if(text) {
             return cy
-                .get(selector).contains(text)
+                .get(selector).contains(text).parent(selector)
                 .find(childSelector)
                 .should(isVisible ? visibilityState : notVisibleState);
         }
@@ -259,39 +270,44 @@ export class BaseMethods {
     public checkElementHaveProperty
     ({
          selector,
-         attr = 'css',
+         attr = CssAttr.css,
          prop,
          value,
          parentSelector,
-         isMultiple = false
+         isMultiple = false,
+        index
     }: {
         selector: string,
         attr?: string,
         prop: string,
-        value: string
+        value: string,
+        index?: number
         parentSelector?: string,
         isMultiple? : boolean
      }
-    ): void {
+    ): Cypress.Chainable<JQuery<HTMLElement>> {
+        if(index) {
+            return cy.get(selector)
+                .eq(index)
+                .invoke(attr, prop)
+                .should('include', value)
+        }
+
         if(parentSelector) {
-            cy.get(parentSelector)
+            return cy.get(parentSelector)
                 .find(selector)
                 .invoke(attr, prop)
                 .should('include', value)
-
-            return;
         }
 
         if(isMultiple) {
-            cy.get(selector)
+            return cy.get(selector)
                 .each((element: JQuery<HTMLElement>) => {
-                    expect(element.attr(prop)).to.be.eq(value)
+                    this._checkCssValue(element, prop, value)
                 });
-
-            return;
         }
 
-        cy.get(selector)
+        return cy.get(selector)
             .invoke(attr, prop)
             .should('include', value)
     }
@@ -299,7 +315,7 @@ export class BaseMethods {
     public checkChildElementHaveProperty({
         selector,
         childSelector,
-        attr = 'css',
+        attr = CssAttr.css,
         prop,
         value,
         parentSelector
@@ -330,18 +346,29 @@ export class BaseMethods {
     public checkElementWithTextHaveProperty({
         selector,
         text,
-        attr = 'css',
+        attr = CssAttr.css,
         prop,
         value,
-        index
+        checkType = 'contains'
     }: {
         selector: string,
         text: string,
         attr?: string,
         prop: string,
         value: string,
-        index?: number
+        checkType?: string
     }): void {
+        if(checkType !== 'contains') {
+            cy.get(selector)
+                .each((element: JQuery<HTMLElement>) => {
+                    if(element.text().includes(text)) {
+                        this._checkCssValue(element, prop, value)
+                    }
+                });
+
+            return;
+        }
+
         cy.get(selector)
             .contains(text)
             .invoke(attr, prop)
@@ -352,7 +379,7 @@ export class BaseMethods {
         selector,
         childSelector,
         text,
-        attr = 'css',
+        attr = CssAttr.css,
         prop,
         value,
         index
@@ -397,13 +424,15 @@ export class BaseMethods {
          quantity,
          parentSelector,
          state = 'have.length',
-         text
+         text,
+         waitUntil = false
     }: {
         selector: string,
         quantity: number,
         state?: string,
-        parentSelector? : string
+        parentSelector?: string,
         text?: string
+        waitUntil?: boolean
     }): void {
         if(parentSelector) {
             cy.get(parentSelector).find(selector).should(state, quantity)
@@ -417,6 +446,14 @@ export class BaseMethods {
             return;
         }
 
+        if(waitUntil) {
+            cy.waitUntil(() =>
+                cy.get(selector).should('have.length', quantity, { timeout: 2000 }),
+            );
+
+            return;
+        }
+
         cy.get(selector).should(state, quantity)
     }
 
@@ -425,12 +462,16 @@ export class BaseMethods {
          selector,
          state = 'be.disabled',
          parentSelector,
-         text
+         text,
+         isMultiple = false,
+         jqueryValue
     }: {
         selector: string,
         state?: string,
         parentSelector?: string,
-        text?: string
+        text?: string,
+        isMultiple?: boolean
+        jqueryValue?: any
     }): void {
         if(parentSelector) {
             cy.get(parentSelector)
@@ -446,7 +487,16 @@ export class BaseMethods {
             return;
         }
 
-        cy.get(selector)
+        if(isMultiple) {
+            cy.get(selector)
+                .each((element: JQuery<HTMLElement>) => {
+                    expect(element.is(state)).to.be.eq(jqueryValue)
+                });
+
+            return;
+        }
+
+         cy.get(selector)
             .should(state)
     }
 
@@ -510,30 +560,6 @@ export class BaseMethods {
         });
     }
 
-    public checkBrowserAlertByText(selector: string, alertMessage: string, isEqual: boolean = true, index: number = 0): void {
-        this.clickElementBySelector({
-            selector,
-            index
-        })
-        cy.wrap(new Promise<void>((resolve, reject) => {
-            cy.on('window:alert', (alertText: string) => {
-                try {
-                    if(isEqual) {
-                        expect(alertText).to.be.eq(alertMessage)
-                    } else {
-                        expect(alertText).not.to.be.eq(alertMessage);
-                    }
-                } catch ( err ) {
-                    return reject(err);
-                }
-                resolve();
-            });
-            setTimeout(() => {
-                reject(new Error('window.confirm wasn\'t called within 3s'));
-            }, 3000);
-        }), { log: false });
-    }
-
     public reloadWindow(withoutCache: boolean = false): void {
         cy.reload(withoutCache)
     }
@@ -558,6 +584,39 @@ export class BaseMethods {
         cy.go(-1)
     }
 
+    public checkCounterInButton(button: string, buttonText: string, buttonsCount?: number): void {
+        let counter = 0
+
+        this.checkElementWithTextPresence({
+            selector: button,
+            text: buttonText,
+            visibilityState: 'be.visible'
+        })
+        this.clickElementWithText({
+            selector: button,
+            text: buttonText
+        })
+        counter++
+        this.checkElementWithTextPresence({
+            selector: button,
+            text: buttonText.replace(/[0-9]+/, counter.toString()),
+            visibilityState: 'be.visible'
+        })
+        this.reloadWindow()
+        if(buttonsCount) {
+            this.checkElementQuantity({
+                selector: button,
+                quantity: buttonsCount,
+                waitUntil: true
+            })
+        }
+        this.checkElementWithTextPresence({
+            selector: button,
+            text: buttonText,
+            visibilityState: 'be.visible'
+        })
+    }
+
     private _checkInputValue(text: string, value: string, isLengthChecked: boolean = false): void {
         if(isLengthChecked) {
             expect(text.length).to.be.eq(value.length)
@@ -567,6 +626,48 @@ export class BaseMethods {
 
         expect(text).to.be.eq(value)
 
+    }
+
+    private _checkCssValue(element: JQuery<HTMLElement>, prop: string, value: string): void {
+        if(prop === CssAttr.css) {
+            expect(element.css(CssAttr.backgroundColor)).to.be.eq(value)
+        } else {
+            expect(element.attr(prop)).to.be.eq(value)
+        }
+    }
+
+    public checkBrowserAlertByText({
+        selector,
+        alertMessage,
+        isEqual = true,
+        index = 0
+    }: {
+        selector: string,
+        alertMessage: string,
+        isEqual?: boolean,
+        index?: number
+    }): void {
+        this.clickElementBySelector({
+            selector,
+            index
+        })
+        cy.wrap(new Promise<void>((resolve, reject) => {
+            cy.on('window:alert', (alertText: string) => {
+                try {
+                    if(isEqual) {
+                        expect(alertText).to.be.eq(alertMessage);
+                    } else {
+                        expect(alertText).not.to.be.eq(alertMessage)
+                    }
+                } catch ( err ) {
+                    return reject(err);
+                }
+                resolve();
+            });
+            setTimeout(() => {
+                reject(new Error('window.confirm wasn\'t called within 1s'));
+            }, 3000);
+        }), { log: false });
     }
 }
 

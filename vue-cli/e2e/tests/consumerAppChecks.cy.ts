@@ -60,7 +60,12 @@ describe("It checks consumer app", () => {
     })
 
     it('Checks that on imported and base other sections same code block appears by click', () => {
-        basePage.checkElementContainText(baseSelectors.section, Constants.elementsText.vueCliOtherSectionCodeBlock, 0 , false)
+        basePage.checkElementContainText({
+            selector: baseSelectors.section,
+            text: Constants.elementsText.vueCliOtherSectionCodeBlock,
+            index: 0 ,
+            contain: false
+        })
         basePage.clickElementWithText({
             selector: baseSelectors.button,
             text: Constants.elementsText.vueCliButtonsText.otherSectionButton,

@@ -21,7 +21,6 @@ describe('Check HOST APP', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.h2,
             text: Constants.elementsText.dynamicSystemRemoteHeaderH2
-
         })
     })
 

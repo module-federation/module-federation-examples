@@ -1,10 +1,8 @@
 import {BaseMethods} from "../../../cypress/common/base";
-import {NativeFederationReactMethods} from "../methods/methods";
 import {Constants} from "../../../cypress/fixtures/constants";
 import {baseSelectors, buttons} from "../../../cypress/common/selectors";
 
 const basePage: BaseMethods = new BaseMethods()
-const methodsPage: NativeFederationReactMethods = new NativeFederationReactMethods()
 
 const elementsQuantity = 2
 
@@ -14,11 +12,11 @@ describe("It checks host apps' component", () => {
     })
 
     it('Checks apps console loading module message', () => {
-        methodsPage.checkInfoInConsole(Constants.elementsText.nativeFederationReactConsoleMessages.loadingModuleMessage)
+        basePage.checkInfoInConsole(Constants.elementsText.nativeFederationReactConsoleMessages.loadingModuleMessage)
     })
 
     it('Checks apps console remote module message', () => {
-        methodsPage.checkInfoInConsole(Constants.elementsText.nativeFederationReactConsoleMessages.remoteModuleMessage)
+        basePage.checkInfoInConsole(Constants.elementsText.nativeFederationReactConsoleMessages.remoteModuleMessage)
     })
 
     it('Checks remote component greeting visibility', () => {
@@ -125,10 +123,12 @@ describe("It checks host apps' component", () => {
     })
 
     it('Checks that host button text includes counter which changed after click & check value reverted after reload', () => {
-        methodsPage.checkCounterInButton(buttons.nativeFederationReactButtons.hostButton)
+        basePage.checkCounterInButton(buttons.nativeFederationReactButtons.hostButton,
+            Constants.elementsText.nativeFederationElementsTexts.buttonText)
     })
 
     it('Checks that remote button text includes counter which changed after click & check value reverted after reload', () => {
-        methodsPage.checkCounterInButton(buttons.nativeFederationReactButtons.remoteButton)
+        basePage.checkCounterInButton(buttons.nativeFederationReactButtons.remoteButton,
+            Constants.elementsText.nativeFederationElementsTexts.buttonText)
     })
 })

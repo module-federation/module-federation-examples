@@ -20,7 +20,12 @@ export class VueCliMethods extends BaseMethods {
         host: number,
         wait?: number
     }): void {
-        this.checkBrowserAlertByText(selector, message, isEqual, index)
+        this.checkBrowserAlertByText({
+            selector,
+            alertMessage: message,
+            isEqual,
+            index
+        })
          cy.origin(Cypress.env(`localhost${host}`), {args: {selector, message, wait}}, ({selector, message, wait}) => {
             cy.visit('/')
              cy.get(selector).wait(wait).click()
@@ -36,7 +41,12 @@ export class VueCliMethods extends BaseMethods {
 
     public checkCodeTagAppearance
     (): void {
-        this.checkElementContainText(baseSelectors.section, Constants.elementsText.vueCliOtherSectionCodeBlock, 0 , false)
+        this.checkElementContainText({
+            selector: baseSelectors.section,
+            text: Constants.elementsText.vueCliOtherSectionCodeBlock, 
+            index: 0 ,
+            contain: false
+        })
         this.clickElementWithText({
             selector: baseSelectors.button,
             text: Constants.elementsText.vueCliButtonsText.otherSectionButton,
@@ -49,7 +59,12 @@ export class VueCliMethods extends BaseMethods {
             visibilityState: 'be.visible'
         })
         this.reloadWindow()
-        this.checkElementContainText(baseSelectors.section, Constants.elementsText.vueCliOtherSectionCodeBlock, 0 , false)
+        this.checkElementContainText({
+            selector: baseSelectors.section,
+            text: Constants.elementsText.vueCliOtherSectionCodeBlock, 
+            index: 0 ,
+            contain: false
+        })
         this.checkChildElementVisibility(baseSelectors.section, baseSelectors.code, false,
             '', '', 'not.be.visible')
     }

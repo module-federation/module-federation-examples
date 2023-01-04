@@ -22,7 +22,7 @@ const appsData = [
         buttonSelector: baseSelectors.button,
         headerText: Constants.elementsText.automaticVendorContent,
         appNameText: Constants.elementsText.automaticVendorSecondAppName,
-        buttonColor: Constants.color.blue,
+        buttonColor: Constants.color.deepBlue,
         host: 3002
     }
 ]

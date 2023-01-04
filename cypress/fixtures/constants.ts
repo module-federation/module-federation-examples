@@ -18,6 +18,7 @@ export class Constants {
     }
 
     public static readonly elementsText = {
+        commonButtonWithEmoji: '💅 Button',
         viteContent: 'Vite Content',
         webpackContent: 'Webpack Content',
         automaticVendorContent: 'Bi-Directional',
@@ -60,7 +61,6 @@ export class Constants {
         mdmfTableRowName: { name: 'Name', index: 0 },
         mdmfTableRowEmail: { name: 'Email', index: 1},
         mdmfTableRowAction: { name: 'Action', index: 2},
-        selfHealingAppButtonText: '💅 Button',
         commonExposedButtonText: 'App 2 Button',
         diferentReactVersionsHeader: 'Basic Host-Remote',
         diferentReactVersionsApp1Subheader: 'App 1, Uses react version not compatible with hooks',
@@ -70,6 +70,93 @@ export class Constants {
         diferentReactVersionsApp1ReactBlockSubheader: 'And these are children passed into it from the legacy app',
         diferentReactVersionsParagraph: 'More react components from App2 using non-legacy React to render',
         diferentReactVersionsButtonName: 'App 2 Button',
+        comprehensiveDemo: {
+            alertMessage: 'You have pressed a button.',
+
+            App1: {
+                mainPage: {
+                    alertMessage: 'Alert from LitElement',
+                    headerText: 'Module Federation Demo',
+                    paragraphs: {
+                        first: 'Welcome to the Module Federation Demo!',
+                        second: 'Click any of the items on the left to get started.',
+                        third: 'Feel free to leave me feedback: https://github.com/module-federation/mfe-webpack-demo'
+                    },
+                    buttonText: 'Lit Element Action',
+                },
+                uiLibrary: {
+                    headerText: 'UI Library Demo',
+                    paragraphs: {
+                        first: 'Simple example showing host app and external component using separate CSS solutions.',
+                        second: 'This Button component can be found in App #3.',
+                        third: 'This button is also used in the routing demo.'
+                    },
+                    dialogHeader: 'Dialog Demo',
+                    dialogParagraph: 'Clicking the button below will render a Dialog using React Portal. This dialog component is being lazy loaded from the app #2.',
+                },
+                svelte: {
+                    headerText: 'Svelte Demo',
+                    updatedText: 'Hello From Svelte May The Force Be With You!'
+                },
+                routing: {
+                    headerText: 'Routing Demo',
+                    paragraphs: {
+                        first: 'The following tab components are being imported remotely from "bravo-app".',
+                        second: 'Notice that your browser\'s route is /routing/<foo|bar> depending on which tab is active.',
+                        third: 'If you open http://localhost:3002 you will see the same tab components at the root level',
+                        forth: 'The "Bar" tab also lazily renders the styled-component Button from the UI Library demo only when rendered.'
+                    }
+                },
+                sideNavHeaderText: 'SideNav'
+
+            },
+            App2: {
+                headerText: 'Material UI App',
+                paragraphText: 'Dialog Component',
+                openDialogButtonText: 'Open Dialog',
+                dialogHeader: 'Dialog Example',
+                dialogParagraph: 'This is a dialog from the Material UI app rendered in a React Portal.',
+                dialogButtonText: 'Nice',
+                dialogTabs: {
+                    headerText: 'Tabs Component',
+                    firstTab: {
+                        name: 'Foo',
+                        paragraphText: 'Foo Content'
+                    },
+                    secondTab: {
+                        name: 'Bar',
+                        paragraphText: 'Bar Content',
+                        buttonText: 'Bar Button'
+                    }
+                }
+            },
+            App3: {
+                headerText: 'Styled Components App',
+                buttonText: 'Test Button'
+            },
+            App4: {
+                headerText: 'Hello From Svelte world!'
+            },
+            App5: {
+                buttonText: 'bar',
+                alertText: 'Hello'
+            },
+
+            comprehensiveDemoDemoPages: [
+                { name: 'Main', link: '#/', index: 0},
+                { name: 'UI Library', link: '#/ui-library', index: 1},
+                { name: 'Dialog', link: '#/dialog', index: 2},
+                { name: 'Svelte Page', link: '#/svelte', index: 3},
+                { name: 'Routing', link: '#/routing/foo', index: 4},
+            ],
+            comprehensiveDemoAppsList: [
+                { name: 'App #1', link: 'http://localhost:3001', index: 5},
+                { name: 'App #2', link: 'http://localhost:3002', index: 6},
+                { name: 'App #3', link: 'http://localhost:3003', index: 7},
+                { name: 'App #4', link: 'http://localhost:3004', index: 8},
+                { name: 'App #5', link: 'http://localhost:3005', index: 9},
+            ],
+        },
         angularReactShellHeader: 'Profile (Angular Shell)',
         angularReactShellSubHeader: 'User List (React Microfrontend)',
         angularReactShellParagraph: 'This user list component is being remotely loaded into the application from React App using Webpack Module Federation',
@@ -302,6 +389,9 @@ export class Constants {
             invoices: 'Invoices',
             expenses: 'Expenses'
         },
+        reactHostNextJsRemoteHeader: 'This is the React container App hosted at localhost:8080',
+        reactHostNextJsRemoteNav: 'Hello from Remote Nextjs component hosted on localhost:8081',
+
         vueCliSectionsDescriptions: {
             otherSection: 'This is a component from /other-app.I am being imported.I also has my own behavior like fetching data',
             coreSection: 'This is a section from /code.',
@@ -318,6 +408,38 @@ export class Constants {
             coreImportMessage: 'The content below is imported from /core',
             otherImportMessage: 'The content below is imported from /other'
         },
+        umdFederation: {
+            App1: {
+                firstHeader: 'Host App 1',
+                secondHeader: 'MF App 01',
+                thirdHeader: 'UMD App2'
+            }
+        },
+        viteReactMicroFrontendsCardsMessages: {
+            remoteCard: 'I\'m the remote app',
+            hostCard: 'I\'m the host app'
+        },
+        viteReactMicroFrontendsButtonsText: {
+            hostButton: 'Host counter: 0',
+            remoteButton: 'Remote counter: 0'
+        },
+        reactInVue: {
+            App1: {
+                header: 'React in Vue',
+                subHeader: 'Vue State/Input',
+                checkBoxText: 'Show button:',
+                buttonInputText: 'Button text:',
+                counterText: 'Times button clicked:',
+                buttonHeader: 'React Button - loaded via Module Federation',
+                buttonText: 'React button',
+                updatedButtonText: 'Make cool'
+            },
+            App2: {
+                header: 'Basic Host-Remote',
+                subHeader: 'Home',
+                buttonText: 'Home Button',
+            }
+        }
     }
 
     public static readonly tabsNames = {
@@ -352,7 +474,7 @@ export class Constants {
         mdmfSharedParagraph: 'mdmf-shared works!',
         mdmfProductParagraph: 'This product component is being remotely loaded into the application using Module Federation, angular is shared so the download is minimal for the frontend',
         mdmfProductLinkText: 'Detail',
-        mdmfLoadingText: 'Loading...',
+        commonLoadingText: 'Loading...',
         mdmfBackLink: 'Back',
         name: { text: 'Test Name', index: 0 },
         email: { text: 'test@test.com', index: 1 },
@@ -402,21 +524,28 @@ export class Constants {
             layout: 'Layout App 1',
             remote: 'Main App'
         },
-        vueCliOtherAppAlertMessage: 'Data fetched'
+        standartText: 'May The Force Be With You',
+        vueCliOtherAppAlertMessage: 'Data fetched',
+        viteSvelteMicroFrontEndsConsoleMessages: [
+            'I\'m RxJs from host',
+            'I\'m RxJs from remote',
+            'remote got message:'
+        ],
     }
 
     public static readonly commonText = {
         button: 'Button',
         background: 'background',
+        backgroundColor: 'background-color',
         widget: 'Widget',
         attr: 'attr',
         href: 'href',
         target: 'target',
         src: 'src',
+        style: 'style',
         remoteButton: 'Remote Button',
         nextJSButton: 'Next JS Button',
         typeScriptMonoRepoYarnWorkspaceDependency: 'app1/*,app2/*',
-        style: 'style',
         border: 'border',
         standartText: 'May The Force Be With You',
         sharedRoutingAppReplaceSelectorPart: 'RECENT_',
@@ -435,12 +564,21 @@ export class Constants {
         sharedStoreCrossFrameworkCounterValues: {
             zero: '0',
             two: '2'
-        }
+        },
+        viteReactMicroFrontendsCardsNames: {
+            hostCard: 'host',
+            remoteCard: 'remote'
+        },
+        viteReactMicroFrontendsCardsSymbolsNames: {
+            starSymbol: 'star',
+            cloudSymbol: 'cloud'
+        },
+        displayNone: 'display: none;'
     }
 
     public static readonly color = {
         red: 'rgb(136, 0, 0)',
-        blue: 'rgb(0, 0, 204)',
+        deepBlue: 'rgb(0, 0, 204)',
         dynamicRemotesWidgetColor: [
             'rgb(255, 0, 0)',
             'rgb(128, 0, 128)'
@@ -458,7 +596,14 @@ export class Constants {
         lightGreen: 'rgb(136, 218, 153)',
         purple: 'rgb(63, 81, 181)',
         deepPink: 'rgb(156, 39, 176)',
-        borderColorRed1px: '1px solid rgb(255, 0, 0)'
+        borderColorRed1px: '1px solid rgb(255, 0, 0)',
+        orange: 'rgb(246, 179, 82)',
+        blue: 'rgb(49, 120, 198)',
+        black: 'rgb(31, 33, 36)',
+        oceanBluePearl: 'rgb(63, 81, 181)',
+        alabaster: 'rgb(250, 250, 250)',
+        paleVioletRed: 'rgb(219, 112, 147)',
+        white: 'rgb(255, 255, 255)'
     }
 
     public static readonly translation = {
@@ -515,7 +660,13 @@ export class Constants {
         nextjsSsrLearnUrl: 'https://nextjs.org/learn/foundations/about-nextjs',
         nextjsSsrExamplesUrl: 'https://github.com/vercel/next.js/tree/deprecated-main/examples',
         nativeFederationReactUrl: 'https://reactjs.org',
-        reactNestedRoutersPage2: '/page-2'
+        reactNestedRoutersPage2: '/page-2',
+        comprehensiveDemoGitHubLink: { link: 'https://github.com/module-federation/mfe-webpack-demo', index: 10 },
+        comprehensiveDemoApp3Link: { link: 'http://localhost:3003/', index: 10 },
+        comprehensiveDemoRoutingDemoLink: { link: 'http://localhost:3001/#/routing/foo', index: 11 },
+        comprehensiveDemoUiLibraryLink: '#/ui-library',
+        comprehensiveDemoDialogLink: '#/dialog',
+        comprehensiveDemoSvelteLink: '#/svelte'
     }
     public static readonly linksNames = {
         vueCliAppDocumentationLinkName: 'vue-cli documentation',
