@@ -1,0 +1,35 @@
+name: Cache cron
+on: workflow_dispatch
+
+jobs:
+
+  cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache Yarn and Cypress
+        uses: actions/cache@v3
+        id: yarn-cache
+        with:
+          path: |
+            **/node_modules
+            ~/.cache/Cypress
+            ${{ steps.yarn-cache-dir-path.outputs.dir }} 
+          key: e2e-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            e2e-${{ runner.os }}-
+      - name: Install deps
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: |
+          echo "YARN CACHE CHANGED"
+          npx lerna bootstrap
