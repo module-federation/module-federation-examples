@@ -1,10 +1,8 @@
 import { BaseMethods } from "../../../cypress/common/base";
 import {baseSelectors} from "../../../cypress/common/selectors";
 import { Constants } from "../../../cypress/fixtures/constants";
-import {NativeFederationReactMethods} from "../methods/methods";
 
 const basePage: BaseMethods = new BaseMethods()
-const methodsPage: NativeFederationReactMethods = new NativeFederationReactMethods()
 
 describe('It checks components header and console message', () => {
     const appsData = [
@@ -39,12 +37,12 @@ describe('It checks components header and console message', () => {
 
         it('Checks apps console date message', () => {
             basePage.openLocalhost(property.host)
-            methodsPage.checkInfoInConsole(Constants.elementsText.nativeFederationReactConsoleMessages.dateMessage)
+            basePage.checkInfoInConsole(Constants.elementsText.nativeFederationReactConsoleMessages.dateMessage)
         })
 
         it('Checks apps console weekend message', () => {
             basePage.openLocalhost(property.host)
-            methodsPage.checkInfoInConsole(Constants.elementsText.nativeFederationReactConsoleMessages.weekendMessage)
+            basePage.checkInfoInConsole(Constants.elementsText.nativeFederationReactConsoleMessages.weekendMessage)
         })
 
     });

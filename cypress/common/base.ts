@@ -215,6 +215,14 @@ export class BaseMethods {
             .should(contain ? checkType : 'not.contain.text', text);
     }
 
+    public checkInfoInConsole(info: string): void {
+        cy.window().then((win) => {
+            cy.stub(win.console, "log").as('log')
+            cy.get('@log').should('be.calledWith', info)
+            this.reloadWindow()
+        })
+    }
+
     public checkElementVisibility(
         selector: string,
         isVisible: boolean = true

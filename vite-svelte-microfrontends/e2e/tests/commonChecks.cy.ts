@@ -1,6 +1,6 @@
-import {BaseMethods} from "../../cypress/common/base";
-import {baseSelectors, selectors} from "../../cypress/common/selectors";
-import {Constants} from "../../cypress/fixtures/constants";
+import {BaseMethods} from "../../../cypress/common/base";
+import {selectors} from "../../../cypress/common/selectors";
+import {Constants} from "../../../cypress/fixtures/constants";
 
 const basePage: BaseMethods = new BaseMethods()
 
@@ -22,9 +22,9 @@ describe('It checks names and symbols inside cards',  () => {
 
     appsData.forEach((property: { cardName: string, symbolName: string, symbol: string, status: string }) => {
         it(`Checks ${property.symbolName} symbol visibility for ${property.cardName} card`, () => {
-            basePage.openLocalhost(4173)
+            basePage.openLocalhost(5173)
             basePage.checkElementQuantity({
-                selector: baseSelectors.button,
+                selector: selectors.commonCardSelector,
                 quantity: 2,
                 waitUntil: true
             })
@@ -32,9 +32,9 @@ describe('It checks names and symbols inside cards',  () => {
         });
 
         it(`Checks ${property.cardName} card includes status`, () => {
-            basePage.openLocalhost(4173)
+            basePage.openLocalhost(5173)
             basePage.checkElementQuantity({
-                selector: baseSelectors.button,
+                selector: selectors.commonCardSelector,
                 quantity: 2,
                 waitUntil: true
             })
