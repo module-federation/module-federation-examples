@@ -1,4 +1,4 @@
-name: Cypress e2e tests - Cache for each
+name: Cypress e2e tests - Cache for All
 on: pull_request
 # concurrency: 
 #   group: ${{ github.head_ref }}
@@ -34,7 +34,6 @@ jobs:
 
           export FORKED_MASTER_SHA=$(git log -n 1 --pretty=format:"%H" origin/${{ github.event.pull_request.base.ref}})
           export BASE_MASTER_SHA=$(git log -n 1 --pretty=format:"%H" base/${{ github.event.pull_request.base.ref }})
-
           echo "$FORKED_MASTER_SHA"
           echo "$BASE_MASTER_SHA"
           
@@ -47,9 +46,43 @@ jobs:
             exit 1
           fi
 
-  setup-matrix:
+  cache:
     runs-on: ubuntu-latest
     needs: forked_master_status
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache Yarn and Cypress
+        uses: actions/cache@v3
+        id: yarn-cache
+        with:
+          path: |
+            **/node_modules
+            ~/.cache/Cypress
+            ${{ steps.yarn-cache-dir-path.outputs.dir }} 
+          key: e2e-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            e2e-yarn-
+            e2e-
+
+      - name: Install deps
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: |
+          echo "YARN CACHE CHANGED"
+          npx lerna bootstrap
+
+  setup-matrix:
+    runs-on: ubuntu-latest
+    needs: cache
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
@@ -88,8 +121,8 @@ jobs:
         id: yarn-cache-dir-path
         run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
-      - name: Cache Yarn and Cypress
-        uses: actions/cache@v3
+      - name: Restore Yarn and Cypress
+        uses: actions/cache/restore@v3
         id: yarn-cache
         with:
           path: |
@@ -100,12 +133,6 @@ jobs:
           restore-keys: |
             e2e-yarn-
             e2e-
-
-      - name: Install sample deps
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: |
-          echo "YARN CACHE CHANGED"
-          npx lerna bootstrap --scope=${{ matrix.container }}
 
       - name: Run sample e2e tests
         run: 
