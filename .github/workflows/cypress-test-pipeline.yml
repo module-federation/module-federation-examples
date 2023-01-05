@@ -1,13 +1,21 @@
-name: Cypress e2e tests - Cache for each
+name: Cypress e2e tests
 on: pull_request
-# concurrency: 
-#   group: ${{ github.head_ref }}
-#   cancel-in-progress: true
 
 jobs:
 
+# Stop previous runs
+  stop-previous-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.11.0
+        with:
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+
+# Check if forked master is up to date with origin master in module federation examples repo
   forked_master_status:
     runs-on: ubuntu-latest
+    needs: stop-previous-run
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -16,21 +24,13 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
-        env:
-          CURRENT_BRANCH: ${{ github.event.pull_request.head.ref }}
-          CURRENT_REPO: ${{ github.event.pull_request.head.repo.url }}
-          BASE_REPO_URL: ${{ github.event.pull_request.base.repo.url }}
-          BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
 
       - name: Check if forked master is up to date
-        if: ${{ github.event.repository.fork }} == 'false'
         run: |
+          echo "${{ github.event.repository.fork }}"
           git remote add base https://github.com/${{github.repository}}
           git remote -v
           git fetch --all
-
-          echo "Latest commit on the forked master is $(git log -n 1 --pretty=format:"%H" origin/${{ github.event.pull_request.base.ref}})"
-          echo "Common ancestor of origin master and forked master is $(git merge-base base/${{ github.event.pull_request.base.ref }} origin/${{ github.event.pull_request.base.ref }})"
 
           export FORKED_MASTER_SHA=$(git log -n 1 --pretty=format:"%H" origin/${{ github.event.pull_request.base.ref}})
           export BASE_MASTER_SHA=$(git log -n 1 --pretty=format:"%H" base/${{ github.event.pull_request.base.ref }})
@@ -47,6 +47,7 @@ jobs:
             exit 1
           fi
 
+# Setup matrix from changed samples by lerna ls --since origin/master command
   setup-matrix:
     runs-on: ubuntu-latest
     needs: forked_master_status
@@ -60,8 +61,8 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
-      - name: Create matrix
-        id: set-matrix    
+      - name: Create matrix 👾
+        id: set-matrix
         run: |
           matrix="$(node checkChangedFiels.js)"
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
@@ -70,6 +71,7 @@ jobs:
         run: |
           echo '${{ steps.set-matrix.outputs.matrix }}'
 
+# Run Cypress e2e tests for changed samples (additionally install deps for all changed samples if there is no any created cache in master branch) + Create artifacts for Cypress screenshots and videos
   run-e2e-test:
     needs: setup-matrix
     runs-on: ubuntu-latest
@@ -88,13 +90,15 @@ jobs:
         id: yarn-cache-dir-path
         run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
-      - name: Cache Yarn and Cypress
-        uses: actions/cache@v3
+      - name: Restore Yarn and Cypress cache
+        uses: actions/cache/restore@v3
         id: yarn-cache
         with:
           path: |
             node_modules
             yarn.lock
+            **/node_modules
+            **/yarn.lock
             */*/node_modules
             */*/yarn.lock
             ~/.cache/Cypress

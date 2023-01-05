@@ -1,10 +1,24 @@
-name: Cache cron
-on: workflow_dispatch
+name: Cache for e2e tests
+on: 
+  push:
+    branches:
+      - master
 
 jobs:
 
+# Stop previous runs
+  stop-previous-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.11.0
+        with:
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+
+# Create cache for all samples
   cache:
     runs-on: ubuntu-latest
+    needs: stop-previous-run
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -22,12 +36,19 @@ jobs:
         id: yarn-cache
         with:
           path: |
+            node_modules
+            yarn.lock
             **/node_modules
+            **/yarn.lock
+            */*/node_modules
+            */*/yarn.lock
             ~/.cache/Cypress
             ${{ steps.yarn-cache-dir-path.outputs.dir }} 
-          key: e2e-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: e2e-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            e2e-${{ runner.os }}-
+            e2e-yarn-
+            e2e-
+
       - name: Install deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: |
