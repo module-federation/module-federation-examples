@@ -7,7 +7,7 @@
       <q-card class="app-button row text-center items-center justify-center vertical-middle">
         <q-card-section>
           <div class="text-h6 text-grey-7">Counter</div>
-          <div class="text-grey-7 text-h3">{{parentCounter}}</div>
+          <div class="text-grey-7 text-h3" data-e2e="General-counter">{{parentCounter}}</div>
         </q-card-section>
       </q-card>
     </div>
