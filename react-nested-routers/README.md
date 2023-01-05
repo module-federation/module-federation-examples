@@ -1,5 +1,5 @@
 # Module Federation - React Router DOM Example
-This example shows how to handle indipendent and nested routings in a MFE setup based on [webpack-module-federation](https://github.com/module-federation). The setup consists of:
+This example shows how to handle independent and nested routings in a MFE setup based on [webpack-module-federation](https://github.com/module-federation). The setup consists of:
 
 - `app1` & `app2`: apps using a browser history strategy when acting as hosts and an in-memory history strategy when acting as remotes.
 - `shell`: host app based on a browser history strategy that handles high-level routing. Shell routing determines mounting/unmounting of `app1` and `app2` remotes.
