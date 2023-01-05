@@ -8,11 +8,13 @@
     "clean": "lerna run --scope @dynamic-remotes-runtime-environment-variables/* --parallel clean",
     "docker:build": "lerna run --scope @dynamic-remotes-runtime-environment-variables/* --parallel docker:build",
     "docker:run": "lerna run --scope @dynamic-remotes-runtime-environment-variables/* --parallel docker:run",
-    "docker:rm": "lerna run --scope @dynamic-remotes-runtime-environment-variables/* --parallel docker:rm"
+    "docker:rm": "lerna run --scope @dynamic-remotes-runtime-environment-variables/* --parallel docker:rm",
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "copy-webpack-plugin": "11.0.0",
     "lerna": "4.0.0",
+    "wait-on": "7.0.1",
     "webpack-cli": "4.10.0"
   }
 }

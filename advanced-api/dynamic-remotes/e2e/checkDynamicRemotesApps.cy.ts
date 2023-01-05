@@ -70,9 +70,11 @@ appsData.forEach(
         const widget: number = property.host === 3002 ? Number(appsData[1].widgetQuantity) : Number(appsData[2].widgetQuantity);
 
         describe(`Check ${appName}`, () => {
+            beforeEach(() => {
+                basePage.openLocalhost(host)
+            })
 
             it(`Check ${appName} built and running`, () => {
-                basePage.openLocalhost(host)
                 basePage.checkElementWithTextPresence({
                     selector: property.headerSelector,
                     text: property.headerText
@@ -116,7 +118,6 @@ appsData.forEach(
             })
 
             it(`Check functionality in ${appName}`, () => {
-                basePage.openLocalhost(host)
                 if (property.isButtonExist) {
                     Constants.elementsText.dynamicRemotesButtonsText.forEach(button => {
                         basePage.clickElementWithText({

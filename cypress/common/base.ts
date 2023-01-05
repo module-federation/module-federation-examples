@@ -12,7 +12,7 @@ export class BaseMethods {
         cy.exec(command)
     }
 
-    public skipTestByCondition(condition : any): void {
+    public skipTestByCondition(condition: any): void {
         cy.skipWhen(condition)
     }
 
@@ -34,15 +34,15 @@ export class BaseMethods {
             .eq(index)
             .invoke('text')
             .then((baseText: string) => {
-                cy.origin(Cypress.env(`localhost${extraHost}`), {args: {baseText, selector, isEqual, clickSelector, wait}}, ({baseText, selector, isEqual, clickSelector, wait}) => {
+                cy.origin(Cypress.env(`localhost${extraHost}`), { args: { baseText, selector, isEqual, clickSelector, wait } }, ({ baseText, selector, isEqual, clickSelector, wait }) => {
                     cy.visit('/')
-                    if(clickSelector) {
+                    if (clickSelector) {
                         cy.get(clickSelector).click().wait(wait)
                     }
                     cy.get(selector)
                         .invoke('text')
                         .then((text: string) => {
-                            if(isEqual) {
+                            if (isEqual) {
                                 expect(text).to.be.eq(baseText)
 
                                 return;
@@ -55,15 +55,15 @@ export class BaseMethods {
     }
 
     public checkUrlText(url: string, isInclude: boolean = false): void {
-         cy.url().should(isInclude? 'include' : 'not.include', url);
+        cy.url().should(isInclude ? 'include' : 'not.include', url);
     }
 
     public checkElementExist({
-         selector,
-         isVisible = true,
-         notVisibleState = 'not.exist',
-         visibleState = 'be.visible',
-     }: {
+        selector,
+        isVisible = true,
+        notVisibleState = 'not.exist',
+        visibleState = 'be.visible',
+    }: {
         selector: string,
         isVisible?: boolean,
         notVisibleState?: string,
@@ -84,19 +84,19 @@ export class BaseMethods {
         selector: string,
         index?: number,
         isForce?: boolean,
-        parentSelector? : string,
+        parentSelector?: string,
         isMultiple?: boolean,
         wait?: number
     }): Cypress.Chainable<JQuery<HTMLElement>> {
         if (index) {
-            return cy.get(selector).eq(index).wait(wait).click({force: isForce, multiple: isMultiple})
+            return cy.get(selector).eq(index).wait(wait).click({ force: isForce, multiple: isMultiple })
         }
 
         if (parentSelector) {
-            return cy.get(parentSelector).find(selector).wait(wait).click({force: isForce, multiple: isMultiple})
+            return cy.get(parentSelector).find(selector).wait(wait).click({ force: isForce, multiple: isMultiple })
         }
 
-        return cy.get(selector).wait(wait).click({force: isForce, multiple: isMultiple})
+        return cy.get(selector).wait(wait).click({ force: isForce, multiple: isMultiple })
     }
 
     public clickElementWithText({
@@ -112,7 +112,7 @@ export class BaseMethods {
     }): void {
         cy.get(selector)
             .contains(text)
-            .click({force: isForce})
+            .click({ force: isForce })
             .wait(wait)
     }
 
@@ -134,13 +134,13 @@ export class BaseMethods {
                 .find(childSelector)
                 .eq(index)
                 .contains(text)
-                .click({force: isForce})
+                .click({ force: isForce })
         }
 
         return cy.get(selector)
             .find(childSelector)
             .contains(text)
-            .click({force: isForce})
+            .click({ force: isForce })
     }
 
     public checkElementWithTextPresence({
@@ -160,7 +160,7 @@ export class BaseMethods {
         notVisibleState?: string,
         parentSelector?: string,
         isMultiple?: boolean,
-        wait? : number
+        wait?: number
         index?: number
     }): Cypress.Chainable<JQuery<HTMLElement>> {
         if (parentSelector) {
@@ -170,7 +170,7 @@ export class BaseMethods {
                 .should(isVisible ? visibilityState : notVisibleState);
         }
 
-        if(index) {
+        if (index) {
             return cy
                 .get(selector)
                 .eq(index)
@@ -178,7 +178,7 @@ export class BaseMethods {
                 .should(isVisible ? visibilityState : notVisibleState);
         }
 
-        if(isMultiple) {
+        if (isMultiple) {
             return cy.get(selector)
                 .each((element: JQuery<HTMLElement>) => {
                     expect(element.text()).to.include(text)
@@ -237,10 +237,10 @@ export class BaseMethods {
         childSelector: string,
         isVisible: boolean = true,
         visibilityState: string = 'be.visible',
-        text? : string,
+        text?: string,
         notVisibleState: string = 'not.exist',
-): Cypress.Chainable<JQuery<HTMLElement>> {
-        if(text) {
+    ): Cypress.Chainable<JQuery<HTMLElement>> {
+        if (text) {
             return cy
                 .get(selector).contains(text).parent(selector)
                 .find(childSelector)
@@ -328,7 +328,7 @@ export class BaseMethods {
         parentSelector?: string
     }
     ): void {
-        if(parentSelector) {
+        if (parentSelector) {
             cy.get(parentSelector)
                 .find(selector)
                 .invoke(attr, prop)
@@ -440,7 +440,7 @@ export class BaseMethods {
             return;
         }
 
-        if(text) {
+        if (text) {
             cy.get(selector).should('contain.text', text).and(state, quantity)
 
             return;
@@ -481,7 +481,7 @@ export class BaseMethods {
             return;
         }
 
-        if(text) {
+        if (text) {
             cy.get(selector).contains(text).should(state)
 
             return;
@@ -552,7 +552,7 @@ export class BaseMethods {
         existedText: string,
         notExistedText: string
     ): Cypress.Chainable<JQuery<HTMLElement>> {
-        return cy.origin(Cypress.env(`localhost${host}`), {args: {element, existedText, notExistedText}}, ({element, existedText, notExistedText}) => {
+        return cy.origin(Cypress.env(`localhost${host}`), { args: { element, existedText, notExistedText } }, ({ element, existedText, notExistedText }) => {
             cy.visit('/')
             // do not get it as checkElementWithTextPresence() due to inability of origin to get outside methods
             cy.get(element).contains(existedText).should('be.visible')
@@ -567,7 +567,7 @@ export class BaseMethods {
     public sendInputText({
         selector,
         text
-    }: {    
+    }: {
         selector: string,
         text: string,
     }) {
@@ -618,7 +618,7 @@ export class BaseMethods {
     }
 
     private _checkInputValue(text: string, value: string, isLengthChecked: boolean = false): void {
-        if(isLengthChecked) {
+        if (isLengthChecked) {
             expect(text.length).to.be.eq(value.length)
 
             return;
