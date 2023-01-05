@@ -66,7 +66,8 @@ jobs:
         id: yarn-cache
         with:
           path: |
-            **/node_modules
+            node_modules
+            */*/node_modules
             ~/.cache/Cypress
             ${{ steps.yarn-cache-dir-path.outputs.dir }} 
           key: e2e-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -126,7 +127,8 @@ jobs:
         id: yarn-cache
         with:
           path: |
-            **/node_modules
+            node_modules
+            */*/node_modules
             ~/.cache/Cypress
             ${{ steps.yarn-cache-dir-path.outputs.dir }} 
           key: e2e-yarn-${{ hashFiles('**/yarn.lock') }}
