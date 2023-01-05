@@ -14,16 +14,16 @@ const Nav = () => (
     <ul>
       <li>
         <Link href="/">
-          <a>Home</a>
+          Home
         </Link>
         <Link href="/shop">
-          <a>Shop</a>
+          Shop
         </Link>
         <Link href="/p/something">
-          <a>Federated Catch All</a>
+          Federated Catch All
         </Link>
         <Link href="/checkout">
-          <a>Checkout</a>
+          Checkout
         </Link>
       </li>
       {links.map(({ key, href, label }) => (
@@ -51,6 +51,7 @@ const Nav = () => (
       li {
         display: flex;
         padding: 6px 8px;
+        gap: 1rem;
       }
       a {
         color: #067df7;
