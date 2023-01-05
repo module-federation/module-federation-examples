@@ -39,7 +39,7 @@ export const baseSelectors = {
     body: 'body',
     unorderedList: 'ul',
     span: 'span',
-    checkbox: 'input[type="checkbox"]',
+    checkbox: 'input[type="checkbox"]'
 }
 
 export const selectors = {
@@ -72,9 +72,8 @@ export const selectors = {
     },
     appExposesCounter: '[data-cy="app-button-counter"]',
     appExposesNames: '[data-e2e="exposesAppNames"]',
-    appExposesCloseName: '[data-e2e="exposesAppNamesClose"]',
+    appExposesCloseButton: '[data-e2e="exposesAppNamesClose"]',
     appGeneralCounter: '[data-e2e="General-counter"]',
-    appExposesButton: '[data-cy="app-button"]'
 }
 
 export const updatedSelectors = {
@@ -117,6 +116,7 @@ export const buttons = {
     },
     actionButton: 'action-button',
     closeButton: '.closebtn',
+    appExposesButton: '[data-cy="app-button"]'
 }
 
 export const alertMessages = {

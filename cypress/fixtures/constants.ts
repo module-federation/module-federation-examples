@@ -433,11 +433,11 @@ export class Constants {
                 name2: 'Quy',
                 name3: 'Sang',
                 name4: 'Loris'
-            }
+            },
+            appButtonDiv: 'App Button',
+            appButtonClickMeButton: 'Click me',
+            appListDiv: 'AppList',
         },
-        appButtonDiv: 'App Button',
-        appButtonClickMeButton: 'Click me',
-        appListDiv: 'AppList',
         viteReactMicroFrontendsCardsMessages: {
             remoteCard: 'I\'m the remote app',
             hostCard: 'I\'m the host app'

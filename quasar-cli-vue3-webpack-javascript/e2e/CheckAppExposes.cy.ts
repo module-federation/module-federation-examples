@@ -1,6 +1,7 @@
 import {BaseMethods} from "../../cypress/common/base";
 import {baseSelectors} from "../../cypress/common/selectors";
-import {selectors} from "../../cypress/common/selectors"
+import {selectors} from "../../cypress/common/selectors";
+import {buttons} from "../../cypress/common/selectors";
 import {Constants} from "../../cypress/fixtures/constants";
 const basePage: BaseMethods = new BaseMethods()
 
@@ -11,10 +12,10 @@ const appsData = [
         appExposesBanner: Constants.elementsText.quasarCli.appExposes.banner,
         appExposesComponentsButton: Constants.elementsText.quasarCli.appExposes.componentsButton,
         AppButtonName: Constants.commonPhrases.button,
-        appButtonDiv: Constants.elementsText.appButtonDiv,
-        clickMeButton: Constants.elementsText.appButtonClickMeButton,
+        appButtonDiv: Constants.elementsText.quasarCli.appButtonDiv,
+        clickMeButton: Constants.elementsText.quasarCli.appButtonClickMeButton,
         appListName: Constants.elementsText.quasarCli.appExposes.list,
-        appListDiv: Constants.elementsText.appListDiv,
+        appListDiv: Constants.elementsText.quasarCli.appListDiv,
         host: 3001
     },
 
@@ -27,8 +28,8 @@ const appsData = [
         appGeneralSubheader1: Constants.elementsText.quasarCli.appGeneral.subheader1,
         appGeneralSubheader2: Constants.elementsText.quasarCli.appGeneral.subheader2,
         appGeneralCounter: Constants.elementsText.quasarCli.appGeneral.counter,
-        clickMeButton: Constants.elementsText.appButtonClickMeButton,
-        appListDiv: Constants.elementsText.appListDiv,
+        clickMeButton: Constants.elementsText.quasarCli.appButtonClickMeButton,
+        appListDiv: Constants.elementsText.quasarCli.appListDiv,
         appGeneralName1: Constants.elementsText.quasarCli.appGeneral.name1,
         appGeneralName2: Constants.elementsText.quasarCli.appGeneral.name2,
         appGeneralName3: Constants.elementsText.quasarCli.appGeneral.name3,
@@ -39,15 +40,15 @@ const appsData = [
 
 appsData.forEach((
     property: {
-        appExposesName?: string,
+        appExposesName: string,
         appExposesBanner?: string,
         appGeneralBanner?: string,
-        appExposesComponentsButton?: string,
+        appExposesComponentsButton: string,
         AppButtonName?: string,
         appButtonDiv?: string,
-        clickMeButton?: string,
+        clickMeButton: string,
         appListName?: string,
-        appListDiv?: string,
+        appListDiv: string,
         appListItems?: object,
         appGeneralName?: string,
         appGeneralRouteButton?: string,
@@ -68,14 +69,15 @@ appsData.forEach((
         })
         it (`Check App Exposes elements`, () => {
             basePage.skipTestByCondition(property.host === 3002)
-            basePage.clickElementWithText({
+            basePage.checkElementWithTextPresence({
                 selector: baseSelectors.divElement,
-                text: String(property.appExposesName)
+                text: property.appExposesName
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.h4,
                 text: String(property.appExposesBanner)
             })
+            //добавить проверку содержимого после клика на Hamburger
             basePage.clickElementBySelector({
                 selector: baseSelectors.button
             })
@@ -84,29 +86,27 @@ appsData.forEach((
             })
             basePage.clickElementWithText({
                 selector: baseSelectors.linkTag,
-                text: String(property.appExposesComponentsButton)
+                text: property.appExposesComponentsButton
             })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
-                text: String(property.AppButtonName)
-            })
+            if (property.host === 3001) {
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.divElement,
+                    text: String(property.AppButtonName)
+                })
+            }
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.divElement,
                 text: String(property.appButtonDiv)
             })
             basePage.clickElementWithText({
                 selector: baseSelectors.button,
-                text: String(property.clickMeButton)
+                text: property.clickMeButton
             })
             basePage.checkElementWithTextPresence({
                 selector: selectors.appExposesCounter,
                 text: '1'
             })
             basePage.reloadWindow()
-            basePage.clickElementWithText({
-                selector: baseSelectors.linkTag,
-                text: String(property.appExposesComponentsButton)
-            })
             basePage.checkElementWithTextPresence({
                 selector: selectors.appExposesCounter,
                 text: '0'
@@ -117,44 +117,18 @@ appsData.forEach((
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.divElement,
-                text: String(property.appListDiv)
+                text: property.appListDiv
             })
-            basePage.checkElementQuantity({
-                selector: selectors.appExposesNames,
-                quantity: 5
-            })
-            basePage.clickElementBySelector({
-                selector: selectors.appExposesCloseName,
-                index: 1
-            })
-            basePage.checkElementQuantity({
-                selector: selectors.appExposesNames,
-                quantity: 4
-            })
-            basePage.clickElementBySelector({
-                selector: selectors.appExposesCloseName,
-                index: 1
-            })
-            basePage.checkElementQuantity({
-                selector: selectors.appExposesNames,
-                quantity: 3
-            })
-            basePage.clickElementBySelector({
-                selector: selectors.appExposesCloseName,
-                index: 1
-            })
-            basePage.checkElementQuantity({
-                selector: selectors.appExposesNames,
-                quantity: 2
-            })
-            basePage.clickElementBySelector({
-                selector: selectors.appExposesCloseName,
-                index: 1
-            })
-            basePage.checkElementQuantity({
-                selector: selectors.appExposesNames,
-                quantity: 1
-            })
+            for (let i = 5; i = 1; i--) {
+                basePage.checkElementQuantity({
+                    selector: selectors.appExposesNames,
+                    quantity: i
+                })
+                basePage.clickElementBySelector({
+                    selector: selectors.appExposesCloseButton,
+                    index: 1
+                })
+            }
             basePage.reloadWindow()
             basePage.clickElementWithText({
                 selector: baseSelectors.linkTag,
@@ -217,7 +191,7 @@ appsData.forEach((
                 text: '0'
             })
             basePage.clickElementWithText({
-                selector: selectors.appExposesButton,
+                selector: buttons.appExposesButton,
                 text: String(property.clickMeButton)
             })
             basePage.checkElementWithTextPresence({
@@ -237,7 +211,7 @@ appsData.forEach((
                 quantity: 5
             })
             basePage.clickElementBySelector({
-                selector: selectors.appExposesCloseName,
+                selector: selectors.appExposesCloseButton,
                 index: 1
             })
             basePage.checkElementWithTextPresence({
@@ -249,7 +223,7 @@ appsData.forEach((
                 quantity: 4
             })
             basePage.clickElementBySelector({
-                selector: selectors.appExposesCloseName,
+                selector: selectors.appExposesCloseButton,
                 index: 1
             })
             basePage.checkElementWithTextPresence({
@@ -261,7 +235,7 @@ appsData.forEach((
                 quantity: 3
             })
             basePage.clickElementBySelector({
-                selector: selectors.appExposesCloseName,
+                selector: selectors.appExposesCloseButton,
                 index: 1
             })
             basePage.checkElementWithTextPresence({
@@ -273,7 +247,7 @@ appsData.forEach((
                 quantity: 2
             })
             basePage.clickElementBySelector({
-                selector: selectors.appExposesCloseName,
+                selector: selectors.appExposesCloseButton,
                 index: 1
             })
             basePage.checkElementWithTextPresence({
