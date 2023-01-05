@@ -349,7 +349,8 @@ export class BaseMethods {
         attr = CssAttr.css,
         prop,
         value,
-        checkType = 'contains'
+        checkType = 'contains',
+        parent,
     }: {
         selector: string,
         text: string,
@@ -357,7 +358,18 @@ export class BaseMethods {
         prop: string,
         value: string,
         checkType?: string
+        parent?: boolean
     }): void {
+        if(parent) {
+            cy.get(selector)
+            .contains(text)
+            .parent()
+            .invoke(attr, prop)
+            .should('include', value)
+
+            return;
+        }
+
         if(checkType !== 'contains') {
             cy.get(selector)
                 .each((element: JQuery<HTMLElement>) => {
@@ -626,6 +638,28 @@ export class BaseMethods {
 
         expect(text).to.be.eq(value)
 
+    }
+
+    public checkElementWithTextContainsLink(
+        selector: string,
+        text: string,
+        link: string,
+        parent: boolean = false
+    ): Cypress.Chainable<JQuery<HTMLElement>> {
+        if (parent) {
+            return cy.get(selector)
+            .contains(text)
+            .parent()
+            .should('have.attr', 'href', link)
+            .and('not.be.disabled')
+        }
+        return cy.get(selector)
+            .each((element: JQuery<HTMLElement>) => {
+                if(element.text() === text) {
+                    expect(element.attr('href')).to.be.eq(link)
+                    expect(element.is(':disabled')).to.be.eq(false)
+                }
+            });
     }
 
     private _checkCssValue(element: JQuery<HTMLElement>, prop: string, value: string): void {
