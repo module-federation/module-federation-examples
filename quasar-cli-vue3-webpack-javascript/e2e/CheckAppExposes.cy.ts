@@ -7,9 +7,10 @@ const basePage: BaseMethods = new BaseMethods()
 
 const appsData = [
     {
-        appExposesName: Constants.elementsText.quasarCli.appExposes.name,
+        appExposesName: Constants.elementsText.quasarCli.appExposes.appName,
+        appName: Constants.elementsText.quasarCli.appExposes.appName,
         appGeneralName: Constants.elementsText.quasarCli.appGeneral.name,
-        appExposesBanner: Constants.elementsText.quasarCli.appExposes.banner,
+        appBanner: Constants.elementsText.quasarCli.appExposes.banner,
         appExposesComponentsButton: Constants.elementsText.quasarCli.appExposes.componentsButton,
         AppButtonName: Constants.commonPhrases.button,
         appButtonDiv: Constants.elementsText.quasarCli.appButtonDiv,
@@ -20,9 +21,10 @@ const appsData = [
     },
 
     {
-        appExposesName: Constants.elementsText.quasarCli.appExposes.name,
+        appExposesName: Constants.elementsText.quasarCli.appExposes.appName,
+        appName: Constants.elementsText.quasarCli.appGeneral.appName,
         appGeneralName: Constants.elementsText.quasarCli.appGeneral.name,
-        appGeneralBanner: Constants.elementsText.quasarCli.appGeneral.banner,
+        appBanner: Constants.elementsText.quasarCli.appGeneral.banner,
         appExposesComponentsButton: Constants.elementsText.quasarCli.appExposes.componentsButton,
         appGeneralRouteButton: Constants.elementsText.quasarCli.appGeneral.routeButton,
         appGeneralSubheader1: Constants.elementsText.quasarCli.appGeneral.subheader1,
@@ -34,15 +36,16 @@ const appsData = [
         appGeneralName2: Constants.elementsText.quasarCli.appGeneral.name2,
         appGeneralName3: Constants.elementsText.quasarCli.appGeneral.name3,
         appGeneralName4: Constants.elementsText.quasarCli.appGeneral.name4,
+        appGeneralName5: Constants.elementsText.quasarCli.appGeneral.name5,
         host: 3002
     }
 ]
 
 appsData.forEach((
     property: {
+        appName: string,
         appExposesName: string,
-        appExposesBanner?: string,
-        appGeneralBanner?: string,
+        appBanner: string,
         appExposesComponentsButton: string,
         AppButtonName?: string,
         appButtonDiv?: string,
@@ -50,7 +53,7 @@ appsData.forEach((
         appListName?: string,
         appListDiv: string,
         appListItems?: object,
-        appGeneralName?: string,
+        appGeneralName: string,
         appGeneralRouteButton?: string,
         appGeneralSubheader1?: string,
         appGeneralSubheader2?: string,
@@ -59,27 +62,37 @@ appsData.forEach((
         appGeneralName2?: string,
         appGeneralName3?: string,
         appGeneralName4?: string,
+        appGeneralName5?: string,
         host: number
-        
+
     }
 ) => {
     describe(`Check App Exposes and App General starts and running`, () => {
         beforeEach(() => {
             basePage.openLocalhost(property.host)
         })
-        it (`Check App Exposes elements`, () => {
-            basePage.skipTestByCondition(property.host === 3002)
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
-                text: property.appExposesName
-            })
+        it (`Check ${property.appName} elements`, () => {
+            if (property.host === 3002) {
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.divElement,
+                    text: property.appGeneralName
+                })
+            } else {
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.divElement,
+                    text: property.appExposesName
+                })
+            }
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.h4,
-                text: String(property.appExposesBanner)
+                text: property.appBanner
             })
-            //добавить проверку содержимого после клика на Hamburger
             basePage.clickElementBySelector({
                 selector: baseSelectors.button
+            })
+            basePage.checkElementExist({
+                selector: property.appExposesComponentsButton,
+                isVisible: false
             })
             basePage.clickElementBySelector({
                 selector: baseSelectors.button
@@ -88,16 +101,54 @@ appsData.forEach((
                 selector: baseSelectors.linkTag,
                 text: property.appExposesComponentsButton
             })
+            if (property.host === 3002) {
+                basePage.clickElementWithText({
+                    selector: baseSelectors.linkTag,
+                    text: String(property.appGeneralRouteButton),
+                    isForce: true
+                })
+                basePage.checkUrlText(`http://localhost:${property.host}/`, true)
+                basePage.clickElementWithText({
+                    selector: baseSelectors.linkTag,
+                    text: property.appExposesComponentsButton
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.h5,
+                    text: String(property.appGeneralSubheader1)
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.h5,
+                    text: String(property.appGeneralSubheader2)
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.divElement,
+                    text: String(property.appGeneralCounter)
+                })
+            }
             if (property.host === 3001) {
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.divElement,
                     text: String(property.AppButtonName)
                 })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.divElement,
+                    text: String(property.appListName)
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.divElement,
+                    text: String(property.appButtonDiv)
+                })
             }
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
-                text: String(property.appButtonDiv)
+                selector: selectors.appExposesCounter,
+                text: '0'
             })
+            if (property.host === 3002) {
+                basePage.checkElementWithTextPresence({
+                    selector: selectors.appGeneralCounter,
+                    text: '0'
+                })
+            }
             basePage.clickElementWithText({
                 selector: baseSelectors.button,
                 text: property.clickMeButton
@@ -106,158 +157,90 @@ appsData.forEach((
                 selector: selectors.appExposesCounter,
                 text: '1'
             })
+            if (property.host === 3002) {
+                basePage.checkElementWithTextPresence({
+                    selector: selectors.appGeneralCounter,
+                    text: '1'
+                })
+            }
             basePage.reloadWindow()
             basePage.checkElementWithTextPresence({
                 selector: selectors.appExposesCounter,
                 text: '0'
             })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
-                text: String(property.appListName)
-            })
+            if (property.host === 3002) {
+                basePage.checkElementWithTextPresence({
+                    selector: selectors.appGeneralCounter,
+                    text: '0'
+                })
+            }
+
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.divElement,
                 text: property.appListDiv
             })
-            for (let i = 5; i = 1; i--) {
-                basePage.checkElementQuantity({
-                    selector: selectors.appExposesNames,
-                    quantity: i
-                })
-                basePage.clickElementBySelector({
-                    selector: selectors.appExposesCloseButton,
-                    index: 1
-                })
-            }
-            basePage.reloadWindow()
-            basePage.clickElementWithText({
-                selector: baseSelectors.linkTag,
-                text: String(property.appExposesComponentsButton)
-            })
-            basePage.checkElementQuantity({
-                selector: selectors.appExposesNames,
-                quantity: 5
-            })
-        })
-        it (`Check App General Elements`, () => {
-            basePage.skipTestByCondition(property.host === 3001)
-            basePage.clickElementWithText({
-                selector: baseSelectors.divElement,
-                text: String(property.appGeneralName)
-            })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h4,
-                text: String(property.appGeneralBanner)
-            })
-            basePage.clickElementBySelector({
-                selector: baseSelectors.button
-            })
-            basePage.clickElementBySelector({
-                selector: baseSelectors.button
-            })
-            basePage.clickElementWithText({
-                selector: baseSelectors.linkTag,
-                text: String(property.appExposesComponentsButton),
-                isForce: true
-            })
-            basePage.clickElementWithText({
-                selector: baseSelectors.linkTag,
-                text: String(property.appGeneralRouteButton),
-                isForce: true
-            })
-            basePage.checkUrlText(`http://localhost:${property.host}/`, true)
-            basePage.clickElementWithText({
-                selector: baseSelectors.linkTag,
-                text: String(property.appExposesComponentsButton)
-            })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h5,
-                text: String(property.appGeneralSubheader1)
-            })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h5,
-                text: String(property.appGeneralSubheader2)
-            })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
-                text: String(property.appGeneralCounter)
-            })
-            basePage.checkElementWithTextPresence({
-                selector: selectors.appExposesCounter,
-                text: '0'
-            })
-            basePage.checkElementWithTextPresence({
-                selector: selectors.appGeneralCounter,
-                text: '0'
-            })
-            basePage.clickElementWithText({
-                selector: buttons.appExposesButton,
-                text: String(property.clickMeButton)
-            })
-            basePage.checkElementWithTextPresence({
-                selector: selectors.appExposesCounter,
-                text: '1'
-            })
-            basePage.checkElementWithTextPresence({
-                selector: selectors.appGeneralCounter,
-                text: '1'
-            })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
-                text: String(property.appListDiv)
-            })
             basePage.checkElementQuantity({
                 selector: selectors.appExposesNames,
                 quantity: 5
             })
             basePage.clickElementBySelector({
-                selector: selectors.appExposesCloseButton,
-                index: 1
-            })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
-                text: String(property.appGeneralName1)
+                selector: selectors.appExposesCloseButton
             })
             basePage.checkElementQuantity({
                 selector: selectors.appExposesNames,
                 quantity: 4
             })
             basePage.clickElementBySelector({
-                selector: selectors.appExposesCloseButton,
-                index: 1
-            })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
-                text: String(property.appGeneralName2)
+                selector: selectors.appExposesCloseButton
             })
             basePage.checkElementQuantity({
                 selector: selectors.appExposesNames,
                 quantity: 3
             })
             basePage.clickElementBySelector({
-                selector: selectors.appExposesCloseButton,
-                index: 1
-            })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
-                text: String(property.appGeneralName3)
+                selector: selectors.appExposesCloseButton
             })
             basePage.checkElementQuantity({
                 selector: selectors.appExposesNames,
                 quantity: 2
             })
             basePage.clickElementBySelector({
-                selector: selectors.appExposesCloseButton,
-                index: 1
-            })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
-                text: String(property.appGeneralName4)
+                selector: selectors.appExposesCloseButton
             })
             basePage.checkElementQuantity({
                 selector: selectors.appExposesNames,
                 quantity: 1
             })
+            basePage.clickElementBySelector({
+                selector: selectors.appExposesCloseButton
+            })
+            basePage.reloadWindow()
+            basePage.checkElementQuantity({
+                selector: selectors.appExposesNames,
+                quantity: 5
+            })
+            if (property.host === 3002) {
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.divElement,
+                    text: String(property.appGeneralName1)
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.divElement,
+                    text: String(property.appGeneralName2)
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.divElement,
+                    text: String(property.appGeneralName3)
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.divElement,
+                    text: String(property.appGeneralName4)
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.divElement,
+                    text: String(property.appGeneralName5)
+                })
+            }
         })
     })
 })
