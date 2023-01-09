@@ -481,7 +481,26 @@ export class Constants {
                 heading: 'This is the heading',
                 button: 'from remote1: GO HOME'
             }
-        }
+        },
+        nextJsV12App: {
+            homeApp: {
+                homeLink: 'Home',
+                shopLink: 'Shop',
+                shopHeader: 'Shop Page',
+                shopSubHeader: 'This is a federated page owned by localhost:3002',
+                federatedLink: 'Federated Catch All',
+                federatedHeader: 'PDP!!!',
+                checkoutLink: 'Checkout',
+                checkoutHeader: 'checkout page',
+                checkoutSubHeader: 'This is a federated page owned by localhost:3000',
+                checkoutDivHeader: 'Data from federated',
+                checkoutDivText: 'userId',
+                zeitLink: 'ZEIT',
+                header: 'This came fom checkout !!!',
+                subheader: 'And it works like a charm v2'
+            }
+        },
+
     }
 
     public static readonly tabsNames = {
