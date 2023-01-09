@@ -1,11 +1,9 @@
-import { AngularMethods } from './../../cypress/common/angular_samples/methods';
 import { ProductList } from './fixtures/productList';
 import { blocks, fields, buttons, baseSelectors, alertMessages } from '../../cypress/common/selectors';
 import { Constants } from '../../cypress/fixtures/constants';
 import { BaseMethods } from '../../cypress/common/base';
 
 const basePage: BaseMethods = new BaseMethods()
-const angularMethods: AngularMethods = new AngularMethods()
 
 const appsData = [
     {
@@ -192,7 +190,7 @@ describe('Check Apps functionality', () => {
     })
 
     it('Check added user visible on both Apps', () => {
-        angularMethods.addUser(
+        basePage.addUser(
             Constants.commonPhrases.name.text,
             Constants.commonPhrases.email.text
         )
@@ -255,7 +253,7 @@ describe('Check Apps functionality', () => {
     })
 
     it('Check removing user from table (Remove form Profile)', () => {
-        angularMethods.addUser(
+        basePage.addUser(
             Constants.commonPhrases.name.text,
             Constants.commonPhrases.email.text
         )
@@ -301,7 +299,7 @@ describe('Check Apps functionality', () => {
     })
 
     it('Check removing user from table (Remove form Shell)', () => {
-        angularMethods.addUser(
+        basePage.addUser(
             Constants.commonPhrases.name.text,
             Constants.commonPhrases.email.text
         )
@@ -351,11 +349,11 @@ describe('Check Apps functionality', () => {
     })
 
     it('Check adding two users and delete one of them (Remove form Profile)', () => {
-        angularMethods.addUser(
+        basePage.addUser(
             Constants.commonPhrases.name.text,
             Constants.commonPhrases.email.text
         )
-        angularMethods.addUser(
+        basePage.addUser(
             Constants.commonPhrases.secondName.text,
             Constants.commonPhrases.secondEmail.text
         )
@@ -426,11 +424,11 @@ describe('Check Apps functionality', () => {
     })
 
     it('Check adding two users and delete one of them (Remove form Shell)', () => {
-        angularMethods.addUser(
+        basePage.addUser(
             Constants.commonPhrases.name.text,
             Constants.commonPhrases.email.text
         )
-        angularMethods.addUser(
+        basePage.addUser(
             Constants.commonPhrases.secondName.text,
             Constants.commonPhrases.secondEmail.text
         )

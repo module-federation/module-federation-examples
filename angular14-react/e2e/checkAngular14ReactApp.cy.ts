@@ -1,10 +1,8 @@
-import { AngularMethods } from './../../cypress/common/angular_samples/methods';
 import { Constants } from './../../cypress/fixtures/constants';
-import { alertMessages, baseSelectors, buttons, fields } from './../../cypress/common/selectors';
+import { alertMessages, baseSelectors, fields } from './../../cypress/common/selectors';
 import { BaseMethods } from "../../cypress/common/base";
 
 const basePage: BaseMethods = new BaseMethods()
-const angularMethods: AngularMethods = new AngularMethods()
 
 describe('Check Angular-React Application', () => {
     beforeEach(() => {
@@ -41,7 +39,7 @@ describe('Check Angular-React Application', () => {
     })
 
     it('Add user to the table', () => {
-        angularMethods.addUser(
+        basePage.addUser(
             Constants.commonPhrases.name.text,
             Constants.commonPhrases.email.text
         )
@@ -75,7 +73,7 @@ describe('Check Angular-React Application', () => {
     })
 
     it('Remove user to the table', () => {
-        angularMethods.addUser(
+        basePage.addUser(
             Constants.commonPhrases.name.text,
             Constants.commonPhrases.email.text
         )

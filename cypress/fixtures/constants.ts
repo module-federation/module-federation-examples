@@ -587,7 +587,7 @@ export class Constants {
         style: 'style',
         remoteButton: 'Remote Button',
         nextJSButton: 'Next JS Button',
-        typeScriptMonoRepoYarnWorkspaceDependency: 'app1/*,app2/*',
+        typeScriptMonoRepoYarnWorkspaceDependency: 'workspaces',
         border: 'border',
         standartText: 'May The Force Be With You',
         sharedRoutingAppReplaceSelectorPart: 'RECENT_',
