@@ -4,12 +4,9 @@ const {
 
 module.exports = withNativeFederation({
   name: "host",
-  shared: {
-    ...shareAll({
-      singleton: true,
-      strictVersion: true,
-      requiredVersion: "auto",
-      includeSecondaries: false,
-    }),
-  },
+  shared: shareAll(),
+  skip: [
+    'react-dom/server',
+    'react-dom/server.node',
+  ],
 });
