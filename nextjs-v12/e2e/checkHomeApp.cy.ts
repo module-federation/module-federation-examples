@@ -53,6 +53,7 @@ appsData.forEach((
                 selector: baseSelectors.linkTag,
                 text: property.homeLink
             })
+            cy.wait(500)
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.h1,
                 text: property.homeHeader
@@ -63,7 +64,8 @@ appsData.forEach((
             })
             basePage.clickElementWithText({
                 selector: baseSelectors.linkTag,
-                text: property.shopLink
+                text: property.shopLink,
+                wait: 2500
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.h1,
@@ -83,7 +85,8 @@ appsData.forEach((
             })
             basePage.clickElementWithText({
                 selector: baseSelectors.linkTag,
-                text: property.checkoutLink
+                text: property.checkoutLink,
+                wait: (2500)
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.h1,
@@ -104,3 +107,4 @@ appsData.forEach((
         })
     })
 })
+
