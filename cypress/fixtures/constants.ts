@@ -424,21 +424,26 @@ export class Constants {
             },
             appGeneral: {
                 name: 'Child FE',
-                appName: 'App General',
                 banner: 'App Remote Home Page',
                 routeButton: 'Route',
                 subheader1: 'Exposed from Child',
                 subheader2: 'Listening in Parent',
                 counter: 'Counter',
-                name1: 'Gualtiero',
-                name2: 'Riyaz',
-                name3: 'Quy',
-                name4: 'Sang',
-                name5: 'Loris'
             },
             appButtonDiv: 'App Button',
             appButtonClickMeButton: 'Click me',
             appListDiv: 'AppList',
+            counter: {
+                startValue: '0',
+                valueAfterClick: '1'
+            },
+            names: [
+                { name: 'Gualtiero', index: 5 },
+                { name: 'Riyaz', index: 4 },
+                { name: 'Quy', index: 3 },
+                { name: 'Sang', index: 2 },
+                { name: 'Loris', index: 1}
+            ]
         },
         viteReactMicroFrontendsCardsMessages: {
             remoteCard: 'I\'m the remote app',
@@ -463,6 +468,18 @@ export class Constants {
                 header: 'Basic Host-Remote',
                 subHeader: 'Home',
                 buttonText: 'Home Button',
+            }
+        },
+        reactHmr: {
+            remote: {
+                text: 'Remote 1\'s counter: ',
+                button: 'increment'
+            },
+            host: {
+                headerText1: 'HOST',
+                headerText2: 'HOST ONLY SUPPORTS LIVE RELOAD. GO TO http://localhost:3001 to try out HMR',
+                heading: 'This is the heading',
+                button: 'from remote1: GO HOME'
             }
         }
     }
@@ -619,6 +636,7 @@ export class Constants {
         pink: 'rgb(219, 112, 147)',
         lightBlue: 'rgb(188, 225, 255)',
         lightGreen: 'rgb(136, 218, 153)',
+        greenyellow: 'rgb(173, 255, 47)',
         purple: 'rgb(63, 81, 181)',
         deepPink: 'rgb(156, 39, 176)',
         borderColorRed1px: '1px solid rgb(255, 0, 0)',
@@ -691,7 +709,10 @@ export class Constants {
         comprehensiveDemoRoutingDemoLink: { link: 'http://localhost:3001/#/routing/foo', index: 11 },
         comprehensiveDemoUiLibraryLink: '#/ui-library',
         comprehensiveDemoDialogLink: '#/dialog',
-        comprehensiveDemoSvelteLink: '#/svelte'
+        comprehensiveDemoSvelteLink: '#/svelte',
+        reactHmrHomeLink: '/',
+        reactHmrButtonLink: '/button',
+        reactHmrHeadingLink: '/heading',
     }
     public static readonly linksNames = {
         vueCliAppDocumentationLinkName: 'vue-cli documentation',
@@ -709,6 +730,9 @@ export class Constants {
         vueCliAppVueDevtoolsLinkName: 'vue-devtools',
         vueCliAppVueLoaderLinkName: 'vue-loader',
         vueCliAppAwesomeVueLinkName: 'awesome-vue',
+        reactHmrHostHomeText: 'Home',
+        reactHmrHostButtonText: 'Button',
+        reactHmrHostHeadingText: 'Heading',
     }
 
     public static readonly commands = {
