@@ -4,10 +4,12 @@
     "start": "concurrently \"lerna run --scope @comprehensive-demo-react16/* --parallel start\" \"yarn serve\"",
     "build": "lerna run --scope @comprehensive-demo-react16/* build",
     "serve": "lerna run --scope @comprehensive-demo-react16/* --parallel serve",
-    "clean": "lerna run --scope @comprehensive-demo-react16/* --parallel clean"
+    "clean": "lerna run --scope @comprehensive-demo-react16/* --parallel clean",
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/runAll*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "concurrently": "7.3.0",
-    "lerna": "3.22.1"
+    "lerna": "3.22.1",
+    "wait-on": "7.0.1"
   }
 }
