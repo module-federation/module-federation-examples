@@ -7,7 +7,9 @@ const basePage: BaseMethods = new BaseMethods()
 describe('Vue CLI', () => {
     context("It checks other app", () => {
         beforeEach(() => {
-            basePage.openLocalhost(9001)
+            basePage.openLocalhost({
+                number: 9001
+            })
         })
     
         it('Checks other section browser alert text', () => {

@@ -19,7 +19,10 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
     describe('Shared Routing', () => {
         context('It checks dashboard page', () => {
             beforeEach(() => {
-                basePage.openLocalhost(property.host, Constants.commonConstantsData.sharedRoutingAppPagesComponents.dashboard.toLowerCase())
+                basePage.openLocalhost({
+                    number: property.host,
+                    path: Constants.commonConstantsData.sharedRoutingAppPagesComponents.dashboard.toLowerCase()
+                })
             })
             it('checks Dashboard text visibility on header', () => {
                 basePage.checkElementWithTextPresence({

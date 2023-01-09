@@ -7,7 +7,9 @@ const basePage: BaseMethods = new BaseMethods()
 describe('It checks elements visibility', () => {
     CommonTestData.commonNextJsAppsData.forEach((property: { messageType: string, selector: string, message: string, linkText? : string }) => {
         it(`Checks ${property.messageType} message visibility`, () => {
-            basePage.openLocalhost(8080)
+            basePage.openLocalhost({
+                number: 8080
+            })
             basePage.checkElementWithTextPresence({
                 selector: property.selector,
                 text: property.message,
@@ -17,7 +19,9 @@ describe('It checks elements visibility', () => {
 
         it(`Checks ${property.messageType} message includes texted link`, () => {
             basePage.skipTestByCondition(!property.linkText)
-            basePage.openLocalhost(8080)
+            basePage.openLocalhost({
+                number: 8080
+            })
             basePage.checkElementWithTextPresence({
                 parentSelector: property.selector,
                 selector: baseSelectors.tags.coreElements.link,

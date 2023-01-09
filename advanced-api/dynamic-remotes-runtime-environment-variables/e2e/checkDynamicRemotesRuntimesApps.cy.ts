@@ -45,7 +45,9 @@ appsData.forEach((
     describe('Dynamic Remotes Runtime Enviroment Variables', () => {
         context(`Check ${property.subheader} app`, () => {
             beforeEach(() => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
             })
     
             it (`Check ${property.subheader} app Widget functionality and application elements`, () => {
@@ -100,4 +102,3 @@ appsData.forEach((
         })
     })
 })
-

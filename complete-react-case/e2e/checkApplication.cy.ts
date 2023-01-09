@@ -9,7 +9,9 @@ const basePage: BaseMethods = new BaseMethods()
 describe('Complete React case', () => {
     context('Check App1', () => {
         beforeEach(() => {
-            basePage.openLocalhost(3002)
+            basePage.openLocalhost({
+                number: 3002
+            })
         })
     
         it('Check App build and running', () => {

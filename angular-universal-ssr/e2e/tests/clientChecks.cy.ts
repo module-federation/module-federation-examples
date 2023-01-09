@@ -9,7 +9,9 @@ const methodsPage: AngularUniversalSsrMethods = new AngularUniversalSsrMethods()
 describe('Angular Universal SSR', () => {
     context('It checks client app', () => {
         beforeEach(() => {
-            basePage.openLocalhost(3000)
+            basePage.openLocalhost({
+                number: 3000
+            })
         })
 
         it('Checks cities block visibility', () => {

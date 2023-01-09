@@ -40,7 +40,9 @@ appsData.forEach(
     describe('CSS isolation', () => {
         context(`Check ${appName}`, () => {
             it(`Check ${appName} built and running`, () => {
-                basePage.openLocalhost(host)
+                basePage.openLocalhost({
+                    number: host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: property.headerSelector,
                     text: property.headerText
@@ -57,7 +59,9 @@ appsData.forEach(
 describe('CSS isolation', () => {
     context('Check App 1', () => {
         it(`Check button in App 1 exist`, () => {
-            basePage.openLocalhost(3001)
+            basePage.openLocalhost({
+                number: 3001
+            })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.ids.parent,
                 text: Constants.elementsText.cssIsolationApp.buttonText,
@@ -66,10 +70,13 @@ describe('CSS isolation', () => {
         })
     })
 })
+
 describe('CSS isolation', () => {
     context('Check App 1 colors', () => {
         beforeEach(() => {
-            basePage.openLocalhost(3001)
+            basePage.openLocalhost({
+                number: 3001
+            })
             });
         it(`Check App 1 color text`, () => {
             
@@ -95,10 +102,13 @@ describe('CSS isolation', () => {
         })
     })
 })
+
 describe('CSS isolation', () => {
     context('Check App 2 colors', () => {
         beforeEach(() => {
-            basePage.openLocalhost(3002)
+            basePage.openLocalhost({
+                number: 3002
+            })
             });
         it(`Check button in App 2 exist`, () => {
             
@@ -120,6 +130,3 @@ describe('CSS isolation', () => {
         })
     })
 })
-
-
-

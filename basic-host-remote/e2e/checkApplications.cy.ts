@@ -43,7 +43,9 @@ appsData.forEach(
     describe('Basic Host remote', () => {
         context(`Check ${appName}`, () => {
             it(`Check ${appName} built and running`, () => {
-                basePage.openLocalhost(host)
+                basePage.openLocalhost({
+                    number: host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: property.headerSelector,
                     text: property.headerText
@@ -55,7 +57,9 @@ appsData.forEach(
             })
         
             it(`Check buttons in ${appName} exist`, () => {
-                basePage.openLocalhost(host)
+                basePage.openLocalhost({
+                    number: host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: property.buttonSelector,
                     text: property.buttonNameText

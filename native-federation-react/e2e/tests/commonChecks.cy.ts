@@ -19,7 +19,9 @@ describe('Native Federation React', () => {
     
         appsData.forEach((property: { host: number, header: string }) => {
             it(`Checks ${property.header} page header visibility`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.headers.h1,
                     text: property.header,
@@ -28,7 +30,9 @@ describe('Native Federation React', () => {
             })
     
             it(`Checks console message visibility in ${property.header} component`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.paragraph,
                     text: Constants.elementsText.nativeFederationReactApp.messages.pageMessages.checkConsoleMessage,
@@ -37,12 +41,16 @@ describe('Native Federation React', () => {
             })
     
             it('Checks apps console date message', () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkInfoInConsole(Constants.elementsText.nativeFederationReactApp.messages.consoleMessages.dateMessage)
             })
     
             it('Checks apps console weekend message', () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkInfoInConsole(Constants.elementsText.nativeFederationReactApp.messages.consoleMessages.weekendMessage)
             })
         });

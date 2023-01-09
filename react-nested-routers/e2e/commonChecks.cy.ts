@@ -21,7 +21,9 @@ describe('React Nested Routers', () => {
     
         appsData.forEach((property: { host: number, message: string, linkMessage: string }) => {
             it(`Checks page message visibility`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.div,
                     text: property.message,
@@ -30,7 +32,9 @@ describe('React Nested Routers', () => {
             });
 
             it(`Checks texted link visibility`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.link,
                     text: property.host === appsData[1].host? property.linkMessage.replace(Constants.elementsText.reactNestedRoutersApp.replaceValues[4],
@@ -40,7 +44,9 @@ describe('React Nested Routers', () => {
             });
 
             it(`Checks that on click on link url texts on page changed & changes is not reverted after reload`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 if(property.host === appsData[0].host) {
                     basePage.checkUrlText(Constants.commonConstantsData.commonLinks.page2, false)
                     basePage.checkElementWithTextPresence({

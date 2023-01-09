@@ -27,14 +27,18 @@ describe('Shared Store Cross Framework', () => {
     
         appsData.forEach((property: { name: string, buttonsBlock: string, blockName: string, color: string }) => {
             it(`Checks ${property.name} buttons block visibility`, () => {
-                basePage.openLocalhost(3001)
+                basePage.openLocalhost({
+                    number: 3001
+                })
                 basePage.checkElementVisibility({
                     selector: property.buttonsBlock
                 })
             });
     
             it(`Checks ${property.name} buttons block includes element with block name`, () => {
-                basePage.openLocalhost(3001)
+                basePage.openLocalhost({
+                    number: 3001
+                })
                 basePage.checkElementWithTextPresence({
                     parentSelector: property.buttonsBlock,
                     selector: baseSelectors.tags.coreElements.div,
@@ -44,7 +48,9 @@ describe('Shared Store Cross Framework', () => {
             });
     
             it(`Checks ${property.name} buttons block includes two buttons`, () => {
-                basePage.openLocalhost(3001)
+                basePage.openLocalhost({
+                    number: 3001
+                })
                 basePage.checkElementQuantity({
                     parentSelector: property.buttonsBlock,
                     selector: baseSelectors.tags.coreElements.button,
@@ -53,7 +59,9 @@ describe('Shared Store Cross Framework', () => {
             });
     
             it(`Checks ${property.name} buttons color`, () => {
-                basePage.openLocalhost(3001)
+                basePage.openLocalhost({
+                    number: 3001
+                })
                 methodsPage.findValueInMultipleButtons({
                     buttonsBlockSelector: property.buttonsBlock,
                     cssValue : property.color
@@ -61,7 +69,9 @@ describe('Shared Store Cross Framework', () => {
             });
     
             it(`Checks ${property.name} block includes increment and decrement one`, () => {
-                basePage.openLocalhost(3001)
+                basePage.openLocalhost({
+                    number: 3001
+                })
                 methodsPage.findValueInMultipleButtons({
                     buttonsBlockSelector: property.buttonsBlock,
                     text : Constants.elementsText.sharedStoreCrossFrameworkApp.mathSigns.plus
@@ -73,7 +83,9 @@ describe('Shared Store Cross Framework', () => {
             });
     
             it(`Checks that buttons in ${property.name} block are not disabled`, () => {
-                basePage.openLocalhost(3001)
+                basePage.openLocalhost({
+                    number: 3001
+                })
                 basePage.checkElementState({
                     parentSelector: property.buttonsBlock,
                     selector: baseSelectors.tags.coreElements.button,
@@ -82,7 +94,9 @@ describe('Shared Store Cross Framework', () => {
             });
     
             it.only(`Checks increase/decrease actions by ${property.name} buttons + check counter can have negative value`, () => {
-                basePage.openLocalhost(3001)
+                basePage.openLocalhost({
+                    number: 3001
+                })
                 basePage.checkCounterFunctionality({
                     button:`${property.buttonsBlock} ${selectors.sharedStoreCrossFrameworkApp.actionButtons.increment}`,
                     counterElement: selectors.sharedStoreCrossFrameworkApp.clicksCounter,

@@ -6,7 +6,9 @@ const basePage: BaseMethods = new BaseMethods()
 
 describe("It checks remote page", () => {
     beforeEach(() => {
-        basePage.openLocalhost(8081)
+        basePage.openLocalhost({
+            number: 8081
+        })
     })
 
     it('Checks remote app message visibility', () => {

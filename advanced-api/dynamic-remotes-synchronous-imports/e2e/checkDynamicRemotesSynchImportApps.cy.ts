@@ -53,7 +53,9 @@ appsData.forEach(
         describe('Dynamic Remotes SYnchronous imports', () => {
             context(`Check ${appName}`, () => {
                 it(`Check ${appName} elements exis on the page`, () => {
-                    basePage.openLocalhost(host)
+                    basePage.openLocalhost({
+                        number: host
+                    })
                     basePage.checkElementWithTextPresence({
                         selector: property.headerSelector,
                         text: property.headerText
@@ -65,7 +67,9 @@ appsData.forEach(
                 })
     
                 it(`Check widgets in ${appName}`, () => {
-                    basePage.openLocalhost(host)
+                    basePage.openLocalhost({
+                    number: host
+                })
                     if (property.isTwoWidgets) {
                         property.widgetName.forEach((widget) => {
                             basePage.checkElementVisibility({
