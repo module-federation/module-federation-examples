@@ -424,21 +424,26 @@ export class Constants {
             },
             appGeneral: {
                 name: 'Child FE',
-                appName: 'App General',
                 banner: 'App Remote Home Page',
                 routeButton: 'Route',
                 subheader1: 'Exposed from Child',
                 subheader2: 'Listening in Parent',
                 counter: 'Counter',
-                name1: 'Gualtiero',
-                name2: 'Riyaz',
-                name3: 'Quy',
-                name4: 'Sang',
-                name5: 'Loris'
             },
             appButtonDiv: 'App Button',
             appButtonClickMeButton: 'Click me',
             appListDiv: 'AppList',
+            counter: {
+                startValue: '0',
+                valueAfterClick: '1'
+            },
+            names: [
+                { name: 'Gualtiero', index: 5 },
+                { name: 'Riyaz', index: 4 },
+                { name: 'Quy', index: 3 },
+                { name: 'Sang', index: 2 },
+                { name: 'Loris', index: 1}
+            ]
         },
         viteReactMicroFrontendsCardsMessages: {
             remoteCard: 'I\'m the remote app',

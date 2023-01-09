@@ -70,10 +70,10 @@ export const selectors = {
         starSymbol: '[data-e2e="STAR__SYMBOL"]',
         cloudSymbol: '[data-e2e="CLOUD__SYMBOL"]',
     },
-    appExposesCounter: '[data-cy="app-button-counter"]',
     appExposesNames: '[data-e2e="exposesAppNames"]',
     appExposesCloseButton: '[data-e2e="exposesAppNamesClose"]',
     appGeneralCounter: '[data-e2e="General-counter"]',
+    appExposesCounter: '[data-cy="app-button-counter"]',
 }
 
 export const updatedSelectors = {
