@@ -39,7 +39,9 @@ appsData.forEach((
             const listNames = Constants.elementsText.quasarCliApp.names;
 
             beforeEach(() => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
             })
             it(`Check ${property.appName} elements`, () => {
                 basePage.checkElementWithTextPresence({

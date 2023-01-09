@@ -341,7 +341,9 @@ export class BaseMethods {
     public checkNetworkCallCreated(requestType: RequestsTypes, url: string, localhost: number, statusCode: number): void {
         cy.intercept(requestType, url).as('networkCall');
         // Extra visit required cause intercept needs to be created before visit
-        this.openLocalhost(localhost)
+        this.openLocalhost({
+            number: localhost
+        })
         cy.wait('@networkCall').then((interception) => {
             if(interception.response) {
                 cy.wrap(interception.response.statusCode).should('eq', statusCode)
@@ -792,11 +794,18 @@ export class BaseMethods {
         cy.wait(wait).get(selector).realHover()
     }
 
-    public openLocalhost(number: number, path?: string): Cypress.Chainable<Cypress.AUTWindow> {
+    public openLocalhost({
+        number,
+        path
+    }: {
+        number: number,
+        path?: string
+    }): Cypress.Chainable<Cypress.AUTWindow> {
         return path ?
             cy.visit(`${Cypress.env(`localhost${number}`)}/${path}`)
             :
             cy.visit(Cypress.env(`localhost${number}`));
+
     }
 
     public reloadWindow(withoutCache: boolean = false): void {

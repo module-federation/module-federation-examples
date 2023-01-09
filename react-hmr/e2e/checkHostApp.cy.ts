@@ -26,7 +26,9 @@ const hostData = [
 describe("React HMR", () => {
     context("Check host app", () => {
         beforeEach(() => {
-            basePage.openLocalhost(3000)
+            basePage.openLocalhost({
+                number: 3000
+            })
         })
     
         it('Check the content of the Home page exists', () => {

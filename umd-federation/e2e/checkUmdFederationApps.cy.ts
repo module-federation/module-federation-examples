@@ -27,7 +27,9 @@ appsData.forEach((
     describe(`UMD Federation`, () => {
         context(`Check app1 and app2 starts and running + emenets exist on the page`, () => {
             beforeEach(()=> {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
             })
             it (`Check App1 elements`, () => {
                 basePage.skipTestByCondition(property.host === 9002)

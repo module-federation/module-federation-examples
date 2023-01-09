@@ -17,7 +17,9 @@ describe("NextJS React", () => {
         // })
     context('Check remote app', () => {
         beforeEach(() => {
-            basePage.openLocalhost(3001)
+            basePage.openLocalhost({
+                number: 3001
+            })
         })
     
         it('Check button exists', () => {

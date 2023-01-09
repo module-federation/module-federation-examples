@@ -19,7 +19,9 @@ describe('Vue 3 Demo',  () => {
     
         appsData.forEach((property: { host: number, appName: string }) => {
             it('Checks apps name visibility', () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                number: property.host
+            })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.div,
                     text: property.appName,
@@ -28,7 +30,9 @@ describe('Vue 3 Demo',  () => {
             })
     
             it('Checks component state message visibility', () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.div,
                     text: Constants.commonConstantsData.commonVueAppComponentState,
@@ -37,7 +41,9 @@ describe('Vue 3 Demo',  () => {
             })
     
             it('Checks component state message style', () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.css.style.replace('{style}',  Constants.color.nonRgbValues.red),
                     text: Constants.commonConstantsData.commonVueAppComponentState,
@@ -46,14 +52,18 @@ describe('Vue 3 Demo',  () => {
             })
     
             it('Checks button visibility', () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementVisibility({
                     selector: baseSelectors.tags.coreElements.button
                 })
             })
     
             it(`Checks that button is not disabled`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementState({
                     selector: baseSelectors.tags.coreElements.button,
                     state: 'not.be.disabled'
@@ -61,7 +71,9 @@ describe('Vue 3 Demo',  () => {
             });
     
             it(`Checks button text`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.button,
                     text: Constants.commonConstantsData.helloWorldMessage,

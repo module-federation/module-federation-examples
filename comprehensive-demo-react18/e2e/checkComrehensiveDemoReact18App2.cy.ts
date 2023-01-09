@@ -9,7 +9,9 @@ const basePage: BaseMethods = new BaseMethods()
 describe('Comprehencive Demo React 18', () => {
     context('Check is Comprehensive Demo App2 working and have elements', () => {
         beforeEach(() => {
-            basePage.openLocalhost(3002)
+            basePage.openLocalhost({
+                number: 3002
+            })
         })
     
         it('Check App build and running & Check app elements exist', () => {
@@ -111,4 +113,5 @@ describe('Comprehencive Demo React 18', () => {
             })
         })
     })
+
 })

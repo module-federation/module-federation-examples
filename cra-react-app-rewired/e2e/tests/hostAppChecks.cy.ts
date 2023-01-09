@@ -6,7 +6,9 @@ const basePage: BaseMethods = new BaseMethods()
 describe('CRA React App Rewired', () => {
     context("It checks host app", () => {
         beforeEach(() => {
-            basePage.openLocalhost(3000)
+            basePage.openLocalhost({
+                number: 3000
+            })
         })
     
         it('Checks imported remote component visibility', () => {

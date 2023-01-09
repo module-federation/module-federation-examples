@@ -7,7 +7,9 @@ const basePage: BaseMethods = new BaseMethods()
 describe('i18next Nextjs React', () => {
     context("Check Next host", () => {
         beforeEach(() => {
-            basePage.openLocalhost(3000)
+            basePage.openLocalhost({
+                number: 3000
+            })
         })
     
         it('Check the content exist on Next host', () => {

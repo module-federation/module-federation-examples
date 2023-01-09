@@ -21,7 +21,9 @@ describe('Startup Code', () => {
     
         appsData.forEach((property: { host: number, header: string, appName: string }) => {
             it(`Check that both apps shares ${property.header} header`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                number: property.host
+            })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.div,
                     text: property.header,
@@ -30,7 +32,9 @@ describe('Startup Code', () => {
             });
     
             it(`Check ${property.appName} app name visibility`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.div,
                     text: property.appName,
@@ -39,14 +43,18 @@ describe('Startup Code', () => {
             });
     
             it(`Check ${property.appName} contains button`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementVisibility({
                     selector: baseSelectors.tags.coreElements.button
                 })
             });
     
             it(`Checks that button in ${property.appName} is not disabled`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementState({
                     selector: baseSelectors.tags.coreElements.button,
                     state: 'not.be.disabled'
@@ -54,7 +62,9 @@ describe('Startup Code', () => {
             });
     
             it(`Checks that both apps shares button with same text`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.button,
                     text: Constants.updatedConstantsData.commonAppWithButton.app2,
@@ -63,9 +73,12 @@ describe('Startup Code', () => {
             });
     
             it(`Checks that apps names is not equal`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.compareInfoBetweenHosts(updatedSelectors.common.appName, property.host === 3002 ? appsData[0].host: appsData[1].host, false)
             });
         });
     });
+
 });

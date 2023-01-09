@@ -7,7 +7,9 @@ const basePage: BaseMethods = new BaseMethods()
 describe('Vue 3 Demo Federation with Vite', () => {
     context("It checks webpack side app", () => {
         beforeEach(() => {
-            basePage.openLocalhost(5001)
+            basePage.openLocalhost({
+                number: 5001
+            })
         })
     
         it('Clicks on webpack content button and checks that wrong alert greeting is not displayed', () => {
@@ -39,4 +41,5 @@ describe('Vue 3 Demo Federation with Vite', () => {
             })
         })
     })
+
 })

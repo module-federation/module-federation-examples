@@ -9,7 +9,9 @@ const elementsQuantity = 2
 describe('Native Federation React', () => {
     context('It checks host apps\' component', () => {
         beforeEach(() => {
-            basePage.openLocalhost(3000)
+            basePage.openLocalhost({
+                number: 3000
+            })
         })
     
         it('Checks apps console loading module message', () => {
@@ -145,4 +147,5 @@ describe('Native Federation React', () => {
             })
         })
     })
+
 })

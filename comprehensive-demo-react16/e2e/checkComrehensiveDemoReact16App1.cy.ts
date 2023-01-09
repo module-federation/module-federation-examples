@@ -8,7 +8,9 @@ const basePage: BaseMethods = new BaseMethods()
 describe('Comprehemsive Demo React 16', () => {
     context('Check is Comprehensive Demo App1 working and have elements', () => {
         beforeEach(() => {
-            basePage.openLocalhost(3001)
+            basePage.openLocalhost({
+                number: 3001
+            })
         })
     
         it('Check App build and running & Check app elements exist', () => {
@@ -135,7 +137,10 @@ describe('Comprehemsive Demo React 16', () => {
         })
     
         it('Check UI Library elements', () => {
-            basePage.openLocalhost(3001, Constants.hrefs.comprehensiveDemoApp.uiLibrary)
+            basePage.openLocalhost({
+                number: 3001,
+                path: Constants.hrefs.comprehensiveDemoApp.uiLibrary
+            })
             basePage.checkElementVisibility({
                 selector: baseSelectors.tags.headers.header
             })
@@ -181,7 +186,10 @@ describe('Comprehemsive Demo React 16', () => {
         })
     
         it('Check Dialog elements', () => {
-            basePage.openLocalhost(3001, Constants.hrefs.comprehensiveDemoApp.demoDialog)
+            basePage.openLocalhost({
+                number: 3001,
+                path: Constants.hrefs.comprehensiveDemoApp.demoDialog
+            })
             basePage.checkElementVisibility({
                 selector: baseSelectors.tags.headers.header
             })
@@ -228,7 +236,10 @@ describe('Comprehemsive Demo React 16', () => {
         })
     
         it('Check Svelte Page elements', () => {
-            basePage.openLocalhost(3001, Constants.hrefs.comprehensiveDemoApp.demoSvelte)
+            basePage.openLocalhost({
+                number: 3001,
+                path: Constants.hrefs.comprehensiveDemoApp.demoSvelte
+            })
             basePage.checkElementVisibility({
                 selector: baseSelectors.tags.headers.header
             })
@@ -250,10 +261,10 @@ describe('Comprehemsive Demo React 16', () => {
         })
     
         it('Check Routing elements', () => {
-            basePage.openLocalhost(
-                3001,
-                Constants.hrefs.comprehensiveDemoApp.routingDemo.replace("http://localhost:3001/", '')
-            )
+            basePage.openLocalhost({
+                number: 3001,
+                path: Constants.hrefs.comprehensiveDemoApp.routingDemo.replace("http://localhost:3001/", '')
+            })
             basePage.checkElementVisibility({
                 selector: baseSelectors.tags.headers.header
             })
@@ -313,4 +324,5 @@ describe('Comprehemsive Demo React 16', () => {
             })
         })
     })
+
 })

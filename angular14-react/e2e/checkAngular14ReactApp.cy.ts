@@ -7,7 +7,9 @@ const basePage: BaseMethods = new BaseMethods()
 describe('Angular 14 React', () => {
     context('Check Angular-React Application', () => {
         beforeEach(() => {
-            basePage.openLocalhost(4201)
+            basePage.openLocalhost({
+                number: 4201
+            })
         })
     
         it('Check App build and running', () => {

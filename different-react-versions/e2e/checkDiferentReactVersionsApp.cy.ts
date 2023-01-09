@@ -9,7 +9,9 @@ const methodsPage: DifferentReactVersionsMethods = new DifferentReactVersionsMet
 describe('Different React Versions', () => {
     context('Check App1', () => {
         beforeEach(() => {
-            basePage.openLocalhost(3001)
+            basePage.openLocalhost({
+                number: 3001
+            })
         })
     
         it('Check App build and running', () => {
@@ -76,7 +78,9 @@ describe('Different React Versions', () => {
 describe('Different React Versions', () => {
     context('Check App2', () => {
         beforeEach(() => {
-            basePage.openLocalhost(3002)
+            basePage.openLocalhost({
+                number: 3002
+            })
         })
     
         it('Check App build and running', () => {
@@ -98,4 +102,5 @@ describe('Different React Versions', () => {
             })
         })
     })
+
 })

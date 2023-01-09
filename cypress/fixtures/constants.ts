@@ -690,6 +690,7 @@ export class Constants {
                 routeButton: 'Route',
                 subheader1: 'Exposed from Child',
                 subheader2: 'Listening in Parent',
+                counter: 'Counter'
             },
             appButtonDiv: 'App Button',
             appButtonClickMeButton: 'Click me',
@@ -789,6 +790,12 @@ export class Constants {
             vueAsApplicationTitle: 'Vue Remote Create App Content',
             interactionTextInitial: 'Some Content',
             interactionTextChanged: 'Interaction Works'
+        },
+        nextJSv12App: {
+            federatedButton: {
+                name: 'Federated Catch All',
+                header: 'PDP!!!'
+            }
         }
     }
 
@@ -1098,6 +1105,18 @@ export class Constants {
         reactNestedRoutersApp: {
             pageB: '/page-b',
             app1: '/app-1',
+        },
+        nextJsHostReactRemoteApp: {
+            nextJsLink: 'https://nextjs.org/',
+            cardsLinks: [
+                'https://nextjs.org/docs',
+                'https://nextjs.org/learn/foundations/about-nextjs',
+                'https://github.com/vercel/next.js/tree/canary/examples',
+                Constants.commonConstantsData.commonLinks.vercel
+            ]
+        },
+        angular11SkullyApp: {
+            product: '/product'
         }
     }
 }

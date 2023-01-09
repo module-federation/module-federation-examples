@@ -25,7 +25,9 @@ appsData.forEach(
         describe('CRA', () => {
             context(`Check ${appName}`, () => {
                 beforeEach(() => {
-                    basePage.openLocalhost(property.host)
+                    basePage.openLocalhost({
+                        number: property.host
+                    })
                 })
     
                 it(`Check ${appName} elements exist on the page`, () => {
@@ -44,4 +46,5 @@ appsData.forEach(
                 })
             })
         })
+
     })

@@ -8,7 +8,9 @@ describe('Vite Svelte Microfrontends',  () => {
     context('It checks names and symbols inside cards', () => {
         CommonTestData.commonMicroFrontendsAppsData.forEach((property: { cardName: string, symbolName: string, symbol: string, status: string }) => {
             it(`Checks ${property.symbolName} symbol visibility for ${property.cardName} card`, () => {
-                basePage.openLocalhost(4173)
+                basePage.openLocalhost({
+                    number: 4173
+                })
                 basePage.checkElementQuantity({
                     selector: commonSelectors.commonMicroFrontendsAppsCard,
                     quantity: 2,
@@ -23,7 +25,9 @@ describe('Vite Svelte Microfrontends',  () => {
             });
     
             it(`Checks ${property.cardName} card includes status`, () => {
-                basePage.openLocalhost(4173)
+                basePage.openLocalhost({
+                    number: 4173
+                })
                 basePage.checkElementQuantity({
                     selector: commonSelectors.commonMicroFrontendsAppsCard,
                     quantity: 2,

@@ -17,7 +17,10 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
     describe('Shared Routing', () => {
         context('It checks orders page', () => {
             beforeEach(() => {
-                basePage.openLocalhost(property.host, Constants.commonConstantsData.sharedRoutingAppPagesComponents.orders.toLowerCase())
+                basePage.openLocalhost({
+                    number: property.host,
+                    path: Constants.commonConstantsData.sharedRoutingAppPagesComponents.orders.toLowerCase()
+                })
             })
     
             it('checks Orders text visibility on header', () => {
@@ -126,4 +129,5 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
             })
         })
     })
+
 })

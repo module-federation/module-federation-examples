@@ -23,7 +23,9 @@ describe('CRA React App Rewired', () => {
     
         appsData.forEach((property: { host: number, appName: string, appMessage: string, remoteAppMessage?: string }) => {
             it(`Checks ${property.appName} app background color`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementHaveProperty({
                     selector: baseSelectors.tags.headers.header,
                     prop: CssAttr.backgroundColor,
@@ -32,7 +34,9 @@ describe('CRA React App Rewired', () => {
             });
     
             it(`Checks ${property.appName} app message visibility & checks imported remote message visibility if any`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 if(property.remoteAppMessage) {
                     basePage.checkElementWithTextPresence({
                         selector: selectors.craReactRewiredApp.componentInfo,

@@ -26,7 +26,9 @@ describe('Vite React Simple', () => {
     
         appsData.forEach((property: { buttonName: string, buttonText: string, buttonColor: string, link: string, linkName: string }) => {
             it(`Checks ${property.buttonName} texted button visibility`, () => {
-                basePage.openLocalhost(3000)
+                basePage.openLocalhost({
+                    number: 3000
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.button,
                     text: property.buttonText,
@@ -35,7 +37,9 @@ describe('Vite React Simple', () => {
             });
     
             it(`Checks ${property.buttonName} texted button color`, () => {
-                basePage.openLocalhost(3000)
+                basePage.openLocalhost({
+                    number: 3000
+                })
                 basePage.checkElementHaveProperty({
                     selector: baseSelectors.tags.coreElements.button,
                     prop: CssAttr.backgroundColor,
@@ -46,7 +50,9 @@ describe('Vite React Simple', () => {
     
     
             it(`Checks ${property.buttonName} texted button is not disabled`, () => {
-                basePage.openLocalhost(3000)
+                basePage.openLocalhost({
+                    number: 3000
+                })
                 basePage.checkElementState({
                     selector: baseSelectors.tags.coreElements.button,
                     text: property.buttonText,
@@ -55,7 +61,9 @@ describe('Vite React Simple', () => {
             })
     
             it(`Checks ${property.linkName} link functionality`, () => {
-                basePage.openLocalhost(3000)
+                basePage.openLocalhost({
+                    number: 3000
+                })
                 basePage.checkOutsideResourceUrl({
                     selector: baseSelectors.tags.coreElements.link,
                     text: property.linkName,
@@ -64,6 +72,7 @@ describe('Vite React Simple', () => {
                 })
         })
     })
+
 
 
 })

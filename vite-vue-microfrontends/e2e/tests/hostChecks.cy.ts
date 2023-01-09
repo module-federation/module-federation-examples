@@ -10,7 +10,9 @@ const commonButtonsQuantity: number = 2
 describe('Vite Vue Microfrontends', () => {
     context("It checks host app", () => {
         beforeEach(() => {
-            basePage.openLocalhost(4173)
+            basePage.openLocalhost({
+                number: 4173
+            })
         })
     
         it('Checks console greeting message', () => {
@@ -105,4 +107,5 @@ describe('Vite Vue Microfrontends', () => {
                 })
         })
     })
+
 })
