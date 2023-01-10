@@ -1,4 +1,4 @@
-import {baseSelectors, block} from "./selectors";
+import {baseSelectors, block, buttons, fields} from "./selectors";
 import {Constants} from "../fixtures/constants";
 import {CssAttr} from "../types/cssAttr";
 
@@ -26,6 +26,48 @@ export class BaseMethods {
             cy.visit(`${Cypress.env(`localhost${number}`)}/${path}`)
             :
             cy.visit(Cypress.env(`localhost${number}`));
+    }
+
+    public checkValueInReadFile
+    ({
+        filePath,
+        text,
+        webpackFileSeparator,
+        isContain = true
+    }: {
+        filePath: string,
+        text: string,
+        webpackFileSeparator?: string
+        isContain?: boolean
+    }): void {
+        cy.readFile(filePath).then((file: string) => {
+            if(webpackFileSeparator) {
+                    isContain ? expect(file.split(webpackFileSeparator)[1]).to.include(text) :
+                        expect(file.split(webpackFileSeparator)[1]).not.to.include(text)
+
+                return;
+            }
+
+            expect(JSON.stringify(file)).to.include(text)
+        })
+    }
+
+    public addUser(name: string, email: string): void {
+        this.fillField({
+            selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.nameField),
+            text: name
+        })
+        this.fillField({
+            selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.emailField),
+            text: email
+        })
+        this.checkElementState({
+            selector: buttons.buttonPrimary,
+            state: 'not.be.disabled'
+        })
+        this.clickElementBySelector({
+            selector: buttons.buttonPrimary
+        })
     }
 
     public compareInfoBetweenHosts(
@@ -154,10 +196,11 @@ export class BaseMethods {
          notVisibleState = 'not.exist',
          parentSelector,
          isMultiple = false,
-         index = 0
+         index = 0,
+         textArray
     }: {
         selector: string,
-        text: string,
+        text: any,
         isVisible?: boolean,
         visibilityState?: string,
         notVisibleState?: string,
@@ -165,12 +208,10 @@ export class BaseMethods {
         isMultiple?: boolean,
         wait?: number
         index?: number
+        textArray?: string[]
     }): Cypress.Chainable<JQuery<HTMLElement>> {
-        if(parentSelector) {
-            return cy.get(parentSelector)
-                .find(selector)
-                .contains(text)
-                .should(isVisible ? visibilityState : notVisibleState);
+        if(parentSelector && !textArray) {
+            this._checkChildElementWithTextPresence(parentSelector, selector, text, isVisible ? visibilityState : notVisibleState)
         }
 
         if(index) {
@@ -186,6 +227,18 @@ export class BaseMethods {
                 .each((element: JQuery<HTMLElement>) => {
                     expect(element.text()).to.include(text)
                 });
+        }
+
+        if(textArray) {
+            for (let i = 0; i <  textArray.length; i++) {
+                // @ts-ignore
+                this._checkChildElementWithTextPresence(parentSelector, selector.replace(
+                   '{cellType}', textArray[i]
+                       .replace(/\s/g, '_').toUpperCase()), text[i], isVisible ? visibilityState : notVisibleState)
+            }
+
+            // @ts-ignore
+            return;
         }
 
         return cy.get(selector)
@@ -581,7 +634,7 @@ export class BaseMethods {
     public sendInputText({
         selector,
         text
-    }: {    
+    }: {
         selector: string,
         text: string,
     }) {
@@ -646,7 +699,7 @@ export class BaseMethods {
         }
         return cy.get(selector)
             .each((element: JQuery<HTMLElement>) => {
-                if(element.text() === text) {
+                if(element.text() === text && element.attr('href') === link) {
                     expect(element.attr('href')).to.be.eq(link)
                     expect(element.is(':disabled')).to.be.eq(false)
                 }
@@ -704,5 +757,12 @@ export class BaseMethods {
         } else {
             expect(element.attr(prop)).to.be.eq(value)
         }
+    }
+
+    private _checkChildElementWithTextPresence(parentSelector: string, selector: string, text: string, visibilityState: string): Cypress.Chainable<JQuery<HTMLElement>> {
+       return cy.get(parentSelector)
+            .find(selector)
+            .contains(text)
+            .should(visibilityState);
     }
 }

@@ -99,7 +99,7 @@ export class SharedRoutingMethods extends BaseMethods {
             text: secondRemotePageHeader,
             visibilityState: 'be.visible'
         })
-        cy.reload()
+        this.reloadWindow()
         this.checkElementWithTextPresence({
             selector: baseSelectors.header,
             text: secondRemotePageHeader,
@@ -107,21 +107,21 @@ export class SharedRoutingMethods extends BaseMethods {
         })
     }
 
-    public checkElementWithTextPresenceForMultipleTexts
+    public checkElementWithTextPresenceInTextArray
     ({
-         textsArray,
+         textArray,
          parentSelector,
          selector,
          childElement,
          visibilityState = 'be.visible'
     }: {
-        textsArray: string[],
+        textArray: string[],
         parentSelector: string,
         selector: string,
         childElement?: boolean
         visibilityState?: string
     }): void {
-        textsArray.forEach(text => {
+        textArray.forEach(text => {
             if(childElement) {
                 this.checkChildElementVisibility(parentSelector, selector.replace(
                         '{cellType}', text.replace(/\s/g, '_').toUpperCase()))
@@ -137,31 +137,7 @@ export class SharedRoutingMethods extends BaseMethods {
         })
     }
 
-    public checkElementWithTextPresenceByForCycle
-    ({
-         textsArray,
-        parentSelector,
-        selector,
-        text
-    }: {
-        textsArray: string[],
-        parentSelector: string,
-        selector: string,
-        text: string[]
-    }): void {
-        for (let i = 0; i <  textsArray.length; i++) {
-            this.checkElementWithTextPresence({
-                parentSelector,
-                selector: selector.replace(
-                    '{cellType}', textsArray[i]
-                        .replace(/\s/g, '_').toUpperCase()),
-                text: text[i],
-                visibilityState: 'be.visible'
-            })
-        }
-    }
-
-    public checkInputValueByForCycle
+    public fillFieldAndCheckValue
     ({
          value,
          multipleSizeStringsArray,
@@ -195,7 +171,7 @@ export class SharedRoutingMethods extends BaseMethods {
         this.checkInputValue(value, formFieldSelector)
 
         if(isReloaded) {
-            cy.reload()
+            this.reloadWindow()
             this.checkInputValue('', formFieldSelector)
         }
     }

@@ -1,10 +1,8 @@
 import { BaseMethods } from "../../../cypress/common/base";
 import {baseSelectors, selectors, updatedSelectors} from "../../../cypress/common/selectors";
 import {Constants} from "../../../cypress/fixtures/constants";
-import {Vue3CliDemoMethods} from "../methods/methods";
 
 const basePage: BaseMethods = new BaseMethods()
-const methodsPage: Vue3CliDemoMethods = new Vue3CliDemoMethods()
 
 describe('It checks certain texted button contains link and not disabled', () => {
     const textedLinks = [
@@ -77,7 +75,7 @@ describe('It checks certain texted button contains link and not disabled', () =>
     textedLinks.forEach((property: { text: string, link: string }) => {
         it(`Check that ${property.text} text includes link and not disabled`, () => {
             basePage.openLocalhost(8081)
-            methodsPage.checkElementWithTextIncludesLink(updatedSelectors.vueCliAppLinkContainer, property.text, property.link)
+            basePage.checkElementWithTextContainsLink(updatedSelectors.vueCliAppLinkContainer, property.text, property.link)
         })
     });
 });

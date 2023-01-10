@@ -38,7 +38,7 @@ export class Vue2InVue3Methods extends BaseMethods {
         }
 
         if (isReloadNeeded) {
-            cy.reload()
+            this.reloadWindow()
             this.checkElementWithTextPresence({
                 selector: baseSelectors.divElement,
                 text: Constants.commonPhrases.vueAppsDefaultCounterText,
