@@ -5,15 +5,6 @@ import { Constants } from '../../cypress/fixtures/constants';
 const basePage: BaseMethods = new BaseMethods()
 
 describe("Check Next host", () => {
-    // TODO cy.exec don't build the apps correctly cause lerna executes without exit code. Uncomment after fix this issue!
-        // before(() => {
-        //     basePage.buildTheSample(Constants.samplesPath.i18nextNextjsReact)
-        // })
-
-        // after(() => {
-        //     basePage.shutdownTheSample(Constants.samplesPath.i18nextNextjsReact)
-        // })
-
     beforeEach(() => {
         basePage.openLocalhost(3000)
     })
