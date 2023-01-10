@@ -5,7 +5,8 @@
     "start:force": "lerna run --scope @startup-code/* --parallel start",
     "build": "lerna run --scope @startup-code/* build",
     "serve": "lerna run --scope @startup-code/* --parallel serve",
-    "clean": "lerna run --scope @startup-code/* --parallel clean"
+    "clean": "lerna run --scope @startup-code/* --parallel clean",
+    "e2e:ci": "yarn build && yarn serve & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "lerna": "3.22.1"
