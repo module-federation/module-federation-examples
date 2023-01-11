@@ -312,6 +312,10 @@ export class Constants {
         sharedContextApp2H2: 'App 2',
         sharedContextApp1Paragraph: 'Welcome, Billy',
         sharedContextApp2Paragraph: 'Welcome, Susan',
+        cssIsolationApp1Name: 'App 1',
+        cssIsolationApp2Name: 'App 2',
+        cssIsolationApp1Header: 'Host Application - React Version',      
+        cssIsolationApp2Header: 'Remote Application - React Version',  
         sharedRoutes2HomeButtonH1: 'Home Page',
         sharedRoutes2AboutButtonH1: 'About Page',
         sharedRoutes2HomeButtonH2: 'Welcome to the future!',
@@ -607,6 +611,7 @@ export class Constants {
             zero: '0',
             two: '2'
         },
+        cssIsolationButton: 'Make Everything Yellow',
         viteReactMicroFrontendsCardsNames: {
             hostCard: 'host',
             remoteCard: 'remote'
@@ -639,6 +644,8 @@ export class Constants {
         greenyellow: 'rgb(173, 255, 47)',
         purple: 'rgb(63, 81, 181)',
         deepPink: 'rgb(156, 39, 176)',
+        yellow: 'rgb(255, 255, 0)',
+        green: 'rgb(0, 128, 0)',
         borderColorRed1px: '1px solid rgb(255, 0, 0)',
         orange: 'rgb(246, 179, 82)',
         blue: 'rgb(49, 120, 198)',
