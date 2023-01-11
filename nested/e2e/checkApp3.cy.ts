@@ -26,10 +26,11 @@ describe("Check App 3", () => {
     })
 
     it('Check button color', () => {
-        basePage.checkElementWithTextHaveCssProperty(
-            baseSelectors.button,
-            Constants.elementsText.nestedApp3Button,
-            CssAttr.background,
-            Constants.color.aquamarine)
+        basePage.checkElementWithTextHaveProperty({
+            selector: baseSelectors.button,
+            text: Constants.elementsText.nestedApp3Button,
+            prop: CssAttr.background,
+            value: Constants.color.aquamarine
+        })
     })
 })

@@ -97,16 +97,16 @@ const hosts = [
         })
 
         it('checks chart horizontal marks visibility', () => {
-            methodsPage.checkElementWithTextPresenceForMultipleTexts({
-                textsArray: Constants.elementsText.sharedRoutingAppHorizontalChartMarks,
+            methodsPage.checkElementWithTextPresenceInTextArray({
+                textArray: Constants.elementsText.sharedRoutingAppHorizontalChartMarks,
                 parentSelector: sharedRoutingAppChartBlockSelector,
                 selector: baseSelectors.tspan
             })
         })
 
         it('checks chart vertical marks visibility', () => {
-            methodsPage.checkElementWithTextPresenceForMultipleTexts({
-                textsArray: Constants.elementsText.sharedRoutingAppVerticalChartMarks,
+            methodsPage.checkElementWithTextPresenceInTextArray({
+                textArray: Constants.elementsText.sharedRoutingAppVerticalChartMarks,
                 parentSelector: sharedRoutingAppChartBlockSelector,
                 selector: baseSelectors.tspan
             })
@@ -182,8 +182,8 @@ const hosts = [
         })
 
         it('checks recent orders table columns headers visibility', () => {
-            methodsPage.checkElementWithTextPresenceForMultipleTexts({
-                textsArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
+            methodsPage.checkElementWithTextPresenceInTextArray({
+                textArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
                 parentSelector: sharedRoutingAppRecentOrdersBlockSelector,
                 selector: baseSelectors.tableHeader
             })
@@ -199,8 +199,8 @@ const hosts = [
         })
 
         it('checks table row contain all required cells', () => {
-            methodsPage.checkElementWithTextPresenceForMultipleTexts({
-                textsArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
+            methodsPage.checkElementWithTextPresenceInTextArray({
+                textArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
                 parentSelector: selectors.sharedRoutingAppRecentOrderRow,
                 selector: widgets.recentOrdersWidgetCell,
                 childElement: true
@@ -208,11 +208,12 @@ const hosts = [
         })
 
         it('checks table row contain all required cells with text', () => {
-            methodsPage.checkElementWithTextPresenceByForCycle({
-                textsArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
+            basePage.checkElementWithTextPresence({
+                textArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
                 parentSelector: selectors.sharedRoutingAppRecentOrderRow,
                 selector: widgets.recentOrdersWidgetCell,
-                text: Constants.elementsText.sharedRoutingAppRecentOrderInfo
+                text: Constants.elementsText.sharedRoutingAppRecentOrderInfo,
+                visibilityState: 'be.visible'
             })
         })
 

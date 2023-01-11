@@ -1,9 +1,6 @@
         import { BaseMethods } from '../../cypress/common/base';
         import { baseSelectors } from '../../cypress/common/selectors';
         import { Constants } from '../../cypress/fixtures/constants';
-        import {NextjsSsrMethods} from "./methods/methods";
-
-        const methodsPage: NextjsSsrMethods = new NextjsSsrMethods();
         const basePage: BaseMethods = new BaseMethods();
 
         const appsData = [
@@ -25,18 +22,18 @@
         ]
 
         appsData.forEach(
-            function (
+             (
                 property: {
                     appName: string
                     host: number
-                }) {
+                }) => {
             // TODO : Uncomment after fixing the Error: Hydration failed 
                 // let appName = property.host === 3001 ? appsData[0].appName : property.host === 3002 ? appsData[1].appName : appsData[2].appName;
                 // let host = property.host === 3001 ? appsData[0].host : property.host === 3002 ? appsData[1].host : appsData[2].host;
-                let appName = property.host === 3001 ? appsData[0].appName :  appsData[1].appName;
-                let host = property.host === 3001 ? appsData[0].host : appsData[1].host;
+                const appName = property.host === 3001 ? appsData[0].appName :  appsData[1].appName;
+                const host = property.host === 3001 ? appsData[0].host : appsData[1].host;
 
-                let navigationTextedLinks = [
+                const navigationTextedLinks = [
                     {
                         text: Constants.elementsText.nextjsSsrHome,
                         link: Constants.hrefs.nextjsSsrHomeLink,
@@ -54,7 +51,7 @@
                     }
                 ]
 
-                let commonTextedLinks = [
+                const commonTextedLinks = [
                     {
                         text: Constants.elementsText.nextjsSsrZeitText,
                         link: Constants.hrefs.nextjsSsrZeitLink,
@@ -67,7 +64,7 @@
                     },  
                 ]
 
-                let tileTextedLinks = [
+                const tileTextedLinks = [
                     {
                         text: Constants.elementsText.nextjsSsrDocumentationTile,
                         link: Constants.hrefs.nextjsSsrDocumentationLink,
@@ -103,23 +100,65 @@
             })
 
             it(`Check the header content of Home page`, () => {
-                basePage.checkElementContainText(baseSelectors.listElement, Constants.elementsText.nextjsSsrHome)
-                basePage.checkElementContainText(baseSelectors.listElement, Constants.elementsText.nextjsSsrShop)
-                basePage.checkElementContainText(baseSelectors.listElement, Constants.elementsText.nextjsSsrCheckout)
-                basePage.checkElementContainText(baseSelectors.listElement, Constants.elementsText.nextjsSsrZeitText)
-                basePage.checkElementContainText(baseSelectors.listElement, Constants.elementsText.nextjsSsrGiHubText)
-                basePage.checkElementContainText(baseSelectors.nextApp, Constants.elementsText.nextjsSsrWelcomeText)
+                basePage.checkElementContainText({
+                    selector: baseSelectors.listElement, 
+                    text: Constants.elementsText.nextjsSsrHome
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.listElement, 
+                    text: Constants.elementsText.nextjsSsrShop
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.listElement, 
+                    text: Constants.elementsText.nextjsSsrCheckout
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.listElement, 
+                    text: Constants.elementsText.nextjsSsrZeitText
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.listElement, 
+                    text: Constants.elementsText.nextjsSsrGiHubText
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.nextApp, 
+                    text: Constants.elementsText.helloWorldMessage
+                })
             })
 
             it(`Check the main content of Home page`, () => {
-                basePage.checkElementContainText(baseSelectors.heroSection, Constants.elementsText.nextjsSsrText3)
-                basePage.checkElementContainText(baseSelectors.heroSection, Constants.elementsText.nextjsSsrText4)
-                basePage.checkElementContainText(baseSelectors.divElement, Constants.elementsText.nextjsSsrMainWelcome)
-                basePage.checkElementContainText(baseSelectors.divElement, Constants.elementsText.nextjsSsrText5)
-                basePage.checkElementContainText(baseSelectors.divElement, Constants.elementsText.nextjsSsrMainWelcome)
-                basePage.checkElementContainText(baseSelectors.divElement, Constants.elementsText.nextjsSsrText5)
-                basePage.checkElementContainText(baseSelectors.divElement, Constants.elementsText.nextjsSsrMainWelcome)
-                basePage.checkElementContainText(baseSelectors.divElement, Constants.elementsText.nextjsSsrText5)
+                basePage.checkElementContainText({
+                    selector: baseSelectors.heroSection, 
+                    text: Constants.elementsText.nextjsSsrText3
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.heroSection, 
+                    text: Constants.elementsText.nextjsSsrText4
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.divElement, 
+                    text: Constants.elementsText.nextjsSsrMainWelcome
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.divElement, 
+                    text: Constants.elementsText.nextjsSsrText5
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.divElement, 
+                    text: Constants.elementsText.nextjsSsrMainWelcome
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.divElement, 
+                    text: Constants.elementsText.nextjsSsrText5
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.divElement, 
+                    text: Constants.elementsText.nextjsSsrMainWelcome
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.divElement, 
+                    text: Constants.elementsText.nextjsSsrText5
+                })
             })
 
             it(`Check the tiles exist on Home page`, () => {
@@ -144,25 +183,25 @@
                     basePage.openLocalhost(host)
                 })
 
-                navigationTextedLinks.forEach(function (property: { text: string, link: string }) {
+                navigationTextedLinks.forEach((property: { text: string, link: string }) => {
                     it(`Check that ${property.text} text includes link, is not disabled`, () => {
-                        methodsPage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
+                        basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
                     })
                 })
 
-                commonTextedLinks.forEach(function (property: { text: string, link: string }) {
+                commonTextedLinks.forEach((property: { text: string, link: string }) => {
                     it(`Check that ${property.text} text includes link, is not disabled`, () => {
-                        methodsPage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
+                        basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
                     })
                 })
 
-                tileTextedLinks.forEach(function (property: { text: string, link: string }) {
+                tileTextedLinks.forEach((property: { text: string, link: string }) => {
                     it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                        methodsPage.checkParentElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
+                        basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link, true)
                     })
                 });
 
-                navigationTextedLinks.forEach(function (property: { text: string, url: string }) {
+                navigationTextedLinks.forEach((property: { text: string, url: string }) => {
                     it(`Check that ${property.text} navigation link works`, () => {
                         basePage.clickElementWithText({
                         selector: baseSelectors.linkTag,
@@ -180,17 +219,41 @@
                 })
 
                 it(`Check the header content of Shop page`, () => {
-                    basePage.checkElementContainText(baseSelectors.listElement, Constants.elementsText.nextjsSsrHome)
-                    basePage.checkElementContainText(baseSelectors.listElement, Constants.elementsText.nextjsSsrShop)
-                    basePage.checkElementContainText(baseSelectors.listElement, Constants.elementsText.nextjsSsrCheckout)
-                    basePage.checkElementContainText(baseSelectors.listElement, Constants.elementsText.nextjsSsrZeitText)
-                    basePage.checkElementContainText(baseSelectors.listElement, Constants.elementsText.nextjsSsrGiHubText)
-                    basePage.checkElementContainText(baseSelectors.nextApp, Constants.elementsText.nextjsSsrWelcomeText)
+                    basePage.checkElementContainText({
+                        selector: baseSelectors.listElement, 
+                        text: Constants.elementsText.nextjsSsrHome
+                    })
+                    basePage.checkElementContainText({
+                        selector: baseSelectors.listElement, 
+                        text: Constants.elementsText.nextjsSsrShop
+                    })
+                    basePage.checkElementContainText({
+                        selector: baseSelectors.listElement, 
+                        text: Constants.elementsText.nextjsSsrCheckout
+                    })
+                    basePage.checkElementContainText({
+                        selector: baseSelectors.listElement, 
+                        text: Constants.elementsText.nextjsSsrZeitText
+                    })
+                    basePage.checkElementContainText({
+                        selector: baseSelectors.listElement, 
+                        text: Constants.elementsText.nextjsSsrGiHubText
+                    })
+                    basePage.checkElementContainText({
+                        selector: baseSelectors.nextApp, 
+                        text: Constants.elementsText.helloWorldMessage
+                    })
             })
 
                 it(`Check the main content of Shop page`, () => {
-                    basePage.checkElementContainText(baseSelectors.nextApp, Constants.elementsText.nextjsSsrShopPage)
-                    basePage.checkElementContainText(baseSelectors.nextApp, Constants.elementsText.nextjsSsrMainShopText)
+                    basePage.checkElementContainText({
+                        selector: baseSelectors.nextApp, 
+                        text: Constants.elementsText.nextjsSsrShopPage
+                    })
+                    basePage.checkElementContainText({
+                        selector: baseSelectors.nextApp, 
+                        text: Constants.elementsText.nextjsSsrMainShopText
+                    })
             })
 
         describe(`Check links on Shop page`, () => {
@@ -198,19 +261,19 @@
                 basePage.openLocalhost(host, Constants.hrefs.nextjsSsrShopLink)
             })
 
-            navigationTextedLinks.forEach(function (property: { text: string, link: string }) {
+            navigationTextedLinks.forEach((property: { text: string, link: string }) => {
                 it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                    methodsPage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
+                    basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
                 })
             })
 
-            commonTextedLinks.forEach(function (property: { text: string, link: string }) {
+            commonTextedLinks.forEach((property: { text: string, link: string }) => {
                 it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                    methodsPage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
+                    basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
                 })
             })
 
-            navigationTextedLinks.forEach(function (property: { text: string, url: string }) {
+            navigationTextedLinks.forEach((property: { text: string, url: string }) => {
                 it(`Check that ${property.text} text navigation link works`, () => {
                     basePage.clickElementWithText({
                     selector: baseSelectors.linkTag,
@@ -229,20 +292,54 @@
 
 
             it(`Check the header content of Checkout page`, () => {
-                basePage.checkElementContainText(baseSelectors.listElement, Constants.elementsText.nextjsSsrHome)
-                basePage.checkElementContainText(baseSelectors.listElement, Constants.elementsText.nextjsSsrShop)
-                basePage.checkElementContainText(baseSelectors.listElement, Constants.elementsText.nextjsSsrCheckout)
-                basePage.checkElementContainText(baseSelectors.listElement, Constants.elementsText.nextjsSsrZeitText)
-                basePage.checkElementContainText(baseSelectors.listElement, Constants.elementsText.nextjsSsrGiHubText)
-                basePage.checkElementContainText(baseSelectors.nextApp, Constants.elementsText.nextjsSsrWelcomeText)
+                basePage.checkElementContainText({
+                    selector: baseSelectors.listElement, 
+                    text: Constants.elementsText.nextjsSsrHome
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.listElement, 
+                    text: Constants.elementsText.nextjsSsrShop
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.listElement, 
+                    text: Constants.elementsText.nextjsSsrCheckout
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.listElement, 
+                    text: Constants.elementsText.nextjsSsrZeitText
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.listElement, 
+                    text: Constants.elementsText.nextjsSsrGiHubText
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.nextApp, 
+                    text: Constants.elementsText.helloWorldMessage
+                })
         })
 
             it(`Check the main content of Checkout page`, () => {
-                basePage.checkElementContainText(baseSelectors.nextApp, Constants.elementsText.nextjsSsrCheckoutPage)
-                basePage.checkElementContainText(baseSelectors.nextApp, Constants.elementsText.nextjsSsrMainCheckoutText)
-                basePage.checkElementContainText(baseSelectors.nextApp, Constants.elementsText.nextjsSsrText1)
-                basePage.checkElementContainText(baseSelectors.nextApp, Constants.elementsText.nextjsSsrText2)
-                basePage.checkElementContainText(baseSelectors.preElement, Constants.elementsText.nextjsSsrJSON, 1)
+                basePage.checkElementContainText({
+                    selector: baseSelectors.nextApp, 
+                    text: Constants.elementsText.nextjsSsrCheckoutPage
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.nextApp, 
+                    text: Constants.elementsText.nextjsSsrMainCheckoutText
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.nextApp, 
+                    text: Constants.elementsText.nextjsSsrText1
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.nextApp, 
+                    text: Constants.elementsText.nextjsSsrText2
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.preElement, 
+                    text: Constants.elementsText.nextjsSsrJSON,
+                    index: 1
+                })
         })
 
         describe(`Check links on Checkout page`, () => {
@@ -250,19 +347,19 @@
             basePage.openLocalhost(host, Constants.hrefs.nextjsSsrCheckoutLink)
         })
 
-        navigationTextedLinks.forEach(function (property: { text: string, link: string }) {
+        navigationTextedLinks.forEach((property: { text: string, link: string }) => {
             it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                methodsPage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
+                basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
             })
         })
 
-        commonTextedLinks.forEach(function (property: { text: string, link: string }) {
+        commonTextedLinks.forEach((property: { text: string, link: string }) => {
             it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                methodsPage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
+                basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
             })
         })
 
-        navigationTextedLinks.forEach(function (property: { text: string, url: string }) {
+        navigationTextedLinks.forEach((property: { text: string, url: string }) => {
             it(`Check that ${property.text} text navigation link works`, () => {
                 basePage.clickElementWithText({
                 selector: baseSelectors.linkTag,

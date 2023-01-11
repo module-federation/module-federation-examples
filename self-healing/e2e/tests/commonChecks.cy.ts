@@ -2,10 +2,8 @@ import { BaseMethods } from "../../../cypress/common/base";
 import {baseSelectors, updatedSelectors} from "../../../cypress/common/selectors";
 import { Constants } from "../../../cypress/fixtures/constants";
 import {CssAttr} from "../../../cypress/types/cssAttr";
-import {SelfHealingMethods} from "../methods/methods";
 
 const basePage: BaseMethods = new BaseMethods()
-const methodsPage: SelfHealingMethods = new SelfHealingMethods()
 
 describe('It checks self-healing apps', () => {
     const appsData = [
@@ -44,7 +42,7 @@ describe('It checks self-healing apps', () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.button,
-                text: Constants.elementsText.selfHealingAppButtonText,
+                text: Constants.elementsText.commonButtonWithEmoji,
                 visibilityState: 'be.visible'
             })
         });
@@ -67,13 +65,12 @@ describe('It checks self-healing apps', () => {
             const { selfHealingWebpackConfigSeparator } = Constants.commonPhrases
             const selfHealingWebpackConfigSearchedElement = Constants.commonPhrases.selfHealingWebpackConfigSearchedString
 
-            if(property.webpackConfigPath.includes('1')) {
-                methodsPage.checkValueInWebpackConfig(property.webpackConfigPath, selfHealingWebpackConfigSeparator, selfHealingWebpackConfigSearchedElement, false)
-
-                return;
-            }
-
-            methodsPage.checkValueInWebpackConfig(property.webpackConfigPath, selfHealingWebpackConfigSeparator, selfHealingWebpackConfigSearchedElement)
+            basePage.checkValueInReadFile({
+                filePath: property.webpackConfigPath,
+                webpackFileSeparator:  selfHealingWebpackConfigSeparator,
+                text: selfHealingWebpackConfigSearchedElement,
+                isContain: !property.webpackConfigPath.includes('1')
+            })
         });
     });
 });

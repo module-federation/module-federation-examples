@@ -90,8 +90,8 @@ hosts.forEach((property: { host: number }) => {
         })
 
         it('checks all texted labels visibility', () => {
-            methodsPage.checkElementWithTextPresenceForMultipleTexts( {
-                textsArray: Constants.elementsText.sharedRoutingAppEditProfileBlockLabels,
+            methodsPage.checkElementWithTextPresenceInTextArray( {
+                textArray: Constants.elementsText.sharedRoutingAppEditProfileBlockLabels,
                 parentSelector: sharedRoutingAppEditProfileBlockSelector,
                 selector: baseSelectors.label,
                 visibilityState: 'exist'
@@ -153,23 +153,23 @@ hosts.forEach((property: { host: number }) => {
         })
 
         it('checks that each non disabled field can be filled with letters', () => {
-            methodsPage.checkInputValueByForCycle({ value: getRandomTextString(10) })
+            methodsPage.fillFieldAndCheckValue({ value: getRandomTextString(10) })
         })
 
         it('checks that each non disabled field can be filled with numbers', () => {
-            methodsPage.checkInputValueByForCycle({ value: getRandomIntegerString(10) })
+            methodsPage.fillFieldAndCheckValue({ value: getRandomIntegerString(10) })
         })
 
         it('checks that each non disabled field can be filled with special symbols', () => {
-            methodsPage.checkInputValueByForCycle({ value: Constants.commonPhrases.randomSymbolsString })
+            methodsPage.fillFieldAndCheckValue({ value: Constants.commonPhrases.randomSymbolsString })
         })
 
         it('checks that each non disabled field can be filled with letters + numbers + specials symbols', () => {
-            methodsPage.checkInputValueByForCycle({ value: getRandomTextString(5) + getRandomIntegerString(5) + Constants.commonPhrases.randomSymbolsString })
+            methodsPage.fillFieldAndCheckValue({ value: getRandomTextString(5) + getRandomIntegerString(5) + Constants.commonPhrases.randomSymbolsString })
         })
 
         it('checks that each non disabled field has no validation', () => {
-            methodsPage.checkInputValueByForCycle({ multipleSizeStringsArray: [
+            methodsPage.fillFieldAndCheckValue({ multipleSizeStringsArray: [
                     getRandomTextString(10),
                     getRandomTextString(100),
                     getRandomTextString(1000),
@@ -178,7 +178,7 @@ hosts.forEach((property: { host: number }) => {
         })
 
         it('checks that each non disabled field clears after reload', () => {
-            methodsPage.checkInputValueByForCycle({
+            methodsPage.fillFieldAndCheckValue({
                 value: getRandomTextString(10),
                 isReloaded: true
             })

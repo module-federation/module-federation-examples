@@ -26,10 +26,11 @@ describe("Check remote app", () => {
     })
 
     it('Check button color', () => {
-        basePage.checkElementWithTextHaveCssProperty(
-            baseSelectors.button,
-            Constants.commonText.remoteButton,
-            Constants.commonText.background,
-            Constants.color.darkMutedBlue)
+        basePage.checkElementWithTextHaveProperty( {
+            selector: baseSelectors.button,
+            text: Constants.commonText.remoteButton,
+            prop: Constants.commonText.background,
+            value: Constants.color.darkMutedBlue
+        })
     })
 })

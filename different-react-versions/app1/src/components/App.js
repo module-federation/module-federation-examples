@@ -25,7 +25,10 @@ class App extends React.Component {
         <h2>App 1, Uses react version not compatible with hooks</h2>
         <input onChange={this.setValue} placeholder="Type something into this input" />
 
-        <div style={{ border: '1px red solid', padding: '10px', margin: '20px 0' }}>
+        <div
+          style={{ border: '1px red solid', padding: '10px', margin: '20px 0' }}
+          data-e2e="REACT__DIV_BLOCK"
+        >
           <ReactAdapterConsumer
             // any other props, passed to ModernComponent
             {...this.state}
@@ -38,7 +41,10 @@ class App extends React.Component {
         {/*This will Fail*/}
         {/*<HookComponent/>*/}
 
-        <div style={{ border: '1px red solid', padding: '10px', margin: '20px 0' }}>
+        <div 
+          style={{ border: '1px red solid', padding: '10px', margin: '20px 0' }}
+          data-e2e="REACT__BUTTON_BLOCK"
+        >
           <React.Suspense fallback="Loading Button">
             <RemoteButton />
           </React.Suspense>

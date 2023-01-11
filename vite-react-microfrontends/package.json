@@ -1,0 +1,22 @@
+{
+	"name": "vite-react-microfrontends",
+	"version": "1.0.0",
+	"description": "Vite + Module Federation is now possible",
+	"main": "index.js",
+	"scripts": {
+		"install:deps": "npm --prefix ./host install && npm --prefix ./remote install",
+		"postinstall:deps": "npm --prefix ./host run build && npm --prefix ./remote run build",
+		"serve:host": "npm --prefix ./host run dev",
+		"serve:remote": "npm --prefix ./remote run dev",
+		"build:host": "npm --prefix ./host run build",
+		"build:remote": "npm --prefix ./remote run build",
+		"preview:host": "npm --prefix ./host run preview",
+		"preview:remote": "npm --prefix ./remote run preview"
+	},
+	"author": {
+		"name": "Giorgio Boa",
+		"email": "giorgiob.boa@gmail.com",
+		"url": "https://github.com/gioboa"
+	},
+	"license": "ISC"
+}

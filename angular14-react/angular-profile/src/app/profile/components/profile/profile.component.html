@@ -7,7 +7,7 @@
               type="text"
               formControlName="name"
               placeholder="Name"
-              data-e2e="FORM__FIELD_NAME"
+              data-e2e="FORM_FIELD__NAME"
               #name
             />
             <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
@@ -21,7 +21,7 @@
               type="email"
               formControlName="email"
               placeholder="Email"
-              data-e2e="FORM__FIELD_EMAIL"
+              data-e2e="FORM_FIELD__EMAIL"
               #email
             />
             <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
@@ -31,7 +31,7 @@
             </div>
           </div>
           <div>
-            <button (click)="addUser(name.value, email.value)"
+            <button class="btn btn-primary" (click)="addUser(name.value, email.value)"
                 [disabled]="angForm.pristine || angForm.invalid">Create User</button>
           </div>
         </form>

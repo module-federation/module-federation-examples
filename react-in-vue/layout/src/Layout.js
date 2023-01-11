@@ -25,13 +25,13 @@ export default {
         <div>
           <label>
             <span>Button text:</span>
-            <input v-model="buttonText" type="text" />
+            <input data-e2e="FORM_FIELD__BUTTON_TEXT" v-model="buttonText" type="text" />
           </label>
         </div>
         <div>
           <label>
             <span>Times button clicked: </span>
-            <input disabled type="number" :value="clickedCount" />
+            <input data-e2e="FORM_FIELD__COUNTER" disabled type="number" :value="clickedCount" />
           </label>
         </div>
       </div>

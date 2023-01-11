@@ -16,7 +16,7 @@ describe('It checks vue2-in-vue3 connection sample', () => {
         },
         {
             headerName: Constants.commonPhrases.vue3AppName,
-            componentState: Constants.commonPhrases.vue3AppComponentState,
+            componentState: Constants.commonPhrases.commonVueAppComponentState,
             host: 3002
         }
     ]
@@ -70,7 +70,7 @@ describe('It checks vue2-in-vue3 connection sample', () => {
             if(property.headerName === Constants.commonPhrases.vue3AppName) {
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.divElement,
-                    text: Constants.commonPhrases.vue3AppComponentState,
+                    text: Constants.commonPhrases.commonVueAppComponentState,
                     visibilityState: 'be.visible'
                 })
 
@@ -84,7 +84,7 @@ describe('It checks vue2-in-vue3 connection sample', () => {
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.divElement,
-                text: Constants.commonPhrases.vue3AppComponentState,
+                text: Constants.commonPhrases.commonVueAppComponentState,
                 isVisible: false
             })
         });

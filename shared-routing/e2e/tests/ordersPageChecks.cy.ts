@@ -83,8 +83,8 @@ hosts.forEach((property: { host: number }) => {
         })
 
         it('checks orders table columns headers visibility', () => {
-            methodsPage.checkElementWithTextPresenceForMultipleTexts( {
-                textsArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
+            methodsPage.checkElementWithTextPresenceInTextArray( {
+                textArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
                 parentSelector: sharedRoutingAppOrdersBlockSelector,
                 selector:  baseSelectors.tableHeader
             })
@@ -100,8 +100,8 @@ hosts.forEach((property: { host: number }) => {
         })
 
         it('checks table row contain all required cells', () => {
-            methodsPage.checkElementWithTextPresenceForMultipleTexts( {
-                textsArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
+            methodsPage.checkElementWithTextPresenceInTextArray( {
+                textArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
                 parentSelector: sharedRoutingAppOrdersRowSelector,
                 selector:  sharedRoutingAppOrdersRowCellSelector,
                 childElement: true
@@ -109,28 +109,31 @@ hosts.forEach((property: { host: number }) => {
         })
 
         it('checks table row contain all required cells with text', () => {
-            methodsPage.checkElementWithTextPresenceByForCycle({
-                textsArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
+            methodsPage.checkElementWithTextPresence({
+                textArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
                 parentSelector: sharedRoutingAppOrdersRowSelector,
                 selector: sharedRoutingAppOrdersRowCellSelector,
-                text: Constants.elementsText.sharedRoutingAppRecentOrderInfo
+                text: Constants.elementsText.sharedRoutingAppRecentOrderInfo,
+                visibilityState: 'be.visible'
             })
         })
 
         it('checks that table contain row with same value as one in dashboard page', () => {
-            methodsPage.checkElementWithTextPresenceByForCycle({
-                textsArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
+            methodsPage.checkElementWithTextPresence({
+                textArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
                 parentSelector: sharedRoutingAppOrdersRowSelector,
                 selector: sharedRoutingAppOrdersRowCellSelector,
-                text: Constants.elementsText.sharedRoutingAppRecentOrderInfo
+                text: Constants.elementsText.sharedRoutingAppRecentOrderInfo,
+                visibilityState: 'be.visible'
             })
             basePage.clickElementBySelector({selector: selectors.hrefSelector.replace('{link}',
                     `/${Constants.elementsText.sharedRoutingAppPageHeaders.dashboard.toLowerCase()}`)})
-            methodsPage.checkElementWithTextPresenceByForCycle({
-                textsArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
+            methodsPage.checkElementWithTextPresence({
+                textArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
                 parentSelector: selectors.sharedRoutingAppRecentOrderRow,
                 selector: widgets.recentOrdersWidgetCell,
-                text: Constants.elementsText.sharedRoutingAppRecentOrderInfo
+                text: Constants.elementsText.sharedRoutingAppRecentOrderInfo,
+                visibilityState: 'be.visible'
             })
         })
     })

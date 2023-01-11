@@ -1,11 +1,13 @@
-import {TypeScriptMonoRepoMethods} from "../methods/methods";
 import {Constants} from "../../../cypress/fixtures/constants";
+import {BaseMethods} from "../../../cypress/common/base";
 
-const methodsPage: TypeScriptMonoRepoMethods = new TypeScriptMonoRepoMethods()
+const basePage: BaseMethods = new BaseMethods()
 
 describe("It checks apps' package.json", () => {
     it('Checks apps package json includes yarn workspaces', () => {
-        methodsPage.checkDependencyAddedInJson(Constants.samplesPath.typeScriptMonoRepoPackageJsonPath,
-            Constants.commonText.typeScriptMonoRepoYarnWorkspaceDependency)
+        basePage.checkValueInReadFile({
+            filePath: Constants.samplesPath.typeScriptMonoRepoPackageJsonPath,
+            text: Constants.commonText.typeScriptMonoRepoYarnWorkspaceDependency
+        })
     })
 })

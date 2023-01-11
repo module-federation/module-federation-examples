@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"lerna run --scope @comprehensive-demo-react18/* --parallel start\" \"yarn serve\"",
+    "build": "lerna run --scope @comprehensive-demo-react18/* build",
+    "serve": "lerna run --scope @comprehensive-demo-react18/* --parallel serve",
+    "clean": "lerna run --scope @comprehensive-demo-react18/* --parallel clean"
+  },
+  "devDependencies": {
+    "concurrently": "7.3.0",
+    "lerna": "3.22.1"
+  }
+}
