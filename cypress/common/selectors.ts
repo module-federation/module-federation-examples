@@ -20,7 +20,6 @@ export const baseSelectors = {
     style: '[style="{style}"]',
     code: 'code',
     parent: '#parent',
-    navigation: 'nav',
     navigationItem: '.nav-item',
     table: 'table',
     tableRow: 'tr',
@@ -64,7 +63,7 @@ export const selectors = {
     sharedRoutingAppInputShrinkAnimation: '[data-shrink="{state}"]',
     sharedRoutingAppCardProfileImage: '[data-e2e="CARD_PROFILE__IMAGE"]',
     cssIsolationAppHeader: '#root h1',
-    cssIsolationAppName: '#root h2'
+    cssIsolationAppName: '#root h2',
     vue3DemoComponents : {
         remote: '.remote-component',
         layout: '.layout-app',
@@ -78,6 +77,7 @@ export const selectors = {
     appExposesCloseButton: '[data-e2e="exposesAppNamesClose"]',
     appGeneralCounter: '[data-e2e="General-counter"]',
     appExposesCounter: '[data-cy="app-button-counter"]',
+    rustWasmGameBoard: '[data-e2e="GAME_BOARD"]',
 }
 
 export const updatedSelectors = {

@@ -44,6 +44,5 @@ describe('It checks components header and console message', () => {
             basePage.openLocalhost(property.host)
             basePage.checkInfoInConsole(Constants.elementsText.nativeFederationReactConsoleMessages.weekendMessage)
         })
-
     });
 });

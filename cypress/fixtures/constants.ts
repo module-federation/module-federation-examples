@@ -506,6 +506,7 @@ export class Constants {
             'Using momentjs for format the date'
         ],
         welcomeToHostApp: 'Welcome to Host App',
+        commonHostAppName: 'Host App',
         remoteAppText: 'RemoteApp',
         remoteAppsNameFromReduxStore: "RemoteApp's name from the redux store : ",
         vueCliAppWelcomeMessage: 'Welcome to Your Vue.js + TypeScript App',
@@ -577,6 +578,13 @@ export class Constants {
             'I\'m RxJs from remote',
             'remote got message:'
         ],
+        rustWasmConsoleMessages: {
+            startLoopMessage:'Infinite looping in progress',
+            stopLoopMessage:'Looping successfully stopped',
+            tickLoopMessage:'Game board successfully rerendered',
+            resetLoopMessage:'Game board successfully reset',
+            baseLoadingMessage: 'I love rust and wasm!'
+        }
     }
 
     public static readonly commonText = {
@@ -620,7 +628,13 @@ export class Constants {
             starSymbol: 'star',
             cloudSymbol: 'cloud'
         },
-        displayNone: 'display: none;'
+        displayNone: 'display: none;',
+        rustWasmAppButtonsNames: [
+            'Play ▶️',
+            'Tick 🔂',
+            'Reset ♻️',
+            'Stop 🛑'
+        ],
     }
 
     public static readonly color = {
@@ -653,7 +667,8 @@ export class Constants {
         oceanBluePearl: 'rgb(63, 81, 181)',
         alabaster: 'rgb(250, 250, 250)',
         paleVioletRed: 'rgb(219, 112, 147)',
-        white: 'rgb(255, 255, 255)'
+        white: 'rgb(255, 255, 255)',
+        lightGrey: 'rgb(239, 239, 239)'
     }
 
     public static readonly translation = {

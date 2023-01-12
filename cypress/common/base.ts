@@ -1,6 +1,7 @@
 import {baseSelectors, block, buttons, fields} from "./selectors";
 import {Constants} from "../fixtures/constants";
 import {CssAttr} from "../types/cssAttr";
+import {StubTypes} from "../types/stubTypes";
 
 export class BaseMethods {
 
@@ -271,12 +272,16 @@ export class BaseMethods {
             .should(contain ? checkType : 'not.contain.text', text);
     }
 
-    public checkInfoInConsole(info: string): void {
-        cy.window().then((win) => {
-            cy.stub(win.console, "log").as('log')
-            cy.get('@log').should('be.calledWith', info)
+    public checkInfoInConsole(info: string, chainer: StubTypes = StubTypes.beCalled, isReloaded: boolean = true, isStubbed: boolean = true): void {
+        if(isStubbed) {
+            cy.window().then((win) => {
+                cy.stub(win.console, "log").as('log');
+            })
+        }
+        cy.get('@log').should(chainer, info)
+        if(isReloaded) {
             this.reloadWindow()
-        })
+        }
     }
 
     public checkElementVisibility(
