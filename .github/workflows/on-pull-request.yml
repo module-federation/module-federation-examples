@@ -1,11 +1,11 @@
-name: Cypress e2e tests
+name: on pull request
 on: pull_request
 
 jobs:
 
 # Stop previous runs
   stop-previous-run:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.11.0
@@ -14,7 +14,7 @@ jobs:
 
 # Check if forked master is up to date with origin master in module federation examples repo
   forked_master_status:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: stop-previous-run
     steps:
       - name: Checkout
@@ -26,8 +26,9 @@ jobs:
           fetch-depth: 0
 
       - name: Check if forked master is up to date
+        if: github.repository_owner == 'module-federation'
         run: |
-          echo "${{ github.event.repository.fork }}"
+          echo "${{ github.repository_owner }}"
           git remote add base https://github.com/${{github.repository}}
           git remote -v
           git fetch --all
@@ -49,7 +50,7 @@ jobs:
 
 # Setup matrix from changed samples by lerna ls --since origin/master command
   setup-matrix:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: forked_master_status
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
@@ -61,20 +62,20 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
-      - name: Create matrix 👾
+      - name: Create matrix
         id: set-matrix
         run: |
-          matrix="$(node checkChangedFiels.js)"
+          matrix="$(node checkChangedWorkspaces.js)"
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
-      - name: Changed files
+      - name: Changed workspaces
         run: |
           echo '${{ steps.set-matrix.outputs.matrix }}'
 
 # Run Cypress e2e tests for changed samples (additionally install deps for all changed samples if there is no any created cache in master branch) + Create artifacts for Cypress screenshots and videos
   run-e2e-test:
     needs: setup-matrix
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix: ${{fromJson(needs.setup-matrix.outputs.matrix)}}
@@ -86,23 +87,15 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
-
       - name: Restore Yarn and Cypress cache
         uses: actions/cache/restore@v3
         id: yarn-cache
         with:
           path: |
-            node_modules
-            yarn.lock
             **/node_modules
             **/yarn.lock
-            */*/node_modules
-            */*/yarn.lock
             ~/.cache/Cypress
-            ${{ steps.yarn-cache-dir-path.outputs.dir }} 
+            ~/.cache/yarn/v6  
           key: e2e-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             e2e-yarn-
@@ -111,12 +104,12 @@ jobs:
       - name: Install sample deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: |
-          echo "YARN CACHE CHANGED"
-          npx lerna bootstrap --scope=${{ matrix.container }}
+          echo "CACHE CHANGED"
+          npx -y lerna bootstrap --scope=${{ matrix.container }}
 
       - name: Run sample e2e tests
         run: 
-          npx lerna run --scope=${{ matrix.container }} --parallel e2e:ci
+          npx lerna run --scope=${{ matrix.container }} e2e:ci
 
       - name: Create artifacts for Cypress screenshots
         uses: actions/upload-artifact@v3

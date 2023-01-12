@@ -23,7 +23,7 @@ on:
 jobs:
 
   stop_previous:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.11.0
@@ -32,7 +32,7 @@ jobs:
 
   analyze:
     name: Analyze
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: stop_previous
     permissions:
       actions: read

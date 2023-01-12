@@ -1,5 +1,5 @@
-name: Cache for e2e tests
-on: 
+name: on push
+on:
   push:
     branches:
       - master
@@ -8,7 +8,7 @@ jobs:
 
 # Stop previous runs
   stop-previous-run:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.11.0
@@ -17,7 +17,7 @@ jobs:
 
 # Create cache for all samples
   cache:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: stop-previous-run
     steps:
       - name: Checkout
@@ -27,23 +27,15 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
-
       - name: Cache Yarn and Cypress
         uses: actions/cache@v3
         id: yarn-cache
         with:
           path: |
-            node_modules
-            yarn.lock
             **/node_modules
             **/yarn.lock
-            */*/node_modules
-            */*/yarn.lock
             ~/.cache/Cypress
-            ${{ steps.yarn-cache-dir-path.outputs.dir }} 
+            ~/.cache/yarn/v6  
           key: e2e-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             e2e-yarn-
@@ -52,5 +44,5 @@ jobs:
       - name: Install deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: |
-          echo "YARN CACHE CHANGED"
-          npx lerna bootstrap
+          echo "CACHE CHANGED"
+          npx -y lerna bootstrap
