@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "lerna run start --stream"
+    "start": "lerna run start --stream",
+    "e2e:ci": "yarn start & wait-on http-get://localhost:8080/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "private": true,
   "workspaces": [
