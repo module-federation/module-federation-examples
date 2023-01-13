@@ -20,6 +20,7 @@ export interface NFPWorkspacePaths {
  */
 export function getWorkspacePaths(
   workspaceRootPath: string,
+  workspaceDistPath: string,
   projectName: string
 ): NFPWorkspacePaths {
   const projectPath = path.join(workspaceRootPath, `./packages/${projectName}`);
@@ -27,7 +28,7 @@ export function getWorkspacePaths(
 
   return {
     workspaceRootPath,
-    workspaceDistPath: `dist/${projectName}`,
+    workspaceDistPath,
     workspaceTsConfigPath: `tsconfig.base.json`,
     projectName,
     projectPath,
@@ -56,13 +57,11 @@ async function setupNativeFederationBuilder(workspace: NFPWorkspacePaths) {
 /**
  *
  */
-async function compileProjectEntryFileByEsbuild(workspace: NFPWorkspacePaths, watch: boolean) {
+async function compileProjectEntryFileByEsbuild(workspace: NFPWorkspacePaths) {
   const { workspaceDistPath, workspaceTsConfigPath, projectEntryPath } =
     workspace;
 
   fs.rmSync(workspaceDistPath, { force: true, recursive: true });
-
-  console.log(watch);
 
   await esbuild.build({
     entryPoints: [projectEntryPath],
@@ -76,7 +75,6 @@ async function compileProjectEntryFileByEsbuild(workspace: NFPWorkspacePaths, wa
     resolveExtensions: ['.ts', '.tsx', '.mjs', '.js'],
     tsconfig: workspaceTsConfigPath,
     splitting: true,
-    watch
     // plugins: [ commonjs() ]
   });
 }
@@ -101,17 +99,18 @@ function copyProjectIndexHtml(workspace: NFPWorkspacePaths) {
  */
 export async function executeProjectBuild(
   workspaceRootPath: string,
-  projectName: string,
-  watch: boolean
+  workspaceDistPath: string,
+  projectName: string
 ) {
   const workspace: NFPWorkspacePaths = getWorkspacePaths(
     workspaceRootPath,
+    workspaceDistPath,
     projectName
   );
 
   await setupNativeFederationBuilder(workspace);
 
-  await compileProjectEntryFileByEsbuild(workspace, watch);
+  await compileProjectEntryFileByEsbuild(workspace);
 
   copyProjectIndexHtml(workspace);
 

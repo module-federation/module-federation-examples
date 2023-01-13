@@ -1,4 +1,4 @@
 // eslint-disable-line
 export interface NFPBuildExecutorOptions {
-  baseUrl: string;
+  outputPath: string;
 }

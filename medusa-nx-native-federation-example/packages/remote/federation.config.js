@@ -20,5 +20,12 @@ module.exports = withNativeFederation({
     }),
   },
 
-  skip: ['@softarc/native-federation-runtime', 'native-federation-plugin', 'tslib'],
+  skip: [
+    '@swc/helpers',
+    '@softarc/native-federation-runtime',
+    'core-js',
+    'native-federation-plugin',
+    'regenerator-runtime',
+    'tslib'
+  ],
 });

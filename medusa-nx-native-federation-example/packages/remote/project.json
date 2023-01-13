@@ -6,12 +6,11 @@
     "build": {
       "executor": "native-federation-plugin:build",
       "options": {
-        "baseUrl": "/"
+        "outputPath": "dist/remote"
       }
     },
     "serve": {
-      "executor": "native-federation-plugin:serve",
-      "defaultConfiguration": "development",
+      "executor": "@nrwl/web:file-server",
       "options": {
         "buildTarget": "remote:build",
         "port": 3004,

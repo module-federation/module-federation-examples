@@ -2,7 +2,7 @@ import { NFPBuildExecutorOptions } from './schema';
 import executor from './executor';
 
 const options: NFPBuildExecutorOptions = {
-  baseUrl: 'http://localhost:3000/',
+  outputPath: 'dist/nfp-build',
 };
 
 describe('Build Executor', () => {

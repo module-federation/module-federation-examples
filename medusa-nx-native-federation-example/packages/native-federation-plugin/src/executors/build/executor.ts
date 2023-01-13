@@ -24,11 +24,10 @@ function createProjectBuilderTsFile(workspace: NFPWorkspacePaths) {
     workspaceDistPath,
     `./${NFP_PROJECT_BUILDER_NAME(projectName)}.ts`
   );
-  const watch = process.argv[2].includes('--watch');
-  console.log(watch);
+
   const builderTypescript = `
     import { executeProjectBuild } from './build';
-    executeProjectBuild('${workspaceRootPath}', '${projectName}', ${watch});
+    executeProjectBuild('${workspaceRootPath}', '${workspaceDistPath}', '${projectName}');
   `;
 
   fs.mkdirSync(workspaceDistPath, { recursive: true });
@@ -98,7 +97,8 @@ export default async function runExecutor(
   context: ExecutorContext
 ): Promise<{ success: boolean }> {
   const { root, projectName } = context;
-  const workspace: NFPWorkspacePaths = getWorkspacePaths(root, projectName);
+  const { outputPath } = options;
+  const workspace: NFPWorkspacePaths = getWorkspacePaths(root, outputPath, projectName);
 
   console.log(`Nx Native Federation: Building`);
 
@@ -118,6 +118,8 @@ export default async function runExecutor(
     console.error(e);
     throw e;
   }
+
+  console.log(`Nx Native Federation: Built successfully`);
 
   return { success: true };
 }
