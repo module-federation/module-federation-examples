@@ -6,8 +6,8 @@
         <a>
             <img src="https://img.shields.io/badge/Tested%20with-Cypress-04C38E.svg"/>
         </a>
-            <a href="https://github.com/module-federation/module-federation-examples/actions/workflows/cypress-test-pipeline.yml">
-                <img src="https://github.com/module-federation/module-federation-examples/actions/workflows/cypress-test-pipeline.yml/badge.svg?branch=master"/>
+            <a href="https://github.com/module-federation/module-federation-examples/actions/workflows/on-pull-request.yml">
+                <img src="https://github.com/module-federation/module-federation-examples/actions/workflows/on-pull-request.yml/badge.svg"/>
             </a>
         </a>
         </a>
