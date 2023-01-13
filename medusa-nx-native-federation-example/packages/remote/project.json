@@ -1,0 +1,38 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/remote/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "native-federation-plugin:build",
+      "options": {
+        "baseUrl": "/"
+      }
+    },
+    "serve": {
+      "executor": "native-federation-plugin:serve",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "remote:build",
+        "port": 3004,
+        "watch": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/remote/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/remote"],
+      "options": {
+        "jestConfig": "packages/remote/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
