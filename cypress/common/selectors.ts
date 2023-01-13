@@ -40,7 +40,8 @@ export const baseSelectors = {
     body: 'body',
     unorderedList: 'ul',
     span: 'span',
-    checkbox: 'input[type="checkbox"]'
+    checkbox: 'input[type="checkbox"]',
+    appRoot: 'app-root'
 }
 
 export const selectors = {
@@ -78,6 +79,9 @@ export const selectors = {
     appGeneralCounter: '[data-e2e="General-counter"]',
     appExposesCounter: '[data-cy="app-button-counter"]',
     rustWasmGameBoard: '[data-e2e="GAME_BOARD"]',
+    activeTab: '[class="active"]',
+    angularUniversalSsrCitiesBlock: 'app-client-cities-home',
+    angularUniversalSsrSelectedCityInfo: 'app-client-city'
 }
 
 export const updatedSelectors = {
@@ -89,7 +93,9 @@ export const updatedSelectors = {
     commonAppNameSelector: `${baseSelectors.divElement} ${baseSelectors.h2}`,
     hamburgerMenuButton: `${baseSelectors.header} ${baseSelectors.button}`,
     sectionName: `${baseSelectors.section} ${baseSelectors.h1}`,
-    sectionButton: `${baseSelectors.section} ${baseSelectors.button}`
+    sectionButton: `${baseSelectors.section} ${baseSelectors.button}`,
+    angularUniversalSsrTab: `${baseSelectors.divElement} ${baseSelectors.linkTag}`,
+    angularUniversalSsrAddedCity: `${selectors.angularUniversalSsrCitiesBlock} ${baseSelectors.listElement}`
 }
 
 export const widgets = {
