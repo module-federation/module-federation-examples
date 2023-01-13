@@ -1,0 +1,48 @@
+name: on push
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+
+# Stop previous runs
+  stop-previous-run:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.11.0
+        with:
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+
+# Create cache for all samples
+  cache:
+    runs-on: ubuntu-22.04
+    needs: stop-previous-run
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Cache Yarn and Cypress
+        uses: actions/cache@v3
+        id: yarn-cache
+        with:
+          path: |
+            **/node_modules
+            **/yarn.lock
+            ~/.cache/Cypress
+            ~/.cache/yarn/v6  
+          key: e2e-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            e2e-yarn-
+            e2e-
+
+      - name: Install deps
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: |
+          echo "CACHE CHANGED"
+          npx -y lerna bootstrap
