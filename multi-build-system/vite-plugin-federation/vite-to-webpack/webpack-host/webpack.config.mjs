@@ -71,16 +71,16 @@ export default {
           })
         })`
       },
-      // shared: {
-      //   react: {
-      //     singleton: true,
-      //     requiredVersion: deps.react,
-      //   },
-      //   "react-dom": {
-      //     singleton: true,
-      //     requiredVersion: deps["react-dom"],
-      //   },
-      // },
+      shared: {
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: deps["react-dom"],
+        },
+      },
     }),
     new HtmlWebPackPlugin({
       template: "./src/index.html",

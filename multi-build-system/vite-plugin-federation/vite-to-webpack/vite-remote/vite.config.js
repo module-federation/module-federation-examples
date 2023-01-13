@@ -17,7 +17,6 @@ export default defineConfig({
       exposes: {
         './Button': './src/components/Button'
       },
-      // shared: ['react', 'react-dom']
     }),
   ],
   preview: {

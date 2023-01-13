@@ -17,6 +17,7 @@ export default defineConfig({
           from: 'webpack'
         }
       },
+      shared: ['react', 'react-dom']
     })
   ],
   preview: {
