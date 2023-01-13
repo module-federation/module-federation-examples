@@ -1,28 +1,3 @@
-const resolveRequire = () => {
-
-}
-
-
-const resolveEntry = () => {
-
-}
-
-
-const setUpkgModule = (packageName, version) => {
-    return {
-      eager: false,
-      from: "@deletages/app3",
-      get: () => {
-        return import(/* webpackIgnore: true */ `https://esm.sh/${packageName}@${version}`).then((m) => {
-          return ()=> m
-        });
-      },
-      loaded: 0,
-    }
-}
-
-
-
 module.exports = new Promise((resolve, reject) => {
   const currentRequest = new URL(__resourceQuery, __webpack_base_uri__).searchParams.get("remote");
   const [global, url] = currentRequest.split('@');
@@ -39,31 +14,6 @@ module.exports = new Promise((resolve, reject) => {
     },
     global,
   );
-}).then((container) => {
-  return {
-    get: (key) => {
-      return container.get(key);
-    },
-    init: (shareScope) => {
-      const handler = {
-        get(target, prop) {
-          return target[prop]
-        },
-        set(target, property, value) {
-          target[property] = new Proxy(value, {
-            get(target, prop) {
-              const unpkgObject = setUpkgModule(property, prop)
-              return unpkgObject
-            },
-            set(target, prop, value) {
-              target[prop] = value;
-              return true
-            }
-          });
-          return true
-        }
-      }
-      return container.init(new Proxy(shareScope, handler));
-    }
-  }
 })
+
+
