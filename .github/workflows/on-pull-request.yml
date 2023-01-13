@@ -75,6 +75,7 @@ jobs:
 # Run Cypress e2e tests for changed samples (additionally install deps for all changed samples if there is no any created cache in master branch) + Create artifacts for Cypress screenshots and videos
   run-e2e-test:
     needs: setup-matrix
+    if: ${{ needs.setup-matrix.outputs.matrix != '{"container":[]}' }}
     runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
