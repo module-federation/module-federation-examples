@@ -7,20 +7,34 @@ const resolveEntry = () => {
 
 }
 
-
-const setUpkgModule = (packageName, version) => {
-    return {
-      eager: false,
-      from: "@deletages/app3",
-      get: () => {
-        return import(/* webpackIgnore: true */ `https://esm.sh/${packageName}@${version}`).then((m) => {
-          return ()=> m
-        });
-      },
-      loaded: 0,
+const rewriteShareScope = (packageName, existingVersions) => {
+  return existingVersions.reduce((acc, version) => {
+      acc[version] = {
+        eager: false,
+        from: "@npm/app3",
+        get: () => {
+          return import(/* webpackIgnore: true */ `https://esm.sh/${packageName}@${version}`).then((m) => {
+            return () => m
+          });
+        },
+        loaded: 0,
+      }
+      return acc
     }
+    , {})
 }
-
+const setUpkgModule = (packageName, version) => {
+  return {
+    eager: false,
+    from: "@npm/app3",
+    get: () => {
+      return import(/* webpackIgnore: true */ `https://esm.sh/${packageName}@${version}`).then((m) => {
+        return () => m
+      });
+    },
+    loaded: 0,
+  }
+}
 
 
 module.exports = new Promise((resolve, reject) => {
@@ -45,17 +59,38 @@ module.exports = new Promise((resolve, reject) => {
       return container.get(key);
     },
     init: (shareScope) => {
+
+      // for (let key in shareScope) {
+      //   shareScope[key] = rewriteShareScope(key, Object.keys(shareScope[key]))
+      // }
+
+
       const handler = {
         get(target, prop) {
+          console.log('main', Object.keys(target));
           return target[prop]
         },
         set(target, property, value) {
+
+          for (let key in target) {
+            console.log('updating share for', key);
+            target[key] = rewriteShareScope(key, Object.keys(target[key]))
+          }
+
+
+          if (target[property]) {
+            return target[property]
+          }
+
           target[property] = new Proxy(value, {
             get(target, prop) {
+              console.log('subproxy getter', target, prop);
               const unpkgObject = setUpkgModule(property, prop)
               return unpkgObject
             },
             set(target, prop, value) {
+              console.log('subproxy setter', target, prop, value);
+
               target[prop] = value;
               return true
             }
@@ -64,6 +99,7 @@ module.exports = new Promise((resolve, reject) => {
         }
       }
       return container.init(new Proxy(shareScope, handler));
+      // return container.init(shareScope);
     }
   }
 })

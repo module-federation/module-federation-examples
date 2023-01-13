@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const {ModuleFederationPlugin} = require('webpack').container;
 const path = require('path');
 
 
@@ -7,12 +7,17 @@ const remotes = {
   app2: "app2@http://localhost:3002/remoteEntry.js",
 }
 
+const delegatedRemote = {
+  app3: "app3@http://localhost:3003/remoteEntry.js",
+}
 
-const delegatedRemotesObject = Object.entries(remotes).reduce((acc, [name, url]) => {
-  acc[name] = `./remote-delegate.js?remote=${url}`;
+const delegatedRemotesObject = Object.entries(delegatedRemote).reduce((acc, [name, url]) => {
+  acc[name] = `./remote-delegate.js?remote=${url}&dontExtract[lodash]`;
   return acc;
-},{})
+}, {})
 
+
+const deps = require('./package.json').dependencies;
 module.exports = {
   entry: [...Object.values(delegatedRemotesObject), './src/index'],
   mode: 'development',
@@ -45,11 +50,18 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: 'app1',
-      remotes: Object.entries(delegatedRemotesObject).reduce((acc, [name, url]) => {
-        acc[name] = `internal ${url}`
-        return acc;
-      }, {}),
-      shared: { react: { singleton: true }, 'react-dom': { singleton: true } },
+      remotes: {
+        unpkg: useupkg({skip: ['lodash']}),
+
+        ...Object.entries(delegatedRemotesObject).reduce((acc, [name, url]) => {
+          acc[name] = `internal ${url}`
+          return acc;
+        }, {}),
+        ...remotes
+      },
+      shared: {
+        ...deps,
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
@@ -57,8 +69,18 @@ module.exports = {
   ],
 };
 
+console.log({
+  remotes: {
+    ...Object.entries(delegatedRemote).reduce((acc, [name, url]) => {
+      acc[name] = `internal ${url}`
+      return acc;
+    }, {}),
+    ...remotes
+  },
+})
+
 function getRemoteEntryUrl(port) {
-  const { CODESANDBOX_SSE, HOSTNAME = '' } = process.env;
+  const {CODESANDBOX_SSE, HOSTNAME = ''} = process.env;
 
   // Check if the example is running on codesandbox
   // https://codesandbox.io/docs/environment
