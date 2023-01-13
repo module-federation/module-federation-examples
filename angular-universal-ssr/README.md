@@ -1,15 +1,15 @@
-# VueJs Module Federation Demo
+# Angular Universal Ssr Example
 
-This example demos consumption of federated modules from a Webpack bundle. `layout` app depends on a component exposed by `home` app.
-
----
+- `client-app`
+- `host-app`
 
 # Running Demo
 
-Run `yarn start` . This will build and serve both `home` and `layout` on ports 3002 and 3001 respectively.
+Run `yarn start`. This will build and serve both `client-app`, `host-app`, on
+ports `4000`, `5000`, respectively.
 
-- HOST (layout): [localhost:3001](http://localhost:3001/)
-- REMOTE (home): [localhost:3002](http://localhost:3002/)
+- [localhost:4000](http://localhost:4000/) (CLIENT_APP)
+- [localhost:5000](http://localhost:5000/) (HOST_APP)
 
 # Running Cypress E2E Tests
 
