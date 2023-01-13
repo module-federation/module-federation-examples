@@ -51,8 +51,6 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'app1',
       remotes: {
-        unpkg: useupkg({skip: ['lodash']}),
-
         ...Object.entries(delegatedRemotesObject).reduce((acc, [name, url]) => {
           acc[name] = `internal ${url}`
           return acc;
@@ -60,7 +58,7 @@ module.exports = {
         ...remotes
       },
       shared: {
-        ...deps,
+        ...deps
       },
     }),
     new HtmlWebpackPlugin({
