@@ -123,6 +123,14 @@ Module federation will work with any type of file that youre able to import, tha
 - MindTickle
 - Experian
 - Herodevs
+- CloudFlare
+- Cisco
+- Business Insider
+- Box.com
+- AfterPay
+- OLX
+- Shopify
+- adidas
 - and many more I cant remember
 
 # Contribution to this repo
