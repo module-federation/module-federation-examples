@@ -297,27 +297,27 @@ export class Constants {
             name: 'Zack Jackson',
             longProfession: 'Principal Engineer at lululemon Distributed JavaScript Orchestration at scale. Maintainer of Webpack, inventor of Module Federation.',
         },
-        dynamicSystemHostHeader: 'Dynamic System Host',
-        dynamicSystemHostHeaderH2: 'Host',
-        dynamicSystemRemoteHeaderH2: 'Remote',
-        dynamicSystemHostHeaderH3: 'my env is https://host.api.com',
-        dynamicSystemHostParagraph: 'The Dynamic System will take advantage Module Federation remotes and exposes. It will no load components that have been loaded already.',
-        dynamicSystemHostButton: 'Load Remote Widget',
-        dynamicSystemHostButtonH2: 'Remote Widget',
-        dynamicSystemHostButtonH2Second: 'My env is ',
-        dynamicSystemHostButtonParagraph: 'Using momentjs for format the date',
-        dynamicSystemHostLoading: 'Loading',
-        sharedContext: {
-            app1: {
-                subheader: 'App 1',
-                paragraph: 'Welcome, Billy'
+        dynamicSystemRemotesRuntime: {
+            host: {
+                header: 'Dynamic System Host',
+                subHeader: 'Host',
+                hostH3: 'my env is https://host.api.com',
+                button: 'Load Remote Widget'
             },
-            app2: {
-                subheader: 'App 2',
-                paragraph: 'Welcome, Susan',
+            remote: {
+                subHeader: 'Remote'
             },
-            header: 'Context Provider'
+            paragraph: 'The Dynamic System will take advantage Module Federation remotes and exposes. It will no load components that have been loaded already.',
+            loading: 'Loading',
+            buttonHeader: 'Remote Widget',
+            buttonH2: 'My env is ',
+            buttonParagraph: 'Using momentjs for format the date'
         },
+        sharedContextApp1H1: 'Context Provider',
+        sharedContextApp1H2: 'App 1',
+        sharedContextApp2H2: 'App 2',
+        sharedContextApp1Paragraph: 'Welcome, Billy',
+        sharedContextApp2Paragraph: 'Welcome, Susan',
         cssIsolationApp1Name: 'App 1',
         cssIsolationApp2Name: 'App 2',
         cssIsolationApp1Header: 'Host Application - React Version',      
