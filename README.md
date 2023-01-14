@@ -15,7 +15,9 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 
 
 https://module-federation.github.io/
+ 
 https://www.youtube.com/playlist?list=PLWSiF9YHHK-DqsFHGYbeAMwbd9xcZbEWJ
+ 
 https://scriptedalchemy.medium.com/
 
 # Examples
