@@ -25,6 +25,7 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 - [x] [Advanced API](./advanced-api) &mdash; Showcasing advanced API use, also seen in other examples.
 - [x] [Basic Host-Remote](./basic-host-remote/README.md) &mdash; App 1 consumes remote components from App2.
 - [x] [Create React App](./cra/README.md) &mdash; Module Federation using CRA.
+- [x] [Create React App using React App Rewired](./cra-react-app-rewired/README.md) &mdash; Module Federation using CRA and React App Rewired.
 - [x] [HMR Remotes](./react-hmr/README.md) &mdash; Hot Reloading Remotes inside Hosts.
 - [x] [Startup Code](./startup-code/README.md) &mdash; Advanced implementation that attaches initialization code to the remote container itself. Useful for dynamically setting publicPath in the remote.
 - [x] [Bi-Directional Hosts](./bi-directional/README.md) &mdash; App1 consumes App2 components; App2 consumes App1 components.
