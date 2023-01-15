@@ -12,6 +12,9 @@
   ],
   "scripts": {
     "build": "yarn workspaces run build",
-    "serve": "yarn workspaces run serve"
+    "serve": "concurrently \"cd shell; yarn serve\" \"cd remote1; yarn serve\"  \"cd remote2; yarn serve\""
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.2"
   }
 }
