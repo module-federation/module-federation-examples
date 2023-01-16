@@ -36,13 +36,13 @@ jobs:
             **/yarn.lock
             ~/.cache/Cypress
             ~/.cache/yarn/v6  
-          key: e2e-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: e2e-cache-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            e2e-yarn-
+            e2e-cache-
             e2e-
 
       - name: Install deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: |
           echo "CACHE CHANGED"
-          npx -y lerna bootstrap
+          npx -y lerna bootstrap --ci --include-dependencies
