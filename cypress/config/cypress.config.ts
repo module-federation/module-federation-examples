@@ -5,6 +5,7 @@ async function setupNodeEvents(
   config: Cypress.PluginConfigOptions,
 ): Promise<Cypress.PluginConfigOptions> {
 
+  // @ts-ignore
   on('before:browser:launch', (browser = {}, launchOptions) => {
     console.log(
       'launching browser %s is headless? %s',

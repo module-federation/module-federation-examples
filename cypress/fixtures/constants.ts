@@ -374,7 +374,7 @@ export class Constants {
             loadingModuleMessage: 'loading remote module ...',
             remoteModuleMessage: 'got remote module: '
         },
-        nativeFederationReactComponentsHeaders: {
+        commonComponentsNames: {
             host: 'Host',
             remote: 'Remote'
         },
@@ -600,6 +600,11 @@ export class Constants {
             resetLoopMessage:'Game board successfully reset',
             baseLoadingMessage: 'I love rust and wasm!'
         },
+        craReactAppAppsPhrases: {
+            hostApp: 'This is the host application.',
+            hostAppRemoteMessage: 'This is a component from the remote application',
+            remoteApp: 'Remote Application'
+        },
         angularUniversalSsrComponentsMessages: {
             rootComponent: 'Root component',
             homeComponent: 'Home component',
@@ -698,7 +703,9 @@ export class Constants {
         alabaster: 'rgb(250, 250, 250)',
         paleVioletRed: 'rgb(219, 112, 147)',
         white: 'rgb(255, 255, 255)',
-        lightGrey: 'rgb(239, 239, 239)'
+        lightGrey: 'rgb(239, 239, 239)',
+        darkGrey: 'rgb(40, 44, 52)',
+        nonRgbBorderRed: 'border: 2px dotted red; padding: 20px;'
     }
 
     public static readonly translation = {
