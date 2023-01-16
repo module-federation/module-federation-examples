@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {
+    "install:deps": "yarn install && yarn install:rollup && yarn install:rollup-rs && yarn install:webpack",
+    "install:rollup": "cd ./rollup-spa && yarn install",
+    "install:rollup-rs": "cd ./rollup-spa/rs-sidecar && yarn install",
+    "install:webpack": "cd ./webpack-spa && yarn install",
+    "start": "concurrently 'cd rollup-spa; yarn start' 'cd rollup-spa/rs-sidecar; yarn start;' 'cd webpack-spa; yarn start'"
+  },
+  "devDependencies": {
+    "concurrently": "7.3.0"
+  }
+}
