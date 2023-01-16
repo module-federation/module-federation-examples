@@ -320,8 +320,8 @@ export class Constants {
         sharedContextApp2Paragraph: 'Welcome, Susan',
         cssIsolationApp1Name: 'App 1',
         cssIsolationApp2Name: 'App 2',
-        cssIsolationApp1Header: 'Host Application - React Version',      
-        cssIsolationApp2Header: 'Remote Application - React Version',  
+        cssIsolationApp1Header: 'Host Application - React Version',
+        cssIsolationApp2Header: 'Remote Application - React Version',
         sharedRoutes2HomeButtonH1: 'Home Page',
         sharedRoutes2AboutButtonH1: 'About Page',
         sharedRoutes2HomeButtonH2: 'Welcome to the future!',
@@ -391,7 +391,6 @@ export class Constants {
             host: 'Host button: ',
             remote: 'Remote button: '
         },
-
         reactHostRemoteContainerHeader: 'This is the container App hosted at localhost:8080',
         reactHostRemoteContainerDiv: 'This component is from the Host React App hosted at localhost:8081',
         reactHostRemoteHostedDiv: 'This is the Remote App hosted at localhost:8081)',
@@ -491,7 +490,17 @@ export class Constants {
                 heading: 'This is the heading',
                 button: 'from remote1: GO HOME'
             }
-        }
+        },
+        angularUniversalSsrValueInputButtonText: 'Add value',
+        angularUniversalSsrTabsNames: [
+            'Home',
+            'Angular lazy module',
+            'Federation lazy module'
+         ],
+        angularUniversalSsrAddedCities: [
+            'Prague',
+            'Saint-Petersburg'
+        ],
     }
 
     public static readonly tabsNames = {
@@ -590,7 +599,17 @@ export class Constants {
             tickLoopMessage:'Game board successfully rerendered',
             resetLoopMessage:'Game board successfully reset',
             baseLoadingMessage: 'I love rust and wasm!'
-        }
+        },
+        angularUniversalSsrComponentsMessages: {
+            rootComponent: 'Root component',
+            homeComponent: 'Home component',
+            angularLazyComponent: 'Angular lazy route component'
+        },
+        angularUniversalSsrCitiesBlockHeaderText: 'Select a city:',
+        angularUniversalSsrSelectedCityInfo: [
+            'The weather in Prague is good![ Angular lazy component ]',
+            'The weather in Saint-Petersburg is good![ Angular lazy component ]'
+        ]
     }
 
     public static readonly commonText = {
@@ -640,6 +659,11 @@ export class Constants {
             'Tick 🔂',
             'Reset ♻️',
             'Stop 🛑'
+        ],
+        angularUniversalSsrAddedValuesNames: [
+            'one',
+            'two',
+            'three',
         ],
     }
 
@@ -741,6 +765,10 @@ export class Constants {
         reactHmrHomeLink: '/',
         reactHmrButtonLink: '/button',
         reactHmrHeadingLink: '/heading',
+        angularUniversalSsrLinks : {
+            angularLink: '/lazy',
+            federationLink: '/federation'
+        }
     }
     public static readonly linksNames = {
         vueCliAppDocumentationLinkName: 'vue-cli documentation',
