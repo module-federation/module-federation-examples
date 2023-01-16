@@ -79,6 +79,7 @@ export const selectors = {
     appGeneralCounter: '[data-e2e="General-counter"]',
     appExposesCounter: '[data-cy="app-button-counter"]',
     rustWasmGameBoard: '[data-e2e="GAME_BOARD"]',
+    craReactAppRemoteComponentInfo: '[data-e2e="REMOTE_COMPONENT_INFO"]',
     activeTab: '[class="active"]',
     angularUniversalSsrCitiesBlock: 'app-client-cities-home',
     angularUniversalSsrSelectedCityInfo: 'app-client-city'
@@ -95,7 +96,9 @@ export const updatedSelectors = {
     sectionName: `${baseSelectors.section} ${baseSelectors.h1}`,
     sectionButton: `${baseSelectors.section} ${baseSelectors.button}`,
     angularUniversalSsrTab: `${baseSelectors.divElement} ${baseSelectors.linkTag}`,
-    angularUniversalSsrAddedCity: `${selectors.angularUniversalSsrCitiesBlock} ${baseSelectors.listElement}`
+    angularUniversalSsrAddedCity: `${selectors.angularUniversalSsrCitiesBlock} ${baseSelectors.listElement}`,
+    craReactAppRemoteComponentBorder: `${selectors.craReactAppRemoteComponentInfo}${baseSelectors.style
+        .replace('{style}', Constants.color.nonRgbBorderRed)}`
 }
 
 export const widgets = {
