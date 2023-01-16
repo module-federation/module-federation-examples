@@ -1,6 +1,7 @@
 import {baseSelectors, block, buttons, fields} from "./selectors";
 import {Constants} from "../fixtures/constants";
 import {CssAttr} from "../types/cssAttr";
+import {StubTypes} from "../types/stubTypes";
 
 export class BaseMethods {
 
@@ -211,7 +212,7 @@ export class BaseMethods {
         textArray?: string[]
     }): Cypress.Chainable<JQuery<HTMLElement>> {
         if(parentSelector && !textArray) {
-            this._checkChildElementWithTextPresence(parentSelector, selector, text, isVisible ? visibilityState : notVisibleState)
+           return this._checkChildElementWithTextPresence(parentSelector, selector, text, isVisible ? visibilityState : notVisibleState)
         }
 
         if(index) {
@@ -271,21 +272,26 @@ export class BaseMethods {
             .should(contain ? checkType : 'not.contain.text', text);
     }
 
-    public checkInfoInConsole(info: string): void {
-        cy.window().then((win) => {
-            cy.stub(win.console, "log").as('log')
-            cy.get('@log').should('be.calledWith', info)
+    public checkInfoInConsole(info: string, chainer: StubTypes = StubTypes.beCalled, isReloaded: boolean = true, isStubbed: boolean = true): void {
+        if(isStubbed) {
+            cy.window().then((win) => {
+                cy.stub(win.console, "log").as('log');
+            })
+        }
+        cy.get('@log').should(chainer, info)
+        if(isReloaded) {
             this.reloadWindow()
-        })
+        }
     }
 
     public checkElementVisibility(
         selector: string,
-        isVisible: boolean = true
+        isVisible: boolean = true,
+        notVisibleState: string = 'not.be.visible'
     ): Cypress.Chainable<JQuery<HTMLElement>> {
         return cy
             .get(selector)
-            .should(isVisible ? 'be.visible' : 'not.be.visible');
+            .should(isVisible ? 'be.visible' : notVisibleState);
     }
 
     public checkChildElementVisibility(
@@ -493,7 +499,8 @@ export class BaseMethods {
          parentSelector,
          state = 'have.length',
          text,
-         waitUntil = false
+         waitUntil = false,
+         jqueryValue = false
     }: {
         selector: string,
         quantity: number,
@@ -501,6 +508,7 @@ export class BaseMethods {
         parentSelector?: string,
         text?: string
         waitUntil?: boolean
+        jqueryValue?: boolean
     }): void {
         if(parentSelector) {
             cy.get(parentSelector).find(selector).should(state, quantity)
@@ -508,7 +516,7 @@ export class BaseMethods {
             return;
         }
 
-        if(text) {
+        if(text && !jqueryValue) {
             cy.get(selector).should('contain.text', text).and(state, quantity)
 
             return;
@@ -518,6 +526,23 @@ export class BaseMethods {
             cy.waitUntil(() =>
                 cy.get(selector).should('have.length', quantity, { timeout: 2000 }),
             );
+
+            return;
+        }
+
+        if(jqueryValue) {
+            let counter: number = 0;
+
+            cy.get(selector)
+                .each((element: JQuery<HTMLElement>) => {
+                    if(element.text().includes(<string>text)) {
+                       counter++
+
+                        if(counter === quantity) {
+                            expect(counter).to.be.eq(quantity)
+                        }
+                    }
+                });
 
             return;
         }

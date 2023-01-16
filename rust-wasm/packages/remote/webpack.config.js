@@ -34,10 +34,10 @@ module.exports = {
     // Webpack will load the Rust code and compile it to Wasm using Wasm-Pack.
     // Wasm-pack will also generate all the JS bindings needed to interop with JS,
     // found in the `./pkg` directory.
-
-    new WasmPackPlugin({
-      crateDirectory: __dirname,
-    }),
+    //
+    // new WasmPackPlugin({
+    //   crateDirectory: __dirname,
+    // }),
 
     new ModuleFederationPlugin({
       name: 'GameOfLifeModule',
