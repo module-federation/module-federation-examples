@@ -1,5 +1,5 @@
 {
-  "name": "ng-microfrontends",
+  "name": "angular11-microfrontends-scully",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -19,7 +19,6 @@
     "scully:debug": "scully --scanRoutes --stats --showGuessError --watch --logSeverity=normal",
     "e2e:ci": "yarn build:shared && yarn start:shell & wait-on http-get://localhost:4200/ && yarn start:profile & wait-on http-get://localhost:4201/ && yarn start:product & wait-on http-get://localhost:4202/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
-  "private": true,
   "resolutions": {
     "webpack": "5.72.1"
   },
