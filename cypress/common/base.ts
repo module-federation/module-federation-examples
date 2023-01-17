@@ -2,6 +2,7 @@ import {baseSelectors, block, buttons, fields} from "./selectors";
 import {Constants} from "../fixtures/constants";
 import {CssAttr} from "../types/cssAttr";
 import {StubTypes} from "../types/stubTypes";
+import { readFile } from "../helpers/file-read-helper";
 
 export class BaseMethods {
 
@@ -41,7 +42,7 @@ export class BaseMethods {
         webpackFileSeparator?: string
         isContain?: boolean
     }): void {
-        cy.readFile(filePath).then((file: string) => {
+        readFile(filePath).then((file: string) => {
             if(webpackFileSeparator) {
                     isContain ? expect(file.split(webpackFileSeparator)[1]).to.include(text) :
                         expect(file.split(webpackFileSeparator)[1]).not.to.include(text)
