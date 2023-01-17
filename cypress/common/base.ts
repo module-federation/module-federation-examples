@@ -2,6 +2,7 @@ import {baseSelectors, block, buttons, fields} from "./selectors";
 import {Constants} from "../fixtures/constants";
 import {CssAttr} from "../types/cssAttr";
 import {StubTypes} from "../types/stubTypes";
+import {RequestsTypes} from "../types/requestsTypes";
 import { readFile } from "../helpers/file-read-helper";
 
 export class BaseMethods {
@@ -283,6 +284,15 @@ export class BaseMethods {
         if(isReloaded) {
             this.reloadWindow()
         }
+    }
+
+    public checkNetworkCallCreated(requestType: RequestsTypes, url: string, localhost: number, statusCode: number): void {
+        cy.intercept(requestType, url).as('networkCall');
+        // Extra visit required cause intercept needs to be created before visit
+        this.openLocalhost(localhost)
+        cy.wait('@networkCall').then((interception) => {
+            cy.wrap(interception.response?.statusCode).should('eq', statusCode)
+        })
     }
 
     public checkElementVisibility(
