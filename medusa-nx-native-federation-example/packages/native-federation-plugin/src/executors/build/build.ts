@@ -58,8 +58,7 @@ async function setupNativeFederationBuilder(workspace: NFPWorkspacePaths) {
  *
  */
 async function compileProjectEntryFileByEsbuild(workspace: NFPWorkspacePaths) {
-  const { workspaceDistPath, workspaceTsConfigPath, projectEntryPath } =
-    workspace;
+  const { workspaceDistPath, workspaceTsConfigPath, projectEntryPath } = workspace;
 
   fs.rmSync(workspaceDistPath, { force: true, recursive: true });
 
@@ -74,8 +73,7 @@ async function compileProjectEntryFileByEsbuild(workspace: NFPWorkspacePaths) {
     conditions: ['es2020', 'es2015', 'module'],
     resolveExtensions: ['.ts', '.tsx', '.mjs', '.js'],
     tsconfig: workspaceTsConfigPath,
-    splitting: true,
-    // plugins: [ commonjs() ]
+    splitting: true
   });
 }
 
@@ -102,17 +100,10 @@ export async function executeProjectBuild(
   workspaceDistPath: string,
   projectName: string
 ) {
-  const workspace: NFPWorkspacePaths = getWorkspacePaths(
-    workspaceRootPath,
-    workspaceDistPath,
-    projectName
-  );
+  const workspace: NFPWorkspacePaths = getWorkspacePaths(workspaceRootPath, workspaceDistPath, projectName);
 
   await setupNativeFederationBuilder(workspace);
-
   await compileProjectEntryFileByEsbuild(workspace);
-
   copyProjectIndexHtml(workspace);
-
   await federationBuilder.build();
 }

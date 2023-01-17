@@ -20,10 +20,7 @@ const NFP_PROJECT_BUILDER_NAME = (projectName: string): string => {
  */
 function createProjectBuilderTsFile(workspace: NFPWorkspacePaths) {
   const { workspaceRootPath, workspaceDistPath, projectName } = workspace;
-  const builderOutputTsFile = path.join(
-    workspaceDistPath,
-    `./${NFP_PROJECT_BUILDER_NAME(projectName)}.ts`
-  );
+  const builderOutputTsFile = path.join(workspaceDistPath, `./${NFP_PROJECT_BUILDER_NAME(projectName)}.ts`);
 
   const builderTypescript = `
     import { executeProjectBuild } from './build';
@@ -42,10 +39,7 @@ function createProjectBuilderTsFile(workspace: NFPWorkspacePaths) {
  */
 function removeProjectBuilderTsFile(workspace: NFPWorkspacePaths) {
   const { workspaceDistPath, projectName } = workspace;
-  const builderOutputTsFile = path.join(
-    workspaceDistPath,
-    `./${NFP_PROJECT_BUILDER_NAME(projectName)}.ts`
-  );
+  const builderOutputTsFile = path.join(workspaceDistPath, `./${NFP_PROJECT_BUILDER_NAME(projectName)}.ts`);
 
   if (fs.existsSync(builderOutputTsFile)) {
     fs.unlinkSync(builderOutputTsFile);
@@ -60,11 +54,11 @@ async function compileCommonBuilderTsFile(
 ): Promise<{ stdout: string; stderr: string }> {
   const { workspaceDistPath } = workspace;
   const builderTsFile = path.join(__dirname, './build.ts');
-  const bundleBuilderTsFileCommand = `
+  const bundleCommand = `
     npx tsc --skipLibCheck ${builderTsFile} --outDir ${workspaceDistPath}
   `;
 
-  return promisify(exec)(bundleBuilderTsFileCommand);
+  return promisify(exec)(bundleCommand);
 }
 
 /**
@@ -74,14 +68,8 @@ async function compileAndRunProjectBuilderFiles(
   workspace: NFPWorkspacePaths
 ): Promise<{ stdout: string; stderr: string }> {
   const { workspaceDistPath, projectName } = workspace;
-  const builderOutputTsFile = path.join(
-    workspaceDistPath,
-    `./${NFP_PROJECT_BUILDER_NAME(projectName)}.ts`
-  );
-  const builderOutputJsFile = path.join(
-    workspaceDistPath,
-    `./${NFP_PROJECT_BUILDER_NAME(projectName)}.js`
-  );
+  const builderOutputTsFile = path.join(workspaceDistPath, `./${NFP_PROJECT_BUILDER_NAME(projectName)}.ts`);
+  const builderOutputJsFile = path.join(workspaceDistPath, `./${NFP_PROJECT_BUILDER_NAME(projectName)}.js`);
   const bundleAndRunCommand = `
     npx tsc --skipLibCheck ${builderOutputTsFile} --outDir ${workspaceDistPath} && node ${builderOutputJsFile}
   `;
@@ -105,8 +93,7 @@ export default async function runExecutor(
   try {
     await compileCommonBuilderTsFile(workspace);
   } catch (e) {
-    console.error(e);
-    throw e;
+    throw new Error(e);
   }
 
   createProjectBuilderTsFile(workspace);
@@ -115,8 +102,7 @@ export default async function runExecutor(
     await compileAndRunProjectBuilderFiles(workspace);
     removeProjectBuilderTsFile(workspace);
   } catch (e) {
-    console.error(e);
-    throw e;
+    throw new Error(e);
   }
 
   console.log(`Nx Native Federation: Built successfully`);
