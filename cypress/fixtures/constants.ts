@@ -614,7 +614,11 @@ export class Constants {
         angularUniversalSsrSelectedCityInfo: [
             'The weather in Prague is good![ Angular lazy component ]',
             'The weather in Saint-Petersburg is good![ Angular lazy component ]'
-        ]
+        ],
+        thirdPartyScriptsAppPhrases: {
+            header: 'Basic Host-Remote',
+            description: 'Check the network tab to see all the third party calls'
+        },
     }
 
     public static readonly commonText = {
@@ -775,7 +779,8 @@ export class Constants {
         angularUniversalSsrLinks : {
             angularLink: '/lazy',
             federationLink: '/federation'
-        }
+        },
+        thirdPartyScriptsPostRequestPath: 'https://www.google-analytics.com/j/collect?**',
     }
     public static readonly linksNames = {
         vueCliAppDocumentationLinkName: 'vue-cli documentation',
