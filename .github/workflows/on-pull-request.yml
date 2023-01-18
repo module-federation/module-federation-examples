@@ -97,16 +97,16 @@ jobs:
             **/yarn.lock
             ~/.cache/Cypress
             ~/.cache/yarn/v6  
-          key: e2e-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: e2e-cache-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            e2e-yarn-
+            e2e-cache-
             e2e-
 
       - name: Install sample deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: |
           echo "CACHE CHANGED"
-          npx -y lerna bootstrap --scope=${{ matrix.container }}
+          npx -y lerna bootstrap --scope=${{ matrix.container }} --ci --include-dependencies
 
       - name: Run sample e2e tests
         run: 
