@@ -7,11 +7,6 @@
     "start": "concurrently \"cd host; npm run dev\" \"cd remote; npm run dev\"",
     "e2e:ci": "yarn start & wait-on http-get://localhost:8080/ && npx cypress run --config-file ../../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
-  "private": true,
-  "workspaces": [
-    "host",
-    "remote"
-  ],
   "author": "Omher",
   "license": "ISC",
   "devDependencies": {

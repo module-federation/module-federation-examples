@@ -313,11 +313,17 @@ export class Constants {
             buttonH2: 'My env is ',
             buttonParagraph: 'Using momentjs for format the date'
         },
-        sharedContextApp1H1: 'Context Provider',
-        sharedContextApp1H2: 'App 1',
-        sharedContextApp2H2: 'App 2',
-        sharedContextApp1Paragraph: 'Welcome, Billy',
-        sharedContextApp2Paragraph: 'Welcome, Susan',
+        sharedContext: {
+            app1: {
+                subheader: 'App 1',
+                paragraph: 'Welcome, Billy'
+            },
+            app2: {
+                subheader: 'App 2',
+                paragraph: 'Welcome, Susan',
+            },
+            header: 'Context Provider'
+        },
         cssIsolationApp1Name: 'App 1',
         cssIsolationApp2Name: 'App 2',
         cssIsolationApp1Header: 'Host Application - React Version',
