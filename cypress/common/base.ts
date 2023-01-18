@@ -312,10 +312,18 @@ export class BaseMethods {
         visibilityState: string = 'be.visible',
         text?: string,
         notVisibleState: string = 'not.exist',
+        parentElement: boolean = true
 ): Cypress.Chainable<JQuery<HTMLElement>> {
-        if(text) {
+        if(text && parentElement) {
             return cy
                 .get(selector).contains(text).parent(selector)
+                .find(childSelector)
+                .should(isVisible ? visibilityState : notVisibleState);
+        }
+
+        if(text && !parentElement) {
+            return cy
+                .get(selector).contains(text)
                 .find(childSelector)
                 .should(isVisible ? visibilityState : notVisibleState);
         }
