@@ -48,11 +48,18 @@ appsData.forEach((
                 selector: baseSelectors.divElement,
                 text: property.sharedComponentText
             })
-            basePage.execTheCommand(Constants.commands.cpSharedComponentFile, 500)
+            basePage.writeContentToFile({
+                filePath: Constants.elementsText.serverSideRenderOnlyChangeFilePath,
+                content: Constants.elementsText.serverSideRenderOnlyChangeContent
+            })
+            basePage.reloadWindow(true)
         })
 
         it(`Check Shared component visibility in ${property.headerText} after updaiting & check it is not reverted after reload`, () => {
-            basePage.execTheCommand(Constants.commands.cpSharedComponentFile, 500)
+            basePage.writeContentToFile({
+                filePath: Constants.elementsText.serverSideRenderOnlyChangeFilePath,
+                content: Constants.elementsText.serverSideRenderOnlyChangeContent
+            })
             if(property.host === 3000) {
                 basePage.openLocalhost(3001)
                 basePage.checkElementWithTextPresence({
@@ -64,7 +71,10 @@ appsData.forEach((
                     selector: baseSelectors.divElement,
                     text: property.updatedSharedComponentText
                 })
-                basePage.execTheCommand(Constants.commands.cpOriginalSharedComponentFile, 500)
+                basePage.writeContentToFile({
+                    filePath: Constants.elementsText.serverSideRenderOnlyChangeFilePath,
+                    content: Constants.elementsText.serverSideRenderOnlyOriginalContent
+                })
                 return;
             }
             basePage.openLocalhost(3000)
@@ -77,7 +87,10 @@ appsData.forEach((
                 selector: baseSelectors.divElement,
                 text: property.updatedSharedComponentText
             })
-            basePage.execTheCommand(Constants.commands.cpOriginalSharedComponentFile, 500)
+            basePage.writeContentToFile({
+                filePath: Constants.elementsText.serverSideRenderOnlyChangeFilePath,
+                content: Constants.elementsText.serverSideRenderOnlyOriginalContent
+            })
         })
 
         it(`Check ${property.headerText} app build and runnning & check shared component visibility`, () => {

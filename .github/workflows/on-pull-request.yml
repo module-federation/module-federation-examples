@@ -125,7 +125,7 @@ jobs:
         if: failure()
         with:
           name: cypress-screenshots
-          path: '~/artifacts/${{ matrix.container }}/cypress/screenshots'
+          path: '**/${{ matrix.container }}/cypress/screenshots'
           retention-days: 7
 
       - name: Create artifacts for Cypress videos
@@ -133,5 +133,5 @@ jobs:
         if: failure()
         with:
           name: cypress-videos
-          path: '~/artifacts/${{ matrix.container }}/cypress/videos'
+          path: '**/${{ matrix.container }}/cypress/videos'
           retention-days: 7

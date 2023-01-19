@@ -3,7 +3,7 @@ import {Constants} from "../fixtures/constants";
 import {CssAttr} from "../types/cssAttr";
 import {StubTypes} from "../types/stubTypes";
 import {RequestsTypes} from "../types/requestsTypes";
-import { readFile } from "../helpers/file-read-helper";
+import { readFile, writeTofile } from "../helpers/file-actions-helper";
 
 export class BaseMethods {
 
@@ -19,8 +19,16 @@ export class BaseMethods {
         cy.skipWhen(condition)
     }
 
-    public execTheCommand(command: string, wait: number = 100): void {
-        cy.exec(command)
+    public writeContentToFile({
+        filePath,
+        content,
+        wait = 500
+    }: {
+        filePath: string,
+        content: string
+        wait?: number
+    }): void {
+        writeTofile(filePath, content)
         cy.wait(wait)
     }
 
