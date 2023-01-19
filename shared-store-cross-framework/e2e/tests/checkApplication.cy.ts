@@ -55,7 +55,7 @@ describe("It checks shared store cross framework app", () => {
     it('Checks that increase/decrease actions from both blocks can be executed one by one', () => {
         methodsPage.clickAndCheckCounterValue({
             selector: buttons.sharedStoreCrossFrameworkAppActionsButtons.incrementButton,
-            value: Constants.commonText.sharedStoreCrossFrameworkCounterValues.two
+            value: Constants.commonText.sharedStoreCrossFrameworkCounterValues.one
         })
         methodsPage.clickAndCheckCounterValue({
             selector: buttons.sharedStoreCrossFrameworkAppActionsButtons.decrementButton,

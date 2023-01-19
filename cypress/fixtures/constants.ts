@@ -190,6 +190,9 @@ export class Constants {
         serverSideRenderOnlyHeaderRemote: 'Remote Server',
         serverSideRenderOnlySharedComponent: 'Shared Component2222',
         serverSideRenderOnlyUpdatedSharedComponent: 'Updated Shared conponent in test',
+        serverSideRenderOnlyChangeFilePath: 'server-side-render-only/remoteServer/SharedComponent.js',
+        serverSideRenderOnlyChangeContent: 'import React from \'react\';\n\nconst SharedComponent = () => <div>Updated Shared conponent in test</div>;\n\nexport default SharedComponent;\n',
+        serverSideRenderOnlyOriginalContent: 'import React from \'react\';\n\nconst SharedComponent = () => <div>Shared Component2222</div>;\n\nexport default SharedComponent;\n',
         nextjsSsrHome: 'Home',
         nextjsSsrShop: 'Shop',
         nextjsSsrCheckout: 'Checkout',
@@ -313,11 +316,17 @@ export class Constants {
             buttonH2: 'My env is ',
             buttonParagraph: 'Using momentjs for format the date'
         },
-        sharedContextApp1H1: 'Context Provider',
-        sharedContextApp1H2: 'App 1',
-        sharedContextApp2H2: 'App 2',
-        sharedContextApp1Paragraph: 'Welcome, Billy',
-        sharedContextApp2Paragraph: 'Welcome, Susan',
+        sharedContext: {
+            app1: {
+                subheader: 'App 1',
+                paragraph: 'Welcome, Billy'
+            },
+            app2: {
+                subheader: 'App 2',
+                paragraph: 'Welcome, Susan',
+            },
+            header: 'Context Provider'
+        },
         cssIsolationApp1Name: 'App 1',
         cssIsolationApp2Name: 'App 2',
         cssIsolationApp1Header: 'Host Application - React Version',
@@ -651,6 +660,7 @@ export class Constants {
         },
         sharedStoreCrossFrameworkCounterValues: {
             zero: '0',
+            one: '1',
             two: '2'
         },
         cssIsolationButton: 'Make Everything Yellow',
@@ -801,11 +811,6 @@ export class Constants {
         reactHmrHostHomeText: 'Home',
         reactHmrHostButtonText: 'Button',
         reactHmrHostHeadingText: 'Heading',
-    }
-
-    public static readonly commands = {
-        cpSharedComponentFile: 'cp server-side-render-only/e2e/fixtures/SharedComponent.js server-side-render-only/remoteServer',
-        cpOriginalSharedComponentFile: 'cp server-side-render-only/e2e/fixtures/originalFile/SharedComponent.js server-side-render-only/remoteServer'
     }
 
     public static readonly fieldsNames = {

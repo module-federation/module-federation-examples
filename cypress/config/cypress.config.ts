@@ -55,6 +55,28 @@ async function setupNodeEvents(
     }
   )
 
+  on ('task', 
+  {
+    writeToFile({
+      filePath,
+      content 
+    }) {
+      return new Promise((resolve, reject) => {
+        //@ts-ignore
+        fs.writeFile(path.resolve(`../../${filePath}`), content, err => { 
+          try {
+            console.log(filePath)
+            resolve(true)
+          } catch (error) {
+            console.log(err)
+            reject(error)
+          }
+        });
+      })
+    }
+  }
+)
+
   return config;
 }
 
