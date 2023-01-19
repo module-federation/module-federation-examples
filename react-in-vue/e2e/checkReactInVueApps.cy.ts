@@ -1,6 +1,5 @@
 import { Constants } from './../../cypress/fixtures/constants';
 import { baseSelectors, fields } from './../../cypress/common/selectors';
-import { property } from 'lit-element';
 import { BaseMethods } from '../../cypress/common/base';
 
 const basePage: BaseMethods = new BaseMethods()

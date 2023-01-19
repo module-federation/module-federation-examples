@@ -25,7 +25,6 @@ describe('It checks shared-store-cross-framework sample', () => {
     ]
 
     appsData.forEach((property: { name: string, buttonsBlock: string, blockName: string, color: string }) => {
-
         it(`Checks ${property.name} buttons block visibility`, () => {
             basePage.openLocalhost(3001)
             basePage.checkElementVisibility(property.buttonsBlock)
