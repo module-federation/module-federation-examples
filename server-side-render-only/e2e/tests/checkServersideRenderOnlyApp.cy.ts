@@ -32,7 +32,7 @@ appsData.forEach((
             basePage.openLocalhost(property.host)
         })
 
-        it(`Check ${property.headerText} app build and runnning`, () => {
+        it(`Check ${property.headerText} app build and running`, () => {
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.h1,
                 text: property.headerText
@@ -55,7 +55,7 @@ appsData.forEach((
             basePage.reloadWindow(true)
         })
 
-        it(`Check Shared component visibility in ${property.headerText} after updaiting & check it is not reverted after reload`, () => {
+        it(`Check Shared component visibility in ${property.headerText} after updating & check it is not reverted after reload`, () => {
             basePage.writeContentToFile({
                 filePath: Constants.elementsText.serverSideRenderOnlyChangeFilePath,
                 content: Constants.elementsText.serverSideRenderOnlyChangeContent
@@ -93,7 +93,7 @@ appsData.forEach((
             })
         })
 
-        it(`Check ${property.headerText} app build and runnning & check shared component visibility`, () => {
+        it(`Check ${property.headerText} app build and running & check shared component visibility`, () => {
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.h1,
                 text: property.headerText

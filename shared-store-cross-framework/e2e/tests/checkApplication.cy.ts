@@ -44,7 +44,7 @@ describe("It checks shared store cross framework app", () => {
             firstButtonsBlock: vueComponentButtonsBlockSelector,
             secondButtonsBlock: reactComponentButtonsBlockSelector
         })
-        cy.reload()
+        basePage.reloadWindow()
         basePage.checkElementWithTextPresence({
             selector: selectors.sharedStoreCrossFrameworkAppClicksCounter,
             text: Constants.commonText.sharedStoreCrossFrameworkCounterValues.zero,
