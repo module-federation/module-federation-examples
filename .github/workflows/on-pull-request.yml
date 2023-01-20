@@ -93,7 +93,7 @@ jobs:
       - name: Check Yarn hash
         run: |
           npx hash-files -f '["**/yarn.lock"]' -a sha256 > YarnHash.txt
-          echo "Yarn cash is >> $(cat YarnHash.txt)"
+          echo "Yarn hash is >> $(cat YarnHash.txt)"
 
       - name: Restore Yarn and Cypress cache
         uses: actions/cache/restore@v3
