@@ -33,33 +33,65 @@ describe("It checks shared store cross framework app", () => {
     })
 
     it('Checks that number can be increased by react button and decreased by vue button', () => {
-        methodsPage.changeCounterValue({
-            firstButtonsBlock: reactComponentButtonsBlockSelector,
-            secondButtonsBlock: vueComponentButtonsBlockSelector
+        basePage.checkCounterFunctionality({
+            button: `${reactComponentButtonsBlockSelector} ${buttons.sharedStoreCrossFrameworkAppActionsButtons.incrementButton}`,
+            counterElement: selectors.sharedStoreCrossFrameworkAppClicksCounter,
+            counterText: Constants.commonText.sharedStoreCrossFrameworkCounterValues.zero,
+            isButtonTexted: false
+        })
+        basePage.checkCounterFunctionality({
+            button: `${vueComponentButtonsBlockSelector} ${buttons.sharedStoreCrossFrameworkAppActionsButtons.decrementButton}`,
+            counterElement: selectors.sharedStoreCrossFrameworkAppClicksCounter,
+            counterText: Constants.commonText.sharedStoreCrossFrameworkCounterValues.one,
+            isButtonTexted: false,
+            isCounterDecreased: true
         })
     })
 
     it('Checks that number can be decreased by react button and increased by vue button & check counter is cleared after reload', () => {
-        methodsPage.changeCounterValue({
-            firstButtonsBlock: vueComponentButtonsBlockSelector,
-            secondButtonsBlock: reactComponentButtonsBlockSelector
+        basePage.checkCounterFunctionality({
+            button: `${vueComponentButtonsBlockSelector} ${buttons.sharedStoreCrossFrameworkAppActionsButtons.incrementButton}`,
+            counterElement: selectors.sharedStoreCrossFrameworkAppClicksCounter,
+            counterText: Constants.commonText.sharedStoreCrossFrameworkCounterValues.zero,
+            isButtonTexted: false
         })
-        basePage.reloadWindow()
-        basePage.checkElementWithTextPresence({
-            selector: selectors.sharedStoreCrossFrameworkAppClicksCounter,
-            text: Constants.commonText.sharedStoreCrossFrameworkCounterValues.zero,
-            visibilityState: 'be.visible'
+        basePage.checkCounterFunctionality({
+            button: `${reactComponentButtonsBlockSelector} ${buttons.sharedStoreCrossFrameworkAppActionsButtons.decrementButton}`,
+            counterElement: selectors.sharedStoreCrossFrameworkAppClicksCounter,
+            counterText: Constants.commonText.sharedStoreCrossFrameworkCounterValues.one,
+            isButtonTexted: false,
+            isCounterDecreased: true,
+            isReloaded: true,
+            isCounterValueUsed: true
         })
     })
 
     it('Checks that increase/decrease actions from both blocks can be executed one by one', () => {
-        methodsPage.clickAndCheckCounterValue({
-            selector: buttons.sharedStoreCrossFrameworkAppActionsButtons.incrementButton,
-            value: Constants.commonText.sharedStoreCrossFrameworkCounterValues.one
+        basePage.checkCounterFunctionality({
+            button: `${vueComponentButtonsBlockSelector} ${buttons.sharedStoreCrossFrameworkAppActionsButtons.incrementButton}`,
+            counterElement: selectors.sharedStoreCrossFrameworkAppClicksCounter,
+            counterText: Constants.commonText.sharedStoreCrossFrameworkCounterValues.zero,
+            isButtonTexted: false
         })
-        methodsPage.clickAndCheckCounterValue({
-            selector: buttons.sharedStoreCrossFrameworkAppActionsButtons.decrementButton,
-            value: Constants.commonText.sharedStoreCrossFrameworkCounterValues.zero
+        basePage.checkCounterFunctionality({
+            button: `${reactComponentButtonsBlockSelector} ${buttons.sharedStoreCrossFrameworkAppActionsButtons.incrementButton}`,
+            counterElement: selectors.sharedStoreCrossFrameworkAppClicksCounter,
+            counterText: Constants.commonText.sharedStoreCrossFrameworkCounterValues.one,
+            isButtonTexted: false,
+            counterValue: Constants.commonText.sharedStoreCrossFrameworkCounterValues.two,
+        })
+        basePage.checkCounterFunctionality({
+            button: `${vueComponentButtonsBlockSelector} ${buttons.sharedStoreCrossFrameworkAppActionsButtons.decrementButton}`,
+            counterElement: selectors.sharedStoreCrossFrameworkAppClicksCounter,
+            counterText: Constants.commonText.sharedStoreCrossFrameworkCounterValues.two,
+            isButtonTexted: false
+        })
+        basePage.checkCounterFunctionality({
+            button: `${reactComponentButtonsBlockSelector} ${buttons.sharedStoreCrossFrameworkAppActionsButtons.decrementButton}`,
+            counterElement: selectors.sharedStoreCrossFrameworkAppClicksCounter,
+            counterText: Constants.commonText.sharedStoreCrossFrameworkCounterValues.one,
+            isButtonTexted: false,
+            isCounterDecreased: true
         })
     })
 })

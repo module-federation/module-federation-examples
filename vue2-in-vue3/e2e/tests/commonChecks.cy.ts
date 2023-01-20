@@ -1,10 +1,8 @@
 import { BaseMethods } from "../../../cypress/common/base";
 import {baseSelectors} from "../../../cypress/common/selectors";
 import { Constants } from "../../../cypress/fixtures/constants";
-import {Vue2InVue3Methods} from "../methods/methods";
 
 const basePage: BaseMethods = new BaseMethods()
-const methodsPage: Vue2InVue3Methods = new Vue2InVue3Methods()
 const clicksCounter = 1;
 
 describe('It checks vue2-in-vue3 connection sample', () => {
@@ -103,16 +101,22 @@ describe('It checks vue2-in-vue3 connection sample', () => {
 
         it(`Checks counter on ${property.headerName} changes after click and returns to default after reload`, () => {
             basePage.openLocalhost(property.host)
-            methodsPage.checkCounterChangedAfterClick({
-                clicksCounter: 3,
-                isReloadNeeded: true
+            basePage.checkCounterFunctionality({
+                button: baseSelectors.button,
+                counterElement: baseSelectors.divElement,
+                counterText: Constants.commonPhrases.vueAppsDefaultCounterText,
+                isButtonTexted: false,
+                isReloaded: true
             })
         });
 
         it(`Compares counter on ${property.headerName} with quantity of clicks`, () => {
             basePage.openLocalhost(property.host)
-            methodsPage.checkCounterChangedAfterClick({
-                clicksCounter: 5,
+            basePage.checkCounterFunctionality({
+                button: baseSelectors.button,
+                counterElement: baseSelectors.divElement,
+                counterText: Constants.commonPhrases.vueAppsDefaultCounterText,
+                isButtonTexted: false,
                 isValueCompared: true
             })
         });
@@ -122,8 +126,11 @@ describe('It checks vue2-in-vue3 connection sample', () => {
             const defaultCounterText = Constants.commonPhrases.vueAppsDefaultCounterText;
 
             basePage.openLocalhost(property.host)
-            methodsPage.checkCounterChangedAfterClick({
-                clicksCounter,
+            basePage.checkCounterFunctionality({
+                button: baseSelectors.button,
+                counterElement: baseSelectors.divElement,
+                counterText: Constants.commonPhrases.vueAppsDefaultCounterText,
+                isButtonTexted: false
             })
             basePage.checkInfoOnNonDefaultHost(host, baseSelectors.divElement,
                 defaultCounterText, defaultCounterText.replace(/[0-9]/g, clicksCounter.toString()))
