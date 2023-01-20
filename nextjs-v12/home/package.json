@@ -1,0 +1,21 @@
+{
+  "name": "home",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_OPTIONS='--inspect' next dev -p 3001",
+    "build": "next telemetry disable && next build",
+    "start": "next start -p 3001"
+  },
+  "dependencies": {
+    "@module-federation/nextjs-mf": "^6.0.1",
+    "next": "^12.3.4",
+    "nextjs-shared": "file:../shared",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "webpack": "^5.75.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}

@@ -10,6 +10,7 @@ export default function Widget() {
         backgroundColor: 'red',
         color: 'white',
       }}
+      data-e2e="APP_1__WIDGET"
     >
       <h2>App 1 Widget</h2>
       <p>

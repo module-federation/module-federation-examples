@@ -12,7 +12,7 @@ export function App() {
           I'm the remote's React Component!
         </p>
         <div>
-          Remote button: <button onClick={() => setCount(count => count + 1)}>click me {count}</button>
+          Remote button: <button data-e2e="REMOTE_BUTTON" onClick={() => setCount(count => count + 1)}>click me {count}</button>
         </div>
 
         <a

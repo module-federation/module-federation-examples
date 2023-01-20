@@ -6,12 +6,12 @@ const useFetchJson = path => {
 
   const fetchData = () => {
     fetch(path, {
+      mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
     })
-      .then(res => res.json())
       .then(json => {
         setData(json);
         setIsLoading(false);

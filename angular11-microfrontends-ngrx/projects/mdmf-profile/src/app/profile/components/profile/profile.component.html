@@ -7,7 +7,14 @@
       <div class="card-body">
         <form [formGroup]="angForm">
           <div class="form-group">
-            <input type="text" class="form-control" formControlName="name" placeholder="Name" #name/>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="name"
+              placeholder="Name"
+              #name
+              data-e2e="FORM_FIELD__NAME"
+            />
             <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
               <div *ngIf="angForm.controls['name'].errors.required">
                 Name is required.
@@ -15,7 +22,14 @@
             </div>
           </div>
           <div class="form-group">            
-            <input type="email" class="form-control" formControlName="email" placeholder="Email" #email/>
+            <input
+              type="email"
+              class="form-control"
+              formControlName="email"
+              placeholder="Email"
+              #email
+              data-e2e="FORM_FIELD__EMAIL"
+            />
             <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
               <div *ngIf="angForm.controls['email'].errors.required">
                 Email is required.

@@ -5,8 +5,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 // material-ui components
-import { makeStyles } from '@material-ui/core/styles';
-import { Button } from '@material-ui/core';
+import { makeStyles, Button } from '@material-ui/core';
 
 import styles from '../../assets/jss/material-dashboard-react/components/buttonStyle.js';
 
