@@ -31,7 +31,7 @@ jobs:
       - name: Check Yarn hash
         run: |
           npx hash-files -f '["**/yarn.lock"]' -a sha256 > YarnHash.txt
-          echo "Yarn cash is >> $(cat YarnHash.txt)"
+          echo "Yarn hash is >> $(cat YarnHash.txt)"
 
       - name: Cache Yarn and Cypress
         uses: actions/cache@v3
@@ -43,9 +43,6 @@ jobs:
             ~/.cache/Cypress
             ~/.cache/yarn/v6  
           key: e2e-cache-${{ hashFiles('YarnHash.txt') }}
-          restore-keys: |
-            e2e-cache-
-            e2e-
 
       - name: Install deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
