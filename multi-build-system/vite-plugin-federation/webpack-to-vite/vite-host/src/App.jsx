@@ -2,7 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
-import Header from 'remote_app/Header';
+import Header from 'nav/Header';
 
 function App() {
   const [count, setCount] = useState(0)

@@ -50,21 +50,11 @@ export default {
   plugins: [
     new ModuleFederationPlugin({
       name: "nav",
-      library: { type: 'module' },
       filename: "remoteEntry.js",
       exposes: {
         "./Header": "./src/components/Header",
       },
-      shared: {
-        react: {
-          singleton: true,
-          requiredVersion: deps.react,
-        },
-        "react-dom": {
-          singleton: true,
-          requiredVersion: deps["react-dom"],
-        },
-      },
+      shared: {},
     }),
     new HtmlWebPackPlugin({
       template: "./src/index.html",

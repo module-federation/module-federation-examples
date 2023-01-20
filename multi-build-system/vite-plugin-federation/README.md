@@ -39,7 +39,8 @@ This example demos using @originjs/vite-plugin-federation in 3 variants.
 ## Usage
 Using the `Module Federation` usually requires more than 2 projects, one as the `host side` and one as the `remote side`.
 #### Step 1: Configure the remote side.
-- for a vite project, modify `vite.config.js`:
+
+Note, that for using plugin with webpack need set 
 
 ```js
 // vite.config.js
@@ -53,7 +54,7 @@ export default {
             exposes: {
                 './Button': './src/Button.jsx',
             },
-            shared: ['vue']
+            shared: []
         })
     ]
 }
@@ -82,6 +83,8 @@ export default {
 
 #### Step 2: Configure the host side
 
+Note that use Current plugin in host and webpack in remote need set `format: var` 
+
 - for a vite project, modify `vite.config.js`:
 
 ```js
@@ -90,11 +93,14 @@ import federation from "@originjs/vite-plugin-federation";
 export default {
     plugins: [
         federation({
-            name: 'host-app',
-            remotes: {
-                remote_app: "http://localhost:5001/assets/remoteEntry.js",
-            },
-            shared: ['vue']
+          name: 'vite',      
+          remotes: {
+            nav: {
+              external: 'http://localhost:3003/remoteEntry.js',
+              format: 'var'
+            }
+          },
+          shared: []
         })
     ]
 }
@@ -109,17 +115,22 @@ export default {
     input: 'src/index.js',
     plugins: [
         federation({
-            name: 'host-app',
-            remotes: {
-                remote_app: "http://localhost:5001/remoteEntry.js",
-            },
-            shared: ['vue']
+          name: 'rollup',      
+          remotes: {
+            nav: {
+              external: 'http://localhost:3003/remoteEntry.js',
+              format: 'var'
+            }
+          },
+          shared: []
         })
     ]
 }
 ```
 
 - for a webpack project, modify `webpack.config.js`, using custom module loaders:
+
+Note that use Current plugin in remote and webpack in host need wite custom remote module loader
 
 ```js
 // webpack.config.js

@@ -12,12 +12,12 @@ export default defineConfig({
     federation({
       name: 'vite',      
       remotes: {
-        remote_app: {
-          external: 'http://localhost:3000/remoteEntry.js',
-          from: 'webpack'
+        nav: {
+          external: 'http://localhost:3003/remoteEntry.js',
+          format: 'var'
         }
       },
-      shared: ['react', 'react-dom']
+      shared: []
     })
   ],
   preview: {
