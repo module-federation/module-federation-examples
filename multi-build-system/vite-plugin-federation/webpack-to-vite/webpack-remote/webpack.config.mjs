@@ -7,7 +7,7 @@ const deps = pkg.dependencies;
 
 export default {
   output: {
-    publicPath: "http://localhost:3000/",
+    publicPath: "http://localhost:3003/",
   },
 
   resolve: {
@@ -15,7 +15,7 @@ export default {
   },
 
   devServer: {
-    port: 3000,
+    port: 3003,
     historyApiFallback: true,
     headers: {
       "Access-Control-Allow-Origin": "*",

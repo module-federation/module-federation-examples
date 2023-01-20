@@ -15,7 +15,7 @@ describe("Check Vite Remote", () => {
         // })
 
     beforeEach(() => {
-        basePage.openLocalhost(5000)
+        basePage.openLocalhost(5001)
     })
 
     it('Check elements exist', () => {

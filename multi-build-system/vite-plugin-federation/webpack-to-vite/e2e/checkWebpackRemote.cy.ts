@@ -15,7 +15,7 @@ describe("Check Webpack Remote", () => {
         // })
 
     beforeEach(() => {
-        basePage.openLocalhost(3000)
+        basePage.openLocalhost(3003)
     })
 
     it('Check elements exist', () => {

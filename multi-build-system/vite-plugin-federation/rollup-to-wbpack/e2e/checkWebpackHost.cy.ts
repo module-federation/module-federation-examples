@@ -4,7 +4,7 @@ import { Constants } from '../../../../cypress/fixtures/constants';
 
 const basePage: BaseMethods = new BaseMethods()
 
-describe("Check Vite Host", () => {
+describe("Check Webpack Remote", () => {
     // TODO cy.exec don't build the apps correctly cause lerna executes without exit code. Uncomment after fix this issue!
         // before(() => {
         //     basePage.buildTheSample(Constants.samplesPath.Nested)
@@ -15,13 +15,12 @@ describe("Check Vite Host", () => {
         // })
 
     beforeEach(() => {
-        basePage.openLocalhost(5003)
+        basePage.openLocalhost(3002)
     })
 
     it('Check elements exist', () => {
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.header,
-            text: Constants.elementsText.remoteAppText
-        })
+            selector: baseSelectors.button,
+            text: Constants.elementsText.webpackContent})    
     })
 })
