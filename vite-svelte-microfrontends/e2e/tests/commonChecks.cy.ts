@@ -22,7 +22,7 @@ describe('It checks names and symbols inside cards',  () => {
 
     appsData.forEach((property: { cardName: string, symbolName: string, symbol: string, status: string }) => {
         it(`Checks ${property.symbolName} symbol visibility for ${property.cardName} card`, () => {
-            basePage.openLocalhost(5173)
+            basePage.openLocalhost(4173)
             basePage.checkElementQuantity({
                 selector: selectors.commonCardSelector,
                 quantity: 2,
@@ -32,7 +32,7 @@ describe('It checks names and symbols inside cards',  () => {
         });
 
         it(`Checks ${property.cardName} card includes status`, () => {
-            basePage.openLocalhost(5173)
+            basePage.openLocalhost(4173)
             basePage.checkElementQuantity({
                 selector: selectors.commonCardSelector,
                 quantity: 2,
