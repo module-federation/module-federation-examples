@@ -5,6 +5,7 @@ This example demos using @originjs/vite-plugin-federation in 3 variants.
 
 
 - `vite-to-webpack` is the example for  `vite as remote and webpack as host`.
+- `rollup-to-webpack` is the example for  `rollup as remote and webpack as host`.
 - `webpack-to-vite` is the example for  `webpack as remote and vite as host`.
 
 
