@@ -27,12 +27,6 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
-      # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
-      - name: Check Yarn hash
-        run: |
-          npx hash-files -f '["**/yarn.lock"]' -a sha256 > YarnHash.txt
-          echo "Yarn hash is >> $(cat YarnHash.txt)"
-
       - name: Cache Yarn and Cypress
         uses: actions/cache@v3
         id: yarn-cache
@@ -42,11 +36,10 @@ jobs:
             **/yarn.lock
             ~/.cache/Cypress
             ~/.cache/yarn/v6  
-          key: e2e-cache-${{ hashFiles('YarnHash.txt') }}
+          key: e2e-cache-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: |
           echo "CACHE CHANGED"
-          yarn install
-          npx lerna exec --stream --concurrency=1 "yarn install"
+          yarn install --frozen-lockfile

@@ -7,11 +7,8 @@
     "./shop"
   ],
   "scripts": {
-    "start": "concurrently \"cd checkout; npm run dev\" \"cd home; npm run dev\" \"cd shop; npm run dev\"",
-    "build": "concurrently \"cd checkout; npm run build\" \"cd home; npm run build\" \"cd shop; npm run build\"",
-    "serve": "concurrently \"cd checkout; npm run start\" \"cd home; npm run start\" \"cd shop; npm run start\""
-  },
-  "dependencies": {
-    "concurrently": "^7.0.0"
+    "start": "npx concurrently \"cd checkout; npm run dev\" \"cd home; npm run dev\" \"cd shop; npm run dev\"",
+    "build": "npx concurrently \"cd checkout; npm run build\" \"cd home; npm run build\" \"cd shop; npm run build\"",
+    "serve": "npx concurrently \"cd checkout; npm run start\" \"cd home; npm run start\" \"cd shop; npm run start\""
   }
 }

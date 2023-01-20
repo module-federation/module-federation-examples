@@ -7,11 +7,7 @@
   "author": "burhanuday",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"cd libs; yarn start\" \"cd remote1; yarn start\" \"cd host; yarn start\"",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/runAll*.cy.ts\" --browser=chrome"
-  },
-  "devDependencies": {
-    "concurrently": "7.3.0",
-    "wait-on": "^7.0.1"
+    "start": "npx concurrently \"cd libs; yarn start\" \"cd remote1; yarn start\" \"cd host; yarn start\"",
+    "e2e:ci": "yarn start & npx wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/runAll*.cy.ts\" --browser=chrome"
   }
 }

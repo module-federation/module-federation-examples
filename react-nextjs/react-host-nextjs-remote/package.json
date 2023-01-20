@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"cd host; npm run dev\" \"cd remote; npm run dev\""
+    "start": "npx concurrently \"cd host; npm run dev\" \"cd remote; npm run dev\""
   },
   "private": true,
   "workspaces": [
@@ -12,8 +12,5 @@
     "remote"
   ],
   "author": "Omher",
-  "license": "ISC",
-  "devDependencies": {
-    "concurrently": "7.4.0"
-  }
+  "license": "ISC"
 }

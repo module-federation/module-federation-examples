@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"cd next-host; npm run dev\" \"cd react-host; npm run start:live\" \"cd react-remote; npm run start:live\" \"cd i18next-shared-lib; npm run dev\"",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/runAll*.cy.ts\" --browser=chrome"
+    "start": "npx concurrently \"cd next-host; npm run dev\" \"cd react-host; npm run start:live\" \"cd react-remote; npm run start:live\" \"cd i18next-shared-lib; npm run dev\"",
+    "e2e:ci": "yarn start & npx wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/runAll*.cy.ts\" --browser=chrome"
   },
   "private": true,
   "workspaces": [
@@ -15,9 +15,5 @@
     "i18next-shared-lib"
   ],
   "author": "Frédéric JAMMES",
-  "license": "ISC",
-  "devDependencies": {
-    "concurrently": "latest",
-    "wait-on": "7.0.1"
-  }
+  "license": "ISC"
 }

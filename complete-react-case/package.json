@@ -2,8 +2,8 @@
   "name": "complete-react-case",
   "version": "1.0.0",
   "scripts": {
-    "start": "concurrently 'cd ./component-app && yarn start' 'cd ./lib-app && yarn start' 'cd ./main-app && yarn start'",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3002/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "start": "npx concurrently 'cd ./component-app && yarn start' 'cd ./lib-app && yarn start' 'cd ./main-app && yarn start'",
+    "e2e:ci": "yarn start & npx wait-on http-get://localhost:3002/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "keywords": [],
   "author": "",
@@ -11,9 +11,5 @@
   "bugs": {
     "url": "https://github.com/anderlaw/react-webpack-MF/issues"
   },
-  "homepage": "https://github.com/anderlaw/react-webpack-MF#readme",
-  "devDependencies": {
-    "concurrently": "7.3.0",
-    "wait-on": "7.0.1"
-  }
+  "homepage": "https://github.com/anderlaw/react-webpack-MF#readme"
 }

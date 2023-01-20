@@ -11,7 +11,7 @@
     "test": "ng test mdmf-shared & ng test mdmf-profile & ng test mdmf-shell",
     "lint": "ng lint",
     "e2e": "ng e2e mdmf-profile & ng e2e mdmf-shell",
-    "e2e:ci": "yarn build:shared && yarn start:shell & wait-on http-get://localhost:4200/ && yarn start:profile & wait-on http-get://localhost:4201/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "e2e:ci": "yarn build:shared && yarn start:shell & npx wait-on http-get://localhost:4200/ && yarn start:profile & npx wait-on http-get://localhost:4201/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "private": true,
   "resolutions": {
@@ -55,7 +55,6 @@
     "protractor": "7.0.0",
     "ts-node": "9.1.1",
     "tslint": "6.1.3",
-    "typescript": "4.0.2",
-    "wait-on": "7.0.1"
+    "typescript": "4.0.2"
   }
 }

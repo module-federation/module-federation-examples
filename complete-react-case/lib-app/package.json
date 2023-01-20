@@ -7,13 +7,12 @@
   "scripts": {
     "webpack": "webpack --watch",
     "serve": "serve dist -p 3000",
-    "start": "concurrently \"npm run webpack\" \"npm run serve\""
+    "start": "npx concurrently \"npm run webpack\" \"npm run serve\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "7.3.0",
     "serve": "13.0.4",
     "webpack": "5.72.1",
     "webpack-cli": "4.10.0"

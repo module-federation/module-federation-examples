@@ -1,13 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "dev": "concurrently --raw \"lerna run --scope=ssr-mf-about dev\" \"lerna run --scope=ssr-mf-home dev\"",
+    "dev": "npx concurrently --raw \"npx lerna run --scope=ssr-mf-about dev\" \"npx lerna run --scope=ssr-mf-home dev\"",
     "build": "FORCE_COLOR=1 lerna run --scope=ssr-mf-about build && FORCE_COLOR=1 lerna run --scope=ssr-mf-home build",
-    "start": "concurrently --raw \"lerna run --scope=ssr-mf-about start\" \"lerna run --scope=ssr-mf-home start\""
-  },
-  "devDependencies": {
-    "concurrently": "7.3.0",
-    "lerna": "4.0.0"
+    "start": "npx concurrently --raw \"npx lerna run --scope=ssr-mf-about start\" \"npx lerna run --scope=ssr-mf-home start\""
   },
   "workspaces": {
     "packages": [
