@@ -1,2 +1,2 @@
-import './checkWebpackHost.cy.js'
-import './checkViteRemote.cy.js'
+import './checkWebpackHost.cy.ts'
+import './checkRollupRemote.cy.ts'

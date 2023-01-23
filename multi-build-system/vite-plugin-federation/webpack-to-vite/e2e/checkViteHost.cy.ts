@@ -21,7 +21,7 @@ describe("Check Vite Host", () => {
     it('Check elements exist', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.header,
-            text: Constants.elementsText.remoteAppText
+            text: Constants.elementsText.craButtontext
         })
     })
 })

@@ -21,7 +21,7 @@ describe("Check Vite Remote", () => {
     it('Check elements exist', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.h1,
-            text: Constants.commonText.remoteButton
+            text: Constants.elementsText.dynamicSystemHostButtonH2
         })
     })
 })

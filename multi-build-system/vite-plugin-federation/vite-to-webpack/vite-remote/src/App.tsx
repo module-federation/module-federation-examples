@@ -1,10 +1,6 @@
 import React from 'react';
 
 export default () => {
-	React.useEffect(() => {
-		console.log('Remote useEffect');
-	}, []);
-
 	return (
 		<div
 			style={{
@@ -38,7 +34,7 @@ export default () => {
 				</svg>
 			</div>
 			<div style={{ marginTop: '10px', fontSize: '25px' }}>
-				I'm the remote app
+			<h1>Remote Widget</h1>
 			</div>
 		</div>
 	);

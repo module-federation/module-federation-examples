@@ -21,6 +21,7 @@ describe("Check Webpack Remote", () => {
     it('Check elements exist', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
-            text: Constants.elementsText.webpackContent})    
+            text: Constants.commonText.remoteButton
+        })    
     })
 })
