@@ -30,7 +30,7 @@ export async function readProjectDependencies(
   projectName: string
 ): Promise<NFPDashboardDependency[]> {
   const projectPackageConfig: PackageJson = createPackageJson(projectName, graph);
-  const dependencies: [string, string][] = Object.entries(projectPackageConfig.dependencies);
+  const dependencies: [string, string][] = Object.entries(projectPackageConfig?.dependencies || {});
   const modules: NFPDashboardDependency[] = [];
 
   for (const [name] of dependencies) {

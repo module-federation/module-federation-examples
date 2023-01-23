@@ -1,9 +1,4 @@
-import { initFederation, loadRemoteModule } from '@softarc/native-federation';
-
-const reactAppMod = loadRemoteModule({
-  remoteName: 'remote',
-  exposedModule: './react-remote2222'
-});
+import { initFederation } from '@softarc/native-federation';
 
 initFederation()
   .catch((err) => console.error('err', err))

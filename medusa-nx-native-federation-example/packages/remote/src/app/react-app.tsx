@@ -1,15 +1,3 @@
-//import {foo} from 'native-federation-plugin';
-import { loadRemoteModule } from '@softarc/native-federation';
-
-const reactAppMod = loadRemoteModule({
-  remoteName: 'remote',
-  exposedModule: './react-remote'
-});
-
-const reactAppMod2 = loadRemoteModule({
-  remoteName: 'remote',
-  exposedModule: './react-remote'
-});
 
 export function App() {
   return (
