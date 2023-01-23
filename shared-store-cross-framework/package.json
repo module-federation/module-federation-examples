@@ -1,18 +1,10 @@
 {
-  "private": true,
-  "workspaces": {
-    "packages": [
-      "react-counter",
-      "vue-counter",
-      "shared-store",
-      "shell"
-    ]
-  },
+  "name": "shared-store-cross-framework",
   "scripts": {
-    "start": "lerna run --parallel start",
-    "build": "lerna run build",
-    "serve": "lerna run --parallel serve",
-    "clean": "lerna run --parallel clean",
+    "start": "lerna run --scope=shared-store-cross-framework_* --parallel start",
+    "build": "lerna run --scope=shared-store-cross-framework_* build",
+    "serve": "lerna run --scope=shared-store-cross-framework_* --parallel serve",
+    "clean": "lerna run --scope=shared-store-cross-framework_* --parallel clean",
     "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
   },
   "devDependencies": {

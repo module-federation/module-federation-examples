@@ -1,24 +1,12 @@
 import { BaseMethods } from "../../../cypress/common/base";
 import {baseSelectors, updatedSelectors} from "../../../cypress/common/selectors";
 import {Constants} from "../../../cypress/fixtures/constants";
+import {CommonTestData} from "../../../cypress/fixtures/commonTestData";
 
 const basePage: BaseMethods = new BaseMethods()
 
 describe('It checks typescript-monorepo apps', () => {
-    const appsData = [
-        {
-            host: 3001,
-            header: Constants.commonPhrases.typescriptProjectReferencesAppsHeader,
-            appName: Constants.commonPhrases.typescriptProjectReferencesAppsApp1Name
-        },
-        {
-            host: 3002,
-            header: Constants.commonPhrases.typescriptProjectReferencesAppsHeader,
-            appName: Constants.commonPhrases.typescriptProjectReferencesAppsApp2Name
-        }
-    ]
-
-    appsData.forEach((property: { host: number, header: string, appName: string }) => {
+    CommonTestData.commonTypeScriptMonorepoProjectReferencesAppsData.forEach((property: { host: number, header: string, appName: string }) => {
         it(`Check that both apps shares ${property.header} header`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
@@ -59,7 +47,7 @@ describe('It checks typescript-monorepo apps', () => {
 
         it(`Checks that apps names is not equal`, () => {
             basePage.openLocalhost(property.host)
-            basePage.compareInfoBetweenHosts(updatedSelectors.commonAppNameSelector, property.host === 3002 ? appsData[0].host: appsData[1].host, false)
+            basePage.compareInfoBetweenHosts(updatedSelectors.commonAppNameSelector, property.host === 3002 ? CommonTestData.commonTypeScriptMonorepoProjectReferencesAppsData[0].host: CommonTestData.commonTypeScriptMonorepoProjectReferencesAppsData[1].host, false)
         });
     });
 });

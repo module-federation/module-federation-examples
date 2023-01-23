@@ -1,7 +1,7 @@
-import { createPinia } from "pinia";
-import { createApp } from "vue";
-import App from "./App.vue";
+import { initFederation } from "@softarc/native-federation";
 
-const app = createApp(App);
-app.use(createPinia());
-app.mount("#app");
+(async () => {
+  await initFederation();
+
+  await import("./bootstrap");
+})();
