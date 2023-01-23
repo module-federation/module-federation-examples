@@ -1,0 +1,55 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/dsl/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "native-federation-plugin:build",
+      "options": {
+        "outputPath": "dist/dsl"
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:file-server",
+      "options": {
+        "buildTarget": "dsl:build",
+        "port": 3002,
+        "watch": true
+      }
+    },
+    "dashboard": {
+      "executor": "native-federation-plugin:dashboard",
+      "options": {
+        "buildTarget": "dsl:build",
+        "tokenFile": ".env",
+        "environment": "development",
+        "versionStrategy": "Date",
+        "filename": "dashboard.json",
+        "dashboardUrl": "{DASHBOARD_BASE_URL}/update?token={DASHBOARD_WRITE_TOKEN}",
+        "metadata": {
+          "baseUrl": "http://localhost:3002",
+          "source": {
+            "url": "https://github.com/module-federation/module-federation-examples/tree/medusa-nx-nfp-example/medusa-nx-native-federation-example/packages/dsl"
+          },
+          "remote": "http://localhost:3002/remoteEntry.js"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/dsl/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/dsl"],
+      "options": {
+        "jestConfig": "packages/dsl/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
