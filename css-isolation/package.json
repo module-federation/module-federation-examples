@@ -1,5 +1,12 @@
 {
   "name": "css-isolation",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "./app1",
+      "./app2"
+    ]
+  },
   "scripts": {
     "start": "lerna run --scope=css-isolation_app* --parallel start",
     "build": "lerna run --scope=css-isolation_app* --parallel build",
