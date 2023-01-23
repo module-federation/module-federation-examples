@@ -8,13 +8,13 @@ describe('It checks startup-code apps', () => {
     const appsData = [
         {
             host: 3001,
-            header: Constants.commonPhrases.startupCodeAppsHeader,
-            appName: Constants.commonPhrases.startupCodeAppsNames.app1
+            header: Constants.commonConstantsData.basicComponents.basicHostRemote,
+            appName: Constants.commonConstantsData.commonCountAppNames.app1
         },
         {
             host: 3002,
-            header: Constants.commonPhrases.startupCodeAppsHeader,
-            appName: Constants.commonPhrases.startupCodeAppsNames.app2
+            header: Constants.commonConstantsData.basicComponents.basicHostRemote,
+            appName: Constants.commonConstantsData.commonCountAppNames.app2
         }
     ]
 
@@ -54,7 +54,7 @@ describe('It checks startup-code apps', () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.button,
-                text: Constants.elementsText.commonExposedButtonText,
+                text: Constants.updatedConstantsData.commonAppWithButton.app2,
                 visibilityState: 'be.visible'
             })
         });

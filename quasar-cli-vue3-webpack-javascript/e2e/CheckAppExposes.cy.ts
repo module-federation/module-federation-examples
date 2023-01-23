@@ -6,19 +6,19 @@ const basePage: BaseMethods = new BaseMethods()
 
 const appsData = [
     {
-        appName: Constants.elementsText.quasarCli.appExposes.appName,
-        appBanner: Constants.elementsText.quasarCli.appExposes.banner,
-        appExposesComponentsButton: Constants.elementsText.quasarCli.appExposes.componentsButton,
-        clickMeButton: Constants.elementsText.quasarCli.appButtonClickMeButton,
-        appListDiv: Constants.elementsText.quasarCli.appListDiv,
+        appName: Constants.elementsText.quasarCliApp.appExposes.appName,
+        appBanner: Constants.elementsText.quasarCliApp.appExposes.banner,
+        appExposesComponentsButton: Constants.elementsText.quasarCliApp.appExposes.componentsButton,
+        clickMeButton: Constants.elementsText.quasarCliApp.appButtonClickMeButton,
+        appListDiv: Constants.elementsText.quasarCliApp.appListDiv,
         host: 3001
     },
     {
-        appName: Constants.elementsText.quasarCli.appGeneral.name,
-        appBanner: Constants.elementsText.quasarCli.appGeneral.banner,
-        appExposesComponentsButton: Constants.elementsText.quasarCli.appExposes.componentsButton,
-        clickMeButton: Constants.elementsText.quasarCli.appButtonClickMeButton,
-        appListDiv: Constants.elementsText.quasarCli.appListDiv,
+        appName: Constants.elementsText.quasarCliApp.appGeneral.name,
+        appBanner: Constants.elementsText.quasarCliApp.appGeneral.banner,
+        appExposesComponentsButton: Constants.elementsText.quasarCliApp.appExposes.componentsButton,
+        clickMeButton: Constants.elementsText.quasarCliApp.appButtonClickMeButton,
+        appListDiv: Constants.elementsText.quasarCliApp.appListDiv,
         host: 3002
     }
 ]
@@ -35,7 +35,7 @@ appsData.forEach((
     }
 ) => {
     describe(`Check App Exposes and App General starts and running`, () => {
-        const listNames = Constants.elementsText.quasarCli.names;
+        const listNames = Constants.elementsText.quasarCliApp.names;
 
         beforeEach(() => {
             basePage.openLocalhost(property.host)
@@ -66,7 +66,7 @@ appsData.forEach((
             if (property.host === 3002) {
                 basePage.clickElementWithText({
                     selector: baseSelectors.linkTag,
-                    text: Constants.elementsText.quasarCli.appGeneral.routeButton,
+                    text: Constants.elementsText.quasarCliApp.appGeneral.routeButton,
                     isForce: true
                 })
                 basePage.checkUrlText(property.host.toString(), true)
@@ -76,29 +76,29 @@ appsData.forEach((
                 })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.h5,
-                    text: Constants.elementsText.quasarCli.appGeneral.subheader1,
+                    text: Constants.elementsText.quasarCliApp.appGeneral.subheader1,
                 })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.h5,
-                    text: Constants.elementsText.quasarCli.appGeneral.subheader2,
+                    text: Constants.elementsText.quasarCliApp.appGeneral.subheader2,
                 })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.divElement,
-                    text: Constants.elementsText.quasarCli.appGeneral.counter,
+                    text: Constants.elementsText.quasarCliApp.appGeneral.counter,
                 })
             }
             if (property.host === 3001) {
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.divElement,
-                    text: Constants.commonPhrases.button
+                    text: Constants.commonConstantsData.button
                 })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.divElement,
-                    text: Constants.elementsText.quasarCli.appExposes.list,
+                    text: Constants.elementsText.quasarCliApp.appExposes.list,
                 })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.divElement,
-                    text: Constants.elementsText.quasarCli.appButtonDiv,
+                    text: Constants.elementsText.quasarCliApp.appButtonDiv,
                 })
             }
         })
@@ -110,12 +110,12 @@ appsData.forEach((
             })
             basePage.checkElementWithTextPresence({
                 selector: selectors.appExposesCounter,
-                text: Constants.elementsText.quasarCli.counter.startValue
+                text: Constants.commonConstantsData.commonIndexes.zero.toString()
             })
             if (property.host === 3002) {
                 basePage.checkElementWithTextPresence({
                     selector: selectors.appGeneralCounter,
-                    text: Constants.elementsText.quasarCli.counter.startValue
+                    text: Constants.commonConstantsData.commonIndexes.zero.toString()
                 })
             }
             basePage.clickElementWithText({
@@ -124,23 +124,23 @@ appsData.forEach((
             })
             basePage.checkElementWithTextPresence({
                 selector: selectors.appExposesCounter,
-                text: Constants.elementsText.quasarCli.counter.valueAfterClick
+                text: Constants.commonConstantsData.commonIndexes.one.toString()
             })
             if (property.host === 3002) {
                 basePage.checkElementWithTextPresence({
                     selector: selectors.appGeneralCounter,
-                    text: Constants.elementsText.quasarCli.counter.valueAfterClick
+                    text: Constants.elementsText.quasarCliApp.counter.valueAfterClick
                 })
             }
             basePage.reloadWindow()
             basePage.checkElementWithTextPresence({
                 selector: selectors.appExposesCounter,
-                text: Constants.elementsText.quasarCli.counter.startValue
+                text: Constants.commonConstantsData.commonIndexes.one.toString()
             })
             if (property.host === 3002) {
                 basePage.checkElementWithTextPresence({
                     selector: selectors.appGeneralCounter,
-                    text: Constants.elementsText.quasarCli.counter.startValue
+                    text: Constants.commonConstantsData.commonIndexes.zero.toString()
                 })
             }
         })

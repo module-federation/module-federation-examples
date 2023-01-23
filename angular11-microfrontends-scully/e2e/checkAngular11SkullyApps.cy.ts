@@ -6,7 +6,7 @@ import {returnCommonAngularAppsData} from "../../cypress/fixtures/commonTestData
 
 const basePage: BaseMethods = new BaseMethods()
 
-const appsData = returnCommonAngularAppsData(Constants.commonPhrases.mdmfShellWelcome)
+const appsData = returnCommonAngularAppsData(Constants.commonConstantsData.commonAngularAppsData.messages.shellWelcome)
 
 appsData.forEach(
     (property: {
@@ -22,9 +22,9 @@ appsData.forEach(
         path: string,
         host: number
     }) => {
-        const appName = property.path === Constants.elementsText.mdmfShell.path ? appsData[0].appNameText : appsData[1].appNameText;
-        const headerText = property.path === Constants.elementsText.mdmfShell.path ? appsData[0].headerText : appsData[1].headerText;
-        const paragraphText = property.path === Constants.elementsText.mdmfShell.path ? appsData[0].paragraphText : appsData[1].paragraphText;
+        const appName = property.path === Constants.commonConstantsData.home.toLowerCase() ? appsData[0].appNameText : appsData[1].appNameText;
+        const headerText = property.path === Constants.commonConstantsData.home.toLowerCase() ? appsData[0].headerText : appsData[1].headerText;
+        const paragraphText = property.path === Constants.commonConstantsData.home.toLowerCase() ? appsData[0].paragraphText : appsData[1].paragraphText;
 
         describe(`Check ${appName} App Page`, () => {
             beforeEach(() => {
@@ -45,33 +45,33 @@ appsData.forEach(
                 })
                 basePage.checkElementHaveProperty({
                     selector: baseSelectors.linkTag,
-                    attr: Constants.commonText.attr,
-                    prop: Constants.commonText.href,
-                    value: Constants.elementsText.mdmfNavigationItemLogo.gitHubLink
+                    attr: Constants.commonConstantsData.commonAttributes.attr,
+                    prop: Constants.commonConstantsData.commonAttributes.href,
+                    value: Constants.commonConstantsData.commonAngularAppsData.mdmfNavigationItemLogo.gitHubLink
                 })
                 basePage.checkElementHaveProperty({
                     selector: baseSelectors.linkTag,
-                    attr: Constants.commonText.attr,
-                    prop: Constants.commonText.target,
-                    value: Constants.elementsText.mdmfNavigationItemLogo.targetBlank
+                    attr: Constants.commonConstantsData.commonAttributes.attr,
+                    prop: Constants.commonConstantsData.commonAttributes.target,
+                    value: Constants.commonConstantsData.commonAngularAppsData.mdmfNavigationItemLogo.targetBlank
                 })
                 basePage.checkChildElementContainText(
                     baseSelectors.navigation,
                     baseSelectors.navigationItem,
-                    Constants.tabsNames.mdmfNavigationItemHome.name,
-                    Constants.tabsNames.mdmfNavigationItemHome.index
+                    Constants.commonConstantsData.home,
+                    Constants.commonConstantsData.commonIndexes.one
                 )
                 basePage.checkChildElementContainText(
                     baseSelectors.navigation,
                     baseSelectors.navigationItem,
-                    Constants.tabsNames.mdmfNavigationItemProfile.name,
-                    Constants.tabsNames.mdmfNavigationItemProfile.index
+                    Constants.commonConstantsData.commonAngularAppsData.mdmfNavigationItems.profile,
+                    Constants.commonConstantsData.commonIndexes.two
                 )
                 basePage.checkChildElementContainText(
                     baseSelectors.navigation,
                     baseSelectors.navigationItem,
-                    Constants.tabsNames.mdmfNavigationItemProduct.name,
-                    Constants.tabsNames.mdmfNavigationItemProduct.index
+                    Constants.commonConstantsData.commonAngularAppsData.mdmfNavigationItems.product,
+                    Constants.commonConstantsData.commonIndexes.three
                 )
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.h2,
@@ -104,10 +104,10 @@ appsData.forEach(
                         quantity: 3
                     })
                     basePage.checkElementExist({
-                        selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.nameField)
+                        selector: fields.commonField.replace('{fieldName}', Constants.selectorParts.formFieldNames.nameField)
                     })
                     basePage.checkElementExist({
-                        selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.emailField)
+                        selector: fields.commonField.replace('{fieldName}', Constants.selectorParts.formFieldNames.emailField)
                     })
                     basePage.checkElementExist({
                         selector: buttons.buttonPrimary
@@ -140,20 +140,20 @@ appsData.forEach(
                 basePage.checkChildElementContainText(
                     baseSelectors.table,
                     baseSelectors.tableHeader,
-                    Constants.elementsText.mdmfTableRowName.name,
-                    Constants.elementsText.mdmfTableRowName.index
+                    Constants.commonConstantsData.commonAngularAppsData.mdmfTableRowName,
+                    Constants.commonConstantsData.commonIndexes.zero
                 )
                 basePage.checkChildElementContainText(
                     baseSelectors.table,
                     baseSelectors.tableHeader,
-                    Constants.elementsText.mdmfTableRowEmail.name,
-                    Constants.elementsText.mdmfTableRowEmail.index
+                    Constants.commonConstantsData.commonAngularAppsData.mdmfTableRowEmail,
+                    Constants.commonConstantsData.commonIndexes.one
                 )
                 basePage.checkChildElementContainText(
                     baseSelectors.table,
                     baseSelectors.tableHeader,
-                    Constants.elementsText.mdmfTableRowAction.name,
-                    Constants.elementsText.mdmfTableRowAction.index
+                    Constants.commonConstantsData.commonAngularAppsData.mdmfTableRowAction,
+                    Constants.commonConstantsData.commonIndexes.two
                 )
             })
         })
@@ -162,13 +162,13 @@ appsData.forEach(
 
 describe('Check Apps functionality', () => {
     beforeEach(() => {
-        basePage.openLocalhost(4200, Constants.elementsText.mdmfProfile.path)
+        basePage.openLocalhost(4200, Constants.commonConstantsData.commonAngularAppsData.mdmfProfile.path)
     })
 
     it('Check added user visible on both Apps', () => {
         basePage.addUser(
-            Constants.commonPhrases.name.text,
-            Constants.commonPhrases.email.text
+            Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+            Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
         )
         basePage.checkElementExist({
             selector: baseSelectors.table
@@ -184,21 +184,21 @@ describe('Check Apps functionality', () => {
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.name.text,
-            Constants.commonPhrases.name.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+            Constants.commonConstantsData.commonIndexes.zero,
         )
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.email.text,
-            Constants.commonPhrases.email.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
+            Constants.commonConstantsData.commonIndexes.one,
         )
         basePage.checkElementExist({
             selector: buttons.buttonDanger
         })
         basePage.clickElementWithText({
             selector: baseSelectors.navigationItem,
-            text: Constants.tabsNames.mdmfNavigationItemHome.name
+            text: Constants.commonConstantsData.home
         })
         basePage.checkElementExist({
             selector: baseSelectors.table
@@ -214,14 +214,14 @@ describe('Check Apps functionality', () => {
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.name.text,
-            Constants.commonPhrases.name.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+            Constants.commonConstantsData.commonIndexes.zero,
         )
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.email.text,
-            Constants.commonPhrases.email.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
+            Constants.commonConstantsData.commonIndexes.one,
         )
         basePage.checkElementExist({
             selector: buttons.buttonDanger
@@ -230,8 +230,8 @@ describe('Check Apps functionality', () => {
 
     it('Check removing user from table (Remove form Profile)', () => {
         basePage.addUser(
-            Constants.commonPhrases.name.text,
-            Constants.commonPhrases.email.text
+            Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+            Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
         )
         basePage.clickElementBySelector({
             selector: buttons.buttonDanger
@@ -254,7 +254,7 @@ describe('Check Apps functionality', () => {
         })
         basePage.clickElementWithText({
             selector: baseSelectors.navigationItem,
-            text: Constants.tabsNames.mdmfNavigationItemHome.name
+            text: Constants.commonConstantsData.home
         })
         basePage.checkElementExist({
             selector: buttons.buttonDanger,
@@ -276,12 +276,12 @@ describe('Check Apps functionality', () => {
 
     it('Check removing user from table (Remove form Shell)', () => {
         basePage.addUser(
-            Constants.commonPhrases.name.text,
-            Constants.commonPhrases.email.text
+            Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+            Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
         )
         basePage.clickElementWithText({
             selector: baseSelectors.navigationItem,
-            text: Constants.tabsNames.mdmfNavigationItemHome.name
+            text: Constants.commonConstantsData.home
         })
         basePage.clickElementBySelector({
             selector: buttons.buttonDanger
@@ -304,7 +304,7 @@ describe('Check Apps functionality', () => {
         })
         basePage.clickElementWithText({
             selector: baseSelectors.navigationItem,
-            text: Constants.tabsNames.mdmfNavigationItemProfile.name
+            text: Constants.commonConstantsData.commonAngularAppsData.mdmfNavigationItems.profile,
         })
         basePage.checkElementExist({
             selector: buttons.buttonDanger,
@@ -326,36 +326,36 @@ describe('Check Apps functionality', () => {
 
     it('Check adding two users and delete one of them (Remove form Profile)', () => {
         basePage.addUser(
-            Constants.commonPhrases.name.text,
-            Constants.commonPhrases.email.text
+            Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+            Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
         )
         basePage.addUser(
-            Constants.commonPhrases.secondName.text,
-            Constants.commonPhrases.secondEmail.text
+            Constants.commonConstantsData.commonAngularAppsData.messages.testName.second,
+            Constants.commonConstantsData.commonAngularAppsData.messages.email.second,
         )
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.name.text,
-            Constants.commonPhrases.name.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+            Constants.commonConstantsData.commonIndexes.zero,
         )
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.email.text,
-            Constants.commonPhrases.email.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
+            Constants.commonConstantsData.commonIndexes.one,
         )
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.secondName.text,
-            Constants.commonPhrases.secondName.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.testName.second,
+            Constants.commonConstantsData.commonIndexes.three,
         )
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.secondEmail.text,
-            Constants.commonPhrases.secondEmail.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.email.second,
+            Constants.commonConstantsData.commonIndexes.four,
         )
         basePage.clickElementBySelector({
             selector: buttons.buttonDanger,
@@ -364,14 +364,14 @@ describe('Check Apps functionality', () => {
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.name.text,
-            Constants.commonPhrases.name.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+            Constants.commonConstantsData.commonIndexes.zero,
         )
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.email.text,
-            Constants.commonPhrases.email.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
+            Constants.commonConstantsData.commonIndexes.one,
         )
         basePage.checkElementQuantity({
             selector: baseSelectors.tableDataCell,
@@ -379,19 +379,19 @@ describe('Check Apps functionality', () => {
         })
         basePage.clickElementWithText({
             selector: baseSelectors.navigationItem,
-            text: Constants.tabsNames.mdmfNavigationItemHome.name
+            text: Constants.commonConstantsData.home
         })
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.name.text,
-            Constants.commonPhrases.name.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+            Constants.commonConstantsData.commonIndexes.zero,
         )
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.email.text,
-            Constants.commonPhrases.email.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
+            Constants.commonConstantsData.commonIndexes.one,
         )
         basePage.checkElementQuantity({
             selector: baseSelectors.tableDataCell,
@@ -401,40 +401,40 @@ describe('Check Apps functionality', () => {
 
     it('Check adding two users and delete one of them (Remove form Shell)', () => {
         basePage.addUser(
-            Constants.commonPhrases.name.text,
-            Constants.commonPhrases.email.text
+            Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+            Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
         )
         basePage.addUser(
-            Constants.commonPhrases.secondName.text,
-            Constants.commonPhrases.secondEmail.text
+            Constants.commonConstantsData.commonAngularAppsData.messages.testName.second,
+            Constants.commonConstantsData.commonAngularAppsData.messages.email.second,
         )
         basePage.clickElementWithText({
             selector: baseSelectors.navigationItem,
-            text: Constants.tabsNames.mdmfNavigationItemHome.name
+            text: Constants.commonConstantsData.home
         })
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.name.text,
-            Constants.commonPhrases.name.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+            Constants.commonConstantsData.commonIndexes.zero,
         )
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.email.text,
-            Constants.commonPhrases.email.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
+            Constants.commonConstantsData.commonIndexes.one,
         )
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.secondName.text,
-            Constants.commonPhrases.secondName.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.testName.second,
+            Constants.commonConstantsData.commonIndexes.three,
         )
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.secondEmail.text,
-            Constants.commonPhrases.secondEmail.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.email.second,
+            Constants.commonConstantsData.commonIndexes.four,
         )
         basePage.clickElementBySelector({
             selector: buttons.buttonDanger,
@@ -443,14 +443,14 @@ describe('Check Apps functionality', () => {
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.name.text,
-            Constants.commonPhrases.name.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+            Constants.commonConstantsData.commonIndexes.zero,
         )
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.email.text,
-            Constants.commonPhrases.email.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
+            Constants.commonConstantsData.commonIndexes.one,
         )
         basePage.checkElementQuantity({
             selector: baseSelectors.tableDataCell,
@@ -458,19 +458,19 @@ describe('Check Apps functionality', () => {
         })
         basePage.clickElementWithText({
             selector: baseSelectors.navigationItem,
-            text: Constants.tabsNames.mdmfNavigationItemProfile.name
+            text: Constants.commonConstantsData.commonAngularAppsData.mdmfNavigationItems.profile,
         })
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.name.text,
-            Constants.commonPhrases.name.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+            Constants.commonConstantsData.commonIndexes.zero,
         )
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.email.text,
-            Constants.commonPhrases.email.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
+            Constants.commonConstantsData.commonIndexes.one,
         )
         basePage.checkElementQuantity({
             selector: baseSelectors.tableDataCell,
@@ -480,10 +480,10 @@ describe('Check Apps functionality', () => {
 
     it('Check fileds validation', () => {
         basePage.clickElementBySelector({
-            selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.nameField)
+            selector: fields.commonField.replace('{fieldName}', Constants.selectorParts.formFieldNames.nameField)
         })
         basePage.clickElementBySelector({
-            selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.emailField)
+            selector: fields.commonField.replace('{fieldName}', Constants.selectorParts.formFieldNames.emailField)
         })
         basePage.clickElementBySelector({
             selector: buttons.buttonPrimary,
@@ -494,11 +494,11 @@ describe('Check Apps functionality', () => {
         })
         basePage.checkElementWithTextPresence({
             selector: alertMessages.angularAlertMessage,
-            text: Constants.commonPhrases.nameIsRequired
+            text: Constants.commonConstantsData.commonAngularAppsData.messages.requiresMessages.name,
         })
         basePage.checkElementWithTextPresence({
             selector: alertMessages.angularAlertMessage,
-            text: Constants.commonPhrases.emailIsRequired
+            text: Constants.commonConstantsData.commonAngularAppsData.messages.requiresMessages.email,
         })
     })
 })
@@ -513,11 +513,11 @@ describe('Check Product Application', () => {
     it('Check App build and running', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.h2,
-            text: Constants.elementsText.mdfmProductHeader
+            text: Constants.elementsText.differentAngularVersionsApps.mdmfProductHeader
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.paragraph,
-            text: Constants.commonPhrases.mdmfProductParagraph
+            text: Constants.commonPhrases.differentAngularVersionsApps.productParagraph
         })
         productList.forEach((product) => {
             basePage.checkElementWithTextPresence({
@@ -528,9 +528,9 @@ describe('Check Product Application', () => {
                 selector: baseSelectors.divElement,
                 childSelector: baseSelectors.linkTag,
                 index: product.index,
-                text: Constants.commonPhrases.mdmfProductLinkText,
-                attr: Constants.commonText.attr,
-                prop: Constants.commonText.href,
+                text: Constants.commonPhrases.differentAngularVersionsApps.productLinkText,
+                attr: Constants.commonConstantsData.commonAttributes.attr,
+                prop: Constants.commonConstantsData.commonAttributes.href,
                 value: product.link
             })
         })
@@ -539,7 +539,7 @@ describe('Check Product Application', () => {
     it('Check Product page', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.divElement,
-            text: Constants.commonPhrases.commonLoadingText,
+            text: Constants.updatedConstantsData.updatedLoadingMessage,
             isVisible: false
         })
         productList.forEach((product) => {
@@ -547,11 +547,11 @@ describe('Check Product Application', () => {
                 selector: baseSelectors.divElement,
                 childSelector: baseSelectors.linkTag,
                 index: product.index,
-                text: Constants.commonPhrases.mdmfProductLinkText
+                text: Constants.commonPhrases.differentAngularVersionsApps.productLinkText
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.linkTag,
-                text: Constants.commonPhrases.mdmfBackLink
+                text: Constants.commonPhrases.differentAngularVersionsApps.backLink
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.h2,
@@ -576,13 +576,13 @@ describe('Check Product Application', () => {
             basePage.checkChildElementHaveProperty({
                 selector: baseSelectors.divElement,
                 childSelector: baseSelectors.image,
-                attr: Constants.commonText.attr,
-                prop: Constants.commonText.src,
+                attr: Constants.commonConstantsData.commonAttributes.attr,
+                prop: Constants.commonConstantsData.commonAttributes.src,
                 value: product.productImageLink
             })
             basePage.clickElementWithText({
                 selector: baseSelectors.linkTag,
-                text: Constants.commonPhrases.mdmfBackLink
+                text: Constants.commonPhrases.differentAngularVersionsApps.backLink
             })
         })
     })

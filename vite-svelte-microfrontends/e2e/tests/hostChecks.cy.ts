@@ -17,7 +17,7 @@ describe("It checks host app", () => {
         })
         basePage.checkElementWithTextPresence({
             selector: selectors.commonCardSelector,
-            text: Constants.elementsText.viteReactMicroFrontendsCardsMessages.hostCard,
+            text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.hostCard,
             visibilityState: 'be.visible'
         })
         basePage.checkElementQuantity({
@@ -27,7 +27,7 @@ describe("It checks host app", () => {
         })
         basePage.checkElementWithTextPresence({
             selector: selectors.commonCardSelector,
-            text: Constants.elementsText.viteReactMicroFrontendsCardsMessages.remoteCard,
+            text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.remoteCard,
             visibilityState: 'be.visible'
         })
     })
@@ -35,7 +35,7 @@ describe("It checks host app", () => {
     it('Checks host app card color is set to blue', () => {
         basePage.checkElementWithTextHaveProperty({
             selector: selectors.commonCardSelector,
-            text: Constants.elementsText.viteReactMicroFrontendsCardsMessages.hostCard,
+            text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.hostCard,
             prop: CssAttr.css,
             value: Constants.color.blue,
             checkType: 'contain'
@@ -50,7 +50,7 @@ describe("It checks host app", () => {
         })
         basePage.checkElementWithTextHaveProperty({
             selector: selectors.commonCardSelector,
-            text: Constants.elementsText.viteReactMicroFrontendsCardsMessages.remoteCard,
+            text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.remoteCard,
             prop: CssAttr.css,
             value: Constants.color.black,
             checkType: 'contain'
@@ -58,7 +58,7 @@ describe("It checks host app", () => {
     })
 
     it('Checks console messages', () => {
-        Constants.commonPhrases.viteSvelteMicroFrontEndsConsoleMessages.forEach((message: string) => {
+        Constants.commonPhrases.viteSvelteMicroFrontEndsApp.consoleMessages.forEach((message: string) => {
             basePage.checkInfoInConsole(message)
         })
     })

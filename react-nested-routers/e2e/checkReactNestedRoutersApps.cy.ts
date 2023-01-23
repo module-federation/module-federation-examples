@@ -6,15 +6,15 @@ const basePage: BaseMethods = new BaseMethods()
 
 const appsData = [
     {
-        appName: Constants.elementsText.reactNestedRoutersApp1,
-        page1: Constants.elementsText.reactNestedRoutersPage1App1,
-        page2: Constants.elementsText.reactNestedRoutersPage2App1,
+        appName: Constants.commonConstantsData.commonCountAppNames.app1,
+        page1: Constants.commonConstantsData.reactNestedRoutersPagesMessages.page1App1,
+        page2: Constants.commonConstantsData.reactNestedRoutersPagesMessages.page2App1,
         host: 8081
     },
     {
-        appName: Constants.elementsText.reactNestedRoutersApp2,
-        page1: Constants.elementsText.reactNestedRoutersPage1App2,
-        page2: Constants.elementsText.reactNestedRoutersPage2App2,
+        appName: Constants.commonConstantsData.commonCountAppNames.app2,
+        page1: Constants.commonConstantsData.reactNestedRoutersPagesMessages.page1App2,
+        page2: Constants.commonConstantsData.reactNestedRoutersPagesMessages.page2App2,
         host: 8082
     }
 ]
@@ -39,13 +39,13 @@ appsData.forEach((
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.linkTag,
-                text: `${Constants.elementsText.reactNestedRoutersGoToPage} ${2}`
+                text: Constants.updatedConstantsData.reactedNestedRoutersGoToPageMessage.page2,
             })
             basePage.checkElementHaveProperty({
                 selector: baseSelectors.linkTag,
-                attr: Constants.commonText.attr,
-                prop: Constants.commonText.href,
-                value: Constants.hrefs.reactNestedRoutersPage2
+                attr: Constants.commonConstantsData.commonAttributes.attr,
+                prop: Constants.commonConstantsData.commonAttributes.href,
+                value: Constants.commonConstantsData.commonLinks.page2
             })
         })
     
@@ -59,10 +59,10 @@ appsData.forEach((
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.linkTag,
-                text: `${Constants.elementsText.reactNestedRoutersGoToPage} ${1}`
+                text: Constants.updatedConstantsData.reactedNestedRoutersGoToPageMessage.page1,
             })
             basePage.checkUrlText(
-                Constants.hrefs.reactNestedRoutersPage2,
+                Constants.commonConstantsData.commonLinks.page2,
                 true
             )
         })
@@ -70,7 +70,7 @@ appsData.forEach((
 })
 
 describe('Check App 3', () => {
-    const navigation = Constants.elementsText.reactNestedRoutersNav
+    const navigation = Constants.elementsText.reactNestedRoutersNavApp
 
     beforeEach(() => {
         basePage.openLocalhost(8080)
@@ -89,8 +89,8 @@ describe('Check App 3', () => {
             basePage.checkElementWithTextHaveProperty({
                 selector: baseSelectors.linkTag,
                 text: navItem.name,
-                attr: Constants.commonText.attr,
-                prop: Constants.commonText.href,
+                attr: Constants.commonConstantsData.commonAttributes.attr,
+                prop: Constants.commonConstantsData.commonAttributes.href,
                 value: navItem.link
             })
         })
@@ -113,8 +113,8 @@ describe('Check App 3', () => {
             basePage.checkElementWithTextHaveProperty({
                 selector: baseSelectors.linkTag,
                 text: navItem.linkText,
-                attr: Constants.commonText.attr,
-                prop: Constants.commonText.href,
+                attr: Constants.commonConstantsData.commonAttributes.attr,
+                prop: Constants.commonConstantsData.commonAttributes.href,
                 value: navItem.linkRouting
             })
         })

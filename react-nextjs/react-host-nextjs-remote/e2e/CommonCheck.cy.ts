@@ -5,14 +5,14 @@ import {Constants} from "../../../cypress/fixtures/constants";
 const basePage: BaseMethods = new BaseMethods()
 const appsData = [
     {
-        appName: Constants.elementsText.reactHostNextJsRemoteHeader,
-        appNav: Constants.elementsText.reactHostNextJsRemoteNav,
+        appName: Constants.elementsText.reactHostNextJsApp.remoteComponents.header,
+        appNav: Constants.elementsText.reactHostNextJsApp.remoteComponents.nav,
         host: 8080,
-        appType: Constants.elementsText.dynamicSystemHostHeaderH2
+        appType: Constants.commonConstantsData.basicComponents.host
     },
     {
         host:8081,
-        appType: Constants.elementsText.dynamicSystemRemoteHeaderH2
+        appType: Constants.commonConstantsData.basicComponents.host
     }
 ]
 

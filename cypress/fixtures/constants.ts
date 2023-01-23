@@ -1,78 +1,252 @@
 export class Constants {
-    public static readonly samplesPath = {
-        AdvancedApiAutomaticVendorSharing: 'advanced-api/automatic-vendor-sharing/',
-        vue3DemoFederationWithVite: 'vue3-demo-federation-with-vite/',
-        i18nextNextjsReact: 'i18next-nextjs-react',
-        vue3CliDemo: 'vue3-cli-demo/',
-        nested: 'nested',
-        nextjsReact: 'nextjs-react',
+    public static readonly filesPath = {
         typeScriptMonoRepoPackageJsonPath: 'typescript-monorepo/package.json',
-        selfHealingApp1WebpackConfigPath: 'self-healing/app1/webpack.config.js',
-        selfHealingApp2WebpackConfigPath: 'self-healing/app2/webpack.config.js',
-        nextjsSsr: 'nextjs-ssr',
+        selfHealingAppsConfigs: {
+            app1: 'self-healing/app1/webpack.config.js',
+            app2: 'self-healing/app2/webpack.config.js',
+        },
+        serverSideRenderOnlyChangeFilePath: 'server-side-render-only/remoteServer/SharedComponent.js',
     }
 
-    public static readonly vueAppButtonTypes = {
-        viteType: 'vite',
-        webpackType: 'webpack'
+    public static readonly selectorParts = {
+        vue3DemoFederationWithViteApp : {
+            vite: 'vite',
+            webpack: 'webpack'
+        },
+        sharedRoutingAppReplaceSelectorPart: 'RECENT_',
+        formFieldNames: {
+            nameField: 'NAME',
+            emailField: 'EMAIL'
+        },
+        sharedRoutingAppSelectorsParts: {
+            chart: 'Chart',
+            recentDeposits: 'Recent_deposits',
+            recentOrders: 'Recent_orders',
+            editProfile: 'Edit_profile',
+            userInfo: 'User_info',
+            cardProfile: 'Card_profile',
+        },
+    }
+
+    public static readonly commonConstantsData = {
+       commonCountAppNames: {
+            app1 : 'App 1',
+            app2: 'App 2',
+            app3: 'App 3'
+        },
+        button: 'Button',
+        widget: 'Widget',
+        home: 'Home',
+        commonIndexes: {
+           minusOne: -1,
+           zero: 0,
+           one: 1,
+           two: 2,
+           three: 3,
+           four: 4,
+           five: 5,
+           ten: 10,
+           eleven: 11
+        },
+        basicComponents: {
+           host: 'Host',
+           remote: 'Remote',
+           basicHostRemote: 'Basic Host-Remote'
+        },
+        commonButtonWithEmoji: '💅 Button',
+        loading: 'Loading',
+        biDirectional: 'Bi-Directional',
+        sharedRoutingAppPagesComponents: {
+            dashboard: 'Dashboard',
+            orders: 'Orders',
+            profile: 'Profile'
+        },
+        standardPhrase: 'May The Force Be With You',
+        reactNestedRoutersGoToPage: 'Go to Page',
+        reactNestedRoutersPagesMessages: {
+           page1App1: 'Page 1 from App1',
+           page1App2: 'Page 1 from App2',
+           page2App1: 'Page 2 from App1',
+           page2App2: 'Page 2 from App2'
+        },
+        commonLinks: {
+           page1: '/page-1',
+           page2:  '/page-2',
+           baseLink: '/' ,
+           cellLink: '#/',
+        },
+        typeScript: 'typescript',
+        commonMicroFrontendsAppsCardsSymbolsNames: {
+            starSymbol: 'star',
+            cloudSymbol: 'cloud'
+        },
+        commonAttributes: {
+            attr: 'attr',
+            href: 'href',
+            target: 'target',
+            src: 'src',
+            style: 'style',
+            border: 'border',
+            displayNone: 'display: none;',
+        },
+        translationInfo: {
+           reactAppsTranslations: {
+               reactTypes: {
+                   host: 'React Host :',
+                   remote: 'React Remote :'
+               },
+               remoteMicroFrontEndIntroduction: {
+                   english: 'Here\'s my micro frontend remote child :',
+                   francais: 'Voici mon micro frontend remote child :',
+               },
+               changeLanguageMessage: {
+                   english: 'change language',
+                   francais: 'changer la langue'
+               },
+               mainTextMessage: 'This is the main text',
+               fromNextHostMessage: 'from Next Host',
+           }
+        },
+        commonAngularAppsData: {
+            mdmfShellName: 'MDMF SHELL',
+            mdmfProfile: { name: 'MDMF PROFILE', path: 'profile' },
+            mdmfNavigationItemLogo: { link: 'http://mellondev.net', gitHubLink: 'https://github.com/pegaltier/', targetBlank: '_blank' },
+            headers: {
+                shell: 'Microfrontend Shell',
+                profile: 'Profile (Microfrontend)',
+                table: 'List users from the shared application state',
+            },
+            mdmfTableRowName: 'Name',
+            mdmfTableRowEmail: 'Email',
+            mdmfTableRowAction: 'Action',
+            mdmfNavigationItems: {
+                profile: 'Profile',
+                product: 'Product'
+            },
+            messages: {
+                shellWelcome: 'Welcome to the Angular 11 Microfrontend demo using Webpack 5 Module Federation',
+                shellParagraph: 'This component is part of the shell application, the Profile component that is linked from the `Profile` link at the top is a Microfrontend that is remotely loaded into the application. Check the network settings to see the remote being loaded.',
+                profileParagraph: 'This profile component is being remotely loaded into the application using Module Federation, angular is shared so the download is minimal for the frontend',
+                sharedParagraph: 'mdmf-shared works!',
+                testName: {
+                    first: 'Test Name',
+                    second: 'Test Name Second'
+                },
+                email: {
+                    first: 'test@test.com',
+                    second: 'testSecond@test.com'
+                },
+                requiresMessages: {
+                    name: 'Name is required.',
+                    email: 'Email is required.',
+                }
+            }
+        },
+        helloWorldMessage: 'Hello World',
+        commonVueAppComponentState: 'Remote Component in Action..',
+    }
+
+    public static readonly updatedConstantsData = {
+        commonAppWithButton: {
+            app1: `${Constants.commonConstantsData.commonCountAppNames.app1} ${Constants.commonConstantsData.button}`,
+            app2: `${Constants.commonConstantsData.commonCountAppNames.app2} ${Constants.commonConstantsData.button}`,
+            app3: `${Constants.commonConstantsData.commonCountAppNames.app3} ${Constants.commonConstantsData.button}`,
+        },
+        commonAppWithWidget: {
+            app1: `${Constants.commonConstantsData.commonCountAppNames.app1} ${Constants.commonConstantsData.widget}`,
+            app2: `${Constants.commonConstantsData.commonCountAppNames.app2} ${Constants.commonConstantsData.widget}`,
+            app3: `${Constants.commonConstantsData.commonCountAppNames.app3} ${Constants.commonConstantsData.widget}`,
+        },
+        reactedNestedRoutersGoToPageMessage: {
+            page1: `${Constants.commonConstantsData.reactNestedRoutersGoToPage} ${Constants.commonConstantsData.commonIndexes.one}`,
+            page2: `${Constants.commonConstantsData.reactNestedRoutersGoToPage} ${Constants.commonConstantsData.commonIndexes.two}`
+        },
+        updatedLoadingMessage: `${Constants.commonConstantsData.loading}...`,
+        baseSvelteIntroMessage: `Hello From Svelte ${Constants.commonConstantsData.standardPhrase}!`,
+        reactAppsTranslations: {
+            host: {
+                english: {
+                    title: `${Constants.commonConstantsData.translationInfo.reactAppsTranslations.reactTypes.host} ${Constants.commonConstantsData.translationInfo.reactAppsTranslations.remoteMicroFrontEndIntroduction.english}`,
+                    button: `${Constants.commonConstantsData.translationInfo.reactAppsTranslations.reactTypes.host} ${Constants.commonConstantsData.translationInfo.reactAppsTranslations.changeLanguageMessage.english}`,
+                    text: `${Constants.commonConstantsData.translationInfo.reactAppsTranslations.reactTypes.host} ${Constants.commonConstantsData.translationInfo.reactAppsTranslations.mainTextMessage}`,
+                },
+                francais: {
+                    title: `${Constants.commonConstantsData.translationInfo.reactAppsTranslations.reactTypes.host} ${Constants.commonConstantsData.translationInfo.reactAppsTranslations.remoteMicroFrontEndIntroduction.francais}`,
+                    button: `${Constants.commonConstantsData.translationInfo.reactAppsTranslations.reactTypes.host} ${Constants.commonConstantsData.translationInfo.reactAppsTranslations.changeLanguageMessage.francais}`,
+                    text: `${Constants.commonConstantsData.translationInfo.reactAppsTranslations.reactTypes.host} Ceci est le texte principal`,
+                }
+            },
+            remote: {
+                english: {
+                    title: `${Constants.commonConstantsData.translationInfo.reactAppsTranslations.reactTypes.remote} Title`,
+                    button: `${Constants.commonConstantsData.translationInfo.reactAppsTranslations.reactTypes.remote} ${Constants.commonConstantsData.translationInfo.reactAppsTranslations.changeLanguageMessage.english}`,
+                    text: `${Constants.commonConstantsData.translationInfo.reactAppsTranslations.reactTypes.remote} I\'m the remote child !`,
+                },
+                francais: {
+                    title: `${Constants.commonConstantsData.translationInfo.reactAppsTranslations.reactTypes.remote} Titre`,
+                    button: `${Constants.commonConstantsData.translationInfo.reactAppsTranslations.reactTypes.remote} ${Constants.commonConstantsData.translationInfo.reactAppsTranslations.changeLanguageMessage.francais}`,
+                    text: `${Constants.commonConstantsData.translationInfo.reactAppsTranslations.reactTypes.remote} Je suis le remote child`,
+                }
+            },
+            nextHost: {
+                english: {
+                    title: Constants.commonConstantsData.translationInfo.reactAppsTranslations.remoteMicroFrontEndIntroduction.english,
+                    button: `${Constants.commonConstantsData.translationInfo.reactAppsTranslations.changeLanguageMessage.english} ${Constants.commonConstantsData.translationInfo.reactAppsTranslations.fromNextHostMessage}`,
+                    text: `${Constants.commonConstantsData.translationInfo.reactAppsTranslations.mainTextMessage} ${Constants.commonConstantsData.translationInfo.reactAppsTranslations.fromNextHostMessage.replace('from', 'of')}`,
+                },
+                francais: {
+                    title: Constants.commonConstantsData.translationInfo.reactAppsTranslations.remoteMicroFrontEndIntroduction.francais,
+                    button: `${Constants.commonConstantsData.translationInfo.reactAppsTranslations.changeLanguageMessage.francais} depuis ${Constants.commonConstantsData.translationInfo.reactAppsTranslations.fromNextHostMessage}`,
+                    text:`Ceci est le texte principal ${Constants.commonConstantsData.translationInfo.reactAppsTranslations.fromNextHostMessage.replace('from', 'de')}`
+                }
+            }
+        },
     }
 
     public static readonly elementsText = {
-        commonButtonWithEmoji: '💅 Button',
-        viteContent: 'Vite Content',
-        webpackContent: 'Webpack Content',
-        automaticVendorContent: 'Bi-Directional',
-        automaticVendorFirstAppName: 'App 1',
-        automaticVendorSecondAppName: 'App 2',
-        dynamicRemotesHeader: 'Dynamic System Host',
-        dynamicRemotesFirstAppName: 'App 1',
-        dynamicRemotesSecondAppName: 'App 2',
-        dynamicRemotesThirdAppName: 'App 3',
-        dynamicRemotesButtonsText: [
-            'Load App 2 Widget',
-            'Load App 3 Widget',
-        ],
-        dynamicRemotesWidgetName: [
-            'App 2 Widget',
-            'App 3 Widget'
-        ],
-        dynamicRemotesSynchronousImportWidgetName: [
-            'App 1 Widget',
-            'App 2 Widget'
-        ],
-        basicHostRemoteFirstAppName: 'App 1',
-        basicHostRemoteSecondAppName: 'App 2',
-        basicHostRemoteHeader: 'Basic Host-Remote',
-        basicHostRemoteButton: 'App 2 Button',
-        dispatchRemoteAppNewNameButton: 'Dispatch RemoteApp new name',
-        dispatchRemoteAppNewNameInput: 'test input',
-        nestedApp3Button: 'App 3 Button',
-        nestedApp2Container: 'App 2 Container',
-        nesterApp1Text: 'app 1 body',
-        vue2AppButtonText: 'vue2 button click',
-        mdmfShell: { name: 'MDMF SHELL', path: 'home' },
-        mdmfProfile: { name: 'MDMF PROFILE', path: 'profile' },
-        mdmfNavigationItemLogo: { link: 'http://mellondev.net', gitHubLink: 'https://github.com/pegaltier/', targetBlank: '_blank', index: 1 },
-        mdfmShellHeader: 'Microfrontend Shell',
-        mdfmProfileHeader: 'Profile (Microfrontend)',
-        mdfmProductHeader: 'Product (Microfrontend)',
-        mdmfSharedHeader: 'Component from shared module',
-        mdmfAppTableHeader: 'List users from the shared application state',
-        mdmfTableRowName: { name: 'Name', index: 0 },
-        mdmfTableRowEmail: { name: 'Email', index: 1},
-        mdmfTableRowAction: { name: 'Action', index: 2},
-        commonExposedButtonText: 'App 2 Button',
-        diferentReactVersionsHeader: 'Basic Host-Remote',
-        diferentReactVersionsApp1Subheader: 'App 1, Uses react version not compatible with hooks',
-        diferentReactVersionsApp2Subheader: 'App2',
-        diferentReactVersionsApp1ReactBlockParagraph: 'This Component uses hooks, if loaded on localhost:3001, it should work, even though that host does not support React Hooks',
-        diferentReactVersionsApp1ReactBlockHeader: 'Text form legacy React app:',
-        diferentReactVersionsApp1ReactBlockSubheader: 'And these are children passed into it from the legacy app',
-        diferentReactVersionsParagraph: 'More react components from App2 using non-legacy React to render',
-        diferentReactVersionsButtonName: 'App 2 Button',
-        comprehensiveDemo: {
+        vue3DemoFederationWithViteApp : {
+            viteContent: 'Vite Content',
+            webpackContent: 'Webpack Content',
+        },
+        dynamicRemotesApp: {
+            header: 'Dynamic System Host',
+            buttonsText: [
+                'Load App 2 Widget',
+                'Load App 3 Widget',
+            ],
+            widgetsNames: [
+                Constants.updatedConstantsData.commonAppWithWidget.app2,
+                Constants.updatedConstantsData.commonAppWithWidget.app3,
+            ],
+            synchronousImportWidgetsNames: [
+                Constants.updatedConstantsData.commonAppWithWidget.app1,
+                Constants.updatedConstantsData.commonAppWithWidget.app2,
+            ],
+        },
+        dispatchRemoteApp: {
+            button: 'Dispatch RemoteApp new name',
+            input: 'test input',
+        },
+        nestedApp: {
+            app1Text: 'app 1 body',
+            app2Container: 'App 2 Container',
+        },
+        vue2InVue3App: {
+            commonButtonText: 'vue2 button click',
+        },
+        differentAngularVersionsApps: {
+            mdmfProductHeader: 'Product (Microfrontend)',
+            mdmfSharedHeader: 'Component from shared module',
+        },
+        differentReactVersionsApps: {
+            subheader: 'App 1, Uses react version not compatible with hooks',
+            reactBlockParagraph: 'This Component uses hooks, if loaded on localhost:3001, it should work, even though that host does not support React Hooks',
+            reactBlockHeader: 'Text form legacy React app:',
+            reactBlockSubheader: 'And these are children passed into it from the legacy app',
+            paragraph: 'More react components from App2 using non-legacy React to render',
+        },
+        comprehensiveDemoApp: {
             alertMessage: 'You have pressed a button.',
-
             App1: {
                 mainPage: {
                     alertMessage: 'Alert from LitElement',
@@ -96,7 +270,6 @@ export class Constants {
                 },
                 svelte: {
                     headerText: 'Svelte Demo',
-                    updatedText: 'Hello From Svelte May The Force Be With You!'
                 },
                 routing: {
                     headerText: 'Routing Demo',
@@ -108,7 +281,6 @@ export class Constants {
                     }
                 },
                 sideNavHeaderText: 'SideNav'
-
             },
             App2: {
                 headerText: 'Material UI App',
@@ -141,299 +313,327 @@ export class Constants {
                 buttonText: 'bar',
                 alertText: 'Hello'
             },
-
             comprehensiveDemoDemoPages: [
-                { name: 'Main', link: '#/', index: 0},
-                { name: 'UI Library', link: '#/ui-library', index: 1},
-                { name: 'Dialog', link: '#/dialog', index: 2},
-                { name: 'Svelte Page', link: '#/svelte', index: 3},
-                { name: 'Routing', link: '#/routing/foo', index: 4},
-            ],
-            comprehensiveDemoAppsList: [
-                { name: 'App #1', link: 'http://localhost:3001', index: 5},
-                { name: 'App #2', link: 'http://localhost:3002', index: 6},
-                { name: 'App #3', link: 'http://localhost:3003', index: 7},
-                { name: 'App #4', link: 'http://localhost:3004', index: 8},
-                { name: 'App #5', link: 'http://localhost:3005', index: 9},
+                { name: 'Main', link: Constants.commonConstantsData.commonLinks.cellLink, index: Constants.commonConstantsData.commonIndexes.zero },
+                { name: 'UI Library', link: '#/ui-library', index: Constants.commonConstantsData.commonIndexes.one},
+                { name: 'Dialog', link: '#/dialog', index: Constants.commonConstantsData.commonIndexes.two },
+                { name: 'Svelte Page', link: '#/svelte', index: Constants.commonConstantsData.commonIndexes.three },
+                { name: 'Routing', link: '#/routing/foo', index: Constants.commonConstantsData.commonIndexes.four },
             ],
         },
-        angularReactShellHeader: 'Profile (Angular Shell)',
-        angularReactShellSubHeader: 'User List (React Microfrontend)',
-        angularReactShellParagraph: 'This user list component is being remotely loaded into the application from React App using Webpack Module Federation',
-        angularReactShellEmptyTable: '----- Create user to see data here -----',
-        angularReactShellCreateUserButton: 'Create User',
-        angularReactShellRemoveUserButton: 'Remove User',
-        craHeader: 'Basic Host-Remote',
-        craHostParagraph: 'Host',
-        craRemoteParagraph: 'Remote',
-        craButtontext: 'Hello from remote',
-        biDirectionalHeader: 'Bi-Directional',
-        biDirectionalButton1: 'App 1 Button',
-        biDirectionalButton2: 'App 2 Button',
-        competeReactCaseHeader: 'Open Dev Tool And Focus On Network,checkout resources details',
-        competeReactCaseFirstParagraph: 'lib-app',
-        competeReactCaseSecondParagraph: 'component-app',
-        primaryButton: 'primary',
-        warningButton: 'warning',
-        clickToOpenDialogButton: 'click me to open Dialog',
-        h4Buttons: 'Buttons:',
-        h4Dialog: 'Dialog:',
-        h4HoverMePlease: 'hover me please',
-        compeateReactCaseWhatIsYourName: 'What is your name ?',
-        closeItButton: 'close It!',
-        differentReactIsolatedHeaderApp1: 'Host Application - React Version 17.0.2',
-        differentReactIsolatedApp1Name: 'App 1',
-        differentReactIsolatedHeaderApp2: 'Remote Application - React Version 16.14.0',
-        differentReactIsolatedApp2Name: 'App 2',
-        differentReactIsolatedApp2ButtonName: 'App 2 Button',
-        serverSideRenderOnlyHeaderHost: 'Host Server',
-        serverSideRenderOnlyHeaderRemote: 'Remote Server',
-        serverSideRenderOnlySharedComponent: 'Shared Component2222',
-        serverSideRenderOnlyUpdatedSharedComponent: 'Updated Shared conponent in test',
-        serverSideRenderOnlyChangeFilePath: 'server-side-render-only/remoteServer/SharedComponent.js',
-        serverSideRenderOnlyChangeContent: 'import React from \'react\';\n\nconst SharedComponent = () => <div>Updated Shared conponent in test</div>;\n\nexport default SharedComponent;\n',
-        serverSideRenderOnlyOriginalContent: 'import React from \'react\';\n\nconst SharedComponent = () => <div>Shared Component2222</div>;\n\nexport default SharedComponent;\n',
-        nextjsSsrHome: 'Home',
-        nextjsSsrShop: 'Shop',
-        nextjsSsrCheckout: 'Checkout',
-        nextjsSsrZeitText: 'ZEIT',
-        nextjsSsrGiHubText: 'GitHub',
-        nextjsSsrCheckoutPage: 'checkout page',
-        helloWorldMessage: 'Hello World',
-        nextjsSsrMainWelcome: 'Welcome to Next.js on Webpack 5! ',
-        nextjsSsrMainCheckoutText: 'This is a federated page owned by localhost:3000',
-        nextjsSsrText1: 'Data from federated ',
-        nextjsSsrText2: 'getInitalProps',
-        nextjsSsrText3: 'This came fom checkout !!!',
-        nextjsSsrText4: 'And it works like a charm v2',
-        nextjsSsrText5: 'To get started, edit pages/index.js and save to reload.',
-        nextjsSsrShopPage: 'Shop Page',
-        nextjsSsrMainShopText: 'This is a federated page owned by localhost:3002',
-        nextjsSsrDocumentationTile: 'Documentation →',
-        nextjsSsrLearnTile: 'Next.js Learn →',
-        nextjsSsrExamplesTile: 'Examples →',
-        nextjsSsrJSON: '{\n  "userId": 1,\n  "id": 1,\n  "title": "delectus aut autem",\n  "completed": false\n}',
-        sharedStoreCrossFrameworkShellPageMark: 'Shell',
-        sharedRoutingAppEditProfileBlockInfo: {
-            editProfile: 'Edit Profile',
-            completeProfile: 'Complete your profile',
+        angularReactShellApp: {
+            header: 'Profile (Angular Shell)',
+            subHeader: 'User List (React Microfrontend)',
+            paragraph: 'This user list component is being remotely loaded into the application from React App using Webpack Module Federation',
+            emptyTableState: '----- Create user to see data here -----',
+            userActions: {
+                create: 'Create User',
+                remove: 'Remove User',
+            }
         },
-        sharedRoutingAppChartInfo: {
-            today: 'Today',
-            sales: 'Sales ($)'
+        craApp: {
+            buttonText: 'Hello from remote',
         },
-        sharedRoutingAppHorizontalChartMarks: [
-            '00:00',
-            '03:00',
-            '06:00',
-            '09:00',
-            '12:00',
-            '15:00',
-            '18:00',
-            '21:00',
-            '24:00',
-        ],
-        sharedRoutingAppVerticalChartMarks: [
-            '0',
-            '600',
-            '1200',
-            '1800',
-            '2400',
-        ],
-        sharedRoutingAppSelectorsParts: {
-            chart: 'Chart',
-            recentDeposits: 'Recent_deposits',
-            recentOrders: 'Recent_orders',
-            editProfile: 'Edit_profile',
-            userInfo: 'User_info',
-            cardProfile: 'Card_profile',
+        completeReactCaseApp: {
+            header: 'Open Dev Tool And Focus On Network,checkout resources details',
+            paragraphs: {
+                firstParagraph: 'lib-app',
+                secondParagraph: 'component-app',
+            },
+            buttons: {
+               primaryButton: 'primary',
+               warningButton: 'warning',
+               openDialogButton: 'click me to open Dialog',
+               h4Buttons: 'Buttons:',
+               closeButton: 'close It!',
+            },
+            h4Dialog: 'Dialog:',
+            h4HoverElement: 'hover me please',
+            nameMessage: 'What is your name ?',
         },
-        sharedRoutingAppButtonTexts: {
-            viewBalance: 'View balance',
-            updateProfile: 'Update Profile',
-            follow: 'Follow',
-            seeMoreOrders: 'See more orders',
+        differentReactVersionsIsolatedApp: {
+            headers: {
+               app1: 'Host Application - React Version 17.0.2',
+               app2:  'Remote Application - React Version 16.14.0',
+            }
         },
-        sharedRoutingAppPageHeaders: {
-            dashboard: 'Dashboard',
-            orders: 'Orders',
-            profile: 'Profile'
+        serverSideRenderOnlyApp: {
+            headers: {
+                host: 'Host Server',
+                remote: 'Remote Server',
+            },
+            components: {
+                sharedComponent: 'Shared Component2222',
+                updatedSharedComponent: 'Updated Shared conponent in test',
+            },
+            contents: {
+                originalContent: 'import React from \'react\';\n\nconst SharedComponent = () => <div>Shared Component2222</div>;\n\nexport default SharedComponent;\n',
+                changedContent: 'import React from \'react\';\n\nconst SharedComponent = () => <div>Updated Shared conponent in test</div>;\n\nexport default SharedComponent;\n',
+            }
         },
-        sharedRoutingAppRecentDepositsInfo: {
-            recentDeposits: 'Recent Deposits',
-            sum: '$3,024.00',
-            date: 'on 15 March, 2019',
+        nextJsSsrApp: {
+           shop: 'Shop',
+           checkout: 'Checkout',
+           zeit: 'ZEIT',
+           gitHub: 'GitHub',
+           messages: {
+               welcomeMessage: 'Welcome to Next.js on Webpack 5! ',
+               checkoutMessage: 'This is a federated page owned by localhost:3000',
+           },
+           texts: {
+               text1: 'Data from federated ',
+               text2: 'getInitalProps',
+               text3: 'This came fom checkout !!!',
+               text4: 'And it works like a charm v2',
+               text5: 'To get started, edit pages/index.js and save to reload.',
+               mainShopText: 'This is a federated page owned by localhost:3002',
+           },
+            pages: {
+               checkoutPage: 'checkout page',
+               shopPage: 'Shop Page',
+            },
+            tiles: {
+               documentation: 'Documentation →',
+               learn: 'Next.js Learn →',
+               examples: 'Examples →',
+            },
+            json: '{\n  "userId": 1,\n  "id": 1,\n  "title": "delectus aut autem",\n  "completed": false\n}',
         },
-        sharedRoutingAppRecentOrdersHeader: 'Recent Orders',
-        sharedRoutingAppRecentOrdersTableColumnsHeaders: [
-            'Date',
-            'Name',
-            'Ship To',
-            'Payment Method',
-            'Sale Amount',
-        ],
-        sharedRoutingAppRecentOrderInfo: [
-            '16 Mar, 2019',
-            'Elvis Presley',
-            'Tupelo, MS',
-            'VISA ⠀•••• 3719',
-            '312.44',
-        ],
-        sharedRoutingAppSideMenuButtonsTypes: [
-            'Dashboard',
-            'Orders',
-            'Profile',
-        ],
-        sharedRoutingAppEditProfileBlockLabels: [
-            'Company (disabled)',
-            'Username',
-            'First Name',
-            'Last Name',
-            'City',
-            'Country',
-            'Postal Code',
-            'Lamborghini Mercy, Your chick she so thirsty, I\'m in that two seat Lambo.',
-            'About me',
-        ],
-        sharedRoutingAppAboutUser: {
-            shortProfession: 'PRINCIPAL ENGINEER',
-            name: 'Zack Jackson',
-            longProfession: 'Principal Engineer at lululemon Distributed JavaScript Orchestration at scale. Maintainer of Webpack, inventor of Module Federation.',
+        sharedStoreCrossFrameworkApp: {
+            pageMark: 'Shell',
+            componentsTypes: {
+                reactType: 'React',
+                vueType: 'Vue',
+            },
+            blocksNames: {
+                reactModule: 'Remote React module',
+                vueModule: 'Remote Vue module'
+            },
+            mathSigns: {
+                plus: '+',
+                minus: '-'
+            },
         },
-        dynamicSystemRemotesRuntime: {
+        sharedRoutingApp: {
+            profileActions: {
+                edit: 'Edit Profile',
+                complete: 'Complete your profile',
+            },
+            chartInfo: {
+                today: 'Today',
+                sales: 'Sales ($)'
+            },
+            chartMarks: {
+                horizontal: [
+                    '00:00',
+                    '03:00',
+                    '06:00',
+                    '09:00',
+                    '12:00',
+                    '15:00',
+                    '18:00',
+                    '21:00',
+                    '24:00',
+                ],
+                vertical: [
+                    '0',
+                    '600',
+                    '1200',
+                    '1800',
+                    '2400',
+                ]
+            },
+            buttonsTexts: {
+                viewBalance: 'View balance',
+                updateProfile: 'Update Profile',
+                follow: 'Follow',
+                seeMoreOrders: 'See more orders',
+            },
+            depositsInfo: {
+                recentDeposits: 'Recent Deposits',
+                sum: '$3,024.00',
+                date: 'on 15 March, 2019',
+            },
+            orders: {
+                ordersHeader: 'Recent Orders',
+                recentOrdersTableColumnsHeaders: [
+                    'Date',
+                    'Name',
+                    'Ship To',
+                    'Payment Method',
+                    'Sale Amount',
+                ],
+                recentOrderInfo: [
+                    '16 Mar, 2019',
+                    'Elvis Presley',
+                    'Tupelo, MS',
+                    'VISA ⠀•••• 3719',
+                    '312.44',
+                ],
+            },
+            sideMenuButtonsTypes: [
+                Constants.commonConstantsData.sharedRoutingAppPagesComponents.dashboard,
+                Constants.commonConstantsData.sharedRoutingAppPagesComponents.orders,
+                Constants.commonConstantsData.sharedRoutingAppPagesComponents.profile,
+            ],
+            editProfileBlockLabels: [
+                'Company (disabled)',
+                'Username',
+                'First Name',
+                'Last Name',
+                'City',
+                'Country',
+                'Postal Code',
+                'Lamborghini Mercy, Your chick she so thirsty, I\'m in that two seat Lambo.',
+                'About me',
+            ],
+            aboutUserBlock: {
+                shortProfession: 'PRINCIPAL ENGINEER',
+                name: 'Zack Jackson',
+                longProfession: 'Principal Engineer at lululemon Distributed JavaScript Orchestration at scale. Maintainer of Webpack, inventor of Module Federation.',
+            }
+        },
+        dynamicSystemRemotesRuntimeApp: {
             host: {
                 header: 'Dynamic System Host',
-                subHeader: 'Host',
                 hostH3: 'my env is https://host.api.com',
                 button: 'Load Remote Widget'
             },
-            remote: {
-                subHeader: 'Remote'
-            },
             paragraph: 'The Dynamic System will take advantage Module Federation remotes and exposes. It will no load components that have been loaded already.',
-            loading: 'Loading',
             buttonHeader: 'Remote Widget',
             buttonH2: 'My env is ',
             buttonParagraph: 'Using momentjs for format the date'
         },
-        sharedContext: {
+        sharedContextApp: {
             app1: {
-                subheader: 'App 1',
                 paragraph: 'Welcome, Billy'
             },
             app2: {
-                subheader: 'App 2',
                 paragraph: 'Welcome, Susan',
             },
             header: 'Context Provider'
         },
-        cssIsolationApp1Name: 'App 1',
-        cssIsolationApp2Name: 'App 2',
-        cssIsolationApp1Header: 'Host Application - React Version',
-        cssIsolationApp2Header: 'Remote Application - React Version',
-        sharedRoutes2HomeButtonH1: 'Home Page',
-        sharedRoutes2AboutButtonH1: 'About Page',
-        sharedRoutes2HomeButtonH2: 'Welcome to the future!',
-        sharedRoutes2HomeButtonEM: 'a page being provided by App 1',
-        sharedRoutes2AboutButtonEM: 'a page being provided by App 2',
-        reactNestedRoutersPage1App1: 'Page 1 from App1',
-        reactNestedRoutersPage1App2: 'Page 1 from App2',
-        reactNestedRoutersPage2App1: 'Page 2 from App1',
-        reactNestedRoutersPage2App2: 'Page 2 from App2',
-        reactNestedRoutersGoToPage: 'Go to Page',
-        reactNestedRoutersApp1: 'App 1',
-        reactNestedRoutersApp2: 'App 2',
-        reactNestedRoutersNav: [
+        cssIsolationApp: {
+            headers: {
+                app1: 'Host Application - React Version',
+                app2: 'Remote Application - React Version',
+            },
+            buttonText: 'Make Everything Yellow',
+        },
+        sharedRoutes2App: {
+            buttons: {
+                homeButtons: {
+                    h1: 'Home Page',
+                    h2: 'Welcome to the future!',
+                    em: 'a page being provided by App 1',
+                },
+                aboutButtons: {
+                    h1: 'About Page',
+                    em: 'a page being provided by App 2',
+                }
+            }
+        },
+        reactNestedRoutersNavApp: [
             {
                 name: 'App1 Page1',
                 link: '/app-1/page-1',
-                index: 0,
-                text: 'Page 1 from App1',
-                linkText: 'Go to Page 2',
-                linkRouting: '/page-2'
+                index: Constants.commonConstantsData.commonIndexes.zero,
+                text: Constants.commonConstantsData.reactNestedRoutersPagesMessages.page1App1,
+                linkText: Constants.updatedConstantsData.reactedNestedRoutersGoToPageMessage.page2,
+                linkRouting: Constants.commonConstantsData.commonLinks.page2
             },
             {
                 name: 'App1 Page2',
                 link: '/app-1/page-2',
-                index: 1,
-                text: 'Page 2 from App1',
-                linkText: 'Go to Page 1',
-                linkRouting: '/page-1'
+                index: Constants.commonConstantsData.commonIndexes.one,
+                text: Constants.commonConstantsData.reactNestedRoutersPagesMessages.page2App1,
+                linkText: Constants.updatedConstantsData.reactedNestedRoutersGoToPageMessage.page1,
+                linkRouting: Constants.commonConstantsData.commonLinks.page1
             },
             {
                 name: 'App2 Page1',
                 link: '/app-2/page-1',
-                index: 2,
-                text: 'Page 1 from App2',
-                linkText: 'Go to Page 2',
-                linkRouting: '/page-2'
+                index: Constants.commonConstantsData.commonIndexes.two,
+                text: Constants.commonConstantsData.reactNestedRoutersPagesMessages.page1App2,
+                linkText: Constants.updatedConstantsData.reactedNestedRoutersGoToPageMessage.page2,
+                linkRouting: Constants.commonConstantsData.commonLinks.page2
             },
             {
                 name: 'App2 Page2',
                 link: '/app-2/page-2',
-                index: 3,
-                text: 'Page 2 from App2',
-                linkText: 'Go to Page 1',
-                linkRouting: '/page-1'
+                index: Constants.commonConstantsData.commonIndexes.three,
+                text: Constants.commonConstantsData.reactNestedRoutersPagesMessages.page2App2,
+                linkText: Constants.updatedConstantsData.reactedNestedRoutersGoToPageMessage.page1,
+                linkRouting: Constants.commonConstantsData.commonLinks.page1
             }
         ],
-        nativeFederationReactConsoleMessages: {
-            dateMessage: '2023-01-01 is a Sun.',
-            weekendMessage: 'No long weekend ☹',
-            loadingModuleMessage: 'loading remote module ...',
-            remoteModuleMessage: 'got remote module: '
+        nativeFederationReactApp: {
+           messages: {
+               consoleMessages: {
+                   dateMessage: '2023-01-01 is a Sun.',
+                   weekendMessage: 'No long weekend ☹',
+                   loadingModuleMessage: 'loading remote module ...',
+                   remoteModuleMessage: 'got remote module: '
+               },
+               pageMessages: {
+                   checkConsoleMessage: 'Have a look into your JavaScript console ...',
+                   remoteComponentGreeting: 'I\'m the remote\'s React Component!',
+                   changeComponentMessage: 'Edit src/App.tsx and save to reload.',
+               }
+           },
+            elementsTexts: {
+                linkName: 'Learn React',
+                buttonText: 'click me 0',
+            },
+            buttons: {
+                host: 'Host button: ',
+                remote: 'Remote button: '
+            }
         },
-        commonComponentsNames: {
-            host: 'Host',
-            remote: 'Remote'
+        reactHostRemoteApp: {
+            containers: {
+                header: 'This is the container App hosted at localhost:8080',
+                div: 'This component is from the Host React App hosted at localhost:8081',
+            },
+            hostedDiv: 'This is the Remote App hosted at localhost:8081)',
+            buttons: {
+                invoices: 'Invoices',
+                expenses: 'Expenses'
+            },
         },
-        nativeFederationReactPageMessages: {
-            checkConsoleMessage: 'Have a look into your JavaScript console ...',
-            remoteComponentGreeting: 'I\'m the remote\'s React Component!',
-            changeComponentMessage: 'Edit src/App.tsx and save to reload.',
+        reactHostNextJsApp: {
+            remoteComponents: {
+                header: 'This is the React container App hosted at localhost:8080',
+                nav: 'Hello from Remote Nextjs component hosted on localhost:8081',
+            }
         },
-        nativeFederationElementsTexts: {
-            linkName: 'Learn React',
-            buttonText: 'click me 0',
+        vueCliApp: {
+            sectionsDescriptions: {
+                otherSection: 'This is a component from /other-app.I am being imported.I also has my own behavior like fetching data',
+                coreSection: 'This is a section from /code.',
+                consumerCoreSection: 'I\'m inside the Section component loaded from /core, but my text is defined in /consumer'
+            },
+            buttonsText: {
+                otherSectionButton: 'Click to fetch from FakeApi',
+                consumerCoreSectionButton: 'Button imported from /core',
+            },
+            otherSectionCodeBlock: '{ "userId": 1, "id": 1, "title": "delectus aut autem", "completed": false }',
+            consumerSection: {
+                header: 'This is /consumer.',
+                importMessages: {
+                    core: 'The content below is imported from /core',
+                    other: 'The content below is imported from /other'
+                }
+            }
         },
-        nativeFederationReactButtonsNames: {
-            host: 'Host button: ',
-            remote: 'Remote button: '
-        },
-        reactHostRemoteContainerHeader: 'This is the container App hosted at localhost:8080',
-        reactHostRemoteContainerDiv: 'This component is from the Host React App hosted at localhost:8081',
-        reactHostRemoteHostedDiv: 'This is the Remote App hosted at localhost:8081)',
-        reactHostRemoteHostedButtonNames: {
-            invoices: 'Invoices',
-            expenses: 'Expenses'
-        },
-        reactHostNextJsRemoteHeader: 'This is the React container App hosted at localhost:8080',
-        reactHostNextJsRemoteNav: 'Hello from Remote Nextjs component hosted on localhost:8081',
-
-        vueCliSectionsDescriptions: {
-            otherSection: 'This is a component from /other-app.I am being imported.I also has my own behavior like fetching data',
-            coreSection: 'This is a section from /code.',
-            consumerCoreSection: 'I\'m inside the Section component loaded from /core, but my text is defined in /consumer'
-        },
-        vueCliButtonsText: {
-            otherSectionButton: 'Click to fetch from FakeApi',
-            coreSectionButton: 'Button',
-            consumerCoreSectionButton: 'Button imported from /core',
-        },
-        vueCliOtherSectionCodeBlock: '{ "userId": 1, "id": 1, "title": "delectus aut autem", "completed": false }',
-        vueCliConsumerSectionHeader: 'This is /consumer.',
-        vueCliConsumerImportMessages: {
-            coreImportMessage: 'The content below is imported from /core',
-            otherImportMessage: 'The content below is imported from /other'
-        },
-        umdFederation: {
+        umdFederationApp: {
             App1: {
                 firstHeader: 'Host App 1',
                 secondHeader: 'MF App 01',
                 thirdHeader: 'UMD App2'
             }
         },
-        quasarCli: {
+        quasarCliApp: {
             appExposes: {
                 appName: 'App Exposes',
                 list: 'List',
@@ -451,27 +651,25 @@ export class Constants {
             appButtonDiv: 'App Button',
             appButtonClickMeButton: 'Click me',
             appListDiv: 'AppList',
-            counter: {
-                startValue: '0',
-                valueAfterClick: '1'
-            },
             names: [
-                { name: 'Gualtiero', index: 5 },
-                { name: 'Riyaz', index: 4 },
-                { name: 'Quy', index: 3 },
-                { name: 'Sang', index: 2 },
-                { name: 'Loris', index: 1}
+                { name: 'Gualtiero', index: Constants.commonConstantsData.commonIndexes.five },
+                { name: 'Riyaz', index: Constants.commonConstantsData.commonIndexes.four },
+                { name: 'Quy', index: Constants.commonConstantsData.commonIndexes.three },
+                { name: 'Sang', index: Constants.commonConstantsData.commonIndexes.two },
+                { name: 'Loris', index: Constants.commonConstantsData.commonIndexes.one }
             ]
         },
-        viteReactMicroFrontendsCardsMessages: {
-            remoteCard: 'I\'m the remote app',
-            hostCard: 'I\'m the host app'
+        commonMicroFrontendsApps: {
+            cardMessages: {
+                remoteCard: 'I\'m the remote app',
+                hostCard: 'I\'m the host app'
+            },
+            buttonsText: {
+                hostButton: 'Host counter: 0',
+                remoteButton: 'Remote counter: 0'
+            }
         },
-        viteReactMicroFrontendsButtonsText: {
-            hostButton: 'Host counter: 0',
-            remoteButton: 'Remote counter: 0'
-        },
-        reactInVue: {
+        reactInVueApp: {
             App1: {
                 header: 'React in Vue',
                 subHeader: 'Vue State/Input',
@@ -483,12 +681,10 @@ export class Constants {
                 updatedButtonText: 'Make cool'
             },
             App2: {
-                header: 'Basic Host-Remote',
-                subHeader: 'Home',
                 buttonText: 'Home Button',
             }
         },
-        reactHmr: {
+        reactHmrApp: {
             remote: {
                 text: 'Remote 1\'s counter: ',
                 button: 'increment'
@@ -500,206 +696,189 @@ export class Constants {
                 button: 'from remote1: GO HOME'
             }
         },
-        angularUniversalSsrValueInputButtonText: 'Add value',
-        angularUniversalSsrTabsNames: [
-            'Home',
-            'Angular lazy module',
-            'Federation lazy module'
-         ],
-        angularUniversalSsrAddedCities: [
-            'Prague',
-            'Saint-Petersburg'
-        ],
-    }
-
-    public static readonly tabsNames = {
-        aboutTab: 'About',
-        homeTab: 'Home',
-        mdmfNavigationItemHome: { name: 'Home', index: 1 },
-        mdmfNavigationItemProfile: { name: 'Profile', index: 2 },
-        mdmfNavigationItemProduct: { name: 'Product', index: 3 },
+        angularUniversalSsrApp: {
+            inputButtonText: 'Add value',
+            tabsNames: [
+                Constants.commonConstantsData.home,
+                'Angular lazy module',
+                'Federation lazy module'
+            ],
+            addedCities: [
+                'Prague',
+                'Saint-Petersburg'
+            ],
+            angularUniversalSsrAddedValuesNames: [
+                'one',
+                'two',
+                'three',
+            ],
+        },
+        vue3CliDemoApp: {
+            aboutTab: 'About',
+        },
+        nextJsReactApp: {
+            buttons: {
+                remote: 'Remote Button',
+                nextJS: 'Next JS Button',
+            }
+        },
+        rustWasmApp: {
+          buttonsNames: [
+              'Play ▶️',
+              'Tick 🔂',
+              'Reset ♻️',
+              'Stop 🛑'
+          ],
+        },
     }
 
     public static readonly commonPhrases = {
-        viteGreeting: 'im from Vite',
-        webpackGreeting: 'im from Webpack',
-        button: 'Button',
-        paragraphText: 'The Dynamic System will take advantage Module Federation remotes and exposes. It will no load components that have been loaded already.',
-        dynamicRemotesWidgetParagraphText: [
-            'Moment shouldn\'t download twice, the host has no moment.js',
-            'Using momentjs for format the date'
-        ],
-        welcomeToHostApp: 'Welcome to Host App',
-        commonHostAppName: 'Host App',
-        remoteAppText: 'RemoteApp',
-        remoteAppsNameFromReduxStore: "RemoteApp's name from the redux store : ",
-        vueCliAppWelcomeMessage: 'Welcome to Your Vue.js + TypeScript App',
-        vueCliAppConfigurationMessage: 'For a guide and recipes on how to configure / customize this project, check out the vue-cli documentation.',
-        vueCliAppInstalledCliPluginsMessage: 'Installed CLI Plugins',
-        vueCliAppEssentialLinksMessage: 'Essential Links',
-        vueCliAppEcosystemLinksMessage: 'Ecosystem',
-        vueCliAppAboutTabMessage: 'This is an about page',
-        mdmfShellWelcome: 'Welcome to the Angular 11 Microfrontend demo using Webpack 5 Module Federation',
-        mdmfShellParagraph: 'This component is part of the shell application, the Profile component that is linked from the `Profile` link at the top is a Microfrontend that is remotely loaded into the application. Check the network settings to see the remote being loaded.',
-        mdmfProfileParagraph: 'This profile component is being remotely loaded into the application using Module Federation, angular is shared so the download is minimal for the frontend',
-        mdmfSharedParagraph: 'mdmf-shared works!',
-        mdmfProductParagraph: 'This product component is being remotely loaded into the application using Module Federation, angular is shared so the download is minimal for the frontend',
-        mdmfProductLinkText: 'Detail',
-        commonLoadingText: 'Loading...',
-        mdmfBackLink: 'Back',
-        name: { text: 'Test Name', index: 0 },
-        email: { text: 'test@test.com', index: 1 },
-        secondName: { text: 'Test Name Second', index: 3 },
-        secondEmail: { text: 'testSecond@test.com', index: 4 },
-        nameIsRequired: 'Name is required.',
-        emailIsRequired: 'Email is required.',
-        vue2AppName: 'Vue2 App',
-        vue3AppName: 'Vue3 App',
-        vueAppsDefaultCounterText: 'count: 0',
-        vue2AppComponentState: 'Component in Action..',
-        dynamicSytemHostParagraph: 'The Dynamic System will take advantage Module Federation ',
-        dynamicSystemHostParagraphText: [
-            'App2 Moment Dep',
-            'for format the date'
-        ],
-        commonVueAppComponentState: 'Remote Component in Action..',
-        selfHealingAppHeaderName: 'Self-Healing',
-        app1Name: 'App 1',
-        app2Name: 'App 2',
-        selfHealingWebpackConfigSeparator: 'shared:',
-        selfHealingWebpackConfigSearchedString: 'styled-components',
-        typescriptProjectReferencesAppsHeader: 'Typescript',
-        typescriptProjectReferencesAppsApp1Name: 'App 1',
-        typescriptProjectReferencesAppsApp2Name: 'App 2',
-        versionDiscrepancyApp1Name: 'App 1 Host',
-        versionDiscrepancyApp2Name: 'App 2: Remote',
-        versionDiscrepancyApp1LodashVersion: 'Lodash v4.10.0',
-        versionDiscrepancyApp2LodashVersion: 'Lodash v4.17.21',
-        lodashVersionNotAvailableMessage: '(lodash.nth not available until lodash@4.11)',
-        lodashVersionUndefinedVersionMessage: 'typeof lodash.nth// => undefined',
-        lodashVersionDefinedVersionMessage: 'typeof lodash.nth// => function',
-        ntxCode: 'nth([\'a\', \'b\'], -1)// => "b"',
-        lodashRemoteComponentHeader: 'Remote Component',
-        compleateReactCaseInput: 'Test Input',
-        randomSymbolsString: '@#$%^&*()_+',
-        startupCodeAppsHeader: 'Basic Host-Remote',
-        startupCodeAppsNames : {
-            app1: 'App 1',
-            app2: 'App 2'
+        vue3DemoFederationWithViteApp: {
+            greetings: {
+                vite: 'im from Vite',
+                webpack: 'im from Webpack',
+            }
         },
-        vue3DemoLayoutAppHeaders : {
-            host: '# Hosting App [HOST]',
-            remote: '#remote-component [REMOTE]'
+        dynamicRemotesApp: {
+            paragraphText: 'The Dynamic System will take advantage Module Federation remotes and exposes. It will no load components that have been loaded already.',
+            widgetParagraphText: [
+                'Moment shouldn\'t download twice, the host has no moment.js',
+                'Using momentjs for format the date'
+            ],
         },
-        vue3DemoLayoutAppNames : {
-            layout: 'Layout App 1',
-            remote: 'Main App'
+        reduxReducerInjectionApp: {
+            welcomeMessage: 'Welcome to Host App',
+            remoteAppText: 'RemoteApp',
+            remoteAppsNameFromReduxStore: "RemoteApp's name from the redux store : ",
         },
-        standartText: 'May The Force Be With You',
-        vueCliOtherAppAlertMessage: 'Data fetched',
-        viteSvelteMicroFrontEndsConsoleMessages: [
-            'I\'m RxJs from host',
-            'I\'m RxJs from remote',
-            'remote got message:'
-        ],
-        rustWasmConsoleMessages: {
-            startLoopMessage:'Infinite looping in progress',
-            stopLoopMessage:'Looping successfully stopped',
-            tickLoopMessage:'Game board successfully rerendered',
-            resetLoopMessage:'Game board successfully reset',
-            baseLoadingMessage: 'I love rust and wasm!'
+        rustWasmApp: {
+            commonHostAppName: 'Host App',
+            consoleMessages: {
+                startLoopMessage:'Infinite looping in progress',
+                stopLoopMessage:'Looping successfully stopped',
+                tickLoopMessage:'Game board successfully rerendered',
+                resetLoopMessage:'Game board successfully reset',
+                baseLoadingMessage: 'I love rust and wasm!'
+            },
         },
-        craReactAppAppsPhrases: {
+        vueCliApp: {
+            welcomeMessage: 'Welcome to Your Vue.js + TypeScript App',
+            configurationMessage: 'For a guide and recipes on how to configure / customize this project, check out the vue-cli documentation.',
+            installedCliPluginsMessage: 'Installed CLI Plugins',
+            essentialLinksMessage: 'Essential Links',
+            ecosystemLinksMessage: 'Ecosystem',
+            aboutTabMessage: 'This is an about page',
+            otherAppAlertMessage: 'Data fetched',
+        },
+        differentAngularVersionsApps: {
+            productParagraph: 'This product component is being remotely loaded into the application using Module Federation, angular is shared so the download is minimal for the frontend',
+            productLinkText: 'Detail',
+            backLink: 'Back',
+        },
+        vue2InVue3App: {
+            appsNames: {
+                vue2: 'Vue2 App',
+                vue3: 'Vue3 App',
+            },
+            defaultCounterText: 'count: 0',
+            componentState: 'Component in Action..',
+        },
+        dynamicSystemHostApp: {
+            hostParagraph: 'The Dynamic System will take advantage Module Federation ',
+            paragraphText: [
+                'App2 Moment Dep',
+                'for format the date'
+            ],
+        },
+        selfHealingApp: {
+            headerName: 'Self-Healing',
+            configs: {
+                separator: 'shared:',
+                searchedString: 'styled-components',
+            }
+        },
+        versionDiscrepancyApp: {
+            appsNames: {
+                app1: 'App 1 Host',
+                app2: 'App 2: Remote',
+            },
+           lodashVersions: {
+                app1: 'Lodash v4.10.0',
+                app2: 'Lodash v4.17.21',
+           },
+           messages: {
+                notAvailable: '(lodash.nth not available until lodash@4.11)',
+                undefinedVersion: 'typeof lodash.nth// => undefined',
+                definedVersion: 'typeof lodash.nth// => function',
+           },
+           ntxCode: 'nth([\'a\', \'b\'], -1)// => "b"',
+           remoteComponentHeader: 'Remote Component',
+        },
+        completeReactCaseApp: {
+            input: 'Test Input',
+        },
+        sharedRoutingApp: {
+            randomSymbolsString: '@#$%^&*()_+',
+        },
+        vue3DemoApp: {
+            appsHeaders: {
+                host: '# Hosting App [HOST]',
+                remote: '#remote-component [REMOTE]'
+            },
+            appsNames: {
+                layout: 'Layout App 1',
+                remote: 'Main App'
+            }
+        },
+        viteSvelteMicroFrontEndsApp: {
+            consoleMessages: [
+                'I\'m RxJs from host',
+                'I\'m RxJs from remote',
+                'remote got message:'
+            ]
+        },
+        craReactApp: {
             hostApp: 'This is the host application.',
             hostAppRemoteMessage: 'This is a component from the remote application',
             remoteApp: 'Remote Application'
         },
-        angularUniversalSsrComponentsMessages: {
-            rootComponent: 'Root component',
-            homeComponent: 'Home component',
-            angularLazyComponent: 'Angular lazy route component'
+        angularUniversalSsrApp: {
+            components: {
+                rootComponent: 'Root component',
+                homeComponent: 'Home component',
+                angularLazyComponent: 'Angular lazy route component'
+            },
+            blockHeaderText: 'Select a city:',
+            selectedCityInfo: [
+                'The weather in Prague is good![ Angular lazy component ]',
+                'The weather in Saint-Petersburg is good![ Angular lazy component ]'
+            ],
         },
-        angularUniversalSsrCitiesBlockHeaderText: 'Select a city:',
-        angularUniversalSsrSelectedCityInfo: [
-            'The weather in Prague is good![ Angular lazy component ]',
-            'The weather in Saint-Petersburg is good![ Angular lazy component ]'
-        ],
-        thirdPartyScriptsAppPhrases: {
-            header: 'Basic Host-Remote',
+        thirdPartyScriptsApp: {
             description: 'Check the network tab to see all the third party calls'
         },
-    }
-
-    public static readonly commonText = {
-        button: 'Button',
-        background: 'background',
-        backgroundColor: 'background-color',
-        widget: 'Widget',
-        attr: 'attr',
-        href: 'href',
-        target: 'target',
-        src: 'src',
-        style: 'style',
-        remoteButton: 'Remote Button',
-        nextJSButton: 'Next JS Button',
-        typeScriptMonoRepoYarnWorkspaceDependency: 'workspaces',
-        border: 'border',
-        standartText: 'May The Force Be With You',
-        sharedRoutingAppReplaceSelectorPart: 'RECENT_',
-        sharedStoreCrossFrameworkAppComponentsTypes: {
-            reactType: 'React',
-            vueType: 'Vue',
-        },
-        sharedStoreCrossFrameworkAppButtonsBlocksNames:  {
-            reactModule: 'Remote React module',
-            vueModule: 'Remote Vue module'
-        },
-        commonMathSigns: {
-            plusSign: '+',
-            minusSign: '-'
-        },
-        sharedStoreCrossFrameworkCounterValues: {
-            minusOne: '-1',
-            zero: '0',
-            one: '1',
-            two: '2'
-        },
-        cssIsolationButton: 'Make Everything Yellow',
-        viteReactMicroFrontendsCardsNames: {
-            hostCard: 'host',
-            remoteCard: 'remote'
-        },
-        viteReactMicroFrontendsCardsSymbolsNames: {
-            starSymbol: 'star',
-            cloudSymbol: 'cloud'
-        },
-        displayNone: 'display: none;',
-        rustWasmAppButtonsNames: [
-            'Play ▶️',
-            'Tick 🔂',
-            'Reset ♻️',
-            'Stop 🛑'
-        ],
-        angularUniversalSsrAddedValuesNames: [
-            'one',
-            'two',
-            'three',
-        ],
+        typeScriptMonoRepoApp: {
+            yarnWorkspaceDependency: 'workspaces',
+        }
     }
 
     public static readonly color = {
+        nonRgbValues: {
+           red: 'color: red;',
+           borderBlack: 'border: 1px solid black; padding: 12px;',
+           borderRed1px: '1px solid rgb(255, 0, 0)',
+           borderRed: 'border: 2px dotted red; padding: 20px;'
+        },
         red: 'rgb(136, 0, 0)',
         deepBlue: 'rgb(0, 0, 204)',
         dynamicRemotesWidgetColor: [
             'rgb(255, 0, 0)',
             'rgb(128, 0, 128)'
         ],
-        nonRgbRed: 'color: red;',
         aquamarine: 'rgb(127, 255, 212)',
         chineseSilver: 'rgb(204, 204, 204)',
         darkMutedBlue: 'rgb(75, 75, 232)',
         lightSaturatedYellow: 'rgb(255, 198, 0)',
-        nonRgbBorderBlack: 'border: 1px solid black; padding: 12px;',
         lightWashedAzure: 'rgb(64, 158, 255)',
         lightWashedOrange: 'rgb(230, 162, 60)',
         pink: 'rgb(219, 112, 147)',
@@ -710,7 +889,6 @@ export class Constants {
         deepPink: 'rgb(156, 39, 176)',
         yellow: 'rgb(255, 255, 0)',
         green: 'rgb(0, 128, 0)',
-        borderColorRed1px: '1px solid rgb(255, 0, 0)',
         orange: 'rgb(246, 179, 82)',
         blue: 'rgb(49, 120, 198)',
         black: 'rgb(31, 33, 36)',
@@ -720,102 +898,103 @@ export class Constants {
         white: 'rgb(255, 255, 255)',
         lightGrey: 'rgb(239, 239, 239)',
         darkGrey: 'rgb(40, 44, 52)',
-        nonRgbBorderRed: 'border: 2px dotted red; padding: 20px;'
-    }
-
-    public static readonly translation = {
-        reactRemoteTitleEn: 'React Remote : Title',
-        reactRemoteButtonEn: 'React Remote : change language',
-        reactRemoteTextEn: 'React Remote : I\'m the remote child !',
-        reactRemoteTitleFr: 'React Remote : Titre',
-        reactRemoteButtonFr: 'React Remote : changer la langue',
-        reactRemoteTextFr: 'React Remote : Je suis le remote child',
-        reactHostButtonEn: 'React Host : change language',
-        reactHostTextEn: 'React Host : This is the main text',
-        reactHostTitleEn: 'React Host : Here\'s my micro frontend remote child :',
-        reactHostButtonFr: 'React Host : changer la langue',
-        reactHostTextFr: 'React Host : Ceci est le texte principal',
-        reactHostTitleFr: 'React Host : Voici mon micro frontend remote child :',
-        nextHostButtonEn: 'change language from Next Host',
-        nextHostTextEn: 'This is the main text of Next Host',
-        nextHostTitleEn: 'Here\'s my micro frontend remote child :',
-        nextHostButtonFr: 'changer la langue depuis from Next Host',
-        nextHostTextFr: 'Ceci est le texte principal de Next Host',
-        nextHostTitleFr: 'Voici mon micro frontend remote child :',
     }
 
     public static readonly hrefs = {
-        vueCliAppDocumentationLink: 'https://cli.vuejs.org',
-        vueCliAppBabelLink: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel',
-        vueCliAppRouterLink: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router',
-        vueCliAppVuexLink: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-vuex',
-        vueCliAppEsLintLink: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint',
-        vueCliAppTypeScriptLink: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript',
-        vueCliAppCoreDocsLink: 'https://vuejs.org',
-        vueCliAppForumLink: 'https://forum.vuejs.org',
-        vueCliAppCommunityChatLink: 'https://chat.vuejs.org',
-        vueCliAppTwitterLink: 'https://twitter.com/vuejs',
-        vueCliAppNewsLink: 'https://news.vuejs.org',
-        vueCliAppVueRouterLink: 'https://router.vuejs.org',
-        vueCliAppEcosystemVuexLink: 'https://vuex.vuejs.org',
-        vueCliAppVueDevToolsLink: 'https://github.com/vuejs/vue-devtools#vue-devtools',
-        vueCliAppVueLoaderLink: 'https://vue-loader.vuejs.org',
-        vueCliAppAwesomeVueLink: 'https://github.com/vuejs/awesome-vue',
-        vueCliAppAboutTabLink: '#/about',
-        vueCliAppHomeTabLink: '#/',
-        nextjsSsrHomeLink: '/',
-        nextjsSsrShopLink: '/shop',
-        nextjsSsrCheckoutLink: '/checkout',
-        nextjsSsrGitHubLink: 'https://github.com/zeit/next.js',
-        nextjsSsrZeitLink: 'https://zeit.co/now',
-        nextjsSsrDocumentationLink: 'https://nextjs.org/docs',
-        nextjsSsrLearnLink: 'https://nextjs.org/learn',
-        nextjsSsrExamplesLink: 'https://github.com/zeit/next.js/tree/master/examples',
-        nextjsSsrGitHubUrl: 'https://github.com/vercel/next.js',
-        nextjsSsrZeitUrl: 'https://vercel.com/home',
-        nextjsSsrDocumentationUrl: 'https://nextjs.org/docs',
-        nextjsSsrLearnUrl: 'https://nextjs.org/learn/foundations/about-nextjs',
-        nextjsSsrExamplesUrl: 'https://github.com/vercel/next.js/tree/deprecated-main/examples',
-        nativeFederationReactUrl: 'https://reactjs.org',
-        reactNestedRoutersPage2: '/page-2',
-        comprehensiveDemoGitHubLink: { link: 'https://github.com/module-federation/mfe-webpack-demo', index: 10 },
-        comprehensiveDemoApp3Link: { link: 'http://localhost:3003/', index: 10 },
-        comprehensiveDemoRoutingDemoLink: { link: 'http://localhost:3001/#/routing/foo', index: 11 },
-        comprehensiveDemoUiLibraryLink: '#/ui-library',
-        comprehensiveDemoDialogLink: '#/dialog',
-        comprehensiveDemoSvelteLink: '#/svelte',
-        reactHmrHomeLink: '/',
-        reactHmrButtonLink: '/button',
-        reactHmrHeadingLink: '/heading',
+        vueCliApp: {
+            documentation: {
+                link: 'https://cli.vuejs.org',
+                name: 'vue-cli documentation',
+            },
+            babel: {
+                link: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel',
+                name: 'babel',
+            },
+            router: {
+               link: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router',
+               name: 'router',
+            },
+            vuex: {
+               link: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-vuex',
+               name: 'vuex',
+            },
+            esLint: {
+                link: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint',
+                name: 'eslint',
+            },
+            typeScript: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript',
+            coreDocs: {
+                link: 'https://vuejs.org',
+                name: 'Core Docs',
+            },
+            forum: {
+                link: 'https://forum.vuejs.org',
+                name: 'Forum',
+            },
+            communityChat: {
+                link: 'https://chat.vuejs.org',
+                name: 'Community Chat',
+            },
+            twitter: {
+                link: 'https://twitter.com/vuejs',
+                name: 'Twitter',
+            },
+            news: {
+                link:'https://news.vuejs.org',
+                name: 'News'
+            },
+            vueRouter: {
+                link: 'https://router.vuejs.org',
+                name: 'vue-router',
+            },
+            ecosystemVuex: 'https://vuex.vuejs.org',
+            vueDevTools: {
+                link: 'https://github.com/vuejs/vue-devtools#vue-devtools',
+                name: 'vue-devtools',
+            },
+            vueLoader: {
+                link: 'https://vue-loader.vuejs.org',
+                name: 'vue-loader',
+            },
+            awesomeVue: {
+              link: 'https://github.com/vuejs/awesome-vue',
+              name: 'awesome-vue',
+            },
+            aboutTab: '#/about',
+        },
+        nextJsSsrApp: {
+            shop: '/shop',
+            checkout: '/checkout',
+            zeitGitHub: 'https://github.com/zeit/next.js',
+            zeit: 'https://zeit.co/now',
+            documentation: 'https://nextjs.org/docs',
+            learn: 'https://nextjs.org/learn',
+            examples: 'https://github.com/zeit/next.js/tree/master/examples',
+            vercelGitHub: 'https://github.com/vercel/next.js',
+            vercelHome: 'https://vercel.com/home',
+            learnAboutNext: 'https://nextjs.org/learn/foundations/about-nextjs',
+            deprecatedMainExamples: 'https://github.com/vercel/next.js/tree/deprecated-main/examples',
+        },
+        nativeFederationReactAppUrl: 'https://reactjs.org',
+        comprehensiveDemoApp: {
+            gitHub: 'https://github.com/module-federation/mfe-webpack-demo',
+            app3: 'http://localhost:3003/',
+            routingDemo: 'http://localhost:3001/#/routing/foo',
+            uiLibrary: '#/ui-library',
+            demoDialog: '#/dialog',
+            demoSvelte: '#/svelte',
+        },
+        reactHmrApp: {
+          button: '/button',
+          heading: {
+              link: '/heading',
+              name: 'Heading',
+          },
+        },
         angularUniversalSsrLinks : {
             angularLink: '/lazy',
             federationLink: '/federation'
         },
         thirdPartyScriptsPostRequestPath: 'https://www.google-analytics.com/j/collect?**',
-    }
-    public static readonly linksNames = {
-        vueCliAppDocumentationLinkName: 'vue-cli documentation',
-        vueCliAppBabelLinkName: 'babel',
-        vueCliAppRouterLinkName: 'router',
-        vueCliAppVuexLinkName: 'vuex',
-        vueCliAppEsLintLinkName: 'eslint',
-        vueCliAppTypeScriptLinkName: 'typescript',
-        vueCliAppCoreDocsLinkName: 'Core Docs',
-        vueCliAppForumLinkName: 'Forum',
-        vueCliAppCommunityChatLinkName: 'Community Chat',
-        vueCliAppTwitterLinkName: 'Twitter',
-        vueCliAppNewsLinkName: 'News',
-        vueCliAppVueRouterLinkName: 'vue-router',
-        vueCliAppVueDevtoolsLinkName: 'vue-devtools',
-        vueCliAppVueLoaderLinkName: 'vue-loader',
-        vueCliAppAwesomeVueLinkName: 'awesome-vue',
-        reactHmrHostHomeText: 'Home',
-        reactHmrHostButtonText: 'Button',
-        reactHmrHostHeadingText: 'Heading',
-    }
-
-    public static readonly fieldsNames = {
-        nameField: 'NAME',
-        emailField: 'EMAIL'
     }
 }

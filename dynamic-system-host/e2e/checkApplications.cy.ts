@@ -7,7 +7,7 @@ import {returnCommonDynamicAppsData} from "../../cypress/fixtures/commonTestData
 
 const basePage: BaseMethods = new BaseMethods()
 
-const appsData = returnCommonDynamicAppsData(Constants.commonPhrases.dynamicSystemHostParagraphText)
+const appsData = returnCommonDynamicAppsData(Constants.commonPhrases.dynamicSystemHostApp.paragraphText)
 
 appsData.forEach(
      (
@@ -44,12 +44,12 @@ appsData.forEach(
                 property.paragraph ? 
                     basePage.checkElementWithTextPresence({
                         selector: baseSelectors.paragraph,
-                        text: Constants.commonPhrases.dynamicSytemHostParagraph
+                        text: Constants.commonPhrases.dynamicSystemHostApp.hostParagraph,
                     })
                     :
                     basePage.checkElementWithTextPresence({
                         selector: baseSelectors.paragraph,
-                        text: Constants.commonPhrases.dynamicSytemHostParagraph,
+                        text: Constants.commonPhrases.dynamicSystemHostApp.hostParagraph,
                         isVisible: false
                     })
             })
@@ -57,7 +57,7 @@ appsData.forEach(
             it(`Check buttons in ${appName} exist`, () => {
                 basePage.openLocalhost(host)
                 property.isButtonExist ?
-                Constants.elementsText.dynamicRemotesButtonsText.forEach(button => {
+                    Constants.elementsText.dynamicRemotesApp.buttonsText.forEach(button => {
                     basePage.checkElementWithTextPresence({
                         selector: property.buttonSelector,
                         text: button
@@ -73,7 +73,7 @@ appsData.forEach(
             it(`Check functionality in ${appName}`, () => {
                 basePage.openLocalhost(host)
                 if (property.isButtonExist) {
-                    Constants.elementsText.dynamicRemotesButtonsText.forEach(button => {
+                    Constants.elementsText.dynamicRemotesApp.buttonsText.forEach(button => {
                         basePage.clickElementWithText({
                             selector: property.buttonSelector,
                             text: button
@@ -81,22 +81,22 @@ appsData.forEach(
                         basePage.checkElementExist({
                             selector: widgets.dynamicRemotesWidget.replace(
                                 '{appQuantity}',
-                                (Constants.elementsText.dynamicRemotesButtonsText.indexOf(button) + 2).toString())
+                                (Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button) + 2).toString())
                         })
                         basePage.checkElementHaveProperty({
                             selector: widgets.dynamicRemotesWidget.replace(
                                 '{appQuantity}',
-                                (Constants.elementsText.dynamicRemotesButtonsText.indexOf(button) + 2).toString()),
+                                (Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button) + 2).toString()),
                             prop: CssAttr.backgroundColor,
-                            value: property.widgetColor[Constants.elementsText.dynamicRemotesButtonsText.indexOf(button)]
+                            value: property.widgetColor[Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button)]
                         })
                         basePage.checkElementWithTextPresence({
                             selector: property.subHeaderSelector,
-                            text: property.widgetName[Constants.elementsText.dynamicRemotesButtonsText.indexOf(button)]
+                            text: property.widgetName[Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button)]
                         })
                         basePage.checkElementWithTextPresence({
                             selector: baseSelectors.paragraph,
-                            text: property.widgetParagraph[Constants.elementsText.dynamicRemotesButtonsText.indexOf(button)]
+                            text: property.widgetParagraph[Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button)]
                         })
                         basePage.checkElementWithTextPresence({
                             selector: baseSelectors.paragraph,

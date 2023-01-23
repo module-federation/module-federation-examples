@@ -65,11 +65,11 @@ export class BaseMethods {
 
     public addUser(name: string, email: string): void {
         this.fillField({
-            selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.nameField),
+            selector: fields.commonField.replace('{fieldName}', Constants.selectorParts.formFieldNames.nameField),
             text: name
         })
         this.fillField({
-            selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.emailField),
+            selector: fields.commonField.replace('{fieldName}', Constants.selectorParts.formFieldNames.emailField),
             text: email
         })
         this.checkElementState({
@@ -652,7 +652,7 @@ export class BaseMethods {
     }
 
     public getInputSelector(selector: string): string {
-        return selector.includes(Constants.elementsText.sharedRoutingAppSelectorsParts.userInfo.toUpperCase()) ? baseSelectors.textarea : baseSelectors.input
+        return selector.includes(Constants.selectorParts.sharedRoutingAppSelectorsParts.userInfo.toUpperCase()) ? baseSelectors.textarea : baseSelectors.input
     }
 
     public checkInputValue(value: string, parentElement?: string, isLengthChecked: boolean = false): void {

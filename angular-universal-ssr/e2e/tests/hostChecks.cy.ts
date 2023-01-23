@@ -22,7 +22,7 @@ describe("It checks host app", () => {
     it('Checks app root component header text', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.appRoot,
-            text: Constants.commonPhrases.angularUniversalSsrComponentsMessages.rootComponent
+            text: Constants.commonPhrases.angularUniversalSsrApp.components.rootComponent
         })
     })
 
@@ -46,7 +46,7 @@ describe("It checks host app", () => {
         basePage.checkElementWithTextPresence({
             parentSelector: baseSelectors.divElement,
             selector: baseSelectors.button,
-            text: Constants.elementsText.angularUniversalSsrValueInputButtonText,
+            text: Constants.elementsText.angularUniversalSsrApp.inputButtonText,
             visibilityState: 'be.visible'
         })
     })
@@ -54,7 +54,7 @@ describe("It checks host app", () => {
     it('Checks value input button color', () => {
         basePage.checkElementWithTextHaveProperty({
             selector: baseSelectors.button,
-            text: Constants.elementsText.angularUniversalSsrValueInputButtonText,
+            text: Constants.elementsText.angularUniversalSsrApp.inputButtonText,
             prop: CssAttr.backgroundColor,
             value: Constants.color.lightGrey
         })
@@ -86,24 +86,24 @@ describe("It checks host app", () => {
     })
 
     it('Checks basically added values names', () => {
-        methodsPage.checkTextedElementsVisibility(Constants.commonText.angularUniversalSsrAddedValuesNames, baseSelectors.listElement)
+        methodsPage.checkTextedElementsVisibility(Constants.elementsText.angularUniversalSsrApp.angularUniversalSsrAddedValuesNames, baseSelectors.listElement)
     })
 
     it('Checks add new value functionality', () => {
         methodsPage.addNewListValue()
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.listElement,
-            text: Constants.commonPhrases.standartText,
+            text: Constants.commonConstantsData.standardPhrase,
             visibilityState: 'be.visible'
         })
     })
 
     it('Checks that after applying value status in input it can be added more then once', () => {
         methodsPage.addNewListValue()
-        basePage.checkInputValue(Constants.commonPhrases.standartText)
+        basePage.checkInputValue(Constants.commonConstantsData.standardPhrase)
         basePage.clickElementWithText({
             selector: baseSelectors.button,
-            text: Constants.elementsText.angularUniversalSsrValueInputButtonText,
+            text: Constants.elementsText.angularUniversalSsrApp.inputButtonText,
         })
         basePage.checkElementQuantity({
             selector: baseSelectors.listElement,
@@ -111,7 +111,7 @@ describe("It checks host app", () => {
         })
         basePage.checkElementQuantity({
             selector: baseSelectors.listElement,
-            text: Constants.commonPhrases.standartText,
+            text: Constants.commonConstantsData.standardPhrase,
             quantity: 2,
             jqueryValue: true
         })
@@ -125,7 +125,7 @@ describe("It checks host app", () => {
         basePage.checkInputValue('')
         basePage.clickElementWithText({
             selector: baseSelectors.button,
-            text: Constants.elementsText.angularUniversalSsrValueInputButtonText,
+            text: Constants.elementsText.angularUniversalSsrApp.inputButtonText,
         })
         basePage.checkElementQuantity({
             selector: baseSelectors.listElement,
@@ -140,12 +140,12 @@ describe("It checks host app", () => {
         })
         basePage.fillField({
             selector: baseSelectors.input,
-            text: Constants.commonPhrases.standartText
+            text: Constants.commonConstantsData.standardPhrase
         })
-        basePage.checkInputValue(Constants.commonPhrases.standartText)
+        basePage.checkInputValue(Constants.commonConstantsData.standardPhrase)
         basePage.clickElementWithText({
             selector: baseSelectors.button,
-            text: Constants.elementsText.angularUniversalSsrValueInputButtonText,
+            text: Constants.elementsText.angularUniversalSsrApp.inputButtonText,
         })
         basePage.checkElementQuantity({
             selector: baseSelectors.listElement,
@@ -153,7 +153,7 @@ describe("It checks host app", () => {
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.listElement,
-            text: Constants.commonPhrases.standartText,
+            text: Constants.commonConstantsData.standardPhrase,
             visibilityState: 'be.visible'
         })
         basePage.reloadWindow()
@@ -163,7 +163,7 @@ describe("It checks host app", () => {
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.listElement,
-            text: Constants.commonPhrases.standartText,
+            text: Constants.commonConstantsData.standardPhrase,
             isVisible: false
         })
     })
@@ -171,7 +171,7 @@ describe("It checks host app", () => {
     it('Checks app home component element text', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.appRoot,
-            text: Constants.commonPhrases.angularUniversalSsrComponentsMessages.homeComponent
+            text: Constants.commonPhrases.angularUniversalSsrApp.components.homeComponent
         })
     })
 
@@ -183,14 +183,14 @@ describe("It checks host app", () => {
     })
 
     it('Checks tab names visibility', () => {
-        methodsPage.checkTextedElementsVisibility(Constants.elementsText.angularUniversalSsrTabsNames, updatedSelectors.angularUniversalSsrTab)
+        methodsPage.checkTextedElementsVisibility(Constants.elementsText.angularUniversalSsrApp.tabsNames, updatedSelectors.angularUniversalSsrTab)
     })
 
     it('Checks cities block appears after click on federation tab', () => {
         basePage.checkElementVisibility(selectors.angularUniversalSsrCitiesBlock, false, 'not.exist')
         basePage.clickElementWithText({
             selector: updatedSelectors.angularUniversalSsrTab,
-            text: Constants.elementsText.angularUniversalSsrTabsNames[2]
+            text: Constants.elementsText.angularUniversalSsrApp.tabsNames[2]
         })
         basePage.checkElementVisibility(selectors.angularUniversalSsrCitiesBlock)
     })
@@ -199,7 +199,7 @@ describe("It checks host app", () => {
         basePage.checkElementVisibility(selectors.angularUniversalSsrCitiesBlock, false, 'not.exist')
         basePage.clickElementWithText({
             selector: updatedSelectors.angularUniversalSsrTab,
-            text: Constants.elementsText.angularUniversalSsrTabsNames[2]
+            text: Constants.elementsText.angularUniversalSsrApp.tabsNames[2]
         })
         basePage.checkElementVisibility(selectors.angularUniversalSsrCitiesBlock)
         basePage.compareInfoBetweenHosts(selectors.angularUniversalSsrCitiesBlock, 5000)
@@ -207,7 +207,7 @@ describe("It checks host app", () => {
 
     it('Checks added cities block functionality are the same for root and client hosts', () => {
         methodsPage.checkAddedCitiesBlockFunctionalityForMultipleHosts(5000,
-            Constants.elementsText.angularUniversalSsrAddedCities, updatedSelectors.angularUniversalSsrAddedCity,
-            Constants.commonPhrases.angularUniversalSsrSelectedCityInfo, selectors.angularUniversalSsrSelectedCityInfo)
+            Constants.elementsText.angularUniversalSsrApp.addedCities, updatedSelectors.angularUniversalSsrAddedCity,
+            Constants.commonPhrases.angularUniversalSsrApp.selectedCityInfo, selectors.angularUniversalSsrSelectedCityInfo)
     })
 })

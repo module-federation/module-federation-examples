@@ -12,14 +12,14 @@ describe('Check is Comprehensive Demo App5 working and have elements', () => {
     it('Check App build and running & Check app elements exist', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App5.buttonText
+            text: Constants.elementsText.comprehensiveDemoApp.App5.buttonText
         })
         basePage.checkElementExist({
             selector: alertMessages.alert
         })
         basePage.checkElementWithTextPresence({
             selector: alertMessages.alert,
-            text: Constants.elementsText.comprehensiveDemo.App5.alertText
+            text: Constants.elementsText.comprehensiveDemoApp.App5.alertText
         })
         basePage.checkElementExist({
             selector: buttons.closeButton
@@ -29,16 +29,16 @@ describe('Check is Comprehensive Demo App5 working and have elements', () => {
     it('Check Application functionality (Alert message & close button exist)', () => {
         basePage.checkBrowserAlertByText({
             selector: baseSelectors.button,
-            alertMessage: Constants.elementsText.comprehensiveDemo.alertMessage
+            alertMessage: Constants.elementsText.comprehensiveDemoApp.alertMessage
         })
         basePage.clickElementBySelector({
             selector: buttons.closeButton
         })
         basePage.checkElementHaveProperty({
             selector: alertMessages.alert,
-            attr: Constants.commonText.attr,
-            prop: Constants.commonText.style,
-            value: Constants.commonText.displayNone
+            attr: Constants.commonConstantsData.commonAttributes.attr,
+            prop: Constants.commonConstantsData.commonAttributes.style,
+            value: Constants.commonConstantsData.commonAttributes.displayNone
         })
     })
 })

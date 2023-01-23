@@ -14,7 +14,7 @@ describe("It checks consumer app", () => {
     it('Checks consumer page header visibility', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.divElement,
-            text: Constants.elementsText.vueCliConsumerSectionHeader,
+            text: Constants.elementsText.vueCliApp.consumerSection.header,
             visibilityState: 'be.visible'
         })
     })
@@ -22,7 +22,7 @@ describe("It checks consumer app", () => {
     it('Checks core imported part message visibility', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.h4,
-            text: Constants.elementsText.vueCliConsumerImportMessages.coreImportMessage,
+            text: Constants.elementsText.vueCliApp.consumerSection.importMessages.core,
             visibilityState: 'be.visible'
         })
     })
@@ -38,7 +38,7 @@ describe("It checks consumer app", () => {
     it('Checks core section description visibility', () => {
         basePage.checkElementState({
             selector: baseSelectors.section,
-            text: Constants.elementsText.vueCliSectionsDescriptions.consumerCoreSection,
+            text: Constants.elementsText.vueCliApp.sectionsDescriptions.consumerCoreSection,
             state: 'not.be.disabled'
         })
     })
@@ -46,7 +46,7 @@ describe("It checks consumer app", () => {
     it('Checks other part message visibility', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.h4,
-            text: Constants.elementsText.vueCliConsumerImportMessages.otherImportMessage,
+            text:  Constants.elementsText.vueCliApp.consumerSection.importMessages.other,
             visibilityState: 'be.visible'
         })
     })
@@ -62,13 +62,13 @@ describe("It checks consumer app", () => {
     it('Checks that on imported and base other sections same code block appears by click', () => {
         basePage.checkElementContainText({
             selector: baseSelectors.section,
-            text: Constants.elementsText.vueCliOtherSectionCodeBlock,
+            text: Constants.elementsText.vueCliApp.otherSectionCodeBlock,
             index: 0 ,
             contain: false
         })
         basePage.clickElementWithText({
             selector: baseSelectors.button,
-            text: Constants.elementsText.vueCliButtonsText.otherSectionButton,
+            text: Constants.elementsText.vueCliApp.buttonsText.otherSectionButton,
             wait: 1500
         })
         basePage.compareInfoBetweenHosts(baseSelectors.code, 9001, true, 0, baseSelectors.button, 1500)
@@ -77,7 +77,7 @@ describe("It checks consumer app", () => {
     it('Checks that on imported and base other sections same browser alert appears by click on button', () => {
         methodsPage.checkBrowserAlertForMultipleHosts({
             selector: baseSelectors.button,
-            message: Constants.commonPhrases.vueCliOtherAppAlertMessage,
+            message: Constants.commonPhrases.vueCliApp.otherAppAlertMessage,
             index: 1,
             host: 9001,
             wait: 1500
