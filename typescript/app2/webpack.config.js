@@ -1,5 +1,4 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
 const { FederatedTypesPlugin } = require('@module-federation/typescript');
 const path = require('path');
 
