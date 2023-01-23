@@ -6,14 +6,14 @@ const basePage: BaseMethods = new BaseMethods()
 
 const appsData = [
     {
-        appName: Constants.elementsText.sharedContextApp1H2,
+        appName: Constants.elementsText.sharedContext.app1.subheader,
         buttonEm: Constants.elementsText.sharedRoutes2HomeButtonEM,
         buttonAbout: Constants.elementsText.sharedRoutes2AboutButtonEM,
         host: 3001
     },
 
     {
-        appName: Constants.elementsText.sharedContextApp2H2,
+        appName: Constants.elementsText.sharedContext.app2.subheader,
         buttonEm: Constants.elementsText.sharedRoutes2AboutButtonEM,
         buttonAbout: Constants.elementsText.sharedRoutes2HomeButtonEM,
         host: 3002

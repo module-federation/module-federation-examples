@@ -2,8 +2,8 @@ import {BaseMethods} from "../../../cypress/common/base";
 import {baseSelectors, selectors, updatedSelectors} from "../../../cypress/common/selectors";
 import {Constants} from "../../../cypress/fixtures/constants";
 import {CssAttr} from "../../../cypress/types/cssAttr";
-import {getRandomTextString} from "../../../cypress/helpers/base-helper";
 import {AngularUniversalSsrMethods} from "../methods/methods";
+import {CommonTestData} from "../../../cypress/fixtures/commonTestData";
 
 const basePage: BaseMethods = new BaseMethods()
 const methodsPage: AngularUniversalSsrMethods = new AngularUniversalSsrMethods()
@@ -69,13 +69,7 @@ describe("It checks host app", () => {
     })
 
     it('Checks value input has no validation', () => {
-        const multipleSizeStringsArray = [
-            getRandomTextString(10),
-            getRandomTextString(100),
-            getRandomTextString(1000),
-       ]
-
-        multipleSizeStringsArray.forEach((string: string) => {
+        CommonTestData.multipleSizeStringsArray.forEach((string: string) => {
             basePage.fillField({
                 selector: baseSelectors.input,
                 text: string

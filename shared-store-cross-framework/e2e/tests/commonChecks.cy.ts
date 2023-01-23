@@ -1,4 +1,4 @@
-import {baseSelectors, selectors} from "../../../cypress/common/selectors";
+import {baseSelectors, buttons, selectors} from "../../../cypress/common/selectors";
 import {Constants} from "../../../cypress/fixtures/constants";
 import {BaseMethods} from "../../../cypress/common/base";
 import {SharedStoreCrossFrameworkMethods} from "../methods/methods";
@@ -25,7 +25,6 @@ describe('It checks shared-store-cross-framework sample', () => {
     ]
 
     appsData.forEach((property: { name: string, buttonsBlock: string, blockName: string, color: string }) => {
-
         it(`Checks ${property.name} buttons block visibility`, () => {
             basePage.openLocalhost(3001)
             basePage.checkElementVisibility(property.buttonsBlock)
@@ -79,10 +78,28 @@ describe('It checks shared-store-cross-framework sample', () => {
             })
         });
 
-        it(`Checks increase/decrease actions by ${property.name} buttons + check counter can have negative value`, () => {
+        it.only(`Checks increase/decrease actions by ${property.name} buttons + check counter can have negative value`, () => {
             basePage.openLocalhost(3001)
-            methodsPage.changeCounterValue({
-                baseButtonsBlock: property.buttonsBlock,
+            basePage.checkCounterFunctionality({
+                button:`${property.buttonsBlock} ${buttons.sharedStoreCrossFrameworkAppActionsButtons.incrementButton}`,
+                counterElement: selectors.sharedStoreCrossFrameworkAppClicksCounter,
+                counterText: Constants.commonText.sharedStoreCrossFrameworkCounterValues.zero,
+                isButtonTexted: false
+            })
+            basePage.checkCounterFunctionality({
+                button:`${property.buttonsBlock} ${buttons.sharedStoreCrossFrameworkAppActionsButtons.decrementButton}`,
+                counterElement: selectors.sharedStoreCrossFrameworkAppClicksCounter,
+                counterText: Constants.commonText.sharedStoreCrossFrameworkCounterValues.one,
+                isButtonTexted: false,
+                isCounterDecreased: true
+            })
+            basePage.checkCounterFunctionality({
+                button:`${property.buttonsBlock} ${buttons.sharedStoreCrossFrameworkAppActionsButtons.decrementButton}`,
+                counterElement: selectors.sharedStoreCrossFrameworkAppClicksCounter,
+                counterText: Constants.commonText.sharedStoreCrossFrameworkCounterValues.zero,
+                isButtonTexted: false,
+                isCounterDecreased: true,
+                counterValue: Constants.commonText.sharedStoreCrossFrameworkCounterValues.minusOne,
             })
         });
     });
