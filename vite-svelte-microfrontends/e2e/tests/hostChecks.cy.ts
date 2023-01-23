@@ -7,7 +7,7 @@ const basePage: BaseMethods = new BaseMethods()
 
 describe("It checks host app", () => {
     beforeEach(() => {
-        basePage.openLocalhost(5173)
+        basePage.openLocalhost(4173)
     })
 
     it('Checks that remote component card appears after loading', () => {

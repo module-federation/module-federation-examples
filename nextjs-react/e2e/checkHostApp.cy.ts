@@ -5,7 +5,6 @@ import { Constants } from '../../cypress/fixtures/constants';
 const basePage: BaseMethods = new BaseMethods()
 
 describe("Check host app", () => {
-
     beforeEach(() => {
         basePage.openLocalhost(3000)
     })
@@ -14,9 +13,7 @@ describe("Check host app", () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
             text: Constants.commonText.nextJSButton})
-
         cy.wait(200)
-
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
             text: Constants.commonText.remoteButton})
@@ -29,9 +26,7 @@ describe("Check host app", () => {
             prop: Constants.commonText.background,
             value: Constants.color.lightSaturatedYellow
         })
-
         cy.wait(200)
-
         basePage.checkElementWithTextHaveProperty({
             selector: baseSelectors.button,
             text: Constants.commonText.remoteButton,

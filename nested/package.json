@@ -1,17 +1,10 @@
 {
-  "private": true,
-  "workspaces": {
-    "packages": [
-      "app1",
-      "app2",
-      "app3"
-    ]
-  },
+  "name": "nested",
   "scripts": {
-    "start": "lerna run --parallel start",
-    "build": "lerna run build",
-    "serve": "lerna run --parallel serve",
-    "clean": "lerna run --parallel clean",
+    "start": "lerna run --scope=nested_app* --parallel start",
+    "build": "lerna run --scope=nested_app* build",
+    "serve": "lerna run --scope=nested_app* --parallel serve",
+    "clean": "lerna run --scope=nested_app* --parallel clean",
     "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/runAll.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
