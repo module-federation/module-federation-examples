@@ -4,7 +4,7 @@ import { initFederation } from '@softarc/native-federation';
   try {
     await initFederation({
       'dsl': 'http://localhost:3002/remoteEntry.json',
-      'search': 'http://localhost:3004/remoteEntry.json',
+      'nav': 'http://localhost:3003/remoteEntry.json',
       'utils': 'http://localhost:3005/remoteEntry.json',
     });
     

@@ -24,8 +24,16 @@ const Button = React.lazy(async () => {
   return module;
 });
 
-//console.log(import('search/MiniSearch'));
-//const MiniSearch = React.lazy(() => import('search/MiniSearch'));
+const MiniSearch = React.lazy(async () => {
+  const module = await loadRemoteModule({
+    remoteName: 'search',
+    exposedModule: './MiniSearch'
+  });
+
+  console.log(MiniSearch);
+
+  return module;
+});
 
 const menuItems = [{
   label: 'Menu', 
@@ -55,11 +63,7 @@ const Header = ({ children }: HeaderProps) => (
   <Layout.Header>
     <Row>
       <Col span={10}>
-        <h2
-          css={css`
-            color: white;
-          `}
-        >
+        <h2>
           {children}
         </h2>
       </Col>
@@ -69,13 +73,13 @@ const Header = ({ children }: HeaderProps) => (
       </Col>
       <Col span={8}>
         <React.Suspense fallback={<span />}>
-         {/* <MiniSearch
+          <MiniSearch
             inputProps={{
               style: {
                 width: 200,
               },
             }}
-          />*/}
+          />
         </React.Suspense>
         <React.Suspense fallback={<span />}>
           <Button>Search</Button>
