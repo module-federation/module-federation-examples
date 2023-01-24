@@ -2,7 +2,6 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 import React from "react";
 import { revalidate, FlushedChunks, flushChunks } from "@module-federation/nextjs-mf/utils";
 
-
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     if(process.env.NODE_ENV === "development" && !ctx.req.url.includes("_next")) {

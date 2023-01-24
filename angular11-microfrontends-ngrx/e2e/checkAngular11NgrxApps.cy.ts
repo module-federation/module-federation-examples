@@ -1,34 +1,11 @@
 import { blocks, fields, buttons, baseSelectors, alertMessages } from './../../cypress/common/selectors';
 import { Constants } from '../../cypress/fixtures/constants';
 import { BaseMethods } from '../../cypress/common/base';
+import {returnCommonAngularAppsData} from "../../cypress/fixtures/commonTestData";
 
 const basePage: BaseMethods = new BaseMethods()
 
-const appsData = [
-    {
-        appNameText: Constants.elementsText.mdmfShell.name,
-        headerText: Constants.elementsText.mdfmShellHeader,
-        isWelcomeText: true,
-        welcomeText: Constants.commonPhrases.mdmfShellWelcome,
-        paragraphText: Constants.commonPhrases.mdmfShellParagraph,
-        tableHeaderText: Constants.elementsText.mdmfAppTableHeader,
-        isCardBody: false,
-        path: Constants.elementsText.mdmfShell.path,
-        host: 4200
-    },
-    {
-        appNameText: Constants.elementsText.mdmfProfile.name,
-        headerText: Constants.elementsText.mdfmProfileHeader,
-        isWelcomeText: false,
-        paragraphText: Constants.commonPhrases.mdmfProfileParagraph,
-        tableHeaderText: Constants.elementsText.mdmfAppTableHeader,
-        isCardBody: true,
-        sharedHeader: Constants.elementsText.mdmfSharedHeader,
-        sharedParagraph: Constants.commonPhrases.mdmfSharedParagraph,
-        path: Constants.elementsText.mdmfProfile.path,
-        host: 4200
-    }
-]
+const appsData = returnCommonAngularAppsData(Constants.commonPhrases.mdmfShellWelcome)
 
 appsData.forEach(
     (property: {

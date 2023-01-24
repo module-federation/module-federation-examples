@@ -3,6 +3,7 @@ import {baseSelectors, selectors, widgets} from "../../../cypress/common/selecto
 import {Constants} from "../../../cypress/fixtures/constants";
 import {CssAttr} from "../../../cypress/types/cssAttr";
 import {SharedRoutingMethods} from "../methods/methods";
+import {CommonTestData} from "../../../cypress/fixtures/commonTestData";
 
 const basePage: BaseMethods = new BaseMethods()
 const methodsPage: SharedRoutingMethods = new SharedRoutingMethods()
@@ -14,25 +15,7 @@ const sharedRoutingAppRecentDepositsBlockSelector = widgets.sharedRoutingAppComm
 const sharedRoutingAppRecentOrdersBlockSelector = widgets.sharedRoutingAppCommonWidgetSelector
     .replace('{selector}', Constants.elementsText.sharedRoutingAppSelectorsParts.recentOrders.toUpperCase())
 
-const hosts = [
-    {
-        host: 3000
-    },
-    {
-        host: 3001
-    },
-    {
-        host: 3002
-    },
-    {
-        host: 3003
-    },
-    {
-        host: 3004
-    },
-]
-
-  hosts.forEach((property: { host: number }) => {
+CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
     describe("It checks apps' dashboard page", () => {
         beforeEach(() => {
             basePage.openLocalhost(property.host, Constants.elementsText.sharedRoutingAppPageHeaders.dashboard.toLowerCase())

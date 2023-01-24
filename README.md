@@ -12,6 +12,14 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 | **JSNation Presentation**                                                                                                                                                                                                                                                        | [https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5.md](https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5.md)                                                                                                                         |
 | **Post about Dynamic Remotes**                                                                                                                                                                                                                                                   | [https://h3manth.com/posts/dynamic-remotes-webpack-module-federation/](https://h3manth.com/posts/dynamic-remotes-webpack-module-federation/)                                                                                                                                               |
 <p align="center"><a href="https://medusa.codes" target="_blank"><img src="https://pbs.twimg.com/media/Fcets1xXgAY3wZf?format=jpg&name=medium" width="800"/><a><p>
+
+
+https://module-federation.github.io/
+ 
+https://www.youtube.com/playlist?list=PLWSiF9YHHK-DqsFHGYbeAMwbd9xcZbEWJ
+ 
+https://scriptedalchemy.medium.com/
+
 # Examples
 
 > Legend:
@@ -25,6 +33,7 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 - [x] [Advanced API](./advanced-api) &mdash; Showcasing advanced API use, also seen in other examples.
 - [x] [Basic Host-Remote](./basic-host-remote/README.md) &mdash; App 1 consumes remote components from App2.
 - [x] [Create React App](./cra/README.md) &mdash; Module Federation using CRA.
+- [x] [Create React App using React App Rewired](./cra-react-app-rewired/README.md) &mdash; Module Federation using CRA and React App Rewired.
 - [x] [HMR Remotes](./react-hmr/README.md) &mdash; Hot Reloading Remotes inside Hosts.
 - [x] [Startup Code](./startup-code/README.md) &mdash; Advanced implementation that attaches initialization code to the remote container itself. Useful for dynamically setting publicPath in the remote.
 - [x] [Bi-Directional Hosts](./bi-directional/README.md) &mdash; App1 consumes App2 components; App2 consumes App1 components.
@@ -59,6 +68,8 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 - [x] [vue3-demo-federation-with-vite](./vue3-demo-federation-with-vite/README.md) &mdash; wepack and vite federation integrated projects, webpack/vite both play the role of host and remote
 - [x] [quasar-cli-vue3-webpack-javascript](./quasar-cli-vue3-webpack-javascript/README.md) &mdash; Module federation integration with Quasar apps running vue3 using quasar-cli (javascript)
 - [x] [UMD Federation](./umd-federation) &mdash; Support importing umd remote module
+ 
+**Module Federation Examples** covered by e2e tests with **Cypress** framework, more info about structure and configuration 👉 [here](./cypress/README.md) 👈
 
 # Check out our book
 
@@ -121,6 +132,14 @@ Module federation will work with any type of file that youre able to import, tha
 - MindTickle
 - Experian
 - Herodevs
+- CloudFlare
+- Cisco
+- Business Insider
+- Box.com
+- AfterPay
+- OLX
+- Shopify
+- adidas
 - and many more I cant remember
 
 # Contribution to this repo

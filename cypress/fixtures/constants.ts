@@ -190,6 +190,9 @@ export class Constants {
         serverSideRenderOnlyHeaderRemote: 'Remote Server',
         serverSideRenderOnlySharedComponent: 'Shared Component2222',
         serverSideRenderOnlyUpdatedSharedComponent: 'Updated Shared conponent in test',
+        serverSideRenderOnlyChangeFilePath: 'server-side-render-only/remoteServer/SharedComponent.js',
+        serverSideRenderOnlyChangeContent: 'import React from \'react\';\n\nconst SharedComponent = () => <div>Updated Shared conponent in test</div>;\n\nexport default SharedComponent;\n',
+        serverSideRenderOnlyOriginalContent: 'import React from \'react\';\n\nconst SharedComponent = () => <div>Shared Component2222</div>;\n\nexport default SharedComponent;\n',
         nextjsSsrHome: 'Home',
         nextjsSsrShop: 'Shop',
         nextjsSsrCheckout: 'Checkout',
@@ -297,25 +300,37 @@ export class Constants {
             name: 'Zack Jackson',
             longProfession: 'Principal Engineer at lululemon Distributed JavaScript Orchestration at scale. Maintainer of Webpack, inventor of Module Federation.',
         },
-        dynamicSystemHostHeader: 'Dynamic System Host',
-        dynamicSystemHostHeaderH2: 'Host',
-        dynamicSystemRemoteHeaderH2: 'Remote',
-        dynamicSystemHostHeaderH3: 'my env is https://host.api.com',
-        dynamicSystemHostParagraph: 'The Dynamic System will take advantage Module Federation remotes and exposes. It will no load components that have been loaded already.',
-        dynamicSystemHostButton: 'Load Remote Widget',
-        dynamicSystemHostButtonH2: 'Remote Widget',
-        dynamicSystemHostButtonH2Second: 'My env is ',
-        dynamicSystemHostButtonParagraph: 'Using momentjs for format the date',
-        dynamicSystemHostLoading: 'Loading',
-        sharedContextApp1H1: 'Context Provider',
-        sharedContextApp1H2: 'App 1',
-        sharedContextApp2H2: 'App 2',
-        sharedContextApp1Paragraph: 'Welcome, Billy',
-        sharedContextApp2Paragraph: 'Welcome, Susan',
+        dynamicSystemRemotesRuntime: {
+            host: {
+                header: 'Dynamic System Host',
+                subHeader: 'Host',
+                hostH3: 'my env is https://host.api.com',
+                button: 'Load Remote Widget'
+            },
+            remote: {
+                subHeader: 'Remote'
+            },
+            paragraph: 'The Dynamic System will take advantage Module Federation remotes and exposes. It will no load components that have been loaded already.',
+            loading: 'Loading',
+            buttonHeader: 'Remote Widget',
+            buttonH2: 'My env is ',
+            buttonParagraph: 'Using momentjs for format the date'
+        },
+        sharedContext: {
+            app1: {
+                subheader: 'App 1',
+                paragraph: 'Welcome, Billy'
+            },
+            app2: {
+                subheader: 'App 2',
+                paragraph: 'Welcome, Susan',
+            },
+            header: 'Context Provider'
+        },
         cssIsolationApp1Name: 'App 1',
         cssIsolationApp2Name: 'App 2',
-        cssIsolationApp1Header: 'Host Application - React Version',      
-        cssIsolationApp2Header: 'Remote Application - React Version',  
+        cssIsolationApp1Header: 'Host Application - React Version',
+        cssIsolationApp2Header: 'Remote Application - React Version',
         sharedRoutes2HomeButtonH1: 'Home Page',
         sharedRoutes2AboutButtonH1: 'About Page',
         sharedRoutes2HomeButtonH2: 'Welcome to the future!',
@@ -368,7 +383,7 @@ export class Constants {
             loadingModuleMessage: 'loading remote module ...',
             remoteModuleMessage: 'got remote module: '
         },
-        nativeFederationReactComponentsHeaders: {
+        commonComponentsNames: {
             host: 'Host',
             remote: 'Remote'
         },
@@ -385,7 +400,6 @@ export class Constants {
             host: 'Host button: ',
             remote: 'Remote button: '
         },
-
         reactHostRemoteContainerHeader: 'This is the container App hosted at localhost:8080',
         reactHostRemoteContainerDiv: 'This component is from the Host React App hosted at localhost:8081',
         reactHostRemoteHostedDiv: 'This is the Remote App hosted at localhost:8081)',
@@ -485,7 +499,17 @@ export class Constants {
                 heading: 'This is the heading',
                 button: 'from remote1: GO HOME'
             }
-        }
+        },
+        angularUniversalSsrValueInputButtonText: 'Add value',
+        angularUniversalSsrTabsNames: [
+            'Home',
+            'Angular lazy module',
+            'Federation lazy module'
+         ],
+        angularUniversalSsrAddedCities: [
+            'Prague',
+            'Saint-Petersburg'
+        ],
     }
 
     public static readonly tabsNames = {
@@ -506,6 +530,7 @@ export class Constants {
             'Using momentjs for format the date'
         ],
         welcomeToHostApp: 'Welcome to Host App',
+        commonHostAppName: 'Host App',
         remoteAppText: 'RemoteApp',
         remoteAppsNameFromReduxStore: "RemoteApp's name from the redux store : ",
         vueCliAppWelcomeMessage: 'Welcome to Your Vue.js + TypeScript App',
@@ -577,6 +602,32 @@ export class Constants {
             'I\'m RxJs from remote',
             'remote got message:'
         ],
+        rustWasmConsoleMessages: {
+            startLoopMessage:'Infinite looping in progress',
+            stopLoopMessage:'Looping successfully stopped',
+            tickLoopMessage:'Game board successfully rerendered',
+            resetLoopMessage:'Game board successfully reset',
+            baseLoadingMessage: 'I love rust and wasm!'
+        },
+        craReactAppAppsPhrases: {
+            hostApp: 'This is the host application.',
+            hostAppRemoteMessage: 'This is a component from the remote application',
+            remoteApp: 'Remote Application'
+        },
+        angularUniversalSsrComponentsMessages: {
+            rootComponent: 'Root component',
+            homeComponent: 'Home component',
+            angularLazyComponent: 'Angular lazy route component'
+        },
+        angularUniversalSsrCitiesBlockHeaderText: 'Select a city:',
+        angularUniversalSsrSelectedCityInfo: [
+            'The weather in Prague is good![ Angular lazy component ]',
+            'The weather in Saint-Petersburg is good![ Angular lazy component ]'
+        ],
+        thirdPartyScriptsAppPhrases: {
+            header: 'Basic Host-Remote',
+            description: 'Check the network tab to see all the third party calls'
+        },
     }
 
     public static readonly commonText = {
@@ -608,7 +659,9 @@ export class Constants {
             minusSign: '-'
         },
         sharedStoreCrossFrameworkCounterValues: {
+            minusOne: '-1',
             zero: '0',
+            one: '1',
             two: '2'
         },
         cssIsolationButton: 'Make Everything Yellow',
@@ -620,7 +673,18 @@ export class Constants {
             starSymbol: 'star',
             cloudSymbol: 'cloud'
         },
-        displayNone: 'display: none;'
+        displayNone: 'display: none;',
+        rustWasmAppButtonsNames: [
+            'Play ▶️',
+            'Tick 🔂',
+            'Reset ♻️',
+            'Stop 🛑'
+        ],
+        angularUniversalSsrAddedValuesNames: [
+            'one',
+            'two',
+            'three',
+        ],
     }
 
     public static readonly color = {
@@ -653,7 +717,10 @@ export class Constants {
         oceanBluePearl: 'rgb(63, 81, 181)',
         alabaster: 'rgb(250, 250, 250)',
         paleVioletRed: 'rgb(219, 112, 147)',
-        white: 'rgb(255, 255, 255)'
+        white: 'rgb(255, 255, 255)',
+        lightGrey: 'rgb(239, 239, 239)',
+        darkGrey: 'rgb(40, 44, 52)',
+        nonRgbBorderRed: 'border: 2px dotted red; padding: 20px;'
     }
 
     public static readonly translation = {
@@ -720,6 +787,11 @@ export class Constants {
         reactHmrHomeLink: '/',
         reactHmrButtonLink: '/button',
         reactHmrHeadingLink: '/heading',
+        angularUniversalSsrLinks : {
+            angularLink: '/lazy',
+            federationLink: '/federation'
+        },
+        thirdPartyScriptsPostRequestPath: 'https://www.google-analytics.com/j/collect?**',
     }
     public static readonly linksNames = {
         vueCliAppDocumentationLinkName: 'vue-cli documentation',
@@ -740,11 +812,6 @@ export class Constants {
         reactHmrHostHomeText: 'Home',
         reactHmrHostButtonText: 'Button',
         reactHmrHostHeadingText: 'Heading',
-    }
-
-    public static readonly commands = {
-        cpSharedComponentFile: 'cp server-side-render-only/e2e/fixtures/SharedComponent.js server-side-render-only/remoteServer',
-        cpOriginalSharedComponentFile: 'cp server-side-render-only/e2e/fixtures/originalFile/SharedComponent.js server-side-render-only/remoteServer'
     }
 
     public static readonly fieldsNames = {

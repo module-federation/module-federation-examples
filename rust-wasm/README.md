@@ -14,6 +14,14 @@ This will start the `Host` and `Remote` applications in dev mode.
 
 Navigate to your browser and open the `Host` app running on http://localhost:8080. You should see a few buttons. Click the "Play" button to start the app. Click the "Stop" button (same button) to pause the execution. Press the "Tick" button to step through the execution frame-by-frame, and lastly click the "Reset" button to reset the app.
 
+# Running Cypress E2E Tests
+
+To run tests in interactive mode, run  `npm run cypress:debug` from the root directory of the project. It will open Cypress Test Runner and allow to run tests in interactive mode. [More info about "How to run tests"](../../cypress/README.md#how-to-run-tests)
+
+To build app and run test in headless mode, run `yarn e2e:ci`. It will build app and run tests for this workspace in headless mode. If tets failed cypress will create `cypress` directory in sample root folder with screenshots and videos.
+
+["Best Practices, Rules amd more interesting information here](../../cypress/README.md)
+
 ## Module Federation
 
 Webpack's Module Federation Plugin **powers** the sharing of the Wasm module between our two apps at runtime. Below is a low-fidelity diagram illustrating how webpack is used to share code.

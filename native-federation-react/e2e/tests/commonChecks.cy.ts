@@ -8,11 +8,11 @@ describe('It checks components header and console message', () => {
     const appsData = [
         {
             host: 3000,
-            header: Constants.elementsText.nativeFederationReactComponentsHeaders.host
+            header: Constants.elementsText.commonComponentsNames.host
         },
         {
             host: 3001,
-            header: Constants.elementsText.nativeFederationReactComponentsHeaders.remote
+            header: Constants.elementsText.commonComponentsNames.remote
         }
     ]
 
@@ -44,6 +44,5 @@ describe('It checks components header and console message', () => {
             basePage.openLocalhost(property.host)
             basePage.checkInfoInConsole(Constants.elementsText.nativeFederationReactConsoleMessages.weekendMessage)
         })
-
     });
 });

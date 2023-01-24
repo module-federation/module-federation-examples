@@ -1,9 +1,81 @@
 import { defineConfig } from "cypress";
+const fs = require('fs')
+const path = require('path');
+
 
 async function setupNodeEvents(
   on: Cypress.PluginEvents,
   config: Cypress.PluginConfigOptions,
 ): Promise<Cypress.PluginConfigOptions> {
+
+  // @ts-ignore
+  on('before:browser:launch', (browser = {}, launchOptions) => {
+    console.log(
+      'launching browser %s is headless? %s',
+      browser.name,
+      browser.isHeadless,
+    )
+
+    // the browser width and height we want to get
+    // our screenshots and videos will be of that resolution
+    const width = 1920
+    const height = 1080
+
+    console.log('setting the browser window size to %d x %d', width, height)
+
+    if (browser.name === 'chrome' && browser.isHeadless) {
+      launchOptions.args.push(`--window-size=${width},${height}`)
+
+      // force screen to be non-retina and just use our given resolution
+      launchOptions.args.push('--force-device-scale-factor=1')
+    }
+
+    if (browser.name === 'electron' && browser.isHeadless) {
+      // might not work on CI for some reason
+      launchOptions.preferences.width = width
+      launchOptions.preferences.height = height
+    }
+
+    if (browser.name === 'firefox' && browser.isHeadless) {
+      launchOptions.args.push(`--width=${width}`)
+      launchOptions.args.push(`--height=${height}`)
+    }
+
+    // IMPORTANT: return the updated browser launch options
+    return launchOptions
+  })
+
+  on ('task', 
+    {
+      readFile({
+        filePath 
+      }) {
+        return fs.readFileSync(path.resolve(`../../${filePath}`),'utf8')
+      }
+    }
+  )
+
+  on ('task', 
+  {
+    writeToFile({
+      filePath,
+      content 
+    }) {
+      return new Promise((resolve, reject) => {
+        //@ts-ignore
+        fs.writeFile(path.resolve(`../../${filePath}`), content, err => { 
+          try {
+            console.log(filePath)
+            resolve(true)
+          } catch (error) {
+            console.log(err)
+            reject(error)
+          }
+        });
+      })
+    }
+  }
+)
 
   return config;
 }
@@ -35,6 +107,7 @@ export default defineConfig({
       localhost3003: "http://localhost:3003",
       localhost3004: "http://localhost:3004",
       localhost3005: "http://localhost:3005",
+      localhost4000: "http://localhost:4000",
       localhost4173: "http://localhost:4173",
       localhost4200: "http://localhost:4200",
       localhost4201: "http://localhost:4201",
