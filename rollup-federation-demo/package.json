@@ -1,11 +1,14 @@
 {
   "private": true,
+  "workspaces": {
+    "packages": [
+      "./rollup-spa",
+      "./rs-sidecar",
+      "./webpack-spa"
+    ]
+  },
   "scripts": {
-    "install:deps": "yarn install && yarn install:rollup && yarn install:rollup-rs && yarn install:webpack",
-    "install:rollup": "yarn --cwd rollup-spa install",
-    "install:rollup-rs": "yarn --cwd rollup-spa/rs-sidecar install",
-    "install:webpack": "yarn --cwd webpack-spa install",
-    "start": "concurrently 'yarn --cwd rollup-spa start' 'yarn --cwd rollup-spa/rs-sidecar start;' 'yarn --cwd webpack-spa start'"
+    "start": "concurrently 'yarn --cwd rollup-spa start' 'yarn --cwd rs-sidecar start;' 'yarn --cwd webpack-spa start'"
   },
   "devDependencies": {
     "concurrently": "7.3.0"

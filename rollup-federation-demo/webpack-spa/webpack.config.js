@@ -18,6 +18,11 @@ module.exports = {
   optimization: {
     minimize: true,
   },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
+  },
   module: {
     rules: [
       {
@@ -30,7 +35,7 @@ module.exports = {
       },
     ],
   },
-  externals: ['react', 'react-dom'],
+  externals: ['../node_modules/react', '../node_modules/react-dom'],
   plugins: [
     new ModuleFederationPlugin({
       name: 'rwebpackremote',
@@ -43,16 +48,6 @@ module.exports = {
         './Button': './src/Button',
       },
       shared: {
-        react: {
-          eager: true,
-          singleton: true,
-          requiredVersion: pkg.dependencies.react,
-        },
-        'react-dom': {
-          eager: true,
-          singleton: true,
-          requiredVersion: pkg.dependencies['react-dom'],
-        },
       },
     }),
   ],
