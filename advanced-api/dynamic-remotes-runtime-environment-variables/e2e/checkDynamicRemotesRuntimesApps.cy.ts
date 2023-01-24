@@ -93,7 +93,7 @@ appsData.forEach((
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.paragraph,
-                text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm:ss a')
+                text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
             })
         })
     })
