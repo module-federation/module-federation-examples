@@ -114,7 +114,6 @@ jobs:
         run: |
           echo "CACHE CHANGED"
           yarn install
-          npx lerna exec --stream --scope="${{ matrix.container }}*" --concurrency=1 "yarn install"
 
       - name: Run sample e2e tests
         run: 

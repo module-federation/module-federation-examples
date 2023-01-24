@@ -2,10 +2,10 @@
   "name": "startup-code",
   "scripts": {
     "start": "echo \"Dev server currently has bugs with entrypoint ordering. Use 'yarn build && yarn serve' instead.\"",
-    "start:force": "lerna run --scope=startup-code_app* --parallel start",
-    "build": "lerna run --scope=startup-code_app* build",
-    "serve": "lerna run --scope=startup-code_app* --parallel serve",
-    "clean": "lerna run --scope=startup-code_app* --parallel clean",
+    "start:force": "npx lerna run --scope=startup-code_app* --parallel start",
+    "build": "npx lerna run --scope=startup-code_app* build",
+    "serve": "npx lerna run --scope=startup-code_app* --parallel serve",
+    "clean": "npx lerna run --scope=startup-code_app* --parallel clean",
     "e2e:ci": "yarn build && yarn serve & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {

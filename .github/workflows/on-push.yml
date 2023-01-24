@@ -1,8 +1,8 @@
 name: on push
-on:
-  push:
-    branches:
-      - master
+on: pull_request
+  # push:
+  #   branches:
+  #     - master
 
 jobs:
 
@@ -49,4 +49,3 @@ jobs:
         run: |
           echo "CACHE CHANGED"
           yarn install
-          npx lerna exec --stream --concurrency=1 "yarn install"

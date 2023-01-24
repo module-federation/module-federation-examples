@@ -10,7 +10,7 @@
     "serve:nav": "cd nav; yarn serve",
     "serve:search": "cd search; yarn serve",
     "serve:utils": "cd utils; yarn serve",
-    "clean": "lerna run --scope @dashboard/* --parallel clean"
+    "clean": "npx lerna run --scope @dashboard/* --parallel clean"
   },
   "workspaces": {
     "packages": [
