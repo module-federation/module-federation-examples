@@ -1,7 +1,6 @@
 import React from 'react';
 
-export default () => {
-	return (
+export default () => (
 		<div
 			style={{
 				background: '#1f2124',
@@ -38,4 +37,3 @@ export default () => {
 			</div>
 		</div>
 	);
-};

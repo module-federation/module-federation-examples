@@ -130,7 +130,7 @@ export default {
 
 - for a webpack project, modify `webpack.config.js`, using custom module loaders:
 
-Note that use Current plugin in remote and webpack in host need wite custom remote module loader
+Note that use Current plugin in remote and webpack in host need write custom remote module loader
 
 ```js
 // webpack.config.js

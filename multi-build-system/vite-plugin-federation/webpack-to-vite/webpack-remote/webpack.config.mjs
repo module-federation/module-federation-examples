@@ -1,10 +1,6 @@
 import HtmlWebPackPlugin from "html-webpack-plugin";
 import ModuleFederationPlugin from "webpack/lib/container/ModuleFederationPlugin.js";
 
-import pkg from "./package.json" assert { type: 'json' };
-
-const deps = pkg.dependencies;
-
 export default {
   output: {
     publicPath: "http://localhost:3003/",
