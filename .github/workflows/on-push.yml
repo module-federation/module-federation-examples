@@ -49,3 +49,25 @@ jobs:
         run: |
           echo "CACHE CHANGED"
           yarn install
+
+  # Clean old and unused caches
+  cleanup:
+    runs-on: ubuntu-22.04
+    needs: cache
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Cleanup
+        run: |
+          gh extension install actions/gh-actions-cache
+          
+          REPO=${{ github.repository }}
+          BRANCH=${{ github.ref }}
+
+          echo "Fetching list of cache key"
+          cacheKeys=${{ needs.cache.steps.yarn-cache.key }}
+          echo "Cache keys: $cacheKeys"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
