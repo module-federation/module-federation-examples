@@ -1,5 +1,5 @@
 {
-  "name": "module-federation-ssr",
+  "name": "server-side-render-only",
   "version": "1.0.0",
   "scripts": {
     "start": "concurrently \"npm run buildHost\" \"npm run startHost\" \"npm run buildRemote\" \"npm run startRemote\"",
@@ -7,7 +7,7 @@
     "startHost": "nodemon hostServer/public/server/server.js",
     "buildRemote": "webpack --config=remoteServer/webpack.config.js -w",
     "startRemote": "nodemon remoteServer/public/server/server.js",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/*.cy.ts\" --browser=chrome"
   },
   "license": "MIT",
   "author": {
@@ -21,7 +21,7 @@
     "babel-loader": "8.2.5",
     "concurrently": "7.3.0",
     "lerna": "3.22.1",
-    "nodemon": "2.0.18",
+    "nodemon": "2.0.20",
     "wait-on": "7.0.1",
     "webpack": "5.72.1",
     "webpack-cli": "4.10.0"

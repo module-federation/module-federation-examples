@@ -1,6 +1,9 @@
 import {baseSelectors, block, buttons, fields} from "./selectors";
 import {Constants} from "../fixtures/constants";
 import {CssAttr} from "../types/cssAttr";
+import {StubTypes} from "../types/stubTypes";
+import {RequestsTypes} from "../types/requestsTypes";
+import { readFile, writeTofile } from "../helpers/file-actions-helper";
 
 export class BaseMethods {
 
@@ -16,8 +19,16 @@ export class BaseMethods {
         cy.skipWhen(condition)
     }
 
-    public execTheCommand(command: string, wait: number = 100): void {
-        cy.exec(command)
+    public writeContentToFile({
+        filePath,
+        content,
+        wait = 500
+    }: {
+        filePath: string,
+        content: string
+        wait?: number
+    }): void {
+        writeTofile(filePath, content)
         cy.wait(wait)
     }
 
@@ -40,7 +51,7 @@ export class BaseMethods {
         webpackFileSeparator?: string
         isContain?: boolean
     }): void {
-        cy.readFile(filePath).then((file: string) => {
+        readFile(filePath).then((file: string) => {
             if(webpackFileSeparator) {
                     isContain ? expect(file.split(webpackFileSeparator)[1]).to.include(text) :
                         expect(file.split(webpackFileSeparator)[1]).not.to.include(text)
@@ -211,7 +222,7 @@ export class BaseMethods {
         textArray?: string[]
     }): Cypress.Chainable<JQuery<HTMLElement>> {
         if(parentSelector && !textArray) {
-            this._checkChildElementWithTextPresence(parentSelector, selector, text, isVisible ? visibilityState : notVisibleState)
+           return this._checkChildElementWithTextPresence(parentSelector, selector, text, isVisible ? visibilityState : notVisibleState)
         }
 
         if(index) {
@@ -271,21 +282,37 @@ export class BaseMethods {
             .should(contain ? checkType : 'not.contain.text', text);
     }
 
-    public checkInfoInConsole(info: string): void {
-        cy.window().then((win) => {
-            cy.stub(win.console, "log").as('log')
-            cy.get('@log').should('be.calledWith', info)
+    public checkInfoInConsole(info: string, chainer: StubTypes = StubTypes.beCalled, isReloaded: boolean = true, isStubbed: boolean = true): void {
+        if(isStubbed) {
+            cy.window().then((win) => {
+                cy.stub(win.console, "log").as('log');
+            })
+        }
+        cy.get('@log').should(chainer, info)
+        if(isReloaded) {
             this.reloadWindow()
+        }
+    }
+
+    public checkNetworkCallCreated(requestType: RequestsTypes, url: string, localhost: number, statusCode: number): void {
+        cy.intercept(requestType, url).as('networkCall');
+        // Extra visit required cause intercept needs to be created before visit
+        this.openLocalhost(localhost)
+        cy.wait('@networkCall').then((interception) => {
+            if(interception.response) {
+                cy.wrap(interception.response.statusCode).should('eq', statusCode)
+            }
         })
     }
 
     public checkElementVisibility(
         selector: string,
-        isVisible: boolean = true
+        isVisible: boolean = true,
+        notVisibleState: string = 'not.be.visible'
     ): Cypress.Chainable<JQuery<HTMLElement>> {
         return cy
             .get(selector)
-            .should(isVisible ? 'be.visible' : 'not.be.visible');
+            .should(isVisible ? 'be.visible' : notVisibleState);
     }
 
     public checkChildElementVisibility(
@@ -295,7 +322,22 @@ export class BaseMethods {
         visibilityState: string = 'be.visible',
         text?: string,
         notVisibleState: string = 'not.exist',
+        parentElement: boolean = true
 ): Cypress.Chainable<JQuery<HTMLElement>> {
+        if(text && parentElement) {
+            return cy
+                .get(selector).contains(text).parent()
+                .find(childSelector)
+                .should(isVisible ? visibilityState : notVisibleState);
+        }
+
+        if(text && !parentElement) {
+            return cy
+                .get(selector).contains(text)
+                .find(childSelector)
+                .should(isVisible ? visibilityState : notVisibleState);
+        }
+
         if(text) {
             return cy
                 .get(selector).contains(text).parent(selector)
@@ -493,7 +535,8 @@ export class BaseMethods {
          parentSelector,
          state = 'have.length',
          text,
-         waitUntil = false
+         waitUntil = false,
+         jqueryValue = false
     }: {
         selector: string,
         quantity: number,
@@ -501,6 +544,7 @@ export class BaseMethods {
         parentSelector?: string,
         text?: string
         waitUntil?: boolean
+        jqueryValue?: boolean
     }): void {
         if(parentSelector) {
             cy.get(parentSelector).find(selector).should(state, quantity)
@@ -508,7 +552,7 @@ export class BaseMethods {
             return;
         }
 
-        if(text) {
+        if(text && !jqueryValue) {
             cy.get(selector).should('contain.text', text).and(state, quantity)
 
             return;
@@ -518,6 +562,23 @@ export class BaseMethods {
             cy.waitUntil(() =>
                 cy.get(selector).should('have.length', quantity, { timeout: 2000 }),
             );
+
+            return;
+        }
+
+        if(jqueryValue) {
+            let counter: number = 0;
+
+            cy.get(selector)
+                .each((element: JQuery<HTMLElement>) => {
+                    if(element.text().includes(<string>text)) {
+                       counter++
+
+                        if(counter === quantity) {
+                            expect(counter).to.be.eq(quantity)
+                        }
+                    }
+                });
 
             return;
         }
@@ -651,37 +712,77 @@ export class BaseMethods {
         cy.go(-1)
     }
 
-    public checkCounterInButton(button: string, buttonText: string, buttonsCount?: number): void {
+    public checkCounterFunctionality
+    ({
+         button,
+         counterText,
+         buttonsCount,
+         counterElement,
+         isButtonTexted = true,
+         isReloaded,
+         isValueCompared,
+         isCounterDecreased,
+         counterValue,
+         isCounterValueUsed
+    }: {
+        button: string,
+        counterText: string,
+        buttonsCount?: number,
+        counterElement?: string
+        isButtonTexted?: boolean
+        isReloaded?: boolean
+        isValueCompared?: boolean
+        isCounterDecreased?: boolean
+        counterValue?: string,
+        isCounterValueUsed?: boolean,
+    }) : void {
         let counter = 0
+        let counterElementSelector: string = counterElement? counterElement : button
 
         this.checkElementWithTextPresence({
-            selector: button,
-            text: buttonText,
+            selector: counterElementSelector,
+            text: counterText,
             visibilityState: 'be.visible'
         })
-        this.clickElementWithText({
-            selector: button,
-            text: buttonText
-        })
-        counter++
-        this.checkElementWithTextPresence({
-            selector: button,
-            text: buttonText.replace(/[0-9]+/, counter.toString()),
-            visibilityState: 'be.visible'
-        })
-        this.reloadWindow()
-        if(buttonsCount) {
-            this.checkElementQuantity({
+        if(isButtonTexted) {
+            this.clickElementWithText({
                 selector: button,
-                quantity: buttonsCount,
-                waitUntil: true
+                text: counterText
             })
+            if(!isCounterDecreased) {
+                counter++
+            }
+        } else {
+            this.clickElementBySelector({
+                selector: button,
+            })
+            if(!isCounterDecreased) {
+                counter++
+            }
         }
         this.checkElementWithTextPresence({
-            selector: button,
-            text: buttonText,
+            selector: counterElementSelector,
+            text: counterValue? counterValue : counterText.replace(/[0-9]+/, counter.toString()),
             visibilityState: 'be.visible'
         })
+        if (isValueCompared) {
+            expect(counter.toString()).to.eq(counterText.replace(/[0-9]/g, counter.toString()).split(':')[1].trim())
+        }
+        if(isReloaded) {
+            this.reloadWindow()
+            if(buttonsCount) {
+                this.checkElementQuantity({
+                    selector: button,
+                    quantity: buttonsCount,
+                    waitUntil: true
+                })
+            }
+            this.checkElementWithTextPresence({
+                selector: counterElementSelector,
+                text: isCounterValueUsed ? counter : counterText,
+                visibilityState: 'be.visible'
+            })
+        }
     }
 
     public checkElementWithTextContainsLink(

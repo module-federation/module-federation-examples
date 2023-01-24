@@ -3,52 +3,11 @@ import { BaseMethods } from "../../../cypress/common/base";
 import { Constants } from "../../../cypress/fixtures/constants";
 import { getDateWithFormat } from "../../../cypress/helpers/base-helper";
 import { CssAttr } from '../../../cypress/types/cssAttr';
+import {returnCommonDynamicAppsData} from "../../../cypress/fixtures/commonTestData";
 
 const basePage: BaseMethods = new BaseMethods()
 
-const appsData = [
-    {
-        headerSelector: baseSelectors.h1,
-        subHeaderSelector: baseSelectors.h2,
-        isButtonExist: true,
-        buttonSelector: baseSelectors.button,
-        headerText: Constants.elementsText.dynamicRemotesHeader,
-        appNameText: Constants.elementsText.dynamicRemotesFirstAppName,
-        widgetName: Constants.elementsText.dynamicRemotesWidgetName,
-        widgetParagraph: Constants.commonPhrases.dynamicRemotesWidgetParagraphText,
-        widgetColor: Constants.color.dynamicRemotesWidgetColor,
-        paragraph: true,
-        host: 3001
-    },
-    {
-        headerSelector: baseSelectors.h1,
-        subHeaderSelector: baseSelectors.h2,
-        isButtonExist: false,
-        buttonSelector: baseSelectors.button,
-        headerText: Constants.elementsText.dynamicRemotesHeader,
-        appNameText: Constants.elementsText.dynamicRemotesSecondAppName,
-        widgetQuantity: 0,
-        widgetName: Constants.elementsText.dynamicRemotesWidgetName,
-        widgetParagraph: Constants.commonPhrases.dynamicRemotesWidgetParagraphText,
-        widgetColor: Constants.color.dynamicRemotesWidgetColor,
-        paragraph: false,
-        host: 3002
-    },
-    {
-        headerSelector: baseSelectors.h1,
-        subHeaderSelector: baseSelectors.h2,
-        isButtonExist: false,
-        buttonSelector: baseSelectors.button,
-        headerText: Constants.elementsText.dynamicRemotesHeader,
-        appNameText: Constants.elementsText.dynamicRemotesThirdAppName,
-        widgetQuantity: 1,
-        widgetName: Constants.elementsText.dynamicRemotesWidgetName,
-        widgetParagraph: Constants.commonPhrases.dynamicRemotesWidgetParagraphText,
-        widgetColor: Constants.color.dynamicRemotesWidgetColor,
-        paragraph: false,
-        host: 3003
-    }
-]
+const appsData = returnCommonDynamicAppsData(Constants.commonPhrases.dynamicRemotesWidgetParagraphText)
 
 appsData.forEach(
     (property: {

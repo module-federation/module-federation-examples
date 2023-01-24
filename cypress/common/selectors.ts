@@ -20,7 +20,6 @@ export const baseSelectors = {
     style: '[style="{style}"]',
     code: 'code',
     parent: '#parent',
-    navigation: 'nav',
     navigationItem: '.nav-item',
     table: 'table',
     tableRow: 'tr',
@@ -41,7 +40,8 @@ export const baseSelectors = {
     body: 'body',
     unorderedList: 'ul',
     span: 'span',
-    checkbox: 'input[type="checkbox"]'
+    checkbox: 'input[type="checkbox"]',
+    appRoot: 'app-root'
 }
 
 export const selectors = {
@@ -64,7 +64,7 @@ export const selectors = {
     sharedRoutingAppInputShrinkAnimation: '[data-shrink="{state}"]',
     sharedRoutingAppCardProfileImage: '[data-e2e="CARD_PROFILE__IMAGE"]',
     cssIsolationAppHeader: '#root h1',
-    cssIsolationAppName: '#root h2'
+    cssIsolationAppName: '#root h2',
     vue3DemoComponents : {
         remote: '.remote-component',
         layout: '.layout-app',
@@ -78,6 +78,11 @@ export const selectors = {
     appExposesCloseButton: '[data-e2e="exposesAppNamesClose"]',
     appGeneralCounter: '[data-e2e="General-counter"]',
     appExposesCounter: '[data-cy="app-button-counter"]',
+    rustWasmGameBoard: '[data-e2e="GAME_BOARD"]',
+    craReactAppRemoteComponentInfo: '[data-e2e="REMOTE_COMPONENT_INFO"]',
+    activeTab: '[class="active"]',
+    angularUniversalSsrCitiesBlock: 'app-client-cities-home',
+    angularUniversalSsrSelectedCityInfo: 'app-client-city'
 }
 
 export const updatedSelectors = {
@@ -89,7 +94,11 @@ export const updatedSelectors = {
     commonAppNameSelector: `${baseSelectors.divElement} ${baseSelectors.h2}`,
     hamburgerMenuButton: `${baseSelectors.header} ${baseSelectors.button}`,
     sectionName: `${baseSelectors.section} ${baseSelectors.h1}`,
-    sectionButton: `${baseSelectors.section} ${baseSelectors.button}`
+    sectionButton: `${baseSelectors.section} ${baseSelectors.button}`,
+    angularUniversalSsrTab: `${baseSelectors.divElement} ${baseSelectors.linkTag}`,
+    angularUniversalSsrAddedCity: `${selectors.angularUniversalSsrCitiesBlock} ${baseSelectors.listElement}`,
+    craReactAppRemoteComponentBorder: `${selectors.craReactAppRemoteComponentInfo}${baseSelectors.style
+        .replace('{style}', Constants.color.nonRgbBorderRed)}`
 }
 
 export const widgets = {

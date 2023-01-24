@@ -1,5 +1,5 @@
 import { Constants } from './../../cypress/fixtures/constants';
-import { baseSelectors, block } from './../../cypress/common/selectors';
+import { baseSelectors } from './../../cypress/common/selectors';
 import { BaseMethods } from "../../cypress/common/base";
 
 const basePage: BaseMethods = new BaseMethods()

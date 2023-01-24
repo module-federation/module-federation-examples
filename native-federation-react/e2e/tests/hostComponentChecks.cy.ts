@@ -123,12 +123,18 @@ describe("It checks host apps' component", () => {
     })
 
     it('Checks that host button text includes counter which changed after click & check value reverted after reload', () => {
-        basePage.checkCounterInButton(buttons.nativeFederationReactButtons.hostButton,
-            Constants.elementsText.nativeFederationElementsTexts.buttonText)
+        basePage.checkCounterFunctionality({
+            button: buttons.nativeFederationReactButtons.hostButton,
+            counterText: Constants.elementsText.nativeFederationElementsTexts.buttonText,
+            isReloaded: true
+        })
     })
 
     it('Checks that remote button text includes counter which changed after click & check value reverted after reload', () => {
-        basePage.checkCounterInButton(buttons.nativeFederationReactButtons.remoteButton,
-            Constants.elementsText.nativeFederationElementsTexts.buttonText)
+        basePage.checkCounterFunctionality({
+            button: buttons.nativeFederationReactButtons.remoteButton,
+            counterText: Constants.elementsText.nativeFederationElementsTexts.buttonText,
+            isReloaded: true
+        })
     })
 })

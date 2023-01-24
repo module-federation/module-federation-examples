@@ -1,12 +1,11 @@
 import { Constants } from '../../cypress/fixtures/constants';
 import { block, baseSelectors, alertMessages, buttons, dialogs } from '../../cypress/common/selectors';
 import { BaseMethods } from "../../cypress/common/base";
+import {CommonTestData} from "../../cypress/fixtures/commonTestData";
 
 const basePage: BaseMethods = new BaseMethods()
 
 describe('Check is Comprehensive Demo App1 working and have elements', () => {
-    const demoPages = Constants.elementsText.comprehensiveDemo.comprehensiveDemoDemoPages
-    const appsNames = Constants.elementsText.comprehensiveDemo.comprehensiveDemoAppsList
     beforeEach(() => {
         basePage.openLocalhost(3001)
     })
@@ -19,7 +18,7 @@ describe('Check is Comprehensive Demo App1 working and have elements', () => {
             selector: baseSelectors.h6,
             text: Constants.elementsText.comprehensiveDemo.App1.sideNavHeaderText
         })
-        demoPages.forEach((demoPage) => {
+        CommonTestData.comprehensiveAppNames.forEach((demoPage) => {
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.span,
                 text: demoPage.name
@@ -32,7 +31,7 @@ describe('Check is Comprehensive Demo App1 working and have elements', () => {
                 value: demoPage.link
             })
         })
-        appsNames.forEach((application) => {
+        CommonTestData.comprehensiveAppNames.forEach((application) => {
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.span,
                 text: application.name
@@ -111,7 +110,7 @@ describe('Check is Comprehensive Demo App1 working and have elements', () => {
             prop: Constants.commonText.style,
             value: Constants.commonText.displayNone
         })
-        demoPages.forEach((demoPage) => {
+        CommonTestData.comprehensiveAppNames.forEach((demoPage) => {
             basePage.clickElementWithText({
                 selector: baseSelectors.linkTag,
                 text: demoPage.name
@@ -121,7 +120,7 @@ describe('Check is Comprehensive Demo App1 working and have elements', () => {
                 true
             )
         })
-        appsNames.forEach((application) => {
+        CommonTestData.comprehensiveAppNames.forEach((application) => {
             basePage.clickElementWithText({
                 selector: baseSelectors.linkTag,
                 text: application.name
