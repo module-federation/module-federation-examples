@@ -15,7 +15,7 @@ describe('It checks integrated apps functionality', () => {
         },
         {
             host: 3001,
-            appName: Constants.elementsText.commonComponentsNames.remote,
+            appName: Constants.commonConstantsData.basicComponents.remote,
             appMessage: Constants.commonPhrases.craReactApp.remoteApp,
         },
     ]

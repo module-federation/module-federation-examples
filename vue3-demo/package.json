@@ -1,5 +1,11 @@
 {
   "name": "vue3-demo",
+  "private": true,
+  "workspaces": [
+    "./home",
+    "./layout"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "start": "lerna run --scope=vue3-demo_* --parallel start",
     "build": "lerna run --scope=vue3-demo_* build",

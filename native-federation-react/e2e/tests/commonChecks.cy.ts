@@ -12,7 +12,7 @@ describe('It checks components header and console message', () => {
         },
         {
             host: 3001,
-            header: Constants.elementsText.commonComponentsNames.remote
+            header: Constants.commonConstantsData.basicComponents.remote
         }
     ]
 

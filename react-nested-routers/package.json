@@ -1,7 +1,12 @@
 {
   "name": "react-nested-routers",
-  "version": "1.0.0",
-  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "./app1",
+    "./app2",
+    "./shell"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "postinstall": "yarn --cwd ./app1 install && yarn --cwd ./app2 install && yarn --cwd ./shell install",
     "start": "concurrently \"yarn --cwd ./app1 start\" \"yarn --cwd ./app2 start\" \"yarn --cwd ./shell start\"",
