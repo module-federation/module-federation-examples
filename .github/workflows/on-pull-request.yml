@@ -125,7 +125,7 @@ jobs:
         if: failure()
         with:
           name: cypress-screenshots
-          path: '**/${{ matrix.container }}/cypress/screenshots'
+          path: '**/cypress/screenshots'
           retention-days: 7
 
       - name: Create artifacts for Cypress videos
@@ -133,5 +133,48 @@ jobs:
         if: failure()
         with:
           name: cypress-videos
-          path: '**/${{ matrix.container }}/cypress/videos'
+          path: '**/cypress/videos'
+          retention-days: 7
+
+      - name: Create artifacts for Allure report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: allure-report
+          path: '**/allure-results'
+          retention-days: 7
+
+  generate-test-report:
+    needs: run-e2e-test
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Install deps
+        run: |
+          yarn install
+
+      - name: Dowload artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: allure-report
+
+      - name: Display structure of downloaded files
+        run: ls -R
+
+      - name: Generate Allure report
+        run: |
+          npx allure generate ./**/allure-results --clean --output allure-report
+      
+      - name: Upload Allure artifacts
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: allure-report
+          path: '**/allure-report'
           retention-days: 7

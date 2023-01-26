@@ -42,40 +42,42 @@ appsData.forEach(
         const appName = property.host === 3002 ? appsData[1].appNameText : appsData[0].appNameText;
         const color = property.host === 3002 ? appsData[1].buttonColor : appsData[0].buttonColor;
 
-        describe(`Check ${appName}`, () => {
-            beforeEach(() => {
-                basePage.openLocalhost(host)
-            })
-
-            it(`Check ${appName} built and running`, () => {
-                basePage.checkElementWithTextPresence({
-                    selector: property.headerSelector,
-                    text: property.headerText
+        describe(`Automatic vendor sharing`, () => {
+            context(`Check ${appName}`, () => {
+                beforeEach(() => {
+                    basePage.openLocalhost(host)
                 })
-                basePage.checkElementWithTextPresence({
-                    selector: property.subHeaderSelector,
-                    text: `${appName}`
+    
+                it(`Check ${appName} built and running`, () => {
+                    basePage.checkElementWithTextPresence({
+                        selector: property.headerSelector,
+                        text: property.headerText
+                    })
+                    basePage.checkElementWithTextPresence({
+                        selector: property.subHeaderSelector,
+                        text: `${appName}`
+                    })
                 })
-            })
-
-            it(`Check buttons in ${appName} exist`, () => {
-                basePage.checkElementWithTextPresence({
-                    selector: property.buttonSelector,
-                    text: `${appName} ${Constants.commonConstantsData.button}`
+    
+                it(`Check buttons in ${appName} exist`, () => {
+                    basePage.checkElementWithTextPresence({
+                        selector: property.buttonSelector,
+                        text: `${appName} ${Constants.commonConstantsData.button}`
+                    })
                 })
-            })
-
-            it(`Check button property in ${appName}`, () => {
-                basePage.checkElementPositionbyText(
-                    property.buttonSelector,
-                    `${appName} ${Constants.commonConstantsData.button}`,
-                    appButtonPosition
-                )
-                basePage.checkElementWithTextHaveProperty({
-                    selector: property.buttonSelector,
-                    text: `${appName} ${Constants.commonConstantsData.button}`,
-                    prop: CssAttr.background,
-                    value: color
+    
+                it(`Check button property in ${appName}`, () => {
+                    basePage.checkElementPositionbyText(
+                        property.buttonSelector,
+                        `${appName} ${Constants.commonConstantsData.button}`,
+                        appButtonPosition
+                    )
+                    basePage.checkElementWithTextHaveProperty({
+                        selector: property.buttonSelector,
+                        text: `${appName} ${Constants.commonConstantsData.button}`,
+                        prop: CssAttr.background,
+                        value: color
+                    })
                 })
             })
         })

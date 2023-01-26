@@ -1,6 +1,8 @@
 import { defineConfig } from "cypress";
+
 const fs = require('fs')
 const path = require('path');
+const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 
 
 async function setupNodeEvents(
@@ -45,37 +47,39 @@ async function setupNodeEvents(
     return launchOptions
   })
 
-  on ('task', 
+  on('task',
     {
       readFile({
-        filePath 
+        filePath
       }) {
-        return fs.readFileSync(path.resolve(`../../${filePath}`),'utf8')
+        return fs.readFileSync(path.resolve(`../../${filePath}`), 'utf8')
       }
     }
   )
 
-  on ('task', 
-  {
-    writeToFile({
-      filePath,
-      content 
-    }) {
-      return new Promise((resolve, reject) => {
-        //@ts-ignore
-        fs.writeFile(path.resolve(`../../${filePath}`), content, err => { 
-          try {
-            console.log(filePath)
-            resolve(true)
-          } catch (error) {
-            console.log(err)
-            reject(error)
-          }
-        });
-      })
+  on('task',
+    {
+      writeToFile({
+        filePath,
+        content
+      }) {
+        return new Promise((resolve, reject) => {
+          //@ts-ignore
+          fs.writeFile(path.resolve(`../../${filePath}`), content, err => {
+            try {
+              console.log(filePath)
+              resolve(true)
+            } catch (error) {
+              console.log(err)
+              reject(error)
+            }
+          });
+        })
+      }
     }
-  }
-)
+  )
+
+  allureWriter(on, config);
 
   return config;
 }
@@ -120,7 +124,7 @@ export default defineConfig({
       localhost8082: "http://localhost:8082",
       localhost9000: "http://localhost:9000",
       localhost9001: "http://localhost:9001",
-      localhost9002: "http://localhost:9002",
+      localhost9002: "http://localhost:9002"
     },
     setupNodeEvents
   },
