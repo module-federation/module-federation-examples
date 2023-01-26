@@ -88,8 +88,8 @@ export const selectors = {
 export const updatedSelectors = {
     navigationActiveStateTab:`${baseSelectors.navigation} ${selectors.vueAppTabActiveState}`,
     vueCliAppLinkContainer:`${selectors.vueCliAppHomeTabInfo} ${baseSelectors.linkTag}`,
-    viteButtonSelector: selectors.vueAppButton.replace('{appType}', Constants.vueAppButtonTypes.viteType),
-    webpackButtonSelector: selectors.vueAppButton.replace('{appType}', Constants.vueAppButtonTypes.webpackType),
+    viteButtonSelector: selectors.vueAppButton.replace('{appType}', Constants.selectorParts.vue3DemoFederationWithViteApp.vite),
+    webpackButtonSelector: selectors.vueAppButton.replace('{appType}', Constants.selectorParts.vue3DemoFederationWithViteApp.webpack),
     vueAppCommonButtonSelector: `${baseSelectors.divElement}${selectors.vueAppAllButtonsClass}`,
     commonAppNameSelector: `${baseSelectors.divElement} ${baseSelectors.h2}`,
     hamburgerMenuButton: `${baseSelectors.header} ${baseSelectors.button}`,
@@ -98,7 +98,7 @@ export const updatedSelectors = {
     angularUniversalSsrTab: `${baseSelectors.divElement} ${baseSelectors.linkTag}`,
     angularUniversalSsrAddedCity: `${selectors.angularUniversalSsrCitiesBlock} ${baseSelectors.listElement}`,
     craReactAppRemoteComponentBorder: `${selectors.craReactAppRemoteComponentInfo}${baseSelectors.style
-        .replace('{style}', Constants.color.nonRgbBorderRed)}`
+        .replace('{style}', Constants.color.nonRgbValues.borderRed)}`
 }
 
 export const widgets = {

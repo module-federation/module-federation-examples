@@ -7,7 +7,7 @@ export class VersionDiscrepancyMethods extends BaseMethods {
     public checkMessageVisibilityByLodashVersion(message: string): Cypress.Chainable<JQuery<HTMLElement>> {
         return cy.get(baseSelectors.divElement)
             .then((element: JQuery<HTMLElement>) => {
-                if(element.text().includes(Constants.commonPhrases.versionDiscrepancyApp1LodashVersion)) {
+                if(element.text().includes(Constants.commonPhrases.versionDiscrepancyApp.lodashVersions.app1)) {
                     this.checkElementWithTextPresence({
                         selector: baseSelectors.divElement,
                         text: message,

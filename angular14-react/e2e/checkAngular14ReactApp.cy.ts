@@ -12,36 +12,36 @@ describe('Check Angular-React Application', () => {
     it('Check App build and running', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.h2,
-            text: Constants.elementsText.angularReactShellHeader
+            text: Constants.elementsText.angularReactShellApp.header
         })
         basePage.checkElementExist({
-            selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.nameField)
+            selector: fields.commonField.replace('{fieldName}', Constants.selectorParts.formFieldNames.nameField)
         })
         basePage.checkElementExist({
-            selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.emailField)
+            selector: fields.commonField.replace('{fieldName}', Constants.selectorParts.formFieldNames.emailField)
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
-            text: Constants.elementsText.angularReactShellCreateUserButton
+            text: Constants.elementsText.angularReactShellApp.userActions.create
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.h2,
-            text: Constants.elementsText.angularReactShellSubHeader
+            text: Constants.elementsText.angularReactShellApp.subHeader
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.divElement,
-            text: Constants.elementsText.angularReactShellParagraph
+            text: Constants.elementsText.angularReactShellApp.paragraph
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.divElement,
-            text: Constants.elementsText.angularReactShellEmptyTable
+            text: Constants.elementsText.angularReactShellApp.emptyTableState
         })
     })
 
     it('Add user to the table', () => {
         basePage.addUser(
-            Constants.commonPhrases.name.text,
-            Constants.commonPhrases.email.text
+            Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+            Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
         )
         basePage.checkElementExist({
             selector: baseSelectors.table
@@ -57,42 +57,42 @@ describe('Check Angular-React Application', () => {
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.name.text,
-            Constants.commonPhrases.name.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+            Constants.commonConstantsData.commonIndexes.zero,
         )
         basePage.checkChildElementContainText(
             baseSelectors.table,
             baseSelectors.tableDataCell,
-            Constants.commonPhrases.email.text,
-            Constants.commonPhrases.email.index,
+            Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
+            Constants.commonConstantsData.commonIndexes.one,
         )
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
-            text: Constants.elementsText.angularReactShellRemoveUserButton
+            text: Constants.elementsText.angularReactShellApp.userActions.remove
         })
     })
 
-    it('Remove user to the table', () => {
+    it('Remove user from the table', () => {
         basePage.addUser(
-            Constants.commonPhrases.name.text,
-            Constants.commonPhrases.email.text
+            Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+            Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
         )
         basePage.clickElementWithText({
             selector: baseSelectors.button,
-            text: Constants.elementsText.angularReactShellRemoveUserButton
+            text: Constants.elementsText.angularReactShellApp.userActions.remove
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.divElement,
-            text: Constants.elementsText.angularReactShellEmptyTable
+            text: Constants.elementsText.angularReactShellApp.emptyTableState
         })
     })
 
-    it('Check fileds validation', () => {
+    it('Check fields validation', () => {
         basePage.clickElementBySelector({
-            selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.nameField)
+            selector: fields.commonField.replace('{fieldName}', Constants.selectorParts.formFieldNames.nameField)
         })
         basePage.clickElementBySelector({
-            selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.emailField)
+            selector: fields.commonField.replace('{fieldName}', Constants.selectorParts.formFieldNames.emailField)
         })
         basePage.clickElementBySelector({
             selector: baseSelectors.button,
@@ -103,11 +103,11 @@ describe('Check Angular-React Application', () => {
         })
         basePage.checkElementWithTextPresence({
             selector: alertMessages.angularAlertMessage,
-            text: Constants.commonPhrases.nameIsRequired
+            text: Constants.commonConstantsData.commonAngularAppsData.messages.requiresMessages.name,
         })
         basePage.checkElementWithTextPresence({
             selector: alertMessages.angularAlertMessage,
-            text: Constants.commonPhrases.emailIsRequired
+            text: Constants.commonConstantsData.commonAngularAppsData.messages.requiresMessages.email,
         })
     })
 })

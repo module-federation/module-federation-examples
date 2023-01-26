@@ -22,29 +22,29 @@ describe("Check App 1", () => {
     it('Check elements exist', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
-            text: Constants.elementsText.nestedApp3Button})
+            text: Constants.updatedConstantsData.commonAppWithButton.app3})
             
         basePage.checkElementContainText({
             selector: baseSelectors.root, 
-            text: Constants.elementsText.nestedApp2Container
+            text: Constants.elementsText.nestedApp.app2Container
         })
         basePage.checkElementContainText({
             selector: baseSelectors.root, 
-            text: Constants.elementsText.nesterApp1Text
+            text: Constants.elementsText.nestedApp.app1Text
         })
     })
 
     it('Check colors', () => {
         basePage.checkElementWithTextHaveProperty({
             selector: baseSelectors.divElement,
-            text: Constants.elementsText.nestedApp2Container,
+            text: Constants.elementsText.nestedApp.app2Container,
             prop: CssAttr.backgroundColor,
             value: Constants.color.chineseSilver
         })
 
         basePage.checkElementWithTextHaveProperty({
             selector: baseSelectors.button,
-            text: Constants.elementsText.nestedApp3Button,
+            text: Constants.updatedConstantsData.commonAppWithButton.app3,
             prop: CssAttr.background,
             value: Constants.color.aquamarine
         })

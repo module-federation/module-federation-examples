@@ -10,22 +10,22 @@ const basePage: BaseMethods = new BaseMethods()
 const methodsPage: SharedRoutingMethods = new SharedRoutingMethods()
 
 const sharedRoutingAppEditProfileBlockSelector = widgets.sharedRoutingAppCommonWidgetSelector
-    .replace('{selector}', Constants.elementsText.sharedRoutingAppSelectorsParts.editProfile.toUpperCase())
-const disabledCompanyFieldSelectorPart = Constants.elementsText.sharedRoutingAppEditProfileBlockLabels[0].replace(/\s/g, '_')
+    .replace('{selector}', Constants.selectorParts.sharedRoutingAppSelectorsParts.editProfile.toUpperCase())
+const disabledCompanyFieldSelectorPart = Constants.elementsText.sharedRoutingApp.editProfileBlockLabels[0].replace(/\s/g, '_')
     .replace(/([()])/g, '').toUpperCase()
 const sharedRoutingAppCardProfileBlockSelector = widgets.sharedRoutingAppCommonWidgetSelector.replace('{selector}',
-    Constants.elementsText.sharedRoutingAppSelectorsParts.cardProfile.toUpperCase())
+    Constants.selectorParts.sharedRoutingAppSelectorsParts.cardProfile.toUpperCase())
 
 CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
     describe("It checks apps' profile page", () => {
         beforeEach(() => {
-            basePage.openLocalhost(property.host, Constants.elementsText.sharedRoutingAppPageHeaders.profile.toLowerCase())
+            basePage.openLocalhost(property.host, Constants.commonConstantsData.sharedRoutingAppPagesComponents.profile.toLowerCase())
         })
 
         it('checks Profile text visibility on header', () => {
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.header,
-                text: Constants.elementsText.sharedRoutingAppPageHeaders.profile,
+                text: Constants.commonConstantsData.sharedRoutingAppPagesComponents.profile,
                 visibilityState: 'be.visible'
             })
         })
@@ -43,8 +43,8 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         })
 
         it('checks that profile page can be visited by side menu button', () => {
-            methodsPage.visitOnPageByName(Constants.elementsText.sharedRoutingAppPageHeaders.profile,
-                Constants.elementsText.sharedRoutingAppPageHeaders.orders, 3000)
+            methodsPage.visitOnPageByName(Constants.commonConstantsData.sharedRoutingAppPagesComponents.profile,
+                Constants.commonConstantsData.sharedRoutingAppPagesComponents.orders, 3000)
         })
 
         it('checks visit pages buttons block visibility', () => {
@@ -52,14 +52,14 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         })
 
         it('checks that orders & dashboard page can be visited from orders page by click and stays on page after reload', () => {
-            methodsPage.transferringThroughPages(Constants.elementsText.sharedRoutingAppPageHeaders.profile,
-                Constants.elementsText.sharedRoutingAppPageHeaders.orders, Constants.elementsText.sharedRoutingAppPageHeaders.dashboard)
+            methodsPage.transferringThroughPages(Constants.commonConstantsData.sharedRoutingAppPagesComponents.profile,
+                Constants.commonConstantsData.sharedRoutingAppPagesComponents.orders, Constants.commonConstantsData.sharedRoutingAppPagesComponents.dashboard)
         })
 
         it('checks edit profile block header visibility', () => {
             basePage.checkElementWithTextPresence({
                 selector: sharedRoutingAppEditProfileBlockSelector,
-                text: Constants.elementsText.sharedRoutingAppEditProfileBlockInfo.editProfile,
+                text: Constants.elementsText.sharedRoutingApp.profileActions.edit,
                 visibilityState: 'be.visible'
             })
         })
@@ -67,14 +67,14 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         it('checks edit profile block description visibility', () => {
             basePage.checkElementWithTextPresence({
                 selector: sharedRoutingAppEditProfileBlockSelector,
-                text: Constants.elementsText.sharedRoutingAppEditProfileBlockInfo.completeProfile,
+                text: Constants.elementsText.sharedRoutingApp.profileActions.complete,
                 visibilityState: 'be.visible'
             })
         })
 
         it('checks all texted labels visibility', () => {
             methodsPage.checkElementWithTextPresenceInTextArray( {
-                textArray: Constants.elementsText.sharedRoutingAppEditProfileBlockLabels,
+                textArray: Constants.elementsText.sharedRoutingApp.editProfileBlockLabels,
                 parentSelector: sharedRoutingAppEditProfileBlockSelector,
                 selector: baseSelectors.label,
                 visibilityState: 'exist'
@@ -86,7 +86,7 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
                 const formFieldSelector = methodsPage.returnReplacedFormFieldSelector({index: i})
 
                 methodsPage.checkInputWithLabelVisibilityInsideBlock(formFieldSelector,
-                    Constants.elementsText.sharedRoutingAppEditProfileBlockLabels[i])
+                    Constants.elementsText.sharedRoutingApp.editProfileBlockLabels[i])
             }
         })
 
@@ -144,11 +144,11 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         })
 
         it('checks that each non disabled field can be filled with special symbols', () => {
-            methodsPage.fillFieldAndCheckValue({ value: Constants.commonPhrases.randomSymbolsString })
+            methodsPage.fillFieldAndCheckValue({ value: Constants.commonPhrases.sharedRoutingApp.randomSymbolsString })
         })
 
         it('checks that each non disabled field can be filled with letters + numbers + specials symbols', () => {
-            methodsPage.fillFieldAndCheckValue({ value: getRandomTextString(5) + getRandomIntegerString(5) + Constants.commonPhrases.randomSymbolsString })
+            methodsPage.fillFieldAndCheckValue({ value: getRandomTextString(5) + getRandomIntegerString(5) + Constants.commonPhrases.sharedRoutingApp.randomSymbolsString })
         })
 
         it('checks that each non disabled field has no validation', () => {
@@ -169,7 +169,7 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
 
         it('checks update profile block button text', () => {
             basePage.checkChildElementContainText(sharedRoutingAppEditProfileBlockSelector, baseSelectors.button,
-                Constants.elementsText.sharedRoutingAppButtonTexts.updateProfile)
+                Constants.elementsText.sharedRoutingApp.buttonsTexts.updateProfile)
         })
 
         it('checks update profile button color', () => {
@@ -204,21 +204,21 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         it('checks card profile contain user short job title', () => {
             basePage.checkElementWithTextPresence({
                 selector: sharedRoutingAppCardProfileBlockSelector,
-                text: Constants.elementsText.sharedRoutingAppAboutUser.shortProfession
+                text: Constants.elementsText.sharedRoutingApp.aboutUserBlock.shortProfession
             })
         })
 
         it('checks card profile contain user name', () => {
             basePage.checkElementWithTextPresence({
                 selector: sharedRoutingAppCardProfileBlockSelector,
-                text: Constants.elementsText.sharedRoutingAppAboutUser.name
+                text: Constants.elementsText.sharedRoutingApp.aboutUserBlock.name
             })
         })
 
         it('checks card profile contain user long job title', () => {
             basePage.checkElementWithTextPresence({
                 selector: sharedRoutingAppCardProfileBlockSelector,
-                text: Constants.elementsText.sharedRoutingAppAboutUser.longProfession
+                text: Constants.elementsText.sharedRoutingApp.aboutUserBlock.longProfession
             })
         })
 
@@ -228,7 +228,7 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
 
         it('checks follow block button text', () => {
             basePage.checkChildElementContainText(sharedRoutingAppCardProfileBlockSelector, baseSelectors.button,
-                Constants.elementsText.sharedRoutingAppButtonTexts.follow)
+                Constants.elementsText.sharedRoutingApp.buttonsTexts.follow)
         })
 
         it('checks follow block button is not disabled', () => {

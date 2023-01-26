@@ -9,17 +9,17 @@ const methodsPage: SharedStoreCrossFrameworkMethods = new SharedStoreCrossFramew
 describe('It checks shared-store-cross-framework sample', () => {
     const appsData = [
         {
-            name: Constants.commonText.sharedStoreCrossFrameworkAppComponentsTypes.reactType,
+            name: Constants.elementsText.sharedStoreCrossFrameworkApp.componentsTypes.reactType,
             buttonsBlock: selectors.sharedStoreCrossFrameworkAppButtonsBlock.replace('{blockType}',
-                Constants.commonText.sharedStoreCrossFrameworkAppComponentsTypes.reactType.toUpperCase()),
-            blockName: Constants.commonText.sharedStoreCrossFrameworkAppButtonsBlocksNames.reactModule,
+                Constants.elementsText.sharedStoreCrossFrameworkApp.componentsTypes.reactType.toUpperCase()),
+            blockName:  Constants.elementsText.sharedStoreCrossFrameworkApp.blocksNames.reactModule,
             color: Constants.color.lightBlue
         },
         {
-            name: Constants.commonText.sharedStoreCrossFrameworkAppComponentsTypes.vueType,
+            name: Constants.elementsText.sharedStoreCrossFrameworkApp.componentsTypes.vueType,
             buttonsBlock: selectors.sharedStoreCrossFrameworkAppButtonsBlock.replace('{blockType}',
-                Constants.commonText.sharedStoreCrossFrameworkAppComponentsTypes.vueType.toUpperCase()),
-            blockName: Constants.commonText.sharedStoreCrossFrameworkAppButtonsBlocksNames.vueModule,
+                Constants.elementsText.sharedStoreCrossFrameworkApp.componentsTypes.vueType.toUpperCase()),
+            blockName: Constants.elementsText.sharedStoreCrossFrameworkApp.blocksNames.vueModule,
             color: Constants.color.lightGreen
         }
     ]
@@ -61,11 +61,11 @@ describe('It checks shared-store-cross-framework sample', () => {
             basePage.openLocalhost(3001)
             methodsPage.findValueInMultipleButtons({
                 buttonsBlockSelector: property.buttonsBlock,
-                text : Constants.commonText.commonMathSigns.plusSign
+                text : Constants.elementsText.sharedStoreCrossFrameworkApp.mathSigns.plus
             })
             methodsPage.findValueInMultipleButtons({
                 buttonsBlockSelector: property.buttonsBlock,
-                text : Constants.commonText.commonMathSigns.minusSign
+                text : Constants.elementsText.sharedStoreCrossFrameworkApp.mathSigns.minus
             })
         });
 
@@ -83,23 +83,23 @@ describe('It checks shared-store-cross-framework sample', () => {
             basePage.checkCounterFunctionality({
                 button:`${property.buttonsBlock} ${buttons.sharedStoreCrossFrameworkAppActionsButtons.incrementButton}`,
                 counterElement: selectors.sharedStoreCrossFrameworkAppClicksCounter,
-                counterText: Constants.commonText.sharedStoreCrossFrameworkCounterValues.zero,
+                counterText: Constants.commonConstantsData.commonIndexes.zero.toString(),
                 isButtonTexted: false
             })
             basePage.checkCounterFunctionality({
                 button:`${property.buttonsBlock} ${buttons.sharedStoreCrossFrameworkAppActionsButtons.decrementButton}`,
                 counterElement: selectors.sharedStoreCrossFrameworkAppClicksCounter,
-                counterText: Constants.commonText.sharedStoreCrossFrameworkCounterValues.one,
+                counterText: Constants.commonConstantsData.commonIndexes.one.toString(),
                 isButtonTexted: false,
                 isCounterDecreased: true
             })
             basePage.checkCounterFunctionality({
                 button:`${property.buttonsBlock} ${buttons.sharedStoreCrossFrameworkAppActionsButtons.decrementButton}`,
                 counterElement: selectors.sharedStoreCrossFrameworkAppClicksCounter,
-                counterText: Constants.commonText.sharedStoreCrossFrameworkCounterValues.zero,
+                counterText: Constants.commonConstantsData.commonIndexes.zero.toString(),
                 isButtonTexted: false,
                 isCounterDecreased: true,
-                counterValue: Constants.commonText.sharedStoreCrossFrameworkCounterValues.minusOne,
+                counterValue: Constants.commonConstantsData.commonIndexes.minusOne.toString(),
             })
         });
     });
