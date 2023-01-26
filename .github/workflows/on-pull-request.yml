@@ -122,18 +122,62 @@ jobs:
         run: 
           npx lerna run --scope=${{ matrix.container }} e2e:ci
 
-      - name: Create artifacts for Cypress screenshots
+      - name: Create artifacts for Allure report
         uses: actions/upload-artifact@v3
-        if: failure()
+        if: always()
         with:
-          name: cypress-screenshots
-          path: '**/${{ matrix.container }}/cypress/screenshots'
+          name: allure-results
+          path: '**/allure-results'
           retention-days: 7
 
-      - name: Create artifacts for Cypress videos
-        uses: actions/upload-artifact@v3
-        if: failure()
+  generate-allure-report:
+    needs: run-e2e-test
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
-          name: cypress-videos
-          path: '**/${{ matrix.container }}/cypress/videos'
-          retention-days: 7
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Dowload artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: allure-results
+
+      - name: Restore cache
+        uses: actions/cache/restore@v3
+        id: yarn-cache
+        with:
+          path: |
+            **/node_modules
+            **/yarn.lock
+            ~/.cache/Cypress
+            ~/.cache/yarn/v6  
+          key: e2e-cache-${{ hashFiles('YarnHash.txt') }}
+          restore-keys: |
+            e2e-cache-
+            e2e-
+
+      - name: Install dependencies
+        run: |
+          yarn install
+
+      - name: Generate Allure report
+        run: |
+          npx allure generate **/allure-results --clean --output allure-report
+      
+      - name: Deploy report to FireBase 
+        if: always()
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}"
+          expires: 2d
+          projectId: module-federation-test-result
+        env:
+          FIREBASE_CLI_PREVIEWS: hostingchannels
+       
+
+     
