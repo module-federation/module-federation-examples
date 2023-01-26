@@ -3,12 +3,13 @@ import createMatcher from 'feather-route-matcher';
 import { injectScript, remotes } from '@module-federation/nextjs-mf/lib/utils';
 
 export async function matchFederatedPage(path) {
-  console.log(remotes);
+  console.log("remotes:", remotes);
   const maps = await Promise.all(
     Object.keys(remotes).map(remote => {
       console.log('FederatedCatchAll:', { remote });
 
       return injectScript(remote).then(container => {
+        console.log(remote, container);
         return container
           .get('./pages-map')
           .then(factory => ({ remote, config: factory().default }))
