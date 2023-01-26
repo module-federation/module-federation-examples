@@ -27,6 +27,7 @@ module.exports = withNativeFederation({
   },
 
   skip: [
+    'antd',
     '@swc/helpers',
     '@softarc/native-federation-runtime',
     'core-js',

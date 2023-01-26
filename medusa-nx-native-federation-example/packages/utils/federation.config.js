@@ -13,6 +13,7 @@ module.exports = withNativeFederation({
   shared: {},
 
   skip: [
+    'antd',
     '@swc/helpers',
     '@softarc/native-federation-runtime',
     'core-js',

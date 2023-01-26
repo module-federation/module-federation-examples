@@ -2,9 +2,16 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { promisify } from 'util';
 import { exec } from 'child_process';
-import { ExecutorContext } from '@nrwl/devkit';
+import {
+  normalizePath,
+  parseTargetString,
+  Target,
+  ProjectGraph,
+  ExecutorContext,
+  ProjectConfiguration,
+} from '@nrwl/devkit';
 import { NFPBuildExecutorOptions } from './schema';
-import { NFPWorkspacePaths, getWorkspacePaths } from './build';
+import { NFPWorkspacePaths } from './schema';
 
 /**
  * Creates a builder name for a specific project
@@ -14,17 +21,48 @@ const NFP_PROJECT_BUILDER_NAME = (projectName: string): string => {
 };
 
 /**
- * Creates the file which contains Typescript code to execute the native federation build
+ * Normalizes the paths to POSIX form (because of Win32 systems which transformes them),
+ * brings all paths to a common form,
+ * adds some extra paths
+ */
+function normalizeWorkspacePaths(
+  workspaceRootPath: string,
+  projectEntryPath: string,
+  workspaceDistPath: string,
+  projectName: string,
+  graph: ProjectGraph
+): NFPWorkspacePaths {
+
+  const projectConfiguration: ProjectConfiguration = graph.nodes[projectName].data;
+  const executorTarget: Target = parseTargetString(projectConfiguration.targets.build.executor, graph);
+  const executorTargetSourcePath = graph.nodes[executorTarget.project].data.sourceRoot;
+  const { root, sourceRoot } = projectConfiguration;
+
+  return {
+    executorTargetPath: normalizePath(path.join(executorTargetSourcePath, 'executors', executorTarget.target)),
+    workspaceRootPath: workspaceRootPath.replace(/\\/gi, '/'),
+    workspaceDistPath: normalizePath(workspaceDistPath),
+    workspaceTsConfigPath: `tsconfig.base.json`,
+    projectName,
+    projectPath: root,
+    projectSrcPath: sourceRoot,
+    projectEntryPath,
+    projectFederationConfigPath: normalizePath(path.join(root, './federation.config.js')),
+  };
+}
+
+/**
+ * Creates the file which contains Typescript code to execute the Native Federation Builder
  * for a specific project
- * Example: dist/remote-build.ts
+ * Example: `dist/{projectName}/remote-build.ts`
  */
 function createProjectBuilderTsFile(workspace: NFPWorkspacePaths) {
-  const { workspaceRootPath, workspaceDistPath, projectName } = workspace;
+  const { workspaceDistPath, projectName } = workspace;
   const builderOutputTsFile = path.join(workspaceDistPath, `./${NFP_PROJECT_BUILDER_NAME(projectName)}.ts`);
 
   const builderTypescript = `
     import { executeProjectBuild } from './build';
-    executeProjectBuild('${workspaceRootPath}', '${workspaceDistPath}', '${projectName}');
+    executeProjectBuild('${JSON.stringify(workspace)}');
   `;
 
   fs.mkdirSync(workspaceDistPath, { recursive: true });
@@ -47,46 +85,45 @@ function removeProjectBuilderTsFile(workspace: NFPWorkspacePaths) {
 }
 
 /**
- *
+ * Compiles `build.ts` to `dist/{projectName}/build.js` to be required in a specific project
+ * to execure the Native Federation Builder
  */
 async function compileCommonBuilderTsFile(
   workspace: NFPWorkspacePaths
 ): Promise<{ stdout: string; stderr: string }> {
-  const { workspaceDistPath } = workspace;
-  const builderTsFile = path.join(__dirname, './build.ts');
-  const bundleCommand = `
-    npx tsc --skipLibCheck ${builderTsFile} --outDir ${workspaceDistPath}
-  `;
+  const { executorTargetPath, workspaceDistPath } = workspace;
+  const builderTsFile = path.join(executorTargetPath, './build.ts');
+  const bundleCommand = `npx tsc --skipLibCheck ${builderTsFile} --outDir ${workspaceDistPath}`;
 
   return promisify(exec)(bundleCommand);
 }
 
 /**
- *
+ * Compiles a specific project `dist/{projectName}/remote-build.ts` to `..remote-build.js`
+ * then executes the one to run the Native Federation Builder
  */
 async function compileAndRunProjectBuilderFiles(
   workspace: NFPWorkspacePaths
 ): Promise<{ stdout: string; stderr: string }> {
   const { workspaceDistPath, projectName } = workspace;
   const builderOutputTsFile = path.join(workspaceDistPath, `./${NFP_PROJECT_BUILDER_NAME(projectName)}.ts`);
-  const builderOutputJsFile = path.join(workspaceDistPath, `./${NFP_PROJECT_BUILDER_NAME(projectName)}.js`);
-  const bundleAndRunCommand = `
-    npx tsc --skipLibCheck ${builderOutputTsFile} --outDir ${workspaceDistPath} && node ${builderOutputJsFile}
-  `;
+  const builderOutputJsFile = normalizePath(path.join(workspaceDistPath, `./${NFP_PROJECT_BUILDER_NAME(projectName)}.js`));
+  const bundleAndRunCommand = `npx tsc --skipLibCheck ${builderOutputTsFile} --outDir ${workspaceDistPath} && node ${builderOutputJsFile}`;
 
   return promisify(exec)(bundleAndRunCommand);
 }
 
 /**
  * Nx Local Executor entry function
+ * Builds a project within Native Module Federation
  */
 export default async function runExecutor(
   options: NFPBuildExecutorOptions,
   context: ExecutorContext
 ): Promise<{ success: boolean }> {
-  const { root, projectName } = context;
-  const { outputPath } = options;
-  const workspace: NFPWorkspacePaths = getWorkspacePaths(root, outputPath, projectName);
+  const { root, projectName, projectGraph } = context;
+  const { outputPath, entryFile } = options;
+  const workspace: NFPWorkspacePaths = normalizeWorkspacePaths(root, entryFile, outputPath, projectName, projectGraph);
 
   console.log(`Nx Native Federation: Building`);
 
@@ -106,6 +143,5 @@ export default async function runExecutor(
   }
 
   console.log(`Nx Native Federation: Built successfully`);
-
   return { success: true };
 }

@@ -22,11 +22,12 @@ module.exports = withNativeFederation({
       singleton: true,
       strictVersion: true,
       requiredVersion: 'auto',
-      includeSecondaries: false,
+      includeSecondaries: true,
     })
   },
 
   skip: [
+    'antd',
     '@swc/helpers',
     '@softarc/native-federation-runtime',
     'core-js',

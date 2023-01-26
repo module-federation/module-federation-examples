@@ -10,6 +10,6 @@ import { initFederation } from '@softarc/native-federation';
     
     await import('./bootstrap');
   } catch(e) {
-    throw new Error(`NativeFederationInitError: 'nav' app error: ${e}`); 
+    throw new Error(`NativeFederationInitError: 'search' app error: ${e}`); 
   }
 })();
