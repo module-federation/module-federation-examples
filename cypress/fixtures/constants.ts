@@ -730,6 +730,9 @@ export class Constants {
               'Stop 🛑'
           ],
         },
+        rollupFederationDemoApp: {
+            headerText: 'Header'
+        }
     }
 
     public static readonly commonPhrases = {
@@ -859,6 +862,13 @@ export class Constants {
         },
         typeScriptMonoRepoApp: {
             yarnWorkspaceDependency: 'workspaces',
+        },
+        rollupFederationDemoApp: {
+            messages: {
+                webpackRemote: 'Webpack Remote',
+                rollupHost: 'Rollup Host'
+            },
+            buttonText: 'Webpack Remote Button'
         }
     }
 
@@ -898,6 +908,7 @@ export class Constants {
         white: 'rgb(255, 255, 255)',
         lightGrey: 'rgb(239, 239, 239)',
         darkGrey: 'rgb(40, 44, 52)',
+        darkSaturatedBlue: 'rgb(0, 0, 255)'
     }
 
     public static readonly hrefs = {

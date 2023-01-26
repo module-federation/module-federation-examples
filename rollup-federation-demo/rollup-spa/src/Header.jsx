@@ -8,6 +8,7 @@ export default () => (
       background: 'blue',
       color: 'white',
     }}
+    data-e2e="APP_HEADER"
   >
     Header
   </div>

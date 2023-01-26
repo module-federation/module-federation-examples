@@ -82,7 +82,8 @@ export const selectors = {
     craReactAppRemoteComponentInfo: '[data-e2e="REMOTE_COMPONENT_INFO"]',
     activeTab: '[class="active"]',
     angularUniversalSsrCitiesBlock: 'app-client-cities-home',
-    angularUniversalSsrSelectedCityInfo: 'app-client-city'
+    angularUniversalSsrSelectedCityInfo: 'app-client-city',
+    rollupFederationDemoAppHeader: '[data-e2e="APP_HEADER"]'
 }
 
 export const updatedSelectors = {
@@ -148,6 +149,7 @@ export const block = {
     differentReactVersionsIsolatedSharedBlock: '[data-e2e="SHARED__REACT_BLOCK"]',
     commonReactBlock: '[data-e2e="REACT__{blockType}_BLOCK"]'
 }
+
 export const dialogs = {
     comprehensiveDemoDialogApp2: 'div[role="dialog"]'
 }
