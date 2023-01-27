@@ -17,6 +17,8 @@ const mount = ({
   const router = createRouter({ strategy: routingStrategy, initialPathname });
   const root = createRoot(mountPoint);
   root.render(<RouterProvider router={router} />);
+
+  return () => queueMicrotask(() => root.unmount());
 };
 
 export { mount };

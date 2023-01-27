@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export function Page2() {
+export function PageA() {
   return (
     <React.Fragment>
-      <div>Page 2 from App2</div>
-      <Link to="/page-1">Go to Page 1</Link>
+      <div>Page 1 from App2</div>
+      <Link to="/page-b">Go to Page B</Link>
     </React.Fragment>
   );
 }

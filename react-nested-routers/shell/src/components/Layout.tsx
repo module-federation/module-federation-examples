@@ -12,10 +12,10 @@ export function Layout() {
         <Link to={`/${app1RoutingPrefix}/page-2`} style={{ marginRight: "1rem" }}>
           App1 Page2
         </Link>
-        <Link to={`/${app2RoutingPrefix}/page-1`} style={{ marginRight: "1rem" }}>
-          App2 Page1
+        <Link to={`/${app2RoutingPrefix}/page-a`} style={{ marginRight: "1rem" }}>
+          App2 PageA
         </Link>
-        <Link to={`/${app2RoutingPrefix}/page-2`}>App2 Page2</Link>
+        <Link to={`/${app2RoutingPrefix}/page-b`}>App2 PageB</Link>
       </nav>
       <Outlet />
     </>
