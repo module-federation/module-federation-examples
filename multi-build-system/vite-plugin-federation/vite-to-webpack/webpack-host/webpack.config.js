@@ -1,9 +1,8 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
-const url = "http://localhost:5001/assets/remoteEntry.js";
-  
 const loadRemote = (resolve) => {
+  const url = "http://localhost:5001/assets/remoteEntry.js";
   import(url).then(lib => {
     const proxy = {
       get: (request) => lib.get(request),
