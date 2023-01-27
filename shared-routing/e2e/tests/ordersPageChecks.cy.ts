@@ -9,20 +9,20 @@ const basePage: BaseMethods = new BaseMethods()
 const methodsPage: SharedRoutingMethods = new SharedRoutingMethods()
 
 const sharedRoutingAppOrdersBlockSelector = widgets.sharedRoutingAppCommonWidgetSelector
-    .replace('{selector}', Constants.elementsText.sharedRoutingAppSelectorsParts.recentOrders.toUpperCase())
-const sharedRoutingAppOrdersRowSelector = selectors.sharedRoutingAppRecentOrderRow.replace(Constants.commonText.sharedRoutingAppReplaceSelectorPart, '')
-const sharedRoutingAppOrdersRowCellSelector = widgets.recentOrdersWidgetCell.replace(Constants.commonText.sharedRoutingAppReplaceSelectorPart, '')
+    .replace('{selector}', Constants.selectorParts.sharedRoutingAppSelectorsParts.recentOrders.toUpperCase())
+const sharedRoutingAppOrdersRowSelector = selectors.sharedRoutingAppRecentOrderRow.replace(Constants.selectorParts.sharedRoutingAppReplaceSelectorPart, '')
+const sharedRoutingAppOrdersRowCellSelector = widgets.recentOrdersWidgetCell.replace(Constants.selectorParts.sharedRoutingAppReplaceSelectorPart, '')
 
 CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
     describe("It checks apps' orders page", () => {
         beforeEach(() => {
-            basePage.openLocalhost(property.host, Constants.elementsText.sharedRoutingAppPageHeaders.orders.toLowerCase())
+            basePage.openLocalhost(property.host, Constants.commonConstantsData.sharedRoutingAppPagesComponents.orders.toLowerCase())
         })
 
         it('checks Orders text visibility on header', () => {
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.header,
-                text: Constants.elementsText.sharedRoutingAppPageHeaders.orders,
+                text: Constants.commonConstantsData.sharedRoutingAppPagesComponents.orders,
                 visibilityState: 'be.visible'
             })
         })
@@ -40,8 +40,8 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         })
 
         it('checks that orders page can be visited by side menu button', () => {
-            methodsPage.visitOnPageByName(Constants.elementsText.sharedRoutingAppPageHeaders.orders,
-                Constants.elementsText.sharedRoutingAppPageHeaders.dashboard, 3000)
+            methodsPage.visitOnPageByName(Constants.commonConstantsData.sharedRoutingAppPagesComponents.orders,
+                Constants.commonConstantsData.sharedRoutingAppPagesComponents.dashboard, 3000)
         })
 
         it('checks visit pages buttons block visibility', () => {
@@ -49,8 +49,8 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         })
 
         it('checks that profile & dashboard page can be visited from orders page by click and stays on page after reload', () => {
-            methodsPage.transferringThroughPages(Constants.elementsText.sharedRoutingAppPageHeaders.orders,
-                Constants.elementsText.sharedRoutingAppPageHeaders.dashboard, Constants.elementsText.sharedRoutingAppPageHeaders.profile)
+            methodsPage.transferringThroughPages(Constants.commonConstantsData.sharedRoutingAppPagesComponents.orders,
+                Constants.commonConstantsData.sharedRoutingAppPagesComponents.dashboard, Constants.commonConstantsData.sharedRoutingAppPagesComponents.profile)
         })
 
         it('checks orders block visibility', () => {
@@ -60,14 +60,14 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         it('checks orders header visibility', () => {
             basePage.checkElementWithTextPresence({
                 selector: sharedRoutingAppOrdersBlockSelector,
-                text: Constants.elementsText.sharedRoutingAppRecentOrdersHeader.split(' ')[1].trim(),
+                text: Constants.elementsText.sharedRoutingApp.orders.ordersHeader.split(' ')[1].trim(),
                 visibilityState: 'be.visible'
             })
         })
 
         it('checks orders table columns headers visibility', () => {
             methodsPage.checkElementWithTextPresenceInTextArray( {
-                textArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
+                textArray: Constants.elementsText.sharedRoutingApp.orders.recentOrdersTableColumnsHeaders,
                 parentSelector: sharedRoutingAppOrdersBlockSelector,
                 selector:  baseSelectors.tableHeader
             })
@@ -84,7 +84,7 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
 
         it('checks table row contain all required cells', () => {
             methodsPage.checkElementWithTextPresenceInTextArray( {
-                textArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
+                textArray: Constants.elementsText.sharedRoutingApp.orders.recentOrdersTableColumnsHeaders,
                 parentSelector: sharedRoutingAppOrdersRowSelector,
                 selector:  sharedRoutingAppOrdersRowCellSelector,
                 childElement: true
@@ -93,29 +93,29 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
 
         it('checks table row contain all required cells with text', () => {
             methodsPage.checkElementWithTextPresence({
-                textArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
+                textArray: Constants.elementsText.sharedRoutingApp.orders.recentOrdersTableColumnsHeaders,
                 parentSelector: sharedRoutingAppOrdersRowSelector,
                 selector: sharedRoutingAppOrdersRowCellSelector,
-                text: Constants.elementsText.sharedRoutingAppRecentOrderInfo,
+                text: Constants.elementsText.sharedRoutingApp.orders.recentOrderInfo,
                 visibilityState: 'be.visible'
             })
         })
 
         it('checks that table contain row with same value as one in dashboard page', () => {
             methodsPage.checkElementWithTextPresence({
-                textArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
+                textArray: Constants.elementsText.sharedRoutingApp.orders.recentOrdersTableColumnsHeaders,
                 parentSelector: sharedRoutingAppOrdersRowSelector,
                 selector: sharedRoutingAppOrdersRowCellSelector,
-                text: Constants.elementsText.sharedRoutingAppRecentOrderInfo,
+                text: Constants.elementsText.sharedRoutingApp.orders.recentOrderInfo,
                 visibilityState: 'be.visible'
             })
             basePage.clickElementBySelector({selector: selectors.hrefSelector.replace('{link}',
-                    `/${Constants.elementsText.sharedRoutingAppPageHeaders.dashboard.toLowerCase()}`)})
+                    `/${Constants.commonConstantsData.sharedRoutingAppPagesComponents.dashboard.toLowerCase()}`)})
             methodsPage.checkElementWithTextPresence({
-                textArray: Constants.elementsText.sharedRoutingAppRecentOrdersTableColumnsHeaders,
+                textArray: Constants.elementsText.sharedRoutingApp.orders.recentOrdersTableColumnsHeaders,
                 parentSelector: selectors.sharedRoutingAppRecentOrderRow,
                 selector: widgets.recentOrdersWidgetCell,
-                text: Constants.elementsText.sharedRoutingAppRecentOrderInfo,
+                text: Constants.elementsText.sharedRoutingApp.orders.recentOrderInfo,
                 visibilityState: 'be.visible'
             })
         })

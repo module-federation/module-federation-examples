@@ -12,13 +12,13 @@ describe("It checks host app", () => {
     })
 
     it('Checks basic console message', () => {
-        basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmConsoleMessages.baseLoadingMessage)
+        basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmApp.consoleMessages.baseLoadingMessage)
     })
 
     it('Checks app header visibility', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.h1,
-            text: Constants.commonPhrases.commonHostAppName,
+            text: Constants.commonPhrases.rustWasmApp.commonHostAppName,
             visibilityState: 'be.visible'
         })
     })
@@ -40,8 +40,8 @@ describe("It checks host app", () => {
     })
 
     it('Checks all buttons names visibility', () => {
-        Constants.commonText.rustWasmAppButtonsNames.forEach((name: string) => {
-            if (name !== Constants.commonText.rustWasmAppButtonsNames[3]) {
+        Constants.elementsText.rustWasmApp.buttonsNames.forEach((name: string) => {
+            if (name !== Constants.elementsText.rustWasmApp.buttonsNames[3]) {
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.button,
                     text: name,
@@ -63,26 +63,26 @@ describe("It checks host app", () => {
     it('Checks that Play button name changed to Stop after click', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
-            text: Constants.commonText.rustWasmAppButtonsNames[0],
+            text: Constants.elementsText.rustWasmApp.buttonsNames[0],
             visibilityState: 'be.visible'
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
-            text: Constants.commonText.rustWasmAppButtonsNames[3],
+            text: Constants.elementsText.rustWasmApp.buttonsNames[3],
             isVisible: false,
         })
         basePage.clickElementWithText({
             selector: baseSelectors.button,
-            text: Constants.commonText.rustWasmAppButtonsNames[0]
+            text: Constants.elementsText.rustWasmApp.buttonsNames[0]
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
-            text: Constants.commonText.rustWasmAppButtonsNames[0],
+            text: Constants.elementsText.rustWasmApp.buttonsNames[0],
             isVisible: false,
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
-            text: Constants.commonText.rustWasmAppButtonsNames[3],
+            text: Constants.elementsText.rustWasmApp.buttonsNames[3],
             visibilityState: 'be.visible'
         })
     })
@@ -90,27 +90,27 @@ describe("It checks host app", () => {
     it('Checks that start button name returns to Play after reload', () => {
         basePage.clickElementWithText({
             selector: baseSelectors.button,
-            text: Constants.commonText.rustWasmAppButtonsNames[0]
+            text: Constants.elementsText.rustWasmApp.buttonsNames[0]
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
-            text: Constants.commonText.rustWasmAppButtonsNames[0],
+            text: Constants.elementsText.rustWasmApp.buttonsNames[0],
             isVisible: false,
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
-            text: Constants.commonText.rustWasmAppButtonsNames[3],
+            text: Constants.elementsText.rustWasmApp.buttonsNames[3],
             visibilityState: 'be.visible'
         })
         basePage.reloadWindow()
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
-            text: Constants.commonText.rustWasmAppButtonsNames[0],
+            text: Constants.elementsText.rustWasmApp.buttonsNames[0],
             visibilityState: 'be.visible'
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
-            text: Constants.commonText.rustWasmAppButtonsNames[3],
+            text: Constants.elementsText.rustWasmApp.buttonsNames[3],
             isVisible: false,
         })
     })
@@ -118,35 +118,35 @@ describe("It checks host app", () => {
     it('Checks infinite looping started on game board after appearing', () => {
         basePage.clickElementWithText({
             selector: baseSelectors.button,
-            text: Constants.commonText.rustWasmAppButtonsNames[0]
+            text: Constants.elementsText.rustWasmApp.buttonsNames[0]
         })
         basePage.checkElementVisibility(selectors.rustWasmGameBoard)
-        basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmConsoleMessages.startLoopMessage)
+        basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmApp.consoleMessages.startLoopMessage)
     })
 
     it('Checks looping stopped after reload', () => {
         basePage.clickElementWithText({
             selector: baseSelectors.button,
-            text: Constants.commonText.rustWasmAppButtonsNames[0]
+            text: Constants.elementsText.rustWasmApp.buttonsNames[0]
         })
         basePage.checkElementVisibility(selectors.rustWasmGameBoard)
-        basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmConsoleMessages.startLoopMessage)
+        basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmApp.consoleMessages.startLoopMessage)
         basePage.reloadWindow()
         basePage.checkElementVisibility(selectors.rustWasmGameBoard, false)
-        basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmConsoleMessages.startLoopMessage, StubTypes.notToBeCalled)
+        basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmApp.consoleMessages.startLoopMessage, StubTypes.notToBeCalled)
     })
 
     it('Checks looping can be stopped by Stop button', () => {
         basePage.clickElementWithText({
             selector: baseSelectors.button,
-            text: Constants.commonText.rustWasmAppButtonsNames[0]
+            text: Constants.elementsText.rustWasmApp.buttonsNames[0]
         })
         basePage.checkElementVisibility(selectors.rustWasmGameBoard)
-        basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmConsoleMessages.stopLoopMessage,StubTypes.notToBeCalled, false)
+        basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmApp.consoleMessages.stopLoopMessage,StubTypes.notToBeCalled, false)
         basePage.clickElementWithText({
             selector: baseSelectors.button,
-            text: Constants.commonText.rustWasmAppButtonsNames[3]
+            text: Constants.elementsText.rustWasmApp.buttonsNames[3]
         })
-        basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmConsoleMessages.stopLoopMessage,StubTypes.beCalled, false, false)
+        basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmApp.consoleMessages.stopLoopMessage,StubTypes.beCalled, false, false)
     })
 })

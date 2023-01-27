@@ -10,16 +10,16 @@ let appsData = [
         headerSelector: selectors.cssIsolationAppHeader,
         subHeaderSelector: selectors.cssIsolationAppName,
         buttonSelector: baseSelectors.button,
-        headerText: Constants.elementsText.cssIsolationApp1Header,
-        appNameText: Constants.elementsText.cssIsolationApp1Name,
+        headerText: Constants.elementsText.cssIsolationApp.headers.app1,
+        appNameText: Constants.commonConstantsData.commonCountAppNames.app1,
         host: 3001
     },
     {
         headerSelector: selectors.cssIsolationAppHeader,
         subHeaderSelector: selectors.cssIsolationAppName,
         buttonSelector: baseSelectors.button,
-        headerText: Constants.elementsText.cssIsolationApp2Header,
-        appNameText: Constants.elementsText.cssIsolationApp2Name,
+        headerText: Constants.elementsText.cssIsolationApp.headers.app2,
+        appNameText: Constants.commonConstantsData.commonCountAppNames.app2,
         host: 3002
     }
 ]
@@ -57,7 +57,7 @@ describe(`Check App 1`, () => {
         basePage.openLocalhost(3001)
         basePage.checkElementInsideShadowRoot({
             selector: baseSelectors.parent,
-            text: Constants.commonText.cssIsolationButton
+            text: Constants.elementsText.cssIsolationApp.buttonText
         })
     })
 })
@@ -76,7 +76,7 @@ describe(`Check App 1 colors`, () => {
     it(`Update background color of App 2 Inside App 1 if click on the "Make Everything Yellow" button`, () => {
         basePage.clickElementInsideShadowRoot({
             selector: baseSelectors.parent,
-            text: Constants.commonText.cssIsolationButton
+            text: Constants.elementsText.cssIsolationApp.buttonText
         })
         basePage.checkElementPropertyInsideShadowRoot({
             selector: baseSelectors.parent,
@@ -94,13 +94,13 @@ describe(`Check App 2 colors`, () => {
         
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
-            text: Constants.commonText.cssIsolationButton
+            text: Constants.elementsText.cssIsolationApp.buttonText
         })
     })
     it(`Update background color of App 2 if click on the "Make Everything Yellow" button`, () => {
         basePage.clickElementWithText({
             selector: baseSelectors.button,
-            text: Constants.commonText.cssIsolationButton
+            text: Constants.elementsText.cssIsolationApp.buttonText
         })
         basePage.checkElementHaveProperty({
             selector: baseSelectors.root,

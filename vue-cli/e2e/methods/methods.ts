@@ -43,25 +43,25 @@ export class VueCliMethods extends BaseMethods {
     (): void {
         this.checkElementContainText({
             selector: baseSelectors.section,
-            text: Constants.elementsText.vueCliOtherSectionCodeBlock, 
+            text: Constants.elementsText.vueCliApp.otherSectionCodeBlock,
             index: 0 ,
             contain: false
         })
         this.clickElementWithText({
             selector: baseSelectors.button,
-            text: Constants.elementsText.vueCliButtonsText.otherSectionButton,
+            text: Constants.elementsText.vueCliApp.buttonsText.otherSectionButton,
         })
         this.checkChildElementVisibility(baseSelectors.section, baseSelectors.code)
         this.checkElementWithTextPresence({
             parentSelector: baseSelectors.section,
             selector: baseSelectors.code,
-            text: Constants.elementsText.vueCliOtherSectionCodeBlock,
+            text: Constants.elementsText.vueCliApp.otherSectionCodeBlock,
             visibilityState: 'be.visible'
         })
         this.reloadWindow()
         this.checkElementContainText({
             selector: baseSelectors.section,
-            text: Constants.elementsText.vueCliOtherSectionCodeBlock, 
+            text: Constants.elementsText.vueCliApp.otherSectionCodeBlock,
             index: 0 ,
             contain: false
         })

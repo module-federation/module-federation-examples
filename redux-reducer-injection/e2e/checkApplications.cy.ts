@@ -10,13 +10,13 @@ describe("Checks application", () => {
     })
     let appText = [
         {
-            appText: Constants.commonPhrases.welcomeToHostApp
+            appText: Constants.commonPhrases.reduxReducerInjectionApp.welcomeMessage
         },
         {
-            appText: Constants.commonPhrases.remoteAppText
+            appText: Constants.commonPhrases.reduxReducerInjectionApp.remoteAppText
         },
         {
-            appText: Constants.commonPhrases.remoteAppsNameFromReduxStore
+            appText: Constants.commonPhrases.reduxReducerInjectionApp.remoteAppsNameFromReduxStore
         }
     ]
     
@@ -33,22 +33,22 @@ describe("Checks application", () => {
         it('Checks dispatch RemoteApp NewName Button visibility', () => {
         basePage.checkElementWithTextPresence({
            selector: baseSelectors.button,
-           text: Constants.elementsText.dispatchRemoteAppNewNameButton
+           text: Constants.elementsText.dispatchRemoteApp.button
         }); 
     });
     
         it('Checks that Remote App name Updated', () => {
             basePage.sendInputText({
                 selector: baseSelectors.input,
-                text: Constants.elementsText.dispatchRemoteAppNewNameInput
+                text: Constants.elementsText.dispatchRemoteApp.input
             }); 
             basePage.clickElementWithText({
                 selector: baseSelectors.button,
-                text: Constants.elementsText.dispatchRemoteAppNewNameButton
+                text: Constants.elementsText.dispatchRemoteApp.button
             });
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.divElement,
-                text: Constants.elementsText.dispatchRemoteAppNewNameInput
+                text: Constants.elementsText.dispatchRemoteApp.input
              });    
     });
 })

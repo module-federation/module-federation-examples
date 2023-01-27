@@ -82,14 +82,15 @@ export const selectors = {
     craReactAppRemoteComponentInfo: '[data-e2e="REMOTE_COMPONENT_INFO"]',
     activeTab: '[class="active"]',
     angularUniversalSsrCitiesBlock: 'app-client-cities-home',
-    angularUniversalSsrSelectedCityInfo: 'app-client-city'
+    angularUniversalSsrSelectedCityInfo: 'app-client-city',
+    rollupFederationDemoAppHeader: '[data-e2e="APP_HEADER"]'
 }
 
 export const updatedSelectors = {
     navigationActiveStateTab:`${baseSelectors.navigation} ${selectors.vueAppTabActiveState}`,
     vueCliAppLinkContainer:`${selectors.vueCliAppHomeTabInfo} ${baseSelectors.linkTag}`,
-    viteButtonSelector: selectors.vueAppButton.replace('{appType}', Constants.vueAppButtonTypes.viteType),
-    webpackButtonSelector: selectors.vueAppButton.replace('{appType}', Constants.vueAppButtonTypes.webpackType),
+    viteButtonSelector: selectors.vueAppButton.replace('{appType}', Constants.selectorParts.vue3DemoFederationWithViteApp.vite),
+    webpackButtonSelector: selectors.vueAppButton.replace('{appType}', Constants.selectorParts.vue3DemoFederationWithViteApp.webpack),
     vueAppCommonButtonSelector: `${baseSelectors.divElement}${selectors.vueAppAllButtonsClass}`,
     commonAppNameSelector: `${baseSelectors.divElement} ${baseSelectors.h2}`,
     hamburgerMenuButton: `${baseSelectors.header} ${baseSelectors.button}`,
@@ -98,7 +99,7 @@ export const updatedSelectors = {
     angularUniversalSsrTab: `${baseSelectors.divElement} ${baseSelectors.linkTag}`,
     angularUniversalSsrAddedCity: `${selectors.angularUniversalSsrCitiesBlock} ${baseSelectors.listElement}`,
     craReactAppRemoteComponentBorder: `${selectors.craReactAppRemoteComponentInfo}${baseSelectors.style
-        .replace('{style}', Constants.color.nonRgbBorderRed)}`
+        .replace('{style}', Constants.color.nonRgbValues.borderRed)}`
 }
 
 export const widgets = {
@@ -148,6 +149,7 @@ export const block = {
     differentReactVersionsIsolatedSharedBlock: '[data-e2e="SHARED__REACT_BLOCK"]',
     commonReactBlock: '[data-e2e="REACT__{blockType}_BLOCK"]'
 }
+
 export const dialogs = {
     comprehensiveDemoDialogApp2: 'div[role="dialog"]'
 }

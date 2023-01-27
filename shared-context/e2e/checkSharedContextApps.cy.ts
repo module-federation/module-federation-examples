@@ -5,16 +5,16 @@ const basePage: BaseMethods = new BaseMethods()
 
 const appsData = [
     {
-        header: Constants.elementsText.sharedContext.header,
-        subheader: Constants.elementsText.sharedContext.app1.subheader,
-        paragraph: Constants.elementsText.sharedContext.app1.paragraph,
+        header: Constants.elementsText.sharedContextApp.header,
+        subheader: Constants.commonConstantsData.commonCountAppNames.app1,
+        paragraph: Constants.elementsText.sharedContextApp.app1.paragraph,
         host: 3001
     },
 
     {
-        header: Constants.elementsText.sharedContext.header,
-        subheader: Constants.elementsText.sharedContext.app2.subheader,
-        paragraph: Constants.elementsText.sharedContext.app2.paragraph,
+        header: Constants.elementsText.sharedContextApp.header,
+        subheader: Constants.commonConstantsData.commonCountAppNames.app2,
+        paragraph: Constants.elementsText.sharedContextApp.app2.paragraph,
         host: 3002
     }
 ]

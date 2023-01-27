@@ -9,14 +9,14 @@ describe('It checks integrated apps functionality', () => {
     const appsData = [
         {
             host: 3000,
-            appName: Constants.elementsText.commonComponentsNames.host,
-            appMessage: Constants.commonPhrases.craReactAppAppsPhrases.hostApp,
-            remoteAppMessage: Constants.commonPhrases.craReactAppAppsPhrases.hostAppRemoteMessage,
+            appName: Constants.commonConstantsData.basicComponents.host,
+            appMessage: Constants.commonPhrases.craReactApp.hostApp,
+            remoteAppMessage: Constants.commonPhrases.craReactApp.hostAppRemoteMessage,
         },
         {
             host: 3001,
             appName: Constants.elementsText.commonComponentsNames.remote,
-            appMessage: Constants.commonPhrases.craReactAppAppsPhrases.remoteApp,
+            appMessage: Constants.commonPhrases.craReactApp.remoteApp,
         },
     ]
 

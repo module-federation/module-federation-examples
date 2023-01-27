@@ -6,24 +6,24 @@ const basePage: BaseMethods = new BaseMethods()
 
 const appsData = [
     {
-        header: Constants.elementsText.dynamicSystemRemotesRuntime.host.header,
-        subheader: Constants.elementsText.dynamicSystemRemotesRuntime.host.subHeader,
-        hostH3: Constants.elementsText.dynamicSystemRemotesRuntime.host.hostH3,
-        paragraph: Constants.elementsText.dynamicSystemRemotesRuntime.paragraph,
-        button: Constants.elementsText.dynamicSystemRemotesRuntime.host.button,
-        loading: Constants.elementsText.dynamicSystemRemotesRuntime.loading,
-        buttonHeader: Constants.elementsText.dynamicSystemRemotesRuntime.buttonHeader,
-        buttonH2: Constants.elementsText.dynamicSystemRemotesRuntime.buttonH2,
-        buttonParagraph: Constants.elementsText.dynamicSystemRemotesRuntime.buttonParagraph,
+        header: Constants.elementsText.dynamicSystemRemotesRuntimeApp.host.header,
+        subheader: Constants.commonConstantsData.basicComponents.host,
+        hostH3: Constants.elementsText.dynamicSystemRemotesRuntimeApp.host.hostH3,
+        paragraph: Constants.elementsText.dynamicSystemRemotesRuntimeApp.paragraph,
+        button: Constants.elementsText.dynamicSystemRemotesRuntimeApp.host.button,
+        loading: Constants.commonConstantsData.loading,
+        buttonHeader: Constants.elementsText.dynamicSystemRemotesRuntimeApp.buttonHeader,
+        buttonH2: Constants.elementsText.dynamicSystemRemotesRuntimeApp.buttonH2,
+        buttonParagraph: Constants.elementsText.dynamicSystemRemotesRuntimeApp.buttonParagraph,
         host: 3000
     },
     {
-        header: Constants.elementsText.dynamicSystemRemotesRuntime.host.header,
-        subheader: Constants.elementsText.dynamicSystemRemotesRuntime.remote.subHeader,
-        loading: Constants.elementsText.dynamicSystemRemotesRuntime.loading,
-        buttonHeader: Constants.elementsText.dynamicSystemRemotesRuntime.buttonHeader,
-        buttonH2: Constants.elementsText.dynamicSystemRemotesRuntime.buttonH2,
-        buttonParagraph: Constants.elementsText.dynamicSystemRemotesRuntime.buttonParagraph,
+        header: Constants.elementsText.dynamicSystemRemotesRuntimeApp.host.header,
+        subheader: Constants.commonConstantsData.basicComponents.remote,
+        loading: Constants.commonConstantsData.loading,
+        buttonHeader: Constants.elementsText.dynamicSystemRemotesRuntimeApp.buttonHeader,
+        buttonH2: Constants.elementsText.dynamicSystemRemotesRuntimeApp.buttonH2,
+        buttonParagraph: Constants.elementsText.dynamicSystemRemotesRuntimeApp.buttonParagraph,
         host: 3001
     }
 ]
@@ -93,7 +93,7 @@ appsData.forEach((
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.paragraph,
-                text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm:ss a')
+                text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
             })
         })
     })

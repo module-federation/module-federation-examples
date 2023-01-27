@@ -20,7 +20,7 @@ export class SharedRoutingMethods extends BaseMethods {
         if(index >= 0) {
             // @ts-ignore
 
-            const replaceSelectorPart = index === 7 ? Constants.elementsText.sharedRoutingAppSelectorsParts.userInfo.toUpperCase() : Constants.elementsText.sharedRoutingAppEditProfileBlockLabels[index].replace(/\s/g, '_')
+            const replaceSelectorPart = index === 7 ? Constants.selectorParts.sharedRoutingAppSelectorsParts.userInfo.toUpperCase() : Constants.elementsText.sharedRoutingApp.editProfileBlockLabels[index].replace(/\s/g, '_')
                     .replace(/([()])/g, '')
 
             return fields.commonField.replace('{fieldName}', replaceSelectorPart.toUpperCase())
@@ -31,7 +31,7 @@ export class SharedRoutingMethods extends BaseMethods {
     }
 
     public checkHamburgerMenuFunctionality(): void {
-        Constants.elementsText.sharedRoutingAppSideMenuButtonsTypes.forEach(buttonType => {
+        Constants.elementsText.sharedRoutingApp.sideMenuButtonsTypes.forEach(buttonType => {
             this.checkElementWithTextPresence({
                 selector: selectors.hrefSelector.replace('{link}', `/${buttonType.toLowerCase()}`),
                 text: buttonType,

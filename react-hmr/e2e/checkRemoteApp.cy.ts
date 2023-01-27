@@ -21,11 +21,11 @@ describe("Check remote app", () => {
     it('Check the content of the page exists', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
-            text: Constants.elementsText.reactHmr.remote.button})
+            text: Constants.elementsText.reactHmrApp.remote.button})
 
         basePage.checkElementContainText({
             selector: baseSelectors.h1,
-            text: Constants.elementsText.reactHmr.remote.text + 0
+            text: Constants.elementsText.reactHmrApp.remote.text + 0
         })
     })
 
@@ -33,11 +33,11 @@ describe("Check remote app", () => {
         for (let i = 1 ; i < 3; i++){
             basePage.clickElementWithText({
                 selector: baseSelectors.button,
-                text: Constants.elementsText.reactHmr.remote.button})
+                text: Constants.elementsText.reactHmrApp.remote.button})
 
             basePage.checkElementContainText({
                 selector: baseSelectors.h1,
-                text: Constants.elementsText.reactHmr.remote.text + i
+                text: Constants.elementsText.reactHmrApp.remote.text + i
             })
         }
     })   

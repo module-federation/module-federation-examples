@@ -1,6 +1,7 @@
 import { Constants } from '../../cypress/fixtures/constants';
 import { block, baseSelectors } from '../../cypress/common/selectors';
 import { BaseMethods } from "../../cypress/common/base";
+import {CssAttr} from "../../cypress/types/cssAttr";
 
 const basePage: BaseMethods = new BaseMethods()
 
@@ -18,31 +19,31 @@ describe('Check is Comprehensive Demo App3 working and have elements', () => {
         })
         basePage.checkElementHaveProperty({
             selector: baseSelectors.header,
-            prop: Constants.commonText.backgroundColor,
+            prop: CssAttr.backgroundColor,
             value: Constants.color.oceanBluePearl
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.h6,
-            text: Constants.elementsText.comprehensiveDemo.App3.headerText
+            text: Constants.elementsText.comprehensiveDemoApp.App3.headerText
         })
         basePage.checkElementExist({
             selector: block.comprehensiveDemoBlockSelectors.secondBlock
         })
         basePage.checkElementHaveProperty({
             selector: block.comprehensiveDemoBlockSelectors.secondBlock,
-            prop: Constants.commonText.backgroundColor,
+            prop: CssAttr.backgroundColor,
             value: Constants.color.alabaster
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
-            text: Constants.elementsText.commonButtonWithEmoji.replace(
-                Constants.commonPhrases.button,
-                Constants.elementsText.comprehensiveDemo.App3.buttonText
+            text: Constants.commonConstantsData.commonButtonWithEmoji.replace(
+                Constants.commonConstantsData.button,
+                Constants.elementsText.comprehensiveDemoApp.App3.buttonText
             )
         })
         basePage.checkElementHaveProperty({
             selector: baseSelectors.button,
-            prop: Constants.commonText.backgroundColor,
+            prop: CssAttr.backgroundColor,
             value: Constants.color.paleVioletRed
         })
     })

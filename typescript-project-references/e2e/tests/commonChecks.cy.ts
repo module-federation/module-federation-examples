@@ -40,7 +40,7 @@ describe('It checks typescript-project-references apps', () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.button,
-                text: Constants.elementsText.commonExposedButtonText,
+                text: Constants.updatedConstantsData.commonAppWithButton.app2,
                 visibilityState: 'be.visible'
             })
         });

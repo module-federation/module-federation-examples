@@ -9,13 +9,13 @@ describe('It checks buttons with text visibility and position for both apps', fu
         {
             parentSelector: selectors.vueAppButtonsBlock,
             selector: updatedSelectors.viteButtonSelector,
-            text: Constants.elementsText.viteContent,
+            text: Constants.elementsText.vue3DemoFederationWithViteApp.viteContent,
             host: 5000
         },
         {
             parentSelector: selectors.vueAppButtonsBlock,
             selector: updatedSelectors.webpackButtonSelector,
-            text: Constants.elementsText.webpackContent,
+            text: Constants.elementsText.vue3DemoFederationWithViteApp.webpackContent,
             host: 5001
         }
     ]
