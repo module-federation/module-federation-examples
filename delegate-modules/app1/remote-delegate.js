@@ -11,7 +11,7 @@ module.exports = new Promise((resolve, reject) => {
       __webpack_error__.name = 'ScriptExternalLoadError';
       __webpack_error__.stack = event.stack;
       reject(__webpack_error__);
-    },medusa
+    },
     global,
   );
 })
