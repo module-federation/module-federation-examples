@@ -1,4 +1,4 @@
-import { baseSelectors, widgets } from '../../../cypress/common/selectors';
+import {baseSelectors, commonSelectors} from '../../../cypress/common/selectors';
 import { BaseMethods } from "../../../cypress/common/base";
 import { Constants } from "../../../cypress/fixtures/constants";
 import { getDateWithFormat } from "../../../cypress/helpers/base-helper";
@@ -44,14 +44,14 @@ appsData.forEach(
                 })
                 if (property.paragraph) {
                     basePage.checkElementWithTextPresence({
-                        selector: baseSelectors.paragraph,
+                        selector: baseSelectors.tags.paragraph,
                         text: Constants.commonPhrases.dynamicRemotesApp.paragraphText
                     })
 
                     return;
                 }
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.paragraph,
+                    selector: baseSelectors.tags.paragraph,
                     text: Constants.commonPhrases.dynamicRemotesApp.paragraphText,
                     isVisible: false
                 })
@@ -84,12 +84,12 @@ appsData.forEach(
                             text: button
                         })
                         basePage.checkElementExist({
-                            selector: widgets.dynamicRemotesWidget.replace(
+                            selector: commonSelectors.commonWidget.replace(
                                 '{appQuantity}',
                                 (Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button) + 2).toString())
                         })
                         basePage.checkElementHaveProperty({
-                            selector: widgets.dynamicRemotesWidget.replace(
+                            selector: commonSelectors.commonWidget.replace(
                                 '{appQuantity}',
                                 (Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button) + 2).toString()),
                             prop: CssAttr.backgroundColor,
@@ -100,11 +100,11 @@ appsData.forEach(
                             text: property.widgetName[Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button)]
                         })
                         basePage.checkElementWithTextPresence({
-                            selector: baseSelectors.paragraph,
+                            selector: baseSelectors.tags.paragraph,
                             text: property.widgetParagraph[Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button)]
                         })
                         basePage.checkElementWithTextPresence({
-                            selector: baseSelectors.paragraph,
+                            selector: baseSelectors.tags.paragraph,
                             text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
                         })
                     })
@@ -113,12 +113,12 @@ appsData.forEach(
 
                 }
                 basePage.checkElementExist({
-                    selector: widgets.dynamicRemotesWidget.replace(
+                    selector: commonSelectors.commonWidget.replace(
                         '{appQuantity}',
                         (widget + 2).toString())
                 })
                 basePage.checkElementHaveProperty({
-                    selector: widgets.dynamicRemotesWidget.replace(
+                    selector: commonSelectors.commonWidget.replace(
                         '{appQuantity}',
                         (widget + 2).toString()),
                     prop: CssAttr.backgroundColor,
@@ -129,11 +129,11 @@ appsData.forEach(
                     text: property.widgetName[widget]
                 })
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.paragraph,
+                    selector: baseSelectors.tags.paragraph,
                     text: property.widgetParagraph[widget]
                 })
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.paragraph,
+                    selector: baseSelectors.tags.paragraph,
                     text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
                 })
             })

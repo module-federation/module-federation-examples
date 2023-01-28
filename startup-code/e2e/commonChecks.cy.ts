@@ -22,7 +22,7 @@ describe('It checks startup-code apps', () => {
         it(`Check that both apps shares ${property.header} header`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: property.header,
                 visibilityState: 'be.visible'
             })
@@ -31,7 +31,7 @@ describe('It checks startup-code apps', () => {
         it(`Check ${property.appName} app name visibility`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: property.appName,
                 visibilityState: 'be.visible'
             })
@@ -39,13 +39,13 @@ describe('It checks startup-code apps', () => {
 
         it(`Check ${property.appName} contains button`, () => {
             basePage.openLocalhost(property.host)
-            basePage.checkElementVisibility(baseSelectors.button)
+            basePage.checkElementVisibility(baseSelectors.tags.coreElements.button)
         });
 
         it(`Checks that button in ${property.appName} is not disabled`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementState({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 state: 'not.be.disabled'
             })
         });
@@ -53,7 +53,7 @@ describe('It checks startup-code apps', () => {
         it(`Checks that both apps shares button with same text`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 text: Constants.updatedConstantsData.commonAppWithButton.app2,
                 visibilityState: 'be.visible'
             })
@@ -61,7 +61,7 @@ describe('It checks startup-code apps', () => {
 
         it(`Checks that apps names is not equal`, () => {
             basePage.openLocalhost(property.host)
-            basePage.compareInfoBetweenHosts(updatedSelectors.commonAppNameSelector, property.host === 3002 ? appsData[0].host: appsData[1].host, false)
+            basePage.compareInfoBetweenHosts(updatedSelectors.common.appName, property.host === 3002 ? appsData[0].host: appsData[1].host, false)
         });
     });
 });

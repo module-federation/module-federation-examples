@@ -9,18 +9,18 @@ const appButtonPosition: number = 0;
 
 const appsData = [
     {
-        headerSelector: baseSelectors.h1,
-        subHeaderSelector: baseSelectors.h2,
-        buttonSelector: baseSelectors.button,
+        headerSelector: baseSelectors.tags.headers.h1,
+        subHeaderSelector: baseSelectors.tags.headers.h2,
+        buttonSelector: baseSelectors.tags.coreElements.button,
         headerText: Constants.commonConstantsData.biDirectional,
         appNameText: Constants.commonConstantsData.commonCountAppNames.app1,
         buttonColor: Constants.color.red,
         host: 3001
     },
     {
-        headerSelector: baseSelectors.h1,
-        subHeaderSelector: baseSelectors.h2,
-        buttonSelector: baseSelectors.button,
+        headerSelector: baseSelectors.tags.headers.h1,
+        subHeaderSelector: baseSelectors.tags.headers.h2,
+        buttonSelector: baseSelectors.tags.coreElements.button,
         headerText: Constants.commonConstantsData.biDirectional,
         appNameText: Constants.commonConstantsData.commonCountAppNames.app2,
         buttonColor: Constants.color.deepBlue,

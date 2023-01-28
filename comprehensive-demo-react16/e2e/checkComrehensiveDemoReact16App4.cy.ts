@@ -11,7 +11,7 @@ describe('Check is Comprehensive Demo App4 working and have elements', () => {
 
     it('Check App build and running & Check app elements exist', () => {
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.h1,
+            selector: baseSelectors.tags.headers.h1,
             text: Constants.elementsText.comprehensiveDemoApp.App4.headerText
         })
     })

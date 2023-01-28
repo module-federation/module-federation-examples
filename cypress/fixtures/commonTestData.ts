@@ -29,13 +29,13 @@ export class CommonTestData {
         {
             cardName: Constants.commonConstantsData.basicComponents.host.toLowerCase(),
             symbolName: Constants.commonConstantsData.commonMicroFrontendsAppsCardsSymbolsNames.starSymbol,
-            symbol: selectors.viteReactMicroFrontendsCardsSymbols.starSymbol,
+            symbol: selectors.viteReactMicroFrontendsApp.symbols.star,
             status: Constants.elementsText.commonMicroFrontendsApps.cardMessages.hostCard,
         },
         {
             cardName:  Constants.commonConstantsData.basicComponents.remote.toLowerCase(),
             symbolName: Constants.commonConstantsData.commonMicroFrontendsAppsCardsSymbolsNames.cloudSymbol,
-            symbol: selectors.viteReactMicroFrontendsCardsSymbols.cloudSymbol,
+            symbol: selectors.viteReactMicroFrontendsApp.symbols.cloud,
             status: Constants.elementsText.commonMicroFrontendsApps.cardMessages.remoteCard,
         }
     ];
@@ -56,10 +56,10 @@ export class CommonTestData {
 export function returnCommonDynamicAppsData(paragraphText: string[]) {
     return [
         {
-            headerSelector: baseSelectors.h1,
-            subHeaderSelector: baseSelectors.h2,
+            headerSelector: baseSelectors.tags.headers.h1,
+            subHeaderSelector: baseSelectors.tags.headers.h2,
             isButtonExist: true,
-            buttonSelector: baseSelectors.button,
+            buttonSelector: baseSelectors.tags.coreElements.button,
             headerText: Constants.elementsText.dynamicRemotesApp.header,
             appNameText: Constants.commonConstantsData.commonCountAppNames.app1,
             widgetName: Constants.elementsText.dynamicRemotesApp.widgetsNames,
@@ -69,10 +69,10 @@ export function returnCommonDynamicAppsData(paragraphText: string[]) {
             host: 3001
         },
         {
-            headerSelector: baseSelectors.h1,
-            subHeaderSelector: baseSelectors.h2,
+            headerSelector: baseSelectors.tags.headers.h1,
+            subHeaderSelector: baseSelectors.tags.headers.h2,
             isButtonExist: false,
-            buttonSelector: baseSelectors.button,
+            buttonSelector: baseSelectors.tags.coreElements.button,
             headerText: Constants.elementsText.dynamicRemotesApp.header,
             appNameText: Constants.commonConstantsData.commonCountAppNames.app2,
             widgetQuantity: 0,
@@ -83,10 +83,10 @@ export function returnCommonDynamicAppsData(paragraphText: string[]) {
             host: 3002
         },
         {
-            headerSelector: baseSelectors.h1,
-            subHeaderSelector: baseSelectors.h2,
+            headerSelector: baseSelectors.tags.headers.h1,
+            subHeaderSelector: baseSelectors.tags.headers.h2,
             isButtonExist: false,
-            buttonSelector: baseSelectors.button,
+            buttonSelector: baseSelectors.tags.coreElements.button,
             headerText: Constants.elementsText.dynamicRemotesApp.header,
             appNameText: Constants.commonConstantsData.commonCountAppNames.app3,
             widgetQuantity: 1,

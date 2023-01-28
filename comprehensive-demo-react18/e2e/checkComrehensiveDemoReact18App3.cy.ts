@@ -1,5 +1,5 @@
 import { Constants } from '../../cypress/fixtures/constants';
-import { block, baseSelectors } from '../../cypress/common/selectors';
+import {baseSelectors, selectors} from '../../cypress/common/selectors';
 import { BaseMethods } from "../../cypress/common/base";
 import {CssAttr} from "../../cypress/types/cssAttr";
 
@@ -12,37 +12,37 @@ describe('Check is Comprehensive Demo App3 working and have elements', () => {
 
     it('Check App build and running & Check app elements exist', () => {
         basePage.checkElementExist({
-            selector: block.comprehensiveDemoBlockSelectors.firstBlock
+            selector: selectors.comprehensiveDemoApp.blockSelectors.firstBlock
         })
         basePage.checkElementExist({
-            selector: baseSelectors.header
+            selector: baseSelectors.tags.headers.header
         })
         basePage.checkElementHaveProperty({
-            selector: baseSelectors.header,
+            selector: baseSelectors.tags.headers.header,
             prop: CssAttr.backgroundColor,
             value: Constants.color.oceanBluePearl
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.h6,
+            selector: baseSelectors.tags.headers.h6,
             text: Constants.elementsText.comprehensiveDemoApp.App3.headerText
         })
         basePage.checkElementExist({
-            selector: block.comprehensiveDemoBlockSelectors.secondBlock
+            selector: selectors.comprehensiveDemoApp.blockSelectors.secondBlock
         })
         basePage.checkElementHaveProperty({
-            selector: block.comprehensiveDemoBlockSelectors.secondBlock,
+            selector: selectors.comprehensiveDemoApp.blockSelectors.secondBlock,
             prop: CssAttr.backgroundColor,
             value: Constants.color.alabaster
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
+            selector: baseSelectors.tags.coreElements.button,
             text: Constants.commonConstantsData.commonButtonWithEmoji.replace(
                 Constants.commonConstantsData.button,
                 Constants.elementsText.comprehensiveDemoApp.App3.buttonText
             )
         })
         basePage.checkElementHaveProperty({
-            selector: baseSelectors.button,
+            selector: baseSelectors.tags.coreElements.button,
             prop: CssAttr.backgroundColor,
             value: Constants.color.paleVioletRed
         })

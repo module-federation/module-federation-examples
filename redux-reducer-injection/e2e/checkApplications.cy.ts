@@ -23,7 +23,7 @@ describe("Checks application", () => {
     appText.forEach(function (property: { appText: string }) {
         it(`Check that ${property.appText} text is visible`, () => {
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: property.appText,
                 visibilityState: 'be.visible'
             })
@@ -32,22 +32,22 @@ describe("Checks application", () => {
 
         it('Checks dispatch RemoteApp NewName Button visibility', () => {
         basePage.checkElementWithTextPresence({
-           selector: baseSelectors.button,
+           selector: baseSelectors.tags.coreElements.button,
            text: Constants.elementsText.dispatchRemoteApp.button
         }); 
     });
     
         it('Checks that Remote App name Updated', () => {
             basePage.sendInputText({
-                selector: baseSelectors.input,
+                selector: baseSelectors.tags.inputs.input,
                 text: Constants.elementsText.dispatchRemoteApp.input
             }); 
             basePage.clickElementWithText({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 text: Constants.elementsText.dispatchRemoteApp.button
             });
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: Constants.elementsText.dispatchRemoteApp.input
              });    
     });

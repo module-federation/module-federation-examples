@@ -1,4 +1,4 @@
-import { baseSelectors, block, selectors } from './../../cypress/common/selectors';
+import { baseSelectors, selectors } from './../../cypress/common/selectors';
 import { Constants } from './../../cypress/fixtures/constants';
 import { BaseMethods } from "../../cypress/common/base";
 
@@ -34,21 +34,21 @@ appsData.forEach((
     
         it(`Check ${property.appName} have ${property.headerText} header`, () => {
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h1,
+                selector: baseSelectors.tags.headers.h1,
                 text: property.headerText
             })
         })
     
         it(`Check ${property.appName} have ${property.appName} subheader`, () => {
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h2,
+                selector: baseSelectors.tags.headers.h2,
                 text: property.appName
             })
         })
 
         it(`Check ${property.appName} have ${property.buttonName} button`, () => {
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 text: property.buttonName
             })
         })
@@ -56,7 +56,7 @@ appsData.forEach((
     
         it(`Check Apps share div with React version 16.14.0`, () => {
             basePage.checkElementExist({
-                selector: block.differentReactVersionsIsolatedSharedBlock,
+                selector: selectors.differentReactVersionsIsolatedApp.sharedBlock,
             })
             if(property.host === 3001) {
                 basePage.openLocalhost(3002)
@@ -64,31 +64,31 @@ appsData.forEach((
                 basePage.openLocalhost(3001)
             }
             basePage.checkElementExist({
-                selector: block.differentReactVersionsIsolatedSharedBlock,
+                selector: selectors.differentReactVersionsIsolatedApp.sharedBlock,
             }) 
         })
 
         if(property.host === 3001) {
             it(`Check ${property.appName} inject React version 16.14.0 block into a div parent element`, () => {
                 basePage.checkChildElementVisibility(
-                    baseSelectors.divElement,
-                    block.differentReactVersionsIsolatedSharedBlock
+                    baseSelectors.tags.coreElements.div,
+                    selectors.differentReactVersionsIsolatedApp.sharedBlock
                 )
                 basePage.checkElementExist({
-                    selector: selectors.differentReactVersionsIsolatedDivParent,
+                    selector: selectors.differentReactVersionsIsolatedApp.divParent,
                 })
             })
         } else {
             it(`Check ${property.appName} didn't inject React version 16.14.0 block into a div parent element`, () => {
                 basePage.checkChildElementVisibility(
-                    baseSelectors.divElement,
-                    block.differentReactVersionsIsolatedSharedBlock,
+                    baseSelectors.tags.coreElements.div,
+                    selectors.differentReactVersionsIsolatedApp.sharedBlock,
                 )
                 basePage.checkElementVisibility(
-                    block.differentReactVersionsIsolatedSharedBlock
+                    selectors.differentReactVersionsIsolatedApp.sharedBlock
                 )
                 basePage.checkElementExist({
-                    selector: selectors.differentReactVersionsIsolatedDivParent,
+                    selector: selectors.differentReactVersionsIsolatedApp.divParent,
                     isVisible: false
                 })
             })
@@ -96,15 +96,15 @@ appsData.forEach((
     
         it(`Check React version 16.14.0 block`, () => {
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h1,
+                selector: baseSelectors.tags.headers.h1,
                 text: Constants.elementsText.differentReactVersionsIsolatedApp.headers.app2,
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h2,
+                selector: baseSelectors.tags.headers.h2,
                 text: Constants.commonConstantsData.commonCountAppNames.app2
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 text: Constants.updatedConstantsData.commonAppWithButton.app2
             })
         })

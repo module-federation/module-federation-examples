@@ -29,15 +29,15 @@ appsData.forEach(
 
             it(`Check ${appName} build and running`, () => {
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.h1,
+                    selector: baseSelectors.tags.headers.h1,
                     text: Constants.commonConstantsData.basicComponents.basicHostRemote,
                 })
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.h2,
+                    selector: baseSelectors.tags.headers.h2,
                     text: property.appNameText
                 })
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.button,
+                    selector: baseSelectors.tags.coreElements.button,
                     text: Constants.elementsText.craApp.buttonText
                 })
             })

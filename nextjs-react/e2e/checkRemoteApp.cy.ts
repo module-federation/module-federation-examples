@@ -22,13 +22,13 @@ describe("Check remote app", () => {
 
     it('Check button exists', () => {
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
+            selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.nextJsReactApp.buttons.remote})
     })
 
     it('Check button color', () => {
         basePage.checkElementWithTextHaveProperty( {
-            selector: baseSelectors.button,
+            selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.nextJsReactApp.buttons.remote,
             prop: CssAttr.background,
             value: Constants.color.darkMutedBlue

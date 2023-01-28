@@ -1,5 +1,5 @@
         import { BaseMethods } from '../../cypress/common/base';
-        import { baseSelectors } from '../../cypress/common/selectors';
+        import {baseSelectors, selectors} from '../../cypress/common/selectors';
         import { Constants } from '../../cypress/fixtures/constants';
         const basePage: BaseMethods = new BaseMethods();
 
@@ -101,79 +101,79 @@
 
             it(`Check the header content of Home page`, () => {
                 basePage.checkElementContainText({
-                    selector: baseSelectors.listElement,
+                    selector: baseSelectors.tags.coreElements.list,
                     text: Constants.commonConstantsData.home
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.listElement, 
+                    selector: baseSelectors.tags.coreElements.list,
                     text: Constants.elementsText.nextJsSsrApp.shop,
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.listElement, 
+                    selector: baseSelectors.tags.coreElements.list,
                     text: Constants.elementsText.nextJsSsrApp.checkout
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.listElement, 
+                    selector: baseSelectors.tags.coreElements.list,
                     text: Constants.elementsText.nextJsSsrApp.zeit,
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.listElement, 
+                    selector: baseSelectors.tags.coreElements.list,
                     text: Constants.elementsText.nextJsSsrApp.gitHub,
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.nextApp, 
+                    selector: selectors.nextJsSsrApp.nextApp,
                     text: Constants.commonConstantsData.helloWorldMessage
                 })
             })
 
             it(`Check the main content of Home page`, () => {
                 basePage.checkElementContainText({
-                    selector: baseSelectors.heroSection, 
+                    selector: selectors.nextJsSsrApp.heroSection,
                     text: Constants.elementsText.nextJsSsrApp.texts.text3
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.heroSection, 
+                    selector: selectors.nextJsSsrApp.heroSection,
                     text: Constants.elementsText.nextJsSsrApp.texts.text4
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.divElement, 
+                    selector: baseSelectors.tags.coreElements.div,
                     text: Constants.elementsText.nextJsSsrApp.messages.welcomeMessage
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.divElement, 
+                    selector: baseSelectors.tags.coreElements.div,
                     text: Constants.elementsText.nextJsSsrApp.texts.text5
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.divElement, 
+                    selector: baseSelectors.tags.coreElements.div,
                     text: Constants.elementsText.nextJsSsrApp.messages.welcomeMessage
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.divElement, 
+                    selector: baseSelectors.tags.coreElements.div,
                     text: Constants.elementsText.nextJsSsrApp.texts.text5
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.divElement, 
+                    selector: baseSelectors.tags.coreElements.div,
                     text: Constants.elementsText.nextJsSsrApp.messages.welcomeMessage
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.divElement, 
+                    selector: baseSelectors.tags.coreElements.div,
                     text: Constants.elementsText.nextJsSsrApp.texts.text5
                 })
             })
 
             it(`Check the tiles exist on Home page`, () => {
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.linkTag,
+                    selector: baseSelectors.tags.coreElements.link,
                     text: Constants.elementsText.nextJsSsrApp.tiles.documentation
                 })
 
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.linkTag,
+                    selector: baseSelectors.tags.coreElements.link,
                     text: Constants.elementsText.nextJsSsrApp.tiles.learn
                 })
 
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.linkTag,
+                    selector: baseSelectors.tags.coreElements.link,
                     text: Constants.elementsText.nextJsSsrApp.tiles.examples,
                 })
             })
@@ -185,26 +185,26 @@
 
                 navigationTextedLinks.forEach((property: { text: string, link: string }) => {
                     it(`Check that ${property.text} text includes link, is not disabled`, () => {
-                        basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
+                        basePage.checkElementWithTextContainsLink(baseSelectors.tags.coreElements.link, property.text, property.link)
                     })
                 })
 
                 commonTextedLinks.forEach((property: { text: string, link: string }) => {
                     it(`Check that ${property.text} text includes link, is not disabled`, () => {
-                        basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
+                        basePage.checkElementWithTextContainsLink(baseSelectors.tags.coreElements.link, property.text, property.link)
                     })
                 })
 
                 tileTextedLinks.forEach((property: { text: string, link: string }) => {
                     it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                        basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link, true)
+                        basePage.checkElementWithTextContainsLink(baseSelectors.tags.coreElements.link, property.text, property.link, true)
                     })
                 });
 
                 navigationTextedLinks.forEach((property: { text: string, url: string }) => {
                     it(`Check that ${property.text} navigation link works`, () => {
                         basePage.clickElementWithText({
-                        selector: baseSelectors.linkTag,
+                        selector: baseSelectors.tags.coreElements.link,
                         text: property.text})
 
                         basePage.checkUrlText(property.url, true)
@@ -220,38 +220,38 @@
 
                 it(`Check the header content of Shop page`, () => {
                     basePage.checkElementContainText({
-                        selector: baseSelectors.listElement, 
+                        selector: baseSelectors.tags.coreElements.list,
                         text: Constants.commonConstantsData.home
                     })
                     basePage.checkElementContainText({
-                        selector: baseSelectors.listElement, 
+                        selector: baseSelectors.tags.coreElements.list,
                         text: Constants.elementsText.nextJsSsrApp.shop,
                     })
                     basePage.checkElementContainText({
-                        selector: baseSelectors.listElement, 
+                        selector: baseSelectors.tags.coreElements.list,
                         text: Constants.elementsText.nextJsSsrApp.checkout
                     })
                     basePage.checkElementContainText({
-                        selector: baseSelectors.listElement, 
+                        selector: baseSelectors.tags.coreElements.list,
                         text: Constants.elementsText.nextJsSsrApp.zeit,
                     })
                     basePage.checkElementContainText({
-                        selector: baseSelectors.listElement, 
+                        selector: baseSelectors.tags.coreElements.list,
                         text: Constants.elementsText.nextJsSsrApp.gitHub,
                     })
                     basePage.checkElementContainText({
-                        selector: baseSelectors.nextApp, 
+                        selector: selectors.nextJsSsrApp.nextApp,
                         text: Constants.commonConstantsData.helloWorldMessage
                     })
             })
 
                 it(`Check the main content of Shop page`, () => {
                     basePage.checkElementContainText({
-                        selector: baseSelectors.nextApp, 
+                        selector: selectors.nextJsSsrApp.nextApp,
                         text: Constants.elementsText.nextJsSsrApp.pages.shopPage
                     })
                     basePage.checkElementContainText({
-                        selector: baseSelectors.nextApp, 
+                        selector: selectors.nextJsSsrApp.nextApp,
                         text: Constants.elementsText.nextJsSsrApp.texts.mainShopText
                     })
             })
@@ -263,20 +263,20 @@
 
             navigationTextedLinks.forEach((property: { text: string, link: string }) => {
                 it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                    basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
+                    basePage.checkElementWithTextContainsLink(baseSelectors.tags.coreElements.link, property.text, property.link)
                 })
             })
 
             commonTextedLinks.forEach((property: { text: string, link: string }) => {
                 it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                    basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
+                    basePage.checkElementWithTextContainsLink(baseSelectors.tags.coreElements.link, property.text, property.link)
                 })
             })
 
             navigationTextedLinks.forEach((property: { text: string, url: string }) => {
                 it(`Check that ${property.text} text navigation link works`, () => {
                     basePage.clickElementWithText({
-                    selector: baseSelectors.linkTag,
+                    selector: baseSelectors.tags.coreElements.link,
                     text: property.text})
 
                     basePage.checkUrlText(property.url, true)
@@ -293,50 +293,50 @@
 
             it(`Check the header content of Checkout page`, () => {
                 basePage.checkElementContainText({
-                    selector: baseSelectors.listElement, 
+                    selector: baseSelectors.tags.coreElements.list,
                     text: Constants.commonConstantsData.home
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.listElement, 
+                    selector: baseSelectors.tags.coreElements.list,
                     text: Constants.elementsText.nextJsSsrApp.shop,
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.listElement, 
+                    selector: baseSelectors.tags.coreElements.list,
                     text: Constants.elementsText.nextJsSsrApp.checkout
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.listElement, 
+                    selector: baseSelectors.tags.coreElements.list,
                     text: Constants.elementsText.nextJsSsrApp.zeit,
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.listElement, 
+                    selector: baseSelectors.tags.coreElements.list,
                     text: Constants.elementsText.nextJsSsrApp.gitHub,
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.nextApp, 
+                    selector: selectors.nextJsSsrApp.nextApp,
                     text: Constants.commonConstantsData.helloWorldMessage
                 })
         })
 
             it(`Check the main content of Checkout page`, () => {
                 basePage.checkElementContainText({
-                    selector: baseSelectors.nextApp, 
+                    selector: selectors.nextJsSsrApp.nextApp,
                     text: Constants.elementsText.nextJsSsrApp.pages.checkoutPage
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.nextApp, 
+                    selector: selectors.nextJsSsrApp.nextApp,
                     text: Constants.elementsText.nextJsSsrApp.messages.checkoutMessage
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.nextApp, 
+                    selector: selectors.nextJsSsrApp.nextApp,
                     text: Constants.elementsText.nextJsSsrApp.texts.text1
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.nextApp, 
+                    selector: selectors.nextJsSsrApp.nextApp,
                     text: Constants.elementsText.nextJsSsrApp.texts.text2
                 })
                 basePage.checkElementContainText({
-                    selector: baseSelectors.preElement, 
+                    selector: baseSelectors.tags.pre,
                     text: Constants.elementsText.nextJsSsrApp.json,
                     index: 1
                 })
@@ -349,20 +349,20 @@
 
         navigationTextedLinks.forEach((property: { text: string, link: string }) => {
             it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
+                basePage.checkElementWithTextContainsLink(baseSelectors.tags.coreElements.link, property.text, property.link)
             })
         })
 
         commonTextedLinks.forEach((property: { text: string, link: string }) => {
             it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, property.text, property.link)
+                basePage.checkElementWithTextContainsLink(baseSelectors.tags.coreElements.link, property.text, property.link)
             })
         })
 
         navigationTextedLinks.forEach((property: { text: string, url: string }) => {
             it(`Check that ${property.text} text navigation link works`, () => {
                 basePage.clickElementWithText({
-                selector: baseSelectors.linkTag,
+                selector: baseSelectors.tags.coreElements.link,
                 text: property.text})
 
                 cy.wait(500)

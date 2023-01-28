@@ -1,5 +1,5 @@
 import {BaseMethods} from "../../../cypress/common/base";
-import {selectors} from "../../../cypress/common/selectors";
+import {commonSelectors} from "../../../cypress/common/selectors";
 import {Constants} from "../../../cypress/fixtures/constants";
 import {CssAttr} from "../../../cypress/types/cssAttr";
 
@@ -12,21 +12,21 @@ describe("It checks host app", () => {
 
     it('Checks that remote component card appears after loading', () => {
         basePage.checkElementQuantity({
-            selector: selectors.commonCardSelector,
+            selector: commonSelectors.commonMicroFrontendsAppsCard,
             quantity: 1
         })
         basePage.checkElementWithTextPresence({
-            selector: selectors.commonCardSelector,
+            selector: commonSelectors.commonMicroFrontendsAppsCard,
             text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.hostCard,
             visibilityState: 'be.visible'
         })
         basePage.checkElementQuantity({
-            selector: selectors.commonCardSelector,
+            selector: commonSelectors.commonMicroFrontendsAppsCard,
             quantity: 2,
             waitUntil: true
         })
         basePage.checkElementWithTextPresence({
-            selector: selectors.commonCardSelector,
+            selector: commonSelectors.commonMicroFrontendsAppsCard,
             text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.remoteCard,
             visibilityState: 'be.visible'
         })
@@ -34,7 +34,7 @@ describe("It checks host app", () => {
 
     it('Checks host app card color is set to blue', () => {
         basePage.checkElementWithTextHaveProperty({
-            selector: selectors.commonCardSelector,
+            selector: commonSelectors.commonMicroFrontendsAppsCard,
             text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.hostCard,
             prop: CssAttr.css,
             value: Constants.color.blue,
@@ -44,12 +44,12 @@ describe("It checks host app", () => {
 
     it('Checks remote app card color is set to black', () => {
         basePage.checkElementQuantity({
-            selector: selectors.commonCardSelector,
+            selector: commonSelectors.commonMicroFrontendsAppsCard,
             quantity: 2,
             waitUntil: true
         })
         basePage.checkElementWithTextHaveProperty({
-            selector: selectors.commonCardSelector,
+            selector: commonSelectors.commonMicroFrontendsAppsCard,
             text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.remoteCard,
             prop: CssAttr.css,
             value: Constants.color.black,

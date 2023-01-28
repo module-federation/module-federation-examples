@@ -30,20 +30,20 @@ describe("Check host app", () => {
 
     it('Check the content of the Home page exists', () => {
         basePage.checkElementContainText({
-            selector: baseSelectors.divElement,
+            selector: baseSelectors.tags.coreElements.div,
             text: Constants.elementsText.reactHmrApp.host.headerText1
         })
         basePage.checkElementContainText({
-            selector: baseSelectors.divElement,
+            selector: baseSelectors.tags.coreElements.div,
             text: Constants.elementsText.reactHmrApp.host.headerText2
         })
 
-        basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, Constants.commonConstantsData.home, Constants.commonConstantsData.commonLinks.baseLink)
-        basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, Constants.commonConstantsData.button, Constants.hrefs.reactHmrApp.button)
-        basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, Constants.hrefs.reactHmrApp.heading.name, Constants.hrefs.reactHmrApp.heading.link)
+        basePage.checkElementWithTextContainsLink(baseSelectors.tags.coreElements.link, Constants.commonConstantsData.home, Constants.commonConstantsData.commonLinks.baseLink)
+        basePage.checkElementWithTextContainsLink(baseSelectors.tags.coreElements.link, Constants.commonConstantsData.button, Constants.hrefs.reactHmrApp.button)
+        basePage.checkElementWithTextContainsLink(baseSelectors.tags.coreElements.link, Constants.hrefs.reactHmrApp.heading.name, Constants.hrefs.reactHmrApp.heading.link)
 
         basePage.checkElementWithTextHaveProperty({
-            selector: baseSelectors.root,
+            selector: baseSelectors.ids.root,
             text: Constants.elementsText.reactHmrApp.host.headerText1,
             prop: CssAttr.backgroundColor,
             value: Constants.color.greenyellow,
@@ -65,32 +65,32 @@ describe("Check host app", () => {
             it(`Check the ${appName} navigation link works`, () => {
 
             basePage.clickElementWithText({
-                selector: baseSelectors.linkTag,
+                selector: baseSelectors.tags.coreElements.link,
                 text: property.linkName})
 
             basePage.checkUrlText(property.link, true)
             basePage.checkElementContainText({
-                selector: baseSelectors.root, 
+                selector: baseSelectors.ids.root,
             text: property.pageContent
             }) 
 
             basePage.checkElementContainText({
-                selector: baseSelectors.divElement, 
+                selector: baseSelectors.tags.coreElements.div,
                 text: Constants.elementsText.reactHmrApp.host.headerText1,
                 index: 1
             })
             basePage.checkElementContainText({
-                selector: baseSelectors.divElement, 
+                selector: baseSelectors.tags.coreElements.div,
                 text: Constants.elementsText.reactHmrApp.host.headerText2,
                 index: 2
             })
 
-            basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, Constants.commonConstantsData.home, Constants.commonConstantsData.commonLinks.baseLink)
-            basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, Constants.commonConstantsData.button, Constants.hrefs.reactHmrApp.button)
-            basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, Constants.hrefs.reactHmrApp.heading.name, Constants.hrefs.reactHmrApp.heading.link)
+            basePage.checkElementWithTextContainsLink(baseSelectors.tags.coreElements.link, Constants.commonConstantsData.home, Constants.commonConstantsData.commonLinks.baseLink)
+            basePage.checkElementWithTextContainsLink(baseSelectors.tags.coreElements.link, Constants.commonConstantsData.button, Constants.hrefs.reactHmrApp.button)
+            basePage.checkElementWithTextContainsLink(baseSelectors.tags.coreElements.link, Constants.hrefs.reactHmrApp.heading.name, Constants.hrefs.reactHmrApp.heading.link)
 
             basePage.checkElementWithTextHaveProperty({
-                selector: baseSelectors.root,
+                selector: baseSelectors.ids.root,
                 text: Constants.elementsText.reactHmrApp.host.headerText1,
                 prop: CssAttr.backgroundColor,
                 value: Constants.color.greenyellow,

@@ -33,15 +33,15 @@ appsData.forEach((
         })
         it (`Check ${property.subheader} elements (header, subHeader, paragraph)`, () => {
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h1,
+                selector: baseSelectors.tags.headers.h1,
                 text: property.header
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h2,
+                selector: baseSelectors.tags.headers.h2,
                 text: property.subheader
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.paragraph,
+                selector: baseSelectors.tags.paragraph,
                 text: property.paragraph
             })
         })

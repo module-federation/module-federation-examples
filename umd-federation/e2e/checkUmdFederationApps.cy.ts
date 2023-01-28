@@ -31,15 +31,15 @@ appsData.forEach((
         it (`Check App1 elements`, () => {
             basePage.skipTestByCondition(property.host === 9002)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h1,
+                selector: baseSelectors.tags.headers.h1,
                 text: String(property.header1)
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h1,
+                selector: baseSelectors.tags.headers.h1,
                 text: String(property.header2)
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h1,
+                selector: baseSelectors.tags.headers.h1,
                 text: String(property.header3)
             })
         })

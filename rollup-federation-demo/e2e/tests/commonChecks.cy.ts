@@ -22,7 +22,7 @@ describe('It checks rollup-federation-demo apps functionality',  () => {
         it(`Checks texted header visibility`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: selectors.rollupFederationDemoAppHeader,
+                selector: selectors.rollupFederationDemoApp.header,
                 text: Constants.elementsText.rollupFederationDemoApp.headerText,
                 visibilityState: 'be.visible'
             })
@@ -31,7 +31,7 @@ describe('It checks rollup-federation-demo apps functionality',  () => {
         it(`Checks header color`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementHaveProperty({
-                selector: selectors.rollupFederationDemoAppHeader,
+                selector: selectors.rollupFederationDemoApp.header,
                 prop: CssAttr.backgroundColor,
                 value: Constants.color.darkSaturatedBlue
             })
@@ -40,7 +40,7 @@ describe('It checks rollup-federation-demo apps functionality',  () => {
         it(`Checks app message visibility`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h1,
+                selector: baseSelectors.tags.headers.h1,
                 text: property.appMessage,
                 visibilityState: 'be.visible'
             })
@@ -48,13 +48,13 @@ describe('It checks rollup-federation-demo apps functionality',  () => {
 
         it(`Checks both apps includes button`, () => {
             basePage.openLocalhost(property.host)
-            basePage.checkElementVisibility(baseSelectors.button)
+            basePage.checkElementVisibility(baseSelectors.tags.coreElements.button)
         });
 
         it(`Checks button is not disabled`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementState({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 state: 'not.be.disabled'
             })
         });
@@ -62,7 +62,7 @@ describe('It checks rollup-federation-demo apps functionality',  () => {
         it(`Checks button color`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementHaveProperty({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 prop: CssAttr.backgroundColor,
                 value: Constants.color.red
             })
@@ -71,7 +71,7 @@ describe('It checks rollup-federation-demo apps functionality',  () => {
         it(`Checks button text`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 text: Constants.commonPhrases.rollupFederationDemoApp.buttonText,
                 visibilityState: 'be.visible'
             })
