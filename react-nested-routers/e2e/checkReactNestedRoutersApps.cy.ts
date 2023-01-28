@@ -213,7 +213,7 @@ describe('App2 remote', () => {
 });
 
 describe('Host app', () => {
-    const pages = hostConfig.pages;
+    const { pages } = hostConfig;
 
     beforeEach(() => {
         basePage.openLocalhost(hostConfig.port)
