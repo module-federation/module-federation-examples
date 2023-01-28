@@ -1,11 +1,18 @@
 {
-  "name": "module-federation-react-router-dom",
+  "name": "react-nested-routers",
+  "version": "0.0.1",
   "scripts": {
-    "start": "npm-run-all -p \"start -w app1\" \"start -w app2\" \"start -w shell\""
+    "start": "run-p \"start -w app1\" \"start -w app2\" \"start -w shell\"",
+    "e2e:standalone": "npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/runAll*.cy.ts\" --browser=chrome",
+    "e2e:ci": "npm start & wait-on http-get://localhost:8080/ && npm run e2e:standalone"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nebarf/module-federation-react-router-dom.git"
+  },
+  "author": {
+    "name": "Francesco Benedetto",
+    "url": "https://github.com/nebarf"
   },
   "bugs": {
     "url": "https://github.com/nebarf/module-federation-react-router-dom/issues"
@@ -17,6 +24,8 @@
     "shell"
   ],
   "devDependencies": {
-    "npm-run-all": "^4.1.5"
+    "cypress": "^12.4.1",
+    "npm-run-all": "^4.1.5",
+    "wait-on": "^7.0.1"
   }
 }

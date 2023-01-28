@@ -62,13 +62,6 @@ export class Constants {
             profile: 'Profile'
         },
         standardPhrase: 'May The Force Be With You',
-        reactNestedRoutersGoToPage: 'Go to Page',
-        reactNestedRoutersPagesMessages: {
-           page1App1: 'Page 1 from App1',
-           page1App2: 'Page 1 from App2',
-           page2App1: 'Page 2 from App1',
-           page2App2: 'Page 2 from App2'
-        },
         commonLinks: {
            page1: '/page-1',
            page2:  '/page-2',
@@ -156,10 +149,6 @@ export class Constants {
             app1: `${Constants.commonConstantsData.commonCountAppNames.app1} ${Constants.commonConstantsData.widget}`,
             app2: `${Constants.commonConstantsData.commonCountAppNames.app2} ${Constants.commonConstantsData.widget}`,
             app3: `${Constants.commonConstantsData.commonCountAppNames.app3} ${Constants.commonConstantsData.widget}`,
-        },
-        reactedNestedRoutersGoToPageMessage: {
-            page1: `${Constants.commonConstantsData.reactNestedRoutersGoToPage} ${Constants.commonConstantsData.commonIndexes.one}`,
-            page2: `${Constants.commonConstantsData.reactNestedRoutersGoToPage} ${Constants.commonConstantsData.commonIndexes.two}`
         },
         updatedLoadingMessage: `${Constants.commonConstantsData.loading}...`,
         baseSvelteIntroMessage: `Hello From Svelte ${Constants.commonConstantsData.standardPhrase}!`,
@@ -533,40 +522,6 @@ export class Constants {
                 }
             }
         },
-        reactNestedRoutersNavApp: [
-            {
-                name: 'App1 Page1',
-                link: '/app-1/page-1',
-                index: Constants.commonConstantsData.commonIndexes.zero,
-                text: Constants.commonConstantsData.reactNestedRoutersPagesMessages.page1App1,
-                linkText: Constants.updatedConstantsData.reactedNestedRoutersGoToPageMessage.page2,
-                linkRouting: Constants.commonConstantsData.commonLinks.page2
-            },
-            {
-                name: 'App1 Page2',
-                link: '/app-1/page-2',
-                index: Constants.commonConstantsData.commonIndexes.one,
-                text: Constants.commonConstantsData.reactNestedRoutersPagesMessages.page2App1,
-                linkText: Constants.updatedConstantsData.reactedNestedRoutersGoToPageMessage.page1,
-                linkRouting: Constants.commonConstantsData.commonLinks.page1
-            },
-            {
-                name: 'App2 Page1',
-                link: '/app-2/page-1',
-                index: Constants.commonConstantsData.commonIndexes.two,
-                text: Constants.commonConstantsData.reactNestedRoutersPagesMessages.page1App2,
-                linkText: Constants.updatedConstantsData.reactedNestedRoutersGoToPageMessage.page2,
-                linkRouting: Constants.commonConstantsData.commonLinks.page2
-            },
-            {
-                name: 'App2 Page2',
-                link: '/app-2/page-2',
-                index: Constants.commonConstantsData.commonIndexes.three,
-                text: Constants.commonConstantsData.reactNestedRoutersPagesMessages.page2App2,
-                linkText: Constants.updatedConstantsData.reactedNestedRoutersGoToPageMessage.page1,
-                linkRouting: Constants.commonConstantsData.commonLinks.page1
-            }
-        ],
         nativeFederationReactApp: {
            messages: {
                consoleMessages: {
