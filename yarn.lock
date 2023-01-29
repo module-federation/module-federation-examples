@@ -7660,13 +7660,13 @@
   dependencies:
     "@octokit/openapi-types" "^16.0.0"
 
-"@originjs/vite-plugin-federation@1.1.9":
-  version "1.1.9"
-  resolved "https://registry.yarnpkg.com/@originjs/vite-plugin-federation/-/vite-plugin-federation-1.1.9.tgz#56284079f27ca4ebf9357c18399481e560553eda"
-  integrity sha512-JD/+rkGrKVhiTu3ZDxspRXbQNUkQ+hii0oiBuwC4W0i7emEDfbm9yUHAHff5/auYWiWZWCF/ort/oqoWDIbiyg==
+"@originjs/vite-plugin-federation@1.1.14":
+  version "1.1.14"
+  resolved "https://registry.yarnpkg.com/@originjs/vite-plugin-federation/-/vite-plugin-federation-1.1.14.tgz#b02f0dce0420cf47c88f3598a4a56806c32abff3"
+  integrity sha512-aEz/J3qgZmSQ1tZXvcLTaLcDFInCY09UZFdvopsJllyGw87dWd0cpvw5LEa6DFIhVoeVzbNFAj3mDk3spbw/LA==
   dependencies:
-    estree-walker "^1.0.1"
-    magic-string "^0.25.7"
+    estree-walker "^3.0.2"
+    magic-string "^0.27.0"
 
 "@parcel/watcher@2.0.4":
   version "2.0.4"
@@ -16138,6 +16138,13 @@ estree-walker@^2.0.1, estree-walker@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-2.0.2.tgz#52f010178c2a4c117a7757cfe942adb7d2da4cac"
   integrity sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==
+
+estree-walker@^3.0.2:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-3.0.3.tgz#67c3e549ec402a487b4fc193d1953a524752340d"
+  integrity sha512-7RUKfXgSMMkzt6ZuXmqapOurLGPPfgj6l9uRZ7lRGolvk0y2yocc35LdcxKC5PQZdn2DMqioAQ2NoWcrTKmm6g==
+  dependencies:
+    "@types/estree" "^1.0.0"
 
 esutils@^2.0.2:
   version "2.0.3"
