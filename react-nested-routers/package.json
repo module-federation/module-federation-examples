@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "postinstall": "concurrently \"yarn --cwd ./app1 install --network-concurrency 1\" \"yarn --cwd ./app2 install --network-concurrency 1\" \"yarn --cwd ./shell install --network-concurrency 1\"",
+    "postinstall": "yarn --cwd ./app1 install && yarn --cwd ./app2 install && yarn --cwd ./shell install",
     "start": "concurrently \"yarn --cwd ./app1 start\" \"yarn --cwd ./app2 start\" \"yarn --cwd ./shell start\"",
     "e2e:standalone": "npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/runAll*.cy.ts\" --browser=chrome",
     "e2e:ci": "yarn start & wait-on http-get://localhost:8080/ && yarn e2e:standalone"
