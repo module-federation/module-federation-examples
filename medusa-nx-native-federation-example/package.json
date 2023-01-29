@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "build:all": "npx nx run-many --target=build --projects=utils,dsl,nav,search --parallel=4",
-    "start:all": "npx nx run-many --target=serve --projects=utils,dsl,nav,search --parallel=4",
-    "dashboard:all": "npx nx run-many --target=dashboard --projects=utils,dsl,nav,search --parallel=4"
+    "build:all": "npx nx run-many --target=build --projects=utils,dsl,nav,search,home --parallel=5",
+    "start:all": "npx nx run-many --target=serve --projects=utils,dsl,nav,search,home --parallel=5",
+    "dashboard:all": "npx nx run-many --target=dashboard --projects=utils,dsl,nav,search,home --parallel=5"
   },
   "private": true,
   "devDependencies": {

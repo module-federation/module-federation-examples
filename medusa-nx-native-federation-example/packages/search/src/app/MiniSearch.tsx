@@ -1,5 +1,5 @@
 import React from 'react';
-import { loadRemoteModule, initFederation } from '@softarc/native-federation';
+import { initFederation, loadRemoteModule } from '@softarc/native-federation';
 
 let TextField: React.ComponentType<any>;
 

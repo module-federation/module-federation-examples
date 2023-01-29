@@ -9,8 +9,7 @@ import 'antd/dist/antd.css';
 const Header = React.lazy(async () => {
   const module = await loadRemoteModule({
     remoteName: 'nav',
-    exposedModule: './Header',
-    //remoteEntry: 'http://localhost:3003/remoteEntry.json'
+    exposedModule: './Header'
   });
 
   return module;
@@ -25,7 +24,14 @@ const Footer = React.lazy(async () => {
   return module;
 });
 
-//const ProductCarousel = React.lazy(() => import('home/ProductCarousel'));
+const ProductCarousel = React.lazy(async () => {
+  const module = await loadRemoteModule({
+    remoteName: 'home',
+    exposedModule: './ProductCarousel'
+  });
+
+  return module;
+});
 
 const App = () => {
   sendMessage('page loaded');
@@ -38,8 +44,7 @@ const App = () => {
         <SearchList />
         <Divider>More Dogs</Divider>
         <React.Suspense fallback={<div />}>
-          {/* TODO: Figure out why this is broken */}
-          {/*<ProductCarousel />*/}
+          <ProductCarousel />
         </React.Suspense>
       </Layout.Content>
       <React.Suspense fallback={<div />}>

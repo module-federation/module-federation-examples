@@ -1,24 +1,33 @@
 import React from 'react';
 import { Row, Col } from 'antd';
-import { loadRemoteModule } from '@softarc/native-federation';
+import { initFederation, loadRemoteModule } from '@softarc/native-federation';
 
-const TextField = React.lazy(async () => {
-  const module = await loadRemoteModule({
-    remoteName: 'dsl',
-    exposedModule: './TextField'
+let TextField: React.ComponentType<any>;
+let Button: React.ComponentType<any>;
+
+(async () => {
+  TextField = React.lazy(async () => {
+    const module = await loadRemoteModule({
+      remoteName: 'dsl',
+      exposedModule: './TextField',
+      remoteEntry: 'http://localhost:3002/remoteEntry.json'
+    });
+  
+    return module;
+  });
+  
+  Button = React.lazy(async () => {
+    const module = await loadRemoteModule({
+      remoteName: 'dsl',
+      exposedModule: './Button',
+      remoteEntry: 'http://localhost:3002/remoteEntry.json'
+    });
+  
+    return module;
   });
 
-  return module;
-});
-
-const Button = React.lazy(async () => {
-  const module = await loadRemoteModule({
-    remoteName: 'dsl',
-    exposedModule: './Button'
-  });
-
-  return module;
-});
+  await initFederation();
+})();
 
 const SearchList = () => (
   <div>
