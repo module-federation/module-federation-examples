@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
-const FederatedTypesPlugin = require('@module-federation/typescript');
+const { FederatedTypesPlugin } = require('@module-federation/typescript');
 const path = require('path');
 
 module.exports = {
@@ -31,15 +30,16 @@ module.exports = {
     ],
   },
   plugins: [
-    new ModuleFederationPlugin({
-      name: 'app2',
-      filename: 'remoteEntry.js',
-      exposes: {
-        './Button': './src/Button',
-      },
-      shared: ['react', 'react-dom'],
+    new FederatedTypesPlugin({
+      federationConfig: {
+        name: 'app2',
+        filename: 'remoteEntry.js',
+        exposes: {
+          './Button': './src/Button',
+        },
+        shared: ['react', 'react-dom'],
+      }
     }),
-    new FederatedTypesPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
