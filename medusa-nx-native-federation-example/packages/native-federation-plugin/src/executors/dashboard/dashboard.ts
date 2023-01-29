@@ -1,9 +1,10 @@
 import * as path from 'path';
-import { writeJsonFile, ProjectGraph } from '@nrwl/devkit';
+import { createPackageJson, writeJsonFile, ProjectGraph } from '@nrwl/devkit';
+import { PackageJson } from 'nx/src/utils/package-json';
 import { NFPDashboardOptions, NFPDashboardOutputFile } from './schema';
 import { createGitSha, createVersion, readNxBuildHash } from './version';
 import { readProjectDependencies, readProjectDevDependencies } from './graph-deps';
-import { readProjectConsumeModules, readProjectExposedModules } from './graph-modules';
+import { readProjectConsumedModules, readProjectExposedModules } from './graph-modules';
 
 /**
  * 
@@ -20,6 +21,8 @@ export async function buildDashboardFile(graph: ProjectGraph, options: NFPDashbo
     metadata 
   } = options;
 
+  const projectPackageJson: PackageJson = createPackageJson(name, graph);
+
   const dashboard: NFPDashboardOutputFile = {
     id: name,
     name,
@@ -29,11 +32,11 @@ export async function buildDashboardFile(graph: ProjectGraph, options: NFPDashbo
     buildHash: readNxBuildHash(buildTarget, rootPath),
     environment,
     metadata,
-    dependencies: await readProjectDependencies(graph, rootPath, name),
-    devDependencies: await readProjectDevDependencies(graph, rootPath, name),
+    dependencies: await readProjectDependencies(rootPath, projectPackageJson),
+    devDependencies: await readProjectDevDependencies(graph, rootPath, projectPackageJson),
     overrides: [],
     modules: await readProjectExposedModules(graph, rootPath, name),
-    consumes: readProjectConsumeModules(graph, rootPath, name, metadata)
+    consumes: readProjectConsumedModules(graph, rootPath, name, metadata)
   };
 
   const outputFile: string = path.join(outputPath, filename);

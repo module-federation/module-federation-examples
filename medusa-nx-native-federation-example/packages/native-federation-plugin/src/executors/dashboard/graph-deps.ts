@@ -1,17 +1,8 @@
 import { existsSync } from 'fs';
 import * as path from 'path';
-import { 
-  createPackageJson,
-  readJsonFile,
-  getDependentPackagesForProject,
-  readRootPackageJson,
-  ProjectGraph, 
-  WorkspaceLibrary,
-  readNxJson
-} from '@nrwl/devkit';
+import { readJsonFile, ProjectGraph } from '@nrwl/devkit';
 import { PackageJson } from 'nx/src/utils/package-json';
 import { NFPDashboardDependency } from './schema';
-
 
 /**
  * Reads `version`, `license` options from `package.json`
@@ -25,12 +16,10 @@ function readProjectDependency(path: string): Omit<NFPDashboardDependency, 'name
  * Reads a project npm or workspace dependencies
  */
 export async function readProjectDependencies(
-  graph: ProjectGraph,
   rootPath: string,
-  projectName: string
+  projectPackageJson: PackageJson
 ): Promise<NFPDashboardDependency[]> {
-  const projectPackageConfig: PackageJson = createPackageJson(projectName, graph);
-  const dependencies: [string, string][] = Object.entries(projectPackageConfig?.dependencies || {});
+  const dependencies: [string, string][] = Object.entries(projectPackageJson?.dependencies || {});
   const modules: NFPDashboardDependency[] = [];
 
   for (const [name] of dependencies) {
@@ -39,15 +28,6 @@ export async function readProjectDependencies(
       ...readProjectDependency(path.join(rootPath, `./node_modules/${name}/package.json`))
     });
   }
-
-  // const workspaceDependencies: WorkspaceLibrary[] = getDependentPackagesForProject(graph, projectName).workspaceLibraries;
-
-  // for (const {name, root} of workspaceDependencies) {
-  //   modules.push({
-  //     name,
-  //     ...readProjectDependency(path.join(rootPath, `${root}/package.json`))
-  //   });
-  // }
 
   return modules;
 }
@@ -58,10 +38,9 @@ export async function readProjectDependencies(
 export async function readProjectDevDependencies(
   graph: ProjectGraph,
   rootPath: string,
-  projectName: string
+  projectPackageJson: PackageJson
 ): Promise<NFPDashboardDependency[]> {
-  const projectPackageConfig: PackageJson = createPackageJson(projectName, graph);
-  const dependencies: [string, string][] = Object.entries(projectPackageConfig.devDependencies);
+  const dependencies: [string, string][] = Object.entries(projectPackageJson?.devDependencies || {});
   const modules: NFPDashboardDependency[] = [];
 
   for (const [name] of dependencies) {

@@ -1,17 +1,18 @@
-import * as fs from 'fs';
+import { readFileSync } from 'fs';
 import { NFPDashboardToken } from './schema';
 
 /**
  *
  */
 export function readFileTokens(path: string): NFPDashboardToken {
-  const tokenArray: string[][] = fs.readFileSync(path)
+  const tokenArray: string[][] = readFileSync(path)
     .toString('utf-8')
     .split('\n')
     .filter(Boolean)
-    .map((line) => {
-      return line.trim().split('=');
-    });
+    .map((s) => s
+      .trim()
+      .split('=')
+    );
 
   const tokens: NFPDashboardToken = {} as NFPDashboardToken;
 

@@ -31,14 +31,18 @@ export function createVersion(strategy: string): string {
  *
  */
 export function readNxBuildHash(target: string, rootPath: string): string {
-  const cacheFilePath = path.join(rootPath, `./node_modules/.cache/nx/run.json`);
+  const cacheNxFile = path.join(rootPath, `./node_modules/.cache/nx/run.json`);
 
-  if (!existsSync(cacheFilePath)) {
-    return '';
+  if (!existsSync(cacheNxFile)) {
+    throw new Error(`Cache Nx file ${cacheNxFile} not found`);
   }
 
-  const task = readJsonFile(cacheFilePath).tasks
-    .find((task) => task.taskId === target);
+  const task: { hash: string } = readJsonFile(cacheNxFile).tasks
+    ?.find((t) => t.taskId === target);
 
-  return task?.hash || '';
+  if (!task || !task.hash) {
+    throw new Error(`Error occurred while reading Nx Build Hash`);
+  }
+
+  return task.hash;
 }

@@ -20,7 +20,7 @@ import {
   NFPDashboardModule, 
   NFPDashboardExecutorMetadataOptions 
 } from './schema';
-import { collectUniqueItemsByProperties, groupBy } from './object-util';
+import { filterUniqueItemsBy } from './object-util';
 
 /**
  * Reads a project exposed modules from `federation.config.js`
@@ -70,32 +70,25 @@ export async function readProjectExposedModules(
 }
 
 /**
- * Reads 
+ * Collects a project remote modules which consume the Native Module Federation
  */
-export function readProjectConsumeModules(
-  graph: ProjectGraph,
+function parseNativeFederationModules(
   rootPath: string,
-  projectName: string,
-  metadata: NFPDashboardExecutorMetadataOptions
-): NFPDashboardConsumeModule[] {
+  project: ProjectGraphProjectNode
+): (LoadRemoteModuleOptions & { file: string; })[] {
   const NATIVE_FEDERATION_PACKAGE = '@softarc/native-federation';
   const NATIVE_FEDERATION_FUNCTION = 'loadRemoteModule';
   const MODULE_PATTERN = /\.(js|mjs|jsx|ts|tsx)$/;
 
-  const project: ProjectGraphProjectNode = graph.nodes[projectName];
-
-  if (project.type !== 'app') {
-    return [];
-  }
-
-  const modules = [] as NFPDashboardConsumeModule[];
-  let nativeFederationOptions = [] as (LoadRemoteModuleOptions & { file: string })[];
-
+  // scan a project Javascript files
   const moduleFiles: FileData[] = project.data.files
     .filter((file) => {
       return file.file.startsWith(project.data.sourceRoot) && MODULE_PATTERN.test(file.file);
     });
 
+  let nativeFederationRemotes = [] as (LoadRemoteModuleOptions & { file: string })[];
+
+  // detect a project modules which use Native Module Federation
   for (const moduleFile of moduleFiles) {
     const modulePath = path.join(rootPath, moduleFile.file);
 
@@ -103,12 +96,14 @@ export function readProjectConsumeModules(
       continue;
     }
 
+    // read and build module AST tree
     const moduleJavascript: string = readFileSync(modulePath).toString('utf-8');
     const moduleAst: SourceFile = createSourceFile('', moduleJavascript, ScriptTarget.Latest, true);
-
     const moduleImports = findNodes(moduleAst, SyntaxKind.ImportDeclaration) as ImportDeclaration[];
-    const hasNativeFederationImport = moduleImports.some(
-      (nativeImport) => {
+    
+    // detect if we have the NMF import declaration
+    const hasNativeFederationImport = moduleImports
+      .some((nativeImport) => {
         return nativeImport.moduleSpecifier.getText().includes(NATIVE_FEDERATION_PACKAGE);
       });
 
@@ -116,36 +111,49 @@ export function readProjectConsumeModules(
       continue;
     }
     
+    // walk through the module tree and seek for NFM function call expressions
     const moduleExpressions = findNodes(moduleAst, SyntaxKind.CallExpression) as CallExpression[];
     const nativeFederationInvokes: CallExpression[] = moduleExpressions
-      .filter((node) => node.expression.getText() === NATIVE_FEDERATION_FUNCTION);
+      .filter((node) => {
+        return node.expression.getText() === NATIVE_FEDERATION_FUNCTION;
+      });
 
     if (nativeFederationInvokes.length < 1) {
       continue;
     }
 
+    // parse the arguments of NFM function call expressions
     try {
-      nativeFederationOptions = [...nativeFederationOptions, ...nativeFederationInvokes
+      // merge all found modules into the list
+      nativeFederationRemotes = [...nativeFederationRemotes, ...nativeFederationInvokes
         .map((node) => {
           return node.arguments.map((node) => node.getText());
         })
+        /** parse the string:
+         * `{
+         *   remoteName: 'dsl',
+         *   exposedModule: "./TextField",
+         *   remoteEntry: 'http://localhost:3002/remoteEntry.json'
+         * }`
+         * into json object
+         */
         .flatMap((options: string[]) => {
-          const nativeFederationParsings = options[0]
-            .split(',')
-            .map((options) => options.trim())
-            .join(',')
-            .replace(/,\}/, '}')
-            .replace(/\n|\r|\t| /gi, '')
-            .replace(/'|"/gi, '')
-            .replace('{', '')
-            .replace('}', '');
+          const parsingsRegex = RegExp('((remoteName|exposedModule)[ ]*:.*)', 'g');
+          const splitsResult: string[] = [];
+          let parsingsResult: RegExpExecArray | null;
+
+          // extract all options
+          while ((parsingsResult = parsingsRegex.exec(options[0])) !== null) {
+            // remove extra characters 
+            splitsResult.push(parsingsResult[1].replace(/'|"| |,/gi, ''));
+          }
           
-          const nativeFederationSplits = nativeFederationParsings.split(',');
           const nativeFederationModules = {} as LoadRemoteModuleOptions & { file: string };
 
-          nativeFederationSplits.forEach((options) => {
-            const nativeFederationSplits = options.split(':');
-            nativeFederationModules[nativeFederationSplits[0]] = path.basename(nativeFederationSplits[1]);
+          // normalize options into key => value format
+          splitsResult.forEach((options) => {
+            const splitsResult = options.split(':');
+            nativeFederationModules[splitsResult[0]] = path.basename(splitsResult[1]);
           });
 
           nativeFederationModules.file = moduleFile.file;
@@ -157,39 +165,63 @@ export function readProjectConsumeModules(
     }
   }
 
-  const nativeFederationOptionsUniques = collectUniqueItemsByProperties(
-    nativeFederationOptions, 
-    ['remoteName', 'exposedModule', 'file']
-  );
+  return nativeFederationRemotes;
+}
 
-  const nativeFederationOptionsGrouped: { [key: string]: (LoadRemoteModuleOptions & { file: string; })[] } 
-    = groupBy(nativeFederationOptionsUniques, 'remoteName');
+/**
+ * Reads a project consumed remote modules
+ */
+export function readProjectConsumedModules(
+  graph: ProjectGraph,
+  rootPath: string,
+  projectName: string,
+  metadata: NFPDashboardExecutorMetadataOptions
+): NFPDashboardConsumeModule[] {
+  const project: ProjectGraphProjectNode = graph.nodes[projectName];
 
-  const url = metadata.source.url;
-  const projectRootPath = project.data.root;
+  if (project.type !== 'app') {
+    return [];
+  }
 
-  for(const nativeFederationRemoteName of Object.keys(nativeFederationOptionsGrouped)) {
-    let module = {} as NFPDashboardConsumeModule;
+  const nativeFederationRemotes: 
+    (LoadRemoteModuleOptions & { file: string; })[] = parseNativeFederationModules(rootPath, project);
 
-    for (const nativeFederationRemote of nativeFederationOptionsGrouped[nativeFederationRemoteName]) {
-      if (module.name !== nativeFederationRemote.exposedModule) {
-        module = {
-          consumingApplicationID: projectName,
-          applicationID: nativeFederationRemoteName,
-          name: nativeFederationRemote.exposedModule,
-          usedIn: module.usedIn || []
-        };
-      }
+  // prevent NFP function call duplications
+  const nativeFederationUniqueRemotes = filterUniqueItemsBy(nativeFederationRemotes, [
+    'remoteName', 'exposedModule', 'file'
+  ]);
 
-      const moduleCleanPath = nativeFederationRemote.file.replace(new RegExp(projectRootPath), '');
+  const url: string = metadata.source.url;
+  const projectRootPath: string = project.data.root;
+  const modules = [] as NFPDashboardConsumeModule[];
 
-      module.usedIn.push({
-        file: moduleCleanPath,
-        url: path.join(url, moduleCleanPath)
+  // serialize and group modules by the same module
+  for (const { remoteName, exposedModule, file } of nativeFederationUniqueRemotes){
+    const module: NFPDashboardConsumeModule = modules
+      .find((module) => {
+        return module?.applicationID === remoteName && module?.name === exposedModule;
       });
+
+    const moduleCleanPath: string = file.replace(new RegExp(projectRootPath), '');
+
+    if (!module) {
+      modules.push({
+        consumingApplicationID: projectName,
+        applicationID: remoteName,
+        name: exposedModule,
+        usedIn: [{
+          file: moduleCleanPath,
+          url: path.join(url, moduleCleanPath)
+        }]
+      });
+
+      continue;
     }
 
-    modules.push(module);
+    module.usedIn.push({
+      file: moduleCleanPath,
+      url: path.join(url, moduleCleanPath)
+    });
   }
 
   return modules;
