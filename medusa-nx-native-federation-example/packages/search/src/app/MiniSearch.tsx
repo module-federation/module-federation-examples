@@ -1,17 +1,22 @@
 import React from 'react';
-import { loadRemoteModule } from '@softarc/native-federation';
+import { loadRemoteModule, initFederation } from '@softarc/native-federation';
 
-const TextField = React.lazy(async () => {
-  const module = await loadRemoteModule({
-    remoteName: 'dsl',
-    exposedModule: './TextField',
-    remoteEntry: 'http://localhost:3002/remoteEntry.json'
+let TextField: React.ComponentType<any>;
+
+(async () => {
+  TextField = React.lazy(async () => {
+    const module = await loadRemoteModule({
+      remoteName: 'dsl',
+      exposedModule: './TextField',
+      remoteEntry: 'http://localhost:3002/remoteEntry.json'
+    });
+  
+    console.log('dsl: ', module);
+    return module;
   });
 
-  console.log('dsl: ', module);
-
-  return module;
-});
+  await initFederation();
+})();
 
 const MiniSearch = ({ inputProps = {} }) => (
   <React.Suspense fallback={<span />}>

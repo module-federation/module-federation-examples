@@ -18,7 +18,8 @@ declare module 'react' {
 const Button = React.lazy(async () => {
   const module = await loadRemoteModule({
     remoteName: 'dsl',
-    exposedModule: './Button'
+    exposedModule: './Button',
+    remoteEntry: 'http://localhost:3002/remoteEntry.json'
   });
 
   return module;
@@ -27,10 +28,11 @@ const Button = React.lazy(async () => {
 const MiniSearch = React.lazy(async () => {
   const module = await loadRemoteModule({
     remoteName: 'search',
-    exposedModule: './MiniSearch'
+    exposedModule: './MiniSearch',
+    remoteEntry: 'http://localhost:3004/remoteEntry.json'
   });
 
-  console.log(MiniSearch);
+  console.log('search: ', module);
 
   return module;
 });
@@ -63,7 +65,11 @@ const Header = ({ children }: HeaderProps) => (
   <Layout.Header>
     <Row>
       <Col span={10}>
-        <h2>
+        <h2
+          css={css`
+            color: white;
+          `}
+        >
           {children}
         </h2>
       </Col>

@@ -1,23 +1,20 @@
 import React from 'react';
 import { Layout, Divider } from 'antd';
 import { loadRemoteModule } from '@softarc/native-federation';
-
-import SearchList from './SearchList';
 import { sendMessage } from './analytics';
+import SearchList from './SearchList';
 
 import 'antd/dist/antd.css';
 
-(async () => {
+const Header = React.lazy(async () => {
   const module = await loadRemoteModule({
     remoteName: 'nav',
     exposedModule: './Header',
     //remoteEntry: 'http://localhost:3003/remoteEntry.json'
   });
 
-  console.log(module);
-
   return module;
-})();
+});
 
 const Footer = React.lazy(async () => {
   const module = await loadRemoteModule({
@@ -35,7 +32,7 @@ const App = () => {
   return (
     <Layout style={{ maxWidth: 1200, margin: 'auto' }}>
       <React.Suspense fallback={<div />}>
-        {/*<Header>Search Site</Header>*/}
+        <Header>Search Site</Header>
       </React.Suspense>
       <Layout.Content style={{ padding: '2em', background: 'white' }}>
         <SearchList />
