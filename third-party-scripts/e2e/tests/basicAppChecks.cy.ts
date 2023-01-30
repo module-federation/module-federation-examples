@@ -13,7 +13,7 @@ describe("It checks basic host-remote app", () => {
     it('Checks app header visibility', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.h1,
-            text: Constants.commonPhrases.thirdPartyScriptsAppPhrases.header,
+            text: Constants.commonConstantsData.basicComponents.basicHostRemote,
             visibilityState: 'be.visible'
         })
     })
@@ -21,7 +21,7 @@ describe("It checks basic host-remote app", () => {
     it('Checks app description visibility', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.paragraph,
-            text: Constants.commonPhrases.thirdPartyScriptsAppPhrases.description,
+            text: Constants.commonPhrases.thirdPartyScriptsApp.description,
             visibilityState: 'be.visible'
         })
     })
