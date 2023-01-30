@@ -1,6 +1,7 @@
 import { BaseMethods } from '../../../cypress/common/base';
 import { baseSelectors } from '../../../cypress/common/selectors';
 import { Constants } from '../../../cypress/fixtures/constants';
+import {CssAttr} from "../../../cypress/types/cssAttr";
 
 const basePage: BaseMethods = new BaseMethods()
 
@@ -11,8 +12,8 @@ const appsData = [
         headerSelector: baseSelectors.h1,
         subHeaderSelector: baseSelectors.h2,
         buttonSelector: baseSelectors.button,
-        headerText: Constants.elementsText.automaticVendorContent,
-        appNameText: Constants.elementsText.automaticVendorFirstAppName,
+        headerText: Constants.commonConstantsData.biDirectional,
+        appNameText: Constants.commonConstantsData.commonCountAppNames.app1,
         buttonColor: Constants.color.red,
         host: 3001
     },
@@ -20,8 +21,8 @@ const appsData = [
         headerSelector: baseSelectors.h1,
         subHeaderSelector: baseSelectors.h2,
         buttonSelector: baseSelectors.button,
-        headerText: Constants.elementsText.automaticVendorContent,
-        appNameText: Constants.elementsText.automaticVendorSecondAppName,
+        headerText: Constants.commonConstantsData.biDirectional,
+        appNameText: Constants.commonConstantsData.commonCountAppNames.app2,
         buttonColor: Constants.color.deepBlue,
         host: 3002
     }
@@ -60,20 +61,20 @@ appsData.forEach(
             it(`Check buttons in ${appName} exist`, () => {
                 basePage.checkElementWithTextPresence({
                     selector: property.buttonSelector,
-                    text: `${appName} ${Constants.commonText.button}`
+                    text: `${appName} ${Constants.commonConstantsData.button}`
                 })
             })
 
             it(`Check button property in ${appName}`, () => {
                 basePage.checkElementPositionbyText(
                     property.buttonSelector,
-                    `${appName} ${Constants.commonText.button}`,
+                    `${appName} ${Constants.commonConstantsData.button}`,
                     appButtonPosition
                 )
                 basePage.checkElementWithTextHaveProperty({
                     selector: property.buttonSelector,
-                    text: `${appName} ${Constants.commonText.button}`,
-                    prop: Constants.commonText.background,
+                    text: `${appName} ${Constants.commonConstantsData.button}`,
+                    prop: CssAttr.background,
                     value: color
                 })
             })
