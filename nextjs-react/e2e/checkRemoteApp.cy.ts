@@ -1,6 +1,7 @@
 import { BaseMethods } from '../../cypress/common/base';
 import { baseSelectors } from '../../cypress/common/selectors';
 import { Constants } from '../../cypress/fixtures/constants';
+import {CssAttr} from "../../cypress/types/cssAttr";
 
 const basePage: BaseMethods = new BaseMethods()
 
@@ -22,14 +23,14 @@ describe("Check remote app", () => {
     it('Check button exists', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
-            text: Constants.commonText.remoteButton})
+            text: Constants.elementsText.nextJsReactApp.buttons.remote})
     })
 
     it('Check button color', () => {
         basePage.checkElementWithTextHaveProperty( {
             selector: baseSelectors.button,
-            text: Constants.commonText.remoteButton,
-            prop: Constants.commonText.background,
+            text: Constants.elementsText.nextJsReactApp.buttons.remote,
+            prop: CssAttr.background,
             value: Constants.color.darkMutedBlue
         })
     })
