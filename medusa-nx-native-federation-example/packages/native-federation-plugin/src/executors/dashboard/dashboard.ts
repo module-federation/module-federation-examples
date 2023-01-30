@@ -33,7 +33,7 @@ export async function buildDashboardFile(graph: ProjectGraph, options: NFPDashbo
     environment,
     metadata,
     dependencies: await readProjectDependencies(rootPath, projectPackageJson),
-    devDependencies: await readProjectDevDependencies(graph, rootPath, projectPackageJson),
+    devDependencies: await readProjectDevDependencies(graph, rootPath, name, projectPackageJson),
     overrides: [],
     modules: await readProjectExposedModules(graph, rootPath, name),
     consumes: readProjectConsumedModules(graph, rootPath, name, metadata)
