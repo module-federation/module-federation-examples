@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { matchRoutes, useLocation, useNavigate } from 'react-router-dom';
+import { routes } from '../routing/routes';
 
 interface NavigationManagerProps {
   children: ReactElement;
@@ -12,7 +13,7 @@ export function NavigationManager({ children }: NavigationManagerProps) {
   useEffect(() => {
     function shellNavigationHandler(event: Event) {
       const pathname = (event as CustomEvent<string>).detail;
-      if (location.pathname === pathname) {
+      if (location.pathname === pathname || !matchRoutes(routes, { pathname })) {
         return;
       }
       navigate(pathname);
