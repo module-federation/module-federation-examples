@@ -105,6 +105,8 @@ export default defineConfig({
       runMode: 1,
     },
     env: {
+      allure: true,
+      allureResultsPath: '../../results/allure-results',
       localhost3000: "http://localhost:3000",
       localhost3001: "http://localhost:3001",
       localhost3002: "http://localhost:3002",

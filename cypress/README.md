@@ -156,6 +156,30 @@ It will exit with a code of 0 or 1, indicating whether the test run was successf
 
 <h2 align="center">How to write tests</h2>
 
+### Test report
+
+After you run tests in a Headless mode, you can find a report in the `cypress/results/[name_of_sample]` directory. It is a `.json` files. It contains information about the test run, such as the number of tests, the number of passed tests, the number of failed tests, and the duration of the test run. To genarete HTML report, you can run:
+
+```bash
+npx allure generate cypress/results/**/allure-results --clean --output cypress/report/allure-report
+```
+
+And find the report in the `cypress/report/allure-report` directory. It is a `.html` file. You can open it in a browser as a standard HTML file.
+
+It looks like:
+
+![Allure report](https://i.ibb.co/7Smkgts/Screenshot-2023-01-30-at-12-52-14.png)
+
+In `Suites` tab you can find all the tests. And debug them.
+
+![Allure report suites](https://i.ibb.co/ggrzwqd/Screenshot-2023-01-30-at-12-52-26.png)
+
+>**Note:** On CI pipeline, the report will be generated automatically and added to your PR as a comment.
+
+![Allure report comment](https://i.ibb.co/F4VsDFc/Screenshot-2023-01-30-at-13-17-44.png)
+
+You can go to the report by clicking on the link in the comment 🔥
+
 ### Create a test
 
 First, create a new, empty test file. It should be located in the `sample/e2e` directory. The file name should end with the `.cy.ts` extension, and should have a simple, self-explanatory name.
@@ -300,7 +324,7 @@ describe(`Example test`, () => {
 
 ##### `commonData.ts`
 
-The main reason of commonData.ts file is to store test which can be used for multiple samples, for example if we declare similar array of data in multiple samples it can be moved to commonData.ts and called from this file instead of redeclaring multiple times 
+The main reason of commonData.ts file is to store test which can be used for multiple samples, for example if we declare similar array of data in multiple samples it can be moved to commonData.ts and called from this file instead of redeclaring multiple times
 
 ## Best Practices
 ### Add and Use data-e2e locators

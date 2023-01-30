@@ -78,8 +78,6 @@ jobs:
     if: ${{ needs.setup-matrix.outputs.matrix != '{"container":[]}' }}
     runs-on: ubuntu-22.04
     timeout-minutes: 30
-    outputs:
-      yarnHash: ${{ steps.set-matrix.outputs.matrix }}
     strategy:
       fail-fast: false
       matrix: ${{fromJson(needs.setup-matrix.outputs.matrix)}}
@@ -112,6 +110,12 @@ jobs:
             e2e-cache-
             e2e-
 
+      - name: Install main deps
+        # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, ayarn install to the run section below instead of npx lerna exec
+        # if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: |
+          yarn install
+
       - name: Install sample deps
         # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
         # if: steps.yarn-cache.outputs.cache-hit != 'true'
@@ -127,12 +131,12 @@ jobs:
         if: always()
         with:
           name: allure-results
-          path: '**/allure-results'
+          path: 'cypress/results/**/allure-results'
           retention-days: 7
 
   generate-allure-report:
-    needs: run-e2e-test
     runs-on: ubuntu-22.04
+    needs: run-e2e-test
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -145,8 +149,20 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: allure-results
+          path: cypress/results
 
-      - name: Restore cache
+      - name: Check downloaded artifacts
+        run: |
+          ls -R
+
+      # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
+      - name: Check Yarn hash
+        id: yarn-hash
+        run: |
+          yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
+          echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
+
+      - name: Restore Yarn and Cypress cache
         uses: actions/cache/restore@v3
         id: yarn-cache
         with:
@@ -155,7 +171,7 @@ jobs:
             **/yarn.lock
             ~/.cache/Cypress
             ~/.cache/yarn/v6  
-          key: e2e-cache-${{ hashFiles('YarnHash.txt') }}
+          key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
           restore-keys: |
             e2e-cache-
             e2e-
@@ -166,7 +182,7 @@ jobs:
 
       - name: Generate Allure report
         run: |
-          npx allure generate **/allure-results --clean --output allure-report
+          npx allure generate cypress/results/**/allure-results --clean --output cypress/report/allure-report
       
       - name: Deploy report to FireBase 
         if: always()
@@ -178,6 +194,3 @@ jobs:
           projectId: module-federation-test-result
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
-       
-
-     
