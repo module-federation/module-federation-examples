@@ -27,33 +27,30 @@ export class CommonTestData {
     ];
     public static readonly commonMicroFrontendsAppsData = [
         {
-            cardName: Constants.commonText.viteReactMicroFrontendsCardsNames.hostCard,
-            symbolName: Constants.commonText.viteReactMicroFrontendsCardsSymbolsNames.starSymbol,
+            cardName: Constants.commonConstantsData.basicComponents.host.toLowerCase(),
+            symbolName: Constants.commonConstantsData.commonMicroFrontendsAppsCardsSymbolsNames.starSymbol,
             symbol: selectors.viteReactMicroFrontendsCardsSymbols.starSymbol,
-            status: Constants.elementsText.viteReactMicroFrontendsCardsMessages.hostCard
+            status: Constants.elementsText.commonMicroFrontendsApps.cardMessages.hostCard,
         },
         {
-            cardName:  Constants.commonText.viteReactMicroFrontendsCardsNames.remoteCard,
-            symbolName: Constants.commonText.viteReactMicroFrontendsCardsSymbolsNames.cloudSymbol,
+            cardName:  Constants.commonConstantsData.basicComponents.remote.toLowerCase(),
+            symbolName: Constants.commonConstantsData.commonMicroFrontendsAppsCardsSymbolsNames.cloudSymbol,
             symbol: selectors.viteReactMicroFrontendsCardsSymbols.cloudSymbol,
-            status: Constants.elementsText.viteReactMicroFrontendsCardsMessages.remoteCard
+            status: Constants.elementsText.commonMicroFrontendsApps.cardMessages.remoteCard,
         }
     ];
     public static readonly commonTypeScriptMonorepoProjectReferencesAppsData = [
         {
             host: 3001,
-            header: Constants.commonPhrases.typescriptProjectReferencesAppsHeader,
-            appName: Constants.commonPhrases.typescriptProjectReferencesAppsApp1Name
+            header: Constants.commonConstantsData.typeScript.charAt(0).toUpperCase(),
+            appName: Constants.commonConstantsData.commonCountAppNames.app1
         },
         {
             host: 3002,
-            header: Constants.commonPhrases.typescriptProjectReferencesAppsHeader,
-            appName: Constants.commonPhrases.typescriptProjectReferencesAppsApp2Name
+            header: Constants.commonConstantsData.typeScript.charAt(0).toUpperCase(),
+            appName: Constants.commonConstantsData.commonCountAppNames.app2
         }
     ];
-    public static readonly comprehensiveAppDemoPages = Constants.elementsText.comprehensiveDemo.comprehensiveDemoDemoPages
-    public static readonly comprehensiveAppNames = Constants.elementsText.comprehensiveDemo.comprehensiveDemoDemoPages
-
 }
 
 export function returnCommonDynamicAppsData(paragraphText: string[]) {
@@ -63,9 +60,9 @@ export function returnCommonDynamicAppsData(paragraphText: string[]) {
             subHeaderSelector: baseSelectors.h2,
             isButtonExist: true,
             buttonSelector: baseSelectors.button,
-            headerText: Constants.elementsText.dynamicRemotesHeader,
-            appNameText: Constants.elementsText.dynamicRemotesFirstAppName,
-            widgetName: Constants.elementsText.dynamicRemotesWidgetName,
+            headerText: Constants.elementsText.dynamicRemotesApp.header,
+            appNameText: Constants.commonConstantsData.commonCountAppNames.app1,
+            widgetName: Constants.elementsText.dynamicRemotesApp.widgetsNames,
             widgetParagraph: paragraphText,
             widgetColor: Constants.color.dynamicRemotesWidgetColor,
             paragraph: true,
@@ -76,10 +73,10 @@ export function returnCommonDynamicAppsData(paragraphText: string[]) {
             subHeaderSelector: baseSelectors.h2,
             isButtonExist: false,
             buttonSelector: baseSelectors.button,
-            headerText: Constants.elementsText.dynamicRemotesHeader,
-            appNameText: Constants.elementsText.dynamicRemotesSecondAppName,
+            headerText: Constants.elementsText.dynamicRemotesApp.header,
+            appNameText: Constants.commonConstantsData.commonCountAppNames.app2,
             widgetQuantity: 0,
-            widgetName: Constants.elementsText.dynamicRemotesWidgetName,
+            widgetName: Constants.elementsText.dynamicRemotesApp.widgetsNames,
             widgetParagraph: paragraphText,
             widgetColor: Constants.color.dynamicRemotesWidgetColor,
             paragraph: false,
@@ -90,10 +87,10 @@ export function returnCommonDynamicAppsData(paragraphText: string[]) {
             subHeaderSelector: baseSelectors.h2,
             isButtonExist: false,
             buttonSelector: baseSelectors.button,
-            headerText: Constants.elementsText.dynamicRemotesHeader,
-            appNameText: Constants.elementsText.dynamicRemotesThirdAppName,
+            headerText: Constants.elementsText.dynamicRemotesApp.header,
+            appNameText: Constants.commonConstantsData.commonCountAppNames.app3,
             widgetQuantity: 1,
-            widgetName: Constants.elementsText.dynamicRemotesWidgetName,
+            widgetName: Constants.elementsText.dynamicRemotesApp.widgetsNames,
             widgetParagraph: paragraphText,
             widgetColor: Constants.color.dynamicRemotesWidgetColor,
             paragraph: false,
@@ -105,27 +102,27 @@ export function returnCommonDynamicAppsData(paragraphText: string[]) {
 export function returnCommonAngularAppsData(welcomeText: string) {
     return [
         {
-            appNameText: Constants.elementsText.mdmfShell.name,
-            headerText: Constants.elementsText.mdfmShellHeader,
+            appNameText: Constants.commonConstantsData.commonAngularAppsData.mdmfShellName,
+            headerText: Constants.commonConstantsData.commonAngularAppsData.headers.shell,
             isWelcomeText: true,
             welcomeText,
-            paragraphText: Constants.commonPhrases.mdmfShellParagraph,
-            tableHeaderText: Constants.elementsText.mdmfAppTableHeader,
+            paragraphText: Constants.commonConstantsData.commonAngularAppsData.messages.shellParagraph,
+            tableHeaderText: Constants.commonConstantsData.commonAngularAppsData.headers.table,
             isCardBody: false,
-            path: Constants.elementsText.mdmfShell.path,
+            path: Constants.commonConstantsData.home.toLowerCase(),
             host: 4200
         },
         {
-            appNameText: Constants.elementsText.mdmfProfile.name,
-            headerText: Constants.elementsText.mdfmProfileHeader,
+            appNameText: Constants.commonConstantsData.commonAngularAppsData.mdmfProfile.name,
+            headerText: Constants.commonConstantsData.commonAngularAppsData.headers.profile,
             isWelcomeText: false,
             welcomeText: '',
-            paragraphText: Constants.commonPhrases.mdmfProfileParagraph,
-            tableHeaderText: Constants.elementsText.mdmfAppTableHeader,
+            paragraphText: Constants.commonConstantsData.commonAngularAppsData.messages.profileParagraph,
+            tableHeaderText: Constants.commonConstantsData.commonAngularAppsData.headers.table,
             isCardBody: true,
-            sharedHeader: Constants.elementsText.mdmfSharedHeader,
-            sharedParagraph: Constants.commonPhrases.mdmfSharedParagraph,
-            path: Constants.elementsText.mdmfProfile.path,
+            sharedHeader: Constants.elementsText.differentAngularVersionsApps.mdmfSharedHeader,
+            sharedParagraph: Constants.commonConstantsData.commonAngularAppsData.messages.sharedParagraph,
+            path: Constants.commonConstantsData.commonAngularAppsData.mdmfProfile.path,
             host: 4200
         }
     ]

@@ -12,59 +12,59 @@ describe('Check App1', () => {
     it('Check App build and running', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.h1,
-            text: Constants.elementsText.diferentReactVersionsHeader
+            text: Constants.commonConstantsData.basicComponents.basicHostRemote,
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.h2,
-            text: Constants.elementsText.diferentReactVersionsApp1Subheader
+            text: Constants.elementsText.differentReactVersionsApps.subheader
         })
         basePage.checkElementExist({
             selector: baseSelectors.input
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.strong,
-            text: Constants.elementsText.diferentReactVersionsApp1ReactBlockParagraph
+            text: Constants.elementsText.differentReactVersionsApps.reactBlockParagraph
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.h2,
-            text: Constants.elementsText.diferentReactVersionsApp1ReactBlockHeader
+            text: Constants.elementsText.differentReactVersionsApps.reactBlockHeader
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.h3,
-            text: Constants.elementsText.diferentReactVersionsApp1ReactBlockSubheader
+            text: Constants.elementsText.differentReactVersionsApps.reactBlockSubheader
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.paragraph,
-            text: Constants.elementsText.diferentReactVersionsParagraph
+            text: Constants.elementsText.differentReactVersionsApps.paragraph
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
-            text: Constants.elementsText.diferentReactVersionsButtonName
+            text: Constants.updatedConstantsData.commonAppWithButton.app2
         })
         basePage.checkElementHaveProperty({
             selector: basePage.getBlockSelector(baseSelectors.button.toUpperCase()),
-            prop: Constants.commonText.border,
-            value: Constants.color.borderColorRed1px
+            prop: Constants.commonConstantsData.commonAttributes.border,
+            value: Constants.color.nonRgbValues.borderRed1px
         })
         basePage.checkElementHaveProperty({
             selector: basePage.getBlockSelector(baseSelectors.divElement.toUpperCase()),
-            prop: Constants.commonText.border,
-            value: Constants.color.borderColorRed1px
+            prop: Constants.commonConstantsData.commonAttributes.border,
+            value: Constants.color.nonRgbValues.borderRed1px
         })
     })
 
     it('Check that filled text appear in header', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.h2,
-            text: Constants.elementsText.diferentReactVersionsApp1ReactBlockHeader
+            text: Constants.elementsText.differentReactVersionsApps.reactBlockHeader
         })
         basePage.fillField({
             selector: baseSelectors.input,
-            text: Constants.commonText.standartText
+            text: Constants.commonConstantsData.standardPhrase
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.h2,
-            text: `${Constants.elementsText.diferentReactVersionsApp1ReactBlockHeader} ${Constants.commonText.standartText}`
+            text: `${Constants.elementsText.differentReactVersionsApps.reactBlockHeader} ${Constants.commonConstantsData.standardPhrase}`
         })
     })
 })
@@ -77,19 +77,19 @@ describe('Check App2', () => {
     it('Check App build and running', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.h1,
-            text: Constants.elementsText.diferentReactVersionsHeader
+            text: Constants.commonConstantsData.basicComponents.basicHostRemote,
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.paragraph,
-            text: Constants.elementsText.diferentReactVersionsApp2Subheader
+            text: Constants.commonConstantsData.commonCountAppNames.app2.replace(' ', '')
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.paragraph,
-            text: Constants.elementsText.diferentReactVersionsParagraph
+            text: Constants.elementsText.differentReactVersionsApps.paragraph
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
-            text: Constants.elementsText.diferentReactVersionsButtonName
+            text: Constants.updatedConstantsData.commonAppWithButton.app2
         })
     })
 })

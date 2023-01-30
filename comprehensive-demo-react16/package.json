@@ -1,5 +1,14 @@
 {
   "name": "comprehensive-demo-react16",
+  "private": true,
+  "workspaces": [
+    "./app-01",
+    "./app-02",
+    "./app-03",
+    "./app-04",
+    "./app-05"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "start": "concurrently \"lerna run --scope=comprehensive-demo-react16_app* --parallel start\" \"yarn serve\"",
     "build": "lerna run --scope=comprehensive-demo-react16_app* build",
