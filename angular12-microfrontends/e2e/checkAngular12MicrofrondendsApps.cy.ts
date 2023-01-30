@@ -6,18 +6,18 @@ const basePage: BaseMethods = new BaseMethods()
 
 const appsData = [
     {
-        headerText: Constants.elementsText.mdfmShellHeader,
-        paragraphText: Constants.commonPhrases.mdmfShellWelcome,
-        additionlParagraph: Constants.commonPhrases.mdmfShellParagraph,
-        appName: Constants.elementsText.mdmfShell.name,
-        appPath: Constants.elementsText.mdmfShell.path,
+        headerText: Constants.commonConstantsData.commonAngularAppsData.headers.shell,
+        paragraphText: Constants.commonConstantsData.commonAngularAppsData.messages.shellWelcome,
+        additionlParagraph: Constants.commonConstantsData.commonAngularAppsData.messages.shellParagraph,
+        appName: Constants.commonConstantsData.commonAngularAppsData.mdmfShellName,
+        appPath: Constants.commonConstantsData.home.toLowerCase(),
         host: 4200
     },
     {
-        headerText: Constants.elementsText.mdfmProfileHeader,
-        paragraphText: Constants.commonPhrases.mdmfProfileParagraph,
-        appName: Constants.elementsText.mdmfProfile.name,
-        appPath: Constants.elementsText.mdmfProfile.path,
+        headerText: Constants.commonConstantsData.commonAngularAppsData.headers.profile,
+        paragraphText: Constants.commonConstantsData.commonAngularAppsData.messages.profileParagraph,
+        appName: Constants.commonConstantsData.commonAngularAppsData.mdmfProfile.name,
+        appPath: Constants.commonConstantsData.commonAngularAppsData.mdmfProfile.path,
         host: 4200
     }
 ]
@@ -51,27 +51,27 @@ appsData.forEach((
             })
             basePage.checkElementHaveProperty({
                 selector: baseSelectors.linkTag,
-                attr: Constants.commonText.attr,
-                prop: Constants.commonText.href,
-                value: Constants.elementsText.mdmfNavigationItemLogo.link
+                attr: Constants.commonConstantsData.commonAttributes.attr,
+                prop: Constants.commonConstantsData.commonAttributes.href,
+                value: Constants.commonConstantsData.commonAngularAppsData.mdmfNavigationItemLogo.link
             })
             basePage.checkElementHaveProperty({
                 selector: baseSelectors.linkTag,
-                attr: Constants.commonText.attr,
-                prop: Constants.commonText.target,
-                value: Constants.elementsText.mdmfNavigationItemLogo.targetBlank
+                attr: Constants.commonConstantsData.commonAttributes.attr,
+                prop: Constants.commonConstantsData.commonAttributes.target,
+                value: Constants.commonConstantsData.commonAngularAppsData.mdmfNavigationItemLogo.targetBlank
             })
             basePage.checkChildElementContainText(
                 baseSelectors.navigation,
                 baseSelectors.navigationItem,
-                Constants.tabsNames.mdmfNavigationItemHome.name,
-                Constants.tabsNames.mdmfNavigationItemHome.index
+                Constants.commonConstantsData.home,
+                Constants.commonConstantsData.commonIndexes.one
             )
             basePage.checkChildElementContainText(
                 baseSelectors.navigation,
                 baseSelectors.navigationItem,
-                Constants.tabsNames.mdmfNavigationItemProfile.name,
-                Constants.tabsNames.mdmfNavigationItemProfile.index
+                Constants.commonConstantsData.commonAngularAppsData.mdmfNavigationItems.profile,
+                Constants.commonConstantsData.commonIndexes.two
             )
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.h2,

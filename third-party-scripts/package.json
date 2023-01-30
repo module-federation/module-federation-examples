@@ -1,11 +1,13 @@
 {
+  "name": "third-party-scripts",
   "private": true,
   "workspaces": {
     "packages": [
-      "app1",
-      "app2"
+      "./app1",
+      "./app2"
     ]
   },
+  "version": "0.0.0",
   "scripts": {
     "start": "lerna run --parallel start",
     "build": "lerna run build",

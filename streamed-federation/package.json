@@ -1,5 +1,10 @@
 {
+  "name": "streamed-federation",
   "private": true,
+  "workspaces": [
+    "./app1",
+    "./federated-middleware"
+  ],
   "scripts": {
     "start": "lerna run --scope @streamed-federation/* --parallel start",
     "build": "lerna run --scope @streamed-federation/* --parallel build",

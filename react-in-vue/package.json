@@ -1,5 +1,11 @@
 {
   "name": "react-in-vue",
+  "private": true,
+  "workspaces": [
+    "./home",
+    "./layout"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "ls": "lerna ls",
     "start": "lerna run --scope=react-in-vue_* --parallel start",

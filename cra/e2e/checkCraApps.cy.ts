@@ -6,11 +6,11 @@ const basePage: BaseMethods = new BaseMethods()
 
 const appsData = [
     {
-        appNameText: Constants.elementsText.craHostParagraph,
+        appNameText: Constants.commonConstantsData.basicComponents.host,
         host: 3000
     },
     {
-        appNameText: Constants.elementsText.craRemoteParagraph,
+        appNameText: Constants.commonConstantsData.basicComponents.remote,
         host: 3002
     }
 ]
@@ -30,7 +30,7 @@ appsData.forEach(
             it(`Check ${appName} build and running`, () => {
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.h1,
-                    text: Constants.elementsText.craHeader
+                    text: Constants.commonConstantsData.basicComponents.basicHostRemote,
                 })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.h2,
@@ -38,7 +38,7 @@ appsData.forEach(
                 })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.button,
-                    text: Constants.elementsText.craButtontext
+                    text: Constants.elementsText.craApp.buttonText
                 })
             })
         })

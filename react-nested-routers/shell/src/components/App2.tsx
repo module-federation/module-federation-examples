@@ -45,13 +45,14 @@ export default () => {
   );
 
   const isFirstRunRef = useRef(true);
+  const unmountRef = useRef(() => {});
   // Mount app1 MFE
   useEffect(
     () => {
       if (!isFirstRunRef.current) {
         return;
       }
-      mount({
+      unmountRef.current = mount({
         mountPoint: wrapperRef.current!,
         initialPathname: location.pathname.replace(
           app2Basename,
@@ -62,6 +63,9 @@ export default () => {
     },
     [location],
   );
+
+  useEffect(() => unmountRef.current, []);
+
 
   return <div ref={wrapperRef} id="app2-mfe" />;
 };

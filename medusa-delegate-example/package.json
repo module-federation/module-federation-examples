@@ -1,4 +1,5 @@
 {
+  "name": "medusa-delegate-example",
   "private": true,
   "scripts": {
     "start": "concurrently \"cd dsl; yarn start\" \"cd home; yarn start\" \"cd nav; yarn start\" \"cd search; yarn start\" \"cd utils; yarn start\"",
@@ -14,11 +15,11 @@
   },
   "workspaces": {
     "packages": [
-      "dsl",
-      "home",
-      "nav",
-      "search",
-      "utils"
+      "./dsl",
+      "./home",
+      "./nav",
+      "./search",
+      "./utils"
     ]
   },
   "devDependencies": {

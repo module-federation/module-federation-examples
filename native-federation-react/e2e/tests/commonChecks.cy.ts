@@ -8,11 +8,11 @@ describe('It checks components header and console message', () => {
     const appsData = [
         {
             host: 3000,
-            header: Constants.elementsText.commonComponentsNames.host
+            header: Constants.commonConstantsData.basicComponents.host
         },
         {
             host: 3001,
-            header: Constants.elementsText.commonComponentsNames.remote
+            header: Constants.commonConstantsData.basicComponents.remote
         }
     ]
 
@@ -30,19 +30,19 @@ describe('It checks components header and console message', () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.paragraph,
-                text: Constants.elementsText.nativeFederationReactPageMessages.checkConsoleMessage,
+                text: Constants.elementsText.nativeFederationReactApp.messages.pageMessages.checkConsoleMessage,
                 visibilityState: 'be.visible'
             })
         })
 
         it('Checks apps console date message', () => {
             basePage.openLocalhost(property.host)
-            basePage.checkInfoInConsole(Constants.elementsText.nativeFederationReactConsoleMessages.dateMessage)
+            basePage.checkInfoInConsole(Constants.elementsText.nativeFederationReactApp.messages.consoleMessages.dateMessage)
         })
 
         it('Checks apps console weekend message', () => {
             basePage.openLocalhost(property.host)
-            basePage.checkInfoInConsole(Constants.elementsText.nativeFederationReactConsoleMessages.weekendMessage)
+            basePage.checkInfoInConsole(Constants.elementsText.nativeFederationReactApp.messages.consoleMessages.weekendMessage)
         })
     });
 });

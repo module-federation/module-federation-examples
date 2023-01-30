@@ -1,5 +1,11 @@
 {
   "name": "startup-code",
+  "private": true,
+  "workspaces": [
+    "./app1",
+    "./app2"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "start": "echo \"Dev server currently has bugs with entrypoint ordering. Use 'yarn build && yarn serve' instead.\"",
     "start:force": "lerna run --scope=startup-code_app* --parallel start",

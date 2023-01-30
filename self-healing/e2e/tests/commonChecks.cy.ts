@@ -9,22 +9,22 @@ describe('It checks self-healing apps', () => {
     const appsData = [
         {
             host: 3001,
-            appName: Constants.commonPhrases.app1Name,
-            webpackConfigPath: Constants.samplesPath.selfHealingApp1WebpackConfigPath
+            appName: Constants.commonConstantsData.commonCountAppNames.app1,
+            webpackConfigPath: Constants.filesPath.selfHealingAppsConfigs.app1,
         },
         {
             host: 3002,
-            appName: Constants.commonPhrases.app2Name,
-            webpackConfigPath: Constants.samplesPath.selfHealingApp2WebpackConfigPath
+            appName: Constants.commonConstantsData.commonCountAppNames.app2,
+            webpackConfigPath: Constants.filesPath.selfHealingAppsConfigs.app2,
         }
     ]
 
     appsData.forEach((property: { host: number, appName: string, webpackConfigPath: string }) => {
-        it(`Checks ${Constants.commonPhrases.selfHealingAppHeaderName} header visibility`, () => {
+        it(`Checks ${Constants.commonPhrases.selfHealingApp.headerName} header visibility`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.divElement,
-                text: Constants.commonPhrases.selfHealingAppHeaderName,
+                text: Constants.commonPhrases.selfHealingApp.headerName,
                 visibilityState: 'be.visible'
             })
         });
@@ -42,7 +42,7 @@ describe('It checks self-healing apps', () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.button,
-                text: Constants.elementsText.commonButtonWithEmoji,
+                text: Constants.commonConstantsData.commonButtonWithEmoji,
                 visibilityState: 'be.visible'
             })
         });
@@ -62,13 +62,10 @@ describe('It checks self-healing apps', () => {
         });
 
         it(`Checks that only ${appsData[1].appName} webpack config includes shared styled components`, () => {
-            const { selfHealingWebpackConfigSeparator } = Constants.commonPhrases
-            const selfHealingWebpackConfigSearchedElement = Constants.commonPhrases.selfHealingWebpackConfigSearchedString
-
             basePage.checkValueInReadFile({
                 filePath: property.webpackConfigPath,
-                webpackFileSeparator:  selfHealingWebpackConfigSeparator,
-                text: selfHealingWebpackConfigSearchedElement,
+                webpackFileSeparator: Constants.commonPhrases.selfHealingApp.configs.separator,
+                text: Constants.commonPhrases.selfHealingApp.configs.searchedString,
                 isContain: !property.webpackConfigPath.includes('1')
             })
         });

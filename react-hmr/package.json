@@ -1,5 +1,11 @@
 {
   "name": "react-hmr",
+  "private": true,
+  "workspaces": [
+    "./libs",
+    "./remote1",
+    "./host"
+  ],
   "version": "1.0.0",
   "description": "experiments with module federation in React with Webpack5",
   "main": "index.js",

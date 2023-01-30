@@ -19,13 +19,13 @@ describe("It checks client app", () => {
         basePage.checkElementWithTextPresence({
             parentSelector: selectors.angularUniversalSsrCitiesBlock,
             selector: baseSelectors.divElement,
-            text: Constants.commonPhrases.angularUniversalSsrCitiesBlockHeaderText,
+            text: Constants.commonPhrases.angularUniversalSsrApp.blockHeaderText,
             visibilityState: 'be.visible'
         })
     })
 
     it('Checks base cities names visibility', () => {
-        methodsPage.checkTextedElementsVisibility(Constants.elementsText.angularUniversalSsrAddedCities, updatedSelectors.angularUniversalSsrAddedCity)
+        methodsPage.checkTextedElementsVisibility(Constants.elementsText.angularUniversalSsrApp.addedCities, updatedSelectors.angularUniversalSsrAddedCity)
     })
 
     it('Checks that both cities links can be clicked', () => {
@@ -38,14 +38,14 @@ describe("It checks client app", () => {
     })
 
     it('Clicks on city by name and checks description with text appear', () => {
-        Constants.elementsText.angularUniversalSsrAddedCities.forEach((city: string, counter: number) => {
+        Constants.elementsText.angularUniversalSsrApp.addedCities.forEach((city: string, counter: number) => {
             basePage.clickElementWithText({
                 selector: updatedSelectors.angularUniversalSsrAddedCity,
                 text: city
             })
             basePage.checkElementWithTextPresence({
                 selector: selectors.angularUniversalSsrSelectedCityInfo,
-                text: Constants.commonPhrases.angularUniversalSsrSelectedCityInfo[counter],
+                text: Constants.commonPhrases.angularUniversalSsrApp.selectedCityInfo[counter],
                 visibilityState: 'be.visible'
             })
         })

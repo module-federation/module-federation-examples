@@ -13,7 +13,7 @@ describe("It checks host app", () => {
     })
 
     it('Checks console greeting message', () => {
-        basePage.checkInfoInConsole(Constants.commonPhrases.viteSvelteMicroFrontEndsConsoleMessages[2])
+        basePage.checkInfoInConsole(Constants.commonPhrases.viteSvelteMicroFrontEndsApp.consoleMessages[2])
     })
 
     it('Checks both cards includes button', () => {
@@ -60,7 +60,7 @@ describe("It checks host app", () => {
     it('Checks host app card color is set to blue', () => {
         basePage.checkElementWithTextHaveProperty({
             selector: selectors.commonCardSelector,
-            text: Constants.elementsText.viteReactMicroFrontendsCardsMessages.hostCard,
+            text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.hostCard,
             prop: CssAttr.css,
             value: Constants.color.blue,
             checkType: 'contain'
@@ -75,7 +75,7 @@ describe("It checks host app", () => {
         })
         basePage.checkElementWithTextHaveProperty({
             selector: selectors.commonCardSelector,
-            text: Constants.elementsText.viteReactMicroFrontendsCardsMessages.remoteCard,
+            text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.remoteCard,
             prop: CssAttr.css,
             value: Constants.color.black,
             checkType: 'contain'
@@ -85,7 +85,7 @@ describe("It checks host app", () => {
     it('Checks that host card button text includes counter which changed after click & check value reverted after reload', () => {
         basePage.checkCounterFunctionality({
                 button: baseSelectors.button,
-                counterText: Constants.elementsText.viteReactMicroFrontendsButtonsText.hostButton,
+                counterText: Constants.elementsText.commonMicroFrontendsApps.buttonsText.hostButton,
                 isReloaded: true
             })
     })
@@ -98,7 +98,7 @@ describe("It checks host app", () => {
         })
         basePage.checkCounterFunctionality({
                 button: baseSelectors.button,
-                counterText: Constants.elementsText.viteReactMicroFrontendsButtonsText.remoteButton,
+                counterText: Constants.elementsText.commonMicroFrontendsApps.buttonsText.remoteButton,
                 buttonsCount: commonButtonsQuantity,
                 isReloaded: true
             })

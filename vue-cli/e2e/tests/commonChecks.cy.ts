@@ -31,7 +31,7 @@ describe('It checks elements appearing and accessibility', () =>{
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.section,
-                text: Constants.elementsText.vueCliSectionsDescriptions.coreSection,
+                text: Constants.elementsText.vueCliApp.sectionsDescriptions.coreSection,
                 visibilityState: 'be.visible'
             })
         })
@@ -42,8 +42,8 @@ describe('It checks elements appearing and accessibility', () =>{
             basePage.checkElementWithTextPresence({
                 parentSelector: baseSelectors.section,
                 selector: baseSelectors.button,
-                text: property.host === 8080 ? Constants.elementsText.vueCliButtonsText.consumerCoreSectionButton :
-                    Constants.elementsText.vueCliButtonsText.coreSectionButton,
+                text: property.host === 8080 ? Constants.elementsText.vueCliApp.buttonsText.consumerCoreSectionButton :
+                    Constants.commonConstantsData.button,
                 visibilityState: 'be.visible'
             })
         })
@@ -53,8 +53,8 @@ describe('It checks elements appearing and accessibility', () =>{
             basePage.openLocalhost(property.host)
             basePage.checkElementState({
                 selector: baseSelectors.button,
-                text: property.host === 8080 ? Constants.elementsText.vueCliButtonsText.consumerCoreSectionButton :
-                    Constants.elementsText.vueCliButtonsText.coreSectionButton,
+                text: property.host === 8080 ? Constants.elementsText.vueCliApp.buttonsText.otherSectionButton :
+                    Constants.commonConstantsData.button,
                 state: 'not.be.disabled'
             })
         })
@@ -64,7 +64,7 @@ describe('It checks elements appearing and accessibility', () =>{
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.section,
-                text: Constants.elementsText.vueCliSectionsDescriptions.otherSection,
+                text: Constants.elementsText.vueCliApp.sectionsDescriptions.otherSection,
                 visibilityState: 'be.visible'
             })
         })
@@ -73,7 +73,7 @@ describe('It checks elements appearing and accessibility', () =>{
             basePage.skipTestByCondition(property.host === 9000)
             basePage.openLocalhost(property.host)
             basePage.checkChildElementVisibility(baseSelectors.section, baseSelectors.h1, false, '',
-                Constants.elementsText.vueCliSectionsDescriptions.otherSection)
+                Constants.elementsText.vueCliApp.sectionsDescriptions.otherSection)
         })
 
         it('Checks that other section includes button', () => {
@@ -82,7 +82,7 @@ describe('It checks elements appearing and accessibility', () =>{
             basePage.checkElementWithTextPresence({
                 parentSelector: baseSelectors.section,
                 selector: baseSelectors.button,
-                text: Constants.elementsText.vueCliButtonsText.otherSectionButton,
+                text: Constants.elementsText.vueCliApp.buttonsText.otherSectionButton,
                 visibilityState: 'be.visible'
             })
         })
@@ -93,7 +93,7 @@ describe('It checks elements appearing and accessibility', () =>{
             basePage.checkElementWithTextPresence({
                 parentSelector: baseSelectors.section,
                 selector: baseSelectors.button,
-                text: Constants.elementsText.vueCliButtonsText.otherSectionButton,
+                text: Constants.elementsText.vueCliApp.buttonsText.otherSectionButton,
                 visibilityState: 'be.visible'
             })
         })
@@ -103,7 +103,7 @@ describe('It checks elements appearing and accessibility', () =>{
             basePage.openLocalhost(property.host)
             basePage.checkElementState({
                 selector: baseSelectors.button,
-                text: Constants.elementsText.vueCliButtonsText.otherSectionButton,
+                text: Constants.elementsText.vueCliApp.buttonsText.otherSectionButton,
                 state: 'not.be.disabled'
             })
         })

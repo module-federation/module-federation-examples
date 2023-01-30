@@ -1,5 +1,13 @@
 {
   "name": "shared-store-cross-framework",
+  "private": true,
+  "workspaces": [
+    "./react-counter",
+    "./shared-store",
+    "./shell",
+    "./vue-counter"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "start": "lerna run --scope=shared-store-cross-framework_* --parallel start",
     "build": "lerna run --scope=shared-store-cross-framework_* build",

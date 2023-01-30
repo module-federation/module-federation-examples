@@ -1,5 +1,12 @@
 {
   "name": "shared-context",
+  "private": true,
+  "workspaces": [
+    "./app1",
+    "./app1",
+    "./shared-library"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "start": "lerna run --scope=shared-context_* --parallel start",
     "build": "lerna run --scope=shared-context_* build",

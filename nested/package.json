@@ -1,5 +1,12 @@
 {
   "name": "nested",
+  "private": true,
+  "workspaces": [
+    "./app1",
+    "./app2",
+    "./app3"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "start": "lerna run --scope=nested_app* --parallel start",
     "build": "lerna run --scope=nested_app* build",

@@ -1,5 +1,11 @@
 {
   "name": "vue2-in-vue3",
+  "private": true,
+  "workspaces": [
+    "./vue2",
+    "./vue3"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "start": "lerna run --scope=vue2-in-vue3_vue* --parallel start",
     "build": "lerna run --scope=vue2-in-vue3_vue* build",

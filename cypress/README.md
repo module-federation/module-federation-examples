@@ -284,12 +284,19 @@ describe(`Example test`, () => {
 ##### `constants.ts`
 
 - All `constants` should be added to their corresponding blocks based on logic:
-  - Buttons to `buttons` block;
-  - Fields to `fields` block;
-  - And so on;
+  - Files path (if you need to reach some system file by test) to `filesPath` block;
+  - Selectors parts (which used to create selector with replace element) to `selectorParts` block;
+  - Common constants data (which can be used in multiple places throughout constants or in multiple samples) to `commonConstantsData` block;
+  - updated constants data (combined constants from multiple elements) to `updatedConstantsData` block;
+  - elements text to `elementsText` block;
+  - different phrases from samples to `commonPhrases` block;
+  - values related to elements color (rgb/non rgb) to `color` block;
+  - links elements to `hrefs` block;
+  
+  NOTE: Please combine all constants inside block by sample name, for example `commonPhrases` -> `sample name` -> constants inside object. You can create such objects in all constants types which you need
 - If a suitable block does not exist, consider if it is necessary to create a new one with a clear and understandable name;
-- Try to avoid duplicating `constants` by utilizing existing ones
-- If a constant appears to be common, but has an incorrect name, please rename it correctly (e.g. `buttonText` to `commonButtonText`) and make sure to update all places where it is used.
+- Try to avoid duplicating `constants` by moving common constant to `commonConstantsData` block and updating of all usage places 
+- If a constant has an incorrect name, please rename it correctly (e.g. `buttonText` to `commonButtonText`) and make sure to update all places where it is used.
 
 ##### `commonData.ts`
 
@@ -464,7 +471,7 @@ import './hostChecks.cy'
 import './commonChecks.cy'
 ```
 
-##### Managing Multiple Constants
+### Managing Multiple Constants
 
 When there is a need to add new constant, or change an existing one, and that app will contain more than one constant, create an object for it:
 

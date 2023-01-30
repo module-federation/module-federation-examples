@@ -12,17 +12,17 @@ describe("It checks host apps' component", () => {
     })
 
     it('Checks apps console loading module message', () => {
-        basePage.checkInfoInConsole(Constants.elementsText.nativeFederationReactConsoleMessages.loadingModuleMessage)
+        basePage.checkInfoInConsole(Constants.elementsText.nativeFederationReactApp.messages.consoleMessages.loadingModuleMessage)
     })
 
     it('Checks apps console remote module message', () => {
-        basePage.checkInfoInConsole(Constants.elementsText.nativeFederationReactConsoleMessages.remoteModuleMessage)
+        basePage.checkInfoInConsole(Constants.elementsText.nativeFederationReactApp.messages.consoleMessages.remoteModuleMessage)
     })
 
     it('Checks remote component greeting visibility', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.divElement,
-            text: Constants.elementsText.nativeFederationReactPageMessages.remoteComponentGreeting,
+            text: Constants.elementsText.nativeFederationReactApp.messages.pageMessages.remoteComponentGreeting,
             visibilityState: 'be.visible'
         })
     })
@@ -30,7 +30,7 @@ describe("It checks host apps' component", () => {
     it('Checks change components message visibility', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.divElement,
-            text: Constants.elementsText.nativeFederationReactPageMessages.changeComponentMessage,
+            text: Constants.elementsText.nativeFederationReactApp.messages.pageMessages.changeComponentMessage,
             visibilityState: 'be.visible'
         })
     })
@@ -46,7 +46,7 @@ describe("It checks host apps' component", () => {
     it('Checks both links has same names', () => {
         basePage.checkElementQuantity({
             selector: baseSelectors.linkTag,
-            text: Constants.elementsText.nativeFederationElementsTexts.linkName,
+            text: Constants.elementsText.nativeFederationReactApp.elementsTexts.linkName,
             quantity: elementsQuantity
         })
     })
@@ -91,9 +91,9 @@ describe("It checks host apps' component", () => {
         })
         basePage.checkElementHaveProperty({
             selector: baseSelectors.linkTag,
-            attr: Constants.commonText.attr,
-            prop: Constants.commonText.href,
-            value: Constants.hrefs.nativeFederationReactUrl,
+            attr: Constants.commonConstantsData.commonAttributes.attr,
+            prop: Constants.commonConstantsData.commonAttributes.href,
+            value: Constants.hrefs.nativeFederationReactAppUrl,
             isMultiple: true
         })
     })
@@ -106,7 +106,7 @@ describe("It checks host apps' component", () => {
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.button,
-            text: Constants.elementsText.nativeFederationElementsTexts.buttonText,
+            text: Constants.elementsText.nativeFederationReactApp.elementsTexts.buttonText,
             visibilityState: 'be.visible',
             isMultiple: true,
         })
@@ -114,18 +114,18 @@ describe("It checks host apps' component", () => {
 
     it('Checks host button visibility', () => {
         basePage.checkChildElementVisibility(baseSelectors.divElement, baseSelectors.button, true,
-            'be.visible', Constants.elementsText.nativeFederationReactButtonsNames.host)
+            'be.visible', Constants.elementsText.nativeFederationReactApp.buttons.host)
     })
 
     it('Checks remote button visibility', () => {
         basePage.checkChildElementVisibility(baseSelectors.divElement, baseSelectors.button, true,
-            'be.visible', Constants.elementsText.nativeFederationReactButtonsNames.remote)
+            'be.visible', Constants.elementsText.nativeFederationReactApp.buttons.remote)
     })
 
     it('Checks that host button text includes counter which changed after click & check value reverted after reload', () => {
         basePage.checkCounterFunctionality({
             button: buttons.nativeFederationReactButtons.hostButton,
-            counterText: Constants.elementsText.nativeFederationElementsTexts.buttonText,
+            counterText: Constants.elementsText.nativeFederationReactApp.elementsTexts.buttonText,
             isReloaded: true
         })
     })
@@ -133,7 +133,7 @@ describe("It checks host apps' component", () => {
     it('Checks that remote button text includes counter which changed after click & check value reverted after reload', () => {
         basePage.checkCounterFunctionality({
             button: buttons.nativeFederationReactButtons.remoteButton,
-            counterText: Constants.elementsText.nativeFederationElementsTexts.buttonText,
+            counterText: Constants.elementsText.nativeFederationReactApp.elementsTexts.buttonText,
             isReloaded: true
         })
     })

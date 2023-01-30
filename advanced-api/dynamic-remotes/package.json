@@ -1,5 +1,12 @@
 {
   "name": "dynamic-remotes",
+  "private": true,
+  "workspaces": [
+    "./app1",
+    "./app2",
+    "./app3"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "start": "lerna run --scope=dynamic-remotes_app* --parallel start",
     "build": "lerna run --scope=dynamic-remotes_app* --parallel build",

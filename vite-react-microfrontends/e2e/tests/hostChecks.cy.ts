@@ -19,12 +19,12 @@ describe("It checks host app", () => {
         })
         basePage.checkElementWithTextPresence({
             selector: selectors.commonCardSelector,
-            text: Constants.elementsText.viteReactMicroFrontendsCardsMessages.hostCard,
+            text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.hostCard,
             visibilityState: 'be.visible'
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.root,
-            text: Constants.commonPhrases.commonLoadingText.toLowerCase(),
+            text: Constants.updatedConstantsData.updatedLoadingMessage.toLowerCase(),
             visibilityState: 'be.visible'
         })
         basePage.checkElementQuantity({
@@ -34,7 +34,7 @@ describe("It checks host app", () => {
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.root,
-            text: Constants.commonPhrases.commonLoadingText.toLowerCase(),
+            text: Constants.updatedConstantsData.updatedLoadingMessage.toLowerCase(),
             isVisible: false
         })
         basePage.checkElementQuantity({
@@ -43,7 +43,7 @@ describe("It checks host app", () => {
         })
         basePage.checkElementWithTextPresence({
             selector: selectors.commonCardSelector,
-            text: Constants.elementsText.viteReactMicroFrontendsCardsMessages.remoteCard,
+            text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.remoteCard,
             visibilityState: 'be.visible'
         })
     })
@@ -92,7 +92,7 @@ describe("It checks host app", () => {
     it('Checks host app card color is set to blue', () => {
         basePage.checkElementWithTextHaveProperty({
             selector: selectors.commonCardSelector,
-            text: Constants.elementsText.viteReactMicroFrontendsCardsMessages.hostCard,
+            text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.hostCard,
             prop: CssAttr.css,
             value: Constants.color.blue,
             checkType: 'contain'
@@ -107,7 +107,7 @@ describe("It checks host app", () => {
         })
         basePage.checkElementWithTextHaveProperty({
             selector: selectors.commonCardSelector,
-            text: Constants.elementsText.viteReactMicroFrontendsCardsMessages.remoteCard,
+            text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.remoteCard,
             prop: CssAttr.css,
             value: Constants.color.black,
             checkType: 'contain'
@@ -117,7 +117,7 @@ describe("It checks host app", () => {
     it('Checks that host card button text includes counter which changed after click & check value reverted after reload', () => {
         basePage.checkCounterFunctionality({
             button: baseSelectors.button,
-            counterText: Constants.elementsText.viteReactMicroFrontendsButtonsText.hostButton,
+            counterText: Constants.elementsText.commonMicroFrontendsApps.buttonsText.hostButton,
             isReloaded: true
         })
     })
@@ -130,7 +130,7 @@ describe("It checks host app", () => {
         })
         basePage.checkCounterFunctionality({
                 button: baseSelectors.button,
-                counterText: Constants.elementsText.viteReactMicroFrontendsButtonsText.remoteButton,
+                counterText: Constants.elementsText.commonMicroFrontendsApps.buttonsText.remoteButton,
                 buttonsCount: commonButtonsQuantity,
                 isReloaded: true,
             })
