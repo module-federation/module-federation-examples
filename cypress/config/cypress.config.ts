@@ -1,4 +1,7 @@
 import { defineConfig } from "cypress";
+const fs = require('fs')
+const path = require('path');
+
 
 async function setupNodeEvents(
   on: Cypress.PluginEvents,
@@ -41,6 +44,38 @@ async function setupNodeEvents(
     // IMPORTANT: return the updated browser launch options
     return launchOptions
   })
+
+  on ('task', 
+    {
+      readFile({
+        filePath 
+      }) {
+        return fs.readFileSync(path.resolve(`../../${filePath}`),'utf8')
+      }
+    }
+  )
+
+  on ('task', 
+  {
+    writeToFile({
+      filePath,
+      content 
+    }) {
+      return new Promise((resolve, reject) => {
+        //@ts-ignore
+        fs.writeFile(path.resolve(`../../${filePath}`), content, err => { 
+          try {
+            console.log(filePath)
+            resolve(true)
+          } catch (error) {
+            console.log(err)
+            reject(error)
+          }
+        });
+      })
+    }
+  }
+)
 
   return config;
 }

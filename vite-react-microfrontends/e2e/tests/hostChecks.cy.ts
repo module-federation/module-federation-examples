@@ -115,8 +115,11 @@ describe("It checks host app", () => {
     })
 
     it('Checks that host card button text includes counter which changed after click & check value reverted after reload', () => {
-        basePage.checkCounterInButton(baseSelectors.button,
-            Constants.elementsText.viteReactMicroFrontendsButtonsText.hostButton)
+        basePage.checkCounterFunctionality({
+            button: baseSelectors.button,
+            counterText: Constants.elementsText.viteReactMicroFrontendsButtonsText.hostButton,
+            isReloaded: true
+        })
     })
 
     it('Checks that remote card button text includes counter which changed after click & check value reverted after reload', () => {
@@ -125,7 +128,11 @@ describe("It checks host app", () => {
             quantity: commonButtonsQuantity,
             waitUntil: true
         })
-        basePage.checkCounterInButton(baseSelectors.button,
-            Constants.elementsText.viteReactMicroFrontendsButtonsText.remoteButton, commonButtonsQuantity)
+        basePage.checkCounterFunctionality({
+                button: baseSelectors.button,
+                counterText: Constants.elementsText.viteReactMicroFrontendsButtonsText.remoteButton,
+                buttonsCount: commonButtonsQuantity,
+                isReloaded: true,
+            })
     })
 })

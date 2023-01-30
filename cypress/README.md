@@ -6,8 +6,8 @@
         <a>
             <img src="https://img.shields.io/badge/Tested%20with-Cypress-04C38E.svg"/>
         </a>
-            <a href="https://github.com/module-federation/module-federation-examples/actions/workflows/cypress-test-pipeline.yml">
-                <img src="https://github.com/module-federation/module-federation-examples/actions/workflows/cypress-test-pipeline.yml/badge.svg?branch=master"/>
+            <a href="https://github.com/module-federation/module-federation-examples/actions/workflows/on-pull-request.yml">
+                <img src="https://github.com/module-federation/module-federation-examples/actions/workflows/on-pull-request.yml/badge.svg"/>
             </a>
         </a>
         </a>
@@ -25,6 +25,7 @@ cypress
 │   └── cypress.config.ts (cypress system file)
 ├── fixtures
 │   └── constants.ts
+│   └── commonTestData.ts
 ├── helpers
 │   └── base-helper.ts
 ├── support
@@ -43,7 +44,7 @@ cypress
 `config` - contains configuration files for the Cypress itself.
 - `cypress.config.ts` - Cypress config file. Since Cypress 10, all plugins and configs for Cypress should be placed here. [How to config Cypress](https://docs.cypress.io/guides/references/configuration)
 
-`fixtures` - contains files that are used in tests, such as images, json constants, etc.
+`fixtures` - contains files or data that are used in tests, such as images, json constants, etc.
 
 `helpers` - contains data-generation methods for tests. As an example, there is a method for generating data for the tests called `base-helper.ts`.
 
@@ -289,6 +290,10 @@ describe(`Example test`, () => {
 - If a suitable block does not exist, consider if it is necessary to create a new one with a clear and understandable name;
 - Try to avoid duplicating `constants` by utilizing existing ones
 - If a constant appears to be common, but has an incorrect name, please rename it correctly (e.g. `buttonText` to `commonButtonText`) and make sure to update all places where it is used.
+
+##### `commonData.ts`
+
+The main reason of commonData.ts file is to store test which can be used for multiple samples, for example if we declare similar array of data in multiple samples it can be moved to commonData.ts and called from this file instead of redeclaring multiple times 
 
 ## Best Practices
 ### Add and Use data-e2e locators

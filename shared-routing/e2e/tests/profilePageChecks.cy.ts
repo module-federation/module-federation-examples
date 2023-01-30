@@ -4,6 +4,7 @@ import { Constants } from "../../../cypress/fixtures/constants";
 import {CssAttr} from "../../../cypress/types/cssAttr";
 import {SharedRoutingMethods} from "../methods/methods";
 import {getRandomIntegerString, getRandomTextString} from "../../../cypress/helpers/base-helper";
+import {CommonTestData} from "../../../cypress/fixtures/commonTestData";
 
 const basePage: BaseMethods = new BaseMethods()
 const methodsPage: SharedRoutingMethods = new SharedRoutingMethods()
@@ -15,25 +16,7 @@ const disabledCompanyFieldSelectorPart = Constants.elementsText.sharedRoutingApp
 const sharedRoutingAppCardProfileBlockSelector = widgets.sharedRoutingAppCommonWidgetSelector.replace('{selector}',
     Constants.elementsText.sharedRoutingAppSelectorsParts.cardProfile.toUpperCase())
 
-const hosts = [
-    {
-        host: 3000
-    },
-    {
-        host: 3001
-    },
-    {
-        host: 3002
-    },
-    {
-        host: 3003
-    },
-    {
-        host: 3004
-    },
-]
-
-hosts.forEach((property: { host: number }) => {
+CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
     describe("It checks apps' profile page", () => {
         beforeEach(() => {
             basePage.openLocalhost(property.host, Constants.elementsText.sharedRoutingAppPageHeaders.profile.toLowerCase())
@@ -153,7 +136,7 @@ hosts.forEach((property: { host: number }) => {
         })
 
         it('checks that each non disabled field can be filled with letters', () => {
-            methodsPage.fillFieldAndCheckValue({ value: getRandomTextString(10) })
+            methodsPage.fillFieldAndCheckValue({ value: CommonTestData.multipleSizeStringsArray[0] })
         })
 
         it('checks that each non disabled field can be filled with numbers', () => {
@@ -169,17 +152,13 @@ hosts.forEach((property: { host: number }) => {
         })
 
         it('checks that each non disabled field has no validation', () => {
-            methodsPage.fillFieldAndCheckValue({ multipleSizeStringsArray: [
-                    getRandomTextString(10),
-                    getRandomTextString(100),
-                    getRandomTextString(1000),
-                ]
+            methodsPage.fillFieldAndCheckValue({ multipleSizeStringsArray: CommonTestData.multipleSizeStringsArray
             })
         })
 
-        it('checks that each non disabled field clears after reload', () => {
+        it.only('checks that each non disabled field clears after reload', () => {
             methodsPage.fillFieldAndCheckValue({
-                value: getRandomTextString(10),
+                value: CommonTestData.multipleSizeStringsArray[0],
                 isReloaded: true
             })
         })

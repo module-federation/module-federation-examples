@@ -1,7 +1,6 @@
 import {BaseMethods} from "../../cypress/common/base";
 import {baseSelectors} from "../../cypress/common/selectors";
 import {selectors} from "../../cypress/common/selectors";
-import {buttons} from "../../cypress/common/selectors";
 import {Constants} from "../../cypress/fixtures/constants";
 const basePage: BaseMethods = new BaseMethods()
 
@@ -14,7 +13,6 @@ const appsData = [
         appListDiv: Constants.elementsText.quasarCli.appListDiv,
         host: 3001
     },
-
     {
         appName: Constants.elementsText.quasarCli.appGeneral.name,
         appBanner: Constants.elementsText.quasarCli.appGeneral.banner,
