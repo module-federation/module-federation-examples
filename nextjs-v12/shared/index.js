@@ -19,7 +19,6 @@ const remotes = Object.entries(remoteVars).reduce((acc, item) => {
   return acc;
 }, {});
 
-console.log(remotes);
 export async function matchFederatedPage(path) {
   const maps = await Promise.all(
     Object.keys(remotes).map(async remote => {
