@@ -1,5 +1,11 @@
 {
   "name": "bi-directional",
+  "private": true,
+  "workspaces": [
+    "./app1",
+    "./app2"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "start": "yarn build && yarn serve",
     "build": "concurrently \"cd app1; yarn build\" \"cd app2; yarn build\"",

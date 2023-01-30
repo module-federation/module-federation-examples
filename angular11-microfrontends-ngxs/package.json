@@ -1,5 +1,9 @@
 {
   "name": "ng-microfrontends",
+  "private": true,
+  "workspaces": [
+    "./projects/*"
+  ],
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -13,7 +17,6 @@
     "e2e": "ng e2e mdmf-profile & ng e2e mdmf-shell",
     "e2e:ci": "yarn build:shared && yarn start:shell & wait-on http-get://localhost:4200/ && yarn start:profile & wait-on http-get://localhost:4201/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
-  "private": true,
   "resolutions": {
     "webpack": "5.72.1"
   },
@@ -39,7 +42,7 @@
     "@angular/compiler-cli": "11.2.14",
     "@ngxs/devtools-plugin": "3.7.0",
     "@ngxs/logger-plugin": "3.7.0",
-    "@types/jasmine": "4.0.3",
+    "@types/jasmine": "4.3.1",
     "@types/jasminewd2": "2.0.10",
     "@types/node": "12.20.55",
     "codelyzer": "6.0.2",

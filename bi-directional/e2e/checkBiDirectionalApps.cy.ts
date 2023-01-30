@@ -6,17 +6,17 @@ const basePage: BaseMethods = new BaseMethods()
 
 const appsData = [
     {
-        appName: Constants.elementsText.biDirectionalHeader,
-        appSubheader: Constants.elementsText.automaticVendorFirstAppName,
-        app1Button: Constants.elementsText.biDirectionalButton1,
-        app2Button: Constants.elementsText.biDirectionalButton2,
+        appName: Constants.commonConstantsData.biDirectional,
+        appSubheader: Constants.commonConstantsData.commonCountAppNames.app1,
+        app1Button: Constants.updatedConstantsData.commonAppWithButton.app1,
+        app2Button: Constants.updatedConstantsData.commonAppWithButton.app2,
         host: 3001
     },
     {
-        appName: Constants.elementsText.biDirectionalHeader,
-        appSubheader: Constants.elementsText.automaticVendorSecondAppName,
-        app1Button: Constants.elementsText.biDirectionalButton1,
-        app2Button: Constants.elementsText.biDirectionalButton2,
+        appName: Constants.commonConstantsData.biDirectional,
+        appSubheader: Constants.commonConstantsData.commonCountAppNames.app2,
+        app1Button: Constants.updatedConstantsData.commonAppWithButton.app1,
+        app2Button: Constants.updatedConstantsData.commonAppWithButton.app2,
         host: 3002
     }
 ]
