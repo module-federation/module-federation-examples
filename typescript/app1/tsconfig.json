@@ -2,10 +2,11 @@
   "compilerOptions": {
     "sourceMap": true,
     "strict": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
     "paths": {
       "*": ["./@mf-types/*"]
-    },
-    "jsx": "react"
+    }
   },
   "include": ["src/**/*"]
 }
