@@ -1,5 +1,12 @@
 {
   "name": "dynamic-system-host",
+  "private": true,
+  "workspaces": [
+    "./app1",
+    "./app2",
+    "./app3"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "start": "lerna run --scope=dynamic-system-host_app* --parallel start",
     "build": "lerna run --scope=dynamic-system-host_app* build",

@@ -1,5 +1,11 @@
 {
   "name": "shared-routes2",
+  "private": true,
+  "workspaces": [
+    "./app1",
+    "./app2"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "start": "lerna run --scope=shared-routes2_app* --parallel start",
     "build": "lerna run --scope=shared-routes2_app* build",

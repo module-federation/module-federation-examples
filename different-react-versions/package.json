@@ -1,5 +1,11 @@
 {
   "name": "different-react-versions",
+  "private": true,
+  "workspaces": [
+    "./app1",
+    "./app2"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "start": "lerna run --scope=different-react-versions_app* --parallel start",
     "build": "lerna run --scope=different-react-versions_app* build",

@@ -1,5 +1,11 @@
 {
   "name": "typescript-project-references",
+  "private": true,
+  "workspaces": [
+    "./app1",
+    "./app2"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "start": "lerna run --scope=typescript-project-references_app* --parallel start",
     "build": "lerna run --scope=typescript-project-references_app* build",
