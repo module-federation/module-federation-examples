@@ -1,22 +1,27 @@
 {
-  "name": "module-federation-react-router-dom",
+  "name": "react-nested-routers",
+  "version": "1.0.0",
+  "license": "MIT",
   "scripts": {
-    "start": "npm-run-all -p \"start -w app1\" \"start -w app2\" \"start -w shell\""
+    "postinstall": "yarn --cwd ./app1 install && yarn --cwd ./app2 install && yarn --cwd ./shell install",
+    "start": "concurrently \"yarn --cwd ./app1 start\" \"yarn --cwd ./app2 start\" \"yarn --cwd ./shell start\"",
+    "e2e:standalone": "npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/runAll*.cy.ts\" --browser=chrome",
+    "e2e:ci": "yarn start & wait-on http-get://localhost:8080/ && yarn e2e:standalone"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nebarf/module-federation-react-router-dom.git"
   },
+  "author": {
+    "name": "Francesco Benedetto",
+    "url": "https://github.com/nebarf"
+  },
   "bugs": {
     "url": "https://github.com/nebarf/module-federation-react-router-dom/issues"
   },
   "homepage": "https://github.com/nebarf/module-federation-react-router-dom#readme",
-  "workspaces": [
-    "app1",
-    "app2",
-    "shell"
-  ],
   "devDependencies": {
-    "npm-run-all": "^4.1.5"
+    "concurrently": "^7.6.0",
+    "wait-on": "^7.0.1"
   }
 }

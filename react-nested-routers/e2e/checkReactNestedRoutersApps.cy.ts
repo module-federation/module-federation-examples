@@ -4,118 +4,261 @@ import { BaseMethods } from "../../cypress/common/base";
 
 const basePage: BaseMethods = new BaseMethods()
 
-const appsData = [
-    {
-        appName: Constants.commonConstantsData.commonCountAppNames.app1,
-        page1: Constants.commonConstantsData.reactNestedRoutersPagesMessages.page1App1,
-        page2: Constants.commonConstantsData.reactNestedRoutersPagesMessages.page2App1,
-        host: 8081
+const app1RemoteConfig = {
+    port: 8081,
+    page1: {
+        path: 'page-1',
+        text: 'Page 1 from App1',
+        linkHref: '/page-2',
+        linkText: 'Go to Page 2',
     },
-    {
-        appName: Constants.commonConstantsData.commonCountAppNames.app2,
-        page1: Constants.commonConstantsData.reactNestedRoutersPagesMessages.page1App2,
-        page2: Constants.commonConstantsData.reactNestedRoutersPagesMessages.page2App2,
-        host: 8082
-    }
-]
+    page2: {
+        path: 'page-2',
+        text: 'Page 2 from App1',
+        linkHref: '/page-1',
+        linkText: 'Go to Page 1',
+    },
+};
 
-appsData.forEach((
-    property: {
-        appName: string,
-        page1: string,
-        page2: string,
-        host: number
-    }
-) => {
-    describe(`Check ${property.appName}`, () => {
-        beforeEach(() => {
-            basePage.openLocalhost(property.host)
-        })
-    
-        it(`Check ${property.appName} build and running (Check elements on the page : Page header & Go to Page link)`, () => {
+const app2RemoteConfig = {
+    port: 8082,
+    pageA: {
+        path: 'page-a',
+        text: 'Page A from App2',
+        linkHref: '/page-b',
+        linkText: 'Go to Page B',
+    },
+    pageB: {
+        path: 'page-b',
+        text: 'Page B from App2',
+        linkHref: '/page-a',
+        linkText: 'Go to Page A',
+    },
+};
+
+const app1RemoteRoutingPrefix = 'app-1';
+const app2RemoteRoutingPrefix = 'app-2';
+const hostConfig = {
+    port: 8080,
+    pages: [
+        {
+            name: 'App1 Page1',
+            link: `/${app1RemoteRoutingPrefix}/${app1RemoteConfig.page1.path}`,
+            index: Constants.commonConstantsData.commonIndexes.zero,
+            text: app1RemoteConfig.page1.text,
+            linkText: app1RemoteConfig.page1.linkText,
+            linkHref: app1RemoteConfig.page1.linkHref,
+        },
+        {
+            name: 'App1 Page2',
+            link: `/${app1RemoteRoutingPrefix}/${app1RemoteConfig.page2.path}`,
+            index: Constants.commonConstantsData.commonIndexes.one,
+            text: app1RemoteConfig.page2.text,
+            linkText: app1RemoteConfig.page2.linkText,
+            linkHref: app1RemoteConfig.page2.linkHref,
+        },
+        {
+            name: 'App2 PageA',
+            link: `/${app2RemoteRoutingPrefix}/${app2RemoteConfig.pageA.path}`,
+            index: Constants.commonConstantsData.commonIndexes.two,
+            text: app2RemoteConfig.pageA.text,
+            linkText: app2RemoteConfig.pageA.linkText,
+            linkHref: app2RemoteConfig.pageA.linkHref
+        },
+        {
+            name: 'App2 PageB',
+            link: `/${app2RemoteRoutingPrefix}/${app2RemoteConfig.pageB.path}`,
+            index: Constants.commonConstantsData.commonIndexes.three,
+            text: app2RemoteConfig.pageB.text,
+            linkText: app2RemoteConfig.pageB.linkText,
+            linkHref: app2RemoteConfig.pageB.linkHref
+        }
+    ]
+};
+
+describe('App1 remote', () => {
+    describe('page1', () => {
+        it('should be rendered when loaded on root path', () => {
+            basePage.openLocalhost(app1RemoteConfig.port);
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.divElement,
-                text: property.page1
-            })
+                text: app1RemoteConfig.page1.text
+            });
+        });
+
+        it('should be rendered when loaded on its relative path', () => {
+            basePage.openLocalhost(app1RemoteConfig.port, app1RemoteConfig.page1.path);
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.linkTag,
-                text: Constants.updatedConstantsData.reactedNestedRoutersGoToPageMessage.page2,
-            })
-            basePage.checkElementHaveProperty({
+                selector: baseSelectors.divElement,
+                text: app1RemoteConfig.page1.text
+            });
+        });
+
+        it('should contain a link allowing to navigate to page2', () => {
+            basePage.openLocalhost(app1RemoteConfig.port);
+            basePage.checkElementWithTextHaveProperty({
                 selector: baseSelectors.linkTag,
                 attr: Constants.commonConstantsData.commonAttributes.attr,
                 prop: Constants.commonConstantsData.commonAttributes.href,
-                value: Constants.commonConstantsData.commonLinks.page2
+                text: app1RemoteConfig.page1.linkText,
+                value: app1RemoteConfig.page1.linkHref
             })
-        })
-    
-        it('Check clicking on Go To Page (Check go to routing)', () => {
+
             basePage.clickElementBySelector({
                 selector: baseSelectors.linkTag
-            })
+            });
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.divElement,
-                text: property.page2
-            })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.linkTag,
-                text: Constants.updatedConstantsData.reactedNestedRoutersGoToPageMessage.page1,
-            })
-            basePage.checkUrlText(
-                Constants.commonConstantsData.commonLinks.page2,
-                true
-            )
-        })
-    })
-})
+                text: app1RemoteConfig.page2.text
+            });
+        });
+    });
 
-describe('Check App 3', () => {
-    const navigation = Constants.elementsText.reactNestedRoutersNavApp
+    describe('page2', () => {
+        it('should be rendered when loaded on its relative path', () => {
+            basePage.openLocalhost(app1RemoteConfig.port, app1RemoteConfig.page2.path);
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.divElement,
+                text: app1RemoteConfig.page2.text
+            });
+        });
+
+        it('should contain a link allowing to navigate to page1', () => {
+            basePage.openLocalhost(app1RemoteConfig.port, app1RemoteConfig.page2.path);
+            basePage.checkElementWithTextHaveProperty({
+                selector: baseSelectors.linkTag,
+                attr: Constants.commonConstantsData.commonAttributes.attr,
+                prop: Constants.commonConstantsData.commonAttributes.href,
+                text: app1RemoteConfig.page2.linkText,
+                value: app1RemoteConfig.page2.linkHref
+            })
+
+            basePage.clickElementBySelector({
+                selector: baseSelectors.linkTag
+            });
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.divElement,
+                text: app1RemoteConfig.page1.text
+            });
+        });
+    });
+});
+
+describe('App2 remote', () => {
+    describe('pageA', () => {
+        it('should be rendered when loaded on root path', () => {
+            basePage.openLocalhost(app2RemoteConfig.port);
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.divElement,
+                text: app2RemoteConfig.pageA.text
+            });
+        });
+
+        it('should be rendered when loaded on its relative path', () => {
+            basePage.openLocalhost(app2RemoteConfig.port, app2RemoteConfig.pageA.path);
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.divElement,
+                text: app2RemoteConfig.pageA.text
+            });
+        });
+
+        it('should contain a link allowing to navigate to pageB', () => {
+            basePage.openLocalhost(app2RemoteConfig.port);
+            basePage.checkElementWithTextHaveProperty({
+                selector: baseSelectors.linkTag,
+                attr: Constants.commonConstantsData.commonAttributes.attr,
+                prop: Constants.commonConstantsData.commonAttributes.href,
+                text: app2RemoteConfig.pageA.linkText,
+                value: app2RemoteConfig.pageA.linkHref
+            })
+
+            basePage.clickElementBySelector({
+                selector: baseSelectors.linkTag
+            });
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.divElement,
+                text: app2RemoteConfig.pageB.text
+            });
+        });
+    });
+
+    describe('pageB', () => {
+        it('should be rendered when loaded on its relative path', () => {
+            basePage.openLocalhost(app2RemoteConfig.port, app2RemoteConfig.pageB.path);
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.divElement,
+                text: app2RemoteConfig.pageB.text
+            });
+        });
+
+        it('should contain a link allowing to navigate to pageA', () => {
+            basePage.openLocalhost(app2RemoteConfig.port, app2RemoteConfig.pageB.path);
+            basePage.checkElementWithTextHaveProperty({
+                selector: baseSelectors.linkTag,
+                attr: Constants.commonConstantsData.commonAttributes.attr,
+                prop: Constants.commonConstantsData.commonAttributes.href,
+                text: app2RemoteConfig.pageB.linkText,
+                value: app2RemoteConfig.pageB.linkHref
+            })
+
+            basePage.clickElementBySelector({
+                selector: baseSelectors.linkTag
+            });
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.divElement,
+                text: app2RemoteConfig.pageA.text
+            });
+        });
+    });
+});
+
+describe('Host app', () => {
+    const { pages } = hostConfig;
 
     beforeEach(() => {
-        basePage.openLocalhost(8080)
+        basePage.openLocalhost(hostConfig.port)
     })
 
-    it('Check App 3 build and running (Check elements on the page: Navigation links & Go to Page link)', () => {
+    it('should rendered correct pages and remotes', () => {
         basePage.checkElementExist({
             selector: baseSelectors.navigation
         })
-        navigation.forEach((navItem) => {
+        pages.forEach((item) => {
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.linkTag,
-                text: navItem.name,
-                index: navItem.index
+                text: item.name,
+                index: item.index
             })
             basePage.checkElementWithTextHaveProperty({
                 selector: baseSelectors.linkTag,
-                text: navItem.name,
+                text: item.name,
                 attr: Constants.commonConstantsData.commonAttributes.attr,
                 prop: Constants.commonConstantsData.commonAttributes.href,
-                value: navItem.link
+                value: item.link
             })
         })
     })
 
-    it('Check App 3 functionality (Clicking on links & Check Routing)', () => {
-        navigation.forEach((navItem) => {
+    it('should allow to navigate between pages and mount/unmount remotes', () => {
+        pages.forEach((item) => {
             basePage.clickElementWithText({
                 selector: baseSelectors.linkTag,
-                text: navItem.name
+                text: item.name
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.divElement,
-                text: navItem.text
+                text: item.text
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.linkTag,
-                text: navItem.linkText
+                text: item.linkText
             })
             basePage.checkElementWithTextHaveProperty({
                 selector: baseSelectors.linkTag,
-                text: navItem.linkText,
+                text: item.linkText,
                 attr: Constants.commonConstantsData.commonAttributes.attr,
                 prop: Constants.commonConstantsData.commonAttributes.href,
-                value: navItem.linkRouting
+                value: item.linkHref
             })
         })
     })
