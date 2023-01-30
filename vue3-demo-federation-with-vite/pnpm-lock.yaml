@@ -4,13 +4,15 @@ importers:
 
   .:
     specifiers:
+      pnpm: 7.25.1
       wait-on: 7.0.1
     devDependencies:
+      pnpm: 7.25.1
       wait-on: 7.0.1
 
   vite-side:
     specifiers:
-      '@originjs/vite-plugin-federation': 1.1.9
+      '@originjs/vite-plugin-federation': 1.1.14
       '@vitejs/plugin-vue': 3.1.0
       '@vue/compiler-sfc': 3.2.39
       vite: 3.1.0
@@ -20,7 +22,7 @@ importers:
       vue: 3.2.37
       vuex: 4.0.2_vue@3.2.37
     devDependencies:
-      '@originjs/vite-plugin-federation': 1.1.9
+      '@originjs/vite-plugin-federation': 1.1.14
       '@vitejs/plugin-vue': 3.1.0_vite@3.1.0+vue@3.2.37
       '@vue/compiler-sfc': 3.2.39
       vite: 3.1.0
@@ -337,12 +339,12 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
 
-  /@originjs/vite-plugin-federation/1.1.9:
-    resolution: {integrity: sha512-JD/+rkGrKVhiTu3ZDxspRXbQNUkQ+hii0oiBuwC4W0i7emEDfbm9yUHAHff5/auYWiWZWCF/ort/oqoWDIbiyg==}
+  /@originjs/vite-plugin-federation/1.1.14:
+    resolution: {integrity: sha512-aEz/J3qgZmSQ1tZXvcLTaLcDFInCY09UZFdvopsJllyGw87dWd0cpvw5LEa6DFIhVoeVzbNFAj3mDk3spbw/LA==}
     engines: {node: '>=14.0.0', pnpm: '>=7.0.1'}
     dependencies:
-      estree-walker: 1.0.1
-      magic-string: 0.25.9
+      estree-walker: 3.0.3
+      magic-string: 0.27.0
     dev: true
 
   /@sideway/address/4.1.4:
@@ -363,12 +365,12 @@ packages:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
       '@types/eslint': 8.4.5
-      '@types/estree': 0.0.51
+      '@types/estree': 1.0.0
 
   /@types/eslint/8.4.5:
     resolution: {integrity: sha512-dhsC09y1gpJWnK+Ff4SGvCuSnk9DaU0BJZSzOwa6GVSg65XtTugLBITDAAzRU5duGBoXBHpdR/9jHGxJjNflJQ==}
     dependencies:
-      '@types/estree': 0.0.51
+      '@types/estree': 1.0.0
       '@types/json-schema': 7.0.11
 
   /@types/estree/0.0.48:
@@ -376,6 +378,9 @@ packages:
 
   /@types/estree/0.0.51:
     resolution: {integrity: sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==}
+
+  /@types/estree/1.0.0:
+    resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
 
   /@types/html-minifier-terser/5.1.2:
     resolution: {integrity: sha512-h4lTMgMJctJybDp8CQrxTUiiYmedihHWkjnF/8Pxseu2S6Nlfcy8kwboQ8yejh456rP2yWoEVm1sS/FVsfM48w==}
@@ -1903,12 +1908,14 @@ packages:
     resolution: {integrity: sha512-MMdARuVEQziNTeJD8DgMqmhwR11BRQ/cBP+pLtYdSTnf3MIO8fFeiINEbX36ZdNlfU/7A9f3gUw49B3oQsvwBA==}
     engines: {node: '>=4.0'}
 
-  /estree-walker/1.0.1:
-    resolution: {integrity: sha512-1fMXF3YP4pZZVozF8j/ZLfvnR8NSIljt56UhbZ5PeeDmmGHpgpdwQt7ITlGvYaQukCvuBRMLEiKiYC+oeIg4cg==}
-    dev: true
-
   /estree-walker/2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
+
+  /estree-walker/3.0.3:
+    resolution: {integrity: sha512-7RUKfXgSMMkzt6ZuXmqapOurLGPPfgj6l9uRZ7lRGolvk0y2yocc35LdcxKC5PQZdn2DMqioAQ2NoWcrTKmm6g==}
+    dependencies:
+      '@types/estree': 1.0.0
+    dev: true
 
   /etag/1.8.1:
     resolution: {integrity: sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==}
@@ -2593,6 +2600,13 @@ packages:
     dependencies:
       sourcemap-codec: 1.4.8
 
+  /magic-string/0.27.0:
+    resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}
+    engines: {node: '>=12'}
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.4.14
+    dev: true
+
   /make-dir/3.1.0:
     resolution: {integrity: sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==}
     engines: {node: '>=8'}
@@ -2912,6 +2926,12 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       find-up: 4.1.0
+
+  /pnpm/7.25.1:
+    resolution: {integrity: sha512-y/jlADVxyk+scBwI0ALRf8QoUMgrWyONnD1voZaPTBI+D+aIXXiFG9pMk3eLhvEfc0nK8KUnnbDDBTywd7WsMw==}
+    engines: {node: '>=14.6'}
+    hasBin: true
+    dev: true
 
   /portfinder/1.0.32:
     resolution: {integrity: sha512-on2ZJVVDXRADWE6jnQaX0ioEylzgBpQk8r55NE4wjXW1ZxO+BgDlY6DXwj20i0V8eB4SenDQ00WEaxfiIQPcxg==}

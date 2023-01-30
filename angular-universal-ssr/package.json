@@ -1,5 +1,11 @@
 {
   "name": "angular-universal-ssr",
+  "private": true,
+  "workspaces": [
+    "./client-app",
+    "./host-app"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "start": "yarn build && yarn serve",
     "build": "lerna run --scope=angular-universal-ssr_* build:federation",

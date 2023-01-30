@@ -9,19 +9,19 @@ const methodsPage: AngularUniversalSsrMethods = new AngularUniversalSsrMethods()
 describe('It checks components functionality', () => {
     const appsData = [
         {
-            componentName: Constants.commonPhrases.angularUniversalSsrComponentsMessages.homeComponent.split(' ')[0],
-            tabName: Constants.elementsText.angularUniversalSsrTabsNames[0],
-            componentText: Constants.commonPhrases.angularUniversalSsrComponentsMessages.homeComponent,
+            componentName: Constants.commonPhrases.angularUniversalSsrApp.components.homeComponent.split(' ')[0],
+            tabName: Constants.elementsText.angularUniversalSsrApp.tabsNames[0],
+            componentText: Constants.commonPhrases.angularUniversalSsrApp.components.homeComponent,
         },
         {
-            componentName: Constants.commonPhrases.angularUniversalSsrComponentsMessages.angularLazyComponent.split(' ')[0],
-            tabName: Constants.elementsText.angularUniversalSsrTabsNames[1],
-            componentText: Constants.commonPhrases.angularUniversalSsrComponentsMessages.angularLazyComponent,
+            componentName: Constants.commonPhrases.angularUniversalSsrApp.components.angularLazyComponent.split(' ')[0],
+            tabName: Constants.elementsText.angularUniversalSsrApp.tabsNames[1],
+            componentText: Constants.commonPhrases.angularUniversalSsrApp.components.angularLazyComponent,
             link: Constants.hrefs.angularUniversalSsrLinks.angularLink,
         },
         {
-            componentName: Constants.elementsText.angularUniversalSsrTabsNames[2].split(' ')[0],
-            tabName: Constants.elementsText.angularUniversalSsrTabsNames[2],
+            componentName: Constants.elementsText.angularUniversalSsrApp.tabsNames[2].split(' ')[0],
+            tabName: Constants.elementsText.angularUniversalSsrApp.tabsNames[2],
             link: Constants.hrefs.angularUniversalSsrLinks.federationLink,
         }
     ]
@@ -32,6 +32,7 @@ describe('It checks components functionality', () => {
 
         it(`Checks that ${property.componentName} component element text will be visible only if ${property.componentName} tab is active & text is not reverted after reload`, () => {
             basePage.openLocalhost(4000)
+
             if(property.componentName === appsData[1].componentName) {
                 basePage.checkElementWithTextPresence({
                     selector: appTabSelector,
@@ -55,7 +56,7 @@ describe('It checks components functionality', () => {
         })
 
         it(`Checks link changes after click on ${property.componentName} tab & check link is not reverted after reload`, () => {
-            basePage.skipTestByCondition(property.componentName === Constants.elementsText.angularUniversalSsrTabsNames[0])
+            basePage.skipTestByCondition(property.componentName === appsData[0].tabName)
             basePage.openLocalhost(4000)
             basePage.checkUrlText(property.link)
             basePage.clickElementWithText({

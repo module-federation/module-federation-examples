@@ -8,11 +8,11 @@ describe('It checks app names & messages',  () => {
     const appsData = [
         {
             host: 3001,
-            appName: Constants.commonPhrases.vue3DemoLayoutAppNames.layout
+            appName: Constants.commonPhrases.vue3DemoApp.appsNames.layout
         },
         {
             host: 3002,
-            appName: Constants.commonPhrases.vue3DemoLayoutAppNames.remote
+            appName: Constants.commonPhrases.vue3DemoApp.appsNames.remote
         }
     ]
 
@@ -30,7 +30,7 @@ describe('It checks app names & messages',  () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.divElement,
-                text: Constants.commonPhrases.commonVueAppComponentState,
+                text: Constants.commonConstantsData.commonVueAppComponentState,
                 visibilityState: 'be.visible'
             })
         })
@@ -38,8 +38,8 @@ describe('It checks app names & messages',  () => {
         it('Checks component state message style', () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.style.replace('{style}', Constants.color.nonRgbRed),
-                text: Constants.commonPhrases.commonVueAppComponentState,
+                selector: baseSelectors.style.replace('{style}',  Constants.color.nonRgbValues.red),
+                text: Constants.commonConstantsData.commonVueAppComponentState,
                 visibilityState: 'be.visible'
             })
         })
@@ -61,7 +61,7 @@ describe('It checks app names & messages',  () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.button,
-                text: Constants.elementsText.helloWorldMessage,
+                text: Constants.commonConstantsData.helloWorldMessage,
                 visibilityState: 'be.visible'
             })
         });
