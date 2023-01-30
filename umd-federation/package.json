@@ -1,5 +1,10 @@
 {
   "name": "umd-federation",
+  "private": true,
+  "workspaces": [
+    "./app1",
+    "./app2"
+  ],
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,7 +17,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "lerna": "^4.0.0",
     "wait-on": "^7.0.1"
   }
 }
