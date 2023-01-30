@@ -1,6 +1,11 @@
 {
 	"name": "vite-svelte-microfrontends",
-	"version": "1.0.0",
+	"private": true,
+	"workspaces": [
+		"./host",
+		"./remote"
+	],
+	"version": "0.0.0",
 	"description": "Vite + Module Federation is now possible",
 	"main": "index.js",
 	"scripts": {

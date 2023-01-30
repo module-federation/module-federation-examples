@@ -5,9 +5,9 @@ const basePage: BaseMethods = new BaseMethods()
 
 const appsData = [
     {
-        header1: Constants.elementsText.umdFederation.App1.firstHeader,
-        header2: Constants.elementsText.umdFederation.App1.secondHeader,
-        header3: Constants.elementsText.umdFederation.App1.thirdHeader,
+        header1: Constants.elementsText.umdFederationApp.App1.firstHeader,
+        header2: Constants.elementsText.umdFederationApp.App1.secondHeader,
+        header3: Constants.elementsText.umdFederationApp.App1.thirdHeader,
         host: 9001
     },
 

@@ -6,15 +6,15 @@ const basePage: BaseMethods = new BaseMethods()
 
 const appsData = [
     {
-        headerText: Constants.elementsText.serverSideRenderOnlyHeaderHost,
-        sharedComponentText: Constants.elementsText.serverSideRenderOnlySharedComponent,
-        updatedSharedComponentText: Constants.elementsText.serverSideRenderOnlyUpdatedSharedComponent,
+        headerText: Constants.elementsText.serverSideRenderOnlyApp.headers.host,
+        sharedComponentText: Constants.elementsText.serverSideRenderOnlyApp.components.sharedComponent,
+        updatedSharedComponentText: Constants.elementsText.serverSideRenderOnlyApp.components.updatedSharedComponent,
         host: 3000
     },
     {
-        headerText: Constants.elementsText.serverSideRenderOnlyHeaderRemote,
-        sharedComponentText: Constants.elementsText.serverSideRenderOnlySharedComponent,
-        updatedSharedComponentText: Constants.elementsText.serverSideRenderOnlyUpdatedSharedComponent,
+        headerText: Constants.elementsText.serverSideRenderOnlyApp.headers.remote,
+        sharedComponentText: Constants.elementsText.serverSideRenderOnlyApp.components.sharedComponent,
+        updatedSharedComponentText: Constants.elementsText.serverSideRenderOnlyApp.components.updatedSharedComponent,
         host: 3001
     }
 ]
@@ -49,16 +49,16 @@ appsData.forEach((
                 text: property.sharedComponentText
             })
             basePage.writeContentToFile({
-                filePath: Constants.elementsText.serverSideRenderOnlyChangeFilePath,
-                content: Constants.elementsText.serverSideRenderOnlyChangeContent
+                filePath: Constants.filesPath.serverSideRenderOnlyChangeFilePath,
+                content: Constants.elementsText.serverSideRenderOnlyApp.contents.changedContent
             })
             basePage.reloadWindow(true)
         })
 
         it(`Check Shared component visibility in ${property.headerText} after updating & check it is not reverted after reload`, () => {
             basePage.writeContentToFile({
-                filePath: Constants.elementsText.serverSideRenderOnlyChangeFilePath,
-                content: Constants.elementsText.serverSideRenderOnlyChangeContent
+                filePath: Constants.filesPath.serverSideRenderOnlyChangeFilePath,
+                content: Constants.elementsText.serverSideRenderOnlyApp.contents.changedContent
             })
             if(property.host === 3000) {
                 basePage.openLocalhost(3001)
@@ -72,8 +72,8 @@ appsData.forEach((
                     text: property.updatedSharedComponentText
                 })
                 basePage.writeContentToFile({
-                    filePath: Constants.elementsText.serverSideRenderOnlyChangeFilePath,
-                    content: Constants.elementsText.serverSideRenderOnlyOriginalContent
+                    filePath: Constants.filesPath.serverSideRenderOnlyChangeFilePath,
+                    content: Constants.elementsText.serverSideRenderOnlyApp.contents.originalContent
                 })
                 return;
             }
@@ -88,8 +88,8 @@ appsData.forEach((
                 text: property.updatedSharedComponentText
             })
             basePage.writeContentToFile({
-                filePath: Constants.elementsText.serverSideRenderOnlyChangeFilePath,
-                content: Constants.elementsText.serverSideRenderOnlyOriginalContent
+                filePath: Constants.filesPath.serverSideRenderOnlyChangeFilePath,
+                content: Constants.elementsText.serverSideRenderOnlyApp.contents.originalContent
             })
         })
 

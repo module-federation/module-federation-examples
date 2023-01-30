@@ -6,19 +6,19 @@ const basePage: BaseMethods = new BaseMethods()
 
 const appsData = [
     {
-        header: Constants.elementsText.reactInVue.App1.header,
-        subHeader: Constants.elementsText.reactInVue.App1.subHeader,
-        checkboxName: Constants.elementsText.reactInVue.App1.checkBoxText,
-        buttonTextInput: Constants.elementsText.reactInVue.App1.buttonInputText,
-        counterText: Constants.elementsText.reactInVue.App1.counterText,
-        buttonHeader: Constants.elementsText.reactInVue.App1.buttonHeader,
-        buttonText: Constants.elementsText.reactInVue.App1.buttonText,
+        header: Constants.elementsText.reactInVueApp.App1.header,
+        subHeader: Constants.elementsText.reactInVueApp.App1.subHeader,
+        checkboxName: Constants.elementsText.reactInVueApp.App1.checkBoxText,
+        buttonTextInput: Constants.elementsText.reactInVueApp.App1.buttonInputText,
+        counterText: Constants.elementsText.reactInVueApp.App1.counterText,
+        buttonHeader: Constants.elementsText.reactInVueApp.App1.buttonHeader,
+        buttonText: Constants.elementsText.reactInVueApp.App1.buttonText,
         host: 3001
     },
     {
-        header: Constants.elementsText.reactInVue.App2.header,
-        subHeader: Constants.elementsText.reactInVue.App2.subHeader,
-        buttonText: Constants.elementsText.reactInVue.App2.buttonText,
+        header: Constants.commonConstantsData.basicComponents.basicHostRemote,
+        subHeader: Constants.commonConstantsData.home,
+        buttonText: Constants.elementsText.reactInVueApp.App2.buttonText,
         host: 3002
     }
 ]
@@ -103,11 +103,11 @@ appsData.forEach((
             })
             basePage.fillField({
                 selector: fields.commonField.replace('{fieldName}', 'BUTTON_TEXT'),
-                text: Constants.elementsText.reactInVue.App1.updatedButtonText
+                text: Constants.elementsText.reactInVueApp.App1.updatedButtonText
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.button,
-                text: Constants.elementsText.reactInVue.App1.updatedButtonText
+                text: Constants.elementsText.reactInVueApp.App1.updatedButtonText
             })
         })
 

@@ -6,23 +6,22 @@ const basePage: BaseMethods = new BaseMethods()
 
 const appsData = [
     {
-        appName: Constants.elementsText.reactHostRemoteContainerHeader,
-        appDiv: Constants.elementsText.reactHostRemoteContainerDiv,
+        appName: Constants.elementsText.reactHostRemoteApp.containers.header,
+        appDiv: Constants.elementsText.reactHostRemoteApp.containers.div,
         host: 8080
     },
 
     {
-        appName: Constants.elementsText.reactHostRemoteHostedDiv,
-        appDiv: Constants.elementsText.reactHostRemoteContainerDiv,
-        appButtonInvoices: Constants.elementsText.reactHostRemoteHostedButtonNames.invoices,
-        appButtonExpenses: Constants.elementsText.reactHostRemoteHostedButtonNames.expenses,
-        appButtonInvoicesH2: Constants.elementsText.reactHostRemoteHostedButtonNames.invoices,
-        appButtonExpensesH2: Constants.elementsText.reactHostRemoteHostedButtonNames.expenses,
+        appName: Constants.elementsText.reactHostRemoteApp.hostedDiv,
+        appDiv: Constants.elementsText.reactHostRemoteApp.containers.div,
+        appButtonInvoices: Constants.elementsText.reactHostRemoteApp.buttons.invoices,
+        appButtonExpenses: Constants.elementsText.reactHostRemoteApp.buttons.expenses,
+        appButtonInvoicesH2: Constants.elementsText.reactHostRemoteApp.buttons.invoices,
+        appButtonExpensesH2: Constants.elementsText.reactHostRemoteApp.buttons.expenses,
         host: 8081
 
     }
 ]
-
 
 appsData.forEach((
         property: {

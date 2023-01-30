@@ -10,10 +10,10 @@ const appsData = [
     {
         headerSelector: baseSelectors.h1,
         subHeaderSelector: baseSelectors.h2,
-        headerText: Constants.elementsText.dynamicRemotesHeader,
-        appNameText: Constants.elementsText.dynamicRemotesFirstAppName,
-        widgetName: Constants.elementsText.dynamicRemotesSynchronousImportWidgetName,
-        widgetParagraph: Constants.commonPhrases.dynamicRemotesWidgetParagraphText,
+        headerText: Constants.elementsText.dynamicRemotesApp.header,
+        appNameText: Constants.commonConstantsData.commonCountAppNames.app1,
+        widgetName: Constants.elementsText.dynamicRemotesApp.synchronousImportWidgetsNames,
+        widgetParagraph: Constants.commonPhrases.dynamicRemotesApp.widgetParagraphText,
         widgetColor: Constants.color.dynamicRemotesWidgetColor,
         widgetIndexNumber: 1,
         isTwoWidgets: true,
@@ -22,10 +22,10 @@ const appsData = [
     {
         headerSelector: baseSelectors.h1,
         subHeaderSelector: baseSelectors.h2,
-        headerText: Constants.elementsText.dynamicRemotesHeader,
-        appNameText: Constants.elementsText.dynamicRemotesSecondAppName,
-        widgetName: Constants.elementsText.dynamicRemotesSynchronousImportWidgetName,
-        widgetParagraph: Constants.commonPhrases.dynamicRemotesWidgetParagraphText,
+        headerText: Constants.elementsText.dynamicRemotesApp.header,
+        appNameText: Constants.commonConstantsData.commonCountAppNames.app2,
+        widgetName: Constants.elementsText.dynamicRemotesApp.synchronousImportWidgetsNames,
+        widgetParagraph: Constants.commonPhrases.dynamicRemotesApp.widgetParagraphText,
         widgetColor: Constants.color.dynamicRemotesWidgetColor,
         widgetIndexNumber: 2,
         isTwoWidgets: false,
@@ -83,7 +83,7 @@ appsData.forEach(
                         })
                         basePage.checkElementWithTextPresence({
                             selector: baseSelectors.paragraph,
-                            text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm:ss a')
+                            text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
                         })
                         basePage.checkElementHaveProperty({
                             selector: widgets.dynamicRemotesWidget.replace(
@@ -110,7 +110,7 @@ appsData.forEach(
                 })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.paragraph,
-                    text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm:ss a')
+                    text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
                 })
                 basePage.checkElementHaveProperty({
                     selector: widgets.dynamicRemotesWidget.replace(

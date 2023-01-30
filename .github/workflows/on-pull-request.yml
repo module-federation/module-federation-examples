@@ -78,6 +78,8 @@ jobs:
     if: ${{ needs.setup-matrix.outputs.matrix != '{"container":[]}' }}
     runs-on: ubuntu-22.04
     timeout-minutes: 30
+    outputs:
+      yarnHash: ${{ steps.set-matrix.outputs.matrix }}
     strategy:
       fail-fast: false
       matrix: ${{fromJson(needs.setup-matrix.outputs.matrix)}}
@@ -91,9 +93,10 @@ jobs:
 
       # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
       - name: Check Yarn hash
+        id: yarn-hash
         run: |
-          npx hash-files -f '["**/yarn.lock"]' -a sha256 > YarnHash.txt
-          echo "Yarn hash is >> $(cat YarnHash.txt)"
+          yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
+          echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
       - name: Restore Yarn and Cypress cache
         uses: actions/cache/restore@v3
@@ -104,16 +107,15 @@ jobs:
             **/yarn.lock
             ~/.cache/Cypress
             ~/.cache/yarn/v6  
-          key: e2e-cache-${{ hashFiles('YarnHash.txt') }}
+          key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
           restore-keys: |
             e2e-cache-
             e2e-
 
       - name: Install sample deps
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
+        # if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: |
-          echo "CACHE CHANGED"
-          yarn install
           npx lerna exec --stream --scope="${{ matrix.container }}*" --concurrency=1 "yarn install"
 
       - name: Run sample e2e tests

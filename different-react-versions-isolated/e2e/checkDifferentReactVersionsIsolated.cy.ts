@@ -6,15 +6,15 @@ const basePage: BaseMethods = new BaseMethods()
 
 const appsData = [
     {
-        headerText: Constants.elementsText.differentReactIsolatedHeaderApp1,
-        appName: Constants.elementsText.differentReactIsolatedApp1Name,
-        buttonName: Constants.elementsText.differentReactIsolatedApp2ButtonName,
+        headerText: Constants.elementsText.differentReactVersionsIsolatedApp.headers.app1,
+        appName: Constants.commonConstantsData.commonCountAppNames.app1,
+        buttonName: Constants.updatedConstantsData.commonAppWithButton.app2,
         host: 3001
     },
     {
-        headerText: Constants.elementsText.differentReactIsolatedHeaderApp2,
-        appName: Constants.elementsText.differentReactIsolatedApp2Name,
-        buttonName: Constants.elementsText.differentReactIsolatedApp2ButtonName,
+        headerText: Constants.elementsText.differentReactVersionsIsolatedApp.headers.app2,
+        appName: Constants.commonConstantsData.commonCountAppNames.app2,
+        buttonName: Constants.updatedConstantsData.commonAppWithButton.app2,
         host: 3002
     }
 ]
@@ -97,15 +97,15 @@ appsData.forEach((
         it(`Check React version 16.14.0 block`, () => {
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.h1,
-                text: Constants.elementsText.differentReactIsolatedHeaderApp2
+                text: Constants.elementsText.differentReactVersionsIsolatedApp.headers.app2,
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.h2,
-                text: Constants.elementsText.differentReactIsolatedApp2Name
+                text: Constants.commonConstantsData.commonCountAppNames.app2
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.button,
-                text: Constants.elementsText.differentReactIsolatedApp2ButtonName
+                text: Constants.updatedConstantsData.commonAppWithButton.app2
             })
         })
     })

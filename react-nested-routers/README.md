@@ -1,4 +1,4 @@
-# Module Federation - React Router DOM Example
+# Module Federation - React Router DOM nested routers
 This example shows how to handle independent and nested routings in a MFE setup based on [webpack-module-federation](https://github.com/module-federation). The setup consists of:
 
 - `app1` & `app2`: apps using a browser history strategy when acting as hosts and an in-memory history strategy when acting as remotes.
@@ -8,12 +8,21 @@ The shell is the only component responsible for updating browser url. The two le
 
 <br>
 
-# Running Demo
-1. _(Optional)_ Select node version with node version manager by running `nvm use`. The repo has been battle-tested with v16 Node.js version.
-2. Install deps by running `npm install`. Since the repo is based on [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces) the command will install deps for all MFEs.
-3. Start apps by running `npm start`.
+# Running the demo
+1. Install deps: `yarn install`.
+2. Start apps: `yarn start`.
+
+Visit http://localhost:8080 to navigate `shell` app. `app1` and `app2` are also exposed as standalone apps at http://localhost:8081 and http://localhost:8082 respectively. 
 
 <br>
+
+# Running Cypress E2E Tests
+
+To build app and run test in headless mode, run `yarn e2e:ci`. It will build app and run tests for this workspace in headless mode. If tets failed cypress will create `cypress` directory in sample root folder with screenshots and videos.
+
+To run tests in interactive mode, run  `yarn cypress:debug` from the root directory of the project. It will open Cypress Test Runner and allow to run tests in interactive mode. [More info about "How to run tests"](../../cypress/README.md#how-to-run-tests)
+
+["Best Practices, Rules amd more interesting information here](../../cypress/README.md)
 
 # Credits
 The setup is inspired to https://github.com/StephenGrider/mfe. 

@@ -1,5 +1,14 @@
 {
   "name": "shared-routing",
+  "private": true,
+  "workspaces": [
+    "./dashboard",
+    "./order",
+    "./profile",
+    "./order",
+    "./shell"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "start": "lerna run --scope=shared-routing_* --parallel start",
     "build": "lerna run --scope=shared-routing_* build",
