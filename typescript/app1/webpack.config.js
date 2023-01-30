@@ -42,12 +42,12 @@ module.exports = {
         shared: [{
           react: {
             singleton: true,
-            requiredVersion: pkg.dependencies['react'],
+            requiredVersion: pkg.dependencies.react,
           }},
           {
             'react-dom': {
               singleton: true,
-              requiredVersion: pkg.dependencies['react-dom'],
+              requiredVersion: pkg.dependencies.react-dom,
             },
           }
         ],
