@@ -9,7 +9,6 @@ export async function matchFederatedPage(path) {
       console.log('FederatedCatchAll:', { remote });
 
       return injectScript(remote).then(container => {
-        console.log(remote, container);
         return container
           .get('./pages-map')
           .then(factory => ({ remote, config: factory().default }))
