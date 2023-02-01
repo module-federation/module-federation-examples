@@ -12,7 +12,9 @@ describe("It checks client app", () => {
     })
 
     it('Checks cities block visibility', () => {
-        basePage.checkElementVisibility(selectors.angularUniversalSsrApp.citiesBlock)
+        basePage.checkElementVisibility({
+            selector: selectors.angularUniversalSsrApp.citiesBlock
+        })
     })
 
     it('Checks cities block header visibility', () => {

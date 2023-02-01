@@ -11,7 +11,7 @@ describe('Check is Comprehensive Demo App1 working and have elements', () => {
     })
 
     it('Check App build and running & Check app elements exist', () => {
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: selectors.comprehensiveDemoApp.blockSelectors.sideBarBlock
         })
         basePage.checkElementWithTextPresence({
@@ -44,7 +44,7 @@ describe('Check is Comprehensive Demo App1 working and have elements', () => {
                 value: application.link
             })
         })
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: baseSelectors.tags.headers.header
         })
         basePage.checkElementWithTextPresence({
@@ -56,14 +56,14 @@ describe('Check is Comprehensive Demo App1 working and have elements', () => {
             prop: CssAttr.backgroundColor,
             value: Constants.color.oceanBluePearl
         })
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: selectors.comprehensiveDemoApp.alert
         })
         basePage.checkElementWithTextPresence({
             selector: selectors.comprehensiveDemoApp.alert,
             text: Constants.elementsText.comprehensiveDemoApp.App1.mainPage.alertMessage
         })
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: selectors.comprehensiveDemoApp.closeButton
         })
         basePage.checkElementWithTextPresence({
@@ -135,7 +135,7 @@ describe('Check is Comprehensive Demo App1 working and have elements', () => {
 
     it('Check UI Library elements', () => {
         basePage.openLocalhost(3001, Constants.hrefs.comprehensiveDemoApp.uiLibrary)
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: baseSelectors.tags.headers.header
         })
         basePage.checkElementWithTextPresence({
@@ -181,7 +181,7 @@ describe('Check is Comprehensive Demo App1 working and have elements', () => {
 
     it('Check Dialog elements', () => {
         basePage.openLocalhost(3001, Constants.hrefs.comprehensiveDemoApp.demoDialog)
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: baseSelectors.tags.headers.header
         })
         basePage.checkElementWithTextPresence({
@@ -205,7 +205,7 @@ describe('Check is Comprehensive Demo App1 working and have elements', () => {
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.comprehensiveDemoApp.App2.openDialogButtonText
         })
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: selectors.comprehensiveDemoApp.app2Dialog
         })
         basePage.checkElementWithTextPresence({
@@ -228,14 +228,14 @@ describe('Check is Comprehensive Demo App1 working and have elements', () => {
 
     it('Check Svelte Page elements', () => {
         basePage.openLocalhost(3001, Constants.hrefs.comprehensiveDemoApp.demoSvelte)
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: baseSelectors.tags.headers.header
         })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.tags.headers.h6,
             text: Constants.elementsText.comprehensiveDemoApp.App1.svelte.headerText
         })
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: baseSelectors.tags.inputs.input
         })
         basePage.fillField({
@@ -253,7 +253,7 @@ describe('Check is Comprehensive Demo App1 working and have elements', () => {
             3001,
             Constants.hrefs.comprehensiveDemoApp.routingDemo.replace("http://localhost:3001/", '')
         )
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: baseSelectors.tags.headers.header
         })
         basePage.checkElementWithTextPresence({
@@ -304,7 +304,7 @@ describe('Check is Comprehensive Demo App1 working and have elements', () => {
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.comprehensiveDemoApp.App2.dialogTabs.secondTab.buttonText
         })
-        basePage.checkElementWithTextHaveProperty({
+        basePage.checkElementHaveProperty({
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.comprehensiveDemoApp.App2.dialogTabs.secondTab.buttonText,
             prop: CssAttr.backgroundColor,

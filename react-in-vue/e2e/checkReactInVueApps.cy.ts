@@ -54,7 +54,7 @@ appsData.forEach((
                     selector: baseSelectors.tags.coreElements.spans.span,
                     text: String(property.checkboxName)
                 })
-                basePage.checkElementExist({
+                basePage.checkElementVisibility({
                     selector: baseSelectors.css.checkbox
                 })
                 basePage.checkElementState({
@@ -89,7 +89,7 @@ appsData.forEach((
             basePage.clickElementBySelector({
                 selector: baseSelectors.css.checkbox
             })
-            basePage.checkElementExist({
+            basePage.checkElementVisibility({
                 selector: baseSelectors.tags.coreElements.button,
                 isVisible: false
             })

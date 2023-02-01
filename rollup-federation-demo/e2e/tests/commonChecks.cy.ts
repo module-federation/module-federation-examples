@@ -48,7 +48,9 @@ describe('It checks rollup-federation-demo apps functionality',  () => {
 
         it(`Checks both apps includes button`, () => {
             basePage.openLocalhost(property.host)
-            basePage.checkElementVisibility(baseSelectors.tags.coreElements.button)
+            basePage.checkElementVisibility({
+                selector: baseSelectors.tags.coreElements.button
+            })
         });
 
         it(`Checks button is not disabled`, () => {

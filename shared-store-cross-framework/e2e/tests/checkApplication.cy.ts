@@ -25,7 +25,9 @@ describe("It checks shared store cross framework app", () => {
     })
 
     it('Checks clicks counter visibility', () => {
-        basePage.checkElementVisibility(selectors.sharedStoreCrossFrameworkApp.clicksCounter)
+        basePage.checkElementVisibility({
+            selector: selectors.sharedStoreCrossFrameworkApp.clicksCounter
+        })
     })
 
     it('Checks that button colors in different blocks is not equal', () => {

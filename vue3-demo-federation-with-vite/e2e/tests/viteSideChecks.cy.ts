@@ -1,5 +1,5 @@
 import { BaseMethods } from "../../../cypress/common/base";
-import { selectors, updatedSelectors } from "../../../cypress/common/selectors";
+import {selectors, updatedSelectors} from "../../../cypress/common/selectors";
 import { Constants } from "../../../cypress/fixtures/constants";
 
 const basePage: BaseMethods = new BaseMethods()
@@ -25,7 +25,16 @@ describe("It checks vite side app", () => {
     })
 
     it('Checks that Vite button stands as the first in the group', () => {
-        basePage.checkChildElementContainText(selectors.vue3DemoFederationWithViteApp.buttonsBlock, updatedSelectors.vue3DemoFederationWithViteApp.buttons.common, Constants.elementsText.vue3DemoFederationWithViteApp.viteContent)
-        basePage.checkChildElementContainText(selectors.vue3DemoFederationWithViteApp.buttonsBlock, updatedSelectors.vue3DemoFederationWithViteApp.buttons.common, Constants.elementsText.vue3DemoFederationWithViteApp.webpackContent,1)
+        basePage.checkElementContainText({
+            parentSelector: selectors.vue3DemoFederationWithViteApp.buttonsBlock,
+            selector: updatedSelectors.vue3DemoFederationWithViteApp.buttons.common,
+            text: Constants.elementsText.vue3DemoFederationWithViteApp.viteContent,
+        })
+        basePage.checkElementContainText({
+            parentSelector: selectors.vue3DemoFederationWithViteApp.buttonsBlock,
+            selector: updatedSelectors.vue3DemoFederationWithViteApp.buttons.common,
+            text: Constants.elementsText.vue3DemoFederationWithViteApp.webpackContent,
+            index: Constants.commonConstantsData.commonIndexes.one
+        })
     })
 })

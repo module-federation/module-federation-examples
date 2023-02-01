@@ -16,7 +16,9 @@ describe("It checks host app", () => {
     })
 
     it('Checks app root component visibility', () => {
-        basePage.checkElementVisibility(baseSelectors.tags.appRoot)
+        basePage.checkElementVisibility({
+            selector: baseSelectors.tags.appRoot
+        })
     })
 
     it('Checks app root component header text', () => {
@@ -27,7 +29,9 @@ describe("It checks host app", () => {
     })
 
     it('Checks value input visibility', () => {
-        basePage.checkElementVisibility(baseSelectors.tags.inputs.input)
+        basePage.checkElementVisibility({
+            selector: baseSelectors.tags.inputs.input
+        })
     })
 
     it('Checks value input is not disabled', () => {
@@ -39,7 +43,10 @@ describe("It checks host app", () => {
     })
 
     it('Checks value input button visibility', () => {
-        basePage.checkChildElementVisibility(baseSelectors.tags.coreElements.div, baseSelectors.tags.coreElements.button)
+        basePage.checkElementVisibility({
+            parentSelector: baseSelectors.tags.coreElements.div,
+            selector: baseSelectors.tags.coreElements.button,
+        })
     })
 
     it('Checks value input button text', () => {
@@ -52,7 +59,7 @@ describe("It checks host app", () => {
     })
 
     it('Checks value input button color', () => {
-        basePage.checkElementWithTextHaveProperty({
+        basePage.checkElementHaveProperty({
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.angularUniversalSsrApp.inputButtonText,
             prop: CssAttr.backgroundColor,
@@ -187,21 +194,31 @@ describe("It checks host app", () => {
     })
 
     it('Checks cities block appears after click on federation tab', () => {
-        basePage.checkElementVisibility(selectors.angularUniversalSsrApp.citiesBlock, false, 'not.exist')
+        basePage.checkElementVisibility({
+            selector: selectors.angularUniversalSsrApp.citiesBlock,
+            isVisible: false
+        })
         basePage.clickElementWithText({
             selector: updatedSelectors.angularUniversalSsrApp.tab,
             text: Constants.elementsText.angularUniversalSsrApp.tabsNames[2]
         })
-        basePage.checkElementVisibility(selectors.angularUniversalSsrApp.citiesBlock)
+        basePage.checkElementVisibility({
+            selector:  selectors.angularUniversalSsrApp.citiesBlock
+        })
     })
 
     it('Checks that cities block which appears after click on federation tab is equal to one in client app', () => {
-        basePage.checkElementVisibility(selectors.angularUniversalSsrApp.citiesBlock, false, 'not.exist')
+        basePage.checkElementVisibility({
+            selector: selectors.angularUniversalSsrApp.citiesBlock,
+            isVisible: false
+        })
         basePage.clickElementWithText({
             selector: updatedSelectors.angularUniversalSsrApp.tab,
             text: Constants.elementsText.angularUniversalSsrApp.tabsNames[2]
         })
-        basePage.checkElementVisibility(selectors.angularUniversalSsrApp.citiesBlock)
+        basePage.checkElementVisibility({
+            selector: selectors.angularUniversalSsrApp.citiesBlock
+        })
         basePage.compareInfoBetweenHosts(selectors.angularUniversalSsrApp.citiesBlock, 5000)
     })
 

@@ -69,27 +69,27 @@ describe('It checks apps with dependency versions discrepancy', () => {
 
         it(`Checks that both apps shares same remote component value`, () => {
             basePage.openLocalhost(property.host)
-            basePage.checkChildElementContainText(
-                baseSelectors.css.style.replace('{style}', Constants.color.nonRgbValues.borderBlack),
-                baseSelectors.tags.headers.h3,
-                Constants.commonPhrases.versionDiscrepancyApp.remoteComponentHeader,
-            )
-            basePage.checkChildElementContainText(
-                baseSelectors.css.style.replace('{style}', Constants.color.nonRgbValues.borderBlack),
-                baseSelectors.tags.paragraph,
-                Constants.commonPhrases.versionDiscrepancyApp.lodashVersions.app2
-            )
-            basePage.checkChildElementContainText(
-                baseSelectors.css.style.replace('{style}', Constants.color.nonRgbValues.borderBlack),
-                baseSelectors.tags.code,
-                Constants.commonPhrases.versionDiscrepancyApp.messages.definedVersion
-            )
-            basePage.checkChildElementContainText(
-                baseSelectors.css.style.replace('{style}', Constants.color.nonRgbValues.borderBlack),
-                baseSelectors.tags.code,
-                Constants.commonPhrases.versionDiscrepancyApp.ntxCode,
-                1
-            )
+            basePage.checkElementContainText({
+                parentSelector: baseSelectors.css.style.replace('{style}', Constants.color.nonRgbValues.borderBlack),
+                selector: baseSelectors.tags.headers.h3,
+                text: Constants.commonPhrases.versionDiscrepancyApp.remoteComponentHeader
+            })
+            basePage.checkElementContainText({
+                parentSelector: baseSelectors.css.style.replace('{style}', Constants.color.nonRgbValues.borderBlack),
+                selector: baseSelectors.tags.paragraph,
+                text: Constants.commonPhrases.versionDiscrepancyApp.lodashVersions.app2
+            })
+            basePage.checkElementContainText({
+                parentSelector: baseSelectors.css.style.replace('{style}', Constants.color.nonRgbValues.borderBlack),
+                selector: baseSelectors.tags.code,
+                text: Constants.commonPhrases.versionDiscrepancyApp.messages.definedVersion
+            })
+            basePage.checkElementContainText({
+                parentSelector: baseSelectors.css.style.replace('{style}', Constants.color.nonRgbValues.borderBlack),
+                selector: baseSelectors.tags.code,
+                text: Constants.commonPhrases.versionDiscrepancyApp.ntxCode,
+                index: Constants.commonConstantsData.commonIndexes.one
+            })
         });
     });
 });

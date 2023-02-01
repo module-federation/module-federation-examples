@@ -38,7 +38,7 @@ describe("Checks application", () => {
     });
     
         it('Checks that Remote App name Updated', () => {
-            basePage.sendInputText({
+            basePage.fillField({
                 selector: baseSelectors.tags.inputs.input,
                 text: Constants.elementsText.dispatchRemoteApp.input
             }); 

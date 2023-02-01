@@ -11,10 +11,10 @@ describe('Check is Comprehensive Demo App3 working and have elements', () => {
     })
 
     it('Check App build and running & Check app elements exist', () => {
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: selectors.comprehensiveDemoApp.blockSelectors.firstBlock
         })
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: baseSelectors.tags.headers.header
         })
         basePage.checkElementHaveProperty({
@@ -26,7 +26,7 @@ describe('Check is Comprehensive Demo App3 working and have elements', () => {
             selector: baseSelectors.tags.headers.h6,
             text: Constants.elementsText.comprehensiveDemoApp.App3.headerText
         })
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: selectors.comprehensiveDemoApp.blockSelectors.secondBlock
         })
         basePage.checkElementHaveProperty({

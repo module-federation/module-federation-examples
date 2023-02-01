@@ -185,19 +185,32 @@
 
                 navigationTextedLinks.forEach((property: { text: string, link: string }) => {
                     it(`Check that ${property.text} text includes link, is not disabled`, () => {
-                        basePage.checkElementWithTextContainsLink(baseSelectors.tags.coreElements.link, property.text, property.link)
+                        basePage.checkElementContainText({
+                            selector: baseSelectors.tags.coreElements.link,
+                            text: property.text,
+                            link: property.link
+                        })
                     })
                 })
 
                 commonTextedLinks.forEach((property: { text: string, link: string }) => {
                     it(`Check that ${property.text} text includes link, is not disabled`, () => {
-                        basePage.checkElementWithTextContainsLink(baseSelectors.tags.coreElements.link, property.text, property.link)
+                        basePage.checkElementContainText({
+                            selector: baseSelectors.tags.coreElements.link,
+                            text: property.text,
+                            link: property.link
+                        })
                     })
                 })
 
                 tileTextedLinks.forEach((property: { text: string, link: string }) => {
                     it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                        basePage.checkElementWithTextContainsLink(baseSelectors.tags.coreElements.link, property.text, property.link, true)
+                        basePage.checkElementContainText({
+                            selector: baseSelectors.tags.coreElements.link,
+                            text: property.text,
+                            link: property.link,
+                            isParent: true
+                        })
                     })
                 });
 
@@ -263,13 +276,21 @@
 
             navigationTextedLinks.forEach((property: { text: string, link: string }) => {
                 it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                    basePage.checkElementWithTextContainsLink(baseSelectors.tags.coreElements.link, property.text, property.link)
+                    basePage.checkElementContainText({
+                        selector: baseSelectors.tags.coreElements.link,
+                        text: property.text,
+                        link: property.link,
+                    })
                 })
             })
 
             commonTextedLinks.forEach((property: { text: string, link: string }) => {
                 it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                    basePage.checkElementWithTextContainsLink(baseSelectors.tags.coreElements.link, property.text, property.link)
+                    basePage.checkElementContainText({
+                        selector: baseSelectors.tags.coreElements.link,
+                        text: property.text,
+                        link: property.link,
+                    })
                 })
             })
 
@@ -349,13 +370,21 @@
 
         navigationTextedLinks.forEach((property: { text: string, link: string }) => {
             it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                basePage.checkElementWithTextContainsLink(baseSelectors.tags.coreElements.link, property.text, property.link)
+                basePage.checkElementContainText({
+                    selector: baseSelectors.tags.coreElements.link,
+                    text: property.text,
+                    link: property.link,
+                })
             })
         })
 
         commonTextedLinks.forEach((property: { text: string, link: string }) => {
             it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                basePage.checkElementWithTextContainsLink(baseSelectors.tags.coreElements.link, property.text, property.link)
+                basePage.checkElementContainText({
+                    selector: baseSelectors.tags.coreElements.link,
+                    text: property.text,
+                    link: property.link,
+                })
             })
         })
 

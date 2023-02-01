@@ -120,7 +120,9 @@ describe("It checks host app", () => {
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.rustWasmApp.buttonsNames[0]
         })
-        basePage.checkElementVisibility(selectors.rustWasmApp.gameBoard)
+        basePage.checkElementVisibility({
+            selector: selectors.rustWasmApp.gameBoard
+        })
         basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmApp.consoleMessages.startLoopMessage)
     })
 
@@ -129,10 +131,16 @@ describe("It checks host app", () => {
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.rustWasmApp.buttonsNames[0]
         })
-        basePage.checkElementVisibility(selectors.rustWasmApp.gameBoard)
+        basePage.checkElementVisibility({
+            selector: selectors.rustWasmApp.gameBoard
+        })
         basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmApp.consoleMessages.startLoopMessage)
         basePage.reloadWindow()
-        basePage.checkElementVisibility(selectors.rustWasmApp.gameBoard, false)
+        basePage.checkElementVisibility({
+            selector: selectors.rustWasmApp.gameBoard,
+            isVisible: false,
+            notVisibleState: 'not.be.visible'
+        })
         basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmApp.consoleMessages.startLoopMessage, StubTypes.notToBeCalled)
     })
 
@@ -141,7 +149,9 @@ describe("It checks host app", () => {
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.rustWasmApp.buttonsNames[0]
         })
-        basePage.checkElementVisibility(selectors.rustWasmApp.gameBoard)
+        basePage.checkElementVisibility({
+            selector: selectors.rustWasmApp.gameBoard
+        })
         basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmApp.consoleMessages.stopLoopMessage,StubTypes.notToBeCalled, false)
         basePage.clickElementWithText({
             selector: baseSelectors.tags.coreElements.button,

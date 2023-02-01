@@ -38,13 +38,13 @@ appsData.forEach((
         })
 
         it(`Check ${property.appName} build and running (Check elements: Navigation, Header, Paragpaph)`, () => {
-            basePage.checkElementExist({
+            basePage.checkElementVisibility({
                 selector: baseSelectors.tags.navigation,
             })
-            basePage.checkChildElementVisibility(
-                baseSelectors.tags.navigation,
-                baseSelectors.css.navigation,
-            )
+            basePage.checkElementVisibility({
+                parentSelector: baseSelectors.tags.navigation,
+                selector: baseSelectors.css.navigation,
+            })
             basePage.checkElementQuantity({
                 selector: baseSelectors.css.navigation,
                 quantity: 3
@@ -61,18 +61,18 @@ appsData.forEach((
                 prop: Constants.commonConstantsData.commonAttributes.target,
                 value: Constants.commonConstantsData.commonAngularAppsData.mdmfNavigationItemLogo.targetBlank
             })
-            basePage.checkChildElementContainText(
-                baseSelectors.tags.navigation,
-                baseSelectors.css.navigation,
-                Constants.commonConstantsData.home,
-                Constants.commonConstantsData.commonIndexes.one
-            )
-            basePage.checkChildElementContainText(
-                baseSelectors.tags.navigation,
-                baseSelectors.css.navigation,
-                Constants.commonConstantsData.commonAngularAppsData.mdmfNavigationItems.profile,
-                Constants.commonConstantsData.commonIndexes.two
-            )
+            basePage.checkElementContainText({
+                parentSelector: baseSelectors.tags.navigation,
+                selector: baseSelectors.css.navigation,
+                text: Constants.commonConstantsData.home,
+                index: Constants.commonConstantsData.commonIndexes.one
+            })
+            basePage.checkElementContainText({
+                parentSelector: baseSelectors.tags.navigation,
+                selector: baseSelectors.css.navigation,
+                text: Constants.commonConstantsData.commonAngularAppsData.mdmfNavigationItems.profile,
+                index: Constants.commonConstantsData.commonIndexes.two
+            })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.tags.headers.h2,
                 text: property.headerText

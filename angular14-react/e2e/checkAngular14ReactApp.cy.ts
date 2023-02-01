@@ -14,10 +14,10 @@ describe('Check Angular-React Application', () => {
             selector: baseSelectors.tags.headers.h2,
             text: Constants.elementsText.angularReactShellApp.header
         })
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: commonSelectors.formField.replace('{fieldName}', Constants.selectorParts.formFieldNames.nameField)
         })
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: commonSelectors.formField.replace('{fieldName}', Constants.selectorParts.formFieldNames.emailField)
         })
         basePage.checkElementWithTextPresence({
@@ -43,29 +43,29 @@ describe('Check Angular-React Application', () => {
             Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
             Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
         )
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: baseSelectors.tags.tableElements.table,
         })
-        basePage.checkChildElementVisibility(
-            baseSelectors.tags.tableElements.table,
-            baseSelectors.tags.tableElements.dataCell,
-        )
+        basePage.checkElementVisibility({
+            parentSelector: baseSelectors.tags.tableElements.table,
+            selector: baseSelectors.tags.tableElements.dataCell,
+        })
         basePage.checkElementQuantity({
             selector: baseSelectors.tags.tableElements.dataCell,
             quantity: 3
         })
-        basePage.checkChildElementContainText(
-            baseSelectors.tags.tableElements.table,
-            baseSelectors.tags.tableElements.dataCell,
-            Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
-            Constants.commonConstantsData.commonIndexes.zero,
-        )
-        basePage.checkChildElementContainText(
-            baseSelectors.tags.tableElements.table,
-            baseSelectors.tags.tableElements.dataCell,
-            Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
-            Constants.commonConstantsData.commonIndexes.one,
-        )
+        basePage.checkElementContainText({
+            parentSelector: baseSelectors.tags.tableElements.table,
+            selector: baseSelectors.tags.tableElements.dataCell,
+            text: Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+            index: Constants.commonConstantsData.commonIndexes.zero,
+        })
+        basePage.checkElementContainText({
+            parentSelector: baseSelectors.tags.tableElements.table,
+            selector: baseSelectors.tags.tableElements.dataCell,
+            text: Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
+            index: Constants.commonConstantsData.commonIndexes.one,
+        })
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.angularReactShellApp.userActions.remove
@@ -98,8 +98,8 @@ describe('Check Angular-React Application', () => {
             selector: baseSelectors.tags.coreElements.button,
             isForce: true
         })
-        basePage.checkElementExist({
-            selector: commonSelectors.commonAngularAppsSelectors.alertMessage,
+        basePage.checkElementVisibility({
+            selector:commonSelectors.commonAngularAppsSelectors.alertMessage,
         })
         basePage.checkElementWithTextPresence({
             selector: commonSelectors.commonAngularAppsSelectors.alertMessage,
