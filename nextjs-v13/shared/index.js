@@ -88,7 +88,7 @@ module.exports = {
     };
 
     FederatedCatchAll.getInitialProps = async ctx => {
-      const { err, req, res, AppTree, ...props } = ctx;
+      const { err, ...props } = ctx;
       if (err) {
         // TODO: Run getInitialProps for error page
         return { renderError: true, ...props };
