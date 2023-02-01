@@ -34,7 +34,7 @@ async function matchFederatedPage(path) {
 
   const config = {};
 
-  for (let map of maps) {
+  for (const map of maps) {
     if (!map) continue;
 
     for (let [path, mod] of Object.entries(map.config)) {
@@ -47,9 +47,7 @@ async function matchFederatedPage(path) {
 
   console.log(config);
   const matcher = createMatcher.default(config);
-  const match = matcher(path);
-
-  return match;
+  return matcher(path);
 };
 
 
@@ -90,7 +88,7 @@ module.exports = {
     };
 
     FederatedCatchAll.getInitialProps = async ctx => {
-      const { err, req, res, AppTree, ...props } = ctx;
+      const { err, ...props } = ctx;
       if (err) {
         // TODO: Run getInitialProps for error page
         return { renderError: true, ...props };
