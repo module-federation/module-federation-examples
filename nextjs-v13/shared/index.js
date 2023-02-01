@@ -88,7 +88,8 @@ module.exports = {
     };
 
     FederatedCatchAll.getInitialProps = async ctx => {
-      const { err, ...props } = ctx;
+      // Bot marks "req, res, AppTree" as unused but those are vital to not get circular-dependency error
+      const { err, req, res, AppTree, ...props } = ctx;
       if (err) {
         // TODO: Run getInitialProps for error page
         return { renderError: true, ...props };
