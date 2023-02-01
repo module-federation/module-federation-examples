@@ -8,7 +8,9 @@
     "start": "NODE_ENV=production next start -p 3001"
   },
   "dependencies": {
-    "@module-federation/nextjs-mf": "5.11.5",
+    "@module-federation/nextjs-mf": "file:../../../nextjs-mf/dist/packages/nextjs-mf",
+    "@module-federation/utilities": "file:../../../nextjs-mf/dist/packages/utilities",
+    "@module-federation/node": "file:../../../nextjs-mf/dist/packages/node",
     "lodash": "4.17.21",
     "next": "12.2.2",
     "next-compose-plugins": "^2.2.1",
@@ -18,3 +20,4 @@
     "webpack-merge": "^5.8.0"
   }
 }
+
