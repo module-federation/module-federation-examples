@@ -1,5 +1,5 @@
 import { BaseMethods } from "../../../cypress/common/base";
-import {baseSelectors, selectors, widgets} from "../../../cypress/common/selectors";
+import {baseSelectors, selectors} from "../../../cypress/common/selectors";
 import { Constants } from "../../../cypress/fixtures/constants";
 import {CssAttr} from "../../../cypress/types/cssAttr";
 import {SharedRoutingMethods} from "../methods/methods";
@@ -8,10 +8,10 @@ import {CommonTestData} from "../../../cypress/fixtures/commonTestData";
 const basePage: BaseMethods = new BaseMethods()
 const methodsPage: SharedRoutingMethods = new SharedRoutingMethods()
 
-const sharedRoutingAppOrdersBlockSelector = widgets.sharedRoutingAppCommonWidgetSelector
+const sharedRoutingAppOrdersBlockSelector = selectors.sharedRoutingApp.commonWidgetSelector
     .replace('{selector}', Constants.selectorParts.sharedRoutingAppSelectorsParts.recentOrders.toUpperCase())
-const sharedRoutingAppOrdersRowSelector = selectors.sharedRoutingAppRecentOrderRow.replace(Constants.selectorParts.sharedRoutingAppReplaceSelectorPart, '')
-const sharedRoutingAppOrdersRowCellSelector = widgets.recentOrdersWidgetCell.replace(Constants.selectorParts.sharedRoutingAppReplaceSelectorPart, '')
+const sharedRoutingAppOrdersRowSelector = selectors.sharedRoutingApp.recentOrdersRow.replace(Constants.selectorParts.sharedRoutingAppReplaceSelectorPart, '')
+const sharedRoutingAppOrdersRowCellSelector = selectors.sharedRoutingApp.recentOrdersWidgetCell.replace(Constants.selectorParts.sharedRoutingAppReplaceSelectorPart, '')
 
 CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
     describe("It checks apps' orders page", () => {
@@ -21,7 +21,7 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
 
         it('checks Orders text visibility on header', () => {
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.header,
+                selector: baseSelectors.tags.headers.header,
                 text: Constants.commonConstantsData.sharedRoutingAppPagesComponents.orders,
                 visibilityState: 'be.visible'
             })
@@ -29,7 +29,7 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
 
         it('checks Orders header color', () => {
             basePage.checkElementHaveProperty({
-                selector: baseSelectors.header,
+                selector: baseSelectors.tags.headers.header,
                 prop: CssAttr.backgroundColor,
                 value: Constants.color.purple
             })
@@ -45,7 +45,9 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         })
 
         it('checks visit pages buttons block visibility', () => {
-            basePage.checkElementVisibility(selectors.sharedRoutingAppSideMenuVisitPageButtonsBlock)
+            basePage.checkElementVisibility({
+                selector: selectors.sharedRoutingApp.navigationButtonsBlock
+            })
         })
 
         it('checks that profile & dashboard page can be visited from orders page by click and stays on page after reload', () => {
@@ -54,7 +56,9 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         })
 
         it('checks orders block visibility', () => {
-            basePage.checkElementVisibility(sharedRoutingAppOrdersBlockSelector)
+            basePage.checkElementVisibility({
+                selector: sharedRoutingAppOrdersBlockSelector
+            })
         })
 
         it('checks orders header visibility', () => {
@@ -69,7 +73,7 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
             methodsPage.checkElementWithTextPresenceInTextArray( {
                 textArray: Constants.elementsText.sharedRoutingApp.orders.recentOrdersTableColumnsHeaders,
                 parentSelector: sharedRoutingAppOrdersBlockSelector,
-                selector:  baseSelectors.tableHeader
+                selector:  baseSelectors.tags.tableElements.header,
             })
         })
 
@@ -109,12 +113,12 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
                 text: Constants.elementsText.sharedRoutingApp.orders.recentOrderInfo,
                 visibilityState: 'be.visible'
             })
-            basePage.clickElementBySelector({selector: selectors.hrefSelector.replace('{link}',
+            basePage.clickElementBySelector({selector: baseSelectors.css.href.replace('{link}',
                     `/${Constants.commonConstantsData.sharedRoutingAppPagesComponents.dashboard.toLowerCase()}`)})
             methodsPage.checkElementWithTextPresence({
                 textArray: Constants.elementsText.sharedRoutingApp.orders.recentOrdersTableColumnsHeaders,
-                parentSelector: selectors.sharedRoutingAppRecentOrderRow,
-                selector: widgets.recentOrdersWidgetCell,
+                parentSelector: selectors.sharedRoutingApp.recentOrdersRow,
+                selector: selectors.sharedRoutingApp.recentOrdersWidgetCell,
                 text: Constants.elementsText.sharedRoutingApp.orders.recentOrderInfo,
                 visibilityState: 'be.visible'
             })

@@ -1,4 +1,4 @@
-import { baseSelectors, widgets } from '../../../cypress/common/selectors';
+import {baseSelectors, commonSelectors} from '../../../cypress/common/selectors';
 import { BaseMethods } from "../../../cypress/common/base"
 import { Constants } from "../../../cypress/fixtures/constants"
 import { getDateWithFormat } from "../../../cypress/helpers/base-helper"
@@ -8,8 +8,8 @@ const basePage: BaseMethods = new BaseMethods()
 
 const appsData = [
     {
-        headerSelector: baseSelectors.h1,
-        subHeaderSelector: baseSelectors.h2,
+        headerSelector: baseSelectors.tags.headers.h1,
+        subHeaderSelector: baseSelectors.tags.headers.h2,
         headerText: Constants.elementsText.dynamicRemotesApp.header,
         appNameText: Constants.commonConstantsData.commonCountAppNames.app1,
         widgetName: Constants.elementsText.dynamicRemotesApp.synchronousImportWidgetsNames,
@@ -20,8 +20,8 @@ const appsData = [
         host: 3001
     },
     {
-        headerSelector: baseSelectors.h1,
-        subHeaderSelector: baseSelectors.h2,
+        headerSelector: baseSelectors.tags.headers.h1,
+        subHeaderSelector: baseSelectors.tags.headers.h2,
         headerText: Constants.elementsText.dynamicRemotesApp.header,
         appNameText: Constants.commonConstantsData.commonCountAppNames.app2,
         widgetName: Constants.elementsText.dynamicRemotesApp.synchronousImportWidgetsNames,
@@ -68,8 +68,8 @@ appsData.forEach(
                 basePage.openLocalhost(host)
                 if (property.isTwoWidgets) {
                     property.widgetName.forEach((widget) => {
-                        basePage.checkElementExist({
-                            selector: widgets.dynamicRemotesWidget.replace(
+                        basePage.checkElementVisibility({
+                            selector: commonSelectors.commonWidget.replace(
                                 '{appQuantity}',
                                 (property.widgetName.indexOf(widget) + 1).toString())
                         })
@@ -78,15 +78,15 @@ appsData.forEach(
                             text: property.widgetName[property.widgetName.indexOf(widget)]
                         })
                         basePage.checkElementWithTextPresence({
-                            selector: baseSelectors.paragraph,
+                            selector: baseSelectors.tags.paragraph,
                             text: property.widgetParagraph[property.widgetName.indexOf(widget)]
                         })
                         basePage.checkElementWithTextPresence({
-                            selector: baseSelectors.paragraph,
+                            selector: baseSelectors.tags.paragraph,
                             text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
                         })
                         basePage.checkElementHaveProperty({
-                            selector: widgets.dynamicRemotesWidget.replace(
+                            selector: commonSelectors.commonWidget.replace(
                                 '{appQuantity}',
                                 (property.widgetName.indexOf(widget) + 1).toString()),
                             prop: CssAttr.backgroundColor,
@@ -95,8 +95,8 @@ appsData.forEach(
                     })
                     return;
                 }
-                basePage.checkElementExist({
-                    selector: widgets.dynamicRemotesWidget.replace(
+                basePage.checkElementVisibility({
+                    selector: commonSelectors.commonWidget.replace(
                         '{appQuantity}',
                         (widgetIndexNumber).toString())
                 })
@@ -105,15 +105,15 @@ appsData.forEach(
                     text: property.widgetName[widgetIndexNumber - 1]
                 })
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.paragraph,
+                    selector: baseSelectors.tags.paragraph,
                     text: property.widgetParagraph[widgetIndexNumber - 1]
                 })
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.paragraph,
+                    selector: baseSelectors.tags.paragraph,
                     text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
                 })
                 basePage.checkElementHaveProperty({
-                    selector: widgets.dynamicRemotesWidget.replace(
+                    selector: commonSelectors.commonWidget.replace(
                         '{appQuantity}',
                         (widgetIndexNumber).toString()),
                     prop: CssAttr.backgroundColor,

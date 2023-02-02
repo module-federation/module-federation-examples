@@ -270,16 +270,28 @@ describe(`Example test`, () => {
   - `public` (at the beginning);
   - `protected` (in between `public` and `private`);
   - `private` (at the end);
+- All methods inside file grouped in multiple sections  
+  - `Clicks Section` -> for methods related to click actions
+  - `Checks Section` -> for methods related to check actions (checkElementVisibility, checkElementContainText, etc)
+  - `Writes Section` -> for methods related to write actions (fillField, etc)
+  - `Helpers Section` -> for methods related to base actions (openLocalhost, reloadPage, etc)
+  - `Activities Section` -> for methods related to specific actions (addUser, compareInfoBetweenHosts, etc)
+  - `Privates Section` -> for privates methods only
+- NOTE: Do not add almost similar methods (like checkElementVisibility & checkChildELementVisibility), if existed methods do not have enough functionality for specific case, find a way to increase it
+- NOTE: If new method should be added, always add it to the right section according to logic
 
 ##### `selectors.ts`
 
-- All `selectors/locators` should be added to their corresponding blocks based on logic:
-  - Buttons to `buttons` block;
-  - Fields to `fields` block;
-  - And so on;
-- If a suitable block does not exist, consider if it is necessary to create a new one, with a clear and understandable name;
-- Try to avoid duplicating `selectors/locators` by utilizing existing ones;
-- If a `selector/locator` appears to be common, but has an incorrect name, please rename it correctly (e.g. `button` to `commonButton`) and make sure to update all places where it is used.
+- There are several blocks where `selectors/locators` can be added:
+  - `baseSelectors` block includes `tags`, `css` and `ids` blocks. According to types only the most common selectors which can be found on the almost every page (like div, button, etc) should be added there;
+  - `commonSelectors` block should include selectors which is used for multiple samples but not so common and basic like the ones in `baseSelectors` block;
+  - `selectors` block should include specific selectors which is used for specific sample
+  - `updatedSelectors` block includes both common and specific selectors which created by combining of two different selectors
+- NOTE Please follow added structure, for example if you add selector in `baseSelectors` block always search for suitable block for it
+- NOTE For `selectors` and `updatedSelectors` blocks please combine selectors under appName just like it's already added, it will help selectors file to be more clear and readable 
+- NOTE Added blocks types should be enough to cover all selectors needs, so it should be unnecessary to create new selectors blocks (only new blocks inside existed ones, for example blocks of selectors for the newest sample inside `selectors` block)   
+- Try to avoid duplicating `selectors/locators` by utilizing/moving existing ones;
+- If a `selector/locator` appears to be common, but has an incorrect name, please rename it correctly and move to another block if necessary (e.g. `button` to `commonButton`) and make sure to update all places where it is used.
 
 ##### `constants.ts`
 
@@ -394,18 +406,18 @@ We have two apps `app1` and `app2` they are similar. So we can create one object
 ```typescript
 const appsData = [
     {
-        headerSelector: baseSelectors.h1,
-        subHeaderSelector: baseSelectors.h2,
-        buttonSelector: baseSelectors.button,
+        headerSelector: baseSelectors.tags.headers.h1,
+        subHeaderSelector: baseSelectors.tags.headers.h2,
+        buttonSelector: baseSelectors.tags.coreElements.button,
         headerText: Constants.elementsText.automaticVendorContent,
         appNameText: Constants.elementsText.automaticVendorFirstAppName,
         buttonColor: Constants.color.red,
         host: 3001
     },
     {
-        headerSelector: baseSelectors.h1,
-        subHeaderSelector: baseSelectors.h2,
-        buttonSelector: baseSelectors.button,
+        headerSelector: baseSelectors.tags.headers.h1,
+        subHeaderSelector: baseSelectors.tags.headers.h2,
+        buttonSelector: baseSelectors.tags.coreElements.button,
         headerText: Constants.elementsText.automaticVendorContent,
         appNameText: Constants.elementsText.automaticVendorSecondAppName,
         buttonColor: Constants.color.deepBlue,
@@ -509,7 +521,7 @@ describe(`Check ${appName}`, () => {
     })
     it(`Check ${appName} built and running`, () => {
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.headerSelector,
+            selector: baseSelectors.tags.headers.header,
             text: Constants.testedAppsName.App1.name
         })
     })

@@ -5,12 +5,12 @@ import {Constants} from "../../../cypress/fixtures/constants";
 export class AngularUniversalSsrMethods extends BaseMethods {
 
     public checkActiveTabNameConnection(activeTabName: string, componentName: string): void {
-        cy.get(selectors.activeTab)
+        cy.get(selectors.angularUniversalSsrApp.activeTab)
             .invoke('text')
             .then((text: string) => {
                 if(text === activeTabName) {
                     this.checkElementWithTextPresence({
-                        selector: baseSelectors.appRoot,
+                        selector: baseSelectors.tags.appRoot,
                         text: componentName,
                         visibilityState: 'be.visible'
                     })
@@ -20,7 +20,7 @@ export class AngularUniversalSsrMethods extends BaseMethods {
 
     public checkAddedCitiesBlockFunctionalityForMultipleHosts(extraHost: number, addedCities: string[], addedCitySelector: string, selectedCityInfo: string[], selectedCityInfoSelector: string): void {
         this.clickElementWithText({
-            selector: updatedSelectors.angularUniversalSsrTab,
+            selector: updatedSelectors.angularUniversalSsrApp.tab,
             text: Constants.elementsText.angularUniversalSsrApp.tabsNames[2]
         })
         this.checkCitiesBlockFunctionality()
@@ -38,16 +38,19 @@ export class AngularUniversalSsrMethods extends BaseMethods {
     public checkCitiesBlockFunctionality(): void {
         Constants.elementsText.angularUniversalSsrApp.addedCities.forEach((city: string, counter: number) => {
             this.clickElementWithText({
-                selector: updatedSelectors.angularUniversalSsrAddedCity,
+                selector: updatedSelectors.angularUniversalSsrApp.addedCity,
                 text: city
             })
             this.checkElementWithTextPresence({
-                selector: selectors.angularUniversalSsrSelectedCityInfo,
+                selector: selectors.angularUniversalSsrApp.selectedCityInfo,
                 text: Constants.commonPhrases.angularUniversalSsrApp.selectedCityInfo[counter],
                 visibilityState: 'be.visible'
             })
             this.reloadWindow()
-            this.checkElementVisibility(selectors.angularUniversalSsrSelectedCityInfo, false, 'not.exist')
+            this.checkElementVisibility({
+                selector: selectors.angularUniversalSsrApp.selectedCityInfo,
+                isVisible: false,
+            })
         })
     }
 
@@ -63,20 +66,20 @@ export class AngularUniversalSsrMethods extends BaseMethods {
 
     public addNewListValue(): void {
         this.checkElementQuantity({
-            selector: baseSelectors.listElement,
+            selector: baseSelectors.tags.coreElements.list,
             quantity: 3
         })
         this.fillField({
-            selector: baseSelectors.input,
+            selector: baseSelectors.tags.inputs.input,
             text: Constants.commonConstantsData.standardPhrase
         })
         this.checkInputValue(Constants.commonConstantsData.standardPhrase)
         this.clickElementWithText({
-            selector: baseSelectors.button,
+            selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.angularUniversalSsrApp.inputButtonText,
         })
         this.checkElementQuantity({
-            selector: baseSelectors.listElement,
+            selector: baseSelectors.tags.coreElements.list,
             quantity: 4
         })
     }

@@ -31,13 +31,19 @@ describe('It checks buttons functionality', () => {
 
         it(`Checks that game board appears after click on ${property.buttonName} button`, () => {
             basePage.openLocalhost(8080)
-            basePage.checkElementVisibility(selectors.rustWasmGameBoard, false)
+            basePage.checkElementVisibility({
+                selector: selectors.rustWasmApp.gameBoard,
+                isVisible: false,
+                notVisibleState: 'not.be.visible'
+            })
             basePage.checkInfoInConsole(property.consoleMessage,StubTypes.notToBeCalled, false)
             basePage.clickElementWithText({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 text: property.buttonName
             })
-            basePage.checkElementVisibility(selectors.rustWasmGameBoard)
+            basePage.checkElementVisibility({
+                selector:selectors.rustWasmApp.gameBoard,
+            })
             basePage.checkInfoInConsole(property.consoleMessage,StubTypes.beCalled, false, false)
         })
 
@@ -45,20 +51,26 @@ describe('It checks buttons functionality', () => {
             basePage.openLocalhost(8080)
             methodsPage.checkGameBoardAppearsByClick(property.buttonName)
             basePage.reloadWindow()
-            basePage.checkElementVisibility(selectors.rustWasmGameBoard, false)
+            basePage.checkElementVisibility({
+                selector: selectors.rustWasmApp.gameBoard,
+                isVisible: false,
+                notVisibleState: 'not.be.visible'
+            })
         })
 
         it(`Checks ${property.buttonName} button still functioning even when game already started`, () => {
             basePage.skipTestByCondition(property.buttonName === appsData[0].buttonName)
             basePage.openLocalhost(8080)
             basePage.clickElementWithText({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 text: appsData[0].buttonName
             })
-            basePage.checkElementVisibility(selectors.rustWasmGameBoard)
+            basePage.checkElementVisibility({
+                selector: selectors.rustWasmApp.gameBoard,
+            })
             basePage.checkInfoInConsole(property.consoleMessage,StubTypes.notToBeCalled, false)
             basePage.clickElementWithText({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 text: property.buttonName
             })
             basePage.checkInfoInConsole(property.consoleMessage,StubTypes.beCalled, false, false)
@@ -67,23 +79,27 @@ describe('It checks buttons functionality', () => {
         it(`Checks ${property.buttonName} button still functioning even when game already started and stopped`, () => {
             basePage.openLocalhost(8080)
             basePage.clickElementWithText({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 text: appsData[0].buttonName
             })
-            basePage.checkElementVisibility(selectors.rustWasmGameBoard)
+            basePage.checkElementVisibility({
+                selector: selectors.rustWasmApp.gameBoard,
+            })
             basePage.checkInfoInConsole(property.consoleMessage, StubTypes.notToBeCalled, false)
             basePage.clickElementWithText({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 text: Constants.elementsText.rustWasmApp.buttonsNames[3]
             })
             basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmApp.consoleMessages.stopLoopMessage,StubTypes.beCalled, false, false)
             basePage.checkInfoInConsole(property.consoleMessage,property.buttonName === Constants.elementsText.rustWasmApp.buttonsNames[0]
             ? StubTypes.beCalled : StubTypes.notToBeCalled, false, false)
             basePage.clickElementWithText({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 text: property.buttonName
             })
-            basePage.checkElementVisibility(selectors.rustWasmGameBoard)
+            basePage.checkElementVisibility({
+                selector: selectors.rustWasmApp.gameBoard,
+            })
             basePage.checkInfoInConsole(property.consoleMessage,StubTypes.beCalled, false, false)
         })
 
@@ -96,7 +112,7 @@ describe('It checks buttons functionality', () => {
             methodsPage.checkGameBoardAppearsByClick(Constants.elementsText.rustWasmApp.buttonsNames[property.index])
             basePage.checkInfoInConsole(consoleMessage,StubTypes.notToBeCalled, false)
             basePage.clickElementWithText({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 text: Constants.elementsText.rustWasmApp.buttonsNames[extraPropertyIndex]
             })
             basePage.checkInfoInConsole(consoleMessage,StubTypes.beCalled, false, false)
@@ -109,12 +125,12 @@ describe('It checks buttons functionality', () => {
             basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmApp.consoleMessages.startLoopMessage,StubTypes.notToBeCalled, false)
             basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmApp.consoleMessages.stopLoopMessage,StubTypes.notToBeCalled, false, false)
             basePage.clickElementWithText({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 text: appsData[0].buttonName
             })
             basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmApp.consoleMessages.startLoopMessage,StubTypes.beCalled, false, false)
             basePage.clickElementWithText({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 text: Constants.elementsText.rustWasmApp.buttonsNames[3]
             })
             basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmApp.consoleMessages.stopLoopMessage,StubTypes.beCalled, false, false)

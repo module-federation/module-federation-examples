@@ -2,6 +2,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { FederatedTypesPlugin } = require('@module-federation/typescript');
 const path = require('path');
 
+const pkg = require("./package.json");
+
 module.exports = {
   entry: './src/index',
   mode: 'development',
@@ -37,7 +39,18 @@ module.exports = {
         remotes: {
           app2: 'app2@http://localhost:3002/remoteEntry.js',
         },
-        shared: ['react', 'react-dom'],
+        shared: [{
+          react: {
+            singleton: true,
+            requiredVersion: pkg.dependencies.react,
+          }},
+          {
+            'react-dom': {
+              singleton: true,
+              requiredVersion: pkg.dependencies.react-dom,
+            },
+          }
+        ],
       }
     }),
     new HtmlWebpackPlugin({
@@ -45,3 +58,5 @@ module.exports = {
     }),
   ],
 };
+
+

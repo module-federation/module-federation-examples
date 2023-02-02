@@ -24,7 +24,7 @@ describe('It checks integrated apps functionality', () => {
         it(`Checks ${property.appName} app background color`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementHaveProperty({
-                selector: baseSelectors.header,
+                selector: baseSelectors.tags.headers.header,
                 prop: CssAttr.backgroundColor,
                 value: Constants.color.darkGrey
             })
@@ -34,13 +34,13 @@ describe('It checks integrated apps functionality', () => {
             basePage.openLocalhost(property.host)
             if(property.remoteAppMessage) {
                 basePage.checkElementWithTextPresence({
-                    selector: selectors.craReactAppRemoteComponentInfo,
+                    selector: selectors.craReactRewiredApp.componentInfo,
                     text: property.remoteAppMessage,
                     visibilityState: 'be.visible'
                 })
             }
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.header,
+                selector: baseSelectors.tags.headers.header,
                 text: property.appMessage,
                 visibilityState: 'be.visible'
             })

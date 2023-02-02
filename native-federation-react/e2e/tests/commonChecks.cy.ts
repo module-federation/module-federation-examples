@@ -20,7 +20,7 @@ describe('It checks components header and console message', () => {
         it(`Checks ${property.header} page header visibility`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h1,
+                selector: baseSelectors.tags.headers.h1,
                 text: property.header,
                 visibilityState: 'be.visible'
             })
@@ -29,7 +29,7 @@ describe('It checks components header and console message', () => {
         it(`Checks console message visibility in ${property.header} component`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.paragraph,
+                selector: baseSelectors.tags.paragraph,
                 text: Constants.elementsText.nativeFederationReactApp.messages.pageMessages.checkConsoleMessage,
                 visibilityState: 'be.visible'
             })

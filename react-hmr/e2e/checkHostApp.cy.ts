@@ -1,7 +1,7 @@
-import { BaseMethods } from '../../cypress/common/base';
-import { baseSelectors } from '../../cypress/common/selectors';
-import { Constants } from '../../cypress/fixtures/constants';
-import { CssAttr } from '../../cypress/types/cssAttr';
+import {BaseMethods} from '../../cypress/common/base';
+import {baseSelectors} from '../../cypress/common/selectors';
+import {Constants} from '../../cypress/fixtures/constants';
+import {CssAttr} from '../../cypress/types/cssAttr';
 
 const basePage: BaseMethods = new BaseMethods();
 
@@ -30,72 +30,92 @@ describe("Check host app", () => {
 
     it('Check the content of the Home page exists', () => {
         basePage.checkElementContainText({
-            selector: baseSelectors.divElement,
+            selector: baseSelectors.tags.coreElements.div,
             text: Constants.elementsText.reactHmrApp.host.headerText1
         })
         basePage.checkElementContainText({
-            selector: baseSelectors.divElement,
+            selector: baseSelectors.tags.coreElements.div,
             text: Constants.elementsText.reactHmrApp.host.headerText2
         })
-
-        basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, Constants.commonConstantsData.home, Constants.commonConstantsData.commonLinks.baseLink)
-        basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, Constants.commonConstantsData.button, Constants.hrefs.reactHmrApp.button)
-        basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, Constants.hrefs.reactHmrApp.heading.name, Constants.hrefs.reactHmrApp.heading.link)
-
-        basePage.checkElementWithTextHaveProperty({
-            selector: baseSelectors.root,
+        basePage.checkElementContainText({
+            selector: baseSelectors.tags.coreElements.link,
+            text: Constants.commonConstantsData.home,
+            link: Constants.commonConstantsData.commonLinks.baseLink,
+        })
+        basePage.checkElementContainText({
+            selector: baseSelectors.tags.coreElements.link,
+            text: Constants.commonConstantsData.button,
+            link: Constants.hrefs.reactHmrApp.button,
+        })
+        basePage.checkElementContainText({
+            selector: baseSelectors.tags.coreElements.link,
+            text: Constants.hrefs.reactHmrApp.heading.name,
+            link: Constants.hrefs.reactHmrApp.heading.link,
+        })
+        basePage.checkElementHaveProperty({
+            selector: baseSelectors.ids.root,
             text: Constants.elementsText.reactHmrApp.host.headerText1,
             prop: CssAttr.backgroundColor,
             value: Constants.color.greenyellow,
-            parent: true
+            isParent: true
         })
-
     })
 
-    hostData.forEach(( 
-            property: { 
-                linkName: string
-                pageContent: string
-                link: string,
+    hostData.forEach((
+        property: {
+            linkName: string
+            pageContent: string
+            link: string,
         }) => {
 
         const appName = property.linkName === 'Home' ? hostData[0].linkName : property.linkName === 'Button' ? hostData[1].linkName : hostData[2].linkName;
 
 
-            it(`Check the ${appName} navigation link works`, () => {
+        it(`Check the ${appName} navigation link works`, () => {
 
             basePage.clickElementWithText({
-                selector: baseSelectors.linkTag,
-                text: property.linkName})
+                selector: baseSelectors.tags.coreElements.link,
+                text: property.linkName
+            })
 
             basePage.checkUrlText(property.link, true)
             basePage.checkElementContainText({
-                selector: baseSelectors.root, 
-            text: property.pageContent
-            }) 
+                selector: baseSelectors.ids.root,
+                text: property.pageContent
+            })
 
             basePage.checkElementContainText({
-                selector: baseSelectors.divElement, 
+                selector: baseSelectors.tags.coreElements.div,
                 text: Constants.elementsText.reactHmrApp.host.headerText1,
                 index: 1
             })
             basePage.checkElementContainText({
-                selector: baseSelectors.divElement, 
+                selector: baseSelectors.tags.coreElements.div,
                 text: Constants.elementsText.reactHmrApp.host.headerText2,
                 index: 2
             })
-
-            basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, Constants.commonConstantsData.home, Constants.commonConstantsData.commonLinks.baseLink)
-            basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, Constants.commonConstantsData.button, Constants.hrefs.reactHmrApp.button)
-            basePage.checkElementWithTextContainsLink(baseSelectors.linkTag, Constants.hrefs.reactHmrApp.heading.name, Constants.hrefs.reactHmrApp.heading.link)
-
-            basePage.checkElementWithTextHaveProperty({
-                selector: baseSelectors.root,
+            basePage.checkElementContainText({
+                selector: baseSelectors.tags.coreElements.link,
+                text: Constants.commonConstantsData.home,
+                link: Constants.commonConstantsData.commonLinks.baseLink
+            })
+            basePage.checkElementContainText({
+                selector: baseSelectors.tags.coreElements.link,
+                text: Constants.commonConstantsData.button,
+                link: Constants.hrefs.reactHmrApp.button
+            })
+            basePage.checkElementContainText({
+                selector: baseSelectors.tags.coreElements.link,
+                text: Constants.hrefs.reactHmrApp.heading.name,
+                link: Constants.hrefs.reactHmrApp.heading.link
+            })
+            basePage.checkElementHaveProperty({
+                selector: baseSelectors.ids.root,
                 text: Constants.elementsText.reactHmrApp.host.headerText1,
                 prop: CssAttr.backgroundColor,
                 value: Constants.color.greenyellow,
-                parent: true
+                isParent: true
             })
-        })   
+        })
     })
 })

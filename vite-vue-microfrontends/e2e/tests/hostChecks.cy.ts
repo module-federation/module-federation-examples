@@ -1,5 +1,5 @@
 import {BaseMethods} from "../../../cypress/common/base";
-import {baseSelectors, selectors} from "../../../cypress/common/selectors";
+import {baseSelectors, commonSelectors} from "../../../cypress/common/selectors";
 import {Constants} from "../../../cypress/fixtures/constants";
 import {CssAttr} from "../../../cypress/types/cssAttr";
 
@@ -18,25 +18,25 @@ describe("It checks host app", () => {
 
     it('Checks both cards includes button', () => {
         basePage.checkElementQuantity({
-            selector: baseSelectors.button,
+            selector: baseSelectors.tags.coreElements.button,
             quantity: commonButtonsQuantity,
             waitUntil: true
         })
         basePage.checkElementQuantity({
-            parentSelector: selectors.commonCardSelector,
-            selector: baseSelectors.button,
+            parentSelector: commonSelectors.commonMicroFrontendsAppsCard,
+            selector: baseSelectors.tags.coreElements.button,
             quantity: commonButtonsQuantity,
         })
     })
 
     it('Checks both cards button is not disabled', () => {
         basePage.checkElementQuantity({
-            selector: baseSelectors.button,
+            selector: baseSelectors.tags.coreElements.button,
             quantity: commonButtonsQuantity,
             waitUntil: true
         })
         basePage.checkElementState({
-            selector: baseSelectors.button,
+            selector: baseSelectors.tags.coreElements.button,
             state: ':disabled',
             isMultiple: true,
             jqueryValue: false
@@ -45,12 +45,12 @@ describe("It checks host app", () => {
 
     it('Checks both cards button shares same color', () => {
         basePage.checkElementQuantity({
-            selector: baseSelectors.button,
+            selector: baseSelectors.tags.coreElements.button,
             quantity: commonButtonsQuantity,
             waitUntil: true
         })
         basePage.checkElementHaveProperty({
-            selector: baseSelectors.button,
+            selector: baseSelectors.tags.coreElements.button,
             prop: CssAttr.css,
             value: Constants.color.orange,
             isMultiple: true
@@ -58,8 +58,8 @@ describe("It checks host app", () => {
     })
 
     it('Checks host app card color is set to blue', () => {
-        basePage.checkElementWithTextHaveProperty({
-            selector: selectors.commonCardSelector,
+        basePage.checkElementHaveProperty({
+            selector: commonSelectors.commonMicroFrontendsAppsCard,
             text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.hostCard,
             prop: CssAttr.css,
             value: Constants.color.blue,
@@ -69,12 +69,12 @@ describe("It checks host app", () => {
 
     it('Checks remote app card color is set to black', () => {
         basePage.checkElementQuantity({
-            selector: selectors.commonCardSelector,
+            selector: commonSelectors.commonMicroFrontendsAppsCard,
             quantity: commonButtonsQuantity,
             waitUntil: true
         })
-        basePage.checkElementWithTextHaveProperty({
-            selector: selectors.commonCardSelector,
+        basePage.checkElementHaveProperty({
+            selector: commonSelectors.commonMicroFrontendsAppsCard,
             text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.remoteCard,
             prop: CssAttr.css,
             value: Constants.color.black,
@@ -84,7 +84,7 @@ describe("It checks host app", () => {
 
     it('Checks that host card button text includes counter which changed after click & check value reverted after reload', () => {
         basePage.checkCounterFunctionality({
-                button: baseSelectors.button,
+                button: baseSelectors.tags.coreElements.button,
                 counterText: Constants.elementsText.commonMicroFrontendsApps.buttonsText.hostButton,
                 isReloaded: true
             })
@@ -92,12 +92,12 @@ describe("It checks host app", () => {
 
     it('Checks that remote card button text includes counter which changed after click & check value reverted after reload', () => {
         basePage.checkElementQuantity({
-            selector: selectors.commonCardSelector,
+            selector: commonSelectors.commonMicroFrontendsAppsCard,
             quantity: commonButtonsQuantity,
             waitUntil: true
         })
         basePage.checkCounterFunctionality({
-                button: baseSelectors.button,
+                button: baseSelectors.tags.coreElements.button,
                 counterText: Constants.elementsText.commonMicroFrontendsApps.buttonsText.remoteButton,
                 buttonsCount: commonButtonsQuantity,
                 isReloaded: true

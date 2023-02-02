@@ -1,5 +1,5 @@
 import { BaseMethods } from "../../../cypress/common/base";
-import {baseSelectors, selectors, widgets} from "../../../cypress/common/selectors";
+import {baseSelectors, selectors} from "../../../cypress/common/selectors";
 import { Constants } from "../../../cypress/fixtures/constants";
 import {CssAttr} from "../../../cypress/types/cssAttr";
 import {SharedRoutingMethods} from "../methods/methods";
@@ -9,11 +9,11 @@ import {CommonTestData} from "../../../cypress/fixtures/commonTestData";
 const basePage: BaseMethods = new BaseMethods()
 const methodsPage: SharedRoutingMethods = new SharedRoutingMethods()
 
-const sharedRoutingAppEditProfileBlockSelector = widgets.sharedRoutingAppCommonWidgetSelector
+const sharedRoutingAppEditProfileBlockSelector = selectors.sharedRoutingApp.commonWidgetSelector
     .replace('{selector}', Constants.selectorParts.sharedRoutingAppSelectorsParts.editProfile.toUpperCase())
 const disabledCompanyFieldSelectorPart = Constants.elementsText.sharedRoutingApp.editProfileBlockLabels[0].replace(/\s/g, '_')
     .replace(/([()])/g, '').toUpperCase()
-const sharedRoutingAppCardProfileBlockSelector = widgets.sharedRoutingAppCommonWidgetSelector.replace('{selector}',
+const sharedRoutingAppCardProfileBlockSelector = selectors.sharedRoutingApp.commonWidgetSelector.replace('{selector}',
     Constants.selectorParts.sharedRoutingAppSelectorsParts.cardProfile.toUpperCase())
 
 CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
@@ -24,7 +24,7 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
 
         it('checks Profile text visibility on header', () => {
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.header,
+                selector: baseSelectors.tags.headers.header,
                 text: Constants.commonConstantsData.sharedRoutingAppPagesComponents.profile,
                 visibilityState: 'be.visible'
             })
@@ -32,7 +32,7 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
 
         it('checks Profile header color', () => {
             basePage.checkElementHaveProperty({
-                selector: baseSelectors.header,
+                selector: baseSelectors.tags.headers.header,
                 prop: CssAttr.backgroundColor,
                 value: Constants.color.purple
             })
@@ -48,7 +48,9 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         })
 
         it('checks visit pages buttons block visibility', () => {
-            basePage.checkElementVisibility(selectors.sharedRoutingAppSideMenuVisitPageButtonsBlock)
+            basePage.checkElementVisibility({
+                selector: selectors.sharedRoutingApp.navigationButtonsBlock
+            })
         })
 
         it('checks that orders & dashboard page can be visited from orders page by click and stays on page after reload', () => {
@@ -76,7 +78,7 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
             methodsPage.checkElementWithTextPresenceInTextArray( {
                 textArray: Constants.elementsText.sharedRoutingApp.editProfileBlockLabels,
                 parentSelector: sharedRoutingAppEditProfileBlockSelector,
-                selector: baseSelectors.label,
+                selector: baseSelectors.tags.coreElements.label,
                 visibilityState: 'exist'
             })
         })
@@ -93,7 +95,7 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         it('checks that company input is disabled', () => {
             basePage.checkElementState({
                 parentSelector: methodsPage.returnReplacedFormFieldSelector({replaceElement: disabledCompanyFieldSelectorPart}),
-                selector: baseSelectors.input,
+                selector: baseSelectors.tags.inputs.input,
             })
         })
 
@@ -104,7 +106,7 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
                 if(formFieldSelector.includes(disabledCompanyFieldSelectorPart)) {
                     basePage.checkElementState({
                         parentSelector: formFieldSelector,
-                        selector: baseSelectors.input,
+                        selector: baseSelectors.tags.inputs.input,
                     })
                 } else {
                     basePage.checkElementState({
@@ -119,19 +121,34 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         it('checks shrink animation works for non disabled fields', () => {
             for (let i = 1; i < 8; i++) {
                 const formFieldSelector = methodsPage.returnReplacedFormFieldSelector({index: i})
-
-                basePage.checkChildElementVisibility(formFieldSelector, selectors.sharedRoutingAppInputShrinkAnimation
-                    .replace('{state}', 'false'), true, 'exist')
-                basePage.checkChildElementVisibility(formFieldSelector, selectors.sharedRoutingAppInputShrinkAnimation
-                    .replace('{state}', 'true'), false)
+                basePage.checkElementVisibility({
+                    parentSelector: formFieldSelector,
+                    selector:  selectors.sharedRoutingApp.inputShrinkAnimation
+                        .replace('{state}', 'false'),
+                    visibleState: 'exist'
+                })
+                basePage.checkElementVisibility({
+                    parentSelector: formFieldSelector,
+                    selector:  selectors.sharedRoutingApp.inputShrinkAnimation
+                        .replace('{state}', 'true'),
+                    isVisible: false
+                })
                 basePage.clickElementBySelector({
                     parentSelector: formFieldSelector,
                     selector: basePage.getInputSelector(formFieldSelector)
                 })
-                basePage.checkChildElementVisibility(formFieldSelector, selectors.sharedRoutingAppInputShrinkAnimation
-                    .replace('{state}', 'false'), false)
-                basePage.checkChildElementVisibility(formFieldSelector, selectors.sharedRoutingAppInputShrinkAnimation
-                    .replace('{state}', 'true'), true, 'exist')
+                basePage.checkElementVisibility({
+                    parentSelector: formFieldSelector,
+                    selector: selectors.sharedRoutingApp.inputShrinkAnimation
+                        .replace('{state}', 'false'),
+                    isVisible: false
+                })
+                basePage.checkElementVisibility({
+                    parentSelector: formFieldSelector,
+                    selector: selectors.sharedRoutingApp.inputShrinkAnimation
+                        .replace('{state}', 'true'),
+                    visibleState: 'exist'
+                })
             }
         })
 
@@ -164,18 +181,24 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         })
 
         it('checks update profile button visibility', () => {
-            basePage.checkChildElementVisibility(sharedRoutingAppEditProfileBlockSelector, baseSelectors.button)
+            basePage.checkElementVisibility({
+                parentSelector: sharedRoutingAppEditProfileBlockSelector,
+                selector: baseSelectors.tags.coreElements.button
+            })
         })
 
         it('checks update profile block button text', () => {
-            basePage.checkChildElementContainText(sharedRoutingAppEditProfileBlockSelector, baseSelectors.button,
-                Constants.elementsText.sharedRoutingApp.buttonsTexts.updateProfile)
+            basePage.checkElementContainText({
+                parentSelector: sharedRoutingAppEditProfileBlockSelector,
+                selector: baseSelectors.tags.coreElements.button,
+                text:Constants.elementsText.sharedRoutingApp.buttonsTexts.updateProfile
+            })
         })
 
         it('checks update profile button color', () => {
             basePage.checkElementHaveProperty({
                 parentSelector: sharedRoutingAppEditProfileBlockSelector,
-                selector: baseSelectors.button,
+                selector:  baseSelectors.tags.coreElements.button,
                 prop: CssAttr.backgroundColor,
                 value: Constants.color.deepPink
             })
@@ -184,21 +207,28 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         it('checks update profile block button is not disabled', () => {
             basePage.checkElementState({
                 parentSelector: sharedRoutingAppEditProfileBlockSelector,
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 state: 'not.be.disabled'
             })
         })
 
         it('checks card profile visibility', () => {
-            basePage.checkElementVisibility(sharedRoutingAppCardProfileBlockSelector)
+            basePage.checkElementVisibility({
+                selector: sharedRoutingAppCardProfileBlockSelector
+            })
         })
 
         it('checks card profile image visibility', () => {
-            basePage.checkElementVisibility(selectors.sharedRoutingAppCardProfileImage)
+            basePage.checkElementVisibility({
+                selector: selectors.sharedRoutingApp.profileImage
+            })
         })
 
         it('checks image stored inside card profile', () => {
-            basePage.checkChildElementVisibility(sharedRoutingAppCardProfileBlockSelector, selectors.sharedRoutingAppCardProfileImage )
+            basePage.checkElementVisibility({
+                parentSelector: sharedRoutingAppCardProfileBlockSelector,
+                selector: selectors.sharedRoutingApp.profileImage
+            })
         })
 
         it('checks card profile contain user short job title', () => {
@@ -223,18 +253,24 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         })
 
         it('checks follow button visibility', () => {
-            basePage.checkChildElementVisibility(sharedRoutingAppCardProfileBlockSelector, baseSelectors.button)
+            basePage.checkElementVisibility({
+                parentSelector: sharedRoutingAppCardProfileBlockSelector,
+                selector: baseSelectors.tags.coreElements.button
+            })
         })
 
         it('checks follow block button text', () => {
-            basePage.checkChildElementContainText(sharedRoutingAppCardProfileBlockSelector, baseSelectors.button,
-                Constants.elementsText.sharedRoutingApp.buttonsTexts.follow)
+            basePage.checkElementContainText({
+                parentSelector: sharedRoutingAppCardProfileBlockSelector,
+                selector: baseSelectors.tags.coreElements.button,
+                text: Constants.elementsText.sharedRoutingApp.buttonsTexts.follow
+            })
         })
 
         it('checks follow block button is not disabled', () => {
             basePage.checkElementState({
                 parentSelector: sharedRoutingAppCardProfileBlockSelector,
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 state: 'not.be.disabled'
             })
         })

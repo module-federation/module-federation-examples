@@ -11,7 +11,7 @@ describe("It checks webpack side app", () => {
 
     it('Clicks on webpack content button and checks that wrong alert greeting is not displayed', () => {
         basePage.checkBrowserAlertByText({
-            selector: updatedSelectors.webpackButtonSelector,
+            selector: updatedSelectors.vue3DemoFederationWithViteApp.buttons.webpack,
             alertMessage: Constants.commonPhrases.vue3DemoFederationWithViteApp.greetings.vite,
             isEqual: false
         })
@@ -19,13 +19,22 @@ describe("It checks webpack side app", () => {
 
     it('Clicks on webpack content button and checks correct alert greeting', () => {
         basePage.checkBrowserAlertByText({
-            selector: updatedSelectors.webpackButtonSelector,
+            selector: updatedSelectors.vue3DemoFederationWithViteApp.buttons.webpack,
             alertMessage: Constants.commonPhrases.vue3DemoFederationWithViteApp.greetings.webpack
         })
     })
 
     it('Checks that Webpack button stands as the first in the group', () => {
-        basePage.checkChildElementContainText(selectors.vueAppButtonsBlock, updatedSelectors.vueAppCommonButtonSelector, Constants.elementsText.vue3DemoFederationWithViteApp.webpackContent)
-        basePage.checkChildElementContainText(selectors.vueAppButtonsBlock, updatedSelectors.vueAppCommonButtonSelector, Constants.elementsText.vue3DemoFederationWithViteApp.viteContent,1)
+        basePage.checkElementContainText({
+            parentSelector: selectors.vue3DemoFederationWithViteApp.buttonsBlock,
+            selector: updatedSelectors.vue3DemoFederationWithViteApp.buttons.common,
+            text: Constants.elementsText.vue3DemoFederationWithViteApp.webpackContent,
+        })
+        basePage.checkElementContainText({
+            parentSelector: selectors.vue3DemoFederationWithViteApp.buttonsBlock,
+            selector: updatedSelectors.vue3DemoFederationWithViteApp.buttons.common,
+            text: Constants.elementsText.vue3DemoFederationWithViteApp.viteContent,
+            index: Constants.commonConstantsData.commonIndexes.one
+        })
     })
 })

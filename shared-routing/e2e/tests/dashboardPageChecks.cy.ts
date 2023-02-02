@@ -1,5 +1,5 @@
 import {BaseMethods} from "../../../cypress/common/base";
-import {baseSelectors, selectors, widgets} from "../../../cypress/common/selectors";
+import {baseSelectors, selectors} from "../../../cypress/common/selectors";
 import {Constants} from "../../../cypress/fixtures/constants";
 import {CssAttr} from "../../../cypress/types/cssAttr";
 import {SharedRoutingMethods} from "../methods/methods";
@@ -8,11 +8,11 @@ import {CommonTestData} from "../../../cypress/fixtures/commonTestData";
 const basePage: BaseMethods = new BaseMethods()
 const methodsPage: SharedRoutingMethods = new SharedRoutingMethods()
 
-const sharedRoutingAppChartBlockSelector = widgets.sharedRoutingAppCommonWidgetSelector
+const sharedRoutingAppChartBlockSelector = selectors.sharedRoutingApp.commonWidgetSelector
     .replace('{selector}', Constants.selectorParts.sharedRoutingAppSelectorsParts.chart.toUpperCase())
-const sharedRoutingAppRecentDepositsBlockSelector = widgets.sharedRoutingAppCommonWidgetSelector
+const sharedRoutingAppRecentDepositsBlockSelector = selectors.sharedRoutingApp.commonWidgetSelector
     .replace('{selector}', Constants.selectorParts.sharedRoutingAppSelectorsParts.recentDeposits.toUpperCase())
-const sharedRoutingAppRecentOrdersBlockSelector = widgets.sharedRoutingAppCommonWidgetSelector
+const sharedRoutingAppRecentOrdersBlockSelector = selectors.sharedRoutingApp.commonWidgetSelector
     .replace('{selector}', Constants.selectorParts.sharedRoutingAppSelectorsParts.recentOrders.toUpperCase())
 
 CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
@@ -22,7 +22,7 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         })
         it('checks Dashboard text visibility on header', () => {
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.header,
+                selector: baseSelectors.tags.headers.header,
                 text: Constants.commonConstantsData.sharedRoutingAppPagesComponents.dashboard,
                 visibilityState: 'be.visible'
             })
@@ -30,7 +30,7 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
 
         it('checks Dashboard header color', () => {
             basePage.checkElementHaveProperty({
-                selector: baseSelectors.header,
+                selector: baseSelectors.tags.headers.header,
                 prop: CssAttr.backgroundColor,
                 value: Constants.color.purple
             })
@@ -46,7 +46,9 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         })
 
         it('checks visit pages buttons block visibility', () => {
-            basePage.checkElementVisibility(selectors.sharedRoutingAppSideMenuVisitPageButtonsBlock)
+            basePage.checkElementVisibility({
+                selector: selectors.sharedRoutingApp.navigationButtonsBlock
+            })
         })
 
         it('checks that profile & orders page can be visited from dashboard page by click and stays on page after reload', () => {
@@ -55,7 +57,9 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         })
 
         it('checks chart block visibility', () => {
-            basePage.checkElementVisibility(sharedRoutingAppChartBlockSelector)
+            basePage.checkElementVisibility({
+                selector: sharedRoutingAppChartBlockSelector
+            })
         })
 
         it('checks chart header visibility', () => {
@@ -67,13 +71,16 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         })
 
         it('checks chart visibility', () => {
-            basePage.checkChildElementVisibility(sharedRoutingAppChartBlockSelector, selectors.sharedRoutingAppChart)
+            basePage.checkElementVisibility({
+                parentSelector: sharedRoutingAppChartBlockSelector,
+                selector: selectors.sharedRoutingApp.chartComponents.chart
+            })
         })
 
         it('checks chart type visibility', () => {
             basePage.checkElementWithTextPresence({
                 parentSelector: sharedRoutingAppChartBlockSelector,
-                selector: baseSelectors.tspan,
+                selector: baseSelectors.tags.coreElements.spans.tspan,
                 text: Constants.elementsText.sharedRoutingApp.chartInfo.sales,
                 visibilityState: 'be.visible'
             })
@@ -83,7 +90,7 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
             methodsPage.checkElementWithTextPresenceInTextArray({
                 textArray: Constants.elementsText.sharedRoutingApp.chartMarks.horizontal,
                 parentSelector: sharedRoutingAppChartBlockSelector,
-                selector: baseSelectors.tspan
+                selector: baseSelectors.tags.coreElements.spans.tspan,
             })
         })
 
@@ -91,24 +98,26 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
             methodsPage.checkElementWithTextPresenceInTextArray({
                 textArray: Constants.elementsText.sharedRoutingApp.chartMarks.vertical,
                 parentSelector: sharedRoutingAppChartBlockSelector,
-                selector: baseSelectors.tspan
+                selector: baseSelectors.tags.coreElements.spans.tspan,
             })
         })
 
         it('checks chart graph appears', () => {
-            basePage.checkElementExist({
-                selector: selectors.sharedRoutingAppChartGraph,
+            basePage.checkElementVisibility({
+                selector: selectors.sharedRoutingApp.chartComponents.graph,
                 isVisible: false,
                 notVisibleState: 'not.be.visible'
             })
-            basePage.checkElementExist({
-                selector: selectors.sharedRoutingAppChartGraph,
+            basePage.checkElementVisibility({
+                selector: selectors.sharedRoutingApp.chartComponents.graph,
                 visibleState: 'exist'
             })
         })
 
         it('checks recent deposits block visibility', () => {
-            basePage.checkElementVisibility(sharedRoutingAppRecentDepositsBlockSelector)
+            basePage.checkElementVisibility({
+                selector: sharedRoutingAppRecentDepositsBlockSelector
+            })
         })
 
         it('checks recent deposits header visibility', () => {
@@ -136,24 +145,32 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         })
 
         it('checks deposit block includes button', () => {
-            basePage.checkChildElementVisibility(sharedRoutingAppRecentDepositsBlockSelector, baseSelectors.button)
+            basePage.checkElementVisibility({
+                parentSelector: sharedRoutingAppRecentDepositsBlockSelector,
+                selector: baseSelectors.tags.coreElements.button
+            })
         })
 
         it('checks deposit block button text', () => {
-            basePage.checkChildElementContainText(sharedRoutingAppRecentDepositsBlockSelector, baseSelectors.button,
-                Constants.elementsText.sharedRoutingApp.buttonsTexts.viewBalance)
+            basePage.checkElementContainText({
+                parentSelector: sharedRoutingAppRecentDepositsBlockSelector,
+                selector: baseSelectors.tags.coreElements.button,
+                text: Constants.elementsText.sharedRoutingApp.buttonsTexts.viewBalance
+            })
         })
 
         it('checks deposit block button is not disabled', () => {
             basePage.checkElementState({
                 parentSelector: sharedRoutingAppRecentDepositsBlockSelector,
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 state: 'not.be.disabled'
             })
         })
 
         it('checks recent orders block visibility', () => {
-            basePage.checkElementVisibility(sharedRoutingAppRecentOrdersBlockSelector)
+            basePage.checkElementVisibility({
+                selector: sharedRoutingAppRecentOrdersBlockSelector
+            })
         })
 
         it('checks recent orders header visibility', () => {
@@ -168,14 +185,14 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
             methodsPage.checkElementWithTextPresenceInTextArray({
                 textArray: Constants.elementsText.sharedRoutingApp.orders.recentOrdersTableColumnsHeaders,
                 parentSelector: sharedRoutingAppRecentOrdersBlockSelector,
-                selector: baseSelectors.tableHeader
+                selector: baseSelectors.tags.tableElements.header,
             })
         })
 
         it('checks recent orders table can contain more than one order row', () => {
             basePage.checkElementQuantity({
                 parentSelector: sharedRoutingAppRecentOrdersBlockSelector,
-                selector: selectors.sharedRoutingAppRecentOrderRow,
+                selector: selectors.sharedRoutingApp.recentOrdersRow,
                 quantity: 1,
                 state: 'have.length.above'
             })
@@ -184,8 +201,8 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         it('checks table row contain all required cells', () => {
             methodsPage.checkElementWithTextPresenceInTextArray({
                 textArray: Constants.elementsText.sharedRoutingApp.orders.recentOrdersTableColumnsHeaders,
-                parentSelector: selectors.sharedRoutingAppRecentOrderRow,
-                selector: widgets.recentOrdersWidgetCell,
+                parentSelector: selectors.sharedRoutingApp.recentOrdersRow,
+                selector: selectors.sharedRoutingApp.recentOrdersWidgetCell,
                 childElement: true
             })
         })
@@ -193,26 +210,32 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         it('checks table row contain all required cells with text', () => {
             basePage.checkElementWithTextPresence({
                 textArray: Constants.elementsText.sharedRoutingApp.orders.recentOrdersTableColumnsHeaders,
-                parentSelector: selectors.sharedRoutingAppRecentOrderRow,
-                selector: widgets.recentOrdersWidgetCell,
+                parentSelector: selectors.sharedRoutingApp.recentOrdersRow,
+                selector: selectors.sharedRoutingApp.recentOrdersWidgetCell,
                 text: Constants.elementsText.sharedRoutingApp.orders.recentOrderInfo,
                 visibilityState: 'be.visible'
             })
         })
 
         it('checks recent orders block includes button', () => {
-            basePage.checkChildElementVisibility(sharedRoutingAppRecentOrdersBlockSelector, baseSelectors.button)
+            basePage.checkElementVisibility({
+                parentSelector: sharedRoutingAppRecentOrdersBlockSelector,
+                selector: baseSelectors.tags.coreElements.button
+            })
         })
 
         it('checks recent orders block button text', () => {
-            basePage.checkChildElementContainText(sharedRoutingAppRecentOrdersBlockSelector, baseSelectors.button,
-                Constants.elementsText.sharedRoutingApp.buttonsTexts.seeMoreOrders)
+            basePage.checkElementContainText({
+                parentSelector: sharedRoutingAppRecentOrdersBlockSelector,
+                selector: baseSelectors.tags.coreElements.button,
+                text: Constants.elementsText.sharedRoutingApp.buttonsTexts.seeMoreOrders
+            })
         })
 
         it('checks recent orders block button is not disabled', () => {
             basePage.checkElementState({
                 parentSelector: sharedRoutingAppRecentOrdersBlockSelector,
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 state: 'not.be.disabled'
             })
         })

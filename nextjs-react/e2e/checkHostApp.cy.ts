@@ -12,24 +12,24 @@ describe("Check host app", () => {
 
     it('Check buttons exist', () => {
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
+            selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.nextJsReactApp.buttons.nextJS})
         cy.wait(200)
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
+            selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.nextJsReactApp.buttons.remote})
     })
 
     it('Check button color', () => {
-        basePage.checkElementWithTextHaveProperty({
-            selector: baseSelectors.button,
+        basePage.checkElementHaveProperty({
+            selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.nextJsReactApp.buttons.nextJS,
             prop: CssAttr.background,
             value: Constants.color.lightSaturatedYellow
         })
         cy.wait(200)
-        basePage.checkElementWithTextHaveProperty({
-            selector: baseSelectors.button,
+        basePage.checkElementHaveProperty({
+            selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.nextJsReactApp.buttons.remote,
             prop: CssAttr.background,
             value: Constants.color.darkMutedBlue
