@@ -1,24 +1,25 @@
 import * as path from 'path';
 import { existsSync, readFileSync } from 'fs';
-import { 
-  createSourceFile, 
-  CallExpression, 
-  ScriptTarget, 
-  SyntaxKind, 
+import {
+  createSourceFile,
+  CallExpression,
+  ScriptTarget,
+  SyntaxKind,
   SourceFile,
   ImportDeclaration
 } from 'typescript';
-import { 
+import {
+  normalizePath,
   FileData,
-  ProjectGraph, 
+  ProjectGraph,
   ProjectGraphProjectNode
 } from '@nrwl/devkit';
 import { findNodes } from 'nx/src/utils/typescript';
 import { LoadRemoteModuleOptions } from '@softarc/native-federation';
-import { 
-  NFPDashboardConsumeModule, 
-  NFPDashboardModule, 
-  NFPDashboardExecutorMetadataOptions 
+import {
+  NFPDashboardConsumeModule,
+  NFPDashboardModule,
+  NFPDashboardExecutorMetadataOptions
 } from './schema';
 import { filterUniqueItemsBy } from './object-util';
 
@@ -39,8 +40,8 @@ export async function readProjectExposedModules(
   } catch (e) {
     throw new Error(`Error occurred while reading exposed modules: ${e}`);
   }
-  
-  const moduleExposes: [string, string][] = Object.entries(projectFederationConfig.exposes || {}); 
+
+  const moduleExposes: [string, string][] = Object.entries(projectFederationConfig.exposes || {});
   const modules: NFPDashboardModule[] = [];
 
   for (const [module, modulePath] of moduleExposes) {
@@ -53,7 +54,7 @@ export async function readProjectExposedModules(
     }
 
     const moduleName: string = path.basename(module);
-    
+
     const moduleRequires: string[] = file.deps?.filter((name) => name.startsWith('npm:'))
       .map((name) => name.replace('npm:', ''));
 
@@ -100,7 +101,7 @@ function parseNativeFederationModules(
     const moduleJavascript: string = readFileSync(modulePath).toString('utf-8');
     const moduleAst: SourceFile = createSourceFile('', moduleJavascript, ScriptTarget.Latest, true);
     const moduleImports = findNodes(moduleAst, SyntaxKind.ImportDeclaration) as ImportDeclaration[];
-    
+
     // detect if we have the NMF import declaration
     const hasNativeFederationImport = moduleImports
       .some((nativeImport) => {
@@ -110,7 +111,7 @@ function parseNativeFederationModules(
     if (!hasNativeFederationImport) {
       continue;
     }
-    
+
     // walk through the module tree and seek for NFM function call expressions
     const moduleExpressions = findNodes(moduleAst, SyntaxKind.CallExpression) as CallExpression[];
     const nativeFederationInvokes: CallExpression[] = moduleExpressions
@@ -144,10 +145,10 @@ function parseNativeFederationModules(
 
           // extract all options
           while ((parsingsResult = parsingsRegex.exec(options[0])) !== null) {
-            // remove extra characters 
+            // remove extra characters
             splitsResult.push(parsingsResult[1].replace(/'|"| |,/gi, ''));
           }
-          
+
           const nativeFederationModules = {} as LoadRemoteModuleOptions & { file: string };
 
           // normalize options into key => value format
@@ -183,7 +184,7 @@ export function readProjectConsumedModules(
     return [];
   }
 
-  const nativeFederationRemotes: 
+  const nativeFederationRemotes:
     (LoadRemoteModuleOptions & { file: string; })[] = parseNativeFederationModules(rootPath, project);
 
   // prevent NFP function call duplications
@@ -211,7 +212,7 @@ export function readProjectConsumedModules(
         name: exposedModule,
         usedIn: [{
           file: moduleCleanPath,
-          url: path.join(url, moduleCleanPath)
+          url: normalizePath(path.join(url, moduleCleanPath))
         }]
       });
 
@@ -220,7 +221,7 @@ export function readProjectConsumedModules(
 
     module.usedIn.push({
       file: moduleCleanPath,
-      url: path.join(url, moduleCleanPath)
+      url: normalizePath(path.join(url, moduleCleanPath))
     });
   }
 

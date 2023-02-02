@@ -8,8 +8,9 @@ import {
   TargetConfiguration,
   Target 
 } from '@nrwl/devkit';
-import { NFPDashboardDependency } from './schema';
 import { PackageJson } from 'nx/src/utils/package-json';
+import { checkAndCleanWithSemver } from 'nx/src/utils/version-utils';
+import { NFPDashboardDependency, NFPDashboardOverrideModule } from './schema';
 
 /**
  * Reads `version`, `license` options from `package.json`
@@ -20,16 +21,18 @@ function readProjectDependency(path: string): Omit<NFPDashboardDependency, 'name
 }
 
 /**
- * Reads a project npm or workspace dependencies
+ * Reads a project npm dependencies by a property name
+ * Link to https://docs.npmjs.com/cli/v9/configuring-npm/package-json#optionaldependencies
  */
-export async function readProjectDependencies(
+export function readProjectDependenciesBy(
+  dependenciesType: string,
   rootPath: string,
-  projectPackageJson: PackageJson
-): Promise<NFPDashboardDependency[]> {
-  const dependencies: [string, string][] = Object.entries(projectPackageJson?.dependencies || {});
+  projectPackageJson: PackageJson & { optionalDependencies?: Record<string, string> }
+): NFPDashboardDependency[] {
+  const dependencies: string[] = Object.keys(projectPackageJson[dependenciesType] || {});
   const modules: NFPDashboardDependency[] = [];
 
-  for (const [name] of dependencies) {
+  for (const name of dependencies) {
     modules.push({
       name,
       ...readProjectDependency(path.join(rootPath, `./node_modules/${name}/package.json`))
@@ -86,7 +89,7 @@ function readProjectJsonPackages(project: ProjectGraphProjectNode, projectPackag
     const target: Target = parseTargetString(projectTargets[targetName].executor);
     dependencies.push(target.project);
 
-    if (target.project.includes('@nrwl')) {
+    if (target.project.startsWith('@nrwl')) {
       dependencies = [
         ...dependencies,
         ...getDevDependenciesByName(target.target, projectPackageJson)
@@ -100,15 +103,15 @@ function readProjectJsonPackages(project: ProjectGraphProjectNode, projectPackag
 /**
  * Reads a project npm dev dependencies
  */
-export async function readProjectDevDependencies(
+export function readProjectDevDependencies(
   graph: ProjectGraph,
   rootPath: string,
   projectName: string,
-  projectPackageJson: PackageJson
-): Promise<NFPDashboardDependency[]> {
+  projectPackageJson: PackageJson,
+  rootPackageJson: PackageJson
+): NFPDashboardDependency[] {
   const project = graph.nodes[projectName];
   const projectRootPath = project.data.root;
-  const rootPackageJson = (existsSync('package.json') ? readJsonFile('package.json') || {} : {}) as PackageJson;
   const isReactPreset: boolean = isReactApplicationPreset(rootPath, projectRootPath);
 
   const dependencies = [...new Set([
@@ -140,3 +143,54 @@ export async function readProjectDevDependencies(
   return modules;
 }
 
+/**
+ * Checks if npm package exists in a PackageJson object by name
+ */
+function hasDependencyByName(
+  name: string, 
+  packageJson: PackageJson & { optionalDependencies?: Record<string, string> }
+) {
+  const dependencies = packageJson?.dependencies || {};
+  const devDependencies = packageJson?.devDependencies || {};
+  const optionalDependencies = packageJson?.optionalDependencies || {};
+
+  return dependencies[name] || devDependencies[name] || optionalDependencies[name];
+}
+
+/**
+ * Reads a project npm dependencies which are redeclared or differ with a version from the root dependencies
+ */
+export function readProjectOverrides(
+  graph: ProjectGraph,
+  projectName: string,
+  rootPackageJson: PackageJson & { optionalDependencies?: Record<string, string> }
+): NFPDashboardOverrideModule[] {
+  const project = graph.nodes[projectName];
+  const projectRootPath = project.data.root;
+  const projectPackageJsonPath = path.join(projectRootPath, './package.json');
+  const projectPackageJson = (
+    existsSync(projectPackageJsonPath) ? readJsonFile(projectPackageJsonPath) || {} : {}
+  ) as PackageJson;
+
+  const dependencies: string[] = Object.keys(projectPackageJson?.dependencies || {});
+  const modules: NFPDashboardOverrideModule[] = [];
+
+  for (const name of dependencies) {
+    if (hasDependencyByName(name, rootPackageJson)) {
+      const version = projectPackageJson.dependencies[name];
+      const cleanVersion = checkAndCleanWithSemver(name, version);
+
+      if (cleanVersion) {
+        modules.push({
+          id: name,
+          name,
+          version: cleanVersion,
+          location: name,
+          applicationID: projectName
+        });
+      }
+    }
+  }
+
+  return modules;
+}

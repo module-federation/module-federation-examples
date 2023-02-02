@@ -13,17 +13,11 @@ module.exports = withNativeFederation({
   },
 
   shared: {
-    "react-dom/client": {
-      singleton: true,
-      strictVersion: true,
-      requiredVersion: 'auto',
-      includeSecondaries: false,
-     },
     ...shareAll({
       singleton: true,
       strictVersion: true,
       requiredVersion: 'auto',
-      includeSecondaries: false,
+      includeSecondaries: true,
     })
   },
 
@@ -34,6 +28,12 @@ module.exports = withNativeFederation({
     'core-js',
     'native-federation-plugin',
     'regenerator-runtime',
+    'react-dom/server.browser',
+    'react-dom/profiling',
+    'react-dom/test-utils',
+    'react-dom/server',
+    'react-dom/server.node',
+    'tslib/',
     'tslib'
   ],
 });

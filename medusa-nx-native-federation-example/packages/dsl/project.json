@@ -6,8 +6,13 @@
     "build": {
       "executor": "native-federation-plugin:build",
       "options": {
-        "entryFile": "packages/dsl/src/app/index.ts",
-        "outputPath": "dist/dsl"
+        "outputPath": "dist/dsl",
+        "index": "packages/dsl/src/index.html",
+        "main": "packages/dsl/src/app/index.ts",
+        "assets": [
+          "packages/dsl/src/assets",
+          "packages/dsl/src/favicon.ico"
+        ]
       }
     },
     "serve": {

@@ -6,8 +6,13 @@
     "build": {
       "executor": "native-federation-plugin:build",
       "options": {
-        "entryFile": "packages/search/src/app/index.ts",
-        "outputPath": "dist/search"
+        "outputPath": "dist/search",
+        "index": "packages/search/src/index.html",
+        "main": "packages/search/src/app/index.ts",
+        "assets": [
+          "packages/search/src/assets",
+          "packages/search/src/favicon.ico"
+        ]
       }
     },
     "serve": {

@@ -1,9 +1,15 @@
 import * as path from 'path';
-import { createPackageJson, writeJsonFile, ProjectGraph } from '@nrwl/devkit';
+import { existsSync } from 'fs';
+import { 
+  createPackageJson, 
+  readJsonFile,
+  writeJsonFile, 
+  ProjectGraph 
+} from '@nrwl/devkit';
 import { PackageJson } from 'nx/src/utils/package-json';
 import { NFPDashboardOptions, NFPDashboardOutputFile } from './schema';
 import { createGitSha, createVersion, readNxBuildHash } from './version';
-import { readProjectDependencies, readProjectDevDependencies } from './graph-deps';
+import { readProjectDependenciesBy, readProjectDevDependencies, readProjectOverrides } from './graph-deps';
 import { readProjectConsumedModules, readProjectExposedModules } from './graph-modules';
 
 /**
@@ -21,7 +27,8 @@ export async function buildDashboardFile(graph: ProjectGraph, options: NFPDashbo
     metadata 
   } = options;
 
-  const projectPackageJson: PackageJson = createPackageJson(name, graph);
+  const projectPackageJson: PackageJson = createPackageJson(name, graph) || {} as PackageJson;
+  const rootPackageJson = (existsSync('package.json') ? readJsonFile('package.json') || {} : {}) as PackageJson;
 
   const dashboard: NFPDashboardOutputFile = {
     id: name,
@@ -32,9 +39,10 @@ export async function buildDashboardFile(graph: ProjectGraph, options: NFPDashbo
     buildHash: readNxBuildHash(buildTarget, rootPath),
     environment,
     metadata,
-    dependencies: await readProjectDependencies(rootPath, projectPackageJson),
-    devDependencies: await readProjectDevDependencies(graph, rootPath, name, projectPackageJson),
-    overrides: [],
+    dependencies: readProjectDependenciesBy('dependencies', rootPath, projectPackageJson),
+    devDependencies: readProjectDevDependencies(graph, rootPath, name, projectPackageJson, rootPackageJson),
+    optionalDependencies: readProjectDependenciesBy('optionalDependencies', rootPath, projectPackageJson),
+    overrides: readProjectOverrides(graph, name, rootPackageJson),
     modules: await readProjectExposedModules(graph, rootPath, name),
     consumes: readProjectConsumedModules(graph, rootPath, name, metadata)
   };

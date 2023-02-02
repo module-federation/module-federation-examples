@@ -1,9 +1,8 @@
 import * as esbuild from 'esbuild';
-import * as path from 'path';
-import * as fs from 'fs';
 import { federationBuilder } from '@softarc/native-federation/build';
 import { createEsBuildAdapter } from '@softarc/native-federation-esbuild';
 import { NFPWorkspacePaths } from './schema';
+import { cleanDirectoryFiles, copyDirectory } from './directory-util';
 
 /**
  * Setups the common options to the Federation Builder for a future builds
@@ -24,10 +23,10 @@ async function setupNativeFederationBuilder(workspace: NFPWorkspacePaths) {
 /**
  * Invokes EsBuild Builder to compile project files
  */
-async function compileProjectEntryFileByEsbuild(workspace: NFPWorkspacePaths) {
+async function compileProjectMain(workspace: NFPWorkspacePaths) {
   const { workspaceDistPath, workspaceTsConfigPath, projectEntryPath } = workspace;
 
-  fs.rmSync(workspaceDistPath, { force: true, recursive: true });
+  cleanDirectoryFiles(workspaceDistPath);
 
   await esbuild.build({
     entryPoints: [projectEntryPath],
@@ -47,16 +46,14 @@ async function compileProjectEntryFileByEsbuild(workspace: NFPWorkspacePaths) {
 /**
  * Copies the project assets from the source root into `dist/{projectName}`
  */
-function outputProjectAssets(workspace: NFPWorkspacePaths) {
-  const { workspaceDistPath, projectSrcPath } = workspace;
-  const indexHtmlFromPath = path.join(projectSrcPath, './index.html');
-  const indexHtmlToPath = path.join(workspaceDistPath, './index.html');
+function copyProjectAssets(workspace: NFPWorkspacePaths) {
+  const { projectIndexHtml, workspaceDistPath, projectAssets } = workspace;
 
-  const faviconIcoFromPath = path.join(projectSrcPath, './favicon.ico');
-  const faviconIcoToPath = path.join(workspaceDistPath, './favicon.ico');
+  copyDirectory(projectIndexHtml, workspaceDistPath);
 
-  fs.copyFileSync(indexHtmlFromPath, indexHtmlToPath);
-  fs.copyFileSync(faviconIcoFromPath, faviconIcoToPath);
+  for (const assetPath of projectAssets) {
+    copyDirectory(assetPath, workspaceDistPath);
+  }
 }
 
 /**
@@ -69,16 +66,16 @@ export async function executeProjectBuild(options: string) {
     await setupNativeFederationBuilder(workspace);
   } catch (e) {
     throw new Error(`Error occurred while initializing the Native Federation Builder: ${e}`);
-  }``
+  }
 
   try {
-    await compileProjectEntryFileByEsbuild(workspace);
+    await compileProjectMain(workspace);
   } catch (e) {
     throw new Error(`Error occurred while compiling by EsBuild Builder: ${e}`);
   }
 
   try {
-    outputProjectAssets(workspace);
+    copyProjectAssets(workspace);
   } catch (e) {
     throw new Error(`Error occurred while copiing '${workspace.projectName}' assets: ${e}`);
   }

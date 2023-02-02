@@ -1,7 +1,9 @@
 // eslint-disable-line
 export interface NFPBuildExecutorOptions {
-  entryFile: string;
   outputPath: string;
+  index: string;
+  main: string;
+  assets: string[];
 }
 
 //
@@ -14,5 +16,7 @@ export interface NFPWorkspacePaths {
   projectPath: string;
   projectSrcPath: string;
   projectEntryPath: string;
+  projectIndexHtml: string;
+  projectAssets: string[];
   projectFederationConfigPath: string;
 }

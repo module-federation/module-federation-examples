@@ -28,6 +28,8 @@ const NFP_PROJECT_BUILDER_NAME = (projectName: string): string => {
 function normalizeWorkspacePaths(
   workspaceRootPath: string,
   projectEntryPath: string,
+  projectIndexHtml: string,
+  projectAssets: string[],
   workspaceDistPath: string,
   projectName: string,
   graph: ProjectGraph
@@ -47,6 +49,8 @@ function normalizeWorkspacePaths(
     projectPath: root,
     projectSrcPath: sourceRoot,
     projectEntryPath,
+    projectIndexHtml,
+    projectAssets,
     projectFederationConfigPath: normalizePath(path.join(root, './federation.config.js')),
   };
 }
@@ -122,13 +126,23 @@ export default async function runExecutor(
   context: ExecutorContext
 ): Promise<{ success: boolean }> {
   const { root, projectName, projectGraph } = context;
-  const { outputPath, entryFile } = options;
-  const workspace: NFPWorkspacePaths = normalizeWorkspacePaths(root, entryFile, outputPath, projectName, projectGraph);
+  const { outputPath, main, index, assets } = options;
 
-  console.log(`Nx Native Federation: Building`);
+  const workspace: NFPWorkspacePaths = normalizeWorkspacePaths(
+    root,
+    main,
+    index,
+    assets,
+    outputPath,
+    projectName,
+    projectGraph
+  );
+
+  console.log(`Nx Native Federation: Building...`);
 
   try {
-    await compileCommonBuilderTsFile(workspace);
+    const {stdout, stderr} = await compileCommonBuilderTsFile(workspace);
+    console.log(stdout, stderr);
   } catch (e) {
     throw new Error(e);
   }
@@ -136,12 +150,13 @@ export default async function runExecutor(
   createProjectBuilderTsFile(workspace);
 
   try {
-    await compileAndRunProjectBuilderFiles(workspace);
+    const {stdout, stderr} = await compileAndRunProjectBuilderFiles(workspace);
+    console.log(stdout, stderr);
     removeProjectBuilderTsFile(workspace);
   } catch (e) {
     throw new Error(e);
   }
 
-  console.log(`Nx Native Federation: Built successfully`);
+  console.log(`Nx Native Federation: Successfully built`);
   return { success: true };
 }

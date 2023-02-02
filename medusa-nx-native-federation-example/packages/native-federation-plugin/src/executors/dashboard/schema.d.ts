@@ -33,7 +33,8 @@ export interface NFPDashboardOutputFile {
   metadata: NFPDashboardExecutorMetadataOptions;
   dependencies: NFPDashboardDependency[];
   devDependencies: NFPDashboardDependency[];
-  overrides: [];
+  optionalDependencies: NFPDashboardDependency[],
+  overrides: NFPDashboardOverrideModule[];
   modules: NFPDashboardModule[];
   consumes: NFPDashboardConsumeModule[];
 }
@@ -76,6 +77,15 @@ export interface NFPDashboardConsumeModule {
 export interface NFPDashboardConsumeUsedInFile {
   file: string;
   url: string;
+}
+
+//
+export interface NFPDashboardOverrideModule {
+  id: string;
+  name: string;
+  version: string;
+  location: string;
+  applicationID: string;
 }
 
 //

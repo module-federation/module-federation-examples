@@ -9,10 +9,7 @@ export function readFileTokens(path: string): NFPDashboardToken {
     .toString('utf-8')
     .split('\n')
     .filter(Boolean)
-    .map((s) => s
-      .trim()
-      .split('=')
-    );
+    .map((s) => s.trim().split('='));
 
   const tokens: NFPDashboardToken = {} as NFPDashboardToken;
 
