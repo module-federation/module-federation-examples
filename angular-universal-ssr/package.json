@@ -6,6 +6,7 @@
     "./host-app"
   ],
   "version": "0.0.0",
+  "type": "commonjs",
   "scripts": {
     "start": "yarn build && yarn serve",
     "build": "lerna run --scope=angular-universal-ssr_* build:federation",
