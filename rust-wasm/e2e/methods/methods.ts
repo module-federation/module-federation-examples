@@ -4,11 +4,11 @@ import {baseSelectors, selectors} from "../../../cypress/common/selectors";
 export class RustWasmMethods extends BaseMethods {
 
     public checkGameBoardAppearsByClick(buttonName: string): void {
-        this.checkElementVisibility(selectors.rustWasmGameBoard, false)
+        this.checkElementVisibility(selectors.rustWasmApp.gameBoard, false)
         this.clickElementWithText({
-            selector: baseSelectors.button,
+            selector: baseSelectors.tags.coreElements.button,
             text: buttonName
         })
-        this.checkElementVisibility(selectors.rustWasmGameBoard)
+        this.checkElementVisibility(selectors.rustWasmApp.gameBoard)
     }
 }

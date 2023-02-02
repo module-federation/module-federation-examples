@@ -39,36 +39,36 @@ appsData.forEach((
             })
             it(`Check Host ${property.appName} UI and Invoices, Expenses buttons`, () => {
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.divElement,
+                    selector: baseSelectors.tags.coreElements.div,
                     text: property.appName
                 })
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.divElement,
+                    selector: baseSelectors.tags.coreElements.div,
                     text: property.appDiv
                 })
                 if (property.host == 8081) {
                     if (property.appButtonInvoices){
                         basePage.clickElementWithText({
-                            selector: baseSelectors.linkTag,
+                            selector: baseSelectors.tags.coreElements.link,
                             text: property.appButtonInvoices
                         })
                     }
                     if (property.appButtonInvoicesH2){
                         basePage.checkElementWithTextPresence({
-                            selector: baseSelectors.h2,
+                            selector: baseSelectors.tags.headers.h2,
                             text: property.appButtonInvoicesH2
                         })
                     }
                     basePage.goBack()
                     if (property.appButtonExpenses){
                         basePage.clickElementWithText({
-                            selector: baseSelectors.linkTag,
+                            selector: baseSelectors.tags.coreElements.link,
                             text: property.appButtonExpenses
                         })
                     }
                     if (property.appButtonExpensesH2)
                     basePage.checkElementWithTextPresence({
-                        selector: baseSelectors.h2,
+                        selector: baseSelectors.tags.headers.h2,
                         text: property.appButtonExpensesH2
                     })
                 }

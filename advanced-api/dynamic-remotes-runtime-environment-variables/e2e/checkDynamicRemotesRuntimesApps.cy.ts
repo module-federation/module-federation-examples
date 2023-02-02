@@ -49,50 +49,50 @@ appsData.forEach((
 
         it (`Check ${property.subheader} app Widget functionality and application elements`, () => {
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h1,
+                selector: baseSelectors.tags.headers.h1,
                 text: property.header
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h2,
+                selector: baseSelectors.tags.headers.h2,
                 text: property.subheader
             })
             if (property.host === 3000) {
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.h3,
+                    selector: baseSelectors.tags.headers.h3,
                     text: property.hostH3
                 })
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.paragraph,
+                    selector: baseSelectors.tags.paragraph,
                     text: property.paragraph
                 })
                 basePage.clickElementWithText({
-                    selector: baseSelectors.button,
+                    selector: baseSelectors.tags.coreElements.button,
                     text: String(property.button)
                 })
             }
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: property.loading
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: property.loading,
                 isVisible: false
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h2,
+                selector: baseSelectors.tags.headers.h2,
                 text: property.buttonHeader
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h2,
+                selector: baseSelectors.tags.headers.h2,
                 text: property.buttonH2
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.paragraph,
+                selector: baseSelectors.tags.paragraph,
                 text: property.buttonParagraph
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.paragraph,
+                selector: baseSelectors.tags.paragraph,
                 text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
             })
         })

@@ -9,6 +9,6 @@ describe("It checks remote app", () => {
     })
 
     it('Checks that remote app message changes after import into host app', () => {
-        basePage.compareInfoBetweenHosts(selectors.craReactAppRemoteComponentInfo, 3000, false)
+        basePage.compareInfoBetweenHosts(selectors.craReactRewiredApp.componentInfo, 3000, false)
     })
 })

@@ -5,11 +5,11 @@ import {Constants} from "../../../cypress/fixtures/constants";
 export class VersionDiscrepancyMethods extends BaseMethods {
 
     public checkMessageVisibilityByLodashVersion(message: string): Cypress.Chainable<JQuery<HTMLElement>> {
-        return cy.get(baseSelectors.divElement)
+        return cy.get(baseSelectors.tags.coreElements.div)
             .then((element: JQuery<HTMLElement>) => {
                 if(element.text().includes(Constants.commonPhrases.versionDiscrepancyApp.lodashVersions.app1)) {
                     this.checkElementWithTextPresence({
-                        selector: baseSelectors.divElement,
+                        selector: baseSelectors.tags.coreElements.div,
                         text: message,
                         visibilityState: 'be.visible'
                     })
@@ -18,7 +18,7 @@ export class VersionDiscrepancyMethods extends BaseMethods {
                 }
 
                 this.checkElementWithTextPresence({
-                    selector: baseSelectors.divElement,
+                    selector: baseSelectors.tags.coreElements.div,
                     text: message,
                     isVisible: false
                 })

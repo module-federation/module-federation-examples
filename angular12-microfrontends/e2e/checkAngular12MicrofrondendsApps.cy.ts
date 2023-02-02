@@ -39,51 +39,51 @@ appsData.forEach((
 
         it(`Check ${property.appName} build and running (Check elements: Navigation, Header, Paragpaph)`, () => {
             basePage.checkElementExist({
-                selector: baseSelectors.navigation,
+                selector: baseSelectors.tags.navigation,
             })
             basePage.checkChildElementVisibility(
-                baseSelectors.navigation,
-                baseSelectors.navigationItem
+                baseSelectors.tags.navigation,
+                baseSelectors.css.navigation,
             )
             basePage.checkElementQuantity({
-                selector: baseSelectors.navigationItem,
+                selector: baseSelectors.css.navigation,
                 quantity: 3
             })
             basePage.checkElementHaveProperty({
-                selector: baseSelectors.linkTag,
+                selector: baseSelectors.tags.coreElements.link,
                 attr: Constants.commonConstantsData.commonAttributes.attr,
                 prop: Constants.commonConstantsData.commonAttributes.href,
                 value: Constants.commonConstantsData.commonAngularAppsData.mdmfNavigationItemLogo.link
             })
             basePage.checkElementHaveProperty({
-                selector: baseSelectors.linkTag,
+                selector: baseSelectors.tags.coreElements.link,
                 attr: Constants.commonConstantsData.commonAttributes.attr,
                 prop: Constants.commonConstantsData.commonAttributes.target,
                 value: Constants.commonConstantsData.commonAngularAppsData.mdmfNavigationItemLogo.targetBlank
             })
             basePage.checkChildElementContainText(
-                baseSelectors.navigation,
-                baseSelectors.navigationItem,
+                baseSelectors.tags.navigation,
+                baseSelectors.css.navigation,
                 Constants.commonConstantsData.home,
                 Constants.commonConstantsData.commonIndexes.one
             )
             basePage.checkChildElementContainText(
-                baseSelectors.navigation,
-                baseSelectors.navigationItem,
+                baseSelectors.tags.navigation,
+                baseSelectors.css.navigation,
                 Constants.commonConstantsData.commonAngularAppsData.mdmfNavigationItems.profile,
                 Constants.commonConstantsData.commonIndexes.two
             )
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h2,
+                selector: baseSelectors.tags.headers.h2,
                 text: property.headerText
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.paragraph,
+                selector: baseSelectors.tags.paragraph,
                 text: property.paragraphText
             })
             if(property.additionlParagraph) {
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.paragraph,
+                    selector: baseSelectors.tags.paragraph,
                     text: property.additionlParagraph
                 }) 
             }

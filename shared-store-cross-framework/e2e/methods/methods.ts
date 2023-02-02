@@ -15,7 +15,7 @@ export class SharedStoreCrossFrameworkMethods extends BaseMethods {
         text?: string
     }): void {
         cy.get(buttonsBlockSelector)
-            .find(baseSelectors.button)
+            .find(baseSelectors.tags.coreElements.button)
             .each((button: JQuery<HTMLElement>) => {
                 if(cssValue) {
                     expect(button.css(CssAttr.backgroundColor)).to.be.eq(cssValue)
@@ -31,10 +31,10 @@ export class SharedStoreCrossFrameworkMethods extends BaseMethods {
 
     public checkDifferInButtonsColors(buttonsBlockSelector: string, secondButtonsBlockSelector: string): void {
         cy.get(buttonsBlockSelector)
-            .find(baseSelectors.button)
+            .find(baseSelectors.tags.coreElements.button)
             .then((button: JQuery<HTMLElement>) => {
                 cy.get(secondButtonsBlockSelector)
-                    .find(baseSelectors.button)
+                    .find(baseSelectors.tags.coreElements.button)
                     .then((secondButton: JQuery<HTMLElement>) => {
 
                         expect(button.css(CssAttr.backgroundColor)).not.to.be.eq(secondButton.css(CssAttr.backgroundColor))

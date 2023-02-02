@@ -32,11 +32,11 @@ appsData.forEach((
             basePage.checkUrlText(`http://localhost:${property.host}/`, true)
             if (property.host == 8080){
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.divElement,
+                    selector: baseSelectors.tags.coreElements.div,
                     text: String(property.appName)
                 })
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.navigation,
+                    selector: baseSelectors.tags.navigation,
                     text: String (property.appNav)
                 })
             }

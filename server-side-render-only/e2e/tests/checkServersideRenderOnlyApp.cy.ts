@@ -34,18 +34,18 @@ appsData.forEach((
 
         it(`Check ${property.headerText} app build and running`, () => {
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h1,
+                selector: baseSelectors.tags.headers.h1,
                 text: property.headerText
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: property.sharedComponentText
             })
         })
 
         it('Update Shared component file', () => {
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: property.sharedComponentText
             })
             basePage.writeContentToFile({
@@ -63,12 +63,12 @@ appsData.forEach((
             if(property.host === 3000) {
                 basePage.openLocalhost(3001)
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.divElement,
+                    selector: baseSelectors.tags.coreElements.div,
                     text: property.updatedSharedComponentText
                 })
                 basePage.reloadWindow(true)
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.divElement,
+                    selector: baseSelectors.tags.coreElements.div,
                     text: property.updatedSharedComponentText
                 })
                 basePage.writeContentToFile({
@@ -79,12 +79,12 @@ appsData.forEach((
             }
             basePage.openLocalhost(3000)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: property.updatedSharedComponentText
             })
             basePage.reloadWindow(true)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: property.updatedSharedComponentText
             })
             basePage.writeContentToFile({
@@ -95,11 +95,11 @@ appsData.forEach((
 
         it(`Check ${property.headerText} app build and running & check shared component visibility`, () => {
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h1,
+                selector: baseSelectors.tags.headers.h1,
                 text: property.headerText
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: property.sharedComponentText
             })
         })

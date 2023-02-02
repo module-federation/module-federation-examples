@@ -21,13 +21,13 @@ describe("Check App 3", () => {
 
     it('Check button exists', () => {
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
+            selector: baseSelectors.tags.coreElements.button,
             text: Constants.updatedConstantsData.commonAppWithButton.app3})
     })
 
     it('Check button color', () => {
         basePage.checkElementWithTextHaveProperty({
-            selector: baseSelectors.button,
+            selector: baseSelectors.tags.coreElements.button,
             text: Constants.updatedConstantsData.commonAppWithButton.app3,
             prop: CssAttr.background,
             value: Constants.color.aquamarine

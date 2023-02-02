@@ -7,14 +7,14 @@ const basePage: BaseMethods = new BaseMethods()
 describe('It checks buttons with text visibility and position for both apps', function () {
     let appsData = [
         {
-            parentSelector: selectors.vueAppButtonsBlock,
-            selector: updatedSelectors.viteButtonSelector,
+            parentSelector: selectors.vue3DemoFederationWithViteApp.buttonsBlock,
+            selector: updatedSelectors.vue3DemoFederationWithViteApp.buttons.vite,
             text: Constants.elementsText.vue3DemoFederationWithViteApp.viteContent,
             host: 5000
         },
         {
-            parentSelector: selectors.vueAppButtonsBlock,
-            selector: updatedSelectors.webpackButtonSelector,
+            parentSelector: selectors.vue3DemoFederationWithViteApp.buttonsBlock,
+            selector: updatedSelectors.vue3DemoFederationWithViteApp.buttons.webpack,
             text: Constants.elementsText.vue3DemoFederationWithViteApp.webpackContent,
             host: 5001
         }

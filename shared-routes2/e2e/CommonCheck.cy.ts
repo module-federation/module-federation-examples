@@ -35,48 +35,48 @@ appsData.forEach((
 
         it (`Check ${property.appName} UI and buttons Home, About`, () => {
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h1,
+                selector: baseSelectors.tags.headers.h1,
                 text: property.appName
             })
             basePage.clickElementWithText({
-                selector: baseSelectors.linkTag,
+                selector: baseSelectors.tags.coreElements.link,
                 text: Constants.commonConstantsData.home
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h1,
+                selector: baseSelectors.tags.headers.h1,
                 text: Constants.elementsText.sharedRoutes2App.buttons.homeButtons.h1
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h2,
+                selector: baseSelectors.tags.headers.h2,
                 text: Constants.elementsText.sharedRoutes2App.buttons.homeButtons.h2
             })
             if(property.host==3001){
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.emphasis,
+                    selector: baseSelectors.tags.emphasis,
                     text: property.buttonEm
                 })
             }else{
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.emphasis,
+                    selector: baseSelectors.tags.emphasis,
                     text: property.buttonAbout
                 })
             }
             basePage.clickElementWithText({
-                selector: baseSelectors.linkTag,
+                selector: baseSelectors.tags.coreElements.link,
                 text: Constants.elementsText.vue3CliDemoApp.aboutTab
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h1,
+                selector: baseSelectors.tags.headers.h1,
                 text: Constants.elementsText.sharedRoutes2App.buttons.aboutButtons.h1
             })
             if(property.host==3001){
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.emphasis,
+                    selector: baseSelectors.tags.emphasis,
                     text: property.buttonAbout
                 })
             }else{
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.emphasis,
+                    selector: baseSelectors.tags.emphasis,
                     text: property.buttonEm
                 })
             }

@@ -42,30 +42,30 @@ export class VueCliMethods extends BaseMethods {
     public checkCodeTagAppearance
     (): void {
         this.checkElementContainText({
-            selector: baseSelectors.section,
+            selector: baseSelectors.tags.section,
             text: Constants.elementsText.vueCliApp.otherSectionCodeBlock,
             index: 0 ,
             contain: false
         })
         this.clickElementWithText({
-            selector: baseSelectors.button,
+            selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.vueCliApp.buttonsText.otherSectionButton,
         })
-        this.checkChildElementVisibility(baseSelectors.section, baseSelectors.code)
+        this.checkChildElementVisibility(baseSelectors.tags.section, baseSelectors.tags.code)
         this.checkElementWithTextPresence({
-            parentSelector: baseSelectors.section,
-            selector: baseSelectors.code,
+            parentSelector: baseSelectors.tags.section,
+            selector: baseSelectors.tags.code,
             text: Constants.elementsText.vueCliApp.otherSectionCodeBlock,
             visibilityState: 'be.visible'
         })
         this.reloadWindow()
         this.checkElementContainText({
-            selector: baseSelectors.section,
+            selector: baseSelectors.tags.section,
             text: Constants.elementsText.vueCliApp.otherSectionCodeBlock,
             index: 0 ,
             contain: false
         })
-        this.checkChildElementVisibility(baseSelectors.section, baseSelectors.code, false,
+        this.checkChildElementVisibility(baseSelectors.tags.section, baseSelectors.tags.code, false,
             '', '', 'not.be.visible')
     }
 }
