@@ -25,7 +25,9 @@ describe('It checks typescript-monorepo apps', () => {
         });
         it(`Check ${property.appName} contains button`, () => {
             basePage.openLocalhost(property.host)
-            basePage.checkElementVisibility(baseSelectors.tags.coreElements.button)
+            basePage.checkElementVisibility({
+                selector: baseSelectors.tags.coreElements.button
+            })
         });
 
         it(`Checks that button in ${property.appName} is not disabled`, () => {

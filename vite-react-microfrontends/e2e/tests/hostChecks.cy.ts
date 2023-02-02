@@ -90,7 +90,7 @@ describe("It checks host app", () => {
     })
 
     it('Checks host app card color is set to blue', () => {
-        basePage.checkElementWithTextHaveProperty({
+        basePage.checkElementHaveProperty({
             selector: commonSelectors.commonMicroFrontendsAppsCard,
             text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.hostCard,
             prop: CssAttr.css,
@@ -105,7 +105,7 @@ describe("It checks host app", () => {
             quantity: commonButtonsQuantity,
             waitUntil: true
         })
-        basePage.checkElementWithTextHaveProperty({
+        basePage.checkElementHaveProperty({
             selector: commonSelectors.commonMicroFrontendsAppsCard,
             text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.remoteCard,
             prop: CssAttr.css,

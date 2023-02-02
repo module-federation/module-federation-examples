@@ -13,9 +13,12 @@ describe('It checks names and symbols inside cards',  () => {
                 quantity: 2,
                 waitUntil: true
             })
-            basePage.checkChildElementVisibility(commonSelectors.commonMicroFrontendsAppsCard,
-                property.symbol, true , 'be.visible',
-                property.status, 'not.exist', property.symbolName === CommonTestData.commonMicroFrontendsAppsData[0].symbolName)
+            basePage.checkElementVisibility({
+                parentSelector: commonSelectors.commonMicroFrontendsAppsCard,
+                selector: property.symbol,
+                text: property.status,
+                parentElement: property.symbolName === CommonTestData.commonMicroFrontendsAppsData[0].symbolName
+            })
         });
 
         it(`Checks ${property.cardName} card includes status`, () => {

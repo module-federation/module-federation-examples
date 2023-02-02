@@ -14,14 +14,14 @@ describe('Check is Comprehensive Demo App5 working and have elements', () => {
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.comprehensiveDemoApp.App5.buttonText
         })
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: selectors.comprehensiveDemoApp.alert
         })
         basePage.checkElementWithTextPresence({
             selector: selectors.comprehensiveDemoApp.alert,
             text: Constants.elementsText.comprehensiveDemoApp.App5.alertText
         })
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: selectors.comprehensiveDemoApp.closeButton
         })
     })

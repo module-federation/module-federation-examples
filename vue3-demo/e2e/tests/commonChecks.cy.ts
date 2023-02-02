@@ -46,7 +46,9 @@ describe('It checks app names & messages',  () => {
 
         it('Checks button visibility', () => {
             basePage.openLocalhost(property.host)
-            basePage.checkElementVisibility(baseSelectors.tags.coreElements.button)
+            basePage.checkElementVisibility({
+                selector: baseSelectors.tags.coreElements.button
+            })
         })
 
         it(`Checks that button is not disabled`, () => {

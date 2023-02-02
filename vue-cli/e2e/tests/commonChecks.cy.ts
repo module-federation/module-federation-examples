@@ -72,8 +72,12 @@ describe('It checks elements appearing and accessibility', () =>{
         it('Checks that other section does not contain name header', () => {
             basePage.skipTestByCondition(property.host === 9000)
             basePage.openLocalhost(property.host)
-            basePage.checkChildElementVisibility(baseSelectors.tags.section, baseSelectors.tags.headers.h1, false, '',
-                Constants.elementsText.vueCliApp.sectionsDescriptions.otherSection)
+            basePage.checkElementVisibility({
+                parentSelector: baseSelectors.tags.section,
+                selector: baseSelectors.tags.headers.h1,
+                isVisible: false,
+                text: Constants.elementsText.vueCliApp.sectionsDescriptions.otherSection
+            })
         })
 
         it('Checks that other section includes button', () => {

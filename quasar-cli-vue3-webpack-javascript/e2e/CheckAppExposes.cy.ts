@@ -52,7 +52,7 @@ appsData.forEach((
             basePage.clickElementBySelector({
                 selector: baseSelectors.tags.coreElements.button,
             })
-            basePage.checkElementExist({
+            basePage.checkElementVisibility({
                 selector: property.appExposesComponentsButton,
                 isVisible: false
             })

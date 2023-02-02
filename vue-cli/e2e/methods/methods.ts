@@ -45,13 +45,16 @@ export class VueCliMethods extends BaseMethods {
             selector: baseSelectors.tags.section,
             text: Constants.elementsText.vueCliApp.otherSectionCodeBlock,
             index: 0 ,
-            contain: false
+            isContain: false
         })
         this.clickElementWithText({
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.vueCliApp.buttonsText.otherSectionButton,
         })
-        this.checkChildElementVisibility(baseSelectors.tags.section, baseSelectors.tags.code)
+        this.checkElementVisibility({
+            parentSelector: baseSelectors.tags.section,
+            selector: baseSelectors.tags.code
+        })
         this.checkElementWithTextPresence({
             parentSelector: baseSelectors.tags.section,
             selector: baseSelectors.tags.code,
@@ -63,9 +66,13 @@ export class VueCliMethods extends BaseMethods {
             selector: baseSelectors.tags.section,
             text: Constants.elementsText.vueCliApp.otherSectionCodeBlock,
             index: 0 ,
-            contain: false
+            isContain: false
         })
-        this.checkChildElementVisibility(baseSelectors.tags.section, baseSelectors.tags.code, false,
-            '', '', 'not.be.visible')
+        this.checkElementVisibility({
+            parentSelector: baseSelectors.tags.section,
+            selector: baseSelectors.tags.code,
+            isVisible: false,
+            notVisibleState: 'not.be.visible'
+        })
     }
 }

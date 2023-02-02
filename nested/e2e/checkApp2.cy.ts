@@ -31,14 +31,13 @@ describe("Check App 2", () => {
     })
 
     it('Check colors', () => {
-        basePage.checkElementWithTextHaveProperty({
+        basePage.checkElementHaveProperty({
             selector: baseSelectors.tags.coreElements.div,
             text: Constants.elementsText.nestedApp.app2Container,
             prop: CssAttr.backgroundColor,
             value: Constants.color.chineseSilver
         })
-
-        basePage.checkElementWithTextHaveProperty({
+        basePage.checkElementHaveProperty({
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.updatedConstantsData.commonAppWithButton.app3,
             prop: CssAttr.background,

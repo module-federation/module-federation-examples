@@ -21,14 +21,14 @@ describe("Check host app", () => {
     })
 
     it('Check button color', () => {
-        basePage.checkElementWithTextHaveProperty({
+        basePage.checkElementHaveProperty({
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.nextJsReactApp.buttons.nextJS,
             prop: CssAttr.background,
             value: Constants.color.lightSaturatedYellow
         })
         cy.wait(200)
-        basePage.checkElementWithTextHaveProperty({
+        basePage.checkElementHaveProperty({
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.nextJsReactApp.buttons.remote,
             prop: CssAttr.background,

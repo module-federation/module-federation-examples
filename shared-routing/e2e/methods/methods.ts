@@ -43,7 +43,10 @@ export class SharedRoutingMethods extends BaseMethods {
                 text: buttonType,
                 visibilityState: 'be.visible'
             })
-            this.checkElementVisibility(updatedSelectors.sharedRoutingApp.hamburgerMenuButton, false)
+            this.checkElementVisibility({
+                selector: updatedSelectors.sharedRoutingApp.hamburgerMenuButton,
+                isVisible: false
+            })
             this.clickElementBySelector({selector: selectors.sharedRoutingApp.closeSideMenuButton})
             this.checkElementWithTextPresence({
                 selector: baseSelectors.css.href.replace('{link}', `/${buttonType.toLowerCase()}`),
@@ -123,8 +126,11 @@ export class SharedRoutingMethods extends BaseMethods {
     }): void {
         textArray.forEach(text => {
             if(childElement) {
-                this.checkChildElementVisibility(parentSelector, selector.replace(
-                        '{cellType}', text.replace(/\s/g, '_').toUpperCase()))
+                this.checkElementVisibility({
+                    parentSelector,
+                    selector: selector.replace(
+                        '{cellType}', text.replace(/\s/g, '_').toUpperCase())
+                })
             } else {
                 this.checkElementWithTextPresence({
                     parentSelector,

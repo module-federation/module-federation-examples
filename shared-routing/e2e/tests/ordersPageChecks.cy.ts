@@ -45,7 +45,9 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         })
 
         it('checks visit pages buttons block visibility', () => {
-            basePage.checkElementVisibility(selectors.sharedRoutingApp.navigationButtonsBlock)
+            basePage.checkElementVisibility({
+                selector: selectors.sharedRoutingApp.navigationButtonsBlock
+            })
         })
 
         it('checks that profile & dashboard page can be visited from orders page by click and stays on page after reload', () => {
@@ -54,7 +56,9 @@ CommonTestData.sharedRoutingAppHosts.forEach((property: { host: number }) => {
         })
 
         it('checks orders block visibility', () => {
-            basePage.checkElementVisibility(sharedRoutingAppOrdersBlockSelector)
+            basePage.checkElementVisibility({
+                selector: sharedRoutingAppOrdersBlockSelector
+            })
         })
 
         it('checks orders header visibility', () => {

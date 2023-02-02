@@ -1,8 +1,10 @@
 import { Constants } from './../../cypress/fixtures/constants';
 import { baseSelectors } from './../../cypress/common/selectors';
 import { BaseMethods } from "../../cypress/common/base";
+import {DifferentReactVersionsMethods} from "./methods/methods";
 
 const basePage: BaseMethods = new BaseMethods()
+const methodsPage: DifferentReactVersionsMethods = new DifferentReactVersionsMethods()
 
 describe('Check App1', () => {
     beforeEach(() => {
@@ -18,7 +20,7 @@ describe('Check App1', () => {
             selector: baseSelectors.tags.headers.h2,
             text: Constants.elementsText.differentReactVersionsApps.subheader
         })
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: baseSelectors.tags.inputs.input
         })
         basePage.checkElementWithTextPresence({
@@ -42,12 +44,12 @@ describe('Check App1', () => {
             text: Constants.updatedConstantsData.commonAppWithButton.app2
         })
         basePage.checkElementHaveProperty({
-            selector: basePage.getBlockSelector(baseSelectors.tags.coreElements.button.toUpperCase()),
+            selector: methodsPage.getBlockSelector(baseSelectors.tags.coreElements.button.toUpperCase()),
             prop: Constants.commonConstantsData.commonAttributes.border,
             value: Constants.color.nonRgbValues.borderRed1px
         })
         basePage.checkElementHaveProperty({
-            selector: basePage.getBlockSelector(baseSelectors.tags.coreElements.div.toUpperCase()),
+            selector: methodsPage.getBlockSelector(baseSelectors.tags.coreElements.div.toUpperCase()),
             prop: Constants.commonConstantsData.commonAttributes.border,
             value: Constants.color.nonRgbValues.borderRed1px
         })

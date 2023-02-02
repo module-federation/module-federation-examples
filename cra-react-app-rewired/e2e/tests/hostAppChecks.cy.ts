@@ -9,10 +9,14 @@ describe("It checks host app", () => {
     })
 
     it('Checks imported remote component visibility', () => {
-        basePage.checkElementVisibility(selectors.craReactRewiredApp.componentInfo)
+        basePage.checkElementVisibility({
+            selector: selectors.craReactRewiredApp.componentInfo,
+        })
     })
 
     it('Checks imported remote component block includes red border', () => {
-        basePage.checkElementVisibility(updatedSelectors.craReactAppRewiredApp.componentBorder)
+        basePage.checkElementVisibility({
+            selector: updatedSelectors.craReactAppRewiredApp.componentBorder,
+        })
     })
 })

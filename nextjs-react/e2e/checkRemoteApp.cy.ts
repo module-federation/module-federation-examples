@@ -27,7 +27,7 @@ describe("Check remote app", () => {
     })
 
     it('Check button color', () => {
-        basePage.checkElementWithTextHaveProperty( {
+        basePage.checkElementHaveProperty({
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.nextJsReactApp.buttons.remote,
             prop: CssAttr.background,

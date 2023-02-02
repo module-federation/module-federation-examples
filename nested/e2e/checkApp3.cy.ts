@@ -26,7 +26,7 @@ describe("Check App 3", () => {
     })
 
     it('Check button color', () => {
-        basePage.checkElementWithTextHaveProperty({
+        basePage.checkElementHaveProperty({
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.updatedConstantsData.commonAppWithButton.app3,
             prop: CssAttr.background,

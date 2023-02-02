@@ -31,13 +31,19 @@ describe('It checks buttons functionality', () => {
 
         it(`Checks that game board appears after click on ${property.buttonName} button`, () => {
             basePage.openLocalhost(8080)
-            basePage.checkElementVisibility(selectors.rustWasmApp.gameBoard, false)
+            basePage.checkElementVisibility({
+                selector: selectors.rustWasmApp.gameBoard,
+                isVisible: false,
+                notVisibleState: 'not.be.visible'
+            })
             basePage.checkInfoInConsole(property.consoleMessage,StubTypes.notToBeCalled, false)
             basePage.clickElementWithText({
                 selector: baseSelectors.tags.coreElements.button,
                 text: property.buttonName
             })
-            basePage.checkElementVisibility(selectors.rustWasmApp.gameBoard)
+            basePage.checkElementVisibility({
+                selector:selectors.rustWasmApp.gameBoard,
+            })
             basePage.checkInfoInConsole(property.consoleMessage,StubTypes.beCalled, false, false)
         })
 
@@ -45,7 +51,11 @@ describe('It checks buttons functionality', () => {
             basePage.openLocalhost(8080)
             methodsPage.checkGameBoardAppearsByClick(property.buttonName)
             basePage.reloadWindow()
-            basePage.checkElementVisibility(selectors.rustWasmApp.gameBoard, false)
+            basePage.checkElementVisibility({
+                selector: selectors.rustWasmApp.gameBoard,
+                isVisible: false,
+                notVisibleState: 'not.be.visible'
+            })
         })
 
         it(`Checks ${property.buttonName} button still functioning even when game already started`, () => {
@@ -55,7 +65,9 @@ describe('It checks buttons functionality', () => {
                 selector: baseSelectors.tags.coreElements.button,
                 text: appsData[0].buttonName
             })
-            basePage.checkElementVisibility(selectors.rustWasmApp.gameBoard)
+            basePage.checkElementVisibility({
+                selector: selectors.rustWasmApp.gameBoard,
+            })
             basePage.checkInfoInConsole(property.consoleMessage,StubTypes.notToBeCalled, false)
             basePage.clickElementWithText({
                 selector: baseSelectors.tags.coreElements.button,
@@ -70,7 +82,9 @@ describe('It checks buttons functionality', () => {
                 selector: baseSelectors.tags.coreElements.button,
                 text: appsData[0].buttonName
             })
-            basePage.checkElementVisibility(selectors.rustWasmApp.gameBoard)
+            basePage.checkElementVisibility({
+                selector: selectors.rustWasmApp.gameBoard,
+            })
             basePage.checkInfoInConsole(property.consoleMessage, StubTypes.notToBeCalled, false)
             basePage.clickElementWithText({
                 selector: baseSelectors.tags.coreElements.button,
@@ -83,7 +97,9 @@ describe('It checks buttons functionality', () => {
                 selector: baseSelectors.tags.coreElements.button,
                 text: property.buttonName
             })
-            basePage.checkElementVisibility(selectors.rustWasmApp.gameBoard)
+            basePage.checkElementVisibility({
+                selector: selectors.rustWasmApp.gameBoard,
+            })
             basePage.checkInfoInConsole(property.consoleMessage,StubTypes.beCalled, false, false)
         })
 
