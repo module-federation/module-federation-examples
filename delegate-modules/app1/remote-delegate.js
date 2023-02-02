@@ -4,15 +4,14 @@ module.exports = new Promise((resolve, reject) => {
   const __webpack_error__ = new Error()
   __webpack_require__.l(
     url,
-    function (event) {
+    (event) => {
       if (typeof window[global] !== 'undefined') return resolve(window[global]);
-      var realSrc = event && event.target && event.target.src;
-      __webpack_error__.message = 'Loading script failed.\\n(' + event.message + ': ' + realSrc + ')';
+      const realSrc = event?.target?.src;
+      __webpack_error__.message = `Loading script failed.\\n(${event.message}: ${realSrc})`;
       __webpack_error__.name = 'ScriptExternalLoadError';
       __webpack_error__.stack = event.stack;
       reject(__webpack_error__);
-    },medusa
-    global,
+    }, global
   );
 })
 
