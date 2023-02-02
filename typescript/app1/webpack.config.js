@@ -47,7 +47,7 @@ module.exports = {
           {
             'react-dom': {
               singleton: true,
-              requiredVersion: pkg.dependencies.react-dom,
+              requiredVersion: pkg.dependencies['react-dom'],
             },
           }
         ],

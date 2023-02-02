@@ -6,7 +6,7 @@ import {CommonTestData} from "../../../cypress/fixtures/commonTestData";
 const basePage: BaseMethods = new BaseMethods()
 
 describe('It checks typescript-project-references apps', () => {
-    CommonTestData.commonTypeScriptMonorepoProjectReferencesAppsData.forEach((property: { host: number, header: string, appName: string }) => {
+    CommonTestData.commonTypeScriptAppsData.forEach((property: { host: number, header: string, appName: string }) => {
         it(`Check that both apps shares ${property.header} header`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
@@ -49,7 +49,7 @@ describe('It checks typescript-project-references apps', () => {
 
         it(`Checks that apps names is not equal`, () => {
             basePage.openLocalhost(property.host)
-            basePage.compareInfoBetweenHosts(updatedSelectors.common.appName, property.host === 3002 ? CommonTestData.commonTypeScriptMonorepoProjectReferencesAppsData[0].host: CommonTestData.commonTypeScriptMonorepoProjectReferencesAppsData[1].host, false)
+            basePage.compareInfoBetweenHosts(updatedSelectors.common.appName, property.host === 3002 ? CommonTestData.commonTypeScriptAppsData[0].host: CommonTestData.commonTypeScriptAppsData[1].host, false)
         });
     });
 });

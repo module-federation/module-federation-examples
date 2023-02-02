@@ -39,7 +39,7 @@ export class CommonTestData {
             status: Constants.elementsText.commonMicroFrontendsApps.cardMessages.remoteCard,
         }
     ];
-    public static readonly commonTypeScriptMonorepoProjectReferencesAppsData = [
+    public static readonly commonTypeScriptAppsData = [
         {
             host: 3001,
             header: Constants.commonConstantsData.typeScript.charAt(0).toUpperCase(),
