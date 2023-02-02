@@ -1,6 +1,7 @@
 {
   "name": "angular-universal-ssr_host-app",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -26,17 +27,17 @@
     "@angular/platform-server": "~13.3.12",
     "@angular/router": "~13.3.12",
     "@nguniversal/express-engine": "^12.1.0",
-    "express": "^4.15.2",
-    "rxjs": "~6.6.0",
-    "tslib": "^2.0.0",
-    "zone.js": "~0.11.4"
+    "express": "^4.17.3",
+    "rxjs": "~7.5.6",
+    "tslib": "^2.3.1",
+    "zone.js": "~0.11.5"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "13.3.10",
     "@angular/cli": "13.3.10",
     "@angular/compiler-cli": "13.3.12",
     "@ngtools/webpack": "file:../patched_packages/_ngtools_webpack.tgz",
-    "@nguniversal/builders": "9.1.1",
+    "@nguniversal/builders": "13.0.2",
     "clean-webpack-plugin": "4.0.0",
     "html-webpack-plugin": "5.5.0",
     "raw-loader": "4.0.2",
