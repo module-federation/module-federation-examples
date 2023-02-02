@@ -11,7 +11,7 @@ describe("It checks other app", () => {
 
     it('Checks other section browser alert text', () => {
         basePage.checkBrowserAlertByText({
-            selector: baseSelectors.button,
+            selector: baseSelectors.tags.coreElements.button,
             alertMessage: Constants.commonPhrases.vueCliApp.otherAppAlertMessage
         })
     })

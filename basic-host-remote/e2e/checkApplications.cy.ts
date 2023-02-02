@@ -6,18 +6,18 @@ const basePage: BaseMethods = new BaseMethods()
 
 let appsData = [
     {
-        headerSelector: baseSelectors.h1,
-        subHeaderSelector: baseSelectors.h2,
-        buttonSelector: baseSelectors.button,
+        headerSelector: baseSelectors.tags.headers.h1,
+        subHeaderSelector: baseSelectors.tags.headers.h2,
+        buttonSelector: baseSelectors.tags.coreElements.button,
         headerText: Constants.commonConstantsData.basicComponents.basicHostRemote,
         appNameText: Constants.commonConstantsData.commonCountAppNames.app1,
         buttonNameText: Constants.updatedConstantsData.commonAppWithButton.app2,
         host: 3001
     },
     {
-        headerSelector: baseSelectors.h1,
-        subHeaderSelector: baseSelectors.h2,
-        buttonSelector: baseSelectors.button,
+        headerSelector: baseSelectors.tags.headers.h1,
+        subHeaderSelector: baseSelectors.tags.headers.h2,
+        buttonSelector: baseSelectors.tags.coreElements.button,
         headerText: Constants.commonConstantsData.basicComponents.basicHostRemote,
         appNameText: Constants.commonConstantsData.commonCountAppNames.app2,
         buttonNameText: Constants.updatedConstantsData.commonAppWithButton.app2,

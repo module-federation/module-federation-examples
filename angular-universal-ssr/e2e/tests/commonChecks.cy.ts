@@ -28,7 +28,7 @@ describe('It checks components functionality', () => {
 
     // @ts-ignore
     appsData.forEach((property: { componentName : string, tabName: string, componentText: string, link: string }) => {
-        const appTabSelector: string = updatedSelectors.angularUniversalSsrTab
+        const appTabSelector: string = updatedSelectors.angularUniversalSsrApp.tab
 
         it(`Checks that ${property.componentName} component element text will be visible only if ${property.componentName} tab is active & text is not reverted after reload`, () => {
             basePage.openLocalhost(4000)
@@ -48,7 +48,7 @@ describe('It checks components functionality', () => {
             basePage.reloadWindow()
             if(property.componentName !== appsData[2].componentName) {
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.appRoot,
+                    selector: baseSelectors.tags.appRoot,
                     text: property.componentText,
                     visibilityState: 'be.visible'
                 })

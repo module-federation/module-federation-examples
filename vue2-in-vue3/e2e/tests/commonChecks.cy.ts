@@ -23,7 +23,7 @@ describe('It checks vue2-in-vue3 connection sample', () => {
         it(`Check ${property.headerName} header visibility`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: property.headerName,
                 visibilityState: 'be.visible'
             })
@@ -32,7 +32,7 @@ describe('It checks vue2-in-vue3 connection sample', () => {
         it(`Check that both apps shares the button with same text`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 text: Constants.elementsText.vue2InVue3App.commonButtonText,
                 visibilityState: 'be.visible'
             })
@@ -41,7 +41,7 @@ describe('It checks vue2-in-vue3 connection sample', () => {
         it(`Check that in ${property.headerName} button is active`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementState({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 state: 'not.be.disabled'
             })
         });
@@ -49,7 +49,7 @@ describe('It checks vue2-in-vue3 connection sample', () => {
         it(`Check that in ${property.headerName} app by default counter set to 0`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: Constants.commonPhrases.vue2InVue3App.defaultCounterText,
                 visibilityState: 'be.visible'
             })
@@ -58,7 +58,7 @@ describe('It checks vue2-in-vue3 connection sample', () => {
         it(`Checks component state visibility for ${property.headerName}`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: property.componentState
             })
         });
@@ -67,7 +67,7 @@ describe('It checks vue2-in-vue3 connection sample', () => {
             basePage.openLocalhost(property.host)
             if(property.headerName === Constants.commonPhrases.vue2InVue3App.appsNames.vue3) {
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.divElement,
+                    selector: baseSelectors.tags.coreElements.div,
                     text: Constants.commonConstantsData.commonVueAppComponentState,
                     visibilityState: 'be.visible'
                 })
@@ -76,12 +76,12 @@ describe('It checks vue2-in-vue3 connection sample', () => {
             }
 
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: Constants.commonPhrases.vue2InVue3App.componentState,
                 visibilityState: 'be.visible'
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: Constants.commonConstantsData.commonVueAppComponentState,
                 isVisible: false
             })
@@ -90,11 +90,11 @@ describe('It checks vue2-in-vue3 connection sample', () => {
         it(`Check that in ${property.headerName} app color of component info set to red`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.style.replace('{style}', Constants.color.nonRgbValues.red),
+                selector: baseSelectors.css.style.replace('{style}', Constants.color.nonRgbValues.red),
                 text: Constants.commonPhrases.vue2InVue3App.defaultCounterText
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.style.replace('{style}',  Constants.color.nonRgbValues.red),
+                selector: baseSelectors.css.style.replace('{style}',  Constants.color.nonRgbValues.red),
                 text: property.componentState
             })
         });
@@ -102,8 +102,8 @@ describe('It checks vue2-in-vue3 connection sample', () => {
         it(`Checks counter on ${property.headerName} changes after click and returns to default after reload`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkCounterFunctionality({
-                button: baseSelectors.button,
-                counterElement: baseSelectors.divElement,
+                button: baseSelectors.tags.coreElements.button,
+                counterElement: baseSelectors.tags.coreElements.div,
                 counterText: Constants.commonPhrases.vue2InVue3App.defaultCounterText,
                 isButtonTexted: false,
                 isReloaded: true
@@ -113,8 +113,8 @@ describe('It checks vue2-in-vue3 connection sample', () => {
         it(`Compares counter on ${property.headerName} with quantity of clicks`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkCounterFunctionality({
-                button: baseSelectors.button,
-                counterElement: baseSelectors.divElement,
+                button: baseSelectors.tags.coreElements.button,
+                counterElement: baseSelectors.tags.coreElements.div,
                 counterText: Constants.commonPhrases.vue2InVue3App.defaultCounterText,
                 isButtonTexted: false,
                 isValueCompared: true
@@ -127,12 +127,12 @@ describe('It checks vue2-in-vue3 connection sample', () => {
 
             basePage.openLocalhost(property.host)
             basePage.checkCounterFunctionality({
-                button: baseSelectors.button,
-                counterElement: baseSelectors.divElement,
+                button: baseSelectors.tags.coreElements.button,
+                counterElement: baseSelectors.tags.coreElements.div,
                 counterText: Constants.commonPhrases.vue2InVue3App.defaultCounterText,
                 isButtonTexted: false
             })
-            basePage.checkInfoOnNonDefaultHost(host, baseSelectors.divElement,
+            basePage.checkInfoOnNonDefaultHost(host, baseSelectors.tags.coreElements.div,
                 defaultCounterText, defaultCounterText.replace(/[0-9]/g, clicksCounter.toString()))
         });
     });

@@ -1,4 +1,4 @@
-import {baseSelectors, block, buttons, fields} from "./selectors";
+import {baseSelectors, commonSelectors, selectors} from "./selectors";
 import {Constants} from "../fixtures/constants";
 import {CssAttr} from "../types/cssAttr";
 import {StubTypes} from "../types/stubTypes";
@@ -65,19 +65,19 @@ export class BaseMethods {
 
     public addUser(name: string, email: string): void {
         this.fillField({
-            selector: fields.commonField.replace('{fieldName}', Constants.selectorParts.formFieldNames.nameField),
+            selector: commonSelectors.formField.replace('{fieldName}', Constants.selectorParts.formFieldNames.nameField),
             text: name
         })
         this.fillField({
-            selector: fields.commonField.replace('{fieldName}', Constants.selectorParts.formFieldNames.emailField),
+            selector: commonSelectors.formField.replace('{fieldName}', Constants.selectorParts.formFieldNames.emailField),
             text: email
         })
         this.checkElementState({
-            selector: buttons.buttonPrimary,
+            selector: commonSelectors.commonAngularAppsSelectors.buttons.primary,
             state: 'not.be.disabled'
         })
         this.clickElementBySelector({
-            selector: buttons.buttonPrimary
+            selector: commonSelectors.commonAngularAppsSelectors.buttons.primary
         })
     }
 
@@ -652,7 +652,7 @@ export class BaseMethods {
     }
 
     public getInputSelector(selector: string): string {
-        return selector.includes(Constants.selectorParts.sharedRoutingAppSelectorsParts.userInfo.toUpperCase()) ? baseSelectors.textarea : baseSelectors.input
+        return selector.includes(Constants.selectorParts.sharedRoutingAppSelectorsParts.userInfo.toUpperCase()) ? baseSelectors.tags.inputs.textarea : baseSelectors.tags.inputs.input
     }
 
     public checkInputValue(value: string, parentElement?: string, isLengthChecked: boolean = false): void {
@@ -667,7 +667,7 @@ export class BaseMethods {
             return;
         }
 
-        cy.get(baseSelectors.input)
+        cy.get(baseSelectors.tags.inputs.input)
             .invoke('val')
             .then((text: any) => {
                 this._checkInputValue(text, value, isLengthChecked)
@@ -705,7 +705,7 @@ export class BaseMethods {
     }
 
     public getBlockSelector(blockType: string): string {
-        return block.commonReactBlock.replace('{blockType}', blockType);
+        return selectors.differentReactVersionsIsolatedApp.commonReactBlock.replace('{blockType}', blockType);
     }
 
     public goBack(): void {

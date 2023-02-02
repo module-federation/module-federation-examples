@@ -23,7 +23,7 @@ describe('It checks self-healing apps', () => {
         it(`Checks ${Constants.commonPhrases.selfHealingApp.headerName} header visibility`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: Constants.commonPhrases.selfHealingApp.headerName,
                 visibilityState: 'be.visible'
             })
@@ -32,7 +32,7 @@ describe('It checks self-healing apps', () => {
         it(`Checks ${property.appName} app name visibility`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: property.appName,
                 visibilityState: 'be.visible'
             })
@@ -41,7 +41,7 @@ describe('It checks self-healing apps', () => {
         it(`Checks button text visibility for ${property.appName} app`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 text: Constants.commonConstantsData.commonButtonWithEmoji,
                 visibilityState: 'be.visible'
             })
@@ -50,7 +50,7 @@ describe('It checks self-healing apps', () => {
         it(`Checks that button on both apps has pink color`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementHaveProperty({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 prop: CssAttr.backgroundColor,
                 value: Constants.color.pink
             })
@@ -58,7 +58,7 @@ describe('It checks self-healing apps', () => {
 
         it(`Checks that app names is not equal`, () => {
             basePage.openLocalhost(property.host)
-            basePage.compareInfoBetweenHosts(updatedSelectors.commonAppNameSelector, property.host === 3002 ? appsData[0].host: appsData[1].host, false)
+            basePage.compareInfoBetweenHosts(updatedSelectors.common.appName, property.host === 3002 ? appsData[0].host: appsData[1].host, false)
         });
 
         it(`Checks that only ${appsData[1].appName} webpack config includes shared styled components`, () => {
