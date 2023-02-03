@@ -1,0 +1,153 @@
+name: on workflow run
+
+# read-write repo token
+# access to secrets
+on:
+  workflow_run:
+    workflows: ["on pull request"]
+    types:
+      - completed
+
+jobs:
+
+  stop-previous-run:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.11.0
+        with:
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+
+  comment-to-pr:
+    runs-on: ubuntu-22.04
+    needs: stop-previous-run
+    if: >
+      github.event.workflow_run.event == 'pull_request'
+    steps:
+      - name: 'Download artifact'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               run_id: ${{github.event.workflow_run.id }}
+            });
+            const matchArtifact = artifacts.data.artifacts.find(artifact => artifact.name === 'env_for_comment');
+            if (!matchArtifact) {
+              throw new Error('Artifact not found');
+            }
+            const download = await github.rest.actions.downloadArtifact({
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               artifact_id: matchArtifact.id,
+               archive_format: 'zip'
+            });
+            const fs = require('fs');
+            fs.writeFileSync('${{github.workspace}}/env_for_comment.zip', Buffer.from(download.data));
+      - run: unzip env_for_comment.zip
+
+      - name: 'Comment to PR -- if success'
+        if: github.event.workflow_run.conclusion == 'success'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const issue_number = Number(fs.readFileSync('./prNum'));
+            const runNumber = Number(fs.readFileSync('./runNum'));
+            const runId = Number(fs.readFileSync('./runId'));
+            const repoFullName = fs.readFileSync('./repoFullName');
+            const ownerName = fs.readFileSync('./ownerName');
+            const githubPagesLink = 'https://' + ownerName.toString().toLowerCase().trim() + '.github.io/' + String(repoFullName).replace(`${ownerName.toString().trim()}/`, '') + '/';
+            const githubRunLink = 'https://github.com/' + repoFullName + '/actions/runs/' + runId;
+            github.rest.issues.createComment({
+              issue_number: issue_number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'All tests are passed ✅ \n Checkout tests results here: <a href="' + githubPagesLink + runNumber + '">Cypress e2e Test Report</a> \n Link to GitHub workflow: <a href="' + githubRunLink + '">Github Workflow Link</a> \n Take care of yourself and have a great day! 🌞 \n❕Note: Report deployment may take up to 5 minutes.'
+            })
+
+      - name: 'Comment to PR -- if failed'
+        if: github.event.workflow_run.conclusion == 'failure'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const issue_number = Number(fs.readFileSync('./prNum'));
+            const runNumber = Number(fs.readFileSync('./runNum'));
+            const runId = Number(fs.readFileSync('./runId'));
+            const repoFullName = fs.readFileSync('./repoFullName');
+            const ownerName = fs.readFileSync('./ownerName');
+            const githubPagesLink = 'https://' + ownerName.toString().toLowerCase().trim() + '.github.io/' + String(repoFullName).replace(`${ownerName.toString().trim()}/`, '') + '/';
+            const githubRunLink = 'https://github.com/' + repoFullName + '/actions/runs/' + runId;
+            github.rest.issues.createComment({
+              issue_number: issue_number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Workflow is failed ❌ \n Test might not start, so please chekout workflow first \n Link to GitHub workflow: <a href="' + githubRunLink + '">Github Workflow Link</a> \n Checkout tests results here: <a href="' + githubPagesLink + runNumber + '">Cypress e2e Test Report</a> \n Take care of yourself and have a great day! 🌞 \n❕Note: Report deployment may take up to 5 minutes.'
+            })
+
+      - name: 'Comment to PR -- if cancelled'
+        if: github.event.workflow_run.conclusion == 'cancelled'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const issue_number = Number(fs.readFileSync('./prNum'));
+            const runNumber = Number(fs.readFileSync('./runNum'));
+            const runId = Number(fs.readFileSync('./runId'));
+            const repoFullName = fs.readFileSync('./repoFullName');
+            const ownerName = fs.readFileSync('./ownerName');
+            const githubPagesLink = 'https://' + ownerName.toString().toLowerCase().trim() + '.github.io/' + String(repoFullName).replace(`${ownerName.toString().trim()}/`, '') + '/';
+            const githubRunLink = 'https://github.com/' + repoFullName + '/actions/runs/' + runId;
+            github.rest.issues.createComment({
+              issue_number: issue_number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Workflow is cancelled 🚫 \n Test might not start, so please chekout workflow first \n Link to GitHub workflow: <a href="' + githubRunLink + '">Github Workflow Link</a> \n Checkout tests results: <a href="' + githubPagesLink + runNumber + '">Cypress e2e Test Report</a> \n Take care of yourself and have a great day! 🌞 \n❕Note: Report deployment may take up to 5 minutes.'
+            })
+
+      - name: 'Add label to PR -- if success'
+        if: github.event.workflow_run.conclusion == 'success'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const issue_number = Number(fs.readFileSync('./prNum'));
+            github.rest.issues.addLabels({
+              issue_number: issue_number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['e2e-success']
+            })
+
+      - name: 'Add label to PR -- if failed'
+        if: github.event.workflow_run.conclusion == 'failure'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const issue_number = Number(fs.readFileSync('./prNum'));
+            github.rest.issues.addLabels({
+              issue_number: issue_number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['e2e-failure']
+            })
+
+      - name: 'Add label to PR -- if cancelled'
+        if: github.event.workflow_run.conclusion == 'cancelled'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const issue_number = Number(fs.readFileSync('./prNum'));
+            github.rest.issues.addLabels({
+              issue_number: issue_number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['e2e-cancelled']
+            })
