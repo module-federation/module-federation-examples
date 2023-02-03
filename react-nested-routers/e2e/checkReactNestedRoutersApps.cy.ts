@@ -209,53 +209,55 @@ describe('React Nested Routers', () => {
         });
     });
     
-    describe('Host app', () => {
-        const { pages } = hostConfig;
+    describe('React Nested Routers', () => {
+        context('Host app', () => {
+            const { pages } = hostConfig;
     
-        beforeEach(() => {
-            basePage.openLocalhost(hostConfig.port)
-        })
-    
-        it('should rendered correct pages and remotes', () => {
-            basePage.checkElementVisibility({
-                selector: baseSelectors.tags.navigation
+            beforeEach(() => {
+                basePage.openLocalhost(hostConfig.port)
             })
-            pages.forEach((item) => {
-                basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.tags.coreElements.link,
-                    text: item.name,
-                    index: item.index
+        
+            it('should rendered correct pages and remotes', () => {
+                basePage.checkElementVisibility({
+                    selector: baseSelectors.tags.navigation
                 })
-                basePage.checkElementHaveProperty({
-                    selector: baseSelectors.tags.coreElements.link,
-                    text: item.name,
-                    attr: Constants.commonConstantsData.commonAttributes.attr,
-                    prop: Constants.commonConstantsData.commonAttributes.href,
-                    value: item.link
+                pages.forEach((item) => {
+                    basePage.checkElementWithTextPresence({
+                        selector: baseSelectors.tags.coreElements.link,
+                        text: item.name,
+                        index: item.index
+                    })
+                    basePage.checkElementHaveProperty({
+                        selector: baseSelectors.tags.coreElements.link,
+                        text: item.name,
+                        attr: Constants.commonConstantsData.commonAttributes.attr,
+                        prop: Constants.commonConstantsData.commonAttributes.href,
+                        value: item.link
+                    })
                 })
             })
-        })
-    
-        it('should allow to navigate between pages and mount/unmount remotes', () => {
-            pages.forEach((item) => {
-                basePage.clickElementWithText({
-                    selector: baseSelectors.tags.coreElements.link,
-                    text: item.name
-                })
-                basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.tags.coreElements.div,
-                    text: item.text
-                })
-                basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.tags.coreElements.link,
-                    text: item.linkText
-                })
-                basePage.checkElementHaveProperty({
-                    selector: baseSelectors.tags.coreElements.link,
-                    text: item.linkText,
-                    attr: Constants.commonConstantsData.commonAttributes.attr,
-                    prop: Constants.commonConstantsData.commonAttributes.href,
-                    value: item.linkHref
+        
+            it('should allow to navigate between pages and mount/unmount remotes', () => {
+                pages.forEach((item) => {
+                    basePage.clickElementWithText({
+                        selector: baseSelectors.tags.coreElements.link,
+                        text: item.name
+                    })
+                    basePage.checkElementWithTextPresence({
+                        selector: baseSelectors.tags.coreElements.div,
+                        text: item.text
+                    })
+                    basePage.checkElementWithTextPresence({
+                        selector: baseSelectors.tags.coreElements.link,
+                        text: item.linkText
+                    })
+                    basePage.checkElementHaveProperty({
+                        selector: baseSelectors.tags.coreElements.link,
+                        text: item.linkText,
+                        attr: Constants.commonConstantsData.commonAttributes.attr,
+                        prop: Constants.commonConstantsData.commonAttributes.href,
+                        value: item.linkHref
+                    })
                 })
             })
         })

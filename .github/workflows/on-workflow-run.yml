@@ -18,9 +18,62 @@ jobs:
         with:
           access_token: ${{ secrets.GITHUB_TOKEN }}
 
+
+  generate-allure-report:
+    runs-on: ubuntu-22.04
+    if: always()
+    needs: stop-previous-run
+    steps:
+      - name: Dowload artifacts
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               run_id: ${{github.event.workflow_run.id }}
+            });
+            const matchArtifact = artifacts.data.artifacts.find(artifact => artifact.name === 'allure-results');
+            if (!matchArtifact) {
+              throw new Error('Artifact not found');
+            }
+            const download = await github.rest.actions.downloadArtifact({
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               artifact_id: matchArtifact.id,
+               archive_format: 'zip'
+            });
+            const fs = require('fs');
+            fs.writeFileSync('${{github.workspace}}/allure-results.zip', Buffer.from(download.data));
+      - run: unzip allure-results.zip
+
+      - name: Get Allure history
+        uses: actions/checkout@v2
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Allure Report action from marketplace
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        with:
+          allure_results: ./
+          allure_history: allure-history
+          keep_reports: 20
+
+      - name: Deploy report to Github Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: allure-history
+
   comment-to-pr:
     runs-on: ubuntu-22.04
-    needs: stop-previous-run
+    needs: generate-allure-report
     if: >
       github.event.workflow_run.event == 'pull_request'
     steps:

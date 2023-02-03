@@ -23,7 +23,7 @@ jobs:
           echo "${{ github.event.pull_request.number }}" > ./workflow/prNum
           echo "${{ github.run_number }}" > ./workflow/runNum
           echo "${{ github.run_id }}" > ./workflow/runId
-          echo "${{ github.event.pull_request.head.repo.full_name }}" > ./workflow/repoFullName
+          echo "${{ github.repository }}" > ./workflow/repoFullName
           echo "${{ github.repository_owner }}" > ./workflow/ownerName
       - name: Upload artifact
         uses: actions/upload-artifact@v3
@@ -150,45 +150,3 @@ jobs:
           name: allure-results
           path: 'cypress/results/allure-results'
           retention-days: 7
-
-  generate-allure-report:
-    runs-on: ubuntu-22.04
-    if: always()
-    needs: run-e2e-test
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
-
-      - name: Dowload artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: allure-results
-          path: cypress/results
-
-      - name: Get Allure history
-        uses: actions/checkout@v2
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
-
-      - name: Allure Report action from marketplace
-        uses: simple-elf/allure-report-action@master
-        if: always()
-        with:
-          allure_results: cypress/results
-          allure_history: allure-history
-          keep_reports: 20
-
-      - name: Deploy report to Github Pages
-        if: always()
-        uses: peaceiris/actions-gh-pages@v2
-        env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
