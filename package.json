@@ -77,6 +77,7 @@
       "./typescript-project-references",
       "./typescript-project-references/*",
       "./umd-federation",
+      "./umd-federation/*",
       "./version-discrepancy",
       "./version-discrepancy/*",
       "./vite-react-microfrontends",
@@ -96,7 +97,6 @@
       "./nextjs-bi-directional/*",
       "./vue-cli/*",
       "./genesis/*",
-      "./umd-federation/*",
       "./cypress"
     ],
     "nohoist": [
@@ -109,10 +109,12 @@
     ]
   },
   "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.35.0",
+    "allure-commandline": "2.20.0",
     "concurrently": "7.3.0",
     "cross-spawn": "7.0.3",
     "cypress": "10",
-    "cypress-fill-command": "^1.0.2",
+    "cypress-fill-command": "1.0.2",
     "cypress-wait-until": "1.7.2",
     "husky": "7.0.4",
     "jest": "26.6.3",
