@@ -1,4 +1,4 @@
-const { AngularCompilerPlugin, PLATFORM } = require('@ngtools/webpack');
+const { AngularWebpackPlugin } = require('@ngtools/webpack');
 const { resolve } = require('path');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
@@ -35,7 +35,7 @@ module.exports = (env = {}) => {
           { '@angular/router': { singleton: true, eager: true } },
         ],
       }),
-      new AngularCompilerPlugin({
+      new AngularWebpackPlugin({
         entryModule: resolve(__dirname, '../src/app/app.module#AppModule'),
         tsConfigPath: './tsconfig.app.json',
         skipCodeGeneration: true,
