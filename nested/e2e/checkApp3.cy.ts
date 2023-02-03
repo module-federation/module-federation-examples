@@ -5,7 +5,7 @@ import { CssAttr } from '../../cypress/types/cssAttr';
 
 const basePage: BaseMethods = new BaseMethods()
 
-describe("Check App 3", () => {
+describe("Nested", () => {
     // TODO cy.exec don't build the apps correctly cause lerna executes without exit code. Uncomment after fix this issue!
         // before(() => {
         //     basePage.buildTheSample(Constants.samplesPath.Nested)
@@ -14,23 +14,24 @@ describe("Check App 3", () => {
         // after(() => {
         //     basePage.shutdownTheSample(Constants.samplesPath.Nested)
         // })
-
-    beforeEach(() => {
-        basePage.openLocalhost(3003)
-    })
-
-    it('Check button exists', () => {
-        basePage.checkElementWithTextPresence({
-            selector: baseSelectors.tags.coreElements.button,
-            text: Constants.updatedConstantsData.commonAppWithButton.app3})
-    })
-
-    it('Check button color', () => {
-        basePage.checkElementHaveProperty({
-            selector: baseSelectors.tags.coreElements.button,
-            text: Constants.updatedConstantsData.commonAppWithButton.app3,
-            prop: CssAttr.background,
-            value: Constants.color.aquamarine
+    context('Check App 3', () => {
+        beforeEach(() => {
+            basePage.openLocalhost(3003)
+        })
+    
+        it('Check button exists', () => {
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.tags.coreElements.button,
+                text: Constants.updatedConstantsData.commonAppWithButton.app3})
+        })
+    
+        it('Check button color', () => {
+            basePage.checkElementHaveProperty({
+                selector: baseSelectors.tags.coreElements.button,
+                text: Constants.updatedConstantsData.commonAppWithButton.app3,
+                prop: CssAttr.background,
+                value: Constants.color.aquamarine
+            })
         })
     })
 })

@@ -27,22 +27,24 @@ appsData.forEach((
         host: number
     }
 ) => {
-    describe(`Check ${property.subheader}`, () => {
-        beforeEach(() => {
-            basePage.openLocalhost(property.host)
-        })
-        it (`Check ${property.subheader} elements (header, subHeader, paragraph)`, () => {
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.headers.h1,
-                text: property.header
+    describe('Shared Context', () => {
+        context(`Check ${property.subheader}`, () => {
+            beforeEach(() => {
+                basePage.openLocalhost(property.host)
             })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.headers.h2,
-                text: property.subheader
-            })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.paragraph,
-                text: property.paragraph
+            it (`Check ${property.subheader} elements (header, subHeader, paragraph)`, () => {
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.headers.h1,
+                    text: property.header
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.headers.h2,
+                    text: property.subheader
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.paragraph,
+                    text: property.paragraph
+                })
             })
         })
     })

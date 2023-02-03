@@ -30,26 +30,28 @@ appsData.forEach((
         host: number
     }
 ) => {
-    describe(`Check ${property.appName} starts and running`, () => {
-        before(() => {
-            basePage.openLocalhost(property.host)
-        })
-        it(`Check App1 and App2 elements`, () => {
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.headers.h1,
-                text: String(property.appName)
+    describe('Bi Directional', () => {
+        context(`Check ${property.appName} elements exists on the page`, () => {
+            before(() => {
+                basePage.openLocalhost(property.host)
             })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.headers.h2,
-                text: String(property.appSubheader)
-            })
-            basePage.clickElementWithText({
-                selector: baseSelectors.tags.coreElements.button,
-                text: String(property.app1Button)
-            })
-            basePage.clickElementWithText({
-                selector: baseSelectors.tags.coreElements.button,
-                text: String(property.app2Button)
+            it(`Check App1 and App2 elements`, () => {
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.headers.h1,
+                    text: String(property.appName)
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.headers.h2,
+                    text: String(property.appSubheader)
+                })
+                basePage.clickElementWithText({
+                    selector: baseSelectors.tags.coreElements.button,
+                    text: String(property.app1Button)
+                })
+                basePage.clickElementWithText({
+                    selector: baseSelectors.tags.coreElements.button,
+                    text: String(property.app2Button)
+                })
             })
         })
     })

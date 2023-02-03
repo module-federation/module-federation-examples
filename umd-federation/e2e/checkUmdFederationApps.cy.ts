@@ -24,27 +24,29 @@ appsData.forEach((
         host: number
     }
 ) => {
-    describe(`Check app1 and app2 starts and running`, () => {
-        beforeEach(()=> {
-            basePage.openLocalhost(property.host)
-        })
-        it (`Check App1 elements`, () => {
-            basePage.skipTestByCondition(property.host === 9002)
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.headers.h1,
-                text: String(property.header1)
+    describe(`UMD Federation`, () => {
+        context(`Check app1 and app2 starts and running + emenets exist on the page`, () => {
+            beforeEach(()=> {
+                basePage.openLocalhost(property.host)
             })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.headers.h1,
-                text: String(property.header2)
+            it (`Check App1 elements`, () => {
+                basePage.skipTestByCondition(property.host === 9002)
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.headers.h1,
+                    text: String(property.header1)
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.headers.h1,
+                    text: String(property.header2)
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.headers.h1,
+                    text: String(property.header3)
+                })
             })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.headers.h1,
-                text: String(property.header3)
+            it (`Check App URL`, () => {
+                basePage.checkUrlText(`http://localhost:${property.host}/`, true)
             })
-        })
-        it (`Check App URL`, () => {
-            basePage.checkUrlText(`http://localhost:${property.host}/`, true)
         })
     })
 })

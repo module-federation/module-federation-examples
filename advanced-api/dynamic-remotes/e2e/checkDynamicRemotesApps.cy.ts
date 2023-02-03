@@ -28,113 +28,115 @@ appsData.forEach(
         const host = property.host === 3001 ? appsData[0].host : property.host === 3002 ? appsData[1].host : appsData[2].host;
         const widget: number = property.host === 3002 ? Number(appsData[1].widgetQuantity) : Number(appsData[2].widgetQuantity);
 
-        describe(`Check ${appName}`, () => {
-            beforeEach(() => {
-                basePage.openLocalhost(host)
-            })
-
-            it(`Check ${appName} built and running`, () => {
-                basePage.checkElementWithTextPresence({
-                    selector: property.headerSelector,
-                    text: property.headerText
+        describe('Dynamic Remotes', () => {
+            context(`Check ${appName}`, () => {
+                beforeEach(() => {
+                    basePage.openLocalhost(host)
                 })
-                basePage.checkElementWithTextPresence({
-                    selector: property.subHeaderSelector,
-                    text: appName
-                })
-                if (property.paragraph) {
+    
+                it(`Check ${appName} elements exist on the page`, () => {
+                    basePage.checkElementWithTextPresence({
+                        selector: property.headerSelector,
+                        text: property.headerText
+                    })
+                    basePage.checkElementWithTextPresence({
+                        selector: property.subHeaderSelector,
+                        text: appName
+                    })
+                    if (property.paragraph) {
+                        basePage.checkElementWithTextPresence({
+                            selector: baseSelectors.tags.paragraph,
+                            text: Constants.commonPhrases.dynamicRemotesApp.paragraphText
+                        })
+    
+                        return;
+                    }
                     basePage.checkElementWithTextPresence({
                         selector: baseSelectors.tags.paragraph,
-                        text: Constants.commonPhrases.dynamicRemotesApp.paragraphText
+                        text: Constants.commonPhrases.dynamicRemotesApp.paragraphText,
+                        isVisible: false
                     })
-
-                    return;
-                }
-                basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.tags.paragraph,
-                    text: Constants.commonPhrases.dynamicRemotesApp.paragraphText,
-                    isVisible: false
                 })
-            })
-
-            it(`Check buttons in ${appName} exist`, () => {
-                basePage.openLocalhost(host)
-                if (property.isButtonExist) {
-                    Constants.elementsText.dynamicRemotesApp.buttonsText.forEach(button => {
-                        basePage.checkElementWithTextPresence({
-                            selector: property.buttonSelector,
-                            text: button
+    
+                it(`Check buttons in ${appName} exist`, () => {
+                    basePage.openLocalhost(host)
+                    if (property.isButtonExist) {
+                        Constants.elementsText.dynamicRemotesApp.buttonsText.forEach(button => {
+                            basePage.checkElementWithTextPresence({
+                                selector: property.buttonSelector,
+                                text: button
+                            })
                         })
+    
+                        return;
+                    }
+    
+                    basePage.checkElementVisibility({
+                        selector: property.buttonSelector,
+                        isVisible: property.isButtonExist
                     })
-
-                    return;
-                }
-
-                basePage.checkElementVisibility({
-                    selector: property.buttonSelector,
-                    isVisible: property.isButtonExist
                 })
-            })
-
-            it(`Check functionality in ${appName}`, () => {
-                if (property.isButtonExist) {
-                    Constants.elementsText.dynamicRemotesApp.buttonsText.forEach(button => {
-                        basePage.clickElementWithText({
-                            selector: property.buttonSelector,
-                            text: button
+    
+                it(`Check elements functionality in ${appName}`, () => {
+                    if (property.isButtonExist) {
+                        Constants.elementsText.dynamicRemotesApp.buttonsText.forEach(button => {
+                            basePage.clickElementWithText({
+                                selector: property.buttonSelector,
+                                text: button
+                            })
+                            basePage.checkElementVisibility({
+                                selector: commonSelectors.commonWidget.replace(
+                                    '{appQuantity}',
+                                    (Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button) + 2).toString())
+                            })
+                            basePage.checkElementHaveProperty({
+                                selector: commonSelectors.commonWidget.replace(
+                                    '{appQuantity}',
+                                    (Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button) + 2).toString()),
+                                prop: CssAttr.backgroundColor,
+                                value: property.widgetColor[Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button)]
+                            })
+                            basePage.checkElementWithTextPresence({
+                                selector: property.subHeaderSelector,
+                                text: property.widgetName[Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button)]
+                            })
+                            basePage.checkElementWithTextPresence({
+                                selector: baseSelectors.tags.paragraph,
+                                text: property.widgetParagraph[Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button)]
+                            })
+                            basePage.checkElementWithTextPresence({
+                                selector: baseSelectors.tags.paragraph,
+                                text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
+                            })
                         })
-                        basePage.checkElementVisibility({
-                            selector: commonSelectors.commonWidget.replace(
-                                '{appQuantity}',
-                                (Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button) + 2).toString())
-                        })
-                        basePage.checkElementHaveProperty({
-                            selector: commonSelectors.commonWidget.replace(
-                                '{appQuantity}',
-                                (Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button) + 2).toString()),
-                            prop: CssAttr.backgroundColor,
-                            value: property.widgetColor[Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button)]
-                        })
-                        basePage.checkElementWithTextPresence({
-                            selector: property.subHeaderSelector,
-                            text: property.widgetName[Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button)]
-                        })
-                        basePage.checkElementWithTextPresence({
-                            selector: baseSelectors.tags.paragraph,
-                            text: property.widgetParagraph[Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button)]
-                        })
-                        basePage.checkElementWithTextPresence({
-                            selector: baseSelectors.tags.paragraph,
-                            text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
-                        })
+    
+                        return;
+    
+                    }
+                    basePage.checkElementVisibility({
+                        selector: commonSelectors.commonWidget.replace(
+                            '{appQuantity}',
+                            (widget + 2).toString())
                     })
-
-                    return;
-
-                }
-                basePage.checkElementVisibility({
-                    selector: commonSelectors.commonWidget.replace(
-                        '{appQuantity}',
-                        (widget + 2).toString())
-                })
-                basePage.checkElementHaveProperty({
-                    selector: commonSelectors.commonWidget.replace(
-                        '{appQuantity}',
-                        (widget + 2).toString()),
-                    prop: CssAttr.backgroundColor,
-                    value: property.widgetColor[widget]
-                })
-                basePage.checkElementWithTextPresence({
-                    selector: property.subHeaderSelector,
-                    text: property.widgetName[widget]
-                })
-                basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.tags.paragraph,
-                    text: property.widgetParagraph[widget]
-                })
-                basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.tags.paragraph,
-                    text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
+                    basePage.checkElementHaveProperty({
+                        selector: commonSelectors.commonWidget.replace(
+                            '{appQuantity}',
+                            (widget + 2).toString()),
+                        prop: CssAttr.backgroundColor,
+                        value: property.widgetColor[widget]
+                    })
+                    basePage.checkElementWithTextPresence({
+                        selector: property.subHeaderSelector,
+                        text: property.widgetName[widget]
+                    })
+                    basePage.checkElementWithTextPresence({
+                        selector: baseSelectors.tags.paragraph,
+                        text: property.widgetParagraph[widget]
+                    })
+                    basePage.checkElementWithTextPresence({
+                        selector: baseSelectors.tags.paragraph,
+                        text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
+                    })
                 })
             })
         })

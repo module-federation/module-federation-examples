@@ -50,74 +50,75 @@ appsData.forEach(
         const host = property.host === 3001 ? appsData[0].host : appsData[1].host;
         const widgetIndexNumber = property.host === 3001 ? appsData[0].widgetIndexNumber : appsData[1].widgetIndexNumber
 
-        describe(`Check ${appName}`, () => {
-
-            it(`Check ${appName} built and running`, () => {
-                basePage.openLocalhost(host)
-                basePage.checkElementWithTextPresence({
-                    selector: property.headerSelector,
-                    text: property.headerText
-                })
-                basePage.checkElementWithTextPresence({
-                    selector: property.subHeaderSelector,
-                    text: appName
-                })
-            })
-
-            it(`Check widgets in ${appName}`, () => {
-                basePage.openLocalhost(host)
-                if (property.isTwoWidgets) {
-                    property.widgetName.forEach((widget) => {
-                        basePage.checkElementVisibility({
-                            selector: commonSelectors.commonWidget.replace(
-                                '{appQuantity}',
-                                (property.widgetName.indexOf(widget) + 1).toString())
-                        })
-                        basePage.checkElementWithTextPresence({
-                            selector: property.subHeaderSelector,
-                            text: property.widgetName[property.widgetName.indexOf(widget)]
-                        })
-                        basePage.checkElementWithTextPresence({
-                            selector: baseSelectors.tags.paragraph,
-                            text: property.widgetParagraph[property.widgetName.indexOf(widget)]
-                        })
-                        basePage.checkElementWithTextPresence({
-                            selector: baseSelectors.tags.paragraph,
-                            text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
-                        })
-                        basePage.checkElementHaveProperty({
-                            selector: commonSelectors.commonWidget.replace(
-                                '{appQuantity}',
-                                (property.widgetName.indexOf(widget) + 1).toString()),
-                            prop: CssAttr.backgroundColor,
-                            value: property.widgetColor[property.widgetName.indexOf(widget)]
-                        })
+        describe('Dynamic Remotes SYnchronous imports', () => {
+            context(`Check ${appName}`, () => {
+                it(`Check ${appName} elements exis on the page`, () => {
+                    basePage.openLocalhost(host)
+                    basePage.checkElementWithTextPresence({
+                        selector: property.headerSelector,
+                        text: property.headerText
                     })
-                    return;
-                }
-                basePage.checkElementVisibility({
-                    selector: commonSelectors.commonWidget.replace(
-                        '{appQuantity}',
-                        (widgetIndexNumber).toString())
+                    basePage.checkElementWithTextPresence({
+                        selector: property.subHeaderSelector,
+                        text: appName
+                    })
                 })
-                basePage.checkElementWithTextPresence({
-                    selector: property.subHeaderSelector,
-                    text: property.widgetName[widgetIndexNumber - 1]
-                })
-                basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.tags.paragraph,
-                    text: property.widgetParagraph[widgetIndexNumber - 1]
-                })
-                basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.tags.paragraph,
-                    text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
-                })
-                basePage.checkElementHaveProperty({
-                    selector: commonSelectors.commonWidget.replace(
-                        '{appQuantity}',
-                        (widgetIndexNumber).toString()),
-                    prop: CssAttr.backgroundColor,
-                    value: property.widgetColor[1]
+    
+                it(`Check widgets in ${appName}`, () => {
+                    basePage.openLocalhost(host)
+                    if (property.isTwoWidgets) {
+                        property.widgetName.forEach((widget) => {
+                            basePage.checkElementVisibility({
+                                selector: commonSelectors.commonWidget.replace(
+                                    '{appQuantity}',
+                                    (property.widgetName.indexOf(widget) + 1).toString())
+                            })
+                            basePage.checkElementWithTextPresence({
+                                selector: property.subHeaderSelector,
+                                text: property.widgetName[property.widgetName.indexOf(widget)]
+                            })
+                            basePage.checkElementWithTextPresence({
+                                selector: baseSelectors.tags.paragraph,
+                                text: property.widgetParagraph[property.widgetName.indexOf(widget)]
+                            })
+                            basePage.checkElementWithTextPresence({
+                                selector: baseSelectors.tags.paragraph,
+                                text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
+                            })
+                            basePage.checkElementHaveProperty({
+                                selector: commonSelectors.commonWidget.replace(
+                                    '{appQuantity}',
+                                    (property.widgetName.indexOf(widget) + 1).toString()),
+                                prop: CssAttr.backgroundColor,
+                                value: property.widgetColor[property.widgetName.indexOf(widget)]
+                            })
+                        })
+                        return;
+                    }
+                    basePage.checkElementVisibility({
+                        selector: commonSelectors.commonWidget.replace(
+                            '{appQuantity}',
+                            (widgetIndexNumber).toString())
+                    })
+                    basePage.checkElementWithTextPresence({
+                        selector: property.subHeaderSelector,
+                        text: property.widgetName[widgetIndexNumber - 1]
+                    })
+                    basePage.checkElementWithTextPresence({
+                        selector: baseSelectors.tags.paragraph,
+                        text: property.widgetParagraph[widgetIndexNumber - 1]
+                    })
+                    basePage.checkElementWithTextPresence({
+                        selector: baseSelectors.tags.paragraph,
+                        text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
+                    })
+                    basePage.checkElementHaveProperty({
+                        selector: commonSelectors.commonWidget.replace(
+                            '{appQuantity}',
+                            (widgetIndexNumber).toString()),
+                        prop: CssAttr.backgroundColor,
+                        value: property.widgetColor[1]
+                    })
                 })
             })
         })
