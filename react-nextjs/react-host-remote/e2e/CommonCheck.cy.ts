@@ -33,46 +33,48 @@ appsData.forEach((
             appButtonInvoicesH2?: string,
             appButtonExpensesH2?: string
         }) => {
-        describe(`Check react-host-remote ${property.appName} starts and running`, () => {
-            before(() => {
-                basePage.openLocalhost(property.host)
-            })
-            it(`Check Host ${property.appName} UI and Invoices, Expenses buttons`, () => {
-                basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.tags.coreElements.div,
-                    text: property.appName
+        describe(`React NextJS -- React Host Remote`, () => {
+            context(`Check react-host-remote ${property.appName} starts and running`, () => {
+                before(() => {
+                    basePage.openLocalhost(property.host)
                 })
-                basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.tags.coreElements.div,
-                    text: property.appDiv
-                })
-                if (property.host == 8081) {
-                    if (property.appButtonInvoices){
-                        basePage.clickElementWithText({
-                            selector: baseSelectors.tags.coreElements.link,
-                            text: property.appButtonInvoices
-                        })
-                    }
-                    if (property.appButtonInvoicesH2){
+                it(`Check Host ${property.appName} UI and Invoices, Expenses buttons`, () => {
+                    basePage.checkElementWithTextPresence({
+                        selector: baseSelectors.tags.coreElements.div,
+                        text: property.appName
+                    })
+                    basePage.checkElementWithTextPresence({
+                        selector: baseSelectors.tags.coreElements.div,
+                        text: property.appDiv
+                    })
+                    if (property.host == 8081) {
+                        if (property.appButtonInvoices){
+                            basePage.clickElementWithText({
+                                selector: baseSelectors.tags.coreElements.link,
+                                text: property.appButtonInvoices
+                            })
+                        }
+                        if (property.appButtonInvoicesH2){
+                            basePage.checkElementWithTextPresence({
+                                selector: baseSelectors.tags.headers.h2,
+                                text: property.appButtonInvoicesH2
+                            })
+                        }
+                        basePage.goBack()
+                        if (property.appButtonExpenses){
+                            basePage.clickElementWithText({
+                                selector: baseSelectors.tags.coreElements.link,
+                                text: property.appButtonExpenses
+                            })
+                        }
+                        if (property.appButtonExpensesH2)
                         basePage.checkElementWithTextPresence({
                             selector: baseSelectors.tags.headers.h2,
-                            text: property.appButtonInvoicesH2
+                            text: property.appButtonExpensesH2
                         })
                     }
-                    basePage.goBack()
-                    if (property.appButtonExpenses){
-                        basePage.clickElementWithText({
-                            selector: baseSelectors.tags.coreElements.link,
-                            text: property.appButtonExpenses
-                        })
-                    }
-                    if (property.appButtonExpensesH2)
-                    basePage.checkElementWithTextPresence({
-                        selector: baseSelectors.tags.headers.h2,
-                        text: property.appButtonExpensesH2
-                    })
-                }
-
+    
+                })
             })
         })
     })

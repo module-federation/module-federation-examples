@@ -27,41 +27,58 @@ appsData.forEach((
         host: number
     }
 ) => {
-    describe(`Check ${property.headerText} App`, () => {
-        beforeEach(() => {
-            basePage.openLocalhost(property.host)
-        })
-
-        it(`Check ${property.headerText} app build and running`, () => {
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.headers.h1,
-                text: property.headerText
+    describe('Server Side Render Only', () => {
+        context(`Check ${property.headerText} App`, () => {
+            beforeEach(() => {
+                basePage.openLocalhost(property.host)
             })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.coreElements.div,
-                text: property.sharedComponentText
+    
+            it(`Check ${property.headerText} app build and running + check elemens exist`, () => {
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.headers.h1,
+                    text: property.headerText
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.coreElements.div,
+                    text: property.sharedComponentText
+                })
             })
-        })
-
-        it('Update Shared component file', () => {
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.coreElements.div,
-                text: property.sharedComponentText
+    
+            it('Update Shared component file', () => {
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.coreElements.div,
+                    text: property.sharedComponentText
+                })
+                basePage.writeContentToFile({
+                    filePath: Constants.filesPath.serverSideRenderOnlyChangeFilePath,
+                    content: Constants.elementsText.serverSideRenderOnlyApp.contents.changedContent
+                })
+                basePage.reloadWindow(true)
             })
-            basePage.writeContentToFile({
-                filePath: Constants.filesPath.serverSideRenderOnlyChangeFilePath,
-                content: Constants.elementsText.serverSideRenderOnlyApp.contents.changedContent
-            })
-            basePage.reloadWindow(true)
-        })
-
-        it(`Check Shared component visibility in ${property.headerText} after updating & check it is not reverted after reload`, () => {
-            basePage.writeContentToFile({
-                filePath: Constants.filesPath.serverSideRenderOnlyChangeFilePath,
-                content: Constants.elementsText.serverSideRenderOnlyApp.contents.changedContent
-            })
-            if(property.host === 3000) {
-                basePage.openLocalhost(3001)
+    
+            it(`Check Shared component visibility in ${property.headerText} after updating & check it is not reverted after reload`, () => {
+                basePage.writeContentToFile({
+                    filePath: Constants.filesPath.serverSideRenderOnlyChangeFilePath,
+                    content: Constants.elementsText.serverSideRenderOnlyApp.contents.changedContent
+                })
+                if(property.host === 3000) {
+                    basePage.openLocalhost(3001)
+                    basePage.checkElementWithTextPresence({
+                        selector: baseSelectors.tags.coreElements.div,
+                        text: property.updatedSharedComponentText
+                    })
+                    basePage.reloadWindow(true)
+                    basePage.checkElementWithTextPresence({
+                        selector: baseSelectors.tags.coreElements.div,
+                        text: property.updatedSharedComponentText
+                    })
+                    basePage.writeContentToFile({
+                        filePath: Constants.filesPath.serverSideRenderOnlyChangeFilePath,
+                        content: Constants.elementsText.serverSideRenderOnlyApp.contents.originalContent
+                    })
+                    return;
+                }
+                basePage.openLocalhost(3000)
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.div,
                     text: property.updatedSharedComponentText
@@ -75,32 +92,17 @@ appsData.forEach((
                     filePath: Constants.filesPath.serverSideRenderOnlyChangeFilePath,
                     content: Constants.elementsText.serverSideRenderOnlyApp.contents.originalContent
                 })
-                return;
-            }
-            basePage.openLocalhost(3000)
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.coreElements.div,
-                text: property.updatedSharedComponentText
             })
-            basePage.reloadWindow(true)
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.coreElements.div,
-                text: property.updatedSharedComponentText
-            })
-            basePage.writeContentToFile({
-                filePath: Constants.filesPath.serverSideRenderOnlyChangeFilePath,
-                content: Constants.elementsText.serverSideRenderOnlyApp.contents.originalContent
-            })
-        })
-
-        it(`Check ${property.headerText} app build and running & check shared component visibility`, () => {
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.headers.h1,
-                text: property.headerText
-            })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.coreElements.div,
-                text: property.sharedComponentText
+    
+            it(`Check ${property.headerText} app build and running & check shared component visibility`, () => {
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.headers.h1,
+                    text: property.headerText
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.coreElements.div,
+                    text: property.sharedComponentText
+                })
             })
         })
     })

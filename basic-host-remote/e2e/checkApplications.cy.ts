@@ -40,25 +40,26 @@ appsData.forEach(
     let appName = property.host === 3002 ? appsData[1].appNameText : appsData[0].appNameText;
 
 
-    describe(`Check ${appName}`, () => {
-  
-        it(`Check ${appName} built and running`, () => {
-            basePage.openLocalhost(host)
-            basePage.checkElementWithTextPresence({
-                selector: property.headerSelector,
-                text: property.headerText
+    describe('Basic Host remote', () => {
+        context(`Check ${appName}`, () => {
+            it(`Check ${appName} built and running`, () => {
+                basePage.openLocalhost(host)
+                basePage.checkElementWithTextPresence({
+                    selector: property.headerSelector,
+                    text: property.headerText
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: property.subHeaderSelector,
+                    text: `${appName}`
+                })
             })
-            basePage.checkElementWithTextPresence({
-                selector: property.subHeaderSelector,
-                text: `${appName}`
-            })
-        })
-    
-        it(`Check buttons in ${appName} exist`, () => {
-            basePage.openLocalhost(host)
-            basePage.checkElementWithTextPresence({
-                selector: property.buttonSelector,
-                text: property.buttonNameText
+        
+            it(`Check buttons in ${appName} exist`, () => {
+                basePage.openLocalhost(host)
+                basePage.checkElementWithTextPresence({
+                    selector: property.buttonSelector,
+                    text: property.buttonNameText
+                })
             })
         })
     })

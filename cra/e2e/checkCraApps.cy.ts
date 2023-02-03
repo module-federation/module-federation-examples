@@ -22,23 +22,25 @@ appsData.forEach(
     }) => {
         const appName = property.host === 3000 ? appsData[0].appNameText : appsData[1].appNameText;
 
-        describe(`Check ${appName}`, () => {
-            beforeEach(() => {
-                basePage.openLocalhost(property.host)
-            })
-
-            it(`Check ${appName} build and running`, () => {
-                basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.tags.headers.h1,
-                    text: Constants.commonConstantsData.basicComponents.basicHostRemote,
+        describe('CRA', () => {
+            context(`Check ${appName}`, () => {
+                beforeEach(() => {
+                    basePage.openLocalhost(property.host)
                 })
-                basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.tags.headers.h2,
-                    text: property.appNameText
-                })
-                basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.tags.coreElements.button,
-                    text: Constants.elementsText.craApp.buttonText
+    
+                it(`Check ${appName} elements exist on the page`, () => {
+                    basePage.checkElementWithTextPresence({
+                        selector: baseSelectors.tags.headers.h1,
+                        text: Constants.commonConstantsData.basicComponents.basicHostRemote,
+                    })
+                    basePage.checkElementWithTextPresence({
+                        selector: baseSelectors.tags.headers.h2,
+                        text: property.appNameText
+                    })
+                    basePage.checkElementWithTextPresence({
+                        selector: baseSelectors.tags.coreElements.button,
+                        text: Constants.elementsText.craApp.buttonText
+                    })
                 })
             })
         })
