@@ -1,7 +1,7 @@
 import { importDelegatedModule } from '@module-federation/utilities';
 
 module.exports = new Promise((resolve, reject) => {
-  console.log('Delegate being called for', __resourceQuery);
+  console.log('Delegate being called for', __resourceQuery, 'from', __webpack_runtime_id__);
   const currentRequest = new URLSearchParams(__resourceQuery).get('remote');
 
   const [global, url] = currentRequest.split('@');
@@ -12,8 +12,5 @@ module.exports = new Promise((resolve, reject) => {
     .then(async (remote) => {
       resolve(remote)
     })
-    .catch((err) => {
-      console.log('did not import', currentRequest);
-      reject(err)
-    });
+    .catch((err) => reject(err));
 });
