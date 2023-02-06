@@ -11,12 +11,14 @@
   "scripts": {
     "clear": "cd 3000-home && rm -rf node_modules && rm -rf .next && cd ../3001-shop && rm -rf node_modules && rm -rf .next && cd ../3002-checkout && rm -rf node_modules && rm -rf .next",
     "start": "yarn dev",
-    "dev": "yarn install && concurrently \"cd 3000-home; npm run dev\" \"cd 3001-shop; npm run dev\" \"cd 3002-checkout; npm run dev\"",
-    "build": "concurrently \"cd 3000-home; npm run build\" \"cd 3001-shop; npm run build\" \"cd 3002-checkout; npm run build\"",
-    "serve": "concurrently \"cd 3000-home; npm run start\" \"cd 3001-shop; npm run start\" \"cd 3002-checkout; npm run start\""
+    "dev": "concurrently \"yarn --cwd 3000-home dev\" \"yarn --cwd 3001-shop dev\" \"yarn --cwd 3002-checkout dev\"",
+    "build": "concurrently \"yarn --cwd 3000-home build\" \"yarn --cwd 3001-shop build\" \"yarn --cwd 3002-checkout build\"",
+    "serve": "concurrently \"yarn --cwd 3000-home start\" \"yarn --cwd 3001-shop start\" \"yarn --cwd 3002-checkout start\""
   },
   "dependencies": {
     "concurrently": "^7.0.0",
+    "@module-federation/nextjs-mf": "6.0.5",
+    "webpack": "5.72.1",
     "cpx": "1.5.0"
   }
 }
