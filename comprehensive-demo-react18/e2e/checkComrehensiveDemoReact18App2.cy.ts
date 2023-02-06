@@ -12,10 +12,10 @@ describe('Check is Comprehensive Demo App2 working and have elements', () => {
     })
 
     it('Check App build and running & Check app elements exist', () => {
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: selectors.comprehensiveDemoApp.blockSelectors.firstBlock
         })
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: baseSelectors.tags.headers.header
         })
         basePage.checkElementHaveProperty({
@@ -23,7 +23,7 @@ describe('Check is Comprehensive Demo App2 working and have elements', () => {
             prop: CssAttr.backgroundColor,
             value: Constants.color.oceanBluePearl
         })
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: selectors.comprehensiveDemoApp.blockSelectors.secondBlock
         })
         basePage.checkElementHaveProperty({
@@ -31,7 +31,7 @@ describe('Check is Comprehensive Demo App2 working and have elements', () => {
             prop: CssAttr.backgroundColor,
             value: Constants.color.alabaster
         })
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: selectors.comprehensiveDemoApp.blockSelectors.thirdBlock
         })
         basePage.checkElementHaveProperty({
@@ -55,7 +55,7 @@ describe('Check is Comprehensive Demo App2 working and have elements', () => {
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.comprehensiveDemoApp.App2.openDialogButtonText
         })
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: selectors.comprehensiveDemoApp.app2Dialog
         })
         basePage.checkElementWithTextPresence({
@@ -102,7 +102,7 @@ describe('Check is Comprehensive Demo App2 working and have elements', () => {
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.comprehensiveDemoApp.App2.dialogTabs.secondTab.buttonText
         })
-        basePage.checkElementWithTextHaveProperty({
+        basePage.checkElementHaveProperty({
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.comprehensiveDemoApp.App2.dialogTabs.secondTab.buttonText,
             prop: CssAttr.backgroundColor,

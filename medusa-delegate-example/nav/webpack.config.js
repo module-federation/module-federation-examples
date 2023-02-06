@@ -75,17 +75,17 @@ module.exports = {
         dsl: DashboardPlugin.clientVersion({
           currentHost: 'nav',
           remoteName: 'dsl',
-          dashboardURL: `${process.env.DASHBOARD_BASE_URL}/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`,
+          dashboardURL: `${process.env.DASHBOARD_BASE_URL}/env/development/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`,
         }),
         search: DashboardPlugin.clientVersion({
           currentHost: 'nav',
           remoteName: 'search',
-          dashboardURL: `${process.env.DASHBOARD_BASE_URL}/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`,
+          dashboardURL: `${process.env.DASHBOARD_BASE_URL}/env/development/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`,
         }),
         utils: DashboardPlugin.clientVersion({
           currentHost: 'nav',
           remoteName: 'utils',
-          dashboardURL: `${process.env.DASHBOARD_BASE_URL}/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`,
+          dashboardURL: `${process.env.DASHBOARD_BASE_URL}/env/development/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`,
         }),
       },
       exposes: {

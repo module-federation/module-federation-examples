@@ -113,13 +113,19 @@ describe("It checks host apps' component", () => {
     })
 
     it('Checks host button visibility', () => {
-        basePage.checkChildElementVisibility(baseSelectors.tags.coreElements.div, baseSelectors.tags.coreElements.button, true,
-            'be.visible', Constants.elementsText.nativeFederationReactApp.buttons.host)
+        basePage.checkElementVisibility({
+            parentSelector: baseSelectors.tags.coreElements.div,
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.nativeFederationReactApp.buttons.host
+        })
     })
 
     it('Checks remote button visibility', () => {
-        basePage.checkChildElementVisibility(baseSelectors.tags.coreElements.div, baseSelectors.tags.coreElements.button, true,
-            'be.visible', Constants.elementsText.nativeFederationReactApp.buttons.remote)
+        basePage.checkElementVisibility({
+            parentSelector: baseSelectors.tags.coreElements.div,
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.nativeFederationReactApp.buttons.remote
+        })
     })
 
     it('Checks that host button text includes counter which changed after click & check value reverted after reload', () => {

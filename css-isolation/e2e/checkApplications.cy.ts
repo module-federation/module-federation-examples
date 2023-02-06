@@ -55,9 +55,10 @@ appsData.forEach(
 describe(`Check App 1`, () => {
     it(`Check button in App 1 exist`, () => {
         basePage.openLocalhost(3001)
-        basePage.checkElementInsideShadowRoot({
+        basePage.checkElementWithTextPresence({
             selector: baseSelectors.ids.parent,
-            text: Constants.elementsText.cssIsolationApp.buttonText
+            text: Constants.elementsText.cssIsolationApp.buttonText,
+            isShadowRoot: true
         })
     })
 })
@@ -74,15 +75,17 @@ describe(`Check App 1 colors`, () => {
         })
     })
     it(`Update background color of App 2 Inside App 1 if click on the "Make Everything Yellow" button`, () => {
-        basePage.clickElementInsideShadowRoot({
+        basePage.clickElementWithText({
             selector: baseSelectors.ids.parent,
-            text: Constants.elementsText.cssIsolationApp.buttonText
+            text: Constants.elementsText.cssIsolationApp.buttonText,
+            isShadowRoot: true
         })
-        basePage.checkElementPropertyInsideShadowRoot({
-            selector: baseSelectors.ids.parent,
-            subSelector: 'style',
+        basePage.checkElementHaveProperty({
+            parentSelector: baseSelectors.ids.parent,
+            selector: 'style',
             prop: CssAttr.backgroundColor,
             value: Constants.color.yellow,
+            isShadowElement: true
         })
     })
 })

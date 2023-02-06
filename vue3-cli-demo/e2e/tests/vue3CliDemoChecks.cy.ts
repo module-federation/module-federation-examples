@@ -75,7 +75,11 @@ describe('It checks certain texted button contains link and not disabled', () =>
     textedLinks.forEach((property: { text: string, link: string }) => {
         it(`Check that ${property.text} text includes link and not disabled`, () => {
             basePage.openLocalhost(8081)
-            basePage.checkElementWithTextContainsLink(updatedSelectors.vue3CliDemoApp.linkContainer, property.text, property.link)
+            basePage.checkElementContainText({
+                selector: updatedSelectors.vue3CliDemoApp.linkContainer,
+                text: property.text,
+                link: property.link
+            })
         })
     });
 });
@@ -117,14 +121,16 @@ describe("Checks tabs and logo", () => {
     })
 
     it('Checks vue logo visibility', () => {
-        basePage.checkElementVisibility(baseSelectors.tags.coreElements.image)
+        basePage.checkElementVisibility({
+            selector: baseSelectors.tags.coreElements.image
+        })
     })
 
     it('Checks that host link is not contain `about` if `about` tab is not active', () => {
         basePage.checkElementWithTextPresence({
                 selector: updatedSelectors.vue3CliDemoApp.navigationActiveStateTab,
                 text: Constants.elementsText.vue3CliDemoApp.aboutTab,
-               isVisible: false
+                isVisible: false
         })
         basePage.checkUrlText(Constants.elementsText.vue3CliDemoApp.aboutTab.toLowerCase())
     })

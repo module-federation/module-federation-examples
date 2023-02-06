@@ -68,7 +68,7 @@ appsData.forEach(
                 basePage.openLocalhost(host)
                 if (property.isTwoWidgets) {
                     property.widgetName.forEach((widget) => {
-                        basePage.checkElementExist({
+                        basePage.checkElementVisibility({
                             selector: commonSelectors.commonWidget.replace(
                                 '{appQuantity}',
                                 (property.widgetName.indexOf(widget) + 1).toString())
@@ -95,7 +95,7 @@ appsData.forEach(
                     })
                     return;
                 }
-                basePage.checkElementExist({
+                basePage.checkElementVisibility({
                     selector: commonSelectors.commonWidget.replace(
                         '{appQuantity}',
                         (widgetIndexNumber).toString())

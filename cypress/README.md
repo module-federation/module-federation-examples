@@ -270,6 +270,15 @@ describe(`Example test`, () => {
   - `public` (at the beginning);
   - `protected` (in between `public` and `private`);
   - `private` (at the end);
+- All methods inside file grouped in multiple sections  
+  - `Clicks Section` -> for methods related to click actions
+  - `Checks Section` -> for methods related to check actions (checkElementVisibility, checkElementContainText, etc)
+  - `Writes Section` -> for methods related to write actions (fillField, etc)
+  - `Helpers Section` -> for methods related to base actions (openLocalhost, reloadPage, etc)
+  - `Activities Section` -> for methods related to specific actions (addUser, compareInfoBetweenHosts, etc)
+  - `Privates Section` -> for privates methods only
+- NOTE: Do not add almost similar methods (like checkElementVisibility & checkChildELementVisibility), if existed methods do not have enough functionality for specific case, find a way to increase it
+- NOTE: If new method should be added, always add it to the right section according to logic
 
 ##### `selectors.ts`
 

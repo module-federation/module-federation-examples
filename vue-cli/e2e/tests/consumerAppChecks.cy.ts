@@ -64,7 +64,7 @@ describe("It checks consumer app", () => {
             selector: baseSelectors.tags.section,
             text: Constants.elementsText.vueCliApp.otherSectionCodeBlock,
             index: 0 ,
-            contain: false
+            isContain: false
         })
         basePage.clickElementWithText({
             selector: baseSelectors.tags.coreElements.button,

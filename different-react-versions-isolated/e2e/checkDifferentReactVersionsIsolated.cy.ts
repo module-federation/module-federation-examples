@@ -55,7 +55,7 @@ appsData.forEach((
     
     
         it(`Check Apps share div with React version 16.14.0`, () => {
-            basePage.checkElementExist({
+            basePage.checkElementVisibility({
                 selector: selectors.differentReactVersionsIsolatedApp.sharedBlock,
             })
             if(property.host === 3001) {
@@ -63,31 +63,31 @@ appsData.forEach((
             } else {
                 basePage.openLocalhost(3001)
             }
-            basePage.checkElementExist({
+            basePage.checkElementVisibility({
                 selector: selectors.differentReactVersionsIsolatedApp.sharedBlock,
             }) 
         })
 
         if(property.host === 3001) {
             it(`Check ${property.appName} inject React version 16.14.0 block into a div parent element`, () => {
-                basePage.checkChildElementVisibility(
-                    baseSelectors.tags.coreElements.div,
-                    selectors.differentReactVersionsIsolatedApp.sharedBlock
-                )
-                basePage.checkElementExist({
+                basePage.checkElementVisibility({
+                    parentSelector: baseSelectors.tags.coreElements.div,
+                    selector: selectors.differentReactVersionsIsolatedApp.sharedBlock,
+                })
+                basePage.checkElementVisibility({
                     selector: selectors.differentReactVersionsIsolatedApp.divParent,
                 })
             })
         } else {
             it(`Check ${property.appName} didn't inject React version 16.14.0 block into a div parent element`, () => {
-                basePage.checkChildElementVisibility(
-                    baseSelectors.tags.coreElements.div,
-                    selectors.differentReactVersionsIsolatedApp.sharedBlock,
-                )
-                basePage.checkElementVisibility(
-                    selectors.differentReactVersionsIsolatedApp.sharedBlock
-                )
-                basePage.checkElementExist({
+                basePage.checkElementVisibility({
+                    parentSelector: baseSelectors.tags.coreElements.div,
+                    selector: selectors.differentReactVersionsIsolatedApp.sharedBlock,
+                })
+                basePage.checkElementVisibility({
+                    selector: selectors.differentReactVersionsIsolatedApp.sharedBlock,
+                })
+                basePage.checkElementVisibility({
                     selector: selectors.differentReactVersionsIsolatedApp.divParent,
                     isVisible: false
                 })

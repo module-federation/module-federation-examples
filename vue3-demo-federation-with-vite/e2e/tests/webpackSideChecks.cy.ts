@@ -25,7 +25,16 @@ describe("It checks webpack side app", () => {
     })
 
     it('Checks that Webpack button stands as the first in the group', () => {
-        basePage.checkChildElementContainText(selectors.vue3DemoFederationWithViteApp.buttonsBlock, updatedSelectors.vue3DemoFederationWithViteApp.buttons.common, Constants.elementsText.vue3DemoFederationWithViteApp.webpackContent)
-        basePage.checkChildElementContainText(selectors.vue3DemoFederationWithViteApp.buttonsBlock, updatedSelectors.vue3DemoFederationWithViteApp.buttons.common, Constants.elementsText.vue3DemoFederationWithViteApp.viteContent,1)
+        basePage.checkElementContainText({
+            parentSelector: selectors.vue3DemoFederationWithViteApp.buttonsBlock,
+            selector: updatedSelectors.vue3DemoFederationWithViteApp.buttons.common,
+            text: Constants.elementsText.vue3DemoFederationWithViteApp.webpackContent,
+        })
+        basePage.checkElementContainText({
+            parentSelector: selectors.vue3DemoFederationWithViteApp.buttonsBlock,
+            selector: updatedSelectors.vue3DemoFederationWithViteApp.buttons.common,
+            text: Constants.elementsText.vue3DemoFederationWithViteApp.viteContent,
+            index: Constants.commonConstantsData.commonIndexes.one
+        })
     })
 })

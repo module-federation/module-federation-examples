@@ -1,5 +1,5 @@
 import { Constants } from './../../cypress/fixtures/constants';
-import { baseSelectors } from './../../cypress/common/selectors';
+import {baseSelectors} from './../../cypress/common/selectors';
 import { BaseMethods } from "../../cypress/common/base";
 
 const basePage: BaseMethods = new BaseMethods()
@@ -96,14 +96,13 @@ describe('App1 remote', () => {
 
         it('should contain a link allowing to navigate to page2', () => {
             basePage.openLocalhost(app1RemoteConfig.port);
-            basePage.checkElementWithTextHaveProperty({
+            basePage.checkElementHaveProperty({
                 selector: baseSelectors.tags.coreElements.link,
                 attr: Constants.commonConstantsData.commonAttributes.attr,
                 prop: Constants.commonConstantsData.commonAttributes.href,
                 text: app1RemoteConfig.page1.linkText,
                 value: app1RemoteConfig.page1.linkHref
             })
-
             basePage.clickElementBySelector({
                 selector: baseSelectors.tags.coreElements.link,
             });
@@ -125,14 +124,13 @@ describe('App1 remote', () => {
 
         it('should contain a link allowing to navigate to page1', () => {
             basePage.openLocalhost(app1RemoteConfig.port, app1RemoteConfig.page2.path);
-            basePage.checkElementWithTextHaveProperty({
+            basePage.checkElementHaveProperty({
                 selector: baseSelectors.tags.coreElements.link,
                 attr: Constants.commonConstantsData.commonAttributes.attr,
                 prop: Constants.commonConstantsData.commonAttributes.href,
                 text: app1RemoteConfig.page2.linkText,
                 value: app1RemoteConfig.page2.linkHref
             })
-
             basePage.clickElementBySelector({
                 selector: baseSelectors.tags.coreElements.link,
             });
@@ -164,14 +162,13 @@ describe('App2 remote', () => {
 
         it('should contain a link allowing to navigate to pageB', () => {
             basePage.openLocalhost(app2RemoteConfig.port);
-            basePage.checkElementWithTextHaveProperty({
+            basePage.checkElementHaveProperty({
                 selector: baseSelectors.tags.coreElements.link,
                 attr: Constants.commonConstantsData.commonAttributes.attr,
                 prop: Constants.commonConstantsData.commonAttributes.href,
                 text: app2RemoteConfig.pageA.linkText,
                 value: app2RemoteConfig.pageA.linkHref
             })
-
             basePage.clickElementBySelector({
                 selector: baseSelectors.tags.coreElements.link,
             });
@@ -193,14 +190,13 @@ describe('App2 remote', () => {
 
         it('should contain a link allowing to navigate to pageA', () => {
             basePage.openLocalhost(app2RemoteConfig.port, app2RemoteConfig.pageB.path);
-            basePage.checkElementWithTextHaveProperty({
+            basePage.checkElementHaveProperty({
                 selector: baseSelectors.tags.coreElements.link,
                 attr: Constants.commonConstantsData.commonAttributes.attr,
                 prop: Constants.commonConstantsData.commonAttributes.href,
                 text: app2RemoteConfig.pageB.linkText,
                 value: app2RemoteConfig.pageB.linkHref
             })
-
             basePage.clickElementBySelector({
                 selector: baseSelectors.tags.coreElements.link,
             });
@@ -220,7 +216,7 @@ describe('Host app', () => {
     })
 
     it('should rendered correct pages and remotes', () => {
-        basePage.checkElementExist({
+        basePage.checkElementVisibility({
             selector: baseSelectors.tags.navigation
         })
         pages.forEach((item) => {
@@ -229,7 +225,7 @@ describe('Host app', () => {
                 text: item.name,
                 index: item.index
             })
-            basePage.checkElementWithTextHaveProperty({
+            basePage.checkElementHaveProperty({
                 selector: baseSelectors.tags.coreElements.link,
                 text: item.name,
                 attr: Constants.commonConstantsData.commonAttributes.attr,
@@ -253,7 +249,7 @@ describe('Host app', () => {
                 selector: baseSelectors.tags.coreElements.link,
                 text: item.linkText
             })
-            basePage.checkElementWithTextHaveProperty({
+            basePage.checkElementHaveProperty({
                 selector: baseSelectors.tags.coreElements.link,
                 text: item.linkText,
                 attr: Constants.commonConstantsData.commonAttributes.attr,

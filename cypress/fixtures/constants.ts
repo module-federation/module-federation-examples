@@ -187,7 +187,13 @@ export class Constants {
                     title: Constants.commonConstantsData.translationInfo.reactAppsTranslations.remoteMicroFrontEndIntroduction.francais,
                     button: `${Constants.commonConstantsData.translationInfo.reactAppsTranslations.changeLanguageMessage.francais} depuis ${Constants.commonConstantsData.translationInfo.reactAppsTranslations.fromNextHostMessage}`,
                     text:`Ceci est le texte principal ${Constants.commonConstantsData.translationInfo.reactAppsTranslations.fromNextHostMessage.replace('from', 'de')}`
-                }
+                },
+            },
+        },
+        typeScriptApp: {
+            buttons: {
+                small: `${Constants.commonConstantsData.commonCountAppNames.app2} Small ${Constants.commonConstantsData.button}`,
+                large: `${Constants.commonConstantsData.commonCountAppNames.app2.replace(' ', '')} Large ${Constants.commonConstantsData.button}`,
             }
         },
     }

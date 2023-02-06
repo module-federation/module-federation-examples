@@ -66,12 +66,12 @@ appsData.forEach(
             })
 
             it(`Check button property in ${appName}`, () => {
-                basePage.checkElementPositionbyText(
-                    property.buttonSelector,
-                    `${appName} ${Constants.commonConstantsData.button}`,
-                    appButtonPosition
-                )
-                basePage.checkElementWithTextHaveProperty({
+                basePage.checkElementContainText({
+                    selector: property.buttonSelector,
+                    text: `${appName} ${Constants.commonConstantsData.button}`,
+                    index: appButtonPosition
+                })
+                basePage.checkElementHaveProperty({
                     selector: property.buttonSelector,
                     text: `${appName} ${Constants.commonConstantsData.button}`,
                     prop: CssAttr.background,

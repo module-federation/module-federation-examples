@@ -55,13 +55,13 @@ describe('Check App1', () => {
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.completeReactCaseApp.buttons.openDialogButton
         })
-        basePage.checkElementWithTextHaveProperty({
+        basePage.checkElementHaveProperty({
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.completeReactCaseApp.buttons.primaryButton,
             prop: CssAttr.backgroundColor,
             value: Constants.color.lightWashedAzure
         })
-        basePage.checkElementWithTextHaveProperty({
+        basePage.checkElementHaveProperty({
             selector: baseSelectors.tags.coreElements.button,
             text: Constants.elementsText.completeReactCaseApp.buttons.warningButton,
             prop: CssAttr.backgroundColor,
@@ -82,7 +82,7 @@ describe('Check App1', () => {
             selector: baseSelectors.tags.coreElements.div,
             text: Constants.elementsText.completeReactCaseApp.nameMessage,
         })
-        basePage.sendInputText({
+        basePage.fillField({
             selector: baseSelectors.tags.inputs.input,
             text: Constants.commonPhrases.completeReactCaseApp.input
         })

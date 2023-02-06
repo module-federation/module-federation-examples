@@ -64,7 +64,7 @@ appsData.forEach(
                     }) 
                 })
                 :
-                basePage.checkElementExist({
+                basePage.checkElementVisibility({
                     selector: property.buttonSelector,
                     isVisible: property.isButtonExist
                 })
@@ -78,7 +78,7 @@ appsData.forEach(
                             selector: property.buttonSelector,
                             text: button
                         })
-                        basePage.checkElementExist({
+                        basePage.checkElementVisibility({
                             selector: commonSelectors.commonWidget.replace(
                                 '{appQuantity}',
                                 (Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button) + 2).toString())
@@ -104,7 +104,7 @@ appsData.forEach(
                         })
                     })
                 } else {
-                    basePage.checkElementExist({
+                    basePage.checkElementVisibility({
                         selector: commonSelectors.commonWidget.replace(
                             '{appQuantity}',
                             (widget + 2).toString())

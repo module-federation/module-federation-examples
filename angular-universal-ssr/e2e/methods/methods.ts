@@ -47,7 +47,10 @@ export class AngularUniversalSsrMethods extends BaseMethods {
                 visibilityState: 'be.visible'
             })
             this.reloadWindow()
-            this.checkElementVisibility(selectors.angularUniversalSsrApp.selectedCityInfo, false, 'not.exist')
+            this.checkElementVisibility({
+                selector: selectors.angularUniversalSsrApp.selectedCityInfo,
+                isVisible: false,
+            })
         })
     }
 

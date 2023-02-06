@@ -40,8 +40,14 @@ describe('It checks buttons with text visibility and position for both apps', fu
 
         it('Checks that both buttons are in the same block', () => {
             basePage.openLocalhost(property.host)
-            basePage.checkChildElementVisibility(property.parentSelector, property.selector)
-            basePage.checkChildElementVisibility(property.parentSelector, secondButtonSelector)
+            basePage.checkElementVisibility({
+                parentSelector: property.parentSelector,
+                selector: property.selector
+            })
+            basePage.checkElementVisibility({
+                parentSelector: property.parentSelector,
+                selector: secondButtonSelector
+            })
         })
     });
 });
