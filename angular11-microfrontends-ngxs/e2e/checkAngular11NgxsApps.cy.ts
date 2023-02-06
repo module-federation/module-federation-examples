@@ -1,3 +1,4 @@
+import { selectors } from './../../cypress/common/selectors';
 import { baseSelectors, commonSelectors} from '../../cypress/common/selectors';
 import { Constants } from '../../cypress/fixtures/constants';
 import { BaseMethods } from '../../cypress/common/base';
@@ -176,7 +177,7 @@ describe('Check Apps functionality', () => {
         })
         basePage.checkElementContainText({
             parentSelector: baseSelectors.tags.tableElements.table,
-            selector: baseSelectors.tags.tableElements.header,
+            selector: baseSelectors.tags.tableElements.dataCell,
             text: Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
             index: Constants.commonConstantsData.commonIndexes.zero
         })
@@ -430,8 +431,7 @@ describe('Check Apps functionality', () => {
             index: Constants.commonConstantsData.commonIndexes.four
         })
         basePage.clickElementBySelector({
-            selector: commonSelectors.commonAngularAppsSelectors.buttons.danger,
-            index: 1
+            selector: commonSelectors.commonAngularAppsSelectors.buttons.danger
         })
         basePage.checkElementContainText({
             parentSelector: baseSelectors.tags.tableElements.table,
@@ -442,7 +442,7 @@ describe('Check Apps functionality', () => {
         basePage.checkElementContainText({
             parentSelector: baseSelectors.tags.tableElements.table,
             selector: baseSelectors.tags.tableElements.dataCell,
-            text: Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
+            text: Constants.commonConstantsData.commonAngularAppsData.messages.email.second,
             index: Constants.commonConstantsData.commonIndexes.one
         })
         basePage.checkElementQuantity({
@@ -456,13 +456,13 @@ describe('Check Apps functionality', () => {
         basePage.checkElementContainText({
             parentSelector: baseSelectors.tags.tableElements.table,
             selector: baseSelectors.tags.tableElements.dataCell,
-            text: Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+            text: Constants.commonConstantsData.commonAngularAppsData.messages.testName.second,
             index: Constants.commonConstantsData.commonIndexes.zero
         })
         basePage.checkElementContainText({
             parentSelector: baseSelectors.tags.tableElements.table,
             selector: baseSelectors.tags.tableElements.dataCell,
-            text: Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
+            text: Constants.commonConstantsData.commonAngularAppsData.messages.email.second,
             index: Constants.commonConstantsData.commonIndexes.one
         })
         basePage.checkElementQuantity({
