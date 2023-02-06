@@ -41,7 +41,8 @@ export const baseSelectors = {
         strong: 'strong',
         emphasis: 'em',
         appRoot: 'app-root',
-        pre: 'pre'
+        pre: 'pre',
+        footer: 'footer'
     },
     ids: {
         app: '#app',
@@ -175,6 +176,9 @@ export const selectors = {
     },
     completeReactCaseApp: {
         toolTip: '.tool-tip',
+    },
+    nextJsHostReactRemoteApp: {
+        linkCard: '[data-e2e="TEXTED_LINK_CARD"]'
     }
 }
 

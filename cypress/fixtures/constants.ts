@@ -6,6 +6,13 @@ export class Constants {
             app2: 'self-healing/app2/webpack.config.js',
         },
         serverSideRenderOnlyChangeFilePath: 'server-side-render-only/remoteServer/SharedComponent.js',
+        nextJsHostReactRemoteApp: {
+            files: {
+                root: 'react-nextjs/nextjs-host-react-remote/host/pages/index.js',
+                changedContent: 'react-nextjs/nextjs-host-react-remote/e2e/fixtures/changedContent.js',
+                originalContent: 'react-nextjs/nextjs-host-react-remote/e2e/fixtures/originalContent.js'
+            }
+        },
     }
 
     public static readonly selectorParts = {
@@ -139,7 +146,10 @@ export class Constants {
         },
         helloWorldMessage: 'Hello World',
         commonVueAppComponentState: 'Remote Component in Action..',
-        commonReactLink: 'https://reactjs.org'
+        links: {
+           react: 'https://reactjs.org',
+           vercel: 'https://vercel.com'
+        },
     }
 
     public static readonly updatedConstantsData = {
@@ -845,6 +855,27 @@ export class Constants {
                 intro: 'Hello Vite + federation! +1+2+3+4',
                 edit: 'Edit App.tsx and save to test HMR updates.'
             }
+        },
+        nextJsHostReactRemoteApp: {
+            messages: {
+                welcome: 'Welcome to Next.js!',
+                start: 'Get started by editing pages/index.js',
+                remotes: {
+                    component: 'This component is from the Host React App hosted at localhost:8081',
+                    page: 'This is the Remote App'
+                },
+                engine: 'Powered by',
+                footer: 'Scipt is only needed if you are not using the federation @ syntax when setting your remotes.',
+            },
+            linksCardsText: [
+                'Documentation →Find in-depth information about Next.js features and API.',
+                'Learn →Learn about Next.js in an interactive course with quizzes!',
+                'Examples →Discover and deploy boilerplate example Next.js projects.',
+                'Deploy →Instantly deploy your Next.js site to a public URL with Vercel.'
+            ],
+            contents: {
+                original: ''
+            }
         }
     }
 
@@ -856,7 +887,7 @@ export class Constants {
            borderRed: 'border: 2px dotted red; padding: 20px;'
         },
         red: 'rgb(136, 0, 0)',
-        deepBlue: 'rgb(0, 0, 204)',
+        midBlue: 'rgb(0, 0, 204)',
         dynamicRemotesWidgetColor: [
             'rgb(255, 0, 0)',
             'rgb(128, 0, 128)'
@@ -885,7 +916,9 @@ export class Constants {
         lightGrey: 'rgb(239, 239, 239)',
         darkGrey: 'rgb(40, 44, 52)',
         darkSaturatedBlue: 'rgb(0, 0, 255)',
-        mint: 'rgb(97, 218, 251)'
+        mint: 'rgb(97, 218, 251)',
+        skyBlue: 'rgb(0, 112, 243)',
+        lightMint: 'rgb(95, 158, 160)'
     }
 
     public static readonly hrefs = {
@@ -985,6 +1018,15 @@ export class Constants {
         thirdPartyScriptsPostRequestPath: 'https://www.google-analytics.com/j/collect?**',
         viteReactSimpleApp: {
             viteLink: 'https://vitejs.dev/guide/features.html'
+        },
+        nextJsHostReactRemoteApp: {
+            nextJsLink: 'https://nextjs.org/',
+            cardsLinks: [
+                'https://nextjs.org/docs',
+                'https://nextjs.org/learn/foundations/about-nextjs',
+                'https://github.com/vercel/next.js/tree/canary/examples',
+                Constants.commonConstantsData.links.vercel
+            ]
         }
     }
 }
