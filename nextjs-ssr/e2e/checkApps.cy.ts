@@ -8,13 +8,10 @@
                 appName: Constants.commonConstantsData.home,
                 host: 3001
             },
-    // TODO : Checks for Shop app (port 3002) are commented, because there is the error after reloading shop page (localhost:3002/shop). 
-    // Error: Hydration failed because the initial UI does not match what was rendered on the server.
-    // Uncomment after fixing
-            // {
-            //     appName: Constants.elementsText.nextjsSsrShop,
-            //     host: 3002
-            // },
+            {
+                appName: Constants.elementsText.nextJsSsrApp.shop,
+                host: 3002
+            },
             {
                 appName: Constants.elementsText.nextJsSsrApp.checkout,
                 host: 3000
@@ -27,11 +24,6 @@
                     appName: string
                     host: number
                 }) => {
-            // TODO : Uncomment after fixing the Error: Hydration failed 
-                // let appName = property.host === 3001 ? appsData[0].appName : property.host === 3002 ? appsData[1].appName : appsData[2].appName;
-                // let host = property.host === 3001 ? appsData[0].host : property.host === 3002 ? appsData[1].host : appsData[2].host;
-                const appName = property.host === 3001 ? appsData[0].appName :  appsData[1].appName;
-                const host = property.host === 3001 ? appsData[0].host : appsData[1].host;
 
                 const navigationTextedLinks = [
                     {
@@ -82,21 +74,9 @@
                     }, 
                 ]
 
-        describe(`Check content in ${appName} app`, () => {
-            // TODO cy.exec don't build the apps correctly cause lerna executes without exit code. Uncomment after fix this issue!
-                // before(() => {
-                //     basePage.buildTheSample(Constants.samplesPath.nextjsSsr)
-                // })
-
-                // after(() => {
-                //     basePage.shutdownTheSample(Constants.samplesPath.nextjsSsr)
-                // })
-
-        
-
-        describe(`Check the content of Home page`, () => {
+        describe(`Check content in ${property.appName} app`, () => {
             beforeEach(() => {
-                basePage.openLocalhost(host)
+                basePage.openLocalhost(property.host)
             })
 
             it(`Check the header content of Home page`, () => {
@@ -180,7 +160,7 @@
 
             describe(`Check links on Home page`, () => {
                 beforeEach(() => {
-                    basePage.openLocalhost(host)
+                    basePage.openLocalhost(property.host)
                 })
 
                 navigationTextedLinks.forEach((property: { text: string, link: string }) => {
@@ -208,8 +188,7 @@
                         basePage.checkElementContainText({
                             selector: baseSelectors.tags.coreElements.link,
                             text: property.text,
-                            link: property.link,
-                            isParent: true
+                            link: property.link
                         })
                     })
                 });
@@ -228,7 +207,7 @@
 
             describe(`Check the content of Shop page`, () => {
                 beforeEach(() => {
-                    basePage.openLocalhost(host, Constants.hrefs.nextJsSsrApp.shop)
+                    basePage.openLocalhost(property.host, Constants.hrefs.nextJsSsrApp.shop)
                 })
 
                 it(`Check the header content of Shop page`, () => {
@@ -271,7 +250,7 @@
 
         describe(`Check links on Shop page`, () => {
             beforeEach(() => {
-                basePage.openLocalhost(host, Constants.hrefs.nextJsSsrApp.shop)
+                basePage.openLocalhost(property.host, Constants.hrefs.nextJsSsrApp.shop)
             })
 
             navigationTextedLinks.forEach((property: { text: string, link: string }) => {
@@ -308,7 +287,7 @@
 
         describe(`Check the content of Checkout page`, () => {
             beforeEach(() => {
-                basePage.openLocalhost(host, Constants.hrefs.nextJsSsrApp.checkout)
+                basePage.openLocalhost(property.host, Constants.hrefs.nextJsSsrApp.checkout)
             })
 
 
@@ -362,43 +341,42 @@
                     index: 1
                 })
         })
-
+        
         describe(`Check links on Checkout page`, () => {
-        beforeEach(() => {
-            basePage.openLocalhost(host, Constants.hrefs.nextJsSsrApp.checkout)
-        })
+            beforeEach(() => {
+                basePage.openLocalhost(property.host, Constants.hrefs.nextJsSsrApp.checkout)
+            })
 
-        navigationTextedLinks.forEach((property: { text: string, link: string }) => {
-            it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                basePage.checkElementContainText({
+            navigationTextedLinks.forEach((property: { text: string, link: string }) => {
+                it(`Check that ${property.text} text includes link and is not disabled`, () => {
+                    basePage.checkElementContainText({
+                        selector: baseSelectors.tags.coreElements.link,
+                        text: property.text,
+                        link: property.link,
+                    })
+                })
+            })
+
+            commonTextedLinks.forEach((property: { text: string, link: string }) => {
+                it(`Check that ${property.text} text includes link and is not disabled`, () => {
+                    basePage.checkElementContainText({
+                        selector: baseSelectors.tags.coreElements.link,
+                        text: property.text,
+                        link: property.link,
+                    })
+                })
+            })
+
+            navigationTextedLinks.forEach((property: { text: string, url: string }) => {
+                it(`Check that ${property.text} text navigation link works`, () => {
+                    basePage.clickElementWithText({
                     selector: baseSelectors.tags.coreElements.link,
-                    text: property.text,
-                    link: property.link,
+                    text: property.text})
+
+                    cy.wait(500)
+                    basePage.checkUrlText(property.url, true)
                 })
             })
         })
-
-        commonTextedLinks.forEach((property: { text: string, link: string }) => {
-            it(`Check that ${property.text} text includes link and is not disabled`, () => {
-                basePage.checkElementContainText({
-                    selector: baseSelectors.tags.coreElements.link,
-                    text: property.text,
-                    link: property.link,
-                })
-            })
-        })
-
-        navigationTextedLinks.forEach((property: { text: string, url: string }) => {
-            it(`Check that ${property.text} text navigation link works`, () => {
-                basePage.clickElementWithText({
-                selector: baseSelectors.tags.coreElements.link,
-                text: property.text})
-
-                cy.wait(500)
-                basePage.checkUrlText(property.url, true)
-            })
-        })
-    })
-    })
     })
 })
