@@ -84,7 +84,7 @@ appsData.forEach((
                 })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.div,
-                    text: Constants.elementsText.quasarCliApp.appGeneral.counter,
+                    text: Constants.commonConstantsData.counter,
                 })
             }
             if (property.host === 3001) {

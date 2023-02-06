@@ -11,7 +11,6 @@ export class Constants {
     public static readonly selectorParts = {
         vue3DemoFederationWithViteApp : {
             vite: 'vite',
-            webpack: 'webpack'
         },
         sharedRoutingAppReplaceSelectorPart: 'RECENT_',
         formFieldNames: {
@@ -35,7 +34,10 @@ export class Constants {
             app3: 'App 3'
         },
         button: 'Button',
+        header: 'Header',
         widget: 'Widget',
+        webpack: 'webpack',
+        counter: 'Counter',
         home: 'Home',
         commonIndexes: {
            minusOne: -1,
@@ -137,6 +139,7 @@ export class Constants {
         },
         helloWorldMessage: 'Hello World',
         commonVueAppComponentState: 'Remote Component in Action..',
+        commonReactLink: 'https://reactjs.org'
     }
 
     public static readonly updatedConstantsData = {
@@ -607,7 +610,6 @@ export class Constants {
                 routeButton: 'Route',
                 subheader1: 'Exposed from Child',
                 subheader2: 'Listening in Parent',
-                counter: 'Counter',
             },
             appButtonDiv: 'App Button',
             appButtonClickMeButton: 'Click me',
@@ -691,8 +693,15 @@ export class Constants {
               'Stop 🛑'
           ],
         },
-        rollupFederationDemoApp: {
-            headerText: 'Header'
+        viteReactSimpleApp: {
+            buttons: {
+                webpack: 'Webpack Remote Button',
+                counter: 'count is: 0'
+            },
+            links: [
+                'Learn React',
+                'Vite Docs'
+            ]
         }
     }
 
@@ -830,6 +839,12 @@ export class Constants {
                 rollupHost: 'Rollup Host'
             },
             buttonText: 'Webpack Remote Button'
+        },
+        viteReactSimpleApp: {
+            messages: {
+                intro: 'Hello Vite + federation! +1+2+3+4',
+                edit: 'Edit App.tsx and save to test HMR updates.'
+            }
         }
     }
 
@@ -869,7 +884,8 @@ export class Constants {
         white: 'rgb(255, 255, 255)',
         lightGrey: 'rgb(239, 239, 239)',
         darkGrey: 'rgb(40, 44, 52)',
-        darkSaturatedBlue: 'rgb(0, 0, 255)'
+        darkSaturatedBlue: 'rgb(0, 0, 255)',
+        mint: 'rgb(97, 218, 251)'
     }
 
     public static readonly hrefs = {
@@ -947,7 +963,6 @@ export class Constants {
             learnAboutNext: 'https://nextjs.org/learn/foundations/about-nextjs',
             deprecatedMainExamples: 'https://github.com/vercel/next.js/tree/deprecated-main/examples',
         },
-        nativeFederationReactAppUrl: 'https://reactjs.org',
         comprehensiveDemoApp: {
             gitHub: 'https://github.com/module-federation/mfe-webpack-demo',
             app3: 'http://localhost:3003/',
@@ -968,5 +983,8 @@ export class Constants {
             federationLink: '/federation'
         },
         thirdPartyScriptsPostRequestPath: 'https://www.google-analytics.com/j/collect?**',
+        viteReactSimpleApp: {
+            viteLink: 'https://vitejs.dev/guide/features.html'
+        }
     }
 }

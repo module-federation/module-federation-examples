@@ -189,7 +189,7 @@ export const updatedSelectors = {
     vue3DemoFederationWithViteApp: {
         buttons: {
             vite: selectors.vue3DemoFederationWithViteApp.vueAppButton.replace('{appType}', Constants.selectorParts.vue3DemoFederationWithViteApp.vite),
-            webpack: selectors.vue3DemoFederationWithViteApp.vueAppButton.replace('{appType}', Constants.selectorParts.vue3DemoFederationWithViteApp.webpack),
+            webpack: selectors.vue3DemoFederationWithViteApp.vueAppButton.replace('{appType}', Constants.commonConstantsData.webpack),
             common: `${baseSelectors.tags.coreElements.div}[class*= "content"]`,
         }
     },
@@ -210,5 +210,8 @@ export const updatedSelectors = {
         componentBorder: `${selectors.craReactRewiredApp.componentInfo}${baseSelectors.css.style
             .replace('{style}', Constants.color.nonRgbValues.borderRed)}`
     },
+    viteReactSimpleApp: {
+        headerBlock: `${baseSelectors.tags.headers.header} ${baseSelectors.tags.coreElements.div}`,
+    }
 }
 
