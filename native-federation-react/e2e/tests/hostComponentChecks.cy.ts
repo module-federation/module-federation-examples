@@ -93,7 +93,7 @@ describe("It checks host apps' component", () => {
             selector: baseSelectors.tags.coreElements.link,
             attr: Constants.commonConstantsData.commonAttributes.attr,
             prop: Constants.commonConstantsData.commonAttributes.href,
-            value: Constants.hrefs.nativeFederationReactAppUrl,
+            value: Constants.commonConstantsData.commonReactLink,
             isMultiple: true
         })
     })

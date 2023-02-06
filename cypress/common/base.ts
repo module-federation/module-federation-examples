@@ -59,7 +59,8 @@ export class BaseMethods {
          wait = 0,
          isShadowRoot = false,
          index = 0,
-         parentSelector
+         parentSelector,
+         isTargetChanged = false
     }: {
         selector: string,
         text: string,
@@ -67,8 +68,18 @@ export class BaseMethods {
         wait?: number,
         isShadowRoot?: boolean,
         index?: number,
-        parentSelector?: string
+        parentSelector?: string,
+        isTargetChanged?: boolean
     }): void {
+        if(isTargetChanged) {
+            cy.get(selector).contains(text)
+                .should(($button: JQuery<HTMLElement>) => {
+                    $button.attr('target', '_self');
+                }).click()
+
+            return;
+        }
+
         if(parentSelector) {
             cy.get(parentSelector)
                 .find(selector)
@@ -124,7 +135,15 @@ export class BaseMethods {
         })
     }
 
-    public checkUrlText(url: string, isInclude: boolean = false): void {
+    public checkUrlText(url: string, isInclude: boolean = false, isDifferentOrigin: boolean = false): void {
+        if(isDifferentOrigin) {
+            cy.origin(url, { args: { isInclude, url } }, ({ isInclude, url }) => {
+                cy.url().should(isInclude ? 'include' : 'not.include', url);
+            });
+
+            return;
+        }
+
         cy.url().should(isInclude ? 'include' : 'not.include', url);
     }
 
@@ -340,7 +359,8 @@ export class BaseMethods {
          isShadowElement = false,
          text,
          isParent = false,
-         checkType = 'contains'
+         checkType = 'contains',
+         isWithInvoke = true
      }: {
          selector: string,
          attr?: string,
@@ -352,7 +372,8 @@ export class BaseMethods {
          isShadowElement?: boolean,
          text?: string,
          isParent?: boolean,
-         checkType?: string
+         checkType?: string,
+         isWithInvoke?: boolean
      }
     ): Cypress.Chainable<JQuery<HTMLElement>> {
         if(text) {
@@ -424,6 +445,10 @@ export class BaseMethods {
                 .each((element: JQuery<HTMLElement>) => {
                     this._checkCssValue(element, prop, value)
                 });
+        }
+
+        if(!isWithInvoke) {
+            return cy.get(selector).should(prop, value)
         }
 
         return cy.get(selector)

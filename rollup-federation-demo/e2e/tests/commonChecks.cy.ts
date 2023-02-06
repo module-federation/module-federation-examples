@@ -23,7 +23,7 @@ describe('It checks rollup-federation-demo apps functionality',  () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
                 selector: selectors.rollupFederationDemoApp.header,
-                text: Constants.elementsText.rollupFederationDemoApp.headerText,
+                text: Constants.commonConstantsData.header,
                 visibilityState: 'be.visible'
             })
         });

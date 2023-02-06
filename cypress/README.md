@@ -461,6 +461,7 @@ It will generate two `describes` and two `its` for each test, and our test run w
 ### Separate common checks and uncommon
 
 As a suggestion, if you have two or more applications with similar functionality, you can create a separate file for shared checks, named `commonChecks.ts`, and add your created object with common checks there.
+NOTE: You can use `commonChecks.ts`, not only fot different apps but for similar checks in one app (for example similar checks of different buttons in one app)
 
 So, your `e2e` directory will look like the following:
 
