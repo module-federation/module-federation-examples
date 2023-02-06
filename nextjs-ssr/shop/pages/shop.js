@@ -32,7 +32,7 @@ const Shop = props => (
   </div>
 );
 Shop.getInitialProps = async () => {
-  const swapi = await fetch('https://swapi.dev/api/people/1').then(res => res.json());
+  const swapi = await fetch('https://jsonplaceholder.typicode.com/todos/2').then(res => res.json());
   return swapi;
 };
 export default Shop;
