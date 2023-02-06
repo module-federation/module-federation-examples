@@ -10,20 +10,20 @@ describe("Checks application", () => {
     })
     let appText = [
         {
-            appText: Constants.commonPhrases.welcomeToHostApp
+            appText: Constants.commonPhrases.reduxReducerInjectionApp.welcomeMessage
         },
         {
-            appText: Constants.commonPhrases.remoteAppText
+            appText: Constants.commonPhrases.reduxReducerInjectionApp.remoteAppText
         },
         {
-            appText: Constants.commonPhrases.remoteAppsNameFromReduxStore
+            appText: Constants.commonPhrases.reduxReducerInjectionApp.remoteAppsNameFromReduxStore
         }
     ]
     
     appText.forEach(function (property: { appText: string }) {
         it(`Check that ${property.appText} text is visible`, () => {
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: property.appText,
                 visibilityState: 'be.visible'
             })
@@ -32,23 +32,23 @@ describe("Checks application", () => {
 
         it('Checks dispatch RemoteApp NewName Button visibility', () => {
         basePage.checkElementWithTextPresence({
-           selector: baseSelectors.button,
-           text: Constants.elementsText.dispatchRemoteAppNewNameButton
+           selector: baseSelectors.tags.coreElements.button,
+           text: Constants.elementsText.dispatchRemoteApp.button
         }); 
     });
     
         it('Checks that Remote App name Updated', () => {
-            basePage.sendInputText({
-                selector: baseSelectors.input,
-                text: Constants.elementsText.dispatchRemoteAppNewNameInput
+            basePage.fillField({
+                selector: baseSelectors.tags.inputs.input,
+                text: Constants.elementsText.dispatchRemoteApp.input
             }); 
             basePage.clickElementWithText({
-                selector: baseSelectors.button,
-                text: Constants.elementsText.dispatchRemoteAppNewNameButton
+                selector: baseSelectors.tags.coreElements.button,
+                text: Constants.elementsText.dispatchRemoteApp.button
             });
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
-                text: Constants.elementsText.dispatchRemoteAppNewNameInput
+                selector: baseSelectors.tags.coreElements.div,
+                text: Constants.elementsText.dispatchRemoteApp.input
              });    
     });
 })

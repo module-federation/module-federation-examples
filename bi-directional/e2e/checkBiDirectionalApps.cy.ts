@@ -6,17 +6,17 @@ const basePage: BaseMethods = new BaseMethods()
 
 const appsData = [
     {
-        appName: Constants.elementsText.biDirectionalHeader,
-        appSubheader: Constants.elementsText.automaticVendorFirstAppName,
-        app1Button: Constants.elementsText.biDirectionalButton1,
-        app2Button: Constants.elementsText.biDirectionalButton2,
+        appName: Constants.commonConstantsData.biDirectional,
+        appSubheader: Constants.commonConstantsData.commonCountAppNames.app1,
+        app1Button: Constants.updatedConstantsData.commonAppWithButton.app1,
+        app2Button: Constants.updatedConstantsData.commonAppWithButton.app2,
         host: 3001
     },
     {
-        appName: Constants.elementsText.biDirectionalHeader,
-        appSubheader: Constants.elementsText.automaticVendorSecondAppName,
-        app1Button: Constants.elementsText.biDirectionalButton1,
-        app2Button: Constants.elementsText.biDirectionalButton2,
+        appName: Constants.commonConstantsData.biDirectional,
+        appSubheader: Constants.commonConstantsData.commonCountAppNames.app2,
+        app1Button: Constants.updatedConstantsData.commonAppWithButton.app1,
+        app2Button: Constants.updatedConstantsData.commonAppWithButton.app2,
         host: 3002
     }
 ]
@@ -36,19 +36,19 @@ appsData.forEach((
         })
         it(`Check App1 and App2 elements`, () => {
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h1,
+                selector: baseSelectors.tags.headers.h1,
                 text: String(property.appName)
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h2,
+                selector: baseSelectors.tags.headers.h2,
                 text: String(property.appSubheader)
             })
             basePage.clickElementWithText({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 text: String(property.app1Button)
             })
             basePage.clickElementWithText({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 text: String(property.app2Button)
             })
         })

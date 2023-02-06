@@ -1,5 +1,5 @@
 import {BaseMethods} from "../../../cypress/common/base";
-import {selectors} from "../../../cypress/common/selectors";
+import {commonSelectors} from "../../../cypress/common/selectors";
 import {Constants} from "../../../cypress/fixtures/constants";
 import {CssAttr} from "../../../cypress/types/cssAttr";
 
@@ -12,30 +12,30 @@ describe("It checks host app", () => {
 
     it('Checks that remote component card appears after loading', () => {
         basePage.checkElementQuantity({
-            selector: selectors.commonCardSelector,
+            selector: commonSelectors.commonMicroFrontendsAppsCard,
             quantity: 1
         })
         basePage.checkElementWithTextPresence({
-            selector: selectors.commonCardSelector,
-            text: Constants.elementsText.viteReactMicroFrontendsCardsMessages.hostCard,
+            selector: commonSelectors.commonMicroFrontendsAppsCard,
+            text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.hostCard,
             visibilityState: 'be.visible'
         })
         basePage.checkElementQuantity({
-            selector: selectors.commonCardSelector,
+            selector: commonSelectors.commonMicroFrontendsAppsCard,
             quantity: 2,
             waitUntil: true
         })
         basePage.checkElementWithTextPresence({
-            selector: selectors.commonCardSelector,
-            text: Constants.elementsText.viteReactMicroFrontendsCardsMessages.remoteCard,
+            selector: commonSelectors.commonMicroFrontendsAppsCard,
+            text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.remoteCard,
             visibilityState: 'be.visible'
         })
     })
 
     it('Checks host app card color is set to blue', () => {
-        basePage.checkElementWithTextHaveProperty({
-            selector: selectors.commonCardSelector,
-            text: Constants.elementsText.viteReactMicroFrontendsCardsMessages.hostCard,
+        basePage.checkElementHaveProperty({
+            selector: commonSelectors.commonMicroFrontendsAppsCard,
+            text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.hostCard,
             prop: CssAttr.css,
             value: Constants.color.blue,
             checkType: 'contain'
@@ -44,13 +44,13 @@ describe("It checks host app", () => {
 
     it('Checks remote app card color is set to black', () => {
         basePage.checkElementQuantity({
-            selector: selectors.commonCardSelector,
+            selector: commonSelectors.commonMicroFrontendsAppsCard,
             quantity: 2,
             waitUntil: true
         })
-        basePage.checkElementWithTextHaveProperty({
-            selector: selectors.commonCardSelector,
-            text: Constants.elementsText.viteReactMicroFrontendsCardsMessages.remoteCard,
+        basePage.checkElementHaveProperty({
+            selector: commonSelectors.commonMicroFrontendsAppsCard,
+            text: Constants.elementsText.commonMicroFrontendsApps.cardMessages.remoteCard,
             prop: CssAttr.css,
             value: Constants.color.black,
             checkType: 'contain'
@@ -58,7 +58,7 @@ describe("It checks host app", () => {
     })
 
     it('Checks console messages', () => {
-        Constants.commonPhrases.viteSvelteMicroFrontEndsConsoleMessages.forEach((message: string) => {
+        Constants.commonPhrases.viteSvelteMicroFrontEndsApp.consoleMessages.forEach((message: string) => {
             basePage.checkInfoInConsole(message)
         })
     })

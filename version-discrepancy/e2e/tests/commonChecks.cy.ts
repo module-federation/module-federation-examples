@@ -10,13 +10,13 @@ describe('It checks apps with dependency versions discrepancy', () => {
     const appsData = [
         {
             host: 3001,
-            header: Constants.commonPhrases.versionDiscrepancyApp1Name,
-            lodashVersion: Constants.commonPhrases.versionDiscrepancyApp1LodashVersion
+            header: Constants.commonPhrases.versionDiscrepancyApp.appsNames.app1,
+            lodashVersion: Constants.commonPhrases.versionDiscrepancyApp.lodashVersions.app1
         },
         {
             host: 3002,
-            header: Constants.commonPhrases.versionDiscrepancyApp2Name,
-            lodashVersion: Constants.commonPhrases.versionDiscrepancyApp2LodashVersion
+            header: Constants.commonPhrases.versionDiscrepancyApp.appsNames.app2,
+            lodashVersion: Constants.commonPhrases.versionDiscrepancyApp.lodashVersions.app2
         }
     ]
 
@@ -24,7 +24,7 @@ describe('It checks apps with dependency versions discrepancy', () => {
         it(`Check ${property.header} header visibility`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: property.header,
                 visibilityState: 'be.visible'
             })
@@ -33,7 +33,7 @@ describe('It checks apps with dependency versions discrepancy', () => {
         it(`Checks Lodash version for ${property.header}`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: property.lodashVersion,
                 visibilityState: 'be.visible'
             })
@@ -41,19 +41,19 @@ describe('It checks apps with dependency versions discrepancy', () => {
 
         it(`Checks lodash.nth not available message shows depending on Lodash version`, () => {
             basePage.openLocalhost(property.host)
-            methodsPage.checkMessageVisibilityByLodashVersion(Constants.commonPhrases.lodashVersionNotAvailableMessage)
+            methodsPage.checkMessageVisibilityByLodashVersion(Constants.commonPhrases.versionDiscrepancyApp.messages.notAvailable)
         });
 
         it(`Checks lodash.nth undefined version message shows depending on Lodash version`, () => {
             basePage.openLocalhost(property.host)
-            methodsPage.checkMessageVisibilityByLodashVersion(Constants.commonPhrases.lodashVersionUndefinedVersionMessage)
+            methodsPage.checkMessageVisibilityByLodashVersion(Constants.commonPhrases.versionDiscrepancyApp.messages.undefinedVersion)
         });
 
         it(`Checks that both apps shares lodash remote component`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
-                text: Constants.commonPhrases.lodashRemoteComponentHeader,
+                selector: baseSelectors.tags.coreElements.div,
+                text: Constants.commonPhrases.versionDiscrepancyApp.remoteComponentHeader,
                 visibilityState: 'be.visible'
             })
         });
@@ -61,35 +61,35 @@ describe('It checks apps with dependency versions discrepancy', () => {
         it(`Checks that both apps shares same remote component style`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.style.replace('{style}', Constants.color.nonRgbBorderBlack),
-                text: Constants.commonPhrases.lodashRemoteComponentHeader,
+                selector: baseSelectors.css.style.replace('{style}', Constants.color.nonRgbValues.borderBlack),
+                text: Constants.commonPhrases.versionDiscrepancyApp.remoteComponentHeader,
                 visibilityState: 'be.visible'
             })
         });
 
         it(`Checks that both apps shares same remote component value`, () => {
             basePage.openLocalhost(property.host)
-            basePage.checkChildElementContainText(
-                baseSelectors.style.replace('{style}', Constants.color.nonRgbBorderBlack),
-                baseSelectors.h3,
-                Constants.commonPhrases.lodashRemoteComponentHeader
-            )
-            basePage.checkChildElementContainText(
-                baseSelectors.style.replace('{style}', Constants.color.nonRgbBorderBlack),
-                baseSelectors.paragraph,
-                Constants.commonPhrases.versionDiscrepancyApp2LodashVersion
-            )
-            basePage.checkChildElementContainText(
-                baseSelectors.style.replace('{style}', Constants.color.nonRgbBorderBlack),
-                baseSelectors.code,
-                Constants.commonPhrases.lodashVersionDefinedVersionMessage
-            )
-            basePage.checkChildElementContainText(
-                baseSelectors.style.replace('{style}', Constants.color.nonRgbBorderBlack),
-                baseSelectors.code,
-                Constants.commonPhrases.ntxCode,
-                1
-            )
+            basePage.checkElementContainText({
+                parentSelector: baseSelectors.css.style.replace('{style}', Constants.color.nonRgbValues.borderBlack),
+                selector: baseSelectors.tags.headers.h3,
+                text: Constants.commonPhrases.versionDiscrepancyApp.remoteComponentHeader
+            })
+            basePage.checkElementContainText({
+                parentSelector: baseSelectors.css.style.replace('{style}', Constants.color.nonRgbValues.borderBlack),
+                selector: baseSelectors.tags.paragraph,
+                text: Constants.commonPhrases.versionDiscrepancyApp.lodashVersions.app2
+            })
+            basePage.checkElementContainText({
+                parentSelector: baseSelectors.css.style.replace('{style}', Constants.color.nonRgbValues.borderBlack),
+                selector: baseSelectors.tags.code,
+                text: Constants.commonPhrases.versionDiscrepancyApp.messages.definedVersion
+            })
+            basePage.checkElementContainText({
+                parentSelector: baseSelectors.css.style.replace('{style}', Constants.color.nonRgbValues.borderBlack),
+                selector: baseSelectors.tags.code,
+                text: Constants.commonPhrases.versionDiscrepancyApp.ntxCode,
+                index: Constants.commonConstantsData.commonIndexes.one
+            })
         });
     });
 });
@@ -102,17 +102,17 @@ describe("It checks right app opened at the right port", () => {
     it('Checks each app opened in right port', () => {
         basePage.checkUrlText(Cypress.env(`localhost${3001}`), true)
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.divElement,
-            text: Constants.commonPhrases.versionDiscrepancyApp1Name,
+            selector: baseSelectors.tags.coreElements.div,
+            text: Constants.commonPhrases.versionDiscrepancyApp.appsNames.app1,
             visibilityState: 'be.visible'
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.divElement,
-            text: Constants.commonPhrases.versionDiscrepancyApp2Name,
+            selector: baseSelectors.tags.coreElements.div,
+            text: Constants.commonPhrases.versionDiscrepancyApp.appsNames.app2,
             isVisible: false
         })
         cy.wait(2000)
-        basePage.checkInfoOnNonDefaultHost(3002, baseSelectors.divElement,
-            Constants.commonPhrases.versionDiscrepancyApp2Name, Constants.commonPhrases.versionDiscrepancyApp1Name)
+        basePage.checkInfoOnNonDefaultHost(3002, baseSelectors.tags.coreElements.div,
+            Constants.commonPhrases.versionDiscrepancyApp.appsNames.app2, Constants.commonPhrases.versionDiscrepancyApp.appsNames.app1)
     })
 })

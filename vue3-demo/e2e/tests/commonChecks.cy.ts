@@ -8,11 +8,11 @@ describe('It checks app names & messages',  () => {
     const appsData = [
         {
             host: 3001,
-            appName: Constants.commonPhrases.vue3DemoLayoutAppNames.layout
+            appName: Constants.commonPhrases.vue3DemoApp.appsNames.layout
         },
         {
             host: 3002,
-            appName: Constants.commonPhrases.vue3DemoLayoutAppNames.remote
+            appName: Constants.commonPhrases.vue3DemoApp.appsNames.remote
         }
     ]
 
@@ -20,7 +20,7 @@ describe('It checks app names & messages',  () => {
         it('Checks apps name visibility', () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
+                selector: baseSelectors.tags.coreElements.div,
                 text: property.appName,
                 visibilityState: 'be.visible'
             })
@@ -29,8 +29,8 @@ describe('It checks app names & messages',  () => {
         it('Checks component state message visibility', () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.divElement,
-                text: Constants.commonPhrases.commonVueAppComponentState,
+                selector: baseSelectors.tags.coreElements.div,
+                text: Constants.commonConstantsData.commonVueAppComponentState,
                 visibilityState: 'be.visible'
             })
         })
@@ -38,21 +38,23 @@ describe('It checks app names & messages',  () => {
         it('Checks component state message style', () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.style.replace('{style}', Constants.color.nonRgbRed),
-                text: Constants.commonPhrases.commonVueAppComponentState,
+                selector: baseSelectors.css.style.replace('{style}',  Constants.color.nonRgbValues.red),
+                text: Constants.commonConstantsData.commonVueAppComponentState,
                 visibilityState: 'be.visible'
             })
         })
 
         it('Checks button visibility', () => {
             basePage.openLocalhost(property.host)
-            basePage.checkElementVisibility(baseSelectors.button)
+            basePage.checkElementVisibility({
+                selector: baseSelectors.tags.coreElements.button
+            })
         })
 
         it(`Checks that button is not disabled`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementState({
-                selector: baseSelectors.button,
+                selector: baseSelectors.tags.coreElements.button,
                 state: 'not.be.disabled'
             })
         });
@@ -60,8 +62,8 @@ describe('It checks app names & messages',  () => {
         it(`Checks button text`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.button,
-                text: Constants.elementsText.helloWorldMessage,
+                selector: baseSelectors.tags.coreElements.button,
+                text: Constants.commonConstantsData.helloWorldMessage,
                 visibilityState: 'be.visible'
             })
         });

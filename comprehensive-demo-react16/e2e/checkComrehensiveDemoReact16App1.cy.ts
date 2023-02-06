@@ -1,7 +1,7 @@
 import { Constants } from '../../cypress/fixtures/constants';
-import { block, baseSelectors, alertMessages, buttons, dialogs } from '../../cypress/common/selectors';
+import {baseSelectors, selectors} from '../../cypress/common/selectors';
 import { BaseMethods } from "../../cypress/common/base";
-import {CommonTestData} from "../../cypress/fixtures/commonTestData";
+import {CssAttr} from "../../cypress/types/cssAttr";
 
 const basePage: BaseMethods = new BaseMethods()
 
@@ -11,108 +11,108 @@ describe('Check is Comprehensive Demo App1 working and have elements', () => {
     })
 
     it('Check App build and running & Check app elements exist', () => {
-        basePage.checkElementExist({
-            selector: block.comprehensiveDemoBlockSelectors.sideBarBlock
+        basePage.checkElementVisibility({
+            selector: selectors.comprehensiveDemoApp.blockSelectors.sideBarBlock
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.h6,
-            text: Constants.elementsText.comprehensiveDemo.App1.sideNavHeaderText
+            selector: baseSelectors.tags.headers.h6,
+            text: Constants.elementsText.comprehensiveDemoApp.App1.sideNavHeaderText
         })
-        CommonTestData.comprehensiveAppNames.forEach((demoPage) => {
+        Constants.elementsText.comprehensiveDemoApp.comprehensiveDemoDemoPages.forEach((demoPage) => {
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.span,
+                selector: baseSelectors.tags.coreElements.spans.span,
                 text: demoPage.name
             })
             basePage.checkElementHaveProperty({
-                selector: baseSelectors.linkTag,
+                selector: baseSelectors.tags.coreElements.link,
                 index: demoPage.index,
-                attr: Constants.commonText.attr,
-                prop: Constants.commonText.href,
+                attr: Constants.commonConstantsData.commonAttributes.attr,
+                prop: Constants.commonConstantsData.commonAttributes.href,
                 value: demoPage.link
             })
         })
-        CommonTestData.comprehensiveAppNames.forEach((application) => {
+        Constants.elementsText.comprehensiveDemoApp.comprehensiveDemoDemoPages.forEach((application) => {
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.span,
+                selector: baseSelectors.tags.coreElements.spans.span,
                 text: application.name
             })
             basePage.checkElementHaveProperty({
-                selector: baseSelectors.linkTag,
+                selector: baseSelectors.tags.coreElements.link,
                 index: application.index,
-                attr: Constants.commonText.attr,
-                prop: Constants.commonText.href,
+                attr: Constants.commonConstantsData.commonAttributes.attr,
+                prop: Constants.commonConstantsData.commonAttributes.href,
                 value: application.link
             })
         })
-        basePage.checkElementExist({
-            selector: baseSelectors.header
+        basePage.checkElementVisibility({
+            selector: baseSelectors.tags.headers.header
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.h6,
-            text: Constants.elementsText.comprehensiveDemo.App1.mainPage.headerText
+            selector: baseSelectors.tags.headers.h6,
+            text: Constants.elementsText.comprehensiveDemoApp.App1.mainPage.headerText
         })
         basePage.checkElementHaveProperty({
-            selector: baseSelectors.header,
-            prop: Constants.commonText.backgroundColor,
+            selector: baseSelectors.tags.headers.header,
+            prop: CssAttr.backgroundColor,
             value: Constants.color.oceanBluePearl
         })
-        basePage.checkElementExist({
-            selector: alertMessages.alert
+        basePage.checkElementVisibility({
+            selector: selectors.comprehensiveDemoApp.alert
         })
         basePage.checkElementWithTextPresence({
-            selector: alertMessages.alert,
-            text: Constants.elementsText.comprehensiveDemo.App1.mainPage.alertMessage
+            selector: selectors.comprehensiveDemoApp.alert,
+            text: Constants.elementsText.comprehensiveDemoApp.App1.mainPage.alertMessage
         })
-        basePage.checkElementExist({
-            selector: buttons.closeButton
-        })
-        basePage.checkElementWithTextPresence({
-            selector: baseSelectors.paragraph,
-            text: Constants.elementsText.comprehensiveDemo.App1.mainPage.paragraphs.first
+        basePage.checkElementVisibility({
+            selector: selectors.comprehensiveDemoApp.closeButton
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.paragraph,
-            text: Constants.elementsText.comprehensiveDemo.App1.mainPage.paragraphs.second
+            selector: baseSelectors.tags.paragraph,
+            text: Constants.elementsText.comprehensiveDemoApp.App1.mainPage.paragraphs.first
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.paragraph,
-            text: Constants.elementsText.comprehensiveDemo.App1.mainPage.paragraphs.third
+            selector: baseSelectors.tags.paragraph,
+            text: Constants.elementsText.comprehensiveDemoApp.App1.mainPage.paragraphs.second
+        })
+        basePage.checkElementWithTextPresence({
+            selector: baseSelectors.tags.paragraph,
+            text: Constants.elementsText.comprehensiveDemoApp.App1.mainPage.paragraphs.third
         })
         basePage.checkElementHaveProperty({
-            selector: baseSelectors.linkTag,
-            index: Constants.hrefs.comprehensiveDemoGitHubLink.index,
-            attr: Constants.commonText.attr,
-            prop: Constants.commonText.href,
-            value: Constants.hrefs.comprehensiveDemoGitHubLink.link
+            selector: baseSelectors.tags.coreElements.link,
+            index: Constants.commonConstantsData.commonIndexes.ten,
+            attr: Constants.commonConstantsData.commonAttributes.attr,
+            prop: Constants.commonConstantsData.commonAttributes.href,
+            value: Constants.hrefs.comprehensiveDemoApp.gitHub
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App1.mainPage.buttonText
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.comprehensiveDemoApp.App1.mainPage.buttonText
         })
         basePage.checkElementHaveProperty({
-            selector: baseSelectors.button,
-            prop: Constants.commonText.backgroundColor,
+            selector: baseSelectors.tags.coreElements.button,
+            prop: CssAttr.backgroundColor,
             value: Constants.color.paleVioletRed
         })
     })
 
     it('Check Main Tab Functionality', () => {
         basePage.checkBrowserAlertByText({
-            selector: baseSelectors.button,
-            alertMessage: Constants.elementsText.comprehensiveDemo.alertMessage
+            selector: baseSelectors.tags.coreElements.button,
+            alertMessage: Constants.elementsText.comprehensiveDemoApp.alertMessage
         })
         basePage.clickElementBySelector({
-            selector: buttons.closeButton
+            selector: selectors.comprehensiveDemoApp.closeButton
         })
         basePage.checkElementHaveProperty({
-            selector: alertMessages.alert,
-            attr: Constants.commonText.attr,
-            prop: Constants.commonText.style,
-            value: Constants.commonText.displayNone
+            selector: selectors.comprehensiveDemoApp.alert,
+            attr: Constants.commonConstantsData.commonAttributes.attr,
+            prop: Constants.commonConstantsData.commonAttributes.style,
+            value: Constants.commonConstantsData.commonAttributes.displayNone
         })
-        CommonTestData.comprehensiveAppNames.forEach((demoPage) => {
+        Constants.elementsText.comprehensiveDemoApp.comprehensiveDemoDemoPages.forEach((demoPage) => {
             basePage.clickElementWithText({
-                selector: baseSelectors.linkTag,
+                selector: baseSelectors.tags.coreElements.link,
                 text: demoPage.name
             })
             basePage.checkUrlText(
@@ -120,9 +120,9 @@ describe('Check is Comprehensive Demo App1 working and have elements', () => {
                 true
             )
         })
-        CommonTestData.comprehensiveAppNames.forEach((application) => {
+        Constants.elementsText.comprehensiveDemoApp.comprehensiveDemoDemoPages.forEach((application) => {
             basePage.clickElementWithText({
-                selector: baseSelectors.linkTag,
+                selector: baseSelectors.tags.coreElements.link,
                 text: application.name
             })
             basePage.checkUrlText(
@@ -134,180 +134,180 @@ describe('Check is Comprehensive Demo App1 working and have elements', () => {
     })
 
     it('Check UI Library elements', () => {
-        basePage.openLocalhost(3001, Constants.hrefs.comprehensiveDemoUiLibraryLink)
-        basePage.checkElementExist({
-            selector: baseSelectors.header
+        basePage.openLocalhost(3001, Constants.hrefs.comprehensiveDemoApp.uiLibrary)
+        basePage.checkElementVisibility({
+            selector: baseSelectors.tags.headers.header
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.h6,
-            text: Constants.elementsText.comprehensiveDemo.App1.uiLibrary.headerText
+            selector: baseSelectors.tags.headers.h6,
+            text: Constants.elementsText.comprehensiveDemoApp.App1.uiLibrary.headerText
         })
         basePage.checkElementHaveProperty({
-            selector: baseSelectors.header,
-            prop: Constants.commonText.backgroundColor,
+            selector: baseSelectors.tags.headers.header,
+            prop: CssAttr.backgroundColor,
             value: Constants.color.oceanBluePearl
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.paragraph,
-            text: Constants.elementsText.comprehensiveDemo.App1.uiLibrary.paragraphs.first
+            selector: baseSelectors.tags.paragraph,
+            text: Constants.elementsText.comprehensiveDemoApp.App1.uiLibrary.paragraphs.first
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.paragraph,
-            text: Constants.elementsText.comprehensiveDemo.App1.uiLibrary.paragraphs.second
+            selector: baseSelectors.tags.paragraph,
+            text: Constants.elementsText.comprehensiveDemoApp.App1.uiLibrary.paragraphs.second
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.paragraph,
-            text: Constants.elementsText.comprehensiveDemo.App1.uiLibrary.paragraphs.third
+            selector: baseSelectors.tags.paragraph,
+            text: Constants.elementsText.comprehensiveDemoApp.App1.uiLibrary.paragraphs.third
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.commonButtonWithEmoji
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.commonConstantsData.commonButtonWithEmoji
         })
         basePage.checkElementHaveProperty({
-            selector: baseSelectors.linkTag,
-            index: Constants.hrefs.comprehensiveDemoApp3Link.index,
-            attr: Constants.commonText.attr,
-            prop: Constants.commonText.href,
-            value: Constants.hrefs.comprehensiveDemoApp3Link.link
+            selector: baseSelectors.tags.coreElements.link,
+            index: Constants.commonConstantsData.commonIndexes.ten,
+            attr: Constants.commonConstantsData.commonAttributes.attr,
+            prop: Constants.commonConstantsData.commonAttributes.href,
+            value: Constants.hrefs.comprehensiveDemoApp.app3
         })
         basePage.checkElementHaveProperty({
-            selector: baseSelectors.linkTag,
-            index: Constants.hrefs.comprehensiveDemoRoutingDemoLink.index,
-            attr: Constants.commonText.attr,
-            prop: Constants.commonText.href,
-            value: Constants.hrefs.comprehensiveDemoRoutingDemoLink.link
+            selector: baseSelectors.tags.coreElements.link,
+            index: Constants.commonConstantsData.commonIndexes.eleven,
+            attr: Constants.commonConstantsData.commonAttributes.attr,
+            prop: Constants.commonConstantsData.commonAttributes.href,
+            value: Constants.hrefs.comprehensiveDemoApp.routingDemo
         })
     })
 
     it('Check Dialog elements', () => {
-        basePage.openLocalhost(3001, Constants.hrefs.comprehensiveDemoDialogLink)
-        basePage.checkElementExist({
-            selector: baseSelectors.header
+        basePage.openLocalhost(3001, Constants.hrefs.comprehensiveDemoApp.demoDialog)
+        basePage.checkElementVisibility({
+            selector: baseSelectors.tags.headers.header
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.h6,
-            text: Constants.elementsText.comprehensiveDemo.App1.uiLibrary.dialogHeader
+            selector: baseSelectors.tags.headers.h6,
+            text: Constants.elementsText.comprehensiveDemoApp.App1.uiLibrary.dialogHeader
         })
         basePage.checkElementHaveProperty({
-            selector: baseSelectors.header,
-            prop: Constants.commonText.backgroundColor,
+            selector: baseSelectors.tags.headers.header,
+            prop: CssAttr.backgroundColor,
             value: Constants.color.oceanBluePearl
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.paragraph,
-            text: Constants.elementsText.comprehensiveDemo.App1.uiLibrary.dialogParagraph
+            selector: baseSelectors.tags.paragraph,
+            text: Constants.elementsText.comprehensiveDemoApp.App1.uiLibrary.dialogParagraph
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App2.openDialogButtonText
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.openDialogButtonText
         })
         basePage.clickElementWithText({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App2.openDialogButtonText
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.openDialogButtonText
         })
-        basePage.checkElementExist({
-            selector: dialogs.comprehensiveDemoDialogApp2
-        })
-        basePage.checkElementWithTextPresence({
-            selector: baseSelectors.h2,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogHeader
+        basePage.checkElementVisibility({
+            selector: selectors.comprehensiveDemoApp.app2Dialog
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.paragraph,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogParagraph
+            selector: baseSelectors.tags.headers.h2,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogHeader
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogButtonText
+            selector: baseSelectors.tags.paragraph,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogParagraph
+        })
+        basePage.checkElementWithTextPresence({
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogButtonText
         })
         basePage.clickElementWithText({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogButtonText
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogButtonText
         })
     })
 
     it('Check Svelte Page elements', () => {
-        basePage.openLocalhost(3001, Constants.hrefs.comprehensiveDemoSvelteLink)
-        basePage.checkElementExist({
-            selector: baseSelectors.header
+        basePage.openLocalhost(3001, Constants.hrefs.comprehensiveDemoApp.demoSvelte)
+        basePage.checkElementVisibility({
+            selector: baseSelectors.tags.headers.header
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.h6,
-            text: Constants.elementsText.comprehensiveDemo.App1.svelte.headerText
+            selector: baseSelectors.tags.headers.h6,
+            text: Constants.elementsText.comprehensiveDemoApp.App1.svelte.headerText
         })
-        basePage.checkElementExist({
-            selector: baseSelectors.input
+        basePage.checkElementVisibility({
+            selector: baseSelectors.tags.inputs.input
         })
         basePage.fillField({
-            selector: baseSelectors.input,
-            text: Constants.commonPhrases.standartText
+            selector: baseSelectors.tags.inputs.input,
+            text: Constants.commonConstantsData.standardPhrase
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.h1,
-            text: Constants.elementsText.comprehensiveDemo.App1.svelte.updatedText
+            selector: baseSelectors.tags.headers.h1,
+            text: Constants.updatedConstantsData.baseSvelteIntroMessage
         })
     })
 
     it('Check Routing elements', () => {
         basePage.openLocalhost(
             3001,
-            Constants.hrefs.comprehensiveDemoRoutingDemoLink.link.replace("http://localhost:3001/", '')
+            Constants.hrefs.comprehensiveDemoApp.routingDemo.replace("http://localhost:3001/", '')
         )
-        basePage.checkElementExist({
-            selector: baseSelectors.header
+        basePage.checkElementVisibility({
+            selector: baseSelectors.tags.headers.header
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.h6,
-            text: Constants.elementsText.comprehensiveDemo.App1.routing.headerText
+            selector: baseSelectors.tags.headers.h6,
+            text: Constants.elementsText.comprehensiveDemoApp.App1.routing.headerText
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.paragraph,
-            text: Constants.elementsText.comprehensiveDemo.App1.routing.paragraphs.first
+            selector: baseSelectors.tags.paragraph,
+            text: Constants.elementsText.comprehensiveDemoApp.App1.routing.paragraphs.first
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.paragraph,
-            text: Constants.elementsText.comprehensiveDemo.App1.routing.paragraphs.second
+            selector: baseSelectors.tags.paragraph,
+            text: Constants.elementsText.comprehensiveDemoApp.App1.routing.paragraphs.second
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.paragraph,
-            text: Constants.elementsText.comprehensiveDemo.App1.routing.paragraphs.third
+            selector: baseSelectors.tags.paragraph,
+            text: Constants.elementsText.comprehensiveDemoApp.App1.routing.paragraphs.third
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.paragraph,
-            text: Constants.elementsText.comprehensiveDemo.App1.routing.paragraphs.forth
+            selector: baseSelectors.tags.paragraph,
+            text: Constants.elementsText.comprehensiveDemoApp.App1.routing.paragraphs.forth
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.paragraph,
-            text: Constants.elementsText.comprehensiveDemo.App1.routing.paragraphs.forth
+            selector: baseSelectors.tags.paragraph,
+            text: Constants.elementsText.comprehensiveDemoApp.App1.routing.paragraphs.forth
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogTabs.firstTab.name
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogTabs.firstTab.name
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogTabs.firstTab.name
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogTabs.firstTab.name
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.divElement,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogTabs.firstTab.paragraphText
+            selector: baseSelectors.tags.coreElements.div,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogTabs.firstTab.paragraphText
         })
         basePage.clickElementWithText({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogTabs.secondTab.name
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogTabs.secondTab.name
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.divElement,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogTabs.secondTab.paragraphText
+            selector: baseSelectors.tags.coreElements.div,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogTabs.secondTab.paragraphText
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogTabs.secondTab.buttonText
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogTabs.secondTab.buttonText
         })
-        basePage.checkElementWithTextHaveProperty({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogTabs.secondTab.buttonText,
-            prop: Constants.commonText.backgroundColor,
+        basePage.checkElementHaveProperty({
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogTabs.secondTab.buttonText,
+            prop: CssAttr.backgroundColor,
             value: Constants.color.paleVioletRed
         })
     })

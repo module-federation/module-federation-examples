@@ -1,6 +1,11 @@
 {
   "name": "server-side-render-only",
-  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "./hostServer",
+    "./remoteServer"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "start": "concurrently \"npm run buildHost\" \"npm run startHost\" \"npm run buildRemote\" \"npm run startRemote\"",
     "buildHost": "webpack --config=hostServer/webpack.config.js -w",

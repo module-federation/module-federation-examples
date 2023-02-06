@@ -68,7 +68,7 @@ function ListItemLink(props) {
 
 function Menu() {
   return (
-    <List data-e2e="VISIT_PAGE__BUTTONS_BLOCK">
+    <List data-e2e="NAVIGATION_BUTTONS_BLOCK">
       <ListItemLink to="dashboard" icon={<DashboardIcon />} text="Dashboard" />
       <ListItemLink to="orders" icon={<ShoppingCartIcon />} text="Orders" />
       <ListItemLink to="profile" icon={<UserIcon />} text="Profile" />

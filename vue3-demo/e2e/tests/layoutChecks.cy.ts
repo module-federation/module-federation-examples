@@ -11,29 +11,47 @@ describe("It checks layout app", () => {
 
     it('Checks page header with text visibility', () => {
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.divElement,
-            text: Constants.commonPhrases.vue3DemoLayoutAppHeaders.host,
+            selector: baseSelectors.tags.coreElements.div,
+            text: Constants.commonPhrases.vue3DemoApp.appsHeaders.host,
             visibilityState: 'be.visible'
         })
     })
 
     it('Checks vue app logo visibility', () => {
-        basePage.checkElementVisibility(baseSelectors.image)
+        basePage.checkElementVisibility({
+            selector: baseSelectors.tags.coreElements.image
+        })
     })
 
     it('Checks layout app includes remote component', () => {
-        basePage.checkChildElementVisibility(selectors.vue3DemoComponents.layout, selectors.vue3DemoComponents.remote)
+        basePage.checkElementVisibility({
+            parentSelector: selectors.vue3DemoApp.components.layout,
+            selector: selectors.vue3DemoApp.components.remote
+        })
     })
 
     it('Checks remote component includes remote header', () => {
-        basePage.checkChildElementContainText(selectors.vue3DemoComponents.remote, baseSelectors.divElement, Constants.commonPhrases.vue3DemoLayoutAppHeaders.remote)
+        basePage.checkElementContainText({
+            parentSelector: selectors.vue3DemoApp.components.remote,
+            selector: baseSelectors.tags.coreElements.div,
+            text: Constants.commonPhrases.vue3DemoApp.appsHeaders.remote
+        })
     })
 
     it('Checks remote component includes component state message', () => {
-        basePage.checkChildElementContainText(selectors.vue3DemoComponents.remote, baseSelectors.divElement, Constants.commonPhrases.commonVueAppComponentState, 1)
+        basePage.checkElementContainText({
+            parentSelector: selectors.vue3DemoApp.components.remote,
+            selector: baseSelectors.tags.coreElements.div,
+            text: Constants.commonConstantsData.commonVueAppComponentState,
+            index: Constants.commonConstantsData.commonIndexes.one
+        })
     })
 
     it('Checks remote component includes button with text', () => {
-        basePage.checkChildElementContainText(selectors.vue3DemoComponents.remote, baseSelectors.button, Constants.elementsText.helloWorldMessage)
+        basePage.checkElementContainText({
+            parentSelector: selectors.vue3DemoApp.components.remote,
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.commonConstantsData.helloWorldMessage,
+        })
     })
 })

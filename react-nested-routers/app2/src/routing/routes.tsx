@@ -1,8 +1,8 @@
 import React from 'react';
 import { Outlet } from "react-router-dom";
 import { NavigationManager } from "../components/NavigationManager";
-import { Page1 } from "../pages/Page1";
-import { Page2 } from "../pages/Page2";
+import { PageA } from "../pages/PageA";
+import { PageB } from "../pages/PageB";
 
 export const routes = [
   {
@@ -15,15 +15,15 @@ export const routes = [
     children: [
       {
         index: true,
-        element: <Page1 />,
+        element: <PageA />,
       },
       {
-        path: "page-1",
-        element: <Page1 />,
+        path: "page-a",
+        element: <PageA />,
       },
       {
-        path: "page-2",
-        element: <Page2 />,
+        path: "page-b",
+        element: <PageB />,
       },
     ],
   },

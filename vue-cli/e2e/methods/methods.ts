@@ -42,30 +42,37 @@ export class VueCliMethods extends BaseMethods {
     public checkCodeTagAppearance
     (): void {
         this.checkElementContainText({
-            selector: baseSelectors.section,
-            text: Constants.elementsText.vueCliOtherSectionCodeBlock, 
+            selector: baseSelectors.tags.section,
+            text: Constants.elementsText.vueCliApp.otherSectionCodeBlock,
             index: 0 ,
-            contain: false
+            isContain: false
         })
         this.clickElementWithText({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.vueCliButtonsText.otherSectionButton,
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.vueCliApp.buttonsText.otherSectionButton,
         })
-        this.checkChildElementVisibility(baseSelectors.section, baseSelectors.code)
+        this.checkElementVisibility({
+            parentSelector: baseSelectors.tags.section,
+            selector: baseSelectors.tags.code
+        })
         this.checkElementWithTextPresence({
-            parentSelector: baseSelectors.section,
-            selector: baseSelectors.code,
-            text: Constants.elementsText.vueCliOtherSectionCodeBlock,
+            parentSelector: baseSelectors.tags.section,
+            selector: baseSelectors.tags.code,
+            text: Constants.elementsText.vueCliApp.otherSectionCodeBlock,
             visibilityState: 'be.visible'
         })
         this.reloadWindow()
         this.checkElementContainText({
-            selector: baseSelectors.section,
-            text: Constants.elementsText.vueCliOtherSectionCodeBlock, 
+            selector: baseSelectors.tags.section,
+            text: Constants.elementsText.vueCliApp.otherSectionCodeBlock,
             index: 0 ,
-            contain: false
+            isContain: false
         })
-        this.checkChildElementVisibility(baseSelectors.section, baseSelectors.code, false,
-            '', '', 'not.be.visible')
+        this.checkElementVisibility({
+            parentSelector: baseSelectors.tags.section,
+            selector: baseSelectors.tags.code,
+            isVisible: false,
+            notVisibleState: 'not.be.visible'
+        })
     }
 }

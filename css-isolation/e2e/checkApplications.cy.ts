@@ -7,19 +7,19 @@ const basePage: BaseMethods = new BaseMethods()
 
 let appsData = [
     {
-        headerSelector: selectors.cssIsolationAppHeader,
-        subHeaderSelector: selectors.cssIsolationAppName,
-        buttonSelector: baseSelectors.button,
-        headerText: Constants.elementsText.cssIsolationApp1Header,
-        appNameText: Constants.elementsText.cssIsolationApp1Name,
+        headerSelector: selectors.cssIsolationApp.header,
+        subHeaderSelector: selectors.cssIsolationApp.name,
+        buttonSelector: baseSelectors.tags.coreElements.button,
+        headerText: Constants.elementsText.cssIsolationApp.headers.app1,
+        appNameText: Constants.commonConstantsData.commonCountAppNames.app1,
         host: 3001
     },
     {
-        headerSelector: selectors.cssIsolationAppHeader,
-        subHeaderSelector: selectors.cssIsolationAppName,
-        buttonSelector: baseSelectors.button,
-        headerText: Constants.elementsText.cssIsolationApp2Header,
-        appNameText: Constants.elementsText.cssIsolationApp2Name,
+        headerSelector: selectors.cssIsolationApp.header,
+        subHeaderSelector: selectors.cssIsolationApp.name,
+        buttonSelector: baseSelectors.tags.coreElements.button,
+        headerText: Constants.elementsText.cssIsolationApp.headers.app2,
+        appNameText: Constants.commonConstantsData.commonCountAppNames.app2,
         host: 3002
     }
 ]
@@ -55,9 +55,10 @@ appsData.forEach(
 describe(`Check App 1`, () => {
     it(`Check button in App 1 exist`, () => {
         basePage.openLocalhost(3001)
-        basePage.checkElementInsideShadowRoot({
-            selector: baseSelectors.parent,
-            text: Constants.commonText.cssIsolationButton
+        basePage.checkElementWithTextPresence({
+            selector: baseSelectors.ids.parent,
+            text: Constants.elementsText.cssIsolationApp.buttonText,
+            isShadowRoot: true
         })
     })
 })
@@ -68,21 +69,23 @@ describe(`Check App 1 colors`, () => {
     it(`Check App 1 color text`, () => {
         
         basePage.checkElementHaveProperty({
-            selector: baseSelectors.h1,
+            selector: baseSelectors.tags.headers.h1,
             prop: CssAttr.color,
             value: Constants.color.green,
         })
     })
     it(`Update background color of App 2 Inside App 1 if click on the "Make Everything Yellow" button`, () => {
-        basePage.clickElementInsideShadowRoot({
-            selector: baseSelectors.parent,
-            text: Constants.commonText.cssIsolationButton
+        basePage.clickElementWithText({
+            selector: baseSelectors.ids.parent,
+            text: Constants.elementsText.cssIsolationApp.buttonText,
+            isShadowRoot: true
         })
-        basePage.checkElementPropertyInsideShadowRoot({
-            selector: baseSelectors.parent,
-            subSelector: 'style',
+        basePage.checkElementHaveProperty({
+            parentSelector: baseSelectors.ids.parent,
+            selector: 'style',
             prop: CssAttr.backgroundColor,
             value: Constants.color.yellow,
+            isShadowElement: true
         })
     })
 })
@@ -93,17 +96,17 @@ describe(`Check App 2 colors`, () => {
     it(`Check button in App 2 exist`, () => {
         
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
-            text: Constants.commonText.cssIsolationButton
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.cssIsolationApp.buttonText
         })
     })
     it(`Update background color of App 2 if click on the "Make Everything Yellow" button`, () => {
         basePage.clickElementWithText({
-            selector: baseSelectors.button,
-            text: Constants.commonText.cssIsolationButton
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.cssIsolationApp.buttonText
         })
         basePage.checkElementHaveProperty({
-            selector: baseSelectors.root,
+            selector: baseSelectors.ids.root,
             prop: CssAttr.backgroundColor,
             value: Constants.color.yellow,
         })

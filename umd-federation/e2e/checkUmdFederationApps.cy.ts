@@ -5,9 +5,9 @@ const basePage: BaseMethods = new BaseMethods()
 
 const appsData = [
     {
-        header1: Constants.elementsText.umdFederation.App1.firstHeader,
-        header2: Constants.elementsText.umdFederation.App1.secondHeader,
-        header3: Constants.elementsText.umdFederation.App1.thirdHeader,
+        header1: Constants.elementsText.umdFederationApp.App1.firstHeader,
+        header2: Constants.elementsText.umdFederationApp.App1.secondHeader,
+        header3: Constants.elementsText.umdFederationApp.App1.thirdHeader,
         host: 9001
     },
 
@@ -31,15 +31,15 @@ appsData.forEach((
         it (`Check App1 elements`, () => {
             basePage.skipTestByCondition(property.host === 9002)
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h1,
+                selector: baseSelectors.tags.headers.h1,
                 text: String(property.header1)
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h1,
+                selector: baseSelectors.tags.headers.h1,
                 text: String(property.header2)
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.h1,
+                selector: baseSelectors.tags.headers.h1,
                 text: String(property.header3)
             })
         })

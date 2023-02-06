@@ -1,5 +1,13 @@
 {
+  "name": "genesis",
   "private": true,
+  "workspaces": {
+    "packages": [
+      "./ssr-mf-about",
+      "./ssr-mf-home"
+    ]
+  },
+  "version": "0.0.0",
   "scripts": {
     "dev": "concurrently --raw \"lerna run --scope=ssr-mf-about dev\" \"lerna run --scope=ssr-mf-home dev\"",
     "build": "FORCE_COLOR=1 lerna run --scope=ssr-mf-about build && FORCE_COLOR=1 lerna run --scope=ssr-mf-home build",
@@ -8,11 +16,5 @@
   "devDependencies": {
     "concurrently": "7.3.0",
     "lerna": "4.0.0"
-  },
-  "workspaces": {
-    "packages": [
-      "ssr-mf-about",
-      "ssr-mf-home"
-    ]
   }
 }

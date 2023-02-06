@@ -1,11 +1,11 @@
-import {baseSelectors, fields, selectors, updatedSelectors} from "../../../cypress/common/selectors";
+import {baseSelectors, commonSelectors, selectors, updatedSelectors} from "../../../cypress/common/selectors";
 import {Constants} from "../../../cypress/fixtures/constants";
 import {BaseMethods} from "../../../cypress/common/base";
 
 export class SharedRoutingMethods extends BaseMethods {
 
     public checkInputWithLabelVisibilityInsideBlock(formField: string, text: string):void {
-        cy.get(baseSelectors.input).parentsUntil(formField).find(baseSelectors.label)
+        cy.get(baseSelectors.tags.inputs.input).parentsUntil(formField).find(baseSelectors.tags.coreElements.label)
             .should( 'contain.text', text)
     }
 
@@ -20,33 +20,36 @@ export class SharedRoutingMethods extends BaseMethods {
         if(index >= 0) {
             // @ts-ignore
 
-            const replaceSelectorPart = index === 7 ? Constants.elementsText.sharedRoutingAppSelectorsParts.userInfo.toUpperCase() : Constants.elementsText.sharedRoutingAppEditProfileBlockLabels[index].replace(/\s/g, '_')
+            const replaceSelectorPart = index === 7 ? Constants.selectorParts.sharedRoutingAppSelectorsParts.userInfo.toUpperCase() : Constants.elementsText.sharedRoutingApp.editProfileBlockLabels[index].replace(/\s/g, '_')
                     .replace(/([()])/g, '')
 
-            return fields.commonField.replace('{fieldName}', replaceSelectorPart.toUpperCase())
+            return commonSelectors.formField.replace('{fieldName}', replaceSelectorPart.toUpperCase())
         }
 
         // @ts-ignore
-        return fields.commonField.replace('{fieldName}', replaceElement)
+        return commonSelectors.formField.replace('{fieldName}', replaceElement)
     }
 
     public checkHamburgerMenuFunctionality(): void {
-        Constants.elementsText.sharedRoutingAppSideMenuButtonsTypes.forEach(buttonType => {
+        Constants.elementsText.sharedRoutingApp.sideMenuButtonsTypes.forEach(buttonType => {
             this.checkElementWithTextPresence({
-                selector: selectors.hrefSelector.replace('{link}', `/${buttonType.toLowerCase()}`),
+                selector: baseSelectors.css.href.replace('{link}', `/${buttonType.toLowerCase()}`),
                 text: buttonType,
                 visibilityState: 'not.be.visible'
             })
-            this.clickElementBySelector({selector: updatedSelectors.hamburgerMenuButton})
+            this.clickElementBySelector({selector: updatedSelectors.sharedRoutingApp.hamburgerMenuButton})
             this.checkElementWithTextPresence({
-                selector: selectors.hrefSelector.replace('{link}', `/${buttonType.toLowerCase()}`),
+                selector: baseSelectors.css.href.replace('{link}', `/${buttonType.toLowerCase()}`),
                 text: buttonType,
                 visibilityState: 'be.visible'
             })
-            this.checkElementVisibility(updatedSelectors.hamburgerMenuButton, false)
-            this.clickElementBySelector({selector: selectors.sharedRoutingAppCloseSideMenuButton})
+            this.checkElementVisibility({
+                selector: updatedSelectors.sharedRoutingApp.hamburgerMenuButton,
+                isVisible: false
+            })
+            this.clickElementBySelector({selector: selectors.sharedRoutingApp.closeSideMenuButton})
             this.checkElementWithTextPresence({
-                selector: selectors.hrefSelector.replace('{link}', `/${buttonType.toLowerCase()}`),
+                selector: baseSelectors.css.href.replace('{link}', `/${buttonType.toLowerCase()}`),
                 text: buttonType,
                 visibilityState: 'not.be.visible'
             })
@@ -56,24 +59,24 @@ export class SharedRoutingMethods extends BaseMethods {
     public visitOnPageByName(checkedPageHeader: string, remotePageHeader: string, host: number): void {
         this.openLocalhost(host, remotePageHeader)
         this.checkElementWithTextPresence({
-            selector: baseSelectors.header,
+            selector: baseSelectors.tags.headers.header,
             text: remotePageHeader,
             visibilityState: 'be.visible'
         })
         this.checkElementWithTextPresence({
-            selector: baseSelectors.header,
+            selector: baseSelectors.tags.headers.header,
             text: checkedPageHeader,
             isVisible: false
         })
-        this.clickElementBySelector({selector: selectors.hrefSelector.replace('{link}',
+        this.clickElementBySelector({selector: baseSelectors.css.href.replace('{link}',
                 `/${checkedPageHeader.toLowerCase()}`)})
         this.checkElementWithTextPresence({
-            selector: baseSelectors.header,
+            selector: baseSelectors.tags.headers.header,
             text: remotePageHeader,
             isVisible: false
         })
         this.checkElementWithTextPresence({
-            selector: baseSelectors.header,
+            selector: baseSelectors.tags.headers.header,
             text: checkedPageHeader,
             visibilityState: 'be.visible'
         })
@@ -81,27 +84,27 @@ export class SharedRoutingMethods extends BaseMethods {
 
     public transferringThroughPages(landingPageHeader: string, firstRemotePageHeader: string, secondRemotePageHeader: string): void {
         this.checkElementWithTextPresence({
-            selector: baseSelectors.header,
+            selector: baseSelectors.tags.headers.header,
             text: landingPageHeader,
             visibilityState: 'be.visible'
         })
-        this.clickElementBySelector({selector: selectors.hrefSelector.replace('{link}',
+        this.clickElementBySelector({selector: baseSelectors.css.href.replace('{link}',
                 `/${firstRemotePageHeader.toLowerCase()}`)})
         this.checkElementWithTextPresence({
-            selector: baseSelectors.header,
+            selector: baseSelectors.tags.headers.header,
             text: firstRemotePageHeader,
             visibilityState: 'be.visible'
         })
-        this.clickElementBySelector({selector: selectors.hrefSelector.replace('{link}',
+        this.clickElementBySelector({selector: baseSelectors.css.href.replace('{link}',
                 `/${secondRemotePageHeader.toLowerCase()}`)})
         this.checkElementWithTextPresence({
-            selector: baseSelectors.header,
+            selector: baseSelectors.tags.headers.header,
             text: secondRemotePageHeader,
             visibilityState: 'be.visible'
         })
         this.reloadWindow()
         this.checkElementWithTextPresence({
-            selector: baseSelectors.header,
+            selector: baseSelectors.tags.headers.header,
             text: secondRemotePageHeader,
             visibilityState: 'be.visible'
         })
@@ -123,8 +126,11 @@ export class SharedRoutingMethods extends BaseMethods {
     }): void {
         textArray.forEach(text => {
             if(childElement) {
-                this.checkChildElementVisibility(parentSelector, selector.replace(
-                        '{cellType}', text.replace(/\s/g, '_').toUpperCase()))
+                this.checkElementVisibility({
+                    parentSelector,
+                    selector: selector.replace(
+                        '{cellType}', text.replace(/\s/g, '_').toUpperCase())
+                })
             } else {
                 this.checkElementWithTextPresence({
                     parentSelector,

@@ -1,7 +1,8 @@
-import { dialogs } from '../../cypress/common/selectors';
+import {selectors} from '../../cypress/common/selectors';
 import { BaseMethods } from "../../cypress/common/base";
-import { block, baseSelectors } from "../../cypress/common/selectors";
+import { baseSelectors } from "../../cypress/common/selectors";
 import { Constants } from "../../cypress/fixtures/constants";
+import {CssAttr} from "../../cypress/types/cssAttr";
 
 const basePage: BaseMethods = new BaseMethods()
 
@@ -11,100 +12,100 @@ describe('Check is Comprehensive Demo App2 working and have elements', () => {
     })
 
     it('Check App build and running & Check app elements exist', () => {
-        basePage.checkElementExist({
-            selector: block.comprehensiveDemoBlockSelectors.firstBlock
+        basePage.checkElementVisibility({
+            selector: selectors.comprehensiveDemoApp.blockSelectors.firstBlock
         })
-        basePage.checkElementExist({
-            selector: baseSelectors.header
+        basePage.checkElementVisibility({
+            selector: baseSelectors.tags.headers.header
         })
         basePage.checkElementHaveProperty({
-            selector: baseSelectors.header,
-            prop: Constants.commonText.backgroundColor,
+            selector: baseSelectors.tags.headers.header,
+            prop: CssAttr.backgroundColor,
             value: Constants.color.oceanBluePearl
         })
-        basePage.checkElementExist({
-            selector: block.comprehensiveDemoBlockSelectors.secondBlock
+        basePage.checkElementVisibility({
+            selector: selectors.comprehensiveDemoApp.blockSelectors.secondBlock
         })
         basePage.checkElementHaveProperty({
-            selector: block.comprehensiveDemoBlockSelectors.secondBlock,
-            prop: Constants.commonText.backgroundColor,
+            selector: selectors.comprehensiveDemoApp.blockSelectors.secondBlock,
+            prop: CssAttr.backgroundColor,
             value: Constants.color.alabaster
         })
-        basePage.checkElementExist({
-            selector: block.comprehensiveDemoBlockSelectors.thirdBlock
+        basePage.checkElementVisibility({
+            selector: selectors.comprehensiveDemoApp.blockSelectors.thirdBlock
         })
         basePage.checkElementHaveProperty({
-            selector: block.comprehensiveDemoBlockSelectors.thirdBlock,
-            prop: Constants.commonText.backgroundColor,
+            selector: selectors.comprehensiveDemoApp.blockSelectors.thirdBlock,
+            prop: CssAttr.backgroundColor,
             value: Constants.color.white
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.h6,
-            text: Constants.elementsText.comprehensiveDemo.App2.headerText
+            selector: baseSelectors.tags.headers.h6,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.headerText
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.h6,
-            text: Constants.elementsText.comprehensiveDemo.App2.paragraphText
+            selector: baseSelectors.tags.headers.h6,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.paragraphText
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App2.openDialogButtonText
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.openDialogButtonText
         })
         basePage.clickElementWithText({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App2.openDialogButtonText
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.openDialogButtonText
         })
-        basePage.checkElementExist({
-            selector: dialogs.comprehensiveDemoDialogApp2
-        })
-        basePage.checkElementWithTextPresence({
-            selector: baseSelectors.h2,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogHeader
+        basePage.checkElementVisibility({
+            selector: selectors.comprehensiveDemoApp.app2Dialog
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.paragraph,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogParagraph
+            selector: baseSelectors.tags.headers.h2,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogHeader
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogButtonText
+            selector: baseSelectors.tags.paragraph,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogParagraph
+        })
+        basePage.checkElementWithTextPresence({
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogButtonText
         })
         basePage.clickElementWithText({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogButtonText
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogButtonText
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.h6,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogTabs.headerText
+            selector: baseSelectors.tags.headers.h6,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogTabs.headerText
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogTabs.firstTab.name
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogTabs.firstTab.name
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.divElement,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogTabs.firstTab.paragraphText
+            selector: baseSelectors.tags.coreElements.div,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogTabs.firstTab.paragraphText
         })
         basePage.clickElementWithText({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogTabs.secondTab.name
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogTabs.secondTab.name
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogTabs.secondTab.name
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogTabs.secondTab.name
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.divElement,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogTabs.secondTab.paragraphText
+            selector: baseSelectors.tags.coreElements.div,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogTabs.secondTab.paragraphText
         })
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogTabs.secondTab.buttonText
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogTabs.secondTab.buttonText
         })
-        basePage.checkElementWithTextHaveProperty({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App2.dialogTabs.secondTab.buttonText,
-            prop: Constants.commonText.backgroundColor,
+        basePage.checkElementHaveProperty({
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.comprehensiveDemoApp.App2.dialogTabs.secondTab.buttonText,
+            prop: CssAttr.backgroundColor,
             value: Constants.color.paleVioletRed
         })
     })

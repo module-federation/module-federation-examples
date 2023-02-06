@@ -1,5 +1,11 @@
 {
   "name": "redux-reducer-injection",
+  "private": true,
+  "workspaces": [
+    "./app1",
+    "./app2"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "start": "concurrently \"lerna run --scope=redux-reducer-injection_app* --parallel start\" \"yarn serve\"",
     "build": "lerna run --scope=redux-reducer-injection_app* build",

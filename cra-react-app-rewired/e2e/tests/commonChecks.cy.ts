@@ -9,14 +9,14 @@ describe('It checks integrated apps functionality', () => {
     const appsData = [
         {
             host: 3000,
-            appName: Constants.elementsText.commonComponentsNames.host,
-            appMessage: Constants.commonPhrases.craReactAppAppsPhrases.hostApp,
-            remoteAppMessage: Constants.commonPhrases.craReactAppAppsPhrases.hostAppRemoteMessage,
+            appName: Constants.commonConstantsData.basicComponents.host,
+            appMessage: Constants.commonPhrases.craReactApp.hostApp,
+            remoteAppMessage: Constants.commonPhrases.craReactApp.hostAppRemoteMessage,
         },
         {
             host: 3001,
-            appName: Constants.elementsText.commonComponentsNames.remote,
-            appMessage: Constants.commonPhrases.craReactAppAppsPhrases.remoteApp,
+            appName: Constants.commonConstantsData.basicComponents.remote,
+            appMessage: Constants.commonPhrases.craReactApp.remoteApp,
         },
     ]
 
@@ -24,7 +24,7 @@ describe('It checks integrated apps functionality', () => {
         it(`Checks ${property.appName} app background color`, () => {
             basePage.openLocalhost(property.host)
             basePage.checkElementHaveProperty({
-                selector: baseSelectors.header,
+                selector: baseSelectors.tags.headers.header,
                 prop: CssAttr.backgroundColor,
                 value: Constants.color.darkGrey
             })
@@ -34,13 +34,13 @@ describe('It checks integrated apps functionality', () => {
             basePage.openLocalhost(property.host)
             if(property.remoteAppMessage) {
                 basePage.checkElementWithTextPresence({
-                    selector: selectors.craReactAppRemoteComponentInfo,
+                    selector: selectors.craReactRewiredApp.componentInfo,
                     text: property.remoteAppMessage,
                     visibilityState: 'be.visible'
                 })
             }
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.header,
+                selector: baseSelectors.tags.headers.header,
                 text: property.appMessage,
                 visibilityState: 'be.visible'
             })

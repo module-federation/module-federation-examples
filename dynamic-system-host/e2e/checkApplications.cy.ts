@@ -1,4 +1,4 @@
-import { baseSelectors, widgets } from '../../cypress/common/selectors';
+import {baseSelectors, commonSelectors} from '../../cypress/common/selectors';
 import { BaseMethods } from "../../cypress/common/base";
 import { Constants } from "../../cypress/fixtures/constants";
 import { getDateWithFormat } from "../../cypress/helpers/base-helper";
@@ -7,7 +7,7 @@ import {returnCommonDynamicAppsData} from "../../cypress/fixtures/commonTestData
 
 const basePage: BaseMethods = new BaseMethods()
 
-const appsData = returnCommonDynamicAppsData(Constants.commonPhrases.dynamicSystemHostParagraphText)
+const appsData = returnCommonDynamicAppsData(Constants.commonPhrases.dynamicSystemHostApp.paragraphText)
 
 appsData.forEach(
      (
@@ -43,13 +43,13 @@ appsData.forEach(
                 })
                 property.paragraph ? 
                     basePage.checkElementWithTextPresence({
-                        selector: baseSelectors.paragraph,
-                        text: Constants.commonPhrases.dynamicSytemHostParagraph
+                        selector: baseSelectors.tags.paragraph,
+                        text: Constants.commonPhrases.dynamicSystemHostApp.hostParagraph,
                     })
                     :
                     basePage.checkElementWithTextPresence({
-                        selector: baseSelectors.paragraph,
-                        text: Constants.commonPhrases.dynamicSytemHostParagraph,
+                        selector: baseSelectors.tags.paragraph,
+                        text: Constants.commonPhrases.dynamicSystemHostApp.hostParagraph,
                         isVisible: false
                     })
             })
@@ -57,14 +57,14 @@ appsData.forEach(
             it(`Check buttons in ${appName} exist`, () => {
                 basePage.openLocalhost(host)
                 property.isButtonExist ?
-                Constants.elementsText.dynamicRemotesButtonsText.forEach(button => {
+                    Constants.elementsText.dynamicRemotesApp.buttonsText.forEach(button => {
                     basePage.checkElementWithTextPresence({
                         selector: property.buttonSelector,
                         text: button
                     }) 
                 })
                 :
-                basePage.checkElementExist({
+                basePage.checkElementVisibility({
                     selector: property.buttonSelector,
                     isVisible: property.isButtonExist
                 })
@@ -73,44 +73,44 @@ appsData.forEach(
             it(`Check functionality in ${appName}`, () => {
                 basePage.openLocalhost(host)
                 if (property.isButtonExist) {
-                    Constants.elementsText.dynamicRemotesButtonsText.forEach(button => {
+                    Constants.elementsText.dynamicRemotesApp.buttonsText.forEach(button => {
                         basePage.clickElementWithText({
                             selector: property.buttonSelector,
                             text: button
                         })
-                        basePage.checkElementExist({
-                            selector: widgets.dynamicRemotesWidget.replace(
+                        basePage.checkElementVisibility({
+                            selector: commonSelectors.commonWidget.replace(
                                 '{appQuantity}',
-                                (Constants.elementsText.dynamicRemotesButtonsText.indexOf(button) + 2).toString())
+                                (Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button) + 2).toString())
                         })
                         basePage.checkElementHaveProperty({
-                            selector: widgets.dynamicRemotesWidget.replace(
+                            selector: commonSelectors.commonWidget.replace(
                                 '{appQuantity}',
-                                (Constants.elementsText.dynamicRemotesButtonsText.indexOf(button) + 2).toString()),
+                                (Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button) + 2).toString()),
                             prop: CssAttr.backgroundColor,
-                            value: property.widgetColor[Constants.elementsText.dynamicRemotesButtonsText.indexOf(button)]
+                            value: property.widgetColor[Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button)]
                         })
                         basePage.checkElementWithTextPresence({
                             selector: property.subHeaderSelector,
-                            text: property.widgetName[Constants.elementsText.dynamicRemotesButtonsText.indexOf(button)]
+                            text: property.widgetName[Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button)]
                         })
                         basePage.checkElementWithTextPresence({
-                            selector: baseSelectors.paragraph,
-                            text: property.widgetParagraph[Constants.elementsText.dynamicRemotesButtonsText.indexOf(button)]
+                            selector: baseSelectors.tags.paragraph,
+                            text: property.widgetParagraph[Constants.elementsText.dynamicRemotesApp.buttonsText.indexOf(button)]
                         })
                         basePage.checkElementWithTextPresence({
-                            selector: baseSelectors.paragraph,
-                            text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm:ss a')
+                            selector: baseSelectors.tags.paragraph,
+                            text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
                         })
                     })
                 } else {
-                    basePage.checkElementExist({
-                        selector: widgets.dynamicRemotesWidget.replace(
+                    basePage.checkElementVisibility({
+                        selector: commonSelectors.commonWidget.replace(
                             '{appQuantity}',
                             (widget + 2).toString())
                     })
                     basePage.checkElementHaveProperty({
-                        selector: widgets.dynamicRemotesWidget.replace(
+                        selector: commonSelectors.commonWidget.replace(
                             '{appQuantity}',
                             (widget + 2).toString()),
                         prop: 'background-color',
@@ -121,12 +121,12 @@ appsData.forEach(
                         text: property.widgetName[widget]
                     })
                     basePage.checkElementWithTextPresence({
-                        selector: baseSelectors.paragraph,
+                        selector: baseSelectors.tags.paragraph,
                         text: property.widgetParagraph[widget]
                     })
                     basePage.checkElementWithTextPresence({
-                        selector: baseSelectors.paragraph,
-                        text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm:ss a')
+                        selector: baseSelectors.tags.paragraph,
+                        text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
                     })
                 }
             })

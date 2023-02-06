@@ -1,5 +1,5 @@
 import { Constants } from '../../cypress/fixtures/constants';
-import { baseSelectors, buttons, alertMessages } from '../../cypress/common/selectors';
+import {baseSelectors, selectors} from '../../cypress/common/selectors';
 import { BaseMethods } from "../../cypress/common/base";
 
 const basePage: BaseMethods = new BaseMethods()
@@ -11,34 +11,34 @@ describe('Check is Comprehensive Demo App5 working and have elements', () => {
 
     it('Check App build and running & Check app elements exist', () => {
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App5.buttonText
+            selector: baseSelectors.tags.coreElements.button,
+            text: Constants.elementsText.comprehensiveDemoApp.App5.buttonText
         })
-        basePage.checkElementExist({
-            selector: alertMessages.alert
+        basePage.checkElementVisibility({
+            selector: selectors.comprehensiveDemoApp.alert
         })
         basePage.checkElementWithTextPresence({
-            selector: alertMessages.alert,
-            text: Constants.elementsText.comprehensiveDemo.App5.alertText
+            selector: selectors.comprehensiveDemoApp.alert,
+            text: Constants.elementsText.comprehensiveDemoApp.App5.alertText
         })
-        basePage.checkElementExist({
-            selector: buttons.closeButton
+        basePage.checkElementVisibility({
+            selector: selectors.comprehensiveDemoApp.closeButton
         })
     })
 
     it('Check Application functionality (Alert message & close button exist)', () => {
         basePage.checkBrowserAlertByText({
-            selector: baseSelectors.button,
-            alertMessage: Constants.elementsText.comprehensiveDemo.alertMessage
+            selector: baseSelectors.tags.coreElements.button,
+            alertMessage: Constants.elementsText.comprehensiveDemoApp.alertMessage
         })
         basePage.clickElementBySelector({
-            selector: buttons.closeButton
+            selector: selectors.comprehensiveDemoApp.closeButton
         })
         basePage.checkElementHaveProperty({
-            selector: alertMessages.alert,
-            attr: Constants.commonText.attr,
-            prop: Constants.commonText.style,
-            value: Constants.commonText.displayNone
+            selector: selectors.comprehensiveDemoApp.alert,
+            attr: Constants.commonConstantsData.commonAttributes.attr,
+            prop: Constants.commonConstantsData.commonAttributes.style,
+            value: Constants.commonConstantsData.commonAttributes.displayNone
         })
     })
 })
