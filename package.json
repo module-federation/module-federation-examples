@@ -117,7 +117,7 @@
     ]
   },
   "devDependencies": {
-    "@shelex/cypress-allure-plugin": "^2.35.0",
+    "@shelex/cypress-allure-plugin": "2.35.2",
     "allure-commandline": "2.20.0",
     "concurrently": "7.3.0",
     "cross-spawn": "7.0.3",
@@ -143,6 +143,6 @@
     "cypress:debug": "cypress open --e2e --config-file cypress/config/cypress.config.ts --browser=chrome",
     "cypress:run": "cypress run --config-file cypress/config/cypress.config.ts --browser=chrome",
     "report:generate": "allure generate ./cypress/results/allure-results --clean -o ./cypress/report",
-    "report: open": "allure open ./cypress/report"
+    "report:open": "allure open ./cypress/report"
   }
 }
