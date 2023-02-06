@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3002",
+    "dev": "rm -rf .next && next dev -p 3002",
     "build": "next build",
     "start": "NODE_ENV=production next start -p 3002"
   },
   "dependencies": {
-    "@module-federation/nextjs-mf": "6.0.5",
-    "@module-federation/utilities": "^1.1.2",
+    "@module-federation/nextjs-mf": "6.0.7",
+    "@module-federation/utilities": "^1.2.0",
     "lodash": "4.17.21",
     "next": "12.2.2",
     "next-compose-plugins": "^2.2.1",

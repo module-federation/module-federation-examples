@@ -12,5 +12,8 @@ module.exports = new Promise((resolve, reject) => {
     .then(async (remote) => {
       resolve(remote)
     })
-    .catch((err) => reject(err));
+    .catch((err) => {
+      console.log('did not import', currentRequest);
+      reject(err)
+    });
 });
