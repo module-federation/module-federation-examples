@@ -29,7 +29,7 @@ export class AngularUniversalSsrMethods extends BaseMethods {
             addedCities.forEach((city: string, counter: number) => {
                 cy.get(addedCitySelector).contains(city).click()
                 cy.get(selectedCityInfoSelector).contains(selectedCityInfo[counter]).should('be.visible')
-                this.reloadWindow()
+                cy.reload(true)
                 cy.get(selectedCityInfoSelector).should('not.exist')
             })
         });
