@@ -6,30 +6,15 @@ const basePage: BaseMethods = new BaseMethods()
 
 let appsData = [
     {
-        headerSelector: baseSelectors.tags.headers.h1,
-        subHeaderSelector: baseSelectors.tags.headers.h2,
-        buttonSelector: baseSelectors.tags.coreElements.button,
-        headerText: Constants.commonConstantsData.basicComponents.basicHostRemote,
         appNameText: Constants.commonConstantsData.commonCountAppNames.app1,
-        buttonNameText: Constants.updatedConstantsData.commonAppWithButton.app2,
         host: 3001
     },
     {
-        headerSelector: baseSelectors.tags.headers.h1,
-        subHeaderSelector: baseSelectors.tags.headers.h2,
-        buttonSelector: baseSelectors.tags.coreElements.button,
-        headerText: Constants.commonConstantsData.basicComponents.basicHostRemote,
         appNameText: Constants.commonConstantsData.commonCountAppNames.app2,
-        buttonNameText: Constants.updatedConstantsData.commonAppWithButton.app2,
         host: 3002
     },
     {
-        headerSelector: baseSelectors.tags.headers.h1,
-        subHeaderSelector: baseSelectors.tags.headers.h2,
-        buttonSelector: baseSelectors.tags.coreElements.button,
-        headerText: Constants.commonConstantsData.basicComponents.basicHostRemote,
         appNameText: Constants.commonConstantsData.commonCountAppNames.app2,
-        buttonNameText: Constants.updatedConstantsData.commonAppWithButton.app2,
         host: 3003
     },
 ]
@@ -37,37 +22,32 @@ let appsData = [
 appsData.forEach(
     function(
         property: { 
-            headerSelector: string
-            subHeaderSelector: string
-            buttonSelector: string,
-            headerText: string,
             appNameText: string,
-            buttonNameText: string,
             host: number
     }) {
-        const appName = property.host === 3001 ? appsData[0].appNameText : property.host === 3002 ? appsData[1].appNameText : appsData[2].appNameText;
-        const host = property.host === 3001 ? appsData[0].host : property.host === 3002 ? appsData[1].host : appsData[2].host;
-
-
-    describe(`Check ${appName}`, () => {
+        
+    describe(`Check ${property.appNameText}`, () => {
   
-        it(`Check ${appName} built and running`, () => {
-            basePage.openLocalhost(host)
+        it(`Check header block with text visibility`, () => {
+            basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: property.headerSelector,
-                text: property.headerText
+                selector: baseSelectors.tags.headers.h1,
+                text: Constants.commonConstantsData.basicComponents.basicHostRemote,
+                visibilityState: 'be.visible'
             })
             basePage.checkElementWithTextPresence({
-                selector: property.subHeaderSelector,
-                text: `${appName}`
+                selector: baseSelectors.tags.headers.h2,
+                text: `${property.appNameText}`,
+                visibilityState: 'be.visible'
             })
         })
     
-        it(`Check buttons in ${appName} exist`, () => {
-            basePage.openLocalhost(host)
+        it(`Check button text visibility`, () => {
+            basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
-                selector: property.buttonSelector,
-                text: property.buttonNameText
+                selector: baseSelectors.tags.coreElements.button,
+                text: Constants.updatedConstantsData.commonAppWithButton.app2,
+                visibilityState: 'be.visible'
             })
         })
     })

@@ -6,21 +6,11 @@ const basePage: BaseMethods = new BaseMethods()
 
 let appsData = [
     {
-        headerSelector: baseSelectors.tags.headers.h1,
-        subHeaderSelector: baseSelectors.tags.headers.h2,
-        buttonSelector: baseSelectors.tags.coreElements.button,
-        headerText: Constants.commonConstantsData.basicComponents.basicHostRemote,
         appNameText: Constants.commonConstantsData.commonCountAppNames.app1,
-        buttonNameText: Constants.updatedConstantsData.commonAppWithButton.app2,
         host: 3001
     },
     {
-        headerSelector: baseSelectors.tags.headers.h1,
-        subHeaderSelector: baseSelectors.tags.headers.h2,
-        buttonSelector: baseSelectors.tags.coreElements.button,
-        headerText: Constants.commonConstantsData.basicComponents.basicHostRemote,
         appNameText: Constants.commonConstantsData.commonCountAppNames.app2,
-        buttonNameText: Constants.updatedConstantsData.commonAppWithButton.app2,
         host: 3002
     }
 ]
@@ -28,37 +18,35 @@ let appsData = [
 appsData.forEach(
     function(
         property: { 
-            headerSelector: string
-            subHeaderSelector: string
-            buttonSelector: string,
-            headerText: string,
             appNameText: string,
-            buttonNameText: string,
             host: number
     }) {
     let host = property.host === 3002 ? appsData[1].host : appsData[0].host;
     let appName = property.host === 3002 ? appsData[1].appNameText : appsData[0].appNameText;
 
 
-    describe(`Check ${appName}`, () => {
+    describe(`Check ${property.appNameText}`, () => {
   
-        it(`Check ${appName} built and running`, () => {
+        it(`Check header block with text visibility`, () => {
             basePage.openLocalhost(host)
             basePage.checkElementWithTextPresence({
-                selector: property.headerSelector,
-                text: property.headerText
+                selector: baseSelectors.tags.headers.h1,
+                text: Constants.commonConstantsData.basicComponents.basicHostRemote,
+                visibilityState: 'be.visible'
             })
             basePage.checkElementWithTextPresence({
-                selector: property.subHeaderSelector,
-                text: `${appName}`
+                selector: baseSelectors.tags.headers.h2,
+                text: `${property.appNameText}`,
+                visibilityState: 'be.visible'
             })
         })
     
-        it(`Check buttons in ${appName} exist`, () => {
+        it(`Check button text visibility`, () => {
             basePage.openLocalhost(host)
             basePage.checkElementWithTextPresence({
-                selector: property.buttonSelector,
-                text: property.buttonNameText
+                selector: baseSelectors.tags.coreElements.button,
+                text: Constants.updatedConstantsData.commonAppWithButton.app2,
+                visibilityState: 'be.visible'
             })
         })
     })
