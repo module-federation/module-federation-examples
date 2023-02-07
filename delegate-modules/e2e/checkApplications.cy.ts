@@ -21,14 +21,11 @@ appsData.forEach(
             appNameText: string,
             host: number
     }) {
-    let host = property.host === 3002 ? appsData[1].host : appsData[0].host;
-    let appName = property.host === 3002 ? appsData[1].appNameText : appsData[0].appNameText;
-
 
     describe(`Check ${property.appNameText}`, () => {
   
         it(`Check header block with text visibility`, () => {
-            basePage.openLocalhost(host)
+            basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.tags.headers.h1,
                 text: Constants.commonConstantsData.basicComponents.basicHostRemote,
@@ -42,7 +39,7 @@ appsData.forEach(
         })
     
         it(`Check button text visibility`, () => {
-            basePage.openLocalhost(host)
+            basePage.openLocalhost(property.host)
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.tags.coreElements.button,
                 text: Constants.updatedConstantsData.commonAppWithButton.app2,
