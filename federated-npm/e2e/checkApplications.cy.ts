@@ -4,7 +4,7 @@ import { Constants } from '../../cypress/fixtures/constants';
 
 const basePage: BaseMethods = new BaseMethods()
 
-let appsData = [
+const appsData = [
     {
         appNameText: Constants.commonConstantsData.commonCountAppNames.app1,
         host: 3001
