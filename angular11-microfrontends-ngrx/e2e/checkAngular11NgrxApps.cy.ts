@@ -328,7 +328,7 @@ describe('Check Apps functionality', () => {
         basePage.addUser(
             Constants.commonConstantsData.commonAngularAppsData.messages.testName.second,
             Constants.commonConstantsData.commonAngularAppsData.messages.email.second,
-            )
+        )
         basePage.checkElementContainText({
             parentSelector: baseSelectors.tags.tableElements.table,
             selector: baseSelectors.tags.tableElements.dataCell,
@@ -355,7 +355,7 @@ describe('Check Apps functionality', () => {
         })
         basePage.checkElementContainText({
             parentSelector: baseSelectors.tags.tableElements.table,
-            selector: baseSelectors.tableDataCell,
+            selector: baseSelectors.tags.tableElements.dataCell,
             text: Constants.commonConstantsData.commonAngularAppsData.messages.email.second,
             index: Constants.commonConstantsData.commonIndexes.four
         })
