@@ -1,5 +1,5 @@
 {
-  "name": "@cra/host",
+  "name": "cra_host",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
@@ -8,7 +8,8 @@
     "react-scripts": "5.0.1"
   },
   "scripts": {
-    "start": "node ./scripts/start.js",
+    "start": "forever start ./scripts/start.js",
+    "stop": "forever stop ./scripts/start.js",
     "build": "node ./scripts/build.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
