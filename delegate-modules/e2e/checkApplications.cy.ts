@@ -22,29 +22,30 @@ appsData.forEach(
             host: number
     }) {
 
-    describe(`Check ${property.appNameText}`, () => {
-  
-        it(`Check header block with text visibility`, () => {
-            basePage.openLocalhost(property.host)
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.headers.h1,
-                text: Constants.commonConstantsData.basicComponents.basicHostRemote,
-                visibilityState: 'be.visible'
+    describe('Delegate Modules', () => {
+        context(`Check ${property.appNameText}`, () => {
+            it(`Check header block with text visibility`, () => {
+                basePage.openLocalhost(property.host)
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.headers.h1,
+                    text: Constants.commonConstantsData.basicComponents.basicHostRemote,
+                    visibilityState: 'be.visible'
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.headers.h2,
+                    text: `${property.appNameText}`,
+                    visibilityState: 'be.visible'
+                })
             })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.headers.h2,
-                text: `${property.appNameText}`,
-                visibilityState: 'be.visible'
+        
+            it(`Check button text visibility`, () => {
+                basePage.openLocalhost(property.host)
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.coreElements.button,
+                    text: Constants.updatedConstantsData.commonAppWithButton.app2,
+                    visibilityState: 'be.visible'
+                })
             })
-        })
-    
-        it(`Check button text visibility`, () => {
-            basePage.openLocalhost(property.host)
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.coreElements.button,
-                text: Constants.updatedConstantsData.commonAppWithButton.app2,
-                visibilityState: 'be.visible'
-            })
-        })
-    })
+        });
+    });
  })
