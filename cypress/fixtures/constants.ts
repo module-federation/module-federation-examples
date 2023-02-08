@@ -887,7 +887,7 @@ export class Constants {
            borderRed: 'border: 2px dotted red; padding: 20px;'
         },
         red: 'rgb(136, 0, 0)',
-        midBlue: 'rgb(0, 0, 204)',
+        deepBlue: 'rgb(0, 0, 204)',
         dynamicRemotesWidgetColor: [
             'rgb(255, 0, 0)',
             'rgb(128, 0, 128)'
