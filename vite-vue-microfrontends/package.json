@@ -16,12 +16,16 @@
     "build:host": "npm --prefix ./host run build",
     "build:remote": "npm --prefix ./remote run build",
     "preview:host": "npm --prefix ./host run build && npm --prefix ./host run preview",
-    "preview:remote": "npm --prefix ./remote run build && npm --prefix ./remote run preview"
+    "preview:remote": "npm --prefix ./remote run build && npm --prefix ./remote run preview",
+    "e2e:ci": "yarn preview:remote && yarn preview:host & wait-on http-get://localhost:4173/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
   },
   "author": {
     "name": "Giorgio Boa",
     "email": "giorgiob.boa@gmail.com",
     "url": "https://github.com/gioboa"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nohup": "0.1.0"
+  }
 }
