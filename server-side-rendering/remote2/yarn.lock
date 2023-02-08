@@ -1013,23 +1013,24 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@module-federation/node@0.10.2":
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/@module-federation/node/-/node-0.10.2.tgz#9be216796209f67eb85730400846170a1c9fe380"
-  integrity sha512-wigyePv5ASr9aCbo55QlwL0rXvPSHtRRwhsOfXZsrLqIrnBiLNTjAo+WkNEXx3NCIq5TewDgfxsv5otzuY+kgw==
+"@module-federation/node@0.10.4":
+  version "0.10.4"
+  resolved "https://registry.yarnpkg.com/@module-federation/node/-/node-0.10.4.tgz#96815cd2a32439442c727c8af4e2d362a68c7a51"
+  integrity sha512-YkdkhcmUcuaRdhmyPpyIRUpjPqXkgfmMuOu7TUdaTMg8ceBInxpErT3++2I5F3wADnnNHeQaEE5m/iQR/Mu/Qw==
   dependencies:
-    "@module-federation/utilities" "1.1.2"
-    encoding "^0.1.13"
-    node-fetch "^2.6.7"
+    "@module-federation/utilities" "1.2.0"
+    encoding "0.1.13"
+    node-fetch "2.6.7"
+    react-dom "18.2.0"
     tslib "2.4.0"
   optionalDependencies:
     next "^12 || ^13"
     react "^17 || ^18"
 
-"@module-federation/utilities@1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@module-federation/utilities/-/utilities-1.1.2.tgz#f973c673a9bb18d0d0a9d694b001059b8aa0ec3e"
-  integrity sha512-3oCy1zYqZY0T72SvPPthQcvuHeuadzYjYh6oBcRcOzDhutvl5mLKCsp/RdAXxy/oPSXK1RouxuQzZUUu3FGXbQ==
+"@module-federation/utilities@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@module-federation/utilities/-/utilities-1.2.0.tgz#413ac8457634d0c7b01114f39f63260d1179c0e9"
+  integrity sha512-TM0cVI59Skk6wvT4OTyCYqGJp8t0fOxl0evqacwOog50Si90KTfNpFBfGRmJp3Gj1Qp1x8gXaqgND0/rmvMAiw==
   dependencies:
     tslib "2.4.0"
   optionalDependencies:
@@ -1513,7 +1514,7 @@ emojis-list@^3.0.0:
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-3.0.0.tgz#5570662046ad29e2e916e71aae260abdff4f6a78"
   integrity sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==
 
-encoding@^0.1.13:
+encoding@0.1.13:
   version "0.1.13"
   resolved "https://registry.yarnpkg.com/encoding/-/encoding-0.1.13.tgz#56574afdd791f54a8e9b2785c0582a2d26210fa9"
   integrity sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==
@@ -1898,10 +1899,10 @@ neo-async@^2.6.2:
     "@next/swc-win32-ia32-msvc" "13.1.5"
     "@next/swc-win32-x64-msvc" "13.1.5"
 
-node-fetch@^2.6.7:
-  version "2.6.8"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.8.tgz#a68d30b162bc1d8fd71a367e81b997e1f4d4937e"
-  integrity sha512-RZ6dBYuj8dRSfxpUSu+NsdF1dpPpluJxwOp+6IoDp/sH2QNDSvurYsAa+F1WxY2RjA1iP93xhcsUoYbF2XBqVg==
+node-fetch@2.6.7:
+  version "2.6.7"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
+  integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
   dependencies:
     whatwg-url "^5.0.0"
 
@@ -2005,6 +2006,14 @@ randombytes@^2.1.0:
   integrity sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==
   dependencies:
     safe-buffer "^5.1.0"
+
+react-dom@18.2.0:
+  version "18.2.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.2.0.tgz#22aaf38708db2674ed9ada224ca4aa708d821e3d"
+  integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
+  dependencies:
+    loose-envify "^1.1.0"
+    scheduler "^0.23.0"
 
 react-dom@^18.1.0:
   version "18.1.0"
@@ -2123,6 +2132,13 @@ scheduler@^0.22.0:
   version "0.22.0"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.22.0.tgz#83a5d63594edf074add9a7198b1bae76c3db01b8"
   integrity sha512-6QAm1BgQI88NPYymgGQLCZgvep4FyePDWFpXVK+zNSUgHwlqpJy8VEh8Et0KxTACS4VWwMousBElAZOH9nkkoQ==
+  dependencies:
+    loose-envify "^1.1.0"
+
+scheduler@^0.23.0:
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.23.0.tgz#ba8041afc3d30eb206a487b6b384002e4e61fdfe"
+  integrity sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==
   dependencies:
     loose-envify "^1.1.0"
 
