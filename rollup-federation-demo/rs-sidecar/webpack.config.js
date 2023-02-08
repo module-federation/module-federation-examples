@@ -40,9 +40,9 @@ module.exports = {
       filename: 'remoteEntry.js',
       remotes: {},
       exposes: {
-        './Header': '../src/Header',
+        './Header': './src/Header',
       },
-      shared: require('../package.json').dependencies,
+      shared: require('../rollup-spa/package.json').dependencies,
     }),
     new ModuleFederationPlugin({
       name: 'var_rollup_spa',
@@ -60,9 +60,9 @@ module.exports = {
       filename: 'varRemoteEntry.js',
       remotes: {},
       exposes: {
-        './Header': '../src/Header',
+        './Header': './src/Header',
       },
-      shared: require('../package.json').dependencies,
+      shared: require('../rollup-spa/package.json').dependencies,
     }),
   ],
 };

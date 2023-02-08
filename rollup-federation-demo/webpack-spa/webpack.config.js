@@ -2,8 +2,6 @@ const path = require('path');
 
 const { ModuleFederationPlugin } = require('webpack').container;
 
-const pkg = require('./package.json');
-
 /** @type {import('webpack').Configuration} */
 module.exports = {
   entry: './src/index',
@@ -18,6 +16,11 @@ module.exports = {
   optimization: {
     minimize: true,
   },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512_000,
+    maxAssetSize: 512_000
+  },
   module: {
     rules: [
       {
@@ -30,7 +33,7 @@ module.exports = {
       },
     ],
   },
-  externals: ['react', 'react-dom'],
+  externals: ['../node_modules/react', '../node_modules/react-dom'],
   plugins: [
     new ModuleFederationPlugin({
       name: 'rwebpackremote',
@@ -43,16 +46,6 @@ module.exports = {
         './Button': './src/Button',
       },
       shared: {
-        react: {
-          eager: true,
-          singleton: true,
-          requiredVersion: pkg.dependencies.react,
-        },
-        'react-dom': {
-          eager: true,
-          singleton: true,
-          requiredVersion: pkg.dependencies['react-dom'],
-        },
       },
     }),
   ],
