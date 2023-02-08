@@ -1,12 +1,12 @@
 {
-  "name": "remote",
+  "name": "vite-vue-microfrontends_remote",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "run-p vite:dev force-vite-restart",
     "vite:dev": "vite --port 4174",
     "build": "run-p type-check build-only",
-    "preview": "vite preview --port 4174",
+    "preview": "nohup vite preview --port 4174 &",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
