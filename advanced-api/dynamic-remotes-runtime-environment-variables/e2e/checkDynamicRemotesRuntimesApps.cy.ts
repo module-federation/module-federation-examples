@@ -42,58 +42,60 @@ appsData.forEach((
         host: number
     }
 ) => {
-    describe(`Check Host and Remote apps`, () => {
-        beforeEach(() => {
-            basePage.openLocalhost(property.host)
-        })
-
-        it (`Check ${property.subheader} app Widget functionality and application elements`, () => {
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.headers.h1,
-                text: property.header
+    describe('Dynamic Remotes Runtime Enviroment Variables', () => {
+        context(`Check ${property.subheader} app`, () => {
+            beforeEach(() => {
+                basePage.openLocalhost(property.host)
             })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.headers.h2,
-                text: property.subheader
-            })
-            if (property.host === 3000) {
+    
+            it (`Check ${property.subheader} app Widget functionality and application elements`, () => {
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.tags.headers.h3,
-                    text: property.hostH3
+                    selector: baseSelectors.tags.headers.h1,
+                    text: property.header
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.headers.h2,
+                    text: property.subheader
+                })
+                if (property.host === 3000) {
+                    basePage.checkElementWithTextPresence({
+                        selector: baseSelectors.tags.headers.h3,
+                        text: property.hostH3
+                    })
+                    basePage.checkElementWithTextPresence({
+                        selector: baseSelectors.tags.paragraph,
+                        text: property.paragraph
+                    })
+                    basePage.clickElementWithText({
+                        selector: baseSelectors.tags.coreElements.button,
+                        text: String(property.button)
+                    })
+                }
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.coreElements.div,
+                    text: property.loading
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.coreElements.div,
+                    text: property.loading,
+                    isVisible: false
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.headers.h2,
+                    text: property.buttonHeader
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.headers.h2,
+                    text: property.buttonH2
                 })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.paragraph,
-                    text: property.paragraph
+                    text: property.buttonParagraph
                 })
-                basePage.clickElementWithText({
-                    selector: baseSelectors.tags.coreElements.button,
-                    text: String(property.button)
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.paragraph,
+                    text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
                 })
-            }
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.coreElements.div,
-                text: property.loading
-            })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.coreElements.div,
-                text: property.loading,
-                isVisible: false
-            })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.headers.h2,
-                text: property.buttonHeader
-            })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.headers.h2,
-                text: property.buttonH2
-            })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.paragraph,
-                text: property.buttonParagraph
-            })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.paragraph,
-                text: getDateWithFormat('current', 'MMMM Do YYYY, h:mm')
             })
         })
     })

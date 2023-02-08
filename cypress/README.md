@@ -153,6 +153,36 @@ It will exit with a code of 0 or 1, indicating whether the test run was successf
 >```bash
 >kill -9 $(lsof -ti:3001)
 >```
+### Test report
+
+After you run tests in a Headless mode, you can find a report in the `cypress/results` directory. It is a `.json` files. It contains information about the test run, such as the number of tests, the number of passed tests, the number of failed tests, and the duration of the test run. To genarete HTML report, you can run:
+
+```bash
+npm run report:generate
+```
+
+And find the report in the `cypress/report` directory. It is a `.html` file. You can open it in a browser as a standard HTML file.
+
+It looks like:
+
+![Allure report](https://i.ibb.co/7Smkgts/Screenshot-2023-01-30-at-12-52-14.png)
+
+In `Suites` tab you can find all the tests. And debug them.
+
+![Allure report suites](https://i.ibb.co/ggrzwqd/Screenshot-2023-01-30-at-12-52-26.png)
+
+>**Note:** On CI pipeline, the report will be generated automatically and added to your PR as a comment. Of course by workflow status.
+
+Success:
+![Allure report success comment](https://i.ibb.co/bRXZTJs/Screenshot-2023-02-03-at-13-13-07.png)
+
+Failed:
+![Allure report failed comment](https://i.ibb.co/BTj5Qvh/Screenshot-2023-02-03-at-13-13-17.png)
+
+Cancelled:
+![Allure report cancelled comment](https://i.ibb.co/5BgYrJ6/Screenshot-2023-02-03-at-13-18-27.png)
+
+In comment you can find a link to the report and a link to the workflow itself, so you can go to the report by clicking on the link in the comment 🔥
 
 <h2 align="center">How to write tests</h2>
 

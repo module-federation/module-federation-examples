@@ -23,91 +23,35 @@ const hostData = [
     }
 ]
 
-describe("Check host app", () => {
-    beforeEach(() => {
-        basePage.openLocalhost(3000)
-    })
-
-    it('Check the content of the Home page exists', () => {
-        basePage.checkElementContainText({
-            selector: baseSelectors.tags.coreElements.div,
-            text: Constants.elementsText.reactHmrApp.host.headerText1
+describe("React HMR", () => {
+    context("Check host app", () => {
+        beforeEach(() => {
+            basePage.openLocalhost(3000)
         })
-        basePage.checkElementContainText({
-            selector: baseSelectors.tags.coreElements.div,
-            text: Constants.elementsText.reactHmrApp.host.headerText2
-        })
-        basePage.checkElementContainText({
-            selector: baseSelectors.tags.coreElements.link,
-            text: Constants.commonConstantsData.home,
-            link: Constants.commonConstantsData.commonLinks.baseLink,
-        })
-        basePage.checkElementContainText({
-            selector: baseSelectors.tags.coreElements.link,
-            text: Constants.commonConstantsData.button,
-            link: Constants.hrefs.reactHmrApp.button,
-        })
-        basePage.checkElementContainText({
-            selector: baseSelectors.tags.coreElements.link,
-            text: Constants.hrefs.reactHmrApp.heading.name,
-            link: Constants.hrefs.reactHmrApp.heading.link,
-        })
-        basePage.checkElementHaveProperty({
-            selector: baseSelectors.ids.root,
-            text: Constants.elementsText.reactHmrApp.host.headerText1,
-            prop: CssAttr.backgroundColor,
-            value: Constants.color.greenyellow,
-            isParent: true
-        })
-    })
-
-    hostData.forEach((
-        property: {
-            linkName: string
-            pageContent: string
-            link: string,
-        }) => {
-
-        const appName = property.linkName === 'Home' ? hostData[0].linkName : property.linkName === 'Button' ? hostData[1].linkName : hostData[2].linkName;
-
-
-        it(`Check the ${appName} navigation link works`, () => {
-
-            basePage.clickElementWithText({
-                selector: baseSelectors.tags.coreElements.link,
-                text: property.linkName
-            })
-
-            basePage.checkUrlText(property.link, true)
-            basePage.checkElementContainText({
-                selector: baseSelectors.ids.root,
-                text: property.pageContent
-            })
-
+    
+        it('Check the content of the Home page exists', () => {
             basePage.checkElementContainText({
                 selector: baseSelectors.tags.coreElements.div,
-                text: Constants.elementsText.reactHmrApp.host.headerText1,
-                index: 1
+                text: Constants.elementsText.reactHmrApp.host.headerText1
             })
             basePage.checkElementContainText({
                 selector: baseSelectors.tags.coreElements.div,
-                text: Constants.elementsText.reactHmrApp.host.headerText2,
-                index: 2
+                text: Constants.elementsText.reactHmrApp.host.headerText2
             })
             basePage.checkElementContainText({
                 selector: baseSelectors.tags.coreElements.link,
                 text: Constants.commonConstantsData.home,
-                link: Constants.commonConstantsData.commonLinks.baseLink
+                link: Constants.commonConstantsData.commonLinks.baseLink,
             })
             basePage.checkElementContainText({
                 selector: baseSelectors.tags.coreElements.link,
                 text: Constants.commonConstantsData.button,
-                link: Constants.hrefs.reactHmrApp.button
+                link: Constants.hrefs.reactHmrApp.button,
             })
             basePage.checkElementContainText({
                 selector: baseSelectors.tags.coreElements.link,
                 text: Constants.hrefs.reactHmrApp.heading.name,
-                link: Constants.hrefs.reactHmrApp.heading.link
+                link: Constants.hrefs.reactHmrApp.heading.link,
             })
             basePage.checkElementHaveProperty({
                 selector: baseSelectors.ids.root,
@@ -115,6 +59,64 @@ describe("Check host app", () => {
                 prop: CssAttr.backgroundColor,
                 value: Constants.color.greenyellow,
                 isParent: true
+            })
+        })
+    
+        hostData.forEach((
+            property: {
+                linkName: string
+                pageContent: string
+                link: string,
+            }) => {
+    
+            const appName = property.linkName === 'Home' ? hostData[0].linkName : property.linkName === 'Button' ? hostData[1].linkName : hostData[2].linkName;
+    
+    
+            it(`Check the ${appName} navigation link works`, () => {
+    
+                basePage.clickElementWithText({
+                    selector: baseSelectors.tags.coreElements.link,
+                    text: property.linkName
+                })
+    
+                basePage.checkUrlText(property.link, true)
+                basePage.checkElementContainText({
+                    selector: baseSelectors.ids.root,
+                    text: property.pageContent
+                })
+    
+                basePage.checkElementContainText({
+                    selector: baseSelectors.tags.coreElements.div,
+                    text: Constants.elementsText.reactHmrApp.host.headerText1,
+                    index: 1
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.tags.coreElements.div,
+                    text: Constants.elementsText.reactHmrApp.host.headerText2,
+                    index: 2
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.tags.coreElements.link,
+                    text: Constants.commonConstantsData.home,
+                    link: Constants.commonConstantsData.commonLinks.baseLink
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.tags.coreElements.link,
+                    text: Constants.commonConstantsData.button,
+                    link: Constants.hrefs.reactHmrApp.button
+                })
+                basePage.checkElementContainText({
+                    selector: baseSelectors.tags.coreElements.link,
+                    text: Constants.hrefs.reactHmrApp.heading.name,
+                    link: Constants.hrefs.reactHmrApp.heading.link
+                })
+                basePage.checkElementHaveProperty({
+                    selector: baseSelectors.ids.root,
+                    text: Constants.elementsText.reactHmrApp.host.headerText1,
+                    prop: CssAttr.backgroundColor,
+                    value: Constants.color.greenyellow,
+                    isParent: true
+                })
             })
         })
     })

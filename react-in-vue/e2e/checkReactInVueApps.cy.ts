@@ -35,96 +35,98 @@ appsData.forEach((
         host: number
     }
 ) => {
-    describe("Check React in Vue Apps", () => {
-        beforeEach(() => {
-            basePage.openLocalhost(property.host)
-        })
-    
-        it('Check app build and running & Check apps elements exist', () => {
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.headers.h1,
-                text: property.header
+    describe("React in Vue", () => {
+        context('Check React in Vue Apps', () => {
+            beforeEach(() => {
+                basePage.openLocalhost(property.host)
             })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.headers.h2,
-                text: property.subHeader
-            })
-            if(property.host === 3001) {
+        
+            it('Check app build and running & Check apps elements exist', () => {
                 basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.tags.coreElements.spans.span,
-                    text: String(property.checkboxName)
-                })
-                basePage.checkElementVisibility({
-                    selector: baseSelectors.css.checkbox
-                })
-                basePage.checkElementState({
-                    selector: baseSelectors.css.checkbox,
-                    state: 'be.checked'
-                })
-                basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.tags.coreElements.spans.span,
-                    text: String(property.buttonTextInput)
-                })
-                basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.tags.coreElements.spans.span,
-                    text: String(property.counterText)
+                    selector: baseSelectors.tags.headers.h1,
+                    text: property.header
                 })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.headers.h2,
-                    text: String(property.buttonHeader)
+                    text: property.subHeader
                 })
-            }
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.coreElements.button,
-                text: property.buttonText
+                if(property.host === 3001) {
+                    basePage.checkElementWithTextPresence({
+                        selector: baseSelectors.tags.coreElements.spans.span,
+                        text: String(property.checkboxName)
+                    })
+                    basePage.checkElementVisibility({
+                        selector: baseSelectors.css.checkbox
+                    })
+                    basePage.checkElementState({
+                        selector: baseSelectors.css.checkbox,
+                        state: 'be.checked'
+                    })
+                    basePage.checkElementWithTextPresence({
+                        selector: baseSelectors.tags.coreElements.spans.span,
+                        text: String(property.buttonTextInput)
+                    })
+                    basePage.checkElementWithTextPresence({
+                        selector: baseSelectors.tags.coreElements.spans.span,
+                        text: String(property.counterText)
+                    })
+                    basePage.checkElementWithTextPresence({
+                        selector: baseSelectors.tags.headers.h2,
+                        text: String(property.buttonHeader)
+                    })
+                }
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.coreElements.button,
+                    text: property.buttonText
+                })
             })
-        })
-
-        it('Check button visibility after clicking on checkbox', () => {
-            basePage.skipTestByCondition(property.host === 3002)
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.coreElements.button,
-                text: property.buttonText
+    
+            it('Check button visibility after clicking on checkbox', () => {
+                basePage.skipTestByCondition(property.host === 3002)
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.coreElements.button,
+                    text: property.buttonText
+                })
+                basePage.clickElementBySelector({
+                    selector: baseSelectors.css.checkbox
+                })
+                basePage.checkElementVisibility({
+                    selector: baseSelectors.tags.coreElements.button,
+                    isVisible: false
+                })
             })
-            basePage.clickElementBySelector({
-                selector: baseSelectors.css.checkbox
+    
+            it('Check change button name', () => {
+                basePage.skipTestByCondition(property.host === 3002)
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.coreElements.button,
+                    text: property.buttonText
+                })
+                basePage.fillField({
+                    selector: commonSelectors.formField.replace('{fieldName}', 'BUTTON_TEXT'),
+                    text: Constants.elementsText.reactInVueApp.App1.updatedButtonText
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: baseSelectors.tags.coreElements.button,
+                    text: Constants.elementsText.reactInVueApp.App1.updatedButtonText
+                })
             })
-            basePage.checkElementVisibility({
-                selector: baseSelectors.tags.coreElements.button,
-                isVisible: false
-            })
-        })
-
-        it('Check change button name', () => {
-            basePage.skipTestByCondition(property.host === 3002)
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.coreElements.button,
-                text: property.buttonText
-            })
-            basePage.fillField({
-                selector: commonSelectors.formField.replace('{fieldName}', 'BUTTON_TEXT'),
-                text: Constants.elementsText.reactInVueApp.App1.updatedButtonText
-            })
-            basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.coreElements.button,
-                text: Constants.elementsText.reactInVueApp.App1.updatedButtonText
-            })
-        })
-
-        it('Check counter value after cliking on button', () => {
-            basePage.skipTestByCondition(property.host === 3002)
-            basePage.checkElementContainText({
-                selector: commonSelectors.formField.replace('{fieldName}', 'COUNTER'),
-                text: 0,
-                checkType: 'have.value'
-            })
-            basePage.clickElementBySelector({
-                selector: baseSelectors.tags.coreElements.button,
-            })
-            basePage.checkElementContainText({
-                selector: commonSelectors.formField.replace('{fieldName}', 'COUNTER'),
-                text: 1,
-                checkType: 'have.value'
+    
+            it('Check counter value after cliking on button', () => {
+                basePage.skipTestByCondition(property.host === 3002)
+                basePage.checkElementContainText({
+                    selector: commonSelectors.formField.replace('{fieldName}', 'COUNTER'),
+                    text: 0,
+                    checkType: 'have.value'
+                })
+                basePage.clickElementBySelector({
+                    selector: baseSelectors.tags.coreElements.button,
+                })
+                basePage.checkElementContainText({
+                    selector: commonSelectors.formField.replace('{fieldName}', 'COUNTER'),
+                    text: 1,
+                    checkType: 'have.value'
+                })
             })
         })
     })

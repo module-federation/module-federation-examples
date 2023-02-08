@@ -51,6 +51,8 @@
       "./different-react-versions-isolated/*",
       "./dynamic-system-host",
       "./dynamic-system-host/*",
+      "./genesis",
+      "./genesis/*",
       "./federated-npm",
       "./federated-npm/*",
       "./native-federation-react",
@@ -89,6 +91,7 @@
       "./typescript-project-references",
       "./typescript-project-references/*",
       "./umd-federation",
+      "./umd-federation/*",
       "./version-discrepancy",
       "./version-discrepancy/*",
       "./vite-react-microfrontends",
@@ -107,8 +110,6 @@
       "./dashboard-example/*",
       "./nextjs-bi-directional/*",
       "./vue-cli/*",
-      "./genesis/*",
-      "./umd-federation/*",
       "./cypress"
     ],
     "nohoist": [
@@ -121,10 +122,12 @@
     ]
   },
   "devDependencies": {
+    "@shelex/cypress-allure-plugin": "2.35.2",
+    "allure-commandline": "2.20.0",
     "concurrently": "7.3.0",
     "cross-spawn": "7.0.3",
     "cypress": "10",
-    "cypress-fill-command": "^1.0.2",
+    "cypress-fill-command": "1.0.2",
     "cypress-wait-until": "1.7.2",
     "husky": "7.0.4",
     "jest": "26.6.3",
@@ -143,6 +146,8 @@
     "test": "jest test/index.spec.js --maxWorkers=2",
     "postinstall": "git pull --recurse-submodules",
     "cypress:debug": "cypress open --e2e --config-file cypress/config/cypress.config.ts --browser=chrome",
-    "cypress:run": "cypress run --config-file cypress/config/cypress.config.ts --browser=chrome"
+    "cypress:run": "cypress run --config-file cypress/config/cypress.config.ts --browser=chrome",
+    "report:generate": "allure generate ./cypress/results/allure-results --clean -o ./cypress/report",
+    "report:open": "allure open ./cypress/report"
   }
 }
