@@ -1,55 +1,44 @@
-# Next.js with Module Federation
+# Getting Started
+To start, run yarn start and navigate to http://localhost:3001 or another available port.
 
+# Consulting Services Available
+For consultations, contact Zackary Jackson at zackary.l.jackson@gmail.com or via Twitter at @ScriptedAlchemy.
 
-## Getting Started
+# How it Works
+This implementation uses our proprietary Software Streams technology to stream commonjs modules at runtime to consuming apps. This technology has not been made publicly available, and we have kept it a guarded secret for the past 2 years despite using it for multiple backend systems.
 
-2. run `yarn start` and browse to `http://localhost:3001` or one of the others
+For the client side, we have enhanced federation interfaces to ensure that the top-level API works as expected, allowing for import(), require, and import from to function. While the serverside has been tested, only import() has been tested on the client side.
 
-# We are available to consult
+An alpha version of Software Streams was leaked a year and a half ago, but it contains security flaws. The federation group has since spent a significant amount of time enhancing the technology. In the future, after the plugin exits beta, we plan to implement stream encryption to prevent code manipulation. This will be achieved through a cypher key known to both the consumer and remote at build time.
 
-Contact me <a href="mailto:zackary.l.jackson@gmail.com">zackary.l.jackson@gmail.com</a> or <a href="https://twitter.com/scriptedalchemy">@ScriptedAlchemy</a> on Twitter
+We are also exploring the possibility of executing streamed software in a WASM isolate that has limited access to host resources, making it possible to execute untrusted code.
 
-
-## How it works?!
-
-This implementaion leverages our propriatery _Software Streams_ which allow me to stream commonjs modules at runtime to consuming apps.
-We have never made software streaming avaliable to the general public, while we have used it for 2 years and run several backends off the technology - its remained a heavily guarded secret. Software Streams is how SSR works, on the client side we are using enhanced federation interfaces to ensure that the top-level api works as expected.
-
-It should allow `import()`, `require`, `import from` to work - this has been tested serverside but i have not yet tested anything else other than import() on the client.
-
-There has been a leaked copy of an alpha from a year and a half ago for software streams. While it does work, there are several security flaws. The federation group has spend signigicant amounts of time enhancing streaming.
-
-In the future, when this plugin is out of beta - we are planning to build in stream encryption to ensure that code streamed has not been manipulated in any way.
-This would rely on a salted cypher key that consumer and remote would know at build time.
-
-We are also looking into running streamed software in a WASM isolate that cannot perform any damage, has no access to host resources. This would make it possible to execute untrusted code.
-
-For the time being - I strongly suggest only federating trusted software between servers.
+For now, we strongly advise federating only trusted software between servers.
 
 ## Security
-
-In order to make this plugin work right out the box, the commonjs modules are exposed via `_next/static/ssr*` i strongly suggest having a CDN or piece of middleware that only allows access to this path from internal network or VPN. You do not want the public internet to be able to reach that path. You are exposing server code, where `process.browser` is not applied to tree shake server secrets since this is server code.
+To ensure proper functionality, the commonjs modules are exposed via _next/static/ssr*. For security reasons, it is recommended to have a CDN or middleware in place that only allows access to this path from an internal network or VPN. Exposing server code publicly through this path can pose a security risk as process.browser is not applied to tree shake server secrets.
 
 ## Context
 
-We have three next.js applications
+We have three Next.js applications:
 
-- `checkout` - port 3000
-- `home` - port 3001
-- `shop` - port 3002
+- `checkout` on port 3000
+- `home` on port 3001
+- `shop` on port 3002
 
-The applications utilize omnidirectional routing and pages or components are able to be federated between applications like a SPA
+These applications use omnidirectional routing, enabling pages and components to be federated between them like in a SPA.
 
-I am using hooks here to ensure multiple copies of react are not loaded into scope on server or client.
-
-The omnidirectional routing now hooks into webpack federation loading functions, so when dynamically loading remotes - you can use the same functions that webpack uses to load remotes when theres a know static import like `home/title`
-
-I am using hooks here to ensure multiple copies of react are not loaded into scope on server or client.
+The use of hooks ensures that multiple copies of React are not loaded into the server or client. The omnidirectional routing also hooks into webpack federation loading functions, allowing dynamic loading of remotes using the same functions as those used for static imports (e.g. home/title).
 
 ### Sharing
 
-Next.js has all its internal modules pre-shared vis `@module-federation/nextjs-mf` you do need to share react via the plugin in order to ensure that the share scope runtime requirements are included - since you cannot share modules in a normal manner, like nextjs internls, the pre-shared modules are attached at runtime to the share scope. Any exta code you share is processed via the plugin which reconfigures sharing properly to work with next.js limitations.
+Next.js has pre-shared internal modules through `@module-federation/nextjs-mf`. However, you need to share React through the plugin to ensure that the shared scope runtime requirements are included. Modules that are shared extra must be processed by the plugin, which reconfigures sharing to work within the limitations of Next.js.
 
-The sharing limit is due to next not having any async boundary, theres no way to "pause" the application while webpack orchestrates share scope.
+The sharing limit is due to Next.js having no async boundary, making it impossible to "pause" the application while webpack manages the shared scope. The author is exploring new methods that could potentially solve the module sharing issue in Next.js, but this is a complex challenge requiring extensive knowledge of webpack and federation within the module graph.
 
-I am investigating new methods that may solve the module sharing problem in next.js, however this is a complex problem to solve and requires enormus amounts of knowladge around how webpack and federation work inside the module graph.
+# Delegate Modules
+
+Delegate modules in module federation offer a flexible solution for creating custom connection code between federated modules.
+Compared to using the promise `new Promise syntax`, delegate modules are bundled into webpack and can utilize `require` and `import` statements.
+This makes them ideal for handling complex requirements such as loading remote modules or customizing the federation API.
+However, it's important to note that delegate modules are an advanced feature and may not be necessary for the majority of users.
