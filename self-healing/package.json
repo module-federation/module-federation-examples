@@ -1,12 +1,20 @@
 {
+  "name": "self-healing",
   "private": true,
+  "workspaces": [
+    "./app1",
+    "./app2"
+  ],
+  "version": "0.0.0",
   "scripts": {
-    "start": "lerna run --scope @self-healing/* --parallel start",
-    "build": "lerna run --scope @self-healing/* build",
-    "serve": "lerna run --scope @self-healing/* --parallel serve",
-    "clean": "lerna run --scope @self-healing/* --parallel clean"
+    "start": "lerna run --scope=self-healing_app* --parallel start",
+    "build": "lerna run --scope=self-healing_app* build",
+    "serve": "lerna run --scope=self-healing_app* --parallel serve",
+    "clean": "lerna run --scope=self-healing_app* --parallel clean",
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "lerna": "3.22.1"
+    "lerna": "3.22.1",
+    "wait-on": "7.0.1"
   }
 }

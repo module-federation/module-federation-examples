@@ -1,16 +1,19 @@
 {
+  "name": "third-party-scripts",
   "private": true,
   "workspaces": {
     "packages": [
-      "app1",
-      "app2"
+      "./app1",
+      "./app2"
     ]
   },
+  "version": "0.0.0",
   "scripts": {
-    "start": "lerna run --parallel start",
+    "start": "lerna run --scope=third-party-scripts_* --parallel start",
     "build": "lerna run build",
-    "serve": "lerna run --parallel serve",
-    "clean": "lerna run --parallel clean"
+    "serve": "lerna run --scope=third-party-scripts_* --parallel serve",
+    "clean": "lerna run --scope=third-party-scripts_* --parallel clean",
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "lerna": "3.22.1"

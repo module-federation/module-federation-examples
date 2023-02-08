@@ -1,17 +1,18 @@
 {
-  "name": "app2",
+  "name": "react-nested-routers_app2",
+  "private": true,
   "version": "1.0.0",
   "scripts": {
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
     "build:start": "cd dist && PORT=8082 npx serve",
-    "start": "webpack serve --open --mode development",
-    "start:live": "webpack serve --open --mode development --live-reload --hot"
+    "start": "webpack serve --mode development",
+    "start:live": "webpack serve --mode development --live-reload --hot"
   },
   "license": "MIT",
   "author": {
-    "name": "Jack Herrington",
-    "email": "jherr@pobox.com"
+    "name": "Francesco Benedetto",
+    "url": "https://github.com/nebarf"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
@@ -23,7 +24,7 @@
     "@types/react-dom": "^18.0.5",
     "autoprefixer": "^10.1.0",
     "babel-loader": "^8.2.2",
-    "css-loader": "^6.3.0",
+    "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.3.2",
     "postcss": "^8.2.1",
     "postcss-loader": "^4.1.0",

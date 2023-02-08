@@ -1,16 +1,25 @@
 {
+  "name": "dynamic-remotes-runtime-environment-variables",
   "private": true,
+  "workspaces": [
+    "./host",
+    "./remote"
+  ],
+  "version": "0.0.0",
   "scripts": {
-    "start": "lerna run --scope @mf-env/* --parallel start",
-    "build": "lerna run --scope @mf-env/* build",
-    "serve": "lerna run --scope @mf-env/* --parallel serve",
-    "clean": "lerna run --scope @mf-env/* --parallel clean",
-    "docker:build": "lerna run --scope @mf-env/* --parallel docker:build",
-    "docker:run": "lerna run --scope @mf-env/* --parallel docker:run",
-    "docker:rm": "lerna run --scope @mf-env/* --parallel docker:rm"
+    "start": "lerna run --scope=dynamic-remotes-runtime-environment-variables_* --parallel start",
+    "build": "lerna run --scope=dynamic-remotes-runtime-environment-variables_* --parallel build",
+    "serve": "lerna run --scope=dynamic-remotes-runtime-environment-variables_* --parallel serve",
+    "clean": "lerna run --scope=dynamic-remotes-runtime-environment-variables_* --parallel clean",
+    "docker:build": "lerna run --scope=dynamic-remotes-runtime-environment-variables_* --parallel docker:build",
+    "docker:run": "lerna run --scope=dynamic-remotes-runtime-environment-variables_* --parallel docker:run",
+    "docker:rm": "lerna run --scope=dynamic-remotes-runtime-environment-variables_* --parallel docker:rm",
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "lerna": "4.0.0"
-  },
-  "name": "mf-env"
+    "copy-webpack-plugin": "11.0.0",
+    "lerna": "4.0.0",
+    "wait-on": "7.0.1",
+    "webpack-cli": "4.10.0"
+  }
 }

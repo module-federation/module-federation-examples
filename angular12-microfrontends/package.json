@@ -1,5 +1,9 @@
 {
-  "name": "ng-microfrontends",
+  "name": "angular12-microfrontends",
+  "private": true,
+  "workspaces": [
+    "./projects/*"
+  ],
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -9,9 +13,9 @@
     "build:profile": "ng build mdmf-profile --configuration production",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "e2e:ci": "ng serve mdmf-shell & wait-on http-get://localhost:4200/ && ng serve mdmf-profile & wait-on http-get://localhost:4201/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "12.2.16",
     "@angular/common": "12.2.16",
@@ -30,7 +34,7 @@
     "@angular-devkit/build-angular": "12.2.17",
     "@angular/cli": "12.2.17",
     "@angular/compiler-cli": "12.2.16",
-    "@types/jasmine": "4.0.3",
+    "@types/jasmine": "4.3.1",
     "@types/jasminewd2": "2.0.10",
     "@types/node": "12.20.55",
     "codelyzer": "6.0.2",
@@ -46,6 +50,7 @@
     "ts-node": "9.1.1",
     "tslint": "6.1.3",
     "typescript": "4.3.5",
+    "wait-on": "^7.0.1",
     "webpack": "5.72.1"
   }
 }

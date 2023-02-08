@@ -14,6 +14,7 @@ class MyDocument extends Document {
           <Main />
           Scipt is only needed if you are not using the federation @ syntax when setting your
           remotes.
+          {/* eslint-disable-next-line @next/next/no-sync-scripts */}
           <script src="http://localhost:8081/_next/static/chunks/remoteEntry.js" />
           <NextScript />
         </body>

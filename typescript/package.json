@@ -1,10 +1,17 @@
 {
+  "name": "typescript",
   "private": true,
+  "workspaces": [
+    "./app1",
+    "./app2"
+  ],
+  "version": "0.0.0",
   "scripts": {
-    "start": "lerna run --scope @typescript/* --parallel start",
-    "build": "lerna run --scope @typescript/* build",
-    "serve": "lerna run --scope @typescript/* --parallel serve",
-    "clean": "lerna run --scope @typescript/* --parallel clean"
+    "start": "lerna run --scope=typescript_* --parallel start",
+    "build": "lerna run --scope=typescript_* build",
+    "serve": "lerna run --scope=typescript_* --parallel serve",
+    "clean": "lerna run --scope=typescript_* --parallel clean",
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "lerna": "3.22.1"

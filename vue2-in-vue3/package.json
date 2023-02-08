@@ -1,12 +1,20 @@
 {
+  "name": "vue2-in-vue3",
   "private": true,
+  "workspaces": [
+    "./vue2",
+    "./vue3"
+  ],
+  "version": "0.0.0",
   "scripts": {
-    "start": "lerna run --scope @vue2-in-vue3/* --parallel start",
-    "build": "lerna run --scope @vue2-in-vue3/* build",
-    "serve": "lerna run --scope @vue2-in-vue3/* --parallel serve",
-    "clean": "lerna run --scope @vue2-in-vue3/* --parallel clean"
+    "start": "lerna run --scope=vue2-in-vue3_vue* --parallel start",
+    "build": "lerna run --scope=vue2-in-vue3_vue* build",
+    "serve": "lerna run --scope=vue2-in-vue3_vue* --parallel serve",
+    "clean": "lerna run --scope=vue2-in-vue3_vue* --parallel clean",
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3002/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "lerna": "3.22.1"
+    "lerna": "3.22.1",
+    "wait-on": "7.0.1"
   }
 }

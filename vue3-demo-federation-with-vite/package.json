@@ -1,8 +1,18 @@
 {
   "name": "vue3-demo-federation-with-vite",
   "private": true,
+  "workspaces": [
+    "./vite-side",
+    "./webpack-side"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "build": "pnpm --parallel --filter \"./**\" build",
-    "serve": "pnpm --parallel --filter \"./**\"  serve"
+    "serve": "pnpm --parallel --filter \"./**\"  serve",
+    "e2e:ci": "pnpm build && pnpm serve & wait-on http-get://localhost:5000/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
+  },
+  "devDependencies": {
+    "pnpm": "7.25.1",
+    "wait-on": "7.0.1"
   }
 }

@@ -1,5 +1,11 @@
 {
+  "name": "multi-threaded-ssr",
   "private": true,
+  "workspaces": [
+    "./website1",
+    "./website2"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "start": "yarn build && yarn serve",
     "build": "lerna run build --parallel --scope @multi-threaded-ssr/icarus-2 --scope @multi-threaded-ssr/icarus-1",

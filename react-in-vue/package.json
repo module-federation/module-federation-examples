@@ -1,13 +1,22 @@
 {
+  "name": "react-in-vue",
   "private": true,
+  "workspaces": [
+    "./home",
+    "./layout"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "ls": "lerna ls",
-    "start": "lerna run --scope @react-in-vue/* --parallel start",
-    "build": "lerna run --scope @react-in-vue/* build",
-    "serve": "lerna run --scope @react-in-vue/* --parallel serve",
-    "clean": "lerna run --scope @react-in-vue/* --parallel clean"
+    "start": "lerna run --scope=react-in-vue_* --parallel start",
+    "build": "lerna run --scope=react-in-vue_* build",
+    "serve": "lerna run --scope=react-in-vue_* --parallel serve",
+    "clean": "lerna run --scope=react-in-vue_* --parallel clean",
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3002/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "lerna": "3.22.1"
+    "@babel/preset-react": "7.18.6",
+    "lerna": "3.22.1",
+    "wait-on": "7.0.1"
   }
 }

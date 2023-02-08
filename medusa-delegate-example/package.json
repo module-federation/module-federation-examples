@@ -1,0 +1,28 @@
+{
+  "name": "medusa-delegate-example",
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"cd dsl; yarn start\" \"cd home; yarn start\" \"cd nav; yarn start\" \"cd search; yarn start\" \"cd utils; yarn start\"",
+    "stackblitzStart": "cd dsl; yarn build && cd ../home; yarn build && cd ../nav; yarn build && cd ../search; yarn build && cd ../utils; yarn build && yarn serve",
+    "build": "concurrently \"cd dsl; yarn build\" \"cd home; yarn build\" \"cd nav; yarn build\" \"cd search; yarn build\" \"cd utils; yarn build\"",
+    "serve": "concurrently \"yarn serve:dsl\" \"yarn serve:home\" \"yarn serve:nav\" \"yarn serve:search\" \"yarn serve:utils\"",
+    "serve:dsl": "cd dsl; yarn serve",
+    "serve:home": "cd home; yarn serve",
+    "serve:nav": "cd nav; yarn serve",
+    "serve:search": "cd search; yarn serve",
+    "serve:utils": "cd utils; yarn serve",
+    "clean": "lerna run --scope @dashboard-delegate/* --parallel clean"
+  },
+  "workspaces": {
+    "packages": [
+      "./dsl",
+      "./home",
+      "./nav",
+      "./search",
+      "./utils"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "7.5.0"
+  }
+}

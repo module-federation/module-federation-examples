@@ -1,0 +1,43 @@
+<div class="profile-container">
+  <h2>Profile (Angular Shell)</h2>
+
+        <form [formGroup]="angForm">
+          <div>
+            <input
+              type="text"
+              formControlName="name"
+              placeholder="Name"
+              data-e2e="FORM_FIELD__NAME"
+              #name
+            />
+            <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
+              <div *ngIf="$any(angForm.controls)['name'].errors['required']">
+                Name is required.
+              </div>
+            </div>
+          </div>
+          <div>
+            <input
+              type="email"
+              formControlName="email"
+              placeholder="Email"
+              data-e2e="FORM_FIELD__EMAIL"
+              #email
+            />
+            <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
+              <div *ngIf="$any(angForm.controls)['email'].errors['required']">
+                Email is required.
+              </div>
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-primary" (click)="addUser(name.value, email.value)"
+                [disabled]="angForm.pristine || angForm.invalid">Create User</button>
+          </div>
+        </form>
+
+    <br />
+
+    <app-list-user></app-list-user>
+
+</div>

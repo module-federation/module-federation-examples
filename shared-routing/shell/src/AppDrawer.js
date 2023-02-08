@@ -68,7 +68,7 @@ function ListItemLink(props) {
 
 function Menu() {
   return (
-    <List>
+    <List data-e2e="NAVIGATION_BUTTONS_BLOCK">
       <ListItemLink to="dashboard" icon={<DashboardIcon />} text="Dashboard" />
       <ListItemLink to="orders" icon={<ShoppingCartIcon />} text="Orders" />
       <ListItemLink to="profile" icon={<UserIcon />} text="Profile" />
@@ -88,8 +88,8 @@ export default function AppDrawer(props) {
       open={props.open}
     >
       <div className={classes.toolbarIcon}>
-        <IconButton onClick={props.drawer.closeDrawer}>
-          <ChevronLeftIcon />
+        <IconButton data-e2e="CLOSE_SIDE_MENU__BUTTON" onClick={props.drawer.closeDrawer}>
+          <ChevronLeftIcon/>
         </IconButton>
       </div>
       <Divider />

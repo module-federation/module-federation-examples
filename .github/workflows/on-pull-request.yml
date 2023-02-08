@@ -1,0 +1,152 @@
+name: on pull request
+on: pull_request
+
+jobs:
+
+# Stop previous runs
+  stop-previous-run:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.11.0
+        with:
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+
+# Save nessesary env variables to use them in next jobs
+  save-env:
+    runs-on: ubuntu-22.04
+    needs: stop-previous-run
+    steps:
+      - name: Save env variables
+        run: |
+          mkdir -p ./workflow
+          echo "${{ github.event.pull_request.number }}" > ./workflow/prNum
+          echo "${{ github.run_number }}" > ./workflow/runNum
+          echo "${{ github.run_id }}" > ./workflow/runId
+          echo "${{ github.repository }}" > ./workflow/repoFullName
+          echo "${{ github.repository_owner }}" > ./workflow/ownerName
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: env_for_comment
+          path: workflow/
+
+# Check if forked master is up to date with origin master in module federation examples repo
+  forked_master_status:
+    runs-on: ubuntu-22.04
+    needs: stop-previous-run
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Check if forked master is up to date
+        if: github.repository_owner == 'module-federation'
+        run: |
+          echo "${{ github.repository_owner }}"
+          git remote add base https://github.com/${{github.repository}}
+          git remote -v
+          git fetch --all
+          export FORKED_MASTER_SHA=$(git log -n 1 --pretty=format:"%H" origin/${{ github.event.pull_request.base.ref}})
+          export BASE_MASTER_SHA=$(git log -n 1 --pretty=format:"%H" base/${{ github.event.pull_request.base.ref }})
+          echo "$FORKED_MASTER_SHA"
+          echo "$BASE_MASTER_SHA"
+          
+          if [ "$FORKED_MASTER_SHA" == "$BASE_MASTER_SHA" ];
+          then
+            echo "The forked master is up to date with the base master branch"
+            exit 0
+          else
+            echo "The forked master branch is not up to date with the base master branch, Please update your fork!"
+            exit 1
+          fi
+
+# Setup matrix from changed samples by lerna ls --since origin/master command
+  setup-matrix:
+    runs-on: ubuntu-22.04
+    needs: forked_master_status
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Create matrix
+        id: set-matrix
+        run: |
+          matrix="$(node checkChangedWorkspaces.js)"
+          echo "matrix=$matrix" >> $GITHUB_OUTPUT
+
+      - name: Changed workspaces
+        run: |
+          echo '${{ steps.set-matrix.outputs.matrix }}'
+
+# Run Cypress e2e tests for changed samples (additionally install deps for all changed samples if there is no any created cache in master branch) + Create artifacts for Cypress screenshots and videos
+  run-e2e-test:
+    needs: setup-matrix
+    if: ${{ needs.setup-matrix.outputs.matrix != '{"container":[]}' }}
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix: ${{fromJson(needs.setup-matrix.outputs.matrix)}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
+      - name: Check Yarn hash
+        id: yarn-hash
+        run: |
+          yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
+          echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
+
+      - name: Restore Yarn and Cypress cache
+        uses: actions/cache/restore@v3
+        id: yarn-cache
+        with:
+          path: |
+            **/node_modules
+            **/yarn.lock
+            ~/.cache/Cypress
+            ~/.cache/yarn/v6  
+          key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
+          restore-keys: |
+            e2e-cache-
+            e2e-
+
+      - name: Install main deps
+        # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, ayarn install to the run section below instead of npx lerna exec
+        # if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: |
+          yarn install
+
+      - name: Install sample deps
+        # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
+        # if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: |
+          npx lerna exec --stream --scope="${{ matrix.container }}*" --concurrency=1 "yarn install"
+
+      - name: Run sample e2e tests
+        run: 
+          npx lerna run --scope=${{ matrix.container }} e2e:ci
+
+      - name: Create artifacts for Allure report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: allure-results
+          path: 'cypress/results/allure-results'
+          retention-days: 7

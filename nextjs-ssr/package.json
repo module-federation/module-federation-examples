@@ -1,4 +1,5 @@
 {
+  "name": "nextjs-ssr",
   "private": true,
   "workspaces": [
     "./checkout",
@@ -6,10 +7,12 @@
     "./shared",
     "./shop"
   ],
+  "version": "0.0.0",
   "scripts": {
     "start": "concurrently \"cd checkout; npm run dev\" \"cd home; npm run dev\" \"cd shop; npm run dev\"",
     "build": "concurrently \"cd checkout; npm run build\" \"cd home; npm run build\" \"cd shop; npm run build\"",
-    "serve": "concurrently \"cd checkout; npm run start\" \"cd home; npm run start\" \"cd shop; npm run start\""
+    "serve": "concurrently \"cd checkout; npm run start\" \"cd home; npm run start\" \"cd shop; npm run start\"",
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "dependencies": {
     "concurrently": "^7.0.0"

@@ -1,16 +1,19 @@
 {
-  "name": "wasm-federation-demo",
+  "name": "rust-wasm",
+  "private": true,
+  "workspaces": [
+    "./host",
+    "./remote"
+  ],
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "lerna run start --stream"
+    "start": "lerna run start --scope=rust-wasm_* --stream",
+    "e2e:ci": "yarn start & wait-on http-get://localhost:8080/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
   },
-  "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "devDependencies": {
-    "lerna": "4.0.0"
+    "lerna": "4.0.0",
+    "wait-on": "7.0.1"
   }
 }

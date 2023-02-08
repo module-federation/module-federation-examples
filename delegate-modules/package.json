@@ -1,0 +1,21 @@
+{
+  "name": "delegate-modules",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "./app1",
+      "./app2"
+    ]
+  },
+  "version": "0.0.0",
+  "scripts": {
+    "start": "lerna run --scope=delegate-modules_* --parallel start",
+    "build": "lerna run --scope=delegate-modules_* build",
+    "serve": "lerna run --scope=delegate-modules_* --parallel serve",
+    "clean": "lerna run --scope=delegate-modules_* --parallel clean",
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+  },
+  "devDependencies": {
+    "lerna": "3.22.1"
+  }
+}

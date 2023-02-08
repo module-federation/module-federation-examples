@@ -21,7 +21,7 @@ export function App() {
     <div className="App">
       <header className="App-header">
         <div>
-          Host button: <button onClick={() => setCount(count => count + 1)}>click me {count}</button>
+          Host button: <button data-e2e="HOST_BUTTON" onClick={() => setCount(count => count + 1)}>click me {count}</button>
         </div>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
