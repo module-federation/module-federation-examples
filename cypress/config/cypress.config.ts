@@ -4,7 +4,6 @@ const fs = require('fs')
 const path = require('path');
 const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 
-
 async function setupNodeEvents(
   on: Cypress.PluginEvents,
   config: Cypress.PluginConfigOptions,

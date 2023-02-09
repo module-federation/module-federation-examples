@@ -21,7 +21,6 @@ jobs:
         run: |
           mkdir -p ./workflow
           echo "${{ github.event.pull_request.number }}" > ./workflow/prNum
-          echo "${{ github.run_number }}" > ./workflow/runNum
           echo "${{ github.run_id }}" > ./workflow/runId
           echo "${{ github.repository }}" > ./workflow/repoFullName
           echo "${{ github.repository_owner }}" > ./workflow/ownerName
