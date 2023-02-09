@@ -13,6 +13,9 @@ const remotes = isServer => {
     checkout: createDelegatedModule(require.resolve('./remote-delegate.js'), {
       remote: `checkout@http://localhost:3000/_next/static/${location}/remoteEntry.js`
     }),
+    // home: `home@http://localhost:3001/_next/static/${location}/remoteEntry.js`,
+    // shop: `shop@http://localhost:3002/_next/static/${location}/remoteEntry.js`,
+    // checkout: `checkout@http://localhost:3000/_next/static/${location}/remoteEntry.js`,
   };
 };
 
