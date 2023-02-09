@@ -94,7 +94,7 @@ describe('Native Federation React', () => {
                 selector: baseSelectors.tags.coreElements.link,
                 attr: Constants.commonConstantsData.commonAttributes.attr,
                 prop: Constants.commonConstantsData.commonAttributes.href,
-                value: Constants.commonConstantsData.commonReactLink,
+                value: Constants.commonConstantsData.links.react,
                 isMultiple: true
             })
         })

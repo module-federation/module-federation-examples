@@ -11,7 +11,7 @@ describe('It checks buttons & links on page', () => {
             buttonName: Constants.commonConstantsData.webpack,
             buttonText: Constants.elementsText.viteReactSimpleApp.buttons.webpack,
             buttonColor: Constants.color.red,
-            link: Constants.commonConstantsData.commonReactLink,
+            link: Constants.commonConstantsData.links.react,
             linkName: Constants.elementsText.viteReactSimpleApp.links[0],
         },
         {
@@ -55,12 +55,11 @@ describe('It checks buttons & links on page', () => {
 
         it(`Checks ${property.linkName} link functionality`, () => {
             basePage.openLocalhost(3000)
-            basePage.clickElementWithText({
+            basePage.checkOutsideResourceUrl({
                 selector: baseSelectors.tags.coreElements.link,
                 text: property.linkName,
-                isTargetChanged: true
+                link: property.link,
             })
-            basePage.checkUrlText(property.link, true, true)
         })
     })
 })

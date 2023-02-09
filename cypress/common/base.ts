@@ -360,7 +360,8 @@ export class BaseMethods {
          text,
          isParent = false,
          checkType = 'contains',
-         isWithInvoke = true
+         isWithInvoke = true,
+         isInclude = true
      }: {
          selector: string,
          attr?: string,
@@ -373,7 +374,8 @@ export class BaseMethods {
          text?: string,
          isParent?: boolean,
          checkType?: string,
-         isWithInvoke?: boolean
+         isWithInvoke?: boolean,
+         isInclude?: boolean
      }
     ): Cypress.Chainable<JQuery<HTMLElement>> {
         if(text) {
@@ -382,7 +384,18 @@ export class BaseMethods {
                     .contains(text)
                     .parent()
                     .invoke(attr, prop)
-                    .should('include', value)
+                    .should(isInclude? 'include' : 'not.include', value)
+
+                // @ts-ignore
+                return;
+            }
+
+            if (parentSelector) {
+                cy.get(parentSelector)
+                    .find(selector)
+                    .contains(text)
+                    .invoke(attr, prop)
+                    .should(isInclude? 'include' : 'not.include', value)
 
                 // @ts-ignore
                 return;
@@ -394,7 +407,7 @@ export class BaseMethods {
                     .eq(index)
                     .contains(text)
                     .invoke(attr, prop)
-                    .should('include', value)
+                    .should(isInclude? 'include' : 'not.include', value)
 
                 // @ts-ignore
                 return;
@@ -415,14 +428,14 @@ export class BaseMethods {
           return cy.get(selector)
                 .contains(text)
                 .invoke(attr, prop)
-                .should('include', value)
+                .should(isInclude? 'include' : 'not.include', value)
         }
 
         if(index) {
             return cy.get(selector)
                 .eq(index)
                 .invoke(attr, prop)
-                .should('include', value)
+                .should(isInclude? 'include' : 'not.include', value)
         }
 
         if(parentSelector && isShadowElement) {
@@ -430,14 +443,14 @@ export class BaseMethods {
                 .shadow()
                 .find(selector)
                 .invoke(attr, prop)
-                .should('include', value)
+                .should(isInclude? 'include' : 'not.include', value)
         }
 
         if(parentSelector) {
             return cy.get(parentSelector)
                 .find(selector)
                 .invoke(attr, prop)
-                .should('include', value)
+                .should(isInclude? 'include' : 'not.include', value)
         }
 
         if(isMultiple) {
@@ -453,7 +466,7 @@ export class BaseMethods {
 
         return cy.get(selector)
             .invoke(attr, prop)
-            .should('include', value)
+            .should(isInclude? 'include' : 'not.include', value)
     }
 
     public checkElementQuantity({
@@ -704,14 +717,25 @@ export class BaseMethods {
     public writeContentToFile({
          filePath,
          content,
-         wait = 500
+         wait = 500,
+         contentFilePath
     }: {
         filePath: string,
-        content: string
-        wait?: number
+        content?: string
+        wait?: number,
+        contentFilePath?: string
     }): void {
-        writeTofile(filePath, content)
-        cy.wait(wait)
+        if(contentFilePath) {
+            readFile(contentFilePath).then((file: string) => {
+                writeTofile(filePath, file)
+                cy.wait(wait)
+            })
+        }
+
+        if(content) {
+            writeTofile(filePath, content)
+            cy.wait(wait)
+        }
     }
 
     public fillField({
@@ -747,6 +771,24 @@ export class BaseMethods {
 
     public skipTestByCondition(condition: any): void {
         cy.skipWhen(condition)
+    }
+
+    public hoverElement({
+         selector,
+         text,
+         wait = 0
+    }: {
+        selector: string,
+        text?: string,
+        wait?: number
+    }): void {
+        if (text) {
+            cy.wait(wait).get(selector).contains(text).realHover()
+
+            return;
+        }
+
+        cy.wait(wait).get(selector).realHover()
     }
 
     public openLocalhost(number: number, path?: string): Cypress.Chainable<Cypress.AUTWindow> {
@@ -824,6 +866,37 @@ export class BaseMethods {
                 });
             });
     }
+
+    public checkOutsideResourceUrl({
+         parentSelector,
+         selector,
+         text,
+         link,
+         isInclude = true
+     }: {
+        parentSelector?: string,
+        selector: string,
+        text: string,
+        link: string,
+        isInclude?: boolean
+    }): void {
+        if(parentSelector) {
+            this.clickElementWithText({
+                parentSelector,
+                selector,
+                text,
+                isTargetChanged: true
+            })
+        } else {
+            this.clickElementWithText({
+                selector,
+                text,
+                isTargetChanged: true
+            })
+        }
+        this.checkUrlText(link, isInclude, true)
+    }
+
 
     /*
 *---------------------------------------------------

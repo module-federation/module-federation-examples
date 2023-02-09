@@ -51,6 +51,7 @@ export class CommonTestData {
             appName: Constants.commonConstantsData.commonCountAppNames.app2
         }
     ];
+    public static readonly nextJsHostReactRemoteAppLinkName = Constants.commonPhrases.nextJsHostReactRemoteApp.messages.welcome.split('to')[1].trim()
 }
 
 export function returnCommonDynamicAppsData(paragraphText: string[]) {
