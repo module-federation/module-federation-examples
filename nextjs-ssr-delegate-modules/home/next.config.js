@@ -20,9 +20,7 @@ const remotes = isServer => {
 };
 
 module.exports = {
-  webpack5: true,
   webpack(config, options) {
-    config.cache = false
 
     config.plugins.push(
       new NextFederationPlugin({

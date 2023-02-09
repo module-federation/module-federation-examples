@@ -19,7 +19,6 @@ const remotes = isServer => {
 };
 module.exports = {
   webpack(config, options) {
-    config.cache = false
     config.plugins.push(
       new NextFederationPlugin({
         name: 'shop',

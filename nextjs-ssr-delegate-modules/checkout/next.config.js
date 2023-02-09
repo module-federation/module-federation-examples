@@ -21,7 +21,6 @@ const remotes = isServer => {
 
 module.exports = {
   webpack(config, options) {
-    config.cache = false
 
     config.plugins.push(
       new NextFederationPlugin({
@@ -33,7 +32,6 @@ module.exports = {
           './pages-map': './pages-map.js',
         },
         remotes: remotes(options.isServer),
-        shared: {},
         extraOptions:{
           automaticAsyncBoundary: true
         }

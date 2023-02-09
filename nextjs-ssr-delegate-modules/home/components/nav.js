@@ -2,6 +2,7 @@ import React, {Suspense} from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
+console.log(__webpack_share_scopes__)
 export const HelloWorld = dynamic(() => import('./helloWorld').then(mod => {
   return {default: mod.HelloWorld}
 }),{suspense: true});
@@ -20,14 +21,14 @@ const Nav = () => (
     </Suspense>
     <ul>
       <li>
-        <Link href="/">
-          <a>Home</a>
+        <Link href="/" className="link">
+          Home
         </Link>
-        <Link href="/shop">
-          <a>Shop</a>
+        <Link href="/shop" className="link">
+          Shop
         </Link>
-        <Link href="/checkout">
-          <a>Checkout</a>
+        <Link href="/checkout" className="link">
+          Checkout
         </Link>
       </li>
       {links.map(({ key, href, label }) => (
@@ -56,7 +57,7 @@ const Nav = () => (
         display: flex;
         padding: 6px 8px;
       }
-      a {
+      li :global(.link) {
         color: #067df7;
         text-decoration: none;
         font-size: 13px;
