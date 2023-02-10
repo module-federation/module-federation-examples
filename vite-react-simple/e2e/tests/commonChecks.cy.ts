@@ -11,7 +11,7 @@ describe('It checks buttons & links on page', () => {
             buttonName: Constants.commonConstantsData.webpack,
             buttonText: Constants.elementsText.viteReactSimpleApp.buttons.webpack,
             buttonColor: Constants.color.red,
-            link: Constants.commonConstantsData.links.react,
+            link: Constants.commonConstantsData.commonLinks.react,
             linkName: Constants.elementsText.viteReactSimpleApp.links[0],
         },
         {

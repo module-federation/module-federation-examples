@@ -51,7 +51,31 @@ export class CommonTestData {
             appName: Constants.commonConstantsData.commonCountAppNames.app2
         }
     ];
-    public static readonly nextJsHostReactRemoteAppLinkName = Constants.commonPhrases.nextJsHostReactRemoteApp.messages.welcome.split('to')[1].trim()
+    public static readonly commonNextJsAppsData = [
+        {
+            messageType: Constants.commonConstantsData.nextJsAppsCommonPhrases.messages.welcome.split(' ')[0].trim(),
+            selector: baseSelectors.tags.headers.h1,
+            message: Constants.commonConstantsData.nextJsAppsCommonPhrases.messages.welcome,
+            linkText: Constants.commonConstantsData.nextJsAppsCommonPhrases.messages.welcome.split('to')[1].trim(),
+        },
+        {
+            messageType: Constants.commonConstantsData.nextJsAppsCommonPhrases.messages.start.split('by')[0].trim(),
+            selector: baseSelectors.tags.paragraph,
+            message: Constants.commonConstantsData.nextJsAppsCommonPhrases.messages.start,
+        },
+        {
+            messageType: Constants.commonConstantsData.nextJsAppsCommonPhrases.messages.engine,
+            selector: baseSelectors.tags.footer,
+            message: Constants.commonConstantsData.nextJsAppsCommonPhrases.messages.engine,
+            linkText: Constants.commonConstantsData.nextJsAppsCommonPhrases.messages.engine,
+        },
+        {
+            messageType: baseSelectors.tags.footer.charAt(0).toUpperCase() + baseSelectors.tags.footer.slice(1),
+            selector: baseSelectors.tags.coreElements.body,
+            message: Constants.commonConstantsData.nextJsAppsCommonPhrases.messages.footer,
+        }
+    ]
+    public static readonly nextJsAppsHeaderLinkName = Constants.commonConstantsData.nextJsAppsCommonPhrases.messages.welcome.split('to')[1].trim()
 }
 
 export function returnCommonDynamicAppsData(paragraphText: string[]) {

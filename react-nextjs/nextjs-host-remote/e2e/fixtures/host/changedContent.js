@@ -1,7 +1,11 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import NextjsRemoteComponent from './../components/nextjs-remote-component';
+import dynamic from 'next/dynamic';
+
+const NextjsRemoteComponent = dynamic(() => import('remote/nextjs-remote-component'), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
@@ -18,10 +22,10 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Get started by editing <code className={styles.code}>pages/index.js</code>
+          Get TESTED by editing <code className={styles.code}>pages/index.js</code>
         </p>
 
-        {/* <NextjsRemoteComponent /> */}
+        <NextjsRemoteComponent />
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card} data-e2e="TEXTED_LINK_CARD">
