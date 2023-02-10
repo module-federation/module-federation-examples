@@ -183,6 +183,7 @@ export const selectors = {
         webComponent: 'unique-name',
         interactionText: '[data="VUE_IN_ANGULAR_INTERACTION_TEXT"]',
     },
+    federatedCssButton: '[data-e2e="FEDERATED_CSS_BUTTON"]',
 }
 
 export const updatedSelectors = {

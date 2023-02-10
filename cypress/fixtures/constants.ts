@@ -33,6 +33,17 @@ export class Constants {
         }
     }
 
+    public static readonly samplesPath = {
+        federatedCssConsumeCssPath: 'consume-css-page',
+        federatedCssConsumeCssModulePath: 'consume-css-module-page',
+        federatedCssConsumeJssPath: 'consume-jss-page',
+        federatedCssConsumeLessPath: 'consume-less-page',
+        federatedCssConsumeScssPath: 'consume-scss-page',
+        federatedCssConsumeStyledComponentPath: 'consume-styled-component-page',
+        federatedCssConsumeTailwindGlobalPath: 'consume-tailwind-global-css-page',
+        federatedCssConsumeTailwindModulePath: 'consume-tailwind-module-css-page',
+    }
+
     public static readonly selectorParts = {
         vue3DemoFederationWithViteApp: {
             vite: 'vite',
@@ -913,6 +924,23 @@ export class Constants {
                 'remote got message:'
             ]
         },
+        federatedStyles: {
+            header: 'Federated Styles',
+            reactAppContainer: 'React App Container',
+            nextJsAppContainer: 'NextJs App Container',
+            buttonsText: {
+                red: 'Red className Button Federated Css injected',
+                black: 'Black Button Federated Css variables inject and used in internal css',
+                orange: 'Orange Button Federated Scss injected',
+                brown: 'Brown Button Federated Less injected',
+                yellow: 'Yellow Button Federated Css Module',
+                redBlue: 'Red className Button but blue Css Module (classname collision does not affect)',
+                aquamarine: 'App 3 Button with Federated Jss styling',
+                purple: 'Federated Styled Button',
+                tailwindBlue: 'Federated button styled with Tailwind',
+                tailwindGreen: 'Button with Federated Tailwind css.',
+            }
+        },
         craReactApp: {
             hostApp: 'This is the host application.',
             hostAppRemoteMessage: 'This is a component from the remote application',
@@ -1001,7 +1029,16 @@ export class Constants {
         darkSaturatedBlue: 'rgb(0, 0, 255)',
         mint: 'rgb(97, 218, 251)',
         skyBlue: 'rgb(0, 112, 243)',
-        lightMint: 'rgb(95, 158, 160)'
+        lightMint: 'rgb(95, 158, 160)',
+        absoluteOrange: 'rgb(255, 165, 0)',
+        brown: 'rgb(165, 42, 42)',
+        absoluteBlue: 'rgb(0, 0, 255)',
+        absoluteRed: 'rgb(255, 0, 0)',
+        absolutePurple: 'rgb(128, 0, 128)',
+        absoluteBlack: 'rgb(0, 0, 0)',
+        tailwindBlue: 'rgb(59, 130, 246)',
+        tailwindGreen: 'rgb(34, 197, 94)',
+        transparent: 'rgba(0, 0, 0, 0)',
     }
 
     public static readonly hrefs = {
@@ -1117,6 +1154,43 @@ export class Constants {
         },
         angular11SkullyApp: {
             product: '/product'
+        }
+    }
+
+    public static readonly fullTestData = {
+        federatedCssTestData: {
+            css: {
+                path: Constants.samplesPath.federatedCssConsumeCssPath,
+                bgColor: Constants.color.absoluteRed,
+            },
+            cssModule: {
+                path: Constants.samplesPath.federatedCssConsumeCssModulePath,
+                bgColor: Constants.color.absoluteRed,
+            },
+            jss: {
+                path: Constants.samplesPath.federatedCssConsumeJssPath,
+                bgColor: Constants.color.aquamarine,
+            },
+            less: {
+                path: Constants.samplesPath.federatedCssConsumeLessPath,
+                bgColor: Constants.color.brown,
+            },
+            scss: {
+                path: Constants.samplesPath.federatedCssConsumeScssPath,
+                bgColor: Constants.color.absoluteOrange,
+            },
+            styledComponent: {
+                path: Constants.samplesPath.federatedCssConsumeStyledComponentPath,
+                bgColor: Constants.color.absolutePurple,
+            },
+            tailwindGlobal: {
+                path: Constants.samplesPath.federatedCssConsumeTailwindGlobalPath,
+                bgColor: Constants.color.tailwindGreen,
+            },
+            tailwindModule: {
+                path: Constants.samplesPath.federatedCssConsumeTailwindModulePath,
+                bgColor: Constants.color.tailwindBlue,
+            }
         }
     }
 }
