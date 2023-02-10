@@ -15,9 +15,9 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 
 
 https://module-federation.github.io/
- 
+
 https://www.youtube.com/playlist?list=PLWSiF9YHHK-DqsFHGYbeAMwbd9xcZbEWJ
- 
+
 https://scriptedalchemy.medium.com/
 
 # Examples
@@ -56,8 +56,9 @@ https://scriptedalchemy.medium.com/
 - [x] [NextJS Sidecar Build](./nextjs-sidecar/README.md) &mdash; Sidecar build to enable module-federation alongside Next codebases.
 - [x] [NextJS v12](./nextjs-v12/README.md) &mdash; Operation, with [nextjs-mf](https://www.npmjs.com/package/@module-federation/nextjs-mf).
 - [x] [NextJS v13](./nextjs-v13/README.md) &mdash; Operation, with [nextjs-mf](https://www.npmjs.com/package/@module-federation/nextjs-mf).
-- [x] [NextJS](./nextjs/README.md) &mdash; Operation, with [nextjs-mf](https://app.privjs.com/buy/packageDetail?pkg=@module-federation/nextjs-mf).
-- [x] 💰[NextJS SSR](./nextjs-ssr/README.md) &mdash; Powered by software streams, with [nextjs-ssr](https://app.privjs.com/buy/packageDetail?pkg=@module-federation/nextjs-ssr)
+- [x] [NextJS](./nextjs/README.md) &mdash; Operation, with [nextjs-mf](https://github.com/module-federation/universe).
+- [x] [NextJS SSR](./nextjs-ssr/README.md) &mdash; Powered by software streams, with [nextjs-ssr](https://github.com/module-federation/universe)
+- [x] [NextJS SSR via Delegates](./nextjs-ssr-delegate-modules/README.md) &mdash; Custom glue code for containers and hosts [nextjs-ssr](https://github.com/module-federation/universe)
 - [x] [Building A Plugin-based Workflow Designer With Angular and Module Federation](https://github.com/manfredsteyer/module-federation-with-angular-dynamic-workflow-designer) &mdash; External Example
 - [x] [Vue.js](./vue3-demo/README.md) &mdash; Simple host/remote (render function / sfc) example using Vue 3.0.
 - [x] [Vue 2 in Vue 3](./vue2-in-vue3/README.md) &mdash; Vue 3 application loading remote Vue 2 component.
@@ -68,7 +69,7 @@ https://scriptedalchemy.medium.com/
 - [x] [vue3-demo-federation-with-vite](./vue3-demo-federation-with-vite/README.md) &mdash; wepack and vite federation integrated projects, webpack/vite both play the role of host and remote
 - [x] [quasar-cli-vue3-webpack-javascript](./quasar-cli-vue3-webpack-javascript/README.md) &mdash; Module federation integration with Quasar apps running vue3 using quasar-cli (javascript)
 - [x] [UMD Federation](./umd-federation) &mdash; Support importing umd remote module
- 
+
 **Module Federation Examples** covered by e2e tests with **Cypress** framework, more info about structure and configuration 👉 [here](./cypress/README.md) 👈
 
 # Check out our book
