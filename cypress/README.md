@@ -153,6 +153,36 @@ It will exit with a code of 0 or 1, indicating whether the test run was successf
 >```bash
 >kill -9 $(lsof -ti:3001)
 >```
+### Test report
+
+After you run tests in a Headless mode, you can find a report in the `cypress/results` directory. It is a `.json` files. It contains information about the test run, such as the number of tests, the number of passed tests, the number of failed tests, and the duration of the test run. To genarete HTML report, you can run:
+
+```bash
+npm run report:generate
+```
+
+And find the report in the `cypress/report` directory. It is a `.html` file. You can open it in a browser as a standard HTML file.
+
+It looks like:
+
+![Allure report](https://i.ibb.co/7Smkgts/Screenshot-2023-01-30-at-12-52-14.png)
+
+In `Suites` tab you can find all the tests. And debug them.
+
+![Allure report suites](https://i.ibb.co/ggrzwqd/Screenshot-2023-01-30-at-12-52-26.png)
+
+>**Note:** On CI pipeline, the report will be generated automatically and added to your PR as a comment. Of course by workflow status.
+
+Success:
+![Allure report success comment](https://i.ibb.co/bRXZTJs/Screenshot-2023-02-03-at-13-13-07.png)
+
+Failed:
+![Allure report failed comment](https://i.ibb.co/BTj5Qvh/Screenshot-2023-02-03-at-13-13-17.png)
+
+Cancelled:
+![Allure report cancelled comment](https://i.ibb.co/5BgYrJ6/Screenshot-2023-02-03-at-13-18-27.png)
+
+In comment you can find a link to the report and a link to the workflow itself, so you can go to the report by clicking on the link in the comment 🔥
 
 <h2 align="center">How to write tests</h2>
 
@@ -270,26 +300,45 @@ describe(`Example test`, () => {
   - `public` (at the beginning);
   - `protected` (in between `public` and `private`);
   - `private` (at the end);
+- All methods inside file grouped in multiple sections  
+  - `Clicks Section` -> for methods related to click actions
+  - `Checks Section` -> for methods related to check actions (checkElementVisibility, checkElementContainText, etc)
+  - `Writes Section` -> for methods related to write actions (fillField, etc)
+  - `Helpers Section` -> for methods related to base actions (openLocalhost, reloadPage, etc)
+  - `Activities Section` -> for methods related to specific actions (addUser, compareInfoBetweenHosts, etc)
+  - `Privates Section` -> for privates methods only
+- NOTE: Do not add almost similar methods (like checkElementVisibility & checkChildELementVisibility), if existed methods do not have enough functionality for specific case, find a way to increase it
+- NOTE: If new method should be added, always add it to the right section according to logic
 
 ##### `selectors.ts`
 
-- All `selectors/locators` should be added to their corresponding blocks based on logic:
-  - Buttons to `buttons` block;
-  - Fields to `fields` block;
-  - And so on;
-- If a suitable block does not exist, consider if it is necessary to create a new one, with a clear and understandable name;
-- Try to avoid duplicating `selectors/locators` by utilizing existing ones;
-- If a `selector/locator` appears to be common, but has an incorrect name, please rename it correctly (e.g. `button` to `commonButton`) and make sure to update all places where it is used.
+- There are several blocks where `selectors/locators` can be added:
+  - `baseSelectors` block includes `tags`, `css` and `ids` blocks. According to types only the most common selectors which can be found on the almost every page (like div, button, etc) should be added there;
+  - `commonSelectors` block should include selectors which is used for multiple samples but not so common and basic like the ones in `baseSelectors` block;
+  - `selectors` block should include specific selectors which is used for specific sample
+  - `updatedSelectors` block includes both common and specific selectors which created by combining of two different selectors
+- NOTE Please follow added structure, for example if you add selector in `baseSelectors` block always search for suitable block for it
+- NOTE For `selectors` and `updatedSelectors` blocks please combine selectors under appName just like it's already added, it will help selectors file to be more clear and readable 
+- NOTE Added blocks types should be enough to cover all selectors needs, so it should be unnecessary to create new selectors blocks (only new blocks inside existed ones, for example blocks of selectors for the newest sample inside `selectors` block)   
+- Try to avoid duplicating `selectors/locators` by utilizing/moving existing ones;
+- If a `selector/locator` appears to be common, but has an incorrect name, please rename it correctly and move to another block if necessary (e.g. `button` to `commonButton`) and make sure to update all places where it is used.
 
 ##### `constants.ts`
 
 - All `constants` should be added to their corresponding blocks based on logic:
-  - Buttons to `buttons` block;
-  - Fields to `fields` block;
-  - And so on;
+  - Files path (if you need to reach some system file by test) to `filesPath` block;
+  - Selectors parts (which used to create selector with replace element) to `selectorParts` block;
+  - Common constants data (which can be used in multiple places throughout constants or in multiple samples) to `commonConstantsData` block;
+  - updated constants data (combined constants from multiple elements) to `updatedConstantsData` block;
+  - elements text to `elementsText` block;
+  - different phrases from samples to `commonPhrases` block;
+  - values related to elements color (rgb/non rgb) to `color` block;
+  - links elements to `hrefs` block;
+  
+  NOTE: Please combine all constants inside block by sample name, for example `commonPhrases` -> `sample name` -> constants inside object. You can create such objects in all constants types which you need
 - If a suitable block does not exist, consider if it is necessary to create a new one with a clear and understandable name;
-- Try to avoid duplicating `constants` by utilizing existing ones
-- If a constant appears to be common, but has an incorrect name, please rename it correctly (e.g. `buttonText` to `commonButtonText`) and make sure to update all places where it is used.
+- Try to avoid duplicating `constants` by moving common constant to `commonConstantsData` block and updating of all usage places 
+- If a constant has an incorrect name, please rename it correctly (e.g. `buttonText` to `commonButtonText`) and make sure to update all places where it is used.
 
 ##### `commonData.ts`
 
@@ -387,18 +436,18 @@ We have two apps `app1` and `app2` they are similar. So we can create one object
 ```typescript
 const appsData = [
     {
-        headerSelector: baseSelectors.h1,
-        subHeaderSelector: baseSelectors.h2,
-        buttonSelector: baseSelectors.button,
+        headerSelector: baseSelectors.tags.headers.h1,
+        subHeaderSelector: baseSelectors.tags.headers.h2,
+        buttonSelector: baseSelectors.tags.coreElements.button,
         headerText: Constants.elementsText.automaticVendorContent,
         appNameText: Constants.elementsText.automaticVendorFirstAppName,
         buttonColor: Constants.color.red,
         host: 3001
     },
     {
-        headerSelector: baseSelectors.h1,
-        subHeaderSelector: baseSelectors.h2,
-        buttonSelector: baseSelectors.button,
+        headerSelector: baseSelectors.tags.headers.h1,
+        subHeaderSelector: baseSelectors.tags.headers.h2,
+        buttonSelector: baseSelectors.tags.coreElements.button,
         headerText: Constants.elementsText.automaticVendorContent,
         appNameText: Constants.elementsText.automaticVendorSecondAppName,
         buttonColor: Constants.color.deepBlue,
@@ -442,6 +491,7 @@ It will generate two `describes` and two `its` for each test, and our test run w
 ### Separate common checks and uncommon
 
 As a suggestion, if you have two or more applications with similar functionality, you can create a separate file for shared checks, named `commonChecks.ts`, and add your created object with common checks there.
+NOTE: You can use `commonChecks.ts`, not only fot different apps but for similar checks in one app (for example similar checks of different buttons in one app)
 
 So, your `e2e` directory will look like the following:
 
@@ -464,7 +514,7 @@ import './hostChecks.cy'
 import './commonChecks.cy'
 ```
 
-##### Managing Multiple Constants
+### Managing Multiple Constants
 
 When there is a need to add new constant, or change an existing one, and that app will contain more than one constant, create an object for it:
 
@@ -502,7 +552,7 @@ describe(`Check ${appName}`, () => {
     })
     it(`Check ${appName} built and running`, () => {
         basePage.checkElementWithTextPresence({
-            selector: baseSelectors.headerSelector,
+            selector: baseSelectors.tags.headers.header,
             text: Constants.testedAppsName.App1.name
         })
     })

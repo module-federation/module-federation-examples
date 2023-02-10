@@ -1,5 +1,11 @@
 {
   "name": "typescript-monorepo",
+  "private": true,
+  "workspaces": [
+    "./app1",
+    "./app2"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "start": "lerna run --scope=typescript-monorepo_app* --parallel start",
     "build": "lerna run --scope=typescript-monorepo_app* build",

@@ -4,15 +4,17 @@ import { BaseMethods } from "../../cypress/common/base";
 
 const basePage: BaseMethods = new BaseMethods()
 
-describe('Check is Comprehensive Demo App4 working and have elements', () => {
-    beforeEach(() => {
-        basePage.openLocalhost(3004)
-    })
-
-    it('Check App build and running & Check app elements exist', () => {
-        basePage.checkElementWithTextPresence({
-            selector: baseSelectors.h1,
-            text: Constants.elementsText.comprehensiveDemo.App4.headerText
+describe('Comprehencive Demo React 18', () => {
+    context('Check is Comprehensive Demo App4 working and have elements', () => {
+        beforeEach(() => {
+            basePage.openLocalhost(3004)
+        })
+    
+        it('Check App build and running & Check app elements exist', () => {
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.tags.headers.h1,
+                text: Constants.elementsText.comprehensiveDemoApp.App4.headerText
+            })
         })
     })
 })

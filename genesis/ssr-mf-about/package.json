@@ -1,27 +1,27 @@
 {
-  "name": "ssr-mf-about",
-  "version": "2.0.10",
+  "name": "genesis_ssr-mf-about",
+  "version": "2.3.10",
   "main": "index.js",
   "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "genesis-ts-node --project=./tsconfig.node.json genesis.dev",
-    "build": "rm -rf dist types && npm run build:dts && npm run build:vue && npm run build:node",
+    "build": "rm -rf dist types && yarn run build:dts && yarn run build:vue && yarn run build:node",
     "build:node": "NODE_ENV=production genesis-tsc --build ./tsconfig.node.json",
     "build:vue": "NODE_ENV=production genesis-ts-node --project=./tsconfig.node.json genesis.build",
-    "build:dts": "genesis-vue-tsc --declaration --emitDeclarationOnly",
-    "type-check": "genesis-vue-tsc --noEmit",
+    "build:dts": "npx vue-tsc --declaration --emitDeclarationOnly",
+    "type-check": "npx vue-tsc --noEmit",
     "start": "NODE_ENV=production node dist/genesis.prod"
   },
   "devDependencies": {
-    "@fmfe/genesis-compiler": "2.3.8",
-    "@types/express": "4.17.15",
-    "vue": "2.7.4",
+    "@fmfe/genesis-compiler": "2.3.10",
+    "@types/express": "4.17.13",
+    "vue": "2.7.14",
     "vue-meta": "2.4.0",
-    "vue-router": "3.5.4"
+    "vue-router": "3.5.3"
   },
   "dependencies": {
-    "@fmfe/genesis-core": "2.0.29",
-    "express": "^4.17.2"
+      "@fmfe/genesis-core": "2.3.10",
+      "express": "4.17.2"
   }
 }

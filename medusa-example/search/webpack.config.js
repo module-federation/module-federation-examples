@@ -75,23 +75,23 @@ module.exports = {
         nav: DashboardPlugin.clientVersion({
           currentHost: 'search',
           remoteName: 'nav',
-          dashboardURL: `${process.env.DASHBOARD_BASE_URL}/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`,
+          dashboardURL: `${process.env.DASHBOARD_BASE_URL}/env/development/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`,
         }),
         dsl: DashboardPlugin.clientVersion({
           currentHost: 'search',
           remoteName: 'dsl',
-          dashboardURL: `${process.env.DASHBOARD_BASE_URL}/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`,
+          dashboardURL: `${process.env.DASHBOARD_BASE_URL}/env/development/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`,
         }),
 
         home: DashboardPlugin.clientVersion({
           currentHost: 'search',
           remoteName: 'home',
-          dashboardURL: `${process.env.DASHBOARD_BASE_URL}/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`,
+          dashboardURL: `${process.env.DASHBOARD_BASE_URL}/env/development/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`,
         }),
         utils: DashboardPlugin.clientVersion({
           currentHost: 'search',
           remoteName: 'utils',
-          dashboardURL: `${process.env.DASHBOARD_BASE_URL}/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`,
+          dashboardURL: `${process.env.DASHBOARD_BASE_URL}/env/development/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`,
         }),
       },
       exposes: {

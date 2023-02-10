@@ -6,21 +6,21 @@ const basePage: BaseMethods = new BaseMethods()
 
 let appsData = [
     {
-        headerSelector: baseSelectors.h1,
-        subHeaderSelector: baseSelectors.h2,
-        buttonSelector: baseSelectors.button,
-        headerText: Constants.elementsText.basicHostRemoteHeader,
-        appNameText: Constants.elementsText.basicHostRemoteFirstAppName,
-        buttonNameText: Constants.elementsText.basicHostRemoteButton,
+        headerSelector: baseSelectors.tags.headers.h1,
+        subHeaderSelector: baseSelectors.tags.headers.h2,
+        buttonSelector: baseSelectors.tags.coreElements.button,
+        headerText: Constants.commonConstantsData.basicComponents.basicHostRemote,
+        appNameText: Constants.commonConstantsData.commonCountAppNames.app1,
+        buttonNameText: Constants.updatedConstantsData.commonAppWithButton.app2,
         host: 3001
     },
     {
-        headerSelector: baseSelectors.h1,
-        subHeaderSelector: baseSelectors.h2,
-        buttonSelector: baseSelectors.button,
-        headerText: Constants.elementsText.basicHostRemoteHeader,
-        appNameText: Constants.elementsText.basicHostRemoteSecondAppName,
-        buttonNameText: Constants.elementsText.basicHostRemoteButton,
+        headerSelector: baseSelectors.tags.headers.h1,
+        subHeaderSelector: baseSelectors.tags.headers.h2,
+        buttonSelector: baseSelectors.tags.coreElements.button,
+        headerText: Constants.commonConstantsData.basicComponents.basicHostRemote,
+        appNameText: Constants.commonConstantsData.commonCountAppNames.app2,
+        buttonNameText: Constants.updatedConstantsData.commonAppWithButton.app2,
         host: 3002
     }
 ]
@@ -40,25 +40,26 @@ appsData.forEach(
     let appName = property.host === 3002 ? appsData[1].appNameText : appsData[0].appNameText;
 
 
-    describe(`Check ${appName}`, () => {
-  
-        it(`Check ${appName} built and running`, () => {
-            basePage.openLocalhost(host)
-            basePage.checkElementWithTextPresence({
-                selector: property.headerSelector,
-                text: property.headerText
+    describe('Basic Host remote', () => {
+        context(`Check ${appName}`, () => {
+            it(`Check ${appName} built and running`, () => {
+                basePage.openLocalhost(host)
+                basePage.checkElementWithTextPresence({
+                    selector: property.headerSelector,
+                    text: property.headerText
+                })
+                basePage.checkElementWithTextPresence({
+                    selector: property.subHeaderSelector,
+                    text: `${appName}`
+                })
             })
-            basePage.checkElementWithTextPresence({
-                selector: property.subHeaderSelector,
-                text: `${appName}`
-            })
-        })
-    
-        it(`Check buttons in ${appName} exist`, () => {
-            basePage.openLocalhost(host)
-            basePage.checkElementWithTextPresence({
-                selector: property.buttonSelector,
-                text: property.buttonNameText
+        
+            it(`Check buttons in ${appName} exist`, () => {
+                basePage.openLocalhost(host)
+                basePage.checkElementWithTextPresence({
+                    selector: property.buttonSelector,
+                    text: property.buttonNameText
+                })
             })
         })
     })

@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "./rollup-spa",
+      "./rs-sidecar",
+      "./webpack-spa"
+    ]
+  },
+  "scripts": {
+    "start": "concurrently 'yarn --cwd rollup-spa start' 'yarn --cwd rs-sidecar start;' 'yarn --cwd webpack-spa start'"
+  },
+  "devDependencies": {
+    "concurrently": "7.3.0"
+  }
+}

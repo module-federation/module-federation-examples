@@ -1,30 +1,14 @@
-import React, { lazy } from "react";
+import React from "react";
 import {
-  Route,
-  Routes,
-  unstable_HistoryRouter as HistoryRouter,
-  Navigate,
-  BrowserRouter,
+  createBrowserRouter,
+  RouterProvider,
 } from "react-router-dom";
-import { Layout } from "../components/Layout";
-import {
-  app1RoutingPrefix,
-  app2RoutingPrefix,
-} from "./constants";
+import { routes } from "./routes";
 
-const App1Lazy = lazy(() => import("../components/App1"));
-const App2Lazy = lazy(() => import("../components/App2"));
+const browserRouter = createBrowserRouter(routes);
 
 export function Router() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Navigate to={`/${app1RoutingPrefix}`} />} />
-          <Route path={`/${app1RoutingPrefix}/*`} element={<App1Lazy />} />
-          <Route path={`/${app2RoutingPrefix}/*`} element={<App2Lazy />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <RouterProvider router={browserRouter} />
   );
 }

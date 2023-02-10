@@ -1,44 +1,46 @@
 import { Constants } from '../../cypress/fixtures/constants';
-import { baseSelectors, buttons, alertMessages } from '../../cypress/common/selectors';
+import {baseSelectors, selectors} from '../../cypress/common/selectors';
 import { BaseMethods } from "../../cypress/common/base";
 
 const basePage: BaseMethods = new BaseMethods()
 
-describe('Check is Comprehensive Demo App5 working and have elements', () => {
-    beforeEach(() => {
-        basePage.openLocalhost(3005)
-    })
-
-    it('Check App build and running & Check app elements exist', () => {
-        basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.comprehensiveDemo.App5.buttonText
+describe('Comprehemsive Demo React 16', () => {
+    context('Check is Comprehensive Demo App5 working and have elements', () => {
+        beforeEach(() => {
+            basePage.openLocalhost(3005)
         })
-        basePage.checkElementExist({
-            selector: alertMessages.alert
+    
+        it('Check App build and running & Check app elements exist', () => {
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.tags.coreElements.button,
+                text: Constants.elementsText.comprehensiveDemoApp.App5.buttonText
+            })
+            basePage.checkElementVisibility({
+                selector: selectors.comprehensiveDemoApp.alert
+            })
+            basePage.checkElementWithTextPresence({
+                selector: selectors.comprehensiveDemoApp.alert,
+                text: Constants.elementsText.comprehensiveDemoApp.App5.alertText
+            })
+            basePage.checkElementVisibility({
+                selector: selectors.comprehensiveDemoApp.closeButton
+            })
         })
-        basePage.checkElementWithTextPresence({
-            selector: alertMessages.alert,
-            text: Constants.elementsText.comprehensiveDemo.App5.alertText
-        })
-        basePage.checkElementExist({
-            selector: buttons.closeButton
-        })
-    })
-
-    it('Check Application functionality (Alert message & close button exist)', () => {
-        basePage.checkBrowserAlertByText({
-            selector: baseSelectors.button,
-            alertMessage: Constants.elementsText.comprehensiveDemo.alertMessage
-        })
-        basePage.clickElementBySelector({
-            selector: buttons.closeButton
-        })
-        basePage.checkElementHaveProperty({
-            selector: alertMessages.alert,
-            attr: Constants.commonText.attr,
-            prop: Constants.commonText.style,
-            value: Constants.commonText.displayNone
+    
+        it('Check Application functionality (Alert message & close button exist)', () => {
+            basePage.checkBrowserAlertByText({
+                selector: baseSelectors.tags.coreElements.button,
+                alertMessage: Constants.elementsText.comprehensiveDemoApp.alertMessage
+            })
+            basePage.clickElementBySelector({
+                selector: selectors.comprehensiveDemoApp.closeButton
+            })
+            basePage.checkElementHaveProperty({
+                selector: selectors.comprehensiveDemoApp.alert,
+                attr: Constants.commonConstantsData.commonAttributes.attr,
+                prop: Constants.commonConstantsData.commonAttributes.style,
+                value: Constants.commonConstantsData.commonAttributes.displayNone
+            })
         })
     })
 })

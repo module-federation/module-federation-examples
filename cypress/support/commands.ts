@@ -37,6 +37,7 @@
 // }
 
 import 'cypress-fill-command';
+import 'cypress-real-events';
 import 'cypress-wait-until';
 
 declare global {

@@ -1,5 +1,12 @@
 {
+  "name": "vue-cli",
   "private": true,
+  "workspaces": [
+    "./consumer",
+    "./core",
+    "./other"
+  ],
+  "version": "0.0.0",
   "scripts": {
     "start": "lerna run --scope @vue-cli/* --parallel start",
     "build": "lerna run --scope @vue-cli/* build",

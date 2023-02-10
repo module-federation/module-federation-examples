@@ -1,113 +1,115 @@
 import { Constants } from './../../cypress/fixtures/constants';
-import { alertMessages, baseSelectors, fields } from './../../cypress/common/selectors';
+import { baseSelectors, commonSelectors } from './../../cypress/common/selectors';
 import { BaseMethods } from "../../cypress/common/base";
 
 const basePage: BaseMethods = new BaseMethods()
 
-describe('Check Angular-React Application', () => {
-    beforeEach(() => {
-        basePage.openLocalhost(4201)
-    })
-
-    it('Check App build and running', () => {
-        basePage.checkElementWithTextPresence({
-            selector: baseSelectors.h2,
-            text: Constants.elementsText.angularReactShellHeader
+describe('Angular 14 React', () => {
+    context('Check Angular-React Application', () => {
+        beforeEach(() => {
+            basePage.openLocalhost(4201)
         })
-        basePage.checkElementExist({
-            selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.nameField)
+    
+        it('Check App build and running', () => {
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.tags.headers.h2,
+                text: Constants.elementsText.angularReactShellApp.header
+            })
+            basePage.checkElementVisibility({
+                selector: commonSelectors.formField.replace('{fieldName}', Constants.selectorParts.formFieldNames.nameField)
+            })
+            basePage.checkElementVisibility({
+                selector: commonSelectors.formField.replace('{fieldName}', Constants.selectorParts.formFieldNames.emailField)
+            })
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.tags.coreElements.button,
+                text: Constants.elementsText.angularReactShellApp.userActions.create
+            })
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.tags.headers.h2,
+                text: Constants.elementsText.angularReactShellApp.subHeader
+            })
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.tags.coreElements.div,
+                text: Constants.elementsText.angularReactShellApp.paragraph
+            })
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.tags.coreElements.div,
+                text: Constants.elementsText.angularReactShellApp.emptyTableState
+            })
         })
-        basePage.checkElementExist({
-            selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.emailField)
+    
+        it('Add user to the table', () => {
+            basePage.addUser(
+                Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+                Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
+            )
+            basePage.checkElementVisibility({
+                selector: baseSelectors.tags.tableElements.table,
+            })
+            basePage.checkElementVisibility({
+                parentSelector: baseSelectors.tags.tableElements.table,
+                selector: baseSelectors.tags.tableElements.dataCell,
+            })
+            basePage.checkElementQuantity({
+                selector: baseSelectors.tags.tableElements.dataCell,
+                quantity: 3
+            })
+            basePage.checkElementContainText({
+                parentSelector: baseSelectors.tags.tableElements.table,
+                selector: baseSelectors.tags.tableElements.dataCell,
+                text: Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+                index: Constants.commonConstantsData.commonIndexes.zero,
+            })
+            basePage.checkElementContainText({
+                parentSelector: baseSelectors.tags.tableElements.table,
+                selector: baseSelectors.tags.tableElements.dataCell,
+                text: Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
+                index: Constants.commonConstantsData.commonIndexes.one,
+            })
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.tags.coreElements.button,
+                text: Constants.elementsText.angularReactShellApp.userActions.remove
+            })
         })
-        basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.angularReactShellCreateUserButton
+    
+        it('Remove user from the table', () => {
+            basePage.addUser(
+                Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
+                Constants.commonConstantsData.commonAngularAppsData.messages.email.first,
+            )
+            basePage.clickElementWithText({
+                selector: baseSelectors.tags.coreElements.button,
+                text: Constants.elementsText.angularReactShellApp.userActions.remove
+            })
+            basePage.checkElementWithTextPresence({
+                selector: baseSelectors.tags.coreElements.div,
+                text: Constants.elementsText.angularReactShellApp.emptyTableState
+            })
         })
-        basePage.checkElementWithTextPresence({
-            selector: baseSelectors.h2,
-            text: Constants.elementsText.angularReactShellSubHeader
-        })
-        basePage.checkElementWithTextPresence({
-            selector: baseSelectors.divElement,
-            text: Constants.elementsText.angularReactShellParagraph
-        })
-        basePage.checkElementWithTextPresence({
-            selector: baseSelectors.divElement,
-            text: Constants.elementsText.angularReactShellEmptyTable
-        })
-    })
-
-    it('Add user to the table', () => {
-        basePage.addUser(
-            Constants.commonPhrases.name.text,
-            Constants.commonPhrases.email.text
-        )
-        basePage.checkElementExist({
-            selector: baseSelectors.table
-        })
-        basePage.checkChildElementVisibility(
-            baseSelectors.table,
-            baseSelectors.tableDataCell
-        )
-        basePage.checkElementQuantity({
-            selector: baseSelectors.tableDataCell,
-            quantity: 3
-        })
-        basePage.checkChildElementContainText(
-            baseSelectors.table,
-            baseSelectors.tableDataCell,
-            Constants.commonPhrases.name.text,
-            Constants.commonPhrases.name.index,
-        )
-        basePage.checkChildElementContainText(
-            baseSelectors.table,
-            baseSelectors.tableDataCell,
-            Constants.commonPhrases.email.text,
-            Constants.commonPhrases.email.index,
-        )
-        basePage.checkElementWithTextPresence({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.angularReactShellRemoveUserButton
-        })
-    })
-
-    it('Remove user to the table', () => {
-        basePage.addUser(
-            Constants.commonPhrases.name.text,
-            Constants.commonPhrases.email.text
-        )
-        basePage.clickElementWithText({
-            selector: baseSelectors.button,
-            text: Constants.elementsText.angularReactShellRemoveUserButton
-        })
-        basePage.checkElementWithTextPresence({
-            selector: baseSelectors.divElement,
-            text: Constants.elementsText.angularReactShellEmptyTable
-        })
-    })
-
-    it('Check fileds validation', () => {
-        basePage.clickElementBySelector({
-            selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.nameField)
-        })
-        basePage.clickElementBySelector({
-            selector: fields.commonField.replace('{fieldName}', Constants.fieldsNames.emailField)
-        })
-        basePage.clickElementBySelector({
-            selector: baseSelectors.button,
-            isForce: true
-        })
-        basePage.checkElementExist({
-            selector: alertMessages.angularAlertMessage
-        })
-        basePage.checkElementWithTextPresence({
-            selector: alertMessages.angularAlertMessage,
-            text: Constants.commonPhrases.nameIsRequired
-        })
-        basePage.checkElementWithTextPresence({
-            selector: alertMessages.angularAlertMessage,
-            text: Constants.commonPhrases.emailIsRequired
+    
+        it('Check fields validation', () => {
+            basePage.clickElementBySelector({
+                selector: commonSelectors.formField.replace('{fieldName}', Constants.selectorParts.formFieldNames.nameField)
+            })
+            basePage.clickElementBySelector({
+                selector: commonSelectors.formField.replace('{fieldName}', Constants.selectorParts.formFieldNames.emailField)
+            })
+            basePage.clickElementBySelector({
+                selector: baseSelectors.tags.coreElements.button,
+                isForce: true
+            })
+            basePage.checkElementVisibility({
+                selector:commonSelectors.commonAngularAppsSelectors.alertMessage,
+            })
+            basePage.checkElementWithTextPresence({
+                selector: commonSelectors.commonAngularAppsSelectors.alertMessage,
+                text: Constants.commonConstantsData.commonAngularAppsData.messages.requiresMessages.name,
+            })
+            basePage.checkElementWithTextPresence({
+                selector: commonSelectors.commonAngularAppsSelectors.alertMessage,
+                text: Constants.commonConstantsData.commonAngularAppsData.messages.requiresMessages.email,
+            })
         })
     })
 })

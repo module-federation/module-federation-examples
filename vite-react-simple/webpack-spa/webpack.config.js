@@ -18,6 +18,11 @@ module.exports = {
   optimization: {
     minimize: true,
   },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512_000,
+    maxAssetSize: 512_000
+  },
   module: {
     rules: [
       {

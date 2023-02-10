@@ -1055,23 +1055,24 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@module-federation/node@0.10.1":
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/@module-federation/node/-/node-0.10.1.tgz#abd7e88d3f9cfd6b66f4fa401442b27fb2694c96"
-  integrity sha512-/+9aMQ51ZZl4Z7guVxMNynEU72sOd9evlYvZ2g3JC3tHRusf6m5KfEEDwS/A33oF23ECnYLB0W34UljS1QCofA==
+"@module-federation/node@0.10.4":
+  version "0.10.4"
+  resolved "https://registry.yarnpkg.com/@module-federation/node/-/node-0.10.4.tgz#96815cd2a32439442c727c8af4e2d362a68c7a51"
+  integrity sha512-YkdkhcmUcuaRdhmyPpyIRUpjPqXkgfmMuOu7TUdaTMg8ceBInxpErT3++2I5F3wADnnNHeQaEE5m/iQR/Mu/Qw==
   dependencies:
-    "@module-federation/utilities" "1.1.1"
-    encoding "^0.1.13"
-    node-fetch "^2.6.7"
+    "@module-federation/utilities" "1.2.0"
+    encoding "0.1.13"
+    node-fetch "2.6.7"
+    react-dom "18.2.0"
     tslib "2.4.0"
   optionalDependencies:
     next "^12 || ^13"
     react "^17 || ^18"
 
-"@module-federation/utilities@1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@module-federation/utilities/-/utilities-1.1.1.tgz#5937cfd65bb19240f72ac709577094dc0b285642"
-  integrity sha512-OD74llw8bRiNiDub8dJ619z68Ph9Dx8Pjnsfhy2gs22l5g+2HHkSmdOFcz2jBjyKl/IfcK/sH7u4plPAvnZTrQ==
+"@module-federation/utilities@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@module-federation/utilities/-/utilities-1.2.0.tgz#413ac8457634d0c7b01114f39f63260d1179c0e9"
+  integrity sha512-TM0cVI59Skk6wvT4OTyCYqGJp8t0fOxl0evqacwOog50Si90KTfNpFBfGRmJp3Gj1Qp1x8gXaqgND0/rmvMAiw==
   dependencies:
     tslib "2.4.0"
   optionalDependencies:
@@ -1724,7 +1725,7 @@ encodeurl@~1.0.2:
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.2.tgz#ad3ff4c86ec2d029322f5a02c3a9a606c95b3f59"
   integrity sha512-TPJXq8JqFaVYm2CWmPvnP2Iyo4ZSM7/QKcSmuMLDObfpH5fi7RUGmd/rTDf+rut/saiDiQEeVTNgAmJEdAOx0w==
 
-encoding@^0.1.13:
+encoding@0.1.13:
   version "0.1.13"
   resolved "https://registry.yarnpkg.com/encoding/-/encoding-0.1.13.tgz#56574afdd791f54a8e9b2785c0582a2d26210fa9"
   integrity sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==
@@ -2496,7 +2497,14 @@ node-environment-flags@^1.0.5:
     object.getownpropertydescriptors "^2.0.3"
     semver "^5.7.0"
 
-node-fetch@2.6.8, node-fetch@^2.6.7:
+node-fetch@2.6.7:
+  version "2.6.7"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
+  integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
+  dependencies:
+    whatwg-url "^5.0.0"
+
+node-fetch@2.6.8:
   version "2.6.8"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.8.tgz#a68d30b162bc1d8fd71a367e81b997e1f4d4937e"
   integrity sha512-RZ6dBYuj8dRSfxpUSu+NsdF1dpPpluJxwOp+6IoDp/sH2QNDSvurYsAa+F1WxY2RjA1iP93xhcsUoYbF2XBqVg==
@@ -2722,6 +2730,14 @@ raw-body@2.5.1:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+react-dom@18.2.0:
+  version "18.2.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.2.0.tgz#22aaf38708db2674ed9ada224ca4aa708d821e3d"
+  integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
+  dependencies:
+    loose-envify "^1.1.0"
+    scheduler "^0.23.0"
+
 react-dom@^18.1.0:
   version "18.1.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.1.0.tgz#7f6dd84b706408adde05e1df575b3a024d7e8a2f"
@@ -2887,6 +2903,13 @@ scheduler@^0.22.0:
   version "0.22.0"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.22.0.tgz#83a5d63594edf074add9a7198b1bae76c3db01b8"
   integrity sha512-6QAm1BgQI88NPYymgGQLCZgvep4FyePDWFpXVK+zNSUgHwlqpJy8VEh8Et0KxTACS4VWwMousBElAZOH9nkkoQ==
+  dependencies:
+    loose-envify "^1.1.0"
+
+scheduler@^0.23.0:
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.23.0.tgz#ba8041afc3d30eb206a487b6b384002e4e61fdfe"
+  integrity sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==
   dependencies:
     loose-envify "^1.1.0"
 

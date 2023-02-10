@@ -12,6 +12,24 @@ jobs:
         with:
           access_token: ${{ secrets.GITHUB_TOKEN }}
 
+# Save nessesary env variables to use them in next jobs
+  save-env:
+    runs-on: ubuntu-22.04
+    needs: stop-previous-run
+    steps:
+      - name: Save env variables
+        run: |
+          mkdir -p ./workflow
+          echo "${{ github.event.pull_request.number }}" > ./workflow/prNum
+          echo "${{ github.run_id }}" > ./workflow/runId
+          echo "${{ github.repository }}" > ./workflow/repoFullName
+          echo "${{ github.repository_owner }}" > ./workflow/ownerName
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: env_for_comment
+          path: workflow/
+
 # Check if forked master is up to date with origin master in module federation examples repo
   forked_master_status:
     runs-on: ubuntu-22.04
@@ -32,10 +50,8 @@ jobs:
           git remote add base https://github.com/${{github.repository}}
           git remote -v
           git fetch --all
-
           export FORKED_MASTER_SHA=$(git log -n 1 --pretty=format:"%H" origin/${{ github.event.pull_request.base.ref}})
           export BASE_MASTER_SHA=$(git log -n 1 --pretty=format:"%H" base/${{ github.event.pull_request.base.ref }})
-
           echo "$FORKED_MASTER_SHA"
           echo "$BASE_MASTER_SHA"
           
@@ -91,9 +107,10 @@ jobs:
 
       # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
       - name: Check Yarn hash
+        id: yarn-hash
         run: |
-          npx hash-files -f '["**/yarn.lock"]' -a sha256 > YarnHash.txt
-          echo "Yarn hash is >> $(cat YarnHash.txt)"
+          yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
+          echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
       - name: Restore Yarn and Cypress cache
         uses: actions/cache/restore@v3
@@ -104,34 +121,31 @@ jobs:
             **/yarn.lock
             ~/.cache/Cypress
             ~/.cache/yarn/v6  
-          key: e2e-cache-${{ hashFiles('YarnHash.txt') }}
+          key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
           restore-keys: |
             e2e-cache-
             e2e-
 
-      - name: Install sample deps
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
+      - name: Install main deps
+        # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, ayarn install to the run section below instead of npx lerna exec
+        # if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: |
-          echo "CACHE CHANGED"
           yarn install
+
+      - name: Install sample deps
+        # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
+        # if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: |
           npx lerna exec --stream --scope="${{ matrix.container }}*" --concurrency=1 "yarn install"
 
       - name: Run sample e2e tests
         run: 
           npx lerna run --scope=${{ matrix.container }} e2e:ci
 
-      - name: Create artifacts for Cypress screenshots
+      - name: Create artifacts for Allure report
         uses: actions/upload-artifact@v3
-        if: failure()
+        if: always()
         with:
-          name: cypress-screenshots
-          path: '**/${{ matrix.container }}/cypress/screenshots'
-          retention-days: 7
-
-      - name: Create artifacts for Cypress videos
-        uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: cypress-videos
-          path: '**/${{ matrix.container }}/cypress/videos'
+          name: allure-results
+          path: 'cypress/results/allure-results'
           retention-days: 7

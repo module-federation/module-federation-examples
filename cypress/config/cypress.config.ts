@@ -1,7 +1,8 @@
 import { defineConfig } from "cypress";
+
 const fs = require('fs')
 const path = require('path');
-
+const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 
 async function setupNodeEvents(
   on: Cypress.PluginEvents,
@@ -77,6 +78,8 @@ async function setupNodeEvents(
   }
 )
 
+allureWriter(on, config);
+
   return config;
 }
 
@@ -101,6 +104,8 @@ export default defineConfig({
       runMode: 1,
     },
     env: {
+      allure: true,
+      allureResultsPath: '../../results/allure-results',
       localhost3000: "http://localhost:3000",
       localhost3001: "http://localhost:3001",
       localhost3002: "http://localhost:3002",
@@ -120,7 +125,7 @@ export default defineConfig({
       localhost8082: "http://localhost:8082",
       localhost9000: "http://localhost:9000",
       localhost9001: "http://localhost:9001",
-      localhost9002: "http://localhost:9002",
+      localhost9002: "http://localhost:9002"
     },
     setupNodeEvents
   },

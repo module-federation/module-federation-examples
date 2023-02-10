@@ -1,5 +1,10 @@
 {
   "name": "rust-wasm",
+  "private": true,
+  "workspaces": [
+    "./host",
+    "./remote"
+  ],
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",

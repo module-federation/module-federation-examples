@@ -1,14 +1,10 @@
 # Next.js with Module Federation
 
-Module Federation in Next.js depends on <a href="https://app.privjs.com/buy/packageDetail?pkg=@module-federation/nextjs-mf">@module-federation/nextjs-mf</a> It will not work unless you have access to this plugin, which is not free.
-
-Due to the effort to support Next.js and funding constraints, I have moved the plugin to a paid model.
-
 NOTE: There seems to be a problem with css-in-js sharing between federated modules. This is likely due to some internal module not being shared as a singleton. PR is welcome
 
 ## Getting Started
 
-1. run `npm install @module-federation/nextjs-mf --registry https://r.privjs.com` with npm 7 (yarn probbably better) or install it directly in each folder/app, note the plugin is not free.
+1. run `yarn install` with npm 7 (yarn probbably better).
 2. run `yarn start` and browse to `http://localhost:3001`
 
 # We are available to consult
@@ -16,8 +12,6 @@ NOTE: There seems to be a problem with css-in-js sharing between federated modul
 Looking for SSR over `fetch()` or architecture support and designs for module federation and Next.js?
 
 Contact me <a href="mailto:zackary.l.jackson@gmail.com">zackary.l.jackson@gmail.com</a> or <a href="https://twitter.com/scriptedalchemy">@ScriptedAlchemy</a> on Twitter
-
-All solutions for next.js currently require a paid access or paid plugin
 
 ## Context
 
@@ -52,7 +46,7 @@ const config = {
 };
 ```
 
-However, in the case of Next.js - you need to use <a href="https://app.privjs.com/buy/packageDetail?pkg=@module-federation/nextjs-mf">@module-federation/nextjs-mf</a>
+However, in the case of Next.js - you need to use @module-federation/nextjs-mf
 
 ## Reference Points
 
