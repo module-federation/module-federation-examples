@@ -20,6 +20,7 @@ import {CssAttr} from "../types/cssAttr";
 import {StubTypes} from "../types/stubTypes";
 import {RequestsTypes} from "../types/requestsTypes";
 import { readFile, writeTofile } from "../helpers/file-actions-helper";
+import {CommonTestData} from "../fixtures/commonTestData";
 
 export class BaseMethods {
 
@@ -895,6 +896,99 @@ export class BaseMethods {
             })
         }
         this.checkUrlText(link, isInclude, true)
+    }
+
+    public changeRootFile({
+         changedContentFilePath,
+         rootFilePath,
+         originalContentFilePath,
+     }: {
+        changedContentFilePath: string,
+        rootFilePath: string,
+        originalContentFilePath: string
+    }): void {
+        cy.wait(2000)
+        this.checkElementWithTextPresence({
+            selector: baseSelectors.tags.paragraph,
+            text: Constants.commonConstantsData.nextJsAppsCommonPhrases.messages.start,
+            visibilityState: 'be.visible'
+        })
+        this.writeContentToFile({
+            contentFilePath: changedContentFilePath,
+            filePath: rootFilePath,
+            wait: 1000
+        })
+        this.reloadWindow()
+        this.checkElementWithTextPresence({
+            selector: baseSelectors.tags.paragraph,
+            text: Constants.commonConstantsData.nextJsAppsCommonPhrases.messages.start,
+            isVisible: false
+        })
+        this.checkElementWithTextPresence({
+            selector: baseSelectors.tags.paragraph,
+            text: Constants.commonConstantsData.nextJsAppsCommonPhrases.messages.start.replace('started', 'TESTED'),
+            visibilityState: 'be.visible'
+        })
+        this.writeContentToFile({
+            contentFilePath: originalContentFilePath,
+            filePath: rootFilePath,
+            wait: 1000
+        })
+        this.reloadWindow()
+        this.checkElementWithTextPresence({
+            selector: baseSelectors.tags.paragraph,
+            text: Constants.commonConstantsData.nextJsAppsCommonPhrases.messages.start,
+            visibilityState: 'be.visible'
+        })
+    }
+
+    public checkLinkedCardsFunctionality(host: number): void {
+        this.checkOutsideResourceUrl({
+            parentSelector: baseSelectors.tags.headers.h1,
+            selector: baseSelectors.tags.coreElements.link,
+            text: CommonTestData.nextJsAppsHeaderLinkName,
+            link: Constants.commonConstantsData.commonLinks.nextJs,
+        })
+        Constants.commonConstantsData.nextJsAppsCommonPhrases.linksCardsText.forEach((text: string, index: number) => {
+            this.openLocalhost(host)
+            this.checkOutsideResourceUrl({
+                selector: commonSelectors.nextJsAppsLinkCard,
+                text,
+                link: Constants.commonConstantsData.commonLinks.nextJsAppsCardsLinks[index],
+            })
+        })
+        // TODO: Failed for now due to dynamic animations loading on new page. Extra investigate required
+        // this.openLocalhost(host)
+        // this.checkOutsideResourceUrl({
+        //         parentSelector: baseSelectors.tags.footer,
+        //         selector: baseSelectors.tags.coreElements.link,
+        //         text: Constants.commonConstantsData.nextJsAppsCommonPhrases.messages.engine,
+        //         link: Constants.commonConstantsData.commonLinks.vercel,
+        // })
+    }
+
+    public checkLinkedCardsHoverAnimation(): void {
+        Constants.commonConstantsData.nextJsAppsCommonPhrases.linksCardsText.forEach((text: string) => {
+            this.reloadWindow()
+            this.checkElementHaveProperty({
+                selector: commonSelectors.nextJsAppsLinkCard,
+                prop: CssAttr.color,
+                value: Constants.color.skyBlue,
+                text,
+                isInclude: false,
+            })
+            this.hoverElement({
+                selector: commonSelectors.nextJsAppsLinkCard,
+                text,
+                wait: 2000
+            })
+            this.checkElementHaveProperty({
+                selector: commonSelectors.nextJsAppsLinkCard,
+                prop: CssAttr.color,
+                value: Constants.color.skyBlue,
+                text,
+            })
+        })
     }
 
 

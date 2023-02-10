@@ -6,9 +6,9 @@ import {CommonTestData} from "../../../../cypress/fixtures/commonTestData";
 
 const basePage: BaseMethods = new BaseMethods()
 
-describe("It checks host page", () => {
+describe("It checks remote page", () => {
     beforeEach(() => {
-        basePage.openLocalhost(8080)
+        basePage.openLocalhost(8081)
     })
 
     it('Checks header texted link color', () => {
@@ -18,23 +18,6 @@ describe("It checks host page", () => {
             prop: CssAttr.color,
             value: Constants.color.skyBlue,
             text: CommonTestData.nextJsAppsHeaderLinkName,
-        })
-    })
-
-    it('Checks texted remote component visibility', () => {
-        basePage.checkElementWithTextPresence({
-            selector: baseSelectors.tags.navigation,
-            text: Constants.commonPhrases.nextJsHostReactRemoteApp.messages.remotes.component,
-            visibilityState: 'be.visible'
-        })
-    })
-
-    it('Checks texted remote component color', () => {
-        basePage.checkElementHaveProperty({
-            selector: baseSelectors.tags.navigation,
-            prop: CssAttr.backgroundColor,
-            value: Constants.color.lightMint,
-            text: Constants.commonPhrases.nextJsHostReactRemoteApp.messages.remotes.component,
         })
     })
 
@@ -56,19 +39,19 @@ describe("It checks host page", () => {
     })
 
     it('Checks hover animation for links cards', () => {
-        basePage.checkLinkedCardsHoverAnimation()
+       basePage.checkLinkedCardsHoverAnimation()
     })
 
     // TODO: Can be flaky
     it('Checks all page links functionality', () => {
-        basePage.checkLinkedCardsFunctionality(8080)
+        basePage.checkLinkedCardsFunctionality(8081)
     })
 
     it('Checks change root file functionality', () => {
         basePage.changeRootFile({
-            changedContentFilePath: Constants.filesPath.nextJsHostReactRemoteApp.files.changedContent,
-            rootFilePath: Constants.filesPath.nextJsHostReactRemoteApp.files.root,
-            originalContentFilePath: Constants.filesPath.nextJsHostReactRemoteApp.files.originalContent,
+            changedContentFilePath: Constants.filesPath.nextJsHostRemoteApp.files.contents.changed.remote,
+            rootFilePath: Constants.filesPath.nextJsHostRemoteApp.files.roots.remote,
+            originalContentFilePath: Constants.filesPath.nextJsHostRemoteApp.files.contents.original.remote,
         })
     })
 })

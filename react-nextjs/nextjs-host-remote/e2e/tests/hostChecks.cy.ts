@@ -24,7 +24,7 @@ describe("It checks host page", () => {
     it('Checks texted remote component visibility', () => {
         basePage.checkElementWithTextPresence({
             selector: baseSelectors.tags.navigation,
-            text: Constants.commonPhrases.nextJsHostReactRemoteApp.messages.remotes.component,
+            text: Constants.commonPhrases.nextJsHostRemoteApp.remoteComponentMessage,
             visibilityState: 'be.visible'
         })
     })
@@ -34,7 +34,7 @@ describe("It checks host page", () => {
             selector: baseSelectors.tags.navigation,
             prop: CssAttr.backgroundColor,
             value: Constants.color.lightMint,
-            text: Constants.commonPhrases.nextJsHostReactRemoteApp.messages.remotes.component,
+            text: Constants.commonPhrases.nextJsHostRemoteApp.remoteComponentMessage,
         })
     })
 
@@ -66,9 +66,9 @@ describe("It checks host page", () => {
 
     it('Checks change root file functionality', () => {
         basePage.changeRootFile({
-            changedContentFilePath: Constants.filesPath.nextJsHostReactRemoteApp.files.changedContent,
-            rootFilePath: Constants.filesPath.nextJsHostReactRemoteApp.files.root,
-            originalContentFilePath: Constants.filesPath.nextJsHostReactRemoteApp.files.originalContent,
+            changedContentFilePath: Constants.filesPath.nextJsHostRemoteApp.files.contents.changed.host,
+            rootFilePath: Constants.filesPath.nextJsHostRemoteApp.files.roots.host,
+            originalContentFilePath: Constants.filesPath.nextJsHostRemoteApp.files.contents.original.host,
         })
     })
 })

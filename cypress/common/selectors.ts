@@ -72,6 +72,7 @@ export const commonSelectors = {
     commonWidget: '[data-e2e="APP_{appQuantity}__WIDGET"]',
     formField: '[data-e2e="FORM_FIELD__{fieldName}"]',
     commonMicroFrontendsAppsCard: '[data-e2e="APP__CARD"]',
+    nextJsAppsLinkCard: '[data-e2e="TEXTED_LINK_CARD"]'
 }
 
 export const selectors = {
@@ -177,9 +178,6 @@ export const selectors = {
     completeReactCaseApp: {
         toolTip: '.tool-tip',
     },
-    nextJsHostReactRemoteApp: {
-        linkCard: '[data-e2e="TEXTED_LINK_CARD"]'
-    }
 }
 
 export const updatedSelectors = {
