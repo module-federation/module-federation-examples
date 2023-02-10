@@ -1,10 +1,10 @@
 {
-  "name": "rollup-spa-systemjs",
+  "name": "rollup-federation-demo_rollup-spa-systemjs",
   "version": "1.0.0",
   "main": "dist",
   "license": "MIT",
   "scripts": {
-    "start": "run-p watch serve",
+    "start": "concurrently 'yarn watch' 'yarn serve'",
     "build": "cross-env NODE_ENV=development rollup -c",
     "serve": "serve -d . -p 8082",
     "watch": "cross-env NODE_ENV=development rollup -c -w",
