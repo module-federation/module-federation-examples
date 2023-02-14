@@ -2,7 +2,7 @@ import {BaseMethods} from "../../cypress/common/base";
 import {baseSelectors} from "../../cypress/common/selectors";
 import {Constants} from "../../cypress/fixtures/constants";
 
-const basePage: BaseMethods = new BaseMethods()
+const basePage: BaseMethods = new BaseMethods();
 
 const appsData = [
     {
