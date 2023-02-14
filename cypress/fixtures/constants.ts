@@ -33,17 +33,6 @@ export class Constants {
         }
     }
 
-    public static readonly samplesPath = {
-        federatedCssConsumeCssPath: 'consume-css-page',
-        federatedCssConsumeCssModulePath: 'consume-css-module-page',
-        federatedCssConsumeJssPath: 'consume-jss-page',
-        federatedCssConsumeLessPath: 'consume-less-page',
-        federatedCssConsumeScssPath: 'consume-scss-page',
-        federatedCssConsumeStyledComponentPath: 'consume-styled-component-page',
-        federatedCssConsumeTailwindGlobalPath: 'consume-tailwind-global-css-page',
-        federatedCssConsumeTailwindModulePath: 'consume-tailwind-module-css-page',
-    }
-
     public static readonly selectorParts = {
         vue3DemoFederationWithViteApp: {
             vite: 'vite',
@@ -1156,39 +1145,38 @@ export class Constants {
             product: '/product'
         }
     }
-
     public static readonly fullTestData = {
         federatedCssTestData: {
             css: {
-                path: Constants.samplesPath.federatedCssConsumeCssPath,
+                path: 'consume-css-page',
                 bgColor: Constants.color.absoluteRed,
             },
             cssModule: {
-                path: Constants.samplesPath.federatedCssConsumeCssModulePath,
+                path: 'consume-css-module-page',
                 bgColor: Constants.color.absoluteRed,
             },
             jss: {
-                path: Constants.samplesPath.federatedCssConsumeJssPath,
+                path: 'consume-jss-page',
                 bgColor: Constants.color.aquamarine,
             },
             less: {
-                path: Constants.samplesPath.federatedCssConsumeLessPath,
+                path: 'consume-less-page',
                 bgColor: Constants.color.brown,
             },
             scss: {
-                path: Constants.samplesPath.federatedCssConsumeScssPath,
+                path: 'consume-scss-page',
                 bgColor: Constants.color.absoluteOrange,
             },
             styledComponent: {
-                path: Constants.samplesPath.federatedCssConsumeStyledComponentPath,
+                path: 'consume-styled-component-page',
                 bgColor: Constants.color.absolutePurple,
             },
             tailwindGlobal: {
-                path: Constants.samplesPath.federatedCssConsumeTailwindGlobalPath,
+                path: 'consume-tailwind-global-css-page',
                 bgColor: Constants.color.tailwindGreen,
             },
             tailwindModule: {
-                path: Constants.samplesPath.federatedCssConsumeTailwindModulePath,
+                path: 'consume-tailwind-module-css-page',
                 bgColor: Constants.color.tailwindBlue,
             }
         }
