@@ -9,7 +9,6 @@
 	"description": "Vite + Module Federation is now possible",
 	"main": "index.js",
 	"scripts": {
-		"install": "npm run install:deps",
 		"install:deps": "npm --prefix ./host install && npm --prefix ./remote install",
 		"postinstall:deps": "npm --prefix ./host run build && npm --prefix ./remote run build",
 		"serve:host": "npm --prefix ./host run dev",
@@ -18,7 +17,8 @@
 		"build:remote": "npm --prefix ./remote run build",
 		"preview:host": "npm --prefix ./host run preview",
 		"preview:remote": "npm --prefix ./remote run preview",
-		"e2e:ci": "yarn preview:remote & yarn preview:host & wait-on http-get://localhost:4174/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/runAll*.cy.ts\" --browser=chrome"
+		"e2e:test": "npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/runAll*.cy.ts\" --browser=chrome",
+		"e2e:ci": "concurrently \"yarn serve:remote\" \"yarn serve:host\" \"yarn e2e:test\""
 	},
 	"author": {
 		"name": "Giorgio Boa",
@@ -27,6 +27,7 @@
 	},
 	"license": "ISC",
 	"devDependencies": {
+		"concurrently": "7.3.0",
 		"wait-on": "7.0.1"
 	}
 }
