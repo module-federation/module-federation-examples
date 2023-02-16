@@ -3,7 +3,7 @@ import { Constants } from '../../cypress/fixtures/constants';
 import { BaseMethods } from '../../cypress/common/base';
 import {returnCommonAngularAppsData} from "../../cypress/fixtures/commonTestData";
 
-const basePage: BaseMethods = new BaseMethods()
+const basePage: BaseMethods = new BaseMethods();
 
 const appsData = returnCommonAngularAppsData(Constants.commonConstantsData.commonAngularAppsData.messages.shellWelcome.replace('11', '15'))
 
@@ -30,7 +30,7 @@ appsData.forEach(
                 beforeEach(() => {
                     basePage.openLocalhost(property.host, property.path)
                 })
-    
+
                 it('Check App is build and running', () => {
                     basePage.checkElementVisibility({
                         selector: baseSelectors.tags.navigation,
@@ -153,13 +153,13 @@ appsData.forEach(
             })
         }
     )
-    
+
     describe('Angular 15 microfrontends lazy components', () => {
         context('Check Apps functionality', () => {
             beforeEach(() => {
                 basePage.openLocalhost(4200, Constants.commonConstantsData.commonAngularAppsData.mdmfProfile.path)
             })
-        
+
             it('Check added user visible on both Apps', () => {
                 basePage.addUser(
                     Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
@@ -222,7 +222,7 @@ appsData.forEach(
                     selector: commonSelectors.commonAngularAppsSelectors.buttons.danger
                 })
             })
-        
+
             it('Check removing user from table (Remove form Profile)', () => {
                 basePage.addUser(
                     Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
@@ -268,7 +268,7 @@ appsData.forEach(
                     quantity: 0
                 })
             })
-        
+
             it('Check removing user from table (Remove form Shell)', () => {
                 basePage.addUser(
                     Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
@@ -318,7 +318,7 @@ appsData.forEach(
                     quantity: 0
                 })
             })
-        
+
             it('Check adding two users and delete one of them (Remove form Profile)', () => {
                 basePage.addUser(
                     Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
@@ -393,7 +393,7 @@ appsData.forEach(
                     quantity: 3
                 })
             })
-        
+
             it('Check adding two users and delete one of them (Remove form Shell)', () => {
                 basePage.addUser(
                     Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
@@ -472,7 +472,7 @@ appsData.forEach(
                     quantity: 3
                 })
             })
-        
+
             it('Check fields validation', () => {
                 basePage.clickElementBySelector({
                     selector: commonSelectors.formField.replace('{fieldName}', Constants.selectorParts.formFieldNames.nameField)
