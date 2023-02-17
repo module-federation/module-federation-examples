@@ -391,21 +391,21 @@ export class BaseMethods {
                 return;
             }
 
+            if (parentSelector && index) {
+              cy.get(parentSelector)
+                .find(selector)
+                .eq(index)
+                .contains(text)
+                .invoke(attr, prop)
+                .should(isInclude? 'include' : 'not.include', value)
+
+              // @ts-ignore
+              return;
+            }
+
             if (parentSelector) {
                 cy.get(parentSelector)
                     .find(selector)
-                    .contains(text)
-                    .invoke(attr, prop)
-                    .should(isInclude? 'include' : 'not.include', value)
-
-                // @ts-ignore
-                return;
-            }
-
-            if (parentSelector && index) {
-                cy.get(parentSelector)
-                    .find(selector)
-                    .eq(index)
                     .contains(text)
                     .invoke(attr, prop)
                     .should(isInclude? 'include' : 'not.include', value)
