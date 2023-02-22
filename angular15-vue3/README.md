@@ -35,3 +35,24 @@ The shell project located in: `shell` folder, its contains the shell application
     }),
   ],
 ```
+
+### Remote (vue-remote)
+
+The remote project located in: `vue-remote` folder, it exposes Vue component as an Vue App that could be mounted into needed element,
+and exposes Custom Element that could be registered and added to the DOM.
+
+```js
+  new ModuleFederationPlugin({
+    name: 'vue_remote',
+    filename: 'remoteEntry.js',
+    exposes: {
+      './customElement': './src/components/HelloWorld.web-component.js',
+      './app': './src/components/HelloWorld.bootstrap.js',
+    },
+    shared: {
+      vue: {
+        singleton: true,
+      },
+    },
+  })
+```
