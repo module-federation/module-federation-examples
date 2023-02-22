@@ -4,7 +4,7 @@
     <div class="test-scoped">Scoped: {{ msg }}</div>
     <div class="test">Not Scoped: {{ msg }}</div>
     <div>
-      <button @click="click">Click Me</button>
+      <button @click="click" data="VUE_IN_ANGULAR_BUTTON">Click Me</button>
     </div>
   </div>
 </template>
