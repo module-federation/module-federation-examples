@@ -41,14 +41,15 @@ jobs:
         id: yarn-cache
         with:
           path: |
-            **/node_modules
-            **/yarn.lock
+            /node_modules
             ~/.cache/Cypress
             ~/.cache/yarn/v6  
           key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
 
       - name: Install deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
           echo "Yarn changed - install deps ... "
           yarn install

@@ -93,7 +93,7 @@ jobs:
     needs: setup-matrix
     if: ${{ needs.setup-matrix.outputs.matrix != '{"container":[]}' }}
     runs-on: ubuntu-22.04
-    timeout-minutes: 30
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix: ${{fromJson(needs.setup-matrix.outputs.matrix)}}
@@ -117,8 +117,7 @@ jobs:
         id: yarn-cache
         with:
           path: |
-            **/node_modules
-            **/yarn.lock
+            /node_modules
             ~/.cache/Cypress
             ~/.cache/yarn/v6  
           key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
@@ -127,8 +126,10 @@ jobs:
             e2e-
 
       - name: Install main deps
-        # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, ayarn install to the run section below instead of npx lerna exec
+        # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
         # if: steps.yarn-cache.outputs.cache-hit != 'true'
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
           yarn install
 
