@@ -5,7 +5,7 @@ import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
-import 'zone.js/dist/zone-testing';
+import 'zone.js/testing';
 
 declare const require: {
   context(
