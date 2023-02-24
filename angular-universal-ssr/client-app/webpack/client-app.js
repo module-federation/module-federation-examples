@@ -41,6 +41,7 @@ module.exports = (env = {}) => {
       new AngularWebpackPlugin({
         tsConfigPath: './tsconfig.app.json',
         entryModule: './src/app/app.module#AppModule',
+        jitMode: true,
         skipCodeGeneration: true,
         directTemplateLoading: false,
       }),

@@ -40,6 +40,7 @@ module.exports = (env = {}) => {
         entryModule: resolve(__dirname, '../src/app/app.module#AppModule'),
         tsConfigPath: './tsconfig.app.json',
         platform: 1,
+        jitMode: true,
         skipCodeGeneration: true,
         directTemplateLoading: false,
       }),
