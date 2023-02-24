@@ -1,7 +1,7 @@
 const concurrently = require('concurrently');
 const commands = {
     startHost: 'yarn start',
-    startE2e: 'yarn e2e:test'
+    startE2e: 'wait-on http://localhost:4000 && yarn e2e:test'
 };
 
 const {result} = concurrently([
