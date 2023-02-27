@@ -1,0 +1,275 @@
+{
+  "dependencies": [
+    {
+      "name": "@module-federation/nextjs-mf",
+      "version": "6.1.3",
+      "license": "MIT",
+      "size": 616
+    },
+    {
+      "name": "@module-federation/dashboard-plugin",
+      "version": "2.7"
+    },
+    {
+      "name": "lodash",
+      "version": "4.17"
+    },
+    {
+      "name": "next",
+      "version": "12.2.2",
+      "license": "MIT",
+      "size": 24288
+    },
+    {
+      "name": "react",
+      "version": "18.2.0",
+      "license": "MIT",
+      "size": 1073
+    },
+    {
+      "name": "react-dom",
+      "version": "18.2"
+    },
+    {
+      "name": "webpack-merge",
+      "version": "5.8"
+    },
+    {
+      "name": "next",
+      "version": "12.2.2",
+      "license": "MIT",
+      "size": 383606
+    },
+    {
+      "name": "react",
+      "version": "18.2.0",
+      "license": "MIT",
+      "size": 8176
+    },
+    {
+      "name": "react-dom",
+      "version": "18.2.0",
+      "license": "MIT",
+      "size": 133719
+    }
+  ],
+  "devDependencies": [],
+  "optionalDependencies": [],
+  "id": "home",
+  "name": "home",
+  "remote": "http://localhost:3001/_next/static/chunks/remoteEntry.js",
+  "metadata": {
+    "baseUrl": "http://localhost:3001/_next/static/chunks/",
+    "source": {
+      "url": "https://github.com/module-federation/federation-dashboard/tree/master/dashboard-example/home"
+    },
+    "remote": "http://localhost:3001/_next/static/chunks/remoteEntry.js"
+  },
+  "overrides": [
+    {
+      "id": "next/dynamic",
+      "name": "next/dynamic",
+      "version": "12.2.2",
+      "location": "next/dynamic",
+      "applicationID": "next/dynamic"
+    },
+    {
+      "id": "next/head",
+      "name": "next/head",
+      "version": "12.2.2",
+      "location": "next/head",
+      "applicationID": "next/head"
+    },
+    {
+      "id": "next/link",
+      "name": "next/link",
+      "version": "12.2.2",
+      "location": "next/link",
+      "applicationID": "next/link"
+    },
+    {
+      "id": "next/router",
+      "name": "next/router",
+      "version": "12.2.2",
+      "location": "next/router",
+      "applicationID": "next/router"
+    },
+    {
+      "id": "next/script",
+      "name": "next/script",
+      "version": "12.2.2",
+      "location": "next/script",
+      "applicationID": "next/script"
+    },
+    {
+      "id": "react-dom",
+      "name": "react-dom",
+      "version": "18.2.0",
+      "location": "react-dom",
+      "applicationID": "react-dom"
+    },
+    {
+      "id": "react/jsx-runtime",
+      "name": "react/jsx-runtime",
+      "version": "18.2.0",
+      "location": "react/jsx-runtime",
+      "applicationID": "react/jsx-runtime"
+    },
+    {
+      "id": "react",
+      "name": "react",
+      "version": "18.2.0",
+      "location": "react",
+      "applicationID": "react"
+    },
+    {
+      "id": "styled-jsx/style",
+      "name": "styled-jsx/style",
+      "version": "5.1.1",
+      "location": "styled-jsx/style",
+      "applicationID": "styled-jsx/style"
+    },
+    {
+      "id": "styled-jsx",
+      "name": "styled-jsx",
+      "version": "5.1.1",
+      "location": "styled-jsx",
+      "applicationID": "styled-jsx"
+    },
+    {
+      "id": "react/jsx-runtime",
+      "name": "react/jsx-runtime",
+      "version": "",
+      "location": "react/jsx-runtime",
+      "applicationID": "home"
+    },
+    {
+      "id": "react",
+      "name": "react",
+      "version": "18.2.0",
+      "location": "react",
+      "applicationID": "home"
+    },
+    {
+      "id": "next/link",
+      "name": "next/link",
+      "version": "",
+      "location": "next/link",
+      "applicationID": "home"
+    },
+    {
+      "id": "next/dynamic",
+      "name": "next/dynamic",
+      "version": "",
+      "location": "next/dynamic",
+      "applicationID": "home"
+    },
+    {
+      "id": "next/head",
+      "name": "next/head",
+      "version": "",
+      "location": "next/head",
+      "applicationID": "home"
+    },
+    {
+      "id": "styled-jsx/style",
+      "name": "styled-jsx/style",
+      "version": "",
+      "location": "styled-jsx/style",
+      "applicationID": "home"
+    },
+    {
+      "id": "react-dom",
+      "name": "react-dom",
+      "version": "18.2",
+      "location": "react-dom",
+      "applicationID": "home"
+    },
+    {
+      "id": "next/router",
+      "name": "next/router",
+      "version": "",
+      "location": "next/router",
+      "applicationID": "home"
+    },
+    {
+      "id": "next/script",
+      "name": "next/script",
+      "version": "",
+      "location": "next/script",
+      "applicationID": "home"
+    },
+    {
+      "id": "styled-jsx",
+      "name": "styled-jsx",
+      "version": "",
+      "location": "styled-jsx",
+      "applicationID": "home"
+    }
+  ],
+  "consumes": [
+    {
+      "consumingApplicationID": "shop",
+      "applicationID": "shop",
+      "name": "shop",
+      "usedIn": [
+        {
+          "file": "pages/shop.js?hasBoundary",
+          "url": "https://github.com/module-federation/federation-dashboard/tree/master/dashboard-example/home/pages/shop.js?hasBoundary"
+        }
+      ]
+    },
+    {
+      "consumingApplicationID": "checkout",
+      "applicationID": "checkout",
+      "name": "checkout",
+      "usedIn": [
+        {
+          "file": "pages/checkout.js?hasBoundary",
+          "url": "https://github.com/module-federation/federation-dashboard/tree/master/dashboard-example/home/pages/checkout.js?hasBoundary"
+        }
+      ]
+    },
+    {
+      "consumingApplicationID": "title",
+      "applicationID": "checkout",
+      "name": "title",
+      "usedIn": [
+        {
+          "file": "pages/index.js?hasBoundary",
+          "url": "https://github.com/module-federation/federation-dashboard/tree/master/dashboard-example/home/pages/index.js?hasBoundary"
+        },
+        {
+          "file": "pages/index.js",
+          "url": "https://github.com/module-federation/federation-dashboard/tree/master/dashboard-example/home/pages/index.js"
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "id": "nav:nav",
+      "name": "nav",
+      "applicationID": "nav",
+      "requires": [],
+      "file": "./components/nav.js"
+    },
+    {
+      "id": "home:home",
+      "name": "home",
+      "applicationID": "home",
+      "requires": [],
+      "file": "./pages/index.js"
+    },
+    {
+      "id": "pages-map:pages-map",
+      "name": "pages-map",
+      "applicationID": "pages-map",
+      "requires": [],
+      "file": "./pages-map.js"
+    }
+  ],
+  "version": "1677283673799",
+  "sha": "76ff56ee2f7470eada35f91858efe7dfb45ed199",
+  "buildHash": "078c690306f1a299"
+}
