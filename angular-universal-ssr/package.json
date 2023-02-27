@@ -6,14 +6,22 @@
     "./host-app"
   ],
   "version": "0.0.0",
+  "type": "commonjs",
   "scripts": {
-    "start": "yarn build && yarn serve",
+    "start": "yarn build:shell && yarn build:client && yarn start:shell & yarn start:client",
+    "build:shell": "npm --prefix ./host-app run build:federation",
+    "start:shell": "npm --prefix ./host-app run serve:federation",
+    "build:client": "npm --prefix ./client-app run build:federation",
+    "start:client": "npm --prefix ./client-app run serve:federation",
     "build": "lerna run --scope=angular-universal-ssr_* build:federation",
     "serve": "lerna run --scope=angular-universal-ssr_* --parallel serve:federation",
     "clean": "lerna run --scope=angular-universal-ssr_* --parallel clean",
-    "e2e:ci": "yarn build && yarn serve & wait-on http://localhost:4000 && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
+    "e2e:test": "npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome",
+    "e2e:ci": "node e2e.ci.js"
   },
   "devDependencies": {
-    "lerna": "3.22.1"
+    "lerna": "6.4.1",
+    "wait-on": "^7.0.1",
+    "concurrently": "^7.6.0"
   }
 }
