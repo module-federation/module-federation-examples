@@ -13,6 +13,7 @@ env:
 
 jobs:
 
+  # Stop previous runs
   stop-previous-run:
     runs-on: ubuntu-22.04
     steps:
@@ -143,7 +144,7 @@ jobs:
             const ownerName = fs.readFileSync('./ownerName');
             const githubPagesLink = 'https://' + ownerName.toString().toLowerCase().trim() + '.github.io/' + String(repoFullName).replace(`${ownerName.toString().trim()}/`, '') + '/';
             const githubRunLink = 'https://github.com/' + repoFullName + '/actions/runs/' + runId;
-            github.rest.issues.createComment({
+            await github.rest.issues.createComment({
               issue_number: issue_number,
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -166,12 +167,40 @@ jobs:
             const ownerName = fs.readFileSync('./ownerName');
             const githubPagesLink = 'https://' + ownerName.toString().toLowerCase().trim() + '.github.io/' + String(repoFullName).replace(`${ownerName.toString().trim()}/`, '') + '/';
             const githubRunLink = 'https://github.com/' + repoFullName + '/actions/runs/' + runId;
-            github.rest.issues.createComment({
+            await github.rest.issues.createComment({
               issue_number: issue_number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: `Workflow status is ${conclusion === 'success'? conclusion + ' \u2705' : conclusion === 'cancelled'? conclusion + ' \u2757' : conclusion + ' \u274C'} \n Unfortunately test report wasn't generated, it can be if no workspaces changed. Please check the workflow run below. \n Link to GitHub workflow: <a href="${githubRunLink}">Github Workflow Link</a>`
             })
+
+      - name: Remove old lables
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const issue_number = Number(fs.readFileSync('./prNum'));
+            const labels = await github.rest.issues.listLabelsOnIssue({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue_number
+            });
+            if (labels.data) {
+              for (let i = 0; i < labels.data.length; i++) {
+                const label = labels.data[i];
+                if (label.name.startsWith("workflow-") || label.name.startsWith("e2e-")) {
+                  await github.rest.issues.removeLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issue_number,
+                    name: label.name
+                  });
+                }
+              }
+            } else {
+              console.log('No labels found');
+            }
 
       - name: 'Add e2e label to PR -- if report generated'
         if: needs.generate-allure-report.result == 'success'
@@ -184,7 +213,7 @@ jobs:
             const fs = require('fs');
             const issue_number = Number(fs.readFileSync('./prNum'));
             const conclusion = process.env.WORKFLOW_CONCLUSION;
-            github.rest.issues.addLabels({
+            await github.rest.issues.addLabels({
               issue_number: issue_number,
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -202,7 +231,7 @@ jobs:
             const fs = require('fs');
             const issue_number = Number(fs.readFileSync('./prNum'));
             const conclusion = process.env.WORKFLOW_CONCLUSION;
-            github.rest.issues.addLabels({
+            await github.rest.issues.addLabels({
               issue_number: issue_number,
               owner: context.repo.owner,
               repo: context.repo.repo,
