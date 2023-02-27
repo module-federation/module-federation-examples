@@ -5,6 +5,6 @@ import { initFederation } from '@softarc/native-federation';
     await initFederation();
     await import('./bootstrap');
   } catch(e) {
-    throw new Error(`NativeFederationInitError: 'dsl' app error: ${e}`); 
+    throw new Error(`NativeFederationInitError: 'dsl' app error: ${e}`);
   }
 })();

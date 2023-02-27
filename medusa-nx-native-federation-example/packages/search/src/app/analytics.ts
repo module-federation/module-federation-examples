@@ -14,7 +14,7 @@ const utils = loadRemoteModule({
 
 export const sendMessage = async (message: string) => {
   await utils;
-  
+
   if (sendAnalyticsMessage) {
     sendAnalyticsMessage(message);
   } else {

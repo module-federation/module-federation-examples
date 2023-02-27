@@ -5,7 +5,8 @@ export interface NFPDashboardExecutorOptions {
   tokenFile: string;
   versionStrategy: string;
   filename: string;
-  dashboardUrl: string;
+  writeUrl: string;
+  readUrl: string;
   metadata: NFPDashboardExecutorMetadataOptions;
 }
 
@@ -93,4 +94,14 @@ export interface NFPDashboardToken {
   DASHBOARD_READ_TOKEN: string;
   DASHBOARD_WRITE_TOKEN: string;
   DASHBOARD_BASE_URL: string;
+  ENVIRONMENT?: string;
 }
+
+//
+export interface NFPDashboardFederationRemoteEntryFile {
+  shared: { outFileName: string }[];
+  exposes: { outFileName: string }[];
+}
+
+//
+export type NFPDashboardVersionStrategy = 'Date' | 'GitSha' | 'BuildHash';

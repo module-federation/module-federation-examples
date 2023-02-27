@@ -1,30 +1,35 @@
 import * as path from 'path';
 import { existsSync } from 'fs';
-import { 
-  createPackageJson, 
+import {
+  createPackageJson,
   readJsonFile,
-  writeJsonFile, 
-  ProjectGraph 
+  writeJsonFile,
+  ProjectGraph
 } from '@nrwl/devkit';
 import { PackageJson } from 'nx/src/utils/package-json';
-import { NFPDashboardOptions, NFPDashboardOutputFile } from './schema';
+import { NFPDashboardOptions, NFPDashboardOutputFile, NFPDashboardVersionStrategy } from './schema';
 import { createGitSha, createVersion, readNxBuildHash } from './version';
 import { readProjectDependenciesBy, readProjectDevDependencies, readProjectOverrides } from './graph-deps';
 import { readProjectConsumedModules, readProjectExposedModules } from './graph-modules';
+import { copyDirectory, isDirectory } from '../build/directory-util';
+//import { writeRemoteEntryVersionFile } from './remote-entry';
 
 /**
- * 
+ *
  */
-export async function buildDashboardFile(graph: ProjectGraph, options: NFPDashboardOptions) {
+export async function buildDashboardFile(
+  graph: ProjectGraph,
+  options: NFPDashboardOptions
+): Promise<NFPDashboardOutputFile> {
   const {
-    buildTarget, 
+    buildTarget,
     name,
     rootPath,
-    outputPath, 
+    outputPath,
     filename = 'dashboard.json',
     versionStrategy,
     environment = 'development',
-    metadata 
+    metadata
   } = options;
 
   const projectPackageJson: PackageJson = createPackageJson(name, graph) || {} as PackageJson;
@@ -34,7 +39,7 @@ export async function buildDashboardFile(graph: ProjectGraph, options: NFPDashbo
     id: name,
     name,
     remote: metadata.remote,
-    version: createVersion(versionStrategy),
+    version: null,
     sha: createGitSha(),
     buildHash: readNxBuildHash(buildTarget, rootPath),
     environment,
@@ -47,13 +52,48 @@ export async function buildDashboardFile(graph: ProjectGraph, options: NFPDashbo
     consumes: readProjectConsumedModules(graph, rootPath, name, metadata)
   };
 
+  dashboard.version = createVersion(versionStrategy as NFPDashboardVersionStrategy, dashboard);
+
+  const outputVersionPath = `./version-${dashboard.version}`;
+  const outputDirectoryPath: string = path.join(outputPath, '/');
+  const outputVersionDirectoryPath = path.join(outputDirectoryPath, outputVersionPath);
+
+  try {
+    copyDirectory(
+      outputDirectoryPath,
+      outputVersionDirectoryPath,
+      (filePath) => isDirectory(filePath) && filePath.includes('version-')
+    );
+  } catch (e) {
+    throw new Error(`Failed to create Dashboard version '${outputVersionDirectoryPath}': ${e}`)
+  }
+
+  //writeRemoteEntryVersionFile(outputVersionDirectoryPath, outputVersionPath);
+
   const outputFile: string = path.join(outputPath, filename);
   writeJsonFile(outputFile, dashboard);
+
+  return dashboard;
 }
 
 /**
- * 
+ *
  */
-export async function sendDashboardFile(endpoint: string): Promise<void> {
-  return;
+export async function sendDashboardFile(endpoint: string, dashboard: NFPDashboardOutputFile): Promise<void> {
+  try {
+    const response: Response = await fetch(endpoint, {
+      method: 'POST',
+      body: JSON.stringify(dashboard),
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+  } catch (e) {
+    throw new Error(e);
+  }
 }

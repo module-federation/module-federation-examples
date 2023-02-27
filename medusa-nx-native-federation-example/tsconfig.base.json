@@ -2,7 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "rootDir": ".",
-    "sourceMap": true,
+    "sourceMap": false,
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
@@ -17,6 +17,9 @@
     "paths": {
       "native-federation-plugin": [
         "packages/native-federation-plugin/src/index.ts"
+      ],
+      "native-federation-plugin/*": [
+        "packages/native-federation-plugin/src/*"
       ]
     }
   },

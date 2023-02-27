@@ -1,12 +1,16 @@
 import { promisify } from 'util';
 import { exec } from 'child_process';
-import { 
-  ExecutorContext, 
+import {
+  ExecutorContext,
   ProjectGraph,
-  parseTargetString, 
+  parseTargetString,
   readTargetOptions
 } from '@nrwl/devkit';
-import { NFPDashboardExecutorOptions, NFPDashboardToken } from './schema';
+import {
+  NFPDashboardExecutorOptions,
+  NFPDashboardOutputFile,
+  NFPDashboardToken
+} from './schema';
 import { readFileTokens, replaceWithTokens } from './token';
 import { buildDashboardFile, sendDashboardFile } from './dashboard';
 
@@ -25,14 +29,14 @@ export default async function runExecutor(
   context: ExecutorContext
 ): Promise<{ success: boolean }> {
   const { projectName, root } = context;
-  const { 
-    buildTarget, 
+  const {
+    buildTarget,
     filename,
-    metadata, 
+    metadata,
     tokenFile,
-    dashboardUrl,
-    environment, 
-    versionStrategy 
+    writeUrl,
+    environment,
+    versionStrategy
   } = options;
 
   try {
@@ -45,14 +49,15 @@ export default async function runExecutor(
   let buildOptions;
 
   try {
-    //console.log(graph.nodes.remote);
     buildOptions = readTargetOptions(parseTargetString(buildTarget, graph), context);
   } catch (e) {
     throw new Error(`Invalid buildTarget: ${buildTarget}`);
   }
 
+  let dashboardFile: NFPDashboardOutputFile;
+
   try {
-    buildDashboardFile(graph, {
+    dashboardFile = await buildDashboardFile(graph, {
       buildTarget,
       name: projectName,
       rootPath: root,
@@ -69,16 +74,16 @@ export default async function runExecutor(
   let tokens: NFPDashboardToken;
 
   try {
-    tokens = readFileTokens(tokenFile); 
+    tokens = readFileTokens(tokenFile);
   } catch (e) {
     throw new Error(`Invalid token file: ${tokenFile}`);
   }
 
   try {
-    const endpoint = replaceWithTokens(dashboardUrl, tokens);
-    await sendDashboardFile(endpoint);
+    const endpoint = replaceWithTokens(writeUrl, tokens);
+    await sendDashboardFile(endpoint, dashboardFile);
   } catch (e) {
-    throw new Error(e);
+    throw new Error(`Error occurred while sending Dashboard '${filename} file': ${e}`);
   }
 
   return { success: true };

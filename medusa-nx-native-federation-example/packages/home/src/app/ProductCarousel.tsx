@@ -3,18 +3,22 @@ import { Card } from 'antd';
 import { initFederation, loadRemoteModule } from '@softarc/native-federation';
 import HeroImage from './HeroImage';
 import { sendMessage } from './analytics';
+import { loadRemoteEntryVersionsMemo } from 'native-federation-plugin/lib';
+
 const { Meta } = Card;
+const getRemoteVersions = loadRemoteEntryVersionsMemo('remotes.json');
 
 let Carousel: React.ComponentType<any>;
 
 (async () => {
   Carousel = React.lazy(async () => {
+    const remotes = await getRemoteVersions();
     const module = await loadRemoteModule({
       remoteName: 'dsl',
       exposedModule: './Carousel',
-      remoteEntry: 'http://localhost:3002/remoteEntry.json'
+      remoteEntry: remotes['dsl'] || 'http://localhost:3002/remoteEntry.json'
     });
-  
+
     return module;
   });
 

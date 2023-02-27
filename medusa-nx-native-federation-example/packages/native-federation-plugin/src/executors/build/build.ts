@@ -2,19 +2,23 @@ import * as esbuild from 'esbuild';
 import { federationBuilder } from '@softarc/native-federation/build';
 import { createEsBuildAdapter } from '@softarc/native-federation-esbuild';
 import { NFPWorkspacePaths } from './schema';
-import { cleanDirectoryFiles, copyDirectory } from './directory-util';
+import { cleanDirectory, copyDirectory, isDirectory } from './directory-util';
 
 /**
  * Setups the common options to the Federation Builder for a future builds
  */
 async function setupNativeFederationBuilder(workspace: NFPWorkspacePaths) {
+  const { workspaceDistPath, workspaceRootPath, workspaceTsConfigPath, projectFederationConfigPath, dev } 
+    = workspace;
+
   await federationBuilder.init({
     options: {
-      workspaceRoot: workspace.workspaceRootPath,
-      outputPath: workspace.workspaceDistPath,
-      tsConfig: workspace.workspaceTsConfigPath,
-      federationConfig: workspace.projectFederationConfigPath,
+      workspaceRoot: workspaceRootPath,
+      outputPath: workspaceDistPath,
+      tsConfig: workspaceTsConfigPath,
+      federationConfig: projectFederationConfigPath,
       verbose: false,
+      dev: Boolean(dev)
     },
     adapter: createEsBuildAdapter({ plugins: [] }),
   });
@@ -24,9 +28,9 @@ async function setupNativeFederationBuilder(workspace: NFPWorkspacePaths) {
  * Invokes EsBuild Builder to compile project files
  */
 async function compileProjectMain(workspace: NFPWorkspacePaths) {
-  const { workspaceDistPath, workspaceTsConfigPath, projectEntryPath } = workspace;
+  const { workspaceDistPath, workspaceTsConfigPath, projectEntryPath, dev } = workspace;
 
-  cleanDirectoryFiles(workspaceDistPath);
+  cleanDirectory(workspaceDistPath, (filePath) => isDirectory(filePath) && filePath.includes('version-'));
 
   await esbuild.build({
     entryPoints: [projectEntryPath],
@@ -39,7 +43,8 @@ async function compileProjectMain(workspace: NFPWorkspacePaths) {
     conditions: ['es2020', 'es2015', 'module'],
     resolveExtensions: ['.ts', '.tsx', '.mjs', '.js'],
     tsconfig: workspaceTsConfigPath,
-    splitting: true
+    splitting: true,
+    minify: !dev
   });
 }
 
@@ -52,7 +57,7 @@ function copyProjectAssets(workspace: NFPWorkspacePaths) {
   copyDirectory(projectIndexHtml, workspaceDistPath);
 
   for (const assetPath of projectAssets) {
-    copyDirectory(assetPath, workspaceDistPath);
+    copyDirectory(assetPath, workspaceDistPath, null, true);
   }
 }
 

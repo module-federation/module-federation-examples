@@ -6,6 +6,11 @@
       "schema": "./src/executors/build/schema.json",
       "description": "Native Federation build executor"
     },
+    "serve": {
+      "implementation": "./src/executors/serve/executor",
+      "schema": "./src/executors/serve/schema.json",
+      "description": "Native Federation serve executor"
+    },
     "dashboard": {
       "implementation": "./src/executors/dashboard/executor",
       "schema": "./src/executors/dashboard/schema.json",

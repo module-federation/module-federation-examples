@@ -1,12 +1,12 @@
 import { existsSync } from 'fs';
 import * as path from 'path';
-import { 
+import {
   readJsonFile,
-  parseTargetString, 
-  ProjectGraph, 
-  ProjectGraphProjectNode, 
+  parseTargetString,
+  ProjectGraph,
+  ProjectGraphProjectNode,
   TargetConfiguration,
-  Target 
+  Target
 } from '@nrwl/devkit';
 import { PackageJson } from 'nx/src/utils/package-json';
 import { checkAndCleanWithSemver } from 'nx/src/utils/version-utils';
@@ -46,7 +46,7 @@ export function readProjectDependenciesBy(
  * Detects if a project uses Typescript and returns the posible Ts packages
  */
 function getTypescriptPresets(projectRootPath: string): string[] {
-  return existsSync(path.join(projectRootPath, 'tsconfig.json')) 
+  return existsSync(path.join(projectRootPath, 'tsconfig.json'))
     ? ['typescript', 'ts-node']
     : [];
 }
@@ -82,7 +82,7 @@ function getDevDependenciesByName(packageName: string, packageJson: PackageJson)
 function readProjectJsonPackages(project: ProjectGraphProjectNode, projectPackageJson: PackageJson) {
   let dependencies: string[] = [];
 
-  const projectTargets: 
+  const projectTargets:
     {[targetName: string]: TargetConfiguration<unknown>} = project.data.targets;
 
   for (const targetName of Object.keys(projectTargets)) {
@@ -147,7 +147,7 @@ export function readProjectDevDependencies(
  * Checks if npm package exists in a PackageJson object by name
  */
 function hasDependencyByName(
-  name: string, 
+  name: string,
   packageJson: PackageJson & { optionalDependencies?: Record<string, string> }
 ) {
   const dependencies = packageJson?.dependencies || {};
