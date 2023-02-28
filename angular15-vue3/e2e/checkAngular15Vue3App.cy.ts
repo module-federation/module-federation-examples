@@ -8,6 +8,7 @@ import { BaseMethods } from '../../cypress/common/base';
 const basePage: BaseMethods = new BaseMethods();
 
 describe('Angular 15 and Vue 3 microfrontends', () => {
+  context("Check Angular 15 and Vue 3 elements", () => {
     beforeEach(() => {
       basePage.openLocalhost(4200);
     });
@@ -66,4 +67,5 @@ describe('Angular 15 and Vue 3 microfrontends', () => {
         index: 1,
       });
     });
+  });
 });

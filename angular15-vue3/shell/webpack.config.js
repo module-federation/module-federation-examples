@@ -12,9 +12,7 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      remotes: {
-        profile: 'profile@http://localhost:4201/remoteEntry.js}',
-      },
+      remotes: {},
       shared: {
         '@angular/core': { eager: true, singleton: true },
         '@angular/common': { eager: true, singleton: true },
