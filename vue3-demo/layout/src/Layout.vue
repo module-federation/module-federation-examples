@@ -18,6 +18,12 @@
 </template>
 
 <script>
+import { fooTs, default as barTs } from 'home/bar';
+import { fooJs, default as barJs } from 'home/foo';
+fooTs();
+fooJs();
+barTs();
+barJs();
 export default {};
 </script>
 

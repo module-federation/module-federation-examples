@@ -20,7 +20,7 @@ module.exports = (env = {}) => ({
     publicPath: 'auto',
   },
   resolve: {
-    extensions: ['.vue', '.jsx', '.js', '.json'],
+    extensions: ['.vue', '.jsx', '.js', '.json', '.ts'],
     alias: {
       // this isn't technically needed, since the default `vue` entry for bundlers
       // is a simple `export * from '@vue/runtime-dom`. However having this
@@ -67,6 +67,8 @@ module.exports = (env = {}) => ({
       exposes: {
         './Content': './src/components/Content',
         './Button': './src/components/Button',
+        './foo': './src/foo.js',
+        './bar': './src/bar.ts',
       },
       shared: {
         vue: {
