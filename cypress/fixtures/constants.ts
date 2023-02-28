@@ -757,6 +757,13 @@ export class Constants {
                 'Learn React',
                 'Vite Docs'
             ]
+        },
+        angularVue: {
+            angularAppHead: 'Welcome to the Angular 15 Microfrontend demo using Webpack 5 Module Federation',
+            vueWebComponentTitle: 'Vue Remote Custom Element Content',
+            vueAsApplicationTitle: 'Vue Remote Create App Content',
+            interactionTextInitial: 'Some Content',
+            interactionTextChanged: 'Interaction Works'
         }
     }
 
