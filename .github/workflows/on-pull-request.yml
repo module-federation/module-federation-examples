@@ -84,9 +84,34 @@ jobs:
             exit 1
           fi
 
+  # Setup matrix from changed samples by lerna ls --since origin/master command
+  setup-matrix:
+    runs-on: ubuntu-22.04
+    needs: forked_master_status
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Create matrix
+        id: set-matrix
+        run: |
+          matrix="$(node checkChangedWorkspaces.js)"
+          echo "matrix=$matrix" >> $GITHUB_OUTPUT
+
+      - name: Changed workspaces
+        run: |
+          echo '${{ steps.set-matrix.outputs.matrix }}'
+
   # Install main dependencies (yarn install) + Create cache for Yarn and Cypress
   install-main-dependencies:
-    needs: forked_master_status
+    needs: setup-matrix
+    if: ${{ needs.setup-matrix.outputs.matrix != '{"container":[]}' }}
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout code
@@ -129,33 +154,9 @@ jobs:
         run: |
           df -h
 
-  # Setup matrix from changed samples by lerna ls --since origin/master command
-  setup-matrix:
-    runs-on: ubuntu-22.04
-    needs: install-main-dependencies
-    outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
-
-      - name: Create matrix
-        id: set-matrix
-        run: |
-          matrix="$(node checkChangedWorkspaces.js)"
-          echo "matrix=$matrix" >> $GITHUB_OUTPUT
-
-      - name: Changed workspaces
-        run: |
-          echo '${{ steps.set-matrix.outputs.matrix }}'
-
   # Run Cypress e2e tests for changed samples (additionally install deps for all changed samples if there is no any created cache in master branch) + Create artifacts for Cypress screenshots and videos
   run-e2e-test:
-    needs: setup-matrix
+    needs: [setup-matrix, install-main-dependencies]
     if: ${{ needs.setup-matrix.outputs.matrix != '{"container":[]}' }}
     runs-on: ubuntu-22.04
     timeout-minutes: 30
