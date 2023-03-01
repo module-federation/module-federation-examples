@@ -11,7 +11,7 @@ const style = {
     backgroundColor: '#cccccc',
 };
 
-(
+const ButtonContainer = () => (
         <div style={style}>
             <br />
             <br />
