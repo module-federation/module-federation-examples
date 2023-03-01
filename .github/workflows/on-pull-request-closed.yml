@@ -1,42 +1,20 @@
 name: on pull request closed
-on: 
+on:
   pull_request:
     types: [closed]
 
 jobs:
-  # Stop previous runs
-  stop-previous-run:
+  # Save nessesary env variables to use them in next jobs
+  save-env:
     runs-on: ubuntu-22.04
+    if: always()
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.11.0
-        with:
-          access_token: ${{ secrets.GITHUB_TOKEN }}
-
-  cleanup:
-    runs-on: ubuntu-22.04
-    needs: stop-previous-run
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v3
-
-      - name: Cleanup
+      - name: Save env variables
         run: |
-          gh extension install actions/gh-actions-cache
-          
-          REPO=${{ github.repository }}
-          BRANCH=refs/pull/${{ github.event.pull_request.number }}/merge
-
-          echo "Fetching list of cache key"
-          cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH | cut -f 1 )
-
-          ## Setting this to not fail the workflow while deleting cache keys. 
-          set +e
-          echo "Deleting caches..."
-          for cacheKey in $cacheKeysForPR
-          do
-              gh actions-cache delete $cacheKey -R $REPO -B $BRANCH --confirm
-          done
-          echo "Done"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          mkdir -p ./workflow
+          echo "${{ github.event.pull_request.number }}" > ./workflow/prNum
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: env_for_cleanup
+          path: workflow/
