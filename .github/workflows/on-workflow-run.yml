@@ -4,7 +4,7 @@ name: on workflow run
 # access to secrets
 on:
   workflow_run:
-    workflows: ["on pull request"]
+    workflows: ["on pull request", "on pull request closed"]
     types:
       - completed
 
@@ -97,11 +97,11 @@ jobs:
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
 
-  # Comment to PR
-  comment-to-pr:
+  # Comment to PR, Add labels to PR, Cleanup caches for PR
+  actions-with-pr:
     runs-on: ubuntu-22.04
     needs: generate-allure-report
-    if: always() && github.event.workflow_run.event == 'pull_request'
+    if: github.event.workflow_run.event == 'pull_request'
     steps:
       - name: 'Download artifact'
         uses: actions/github-script@v6
@@ -187,14 +187,16 @@ jobs:
               issue_number: issue_number
             });
             if (labels.data) {
-              for (let i = 0; i < labels.data.length; i++) {
-                const label = labels.data[i];
-                if (label.name.startsWith("workflow-") || label.name.startsWith("e2e-")) {
+            for (const label of labels.data.name) {
+                if (label == `e2e-${conclusion}` || label == `workflow-${conclusion}`) {
+                  continue;
+                }
+                if (label.startsWith("workflow-") || label.startsWith("e2e-")) {
                   await github.rest.issues.removeLabel({
                     owner: context.repo.owner,
                     repo: context.repo.repo,
                     issue_number: issue_number,
-                    name: label.name
+                    name: label
                   });
                 }
               }
@@ -237,3 +239,72 @@ jobs:
               repo: context.repo.repo,
               labels: [`workflow-${conclusion}`]
             })
+
+  # Cleanup unused cache to save space, run once a day at 8:00 AM. Removes all caches that are older than 10 hours and with names starting with e2e- or codeql-trap-
+  cleanup:
+    runs-on: ubuntu-22.04
+    if: github.event.workflow_run.payload.action == 'closed'
+    needs: stop-previous-run
+    steps:
+      - name: 'Download artifact'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               run_id: ${{github.event.workflow_run.id }}
+            });
+            const matchArtifact = artifacts.data.artifacts.find(artifact => artifact.name === 'env_for_cleanup');
+            if (!matchArtifact) {
+              throw new Error('Artifact not found');
+            }
+            const download = await github.rest.actions.downloadArtifact({
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               artifact_id: matchArtifact.id,
+               archive_format: 'zip'
+            });
+            const fs = require('fs');
+            fs.writeFileSync('${{github.workspace}}/env_for_comment.zip', Buffer.from(download.data));
+      - run: |
+          unzip env_for_cleanup.zip
+
+      - name: Cleanup unused cache
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const issue_number = Number(fs.readFileSync('./prNum'));
+            const timestamp = new Date().getTime() - 1000 * 60 * 60 * 10;
+            const date = new Date(timestamp);
+            const isoDate = date.toISOString().replace('Z', '');
+            const milliseconds = (date.getMilliseconds() / 1000).toFixed(7).slice(2);
+            const resultDate = isoDate + milliseconds + 'Z';
+            const caches = await github.rest.actions.getActionsCacheList({
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+            console.log(caches);
+            if (caches.data) {
+              for (const cache of caches.data.actions_caches) {
+                if (cache.key.startsWith('e2e-') && cache.ref.includes(`refs/heads/${issue_number}/merge`)) {
+                  await github.rest.actions.deleteActionsCacheById({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    cache_key: cache.id
+                  });
+                  console.log(`Deleted cache ${cache.key}`);
+                }
+                if (cache.key.startsWith('codeql-trap-') && cache.last_accessed_at < resultDate) {
+                  await github.rest.actions.deleteActionsCacheById({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    cache_id: cache.id
+                  });
+                  console.log(`Deleted cache ${cache.key}`);
+                }
+                console.log(`Cache ${cache.key} is valid and will not be deleted`);
+              }
+            }
