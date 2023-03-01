@@ -3,7 +3,7 @@
  * Please stick to the next rules:
  * 1. Use existing methods. If you cant please make sure twice that you can't use existing methods
  * 2. Every new method need to be added to relevant section
- * 4. Please add a suitable name to the methods
+ * 3. Please add a suitable name to the methods
  *
  * NAVIGATION LIST
  * Clicks Section
@@ -24,7 +24,7 @@ import {CommonTestData} from "../fixtures/commonTestData";
 
 export class BaseMethods {
 
-    /*
+ /*
  *---------------------------------------------------
  * CLICKS SECTION
  * Base methods for clicking on elements on the page
@@ -106,7 +106,7 @@ export class BaseMethods {
             .wait(wait)
     }
 
-    /*
+/*
  *---------------------------------------------------
  * CHECKS SECTION
  * Base methods for various checks on page
@@ -708,7 +708,7 @@ export class BaseMethods {
         }), { log: false });
     }
 
-    /*
+/*
 *---------------------------------------------------
 * WRITES SECTION
 * Base methods for writing values in inputs/files
@@ -762,7 +762,7 @@ export class BaseMethods {
             .fill(text);
     }
 
-    /*
+/*
 *---------------------------------------------------
 * HELPERS SECTION
 * Base methods for activities like visit, go back,
@@ -811,7 +811,7 @@ export class BaseMethods {
         return selector.includes(Constants.selectorParts.sharedRoutingAppSelectorsParts.userInfo.toUpperCase()) ? baseSelectors.tags.inputs.textarea : baseSelectors.tags.inputs.input
     }
 
-    /*
+/*
 *---------------------------------------------------
 * ACTIVITIES SECTION
 * Base methods related to specific actions
@@ -992,7 +992,7 @@ export class BaseMethods {
     }
 
 
-    /*
+/*
 *---------------------------------------------------
 * PRIVATES SECTION
 * Base private methods

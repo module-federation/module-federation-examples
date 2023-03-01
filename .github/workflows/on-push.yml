@@ -6,7 +6,7 @@ on:
 
 jobs:
 
-# Stop previous runs
+  # Stop previous runs
   stop-previous-run:
     runs-on: ubuntu-22.04
     steps:
@@ -15,7 +15,7 @@ jobs:
         with:
           access_token: ${{ secrets.GITHUB_TOKEN }}
 
-# Create cache for all samples
+  # Create cache for all samples
   cache:
     runs-on: ubuntu-22.04
     needs: stop-previous-run
@@ -29,7 +29,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
-      # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
+        # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
       - name: Check Yarn hash
         id: yarn-hash
         run: |
@@ -41,7 +41,7 @@ jobs:
         id: yarn-cache
         with:
           path: |
-            /node_modules
+            **/node_modules
             ~/.cache/Cypress
             ~/.cache/yarn/v6  
           key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
@@ -52,4 +52,4 @@ jobs:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
           echo "Yarn changed - install deps ... "
-          yarn install
+          yarn install --frozen-lockfile
