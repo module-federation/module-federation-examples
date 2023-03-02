@@ -213,8 +213,14 @@ jobs:
         run: |
           df -h
 
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
       - name: Run sample e2e tests
-        run: 
+        run: |
+          node -v
           npx lerna run --scope=${{ matrix.container }} e2e:ci
 
       - name: Create artifacts for Allure report
