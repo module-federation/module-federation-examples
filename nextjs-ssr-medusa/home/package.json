@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3001",
-    "build": "next build",
+    "build": "next build && node ./send-to-medusa.js",
     "start": "NODE_ENV=production next start -p 3001"
   },
   "dependencies": {
