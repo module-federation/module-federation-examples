@@ -50,19 +50,6 @@ module.exports = {
         extraOptions:{
           automaticAsyncBoundary: true
         },
-        // medusa: (!options.isServer && !options.dev) ? new DashboardPlugin({
-        //   debug:true,
-        //   versionStrategy: `${Date.now()}`,
-        //   filename: 'dashboard.json',
-        //   dashboardURL: `https://api.medusa.codes/update?token=8372db21-6633-4a62-8896-34538c082713`,
-        //   metadata: {
-        //     baseUrl: 'http://localhost:3001/_next/static/chunks/',
-        //     source: {
-        //       url: 'https://github.com/module-federation/federation-dashboard/tree/master/dashboard-example/home',
-        //     },
-        //     remote: 'http://localhost:3001/_next/static/chunks/remoteEntry.js',
-        //   },
-        // }) : null,
       }),
     );
 

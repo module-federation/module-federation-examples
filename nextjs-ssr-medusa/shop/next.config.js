@@ -1,5 +1,4 @@
 const NextFederationPlugin = require('@module-federation/nextjs-mf');
-const DashboardPlugin = require('@module-federation/dashboard-plugin');
 const {NextMedusaPlugin} = require("@module-federation/dashboard-plugin");
 // this enables you to use import() and the webpack parser
 // loading remotes on demand, not ideal for SSR
