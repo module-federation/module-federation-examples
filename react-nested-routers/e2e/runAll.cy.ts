@@ -1,1 +1,2 @@
-import './checkReactNestedRoutersApps.cy';
+import './shellAppChecks.cy';
+import './commonChecks.cy';
