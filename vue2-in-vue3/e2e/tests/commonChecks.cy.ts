@@ -22,7 +22,9 @@ describe('Vue 2 in Vue 3', () => {
     
         appsData.forEach((property: { headerName: string, componentState: string, host: number }) => {
             it(`Check ${property.headerName} header visibility`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.div,
                     text: property.headerName,
@@ -31,7 +33,9 @@ describe('Vue 2 in Vue 3', () => {
             });
     
             it(`Check that both apps shares the button with same text`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.button,
                     text: Constants.elementsText.vue2InVue3App.commonButtonText,
@@ -40,7 +44,9 @@ describe('Vue 2 in Vue 3', () => {
             });
     
             it(`Check that in ${property.headerName} button is active`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementState({
                     selector: baseSelectors.tags.coreElements.button,
                     state: 'not.be.disabled'
@@ -48,7 +54,9 @@ describe('Vue 2 in Vue 3', () => {
             });
     
             it(`Check that in ${property.headerName} app by default counter set to 0`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                number: property.host
+            })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.div,
                     text: Constants.commonPhrases.vue2InVue3App.defaultCounterText,
@@ -57,7 +65,9 @@ describe('Vue 2 in Vue 3', () => {
             });
     
             it(`Checks component state visibility for ${property.headerName}`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.div,
                     text: property.componentState
@@ -65,7 +75,9 @@ describe('Vue 2 in Vue 3', () => {
             });
     
             it(`Checks that only 'vue3' app recognises button as remote component`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 if(property.headerName === Constants.commonPhrases.vue2InVue3App.appsNames.vue3) {
                     basePage.checkElementWithTextPresence({
                         selector: baseSelectors.tags.coreElements.div,
@@ -89,7 +101,9 @@ describe('Vue 2 in Vue 3', () => {
             });
     
             it(`Check that in ${property.headerName} app color of component info set to red`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.css.style.replace('{style}', Constants.color.nonRgbValues.red),
                     text: Constants.commonPhrases.vue2InVue3App.defaultCounterText
@@ -101,7 +115,9 @@ describe('Vue 2 in Vue 3', () => {
             });
     
             it(`Checks counter on ${property.headerName} changes after click and returns to default after reload`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkCounterFunctionality({
                     button: baseSelectors.tags.coreElements.button,
                     counterElement: baseSelectors.tags.coreElements.div,
@@ -112,7 +128,9 @@ describe('Vue 2 in Vue 3', () => {
             });
     
             it(`Compares counter on ${property.headerName} with quantity of clicks`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkCounterFunctionality({
                     button: baseSelectors.tags.coreElements.button,
                     counterElement: baseSelectors.tags.coreElements.div,
@@ -126,7 +144,9 @@ describe('Vue 2 in Vue 3', () => {
                 const host = property.host === 3001 ? appsData[1].host : appsData[0].host;
                 const defaultCounterText = Constants.commonPhrases.vue2InVue3App.defaultCounterText;
     
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkCounterFunctionality({
                     button: baseSelectors.tags.coreElements.button,
                     counterElement: baseSelectors.tags.coreElements.div,

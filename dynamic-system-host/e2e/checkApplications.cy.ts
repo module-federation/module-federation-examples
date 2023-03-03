@@ -32,7 +32,9 @@ appsData.forEach(
         describe('Dynamic System Host', () => {
             context(`Check ${appName}`, () => {
                 it(`Check ${appName} built and running`, () => {
-                    basePage.openLocalhost(host)
+                    basePage.openLocalhost({
+                        number: host
+                    })
                     basePage.checkElementWithTextPresence({
                         selector: property.headerSelector,
                         text: property.headerText
@@ -55,7 +57,9 @@ appsData.forEach(
                 })
     
                 it(`Check buttons in ${appName} exist`, () => {
-                    basePage.openLocalhost(host)
+                    basePage.openLocalhost({
+                        number: host
+                    })
                     property.isButtonExist ?
                         Constants.elementsText.dynamicRemotesApp.buttonsText.forEach(button => {
                         basePage.checkElementWithTextPresence({
@@ -71,7 +75,9 @@ appsData.forEach(
                 })
     
                 it(`Check functionality in ${appName}`, () => {
-                    basePage.openLocalhost(host)
+                    basePage.openLocalhost({
+                        number: host
+                    })
                     if (property.isButtonExist) {
                         Constants.elementsText.dynamicRemotesApp.buttonsText.forEach(button => {
                             basePage.clickElementWithText({

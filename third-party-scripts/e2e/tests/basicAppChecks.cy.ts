@@ -8,7 +8,9 @@ const basePage: BaseMethods = new BaseMethods()
 describe('Third Party Scripts', () => {
     context('It checks basic host-remote app', () => {
         beforeEach(() => {
-            basePage.openLocalhost(3001)
+            basePage.openLocalhost({
+                number: 3001
+            })
         })
     
         it('Checks app header visibility', () => {

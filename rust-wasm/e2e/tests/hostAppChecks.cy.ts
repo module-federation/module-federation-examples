@@ -9,7 +9,9 @@ const basePage: BaseMethods = new BaseMethods()
 describe("Rust Wasm", () => {
     context("It Checks host app", () => {
         beforeEach(() => {
-            basePage.openLocalhost(8080)
+            basePage.openLocalhost({
+                number: 8080
+            })
         })
     
         it('Checks basic console message', () => {

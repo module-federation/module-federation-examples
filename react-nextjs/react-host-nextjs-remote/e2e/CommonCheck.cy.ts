@@ -27,7 +27,9 @@ appsData.forEach((
     describe('React Host NextJS Remote', () => {
         context(`Check ${property.appType} App UI elements`, () => {
             before(()=> {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
             })
             it(`Check ${property.appType} App UI elements`, ()=> {
                 basePage.checkUrlText(`http://localhost:${property.host}/`, true)

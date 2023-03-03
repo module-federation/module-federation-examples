@@ -31,7 +31,10 @@ appsData.forEach(
         describe('Angular 11 microfrontends NGRX', () => {
             context(`Check ${appName} App Page`, () => {
                 beforeEach(() => {
-                    basePage.openLocalhost(property.host, property.path)
+                    basePage.openLocalhost({
+                        number: property.host,
+                        path: property.path
+                    })
                 })
     
                 it('Check App is build and running', () => {
@@ -159,7 +162,10 @@ appsData.forEach(
     
     describe('Check Apps functionality', () => {
         beforeEach(() => {
-            basePage.openLocalhost(4200, Constants.commonConstantsData.commonAngularAppsData.mdmfProfile.path)
+            basePage.openLocalhost({
+                number: property.host,
+                path: Constants.commonConstantsData.commonAngularAppsData.mdmfProfile.path
+            })
         })
     
         it('Check added user visible on both Apps', () => {

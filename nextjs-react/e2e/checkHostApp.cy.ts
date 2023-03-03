@@ -8,7 +8,9 @@ const basePage: BaseMethods = new BaseMethods()
 describe("NextJS React", () => {
     context("Check host app", () => {
         beforeEach(() => {
-            basePage.openLocalhost(3000)
+            basePage.openLocalhost({
+                number: 3000
+            })
         })
     
         it('Check buttons exist', () => {
