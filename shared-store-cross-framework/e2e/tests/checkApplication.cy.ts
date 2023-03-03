@@ -14,7 +14,9 @@ const vueComponentButtonsBlockSelector = selectors.sharedStoreCrossFrameworkApp.
 describe('Shared Store Cross Framework', () => {
     context("It checks shared store cross framework app", () => {
         beforeEach(() => {
-            basePage.openLocalhost(3001)
+            basePage.openLocalhost({
+                number: 3001
+            })
         })
     
         it('Checks mark with Shell text visibility', () => {

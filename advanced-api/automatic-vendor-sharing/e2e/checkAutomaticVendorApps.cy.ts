@@ -45,7 +45,9 @@ appsData.forEach(
         describe(`Automatic Vendor Sharing`, () => {
             context(`Check ${appName}`, () => {
                 beforeEach(() => {
-                    basePage.openLocalhost(host)
+                    basePage.openLocalhost({
+                        number: host
+                    })
                 })
     
                 it(`Check ${appName} header and subheader exist on the page`, () => {

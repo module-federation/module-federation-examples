@@ -13,7 +13,9 @@ const baseElementsQuantity: number = 3
 describe('Angular Universal SSR', () => {
     context('It checks host app', () => {
         beforeEach(() => {
-            basePage.openLocalhost(4000)
+            basePage.openLocalhost({
+                number: 4000
+            })
         })
 
         it('Checks app root component visibility', () => {
