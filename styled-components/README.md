@@ -9,7 +9,19 @@ This sample shows how to use [Styled Components](https://www.styled-components.c
 
 Run `yarn` to install the dependencies.
 
-Run `yarn start` this will build and start all applications.
+To run this demo you will need to open 2 terminals.
+
+```bash
+# Terminal 1
+cd app1
+yarn start
+```
+
+```bash
+# Terminal 2
+cd app2
+yarn start
+```
 
 Bellow you can see the port mapping:
 
