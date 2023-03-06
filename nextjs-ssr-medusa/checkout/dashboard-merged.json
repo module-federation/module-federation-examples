@@ -2,7 +2,7 @@
   "dependencies": [
     {
       "name": "@module-federation/nextjs-mf",
-      "version": "6.1.558",
+      "version": "6.1.555",
       "license": "MIT",
       "size": 616
     },
@@ -197,17 +197,6 @@
   ],
   "consumes": [
     {
-      "consumingApplicationID": "shop",
-      "applicationID": "shop",
-      "name": "shop",
-      "usedIn": [
-        {
-          "file": "pages/shop.js?hasBoundary",
-          "url": "https://github.com/module-federation/federation-dashboard/tree/master/dashboard-example/home/pages/shop.js?hasBoundary"
-        }
-      ]
-    },
-    {
       "consumingApplicationID": "home",
       "applicationID": "home",
       "name": "home",
@@ -215,6 +204,17 @@
         {
           "file": "pages/index.js?hasBoundary",
           "url": "https://github.com/module-federation/federation-dashboard/tree/master/dashboard-example/home/pages/index.js?hasBoundary"
+        }
+      ]
+    },
+    {
+      "consumingApplicationID": "shop",
+      "applicationID": "shop",
+      "name": "shop",
+      "usedIn": [
+        {
+          "file": "pages/shop.js?hasBoundary",
+          "url": "https://github.com/module-federation/federation-dashboard/tree/master/dashboard-example/home/pages/shop.js?hasBoundary"
         }
       ]
     },
@@ -253,7 +253,7 @@
       "file": "./pages-map.js"
     }
   ],
-  "version": "1678133175093",
-  "sha": "8a8ffd72fa7a89d16d1895124adbb51964450987",
-  "buildHash": "ff0c2ae79e3d1e83"
+  "version": "1678145864645",
+  "sha": "d7399b422df72e490726f108862ea5e77db97557",
+  "buildHash": "72d4f6730838111a"
 }
