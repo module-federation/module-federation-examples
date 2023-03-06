@@ -7,6 +7,7 @@ const queryEnv = new URLSearchParams(__resourceQuery).get('env');
 const queryToken = new URLSearchParams(__resourceQuery).get('token');
 console.log('current request', currentRequest);
 export default medusaClient({
+  // currentHost: process.env.CURRENT_HOST,
   remote: currentRequest,
   environment: queryEnv,
   token: queryToken,
