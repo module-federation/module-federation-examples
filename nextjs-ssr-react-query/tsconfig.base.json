@@ -1,0 +1,26 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@acme/domain": ["libs/domain/src/index.ts"],
+      "@header/*": ["apps/header/*"],
+      "@host/*": ["apps/host/*"],
+      "@plp/*": ["apps/plp/*"],
+      "@button/*": ["apps/button/*"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
