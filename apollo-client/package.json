@@ -1,0 +1,16 @@
+{
+  "name": "apollo-client",
+  "private": true,
+  "workspaces": [
+    "app1",
+    "app2"
+  ],
+  "scripts": {
+    "start": "lerna run --parallel start",
+    "serve": "lerna run --parallel serve",
+    "build": "lerna run build"
+  },
+  "devDependencies": {
+    "lerna": "3.22.1"
+  }
+}
