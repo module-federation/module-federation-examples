@@ -2,7 +2,7 @@ name: on-schedule
 on: 
   workflow_dispatch:
   schedule:
-    - cron: 0 8 * * *
+    - cron: 0 */48 * * *
 
 jobs:
   # Cleanup unused cache to save space, run once a day at 8:00 AM. Removes all caches that are older than 10 hours and with names starting with e2e- or codeql-trap-
