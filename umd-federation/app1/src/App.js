@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDom from "react-dom";
-import App2 from "app2/App"
+import App2, {moduleA} from "app2"
 import App1 from "mf-app-01/App"
-import remixRunRouter from "@remix-run/router"
-console.log("remixRunRouter", remixRunRouter)
+import {createRouter} from "@remix-run/router"
+console.log("remixRunRouter.createRouter", createRouter)
 
 const App = () => {
   return (
@@ -18,6 +18,7 @@ const App = () => {
       <App1 />
       <hr />
       <App2 />
+      app2-moduleA: {moduleA}
     </div>
   )
 }
