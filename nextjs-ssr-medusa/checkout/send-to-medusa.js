@@ -8,7 +8,7 @@ const fetch = require("node-fetch");
 const mergedGraph = mergeGraphs(hostGraph, childGraph);
 fs.writeFileSync('./dashboard-merged.json', JSON.stringify(mergedGraph, null, 2))
 
-fetch('https://api.medusa.codes/update?token=8372db21-6633-4a62-8896-34538c082713', {
+fetch('https://api-dev.medusa.codes/update?token=b99d41da-fc30-405a-94b2-f37266882959', {
   method: 'POST',
   body: JSON.stringify(mergedGraph),
   headers: {

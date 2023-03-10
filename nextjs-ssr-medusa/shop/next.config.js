@@ -31,11 +31,12 @@ module.exports = {
       }),
       new NextMedusaPlugin({
         debug:true,
-        versionStrategy: timestamp,
+        // versionStrategy: timestamp,
+        versionStrategy: 'gitSha', //use commit hash as unique ID
         filename: 'dashboard.json',
-        dashboardURL: `https://api.medusa.codes/update?token=8372db21-6633-4a62-8896-34538c082713`,
+        dashboardURL: `https://api-dev.medusa.codes/update?token=b99d41da-fc30-405a-94b2-f37266882959`,
         metadata: {
-          baseUrl: 'http://localhost:3001/_next/static/chunks/',
+          baseUrl: 'http://localhost:3002/_next/static/chunks/',
           source: {
             url: 'https://github.com/module-federation/federation-dashboard/tree/master/dashboard-example/home',
           },
