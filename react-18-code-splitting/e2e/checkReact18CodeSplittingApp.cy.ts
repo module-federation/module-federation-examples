@@ -24,8 +24,10 @@ appsData.forEach(
             appHeader2: string,
             host: number
     }) {
-    describe(`React 18 Code Splitting ${property.appName}`, () => {
-    
+
+    describe('React 18 Code Splitting', () => {
+        
+        context(`Check ${property.appName}`, () => {
             it('Check App headers and buttons visability', () => {
                 basePage.openLocalhost({
                     number: property.host
@@ -34,7 +36,6 @@ appsData.forEach(
                     selector: baseSelectors.tags.headers.h1,
                     text: Constants.elementsText.react18CodeSplittingApp.header1,
                     visibilityState: 'be.visible'
-                    
                 })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.headers.h2,
@@ -53,8 +54,8 @@ appsData.forEach(
                     selector: baseSelectors.tags.coreElements.button,
                     text: Constants.elementsText.react18CodeSplittingApp.button,
                     visibilityState: 'be.visible'
-                })
-            })
+             })
+        })
         
             it('Check that App 2 Content Block with filled text appear', () => {
                 basePage.openLocalhost({
@@ -85,3 +86,4 @@ appsData.forEach(
             })
         })
     })
+})
