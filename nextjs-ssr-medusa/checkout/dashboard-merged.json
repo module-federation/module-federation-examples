@@ -8,7 +8,7 @@
     },
     {
       "name": "@module-federation/dashboard-plugin",
-      "version": "2.8"
+      "version": "2.8.0-beta"
     },
     {
       "name": "lodash",
@@ -197,17 +197,6 @@
   ],
   "consumes": [
     {
-      "consumingApplicationID": "home",
-      "applicationID": "home",
-      "name": "home",
-      "usedIn": [
-        {
-          "file": "pages/index.js?hasBoundary",
-          "url": "https://github.com/module-federation/federation-dashboard/tree/master/dashboard-example/home/pages/index.js?hasBoundary"
-        }
-      ]
-    },
-    {
       "consumingApplicationID": "shop",
       "applicationID": "shop",
       "name": "shop",
@@ -215,6 +204,17 @@
         {
           "file": "pages/shop.js?hasBoundary",
           "url": "https://github.com/module-federation/federation-dashboard/tree/master/dashboard-example/home/pages/shop.js?hasBoundary"
+        }
+      ]
+    },
+    {
+      "consumingApplicationID": "home",
+      "applicationID": "home",
+      "name": "home",
+      "usedIn": [
+        {
+          "file": "pages/index.js?hasBoundary",
+          "url": "https://github.com/module-federation/federation-dashboard/tree/master/dashboard-example/home/pages/index.js?hasBoundary"
         }
       ]
     },
@@ -253,7 +253,7 @@
       "file": "./pages-map.js"
     }
   ],
-  "version": "04dea618c97d509b1def9597380081359a2954a0",
-  "sha": "04dea618c97d509b1def9597380081359a2954a0",
-  "buildHash": "1c571dc9130aff8d"
+  "version": "a5a5578d46687e2910bdedc88efe2289c2afb168",
+  "sha": "a5a5578d46687e2910bdedc88efe2289c2afb168",
+  "buildHash": "ced4eae489de5011"
 }
