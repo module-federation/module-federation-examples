@@ -30,7 +30,7 @@ module.exports = {
         },
       }),
       new NextMedusaPlugin({
-        debug:true,
+        debug:false,
         // versionStrategy: timestamp,
         versionStrategy: 'gitSha', //use commit hash as unique ID
         filename: 'dashboard.json',

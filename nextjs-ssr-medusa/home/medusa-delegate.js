@@ -1,4 +1,4 @@
-import medusaClient from "@module-federation/dashboard-plugin/medusa-delegate";
+import medusaClient from "@module-federation/dashboard-plugin/medusa-client";
 import {importDelegatedModule} from '@module-federation/utilities';
 //Logging the delegate being called for the resourceQuery from the webpack runtime ID
 //Getting the current request by getting the 'remote' query parameter using URLSearchParams
@@ -27,5 +27,8 @@ module.exports = medusaClient({
   return importDelegatedModule({
     global: constructedContainerName,
     url: constructedContainerUrl,
-  })
+  }).then((remote) => {
+    console.log('remote', remote);
+    return remote;
+  });
 })
