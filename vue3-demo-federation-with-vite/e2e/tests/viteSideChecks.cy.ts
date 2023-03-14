@@ -7,7 +7,9 @@ const basePage: BaseMethods = new BaseMethods()
 describe('Vue 3 Demo Federation with Vite', () => {
     context("It checks vite side app", () => {
         beforeEach(() => {
-            basePage.openLocalhost(5000)
+            basePage.openLocalhost({
+                number: 5000
+            })
         })
     
         it('Clicks on vite content button and checks that wrong alert greeting is not displayed', () => {

@@ -8,7 +8,9 @@ const basePage: BaseMethods = new BaseMethods()
 describe('Vite React Simple', () => {
     context('It checks elements visibility/functionality', () => {
         beforeEach(() => {
-            basePage.openLocalhost(3000)
+            basePage.openLocalhost({
+                number: 3000
+            })
         })
     
         it('Checks react logo visibility', () => {
@@ -61,7 +63,9 @@ describe('Vite React Simple', () => {
 describe('Vite React Simple', () => {
     context('It checks elements colors/functionality', () => {
         beforeEach(() => {
-            basePage.openLocalhost(3000)
+            basePage.openLocalhost({
+                number: 3000
+            })
         })
     
         it('Checks page background color', () => {

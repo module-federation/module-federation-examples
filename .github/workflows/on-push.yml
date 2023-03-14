@@ -4,9 +4,29 @@ on:
     branches:
       - master
 
+env:
+  CACHE_PATH: |
+    **/node_modules
+    ~/.cache/Cypress
+    ~/.cache/yarn/v6
+  FILES_TO_DELETE: |
+    sudo rm -rf "/usr/share/dotnet"
+    sudo rm -rf "/usr/share/swift"
+    sudo rm -rf "/usr/local/share/boost"
+    sudo rm -rf /opt/ghc
+    sudo rm -rf "/usr/local/share/boost"
+    sudo rm -rf "/usr/local/lib/android/sdk"
+    sudo rm -rf "/opt/hostedtoolcache/Python"
+    sudo rm -rf "/opt/hostedtoolcache/go"
+    sudo rm -rf "/opt/hostedtoolcache/CodeQL"
+    sudo rm -rf "/var/lib/gems"
+    sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+    sudo apt-get clean -y
+    sudo apt-get autoremove -y
+
 jobs:
 
-# Stop previous runs
+  # Stop previous runs
   stop-previous-run:
     runs-on: ubuntu-22.04
     steps:
@@ -15,7 +35,7 @@ jobs:
         with:
           access_token: ${{ secrets.GITHUB_TOKEN }}
 
-# Create cache for all samples
+  # Create cache for all samples
   cache:
     runs-on: ubuntu-22.04
     needs: stop-previous-run
@@ -29,7 +49,10 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
-      # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
+      - name: Free up some space
+        run: ${{ env.FILES_TO_DELETE }}
+
+        # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
       - name: Check Yarn hash
         id: yarn-hash
         run: |
@@ -40,15 +63,13 @@ jobs:
         uses: actions/cache@v3
         id: yarn-cache
         with:
-          path: |
-            **/node_modules
-            **/yarn.lock
-            ~/.cache/Cypress
-            ~/.cache/yarn/v6  
+          path: ${{ env.CACHE_PATH }}  
           key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
 
       - name: Install deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
           echo "Yarn changed - install deps ... "
-          yarn install
+          yarn install --frozen-lockfile

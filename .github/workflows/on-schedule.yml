@@ -1,0 +1,46 @@
+name: on-schedule
+on: 
+  workflow_dispatch:
+  schedule:
+    - cron: 0 */48 * * *
+
+jobs:
+  # Cleanup unused cache to save space, run once a day at 8:00 AM. Removes all caches that are older than 10 hours and with names starting with e2e- or codeql-trap-
+  cleanup:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Cleanup unused cache
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const timestamp = new Date().getTime() - 1000 * 60 * 60 * 10;
+            const date = new Date(timestamp);
+            const isoDate = date.toISOString().replace('Z', '');
+            const milliseconds = (date.getMilliseconds() / 1000).toFixed(7).slice(2);
+            const resultDate = isoDate + milliseconds + 'Z';
+            const caches = await github.rest.actions.getActionsCacheList({
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+            if (caches.data) {
+              for (const cache of caches.data.actions_caches) {
+                if (cache.key.startsWith('e2e-') && cache.ref.match(/refs\/pull\/\d+\/merge/g)) {
+                  await github.rest.actions.deleteActionsCacheById({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    cache_id: cache.id
+                  });
+                  console.log(`Deleted cache ${cache.key}`);
+                } else if (cache.key.startsWith('codeql-trap-') && cache.last_accessed_at < resultDate) {
+                  await github.rest.actions.deleteActionsCacheById({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    cache_id: cache.id
+                  });
+                  console.log(`Deleted cache ${cache.key}`);
+                } else {
+                  console.log(`Cache ${cache.key} is valid and will not be deleted`);
+                }
+              }
+            }

@@ -78,7 +78,9 @@ appsData.forEach(
         describe(`NextJS SSR`, () => {
             context(`Check content in ${property.appName} app`, () => {
                 beforeEach(() => {
-                    basePage.openLocalhost(property.host)
+                    basePage.openLocalhost({
+                        number: property.host
+                    })
                 })
 
                 it(`Check the header content of Home page`, () => {
@@ -165,7 +167,9 @@ appsData.forEach(
         describe('NextJS SSR', () => {
             context('Check links on Home page', () => {
                 beforeEach(() => {
-                    basePage.openLocalhost(property.host)
+                    basePage.openLocalhost({
+                        number: property.host
+                    })
                 })
 
                 navigationTextedLinks.forEach((property: { text: string, link: string }) => {
@@ -214,7 +218,10 @@ appsData.forEach(
         describe('NextJS SSR', () => {
             context('Check the header content of Shop page', () => {
                 beforeEach(() => {
-                    basePage.openLocalhost(property.host, Constants.hrefs.nextJsSsrApp.shop)
+                    basePage.openLocalhost({
+                        number: property.host,
+                        path: Constants.hrefs.nextJsSsrApp.shop
+                    })
                 })
 
                 it(`Check the header content of Shop page`, () => {
@@ -260,7 +267,10 @@ appsData.forEach(
         describe('NextJS SSR', () => {
             context('Check links on Shop page', () => {
                 beforeEach(() => {
-                    basePage.openLocalhost(property.host, Constants.hrefs.nextJsSsrApp.shop)
+                    basePage.openLocalhost({
+                        number: property.host,
+                        path: Constants.hrefs.nextJsSsrApp.shop
+                    })
                 })
 
                 navigationTextedLinks.forEach((property: { text: string, link: string }) => {
@@ -299,7 +309,10 @@ appsData.forEach(
         describe('NextJS SSR', () => {
             context(`Check the content of Checkout page`, () => {
                 beforeEach(() => {
-                    basePage.openLocalhost(property.host, Constants.hrefs.nextJsSsrApp.checkout)
+                    basePage.openLocalhost({
+                        number: property.host,
+                        path: Constants.hrefs.nextJsSsrApp.checkout
+                    })
                 })
 
 
@@ -359,7 +372,10 @@ appsData.forEach(
         describe('NextJS SSR', () => {
             context('Check links on Checkout page', () => {
                 beforeEach(() => {
-                    basePage.openLocalhost(property.host, Constants.hrefs.nextJsSsrApp.checkout)
+                    basePage.openLocalhost({
+                        number: property.host,
+                        path: Constants.hrefs.nextJsSsrApp.checkout
+                    })
                 })
     
                 navigationTextedLinks.forEach((property: { text: string, link: string }) => {

@@ -1,5 +1,5 @@
 const { resolve } = require('path');
-const { AngularCompilerPlugin } = require('@ngtools/webpack');
+const { AngularWebpackPlugin } = require('@ngtools/webpack');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
@@ -10,6 +10,9 @@ module.exports = (env = {}) => {
   return {
     entry: ['./src/polyfills.ts', './src/main.ts'],
     mode: 'production',
+    resolve: {
+      extensions: ['.ts', '.js'],
+    },
     output: {
       path: resolve(__dirname, buildFolder),
     },
@@ -37,9 +40,10 @@ module.exports = (env = {}) => {
         ],
       }),
 
-      new AngularCompilerPlugin({
+      new AngularWebpackPlugin({
         tsConfigPath: './tsconfig.app.json',
         entryModule: './src/app/app.module#AppModule',
+        jitMode: true,
         skipCodeGeneration: true,
         directTemplateLoading: false,
       }),

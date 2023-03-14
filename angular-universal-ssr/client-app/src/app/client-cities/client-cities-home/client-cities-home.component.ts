@@ -36,8 +36,9 @@ export class ClientCitiesHomeComponent implements OnInit {
       );
       const componentInstance = this.viewContainer.createComponent(
         factory,
-        null,
+        0,
         this.injector,
+        null,
       ).instance;
       (componentInstance as any).city = city;
     });

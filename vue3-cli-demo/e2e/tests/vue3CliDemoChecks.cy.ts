@@ -75,7 +75,9 @@ describe('Vue 3 CLI Demo', () => {
     
         textedLinks.forEach((property: { text: string, link: string }) => {
             it(`Check that ${property.text} text includes link and not disabled`, () => {
-                basePage.openLocalhost(8081)
+                basePage.openLocalhost({
+                    number: 8081
+                })
                 basePage.checkElementContainText({
                     selector: updatedSelectors.vue3CliDemoApp.linkContainer,
                     text: property.text,
@@ -108,7 +110,9 @@ describe('Vue 3 CLI Demo', () => {
     
         messages.forEach((property: { message: string }) => {
             it(`Check that ${property.message} text is visible`, () => {
-                basePage.openLocalhost(8081)
+                basePage.openLocalhost({
+                    number: 8081
+                })
                 basePage.checkElementWithTextPresence({
                     selector: selectors.vue3CliDemoApp.tabs.home,
                     text: property.message,
@@ -122,7 +126,9 @@ describe('Vue 3 CLI Demo', () => {
 describe('Vue 3 CLI Demo', () => {
     context('Checks tabs and logo', () => {
         beforeEach(() => {
-            basePage.openLocalhost(8081)
+            basePage.openLocalhost({
+                number: 8081
+            })
         })
     
         it('Checks vue logo visibility', () => {

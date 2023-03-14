@@ -178,6 +178,11 @@ export const selectors = {
     completeReactCaseApp: {
         toolTip: '.tool-tip',
     },
+    angularVue: {
+        btn: '[data="VUE_IN_ANGULAR_BUTTON"]',
+        webComponent: 'unique-name',
+        interactionText: '[data="VUE_IN_ANGULAR_INTERACTION_TEXT"]',
+    },
 }
 
 export const updatedSelectors = {

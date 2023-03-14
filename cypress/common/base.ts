@@ -3,7 +3,7 @@
  * Please stick to the next rules:
  * 1. Use existing methods. If you cant please make sure twice that you can't use existing methods
  * 2. Every new method need to be added to relevant section
- * 4. Please add a suitable name to the methods
+ * 3. Please add a suitable name to the methods
  *
  * NAVIGATION LIST
  * Clicks Section
@@ -24,7 +24,7 @@ import {CommonTestData} from "../fixtures/commonTestData";
 
 export class BaseMethods {
 
-    /*
+ /*
  *---------------------------------------------------
  * CLICKS SECTION
  * Base methods for clicking on elements on the page
@@ -106,7 +106,7 @@ export class BaseMethods {
             .wait(wait)
     }
 
-    /*
+/*
  *---------------------------------------------------
  * CHECKS SECTION
  * Base methods for various checks on page
@@ -341,7 +341,9 @@ export class BaseMethods {
     public checkNetworkCallCreated(requestType: RequestsTypes, url: string, localhost: number, statusCode: number): void {
         cy.intercept(requestType, url).as('networkCall');
         // Extra visit required cause intercept needs to be created before visit
-        this.openLocalhost(localhost)
+        this.openLocalhost({
+            number: localhost
+        })
         cy.wait('@networkCall').then((interception) => {
             if(interception.response) {
                 cy.wrap(interception.response.statusCode).should('eq', statusCode)
@@ -708,7 +710,7 @@ export class BaseMethods {
         }), { log: false });
     }
 
-    /*
+/*
 *---------------------------------------------------
 * WRITES SECTION
 * Base methods for writing values in inputs/files
@@ -762,7 +764,7 @@ export class BaseMethods {
             .fill(text);
     }
 
-    /*
+/*
 *---------------------------------------------------
 * HELPERS SECTION
 * Base methods for activities like visit, go back,
@@ -792,11 +794,18 @@ export class BaseMethods {
         cy.wait(wait).get(selector).realHover()
     }
 
-    public openLocalhost(number: number, path?: string): Cypress.Chainable<Cypress.AUTWindow> {
+    public openLocalhost({
+        number,
+        path
+    }: {
+        number: number,
+        path?: string
+    }): Cypress.Chainable<Cypress.AUTWindow> {
         return path ?
             cy.visit(`${Cypress.env(`localhost${number}`)}/${path}`)
             :
             cy.visit(Cypress.env(`localhost${number}`));
+
     }
 
     public reloadWindow(withoutCache: boolean = false): void {
@@ -811,7 +820,7 @@ export class BaseMethods {
         return selector.includes(Constants.selectorParts.sharedRoutingAppSelectorsParts.userInfo.toUpperCase()) ? baseSelectors.tags.inputs.textarea : baseSelectors.tags.inputs.input
     }
 
-    /*
+/*
 *---------------------------------------------------
 * ACTIVITIES SECTION
 * Base methods related to specific actions
@@ -950,7 +959,9 @@ export class BaseMethods {
             link: Constants.commonConstantsData.commonLinks.nextJs,
         })
         Constants.commonConstantsData.nextJsAppsCommonPhrases.linksCardsText.forEach((text: string, index: number) => {
-            this.openLocalhost(host)
+            this.openLocalhost({
+                number: host
+            })
             this.checkOutsideResourceUrl({
                 selector: commonSelectors.nextJsAppsLinkCard,
                 text,
@@ -992,7 +1003,7 @@ export class BaseMethods {
     }
 
 
-    /*
+/*
 *---------------------------------------------------
 * PRIVATES SECTION
 * Base private methods

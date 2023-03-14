@@ -253,6 +253,31 @@ export class Constants {
     }
 
     public static readonly elementsText = {
+        reactNestedRoutersApp: {
+            shellAppTextedLinks: [
+                'App1 Page1',
+                'App1 Page2',
+                'App2 PageA',
+                'App2 PageB',
+                'Go to Page 2',
+            ],
+            shellAppLinks: [
+                '/app-1/page-1',
+                '/app-1/page-2',
+                '/app-2/page-a',
+                '/app-2/page-b',
+            ],
+            replaceValues: [
+                '2',
+                'B',
+                'Page 1',
+                'Page 2',
+                '1',
+                'Page A',
+                'Page B',
+                'A'
+            ]
+        },
         vue3DemoFederationWithViteApp: {
             viteContent: 'Vite Content',
             webpackContent: 'Webpack Content',
@@ -665,6 +690,7 @@ export class Constants {
                 routeButton: 'Route',
                 subheader1: 'Exposed from Child',
                 subheader2: 'Listening in Parent',
+                counter: 'Counter'
             },
             appButtonDiv: 'App Button',
             appButtonClickMeButton: 'Click me',
@@ -757,10 +783,32 @@ export class Constants {
                 'Learn React',
                 'Vite Docs'
             ]
+        },
+        angularVue: {
+            angularAppHead: 'Welcome to the Angular 15 Microfrontend demo using Webpack 5 Module Federation',
+            vueWebComponentTitle: 'Vue Remote Custom Element Content',
+            vueAsApplicationTitle: 'Vue Remote Create App Content',
+            interactionTextInitial: 'Some Content',
+            interactionTextChanged: 'Interaction Works'
+        },
+        nextJSv12App: {
+            federatedButton: {
+                name: 'Federated Catch All',
+                header: 'PDP!!!'
+            }
         }
     }
 
     public static readonly commonPhrases = {
+        reactNestedRoutersApp: {
+            pagesMessages: {
+                page1App1: 'Page 1 from App1',
+                pageAApp2: 'Page A from App2',
+                page2App1: 'Page 2 from App1',
+                pageBApp2: 'Page B from App2',
+            },
+            loadingMessage: 'Loading App1...',
+        },
         vue3DemoFederationWithViteApp: {
             greetings: {
                 vite: 'im from Vite',
@@ -1054,5 +1102,21 @@ export class Constants {
         viteReactSimpleApp: {
             viteLink: 'https://vitejs.dev/guide/features.html'
         },
+        reactNestedRoutersApp: {
+            pageB: '/page-b',
+            app1: '/app-1',
+        },
+        nextJsHostReactRemoteApp: {
+            nextJsLink: 'https://nextjs.org/',
+            cardsLinks: [
+                'https://nextjs.org/docs',
+                'https://nextjs.org/learn/foundations/about-nextjs',
+                'https://github.com/vercel/next.js/tree/canary/examples',
+                Constants.commonConstantsData.commonLinks.vercel
+            ]
+        },
+        angular11SkullyApp: {
+            product: '/product'
+        }
     }
 }

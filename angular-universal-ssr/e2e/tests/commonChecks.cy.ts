@@ -32,7 +32,9 @@ describe('Angular Universal SSR', () => {
             const appTabSelector: string = updatedSelectors.angularUniversalSsrApp.tab
     
             it(`Checks that ${property.componentName} component element text will be visible only if ${property.componentName} tab is active & text is not reverted after reload`, () => {
-                basePage.openLocalhost(4000)
+                basePage.openLocalhost({
+                    number: 4000
+                })
     
                 if(property.componentName === appsData[1].componentName) {
                     basePage.checkElementWithTextPresence({
@@ -58,7 +60,9 @@ describe('Angular Universal SSR', () => {
     
             it(`Checks link changes after click on ${property.componentName} tab & check link is not reverted after reload`, () => {
                 basePage.skipTestByCondition(property.componentName === appsData[0].tabName)
-                basePage.openLocalhost(4000)
+                basePage.openLocalhost({
+                    number: 4000
+                })
                 basePage.checkUrlText(property.link)
                 basePage.clickElementWithText({
                     selector: appTabSelector,

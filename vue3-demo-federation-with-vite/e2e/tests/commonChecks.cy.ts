@@ -26,7 +26,9 @@ describe('Vue 3 Demo Federation with Vite', function () {
             const secondButtonText = property.host === 5000 ? appsData[1].text : appsData[0].text
     
             it('Checks buttons with text visibility', () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: property.selector,
                     text: property.text,
@@ -40,7 +42,9 @@ describe('Vue 3 Demo Federation with Vite', function () {
             })
     
             it('Checks that both buttons are in the same block', () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementVisibility({
                     parentSelector: property.parentSelector,
                     selector: property.selector
