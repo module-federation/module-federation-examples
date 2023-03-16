@@ -7,8 +7,6 @@ import providers from '../src/StyleProviders';
 export default async function(req, res) {
     const css = new Set();
     const insertCss = (...styles) => {
-        console.log(styles);
-
         styles.forEach(style => css.add(style._getCss()));
     };
 
