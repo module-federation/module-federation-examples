@@ -913,6 +913,23 @@ export class Constants {
                 'remote got message:'
             ]
         },
+        federatedStyles: {
+            header: 'Federated Styles',
+            reactAppContainer: 'React App Container',
+            nextJsAppContainer: 'NextJs App Container',
+            buttonsText: {
+                red: 'Red className Button Federated Css injected',
+                black: 'Black Button Federated Css variables inject and used in internal css',
+                orange: 'Orange Button Federated Scss injected',
+                brown: 'Brown Button Federated Less injected',
+                yellow: 'Yellow Button Federated Css Module',
+                redBlue: 'Red className Button but blue Css Module (classname collision does not affect)',
+                aquamarine: 'App 3 Button with Federated Jss styling',
+                purple: 'Federated Styled Button',
+                tailwindBlue: 'Federated button styled with Tailwind',
+                tailwindGreen: 'Button with Federated Tailwind css.',
+            }
+        },
         craReactApp: {
             hostApp: 'This is the host application.',
             hostAppRemoteMessage: 'This is a component from the remote application',
@@ -1001,7 +1018,16 @@ export class Constants {
         darkSaturatedBlue: 'rgb(0, 0, 255)',
         mint: 'rgb(97, 218, 251)',
         skyBlue: 'rgb(0, 112, 243)',
-        lightMint: 'rgb(95, 158, 160)'
+        lightMint: 'rgb(95, 158, 160)',
+        absoluteOrange: 'rgb(255, 165, 0)',
+        brown: 'rgb(165, 42, 42)',
+        absoluteBlue: 'rgb(0, 0, 255)',
+        absoluteRed: 'rgb(255, 0, 0)',
+        absolutePurple: 'rgb(128, 0, 128)',
+        absoluteBlack: 'rgb(0, 0, 0)',
+        tailwindBlue: 'rgb(59, 130, 246)',
+        tailwindGreen: 'rgb(34, 197, 94)',
+        transparent: 'rgba(0, 0, 0, 0)',
     }
 
     public static readonly hrefs = {
@@ -1117,6 +1143,42 @@ export class Constants {
         },
         angular11SkullyApp: {
             product: '/product'
+        }
+    }
+    public static readonly fullTestData = {
+        federatedCssTestData: {
+            css: {
+                path: 'consume-css-page',
+                bgColor: Constants.color.absoluteRed,
+            },
+            cssModule: {
+                path: 'consume-css-module-page',
+                bgColor: Constants.color.absoluteRed,
+            },
+            jss: {
+                path: 'consume-jss-page',
+                bgColor: Constants.color.aquamarine,
+            },
+            less: {
+                path: 'consume-less-page',
+                bgColor: Constants.color.brown,
+            },
+            scss: {
+                path: 'consume-scss-page',
+                bgColor: Constants.color.absoluteOrange,
+            },
+            styledComponent: {
+                path: 'consume-styled-component-page',
+                bgColor: Constants.color.absolutePurple,
+            },
+            tailwindGlobal: {
+                path: 'consume-tailwind-global-css-page',
+                bgColor: Constants.color.tailwindGreen,
+            },
+            tailwindModule: {
+                path: 'consume-tailwind-module-css-page',
+                bgColor: Constants.color.tailwindBlue,
+            }
         }
     }
 }
