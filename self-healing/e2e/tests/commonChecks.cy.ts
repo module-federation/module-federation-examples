@@ -22,7 +22,9 @@ describe('Self Healing', () => {
     
         appsData.forEach((property: { host: number, appName: string, webpackConfigPath: string }) => {
             it(`Checks ${Constants.commonPhrases.selfHealingApp.headerName} header visibility`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.div,
                     text: Constants.commonPhrases.selfHealingApp.headerName,
@@ -31,7 +33,9 @@ describe('Self Healing', () => {
             });
     
             it(`Checks ${property.appName} app name visibility`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.div,
                     text: property.appName,
@@ -40,7 +44,9 @@ describe('Self Healing', () => {
             });
     
             it(`Checks button text visibility for ${property.appName} app`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.button,
                     text: Constants.commonConstantsData.commonButtonWithEmoji,
@@ -49,7 +55,9 @@ describe('Self Healing', () => {
             });
     
             it(`Checks that button on both apps has pink color`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementHaveProperty({
                     selector: baseSelectors.tags.coreElements.button,
                     prop: CssAttr.backgroundColor,
@@ -58,7 +66,9 @@ describe('Self Healing', () => {
             });
     
             it(`Checks that app names is not equal`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.compareInfoBetweenHosts(updatedSelectors.common.appName, property.host === 3002 ? appsData[0].host: appsData[1].host, false)
             });
     

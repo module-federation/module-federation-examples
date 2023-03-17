@@ -31,7 +31,9 @@ appsData.forEach((
     describe('Shared Routes 2', () => {
         context(`Check Shared-routes ${property.appName} starts and running`, () => {
             before(() => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
             })
     
             it (`Check ${property.appName} UI and buttons Home, About`, () => {

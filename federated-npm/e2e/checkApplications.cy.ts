@@ -29,7 +29,9 @@ appsData.forEach(
     describe('Federated npm', () => {
         context(`Check ${property.appNameText}`, () => {
             it(`Check header block with text visibility`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.headers.h1,
                     text: Constants.commonConstantsData.basicComponents.basicHostRemote,
@@ -43,7 +45,9 @@ appsData.forEach(
             })
         
             it(`Check button text visibility`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.button,
                     text: Constants.updatedConstantsData.commonAppWithButton.app2,

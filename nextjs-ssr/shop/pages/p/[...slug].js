@@ -1,5 +1,9 @@
+import { useRouter } from 'next/router'
+
 export default function PDP() {
-  return <h1>PDP!!!</h1>;
+  const router = useRouter()
+  const { slug } = router.query
+  return <h1>PDP!!! slug: {slug}</h1>;
 }
 PDP.getInitialProps = async () => {
   return {};

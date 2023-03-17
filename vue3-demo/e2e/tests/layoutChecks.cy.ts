@@ -7,7 +7,9 @@ const basePage: BaseMethods = new BaseMethods()
 describe('Vue 3 Demo', () => {
     context("It checks layout app", () => {
         beforeEach(() => {
-            basePage.openLocalhost(3001)
+                basePage.openLocalhost({
+                    number: 3001
+                })
         })
     
         it('Checks page header with text visibility', () => {

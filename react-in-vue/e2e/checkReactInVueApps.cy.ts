@@ -38,7 +38,9 @@ appsData.forEach((
     describe("React in Vue", () => {
         context('Check React in Vue Apps', () => {
             beforeEach(() => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
             })
         
             it('Check app build and running & Check apps elements exist', () => {

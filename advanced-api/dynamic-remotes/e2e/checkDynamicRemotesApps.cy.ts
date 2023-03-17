@@ -31,7 +31,9 @@ appsData.forEach(
         describe('Dynamic Remotes', () => {
             context(`Check ${appName}`, () => {
                 beforeEach(() => {
-                    basePage.openLocalhost(host)
+                    basePage.openLocalhost({
+                        number: host
+                    })
                 })
     
                 it(`Check ${appName} elements exist on the page`, () => {
@@ -59,7 +61,9 @@ appsData.forEach(
                 })
     
                 it(`Check buttons in ${appName} exist`, () => {
-                    basePage.openLocalhost(host)
+                    basePage.openLocalhost({
+                    number: host
+                })
                     if (property.isButtonExist) {
                         Constants.elementsText.dynamicRemotesApp.buttonsText.forEach(button => {
                             basePage.checkElementWithTextPresence({

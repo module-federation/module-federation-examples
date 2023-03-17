@@ -36,7 +36,9 @@ appsData.forEach((
         describe(`React NextJS -- React Host Remote`, () => {
             context(`Check react-host-remote ${property.appName} starts and running`, () => {
                 before(() => {
-                    basePage.openLocalhost(property.host)
+                    basePage.openLocalhost({
+                        number: property.host
+                    })
                 })
                 it(`Check Host ${property.appName} UI and Invoices, Expenses buttons`, () => {
                     basePage.checkElementWithTextPresence({

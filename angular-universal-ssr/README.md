@@ -9,7 +9,7 @@ Run `yarn start`. This will build and serve both `client-app`, `host-app`, on
 ports `4000`, `5000`, respectively.
 
 - [localhost:4000](http://localhost:4000/) (CLIENT_APP)
-- [localhost:5000](http://localhost:5000/) (HOST_APP)
+- [localhost:3000](http://localhost:3000/) (HOST_APP)
 
 # Running Cypress E2E Tests
 

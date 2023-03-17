@@ -31,7 +31,9 @@ describe('Rust Wasm', () => {
             const extraPropertyIndex: number = property.index === 1 ? 2 : 1
     
             it(`Checks that game board appears after click on ${property.buttonName} button`, () => {
-                basePage.openLocalhost(8080)
+                basePage.openLocalhost({
+                    number: 8080
+                })
                 basePage.checkElementVisibility({
                     selector: selectors.rustWasmApp.gameBoard,
                     isVisible: false,
@@ -49,7 +51,9 @@ describe('Rust Wasm', () => {
             })
     
             it(`Checks that game board triggered ${property.buttonName} button disappears after reload`, () => {
-                basePage.openLocalhost(8080)
+                basePage.openLocalhost({
+                    number: 8080
+                })
                 methodsPage.checkGameBoardAppearsByClick(property.buttonName)
                 basePage.reloadWindow()
                 basePage.checkElementVisibility({
@@ -61,7 +65,9 @@ describe('Rust Wasm', () => {
     
             it(`Checks ${property.buttonName} button still functioning even when game already started`, () => {
                 basePage.skipTestByCondition(property.buttonName === appsData[0].buttonName)
-                basePage.openLocalhost(8080)
+                basePage.openLocalhost({
+                    number: 8080
+                })
                 basePage.clickElementWithText({
                     selector: baseSelectors.tags.coreElements.button,
                     text: appsData[0].buttonName
@@ -78,7 +84,9 @@ describe('Rust Wasm', () => {
             })
     
             it(`Checks ${property.buttonName} button still functioning even when game already started and stopped`, () => {
-                basePage.openLocalhost(8080)
+                basePage.openLocalhost({
+                    number: 8080
+                })
                 basePage.clickElementWithText({
                     selector: baseSelectors.tags.coreElements.button,
                     text: appsData[0].buttonName
@@ -109,7 +117,9 @@ describe('Rust Wasm', () => {
                 const consoleMessage: string =  property.index === 1 ? appsData[2].consoleMessage :  appsData[1].consoleMessage
     
                 basePage.skipTestByCondition(property.buttonName === appsData[0].buttonName)
-                basePage.openLocalhost(8080)
+                basePage.openLocalhost({
+                    number: 8080
+                })
                 methodsPage.checkGameBoardAppearsByClick(Constants.elementsText.rustWasmApp.buttonsNames[property.index])
                 basePage.checkInfoInConsole(consoleMessage,StubTypes.notToBeCalled, false)
                 basePage.clickElementWithText({
@@ -121,7 +131,9 @@ describe('Rust Wasm', () => {
     
             it(`Checks game triggered by ${property.buttonName} button can be started and stopped by Play button`, () => {
                 basePage.skipTestByCondition(property.buttonName === appsData[0].buttonName)
-                basePage.openLocalhost(8080)
+                basePage.openLocalhost({
+                    number: 8080
+                })
                 methodsPage.checkGameBoardAppearsByClick(property.buttonName)
                 basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmApp.consoleMessages.startLoopMessage,StubTypes.notToBeCalled, false)
                 basePage.checkInfoInConsole(Constants.commonPhrases.rustWasmApp.consoleMessages.stopLoopMessage,StubTypes.notToBeCalled, false, false)

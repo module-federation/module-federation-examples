@@ -16,7 +16,9 @@ describe("Nested", () => {
         // })
     context('Check App 3', () => {
         beforeEach(() => {
-            basePage.openLocalhost(3003)
+            basePage.openLocalhost({
+                number: 3003
+            })
         })
     
         it('Check button exists', () => {

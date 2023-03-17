@@ -1,0 +1,27 @@
+{
+  "name": "@federated-css/expose-css-module",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "7.18.9",
+    "@babel/preset-react": "7.18.6",
+    "babel-loader": "8.2.5",
+    "html-webpack-plugin": "5.5.0",
+    "serve": "13.0.4",
+    "webpack": "5.72.1",
+    "webpack-cli": "4.10.0",
+    "webpack-dev-server": "4.9.3"
+  },
+  "scripts": {
+    "start": "webpack-cli serve",
+    "build": "webpack --mode production",
+    "serve": "serve dist -p 4001",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "css-loader": "^6.7.3",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "style-loader": "^3.3.1"
+  }
+}
