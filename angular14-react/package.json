@@ -9,6 +9,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "postinstall": "yarn --ignore-scripts",
     "start": "lerna run --scope=angular14-react_* --parallel start",
     "e2e:ci": "yarn start & wait-on http-get://localhost:4201/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
