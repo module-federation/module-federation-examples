@@ -1,17 +1,17 @@
 import React from 'react';
-import { loadComponent } from './utils/loadComponent';
+import { importRemote } from '@module-federation/utilities';
 
 function System(props) {
   const {
     system,
-    system: { remote, url, module },
+    system: { url, scope, module },
   } = props;
 
-  if (!system || !remote || !url || !module) {
+  if (!system || !url || !scope || !module) {
     return <h2>No system specified</h2>;
   }
 
-  const Component = React.lazy(loadComponent(remote, 'default', module, url));
+  const Component = React.lazy(() => importRemote({ url, scope, module }));
 
   return (
     <React.Suspense fallback="Loading System">
@@ -25,16 +25,16 @@ function App() {
 
   function setApp2() {
     setSystem({
-      remote: 'app2',
-      url: 'http://localhost:3002/remoteEntry.js',
+      url: 'http://localhost:3002',
+      scope: 'app2',
       module: './Widget',
     });
   }
 
   function setApp3() {
     setSystem({
-      remote: 'app3',
-      url: 'http://localhost:3003/remoteEntry.js',
+      url: 'http://localhost:3003',
+      scope: 'app3',
       module: './Widget',
     });
   }
