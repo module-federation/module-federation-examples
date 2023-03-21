@@ -645,6 +645,24 @@ export class Constants {
                 expenses: 'Expenses'
             },
         },
+        react18CodeSplittingApp: {
+            app1: {
+                header2: 'This is the App 1 application.',
+                appName: 'App1'
+            },
+            app2: {
+                header2: 'This is the App 2 application.',
+                appName: 'App2'
+            },
+            splitedApp:{
+                header: 'App 2: Content',
+                subHeader: 'This is the content from app2.',
+                inputText: 'Custom text: '
+            },
+            header1: 'Module Federation Example: React 18 Code Splitting',
+            header3: 'Type something into this input',
+            button: 'Toggle Content',
+        },
         reactHostNextJsApp: {
             remoteComponents: {
                 header: 'This is the React container App hosted at localhost:8080',

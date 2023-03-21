@@ -91,6 +91,9 @@ export const selectors = {
         sharedBlock: '[data-e2e="SHARED__REACT_BLOCK"]',
         commonReactBlock: '[data-e2e="REACT__{blockType}_BLOCK"]'
     },
+    react18CodeSplittingApp: {
+        app2ContentBlock: '[data-e2e="APP_2_CONTENT_BLOCK"]',
+    },
     sharedStoreCrossFrameworkApp: {
         clicksCounter: '[data-e2e="CLICKS_COUNTER"]',
         buttonsBlock: '[data-e2e="REMOTE_{blockType}__BUTTONS_BLOCK_MODULE"]',
