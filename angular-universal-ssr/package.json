@@ -8,6 +8,7 @@
   "version": "0.0.0",
   "type": "commonjs",
   "scripts": {
+    "postinstall": "yarn install --ignore-scripts",
     "start": "yarn build:shell && yarn build:client && yarn start:shell & yarn start:client",
     "build:shell": "npm --prefix ./host-app run build:federation",
     "start:shell": "npm --prefix ./host-app run serve:federation",

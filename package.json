@@ -172,7 +172,7 @@
   },
   "scripts": {
     "bootstrap": "lerna bootstrap --ignore-scripts",
-    "build": "lerna run --parallel build",
+    "build": "lerna run --concurrency=4 build",
     "submodules": "git pull --recurse-submodules",
     "prettier": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\"",
     "prettier:check": "prettier --list-different \"**/*.{js,jsx,json,md,ts,tsx}\"",
