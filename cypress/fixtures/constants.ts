@@ -663,6 +663,23 @@ export class Constants {
             header3: 'Type something into this input',
             button: 'Toggle Content',
         },
+        loadableReact18: {
+            app1: {
+                subHeader: 'This is the App 1 application.',
+            },
+            app2: {
+                subHeader: 'This is the App 2 application.',
+            },
+            splitedApp:{
+                header: 'App 2: Content',
+                subHeader: 'This is the content from app2.',
+                inputText: 'Custom text: '
+            },
+            header: 'Module Federation Example: Server Side Rendering',
+            header3: 'Type something into this input',
+            regularButton: 'Regular Button',
+            loadableButton: 'Loadable Button'
+        },
         reactHostNextJsApp: {
             remoteComponents: {
                 header: 'This is the React container App hosted at localhost:8080',
