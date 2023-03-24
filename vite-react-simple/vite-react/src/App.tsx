@@ -30,6 +30,7 @@ function App() {
             href="https://reactjs.org"
             target="_blank"
             rel="noopener noreferrer"
+            data-e2e="VITE_REACT_APP__LEARN_REACT_LINK"
           >
             Learn React
           </a>
@@ -39,6 +40,7 @@ function App() {
             href="https://vitejs.dev/guide/features.html"
             target="_blank"
             rel="noopener noreferrer"
+            data-e2e="VITE_REACT_APP__VITE_DOCS_LINK"
           >
             Vite Docs
           </a>
