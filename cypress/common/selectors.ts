@@ -190,6 +190,10 @@ export const selectors = {
         interactionText: '[data="VUE_IN_ANGULAR_INTERACTION_TEXT"]',
     },
     federatedCssButton: '[data-e2e="FEDERATED_CSS_BUTTON"]',
+    viteReactSimple: {
+        reactLink: '[data-e2e="VITE_REACT_APP__LEARN_REACT_LINK"]',
+        viteLink: '[data-e2e="VITE_REACT_APP__VITE_DOCS_LINK"]'
+    }
 }
 
 export const updatedSelectors = {
