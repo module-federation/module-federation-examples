@@ -60,7 +60,7 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        loader: 'esbuild-loader',
+        loader: require.resolve('esbuild-loader'),
         exclude: /node_modules/,
         options: {
           loader: 'jsx',
