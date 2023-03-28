@@ -35,7 +35,10 @@ appsData.forEach((
     describe('Angular 12 microfrontends', () => {
         context(`Check ${property.appName}`, () => {
             beforeEach(() => {
-                basePage.openLocalhost(property.host, property.appPath)
+                basePage.openLocalhost({
+                    number: property.host,
+                    path: property.appPath
+                })
             })
     
             it(`Check ${property.appName} build and running (Check elements: Navigation, Header, Paragpaph)`, () => {

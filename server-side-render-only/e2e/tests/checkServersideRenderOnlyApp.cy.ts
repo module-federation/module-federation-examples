@@ -30,7 +30,9 @@ appsData.forEach((
     describe('Server Side Render Only', () => {
         context(`Check ${property.headerText} App`, () => {
             beforeEach(() => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
             })
     
             it(`Check ${property.headerText} app build and running + check elemens exist`, () => {
@@ -62,7 +64,9 @@ appsData.forEach((
                     content: Constants.elementsText.serverSideRenderOnlyApp.contents.changedContent
                 })
                 if(property.host === 3000) {
-                    basePage.openLocalhost(3001)
+                    basePage.openLocalhost({
+                        number: 3001
+                    })
                     basePage.checkElementWithTextPresence({
                         selector: baseSelectors.tags.coreElements.div,
                         text: property.updatedSharedComponentText
@@ -78,7 +82,9 @@ appsData.forEach((
                     })
                     return;
                 }
-                basePage.openLocalhost(3000)
+                basePage.openLocalhost({
+                    number: 3000
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.div,
                     text: property.updatedSharedComponentText

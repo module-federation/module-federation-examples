@@ -57,7 +57,10 @@ export class SharedRoutingMethods extends BaseMethods {
     }
 
     public visitOnPageByName(checkedPageHeader: string, remotePageHeader: string, host: number): void {
-        this.openLocalhost(host, remotePageHeader)
+        this.openLocalhost({
+            number: host,
+            path: remotePageHeader
+        })
         this.checkElementWithTextPresence({
             selector: baseSelectors.tags.headers.header,
             text: remotePageHeader,

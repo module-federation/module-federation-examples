@@ -16,7 +16,9 @@ describe('Nested', () => {
         // })
     context('Check App 2', () => {
         beforeEach(() => {
-            basePage.openLocalhost(3002)
+            basePage.openLocalhost({
+                number: 3002
+            })
         })
     
         it('Check elements exist', () => {

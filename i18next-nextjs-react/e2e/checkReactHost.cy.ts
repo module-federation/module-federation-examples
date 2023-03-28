@@ -15,7 +15,9 @@ describe('i18next Nextjs React', () => {
         // })
     context("Check Next host", () => {
         beforeEach(() => {
-            basePage.openLocalhost(3001)
+            basePage.openLocalhost({
+                number: 3001
+            })
         })
     
         it('Check the content exist on React host', () => {

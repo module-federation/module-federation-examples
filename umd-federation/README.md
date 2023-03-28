@@ -23,3 +23,10 @@ To build app and run test in headless mode, run `yarn e2e:ci`. It will build app
 ## try online
 
 https://stackblitz.com/github/module-federation/module-federation-examples/tree/master/umd-federation?file=app1/webpack.config.js
+
+Create lerna.json if you are in online example
+{
+   "version": "0.0.0",
+   "npmClient": "yarn",
+   "useWorkspaces": true
+}

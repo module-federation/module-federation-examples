@@ -7,7 +7,9 @@ const basePage: BaseMethods = new BaseMethods()
 describe("Redux Reducer Injection", () => {
     context("Checks application", () => {
         beforeEach(() => {
-            basePage.openLocalhost(3001)
+            basePage.openLocalhost({
+                number: 3001
+            })
         })
         let appText = [
             {

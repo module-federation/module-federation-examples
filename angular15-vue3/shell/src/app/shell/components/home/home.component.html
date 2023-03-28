@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>Microfrontend Shell</h2>
+  <p>Welcome to the Angular 15 Microfrontend demo using Webpack 5 Module Federation</p>
+  <p>This component is part of the Angular shell application</p>
+    <br />
+
+  This is part of remote application.
+
+    <federated-component remoteEntry="http://localhost:4201/remoteEntry.js"
+                         remoteName="vue_remote"
+                         exposedModule="./customElement"
+                         webComponentSelector="unique-name"
+    ></federated-component>
+  <br />
+    <federated-component remoteEntry="http://localhost:4201/remoteEntry.js"
+                         remoteName="vue_remote"
+                         exposedModule="./app"
+                         [isApp]="true"></federated-component>
+</div>

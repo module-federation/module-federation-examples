@@ -30,7 +30,9 @@ appsData.forEach((
     describe('Shared Context', () => {
         context(`Check ${property.subheader}`, () => {
             beforeEach(() => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
             })
             it (`Check ${property.subheader} elements (header, subHeader, paragraph)`, () => {
                 basePage.checkElementWithTextPresence({

@@ -22,7 +22,9 @@ describe('Typescript', () => {
     
         appsData.forEach((property: { host: number, appName: string, smallButton?: string, largeButton?: string }) => {
             it(`Checks both apps shares same header`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.headers.h1,
                     text: CommonTestData.commonTypeScriptAppsData[0].header,
@@ -31,7 +33,9 @@ describe('Typescript', () => {
             });
     
             it(`Checks app name visibility`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.headers.h2,
                     text: property.appName,
@@ -40,7 +44,9 @@ describe('Typescript', () => {
             });
     
             it(`Checks both apps shares ${appsData[0].smallButton}`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.button,
                     text: appsData[0].smallButton,
@@ -49,7 +55,9 @@ describe('Typescript', () => {
             });
     
             it(`Checks ${appsData[0].smallButton} is not disabled`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementState({
                     selector: baseSelectors.tags.coreElements.button,
                     text: appsData[0].smallButton,
@@ -58,7 +66,9 @@ describe('Typescript', () => {
             });
     
             it(`Checks only ${appsData[0].appName} includes ${appsData[0].largeButton}`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 if(property.host === appsData[0].host) {
                   basePage.checkElementWithTextPresence({
                       selector: baseSelectors.tags.coreElements.button,

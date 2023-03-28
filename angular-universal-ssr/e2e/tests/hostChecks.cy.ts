@@ -13,28 +13,30 @@ const baseElementsQuantity: number = 3
 describe('Angular Universal SSR', () => {
     context('It checks host app', () => {
         beforeEach(() => {
-            basePage.openLocalhost(4000)
+            basePage.openLocalhost({
+                number: 4000
+            })
         })
-    
+
         it('Checks app root component visibility', () => {
             basePage.checkElementVisibility({
                 selector: baseSelectors.tags.appRoot
             })
         })
-    
+
         it('Checks app root component header text', () => {
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.tags.appRoot,
                 text: Constants.commonPhrases.angularUniversalSsrApp.components.rootComponent
             })
         })
-    
+
         it('Checks value input visibility', () => {
             basePage.checkElementVisibility({
                 selector: baseSelectors.tags.inputs.input
             })
         })
-    
+
         it('Checks value input is not disabled', () => {
             basePage.checkElementState({
                 parentSelector: baseSelectors.tags.coreElements.div,
@@ -42,14 +44,14 @@ describe('Angular Universal SSR', () => {
                 state: 'not.be.disabled'
             })
         })
-    
+
         it('Checks value input button visibility', () => {
             basePage.checkElementVisibility({
                 parentSelector: baseSelectors.tags.coreElements.div,
                 selector: baseSelectors.tags.coreElements.button,
             })
         })
-    
+
         it('Checks value input button text', () => {
             basePage.checkElementWithTextPresence({
                 parentSelector: baseSelectors.tags.coreElements.div,
@@ -58,7 +60,7 @@ describe('Angular Universal SSR', () => {
                 visibilityState: 'be.visible'
             })
         })
-    
+
         it('Checks value input button color', () => {
             basePage.checkElementHaveProperty({
                 selector: baseSelectors.tags.coreElements.button,
@@ -67,7 +69,7 @@ describe('Angular Universal SSR', () => {
                 value: Constants.color.lightGrey
             })
         })
-    
+
         it('Checks value input button is not disabled', () => {
             basePage.checkElementState({
                 parentSelector: baseSelectors.tags.coreElements.div,
@@ -75,7 +77,7 @@ describe('Angular Universal SSR', () => {
                 state: 'not.be.disabled'
             })
         })
-    
+
         it('Checks value input has no validation', () => {
             CommonTestData.multipleSizeStringsArray.forEach((string: string) => {
                 basePage.fillField({
@@ -85,18 +87,18 @@ describe('Angular Universal SSR', () => {
                 basePage.checkInputValue(string)
             })
         })
-    
+
         it( `Checks that by default added values quantity equal to ${baseElementsQuantity}`, () => {
             basePage.checkElementQuantity({
                 selector: baseSelectors.tags.coreElements.list,
                 quantity: baseElementsQuantity
             })
         })
-    
+
         it('Checks basically added values names', () => {
             methodsPage.checkTextedElementsVisibility(Constants.elementsText.angularUniversalSsrApp.angularUniversalSsrAddedValuesNames, baseSelectors.tags.coreElements.list)
         })
-    
+
         it('Checks add new value functionality', () => {
             methodsPage.addNewListValue()
             basePage.checkElementWithTextPresence({
@@ -105,7 +107,7 @@ describe('Angular Universal SSR', () => {
                 visibilityState: 'be.visible'
             })
         })
-    
+
         it('Checks that after applying value status in input it can be added more then once', () => {
             methodsPage.addNewListValue()
             basePage.checkInputValue(Constants.commonConstantsData.standardPhrase)
@@ -124,7 +126,7 @@ describe('Angular Universal SSR', () => {
                 jqueryValue: true
             })
         })
-    
+
         it('Checks that empty input would not add new value to the list', () => {
             basePage.checkElementQuantity({
                 selector: baseSelectors.tags.coreElements.list,
@@ -140,7 +142,7 @@ describe('Angular Universal SSR', () => {
                 quantity: baseElementsQuantity
             })
         })
-    
+
         it('Checks that newly added value disappears after reload', () => {
             basePage.checkElementQuantity({
                 selector: baseSelectors.tags.coreElements.list,
@@ -175,25 +177,25 @@ describe('Angular Universal SSR', () => {
                 isVisible: false
             })
         })
-    
+
         it('Checks app home component element text', () => {
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.tags.appRoot,
                 text: Constants.commonPhrases.angularUniversalSsrApp.components.homeComponent
             })
         })
-    
+
         it(`Checks that tabs quantity equal to ${baseElementsQuantity}`, () => {
             basePage.checkElementQuantity({
                 selector: updatedSelectors.angularUniversalSsrApp.tab,
                 quantity: baseElementsQuantity
             })
         })
-    
+
         it('Checks tab names visibility', () => {
             methodsPage.checkTextedElementsVisibility(Constants.elementsText.angularUniversalSsrApp.tabsNames, updatedSelectors.angularUniversalSsrApp.tab)
         })
-    
+
         it('Checks cities block appears after click on federation tab', () => {
             basePage.checkElementVisibility({
                 selector: selectors.angularUniversalSsrApp.citiesBlock,
@@ -207,7 +209,7 @@ describe('Angular Universal SSR', () => {
                 selector:  selectors.angularUniversalSsrApp.citiesBlock
             })
         })
-    
+
         it('Checks that cities block which appears after click on federation tab is equal to one in client app', () => {
             basePage.checkElementVisibility({
                 selector: selectors.angularUniversalSsrApp.citiesBlock,
@@ -220,11 +222,11 @@ describe('Angular Universal SSR', () => {
             basePage.checkElementVisibility({
                 selector: selectors.angularUniversalSsrApp.citiesBlock
             })
-            basePage.compareInfoBetweenHosts(selectors.angularUniversalSsrApp.citiesBlock, 5000)
+            basePage.compareInfoBetweenHosts(selectors.angularUniversalSsrApp.citiesBlock, 3000)
         })
-    
+
         it('Checks added cities block functionality are the same for root and client hosts', () => {
-            methodsPage.checkAddedCitiesBlockFunctionalityForMultipleHosts(5000,
+            methodsPage.checkAddedCitiesBlockFunctionalityForMultipleHosts(3000,
                 Constants.elementsText.angularUniversalSsrApp.addedCities, updatedSelectors.angularUniversalSsrApp.addedCity,
                 Constants.commonPhrases.angularUniversalSsrApp.selectedCityInfo, selectors.angularUniversalSsrApp.selectedCityInfo)
         })

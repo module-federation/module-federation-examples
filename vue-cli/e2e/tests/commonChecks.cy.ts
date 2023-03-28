@@ -23,13 +23,17 @@ describe('Vue CLI', () =>{
         appsData.forEach((property: { host: number }) => {
             it('Checks that fetched code appears on click and disappears after reload', () => {
                 basePage.skipTestByCondition(property.host === 9000)
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 methodsPage.checkCodeTagAppearance()
             })
     
             it('Checks core section visibility & core section description header', () => {
                 basePage.skipTestByCondition(property.host === 9001)
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.section,
                     text: Constants.elementsText.vueCliApp.sectionsDescriptions.coreSection,
@@ -39,7 +43,9 @@ describe('Vue CLI', () =>{
     
             it('Checks core section includes button with text', () => {
                 basePage.skipTestByCondition(property.host === 9001)
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     parentSelector: baseSelectors.tags.section,
                     selector: baseSelectors.tags.coreElements.button,
@@ -51,7 +57,9 @@ describe('Vue CLI', () =>{
     
             it('Checks core section button is not disabled', () => {
                 basePage.skipTestByCondition(property.host === 9001)
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementState({
                     selector: baseSelectors.tags.coreElements.button,
                     text: property.host === 8080 ? Constants.elementsText.vueCliApp.buttonsText.otherSectionButton :
@@ -62,7 +70,9 @@ describe('Vue CLI', () =>{
     
             it('Checks other section with description visibility', () => {
                 basePage.skipTestByCondition(property.host === 9000)
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.section,
                     text: Constants.elementsText.vueCliApp.sectionsDescriptions.otherSection,
@@ -72,7 +82,9 @@ describe('Vue CLI', () =>{
     
             it('Checks that other section does not contain name header', () => {
                 basePage.skipTestByCondition(property.host === 9000)
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementVisibility({
                     parentSelector: baseSelectors.tags.section,
                     selector: baseSelectors.tags.headers.h1,
@@ -83,7 +95,9 @@ describe('Vue CLI', () =>{
     
             it('Checks that other section includes button', () => {
                 basePage.skipTestByCondition(property.host === 9000)
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     parentSelector: baseSelectors.tags.section,
                     selector: baseSelectors.tags.coreElements.button,
@@ -94,7 +108,9 @@ describe('Vue CLI', () =>{
     
             it('Checks other section button text', () => {
                 basePage.skipTestByCondition(property.host === 9000)
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     parentSelector: baseSelectors.tags.section,
                     selector: baseSelectors.tags.coreElements.button,
@@ -105,7 +121,9 @@ describe('Vue CLI', () =>{
     
             it('Checks other section button is not disabled', () => {
                 basePage.skipTestByCondition(property.host === 9000)
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementState({
                     selector: baseSelectors.tags.coreElements.button,
                     text: Constants.elementsText.vueCliApp.buttonsText.otherSectionButton,

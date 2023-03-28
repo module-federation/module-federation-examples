@@ -1,0 +1,1 @@
+import './commonChecks.cy';

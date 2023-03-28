@@ -10,7 +10,9 @@ const commonButtonsQuantity: number = 2
 describe('Vite React Microfrontends', () => {
     context("It checks host app", () => {
         beforeEach(() => {
-            basePage.openLocalhost(4173)
+            basePage.openLocalhost({
+                number: 4173
+            })
         })
     
         it('Checks that remote component card appears after loading', () => {

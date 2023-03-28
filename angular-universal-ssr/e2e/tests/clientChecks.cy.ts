@@ -9,15 +9,17 @@ const methodsPage: AngularUniversalSsrMethods = new AngularUniversalSsrMethods()
 describe('Angular Universal SSR', () => {
     context('It checks client app', () => {
         beforeEach(() => {
-            basePage.openLocalhost(5000)
+            basePage.openLocalhost({
+                number: 3000
+            })
         })
-    
+
         it('Checks cities block visibility', () => {
             basePage.checkElementVisibility({
                 selector: selectors.angularUniversalSsrApp.citiesBlock
             })
         })
-    
+
         it('Checks cities block header visibility', () => {
             basePage.checkElementWithTextPresence({
                 parentSelector: selectors.angularUniversalSsrApp.citiesBlock,
@@ -26,11 +28,11 @@ describe('Angular Universal SSR', () => {
                 visibilityState: 'be.visible'
             })
         })
-    
+
         it('Checks base cities names visibility', () => {
             methodsPage.checkTextedElementsVisibility(Constants.elementsText.angularUniversalSsrApp.addedCities, updatedSelectors.angularUniversalSsrApp.addedCity)
         })
-    
+
         it('Checks that both cities links can be clicked', () => {
             basePage.checkElementState({
                 selector: updatedSelectors.angularUniversalSsrApp.addedCity,
@@ -39,7 +41,7 @@ describe('Angular Universal SSR', () => {
                 jqueryValue: false
             })
         })
-    
+
         it('Clicks on city by name and checks description with text appear', () => {
             Constants.elementsText.angularUniversalSsrApp.addedCities.forEach((city: string, counter: number) => {
                 basePage.clickElementWithText({
@@ -53,7 +55,7 @@ describe('Angular Universal SSR', () => {
                 })
             })
         })
-    
+
         it('Checks that selection of city info can be reverted after reload', () => {
             methodsPage.checkCitiesBlockFunctionality()
         })

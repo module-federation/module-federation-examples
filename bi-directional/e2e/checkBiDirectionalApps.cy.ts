@@ -33,7 +33,9 @@ appsData.forEach((
     describe('Bi Directional', () => {
         context(`Check ${property.appName} elements exists on the page`, () => {
             before(() => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
             })
             it(`Check App1 and App2 elements`, () => {
                 basePage.checkElementWithTextPresence({

@@ -91,6 +91,12 @@ export const selectors = {
         sharedBlock: '[data-e2e="SHARED__REACT_BLOCK"]',
         commonReactBlock: '[data-e2e="REACT__{blockType}_BLOCK"]'
     },
+    react18CodeSplittingApp: {
+        app2ContentBlock: '[data-e2e="APP_2_CONTENT_BLOCK"]',
+    },
+    loadebleReact18App: {
+        app2ContentBlock: '[data-e2e="APP_2_CONTENT_BLOCK"]',
+    },
     sharedStoreCrossFrameworkApp: {
         clicksCounter: '[data-e2e="CLICKS_COUNTER"]',
         buttonsBlock: '[data-e2e="REMOTE_{blockType}__BUTTONS_BLOCK_MODULE"]',
@@ -178,6 +184,16 @@ export const selectors = {
     completeReactCaseApp: {
         toolTip: '.tool-tip',
     },
+    angularVue: {
+        btn: '[data="VUE_IN_ANGULAR_BUTTON"]',
+        webComponent: 'unique-name',
+        interactionText: '[data="VUE_IN_ANGULAR_INTERACTION_TEXT"]',
+    },
+    federatedCssButton: '[data-e2e="FEDERATED_CSS_BUTTON"]',
+    viteReactSimple: {
+        reactLink: '[data-e2e="VITE_REACT_APP__LEARN_REACT_LINK"]',
+        viteLink: '[data-e2e="VITE_REACT_APP__VITE_DOCS_LINK"]'
+    }
 }
 
 export const updatedSelectors = {

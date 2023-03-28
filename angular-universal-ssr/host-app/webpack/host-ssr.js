@@ -1,5 +1,5 @@
 const { resolve } = require('path');
-const { AngularCompilerPlugin, PLATFORM } = require('@ngtools/webpack');
+const { AngularWebpackPlugin } = require('@ngtools/webpack');
 const { ContextReplacementPlugin } = require('webpack');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
@@ -12,6 +12,7 @@ module.exports = (env = {}) => {
     mode: 'production',
     resolve: {
       mainFields: ['es2015', 'module', 'main'],
+      extensions: ['.ts', '.js'],
     },
     output: {
       filename: '[name].js',
@@ -41,10 +42,11 @@ module.exports = (env = {}) => {
 
       new ContextReplacementPlugin(/@?hapi(\\|\/)/),
       new ContextReplacementPlugin(/express(\\|\/)/),
-      new AngularCompilerPlugin({
+      new AngularWebpackPlugin({
         entryModule: resolve(__dirname, '../src/app/app.server.module#AppServerModule'),
         tsConfigPath: './tsconfig.server.json',
-        platform: PLATFORM.Server,
+        platform: 1,
+        jitMode: true,
         skipCodeGeneration: true,
         directTemplateLoading: false,
       }),

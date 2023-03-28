@@ -15,7 +15,9 @@ describe("React HMR", () => {
         // })
     context('Check remote app', () => {
         beforeEach(() => {
-            basePage.openLocalhost(3001)
+            basePage.openLocalhost({
+                number: 3001
+            })
         })
     
         it('Check the content of the page exists', () => {

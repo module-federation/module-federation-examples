@@ -23,7 +23,9 @@ describe('Version Descrepancy', () => {
     
         appsData.forEach((property: { host: number, header: string, lodashVersion: string }) => {
             it(`Check ${property.header} header visibility`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.div,
                     text: property.header,
@@ -32,7 +34,9 @@ describe('Version Descrepancy', () => {
             });
     
             it(`Checks Lodash version for ${property.header}`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.div,
                     text: property.lodashVersion,
@@ -41,17 +45,23 @@ describe('Version Descrepancy', () => {
             });
     
             it(`Checks lodash.nth not available message shows depending on Lodash version`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 methodsPage.checkMessageVisibilityByLodashVersion(Constants.commonPhrases.versionDiscrepancyApp.messages.notAvailable)
             });
     
             it(`Checks lodash.nth undefined version message shows depending on Lodash version`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 methodsPage.checkMessageVisibilityByLodashVersion(Constants.commonPhrases.versionDiscrepancyApp.messages.undefinedVersion)
             });
     
             it(`Checks that both apps shares lodash remote component`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.div,
                     text: Constants.commonPhrases.versionDiscrepancyApp.remoteComponentHeader,
@@ -60,7 +70,9 @@ describe('Version Descrepancy', () => {
             });
     
             it(`Checks that both apps shares same remote component style`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.css.style.replace('{style}', Constants.color.nonRgbValues.borderBlack),
                     text: Constants.commonPhrases.versionDiscrepancyApp.remoteComponentHeader,
@@ -69,7 +81,9 @@ describe('Version Descrepancy', () => {
             });
     
             it(`Checks that both apps shares same remote component value`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementContainText({
                     parentSelector: baseSelectors.css.style.replace('{style}', Constants.color.nonRgbValues.borderBlack),
                     selector: baseSelectors.tags.headers.h3,
@@ -99,7 +113,9 @@ describe('Version Descrepancy', () => {
 describe('Version Descrepancy', () => {
     context('It checks right app opened at the right port', () => {
         before(() => {
-            basePage.openLocalhost(3001)
+            basePage.openLocalhost({
+                number: 3001
+            })
         })
     
         it('Checks each app opened in right port', () => {

@@ -1,3 +1,4 @@
+import { selectors } from './../../../cypress/common/selectors';
 import { BaseMethods } from "../../../cypress/common/base";
 import {baseSelectors} from "../../../cypress/common/selectors";
 import {Constants} from "../../../cypress/fixtures/constants";
@@ -14,6 +15,7 @@ describe('Vite React Simple', () => {
                 buttonColor: Constants.color.red,
                 link: Constants.commonConstantsData.commonLinks.react,
                 linkName: Constants.elementsText.viteReactSimpleApp.links[0],
+                linkSelector: selectors.viteReactSimple.reactLink
             },
             {
                 buttonName: Constants.commonConstantsData.counter.toLowerCase(),
@@ -21,12 +23,15 @@ describe('Vite React Simple', () => {
                 buttonColor: Constants.color.lightGrey,
                 link: Constants.hrefs.viteReactSimpleApp.viteLink,
                 linkName: Constants.elementsText.viteReactSimpleApp.links[1],
+                linkSelector: selectors.viteReactSimple.viteLink
             }
         ]
     
-        appsData.forEach((property: { buttonName: string, buttonText: string, buttonColor: string, link: string, linkName: string }) => {
+        appsData.forEach((property: { buttonName: string, buttonText: string, buttonColor: string, link: string, linkName: string, linkSelector: string }) => {
             it(`Checks ${property.buttonName} texted button visibility`, () => {
-                basePage.openLocalhost(3000)
+                basePage.openLocalhost({
+                    number: 3000
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.button,
                     text: property.buttonText,
@@ -35,7 +40,9 @@ describe('Vite React Simple', () => {
             });
     
             it(`Checks ${property.buttonName} texted button color`, () => {
-                basePage.openLocalhost(3000)
+                basePage.openLocalhost({
+                    number: 3000
+                })
                 basePage.checkElementHaveProperty({
                     selector: baseSelectors.tags.coreElements.button,
                     prop: CssAttr.backgroundColor,
@@ -46,7 +53,9 @@ describe('Vite React Simple', () => {
     
     
             it(`Checks ${property.buttonName} texted button is not disabled`, () => {
-                basePage.openLocalhost(3000)
+                basePage.openLocalhost({
+                    number: 3000
+                })
                 basePage.checkElementState({
                     selector: baseSelectors.tags.coreElements.button,
                     text: property.buttonText,
@@ -55,15 +64,16 @@ describe('Vite React Simple', () => {
             })
     
             it(`Checks ${property.linkName} link functionality`, () => {
-                basePage.openLocalhost(3000)
-                basePage.checkOutsideResourceUrl({
-                    selector: baseSelectors.tags.coreElements.link,
-                    text: property.linkName,
-                    link: property.link,
+                basePage.openLocalhost({
+                    number: 3000
+                })
+                basePage.checkElementHaveProperty({
+                    selector: property.linkSelector,
+                    attr: Constants.commonConstantsData.commonAttributes.attr,
+                    prop: Constants.commonConstantsData.commonAttributes.href,
+                    value: property.link,
                 })
                 })
         })
     })
-
-
 })

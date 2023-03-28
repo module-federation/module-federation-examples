@@ -30,7 +30,9 @@ appsData.forEach((
     describe('Different React Versions Isolated', () => {
         context(`Check ${property.appName}`, () => {
             beforeEach(() => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
             })
         
             it(`Check ${property.appName} have ${property.headerText} header`, () => {
@@ -60,9 +62,13 @@ appsData.forEach((
                     selector: selectors.differentReactVersionsIsolatedApp.sharedBlock,
                 })
                 if(property.host === 3001) {
-                    basePage.openLocalhost(3002)
+                    basePage.openLocalhost({
+                        number: 3002
+                    })
                 } else {
-                    basePage.openLocalhost(3001)
+                    basePage.openLocalhost({
+                        number: 3001
+                    })
                 }
                 basePage.checkElementVisibility({
                     selector: selectors.differentReactVersionsIsolatedApp.sharedBlock,

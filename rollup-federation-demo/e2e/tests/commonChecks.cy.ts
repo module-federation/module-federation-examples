@@ -21,7 +21,9 @@ describe('Rollup Federation Demo',  () => {
         appsData.forEach((property: { host: number, appMessage: string }) => {
     
             it(`Checks texted header visibility`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: selectors.rollupFederationDemoApp.header,
                     text: Constants.commonConstantsData.header,
@@ -30,7 +32,9 @@ describe('Rollup Federation Demo',  () => {
             });
     
             it(`Checks header color`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementHaveProperty({
                     selector: selectors.rollupFederationDemoApp.header,
                     prop: CssAttr.backgroundColor,
@@ -39,7 +43,9 @@ describe('Rollup Federation Demo',  () => {
             });
     
             it(`Checks app message visibility`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.headers.h1,
                     text: property.appMessage,
@@ -48,14 +54,18 @@ describe('Rollup Federation Demo',  () => {
             });
     
             it(`Checks both apps includes button`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementVisibility({
                     selector: baseSelectors.tags.coreElements.button
                 })
             });
     
             it(`Checks button is not disabled`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementState({
                     selector: baseSelectors.tags.coreElements.button,
                     state: 'not.be.disabled'
@@ -63,7 +73,9 @@ describe('Rollup Federation Demo',  () => {
             });
     
             it(`Checks button color`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementHaveProperty({
                     selector: baseSelectors.tags.coreElements.button,
                     prop: CssAttr.backgroundColor,
@@ -72,7 +84,9 @@ describe('Rollup Federation Demo',  () => {
             });
     
             it(`Checks button text`, () => {
-                basePage.openLocalhost(property.host)
+                basePage.openLocalhost({
+                    number: property.host
+                })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.coreElements.button,
                     text: Constants.commonPhrases.rollupFederationDemoApp.buttonText,
