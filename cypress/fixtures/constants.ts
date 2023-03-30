@@ -655,10 +655,6 @@ export class Constants {
             header: 'Module Federation Example: React 18 Code Splitting',
             button: 'Toggle Content',
         },
-        loadableReact18: {
-            regularButton: 'Regular Button',
-            loadableButton: 'Loadable Button'
-        },
         reactApps:{
             app1: {
                 subHeader: 'This is the App 1 application.',
@@ -675,8 +671,9 @@ export class Constants {
             header3: 'Type something into this input',
             idField: "1337",
             nameField: "John Doe",
-            companyfield: "Acme Inc."
-            
+            companyfield: "Acme Inc.",
+            regularButton: 'Regular Button',
+            loadableButton: 'Loadable Button'
         },
         reactHostNextJsApp: {
             remoteComponents: {

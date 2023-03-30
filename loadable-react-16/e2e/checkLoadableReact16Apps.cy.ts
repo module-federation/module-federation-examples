@@ -4,7 +4,7 @@ import { BaseMethods } from "../../cypress/common/base";
 
 const basePage: BaseMethods = new BaseMethods()
 
-describe('Loadable React 18', () => {
+describe('Loadable React 16', () => {
     context('Check App1', () => {
         beforeEach(() => {
             basePage.openLocalhost({
@@ -66,7 +66,7 @@ describe('Loadable React 18', () => {
     })
 })
 
-describe('Loadable React 18', () => {
+describe('Loadable React 16', () => {
     context('Check App2', () => {
         beforeEach(() => {
             basePage.openLocalhost({
