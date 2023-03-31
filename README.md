@@ -100,6 +100,8 @@ Module federation will work with any type of file that youre able to import, tha
 - Best Buy
 - SAP
 - AWS
+- SemRush
+- Ford Motor Company
 - JPMorgan Chase
 - Microsoft
 - Lululemon
@@ -119,6 +121,7 @@ Module federation will work with any type of file that youre able to import, tha
 - RingCentral
 - Indeed
 - Telia
+- Beamery
 - Amazon
 - Sony
 - Paypal
