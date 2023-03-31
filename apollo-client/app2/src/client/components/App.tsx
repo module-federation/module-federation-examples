@@ -2,10 +2,19 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 import PokemonList from './PokemonList';
+import { createApolloClient } from '../apolloClient';
+import fetch from 'node-fetch';
+
+
 
 const App = () => {
   const [limit, setLimit] = React.useState<number>(10);
   const [offset, setOffset] = React.useState<number>(0);
+
+  const {apolloClient} = createApolloClient({
+    ssrMode: false,
+    fetch,
+  });
 
   return (
     <div
@@ -19,7 +28,7 @@ const App = () => {
         <title>React 18 + Apollo Client</title>
       </Helmet>
 
-      <div style={{ padding: '1rem' }}>
+      <div style={{ padding: '1rem' }} >
         <h1>Module Federation Example: React 18 + Apollo Client</h1>
 
         <h2>This is the App 2 application.</h2>
@@ -54,7 +63,7 @@ const App = () => {
       </div>
 
       <div style={{ padding: '1rem' }}>
-        <PokemonList limit={limit} offset={offset} />
+        <PokemonList limit={limit} offset={offset} apolloClient={apolloClient}/>
       </div>
     </div>
   );

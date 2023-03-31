@@ -15,7 +15,7 @@ const webpackConfig = {
     filename: '[name].js',
     libraryTarget: 'commonjs-module',
   },
-  mode: 'production',
+  mode: 'development',
   plugins: [...moduleFederationPlugin.server],
   stats: {
     colors: true,

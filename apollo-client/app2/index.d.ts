@@ -1,3 +1,6 @@
-// declare module 'app2/Content' {
-//   export * from '@app2/Content';
-// }
+export declare global {
+    interface Window {
+        __APOLLO_STATE__: any;
+    }
+
+}

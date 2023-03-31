@@ -10,7 +10,7 @@ const webpackConfig = {
   name: 'client',
   target: 'web',
   entry: ['@babel/polyfill', path.resolve(__dirname, '../src/client/index')],
-  mode: 'production',
+  mode: 'development',
   devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, '../dist/client'),

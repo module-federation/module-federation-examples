@@ -1,12 +1,13 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import type { PokemonListProps } from 'app2/PokemonList';
+import {ApolloClient, NormalizedCacheObject} from "@apollo/client";
 
 const PokemonList = React.lazy(
-  () => import('app2/PokemonList') as Promise<{ default: React.FC<PokemonListProps> }>,
+    () => import('app2/PokemonList') as Promise<{ default: React.FC<PokemonListProps> }>,
 );
 
-const App = () => {
+const App = ({apolloClient}: {apolloClient:  ApolloClient<NormalizedCacheObject>}) => {
   const [limit, setLimit] = React.useState<number>(10);
   const [offset, setOffset] = React.useState<number>(0);
 
@@ -57,8 +58,8 @@ const App = () => {
       </div>
 
       <div style={{ padding: '1rem' }}>
-        <React.Suspense fallback={<span>Suspense Loading....</span>}>
-          <PokemonList limit={limit} offset={offset} />
+        <React.Suspense>
+          <PokemonList limit={limit} offset={offset} apolloClient={apolloClient} />
         </React.Suspense>
       </div>
     </div>

@@ -2,6 +2,8 @@ import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 
 export function createApolloClient({ ssrMode = false, fetch }) {
   const apolloCache = new InMemoryCache();
+  if (typeof window !== 'undefined' && window.__APOLLO_STATE__ ) apolloCache.restore(JSON.parse(window.__APOLLO_STATE__));
+
   const apolloClient = new ApolloClient({
     ssrMode,
     cache: apolloCache,

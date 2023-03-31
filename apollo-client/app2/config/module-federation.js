@@ -13,7 +13,7 @@ module.exports = {
     shared: [
       {
         react: deps.react,
-        'react-dom': deps['react-dom'],
+        'react-dom':  { requiredVersion: deps['react-dom'], eager: true },
         graphql: deps.graphql,
         '@apollo/client': {
           singleton: true,
@@ -36,7 +36,7 @@ module.exports = {
       shared: [
         {
           react: deps.react,
-          'react-dom': deps['react-dom'],
+          'react-dom': { requiredVersion: deps['react-dom'], eager: true },
           graphql: deps.graphql,
           '@apollo/client': {
             singleton: true,
