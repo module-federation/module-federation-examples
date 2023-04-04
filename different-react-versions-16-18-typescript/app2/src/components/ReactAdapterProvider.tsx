@@ -1,22 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export type ReactAdaperProviderProps<P = {}> = P & {
+export type ReactAdapterProviderProps<P = {}> = P & {
   component: React.FunctionComponent<P> | React.ComponentClass<P> | keyof React.ReactHTML | string;
   children?: React.ReactNode;
 };
 
-export interface ReactAdaperProviderState {
+export interface ReactAdapterProviderState {
   Component: React.ReactNode;
 }
 
-class ReactAdaperProvider<P = {}> extends React.Component<
-  ReactAdaperProviderProps<P>,
-  ReactAdaperProviderState
+class ReactAdapterProvider<P = {}> extends React.Component<
+  ReactAdapterProviderProps<P>,
+  ReactAdapterProviderState
 > {
   private refHold: HTMLDivElement | null = null;
 
-  constructor(props: ReactAdaperProviderProps<P>) {
+  constructor(props: ReactAdapterProviderProps<P>) {
     super(props);
     this.refHold;
   }
@@ -42,4 +42,4 @@ class ReactAdaperProvider<P = {}> extends React.Component<
   }
 }
 
-export default ReactAdaperProvider;
+export default ReactAdapterProvider;
