@@ -1,0 +1,27 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": false,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "native-federation-plugin": [
+        "packages/native-federation-plugin/src/index.ts"
+      ],
+      "native-federation-plugin/*": [
+        "packages/native-federation-plugin/src/*"
+      ]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
