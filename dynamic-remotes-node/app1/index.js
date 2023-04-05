@@ -1,5 +1,6 @@
 const {injectScript} = require('@module-federation/utilities')
 console.log('hello from host app1')
+// fake import needed in order to tell webpack to include chunk loading runtime code
 import('fake')
 injectScript({
   global: 'app2',
