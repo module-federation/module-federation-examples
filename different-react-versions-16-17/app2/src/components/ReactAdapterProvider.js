@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class ReactAdaperProvider extends React.Component {
+class ReactAdapterProvider extends React.Component {
   constructor(props) {
     super(props);
     this.refHold;
@@ -28,4 +28,4 @@ class ReactAdaperProvider extends React.Component {
   }
 }
 
-export default ReactAdaperProvider;
+export default ReactAdapterProvider;

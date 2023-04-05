@@ -22,7 +22,7 @@ This example contains two important components, the `ReactAdapterConsumer` and `
 
 The adapter consumes both versions of react to "translate" the props into a fresh render. This could be presented as a HOC or federated components could have a legacy export containing the adapter build in.
 
-### [ReactAdapterProvider](./app2/src/components/ReactAdaperProvider.tsx)
+### [ReactAdapterProvider](./app2/src/components/ReactAdapterProvider.tsx)
 
 This component is responsible to dynamic render/hydrate the federated component using it host version of React.
 
@@ -42,12 +42,12 @@ const Button = (props: ButtonProps) => {
 };
 
 export const Adapted = React.forwardRef<
-    ReactAdaperProvider<ModernReactComponentProps>,
+    ReactAdapterProvider<ModernReactComponentProps>,
     ModernReactComponentProps
   >((props, ref) => {
   // the intellisesne will show the type of the props if you try to modify it
   return (
-    <ReactAdaperProvider<ButtonProps> component={Button} color="red" ref={ref} />
+    <ReactAdapterProvider<ButtonProps> component={Button} color="red" ref={ref} />
   );
 });
 ```
