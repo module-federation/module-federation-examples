@@ -1,0 +1,78 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/search/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "native-federation-plugin:build",
+      "options": {
+        "outputPath": "dist/search",
+        "index": "packages/search/src/index.html",
+        "main": "packages/search/src/app/index.ts",
+        "assets": [
+          "packages/search/src/assets",
+          "packages/search/src/favicon.ico"
+        ],
+        "remotes": [
+          "nav",
+          "dsl",
+          "home",
+          "utils"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "dev": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:file-server",
+      "options": {
+        "buildTarget": "search:build",
+        "port": 3004,
+        "watch": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "search:build:production"
+        }
+      }
+    },
+    "dashboard": {
+      "executor": "native-federation-plugin:dashboard",
+      "options": {
+        "buildTarget": "search:build:production",
+        "tokenFile": ".env",
+        "environment": "development",
+        "versionStrategy": "Date",
+        "filename": "dashboard.json",
+        "writeUrl": "{DASHBOARD_BASE_URL}/update?token={DASHBOARD_WRITE_TOKEN}",
+        "readUrl": "{DASHBOARD_BASE_URL}/env/{ENVIRONMENT}/get-remote?token={DASHBOARD_READ_TOKEN}",
+        "metadata": {
+          "baseUrl": "http://localhost:3004",
+          "source": {
+            "url": "https://github.com/module-federation/module-federation-examples/tree/medusa-nx-nfp-example/medusa-nx-native-federation-example/packages/search"
+          },
+          "remote": "http://localhost:3004/remoteEntry.js"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/search/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/search"],
+      "options": {
+        "jestConfig": "packages/search/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/dsl/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "native-federation-plugin:build",
+      "options": {
+        "outputPath": "dist/dsl",
+        "index": "packages/dsl/src/index.html",
+        "main": "packages/dsl/src/app/index.ts",
+        "assets": [
+          "packages/dsl/src/assets",
+          "packages/dsl/src/favicon.ico"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "dev": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:file-server",
+      "options": {
+        "buildTarget": "dsl:build",
+        "port": 3002,
+        "watch": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "dsl:build:production"
+        }
+      }
+    },
+    "dashboard": {
+      "executor": "native-federation-plugin:dashboard",
+      "options": {
+        "buildTarget": "dsl:build:production",
+        "tokenFile": ".env",
+        "environment": "development",
+        "versionStrategy": "Date",
+        "filename": "dashboard.json",
+        "writeUrl": "{DASHBOARD_BASE_URL}/update?token={DASHBOARD_WRITE_TOKEN}",
+        "readUrl": "{DASHBOARD_BASE_URL}/env/{ENVIRONMENT}/get-remote?token={DASHBOARD_READ_TOKEN}",
+        "metadata": {
+          "baseUrl": "http://localhost:3002",
+          "source": {
+            "url": "https://github.com/module-federation/module-federation-examples/tree/medusa-nx-nfp-example/medusa-nx-native-federation-example/packages/dsl"
+          },
+          "remote": "http://localhost:3002/remoteEntry.js"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/dsl/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/dsl"],
+      "options": {
+        "jestConfig": "packages/dsl/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
