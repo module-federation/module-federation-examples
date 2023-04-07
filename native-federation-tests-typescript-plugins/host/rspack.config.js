@@ -1,6 +1,6 @@
 const path = require('path')
-const {NativeFederationTypeScriptHost} = require('native-federation-typescript/rspack')
-const {NativeFederationTestsHost} = require('native-federation-tests/rspack')
+const { NativeFederationTypeScriptHost } = require('@module-federation/native-federation-typescript/rspack')
+const { NativeFederationTestsHost } = require('@module-federation/native-federation-tests/rspack')
 
 const deps = require('./package.json').dependencies;
 

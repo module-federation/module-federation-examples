@@ -1,6 +1,6 @@
+import { NativeFederationTestsRemote } from '@module-federation/native-federation-tests/vite'
+import { NativeFederationTypeScriptRemote } from '@module-federation/native-federation-typescript/vite'
 import react from '@vitejs/plugin-react'
-import { NativeFederationTestsRemote } from 'native-federation-tests/vite'
-import { NativeFederationTypeScriptRemote } from 'native-federation-typescript/vite'
 import { defineConfig } from 'vite'
 import packageJson from './package.json'
 

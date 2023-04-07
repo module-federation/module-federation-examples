@@ -2,15 +2,17 @@
     "name": "native-federation-tests-typescript-plugins",
     "private": true,
     "scripts": {
-        "start:webpack": "concurrently \"wsrun --parallel dev:webpack\"",
-        "start:vite": "concurrently \"wsrun --parallel dev:vite\"",
-        "start:rspack": "concurrently \"wsrun --parallel dev:rspack\""
+        "ls": "lerna ls",
+        "start:webpack": "lerna run --scope=native-federation-tests-typescript* --parallel dev:webpack",
+        "start:vite": "lerna run --scope=native-federation-tests-typescript* --parallel dev:vite",
+        "start:rspack": "lerna run --scope=native-federation-tests-typescript* --parallel dev:rspack"
     },
     "workspaces": [
-        "packages/*"
+        "remote",
+        "host"
     ],
     "devDependencies": {
-        "concurrently": "^7.6.0",
-        "wsrun": "^5.2.4"
+        "lerna": "^6.6.1",
+        "wait-on": "^7.0.1"
     }
 }

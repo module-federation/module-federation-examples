@@ -1,7 +1,7 @@
 const path = require('path')
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin
-const {NativeFederationTypeScriptHost} = require('native-federation-typescript/webpack')
-const {NativeFederationTestsHost} = require('native-federation-tests/webpack')
+const { NativeFederationTypeScriptHost } = require('@module-federation/native-federation-typescript/webpack')
+const { NativeFederationTestsHost } = require('@module-federation/native-federation-tests/webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const deps = require('./package.json').dependencies;
