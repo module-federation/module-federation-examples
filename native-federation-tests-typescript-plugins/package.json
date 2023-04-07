@@ -1,0 +1,16 @@
+{
+    "name": "native-federation-tests-typescript-plugins",
+    "private": true,
+    "scripts": {
+        "start:webpack": "concurrently \"wsrun --parallel dev:webpack\"",
+        "start:vite": "concurrently \"wsrun --parallel dev:vite\"",
+        "start:rspack": "concurrently \"wsrun --parallel dev:rspack\""
+    },
+    "workspaces": [
+        "packages/*"
+    ],
+    "devDependencies": {
+        "concurrently": "^7.6.0",
+        "wsrun": "^5.2.4"
+    }
+}
