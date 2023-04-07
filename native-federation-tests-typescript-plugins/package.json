@@ -3,9 +3,9 @@
     "private": true,
     "scripts": {
         "ls": "lerna ls",
-        "start:webpack": "lerna run --scope=native-federation-tests-typescript* --parallel dev:webpack",
-        "start:vite": "lerna run --scope=native-federation-tests-typescript* --parallel dev:vite",
-        "start:rspack": "lerna run --scope=native-federation-tests-typescript* --parallel dev:rspack"
+        "start:webpack": "lerna run --scope=native-federation-tests-typescript-remote dev:webpack & wait-on http-get://localhost:3000/ && lerna run --scope=native-federation-tests-typescript-host dev:webpack",
+        "start:vite": "lerna run --scope=native-federation-tests-typescript-remote dev:vite & wait-on http-get://localhost:3000/ && lerna run --scope=native-federation-tests-typescript-host dev:vite",
+        "start:rspack": "lerna run --scope=native-federation-tests-typescript-remote dev:rspack & wait-on http-get://localhost:3000/ && lerna run --scope=native-federation-tests-typescript-host dev:rspack"
     },
     "workspaces": [
         "remote",
