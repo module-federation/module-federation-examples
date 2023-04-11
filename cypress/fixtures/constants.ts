@@ -662,6 +662,7 @@ export class Constants {
             header1: 'Module Federation Example: React 18 Code Splitting',
             header3: 'Type something into this input',
             button: 'Toggle Content',
+            test: 'test'
         },
         loadableReact18: {
             app1: {
