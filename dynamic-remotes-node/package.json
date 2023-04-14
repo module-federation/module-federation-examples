@@ -1,0 +1,17 @@
+{
+  "name": "dynamic-remotes-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "serve": "concurrently 'serve -s app1/dist -l 3001' 'serve -s app2/dist -l 3002'",
+    "build": "rimraf dist/server && concurrently 'cd app1; webpack --config ./webpack.config.js' 'cd app2; webpack --config ./webpack.config.js'",
+    "start": "yarn build && concurrently 'yarn serve' 'sleep 5 && node app1/dist/main.js'"
+  },
+  "dependencies": {
+    "@module-federation/node": "^0.13.0",
+    "@module-federation/utilities": "^1.5.0",
+    "concurrently": "^8.0.1",
+    "webpack": "^5.78.0"
+  }
+}
