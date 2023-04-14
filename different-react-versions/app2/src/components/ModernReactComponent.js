@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import ReactAdaperProvider from './ReactAdaperProvider';
+import ReactAdapterProvider from './ReactAdapterProvider';
 
 const ModernReactComponent = props => {
   const { children, input } = props;
@@ -22,7 +22,7 @@ const ModernReactComponent = props => {
 };
 
 export const Adapted = React.forwardRef((props, ref) => {
-  return (<ReactAdaperProvider {...props} component={ModernReactComponent} ref={ref} />)
+  return (<ReactAdapterProvider {...props} component={ModernReactComponent} ref={ref} />)
 });
 
 export default ModernReactComponent;

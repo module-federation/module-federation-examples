@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "plugins": [{ "name": "typescript-plugin-css-modules" }],
+      "sourceMap": true,
+      "strict": true,
+      "jsx": "react-jsx",
+      "esModuleInterop": true,
+      "resolveJsonModule": true,
+      "moduleResolution": "node",
+      "target": "ESNext",
+      "module": "ES2022",
+      "paths": {
+        "*": ["./@mf-types/*"]
+      }
+    },
+    "include": ["src/**/*"]
+  }

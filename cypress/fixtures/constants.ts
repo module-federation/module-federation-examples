@@ -654,6 +654,7 @@ export class Constants {
             },
             header: 'Module Federation Example: React 18 Code Splitting',
             button: 'Toggle Content',
+            test: 'test'
         },
         reactApps:{
             app1: {

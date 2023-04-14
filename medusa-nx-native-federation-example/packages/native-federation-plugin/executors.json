@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "executors": {
+    "build": {
+      "implementation": "./src/executors/build/executor",
+      "schema": "./src/executors/build/schema.json",
+      "description": "Native Federation build executor"
+    },
+    "serve": {
+      "implementation": "./src/executors/serve/executor",
+      "schema": "./src/executors/serve/schema.json",
+      "description": "Native Federation serve executor"
+    },
+    "dashboard": {
+      "implementation": "./src/executors/dashboard/executor",
+      "schema": "./src/executors/dashboard/schema.json",
+      "description": "Medusa Native Federation dashboard executor"
+    }
+  }
+}

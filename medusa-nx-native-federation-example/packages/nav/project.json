@@ -1,0 +1,77 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/nav/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "native-federation-plugin:build",
+      "options": {
+        "outputPath": "dist/nav",
+        "index": "packages/nav/src/index.html",
+        "main": "packages/nav/src/app/index.ts",
+        "assets": [
+          "packages/nav/src/assets",
+          "packages/nav/src/favicon.ico"
+        ],
+        "remotes": [
+          "dsl",
+          "search",
+          "utils"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "dev": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:file-server",
+      "options": {
+        "buildTarget": "nav:build",
+        "port": 3003,
+        "watch": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "nav:build:production"
+        }
+      }
+    },
+    "dashboard": {
+      "executor": "native-federation-plugin:dashboard",
+      "options": {
+        "buildTarget": "nav:build:production",
+        "tokenFile": ".env",
+        "environment": "development",
+        "versionStrategy": "Date",
+        "filename": "dashboard.json",
+        "writeUrl": "{DASHBOARD_BASE_URL}/update?token={DASHBOARD_WRITE_TOKEN}",
+        "readUrl": "{DASHBOARD_BASE_URL}/env/{ENVIRONMENT}/get-remote?token={DASHBOARD_READ_TOKEN}",
+        "metadata": {
+          "baseUrl": "http://localhost:3003",
+          "source": {
+            "url": "https://github.com/module-federation/module-federation-examples/tree/medusa-nx-nfp-example/medusa-nx-native-federation-example/packages/nav"
+          },
+          "remote": "http://localhost:3003/remoteEntry.js"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/nav/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/nav"],
+      "options": {
+        "jestConfig": "packages/nav/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
