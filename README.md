@@ -36,6 +36,7 @@ https://scriptedalchemy.medium.com/
 - [x] [Create React App using React App Rewired](./cra-react-app-rewired/README.md) &mdash; Module Federation using CRA and React App Rewired.
 - [x] [HMR Remotes](./react-hmr/README.md) &mdash; Hot Reloading Remotes inside Hosts.
 - [x] [Startup Code](./startup-code/README.md) &mdash; Advanced implementation that attaches initialization code to the remote container itself. Useful for dynamically setting publicPath in the remote.
+- [x] [Dynamic Remotes in Node](./dynamic-remotes-node/README.md) &mdash; Dynamically load remotes in Node.
 - [x] [Bi-Directional Hosts](./bi-directional/README.md) &mdash; App1 consumes App2 components; App2 consumes App1 components.
 - [x] [Self-Healing](./self-healing/README.md) &mdash; Fallback to remote apps vendors if a dependency fails to load.
 - [x] [Server-Side Rendering](./server-side-rendering/README.md) &mdash; App1 and App2 with SSR.
