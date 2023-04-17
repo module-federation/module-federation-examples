@@ -4,7 +4,7 @@ import { BaseMethods } from "../../cypress/common/base";
 
 const basePage: BaseMethods = new BaseMethods()
 
-describe('Loadable React 18', () => {
+describe('React 18 Server 2 Server', () => {
     context('Check App1', () => {
         beforeEach(() => {
             basePage.openLocalhost({
@@ -31,13 +31,18 @@ describe('Loadable React 18', () => {
                 selector: baseSelectors.tags.inputs.input
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.coreElements.button,
-                text: Constants.elementsText.reactApps.regularButton,
+                selector: selectors.react18Server2Server.idField,
+                text: Constants.elementsText.reactApps.idField,
                 visibilityState: 'be.visible'
             })
             basePage.checkElementWithTextPresence({
-                selector: baseSelectors.tags.coreElements.button,
-                text: Constants.elementsText.reactApps.loadableButton,
+                selector: selectors.react18Server2Server.NameField,
+                text: Constants.elementsText.reactApps.nameField,
+                visibilityState: 'be.visible'
+            })
+            basePage.checkElementWithTextPresence({
+                selector: selectors.react18Server2Server.CompanyField,
+                text: Constants.elementsText.reactApps.companyfield,
                 visibilityState: 'be.visible'
             })
         })
@@ -66,7 +71,7 @@ describe('Loadable React 18', () => {
     })
 })
 
-describe('Loadable React 18', () => {
+describe('React 18 Server 2 Server', () => {
     context('Check App2', () => {
         beforeEach(() => {
             basePage.openLocalhost({
