@@ -9411,6 +9411,15 @@
     next "^12 || ^13"
     react "^17 || ^18"
 
+"@module-federation/node@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@module-federation/node/-/node-0.13.0.tgz#95d047bca1485b8e0195d74e59c06c26d246ab79"
+  integrity sha512-HbBlqSiHV7U3Cab7Uz7mNo5qrrsi1V/TJElkmdzXRLFtxUDrD9UH8H7JIqjVXgXmJuwJrLtFPMUMXHfOyYhPkw==
+  dependencies:
+    "@module-federation/utilities" "1.5.0"
+    encoding "0.1.13"
+    node-fetch "2.6.7"
+
 "@module-federation/utilities@1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@module-federation/utilities/-/utilities-1.0.2.tgz#9231c7407ddafbe914b5328954b111077d2d504f"
@@ -9448,6 +9457,11 @@
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@module-federation/utilities/-/utilities-1.4.0.tgz#c7b8c6e08262af6377714d94557929a3df67e64e"
   integrity sha512-J4KISJvLmFhZEgBhdntn6MWqElWU6vMC/JuQT7MdNe8Apc8qoYis0FKGp4gp8YkIPPhplkQExy2vS14+3KxoJA==
+
+"@module-federation/utilities@1.5.0", "@module-federation/utilities@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@module-federation/utilities/-/utilities-1.5.0.tgz#500e1cac10196f4da15bef468c969cfe726e2b22"
+  integrity sha512-LK0B+AYVSZXlCun8rasNVAXr7C+onqrO8f72Uw4Eg7c7vSY9mp8GN1IA+ewDH8UAiVAp5f0AfVwEIW9oQbeskg==
 
 "@module-federation/vite@^0.2.6":
   version "0.2.6"
@@ -17441,6 +17455,21 @@ concurrently@^6.2.2:
     supports-color "^8.1.0"
     tree-kill "^1.2.2"
     yargs "^16.2.0"
+
+concurrently@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/concurrently/-/concurrently-8.0.1.tgz#80c0591920a9fa3e68ba0dd8aa6eac8487eb904c"
+  integrity sha512-Sh8bGQMEL0TAmAm2meAXMjcASHZa7V0xXQVDBLknCPa9TPtkY9yYs+0cnGGgfdkW0SV1Mlg+hVGfXcoI8d3MJA==
+  dependencies:
+    chalk "^4.1.2"
+    date-fns "^2.29.3"
+    lodash "^4.17.21"
+    rxjs "^7.8.0"
+    shell-quote "^1.8.0"
+    spawn-command "0.0.2-1"
+    supports-color "^8.1.1"
+    tree-kill "^1.2.2"
+    yargs "^17.7.1"
 
 config-chain@^1.1.11:
   version "1.1.12"
