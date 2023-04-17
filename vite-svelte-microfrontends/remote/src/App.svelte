@@ -2,7 +2,10 @@
 	import { of, tap } from 'rxjs';
 
 	import { state } from 'shared';
+	import enviroment from "./enviroment";
 	console.log('remote got message:', state.message);
+	console.info("vite import.meta got message:", enviroment.VITE_EXAMPLE);
+
 
 	of('emit')
 		.pipe(tap(() => console.log("I'm RxJs from remote")))
