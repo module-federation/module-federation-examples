@@ -10416,14 +10416,14 @@
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-15.1.4.tgz#8535324ef9fdffdee606513b7244b859b6e549c5"
   integrity sha512-IvKXK8AvPlLkP99Uf0RL1EHlcsXNQd86II9HsLjupUtmFC/pPuDWrRFMP9bjWUMh2ZeYpgUeEAbcCH3doSrdIA==
 
-"@nguniversal/builders@15.2.0":
-  version "15.2.0"
-  resolved "https://registry.yarnpkg.com/@nguniversal/builders/-/builders-15.2.0.tgz#867e9e816a3318819560ec84b2196c1036d770f3"
-  integrity sha512-V+y3gj/yKs2EHXXOSk752yYS60d+Bmhts+l5o4dDi4GJSZbJ7SCcbmocxZNgjYOv3sTJgsE4zLxxiaL7+4MHDQ==
+"@nguniversal/builders@15.2.1":
+  version "15.2.1"
+  resolved "https://registry.npmjs.org/@nguniversal/builders/-/builders-15.2.1.tgz#0fe86d0f5af92910c728e44aa81620002857531b"
+  integrity sha512-6UbnJlgFv0KcEmYtw8lJ4B9DVpQcTyQd7vEpuvlOJ7RtcKwY+yUbmsEFnUusxM7y6NgZqiFDziAdJ796agySTQ==
   dependencies:
     "@angular-devkit/architect" "~0.1502.0"
     "@angular-devkit/core" "~15.2.0"
-    "@nguniversal/common" "15.2.0"
+    "@nguniversal/common" "15.2.1"
     browser-sync "^2.27.10"
     express "^4.18.2"
     guess-parser "^0.4.22"
@@ -10437,6 +10437,15 @@
   version "15.2.0"
   resolved "https://registry.yarnpkg.com/@nguniversal/common/-/common-15.2.0.tgz#83be23d46a730bb0eb64324ac813f97a385c04f7"
   integrity sha512-IfFuqpzK0P3iMdR2DbPWTbjLWsFvAwvMkZnp5k9FRgg20DpdgqDRaoJuw4HV5qSKKhY/JcVXq99GIG6JHaza1A==
+  dependencies:
+    critters "0.0.16"
+    jsdom "21.1.0"
+    tslib "^2.3.0"
+
+"@nguniversal/common@15.2.1":
+  version "15.2.1"
+  resolved "https://registry.npmjs.org/@nguniversal/common/-/common-15.2.1.tgz#6e3f6b3f46394c02e20a93f7721bcd660810c1a7"
+  integrity sha512-1m/YFx5FLJAm/ll7YZfUTFGPqsOaHkhwEv8aHIp8oc1CWf6K+agrfLIwzY39n18T3J0lrCL/8/9vR1tnId3A9g==
   dependencies:
     critters "0.0.16"
     jsdom "21.1.0"
@@ -13275,14 +13284,7 @@
   dependencies:
     "@types/react" "^17"
 
-"@types/react-dom@18.0.10":
-  version "18.0.10"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.0.10.tgz#3b66dec56aa0f16a6cc26da9e9ca96c35c0b4352"
-  integrity sha512-E42GW/JA4Qv15wQdqJq8DL4JhNpB3prJgjgapN3qJT9K2zO5IIAQh4VXvCEDupoqAwnz0cY4RlXeC/ajX5SFHg==
-  dependencies:
-    "@types/react" "*"
-
-"@types/react-dom@18.0.11", "@types/react-dom@^18.0.0", "@types/react-dom@^18.0.11", "@types/react-dom@~18.0.10":
+"@types/react-dom@18.0.11", "@types/react-dom@^18.0.0", "@types/react-dom@~18.0.10":
   version "18.0.11"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.0.11.tgz#321351c1459bc9ca3d216aefc8a167beec334e33"
   integrity sha512-O38bPbI2CWtgw/OoQoY+BRelw7uysmXbWvw3nLWO21H1HSh+GOlqPuXshJfjmpNlKiiSDG9cc1JZAaMmVdcTlw==
@@ -13370,7 +13372,7 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/react@18.0.35":
+"@types/react@18.0.35", "@types/react@^18.0.15", "@types/react@~18.0.26":
   version "18.0.35"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.35.tgz#192061cb1044fe01f2d3a94272cd35dd50502741"
   integrity sha512-6Laome31HpetaIUGFWl1VQ3mdSImwxtFZ39rh059a1MNnKGqBpC88J6NJ8n/Is3Qx7CefDGLgf/KhN/sYCf7ag==
@@ -13392,24 +13394,6 @@
   version "17.0.55"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.55.tgz#f94eac1a37929cd86d1cc084c239c08dcfd10e5f"
   integrity sha512-kBcAhmT8RivFDYxHdy8QfPKu+WyfiiGjdPb9pIRtd6tj05j0zRHq5DBGW5Ogxv5cwSKd93BVgUk/HZ4I9p3zNg==
-  dependencies:
-    "@types/prop-types" "*"
-    "@types/scheduler" "*"
-    csstype "^3.0.2"
-
-"@types/react@^18.0.15", "@types/react@~18.0.26":
-  version "18.0.35"
-  resolved "https://registry.npmjs.org/@types/react/-/react-18.0.35.tgz#192061cb1044fe01f2d3a94272cd35dd50502741"
-  integrity sha512-6Laome31HpetaIUGFWl1VQ3mdSImwxtFZ39rh059a1MNnKGqBpC88J6NJ8n/Is3Qx7CefDGLgf/KhN/sYCf7ag==
-  dependencies:
-    "@types/prop-types" "*"
-    "@types/scheduler" "*"
-    csstype "^3.0.2"
-
-"@types/react@^18.0.28":
-  version "18.0.33"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.33.tgz#a1575160cb4376787c2f5fe0312302f824baa61e"
-  integrity sha512-sHxzVxeanvQyQ1lr8NSHaj0kDzcNiGpILEVt69g9S31/7PfMvNCKLKcsHw4lYKjs3cGNJjXSP4mYzX43QlnjNA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
