@@ -91,11 +91,13 @@ export const selectors = {
         sharedBlock: '[data-e2e="SHARED__REACT_BLOCK"]',
         commonReactBlock: '[data-e2e="REACT__{blockType}_BLOCK"]'
     },
-    react18CodeSplittingApp: {
+    reactApp: {
         app2ContentBlock: '[data-e2e="APP_2_CONTENT_BLOCK"]',
     },
-    loadebleReact18App: {
-        app2ContentBlock: '[data-e2e="APP_2_CONTENT_BLOCK"]',
+    react18Server2Server: {
+        idField: '[data-e2e="ID"]',
+        NameField: '[data-e2e="Name"]',
+        CompanyField: '[data-e2e="Company"]',
     },
     sharedStoreCrossFrameworkApp: {
         clicksCounter: '[data-e2e="CLICKS_COUNTER"]',
