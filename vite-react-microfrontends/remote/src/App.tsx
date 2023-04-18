@@ -1,8 +1,10 @@
 import React from 'react';
 import Counter from './components/Counter';
+import enviroment from "./enviroment";
 
 export default () => {
 	React.useEffect(() => {
+		console.info("vite import.meta got message:", enviroment.VITE_EXAMPLE);
 		console.log('Remote useEffect');
 	}, []);
 
