@@ -25138,10 +25138,21 @@ html-tags@^3.1.0:
   resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-3.1.0.tgz#7b5e6f7e665e9fb41f30007ed9e0d41e97fb2140"
   integrity sha512-1qYz89hW3lFDEazhjW0yVAV87lw8lVkrJocr72XmBkMKsoSVJCQx3W8BXsC7hO2qAt8BoVjYjtAcZ9perqGnNg==
 
-html-webpack-plugin@5.5.0, html-webpack-plugin@^5.0.0, html-webpack-plugin@^5.1.0, html-webpack-plugin@^5.3.1, html-webpack-plugin@^5.3.2, html-webpack-plugin@^5.5.0:
+html-webpack-plugin@5.5.0, html-webpack-plugin@^5.0.0, html-webpack-plugin@^5.1.0, html-webpack-plugin@^5.3.1, html-webpack-plugin@^5.5.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-5.5.0.tgz#c3911936f57681c1f9f4d8b68c158cd9dfe52f50"
   integrity sha512-sy88PC2cRTVxvETRgUHFrL4No3UxvcH8G1NepGhqaTT+GXN2kTamqasot0inS5hXeg1cMbFDt27zzo9p35lZVw==
+  dependencies:
+    "@types/html-minifier-terser" "^6.0.0"
+    html-minifier-terser "^6.0.2"
+    lodash "^4.17.21"
+    pretty-error "^4.0.0"
+    tapable "^2.0.0"
+
+html-webpack-plugin@5.5.1:
+  version "5.5.1"
+  resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-5.5.1.tgz#826838e31b427f5f7f30971f8d8fa2422dfa6763"
+  integrity sha512-cTUzZ1+NqjGEKjmVgZKLMdiFg3m9MdRXkZW2OEe69WYVi5ONLMmlnSZdXzGGMOq0C8jGDrL6EWyEDDUioHO/pA==
   dependencies:
     "@types/html-minifier-terser" "^6.0.0"
     html-minifier-terser "^6.0.2"
@@ -34927,7 +34938,7 @@ postcss@8.4.19:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
-postcss@8.4.21, postcss@^8.0.0, postcss@^8.0.9, postcss@^8.2.1, postcss@^8.2.14, postcss@^8.2.15, postcss@^8.4.13, postcss@^8.4.16, postcss@^8.4.18, postcss@^8.4.19, postcss@^8.4.20, postcss@^8.4.21, postcss@^8.4.4:
+postcss@8.4.21, postcss@^8.0.0, postcss@^8.0.9, postcss@^8.2.14, postcss@^8.2.15, postcss@^8.4.13, postcss@^8.4.16, postcss@^8.4.18, postcss@^8.4.19, postcss@^8.4.20, postcss@^8.4.21, postcss@^8.4.4:
   version "8.4.21"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.21.tgz#c639b719a57efc3187b13a1d765675485f4134f4"
   integrity sha512-tP7u/Sn/dVxK2NnruI4H9BG+x+Wxz6oeZ1cJ8P6G/PZY0IKk4k/63TDsQf2kQq3+qoJeLm2kIBUNlZe3zgb4Zg==
