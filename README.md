@@ -69,6 +69,8 @@ https://scriptedalchemy.medium.com/
 - [x] [vue3-demo-federation-with-vite](./vue3-demo-federation-with-vite/README.md) &mdash; wepack and vite federation integrated projects, webpack/vite both play the role of host and remote
 - [x] [quasar-cli-vue3-webpack-javascript](./quasar-cli-vue3-webpack-javascript/README.md) &mdash; Module federation integration with Quasar apps running vue3 using quasar-cli (javascript)
 - [x] [UMD Federation](./umd-federation) &mdash; Support importing umd remote module
+- [x] [Modernjs](./modernjs) &mdash; Basic Module Federation Usage in Modern.js Framework
+- [x] [Modernjs Medusa](./modernjs-medusa) &mdash; Using Medusa in Modern.js Framework 
 
 **Module Federation Examples** covered by e2e tests with **Cypress** framework, more info about structure and configuration 👉 [here](./cypress/README.md) 👈
 
