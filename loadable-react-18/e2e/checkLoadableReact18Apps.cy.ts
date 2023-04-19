@@ -14,17 +14,17 @@ describe('Loadable React 18', () => {
         it('Check App headers and buttons visability', () => {
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.tags.headers.h1,
-                text: Constants.elementsText.loadableReact18.header,
+                text: Constants.elementsText.reactApps.header,
                 visibilityState: 'be.visible'
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.tags.headers.h2,
-                text: Constants.elementsText.loadableReact18.app1.subHeader,
+                text: Constants.elementsText.reactApps.app1.subHeader,
                 visibilityState: 'be.visible'
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.tags.headers.h3,
-                text: Constants.elementsText.loadableReact18.header3,
+                text: Constants.elementsText.reactApps.header3,
                 visibilityState: 'be.visible'
             })
             basePage.checkElementVisibility({
@@ -32,12 +32,12 @@ describe('Loadable React 18', () => {
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.tags.coreElements.button,
-                text: Constants.elementsText.loadableReact18.regularButton,
+                text: Constants.elementsText.reactApps.regularButton,
                 visibilityState: 'be.visible'
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.tags.coreElements.button,
-                text: Constants.elementsText.loadableReact18.loadableButton,
+                text: Constants.elementsText.reactApps.loadableButton,
                 visibilityState: 'be.visible'
             })
         })
@@ -48,13 +48,13 @@ describe('Loadable React 18', () => {
                 text: Constants.commonConstantsData.standardPhrase
             })
             basePage.checkElementWithTextPresence({
-                selector:  `${selectors.loadebleReact18App.app2ContentBlock} ${baseSelectors.tags.headers.h2}`,
-                text: Constants.elementsText.loadableReact18.splitedApp.header,
+                selector:  `${selectors.reactApp.app2ContentBlock} ${baseSelectors.tags.headers.h2}`,
+                text: Constants.elementsText.reactApps.splitedApp.header,
                 visibilityState: 'be.visible'
             })
             basePage.checkElementWithTextPresence({
-                selector:  `${selectors.loadebleReact18App.app2ContentBlock} ${baseSelectors.tags.paragraph}`,
-                text: Constants.elementsText.react18CodeSplittingApp.splitedApp.subHeader,
+                selector:  `${selectors.reactApp.app2ContentBlock} ${baseSelectors.tags.paragraph}`,
+                text: Constants.elementsText.reactApps.splitedApp.subHeader,
                 visibilityState: 'be.visible'
             })
             basePage.checkElementWithTextPresence({
@@ -77,17 +77,17 @@ describe('Loadable React 18', () => {
         it('Check App elements visability', () => {
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.tags.headers.h1,
-                text: Constants.elementsText.loadableReact18.header,
+                text: Constants.elementsText.reactApps.header,
                 visibilityState: 'be.visible'
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.tags.headers.h2,
-                text: Constants.elementsText.loadableReact18.app2.subHeader,
+                text: Constants.elementsText.reactApps.app2.subHeader,
                 visibilityState: 'be.visible'
             })
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.tags.headers.h3,
-                text: Constants.elementsText.loadableReact18.header3,
+                text: Constants.elementsText.reactApps.header3,
                 visibilityState: 'be.visible'
             })
             basePage.checkElementVisibility({
@@ -100,13 +100,13 @@ describe('Loadable React 18', () => {
                 text: Constants.commonConstantsData.standardPhrase
             })
             basePage.checkElementWithTextPresence({
-                selector:  `${selectors.loadebleReact18App.app2ContentBlock} ${baseSelectors.tags.headers.h2}`,
-                text: Constants.elementsText.loadableReact18.splitedApp.header,
+                selector:  `${selectors.reactApp.app2ContentBlock} ${baseSelectors.tags.headers.h2}`,
+                text: Constants.elementsText.reactApps.splitedApp.header,
                 visibilityState: 'be.visible'
             })
             basePage.checkElementWithTextPresence({
-                selector:  `${selectors.loadebleReact18App.app2ContentBlock} ${baseSelectors.tags.paragraph}`,
-                text: Constants.elementsText.react18CodeSplittingApp.splitedApp.subHeader,
+                selector:  `${selectors.reactApp.app2ContentBlock} ${baseSelectors.tags.paragraph}`,
+                text: Constants.elementsText.reactApps.splitedApp.subHeader,
                 visibilityState: 'be.visible'
             })
             basePage.checkElementWithTextPresence({

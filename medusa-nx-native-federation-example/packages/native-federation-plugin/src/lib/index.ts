@@ -27,10 +27,17 @@ export async function loadRemoteEntryVersions(url: string): Promise<{ [key: stri
 
   for (const remote of Object.keys(remotes)) {
     const endpoint: string = remotes[remote];
-    let version: NFPRemote | NFPRemoteErrorResponse = await window.fetch(endpoint, jsonHeaders)
-      .then((r) => r.json());
+    let version: NFPRemote | NFPRemoteErrorResponse;
 
-    if ((version as NFPRemoteErrorResponse).error) {
+    try {
+      version = await window.fetch(endpoint, jsonHeaders)
+        .then((r) => r.json());
+
+      if ((version as NFPRemoteErrorResponse).error) {
+        versionsJson[remote] = null;
+        continue;
+      }
+    } catch(e) {
       versionsJson[remote] = null;
       continue;
     }
