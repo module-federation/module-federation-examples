@@ -151,6 +151,14 @@
     "nohoist": [
       "**/@types",
       "**/@types/**",
+      "**/styled-jsx/**",
+      "**/styled-jsx",
+      "**/react/**",
+      "**/react",
+      "**/next/**",
+      "**/next",
+      "**/react-dom/**",
+      "**/react-dom",
       "**/svelte",
       "**/svelte/**",
       "**/svelte-loader",
@@ -187,5 +195,6 @@
     "cypress:run": "cypress run --config-file cypress/config/cypress.config.ts --browser=chrome",
     "report:generate": "allure generate ./cypress/results/allure-results --clean -o ./cypress/report",
     "report:open": "allure open ./cypress/report"
-  }
+  },
+  "packageManager": "yarn@3.5.0"
 }
