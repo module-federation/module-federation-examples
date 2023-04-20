@@ -14,6 +14,11 @@
     "serve": "concurrently \"cd checkout; npm run start\" \"cd home; npm run start\" \"cd shop; npm run start\"",
     "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
+  "resolutions": {
+    "@module-federation/nextjs-mf": "file:../../universe/dist/packages/nextjs-mf",
+    "@module-federation/utilities": "file:../../universe/dist/packages/utilities",
+    "@module-federation/node": "file:../../universe/dist/packages/node"
+  },
   "dependencies": {
     "concurrently": "^7.0.0"
   }
