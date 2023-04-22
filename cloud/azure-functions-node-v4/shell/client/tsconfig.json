@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": "src",
+    "rootDir": ".",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "paths": {
+      "remote/*": ["../../../remote/src/components/*"]
+    }
+  },
+  "references": [
+    { "path": "../../remote" }
+  ],
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
