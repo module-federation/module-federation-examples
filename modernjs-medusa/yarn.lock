@@ -2093,6 +2093,31 @@
     prettier "^2.3.2"
     typescript "^4"
 
+"@modern-js-app/eslint-config@2.15.0":
+  version "2.15.0"
+  resolved "https://registry.yarnpkg.com/@modern-js-app/eslint-config/-/eslint-config-2.15.0.tgz#65034e001d7f0458e56e6b4bce773b78b8b581db"
+  integrity sha512-Zzzl00JTcTp6n+1voq7JFUepvPumdrXbJyUYiG4D0jE1LKC0/3Wl26wNYMm+xc4N2kk5BBO11mwNPnKZfkQQpA==
+  dependencies:
+    "@babel/core" "^7.18.0"
+    "@babel/eslint-parser" "^7.18.0"
+    "@babel/eslint-plugin" "^7.17.7"
+    "@modern-js/babel-preset-app" "2.15.0"
+    "@typescript-eslint/eslint-plugin" "^5.17.0"
+    "@typescript-eslint/parser" "^5.17.0"
+    eslint "^8.28.0"
+    eslint-config-prettier "^8.3.0"
+    eslint-plugin-eslint-comments "^3.2.0"
+    eslint-plugin-filenames "^1.3.2"
+    eslint-plugin-import "^2.24.1"
+    eslint-plugin-markdown "^3.0.0"
+    eslint-plugin-node "^11.1.0"
+    eslint-plugin-prettier "^4.0.0"
+    eslint-plugin-promise "^6.1.1"
+    eslint-plugin-react "^7.24.0"
+    eslint-plugin-react-hooks "^4.2.0"
+    prettier "^2.3.2"
+    typescript "^4"
+
 "@modern-js-reduck/plugin-auto-actions@1.1.9", "@modern-js-reduck/plugin-auto-actions@^1.1.4":
   version "1.1.9"
   resolved "https://registry.npmjs.org/@modern-js-reduck/plugin-auto-actions/-/plugin-auto-actions-1.1.9.tgz#f4f4eba6d237411a90572d76cbe3ea554c53d44c"
@@ -2199,6 +2224,18 @@
     "@modern-js/utils" "2.13.4"
     core-js "^3.27.0"
 
+"@modern-js/babel-preset-app@2.15.0":
+  version "2.15.0"
+  resolved "https://registry.yarnpkg.com/@modern-js/babel-preset-app/-/babel-preset-app-2.15.0.tgz#2f37f4cd44d99aa58776afde16b66a32e740379b"
+  integrity sha512-qRlW4SUSH3OON7yD04kzJ52R/zEJr2LSollIVwoBW6/uU2mEOJyJJJ9uUnTUl273p/p7avPi+NNaUTszjwofZw==
+  dependencies:
+    "@babel/core" "^7.18.0"
+    "@babel/runtime" "^7.18.0"
+    "@babel/types" "^7.18.0"
+    "@modern-js/babel-preset-base" "2.15.0"
+    "@modern-js/utils" "2.15.0"
+    core-js "^3.27.0"
+
 "@modern-js/babel-preset-base@2.13.4":
   version "2.13.4"
   resolved "https://registry.npmjs.org/@modern-js/babel-preset-base/-/babel-preset-base-2.13.4.tgz#b5cf15c6cfaf3c704117146b8dad00b65bc9274e"
@@ -2212,6 +2249,22 @@
     "@babel/preset-typescript" "^7.17.12"
     "@babel/runtime" "^7.18.0"
     "@modern-js/utils" "2.13.4"
+    "@types/babel__core" "^7.1.16"
+    lodash "^4.17.21"
+
+"@modern-js/babel-preset-base@2.15.0":
+  version "2.15.0"
+  resolved "https://registry.yarnpkg.com/@modern-js/babel-preset-base/-/babel-preset-base-2.15.0.tgz#921c96a94a6cb07a6cc837817fcbc151469b5485"
+  integrity sha512-MUseyqu3lGKty6Y/hqmJC/I/NF82TWlY0QYcFUpNY9G55EWLeKoE2aR08mD2/zNo5fjN3V7WIh6GVpg+W9SU9Q==
+  dependencies:
+    "@babel/core" "^7.18.0"
+    "@babel/plugin-transform-runtime" "^7.18.0"
+    "@babel/plugin-transform-typescript" "^7.18.0"
+    "@babel/preset-env" "^7.18.0"
+    "@babel/preset-react" "^7.17.12"
+    "@babel/preset-typescript" "^7.17.12"
+    "@babel/runtime" "^7.18.0"
+    "@modern-js/utils" "2.15.0"
     "@types/babel__core" "^7.1.16"
     lodash "^4.17.21"
 
@@ -2327,12 +2380,12 @@
     "@modern-js/plugin" "2.13.4"
     "@modern-js/utils" "2.13.4"
 
-"@modern-js/eslint-config@2.13.4":
-  version "2.13.4"
-  resolved "https://registry.npmjs.org/@modern-js/eslint-config/-/eslint-config-2.13.4.tgz#f7f1fc8b946d5e026ceff34bc166edfeba405434"
-  integrity sha512-mlo6CJskmPcz3ClHdb4DWj6bYt9J9RyF+XrxVPks/n4SDEar0qydgzbQlbykZev+xYUMeQgprW/t+4Yu4Yp+sg==
+"@modern-js/eslint-config@2.15.0":
+  version "2.15.0"
+  resolved "https://registry.yarnpkg.com/@modern-js/eslint-config/-/eslint-config-2.15.0.tgz#9dab9850cf9555f3f91d7312bc6b6c5015529c93"
+  integrity sha512-920O5OzAqJ7JTAAe1aH9+PlBKYP64v4kpGFmyvIAw2iPEAIi0bU/m8hTNFo71Eq0yFH/O71Wn7b6ELR43mFFRQ==
   dependencies:
-    "@modern-js-app/eslint-config" "2.13.4"
+    "@modern-js-app/eslint-config" "2.15.0"
 
 "@modern-js/generator-common@3.1.7":
   version "3.1.7"
@@ -2537,6 +2590,16 @@
   version "2.13.4"
   resolved "https://registry.npmjs.org/@modern-js/utils/-/utils-2.13.4.tgz#36736987fea05fcaa6c96541976e841b7d3dac7d"
   integrity sha512-/Ju8DABEZ2E4Y2RcuJ7QdM4rSosMo06HiMTRcI9OMx4iuxA3lo887LGNzF9PecjYAGMbNavgZ9DJXsUT/G1B2A==
+  dependencies:
+    "@remix-run/router" "^1.3.2"
+    caniuse-lite "^1.0.30001451"
+    lodash "^4.17.21"
+    serialize-javascript "^6.0.0"
+
+"@modern-js/utils@2.15.0":
+  version "2.15.0"
+  resolved "https://registry.yarnpkg.com/@modern-js/utils/-/utils-2.15.0.tgz#97b009ceb9887aa705aed6866ee678b9d9e5ec8d"
+  integrity sha512-FJyElgfb/pajjcgBTjrlcGlrr+U2OVVfSEDIxB+OJrH9ioA5E+bk1hypi4DDpJXAqLaY/YrVLUdQUPL5uXppsw==
   dependencies:
     "@remix-run/router" "^1.3.2"
     caniuse-lite "^1.0.30001451"
