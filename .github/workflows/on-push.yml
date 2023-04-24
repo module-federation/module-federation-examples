@@ -7,6 +7,7 @@ on:
 env:
   CACHE_PATH: |
     **/node_modules
+    **/.yarn/cache
     ~/.cache/Cypress
     ~/.cache/yarn/v6
   FILES_TO_DELETE: |
