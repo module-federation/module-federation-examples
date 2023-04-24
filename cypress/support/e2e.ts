@@ -14,14 +14,14 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands';
 import '@shelex/cypress-allure-plugin';
 
 Cypress.on('uncaught:exception', (err: Error) => {
-    if (err.message.includes('cookie') || err.name.includes('cookie')) {
-        return false
-    }
-})
+  if (err.message.includes('cookie') || err.name.includes('cookie')) {
+    return false;
+  }
+});
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

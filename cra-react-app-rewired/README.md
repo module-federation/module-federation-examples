@@ -7,6 +7,7 @@ This example demos a basic host application loading remote component.
 - In each of the applications the `config-overides.js` file is where the webpack file is extended to include module federation
 
 # Running Demo
+
 Run `yarn install`.
 Run `yarn start`. This will build and serve both `host` and `remote` on ports 3000 and 3001 respectively.
 

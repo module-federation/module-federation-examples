@@ -1,7 +1,10 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
-const { remotes: { styledComponent }, mfeBaseConfig } = require('../remotes.config');
+const {
+  remotes: { styledComponent },
+  mfeBaseConfig,
+} = require('../remotes.config');
 
 module.exports = {
   entry: './src/index',

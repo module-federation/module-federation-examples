@@ -7,7 +7,10 @@ import { NFPDashboardVersionStrategy, NFPDashboardOutputFile } from './schema';
 /**
  * Defines a version specifier for an app build
  */
-export function createVersion(strategy: NFPDashboardVersionStrategy, dashboard: NFPDashboardOutputFile): string {
+export function createVersion(
+  strategy: NFPDashboardVersionStrategy,
+  dashboard: NFPDashboardOutputFile,
+): string {
   strategy = strategy.trim() as NFPDashboardVersionStrategy;
 
   if (strategy === 'Date') {
@@ -30,9 +33,7 @@ export function createVersion(strategy: NFPDashboardVersionStrategy, dashboard: 
  */
 export function createGitSha(): string {
   try {
-    return execSync('git rev-parse HEAD')
-      .toString()
-      .trim();
+    return execSync('git rev-parse HEAD').toString().trim();
   } catch (e) {
     throw new Error(`Error occurred while creating Git SHA version specifier: ${e}`);
   }
@@ -48,8 +49,7 @@ export function readNxBuildHash(target: string, rootPath: string): string {
     throw new Error(`Cache Nx file ${cacheNxFile} not found`);
   }
 
-  const task: { hash: string } = readJsonFile(cacheNxFile).tasks
-    ?.find((t) => t.taskId === target);
+  const task: { hash: string } = readJsonFile(cacheNxFile).tasks?.find(t => t.taskId === target);
 
   if (!task || !task.hash) {
     throw new Error(`Error occurred while reading Nx Build Hash version specifier`);

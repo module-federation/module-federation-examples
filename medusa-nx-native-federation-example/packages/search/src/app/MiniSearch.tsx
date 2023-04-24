@@ -12,7 +12,7 @@ let TextField: React.ComponentType<any>;
     const module = await loadRemoteModule({
       remoteName: 'dsl',
       exposedModule: './TextField',
-      remoteEntry: remotes['dsl'] || 'http://localhost:3002/remoteEntry.json'
+      remoteEntry: remotes['dsl'] || 'http://localhost:3002/remoteEntry.json',
     });
 
     console.log('dsl: ', module);

@@ -13,10 +13,7 @@ export function initializeApp(mfService: MicrofrontendService): () => Promise<vo
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(APP_ROUTES),
-  ],
+  imports: [BrowserModule, RouterModule.forRoot(APP_ROUTES)],
   providers: [
     MicrofrontendService,
     {

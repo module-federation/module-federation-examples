@@ -1,5 +1,5 @@
-import { FC, ReactNode } from "react";
-import React from "react";
+import { FC, ReactNode } from 'react';
+import React from 'react';
 
 export interface ButtonProps {
   children: ReactNode;

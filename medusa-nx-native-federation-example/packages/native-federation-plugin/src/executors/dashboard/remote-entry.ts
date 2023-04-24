@@ -12,17 +12,17 @@ export function writeRemoteEntryVersionFile(directory: string, version: string):
     existsSync(remoteEntryJsonFile) ? readJsonFile(remoteEntryJsonFile) || {} : {}
   ) as NFPDashboardFederationRemoteEntryFile;
 
-  remoteEntryJson.shared = (remoteEntryJson?.shared || []).map((dependency) => {
+  remoteEntryJson.shared = (remoteEntryJson?.shared || []).map(dependency => {
     return {
       ...dependency,
-      outFileName: path.join(version, dependency.outFileName)
+      outFileName: path.join(version, dependency.outFileName),
     };
   });
 
-  remoteEntryJson.exposes = (remoteEntryJson?.exposes || []).map((dependency) => {
+  remoteEntryJson.exposes = (remoteEntryJson?.exposes || []).map(dependency => {
     return {
       ...dependency,
-      outFileName: './' + path.join(version, dependency.outFileName)
+      outFileName: './' + path.join(version, dependency.outFileName),
     };
   });
 

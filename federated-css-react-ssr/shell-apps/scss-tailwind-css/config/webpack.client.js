@@ -1,24 +1,22 @@
-const path = require("path");
-const { merge } = require("webpack-merge");
-const shared = require("./webpack.shared");
-const moduleFederationPlugin = require("./module-federation");
+const path = require('path');
+const { merge } = require('webpack-merge');
+const shared = require('./webpack.shared');
+const moduleFederationPlugin = require('./module-federation');
 
 module.exports = merge(shared, {
-  name: "client",
-  target: "web",
-  "optimization": {
-    "minimize": false
+  name: 'client',
+  target: 'web',
+  optimization: {
+    minimize: false,
   },
-  entry: ["@babel/polyfill", path.resolve(__dirname, "../src/index.js")],
-  mode: "production",
-  devtool: "source-map",
+  entry: ['@babel/polyfill', path.resolve(__dirname, '../src/index.js')],
+  mode: 'production',
+  devtool: 'source-map',
   output: {
-    path: path.resolve(__dirname, "../dist/client"),
-    filename: "[name].js",
-    chunkFilename: "[name].js",
-    publicPath: "http://localhost:4005/static/",
+    path: path.resolve(__dirname, '../dist/client'),
+    filename: '[name].js',
+    chunkFilename: '[name].js',
+    publicPath: 'http://localhost:4005/static/',
   },
-  plugins: [
-    moduleFederationPlugin.client,
-  ],
+  plugins: [moduleFederationPlugin.client],
 });

@@ -1,3 +1,3 @@
 export default {
-  VITE_EXAMPLE: "VITE_EXAMPLE_TEXT",
+  VITE_EXAMPLE: 'VITE_EXAMPLE_TEXT',
 };

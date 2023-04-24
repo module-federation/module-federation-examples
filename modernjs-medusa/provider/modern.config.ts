@@ -2,8 +2,7 @@ import fs from 'fs';
 import appTools, { defineConfig } from '@modern-js/app-tools';
 import DashboardPlugin from '@module-federation/dashboard-plugin';
 import ChunkPatchPlugin from './ChunkPatchPlugin';
-import AdaptMedusaPlugin from './AdaptMedusaPlugin'
-
+import AdaptMedusaPlugin from './AdaptMedusaPlugin';
 
 const tokens = fs
   .readFileSync(__dirname + '/../.env')
@@ -62,7 +61,7 @@ export default defineConfig({
             remote: 'http://localhost:3002/remoteEntry.js',
           },
         }),
-        new AdaptMedusaPlugin()
+        new AdaptMedusaPlugin(),
       ]);
       // modern.js set runtimeChunk true by default
       delete config.optimization?.runtimeChunk;

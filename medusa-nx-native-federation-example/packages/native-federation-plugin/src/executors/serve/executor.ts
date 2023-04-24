@@ -9,9 +9,9 @@ async function fetchProjectBuildVersion(endpoint: string) {
   try {
     const response = await fetch(endpoint, {
       headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      }
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
     });
 
     console.log(response);
@@ -52,7 +52,10 @@ function createDashboardReadUrl(configuration: ProjectConfiguration): string {
  */
 function updateProjectBuildOutputPath(context: ExecutorContext, version: string) {
   const projectBuildTarget = context.workspace.projects[context.projectName].targets.build;
-  projectBuildTarget.options.outputPath = path.join(projectBuildTarget.options.outputPath, `version-${version}`);
+  projectBuildTarget.options.outputPath = path.join(
+    projectBuildTarget.options.outputPath,
+    `version-${version}`,
+  );
 }
 
 /**
@@ -60,7 +63,7 @@ function updateProjectBuildOutputPath(context: ExecutorContext, version: string)
  */
 export default async function runExecutor(
   options: NFPServeExecutorOptions,
-  context: ExecutorContext
+  context: ExecutorContext,
 ): Promise<{ success: boolean }> {
   const { root, projectName, configurationName } = context;
 

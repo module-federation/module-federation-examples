@@ -2,14 +2,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
 const remotes = {
-  app2: "app2@http://localhost:3002/remoteEntry.js",
-}
-
+  app2: 'app2@http://localhost:3002/remoteEntry.js',
+};
 
 const delegatedRemotesObject = Object.entries(remotes).reduce((acc, [name, url]) => {
   acc[name] = `./remote-delegate.js?remote=${url}`;
   return acc;
-},{})
+}, {});
 module.exports = {
   entry: [...Object.values(delegatedRemotesObject), './src/index'],
   mode: 'development',
@@ -42,7 +41,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'app1',
       remotes: Object.entries(delegatedRemotesObject).reduce((acc, [name, url]) => {
-        acc[name] = `internal ${url}`
+        acc[name] = `internal ${url}`;
         return acc;
       }, {}),
       shared: { react: { singleton: true }, 'react-dom': { singleton: true } },

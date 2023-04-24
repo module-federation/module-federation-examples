@@ -38,10 +38,12 @@ cypress
 ```
 
 `common` - contains common files for the tests.
+
 - `base.ts` - all methods that could be used in more than one test should be placed in this file.
 - `selectors.ts` - all selectors/locators that are used in tests.
 
 `config` - contains configuration files for the Cypress itself.
+
 - `cypress.config.ts` - Cypress config file. Since Cypress 10, all plugins and configs for Cypress should be placed here. [How to config Cypress](https://docs.cypress.io/guides/references/configuration)
 
 `fixtures` - contains files or data that are used in tests, such as images, json constants, etc.
@@ -49,6 +51,7 @@ cypress
 `helpers` - contains data-generation methods for tests. As an example, there is a method for generating data for the tests called `base-helper.ts`.
 
 `support` - contains files that are loaded automatically before every test, such as commands, etc.
+
 - `commands.ts` - all custom commands that could be use in tests are placed in this file.
 - `e2e.ts` - contains imports for our custom commands.
 
@@ -76,9 +79,9 @@ It will open Cypress Test Runner and allow to run tests in interactive mode:
 
 ![Cypress test runner](https://i.ibb.co/yssCZZX/Screenshot-2023-01-11-at-13-34-32.png)
 
-First, select the browser in which the tests are to be executed. Next, initiate the tests by choosing the test name. 
+First, select the browser in which the tests are to be executed. Next, initiate the tests by choosing the test name.
 
->**Note:** Cypress is configured to use the Chrome browser as the default option.
+> **Note:** Cypress is configured to use the Chrome browser as the default option.
 
 Then, select the test that needs to be executed by selecting it.
 
@@ -109,50 +112,57 @@ npx cypress run --config-file cypress/config/cypress.config.ts --browser=chrome 
 ```
 
 For example:
+
 ```bash
 npx cypress run --config-file cypress/config/cypress.config.ts --browser=chrome --spec "./advanced-api/automatic-vendor-sharing/e2e/*.cy.ts"
 ```
 
-For ease of use, each sample includes a script that performs the following tasks: 
-- building the sample, 
-- starting the sample, and 
-- executing the tests in headless mode. 
+For ease of use, each sample includes a script that performs the following tasks:
+
+- building the sample,
+- starting the sample, and
+- executing the tests in headless mode.
 
 To execute the script, use the following command:
 
 ```bash
 npx lerna run --scope="name_of_sample_in_sample_package.json" e2e:ci
 ```
+
 ![Sample package.json name](https://i.ibb.co/Tgcgp1C/Screenshot-2023-01-11-at-14-00-51.png)
 
 For example:
+
 ```bash
 npx lerna run --scope=automatic-vendor-sharing e2e:ci
 ```
 
-This command will perform the following tasks in sequence: 
-- building the application, 
-- waiting for it to start on localhost, 
-- starting the application, 
+This command will perform the following tasks in sequence:
+
+- building the application,
+- waiting for it to start on localhost,
+- starting the application,
 - executing the tests,
-- and then providing a simple summary of the test results. 
- 
+- and then providing a simple summary of the test results.
+
 It will exit with a code of 0 or 1, indicating whether the test run was successful or not.
 
->`0` means that all tests passed and `1` means that at least one test failed.
+> `0` means that all tests passed and `1` means that at least one test failed.
 
 ![Console](https://i.ibb.co/p0fn5Fz/Screenshot-2023-01-11-at-14-08-29.png)
 
->**Note:** This command does not stop the application after the test run. It must be manually stopped by executing the following command:
+> **Note:** This command does not stop the application after the test run. It must be manually stopped by executing the following command:
 >
->```bash
->kill -9 $(lsof -ti:port_you_need_to_kill)
->```
+> ```bash
+> kill -9 $(lsof -ti:port_you_need_to_kill)
+> ```
 >
->For example:
->```bash
->kill -9 $(lsof -ti:3001)
->```
+> For example:
+>
+> ```bash
+> kill -9 $(lsof -ti:3001)
+> ```
+
 ### Test report
 
 After you run tests in a Headless mode, you can find a report in the `cypress/results` directory. It is a `.json` files. It contains information about the test run, such as the number of tests, the number of passed tests, the number of failed tests, and the duration of the test run. To genarete HTML report, you can run:
@@ -171,7 +181,7 @@ In `Suites` tab you can find all the tests. And debug them.
 
 ![Allure report suites](https://i.ibb.co/ggrzwqd/Screenshot-2023-01-30-at-12-52-26.png)
 
->**Note:** On CI pipeline, the report will be generated automatically and added to your PR as a comment. Of course by workflow status.
+> **Note:** On CI pipeline, the report will be generated automatically and added to your PR as a comment. Of course by workflow status.
 
 Success:
 ![Allure report success comment](https://i.ibb.co/bRXZTJs/Screenshot-2023-02-03-at-13-13-07.png)
@@ -191,6 +201,7 @@ In comment you can find a link to the report and a link to the workflow itself, 
 First, create a new, empty test file. It should be located in the `sample/e2e` directory. The file name should end with the `.cy.ts` extension, and should have a simple, self-explanatory name.
 
 For example:
+
 - hostChecks.cy.ts
 - name_of_sample.cy.ts
 - etc.
@@ -202,91 +213,91 @@ As an example:
 ```typescript
 import { BaseMethods } from '../../../cypress/common/base';
 
-const basePage: BaseMethods = new BaseMethods()
+const basePage: BaseMethods = new BaseMethods();
 ```
 
 Create the describe (suite) for the test:
 
 ```typescript
-describe(`Example test`, () => {
-
-})
+describe(`Example test`, () => {});
 ```
+
 Sometimes it isn't nessesary to use `before` & `beforeEach` hooks. But if you need to do some actions before the test, you can use them. Put `before` or `beforeEach` hook into `describe` block. It will be executed before each test (means `beforeEach`) or before all the tests (means `before`) in the suite.
 
 As an example, our hook opens needed localhost before every test in the suite:
 
 ```typescript
 describe(`Example test`, () => {
-    beforeEach(() => {
-        cy.visit('https"//localhost:3001')
-    })
-})
+  beforeEach(() => {
+    cy.visit('https"//localhost:3001');
+  });
+});
 ```
 
 And finally, add the test case into the `describe` block by adding `it` block:
 
 ```typescript
 describe(`Example test`, () => {
-    beforeEach(() => {
-        cy.visit('https"//localhost:3001')
-    })
+  beforeEach(() => {
+    cy.visit('https"//localhost:3001');
+  });
 
-    it(`Should open localhost`, () => {
-        cy.url().should('include', 'localhost:3001')
-    })
-})
+  it(`Should open localhost`, () => {
+    cy.url().should('include', 'localhost:3001');
+  });
+});
 ```
 
 Voilà, it is done! 😃
 
->**Note:** When writing tests, it is recommended to use the existing methods located in the `common` directory. If a new method is required, it should be added to the `common/base.ts` file. However, if the new method will only be used in a single test, it can be added to the `sample/e2e/methods.ts` file.
+> **Note:** When writing tests, it is recommended to use the existing methods located in the `common` directory. If a new method is required, it should be added to the `common/base.ts` file. However, if the new method will only be used in a single test, it can be added to the `sample/e2e/methods.ts` file.
 
 The following is an example of how the test will appear when utilizing the pre-existing common methods:
 
 ```typescript
 describe(`Example test`, () => {
-    beforeEach(() => {
-        basePage.openLocalhost(3001)
-    })
+  beforeEach(() => {
+    basePage.openLocalhost(3001);
+  });
 
-    it(`Should open localhost`, () => {
-        basePage.checkUrlText(3001)
-    })
-})
+  it(`Should open localhost`, () => {
+    basePage.checkUrlText(3001);
+  });
+});
 ```
 
 ### Create methods
 
 If a new method is needed, and it will be reused across multiple test for multiple samples, it should be added to the `common/base.ts` file.
 
->**Note:** New methods should only be added to the `base.ts` file if they will be used in more than one sample.
+> **Note:** New methods should only be added to the `base.ts` file if they will be used in more than one sample.
 
 If the new method will only be used in a single sample, a new methods folder should be created within the `sample/e2e/` directory and a `methods.ts` file should be added to it. The new method can then be added to the `methods.ts` file, allowing it to be used only in the specific sample where it was created.
 
 Don't forget to import it in the test, as shown:
 
 ```typescript
-import {ExampleMethods} from "../methods/methods";
+import { ExampleMethods } from '../methods/methods';
 ```
 
 And then use it in the test:
 
 ```typescript
 describe(`Example test`, () => {
-    beforeEach(() => {
-        basePage.openLocalhost(3001)
-    })
+  beforeEach(() => {
+    basePage.openLocalhost(3001);
+  });
 
-    it(`Should open localhost`, () => {
-        exampleMethods.checkSomething('Thing😎')
-    })
-})
+  it(`Should open localhost`, () => {
+    exampleMethods.checkSomething('Thing😎');
+  });
+});
 ```
 
 <h2 align="center">Best Practices & Rules</h2>
 
 ## Rules
+
 ### File rules
 
 ##### `base.ts`
@@ -300,7 +311,7 @@ describe(`Example test`, () => {
   - `public` (at the beginning);
   - `protected` (in between `public` and `private`);
   - `private` (at the end);
-- All methods inside file grouped in multiple sections  
+- All methods inside file grouped in multiple sections
   - `Clicks Section` -> for methods related to click actions
   - `Checks Section` -> for methods related to check actions (checkElementVisibility, checkElementContainText, etc)
   - `Writes Section` -> for methods related to write actions (fillField, etc)
@@ -318,14 +329,15 @@ describe(`Example test`, () => {
   - `selectors` block should include specific selectors which is used for specific sample
   - `updatedSelectors` block includes both common and specific selectors which created by combining of two different selectors
 - NOTE Please follow added structure, for example if you add selector in `baseSelectors` block always search for suitable block for it
-- NOTE For `selectors` and `updatedSelectors` blocks please combine selectors under appName just like it's already added, it will help selectors file to be more clear and readable 
-- NOTE Added blocks types should be enough to cover all selectors needs, so it should be unnecessary to create new selectors blocks (only new blocks inside existed ones, for example blocks of selectors for the newest sample inside `selectors` block)   
+- NOTE For `selectors` and `updatedSelectors` blocks please combine selectors under appName just like it's already added, it will help selectors file to be more clear and readable
+- NOTE Added blocks types should be enough to cover all selectors needs, so it should be unnecessary to create new selectors blocks (only new blocks inside existed ones, for example blocks of selectors for the newest sample inside `selectors` block)
 - Try to avoid duplicating `selectors/locators` by utilizing/moving existing ones;
 - If a `selector/locator` appears to be common, but has an incorrect name, please rename it correctly and move to another block if necessary (e.g. `button` to `commonButton`) and make sure to update all places where it is used.
 
 ##### `constants.ts`
 
 - All `constants` should be added to their corresponding blocks based on logic:
+
   - Files path (if you need to reach some system file by test) to `filesPath` block;
   - Selectors parts (which used to create selector with replace element) to `selectorParts` block;
   - Common constants data (which can be used in multiple places throughout constants or in multiple samples) to `commonConstantsData` block;
@@ -334,17 +346,19 @@ describe(`Example test`, () => {
   - different phrases from samples to `commonPhrases` block;
   - values related to elements color (rgb/non rgb) to `color` block;
   - links elements to `hrefs` block;
-  
+
   NOTE: Please combine all constants inside block by sample name, for example `commonPhrases` -> `sample name` -> constants inside object. You can create such objects in all constants types which you need
+
 - If a suitable block does not exist, consider if it is necessary to create a new one with a clear and understandable name;
-- Try to avoid duplicating `constants` by moving common constant to `commonConstantsData` block and updating of all usage places 
+- Try to avoid duplicating `constants` by moving common constant to `commonConstantsData` block and updating of all usage places
 - If a constant has an incorrect name, please rename it correctly (e.g. `buttonText` to `commonButtonText`) and make sure to update all places where it is used.
 
 ##### `commonData.ts`
 
-The main reason of commonData.ts file is to store test which can be used for multiple samples, for example if we declare similar array of data in multiple samples it can be moved to commonData.ts and called from this file instead of redeclaring multiple times 
+The main reason of commonData.ts file is to store test which can be used for multiple samples, for example if we declare similar array of data in multiple samples it can be moved to commonData.ts and called from this file instead of redeclaring multiple times
 
 ## Best Practices
+
 ### Add and Use data-e2e locators
 
 For instance, if there are two or more elements on the page that have similar names, tags, and classes, but you only need to select one of them. 😢
@@ -361,20 +375,22 @@ In this case, you can use the data-e2e attribute to target the specific element 
     #name
     data-e2e="FORM_FIELD__NAME"
   />
-  <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
-    <div *ngIf="angForm.controls['name'].errors.required">
-      Name is required.
-    </div>
+  <div
+    *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)"
+    class="alert alert-danger"
+  >
+    <div *ngIf="angForm.controls['name'].errors.required">Name is required.</div>
   </div>
 </div>
 ```
+
 And use it in the test:
 
 ```typescript
 basePage.fillField({
-    selector: '[data-e2e="FORM_FIELD__NAME"]',
-    text: 'Module Federation is Cool 😎'
-})
+  selector: '[data-e2e="FORM_FIELD__NAME"]',
+  text: 'Module Federation is Cool 😎',
+});
 ```
 
 > **Note:** Please be careful, some samples are auto-reloading after changes and some are not. So carefully check what's needed when you change the source code. 🧐
@@ -388,12 +404,13 @@ To keep it DRY we can create reusable data-e2e locators. For example, we have a 
 <button data-e2e="COMMON_BUTTON__SECOND">Second</button>
 <button data-e2e="COMMON_BUTTON__THIRD">Third</button>
 ```
+
 Next, we need to create a selector and a get method that will replace the `{buttonName}` text in the selector with the desired text.
 
 ```typescript
 const commonSelectors = {
-    button: '[data-e2e="COMMON_BUTTON__{buttonName}"]'
-}
+  button: '[data-e2e="COMMON_BUTTON__{buttonName}"]',
+};
 ```
 
 ```typescript
@@ -407,16 +424,17 @@ In the end we get `data-e2e="COMMON_BUTTON` selector with the needed name.
 For example:
 
 ```typescript
-basePage.getButtonName('First') // will return us `data-e2e="COMMON_BUTTON__FIRST`
+basePage.getButtonName('First'); // will return us `data-e2e="COMMON_BUTTON__FIRST`
 ```
 
 And we can use it an argument for the `check` or `click`, etc. methods
 
 ```typescript
 basePage.isElementExist({
-    selector: basePage.getButtonName('First')
-})
+  selector: basePage.getButtonName('First'),
+});
 ```
+
 ### Use objects
 
 #### Testing Identical Apps
@@ -435,53 +453,54 @@ We have two apps `app1` and `app2` they are similar. So we can create one object
 
 ```typescript
 const appsData = [
-    {
-        headerSelector: baseSelectors.tags.headers.h1,
-        subHeaderSelector: baseSelectors.tags.headers.h2,
-        buttonSelector: baseSelectors.tags.coreElements.button,
-        headerText: Constants.elementsText.automaticVendorContent,
-        appNameText: Constants.elementsText.automaticVendorFirstAppName,
-        buttonColor: Constants.color.red,
-        host: 3001
-    },
-    {
-        headerSelector: baseSelectors.tags.headers.h1,
-        subHeaderSelector: baseSelectors.tags.headers.h2,
-        buttonSelector: baseSelectors.tags.coreElements.button,
-        headerText: Constants.elementsText.automaticVendorContent,
-        appNameText: Constants.elementsText.automaticVendorSecondAppName,
-        buttonColor: Constants.color.deepBlue,
-        host: 3002
-    }
-]
+  {
+    headerSelector: baseSelectors.tags.headers.h1,
+    subHeaderSelector: baseSelectors.tags.headers.h2,
+    buttonSelector: baseSelectors.tags.coreElements.button,
+    headerText: Constants.elementsText.automaticVendorContent,
+    appNameText: Constants.elementsText.automaticVendorFirstAppName,
+    buttonColor: Constants.color.red,
+    host: 3001,
+  },
+  {
+    headerSelector: baseSelectors.tags.headers.h1,
+    subHeaderSelector: baseSelectors.tags.headers.h2,
+    buttonSelector: baseSelectors.tags.coreElements.button,
+    headerText: Constants.elementsText.automaticVendorContent,
+    appNameText: Constants.elementsText.automaticVendorSecondAppName,
+    buttonColor: Constants.color.deepBlue,
+    host: 3002,
+  },
+];
 ```
 
 And then use it in our tests:
 
 ```typescript
 appsData.forEach(
-    (property: {
-        headerSelector: string
-        subHeaderSelector: string
-        buttonSelector: string,
-        headerText: string,
-        appNameText: string,
-        buttonColor: string,
-        host: number
-    }) => {
-        describe(`Check example ${property.appNameText}`, () => {
-            beforeEach(() => {
-                basePage.openLocalhost(property.host)
-            })
+  (property: {
+    headerSelector: string;
+    subHeaderSelector: string;
+    buttonSelector: string;
+    headerText: string;
+    appNameText: string;
+    buttonColor: string;
+    host: number;
+  }) => {
+    describe(`Check example ${property.appNameText}`, () => {
+      beforeEach(() => {
+        basePage.openLocalhost(property.host);
+      });
 
-            it(`Check that ${property.appNameText} header is exist`, () => {
-                basePage.checkElementWithTextPresence({
-                    selector: property.headerSelector,
-                    text: property.headerText
-                })
-            })
-        })
-    })
+      it(`Check that ${property.appNameText} header is exist`, () => {
+        basePage.checkElementWithTextPresence({
+          selector: property.headerSelector,
+          text: property.headerText,
+        });
+      });
+    });
+  },
+);
 ```
 
 It will generate two `describes` and two `its` for each test, and our test run will look like the following:
@@ -505,13 +524,14 @@ sample
     ├── commonChecks.cy.ts (for common checks)
     └── runAllTest.cy.ts (for common and uncommon checks)
 ```
+
 - `hostChecks.cy.ts` for non-similar checks. It contains all non-similar checks for each app;
 - `commonChecks.cy.ts` for similar checks. It contains all similar checks for each app;
 - `runAllTest.cy.ts` for similar and non-simillar checks. It contains all checks for each app. You don't need to duplicate code here, only import from your `commonChecks` and `hostChecks` files and that's all.
 
 ```typescript
-import './hostChecks.cy'
-import './commonChecks.cy'
+import './hostChecks.cy';
+import './commonChecks.cy';
 ```
 
 ### Managing Multiple Constants
@@ -544,19 +564,19 @@ import { BaseMethods } from '../../../cypress/common/base';
 import { baseSelectors } from '../../../cypress/common/selectors';
 import { Constants } from '../../../cypress/fixtures/constants';
 
-const basePage: BaseMethods = new BaseMethods()
+const basePage: BaseMethods = new BaseMethods();
 
 describe(`Check ${appName}`, () => {
-    beforeEach(() => {
-        basePage.openLocalhost(host)
-    })
-    it(`Check ${appName} built and running`, () => {
-        basePage.checkElementWithTextPresence({
-            selector: baseSelectors.tags.headers.header,
-            text: Constants.testedAppsName.App1.name
-        })
-    })
-})
+  beforeEach(() => {
+    basePage.openLocalhost(host);
+  });
+  it(`Check ${appName} built and running`, () => {
+    basePage.checkElementWithTextPresence({
+      selector: baseSelectors.tags.headers.header,
+      text: Constants.testedAppsName.App1.name,
+    });
+  });
+});
 ```
 
 ### Skip tests with `skipWhen()` method
@@ -571,38 +591,35 @@ Usage:
 
 ```typescript
 const appData = [
-    {
-        host: 3001
-    },
-    {
-        host: 3002
-    }
-]
+  {
+    host: 3001,
+  },
+  {
+    host: 3002,
+  },
+];
 
-appsData.forEach(
-    (property: {
-        host: number
-    }) => {
-        describe(`Check example apps`, () => {
-            beforeEach(() => {
-                basePage.openLocalhost(host)
-            })
+appsData.forEach((property: { host: number }) => {
+  describe(`Check example apps`, () => {
+    beforeEach(() => {
+      basePage.openLocalhost(host);
+    });
 
-            it(`User should be created & added`, () => {
-                basePage.clickElementBySelector({
-                    selector: baseSelectors.createButton
-                })
-                basePage.checkUserCreated(true)
-            })
+    it(`User should be created & added`, () => {
+      basePage.clickElementBySelector({
+        selector: baseSelectors.createButton,
+      });
+      basePage.checkUserCreated(true);
+    });
 
-            it(`User should be deleted`, () => {
-                basePage.clickElementBySelector({
-                    selector: baseSelectors.deleteButton
-                })
-                basePage.checkUserDeleted(true)
-            })
-        })
-    })
+    it(`User should be deleted`, () => {
+      basePage.clickElementBySelector({
+        selector: baseSelectors.deleteButton,
+      });
+      basePage.checkUserDeleted(true);
+    });
+  });
+});
 ```
 
 It will run your testCases on every host, as an example on 3001 and 3002. So you need to skip user deletion on 3001 host, and user creation user on 3002. Let's do this!
@@ -611,18 +628,18 @@ Check how we already added `skipWhen()` custom command and keep in mind that you
 
 ```typescript
 declare global {
-    namespace Cypress {
-        interface Chainable {
-            skipWhen(condition: boolean): void;
-        }
+  namespace Cypress {
+    interface Chainable {
+      skipWhen(condition: boolean): void;
     }
+  }
 }
 
 Cypress.Commands.add('skipWhen', function (condition) {
-    if (condition) {
-        this.skip()
-    }
-})
+  if (condition) {
+    this.skip();
+  }
+});
 ```
 
 Then add it to `cypress/common/base.ts` file, because we are going to use it as global:
@@ -637,40 +654,37 @@ And finally, use it in our testCase:
 
 ```typescript
 const appData = [
-    {
-        host: 3001
-    },
-    {
-        host: 3002
-    }
-]
+  {
+    host: 3001,
+  },
+  {
+    host: 3002,
+  },
+];
 
-appsData.forEach(
-    (property: {
-        host: number
-    }) => {
-        describe(`Check example apps`, () => {
-            beforeEach(() => {
-                basePage.openLocalhost(host)
-            })
+appsData.forEach((property: { host: number }) => {
+  describe(`Check example apps`, () => {
+    beforeEach(() => {
+      basePage.openLocalhost(host);
+    });
 
-            it(`User should be created & added`, () => {
-                basePage.skipTestByCondition(property.host === 3002)
-                basePage.clickElementBySelector({
-                    selector: baseSelectors.createButton
-                })
-                basePage.checkUserCreated(true)
-            })
+    it(`User should be created & added`, () => {
+      basePage.skipTestByCondition(property.host === 3002);
+      basePage.clickElementBySelector({
+        selector: baseSelectors.createButton,
+      });
+      basePage.checkUserCreated(true);
+    });
 
-            it(`User should be deleted`, () => {
-                basePage.skipTestByCondition(property.host === 3001)
-                basePage.clickElementBySelector({
-                    selector: baseSelectors.deleteButton
-                })
-                basePage.checkUserDeleted(true)
-            })
-        })
-    })
+    it(`User should be deleted`, () => {
+      basePage.skipTestByCondition(property.host === 3001);
+      basePage.clickElementBySelector({
+        selector: baseSelectors.deleteButton,
+      });
+      basePage.checkUserDeleted(true);
+    });
+  });
+});
 ```
 
 `skipTestByCondition(condition)` will skip the test if the app is hosted on 3001 or 3002 respectively. Isn't it cool? 🔥🔥🔥

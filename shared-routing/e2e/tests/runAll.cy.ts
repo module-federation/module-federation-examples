@@ -1,3 +1,3 @@
-import './dashboardPageChecks.cy'
-import './ordersPageChecks.cy'
-import './profilePageChecks.cy'
+import './dashboardPageChecks.cy';
+import './ordersPageChecks.cy';
+import './profilePageChecks.cy';

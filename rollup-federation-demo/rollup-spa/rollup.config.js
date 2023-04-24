@@ -3,7 +3,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import injectProcessEnv from 'rollup-plugin-inject-process-env';
 import federation from '@module-federation/rollup-federation';
-import copy from 'rollup-plugin-copy'
+import copy from 'rollup-plugin-copy';
 
 import pkg from './package.json';
 
@@ -31,23 +31,23 @@ export default {
     // parent folder.
     copy({
       targets: [
-        {src: [
+        {
+          src: [
             '../node_modules/react/umd/react.development.js',
             '../node_modules/react/umd/react.production.min.js',
             '../node_modules/react-dom/umd/react-dom.development.js',
-            '../node_modules/react-dom/umd/react-dom.production.min.js'
+            '../node_modules/react-dom/umd/react-dom.production.min.js',
           ],
-          dest: 'vendor'
-        }
-      ]
+          dest: 'vendor',
+        },
+      ],
     }),
     federation({
       remotes: {
         foo_app1: 'rwebpackremote',
         foo_rollup_spa: 'rollup_spa',
       },
-      shared: {
-      },
+      shared: {},
     }),
   ],
   output: [{ format: 'system', dir: pkg.main }],

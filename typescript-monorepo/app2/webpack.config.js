@@ -38,7 +38,7 @@ module.exports = {
       },
       library: {
         type: 'global',
-        name: '_typescript_monorepo_app2'
+        name: '_typescript_monorepo_app2',
       },
       shared: ['react', 'react-dom'],
     }),

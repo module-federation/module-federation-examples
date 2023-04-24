@@ -30,7 +30,6 @@ const Shop = props => (
           </li>
         ))}
       </ul>
-
     </div>
     <style jsx>{`
       .hero {

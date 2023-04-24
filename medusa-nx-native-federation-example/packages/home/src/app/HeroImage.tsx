@@ -3,9 +3,9 @@ import { sendMessage } from './analytics';
 
 type ImageProps = {
   src: string;
-  alt?: string; 
-  style?: React.CSSProperties
-}
+  alt?: string;
+  style?: React.CSSProperties;
+};
 
 const HeroImage = (props: ImageProps) => {
   sendMessage('loaded');

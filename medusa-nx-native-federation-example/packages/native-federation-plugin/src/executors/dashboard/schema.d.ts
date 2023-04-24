@@ -14,7 +14,7 @@ export interface NFPDashboardExecutorOptions {
 export interface NFPDashboardOptions {
   buildTarget: string;
   name: string;
-  rootPath: string,
+  rootPath: string;
   outputPath: string;
   filename: string;
   versionStrategy: string;
@@ -34,7 +34,7 @@ export interface NFPDashboardOutputFile {
   metadata: NFPDashboardExecutorMetadataOptions;
   dependencies: NFPDashboardDependency[];
   devDependencies: NFPDashboardDependency[];
-  optionalDependencies: NFPDashboardDependency[],
+  optionalDependencies: NFPDashboardDependency[];
   overrides: NFPDashboardOverrideModule[];
   modules: NFPDashboardModule[];
   consumes: NFPDashboardConsumeModule[];
@@ -46,7 +46,7 @@ export interface NFPDashboardExecutorMetadataOptions {
   source: {
     url: string;
   };
-  remote: string,
+  remote: string;
 }
 
 //

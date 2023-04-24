@@ -1,4 +1,4 @@
-import {createApp} from 'vue';
+import { createApp } from 'vue';
 import HelloWorldComponent from './HelloWorld.vue';
 
 const app = createApp(HelloWorldComponent);

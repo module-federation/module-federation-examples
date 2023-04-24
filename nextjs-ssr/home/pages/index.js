@@ -1,23 +1,22 @@
-import React, {Fragment, Suspense} from 'react';
+import React, { Fragment, Suspense } from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 
-const RemoteTitle = dynamic(() => import('checkout/title'), {suspense: true});
+const RemoteTitle = dynamic(() => import('checkout/title'), { suspense: true });
 
-const Home = ({loaded}) => {
+const Home = ({ loaded }) => {
   return (
     <div>
       <Head>
         <title>Home</title>
-        <link rel="icon" href="/nextjs-ssr/home/public/favicon.ico"/>
+        <link rel="icon" href="/nextjs-ssr/home/public/favicon.ico" />
       </Head>
 
       <div className="hero">
         <Suspense>
-          <RemoteTitle/>
+          <RemoteTitle />
         </Suspense>
         <h1 className="title">
-
           Welcome to Next.js on Webpack 5! <code>home</code>
         </h1>
         <p className="description">

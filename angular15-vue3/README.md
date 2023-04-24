@@ -11,7 +11,7 @@ This project shows an example of using Webpack 5 Module Federation with Angular 
 
 # Running Cypress E2E Tests
 
-To run tests in interactive mode, run  `npm run cypress:debug` from the root directory of the project. It will open Cypress Test Runner and allow to run tests in interactive mode. [More info about "How to run tests"](../../cypress/README.md#how-to-run-tests)
+To run tests in interactive mode, run `npm run cypress:debug` from the root directory of the project. It will open Cypress Test Runner and allow to run tests in interactive mode. [More info about "How to run tests"](../../cypress/README.md#how-to-run-tests)
 
 To build app and run test in headless mode, run `yarn e2e:ci`. It will build app and run tests for this workspace in headless mode. If tets failed cypress will create `cypress` directory in sample root folder with screenshots and videos.
 
@@ -42,17 +42,17 @@ The remote project located in: `vue-remote` folder, it exposes Vue component as 
 and exposes Custom Element that could be registered and added to the DOM.
 
 ```js
-  new ModuleFederationPlugin({
-    name: 'vue_remote',
-    filename: 'remoteEntry.js',
-    exposes: {
-      './customElement': './src/components/HelloWorld.web-component.js',
-      './app': './src/components/HelloWorld.bootstrap.js',
+new ModuleFederationPlugin({
+  name: 'vue_remote',
+  filename: 'remoteEntry.js',
+  exposes: {
+    './customElement': './src/components/HelloWorld.web-component.js',
+    './app': './src/components/HelloWorld.bootstrap.js',
+  },
+  shared: {
+    vue: {
+      singleton: true,
     },
-    shared: {
-      vue: {
-        singleton: true,
-      },
-    },
-  })
+  },
+});
 ```

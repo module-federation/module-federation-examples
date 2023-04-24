@@ -1,2 +1,2 @@
-import './viteAppChecks.cy'
-import './commonChecks.cy'
+import './viteAppChecks.cy';
+import './commonChecks.cy';

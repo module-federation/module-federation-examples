@@ -12,11 +12,11 @@ module.exports = new Promise((resolve, reject) => {
     global,
     url,
   })
-    .then(async (remote) => {
+    .then(async remote => {
       //resolving the remote
-      resolve(remote)
+      resolve(remote);
     })
-    .catch((err) => {
+    .catch(err => {
       //catching the error and rejecting it
       reject(err);
     });

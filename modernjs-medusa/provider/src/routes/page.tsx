@@ -1,5 +1,5 @@
 import { Helmet } from '@modern-js/runtime/head';
-import Button from '@/components/Button'
+import Button from '@/components/Button';
 import './index.css';
 
 const Index = () => (

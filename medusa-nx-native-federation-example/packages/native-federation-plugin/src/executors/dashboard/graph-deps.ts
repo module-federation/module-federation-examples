@@ -6,7 +6,7 @@ import {
   ProjectGraph,
   ProjectGraphProjectNode,
   TargetConfiguration,
-  Target
+  Target,
 } from '@nrwl/devkit';
 import { PackageJson } from 'nx/src/utils/package-json';
 import { checkAndCleanWithSemver } from 'nx/src/utils/version-utils';
@@ -27,7 +27,7 @@ function readProjectDependency(path: string): Omit<NFPDashboardDependency, 'name
 export function readProjectDependenciesBy(
   dependenciesType: string,
   rootPath: string,
-  projectPackageJson: PackageJson & { optionalDependencies?: Record<string, string> }
+  projectPackageJson: PackageJson & { optionalDependencies?: Record<string, string> },
 ): NFPDashboardDependency[] {
   const dependencies: string[] = Object.keys(projectPackageJson[dependenciesType] || {});
   const modules: NFPDashboardDependency[] = [];
@@ -35,7 +35,7 @@ export function readProjectDependenciesBy(
   for (const name of dependencies) {
     modules.push({
       name,
-      ...readProjectDependency(path.join(rootPath, `./node_modules/${name}/package.json`))
+      ...readProjectDependency(path.join(rootPath, `./node_modules/${name}/package.json`)),
     });
   }
 
@@ -46,9 +46,7 @@ export function readProjectDependenciesBy(
  * Detects if a project uses Typescript and returns the posible Ts packages
  */
 function getTypescriptPresets(projectRootPath: string): string[] {
-  return existsSync(path.join(projectRootPath, 'tsconfig.json'))
-    ? ['typescript', 'ts-node']
-    : [];
+  return existsSync(path.join(projectRootPath, 'tsconfig.json')) ? ['typescript', 'ts-node'] : [];
 }
 
 /**
@@ -59,7 +57,7 @@ function isReactApplicationPreset(rootPath: string, projectRootPath: string): bo
     const babelRcPath = path.join(projectRootPath, `.babelrc`);
 
     if (existsSync(babelRcPath)) {
-      return readJsonFile(babelRcPath)?.presets.some((preset) => {
+      return readJsonFile(babelRcPath)?.presets.some(preset => {
         return preset[0].startsWith('@nrwl/react');
       });
     }
@@ -72,18 +70,22 @@ function isReactApplicationPreset(rootPath: string, projectRootPath: string): bo
  * Get the packages which contains a provided name
  */
 function getDevDependenciesByName(packageName: string, packageJson: PackageJson): string[] {
-  return Object.keys(packageJson?.devDependencies || {})
-    .filter((dependency) => dependency.includes(packageName));
+  return Object.keys(packageJson?.devDependencies || {}).filter(dependency =>
+    dependency.includes(packageName),
+  );
 }
 
 /**
  * Reads a project `project.json` file to collect the target packages
  */
-function readProjectJsonPackages(project: ProjectGraphProjectNode, projectPackageJson: PackageJson) {
+function readProjectJsonPackages(
+  project: ProjectGraphProjectNode,
+  projectPackageJson: PackageJson,
+) {
   let dependencies: string[] = [];
 
-  const projectTargets:
-    {[targetName: string]: TargetConfiguration<unknown>} = project.data.targets;
+  const projectTargets: { [targetName: string]: TargetConfiguration<unknown> } =
+    project.data.targets;
 
   for (const targetName of Object.keys(projectTargets)) {
     const target: Target = parseTargetString(projectTargets[targetName].executor);
@@ -92,7 +94,7 @@ function readProjectJsonPackages(project: ProjectGraphProjectNode, projectPackag
     if (target.project.startsWith('@nrwl')) {
       dependencies = [
         ...dependencies,
-        ...getDevDependenciesByName(target.target, projectPackageJson)
+        ...getDevDependenciesByName(target.target, projectPackageJson),
       ];
     }
   }
@@ -108,35 +110,34 @@ export function readProjectDevDependencies(
   rootPath: string,
   projectName: string,
   projectPackageJson: PackageJson,
-  rootPackageJson: PackageJson
+  rootPackageJson: PackageJson,
 ): NFPDashboardDependency[] {
   const project = graph.nodes[projectName];
   const projectRootPath = project.data.root;
   const isReactPreset: boolean = isReactApplicationPreset(rootPath, projectRootPath);
 
-  const dependencies = [...new Set([
-    'nx',
-    'esbuild',
-    'cypress',
-    '@nrwl/devkit',
-    '@nrwl/js',
-    '@nrwl/workspace',
-    ...getTypescriptPresets(projectRootPath),
-    ...isReactPreset
-      ? getDevDependenciesByName('react', rootPackageJson)
-      : [],
-    ...getDevDependenciesByName('@swc', rootPackageJson),
-    ...readProjectJsonPackages(project, rootPackageJson),
-    ...Object.keys(projectPackageJson?.devDependencies || {}) || []
-  ])]
-  .sort();
+  const dependencies = [
+    ...new Set([
+      'nx',
+      'esbuild',
+      'cypress',
+      '@nrwl/devkit',
+      '@nrwl/js',
+      '@nrwl/workspace',
+      ...getTypescriptPresets(projectRootPath),
+      ...(isReactPreset ? getDevDependenciesByName('react', rootPackageJson) : []),
+      ...getDevDependenciesByName('@swc', rootPackageJson),
+      ...readProjectJsonPackages(project, rootPackageJson),
+      ...(Object.keys(projectPackageJson?.devDependencies || {}) || []),
+    ]),
+  ].sort();
 
   const modules: NFPDashboardDependency[] = [];
 
   for (const name of dependencies) {
     modules.push({
       name,
-      ...readProjectDependency(path.join(rootPath, `./node_modules/${name}/package.json`))
+      ...readProjectDependency(path.join(rootPath, `./node_modules/${name}/package.json`)),
     });
   }
 
@@ -148,7 +149,7 @@ export function readProjectDevDependencies(
  */
 function hasDependencyByName(
   name: string,
-  packageJson: PackageJson & { optionalDependencies?: Record<string, string> }
+  packageJson: PackageJson & { optionalDependencies?: Record<string, string> },
 ) {
   const dependencies = packageJson?.dependencies || {};
   const devDependencies = packageJson?.devDependencies || {};
@@ -163,7 +164,7 @@ function hasDependencyByName(
 export function readProjectOverrides(
   graph: ProjectGraph,
   projectName: string,
-  rootPackageJson: PackageJson & { optionalDependencies?: Record<string, string> }
+  rootPackageJson: PackageJson & { optionalDependencies?: Record<string, string> },
 ): NFPDashboardOverrideModule[] {
   const project = graph.nodes[projectName];
   const projectRootPath = project.data.root;
@@ -186,7 +187,7 @@ export function readProjectOverrides(
           name,
           version: cleanVersion,
           location: name,
-          applicationID: projectName
+          applicationID: projectName,
         });
       }
     }

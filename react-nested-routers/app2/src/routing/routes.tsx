@@ -1,12 +1,12 @@
 import React from 'react';
-import { Outlet } from "react-router-dom";
-import { NavigationManager } from "../components/NavigationManager";
-import { PageA } from "../pages/PageA";
-import { PageB } from "../pages/PageB";
+import { Outlet } from 'react-router-dom';
+import { NavigationManager } from '../components/NavigationManager';
+import { PageA } from '../pages/PageA';
+import { PageB } from '../pages/PageB';
 
 export const routes = [
   {
-    path: "/",
+    path: '/',
     element: (
       <NavigationManager>
         <Outlet />
@@ -18,11 +18,11 @@ export const routes = [
         element: <PageA />,
       },
       {
-        path: "page-a",
+        path: 'page-a',
         element: <PageA />,
       },
       {
-        path: "page-b",
+        path: 'page-b',
         element: <PageB />,
       },
     ],

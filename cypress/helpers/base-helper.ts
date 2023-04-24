@@ -1,5 +1,5 @@
-import moment from "moment";
-import { Dates } from "../types/dates";
+import moment from 'moment';
+import { Dates } from '../types/dates';
 
 export function getDateWithFormat(date: string, format: string): string {
   let days: number;
@@ -33,7 +33,7 @@ export function getDateWithFormat(date: string, format: string): string {
   return moment().add(days, 'days').format(format);
 }
 
-export function getRandomTextString(symbolsQuantity: number,): string {
+export function getRandomTextString(symbolsQuantity: number): string {
   return _getRandomString(symbolsQuantity);
 }
 
@@ -43,6 +43,6 @@ export function getRandomIntegerString(stringLength: number): string {
 
 function _getRandomString(stringLength: number, from: number = 97, to: number = 122): string {
   return Array.from({ length: stringLength }, () =>
-      String.fromCharCode(Math.floor(Math.random() * (to - from) + from)),
+    String.fromCharCode(Math.floor(Math.random() * (to - from) + from)),
   ).join('');
 }

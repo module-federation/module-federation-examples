@@ -11,23 +11,23 @@ To show examples of how different types of styling could be federated.
 # Comparison Table
 
 |           Exposed Styling | React                            | NextJs                           |
-|--------------------------:|----------------------------------|----------------------------------|
-| Css                       | can import (affect global)       | can import (affect global)       |
-| Scss                      | can import (affect global)       | can import (affect global)       |
-| Less                      | can import (affect global)       | can import (affect global)       |
-| Css Module                | can import (affect encapsulated) | can import (affect encapsulated) |
-| react-jss                 | can import (affect encapsulated) | can import (affect encapsulated) |
-| styled-components         | can import (affect encapsulated) | can import (affect encapsulated) |
-| tailwind css (as module)  | can import (affect encapsulated) | can import (affect encapsulated) |
+| ------------------------: | -------------------------------- | -------------------------------- |
+|                       Css | can import (affect global)       | can import (affect global)       |
+|                      Scss | can import (affect global)       | can import (affect global)       |
+|                      Less | can import (affect global)       | can import (affect global)       |
+|                Css Module | can import (affect encapsulated) | can import (affect encapsulated) |
+|                 react-jss | can import (affect encapsulated) | can import (affect encapsulated) |
+|         styled-components | can import (affect encapsulated) | can import (affect encapsulated) |
+|  tailwind css (as module) | can import (affect encapsulated) | can import (affect encapsulated) |
 | tailwind styled component | can import (affect encapsulated) | can import (affect encapsulated) |
-| Css variables in css      | can import (affect global)       | can import (affect global)       |
-
+|      Css variables in css | can import (affect global)       | can import (affect global)       |
 
 # Running Expose Remotes
+
 Command `start:expose-all` will run remotes `http://localhost:4000-4008/` with exposed components
 
-
 # Running Demo React
+
 Commands will run host react App on `http://localhost:3001-3008/`
 
 - `start:react:jss-tailwind-component`
@@ -45,9 +45,8 @@ ex. `yarn start:react:any-combination --scope=@federated-css/{expose-css,expose-
 it will run all required expose remotes and creates host app with provided depth.
 Note. you don't need to start required remotes separately for this command.
 
-
 |           Available Scopes |
-|---------------------------:|
+| -------------------------: |
 |                 expose-css |
 |          expose-css-module |
 |                 expose-jss |
@@ -58,12 +57,10 @@ Note. you don't need to start required remotes separately for this command.
 | expose-tailwind-css-module |
 
 # Running Demo NextJs
+
 Commands will run host NextJs App on `http://localhost:8081-8084/`.
 
--`start:nextjs:combination-of-4`
--`start:nextjs:jss-tailwind-global`
--`start:nextjs:jss-css-and-tailwind-module`
--`start:nextjs:less-and-styled-component`
+-`start:nextjs:combination-of-4` -`start:nextjs:jss-tailwind-global` -`start:nextjs:jss-css-and-tailwind-module` -`start:nextjs:less-and-styled-component`
 
 Since there are 9! variants of remotes combinations you are able to create and run your own `start:nextjs:any-combination --scopes=@federated-css/{REQUIRED_COMBINATION_OF_REMOTES}`
 
@@ -71,9 +68,8 @@ ex. `yarn start:nextjs:any-combination --scope=@federated-css/{expose-css,expose
 it will run all required expose remotes and creates host app with provided depth.
 Note. you don't need to start required remotes separately for this command.
 
-
 |           Available Scopes |
-|---------------------------:|
+| -------------------------: |
 |                 expose-css |
 |          expose-css-module |
 |                 expose-jss |
@@ -82,8 +78,6 @@ Note. you don't need to start required remotes separately for this command.
 |    expose-styled-component |
 | expose-tailwind-css-global |
 | expose-tailwind-css-module |
-
-
 
 - [localhost:3001](http://localhost:3001/) (React HOST)
 - [localhost:8080](http://localhost:8080/) (NextJs HOST)

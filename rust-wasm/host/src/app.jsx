@@ -25,27 +25,27 @@ const App = () => {
   const start = () => {
     setIsPlaying(true);
     animationId.current = window.requestAnimationFrame(loop);
-    console.log('Infinite looping in progress')
+    console.log('Infinite looping in progress');
   };
 
   const stop = () => {
     setIsPlaying(false);
     window.cancelAnimationFrame(animationId.current);
     animationId.current = undefined;
-    console.log('Looping successfully stopped')
+    console.log('Looping successfully stopped');
   };
 
   // TODO: Sometimes this function send error as undefined in tests, needs to be checked
   const tick = () => {
     cells.tick();
     board.current.textContent = cells.render();
-    console.log('Game board successfully rerendered')
+    console.log('Game board successfully rerendered');
   };
 
   const reset = () => {
     cells.reset();
     board.current.textContent = cells.render();
-    console.log('Game board successfully reset')
+    console.log('Game board successfully reset');
   };
 
   const toggle = () => {

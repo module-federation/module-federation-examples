@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  inject,
-  ViewContainerRef,
-} from '@angular/core';
+import { Component, Input, OnInit, inject, ViewContainerRef } from '@angular/core';
 import { loadRemoteModule } from '../../../utils/federation-utils';
 
 @Component({

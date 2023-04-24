@@ -11,8 +11,8 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 | **Medium post**                                                                                                                                                                                                                                                                  | [https://link.medium.com/xzFgBBtAx6](https://link.medium.com/xzFgBBtAx6)                                                                                                                                                                                                                   |
 | **JSNation Presentation**                                                                                                                                                                                                                                                        | [https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5.md](https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5.md)                                                                                                                         |
 | **Post about Dynamic Remotes**                                                                                                                                                                                                                                                   | [https://h3manth.com/posts/dynamic-remotes-webpack-module-federation/](https://h3manth.com/posts/dynamic-remotes-webpack-module-federation/)                                                                                                                                               |
-<p align="center"><a href="https://medusa.codes" target="_blank"><img src="https://pbs.twimg.com/media/Fcets1xXgAY3wZf?format=jpg&name=medium" width="800"/><a><p>
 
+<p align="center"><a href="https://medusa.codes" target="_blank"><img src="https://pbs.twimg.com/media/Fcets1xXgAY3wZf?format=jpg&name=medium" width="800"/><a><p>
 
 https://module-federation.github.io/
 
@@ -70,7 +70,7 @@ https://scriptedalchemy.medium.com/
 - [x] [quasar-cli-vue3-webpack-javascript](./quasar-cli-vue3-webpack-javascript/README.md) &mdash; Module federation integration with Quasar apps running vue3 using quasar-cli (javascript)
 - [x] [UMD Federation](./umd-federation) &mdash; Support importing umd remote module
 - [x] [Modernjs](./modernjs) &mdash; Basic Module Federation Usage in Modern.js Framework
-- [x] [Modernjs Medusa](./modernjs-medusa) &mdash; Using Medusa in Modern.js Framework 
+- [x] [Modernjs Medusa](./modernjs-medusa) &mdash; Using Medusa in Modern.js Framework
 
 **Module Federation Examples** covered by e2e tests with **Cypress** framework, more info about structure and configuration 👉 [here](./cypress/README.md) 👈
 

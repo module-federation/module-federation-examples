@@ -1,21 +1,19 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {ModuleFederationPlugin} = require('webpack').container;
+const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
 
-
 const remotes = {
-  app2: "app2@http://localhost:3002/remoteEntry.js",
-}
+  app2: 'app2@http://localhost:3002/remoteEntry.js',
+};
 
 const delegatedRemote = {
-  app3: "app3@http://localhost:3003/remoteEntry.js",
-}
+  app3: 'app3@http://localhost:3003/remoteEntry.js',
+};
 
 const delegatedRemotesObject = Object.entries(delegatedRemote).reduce((acc, [name, url]) => {
   acc[name] = `./remote-delegate.js?remote=${url}&dontExtract[lodash]`;
   return acc;
-}, {})
-
+}, {});
 
 const deps = require('./package.json').dependencies;
 module.exports = {
@@ -42,7 +40,6 @@ module.exports = {
         options: {
           presets: ['@babel/preset-react'],
         },
-
       },
     ],
   },
@@ -52,13 +49,13 @@ module.exports = {
       name: 'app1',
       remotes: {
         ...Object.entries(delegatedRemotesObject).reduce((acc, [name, url]) => {
-          acc[name] = `internal ${url}`
+          acc[name] = `internal ${url}`;
           return acc;
         }, {}),
-        ...remotes
+        ...remotes,
       },
       shared: {
-        ...deps
+        ...deps,
       },
     }),
     new HtmlWebpackPlugin({
@@ -70,15 +67,15 @@ module.exports = {
 console.log({
   remotes: {
     ...Object.entries(delegatedRemote).reduce((acc, [name, url]) => {
-      acc[name] = `internal ${url}`
+      acc[name] = `internal ${url}`;
       return acc;
     }, {}),
-    ...remotes
+    ...remotes,
   },
-})
+});
 
 function getRemoteEntryUrl(port) {
-  const {CODESANDBOX_SSE, HOSTNAME = ''} = process.env;
+  const { CODESANDBOX_SSE, HOSTNAME = '' } = process.env;
 
   // Check if the example is running on codesandbox
   // https://codesandbox.io/docs/environment

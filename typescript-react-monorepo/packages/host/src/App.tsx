@@ -1,10 +1,8 @@
-import React from "react";
-import RemoteButtonProps from "@mfTypes/Button";
-const RemoteButton = React.lazy(
-  () => import("Remote/Button")
-) as typeof RemoteButtonProps;
+import React from 'react';
+import RemoteButtonProps from '@mfTypes/Button';
+const RemoteButton = React.lazy(() => import('Remote/Button')) as typeof RemoteButtonProps;
 
-import ErrorBoundary from "./ErrorBoundary";
+import ErrorBoundary from './ErrorBoundary';
 
 const App = () => {
   return (

@@ -7,7 +7,7 @@ import HeroImage from './HeroImage';
 const Button = React.lazy(async () => {
   const module = await loadRemoteModule({
     remoteName: 'dsl',
-    exposedModule: './Button'
+    exposedModule: './Button',
   });
 
   return module;

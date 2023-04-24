@@ -11,17 +11,19 @@ interface NFPRemoteErrorResponse {
 
 const jsonHeaders = {
   headers: {
-    "Content-Type": "application/json",
-    "Accept": "application/json"
-  }
-}
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+  },
+};
 
 /**
  *
  */
-export async function loadRemoteEntryVersions(url: string): Promise<{ [key: string]: string | null }> {
-  const remotes: { [key: string]: string } = await window.fetch(url, jsonHeaders)
-    .then((r) => r.json()) || {};
+export async function loadRemoteEntryVersions(
+  url: string,
+): Promise<{ [key: string]: string | null }> {
+  const remotes: { [key: string]: string } =
+    (await window.fetch(url, jsonHeaders).then(r => r.json())) || {};
 
   const versionsJson: { [key: string]: string | null } = {};
 
@@ -30,14 +32,13 @@ export async function loadRemoteEntryVersions(url: string): Promise<{ [key: stri
     let version: NFPRemote | NFPRemoteErrorResponse;
 
     try {
-      version = await window.fetch(endpoint, jsonHeaders)
-        .then((r) => r.json());
+      version = await window.fetch(endpoint, jsonHeaders).then(r => r.json());
 
       if ((version as NFPRemoteErrorResponse).error) {
         versionsJson[remote] = null;
         continue;
       }
-    } catch(e) {
+    } catch (e) {
       versionsJson[remote] = null;
       continue;
     }
@@ -52,15 +53,15 @@ export async function loadRemoteEntryVersions(url: string): Promise<{ [key: stri
 /**
  *
  */
-export function loadRemoteEntryVersionsMemo(url: string): () => Promise<{ [key: string]: string; }> {
-  let remotes: {[key: string]: string | null;};
+export function loadRemoteEntryVersionsMemo(url: string): () => Promise<{ [key: string]: string }> {
+  let remotes: { [key: string]: string | null };
 
-  return async (): Promise<{ [key: string]: string; }> => {
+  return async (): Promise<{ [key: string]: string }> => {
     if (!remotes) {
-      remotes = await loadRemoteEntryVersions(url) || {};
+      remotes = (await loadRemoteEntryVersions(url)) || {};
       return remotes;
     }
 
     return remotes;
-  }
+  };
 }

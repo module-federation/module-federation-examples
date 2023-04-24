@@ -1,7 +1,9 @@
 interface AnotherButtonProps {
-    onClick: () => void
+  onClick: () => void;
 }
 
-const AnotherButton = ({onClick}: AnotherButtonProps) => <button onClick={onClick}>Another federated button</button>
+const AnotherButton = ({ onClick }: AnotherButtonProps) => (
+  <button onClick={onClick}>Another federated button</button>
+);
 
-export default AnotherButton
+export default AnotherButton;

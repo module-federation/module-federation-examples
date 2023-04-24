@@ -1,2 +1,2 @@
-import './checkHostApp.cy'
-import './checkRemoteApp.cy'
+import './checkHostApp.cy';
+import './checkRemoteApp.cy';

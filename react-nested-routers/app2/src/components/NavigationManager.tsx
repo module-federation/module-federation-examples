@@ -19,17 +19,15 @@ export function NavigationManager({ children }: NavigationManagerProps) {
       navigate(pathname);
     }
 
-    window.addEventListener("[shell] navigated", shellNavigationHandler);
+    window.addEventListener('[shell] navigated', shellNavigationHandler);
 
     return () => {
-      window.removeEventListener("[shell] navigated", shellNavigationHandler);
+      window.removeEventListener('[shell] navigated', shellNavigationHandler);
     };
   }, [location]);
 
   useEffect(() => {
-    window.dispatchEvent(
-      new CustomEvent("[app2] navigated", { detail: location.pathname })
-    );
+    window.dispatchEvent(new CustomEvent('[app2] navigated', { detail: location.pathname }));
   }, [location]);
 
   return children;

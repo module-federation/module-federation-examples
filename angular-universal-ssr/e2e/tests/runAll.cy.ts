@@ -1,3 +1,3 @@
-import './clientChecks.cy'
-import './hostChecks.cy'
-import './commonChecks.cy'
+import './clientChecks.cy';
+import './hostChecks.cy';
+import './commonChecks.cy';

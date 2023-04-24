@@ -1,22 +1,18 @@
-import {
-  baseSelectors,
-  selectors,
-} from './../../cypress/common/selectors';
+import { baseSelectors, selectors } from './../../cypress/common/selectors';
 import { Constants } from '../../cypress/fixtures/constants';
 import { BaseMethods } from '../../cypress/common/base';
 
 const basePage: BaseMethods = new BaseMethods();
 
 describe('Angular 15 and Vue 3 microfrontends', () => {
-  context("Check Angular 15 and Vue 3 elements", () => {
+  context('Check Angular 15 and Vue 3 elements', () => {
     beforeEach(() => {
       basePage.openLocalhost(4200);
     });
     it('Check Angular App is running', () => {
-
       basePage.checkElementWithTextPresence({
         selector: baseSelectors.tags.paragraph,
-        text: String(Constants.elementsText.angularVue.angularAppHead)
+        text: String(Constants.elementsText.angularVue.angularAppHead),
       });
     });
     it('Check Vue as a Web Component loaded', () => {
@@ -29,7 +25,7 @@ describe('Angular 15 and Vue 3 microfrontends', () => {
     it('Check Vue as a Vue App Component loaded', () => {
       basePage.checkElementWithTextPresence({
         selector: baseSelectors.tags.coreElements.div,
-        text: String(Constants.elementsText.angularVue.vueAsApplicationTitle)
+        text: String(Constants.elementsText.angularVue.vueAsApplicationTitle),
       });
     });
 
@@ -42,12 +38,12 @@ describe('Angular 15 and Vue 3 microfrontends', () => {
       basePage.clickElementWithText({
         selector: selectors.angularVue.btn,
         isForce: true,
-        text: 'Click Me'
+        text: 'Click Me',
       });
       basePage.checkElementWithTextPresence({
         selector: selectors.angularVue.webComponent,
         isShadowRoot: true,
-        text: String(Constants.elementsText.angularVue.interactionTextChanged)
+        text: String(Constants.elementsText.angularVue.interactionTextChanged),
       });
     });
 

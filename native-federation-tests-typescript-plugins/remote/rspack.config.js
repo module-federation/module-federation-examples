@@ -1,6 +1,10 @@
-const path = require('path')
-const { NativeFederationTypeScriptRemote } = require('@module-federation/native-federation-typescript/rspack')
-const { NativeFederationTestsRemote } = require('@module-federation/native-federation-tests/rspack')
+const path = require('path');
+const {
+  NativeFederationTypeScriptRemote,
+} = require('@module-federation/native-federation-typescript/rspack');
+const {
+  NativeFederationTestsRemote,
+} = require('@module-federation/native-federation-tests/rspack');
 
 const deps = require('./package.json').dependencies;
 
@@ -9,14 +13,14 @@ const moduleFederationConfig = {
   filename: 'remoteEntry.js',
   exposes: {
     './button': './src/components/button',
-    './anotherButton': './src/components/anotherButton'
+    './anotherButton': './src/components/anotherButton',
   },
   shared: {
     ...deps,
     react: { singleton: true, eager: true, requiredVersion: deps.react },
-    "react-dom": { singleton: true, eager: true, requiredVersion: deps["react-dom"] }
+    'react-dom': { singleton: true, eager: true, requiredVersion: deps['react-dom'] },
   },
-}
+};
 
 module.exports = () => ({
   entry: './src/index',
@@ -29,19 +33,22 @@ module.exports = () => ({
   devServer: {
     port: 3000,
     static: {
-      directory: path.join(__dirname, 'dist')
+      directory: path.join(__dirname, 'dist'),
     },
     historyApiFallback: true,
     headers: {
-      'Access-Control-Allow-Origin': '*'
+      'Access-Control-Allow-Origin': '*',
     },
-    liveReload: true
+    liveReload: true,
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js']
+    extensions: ['.ts', '.tsx', '.js'],
   },
   plugins: [
-    NativeFederationTypeScriptRemote({moduleFederationConfig}),
-    NativeFederationTestsRemote({ moduleFederationConfig, additionalBundlerConfig: {format: 'esm'}})
-  ]
-})
+    NativeFederationTypeScriptRemote({ moduleFederationConfig }),
+    NativeFederationTestsRemote({
+      moduleFederationConfig,
+      additionalBundlerConfig: { format: 'esm' },
+    }),
+  ],
+});

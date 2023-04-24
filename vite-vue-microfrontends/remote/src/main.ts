@@ -1,7 +1,7 @@
-import { initFederation } from "@softarc/native-federation";
+import { initFederation } from '@softarc/native-federation';
 
 (async () => {
   await initFederation();
 
-  await import("./bootstrap");
+  await import('./bootstrap');
 })();

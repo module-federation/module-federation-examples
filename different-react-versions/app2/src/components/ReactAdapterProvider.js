@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from "react-dom";
+import ReactDOM from 'react-dom';
 
 class ReactAdapterProvider extends React.Component {
   constructor(props) {
@@ -24,9 +24,7 @@ class ReactAdapterProvider extends React.Component {
   }
 
   render() {
-    return (
-      <div ref={ref => (this.refHold = ref)} />
-    );
+    return <div ref={ref => (this.refHold = ref)} />;
   }
 }
 

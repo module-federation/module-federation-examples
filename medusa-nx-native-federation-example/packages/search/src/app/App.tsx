@@ -9,7 +9,7 @@ import 'antd/dist/antd.css';
 const Header = React.lazy(async () => {
   const module = await loadRemoteModule({
     remoteName: 'nav',
-    exposedModule: './Header'
+    exposedModule: './Header',
   });
 
   return module;
@@ -18,7 +18,7 @@ const Header = React.lazy(async () => {
 const Footer = React.lazy(async () => {
   const module = await loadRemoteModule({
     remoteName: 'nav',
-    exposedModule: './Footer'
+    exposedModule: './Footer',
   });
 
   return module;
@@ -27,7 +27,7 @@ const Footer = React.lazy(async () => {
 const ProductCarousel = React.lazy(async () => {
   const module = await loadRemoteModule({
     remoteName: 'home',
-    exposedModule: './ProductCarousel'
+    exposedModule: './ProductCarousel',
   });
 
   return module;

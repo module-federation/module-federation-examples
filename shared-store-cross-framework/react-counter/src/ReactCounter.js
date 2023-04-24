@@ -14,8 +14,12 @@ const { increment, decrement } = createApi($counter, {
 const ReactCounter = () => (
   <Layout>
     <div>
-      <Button data-e2e="DECREMENT_BUTTON" onClick={decrement}>-</Button>
-      <Button data-e2e="INCREMENT_BUTTON" onClick={increment}>+</Button>
+      <Button data-e2e="DECREMENT_BUTTON" onClick={decrement}>
+        -
+      </Button>
+      <Button data-e2e="INCREMENT_BUTTON" onClick={increment}>
+        +
+      </Button>
     </div>
   </Layout>
 );

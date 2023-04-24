@@ -1,6 +1,6 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia';
 
-const _useStore = defineStore("store", {
+const _useStore = defineStore('store', {
   state: () => ({ count: 0 }),
   getters: {
     getCount(): number {

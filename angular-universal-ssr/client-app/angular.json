@@ -28,8 +28,7 @@
         "@schematics/angular:interceptor": {
           "skipTests": true
         },
-        "@schematics/angular:module": {
-        },
+        "@schematics/angular:module": {},
         "@schematics/angular:pipe": {
           "skipTests": true
         },
@@ -49,13 +48,8 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,

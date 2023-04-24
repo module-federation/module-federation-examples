@@ -1,15 +1,18 @@
-import {Suspense,lazy} from "react";
+import { Suspense, lazy } from 'react';
 import App from 'next/app';
 import dynamic from 'next/dynamic';
-const Nav = dynamic(() => {
-  return import('home/nav');
-},{suspense:true});
+const Nav = dynamic(
+  () => {
+    return import('home/nav');
+  },
+  { suspense: true },
+);
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
       <Suspense fallback={'loading'}>
-      <Nav />
+        <Nav />
       </Suspense>
       <Component {...pageProps} />
     </>

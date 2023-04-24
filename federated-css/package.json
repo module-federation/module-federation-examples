@@ -10,7 +10,6 @@
       "expose-remotes/expose-styled-component",
       "expose-remotes/expose-tailwind-css-global",
       "expose-remotes/expose-tailwind-css-module",
-
       "consumers-react/css-and-styled-component",
       "consumers-react/less-and-scss",
       "consumers-react/css-module-and-jss",
@@ -19,7 +18,6 @@
       "consumers-react/any-combination",
       "consumers-react/combination-of-5",
       "consumers-react/combination-of-4",
-
       "consumers-nextjs/jss-and-tailwind-global",
       "consumers-nextjs/jss-css-and-tailwind-module",
       "consumers-nextjs/less-and-styled-component",
@@ -39,7 +37,6 @@
     "start:react:combination-of-5": "lerna run --scope=@federated-css/combination-of-5 --parallel start",
     "start:react:combination-of-4": "lerna run --scope=@federated-css/combination-of-4 --parallel start",
     "start:react:any-combination": "node ./consumers-react/any-combination/execute.js && lerna run --scope=@federated-css/any-combination --parallel start",
-
     "start:nextjs:combination-of-4": "lerna run --scope=@federated-css/next-combination-of-4 --parallel start",
     "start:nextjs:any-combination": "node ./consumers-nextjs/any-combination/execute.js && lerna run --scope=@federated-css/next-any-combination --parallel start",
     "start:nextjs:jss-tailwind-global": "lerna run --scope=@federated-css/next-jss-and-tailwind-global --parallel start",

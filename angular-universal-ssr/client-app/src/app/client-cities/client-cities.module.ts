@@ -5,8 +5,8 @@ import { ClientCitiesRoutingModule } from './client-cities-routing.module';
 import { ClientCityComponent } from './client-city/client-city.component';
 
 @NgModule({
-    declarations: [ClientCitiesHomeComponent, ClientCityComponent],
-    imports: [CommonModule, ClientCitiesRoutingModule],
-    exports: [ClientCitiesHomeComponent]
+  declarations: [ClientCitiesHomeComponent, ClientCityComponent],
+  imports: [CommonModule, ClientCitiesRoutingModule],
+  exports: [ClientCitiesHomeComponent],
 })
 export class ClientCitiesModule {}

@@ -6,17 +6,10 @@ import { BaseMethods } from '../../cypress/common/base';
 const basePage: BaseMethods = new BaseMethods();
 
 describe('It checks federated css ssr apps', () => {
-  const { fullTestData: {
-    federatedCssTestData: {
-      css,
-      cssModule,
-      jss,
-      less,
-      scss,
-      styledComponent,
-      tailwindModule,
-    }
-  }
+  const {
+    fullTestData: {
+      federatedCssTestData: { css, cssModule, jss, less, scss, styledComponent, tailwindModule },
+    },
   } = Constants;
 
   const appsData = [
@@ -87,7 +80,7 @@ describe('It checks federated css ssr apps', () => {
     },
   ];
   appsData.forEach(appConfig => {
-    if(appConfig.isShell) {
+    if (appConfig.isShell) {
       it('should verify Shell App exposed buttons colors on page with invoked JS', () => {
         basePage.openLocalhost(appConfig.port);
         appConfig.buttons.forEach((cfg, idx) => {
@@ -130,7 +123,7 @@ describe('It checks federated css ssr apps', () => {
             isMultiple: true,
           });
         });
-      })
+      });
     }
   });
 });

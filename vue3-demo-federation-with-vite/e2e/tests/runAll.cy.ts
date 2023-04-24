@@ -1,3 +1,3 @@
-import './commonChecks.cy'
-import './viteSideChecks.cy'
-import './webpackSideChecks.cy'
+import './commonChecks.cy';
+import './viteSideChecks.cy';
+import './webpackSideChecks.cy';

@@ -5,9 +5,8 @@ let sendAnalyticsMessage = (message: string) => '';
 
 const utils = loadRemoteModule({
   remoteName: 'utils',
-  exposedModule: './analytics'
-})
-.then((module) => {
+  exposedModule: './analytics',
+}).then(module => {
   sendAnalyticsMessage = module.sendAnalyticsMessage;
   pending.forEach(sendAnalyticsMessage);
 });

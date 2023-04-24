@@ -1,6 +1,5 @@
 # Next.js with Module Federation
 
-
 ## Getting Started
 
 2. run `yarn start` and browse to `http://localhost:3001` or one of the others
@@ -8,7 +7,6 @@
 # We are available to consult
 
 Contact me <a href="mailto:zackary.l.jackson@gmail.com">zackary.l.jackson@gmail.com</a> or <a href="https://twitter.com/scriptedalchemy">@ScriptedAlchemy</a> on Twitter
-
 
 ## How it works?!
 
@@ -56,7 +54,7 @@ I am investigating new methods that may solve the module sharing problem in next
 
 # Running Cypress E2E Tests
 
-To run tests in interactive mode, run  `npm run cypress:debug` from the root directory of the project. It will open Cypress Test Runner and allow to run tests in interactive mode. [More info about "How to run tests"](../../cypress/README.md#how-to-run-tests)
+To run tests in interactive mode, run `npm run cypress:debug` from the root directory of the project. It will open Cypress Test Runner and allow to run tests in interactive mode. [More info about "How to run tests"](../../cypress/README.md#how-to-run-tests)
 
 To build app and run test in headless mode, run `yarn e2e:ci`. It will build app and run tests for this workspace in headless mode. If tets failed cypress will create `cypress` directory in sample root folder with screenshots and videos.
 

@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
-import { mount } from "app2/App2Index";
-import { app2RoutingPrefix } from "../routing/constants";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useRef } from 'react';
+import { mount } from 'app2/App2Index';
+import { app2RoutingPrefix } from '../routing/constants';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const app2Basename = `/${app2RoutingPrefix}`;
 
@@ -20,52 +20,39 @@ export default () => {
       }
       navigate(newPathname);
     };
-    window.addEventListener("[app2] navigated", app2NavigationEventHandler);
+    window.addEventListener('[app2] navigated', app2NavigationEventHandler);
 
     return () => {
-      window.removeEventListener(
-        "[app2] navigated",
-        app2NavigationEventHandler
-      );
+      window.removeEventListener('[app2] navigated', app2NavigationEventHandler);
     };
   }, [location]);
 
   // Listen for shell location changes and dispatch a notification.
-  useEffect(
-    () => {
-      if (location.pathname.startsWith(app2Basename)) {
-        window.dispatchEvent(
-          new CustomEvent("[shell] navigated", {
-            detail: location.pathname.replace(app2Basename, ""),
-          })
-        );
-      }
-    },
-    [location],
-  );
+  useEffect(() => {
+    if (location.pathname.startsWith(app2Basename)) {
+      window.dispatchEvent(
+        new CustomEvent('[shell] navigated', {
+          detail: location.pathname.replace(app2Basename, ''),
+        }),
+      );
+    }
+  }, [location]);
 
   const isFirstRunRef = useRef(true);
   const unmountRef = useRef(() => {});
   // Mount app1 MFE
-  useEffect(
-    () => {
-      if (!isFirstRunRef.current) {
-        return;
-      }
-      unmountRef.current = mount({
-        mountPoint: wrapperRef.current!,
-        initialPathname: location.pathname.replace(
-          app2Basename,
-          ''
-        ),
-      });
-      isFirstRunRef.current = false;
-    },
-    [location],
-  );
+  useEffect(() => {
+    if (!isFirstRunRef.current) {
+      return;
+    }
+    unmountRef.current = mount({
+      mountPoint: wrapperRef.current!,
+      initialPathname: location.pathname.replace(app2Basename, ''),
+    });
+    isFirstRunRef.current = false;
+  }, [location]);
 
   useEffect(() => unmountRef.current, []);
-
 
   return <div ref={wrapperRef} id="app2-mfe" />;
 };

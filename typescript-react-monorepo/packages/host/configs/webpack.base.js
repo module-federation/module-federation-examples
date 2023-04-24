@@ -1,20 +1,20 @@
-const path = require("path");
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { FederatedTypesPlugin } = require("@module-federation/typescript");
-const dotenv = require("dotenv").config({
-  path: path.join(__dirname, "../.env"),
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { FederatedTypesPlugin } = require('@module-federation/typescript');
+const dotenv = require('dotenv').config({
+  path: path.join(__dirname, '../.env'),
 });
 
-const federationConfig = require("./federationConfig");
+const federationConfig = require('./federationConfig');
 
 module.exports = {
   entry: {
-    main: path.join(__dirname, "../src/index.js"),
+    main: path.join(__dirname, '../src/index.js'),
   },
 
   output: {
-    publicPath: "auto",
+    publicPath: 'auto',
   },
 
   module: {
@@ -23,18 +23,18 @@ module.exports = {
         test: /\.(js|ts)x?$/, // add |ts
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
             presets: [
-              "@babel/preset-typescript",
+              '@babel/preset-typescript',
               [
-                "@babel/preset-env",
+                '@babel/preset-env',
                 {
-                  useBuiltIns: "usage",
+                  useBuiltIns: 'usage',
                   corejs: 3,
                 },
               ],
-              "@babel/preset-react",
+              '@babel/preset-react',
             ],
           },
         },
@@ -44,21 +44,21 @@ module.exports = {
 
   plugins: [
     new webpack.DefinePlugin({
-      "process.env": dotenv.parsed,
+      'process.env': dotenv.parsed,
     }),
     new FederatedTypesPlugin({
       federationConfig: federationConfig(process.env.REMOTE_URL),
     }),
 
     new HtmlWebpackPlugin({
-      template: "public/index.html",
-      title: "Host App",
-      filename: "index.html",
-      chunks: ["main"],
+      template: 'public/index.html',
+      title: 'Host App',
+      filename: 'index.html',
+      chunks: ['main'],
     }),
   ],
   resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
   },
-  target: "web",
+  target: 'web',
 };

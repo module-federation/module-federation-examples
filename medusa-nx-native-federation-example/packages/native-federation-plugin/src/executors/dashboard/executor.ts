@@ -1,16 +1,7 @@
 import { promisify } from 'util';
 import { exec } from 'child_process';
-import {
-  ExecutorContext,
-  ProjectGraph,
-  parseTargetString,
-  readTargetOptions
-} from '@nrwl/devkit';
-import {
-  NFPDashboardExecutorOptions,
-  NFPDashboardOutputFile,
-  NFPDashboardToken
-} from './schema';
+import { ExecutorContext, ProjectGraph, parseTargetString, readTargetOptions } from '@nrwl/devkit';
+import { NFPDashboardExecutorOptions, NFPDashboardOutputFile, NFPDashboardToken } from './schema';
 import { readFileTokens, replaceWithTokens } from './token';
 import { buildDashboardFile, sendDashboardFile } from './dashboard';
 
@@ -26,18 +17,11 @@ async function executeProjectBuild(target: string): Promise<{ stdout: string; st
  */
 export default async function runExecutor(
   options: NFPDashboardExecutorOptions,
-  context: ExecutorContext
+  context: ExecutorContext,
 ): Promise<{ success: boolean }> {
   const { projectName, root } = context;
-  const {
-    buildTarget,
-    filename,
-    metadata,
-    tokenFile,
-    writeUrl,
-    environment,
-    versionStrategy
-  } = options;
+  const { buildTarget, filename, metadata, tokenFile, writeUrl, environment, versionStrategy } =
+    options;
 
   try {
     await executeProjectBuild(buildTarget);
@@ -65,7 +49,7 @@ export default async function runExecutor(
       filename,
       versionStrategy,
       environment,
-      metadata
+      metadata,
     });
   } catch (e) {
     throw new Error(`Error occurred while creating Dashboard '${filename}': ${e}`);

@@ -1,10 +1,13 @@
 # Getting Started
+
 To start, run yarn start and navigate to http://localhost:3001 or another available port.
 
 # Consulting Services Available
+
 For consultations, contact Zackary Jackson at zackary.l.jackson@gmail.com or via Twitter at @ScriptedAlchemy.
 
 # How it Works
+
 This implementation uses our proprietary Software Streams technology to stream commonjs modules at runtime to consuming apps. This technology has not been made publicly available, and we have kept it a guarded secret for the past 2 years despite using it for multiple backend systems.
 
 For the client side, we have enhanced federation interfaces to ensure that the top-level API works as expected, allowing for import(), require, and import from to function. While the serverside has been tested, only import() has been tested on the client side.
@@ -16,7 +19,8 @@ We are also exploring the possibility of executing streamed software in a WASM i
 For now, we strongly advise federating only trusted software between servers.
 
 ## Security
-To ensure proper functionality, the commonjs modules are exposed via _next/static/ssr*. For security reasons, it is recommended to have a CDN or middleware in place that only allows access to this path from an internal network or VPN. Exposing server code publicly through this path can pose a security risk as process.browser is not applied to tree shake server secrets.
+
+To ensure proper functionality, the commonjs modules are exposed via \_next/static/ssr\*. For security reasons, it is recommended to have a CDN or middleware in place that only allows access to this path from an internal network or VPN. Exposing server code publicly through this path can pose a security risk as process.browser is not applied to tree shake server secrets.
 
 ## Context
 

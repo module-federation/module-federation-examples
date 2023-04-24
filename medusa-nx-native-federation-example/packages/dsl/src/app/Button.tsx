@@ -3,13 +3,11 @@ import { Button } from 'antd';
 
 import packageJson from '../../package.json';
 
-console.log(
-  'REMOTE NATIVE FEDERATION MANAGEMENT: using remote version: ' + packageJson.version,
-);
+console.log('REMOTE NATIVE FEDERATION MANAGEMENT: using remote version: ' + packageJson.version);
 
 type ButtonProps = {
   children: ReactNode;
-}
+};
 // red
 // green
 // blue

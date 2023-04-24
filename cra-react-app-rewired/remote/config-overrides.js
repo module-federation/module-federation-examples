@@ -1,42 +1,41 @@
-var path = require("path");
-const { dependencies } = require("./package.json");
-const ModuleFederationPlugin =
-  require("webpack").container.ModuleFederationPlugin;
+var path = require('path');
+const { dependencies } = require('./package.json');
+const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
 
-const { override, babelInclude } = require("customize-cra");
+const { override, babelInclude } = require('customize-cra');
 
 module.exports = function (config, env) {
   config.plugins.push(
     new ModuleFederationPlugin(
       (module.exports = {
-        name: "remote",
+        name: 'remote',
         exposes: {
-          "./Card": "./src/components/Card",
+          './Card': './src/components/Card',
         },
-        filename: "remoteEntry.js",
+        filename: 'remoteEntry.js',
         shared: {
           ...dependencies,
           react: {
             singleton: true,
-            requiredVersion: dependencies["react"],
+            requiredVersion: dependencies['react'],
           },
-          "react-dom": {
+          'react-dom': {
             singleton: true,
-            requiredVersion: dependencies["react-dom"],
+            requiredVersion: dependencies['react-dom'],
           },
         },
-      })
-    )
+      }),
+    ),
   );
-  config.output.publicPath = "auto";
+  config.output.publicPath = 'auto';
   return Object.assign(
     config,
     override(
       babelInclude([
         /* transpile (converting to es5) code in src/ and shared component library */
-        path.resolve("src"),
-        path.resolve("../host/src/components"),
-      ])
-    )(config, env)
+        path.resolve('src'),
+        path.resolve('../host/src/components'),
+      ]),
+    )(config, env),
   );
 };

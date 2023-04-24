@@ -22,7 +22,7 @@ const ModernReactComponent = props => {
 };
 
 export const Adapted = React.forwardRef((props, ref) => {
-  return (<ReactAdapterProvider {...props} component={ModernReactComponent} ref={ref} />)
+  return <ReactAdapterProvider {...props} component={ModernReactComponent} ref={ref} />;
 });
 
 export default ModernReactComponent;

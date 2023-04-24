@@ -1,7 +1,9 @@
 This is a quite simple lib giving access to 2 things : i18nService and useInstanceTranslation hook.
 
 # i18nService.ts
+
 ## How it works
+
 This service is a singleton, registering i18n instances, and handling language change across all registered instances.
 
 ## Useful functions

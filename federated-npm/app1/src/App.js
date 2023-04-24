@@ -1,5 +1,5 @@
 import React from 'react';
-import('app3')
+import('app3');
 const RemoteButton = React.lazy(() => import('app2/Button'));
 import lodash from 'lodash';
 import merge from 'lodash.merge';
