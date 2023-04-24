@@ -72,4 +72,4 @@ jobs:
           NODE_OPTIONS: "--max_old_space_size=5096"
         run: |
           echo "Yarn changed - install deps ... "
-          yarn install
+          yarn install --immutable
