@@ -1,5 +1,6 @@
 import * as path from 'path';
 import { existsSync } from 'fs';
+import fetch from 'cross-fetch';
 import { createPackageJson, readJsonFile, writeJsonFile, ProjectGraph } from '@nrwl/devkit';
 import { PackageJson } from 'nx/src/utils/package-json';
 import { NFPDashboardOptions, NFPDashboardOutputFile, NFPDashboardVersionStrategy } from './schema';

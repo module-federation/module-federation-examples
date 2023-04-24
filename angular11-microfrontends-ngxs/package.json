@@ -18,7 +18,7 @@
     "e2e:ci": "yarn build:shared && yarn start:shell & wait-on http-get://localhost:4200/ && yarn start:profile & wait-on http-get://localhost:4201/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "resolutions": {
-    "webpack": "5.72.1"
+    "webpack": "5.80.0"
   },
   "dependencies": {
     "@angular/animations": "11.2.14",
@@ -48,8 +48,8 @@
     "codelyzer": "6.0.2",
     "jasmine-core": "4.2.0",
     "jasmine-spec-reporter": "5.0.2",
-    "karma": "6.4.0",
-    "karma-chrome-launcher": "3.1.1",
+    "karma": "6.4.2",
+    "karma-chrome-launcher": "3.2.0",
     "karma-coverage": "2.2.0",
     "karma-jasmine": "4.0.2",
     "karma-jasmine-html-reporter": "1.7.0",
