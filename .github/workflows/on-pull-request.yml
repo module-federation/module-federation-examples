@@ -74,7 +74,7 @@ jobs:
           export BASE_MASTER_SHA=$(git log -n 1 --pretty=format:"%H" base/${{ github.event.pull_request.base.ref }})
           echo "$FORKED_MASTER_SHA"
           echo "$BASE_MASTER_SHA"
-          
+
           if [ "$FORKED_MASTER_SHA" == "$BASE_MASTER_SHA" ];
           then
             echo "The forked master is up to date with the base master branch"
@@ -135,7 +135,7 @@ jobs:
         uses: actions/cache@v3
         id: yarn-cache
         with:
-          path: ${{ env.CACHE_PATH }}  
+          path: ${{ env.CACHE_PATH }}
           key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
 
       - name: Check disk space before install
@@ -148,7 +148,7 @@ jobs:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
           echo "Yarn changed - install deps ... "
-          yarn install --frozen-lockfile
+          yarn install
 
       - name: Check disk space after install
         run: |
@@ -194,14 +194,14 @@ jobs:
           restore-keys: |
             e2e-cache-
             e2e-
-      
+
       - name: Install deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
           echo "Yarn changed - install deps ... "
-          yarn install --frozen-lockfile
+          yarn install
 
       - name: Install sample deps
           # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec

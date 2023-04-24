@@ -63,13 +63,13 @@ jobs:
         uses: actions/cache@v3
         id: yarn-cache
         with:
-          path: ${{ env.CACHE_PATH }}  
+          path: ${{ env.CACHE_PATH }}
           key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
 
       - name: Install deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
-          NODE_OPTIONS: "--max_old_space_size=4096"
+          NODE_OPTIONS: "--max_old_space_size=5096"
         run: |
           echo "Yarn changed - install deps ... "
-          yarn install --frozen-lockfile
+          yarn install
