@@ -11,6 +11,9 @@ const remotes = isServer => {
 };
 module.exports = {
   webpack(config, options) {
+    config.optimization.minimize = false;
+    config.optimization.chunkIds = 'named';
+    config.optimization.moduleIds = 'named';
     config.plugins.push(
       new NextFederationPlugin({
         name: 'checkout',
