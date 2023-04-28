@@ -6,14 +6,11 @@ const remotes = isServer => {
   return {
     home: `home@http://localhost:3001/_next/static/${location}/remoteEntry.js`,
     shop: `shop@http://localhost:3002/_next/static/${location}/remoteEntry.js`,
-    // checkout: `checkout@http://localhost:3000/_next/static/${location}/remoteEntry.js`,
+    checkout: `checkout@http://localhost:3000/_next/static/${location}/remoteEntry.js`,
   };
 };
 module.exports = {
   webpack(config, options) {
-    config.optimization.minimize = false;
-    config.optimization.chunkIds = 'named';
-    config.optimization.moduleIds = 'named';
     config.plugins.push(
       new NextFederationPlugin({
         name: 'checkout',
@@ -26,7 +23,8 @@ module.exports = {
         remotes: remotes(options.isServer),
         shared: {},
         extraOptions:{
-          automaticAsyncBoundary: true
+          automaticAsyncBoundary: true,
+          exposePages: true
         }
       }),
     );

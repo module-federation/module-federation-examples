@@ -11,16 +11,13 @@ const remotes = isServer => {
 };
 module.exports = {
   webpack(config, options) {
-    config.optimization.minimize = false;
-    config.optimization.chunkIds = 'named';
-    config.optimization.moduleIds = 'named';
     config.plugins.push(
       new NextFederationPlugin({
         name: 'home',
         filename: 'static/chunks/remoteEntry.js',
         exposes: {
           './nav': './components/nav.js',
-          // './home': './pages/index.js',
+          './home': './pages/index.js',
           './pages-map': './pages-map.js',
         },
         remotes: remotes(options.isServer),
