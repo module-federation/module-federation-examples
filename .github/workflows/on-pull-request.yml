@@ -74,7 +74,7 @@ jobs:
           export BASE_MASTER_SHA=$(git log -n 1 --pretty=format:"%H" base/${{ github.event.pull_request.base.ref }})
           echo "$FORKED_MASTER_SHA"
           echo "$BASE_MASTER_SHA"
-          
+
           if [ "$FORKED_MASTER_SHA" == "$BASE_MASTER_SHA" ];
           then
             echo "The forked master is up to date with the base master branch"
@@ -135,7 +135,7 @@ jobs:
         uses: actions/cache@v3
         id: yarn-cache
         with:
-          path: ${{ env.CACHE_PATH }}  
+          path: ${{ env.CACHE_PATH }}
           key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
 
       - name: Check disk space before install
@@ -171,6 +171,15 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
       - name: Free up some space
         run: ${{ env.FILES_TO_DELETE }}
 
@@ -178,45 +187,23 @@ jobs:
         run: |
           df -h
 
-        # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
-      - name: Check Yarn hash
-        id: yarn-hash
-        run: |
-          yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
-          echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
-
-      - name: Restore Yarn and Cypress cache
-        uses: actions/cache/restore@v3
-        id: yarn-cache
+      - name: Cache pnpm and Cypress
+        uses: actions/cache@v3
+        id: pnpm-cache
         with:
           path: ${{ env.CACHE_PATH }}
-          key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
+          key: e2e-cache-${{ hashFiles('pnpm-lock.yaml') }}
           restore-keys: |
             e2e-cache-
             e2e-
-      
-      - name: Install deps
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        env:
-          NODE_OPTIONS: "--max_old_space_size=4096"
-        run: |
-          echo "Yarn changed - install deps ... "
-          yarn install --frozen-lockfile
 
-      - name: Install sample deps
-          # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
-        # if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: |
-          npx lerna exec --stream --scope="${{ matrix.container }}*" --concurrency=1 "yarn install"
+      - name: Install deps
+        if: steps.pnpm-cache.outputs.cache-hit != 'true'
+        run: pnpm install --frozen-lockfile
 
       - name: Check disk space after install
         run: |
           df -h
-
-      - name: Set up node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
 
       - name: Run sample e2e tests
         run: |
