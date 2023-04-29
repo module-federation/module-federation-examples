@@ -16,6 +16,7 @@ function MyApp({ Component, pageProps }) {
       <Nav />
       </Suspense>
       <Component {...pageProps} />
+      <div className="test">test</div>
     </>
   );
 }
