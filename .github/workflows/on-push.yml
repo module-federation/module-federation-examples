@@ -9,6 +9,7 @@ env:
     **/node_modules
     ~/.cache/Cypress
     ~/.cache/yarn/v6
+    ~/setup-pnpm/node_modules/.bin/store/v3
   FILES_TO_DELETE: |
     sudo rm -rf "/usr/share/dotnet"
     sudo rm -rf "/usr/share/swift"
@@ -39,8 +40,6 @@ jobs:
   cache:
     runs-on: ubuntu-22.04
     needs: stop-previous-run
-    outputs:
-      yarnHash: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -49,27 +48,25 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
       - name: Free up some space
         run: ${{ env.FILES_TO_DELETE }}
 
-        # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
-      - name: Check Yarn hash
-        id: yarn-hash
-        run: |
-          yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
-          echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
-
-      - name: Cache Yarn and Cypress
+      - name: Cache pnpm and Cypress
         uses: actions/cache@v3
-        id: yarn-cache
+        id: pnpm-cache
         with:
-          path: ${{ env.CACHE_PATH }}  
-          key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
+          path: ${{ env.CACHE_PATH }}
+          key: e2e-cache-${{ hashFiles('pnpm-lock.yaml') }}
 
       - name: Install deps
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        env:
-          NODE_OPTIONS: "--max_old_space_size=4096"
-        run: |
-          echo "Yarn changed - install deps ... "
-          yarn install --frozen-lockfile
+        if: steps.pnpm-cache.outputs.cache-hit != 'true'
+        run: pnpm install --frozen-lockfile
