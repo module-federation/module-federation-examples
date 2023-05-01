@@ -131,7 +131,7 @@ jobs:
           yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
-      - name: Cache Yarn and Cypress
+      - name: Cache pnpm and Cypress
         uses: actions/cache@v3
         id: yarn-cache
         with:
@@ -208,7 +208,7 @@ jobs:
       - name: Run sample e2e tests
         run: |
           node -v
-          npx lerna run --scope=${{ matrix.container }} e2e:ci
+          pnpm --filter ${{ matrix.container }} e2e:ci
 
       - name: Create artifacts for Allure report
         uses: actions/upload-artifact@v3
