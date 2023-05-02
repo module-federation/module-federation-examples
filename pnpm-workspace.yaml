@@ -16,10 +16,13 @@ packages:
   - angular11-microfrontends-scully
   - angular11-microfrontends-scully/*
   - angular12-microfrontends
+  - angular12-microfrontends/*
   - angular14-react
   - angular14-react/*
   - angular15-microfrontends-lazy-components
+  - angular15-microfrontends-lazy-components/*
   - apollo-client
+  - apollo-client/*
   - basic-host-remote
   - basic-host-remote/*
   - bi-directional
@@ -35,13 +38,18 @@ packages:
   - css-isolation
   - css-isolation/*
   - cypress
+  - cypress/*
   - dashboard-example/*
   - delegate-modules
   - delegate-modules/*
   - different-react-versions-16-17-typescript
+  - different-react-versions-16-17-typescript/*
   - different-react-versions-16-17
+  - different-react-versions-16-17/*
   - different-react-versions-16-18-typescript
+  - different-react-versions-16-18-typescript/*
   - different-react-versions-16-18
+  - different-react-versions-16-18/*
   - different-react-versions-isolated
   - different-react-versions-isolated/*
   - different-react-versions-typescript
@@ -57,7 +65,9 @@ packages:
   - loadable-react-18
   - loadable-react-18/*
   - loadable-react-spectrum
+  - loadable-react-spectrum/*
   - loadable
+  - loadable/*
   - native-federation-tests-typescript-plugins
   - native-federation-tests-typescript-plugins/*
   - nested
@@ -69,12 +79,15 @@ packages:
   - nextjs-ssr
   - nextjs-ssr/*
   - nextjs-ssr-react-query
+  - nextjs-ssr-react-query/*
   - react-16-17-18-ssr
+  - react-16-17-18-ssr/*
   - react-18-code-splitting
   - react-18-code-splitting/*
   - react-18-server-2-server
   - react-18-server-2-server/*
   - react-18-ssr
+  - react-18-ssr/*
   - react-hmr
   - react-hmr/*
   - react-in-vue
@@ -88,11 +101,13 @@ packages:
   - react-nextjs/react-host-remote
   - react-nextjs/react-host-remote/*
   - react-spectrum
+  - react-spectrum/*
   - redux-reducer-injection
   - redux-reducer-injection/*
   - self-healing
   - self-healing/*
   - server-side-render-only
+  - server-side-render-only/*
   - server-side-rendering
   - server-side-rendering/*
   - shared-context
@@ -106,6 +121,7 @@ packages:
   - startup-code
   - startup-code/*
   - styled-components
+  - styled-components/*
   - third-party-scripts
   - third-party-scripts/*
   - typescript-monorepo
@@ -136,246 +152,482 @@ packages:
   - modernjs-medusa
   - modernjs-medusa/*
   - vue3-demo-federation-with-vite/vite-side
+  - vue3-demo-federation-with-vite/vite-side/*
   - vue3-demo-federation-with-vite/webpack-side
+  - vue3-demo-federation-with-vite/webpack-side/*
   - vue3-demo/home
+  - vue3-demo/home/*
   - vue3-demo/layout
+  - vue3-demo/layout/*
   - vue2-in-vue3/vue2
+  - vue2-in-vue3/vue2/*
   - vue2-in-vue3/vue3
+  - vue2-in-vue3/vue3/*
   - vue-cli/consumer
+  - vue-cli/consumer/*
   - vue-cli/core
+  - vue-cli/core/*
   - vue-cli/other
+  - vue-cli/other/*
   - vite-vue-microfrontends/host
+  - vite-vue-microfrontends/host/*
   - vite-vue-microfrontends/remote
+  - vite-vue-microfrontends/remote/*
   - vite-svelte-microfrontends/host
+  - vite-svelte-microfrontends/host/*
   - vite-svelte-microfrontends/remote
+  - vite-svelte-microfrontends/remote/*
   - vite-react-simple/rs-sidecart
+  - vite-react-simple/rs-sidecart/*
   - vite-react-simple/vite-react
+  - vite-react-simple/vite-react/*
   - vite-react-simple/webpack-spa
-  - umd-federation/app1
-  - umd-federation/app2
-  - version-discrepancy/app1
-  - version-discrepancy/app2
+  - vite-react-simple/webpack-spa/*
   - vite-react-microfrontends/host
+  - vite-react-microfrontends/host/*
   - vite-react-microfrontends/remote
+  - vite-react-microfrontends/remote/*
+  - version-discrepancy/app1
+  - version-discrepancy/app1/*
+  - version-discrepancy/app2
+  - version-discrepancy/app2/*
   - typescript-react-monorepo/packages/*
-  - typescript/app1
-  - typescript/app2
-  - typescript-project-references/app1
-  - typescript-project-references/app2
+  - umd-federation/app1
+  - umd-federation/app1/*
+  - umd-federation/app2
+  - umd-federation/app2/*
   - typescript-monorepo/app1
+  - typescript-monorepo/app1/*
   - typescript-monorepo/app2
+  - typescript-monorepo/app2/*
+  - typescript/app1
+  - typescript/app1/*
+  - typescript/app2
+  - typescript/app2/*
+  - typescript-project-references/app1
+  - typescript-project-references/app1/*
+  - typescript-project-references/app2
+  - typescript-project-references/app2/*
   - third-party-scripts/app1
+  - third-party-scripts/app1/*
   - third-party-scripts/app2
+  - third-party-scripts/app2/*
   - styled-components/app1
+  - styled-components/app1/*
   - styled-components/app2
+  - styled-components/app2/*
   - startup-code/app1
+  - startup-code/app1/*
   - startup-code/app2
-  - shared-store-cross-framework/react-counter
-  - shared-store-cross-framework/shared-store
-  - shared-store-cross-framework/shell
-  - shared-store-cross-framework/vue-counter
-  - shared-routing/dashboard
-  - shared-routing/order
-  - shared-routing/profile
-  - shared-routing/sales
-  - shared-routing/shell
+  - startup-code/app2/*
   - shared-routes2/app1
+  - shared-routes2/app1/*
   - shared-routes2/app2
+  - shared-routes2/app2/*
+  - shared-store-cross-framework/react-counter
+  - shared-store-cross-framework/react-counter/*
+  - shared-store-cross-framework/shared-store
+  - shared-store-cross-framework/shared-store/*
+  - shared-store-cross-framework/shell
+  - shared-store-cross-framework/shell/*
+  - shared-store-cross-framework/vue-counter
+  - shared-store-cross-framework/vue-counter/*
   - shared-context/app1
-  - shared-context/app1
+  - shared-context/app1/*
   - shared-context/shared-library
-  - server-side-render-only/hostServer
-  - server-side-render-only/remoteServer
-  - self-healing/app1
-  - self-healing/app2
+  - shared-context/shared-library/*
+  - shared-routing/dashboard
+  - shared-routing/dashboard/*
+  - shared-routing/order
+  - shared-routing/order/*
+  - shared-routing/profile
+  - shared-routing/profile/*
+  - shared-routing/sales
+  - shared-routing/sales/*
+  - shared-routing/shell
+  - shared-routing/shell/*
   - server-side-rendering/shell
+  - server-side-rendering/shell/*
   - server-side-rendering/remote1
+  - server-side-rendering/remote1/*
   - server-side-rendering/remote2
-  - rollup-federation-demo/rollup-spa
-  - rollup-federation-demo/rs-sidecar
-  - rollup-federation-demo/webpack-spa
-  - redux-reducer-injection/app1
-  - redux-reducer-injection/app2
+  - server-side-rendering/remote2/*
+  - server-side-render-only/hostServer
+  - server-side-render-only/hostServer/*
+  - server-side-render-only/remoteServer
+  - server-side-render-only/remoteServer/*
+  - self-healing/app1
+  - self-healing/app1/*
+  - self-healing/app2
+  - self-healing/app2/*
   - rust-wasm/host
+  - rust-wasm/host/*
   - rust-wasm/remote
+  - rust-wasm/remote/*
+  - rollup-federation-demo/rollup-spa
+  - rollup-federation-demo/rollup-spa/*
+  - rollup-federation-demo/rs-sidecar
+  - rollup-federation-demo/rs-sidecar/*
+  - rollup-federation-demo/webpack-spa
+  - rollup-federation-demo/webpack-spa/*
+  - redux-reducer-injection/app1
+  - redux-reducer-injection/app1/*
+  - redux-reducer-injection/app2
+  - redux-reducer-injection/app2/*
   - react-in-vue/home
+  - react-in-vue/home/*
   - react-in-vue/layout
-  - react-nested-routers/app1
-  - react-nested-routers/app2
-  - react-nested-routers/shell
+  - react-in-vue/layout/*
   - react-hmr/libs
+  - react-hmr/libs/*
   - react-hmr/remote1
+  - react-hmr/remote1/*
   - react-hmr/host
+  - react-hmr/host/*
+  - react-nested-routers/app1
+  - react-nested-routers/app1/*
+  - react-nested-routers/app2
+  - react-nested-routers/app2/*
+  - react-nested-routers/shell
+  - react-nested-routers/shell/*
   - react-18-ssr/remote1
+  - react-18-ssr/remote1/*
   - react-18-ssr/remote2
+  - react-18-ssr/remote2/*
   - react-18-ssr/shell
-  - react-18-server-2-server/app1
-  - react-18-server-2-server/app2
+  - react-18-ssr/shell/*
   - react-18-code-splitting/app1
+  - react-18-code-splitting/app1/*
   - react-18-code-splitting/app2
+  - react-18-code-splitting/app2/*
+  - react-18-server-2-server/app1
+  - react-18-server-2-server/app1/*
+  - react-18-server-2-server/app2
+  - react-18-server-2-server/app2/*
   - react-16-17-18-ssr/remote1
+  - react-16-17-18-ssr/remote1/*
   - react-16-17-18-ssr/remote2
+  - react-16-17-18-ssr/remote2/*
   - react-16-17-18-ssr/shell
-  - nextjs-v13/checkout
-  - nextjs-v13/home
-  - nextjs-v13/shared
-  - nextjs-v13/shop
+  - react-16-17-18-ssr/shell/*
   - nextjs-v12/checkout
+  - nextjs-v12/checkout/*
   - nextjs-v12/home
+  - nextjs-v12/home/*
   - nextjs-v12/shared
+  - nextjs-v12/shared/*
   - nextjs-v12/shop
-  - nextjs-ssr/checkout
-  - nextjs-ssr/home
-  - nextjs-ssr/shared
-  - nextjs-ssr/shop
+  - nextjs-v12/shop/*
+  - nextjs-v13/checkout
+  - nextjs-v13/checkout/*
+  - nextjs-v13/home
+  - nextjs-v13/home/*
+  - nextjs-v13/shared
+  - nextjs-v13/shared/*
+  - nextjs-v13/shop
+  - nextjs-v13/shop/*
   - nextjs-ssr-delegate-modules/checkout
+  - nextjs-ssr-delegate-modules/checkout/*
   - nextjs-ssr-delegate-modules/home
+  - nextjs-ssr-delegate-modules/home/*
   - nextjs-ssr-delegate-modules/shop
-  - nextjs-antd/3000-home
-  - nextjs-antd/3001-shop
-  - nextjs-antd/3002-checkout
-  - nextjs-antd/shared
+  - nextjs-ssr-delegate-modules/shop/*
+  - nextjs-ssr/checkout
+  - nextjs-ssr/checkout/*
+  - nextjs-ssr/home
+  - nextjs-ssr/home/*
+  - nextjs-ssr/shared
+  - nextjs-ssr/shared/*
+  - nextjs-ssr/shop
+  - nextjs-ssr/shop/*
   - nested/app1
+  - nested/app1/*
   - nested/app2
+  - nested/app2/*
   - nested/app3
+  - nested/app3/*
+  - nextjs-antd/3000-home
+  - nextjs-antd/3000-home/*
+  - nextjs-antd/3001-shop
+  - nextjs-antd/3001-shop/*
+  - nextjs-antd/3002-checkout
+  - nextjs-antd/3002-checkout/*
+  - nextjs-antd/shared
+  - nextjs-antd/shared/*
   - native-federation-tests-typescript-plugins/remote
+  - native-federation-tests-typescript-plugins/remote/*
   - native-federation-tests-typescript-plugins/host
-  - native-federation-react/host
-  - native-federation-react/remote
+  - native-federation-tests-typescript-plugins/host/*
   - modernjs-medusa/host
+  - modernjs-medusa/host/*
   - modernjs-medusa/provider
+  - modernjs-medusa/provider/*
+  - native-federation-react/host
+  - native-federation-react/host/*
+  - native-federation-react/remote
+  - native-federation-react/remote/*
   - modernjs/host
+  - modernjs/host/*
   - modernjs/provider
-  - medusa-nx-native-federation-example/packages/dsl
-  - medusa-nx-native-federation-example/packages/utils
-  - medusa-nx-native-federation-example/packages/nav
-  - medusa-nx-native-federation-example/packages/search
-  - medusa-nx-native-federation-example/packages/home
+  - modernjs/provider/*
   - medusa-example/dsl
+  - medusa-example/dsl/*
   - medusa-example/home
+  - medusa-example/home/*
   - medusa-example/nav
+  - medusa-example/nav/*
   - medusa-example/search
+  - medusa-example/search/*
   - medusa-example/utils
+  - medusa-example/utils/*
   - medusa-delegate-example/dsl
+  - medusa-delegate-example/dsl/*
   - medusa-delegate-example/home
+  - medusa-delegate-example/home/*
   - medusa-delegate-example/nav
+  - medusa-delegate-example/nav/*
   - medusa-delegate-example/search
+  - medusa-delegate-example/search/*
   - medusa-delegate-example/utils
-  - loadable-react-18/app1
-  - loadable-react-18/app2
-  - i18next-nextjs-react/next-host
-  - i18next-nextjs-react/react-host
-  - i18next-nextjs-react/react-remote
-  - i18next-nextjs-react/i18next-shared-lib
+  - medusa-delegate-example/utils/*
+  - medusa-nx-native-federation-example/packages/dsl
+  - medusa-nx-native-federation-example/packages/dsl/*
+  - medusa-nx-native-federation-example/packages/utils
+  - medusa-nx-native-federation-example/packages/utils/*
+  - medusa-nx-native-federation-example/packages/nav
+  - medusa-nx-native-federation-example/packages/nav/*
+  - medusa-nx-native-federation-example/packages/search
+  - medusa-nx-native-federation-example/packages/search/*
+  - medusa-nx-native-federation-example/packages/home
+  - medusa-nx-native-federation-example/packages/home/*
   - loadable-react-16/app1
+  - loadable-react-16/app1/*
   - loadable-react-16/app2
-  - federated-npm/app1
-  - federated-npm/app2
-  - federated-npm/app3
-  - federated-css-react-ssr/expose-apps/expose-css
-  - federated-css-react-ssr/expose-apps/expose-css-module
-  - federated-css-react-ssr/expose-apps/expose-tailwind-css
-  - federated-css-react-ssr/expose-apps/expose-scss
-  - federated-css-react-ssr/expose-apps/expose-jss
-  - federated-css-react-ssr/expose-apps/expose-styled-components
-  - federated-css-react-ssr/expose-apps/expose-less
-  - federated-css-react-ssr/shell-apps/css-scss
-  - federated-css-react-ssr/shell-apps/less-scss
-  - federated-css-react-ssr/shell-apps/css-jss
-  - federated-css-react-ssr/shell-apps/jss-styled-components
-  - federated-css-react-ssr/shell-apps/jss-styled-components-css-module
-  - federated-css-react-ssr/shell-apps/scss-tailwind-css
+  - loadable-react-16/app2/*
+  - loadable-react-18/app1
+  - loadable-react-18/app1/*
+  - loadable-react-18/app2
+  - loadable-react-18/app2/*
+  - i18next-nextjs-react/next-host
+  - i18next-nextjs-react/next-host/*
+  - i18next-nextjs-react/react-host
+  - i18next-nextjs-react/react-host/*
+  - i18next-nextjs-react/react-remote
+  - i18next-nextjs-react/react-remote/*
+  - i18next-nextjs-react/i18next-shared-lib
+  - i18next-nextjs-react/i18next-shared-lib/*
   - genesis/ssr-mf-about
+  - genesis/ssr-mf-about/*
   - genesis/ssr-mf-home
+  - genesis/ssr-mf-home/*
   - federated-css/expose-remotes/expose-css
+  - federated-css/expose-remotes/expose-css/*
   - federated-css/expose-remotes/expose-css-module
+  - federated-css/expose-remotes/expose-css-module/*
   - federated-css/expose-remotes/expose-jss
+  - federated-css/expose-remotes/expose-jss/*
   - federated-css/expose-remotes/expose-less
+  - federated-css/expose-remotes/expose-less/*
   - federated-css/expose-remotes/expose-scss
+  - federated-css/expose-remotes/expose-scss/*
   - federated-css/expose-remotes/expose-styled-component
+  - federated-css/expose-remotes/expose-styled-component/*
   - federated-css/expose-remotes/expose-tailwind-css-global
+  - federated-css/expose-remotes/expose-tailwind-css-global/*
   - federated-css/expose-remotes/expose-tailwind-css-module
+  - federated-css/expose-remotes/expose-tailwind-css-module/*
   - federated-css/consumers-react/css-and-styled-component
+  - federated-css/consumers-react/css-and-styled-component/*
   - federated-css/consumers-react/less-and-scss
+  - federated-css/consumers-react/less-and-scss/*
   - federated-css/consumers-react/css-module-and-jss
+  - federated-css/consumers-react/css-module-and-jss/*
   - federated-css/consumers-react/tailwind-global-and-less
+  - federated-css/consumers-react/tailwind-global-and-less/*
   - federated-css/consumers-react/tailwind-module-and-jss
+  - federated-css/consumers-react/tailwind-module-and-jss/*
   - federated-css/consumers-react/any-combination
+  - federated-css/consumers-react/any-combination/*
   - federated-css/consumers-react/combination-of-5
+  - federated-css/consumers-react/combination-of-5/*
   - federated-css/consumers-react/combination-of-4
+  - federated-css/consumers-react/combination-of-4/*
   - federated-css/consumers-nextjs/jss-and-tailwind-global
+  - federated-css/consumers-nextjs/jss-and-tailwind-global/*
   - federated-css/consumers-nextjs/jss-css-and-tailwind-module
+  - federated-css/consumers-nextjs/jss-css-and-tailwind-module/*
   - federated-css/consumers-nextjs/less-and-styled-component
+  - federated-css/consumers-nextjs/less-and-styled-component/*
   - federated-css/consumers-nextjs/combination-of-4
+  - federated-css/consumers-nextjs/combination-of-4/*
   - federated-css/consumers-nextjs/any-combination
+  - federated-css/consumers-nextjs/any-combination/*
   - dynamic-system-host/app1
+  - dynamic-system-host/app1/*
   - dynamic-system-host/app2
+  - dynamic-system-host/app2/*
   - dynamic-system-host/app3
-  - different-react-versions-typescript/app1
-  - different-react-versions-typescript/app2
+  - dynamic-system-host/app3/*
+  - federated-css-react-ssr/expose-apps/expose-css
+  - federated-css-react-ssr/expose-apps/expose-css/*
+  - federated-css-react-ssr/expose-apps/expose-css-module
+  - federated-css-react-ssr/expose-apps/expose-css-module/*
+  - federated-css-react-ssr/expose-apps/expose-tailwind-css
+  - federated-css-react-ssr/expose-apps/expose-tailwind-css/*
+  - federated-css-react-ssr/expose-apps/expose-scss
+  - federated-css-react-ssr/expose-apps/expose-scss/*
+  - federated-css-react-ssr/expose-apps/expose-jss
+  - federated-css-react-ssr/expose-apps/expose-jss/*
+  - federated-css-react-ssr/expose-apps/expose-styled-components
+  - federated-css-react-ssr/expose-apps/expose-styled-components/*
+  - federated-css-react-ssr/expose-apps/expose-less
+  - federated-css-react-ssr/expose-apps/expose-less/*
+  - federated-css-react-ssr/shell-apps/css-scss
+  - federated-css-react-ssr/shell-apps/css-scss/*
+  - federated-css-react-ssr/shell-apps/less-scss
+  - federated-css-react-ssr/shell-apps/less-scss/*
+  - federated-css-react-ssr/shell-apps/css-jss
+  - federated-css-react-ssr/shell-apps/css-jss/*
+  - federated-css-react-ssr/shell-apps/jss-styled-components
+  - federated-css-react-ssr/shell-apps/jss-styled-components/*
+  - federated-css-react-ssr/shell-apps/jss-styled-components-css-module
+  - federated-css-react-ssr/shell-apps/jss-styled-components-css-module/*
+  - federated-css-react-ssr/shell-apps/scss-tailwind-css
+  - federated-css-react-ssr/shell-apps/scss-tailwind-css/*
+  - federated-npm/app1
+  - federated-npm/app1/*
+  - federated-npm/app2
+  - federated-npm/app2/*
+  - federated-npm/app3
+  - federated-npm/app3/*
   - different-react-versions-isolated/app1
+  - different-react-versions-isolated/app1/*
   - different-react-versions-isolated/app2
-  - different-react-versions-16-18-typescript/app1
-  - different-react-versions-16-18-typescript/app2
-  - different-react-versions-16-18/app1
-  - different-react-versions-16-18/app2
-  - different-react-versions-16-17-typescript/app1
-  - different-react-versions-16-17-typescript/app2
+  - different-react-versions-isolated/app2/*
+  - different-react-versions-typescript/app1
+  - different-react-versions-typescript/app1/*
+  - different-react-versions-typescript/app2
+  - different-react-versions-typescript/app2/*
   - different-react-versions-16-17/app1
+  - different-react-versions-16-17/app1/*
   - different-react-versions-16-17/app2
-  - different-react-versions/app1
-  - different-react-versions/app2
-  - delegate-modules/app1
-  - delegate-modules/app2
-  - cra-react-app-rewired/host
-  - cra-react-app-rewired/remote
-  - cra/host
-  - cra/remote
+  - different-react-versions-16-17/app2/*
+  - different-react-versions-16-18/app1
+  - different-react-versions-16-18/app1/*
+  - different-react-versions-16-18/app2
+  - different-react-versions-16-18/app2/*
+  - different-react-versions-16-17-typescript/app1
+  - different-react-versions-16-17-typescript/app1/*
+  - different-react-versions-16-17-typescript/app2
+  - different-react-versions-16-17-typescript/app2/*
+  - different-react-versions-16-18-typescript/app1
+  - different-react-versions-16-18-typescript/app1/*
+  - different-react-versions-16-18-typescript/app2
+  - different-react-versions-16-18-typescript/app2/*
   - css-isolation/app1
+  - css-isolation/app1/*
   - css-isolation/app2
+  - css-isolation/app2/*
+  - delegate-modules/app1
+  - delegate-modules/app1/*
+  - delegate-modules/app2
+  - delegate-modules/app2/*
+  - different-react-versions/app1
+  - different-react-versions/app1/*
+  - different-react-versions/app2
+  - different-react-versions/app2/*
+  - cra-react-app-rewired/host
+  - cra-react-app-rewired/host/*
+  - cra-react-app-rewired/remote
+  - cra-react-app-rewired/remote/*
+  - cra/host
+  - cra/host/*
+  - cra/remote
+  - cra/remote/*
   - comprehensive-demo-react18/app-01
+  - comprehensive-demo-react18/app-01/*
   - comprehensive-demo-react18/app-02
+  - comprehensive-demo-react18/app-02/*
   - comprehensive-demo-react18/app-03
+  - comprehensive-demo-react18/app-03/*
   - comprehensive-demo-react18/app-04
+  - comprehensive-demo-react18/app-04/*
   - comprehensive-demo-react18/app-05
-  - bi-directional/app1
-  - bi-directional/app2
-  - complete-react-case/component-app
-  - complete-react-case/lib-app
-  - complete-react-case/main-app
+  - comprehensive-demo-react18/app-05/*
   - comprehensive-demo-react16/app-01
+  - comprehensive-demo-react16/app-01/*
   - comprehensive-demo-react16/app-02
+  - comprehensive-demo-react16/app-02/*
   - comprehensive-demo-react16/app-03
+  - comprehensive-demo-react16/app-03/*
   - comprehensive-demo-react16/app-04
+  - comprehensive-demo-react16/app-04/*
   - comprehensive-demo-react16/app-05
-  - apollo-client/app1
-  - apollo-client/app2
-  - angular15-vue3/vue-remote
+  - comprehensive-demo-react16/app-05/*
   - basic-host-remote/app1
+  - basic-host-remote/app1/*
   - basic-host-remote/app2
-  - angular15-microfrontends-lazy-components/projects/*
+  - basic-host-remote/app2/*
+  - complete-react-case/component-app
+  - complete-react-case/component-app/*
+  - complete-react-case/lib-app
+  - complete-react-case/lib-app/*
+  - complete-react-case/main-app
+  - complete-react-case/main-app/*
+  - bi-directional/app1
+  - bi-directional/app1/*
+  - bi-directional/app2
+  - bi-directional/app2/*
+  - angular15-vue3/vue-remote
+  - angular15-vue3/vue-remote/*
+  - apollo-client/app1
+  - apollo-client/app1/*
+  - apollo-client/app2
+  - apollo-client/app2/*
   - angular14-react/angular-profile
+  - angular14-react/angular-profile/*
   - angular14-react/react-user-list
-  - angular11-microfrontends-ngxs/projects/*
-  - angular11-microfrontends-scully/projects/*
+  - angular14-react/react-user-list/*
+  - angular15-microfrontends-lazy-components/projects/*
   - angular12-microfrontends/projects/*
-  - angular-universal-ssr/client-app
-  - angular-universal-ssr/host-app
+  - angular11-microfrontends-scully/projects/*
   - angular11-microfrontends-ngrx/projects/*
-  - react-nextjs/react-host-remote/host
-  - react-nextjs/react-host-remote/remote
+  - angular11-microfrontends-ngxs/projects/*
+  - angular-universal-ssr/client-app
+  - angular-universal-ssr/client-app/*
+  - angular-universal-ssr/host-app
+  - angular-universal-ssr/host-app/*
   - react-nextjs/react-host-nextjs-remote/host
+  - react-nextjs/react-host-nextjs-remote/host/*
   - react-nextjs/react-host-nextjs-remote/remote
-  - react-nextjs/nextjs-host-remote/host
-  - react-nextjs/nextjs-host-remote/remote
+  - react-nextjs/react-host-nextjs-remote/remote/*
+  - react-nextjs/react-host-remote/host
+  - react-nextjs/react-host-remote/host/*
+  - react-nextjs/react-host-remote/remote
+  - react-nextjs/react-host-remote/remote/*
   - react-nextjs/nextjs-host-react-remote/host
+  - react-nextjs/nextjs-host-react-remote/host/*
   - react-nextjs/nextjs-host-react-remote/remote
-  - advanced-api/dynamic-remotes-synchronous-imports/app1
-  - advanced-api/dynamic-remotes-synchronous-imports/app2
-  - advanced-api/dynamic-remotes/app1
-  - advanced-api/dynamic-remotes/app2
-  - advanced-api/dynamic-remotes/app3
-  - advanced-api/dynamic-remotes-runtime-environment-variables/host
-  - advanced-api/dynamic-remotes-runtime-environment-variables/remote
+  - react-nextjs/nextjs-host-react-remote/remote/*
+  - react-nextjs/nextjs-host-remote/host
+  - react-nextjs/nextjs-host-remote/host/*
+  - react-nextjs/nextjs-host-remote/remote
+  - react-nextjs/nextjs-host-remote/remote/*
   - advanced-api/automatic-vendor-sharing/app1
+  - advanced-api/automatic-vendor-sharing/app1/*
   - advanced-api/automatic-vendor-sharing/app2
+  - advanced-api/automatic-vendor-sharing/app2/*
+  - advanced-api/dynamic-remotes/app1
+  - advanced-api/dynamic-remotes/app1/*
+  - advanced-api/dynamic-remotes/app2
+  - advanced-api/dynamic-remotes/app2/*
+  - advanced-api/dynamic-remotes/app3
+  - advanced-api/dynamic-remotes/app3/*
+  - advanced-api/dynamic-remotes-synchronous-imports/app1
+  - advanced-api/dynamic-remotes-synchronous-imports/app1/*
+  - advanced-api/dynamic-remotes-synchronous-imports/app2
+  - advanced-api/dynamic-remotes-synchronous-imports/app2/*
+  - advanced-api/dynamic-remotes-runtime-environment-variables/host
+  - advanced-api/dynamic-remotes-runtime-environment-variables/host/*
+  - advanced-api/dynamic-remotes-runtime-environment-variables/remote
+  - advanced-api/dynamic-remotes-runtime-environment-variables/remote/*
