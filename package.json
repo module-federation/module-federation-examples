@@ -87,6 +87,7 @@
       "./react-18-server-2-server",
       "./react-18-server-2-server/*",
       "./react-18-ssr",
+      "./react-dynamic-routes/*",
       "./react-hmr",
       "./react-hmr/*",
       "./react-in-vue",
@@ -187,5 +188,8 @@
     "cypress:run": "cypress run --config-file cypress/config/cypress.config.ts --browser=chrome",
     "report:generate": "allure generate ./cypress/results/allure-results --clean -o ./cypress/report",
     "report:open": "allure open ./cypress/report"
+  },
+  "dependencies": {
+    "puppeteer": "^20.2.0"
   }
 }
