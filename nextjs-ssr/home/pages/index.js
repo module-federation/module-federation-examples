@@ -13,7 +13,7 @@ const Home = ({loaded}) => {
       </Head>
 
       <div className="hero">
-        <Suspense>
+        <Suspense fallback={"loading remote title"}>
           <RemoteTitle/>
         </Suspense>
         <h1 className="title">

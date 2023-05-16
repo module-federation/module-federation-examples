@@ -7,7 +7,6 @@ const Nav = lazy(() => {
 });
 
 
-
 function MyApp({ Component, pageProps }) {
   console.log('in app');
   return (
