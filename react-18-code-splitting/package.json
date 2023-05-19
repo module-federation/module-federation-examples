@@ -1,0 +1,18 @@
+{
+  "name": "react-18-code-splitting",
+  "private": true,
+  "workspaces": [
+    "app1",
+    "app2"
+  ],
+  "scripts": {
+    "start": "lerna run --scope=react-18-code-splitting_* --parallel start",
+    "build": "lerna run --scope=react-18-code-splitting_* build",
+    "serve": "lerna run --scope=react-18-code-splitting_* --parallel serve",
+    "clean": "lerna run --scope=react-18-code-splitting_* --parallel clean",
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+  },
+  "devDependencies": {
+    "lerna": "3.22.1"
+  }
+}

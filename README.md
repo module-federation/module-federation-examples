@@ -36,6 +36,7 @@ https://scriptedalchemy.medium.com/
 - [x] [Create React App using React App Rewired](./cra-react-app-rewired/README.md) &mdash; Module Federation using CRA and React App Rewired.
 - [x] [HMR Remotes](./react-hmr/README.md) &mdash; Hot Reloading Remotes inside Hosts.
 - [x] [Startup Code](./startup-code/README.md) &mdash; Advanced implementation that attaches initialization code to the remote container itself. Useful for dynamically setting publicPath in the remote.
+- [x] [Dynamic Remotes in Node](./dynamic-remotes-node/README.md) &mdash; Dynamically load remotes in Node.
 - [x] [Bi-Directional Hosts](./bi-directional/README.md) &mdash; App1 consumes App2 components; App2 consumes App1 components.
 - [x] [Self-Healing](./self-healing/README.md) &mdash; Fallback to remote apps vendors if a dependency fails to load.
 - [x] [Server-Side Rendering](./server-side-rendering/README.md) &mdash; App1 and App2 with SSR.
@@ -46,8 +47,7 @@ https://scriptedalchemy.medium.com/
 - [x] [Shared Routes](./shared-routes2) &mdash; Compose federated routes for a seamless user experience.
 - [x] [Nested Components](./nested/README.md) &mdash; Nested remote components.
 - [x] [Share Context Provider](./shared-context/README.md) &mdash; App1 and App2 with shared Context Provider.
-- [x] [Federation Dashboard Example](./dashboard-example/README.md) &mdash; Single example implementing [Module Federation Dashboard](https://www.npmjs.com/package/@module-federation/dashboard-plugin)
-- [x] 🔒[Streaming Federated Code](./streamed-federation/README.md) &mdash; App1 and federated-middleware deploy to s3. App1 then stream's federated code directly from S3.
+- [x] [Medusa Example](./dashboard-example/README.md) &mdash; Single example implementing [Module Federation Dashboard](https://www.npmjs.com/package/@module-federation/dashboard-plugin)
 - [x] Non-UI Module
 - [x] [Routing](./shared-routing/README.md) &mdash; An example of sharing router context. Also worth looking at - [Routing 2](./shared-routes2/README.md)
 - [x] [Version Discrepancy](./version-discrepancy/README.md) &mdash; Federated apps depending on different versions of a dependency without side-effects.
@@ -69,6 +69,8 @@ https://scriptedalchemy.medium.com/
 - [x] [vue3-demo-federation-with-vite](./vue3-demo-federation-with-vite/README.md) &mdash; wepack and vite federation integrated projects, webpack/vite both play the role of host and remote
 - [x] [quasar-cli-vue3-webpack-javascript](./quasar-cli-vue3-webpack-javascript/README.md) &mdash; Module federation integration with Quasar apps running vue3 using quasar-cli (javascript)
 - [x] [UMD Federation](./umd-federation) &mdash; Support importing umd remote module
+- [x] [Modernjs](./modernjs) &mdash; Basic Module Federation Usage in Modern.js Framework
+- [x] [Modernjs Medusa](./modernjs-medusa) &mdash; Using Medusa in Modern.js Framework 
 
 **Module Federation Examples** covered by e2e tests with **Cypress** framework, more info about structure and configuration 👉 [here](./cypress/README.md) 👈
 
@@ -101,6 +103,8 @@ Module federation will work with any type of file that youre able to import, tha
 - Best Buy
 - SAP
 - AWS
+- SemRush
+- Ford Motor Company
 - JPMorgan Chase
 - Microsoft
 - Lululemon
@@ -120,6 +124,7 @@ Module federation will work with any type of file that youre able to import, tha
 - RingCentral
 - Indeed
 - Telia
+- Beamery
 - Amazon
 - Sony
 - Paypal

@@ -13,3 +13,5 @@ export default function () {
     </div>
   )
 }
+
+export const moduleA = "moduleA"

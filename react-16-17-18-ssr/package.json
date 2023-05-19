@@ -1,0 +1,16 @@
+{
+  "name": "react-16-17-18-ssr",
+  "private": true,
+  "workspaces": [
+    "remote1",
+    "remote2",
+    "shell"
+  ],
+  "scripts": {
+    "start": "lerna run --parallel start",
+    "build": "lerna run build"
+  },
+  "devDependencies": {
+    "lerna": "3.22.1"
+  }
+}

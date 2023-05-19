@@ -1,0 +1,17 @@
+{
+    "name": "native-federation-tests-typescript-plugins",
+    "private": true,
+    "scripts": {
+        "ls": "lerna ls",
+        "start:webpack": "lerna run --scope=native-federation-tests-typescript-remote dev:webpack & wait-on http-get://localhost:3000/ && lerna run --scope=native-federation-tests-typescript-host dev:webpack",
+        "start:rspack": "lerna run --scope=native-federation-tests-typescript-remote dev:rspack & wait-on http-get://localhost:3000/ && lerna run --scope=native-federation-tests-typescript-host dev:rspack"
+    },
+    "workspaces": [
+        "remote",
+        "host"
+    ],
+    "devDependencies": {
+        "lerna": "6.6.1",
+        "wait-on": "7.0.1"
+    }
+}

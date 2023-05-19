@@ -1,0 +1,32 @@
+{
+  "name": "@react-ssr/remote1",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "yarn build && yarn serve",
+    "serve": "npx serve dist/ -p 3001",
+    "build": "yarn build:client && yarn build:server",
+    "build:client": "rimraf dist/client && webpack --mode production --config config/webpack.client.js",
+    "build:server": "rimraf dist/server && webpack --mode production --config config/webpack.server.js"
+  },
+  "dependencies": {
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "regenerator-runtime": "0.13.11"
+  },
+  "devDependencies": {
+    "@babel/core": "7.21.4",
+    "@babel/plugin-proposal-class-properties": "7.18.6",
+    "@babel/preset-env": "7.21.4",
+    "@babel/preset-react": "7.18.6",
+    "@babel/preset-typescript": "7.21.4",
+    "@module-federation/node": "0.12.2",
+    "@types/react": "16.14.40",
+    "@types/react-dom": "16.9.18",
+    "babel-loader": "8.2.5",
+    "html-webpack-plugin": "5.5.0",
+    "rimraf": "3.0.2",
+    "webpack": "5.80.0",
+    "webpack-cli": "4.9.2",
+    "webpack-merge": "5.8.0"
+  }
+}

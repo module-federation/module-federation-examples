@@ -9,7 +9,7 @@ module.exports = function (config, env) {
   config.plugins.push(
     new ModuleFederationPlugin(
       (module.exports = {
-        name: "remote",
+        name: "host",
         remotes: {
           remote: `remote@http://localhost:3001/remoteEntry.js`,
         },

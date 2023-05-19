@@ -1,0 +1,19 @@
+{
+  "name": "loadable-react-16",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "app1",
+    "app2"
+  ],
+  "scripts": {
+    "start": "lerna run --scope=loadable-react-16_* --parallel start",
+    "build": "lerna run --scope=loadable-react-16_* build",
+    "serve": "lerna run --scope=loadable-react-16_* --parallel serve",
+    "clean": "lerna run --scope=loadable-react-16_* --parallel clean",
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+  },
+  "devDependencies": {
+    "lerna": "3.22.1"
+  }
+}
