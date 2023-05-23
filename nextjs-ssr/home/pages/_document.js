@@ -16,14 +16,14 @@ class MyDocument extends Document {
         revalidate()
       });
     }
-
+    const initialProps = await Document.getInitialProps(ctx);
     const chunks = await flushChunks()
 
-    const initialProps = await Document.getInitialProps(ctx);
     return {
       ...initialProps,
       chunks
     };
+
   }
 
   render() {

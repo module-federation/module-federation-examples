@@ -39,7 +39,6 @@ const Checkout = props => (
 );
 Checkout.getInitialProps = async () => {
   const swapi = await fetch('https://jsonplaceholder.typicode.com/todos/1').then(res => res.json());
-  console.log(swapi);
   console.log('swapi');
   return swapi;
 };
