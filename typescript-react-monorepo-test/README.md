@@ -11,10 +11,20 @@ yarn
 
 # Running Demo
 
-Run `yarn start` in root folder. This will build and serve both `host` and `remote` on ports 3000 and 4000 respectively.
+Run `REMOTE_URL=http://localhost:4000 yarn start` in root folder. This will build and serve both `host` and `remote` on ports 3000 and 4000 respectively.
 
 - [localhost:3000](http://localhost:3000/)
 - [localhost:4000](http://localhost:4000/)
+
+# Running Host RTL test through Jest
+
+Go to host service folder and run `yarn test`
+This is achieved using jest's moduleNameMapper by telling it how to resolve remote imports.
+
+# Running Host Cypress Component test
+
+Go to host service folder and run `yarn cypress`
+This is achieved using webpack's `resolve.alias` by telling it how to resolve remote imports.
 
 # FederationConfig
 
@@ -23,5 +33,4 @@ Run `yarn start` in root folder. This will build and serve both `host` and `remo
 
 # Tip
 
-- Monorepo is used for ease of use. But there is no requirement to use it.
-- This project demonstrates the functionality of @module-federation/typescript. To read more, you can refer to the documentation of this package.
+- Monorepo is requirement for jest to run.

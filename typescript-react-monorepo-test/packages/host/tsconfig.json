@@ -15,7 +15,9 @@
     "baseUrl": ".",
     "paths": {
       "@mfTypes/*": ["./@mf-types/Remote/_types/*"]
-    }
+    },
+    "types": ["@testing-library/jest-dom", "cypress", "@testing-library/cypress"]
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["**/__tests__/*.cy.tsx"]
 }
