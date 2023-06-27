@@ -1,10 +1,9 @@
-import React, {Fragment, Suspense} from 'react';
+import React, {Fragment, Suspense, lazy} from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import lodash from "lodash";
-console.log('lodash', lodash);
 
-const RemoteTitle = dynamic(() => import('checkout/title'), {suspense: true});
+const RemoteTitle = lazy(() => import('checkout/title'));
 
 const Home = ({loaded}) => {
   return (
