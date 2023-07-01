@@ -35,7 +35,9 @@ export async function buildRemotesFile(outputPath: string, remotes: string[], pr
     return;
   }
 
-  remotes = remotes.filter((r) => typeof r === 'string' && r.trim() !== '');
+  remotes = remotes.filter((remote) => {
+    return typeof remote === 'string' && remote.trim() !== '';
+  });
 
   if (remotes.length < 1) {
     return;

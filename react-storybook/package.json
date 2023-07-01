@@ -1,0 +1,19 @@
+{
+  "name": "cra",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "./host",
+      "./remote"
+    ]
+  },
+  "scripts": {
+    "start": "concurrently 'cd ./host && yarn start' 'cd ./remote && yarn start'",
+    "build": "concurrently 'cd ./host && yarn build' 'cd ./remote && yarn build'",
+    "serve": "concurrently 'cd ./host && yarn serve' 'cd ./remote && yarn serve'",
+    "clean": "concurrently 'cd ./host && yarn clean' 'cd ./remote && yarn clean'"
+  },
+  "devDependencies": {
+    "concurrently": "7.3.0"
+  }
+}

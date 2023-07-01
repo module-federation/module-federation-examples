@@ -3,6 +3,9 @@ const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlug
 module.exports = {
   publicPath: 'http://localhost:9000/',
   configureWebpack: {
+    optimization: {
+      splitChunks: false
+    },
     plugins: [
       new ModuleFederationPlugin({
         name: 'core',
