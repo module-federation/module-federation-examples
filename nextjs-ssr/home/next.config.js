@@ -10,7 +10,6 @@ const remotes = isServer => {
   };
 };
 module.exports = {
-  webpack5: true,
   webpack(config, options) {
     config.plugins.push(
       new NextFederationPlugin({
@@ -24,7 +23,8 @@ module.exports = {
         remotes: remotes(options.isServer),
         shared: {},
         extraOptions:{
-          automaticAsyncBoundary: true
+          automaticAsyncBoundary: true,
+          exposePages: true
         }
       }),
     );

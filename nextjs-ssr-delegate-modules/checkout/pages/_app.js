@@ -1,9 +1,9 @@
 import {Suspense,lazy} from "react";
 import App from 'next/app';
 import dynamic from 'next/dynamic';
-const Nav = dynamic(() => {
+const Nav = lazy(() => {
   return import('home/nav');
-},{suspense:true});
+});
 
 function MyApp({ Component, pageProps }) {
   return (

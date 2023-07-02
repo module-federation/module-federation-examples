@@ -1,11 +1,11 @@
-import React, {Suspense} from 'react';
+import React, {Suspense,lazy} from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
 console.log(__webpack_share_scopes__)
-export const HelloWorld = dynamic(() => import('./helloWorld').then(mod => {
+export const HelloWorld = lazy(() => import('./helloWorld').then(mod => {
   return {default: mod.HelloWorld}
-}),{suspense: true});
+}));
 const links = [
   { href: 'https://zeit.co/now', label: 'ZEIT' },
   { href: 'https://github.com/zeit/next.js', label: 'GitHub' },
