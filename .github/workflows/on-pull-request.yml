@@ -106,6 +106,7 @@ jobs:
       - name: Create matrix
         id: set-matrix
         run: |
+          node -v && 
           matrix="$(node checkChangedWorkspaces.js)"
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
