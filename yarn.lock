@@ -10043,13 +10043,13 @@
     node-fetch "2.6.7"
     webpack-sources "3.2.3"
 
-"@module-federation/nextjs-mf@^6.5.2-rc6.0":
-  version "6.7.1"
-  resolved "https://registry.yarnpkg.com/@module-federation/nextjs-mf/-/nextjs-mf-6.7.1.tgz#9b5204d73eeea56ac3dbd82a52817215ce5f3e4f"
-  integrity sha512-uxE8D7Vcvl63syv8pa2Gt6LVaTYJIOjS1m+/Pa5KgSFFmGcX8sZ7BCpXJ3MQxNxFD2AA0QsHmX969Le/h6zKIw==
+"@module-federation/nextjs-mf@^7.0.2":
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/@module-federation/nextjs-mf/-/nextjs-mf-7.0.2.tgz#1bfa0dc0bcfefb82ee5e5fff53a4d432185d9086"
+  integrity sha512-DHrHyPedavvkv2Krw4nIX6Oj0gka5PyikN1uObdAEHPMZzLl4QZTlpMNbQntHViWOLqRGuwTMPX5MiIyU9nvvA==
   dependencies:
-    "@module-federation/node" "0.16.2"
-    "@module-federation/utilities" "1.9.1"
+    "@module-federation/node" "1.0.2"
+    "@module-federation/utilities" "2.0.0"
     encoding "0.1.13"
     eventemitter3 "^5.0.0"
     fast-glob "^3.2.11"
@@ -10087,15 +10087,6 @@
     encoding "0.1.13"
     node-fetch "2.6.7"
 
-"@module-federation/node@0.16.2":
-  version "0.16.2"
-  resolved "https://registry.yarnpkg.com/@module-federation/node/-/node-0.16.2.tgz#36db955a11b9391a29ee5291e3b2ea6ec3c2ee9e"
-  integrity sha512-9zyB1D76lKsoSHcpaM5V+ifNqS2wevCQQgbw3Q7/C9JhoBM2GFhXkKXR2FxTlWdPZz4dmkN+jC5ZYW/w8v+mEA==
-  dependencies:
-    "@module-federation/utilities" "1.9.1"
-    encoding "^0.1.13"
-    node-fetch "^2.6.7"
-
 "@module-federation/node@0.9.8":
   version "0.9.8"
   resolved "https://registry.yarnpkg.com/@module-federation/node/-/node-0.9.8.tgz#3493568ba9730dd589b7d99e21127102f3b1784f"
@@ -10108,6 +10099,16 @@
   optionalDependencies:
     next "^12 || ^13"
     react "^17 || ^18"
+
+"@module-federation/node@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@module-federation/node/-/node-1.0.2.tgz#bf070ab80e37a3f5f3b36beb38b7df7399a778ae"
+  integrity sha512-diKU6lDtwiGtnXsuEEcT3MBv4T6rEueEf3izYfcszNwFzt7Oh7d78q3mu0MS3l5N518+wXyb+bZh0iWafgLQYw==
+  dependencies:
+    "@module-federation/utilities" "2.0.0"
+    encoding "^0.1.13"
+    node-fetch "^2.6.7"
+    webpack-sources "3.2.3"
 
 "@module-federation/utilities@1.0.2":
   version "1.0.2"
@@ -10137,10 +10138,12 @@
   resolved "https://registry.yarnpkg.com/@module-federation/utilities/-/utilities-1.4.0.tgz#c7b8c6e08262af6377714d94557929a3df67e64e"
   integrity sha512-J4KISJvLmFhZEgBhdntn6MWqElWU6vMC/JuQT7MdNe8Apc8qoYis0FKGp4gp8YkIPPhplkQExy2vS14+3KxoJA==
 
-"@module-federation/utilities@1.9.1":
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/@module-federation/utilities/-/utilities-1.9.1.tgz#be6ee95a90ca5d26243e4b76c92ee169784231ef"
-  integrity sha512-EVPV90TSK+tSG6R7Kw65w7pRuI2phff8YFIazzGWNViZPRlTYS3c9pZWVPYGiwIz1+96P+yeNp/WQZrkyS8kpA==
+"@module-federation/utilities@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@module-federation/utilities/-/utilities-2.0.0.tgz#f28a9308ae734f72e02abd896ecab4687ae8d83f"
+  integrity sha512-MtdVeSFOAMIK50+G4ZHl+m4gV3TscYRN43El+2djpJt0Md9O2a9CymHb8EumK9KYndbRCFf9Y8M2X+LtC31STg==
+  dependencies:
+    webpack-sources "3.2.3"
 
 "@module-federation/utilities@^1.3.0":
   version "1.5.0"
