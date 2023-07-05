@@ -98,6 +98,11 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
+      - name: Setup Lerna
+        id: set-matrix
+        run: |
+          yarn global add lerna
+
       - name: Create matrix
         id: set-matrix
         run: |
@@ -135,7 +140,7 @@ jobs:
         uses: actions/cache@v3
         id: yarn-cache
         with:
-          path: ${{ env.CACHE_PATH }}  
+          path: ${{ env.CACHE_PATH }}
           key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
 
       - name: Check disk space before install
@@ -194,7 +199,7 @@ jobs:
           restore-keys: |
             e2e-cache-
             e2e-
-      
+
       - name: Install deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
