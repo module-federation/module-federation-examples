@@ -1,5 +1,5 @@
 const { exec } = require("child_process");
-exec("npx lerna ls --all --json", (error, stdout, stderr) => {
+exec("`lerna ls --all --json", (error, stdout, stderr) => {
     if (error) {
         console.log(`error: ${error.message}`);
         return;
