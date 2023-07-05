@@ -1,13 +1,13 @@
 const { exec } = require("child_process");
-exec("lerna ls --all --json", (error, stdout, stderr) => {
+exec("lerna la --json", (error, stdout, stderr) => {
     if (error) {
-        console.log("CMD:lerna ls --all --json",`error: ${error.message}`);
+        console.log("CMD: lerna la --json",`error: ${error.message}`);
         return;
     }
 
     try {
         const allPackages = JSON.parse(stdout);
-        exec("lerna ls --all --since=origin/master --json", (error, stdout, stderr) => {
+        exec("npx lerna ls --all --since=origin/master --json", (error, stdout, stderr) => {
             if (error) {
                 console.error(`CMD:lerna ls --all --since=origin/master --json`,`error: ${error.message}`);
                 return;
