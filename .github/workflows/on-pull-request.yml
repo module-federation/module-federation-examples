@@ -99,7 +99,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Lerna
-        id: set-matrix
+        id: set-lerna-matrix
         run: |
           yarn global add lerna
 
