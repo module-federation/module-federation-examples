@@ -1,5 +1,5 @@
 const { exec } = require("child_process");
-exec("lerna la --json", (error, stdout, stderr) => {
+exec("chmod 777 ./listChange.sh && bash ./listChange.sh", (error, stdout, stderr) => {
     if (error) {
         console.log("CMD: lerna la --json",`error: ${error.message}`);
         return;

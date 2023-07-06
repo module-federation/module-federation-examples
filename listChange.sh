@@ -1,0 +1,1 @@
+$(which lerna) la --json
