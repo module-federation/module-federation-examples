@@ -1,6 +1,7 @@
 {
   "name": "cra",
   "private": true,
+  "version": "0.0.1",
   "workspaces": {
     "packages": [
       "./host",
@@ -16,7 +17,7 @@
     "e2e:ci": "yarn start && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome && yarn stop"
   },
   "devDependencies": {
-    "concurrently": "7.3.0",
+    "concurrently": "7.6.0",
     "forever": "4.0.3",
     "lerna": "3.22.1"
   }

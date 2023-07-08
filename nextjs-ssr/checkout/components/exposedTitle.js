@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import styles from './sample.module.css'
 const ExportredTitle = () => {
   console.log('---------loading remote component---------');
   useEffect(() => {
@@ -6,7 +7,7 @@ const ExportredTitle = () => {
   }, []);
   return (
     <div className="hero">
-      <h1 className="title">
+      <h1 className={"title " + styles.thing}>
         {' '}
         This came fom <code>checkout</code> !!!
       </h1>

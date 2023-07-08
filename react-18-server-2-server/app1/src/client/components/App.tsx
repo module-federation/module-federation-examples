@@ -51,9 +51,9 @@ const App = () => {
         {!userInfo && <p>loading user info...</p>}
         {userInfo && (
           <>
-            <p>ID: {userInfo.id}</p>
-            <p>Name: {userInfo.name}</p>
-            <p>Company: {userInfo.company}</p>
+            <p data-e2e="ID">ID: {userInfo.id}</p>
+            <p data-e2e="Name">Name: {userInfo.name}</p>
+            <p data-e2e="Company">Company: {userInfo.company}</p>
           </>
         )}
       </div>

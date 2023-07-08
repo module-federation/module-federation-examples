@@ -1,0 +1,78 @@
+:root {
+	--color-white: white;
+	--primary-color: #0075E1;
+	--primary-color-light: #e6f2fd;
+	--secondary-color: #8C8C8C;
+	--secondary-color-light: #DADADA;
+}
+
+.button {
+	padding: 12px;
+	border-radius: 4px;
+	outline: none;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	white-space: nowrap;
+	background-image: none;
+	background-color: transparent;
+	border: 1px solid transparent;
+	cursor: pointer;
+	transition: all .2s cubic-bezier(.645,.045,.355,1);
+	user-select: none;
+	touch-action: manipulation;
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+.button:disabled {
+	cursor: not-allowed;
+}
+
+.primary {
+	border-color: var(--primary-color);
+	background-color: var(--primary-color);
+	color: var(--color-white);
+}
+
+.primary .icon {
+	fill: var(--color-white);
+}
+
+.primary:disabled {
+	border-color: var(--secondary-color);
+	background-color: var(--secondary-color);
+	color: var(--secondary-color-light);
+}
+
+.primary:disabled .icon {
+	fill: var(--secondary-color-light);
+}
+
+.secondary {
+	border-color: var(--primary-color);
+	background-color: var(--color-white);
+	color: var(--primary-color);
+}
+
+.secondary .icon {
+	fill: var(--primary-color);
+}
+
+.secondary:hover {
+	border-color: var(--primary-color);
+	background-color: var(--primary-color-light);
+	color: var(--primary-color);
+}
+
+.secondary:disabled {
+	border-color: var(--secondary-color);
+	background-color: var(--color-white);
+	color: var(--secondary-color);
+}
+
+.secondary:disabled .icon {
+	fill: var(--secondary-color);
+}

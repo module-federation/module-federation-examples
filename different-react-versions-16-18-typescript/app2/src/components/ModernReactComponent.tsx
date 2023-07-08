@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import ReactAdaperProvider from './ReactAdaperProvider';
+import ReactAdapterProvider from './ReactAdapterProvider';
 
 export interface ModernReactComponentProps {
   children?: React.ReactNode;
@@ -27,11 +27,11 @@ const ModernReactComponent: React.FC<ModernReactComponentProps> = props => {
 };
 
 export const Adapted = React.forwardRef<
-  ReactAdaperProvider<ModernReactComponentProps>,
+  ReactAdapterProvider<ModernReactComponentProps>,
   ModernReactComponentProps
 >((props, ref) => {
   return (
-    <ReactAdaperProvider<ModernReactComponentProps>
+    <ReactAdapterProvider<ModernReactComponentProps>
       {...props}
       component={ModernReactComponent}
       ref={ref}

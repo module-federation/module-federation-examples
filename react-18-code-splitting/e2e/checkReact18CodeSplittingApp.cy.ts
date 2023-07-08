@@ -7,12 +7,12 @@ const basePage: BaseMethods = new BaseMethods()
 const appsData = [
     {
         appName: Constants.elementsText.react18CodeSplittingApp.app1.appName,
-        appHeader2: Constants.elementsText.react18CodeSplittingApp.app1.header2,
+        appHeader2: Constants.elementsText.reactApps.app1.subHeader,
         host: 3000
     },
     {
         appName: Constants.elementsText.react18CodeSplittingApp.app2.appName,
-        appHeader2: Constants.elementsText.react18CodeSplittingApp.app2.header2,
+        appHeader2: Constants.elementsText.reactApps.app2.subHeader,
         host: 3001
     }
 ]
@@ -34,7 +34,7 @@ appsData.forEach(
                 })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.headers.h1,
-                    text: Constants.elementsText.react18CodeSplittingApp.header1,
+                    text: Constants.elementsText.react18CodeSplittingApp.header,
                     visibilityState: 'be.visible'
                 })
                 basePage.checkElementWithTextPresence({
@@ -44,7 +44,7 @@ appsData.forEach(
                 })
                 basePage.checkElementWithTextPresence({
                     selector: baseSelectors.tags.headers.h3,
-                    text: Constants.elementsText.react18CodeSplittingApp.header3,
+                    text: Constants.elementsText.reactApps.header3,
                     visibilityState: 'be.visible'
                 })
                 basePage.checkElementVisibility({
@@ -69,13 +69,13 @@ appsData.forEach(
                     selector: baseSelectors.tags.coreElements.button,
                 })
                 basePage.checkElementWithTextPresence({
-                    selector:  `${selectors.react18CodeSplittingApp.app2ContentBlock} ${baseSelectors.tags.headers.h2}`,
-                    text: Constants.elementsText.react18CodeSplittingApp.splitedApp.header,
+                    selector:  `${selectors.reactApp.app2ContentBlock} ${baseSelectors.tags.headers.h2}`,
+                    text: Constants.elementsText.reactApps.splitedApp.header,
                     visibilityState: 'be.visible'
                 })
                 basePage.checkElementWithTextPresence({
-                    selector:  `${selectors.react18CodeSplittingApp.app2ContentBlock} ${baseSelectors.tags.paragraph}`,
-                    text: Constants.elementsText.react18CodeSplittingApp.splitedApp.subHeader,
+                    selector:  `${selectors.reactApp.app2ContentBlock} ${baseSelectors.tags.paragraph}`,
+                    text: Constants.elementsText.reactApps.splitedApp.subHeader,
                     visibilityState: 'be.visible'
                 })
                 basePage.checkElementWithTextPresence({

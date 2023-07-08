@@ -1,0 +1,20 @@
+{
+  "name": "modernjs",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": {
+    "packages": [
+      "host",
+      "provider"
+    ]
+  },
+  "scripts": {
+    "start": "lerna run --parallel dev",
+    "build": "lerna run build",
+    "serve": "lerna run --parallel serve",
+    "clean": "lerna run --parallel clean"
+  },
+  "devDependencies": {
+    "lerna": "3.22.1"
+  }
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
-
+import dynamic from 'next/dynamic';
+const CC = dynamic(() => import('../components/test'),{ssr:false});
 const Checkout = props => (
   <div>
     <Head>
@@ -10,6 +11,7 @@ const Checkout = props => (
 
     <div className="hero">
       <h1>checkout page</h1>
+      <CC />
       <h3 className="title">This is a federated page owned by localhost:3000</h3>
       <span>
         {' '}
@@ -39,7 +41,6 @@ const Checkout = props => (
 );
 Checkout.getInitialProps = async () => {
   const swapi = await fetch('https://jsonplaceholder.typicode.com/todos/1').then(res => res.json());
-  console.log(swapi);
   console.log('swapi');
   return swapi;
 };

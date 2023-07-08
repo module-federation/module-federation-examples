@@ -1,0 +1,14 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": ".",
+    "baseUrl": "src",
+    "paths": {
+      "shell/*": ["../../shell/client/src/components/*"]
+    }
+  },
+  "references": [
+    { "path": "../shell/client" }],
+  "include": ["src"]
+}

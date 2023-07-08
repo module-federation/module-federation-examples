@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "outDir": "dist",
+    "baseUrl": "src",
+    "rootDir": ".",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "paths": {
+      "@client/*": ["../../client/src/components/*"],
+      "remote/*": ["../../../remote/src/components/*"]
+    }
+  },
+  "include": ["src"],
+  "references": [
+    { "path": "../client"}, 
+    { "path": "../../remote" }
+  ],
+  "exclude": ["node_modules", "dist"]
+}

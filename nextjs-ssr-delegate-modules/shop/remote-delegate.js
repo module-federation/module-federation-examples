@@ -1,6 +1,6 @@
-import { importDelegatedModule } from '@module-federation/utilities';
+module.exports = new Promise(async (resolve, reject) => {
+  const { importDelegatedModule } = await import('@module-federation/utilities');
 
-module.exports = new Promise((resolve, reject) => {
   //Logging the delegate being called for the resourceQuery from the webpack runtime ID
   console.log('Delegate being called for', __resourceQuery, 'from', __webpack_runtime_id__);
   //Getting the current request by getting the 'remote' query parameter using URLSearchParams

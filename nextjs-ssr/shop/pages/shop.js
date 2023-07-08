@@ -25,7 +25,7 @@ const Shop = props => (
         {productLinks.map(({ key, href, label }) => (
           <li key={key}>
             <Link href={href}>
-              <a>{label}</a>
+              {label}
             </Link>
           </li>
         ))}
