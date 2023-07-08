@@ -1,18 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
-const { ModuleFederationPlugin } = webpack.container;
 const { FederatedTypesPlugin } = require('@module-federation/typescript');
+const { ModuleFederationPlugin } = webpack.container;
 const federationConfig = require('./federationConfig');
-
-const dotenv = require('dotenv').config({
-  path: path.join(__dirname, '../.env'),
-});
-
-const initModuleFederationConfig = federationConfig({
-  APP1: process.env.APP1_REMOTE_URL,
-  APP2: process.env.APP2_REMOTE_URL,
-});
 
 module.exports = {
   entry: {
@@ -27,28 +18,16 @@ module.exports = {
       },
     ],
   },
-  output: {
-    publicPath: 'auto',
-  },
-  target: 'web',
-
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': dotenv.parsed,
-    }),
-
-    new ModuleFederationPlugin(initModuleFederationConfig),
-
+    new ModuleFederationPlugin(federationConfig),
     new FederatedTypesPlugin({
-      federationConfig: initModuleFederationConfig,
+      federationConfig,
     }),
-
     new HtmlWebpackPlugin({
       template: 'public/index.html',
-      title: 'Host App',
+      title: 'app2',
       filename: 'index.html',
       chunks: ['main'],
-      publicPath: '/',
     }),
   ],
   resolve: {
