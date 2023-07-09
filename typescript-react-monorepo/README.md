@@ -14,7 +14,7 @@ yarn
 Run `yarn start` in root folder. This will build and serve both `host` and `app1`, `app2` on ports `4000` and `3000,3001` respectively.
 
 - [localhost:3000](http://localhost:3000/)
-- [localhost:3000](http://localhost:3001/)
+- [localhost:3001](http://localhost:3001/)
 - [localhost:4000](http://localhost:4000/)
 
 # FederationConfig
