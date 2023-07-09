@@ -21,6 +21,7 @@ const webpackConfig = {
       },
     ],
   },
+  optimization: { splitChunks: { chunks: 'initial' }}
 };
 
 module.exports = webpackConfig;
