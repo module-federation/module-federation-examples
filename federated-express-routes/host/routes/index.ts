@@ -1,0 +1,1 @@
+export { booksRoutes } from './books';
