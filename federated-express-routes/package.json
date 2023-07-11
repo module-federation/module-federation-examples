@@ -2,6 +2,12 @@
   "name": "federated-express-routes",
   "private": true,
   "version": "1.0.0",
+  "scripts": {
+    "start": "npm run build && concurrently \"npm run start:remote\" \"npm run start:host\"",
+    "start:remote": "cd remote; npm run dev",
+    "start:host": "cd host; npm run dev",
+    "build": "concurrently \"cd host; npm run build\" \"cd remote; npm run build\""
+  },
   "workspaces": {
     "packages": [
       "remote",

@@ -5,7 +5,7 @@ const listEndpoints = require('express-list-endpoints');
 
 const server = express();
 
-
+server.use(express.static('build'))
 server.use(userRoutes);
 server.get('/', (req, res) => {
   res.send(listEndpoints(server));

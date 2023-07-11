@@ -17,6 +17,7 @@ const config = {
   },
   externals: [nodeExternals()],
   devServer: {
+    writeToDisk: true,
     open: true,
     host: 'localhost',
     headers: {
@@ -35,6 +36,7 @@ const config = {
     new UniversalFederationPlugin({
       name: 'RemoteRoutes',
       isServer: true,
+      runtime:false,
       library: { type: 'commonjs-module' },
       remotes: {},
       filename: 'remoteEntry.js',
