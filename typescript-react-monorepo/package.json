@@ -1,5 +1,7 @@
 {
   "name": "micro",
+  "version": "1.0.0",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "build": "yarn workspaces run build",
@@ -10,7 +12,7 @@
     "packages/*"
   ],
   "devDependencies": {
-    "concurrently": "7.6.0",
-    "wsrun": "5.2.4"
+    "concurrently": "^7.6.0",
+    "wsrun": "^5.2.4"
   }
 }

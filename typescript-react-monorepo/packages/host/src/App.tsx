@@ -1,21 +1,12 @@
-import React from "react";
-import RemoteButtonProps from "@mfTypes/Button";
-const RemoteButton = React.lazy(
-  () => import("Remote/Button")
-) as typeof RemoteButtonProps;
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import ErrorBoundary from "./ErrorBoundary";
+// const RemoteButton = React.lazy(
+//   () => import('Remote/Button'),
+// ) as unknown as typeof RemoteButtonProps;
+import Routers from './Routers';
 
 const App = () => {
-  return (
-    <div>
-      <h1>Host Website</h1>
-      <h2>this button import from Remote project:</h2>
-      <ErrorBoundary>
-        <RemoteButton name="host-button">Remote button</RemoteButton>
-      </ErrorBoundary>
-    </div>
-  );
+  return <RouterProvider router={createBrowserRouter(Routers())} />;
 };
 
 export default App;
