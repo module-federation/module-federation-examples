@@ -20,7 +20,6 @@ module.exports = {
           },
           shared: {},
           extraOptions: {
-            debug: true,
           }
         }),
       );
