@@ -1,14 +1,18 @@
-import App from 'next/app';
 import dynamic from 'next/dynamic';
-const page = import('../realPages/_app');
-
-const Page = dynamic(() => import('../realPages/_app'));
-Page.getInitialProps = async ctx => {
-  const appProps = await App.getInitialProps(ctx);
-  const getInitialProps = (await page).default?.getInitialProps;
-  if (getInitialProps) {
-    return { ...appProps, ...getInitialProps(ctx) };
+const Nav = process.browser ? lazy(
+  () => {
+    const mod = import('home/nav');
+    return mod;
   }
-  return { ...appProps };
-};
-export default Page;
+) : ()=>null
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <Nav />
+      <Component {...pageProps} />
+    </>
+  );
+}
+
+export default MyApp;

@@ -1,35 +1,18 @@
-// if(process.browser && (typeof __webpack_share_scopes__ === "undefined" || !__webpack_share_scopes__.default)) {
-//   __webpack_init_sharing__('default');
-// }
-// require('next/link')
-// require('next/router')
-// require('next/head')
-// require('next/script')
-// require('next/dynamic')
-// require('styled-jsx')
-//
-// require('next/dynamic')
-// require('next/head')
-// require('next/link')
-// require('next/router')
-// require('next/script')
-// require('react')
-if (process.env.NODE_ENV === 'development') {
-  require('react/jsx-dev-runtime');
-}
-// console.log(__webpack_init_sharing__('default'))
-
-console.log(__webpack_share_scopes__);
+import Nav from '../components/nav';
+import App from 'next/app';
 import dynamic from 'next/dynamic';
-const page = import('../realPages/_app');
-const AppPage = dynamic(() => import('../realPages/_app'));
-const Page = props => {
-  return <AppPage {...props} />;
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <Nav />
+      <Component {...pageProps} />
+    </>
+  );
+}
+MyApp.getInitialProps = async ctx => {
+  const appProps = await App.getInitialProps(ctx);
+  return appProps;
 };
-Page.getInitialProps = async ctx => {
-  const getInitialProps = (await page).default?.getInitialProps;
-  if (getInitialProps) {
-    return getInitialProps(ctx);
-  }
-};
-export default Page;
+
+export default MyApp;
