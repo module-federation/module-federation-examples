@@ -4,7 +4,7 @@ exec("yarn list", (error, stdout, stderr) => {
         console.log(`error: ${error.message}`);
         return;
     }
-
+console.log('ou', stdout);
     try {
         const allPackages = JSON.parse(stdout);
         exec("yarn list:changed", (error, stdout, stderr) => {
