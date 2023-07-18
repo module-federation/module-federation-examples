@@ -1,5 +1,5 @@
 const { exec } = require("child_process");
-exec("yarn list", (error, stdout, stderr) => {
+exec("yarn list:all", (error, stdout, stderr) => {
     if (error) {
         console.log(`error: ${error.message}`);
         return;

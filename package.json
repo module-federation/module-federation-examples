@@ -185,7 +185,7 @@
     "wait-on": "7.0.1"
   },
   "scripts": {
-    "list": "lerna ls --all --json",
+    "list:all": "lerna ls --all --json",
     "list:changed": "lerna ls --all --since=origin/master --json",
     "bootstrap": "lerna bootstrap --ignore-scripts",
     "build": "lerna run --parallel build",
