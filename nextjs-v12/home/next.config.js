@@ -2,7 +2,6 @@ const NextFederationPlugin = require('@module-federation/nextjs-mf');
 
 module.exports = {
   webpack(config, options) {
-    if (!options.isServer) {
       config.plugins.push(
         new NextFederationPlugin({
           name: 'home',
@@ -14,13 +13,12 @@ module.exports = {
           },
           exposes: {
             './nav': './components/nav.js',
-            './home': './realPages/index.js',
+            './home': './pages/index.js',
             './pages-map': './pages-map.js',
           },
           shared: {},
         }),
       );
-    }
 
     return config;
   },

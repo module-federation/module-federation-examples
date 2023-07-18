@@ -54,7 +54,6 @@ https://scriptedalchemy.medium.com/
 - [x] [TypeScript](./typescript/README.md) &mdash; Streaming TypeScript between module-federation apps.
 - [x] [Angular Universal](./angular-universal-ssr/README.md) &mdash; Remote and Host app with SSR, lazy modules and components.
 - [x] [NextJS Sidecar Build](./nextjs-sidecar/README.md) &mdash; Sidecar build to enable module-federation alongside Next codebases.
-- [x] [NextJS v12](./nextjs-v12/README.md) &mdash; Operation, with [nextjs-mf](https://www.npmjs.com/package/@module-federation/nextjs-mf).
 - [x] [NextJS v13](./nextjs-v13/README.md) &mdash; Operation, with [nextjs-mf](https://www.npmjs.com/package/@module-federation/nextjs-mf).
 - [x] [NextJS](./nextjs/README.md) &mdash; Operation, with [nextjs-mf](https://github.com/module-federation/universe).
 - [x] [NextJS SSR](./nextjs-ssr/README.md) &mdash; Powered by software streams, with [nextjs-ssr](https://github.com/module-federation/universe)
