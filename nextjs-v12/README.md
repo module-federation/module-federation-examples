@@ -6,8 +6,7 @@ NOTE: There seems to be a problem with css-in-js sharing between federated modul
 
 ## Getting Started
 
-1. run `npm install @module-federation/nextjs-mf` with npm 7 (yarn probably better) or install it directly in each folder/app
-2. run `yarn start` and browse to `http://localhost:3001`
+1. run `yarn start` and browse to `http://localhost:3001`
 
 # We are available to consult
 
