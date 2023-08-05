@@ -1,5 +1,5 @@
 const { exec } = require("child_process");
-exec("yarn list:all", (error, stdout, stderr) => {
+exec("npx lerna ls --all --json", (error, stdout, stderr) => {
     if (error) {
         console.log(`error: ${error.message}`);
         return;
@@ -7,7 +7,7 @@ exec("yarn list:all", (error, stdout, stderr) => {
 console.log('ou', stdout);
     try {
         const allPackages = JSON.parse(stdout);
-        exec("yarn list:changed", (error, stdout, stderr) => {
+        exec("npx lerna ls --all --since=origin/master --json", (error, stdout, stderr) => {
             if (error) {
                 console.log(`error: ${error.message}`);
                 return;
