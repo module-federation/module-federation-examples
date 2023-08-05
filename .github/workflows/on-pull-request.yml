@@ -101,6 +101,7 @@ jobs:
       - name: Create matrix
         id: set-matrix
         run: |
+          npm install lerna -g
           matrix="$(node checkChangedWorkspaces.js)"
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
@@ -135,7 +136,7 @@ jobs:
         uses: actions/cache@v3
         id: yarn-cache
         with:
-          path: ${{ env.CACHE_PATH }}  
+          path: ${{ env.CACHE_PATH }}
           key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
 
       - name: Check disk space before install
@@ -194,7 +195,7 @@ jobs:
           restore-keys: |
             e2e-cache-
             e2e-
-      
+
       - name: Install deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
