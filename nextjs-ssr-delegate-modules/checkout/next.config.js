@@ -33,7 +33,6 @@ module.exports = {
         },
         remotes: remotes(options.isServer),
         extraOptions:{
-          automaticAsyncBoundary: true
         }
       }),
     );
