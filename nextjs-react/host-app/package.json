@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "rm -rf ./.next && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@module-federation/nextjs-mf": "^5.12.10",
+    "@module-federation/nextjs-mf": "^7.0.5",
     "@stitches/react": "^1.2.8",
     "next": "^13.0.7",
     "react": "^18.2.0",

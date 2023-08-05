@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS='--inspect' next dev -p 3001",
+    "dev": "rm -rf .next && next dev -p 3001",
     "build": "next telemetry disable && next build",
     "start": "next start -p 3001"
   },
   "dependencies": {
-    "@module-federation/nextjs-mf": "6.0.1",
+    "@module-federation/nextjs-mf": "^7.0.4",
     "next": "12.3.4",
     "nextjs-shared": "file:../shared",
     "react": "18.2.0",

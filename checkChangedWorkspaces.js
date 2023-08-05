@@ -4,7 +4,6 @@ exec("npx lerna ls --all --json", (error, stdout, stderr) => {
         console.log(`error: ${error.message}`);
         return;
     }
-
     try {
         const allPackages = JSON.parse(stdout);
         exec("npx lerna ls --all --since=origin/master --json", (error, stdout, stderr) => {
