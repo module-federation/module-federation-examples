@@ -24,7 +24,7 @@ async function matchFederatedPage(path) {
       Object.keys(remotes).map(async remote => {
         const foundContainer = injectScript(remote);
         const container = await foundContainer;
-
+await container.init(__webpack_share_scopes__.default)
         return container
             .get('./pages-map')
             .then(factory => ({ remote, config: factory().default }))
@@ -113,7 +113,11 @@ module.exports = {
 
         console.log('loading exposed module', mod, 'from remote', remote);
         const container = await injectScript(remote);
-        const FederatedPage = await container.get(mod).then(factory => factory().default);
+        console.log('container', container);
+        await container.init(__webpack_share_scopes__.default);
+        const FederatedPageFactory = await container.get(mod)
+        console.log('FederatedPageFactory', FederatedPageFactory);
+        const FederatedPage = FederatedPageFactory().default;
         console.log('FederatedPage', FederatedPage);
         if (!FederatedPage) {
           // TODO: Run getInitialProps for 404 page

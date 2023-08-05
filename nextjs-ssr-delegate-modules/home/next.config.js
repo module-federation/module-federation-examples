@@ -36,7 +36,6 @@ module.exports = {
           lodash: {}
         },
         extraOptions: {
-          automaticAsyncBoundary: true
         }
       }),
     );
