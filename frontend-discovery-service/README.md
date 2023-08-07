@@ -17,7 +17,7 @@ In order for this example to work, you will need these settings:
 
 When the deployment completes, take note of the `ConsumerApi` and `AdminApi` urls from the deployment output.
 
-In the next session, you will need to make authenticated calls to the Admin API. To obtain an API Token, refer to the [Making Authenticated API Requests guide](../../docs/USER_GUIDE.md#making-authenticated-api-requests).
+In the next session, you will need to make authenticated calls to the Admin API. To obtain an API Token, refer to the [Making Authenticated API Requests guide](./docs/USER_GUIDE.md#making-authenticated-api-requests).
 
 ## 2. Deploy Micro Frontends
 
@@ -138,7 +138,7 @@ Consider that during a deployment:
 * As soon as a user sees V2, the same user should keep seeing V2 during the deployment and after it completes
 * In this example, the list of Micro Frontends is fetched only once at page load - so if you are testing the shift from V1 to V2, you may need to refresh the page.
 
-In order to test multiple users, view/modify/delete the `USER_TOKEN` value used to recognise the user session, and refresh the page to make a new request to the Consumer API. When the cookie is deleted, the next response will contain a `Set-Cookie` with a new value. See the User Guide to learn more about [consumer stickiness](../../docs/USER_GUIDE.md#consumer-stickiness)
+In order to test multiple users, view/modify/delete the `USER_TOKEN` value used to recognise the user session, and refresh the page to make a new request to the Consumer API. When the cookie is deleted, the next response will contain a `Set-Cookie` with a new value. See the User Guide to learn more about [consumer stickiness](./USER_GUIDE.md#consumer-stickiness)
 
 ## 6. Wrapping up
 
