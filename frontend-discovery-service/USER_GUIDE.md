@@ -102,7 +102,7 @@ Follow these steps to add or manage users within the application:
    - Select the "Users" tab.
    - Utilize this page to create or manage users as needed.
 
-For more detailed information on managing users, please refer to the [Managing Users in User Pools Guide](link-to-guide).
+For more detailed information on managing users, please refer to the [Managing Users in User Pools Guide](https://docs.aws.amazon.com/cognito/latest/developerguide/managing-users.html).
 
 ### Making Authenticated API Requests
 
