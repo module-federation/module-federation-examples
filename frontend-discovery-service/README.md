@@ -1,79 +1,93 @@
-# Client-side routing using Webpack Module Federation Example
+# Client-Side Routing: A Webpack Module Federation Example
 
-This example shows how to run a number of Micro Frontends with [Webpack Module Federation](https://webpack.js.org/concepts/module-federation/) using Frontend Service Discovery on AWS, how to deploy a new version of a Micro Frontend, and how to shift traffic using the Blue/Green deploy pattern.
+This example demonstrates how to run Micro Frontends with Webpack Module Federation using Frontend Service Discovery on AWS. It also explains how to deploy new versions of a Micro Frontend and shift traffic using the Blue/Green deploy pattern.
 
-## 0. Pre-requirements
+## 1. Pre-requirements
 
-To run this demo, you'll need:
-* Node.js >= 16
-* cURL
+To run this demo, ensure you have:
+- Node.js >= 16
+- cURL
 
-## 1. Deploy Service Discovery on AWS
+## 2. Deploy Service Discovery on AWS
 
-You will need to deploy Frontend Service Discovery on AWS by following the [Deployment instructions](./USER_GUIDE.md#deploying-the-solution).
-In order for this example to work, you will need these settings:
-* **AccessControlAllowOrigin**: `https://localhost:3001`
-* **CookieSettings**: `Secure;SameSite=None`
+Follow the [Deployment instructions](https://github.com/module-federation/module-federation-examples/blob/master/frontend-discovery-service/USER_GUIDE.md#deploying-the-solution) to deploy Frontend Service Discovery on AWS. 
 
-When the deployment completes, take note of the `ConsumerApi` and `AdminApi` urls from the deployment output.
+Ensure these settings:
+- `AccessControlAllowOrigin`: https://localhost:3001
+- `CookieSettings`: Secure; SameSite=None
 
-In the next session, you will need to make authenticated calls to the Admin API. To obtain an API Token, refer to the [Making Authenticated API Requests guide](./docs/USER_GUIDE.md#making-authenticated-api-requests).
+Upon successful completion of the deployment, please record the URLs for both the `ConsumerApi` and `AdminApi` as they will be displayed in the deployment output.
 
-## 2. Deploy Micro Frontends
+In the subsequent session, you will be required to make authenticated calls to the Admin API. To acquire the necessary API Token for authentication, kindly refer to the [Making Authenticated API Requests guide](https://github.com/module-federation/module-federation-examples/blob/master/frontend-discovery-service/docs/USER_GUIDE.md#making-authenticated-api-requests).    
 
-Let's first create a new Project called `my-project`. Replace `$API_URL` and `$API_TOKEN` with the values obtained in step 1.
+## 3. Deploy Micro Frontends
 
-```
+This section guides you through the process of deploying Micro Frontends, including creating a new project, adding Micro Frontends, and publishing versions.
+
+### Step 1: Create a New Project
+
+First, create a new project named `my-project`. Replace `$API_URL` and `$API_TOKEN` with the values obtained in the previous step.
+
+```bash
 curl -X POST $API_URL/projects \
      -H "Authorization: Bearer $API_TOKEN" \
      -H "Content-Type: application/json" \
      -d '{"name":"my-project"}'
 ```
 
-Take note of the Project ID from the response, then let's create a Micro Frontend called `catalog`.
+Record the Project ID from the response for future use.
 
-```
+### Step 2: Create and Publish the 'catalog' Micro Frontend
+
+Create a Micro Frontend named `catalog`:
+
+```bash
 curl -X POST $API_URL/projects/$PROJECT_ID/microFrontends \
      -H "Authorization: Bearer $API_TOKEN" \
      -H "Content-Type: application/json" \
      -d '{"name":"catalog"}'
 ```
 
-Take note of the Micro Frontend ID, then let's publish catalog V1. Note that the Integrity parameter on the next step is mocked for demo purposes. When running in production, you shoud use the Integrity string to perform integrity checks.
+Record the Micro Frontend ID, then publish catalog V1. Note that the Integrity parameter is mocked for demo purposes. In production, use the Integrity string for integrity checks:
 
-```
+```bash
 curl -X POST $API_URL/projects/$PROJECT_ID/microFrontends/$MFE_ID/versions \
      -H "Authorization: Bearer $API_TOKEN" \
      -H "Content-Type: application/json" \
      -d '{"version":{ "url": "https://localhost:3003/remoteEntry.js","metadata":{"integrity": "e0d123e5f316bef78bfdf5a008837577","version": "1.0.0"}}}'
 ```
 
-In the next step we will run locally a demo app that will expose the Catalog Micro Frontend at `https://localhost:3003/remoteEntry.js`. But next, let's create another Micro Frontend called `product` and let's deploy it for running at port `3002` instead.
+### Step 3: Create and Publish the 'product' Micro Frontend
 
-```
+In the next step, we will execute a local demo application that exposes the Catalog Micro Frontend at `https://localhost:3003/remoteEntry.js`. Before proceeding, we will create another Micro Frontend named 'product' and deploy it to run on port 3002."
+
+```bash
 curl -X POST $API_URL/projects/$PROJECT_ID/microFrontends \
      -H "Authorization: Bearer $API_TOKEN" \
      -H "Content-Type: application/json" \
      -d '{"name":"product"}'
 ```
 
-Remember to take note of the Micro Frontend ID, to be used to run the next command:
+Ensure to record the Micro Frontend ID, as it will be required for executing the subsequent command:
 
-```
+```bash
 curl -X POST $API_URL/projects/$PROJECT_ID/microFrontends/$MFE_ID/versions \
      -H "Authorization: Bearer $API_TOKEN" \
      -H "Content-Type: application/json" \
      -d '{"version":{ "url": "https://localhost:3002/remoteEntry.js","metadata":{"integrity": "e0d123e5f316bef78bfdf5a008837578","version": "1.0.0"}}}'
 ```
 
-Finally, you should be able to make a request to the `ConsumerApi` for the given project:
+### Step 4: Verify the Deployment
 
-```
+Finally, make a request to the `ConsumerApi`` for the given project:
+
+```bash
 curl $CONSUMER_API_URL/projects/$PROJECT_ID/microFrontends
+```
 
-```
-Should respond with something like:
-```
+The response should resemble:
+
+```json
 {
     "schema":"<SCHEMA_URL>",
     "microFrontends":{
@@ -99,47 +113,100 @@ Should respond with something like:
 }
 ```
 
-## 3. Run Shell App
+## 4. Running the Shell Application
 
-The app is located inside this folder. After cloning this repo, run:
-`npm install` to install the dependencies and then `npm run build` to package the app shell and the Micro Frontends.
+This section guides you through the process of running the shell application and Micro Frontends, including handling self-signed certificates and exploring the source code.
 
-Next, run `export DISCOVERY_ENDPOINT=$CONSUMER_API_URL/projects/$PROJECT_ID/microFrontends && npm start`, after making sure to replace the CONSUMER API and PROJECT ID portions of the url. Then access the shell app by opening `https://localhost:3001` on your browser.
+### Step 1: Clone the Repository and Install Dependencies
 
-> Note: the shell app running on port 3001 is on `https` with a self-signed certificate. If you see a `Warning` message when opening the shell app with your browser, choose `Advanced` and then `Accept the risk and continue` to see the content.
+The application is located inside this folder. After cloning the repository, execute the following commands to install the dependencies and package the app shell and Micro Frontends:
 
-You'll notice that the shell app, after dynamically fetching the Micro Frontends list from the Service Discovery API, will fetch the appropriate URL declared during Micro Frontend registration, if its button is clicked.
-
-> Note: apps running at ports 3002 (product MFE), 3003 (catalog v1 MFE) and 3004 (catalog v2 MFE) all run on `https` with a self-signed certificate. After clicking to a button to load a Micro Frontend, if you see a `net::ERR_CERT_AUTHORITY_INVALID` error on your Javascript console and the UI stuck to `Loading dynamic script` or `Failed to load dynamic script`, navigate to `https://localhost:3002`, `https://localhost:3003`, `https://localhost:3004` and accept the risk for self-signed certificates as done for `https://localhost:3001`. Then get back to `https://localhost:3001` and try again.
-
-Feel free to explore the source code for the [app shell](./app-shell/), the [catalog Micro Frontend](./catalog-1.0.0/) and the [product Micro Frontend](./product-1.0.0/). While all the apps are pretty basic, explore the `webpack.config.js` of each project to observe how Webpack Module Federation is orchestrating the discovery and fetching of the remote urls.
-
-## 4. Deploy a new version of the Catalog Micro Frontend
-
-You may notice that there is another Micro Frontend running locally on port `3004`, that is catalog V2 which we'll now deploy to the Frontend Service Discovery.
-
-Take note of the catalog's Micro Frontend ID for making the next API call:
-
+```bash
+npm install
+npm run build
 ```
+
+### Step 2: Set the Discovery Endpoint and Start the Application
+
+Next, run the following command, making sure to replace the `CONSUMER_API_URL` and `PROJECT_ID` portions of the URL:
+
+```bash
+export DISCOVERY_ENDPOINT=$CONSUMER_API_URL/projects/$PROJECT_ID/microFrontends && npm start
+```
+
+Access the shell app by opening [https://localhost:3001](https://localhost:3001) in your browser.
+
+### Step 3: Handle Self-Signed Certificates
+
+The shell app runs on HTTPS with a self-signed certificate. If you encounter a warning message, choose "Advanced" and then "Accept the risk and continue" to view the content.
+
+### Step 4: Explore the Shell App and Micro Frontends
+
+You'll notice that the shell app dynamically fetches the Micro Frontends list from the Service Discovery API and retrieves the appropriate URL declared during Micro Frontend registration when its button is clicked.
+
+**Note:** Apps running at ports 3002 (product MFE), 3003 (catalog v1 MFE), and 3004 (catalog v2 MFE) also run on HTTPS with self-signed certificates. If you encounter a `net::ERR_CERT_AUTHORITY_INVALID` error and the UI is stuck on "Loading dynamic script" or "Failed to load dynamic script," navigate to the following URLs and accept the risk for self-signed certificates:
+
+- [https://localhost:3002](https://localhost:3002)
+- [https://localhost:3003](https://localhost:3003)
+- [https://localhost:3004](https://localhost:3004)
+
+Then return to [https://localhost:3001](https://localhost:3001) and try again.
+
+### Step 5: Explore the Source Code
+
+Feel free to explore the source code for the [app shell](https://github.com/module-federation/module-federation-examples/blob/master/frontend-discovery-service/app-shell), [catalog Micro Frontend](https://github.com/module-federation/module-federation-examples/blob/master/frontend-discovery-service/catalog-1.0.0), and [product Micro Frontend](https://github.com/module-federation/module-federation-examples/blob/master/frontend-discovery-service/product-1.0.0). While the apps are relatively basic, you can examine the `webpack.config.js` of each project to observe how Webpack Module Federation orchestrates the discovery and fetching of remote URLs.
+
+## 5. Deploying a New Version of the Catalog Micro Frontend 
+
+This section outlines the process of deploying a new version (V2) of the Catalog Micro Frontend, utilizing a gradual roll-out strategy.
+
+### Step 1: Identify the Catalog V2 Micro Frontend
+
+You may observe another Micro Frontend running locally on port 3004. This is Catalog V2, which we will now deploy to the Frontend Service Discovery.
+
+### Step 2: Deploy Catalog V2
+
+Record the catalog's Micro Frontend ID, as it will be required for the next API call. Execute the following command to deploy Catalog V2:
+
+```bash
 curl -X POST $API_URL/projects/$PROJECT_ID/microFrontends/$MFE_ID/versions \
      -H "Authorization: Bearer $API_TOKEN" \
      -H "Content-Type: application/json" \
      -d '{"version":{ "url": "https://localhost:3004/remoteEntry.js","metadata":{"integrity": "e0d123e5f316bef78bfdf5a008837574","version": "2.0.0"}},"deploymentStrategy":"Linear10PercentEvery1Minute"}'
 ```
 
-This will initiate the gradual roll-out of Catalog V2 during the next 10 minutes. After deployment, only 10% of users will see V2, after one minute an extra 10% of the users will be shifted to V2, and so on until 100% of users will see V2.
+### Step 3: Understand the Gradual Roll-Out Strategy
 
-## 5. Test traffic shifting
+This command initiates the gradual roll-out of Catalog V2 over the next 10 minutes. The deployment strategy, `Linear10PercentEvery1Minute`, ensures that:
 
-If you open and refresh `https://localhost:3001` on your browser during a deployment, you should be able, at some point, to click `Load my-project/catalog` button and see `Hi, I'm the Catalog V2`. The shifting is based on a user Id saved in the `USER_TOKEN` cookie.
+- Initially, only 10% of users will see V2.
+- After one minute, an additional 10% of users will be shifted to V2.
+- This pattern continues until 100% of users see V2.
 
-Consider that during a deployment:
-* Some users will see V1, some others will see V2, based on their `USER_TOKEN` values
-* As soon as a user sees V2, the same user should keep seeing V2 during the deployment and after it completes
-* In this example, the list of Micro Frontends is fetched only once at page load - so if you are testing the shift from V1 to V2, you may need to refresh the page.
+## 6. Testing Traffic Shifting
 
-In order to test multiple users, view/modify/delete the `USER_TOKEN` value used to recognise the user session, and refresh the page to make a new request to the Consumer API. When the cookie is deleted, the next response will contain a `Set-Cookie` with a new value. See the User Guide to learn more about [consumer stickiness](./USER_GUIDE.md#consumer-stickiness)
+This section provides guidance on how to test traffic shifting between different versions of a Micro Frontend, specifically shifting from Catalog V1 to V2.
 
-## 6. Wrapping up
+### Step 1: Observe the Shift During Deployment
 
-In order to run Frontend Service Discovery on AWS in production, you will need to carefully setup CORS to ensure secure requests. In order to do that, make sure you have accurate values for **AccessControlAllowOrigin** and **CookieSettings** values.
+During deployment, open and refresh [https://localhost:3001](https://localhost:3001) in your browser. At some point, you should be able to click the "Load my-project/catalog" button and see the message "Hi, I'm the Catalog V2." This shifting is based on a user ID saved in the `USER_TOKEN` cookie.
+
+### Step 2: Understand the Shifting Behavior
+
+During a deployment, consider the following:
+
+- Some users will see V1, while others will see V2, depending on their `USER_TOKEN` values.
+- Once a user sees V2, they will continue to see V2 throughout the deployment and after its completion.
+- The list of Micro Frontends is fetched only once at page load, so you may need to refresh the page if testing the shift from V1 to V2.
+
+### Step 3: Test Multiple Users
+
+To simulate the experience of multiple users, you can view, modify, or delete the `USER_TOKEN` value used to recognize the user session. Refresh the page to make a new request to the Consumer API. If the cookie is deleted, the next response will contain a "Set-Cookie" header with a new value.
+
+### Additional Resources
+
+For more details on consumer stickiness and how it influences the traffic shifting, refer to the [User Guide](https://github.com/module-federation/module-federation-examples/blob/master/frontend-discovery-service/USER_GUIDE.md).
+
+## 7. Wrapping Up
+
+When running Frontend Service Discovery on AWS in a production environment, it's essential to meticulously configure Cross-Origin Resource Sharing (CORS) to guarantee secure requests. In order to do that, make sure you have accurate values for `AccessControlAllowOrigin` and `CookieSettings` values.
