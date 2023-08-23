@@ -19,4 +19,4 @@ importModule(
   'models',
   './models',
   'ORDER',
-).then(module => console.log({ module: module.moduleObj, export: module.exportObj }));
+).then(module => console.log(module));
