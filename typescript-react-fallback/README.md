@@ -1,11 +1,11 @@
-# TypeScript Project References Example
+# TypeScript React Fallback Example
 
-This example demos a basic host/remote application with TypeScript using [Project References](https://www.typescriptlang.org/docs/handbook/project-references.html).
+This example demos a basic host/remote application with TypeScript using [Project References], to show how to render another remote as a fallback if a remote fails to render. It uses react-error-boundary to accomplish this.(https://www.typescriptlang.org/docs/handbook/project-references.html).
 
 # Running Demo
 
 Run `yarn`
-Run `yarn start`. 
+Run `yarn start`.
 This will build and serve both `app1` and `app2` on ports 3001 and 3002 respectively.
 
 - [localhost:3001](http://localhost:3001/)
@@ -14,7 +14,7 @@ This will build and serve both `app1` and `app2` on ports 3001 and 3002 respecti
 
 # Running Cypress E2E Tests
 
-To run tests in interactive mode, run  `npm run cypress:debug` from the root directory of the project. It will open Cypress Test Runner and allow to run tests in interactive mode. [More info about "How to run tests"](../../cypress/README.md#how-to-run-tests)
+To run tests in interactive mode, run `npm run cypress:debug` from the root directory of the project. It will open Cypress Test Runner and allow to run tests in interactive mode. [More info about "How to run tests"](../../cypress/README.md#how-to-run-tests)
 
 To build app and run test in headless mode, run `yarn e2e:ci`. It will build app and run tests for this workspace in headless mode. If tets failed cypress will create `cypress` directory in sample root folder with screenshots and videos.
 
