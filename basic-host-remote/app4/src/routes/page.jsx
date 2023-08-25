@@ -1,6 +1,6 @@
 import { Helmet } from '@modern-js/runtime/head';
 import './index.css';
-import Button from 'app2/Button'
+
 const Index = () => (
   <div className="container-box">
     <Helmet>
@@ -23,7 +23,6 @@ const Index = () => (
       <p className="description">
         Get started by editing <code className="code">src/routes/page.tsx</code>
       </p>
-      <Button />
       <div className="grid">
         <a
           href="https://modernjs.dev/guides/get-started/introduction.html"

@@ -3,12 +3,12 @@ import appTools, { defineConfig } from '@modern-js/app-tools';
 // https://modernjs.dev/en/configure/app/usage
 export default defineConfig({
   server: {
-    port: 3001,
+    port: 3002,
   },
-  // dev: {
-  //   // set publicPath
-  //   assetPrefix: 'http://localhost:3001/',
-  // },
+  dev: {
+    // set publicPath
+    assetPrefix: 'http://localhost:3002/',
+  },
   runtime: {
     router: true,
   },
@@ -20,9 +20,12 @@ export default defineConfig({
     webpack: (config, { webpack, appendPlugins }) => {
       appendPlugins([
         new webpack.container.ModuleFederationPlugin({
-          name: 'app1',
-          remotes: {
-            app2: 'app2@http://localhost:3002/static/js/remoteEntry.js',
+          name: 'app2',
+          library: { type: 'window', name: 'app2' },
+          runtime: false,
+          filename: 'static/js/remoteEntry.js',
+          exposes: {
+            './Button': './src/components/Button.js',
           },
           shared: {
             react: { singleton: true },
