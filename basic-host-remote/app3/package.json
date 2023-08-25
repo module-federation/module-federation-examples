@@ -1,5 +1,5 @@
 {
-  "name": "modernjs-host",
+  "name": "app3",
   "version": "0.1.0",
   "scripts": {
     "reset": "npx rimraf ./**/node_modules",
@@ -9,6 +9,7 @@
     "serve": "modern serve",
     "new": "modern new",
     "lint": "modern lint",
+    "prepare": "husky install",
     "upgrade": "modern upgrade"
   },
   "engines": {
@@ -27,23 +28,18 @@
     "dist/"
   ],
   "dependencies": {
-    "@modern-js/runtime": "2.13.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@modern-js/runtime": "2.32.0",
+    "react": "~18.2.0",
+    "react-dom": "~18.2.0"
   },
   "devDependencies": {
-    "@modern-js/app-tools": "2.24.1",
-    "@modern-js/eslint-config": "2.24.1",
-    "@modern-js/tsconfig": "2.24.1",
-    "@modern-js-app/eslint-config": "2.24.1",
-    "lint-staged": "13.1.4",
-    "prettier": "2.8.8",
-    "husky": "8.0.3",
-    "rimraf": "3.0.2",
-    "typescript": "4.9.5",
-    "@types/jest": "29.5.2",
-    "@types/node": "16.11.68",
-    "@types/react": "18.0.38",
-    "@types/react-dom": "18.0.11"
+    "@modern-js/app-tools": "2.32.0",
+    "@modern-js/eslint-config": "2.32.0",
+    "@modern-js/tsconfig":"2.32.0",
+    "@modern-js-app/eslint-config": "2.32.0",
+    "lint-staged": "~13.1.0",
+    "prettier": "~2.8.1",
+    "husky": "~8.0.1",
+    "rimraf": "~3.0.2"
   }
 }
