@@ -11,7 +11,7 @@ const rewriteShareScope = (packageName, existingVersions) => {
   return existingVersions.reduce((acc, version) => {
       acc[version] = {
         eager: false,
-        from: "@npm/app3",
+        from: "@npm/app1",
         get: () => {
           return import(/* webpackIgnore: true */ `https://esm.sh/${packageName}@${version}`).then((m) => {
             return () => m
@@ -26,7 +26,7 @@ const rewriteShareScope = (packageName, existingVersions) => {
 const setUpkgModule = (packageName, version) => {
   return {
     eager: false,
-    from: "@npm/app3",
+    from: "@npm/app1",
     get: () => {
       return import(/* webpackIgnore: true */ `https://esm.sh/${packageName}@${version}`).then((m) => {
         return () => m

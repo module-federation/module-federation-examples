@@ -21,9 +21,9 @@ const Index = () => (
         <p className="name">Modern.js</p>
       </div>
       <p className="description">
-        Get started by editing <code className="code">src/routes/page.tsx</code>
+        FEDERATED: <Button />
       </p>
-      <Button />
+
       <div className="grid">
         <a
           href="https://modernjs.dev/guides/get-started/introduction.html"
