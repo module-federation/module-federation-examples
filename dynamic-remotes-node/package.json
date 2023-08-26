@@ -6,7 +6,8 @@
   "scripts": {
     "serve": "concurrently 'serve -s app1/dist -l 3001' 'serve -s app2/dist -l 3002'",
     "build": "rimraf dist/server && concurrently 'cd app1; webpack --config ./webpack.config.js' 'cd runtime-container; webpack --config ./webpack.config.js'  'cd app2; webpack --config ./webpack.config.js'",
-    "start": "yarn build && concurrently 'yarn serve' 'sleep 5 && node app1/dist/main.js'"
+    "start": "yarn build && concurrently 'yarn serve' 'sleep 5 && node app1/dist/main.js'",
+    "import-remote": "node import-remote.js"
   },
   "dependencies": {
     "@module-federation/node": "^0.13.0",
