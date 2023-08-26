@@ -221,6 +221,7 @@ jobs:
 
       - name: Run sample e2e tests
         run: |
+          yarn add @rspack/core@latest
           node -v
           npx lerna run --scope=${{ matrix.container }} e2e:ci
 
