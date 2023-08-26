@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RemoteButton = React.lazy(() => import('app3/Button'));
+const RemoteButton = React.lazy(() => import('app1/Button'));
 
 const style = {
   padding: 12,

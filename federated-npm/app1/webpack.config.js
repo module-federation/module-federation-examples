@@ -8,7 +8,7 @@ const remotes = {
 }
 
 const delegatedRemote = {
-  app3: "app3@http://localhost:3003/remoteEntry.js",
+  app3: "app1@http://localhost:3003/remoteEntry.js",
 }
 
 const delegatedRemotesObject = Object.entries(delegatedRemote).reduce((acc, [name, url]) => {

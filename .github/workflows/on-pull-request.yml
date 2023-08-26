@@ -102,6 +102,7 @@ jobs:
         id: set-matrix
         run: |
           npm install lerna -g
+          yarn add @rspack/core@latest
           matrix="$(node checkChangedWorkspaces.js)"
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
@@ -221,6 +222,7 @@ jobs:
 
       - name: Run sample e2e tests
         run: |
+          yarn add @rspack/core@latest
           node -v
           npx lerna run --scope=${{ matrix.container }} e2e:ci
 
