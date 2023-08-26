@@ -102,6 +102,7 @@ jobs:
         id: set-matrix
         run: |
           npm install lerna -g
+          yarn add @rspack/core@latest
           matrix="$(node checkChangedWorkspaces.js)"
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
