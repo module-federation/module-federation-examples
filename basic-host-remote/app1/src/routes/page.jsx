@@ -1,6 +1,7 @@
 import { Helmet } from '@modern-js/runtime/head';
 import './index.css';
-import Button from 'app2/Button'
+import Button from 'app2/Button';
+
 const Index = () => (
   <div className="container-box">
     <Helmet>

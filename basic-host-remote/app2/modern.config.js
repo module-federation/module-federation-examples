@@ -7,7 +7,7 @@ export default defineConfig({
   },
   dev: {
     // set publicPath
-    assetPrefix: 'http://localhost:3002/',
+    // assetPrefix: 'auto',
   },
   runtime: {
     router: true,
@@ -19,6 +19,7 @@ export default defineConfig({
   tools: {
     webpack: (config, { webpack, appendPlugins }) => {
       delete config.optimization.splitChunks;
+      config.output.publicPath = 'auto';
 
       appendPlugins([
         new webpack.container.ModuleFederationPlugin({
