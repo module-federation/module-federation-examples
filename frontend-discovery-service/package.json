@@ -1,0 +1,16 @@
+{
+  "name": "frontend-discovery-service-module-federation-example",
+  "private": true,
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "clean": "npm run clean --workspaces",
+    "start": "npm start -w app-shell & npm start -w catalog-1.0.0 & npm start -w catalog-2.0.0 & npm start -w product-1.0.0"
+  },
+  "version": "1.0.0",
+  "workspaces": [
+    "app-shell",
+    "catalog-1.0.0",
+    "catalog-2.0.0",
+    "product-1.0.0"
+  ]
+}
