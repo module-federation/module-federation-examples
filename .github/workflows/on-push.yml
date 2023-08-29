@@ -63,7 +63,7 @@ jobs:
         uses: actions/cache@v3
         id: yarn-cache
         with:
-          path: ${{ env.CACHE_PATH }}  
+          path: ${{ env.CACHE_PATH }}
           key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
 
       - name: Install deps
