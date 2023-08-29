@@ -1954,19 +1954,22 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@module-federation/node@0.12.2":
-  version "0.12.2"
-  resolved "https://registry.yarnpkg.com/@module-federation/node/-/node-0.12.2.tgz#9abf138ef579692ffd316e0b44e7bd69bb512fd2"
-  integrity sha512-eh2hq5cx92S7S1Y9Vp/OVpbzEmWhiBIcSWaUf9kUqyjNpH5pzMgh9cX6Etp2hn63OFv2SaYvZ84h0rqrf/C7VA==
+"@module-federation/node@1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@module-federation/node/-/node-1.0.5.tgz#29cbb4a1128da2e26609bec6c857a3d5b78a2ec4"
+  integrity sha512-9NH9GE3uEIcL5laJKJgdyCk1n1mvn2ROFE3HdmHvQNfSsBDHKW3yBjYk0aOSvW0gelhEMVeltpFWqhXy7Q3exg==
   dependencies:
-    "@module-federation/utilities" "1.4.0"
-    encoding "0.1.13"
-    node-fetch "2.6.7"
+    "@module-federation/utilities" "2.0.4"
+    encoding "^0.1.13"
+    node-fetch "^2.6.7"
+    webpack-sources "3.2.3"
 
-"@module-federation/utilities@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@module-federation/utilities/-/utilities-1.4.0.tgz#c7b8c6e08262af6377714d94557929a3df67e64e"
-  integrity sha512-J4KISJvLmFhZEgBhdntn6MWqElWU6vMC/JuQT7MdNe8Apc8qoYis0FKGp4gp8YkIPPhplkQExy2vS14+3KxoJA==
+"@module-federation/utilities@2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@module-federation/utilities/-/utilities-2.0.4.tgz#5fc673101ebfb6f7e8befee0bbbac95170a5b364"
+  integrity sha512-2youICrL7FWSGGPe+GwZTr5IsNZMdUv6kFRrH+gXV1/TfR1zeQ0y0ixRJUFskOt22nSeH6fOEhiCuqIWD1dQGQ==
+  dependencies:
+    webpack-sources "3.2.3"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -3685,7 +3688,7 @@ encodeurl@~1.0.2:
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.2.tgz#ad3ff4c86ec2d029322f5a02c3a9a606c95b3f59"
   integrity sha512-TPJXq8JqFaVYm2CWmPvnP2Iyo4ZSM7/QKcSmuMLDObfpH5fi7RUGmd/rTDf+rut/saiDiQEeVTNgAmJEdAOx0w==
 
-encoding@0.1.13, encoding@^0.1.11:
+encoding@^0.1.11, encoding@^0.1.13:
   version "0.1.13"
   resolved "https://registry.yarnpkg.com/encoding/-/encoding-0.1.13.tgz#56574afdd791f54a8e9b2785c0582a2d26210fa9"
   integrity sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==
@@ -5806,7 +5809,7 @@ node-fetch-npm@^2.0.2:
     json-parse-better-errors "^1.0.0"
     safe-buffer "^5.1.1"
 
-node-fetch@2.6.7, node-fetch@^2.5.0, node-fetch@^2.6.7:
+node-fetch@^2.5.0, node-fetch@^2.6.7:
   version "2.6.7"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
   integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
@@ -8074,7 +8077,7 @@ webpack-merge@5.8.0, webpack-merge@^5.7.3:
     clone-deep "^4.0.1"
     wildcard "^2.0.0"
 
-webpack-sources@^3.2.3:
+webpack-sources@3.2.3, webpack-sources@^3.2.3:
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-3.2.3.tgz#2d4daab8451fd4b240cc27055ff6a0c2ccea0cde"
   integrity sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==
