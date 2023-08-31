@@ -8,15 +8,21 @@
 ```
 npm i
 ```
-### Run dev server for external library
+### Serve the two apps locally to see the federated button component from the CDN
+```
+npm run start
+```
+### or
+
+### Run dev server for remote library to make changes (localHost:3002)
 ```
 npm run dev
 ```
-### Create library federation bundle (remoteEntry.js), deploy the dist folder on your CDN of choice
+### Create library federation bundle (remoteEntry.js) and deploy the dist folder on your CDN of choice
 ```
 npm run build
 ```
-### Insert library bundle endpoint "http//yourendpoint/remoteEntry.js" into the REMOTE_URL env variable and serve the two apps to see the fedarated component from the cdn
+### Insert library bundle endpoint "http//yourendpoint/remoteEntry.js" into the "remoteUrl" variable in the webpack config file and serve the two apps to see the fedarated component from the cdn (app1 on localHost:3000, app2 on localHost:3001)
 ```
 npm run start
 ```
