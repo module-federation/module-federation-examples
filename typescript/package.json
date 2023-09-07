@@ -7,7 +7,7 @@
   ],
   "version": "0.0.0",
   "scripts": {
-    "start": "lerna run --scope=typescript_* --parallel start",
+    "start": "pnpm --filter 'typescript_*' start",
     "build": "lerna run --scope=typescript_* build",
     "serve": "lerna run --scope=typescript_* --parallel serve",
     "clean": "lerna run --scope=typescript_* --parallel clean",

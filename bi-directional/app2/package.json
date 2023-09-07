@@ -9,7 +9,7 @@
     "serve": "modern serve",
     "new": "modern new",
     "lint": "modern lint",
-    "prepare": "husky install",
+    "devPreinstall": "cd ../.. && husky install bi-directional/app2",
     "upgrade": "modern upgrade"
   },
   "engines": {
@@ -35,7 +35,7 @@
   "devDependencies": {
     "@modern-js/app-tools": "2.32.0",
     "@modern-js/eslint-config": "2.32.0",
-    "@modern-js/tsconfig":"2.32.0",
+    "@modern-js/tsconfig": "2.32.0",
     "@modern-js-app/eslint-config": "2.32.0",
     "lint-staged": "~13.1.0",
     "prettier": "~2.8.1",

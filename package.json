@@ -173,6 +173,7 @@
     "allure-commandline": "2.21.0",
     "concurrently": "7.6.0",
     "cross-spawn": "7.0.3",
+    "cross-env": "7.0.3",
     "cypress": "10",
     "cypress-fill-command": "1.0.2",
     "cypress-real-events": "1.7.6",
@@ -199,6 +200,7 @@
     "cypress:debug": "cypress open --e2e --config-file cypress/config/cypress.config.ts --browser=chrome",
     "cypress:run": "cypress run --config-file cypress/config/cypress.config.ts --browser=chrome",
     "report:generate": "allure generate ./cypress/results/allure-results --clean -o ./cypress/report",
-    "report:open": "allure open ./cypress/report"
+    "report:open": "allure open ./cypress/report",
+    "preinstall": "npx only-allow pnpm"
   }
 }
