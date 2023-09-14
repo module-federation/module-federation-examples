@@ -8,10 +8,10 @@
   "version": "0.0.0",
   "scripts": {
     "ls": "lerna ls",
-    "start": "lerna run --scope=react-in-vue_* --parallel start",
-    "build": "lerna run --scope=react-in-vue_* build",
-    "serve": "lerna run --scope=react-in-vue_* --parallel serve",
-    "clean": "lerna run --scope=react-in-vue_* --parallel clean",
+    "start": "pnpm --filter react-in-vue_* --parallel start",
+    "build": "pnpm --filter react-in-vue_* build",
+    "serve": "pnpm --filter react-in-vue_* --parallel serve",
+    "clean": "pnpm --filter react-in-vue_* --parallel clean",
     "e2e:ci": "yarn start & wait-on http-get://localhost:3002/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {

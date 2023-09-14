@@ -74,7 +74,7 @@ jobs:
           export BASE_MASTER_SHA=$(git log -n 1 --pretty=format:"%H" base/${{ github.event.pull_request.base.ref }})
           echo "$FORKED_MASTER_SHA"
           echo "$BASE_MASTER_SHA"
-          
+
           if [ "$FORKED_MASTER_SHA" == "$BASE_MASTER_SHA" ];
           then
             echo "The forked master is up to date with the base master branch"
@@ -146,7 +146,7 @@ jobs:
       - name: Install deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
-          NODE_OPTIONS: "--max_old_space_size=4096"
+          NODE_OPTIONS: '--max_old_space_size=4096'
         run: |
           echo "Yarn changed - install deps ... "
           yarn install --frozen-lockfile
@@ -199,16 +199,17 @@ jobs:
       - name: Install deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
-          NODE_OPTIONS: "--max_old_space_size=4096"
+          NODE_OPTIONS: '--max_old_space_size=4096'
         run: |
           echo "Yarn changed - install deps ... "
           yarn install --frozen-lockfile
 
-      - name: Install sample deps
+      - name:
+          Install sample deps
           # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
         # if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: |
-          npx lerna exec --stream --scope="${{ matrix.container }}*" --concurrency=1 "yarn install"
+          npx lerna exec --stream "${{ matrix.container }}*" --concurrency=1 "yarn install"
 
       - name: Check disk space after install
         run: |
@@ -222,7 +223,7 @@ jobs:
       - name: Run sample e2e tests
         run: |
           node -v
-          npx lerna run --scope=${{ matrix.container }} e2e:ci
+          npx pnpm --filter ${{ matrix.container }} e2e:ci
 
       - name: Create artifacts for Allure report
         uses: actions/upload-artifact@v3

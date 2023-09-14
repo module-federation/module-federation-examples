@@ -21,7 +21,7 @@
     "serve:nav": "cd nav; yarn serve",
     "serve:search": "cd search; yarn serve",
     "serve:utils": "cd utils; yarn serve",
-    "clean": "lerna run --scope @dashboard/* --parallel clean"
+    "clean": "pnpm --filter --scope @dashboard/* --parallel clean"
   },
   "devDependencies": {
     "concurrently": "7.6.0"

@@ -9,9 +9,9 @@
   },
   "version": "0.0.0",
   "scripts": {
-    "dev": "concurrently --raw \"lerna run --scope=genesis_ssr-mf-about dev\" \"lerna run --scope=genesis_ssr-mf-home dev\"",
-    "build": "FORCE_COLOR=1 lerna run --scope=genesis_ssr-mf-about build && FORCE_COLOR=1 lerna run --scope=genesis_ssr-mf-home build",
-    "start": "concurrently --raw \"lerna run --scope=genesis_ssr-mf-about start\" \"lerna run --scope=genesis_ssr-mf-home start\""
+    "dev": "concurrently --raw \"pnpm --filter genesis_ssr-mf-about dev\" \"pnpm --filter genesis_ssr-mf-home dev\"",
+    "build": "FORCE_COLOR=1 pnpm --filter genesis_ssr-mf-about build && FORCE_COLOR=1 pnpm --filter genesis_ssr-mf-home build",
+    "start": "concurrently --raw \"pnpm --filter genesis_ssr-mf-about start\" \"pnpm --filter genesis_ssr-mf-home start\""
   },
   "devDependencies": {
     "concurrently": "7.6.0",

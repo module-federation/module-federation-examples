@@ -8,10 +8,10 @@
   ],
   "version": "0.0.0",
   "scripts": {
-    "start": "lerna run --scope @vue-cli/* --parallel start",
-    "build": "lerna run --scope @vue-cli/* build",
-    "serve": "lerna run --scope @vue-cli/* --parallel serve",
-    "clean": "lerna run --scope @vue-cli/* --parallel clean"
+    "start": "pnpm --filter --scope @vue-cli/* --parallel start",
+    "build": "pnpm --filter --scope @vue-cli/* build",
+    "serve": "pnpm --filter --scope @vue-cli/* --parallel serve",
+    "clean": "pnpm --filter --scope @vue-cli/* --parallel clean"
   },
   "devDependencies": {
     "lerna": "3.22.1"

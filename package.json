@@ -191,7 +191,7 @@
     "list:all": "lerna ls --all --json",
     "list:changed": "lerna ls --all --since=origin/master --json",
     "bootstrap": "lerna bootstrap --ignore-scripts",
-    "build": "lerna run --parallel build",
+    "build": "pnpm --filter --parallel build",
     "submodules": "git pull --recurse-submodules",
     "prettier": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\"",
     "prettier:check": "prettier --list-different \"**/*.{js,jsx,json,md,ts,tsx}\"",

@@ -17,8 +17,10 @@
     "e2e": "ng e2e mdmf-profile & ng e2e mdmf-shell",
     "e2e:ci": "yarn build:shared && yarn start:shell & wait-on http-get://localhost:4200/ && yarn start:profile & wait-on http-get://localhost:4201/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
-  "resolutions": {
-    "webpack": "5.80.0"
+  "pnpm": {
+    "overrides": {
+      "webpack": "5.80.0"
+    }
   },
   "dependencies": {
     "@angular/animations": "11.2.14",
