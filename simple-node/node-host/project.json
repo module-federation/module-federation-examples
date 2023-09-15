@@ -1,0 +1,89 @@
+{
+  "name": "node-host",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/node-host/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/node-host",
+        "main": "apps/node-host/src/main.js",
+        "tsConfig": "apps/node-host/tsconfig.app.json",
+        "assets": [
+          "apps/node-host/src/assets"
+        ],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/node-host/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      },
+      "dependsOn": [
+        {
+          "target": "build",
+          "dependencies": true
+        }
+      ]
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": [
+        {
+          "target": "build",
+          "dependencies": true
+        }
+      ],
+      "options": {
+        "buildTarget": [
+          "node-host:build",
+          "node-remote:build"
+        ]
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "node-host:build:development"
+        },
+        "production": {
+          "buildTarget": "node-host:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/node-host/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "apps/node-host/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
