@@ -9,10 +9,8 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: 'auto',
     importMetaName: 'remoteContainerRegistry',
-    library:{type: 'commonjs-module'},
-    scriptType: 'module',
   },
-  target: false,
+  target: 'async-node',
   devtool: false,
   cache: false,
 
