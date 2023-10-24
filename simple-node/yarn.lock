@@ -59,19 +59,32 @@
   resolved "https://registry.npmjs.org/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
-"@module-federation/node@^2.0.2-beta.2":
-  version "2.0.2-beta.2"
-  resolved "https://registry.yarnpkg.com/@module-federation/node/-/node-2.0.2-beta.2.tgz#2e69e9f3da2257b889e43938f9aededc00187727"
-  integrity sha512-/kKeBtqT/Nn5g87farXNwPCSFkvRgIqBPnntphSCig11g7tJEhve6BaEsHR5SSYv9t6+880slroiOvuTA9bIbg==
+"@module-federation/enhanced@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@module-federation/enhanced/-/enhanced-0.1.0.tgz#65d855e941c473e4f0cd12cc1c069ae9c8fdc6f3"
+  integrity sha512-CymUY20htVd55Ff0G8tNeh1q3at/6xRa26Db8KcO1537aV41CFC5qRcTWd58EG9pgJhu9psyJPVaAjFXliB66g==
   dependencies:
-    "@module-federation/utilities" "3.0.2-beta.0"
+    tapable "2.2.1"
+    webpack-sources "3.2.3"
+
+"@module-federation/node@^2.0.2-beta.6":
+  version "2.0.2-beta.6"
+  resolved "https://registry.yarnpkg.com/@module-federation/node/-/node-2.0.2-beta.6.tgz#fd0a02e4d8b7ebe931002c303d7f68b2398828f5"
+  integrity sha512-gv3eQDTuJ1IwMkzU1WRiTCbqfmd9kHrDdrPCve5x3C7Ns3WKO1GwXoU1UFLfl02TXlknJ8JSyCZ9iOB9J1LtUg==
+  dependencies:
+    "@module-federation/enhanced" "0.1.0"
+    "@module-federation/utilities" "3.0.3-0"
     encoding "^0.1.13"
     node-fetch "^2.6.7"
+    tapable "2.2.1"
+    webpack-sources "3.2.3"
 
-"@module-federation/utilities@3.0.2-beta.0":
-  version "3.0.2-beta.0"
-  resolved "https://registry.npmjs.org/@module-federation/utilities/-/utilities-3.0.2-beta.0.tgz"
-  integrity sha512-T6Di9lsr5zNr9aqI3fXkpz39t9ejo/JsRZVPQiIwt8nN8TiWZhzf+0WZYOSqYAI7ByLsYlNlutm0RvqSu7UaGw==
+"@module-federation/utilities@3.0.3-0":
+  version "3.0.3-0"
+  resolved "https://registry.yarnpkg.com/@module-federation/utilities/-/utilities-3.0.3-0.tgz#78a70ddeb7bdf2de3b91d73c99806e72ada0a202"
+  integrity sha512-IMNqtXuqKz10ZN7wPivjFGcSyqjDoRVI5mSmv4jU8o7bBn0sDuFVbY9WswDrl+QOjMAhiAh7Ne4pUc/FKG9SUg==
+  dependencies:
+    webpack-sources "3.2.3"
 
 "@types/body-parser@*":
   version "1.19.2"
@@ -2002,7 +2015,7 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-tapable@^2.1.1, tapable@^2.2.0:
+tapable@2.2.1, tapable@^2.1.1, tapable@^2.2.0:
   version "2.2.1"
   resolved "https://registry.npmjs.org/tapable/-/tapable-2.2.1.tgz"
   integrity sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==
@@ -2201,7 +2214,7 @@ webpack-merge@^5.7.3:
     clone-deep "^4.0.1"
     wildcard "^2.0.0"
 
-webpack-sources@^3.2.3:
+webpack-sources@3.2.3, webpack-sources@^3.2.3:
   version "3.2.3"
   resolved "https://registry.npmjs.org/webpack-sources/-/webpack-sources-3.2.3.tgz"
   integrity sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==

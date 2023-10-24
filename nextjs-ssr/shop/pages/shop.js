@@ -1,7 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-
 const productLinks = [
   { href: '/p/1', label: 'Product 1' },
   { href: '/p/2', label: 'Product 2' },
@@ -51,7 +50,8 @@ const Shop = props => (
     `}</style>
   </div>
 );
-Shop.getInitialProps = async () => {
+export const getServerSideProps = async () => {
+  console.log('loading slow api')
   const swapi = await fetch('https://jsonplaceholder.typicode.com/todos/2').then(res => res.json());
   return swapi;
 };
