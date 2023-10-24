@@ -8,7 +8,7 @@
   "version": "0.0.0",
   "type": "commonjs",
   "scripts": {
-    "start": "yarn build:shell && yarn build:client && yarn start:shell & yarn start:client",
+    "start": "pnpm build:shell && pnpm build:client && pnpm start:shell & pnpm start:client",
     "build:shell": "npm --prefix ./host-app run build:federation",
     "start:shell": "npm --prefix ./host-app run serve:federation",
     "build:client": "npm --prefix ./client-app run build:federation",

@@ -13,8 +13,8 @@
   "author": "burhanuday",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"cd libs; yarn start\" \"cd remote1; yarn start\" \"cd host; yarn start\"",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/runAll*.cy.ts\" --browser=chrome"
+    "start": "concurrently \"cd libs; pnpm  start\" \"cd remote1; pnpm  start\" \"cd host; pnpm  start\"",
+    "e2e:ci": "pnpm  start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/runAll*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "concurrently": "7.6.0",

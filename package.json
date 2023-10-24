@@ -9,6 +9,11 @@
   ],
   "license": "MIT",
   "private": true,
+  "pnpm": {
+    "overrides": {
+      "webpack": "5.80.0"
+    }
+  },
   "workspaces": {
     "packages": [
       "./advanced-api/automatic-vendor-sharing",
