@@ -43,4 +43,5 @@ function getPackages(dir, since) {
 
 const since = process.argv[2] === '--since' ? process.argv[3] : null;
 const packages = getPackages('./', since); // start from current directory
-console.log(JSON.stringify(packages, null, 2));
+// console.log(JSON.stringify(packages, null, 2));
+module.exports = getPackages
