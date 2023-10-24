@@ -187,8 +187,8 @@
     "wait-on": "7.0.1"
   },
   "scripts": {
-    "list:all": "lerna ls --all --json",
-    "list:changed": "lerna ls --all --since=origin/master --json",
+    "list:all": "node repotools.js",
+    "list:changed": "node repotools.js --since=origin/master",
     "bootstrap": "lerna bootstrap --ignore-scripts",
     "build": "lerna run --parallel build",
     "submodules": "git pull --recurse-submodules",
