@@ -7,10 +7,10 @@
   ],
   "version": "0.0.0",
   "scripts": {
-    "start": "yarn build && yarn serve",
+    "start": "concurrently \"cd app1; yarn dev\" \"cd app2; yarn dev\"",
     "build": "concurrently \"cd app1; yarn build\" \"cd app2; yarn build\"",
     "serve": "concurrently \"cd app1; yarn serve\" \"cd app2; yarn serve\"",
-    "clean": "concurrently \"cd app1; yarn clean\" \"cd app2; yarn clean\"",
+    "clean": "concurrently \"cd app1; yarn reset\" \"cd app2; yarn reset\"",
     "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
