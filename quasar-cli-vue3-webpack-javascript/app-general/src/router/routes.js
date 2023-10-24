@@ -6,7 +6,7 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
       { path: 'shared-components', component: () => import('pages/SharedComponentsPage.vue') },
-      { path: 'route', component: () => import('exposes/HomePage.vue') }
+      { path: 'route', component: () => import('app_exposes/HomePage.vue') }
     ]
   },
 
