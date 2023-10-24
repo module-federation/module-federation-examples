@@ -11,6 +11,7 @@ npm install
 
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
 ```bash
+yarn setup-env:dev
 quasar dev
 ```
 
@@ -34,6 +35,7 @@ npm run format
 
 ### Build the app for production
 ```bash
+yarn setup-env:prod
 quasar build
 ```
 

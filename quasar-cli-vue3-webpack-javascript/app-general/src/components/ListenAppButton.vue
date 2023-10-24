@@ -20,7 +20,7 @@ import { defineComponent, defineAsyncComponent, ref } from 'vue';
 export default defineComponent({
   name: 'ListenAppButton',
   components: {
-    AppButton: defineAsyncComponent(()=> import('app_exposes/AppButton.vue'))
+    AppButton: defineAsyncComponent(()=> import('exposes/AppButton.vue'))
   },
   setup(){
     const parentCounter = ref(0);

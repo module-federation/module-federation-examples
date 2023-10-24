@@ -20,7 +20,7 @@
 import {defineComponent, defineAsyncComponent, ref} from 'vue';
 export default defineComponent({
   components: {
-    AppList: defineAsyncComponent(() => import('app_exposes/AppList.vue'))
+    AppList: defineAsyncComponent(() => import('exposes/AppList.vue'))
   },
   setup(){
     const parentList = ref([]);

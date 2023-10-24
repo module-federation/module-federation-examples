@@ -49,7 +49,10 @@ console.info('[Quasar] Running SPA.')
 
 
 
-const publicPath = ``
+const publicPath = `http://localhost:3001/`
+
+const doubleSlashRE = /\/\//
+const addPublicPath = url => (publicPath + url).replace(doubleSlashRE, '/')
 
 
 async function start ({
