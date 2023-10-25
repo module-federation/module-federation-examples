@@ -37,6 +37,8 @@ npm run format
 ```bash
 yarn setup-env:prod
 quasar build
+cd dist spa
+quasar serve
 ```
 
 ### Customize the configuration
