@@ -4,7 +4,7 @@ on: pull_request
 env:
   CACHE_PATH: |
     **/node_modules
-    ~/.cache/Cypress
+#    ~/.cache/Cypress
     ~/.cache/yarn/v6
   FILES_TO_DELETE: |
     sudo rm -rf "/usr/share/dotnet"
@@ -208,7 +208,7 @@ jobs:
           # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
         # if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: |
-          npx lerna@6 exec --stream --scope="${{ matrix.container }}*" --concurrency=1 "yarn install"
+          lerna exec --stream --scope="${{ matrix.container }}*" --concurrency=1 "yarn install"
 
       - name: Check disk space after install
         run: |
@@ -222,7 +222,7 @@ jobs:
       - name: Run sample e2e tests
         run: |
           node -v
-          npx lerna@6 run --scope=${{ matrix.container }} e2e:ci
+          lerna run --scope=${{ matrix.container }} e2e:ci
 
       - name: Create artifacts for Allure report
         uses: actions/upload-artifact@v3
