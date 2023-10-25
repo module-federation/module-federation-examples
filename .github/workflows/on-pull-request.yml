@@ -146,6 +146,7 @@ jobs:
           df -h
 
       - name: Install deps
+        uses: oven-sh/setup-bun@v1
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
@@ -199,12 +200,13 @@ jobs:
             e2e-
 
       - name: Install deps
+        uses: oven-sh/setup-bun@v1
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
           echo "Yarn changed - install deps ... "
-          yarn install --frozen-lockfile
+          bun install --frozen-lockfile
 
       - name: Install sample deps
           # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
