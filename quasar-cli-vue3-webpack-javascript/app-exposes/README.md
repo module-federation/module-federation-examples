@@ -37,7 +37,7 @@ npm run format
 ```bash
 yarn setup-env:prod
 quasar build
-cd dist spa
+cd dist/spa
 quasar serve -p 3001
 ```
 
