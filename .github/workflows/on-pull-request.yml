@@ -20,7 +20,6 @@ env:
     sudo rm -rf "$AGENT_TOOLSDIRECTORY"
     sudo apt-get clean -y
     sudo apt-get autoremove -y
-    curl -fsSL https://bun.sh/install | bash
 
 
 jobs:
@@ -104,6 +103,7 @@ jobs:
         id: set-matrix
         run: |
           npm install lerna@6 -g
+          npm install -g bun
           matrix="$(node checkChangedWorkspaces.js)"
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
@@ -146,7 +146,6 @@ jobs:
           df -h
 
       - name: Install deps
-        uses: oven-sh/setup-bun@v1
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
@@ -200,7 +199,6 @@ jobs:
             e2e-
 
       - name: Install deps
-        uses: oven-sh/setup-bun@v1
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
