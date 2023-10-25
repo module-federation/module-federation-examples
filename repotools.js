@@ -17,7 +17,8 @@ function getPackages(dir, since) {
       if (fs.existsSync(packageJsonPath)) {
         const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
         if (since) {
-          const result = execSync(`git log --since="${since}" -- ${nestedDir}`, { encoding: 'utf8' });
+          const result = execSync(`git diff --name-only ${since}..HEAD -- ${nestedDir}`, { encoding: 'utf8' });
+          
           if (result) {
             packages.push({
               name: packageJson.name,
@@ -42,5 +43,6 @@ function getPackages(dir, since) {
 }
 
 const since = process.argv[2] === '--since' ? process.argv[3] : null;
-const packages = getPackages('./', since); // start from current directory
-console.log(JSON.stringify(packages, null, 2));
+// const packages = getPackages('./', since); // start from current directory
+// console.log(JSON.stringify(packages, null, 2));
+module.exports = getPackages
