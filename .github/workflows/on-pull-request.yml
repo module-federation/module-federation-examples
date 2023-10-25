@@ -20,6 +20,8 @@ env:
     sudo rm -rf "$AGENT_TOOLSDIRECTORY"
     sudo apt-get clean -y
     sudo apt-get autoremove -y
+    curl -fsSL https://bun.sh/install | bash
+
 
 jobs:
   # Stop previous runs
@@ -149,7 +151,7 @@ jobs:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
           echo "Yarn changed - install deps ... "
-          yarn install --frozen-lockfile
+          bun install
 
       - name: Check disk space after install
         run: |
