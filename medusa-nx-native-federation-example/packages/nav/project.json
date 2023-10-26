@@ -1,4 +1,5 @@
 {
+  "name": "nav",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/nav/src",
   "projectType": "application",
@@ -9,15 +10,8 @@
         "outputPath": "dist/nav",
         "index": "packages/nav/src/index.html",
         "main": "packages/nav/src/app/index.ts",
-        "assets": [
-          "packages/nav/src/assets",
-          "packages/nav/src/favicon.ico"
-        ],
-        "remotes": [
-          "dsl",
-          "search",
-          "utils"
-        ]
+        "assets": ["packages/nav/src/assets", "packages/nav/src/favicon.ico"],
+        "remotes": ["dsl", "search", "utils"]
       },
       "configurations": {
         "production": {
