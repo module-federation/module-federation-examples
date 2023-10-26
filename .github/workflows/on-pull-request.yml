@@ -185,7 +185,7 @@ jobs:
       - name: Check Yarn hash
         id: yarn-hash
         run: |
-          yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
+          yarnHash="$(npx hash-files -f '["**/yarn.lock","**/bun.lockb"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
       - name: Restore Yarn and Cypress cache
