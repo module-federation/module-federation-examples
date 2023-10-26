@@ -1,0 +1,20 @@
+{
+  "name": "nextjs-ssr_medusa_checkout",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && node ./send-to-medusa.js",
+    "start": "NODE_ENV=production next start"
+  },
+  "dependencies": {
+    "@module-federation/nextjs-mf": "6.2.1",
+    "@module-federation/dashboard-plugin": " 2.8.0-beta.5",
+    "lodash": "4.17.21",
+    "next": "12.2.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "webpack": "5.72.1",
+    "webpack-merge": "^5.8.0"
+  }
+}
