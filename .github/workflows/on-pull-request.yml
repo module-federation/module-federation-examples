@@ -222,6 +222,8 @@ jobs:
       - name: Run sample e2e tests
         run: |
           node -v
+          yarn add lerna@6 -W
+          yarn add lerna@6 -g
           lerna run --scope=${{ matrix.container }} e2e:ci
 
       - name: Create artifacts for Allure report
