@@ -151,6 +151,7 @@ jobs:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
           echo "Yarn changed - install deps ... "
+          npm install -g bun
           bun install
 
       - name: Check disk space after install
