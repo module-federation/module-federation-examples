@@ -28,11 +28,17 @@ module.exports = {
       },
     ],
   },
+  devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+  },
+  cache:false,
   plugins: [
     new ModuleFederationPlugin({
       name: 'main_app',
       remotes: {
-        'lib-app': 'lib_app@http://localhost:3000/remoteEntry.js',
+        'lib_app': 'lib_app@http://localhost:3000/remoteEntry.js',
         'component-app': 'component_app@http://localhost:3001/remoteEntry.js',
       },
     }),
