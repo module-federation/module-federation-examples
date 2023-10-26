@@ -20,6 +20,7 @@ env:
     sudo rm -rf "$AGENT_TOOLSDIRECTORY"
     sudo apt-get clean -y
     sudo apt-get autoremove -y
+    npm install -g bun
 
 
 jobs:
@@ -103,7 +104,6 @@ jobs:
         id: set-matrix
         run: |
           npm install lerna@6 -g
-          npm install -g bun
           matrix="$(node checkChangedWorkspaces.js)"
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
@@ -151,8 +151,7 @@ jobs:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
           echo "Yarn changed - install deps ... "
-          npm install -g bun
-          bun install
+          bun install --frozen-lockfile
 
       - name: Check disk space after install
         run: |
