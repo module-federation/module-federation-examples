@@ -20,7 +20,7 @@ env:
     sudo rm -rf "$AGENT_TOOLSDIRECTORY"
     sudo apt-get clean -y
     sudo apt-get autoremove -y
-    curl -fsSL https://bun.sh/install | bash
+    npm install -g bun
 
 
 jobs:
@@ -131,7 +131,7 @@ jobs:
       - name: Check Yarn hash
         id: yarn-hash
         run: |
-          yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
+          yarnHash="$(npx hash-files -f '["**/yarn.lock","**/bun.lockb"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
       - name: Cache Yarn and Cypress
@@ -151,7 +151,7 @@ jobs:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
           echo "Yarn changed - install deps ... "
-          bun install
+          bun install --frozen-lockfile
 
       - name: Check disk space after install
         run: |
@@ -185,7 +185,7 @@ jobs:
       - name: Check Yarn hash
         id: yarn-hash
         run: |
-          yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
+          yarnHash="$(npx hash-files -f '["**/yarn.lock","**/bun.lockb"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
       - name: Restore Yarn and Cypress cache
@@ -204,13 +204,13 @@ jobs:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
           echo "Yarn changed - install deps ... "
-          yarn install --frozen-lockfile
+          bun install --frozen-lockfile
 
       - name: Install sample deps
           # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
         # if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: |
-          lerna exec --stream --scope="${{ matrix.container }}*" --concurrency=1 "yarn install"
+          lerna exec --stream --scope="${{ matrix.container }}*" --concurrency=1 "bun install"
 
       - name: Check disk space after install
         run: |

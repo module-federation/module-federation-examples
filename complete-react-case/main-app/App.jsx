@@ -1,4 +1,4 @@
-import React from 'lib-app/react';
+import React from 'lib_app/react';
 import Button from 'component-app/Button';
 import Dialog from 'component-app/Dialog';
 import ToolTip from 'component-app/ToolTip';
@@ -27,7 +27,7 @@ export default class App extends React.Component {
       <div>
         <h1>Open Dev Tool And Focus On Network,checkout resources details</h1>
         <p>
-          react、react-dom js files hosted on <strong>lib-app</strong>
+          react、react-dom js files hosted on <strong>lib_app</strong>
         </p>
         <p>
           components hosted on <strong>component-app</strong>

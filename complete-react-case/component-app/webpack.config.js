@@ -9,6 +9,7 @@ module.exports = {
     publicPath: 'http://localhost:3001/',
     clean: true,
   },
+  cache:false,
   resolve: {
     extensions: ['.jsx', '.js', '.json', '.css', '.scss', '.jpg', 'jpeg', 'png'],
   },
@@ -32,6 +33,11 @@ module.exports = {
       },
     ],
   },
+  devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+  },
   plugins: [
     new ModuleFederationPlugin({
       name: 'component_app',
@@ -43,7 +49,7 @@ module.exports = {
         './ToolTip': './src/ToolTip.jsx',
       },
       remotes: {
-        'lib-app': 'lib_app@http://localhost:3000/remoteEntry.js',
+        'lib_app': 'lib_app@http://localhost:3000/remoteEntry.js',
       },
     }),
     new HtmlWebpackPlugin({
