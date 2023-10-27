@@ -2,12 +2,10 @@
   "name": "different-react-versions-16-17",
   "private": true,
   "version": "1.0.0",
-  "workspaces": {
-    "packages": [
+    "workspaces": [
       "app1",
       "app2"
-    ]
-  },
+    ],
   "scripts": {
     "start": "lerna run --parallel start",
     "build": "lerna run build",

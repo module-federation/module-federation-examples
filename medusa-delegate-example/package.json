@@ -14,15 +14,13 @@
     "serve:utils": "cd utils; yarn serve",
     "clean": "lerna run --scope @dashboard-delegate/* --parallel clean"
   },
-  "workspaces": {
-    "packages": [
+  "workspaces": [
       "./dsl",
       "./home",
       "./nav",
       "./search",
       "./utils"
-    ]
-  },
+    ],
   "devDependencies": {
     "concurrently": "7.6.0"
   }

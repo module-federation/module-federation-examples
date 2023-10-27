@@ -1,12 +1,10 @@
 {
   "name": "third-party-scripts",
   "private": true,
-  "workspaces": {
-    "packages": [
+    "workspaces": [
       "./app1",
       "./app2"
-    ]
-  },
+    ],
   "version": "0.0.0",
   "scripts": {
     "start": "lerna run --scope=third-party-scripts_* --parallel start",

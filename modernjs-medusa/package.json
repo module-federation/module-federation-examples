@@ -2,12 +2,10 @@
   "name": "modernjs-medusa",
   "private": true,
   "version": "1.0.0",
-  "workspaces": {
-    "packages": [
+    "workspaces": [
       "host",
       "provider"
-    ]
-  },
+    ],
   "scripts": {
     "start": "lerna run --parallel dev",
     "build": "lerna run build",
