@@ -27,7 +27,7 @@
     "start:all": "npx nx run-many --target=serve --projects=utils,dsl,nav,search,home --parallel=5 --verbose --skip-nx-cache",
     "dashboard:all": "npx nx run-many --target=dashboard --projects=utils,dsl,nav,search,home --parallel=5"
   },
-  "private": true,
+
   "devDependencies": {
     "@nrwl/cypress": "14.7.8",
     "@nrwl/devkit": "15.4.5",
