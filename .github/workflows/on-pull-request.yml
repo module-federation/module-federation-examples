@@ -209,7 +209,8 @@ jobs:
           # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
         # if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: |
-          npx lerna exec --stream --scope="${{ matrix.container }}*" --concurrency=1 "yarn install"
+          # npx lerna exec --stream --scope="${{ matrix.container }}*" --concurrency=1 "yarn install"
+          echo 'test'
 
       - name: Check disk space after install
         run: |
