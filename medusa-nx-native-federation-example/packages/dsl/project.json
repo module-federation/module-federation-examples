@@ -1,4 +1,5 @@
 {
+  "name": "dsl",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/dsl/src",
   "projectType": "application",
@@ -9,10 +10,7 @@
         "outputPath": "dist/dsl",
         "index": "packages/dsl/src/index.html",
         "main": "packages/dsl/src/app/index.ts",
-        "assets": [
-          "packages/dsl/src/assets",
-          "packages/dsl/src/favicon.ico"
-        ]
+        "assets": ["packages/dsl/src/assets", "packages/dsl/src/favicon.ico"]
       },
       "configurations": {
         "production": {

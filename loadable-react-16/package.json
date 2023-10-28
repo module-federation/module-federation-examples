@@ -1,7 +1,7 @@
 {
   "name": "loadable-react-16",
   "version": "0.0.1",
-  "private": true,
+
   "workspaces": [
     "app1",
     "app2"
@@ -14,7 +14,6 @@
     "e2e:ci": "yarn start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "lerna": "3.22.1",
     "wait-on": "7.0.1"
   }
 }

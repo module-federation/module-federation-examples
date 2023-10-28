@@ -1,4 +1,5 @@
 {
+  "name": "search",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/search/src",
   "projectType": "application",
@@ -9,16 +10,8 @@
         "outputPath": "dist/search",
         "index": "packages/search/src/index.html",
         "main": "packages/search/src/app/index.ts",
-        "assets": [
-          "packages/search/src/assets",
-          "packages/search/src/favicon.ico"
-        ],
-        "remotes": [
-          "nav",
-          "dsl",
-          "home",
-          "utils"
-        ]
+        "assets": ["packages/search/src/assets", "packages/search/src/favicon.ico"],
+        "remotes": ["nav", "dsl", "home", "utils"]
       },
       "configurations": {
         "production": {
