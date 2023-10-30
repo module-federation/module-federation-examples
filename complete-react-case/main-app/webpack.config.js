@@ -32,6 +32,11 @@ module.exports = {
       },
     ],
   },
+  devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+  },
   plugins: [
     new ModuleFederationPlugin({
       name: 'main_app',

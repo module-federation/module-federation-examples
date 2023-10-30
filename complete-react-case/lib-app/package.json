@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "webpack": "webpack --watch",
-    "serve": "serve dist -p 3000",
+    "serve": "serve dist -p 3000 --cors",
     "start": "concurrently \"npm run webpack\" \"npm run serve\""
   },
   "keywords": [],

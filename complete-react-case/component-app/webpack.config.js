@@ -9,6 +9,11 @@ module.exports = {
     publicPath: 'http://localhost:3001/',
     clean: true,
   },
+  devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+  },
   resolve: {
     extensions: ['.jsx', '.js', '.json', '.css', '.scss', '.jpg', 'jpeg', 'png'],
   },

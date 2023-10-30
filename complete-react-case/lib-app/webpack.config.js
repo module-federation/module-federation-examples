@@ -8,6 +8,11 @@ module.exports = {
     publicPath: 'http://localhost:3000/',
     clean: true,
   },
+  devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+  },
   module: {},
   plugins: [
     new ModuleFederationPlugin({
