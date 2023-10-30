@@ -103,7 +103,9 @@ jobs:
         id: set-matrix
         run: |
           npm i lerna@6 -g
-          matrix="$(node checkChangedWorkspaces.js)"
+          all="$(npm run list:all --silent)"
+          diff="$(npm run list:changed --silent)"
+          matrix="$(node checkChangedWorkspaces.js "$all" "$diff")"
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
       - name: Changed workspaces
