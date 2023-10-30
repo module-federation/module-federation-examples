@@ -37,7 +37,6 @@
     "comprehensive-demo-react18",
     "comprehensive-demo-react18/*",
     "cra",
-    "cra/*",
     "cra-react-app-rewired",
     "cra-react-app-rewired/*",
     "css-isolation",
@@ -147,8 +146,8 @@
     "wait-on": "7.0.1"
   },
   "scripts": {
-    "list:all": "lerna list",
-    "list:changed": "lerna list --since=origin/master",
+    "list:all": "lerna list --all --json",
+    "list:changed": "lerna list --all --since=origin/master --json",
     "bootstrap": "lerna bootstrap --ignore-scripts",
     "build": "lerna run --parallel build",
     "submodules": "git pull --recurse-submodules",
