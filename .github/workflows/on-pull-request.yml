@@ -119,7 +119,7 @@ jobs:
       cache-restored: ${{ steps.cache.outputs.cache-hit }}
     steps:
       - name: Restore Yarn global cache
-        id: cache
+        id: cacheglobal
         uses: actions/cache/restore@v3
         with:
           path: |
