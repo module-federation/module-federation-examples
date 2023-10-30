@@ -1,12 +1,10 @@
 {
   "name": "genesis",
-  "private": true,
-  "workspaces": {
-    "packages": [
+
+    "workspaces": [
       "./ssr-mf-about",
       "./ssr-mf-home"
-    ]
-  },
+    ],
   "version": "0.0.0",
   "scripts": {
     "dev": "concurrently --raw \"pnpm --filter genesis_ssr-mf-about dev\" \"pnpm --filter genesis_ssr-mf-home dev\"",
@@ -14,7 +12,6 @@
     "start": "concurrently --raw \"pnpm --filter genesis_ssr-mf-about start\" \"pnpm --filter genesis_ssr-mf-home start\""
   },
   "devDependencies": {
-    "concurrently": "7.6.0",
-    "lerna": "4.0.0"
+    "concurrently": "7.6.0"
   }
 }

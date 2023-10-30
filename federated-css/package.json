@@ -1,7 +1,8 @@
 {
-  "private": true,
-  "workspaces": {
-    "packages": [
+
+  "version": "1.2.3",
+  "name": "federated-css-mono",
+    "workspaces": [
       "expose-remotes/expose-css",
       "expose-remotes/expose-css-module",
       "expose-remotes/expose-jss",
@@ -23,8 +24,7 @@
       "consumers-nextjs/less-and-styled-component",
       "consumers-nextjs/combination-of-4",
       "consumers-nextjs/any-combination"
-    ]
-  },
+    ],
   "scripts": {
     "build": "pnpm --filter build",
     "clean": "pnpm --filter --parallel clean",
@@ -44,6 +44,6 @@
     "start:nextjs:less-and-styled-component": "pnpm --filter @federated-css/next-less-and-styled-component --parallel start"
   },
   "devDependencies": {
-    "lerna": "3.22.1"
+
   }
 }

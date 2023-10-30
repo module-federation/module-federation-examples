@@ -3,7 +3,6 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "ls": "lerna ls",
     "start:webpack": "pnpm --filter native-federation-tests-typescript-remote dev:webpack & wait-on http-get://localhost:3000/ && pnpm --filter native-federation-tests-typescript-host dev:webpack",
     "start:rspack": "pnpm --filter native-federation-tests-typescript-remote dev:rspack & wait-on http-get://localhost:3000/ && pnpm --filter native-federation-tests-typescript-host dev:rspack"
   },
@@ -12,7 +11,6 @@
     "host"
   ],
   "devDependencies": {
-    "lerna": "6.6.2",
     "wait-on": "7.0.1"
   }
 }

@@ -1,6 +1,7 @@
 {
   "name": "medusa-delegate-example",
-  "private": true,
+  "version": "1.0.0",
+
   "scripts": {
     "start": "concurrently \"cd dsl; yarn start\" \"cd home; yarn start\" \"cd nav; yarn start\" \"cd search; yarn start\" \"cd utils; yarn start\"",
     "stackblitzStart": "cd dsl; yarn build && cd ../home; yarn build && cd ../nav; yarn build && cd ../search; yarn build && cd ../utils; yarn build && yarn serve",
@@ -13,15 +14,13 @@
     "serve:utils": "cd utils; yarn serve",
     "clean": "pnpm --filter --scope @dashboard-delegate/* --parallel clean"
   },
-  "workspaces": {
-    "packages": [
+  "workspaces": [
       "./dsl",
       "./home",
       "./nav",
       "./search",
       "./utils"
-    ]
-  },
+    ],
   "devDependencies": {
     "concurrently": "7.6.0"
   }

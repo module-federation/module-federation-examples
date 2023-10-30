@@ -1,13 +1,11 @@
 {
   "name": "cra",
-  "private": true,
+
   "version": "0.0.1",
-  "workspaces": {
-    "packages": [
+    "workspaces": [
       "./host",
       "./remote"
-    ]
-  },
+    ],
   "scripts": {
     "start": "pnpm --filter cra_* start",
     "stop": "pnpm --filter cra_* stop",
@@ -18,7 +16,6 @@
   },
   "devDependencies": {
     "concurrently": "7.6.0",
-    "forever": "4.0.3",
-    "lerna": "3.22.1"
+    "forever": "4.0.3"
   }
 }

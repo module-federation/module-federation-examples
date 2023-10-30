@@ -101,7 +101,6 @@ jobs:
       - name: Create matrix
         id: set-matrix
         run: |
-          npm install lerna -g
           matrix="$(node checkChangedWorkspaces.js)"
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
@@ -149,7 +148,8 @@ jobs:
           NODE_OPTIONS: '--max_old_space_size=4096'
         run: |
           echo "Yarn changed - install deps ... "
-          yarn install --frozen-lockfile
+          npm i lerna@6 -g
+          lerna bootstrap
 
       - name: Check disk space after install
         run: |
@@ -202,14 +202,16 @@ jobs:
           NODE_OPTIONS: '--max_old_space_size=4096'
         run: |
           echo "Yarn changed - install deps ... "
-          yarn install --frozen-lockfile
+          npm i lerna@6 -g
+          lerna bootstrap
 
       - name:
           Install sample deps
           # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
         # if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: |
-          npx lerna exec --stream "${{ matrix.container }}*" --concurrency=1 "yarn install"
+          # npx lerna exec --stream --scope="${{ matrix.container }}*" --concurrency=1 "yarn install"
+          echo 'test'
 
       - name: Check disk space after install
         run: |

@@ -1,13 +1,11 @@
 {
   "name": "different-react-versions-16-18",
-  "private": true,
+
   "version": "1.0.0",
-  "workspaces": {
-    "packages": [
+    "workspaces": [
       "app1",
       "app2"
-    ]
-  },
+    ],
   "scripts": {
     "start": "pnpm --filter --parallel start",
     "build": "pnpm --filter build",
@@ -15,6 +13,6 @@
     "clean": "pnpm --filter --parallel clean"
   },
   "devDependencies": {
-    "lerna": "3.22.1"
+
   }
 }

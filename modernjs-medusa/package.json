@@ -1,13 +1,11 @@
 {
   "name": "modernjs-medusa",
-  "private": true,
+
   "version": "1.0.0",
-  "workspaces": {
-    "packages": [
+    "workspaces": [
       "host",
       "provider"
-    ]
-  },
+    ],
   "scripts": {
     "start": "pnpm --filter --parallel dev",
     "build": "pnpm --filter build",
@@ -15,6 +13,6 @@
     "clean": "pnpm --filter --parallel clean"
   },
   "devDependencies": {
-    "lerna": "3.22.1"
+
   }
 }
