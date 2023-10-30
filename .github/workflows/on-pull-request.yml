@@ -146,16 +146,28 @@ jobs:
         run: |
           df -h
 
-      - name: Install deps
+      - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
-          echo "Yarn changed - install deps ... "
-          npm i lerna@6 -g
+          echo "Yarn has changed - installing dependencies ... "
+          npm install lerna@6 -g
           lerna bootstrap
+      - name: Cache Yarn and Cypress
+        uses: actions/cache@v3
+        id: yarn-global-cache
+        with:
+          path: ${{ env.YARN_CACHE_PATH }}
+          key: yarn-global-cache
 
-      - name: Check disk space after install
+      - name: Create additional cache
+        uses: actions/cache@v3
+        id: yarn-cache
+        with:
+          path: ${{ env.CACHE_PATH }}
+          key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
+      - name: Check disk space after installation
         run: |
           df -h
 
