@@ -1,18 +1,17 @@
 {
   "name": "cra",
-
   "version": "0.0.1",
-    "workspaces": [
-      "./host",
-      "./remote"
-    ],
+  "workspaces": [
+    "./host",
+    "./remote"
+  ],
   "scripts": {
     "start": "pnpm --filter cra_* start",
     "stop": "pnpm --filter cra_* stop",
     "build": "pnpm --filter cra_* build'",
     "serve": "pnpm --filter cra_* serve'",
     "clean": "pnpm --filter cra_* clean'",
-    "e2e:ci": "yarn start && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome && yarn stop"
+    "e2e:ci": "pnpm start && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome && pnpm stop"
   },
   "devDependencies": {
     "concurrently": "7.6.0",
