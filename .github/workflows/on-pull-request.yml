@@ -168,7 +168,10 @@ jobs:
         id: yarn-global-cache
         with:
           path: ${{ env.YARN_CACHE_PATH }}
-          key: yarn-global-cache
+          key: yarn-global-cache-${{ github.run_id }} # Can use time based key as well
+          restore-keys: |
+            yarn-global-cache
+            yarn-global-cache-
 
       - name: Create additional cache
         uses: actions/cache/save@v3
