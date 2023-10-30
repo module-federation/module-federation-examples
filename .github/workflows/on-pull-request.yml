@@ -152,35 +152,22 @@ jobs:
       - name: Free up some space
         run: ${{ env.FILES_TO_DELETE }}
 
-      - name: Check disk space and Install deps
+      - name: Check disk space before install
+        run: |
+          df -h
+
+      - name: Install deps
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
-          echo "Disk space before install:"
-          df -h
           echo "Yarn changed - install deps ... "
           npm i lerna@6 -g
           lerna bootstrap
-          echo "Disk space after install:"
-          df -h
-      - name: Cache Yarn Global Cache
-        uses: actions/cache@v3
-        id: yarn-global-cache
-        with:
-          path: ${{ env.YARN_CACHE_PATH }}
-          key: yarn-global-cache
-      - name: Check Yarn hash
-        id: yarn-hash
-        run: |
-          yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
-          echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
-      - name: Cache Yarn and Cypress
-        uses: actions/cache@v3
-        id: yarn-cache
-        with:
-          path: ${{ env.CACHE_PATH }}
-          key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
+      - name: Check disk space after install
+        run: |
+          df -h
 
   # Run Cypress e2e tests for changed samples (additionally install deps for all changed samples if there is no any created cache in master branch) + Create artifacts for Cypress screenshots and videos
   run-e2e-test:
@@ -202,14 +189,28 @@ jobs:
       - name: Free up some space
         run: ${{ env.FILES_TO_DELETE }}
 
-      - name: Check disk space and Install deps
+      - name: Check disk space before install
+        run: |
+          df -h
+
+      - name: Install deps
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
-          echo "Disk space before install:"
-          df -h
           echo "Yarn changed - install deps ... "
-          echo "Disk space after install:"
+          npm i lerna@6 -g
+          lerna bootstrap
+
+      - name: Install sample deps
+        # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
+        # if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: |
+          # npx lerna exec --stream --scope="${{ matrix.container }}*" --concurrency=1 "yarn install"
+          echo 'test'
+
+      - name: Check disk space after install
+        run: |
           df -h
 
       - name: Set up node
