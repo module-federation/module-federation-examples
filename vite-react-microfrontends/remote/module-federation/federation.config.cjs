@@ -11,6 +11,7 @@ module.exports = withNativeFederation({
   skip: [
     'react-dom/server',
     'react-dom/server.node',
+    'vite-react-microfrontends'
   ],
 });
 
