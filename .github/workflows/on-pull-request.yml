@@ -5,6 +5,7 @@ env:
   CACHE_PATH: |
     **/node_modules
     ~/.cache/Cypress
+  YARN_CACHE_PATH: |
     ~/.cache/yarn/v6
   FILES_TO_DELETE: |
     sudo rm -rf "/usr/share/dotnet"
@@ -138,6 +139,13 @@ jobs:
           path: ${{ env.CACHE_PATH }}
           key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
 
+      - name: Cache Yarn Global Cache
+        uses: actions/cache@v3
+        id: yarn-global-cache
+        with:
+          path: ${{ env.YARN_CACHE_PATH }}
+          key: yarn-global-cache
+
       - name: Check disk space before install
         run: |
           df -h
@@ -196,6 +204,13 @@ jobs:
             e2e-cache-
             e2e-
 
+      - name: Restore Yarn Global Cache
+        uses: actions/cache/restore@v3
+        id: yarn-global-cache
+        with:
+          path: ${{ env.YARN_CACHE_PATH }}
+          key: yarn-global-cache
+
       - name: Install deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
@@ -206,7 +221,7 @@ jobs:
           lerna bootstrap
 
       - name: Install sample deps
-          # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
+        # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
         # if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: |
           # npx lerna exec --stream --scope="${{ matrix.container }}*" --concurrency=1 "yarn install"
@@ -233,3 +248,4 @@ jobs:
           name: allure-results
           path: 'cypress/results/allure-results'
           retention-days: 7
+
