@@ -32,7 +32,7 @@ jobs:
         with:
           access_token: ${{ secrets.GITHUB_TOKEN }}
 
-  # Save nessesary env variables to use them in next jobs
+  # Save necessary env variables to use them in next jobs
   save-env:
     runs-on: ubuntu-22.04
     needs: stop-previous-run
@@ -135,15 +135,8 @@ jobs:
           yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
-      - name: Cache Yarn and Cypress
-        uses: actions/cache@v3
-        id: yarn-cache
-        with:
-          path: ${{ env.CACHE_PATH }}
-          key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
-
-      - name: Cache Yarn Global Cache
-        uses: actions/cache@v3
+      - name: Restore Yarn Global Cache
+        uses: actions/cache/restore@v3
         id: yarn-global-cache
         with:
           path: ${{ env.YARN_CACHE_PATH }}
