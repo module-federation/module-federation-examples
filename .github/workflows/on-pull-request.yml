@@ -141,6 +141,15 @@ jobs:
         with:
           path: ${{ env.YARN_CACHE_PATH }}
           key: yarn-global-cache
+      - name: Restore Yarn and Cypress cache
+        uses: actions/cache/restore@v3
+        id: yarn-cache
+        with:
+          path: ${{ env.CACHE_PATH }}
+          key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
+          restore-keys: |
+            e2e-cache-
+            e2e-
 
       - name: Check disk space before install
         run: |
