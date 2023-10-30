@@ -1,16 +1,19 @@
 const { exec } = require("child_process");
-exec("yarn list", (error, stdout, stderr) => {
+const execOptions = { maxBuffer: Infinity }; // Increase maxBuffer to avoid "stdout maxBuffer length exceeded" error
+exec("npm run list:all --silent", execOptions, (error, stdout, stderr) => {
     if (error) {
         console.log(`error: ${error.message}`);
         return;
     }
     try {
+
         const allPackages = JSON.parse(stdout);
-        exec("yarn list:changed", (error, stdout, stderr) => {
+        exec("npm run list:changed --silent", execOptions, (error, stdout, stderr) => {
             if (error) {
                 console.log(`error: ${error.message}`);
                 return;
             }
+
 
             try {
                 const updatedPackages = JSON.parse(stdout);
