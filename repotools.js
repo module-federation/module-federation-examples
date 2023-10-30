@@ -11,14 +11,14 @@ function getPackages(dir, since) {
   let packages = [];
   const directories = getDirectories(dir);
   directories.forEach(directory => {
-    if (directory !== 'node_modules') {
+    if (directory !== 'node_modules' && !directory.startsWith('.')) {
       const nestedDir = path.join(dir, directory);
       const packageJsonPath = path.join(nestedDir, 'package.json');
       if (fs.existsSync(packageJsonPath)) {
         const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
         if (since) {
           const result = execSync(`git diff --name-only ${since}..HEAD -- ${nestedDir}`, { encoding: 'utf8' });
-          
+
           if (result) {
             packages.push({
               name: packageJson.name,

@@ -27,7 +27,7 @@
     "start:all": "npx nx run-many --target=serve --projects=utils,dsl,nav,search,home --parallel=5 --verbose --skip-nx-cache",
     "dashboard:all": "npx nx run-many --target=dashboard --projects=utils,dsl,nav,search,home --parallel=5"
   },
-  "private": true,
+
   "devDependencies": {
     "@nrwl/cypress": "14.7.8",
     "@nrwl/devkit": "15.4.5",
@@ -55,14 +55,14 @@
     "esbuild": "0.17.18",
     "eslint": "8.15.0",
     "eslint-config-prettier": "8.1.0",
-    "eslint-plugin-cypress": "2.14.0",
+    "eslint-plugin-cypress": "2.15.1",
     "eslint-plugin-import": "2.26.0",
-    "eslint-plugin-jsx-a11y": "6.6.1",
+    "eslint-plugin-jsx-a11y": "6.7.1",
     "eslint-plugin-react": "7.31.1",
     "eslint-plugin-react-hooks": "4.6.0",
     "jest": "28.1.3",
     "jest-environment-jsdom": "28.1.3",
-    "jsonc-eslint-parser": "2.2.0",
+    "jsonc-eslint-parser": "2.4.0",
     "nx": "15.4.5",
     "prettier": "2.8.8",
     "react-test-renderer": "18.2.0",
