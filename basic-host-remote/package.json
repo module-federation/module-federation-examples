@@ -6,10 +6,10 @@
   ],
   "version": "0.0.0",
   "scripts": {
-    "start": "concurrently 'cd app1; pnpm dev' 'cd app2; pnpm dev'",
-    "build": "concurrently 'cd app1; pnpm build' 'cd app2; pnpm build'",
-    "serve": "concurrently 'cd app1; pnpm serve' 'cd app2; pnpm serve'",
-    "clean": "concurrently 'cd app1; pnpm reset' 'cd app2; pnpm reset'",
+    "start": "pnpm --filter basic-host-remote_* run start",
+    "build": "pnpm --filter basic-host-remote_* run build",
+    "serve": "pnpm --filter basic-host-remote_* run serve",
+    "clean": "pnpm --filter basic-host-remote_* run reset",
     "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
