@@ -137,7 +137,7 @@ jobs:
 
       - name: Restore Yarn Global Cache
         uses: actions/cache/restore@v3
-        id: yarn-global-cache
+        id: yarn-global-cache-restore
         with:
           path: ${{ env.YARN_CACHE_PATH }}
           key: yarn-global-cache
