@@ -12,7 +12,9 @@
   "pnpm": {
     "overrides": {
       "webpack": "5.80.0",
-      "puppeteer": "^19.0.0"
+      "puppeteer": "^19.0.0",
+      "@types/react": "18.0.38",
+      "@types/react-dom": "18.0.11"
     }
   },
   "workspaces": {
@@ -139,23 +141,6 @@
       "vue3-demo/*",
       "vue3-demo-federation-with-vite",
       "vue3-demo-federation-with-vite/*"
-    ],
-    "nohoist": [
-      "**/@types",
-      "**/@module-federation/**",
-      "**/@types/**",
-      "**/styled-jsx/**",
-      "**/styled-jsx",
-      "**/react/**",
-      "**/react",
-      "**/next/**",
-      "**/next",
-      "**/react-dom/**",
-      "**/react-dom",
-      "**/svelte",
-      "**/svelte/**",
-      "**/svelte-loader",
-      "**/svelte-loader/**"
     ]
   },
   "devDependencies": {
