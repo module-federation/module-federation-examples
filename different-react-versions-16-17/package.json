@@ -1,18 +1,11 @@
 {
   "name": "different-react-versions-16-17",
-
   "version": "1.0.0",
-    "workspaces": [
-      "app1",
-      "app2"
-    ],
   "scripts": {
-    "start": "pnpm --filter --parallel start",
-    "build": "pnpm --filter build",
-    "serve": "pnpm --filter --parallel serve",
-    "clean": "pnpm --filter --parallel clean"
+    "start": "pnpm --filter different-react-versions-16-17_* --parallel start",
+    "build": "pnpm --filter different-react-versions-16-17_* build",
+    "serve": "pnpm --filter different-react-versions-16-17_* --parallel serve",
+    "clean": "pnpm --filter different-react-versions-16-17_* --parallel clean"
   },
-  "devDependencies": {
-
-  }
+  "devDependencies": {}
 }
