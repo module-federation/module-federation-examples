@@ -1,6 +1,8 @@
 {
   "name": "medusa-delegate-example",
   "version": "1.0.0",
+  "private": true,
+
 
   "scripts": {
     "start": "concurrently \"cd dsl; yarn start\" \"cd home; yarn start\" \"cd nav; yarn start\" \"cd search; yarn start\" \"cd utils; yarn start\"",

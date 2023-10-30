@@ -6,6 +6,7 @@
     "./shared",
     "./shop"
   ],
+  "private": true,
   "version": "0.0.0",
   "scripts": {
     "start": "concurrently \"npm --prefix checkout run dev\" \"npm --prefix home run dev\" \"npm --prefix shop run dev\"",
