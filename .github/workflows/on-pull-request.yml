@@ -108,10 +108,6 @@ jobs:
           matrix="$(node checkChangedWorkspaces.js "$all" "$diff")"
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
-      - name: Changed workspaces
-        run: |
-          echo '${{ steps.set-matrix.outputs.matrix }}'
-
   # Cache Yarn and Cypress
   cache-yarn-and-cypress:
     runs-on: ubuntu-22.04
@@ -141,7 +137,7 @@ jobs:
           key: yarn-global-cache
 
   # Install main dependencies (yarn install)
-    install-main-dependencies:
+  install-main-dependencies:
     needs: [setup-matrix, cache-yarn-and-cypress, cache-yarn-global]
     if: ${{ needs.setup-matrix.outputs.matrix != '{"container":[]}' }}
     runs-on: ubuntu-22.04
