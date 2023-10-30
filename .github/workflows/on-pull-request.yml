@@ -108,10 +108,27 @@ jobs:
           matrix="$(node checkChangedWorkspaces.js "$all" "$diff")"
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
-  # Cache Yarn and Cypress
-  cache-yarn-and-cypress:
+      - name: Changed workspaces
+        run: |
+          echo '${{ steps.set-matrix.outputs.matrix }}'
+
+  # Install main dependencies (yarn install) + Create cache for Yarn and Cypress
+  install-main-dependencies:
+    needs: setup-matrix
+    if: ${{ needs.setup-matrix.outputs.matrix != '{"container":[]}' }}
     runs-on: ubuntu-22.04
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Free up some space
+        run: ${{ env.FILES_TO_DELETE }}
+
+        # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
       - name: Check Yarn hash
         id: yarn-hash
         run: |
@@ -125,32 +142,12 @@ jobs:
           path: ${{ env.CACHE_PATH }}
           key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
 
-  # Cache Yarn Global Cache
-  cache-yarn-global:
-    runs-on: ubuntu-22.04
-    steps:
       - name: Cache Yarn Global Cache
         uses: actions/cache@v3
         id: yarn-global-cache
         with:
           path: ${{ env.YARN_CACHE_PATH }}
           key: yarn-global-cache
-
-  # Install main dependencies (yarn install)
-  install-main-dependencies:
-    needs: [setup-matrix, cache-yarn-and-cypress, cache-yarn-global]
-    if: ${{ needs.setup-matrix.outputs.matrix != '{"container":[]}' }}
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
-
-      - name: Free up some space
-        run: ${{ env.FILES_TO_DELETE }}
 
       - name: Check disk space before install
         run: |
@@ -193,6 +190,30 @@ jobs:
         run: |
           df -h
 
+        # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
+      - name: Check Yarn hash
+        id: yarn-hash
+        run: |
+          yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
+          echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
+
+      - name: Restore Yarn and Cypress cache
+        uses: actions/cache/restore@v3
+        id: yarn-cache
+        with:
+          path: ${{ env.CACHE_PATH }}
+          key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
+          restore-keys: |
+            e2e-cache-
+            e2e-
+
+      - name: Restore Yarn Global Cache
+        uses: actions/cache/restore@v3
+        id: yarn-global-cache
+        with:
+          path: ${{ env.YARN_CACHE_PATH }}
+          key: yarn-global-cache
+
       - name: Install deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
@@ -230,3 +251,4 @@ jobs:
           name: allure-results
           path: 'cypress/results/allure-results'
           retention-days: 7
+
