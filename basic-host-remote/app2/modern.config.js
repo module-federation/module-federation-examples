@@ -6,36 +6,31 @@ const JavascriptModulesPlugin = require('webpack/lib/javascript/JavascriptModule
 
 class AsyncEntryStartupPlugin {
   apply(compiler) {
-    compiler.hooks.thisCompilation.tap(
-      'AsyncEntryStartupPlugin',
-      compilation => {
-        JavascriptModulesPlugin.getCompilationHooks(
-          compilation,
-        ).renderStartup.tap(
-          'AsyncEntryStartupPlugin',
-          (source, renderContext, upperContext) => {
+    compiler.hooks.thisCompilation.tap('AsyncEntryStartupPlugin', compilation => {
+      JavascriptModulesPlugin.getCompilationHooks(compilation).renderStartup.tap(
+        'AsyncEntryStartupPlugin',
+        (source, renderContext, upperContext) => {
+          if (upperContext.chunk.hasRuntime()) {
+            return source;
+          }
+          const startup = [
+            'var promiseTrack = [];',
+            `if(__webpack_require__.f && __webpack_require__.f.remotes) __webpack_require__.f.remotes(${JSON.stringify(
+              upperContext.chunk.id,
+            )}, promiseTrack);`,
+            `if(__webpack_require__.f && __webpack_require__.f.consumes) __webpack_require__.f.consumes(${JSON.stringify(
+              upperContext.chunk.id,
+            )}, promiseTrack);`,
+            `var __webpack_exports__ = Promise.all(promiseTrack).then(function() {`,
+            source.source(),
+            'return __webpack_exports__;',
+            `});`,
+          ].join('\n');
 
-            if (upperContext.chunk.hasRuntime()) {
-              return source;
-            }
-            const startup = [
-              'var promiseTrack = [];',
-              `if(__webpack_require__.f && __webpack_require__.f.remotes) __webpack_require__.f.remotes(${JSON.stringify(
-                upperContext.chunk.id,
-              )}, promiseTrack);`,
-              `if(__webpack_require__.f && __webpack_require__.f.consumes) __webpack_require__.f.consumes(${JSON.stringify(
-                upperContext.chunk.id,
-              )}, promiseTrack);`,
-              `Promise.all(promiseTrack).then(function() {`,
-              source.source(),
-              `});`,
-            ].join('\n');
-
-            return startup;
-          },
-        );
-      },
-    );
+          return startup;
+        },
+      );
+    });
   }
 }
 
