@@ -6,6 +6,7 @@
     "./shared",
     "./shop"
   ],
+  "private": true,
   "version": "0.0.0",
   "scripts": {
     "start": "find . -type d -name '.next' -exec rm -rf {} + && concurrently \"cd checkout; npm run dev\" \"cd home; npm run dev\" \"cd shop; npm run dev\"",

@@ -4,6 +4,7 @@ import enviroment from "./enviroment";
 
 export default () => {
 	React.useEffect(() => {
+		//@ts-ignore
 		console.info("vite import.meta got message:", enviroment.VITE_EXAMPLE);
 		console.log('Remote useEffect');
 	}, []);
