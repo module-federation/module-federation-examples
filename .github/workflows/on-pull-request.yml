@@ -5,6 +5,7 @@ env:
   CACHE_PATH: |
     **/node_modules
     ~/.cache/Cypress
+  YARN_CACHE_PATH: |
     ~/.cache/yarn/v6
   FILES_TO_DELETE: |
     sudo rm -rf "/usr/share/dotnet"
@@ -31,13 +32,14 @@ jobs:
         with:
           access_token: ${{ secrets.GITHUB_TOKEN }}
 
-  # Save nessesary env variables to use them in next jobs
+  # Save necessary env variables to use them in next jobs
   save-env:
     runs-on: ubuntu-22.04
     needs: stop-previous-run
     if: always()
     steps:
       - name: Save env variables
+        id: save-env-variables
         run: |
           mkdir -p ./workflow
           echo "${{ github.event.pull_request.number }}" > ./workflow/prNum
@@ -45,6 +47,7 @@ jobs:
           echo "${{ github.repository }}" > ./workflow/repoFullName
           echo "${{ github.repository_owner }}" > ./workflow/ownerName
       - name: Upload artifact
+        id: upload-artifact
         uses: actions/upload-artifact@v3
         with:
           name: env_for_comment
@@ -56,6 +59,7 @@ jobs:
     needs: stop-previous-run
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -64,6 +68,7 @@ jobs:
           fetch-depth: 0
 
       - name: Check if forked master is up to date
+        id: check-forked-master
         if: github.repository_owner == 'module-federation'
         run: |
           echo "${{ github.repository_owner }}"
@@ -92,6 +97,7 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - name: Checkout
+        id: checkout-matrix
         uses: actions/checkout@v3
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
@@ -101,10 +107,14 @@ jobs:
       - name: Create matrix
         id: set-matrix
         run: |
-          matrix="$(node checkChangedWorkspaces.js)"
+          npm i lerna@6 -g
+          all="$(npm run list:all --silent)"
+          diff="$(npm run list:changed --silent)"
+          matrix="$(node checkChangedWorkspaces.js "$all" "$diff")"
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
       - name: Changed workspaces
+        id: changed-workspaces
         run: |
           echo '${{ steps.set-matrix.outputs.matrix }}'
 
@@ -115,6 +125,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout code
+        id: checkout-code
         uses: actions/checkout@v3
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
@@ -122,36 +133,64 @@ jobs:
           fetch-depth: 0
 
       - name: Free up some space
+        id: free-up-space
         run: ${{ env.FILES_TO_DELETE }}
 
         # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
       - name: Check Yarn hash
-        id: yarn-hash
+        id: check-yarn-hash
         run: |
           yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
-      - name: Cache Yarn and Cypress
-        uses: actions/cache@v3
-        id: yarn-cache
+      - name: Restore Yarn Global Cache
+        id: restore-yarn-global-cache
+        uses: actions/cache/restore@v3
+        with:
+          path: ${{ env.YARN_CACHE_PATH }}
+          key: yarn-global-cache-${{ github.run_id }} # Can use time based key as well
+          restore-keys: |
+            yarn-global-cache
+            yarn-global-cache-
+      - name: Restore Yarn and Cypress cache
+        id: restore-yarn-cypress-cache
+        uses: actions/cache/restore@v3
         with:
           path: ${{ env.CACHE_PATH }}
-          key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
+          key: e2e-cache-${{ steps.check-yarn-hash.outputs.yarnHash }}
+          restore-keys: |
+            e2e-cache-
+            e2e-
 
       - name: Check disk space before install
+        id: check-disk-space-before-install
         run: |
           df -h
 
-      - name: Install deps
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
+      - name: Install dependencies
+        id: install-dependencies
+        if: steps.restore-yarn-cypress-cache.outputs.cache-hit != 'true'
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
-          echo "Yarn changed - install deps ... "
-          npm i lerna@6 -g
+          echo "Yarn has changed - installing dependencies ... "
+          npm install lerna@6 -g
           lerna bootstrap
+      - name: Cache Yarn and Cypress
+        id: cache-yarn-cypress
+        uses: actions/cache/save@v3
+        with:
+          path: ${{ env.YARN_CACHE_PATH }}
+          key: yarn-global-cache-${{ github.run_id }} # Can use time based key as well
 
-      - name: Check disk space after install
+      - name: Create additional cache
+        id: create-additional-cache
+        uses: actions/cache/save@v3
+        with:
+          path: ${{ env.CACHE_PATH }}
+          key: e2e-cache-${{ steps.check-yarn-hash.outputs.yarnHash }}
+      - name: Check disk space after installation
+        id: check-disk-space-after-installation
         run: |
           df -h
 
@@ -166,6 +205,7 @@ jobs:
       matrix: ${{fromJson(needs.setup-matrix.outputs.matrix)}}
     steps:
       - name: Checkout
+        id: checkout-e2e
         uses: actions/checkout@v3
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
@@ -173,31 +213,44 @@ jobs:
           fetch-depth: 0
 
       - name: Free up some space
+        id: free-up-space-e2e
         run: ${{ env.FILES_TO_DELETE }}
 
       - name: Check disk space before install
+        id: check-disk-space-before-install-e2e
         run: |
           df -h
 
         # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
       - name: Check Yarn hash
-        id: yarn-hash
+        id: check-yarn-hash-e2e
         run: |
           yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
       - name: Restore Yarn and Cypress cache
+        id: restore-yarn-cypress-cache-e2e
         uses: actions/cache/restore@v3
-        id: yarn-cache
         with:
           path: ${{ env.CACHE_PATH }}
-          key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
+          key: e2e-cache-${{ steps.check-yarn-hash-e2e.outputs.yarnHash }}
           restore-keys: |
             e2e-cache-
             e2e-
 
+      - name: Restore Yarn Global Cache
+        id: restore-yarn-global-cache-e2e
+        uses: actions/cache/restore@v3
+        with:
+          path: ${{ env.YARN_CACHE_PATH }}
+          key: yarn-global-cache-${{ github.run_id }} # Can use time based key as well
+          restore-keys: |
+            yarn-global-cache
+            yarn-global-cache-
+
       - name: Install deps
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        id: install-deps-e2e
+        if: steps.restore-yarn-cypress-cache-e2e.outputs.cache-hit != 'true'
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
@@ -206,30 +259,36 @@ jobs:
           lerna bootstrap
 
       - name: Install sample deps
-          # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
+        id: install-sample-deps
+        # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
         # if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: |
           # npx lerna exec --stream --scope="${{ matrix.container }}*" --concurrency=1 "yarn install"
           echo 'test'
 
       - name: Check disk space after install
+        id: check-disk-space-after-install-e2e
         run: |
           df -h
 
       - name: Set up node
+        id: setup-node
         uses: actions/setup-node@v3
         with:
           node-version: 16
 
       - name: Run sample e2e tests
+        id: run-sample-e2e-tests
         run: |
           node -v
           npx lerna run --scope=${{ matrix.container }} e2e:ci
 
       - name: Create artifacts for Allure report
+        id: create-artifacts-allure-report
         uses: actions/upload-artifact@v3
         if: always()
         with:
           name: allure-results
           path: 'cypress/results/allure-results'
           retention-days: 7
+

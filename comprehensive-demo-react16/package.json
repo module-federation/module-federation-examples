@@ -7,6 +7,7 @@
     "./app-04",
     "./app-05"
   ],
+  "private": true,
   "version": "0.0.0",
   "scripts": {
     "start": "concurrently \"lerna run --scope=comprehensive-demo-react16_app* --parallel start\" \"yarn serve\"",
