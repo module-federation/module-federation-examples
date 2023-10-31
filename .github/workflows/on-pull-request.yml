@@ -146,9 +146,9 @@ jobs:
       - name: Restore Yarn Global Cache
         id: restore-yarn-global-cache
         uses: actions/cache/restore@v3
-        key: yarn-global-cache-${{ github.run_id }} # Can use time based key as well
         with:
           path: ${{ env.YARN_CACHE_PATH }}
+          key: yarn-global-cache-${{ github.run_id }} # Can use time based key as well
           restore-keys: |
             yarn-global-cache
             yarn-global-cache-
