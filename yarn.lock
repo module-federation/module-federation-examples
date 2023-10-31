@@ -7630,6 +7630,11 @@
   resolved "https://registry.yarnpkg.com/@modern-js/tsconfig/-/tsconfig-2.32.0.tgz#0d6725ac94702f8a5d4f4f981b0b423f51e861a3"
   integrity sha512-ygx4+okcCrMGI8lVVSf3cqngaGs6j9b9bhQLm4wSmYb411mH2MR7qDl3TWYsSLVltw/qBMf7xfbswSE1d4ujHA==
 
+"@modern-js/tsconfig@2.39.0":
+  version "2.39.0"
+  resolved "https://registry.yarnpkg.com/@modern-js/tsconfig/-/tsconfig-2.39.0.tgz#0f8035d278b23c5961219a80289c0ae05512d00b"
+  integrity sha512-6vVGZftc47W3fuWSRpMVdw47ORM/V1mnJNhOQYFkc5di83VzcojwQLUmP76znGMK+l5ayFVk79+VGdJO6Q6fnQ==
+
 "@modern-js/types@2.13.4":
   version "2.13.4"
   resolved "https://registry.yarnpkg.com/@modern-js/types/-/types-2.13.4.tgz#97d0b4a12850f39162db504a7f8005a6ed58a4ce"
@@ -10829,10 +10834,10 @@
   resolved "https://registry.yarnpkg.com/@soda/get-current-script/-/get-current-script-1.0.2.tgz#a53515db25d8038374381b73af20bb4f2e508d87"
   integrity sha512-T7VNNlYVM1SgQ+VsMYhnDkcGmWhQdL0bDyGm5TlQ3GBXnJscEClUUOKduWTmm2zCnvNLC1hc3JpuXjs/nFOc5w==
 
-"@softarc/native-federation-esbuild@1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@softarc/native-federation-esbuild/-/native-federation-esbuild-1.1.1.tgz#3947fcfdfb2fe01b0fc42517d7a0de133bd53d4a"
-  integrity sha512-0lsrHHdmqhKOJ33sXSRapn2U2ZCvW95widEVcb6T3Yd0RJFQ0oR2pHplfPkGQ0xMgvgxROksfKzIgIOywbCOOw==
+"@softarc/native-federation-esbuild@1.1.2", "@softarc/native-federation-esbuild@^1.1.1":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@softarc/native-federation-esbuild/-/native-federation-esbuild-1.1.2.tgz#b9819dd590130e2a85a831b8b520681478db113d"
+  integrity sha512-siC1vD9fn5KM0ohrYJdpPkskzv82zOPM+INK3VwXmbl+ug+1o+Wxkpti4F06IuyVOAVX4NVizmX7ccwpw5wVmQ==
   dependencies:
     "@rollup/plugin-commonjs" "^22.0.2"
     "@rollup/plugin-node-resolve" "^13.3.0"
@@ -10840,6 +10845,7 @@
     acorn "^8.8.1"
     esbuild "^0.15.5"
     npmlog "^6.0.2"
+    process "0.11.10"
     rollup "^2.79.0"
     rollup-plugin-node-externals "^4.1.1"
 
@@ -10853,21 +10859,6 @@
     "@rollup/plugin-replace" "^4.0.0"
     acorn "^8.8.1"
     esbuild "^0.18.12"
-    npmlog "^6.0.2"
-    process "0.11.10"
-    rollup "^2.79.0"
-    rollup-plugin-node-externals "^4.1.1"
-
-"@softarc/native-federation-esbuild@^1.1.1":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@softarc/native-federation-esbuild/-/native-federation-esbuild-1.1.2.tgz#b9819dd590130e2a85a831b8b520681478db113d"
-  integrity sha512-siC1vD9fn5KM0ohrYJdpPkskzv82zOPM+INK3VwXmbl+ug+1o+Wxkpti4F06IuyVOAVX4NVizmX7ccwpw5wVmQ==
-  dependencies:
-    "@rollup/plugin-commonjs" "^22.0.2"
-    "@rollup/plugin-node-resolve" "^13.3.0"
-    "@rollup/plugin-replace" "^4.0.0"
-    acorn "^8.8.1"
-    esbuild "^0.15.5"
     npmlog "^6.0.2"
     process "0.11.10"
     rollup "^2.79.0"
