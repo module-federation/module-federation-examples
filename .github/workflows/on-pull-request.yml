@@ -5,6 +5,7 @@ env:
   CACHE_PATH: |
     **/node_modules
     ~/.cache/Cypress
+    ~/.pnpm-store/v3
   YARN_CACHE_PATH: |
     ~/.cache/yarn/v6
   FILES_TO_DELETE: |
@@ -107,9 +108,9 @@ jobs:
       - name: Create matrix
         id: set-matrix
         run: |
-          npm i lerna@6 -g
-          all="$(npm run list:all --silent)"
-          diff="$(npm run list:changed --silent)"
+          pnpm i lerna@6 -g
+          all="$(pnpm run list:all --silent)"
+          diff="$(pnpm run list:changed --silent)"
           matrix="$(node checkChangedWorkspaces.js "$all" "$diff")"
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
@@ -174,9 +175,8 @@ jobs:
           NODE_OPTIONS: '--max_old_space_size=4096'
         run: |
           echo "Yarn has changed - installing dependencies ... "
-          npm install lerna@6 -g
-          lerna bootstrap
-      - name: Cache Yarn and Cypress
+          pnpm install
+      - name: Calerche Yarn and Cypress
         id: cache-yarn-cypress
         uses: actions/cache/save@v3
         with:
@@ -255,8 +255,7 @@ jobs:
           NODE_OPTIONS: '--max_old_space_size=4096'
         run: |
           echo "Yarn changed - install deps ... "
-          npm i lerna@6 -g
-          lerna bootstrap
+          pnpm install
 
       - name:
           Install sample deps
