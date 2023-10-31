@@ -26,8 +26,9 @@ class AsyncEntryStartupPlugin {
               `if(__webpack_require__.f && __webpack_require__.f.consumes) __webpack_require__.f.consumes(${JSON.stringify(
                 upperContext.chunk.id,
               )}, promiseTrack);`,
-              `Promise.all(promiseTrack).then(function() {`,
+              `var __webpack_exports__ = Promise.all(promiseTrack).then(function() {`,
               source.source(),
+              'return __webpack_exports__;',
               `});`,
             ].join('\n');
 
