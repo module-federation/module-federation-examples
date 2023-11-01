@@ -1,8 +1,6 @@
 {
   "name": "vite-react-simple",
   "private": true,
-
-
   "workspaces": [
     "./rs-sidecart",
     "./vite-react",
@@ -10,8 +8,8 @@
   ],
   "version": "0.0.0",
   "scripts": {
-    "start": "concurrently \"yarn --cwd vite-react start\" \"yarn --cwd webpack-spa start\" \"cd rs-sidecart; yarn start\"",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
+    "start": "pnpm --parallel --filter vite-react-simple_* start",
+    "e2e:ci": "pnpm start & wait-on -c ../cypress/waitOnConfig.json http-get://localhost:3000/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "concurrently": "7.6.0",
