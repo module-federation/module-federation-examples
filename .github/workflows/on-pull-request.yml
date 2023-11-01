@@ -110,8 +110,8 @@ jobs:
         run: |
           npm i lerna@6 -g
           npm i pnpm -g
-          all="$(pnpm run list:all --silent)"
-          diff="$(pnpm run list:changed --silent)"
+          all="$(pnpm run list:all)"
+          diff="$(pnpm run list:changed)"
           matrix="$(node checkChangedWorkspaces.js "$all" "$diff")"
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
