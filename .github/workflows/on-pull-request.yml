@@ -178,7 +178,7 @@ jobs:
         run: |
           echo "Yarn has changed - installing dependencies ... "
           npm i pnpm -g
-          pnpm install
+          pnpm i --frozen-lockfile
       - name: Cache Yarn and Cypress
         id: cache-yarn-cypress
         uses: actions/cache/save@v3
@@ -294,5 +294,3 @@ jobs:
           name: allure-results
           path: 'cypress/results/allure-results'
           retention-days: 7
-
-
