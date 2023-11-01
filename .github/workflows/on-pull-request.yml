@@ -106,7 +106,7 @@ jobs:
           fetch-depth: 0
 
       - name: Create matrix
-        id: set-matrix
+        id: set-matrix-temp
         # TODO: Temporary disabled because of switch to pnpm
         if: ${{ false }}
         run: |
@@ -118,6 +118,7 @@ jobs:
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
       - name: Create matrix
+        id: set-matrix
         run: |
           npm i pnpm -g
           all="$(pnpm list --filter "*" --only-projects --depth -1 --json)"
