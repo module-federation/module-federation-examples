@@ -120,8 +120,8 @@ jobs:
       - name: Create matrix
         run: |
           npm i pnpm -g
-          all="$(pnpm list --filter "*" --only-projects --json)"
-          diff="$(pnpm list --filter "...[origin/master]" --only-projects --json)"
+          all="$(pnpm list --filter "*" --only-projects --depth -1 --json)"
+          diff="$(pnpm list --filter "...[origin/master]" --only-projects --depth -1 --json)"
           matrix="$(node checkChangedWorkspaces.js "$all" "$diff")"
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
