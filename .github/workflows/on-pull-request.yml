@@ -103,7 +103,7 @@ jobs:
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Create matrix
         id: set-matrix
@@ -117,6 +117,14 @@ jobs:
           matrix="$(node checkChangedWorkspaces.js "$all" "$diff")"
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
+      - name: Create matrix
+        run: |
+          npm i pnpm -g
+          all="$(pnpm list --filter "*" --only-projects --json)"
+          diff="$(pnpm list --filter "...[origin/master]" --only-projects --json)"
+          matrix="$(node checkChangedWorkspaces.js "$all" "$diff")"
+          echo "matrix=$matrix" >> $GITHUB_OUTPUT
+
       - name: Changed workspaces
         # TODO: Temporary disabled because of switch to pnpm
         if: ${{ false }}
@@ -127,7 +135,8 @@ jobs:
   # Install main dependencies (yarn install) + Create cache for Yarn and Cypress
   install-main-dependencies:
     needs: setup-matrix
-    if: ${{ needs.setup-matrix.outputs.matrix != '{"container":[]}' }}
+    # TODO: Temporary disabled because of switch to pnpm
+    if: ${{ false }}
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout code
@@ -228,7 +237,7 @@ jobs:
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Free up some space
         id: free-up-space-e2e
