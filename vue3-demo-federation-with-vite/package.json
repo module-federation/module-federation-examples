@@ -4,11 +4,10 @@
   "scripts": {
     "start": "pnpm --parallel --filter vue3-demo-federation-with-vite_* start",
     "build": "pnpm --parallel --filter vue3-demo-federation-with-vite_* build",
-    "serve": "pnpm build && pnpm --parallel --filter vue3-demo-federation-with-vite_* serve",
-    "e2e:ci": "pnpm serve & pnpm cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
+    "serve": "pnpm --parallel --filter vue3-demo-federation-with-vite_* serve",
+    "e2e:ci": "pnpm start & wait-on -c ../cypress/waitOnConfig.json http-get://localhost:5173/ && pnpm cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "wait-on": "7.0.1",
-    "concurrently": "7.6.0"
+    "wait-on": "7.0.1"
   }
 }

@@ -4,9 +4,6 @@ import federation from '@originjs/vite-plugin-federation';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  preview: {
-    port: 5173,
-  },
   cacheDir: 'node_modules/.cacheDir',
   plugins: [
     vue(),
