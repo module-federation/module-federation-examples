@@ -138,11 +138,11 @@ jobs:
         id: free-up-space
         run: ${{ env.FILES_TO_DELETE }}
 
-        # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
+        # Hash pnpm.lock files to use it as a cache key, if pnpm.lock files are changed, the cache will be invalidated
       - name: Check Yarn hash
         id: check-yarn-hash
         run: |
-          yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
+          yarnHash="$(npx hash-files -f '["**/pnpm.lock"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
       - name: Restore Yarn Global Cache
@@ -150,10 +150,11 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           path: ${{ env.YARN_CACHE_PATH }}
-          key: yarn-global-cache-${{ github.run_id }} # Can use time based key as well
+          key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash}} # Can use time based key as well
           restore-keys: |
             yarn-global-cache
             yarn-global-cache-
+
       - name: Restore Yarn and Cypress cache
         id: restore-yarn-cypress-cache
         uses: actions/cache/restore@v3
@@ -177,12 +178,12 @@ jobs:
         run: |
           echo "Yarn has changed - installing dependencies ... "
           pnpm install
-      - name: Calerche Yarn and Cypress
+      - name: Cache Yarn and Cypress
         id: cache-yarn-cypress
         uses: actions/cache/save@v3
         with:
           path: ${{ env.YARN_CACHE_PATH }}
-          key: yarn-global-cache-${{ github.run_id }} # Can use time based key as well
+          key: yarn-global-cache-${{steps.check-yarn-hash.outputs.yarnHash}} # Can use time based key as well
 
       - name: Create additional cache
         id: create-additional-cache
@@ -222,11 +223,11 @@ jobs:
         run: |
           df -h
 
-        # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
+        # Hash pnpm.lock files to use it as a cache key, if pnpm.lock files are changed, the cache will be invalidated
       - name: Check Yarn hash
         id: check-yarn-hash-e2e
         run: |
-          yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
+          yarnHash="$(npx hash-files -f '["**/pnpm.lock"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
       - name: Restore Yarn and Cypress cache
@@ -244,7 +245,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           path: ${{ env.YARN_CACHE_PATH }}
-          key: yarn-global-cache-${{ github.run_id }} # Can use time based key as well
+          key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash}} # Can use time based key as well
           restore-keys: |
             yarn-global-cache
             yarn-global-cache-
@@ -258,8 +259,7 @@ jobs:
           echo "Yarn changed - install deps ... "
           pnpm install
 
-      - name:
-          Install sample deps
+      - name: Install sample deps
         id: install-sample-deps
         # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
         # if: steps.yarn-cache.outputs.cache-hit != 'true'
@@ -292,4 +292,5 @@ jobs:
           name: allure-results
           path: 'cypress/results/allure-results'
           retention-days: 7
+
 
