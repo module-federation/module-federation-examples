@@ -108,7 +108,8 @@ jobs:
       - name: Create matrix
         id: set-matrix
         run: |
-          npm i lerna@6 pnpm -g
+          npm i lerna@6 -g
+          npm i pnpm -g
           all="$(pnpm run list:all --silent)"
           diff="$(pnpm run list:changed --silent)"
           matrix="$(node checkChangedWorkspaces.js "$all" "$diff")"
