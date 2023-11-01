@@ -14,6 +14,11 @@ module.exports = {
   output: {
     publicPath: 'auto',
   },
+  resolve:{
+    fallback: {
+      "path": require.resolve("path-browserify") 
+    }
+  },
   module: {
     rules: [
       {

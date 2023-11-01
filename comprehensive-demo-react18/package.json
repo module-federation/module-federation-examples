@@ -10,15 +10,14 @@
   ],
   "version": "0.0.0",
   "scripts": {
-    "start": "concurrently \"yarn workspace comprehensive-demo-react18_app-01 start\" \"yarn workspace comprehensive-demo-react18_app-02 start\" \"yarn workspace comprehensive-demo-react18_app-03 start\" \"yarn workspace comprehensive-demo-react18_app-04 start\" \"yarn workspace comprehensive-demo-react18_app-05 start\"",
-    "build": "concurrently \"yarn workspace comprehensive-demo-react18_app-01 build\" \"yarn workspace comprehensive-demo-react18_app-02 build\" \"yarn workspace comprehensive-demo-react18_app-03 build\" \"yarn workspace comprehensive-demo-react18_app-04 build\" \"yarn workspace comprehensive-demo-react18_app-05 build\"",
-    "serve": "concurrently \"yarn workspace comprehensive-demo-react18_app-01 serve\" \"yarn workspace comprehensive-demo-react18_app-02 serve\" \"yarn workspace comprehensive-demo-react18_app-03 serve\" \"yarn workspace comprehensive-demo-react18_app-04 serve\" \"yarn workspace comprehensive-demo-react18_app-05 serve\"",
-    "clean": "concurrently \"yarn workspace comprehensive-demo-react18_app-01 clean\" \"yarn workspace comprehensive-demo-react18_app-02 clean\" \"yarn workspace comprehensive-demo-react18_app-03 clean\" \"yarn workspace comprehensive-demo-react18_app-04 clean\" \"yarn workspace comprehensive-demo-react18_app-05 clean\"",
+    "start": "concurrently \"lerna run --scope=comprehensive-demo-react18_app* --parallel start\" \"yarn serve\"",
+    "build": "lerna run --scope=comprehensive-demo-react18_app* build",
+    "serve": "lerna run --scope=comprehensive-demo-react18_app* --parallel serve",
+    "clean": "lerna run --scope=comprehensive-demo-react18_app* --parallel clean",
     "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/runAll*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "concurrently": "7.6.0",
-    "lerna": "3.22.1",
     "wait-on": "7.0.1"
   }
 }

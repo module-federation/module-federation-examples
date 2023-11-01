@@ -1,4 +1,5 @@
 {
+  "name": "utils",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/utils/src",
   "projectType": "application",
@@ -9,10 +10,7 @@
         "outputPath": "dist/utils",
         "index": "packages/utils/src/index.html",
         "main": "packages/utils/src/app/index.ts",
-        "assets": [
-          "packages/utils/src/assets",
-          "packages/utils/src/favicon.ico"
-        ]
+        "assets": ["packages/utils/src/assets", "packages/utils/src/favicon.ico"]
       },
       "configurations": {
         "production": {

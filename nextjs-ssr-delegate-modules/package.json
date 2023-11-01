@@ -1,10 +1,14 @@
 {
-  "private": true,
+  "name": "nextjs-ssr-delegate-modules",
+  "version": "1.0.0",
   "workspaces": [
     "./checkout",
     "./home",
     "./shop"
   ],
+  "private": true,
+
+
   "scripts": {
     "start": "concurrently \"cd checkout; npm run dev\" \"cd home; npm run dev\" \"cd shop; npm run dev\"",
     "build": "concurrently \"cd checkout; npm run build\" \"cd home; npm run build\" \"cd shop; npm run build\"",
