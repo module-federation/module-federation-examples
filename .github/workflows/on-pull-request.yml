@@ -317,7 +317,7 @@ jobs:
         id: run-sample-e2e-tests
         run: |
           node -v
-          pnpm --filter "...[origin/master]" e2e:ci
+          pnpm --filter "${{ matrix.container }}" e2e:ci
 
       - name: Create artifacts for Allure report
         id: create-artifacts-allure-report
