@@ -107,6 +107,8 @@ jobs:
 
       - name: Create matrix
         id: set-matrix
+        # TODO: Temporary disabled because of switch to pnpm
+        if: ${{ false }}
         run: |
           npm i lerna@6 -g
           npm i pnpm -g
@@ -116,6 +118,8 @@ jobs:
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
       - name: Changed workspaces
+        # TODO: Temporary disabled because of switch to pnpm
+        if: ${{ false }}
         id: changed-workspaces
         run: |
           echo '${{ steps.set-matrix.outputs.matrix }}'
@@ -140,12 +144,16 @@ jobs:
 
         # Hash pnpm.lock files to use it as a cache key, if pnpm.lock files are changed, the cache will be invalidated
       - name: Check Yarn hash
+        # TODO: Temporary disabled because of switch to pnpm
+        if: ${{ false }}
         id: check-yarn-hash
         run: |
           yarnHash="$(npx hash-files -f '["**/pnpm.lock"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
       - name: Restore Yarn Global Cache
+        # TODO: Temporary disabled because of switch to pnpm
+        if: ${{ false }}
         id: restore-yarn-global-cache
         uses: actions/cache/restore@v3
         with:
@@ -156,6 +164,8 @@ jobs:
             yarn-global-cache-
 
       - name: Restore Yarn and Cypress cache
+        # TODO: Temporary disabled because of switch to pnpm
+        if: ${{ false }}
         id: restore-yarn-cypress-cache
         uses: actions/cache/restore@v3
         with:
@@ -176,10 +186,12 @@ jobs:
         env:
           NODE_OPTIONS: '--max_old_space_size=4096'
         run: |
-          echo "Yarn has changed - installing dependencies ... "
+          echo "PNPM has changed - installing dependencies ... "
           npm i pnpm -g
           pnpm i --frozen-lockfile
       - name: Cache Yarn and Cypress
+        # TODO: Temporary disabled because of switch to pnpm
+        if: ${{ false }}
         id: cache-yarn-cypress
         uses: actions/cache/save@v3
         with:
@@ -187,11 +199,14 @@ jobs:
           key: yarn-global-cache-${{steps.check-yarn-hash.outputs.yarnHash}} # Can use time based key as well
 
       - name: Create additional cache
+        # TODO: Temporary disabled because of switch to pnpm
+        if: ${{ false }}
         id: create-additional-cache
         uses: actions/cache/save@v3
         with:
           path: ${{ env.CACHE_PATH }}
           key: e2e-cache-${{ steps.check-yarn-hash.outputs.yarnHash }}
+
       - name: Check disk space after installation
         id: check-disk-space-after-installation
         run: |
@@ -226,12 +241,16 @@ jobs:
 
         # Hash pnpm.lock files to use it as a cache key, if pnpm.lock files are changed, the cache will be invalidated
       - name: Check Yarn hash
+        # TODO: Temporary disabled because of switch to pnpm
+        if: ${{ false }}
         id: check-yarn-hash-e2e
         run: |
           yarnHash="$(npx hash-files -f '["**/pnpm.lock"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
       - name: Restore Yarn and Cypress cache
+        # TODO: Temporary disabled because of switch to pnpm
+        if: ${{ false }}
         id: restore-yarn-cypress-cache-e2e
         uses: actions/cache/restore@v3
         with:
@@ -243,6 +262,8 @@ jobs:
 
       - name: Restore Yarn Global Cache
         id: restore-yarn-global-cache-e2e
+        # TODO: Temporary disabled because of switch to pnpm
+        if: ${{ false }}
         uses: actions/cache/restore@v3
         with:
           path: ${{ env.YARN_CACHE_PATH }}
@@ -257,12 +278,14 @@ jobs:
         env:
           NODE_OPTIONS: '--max_old_space_size=4096'
         run: |
-          echo "Yarn changed - install deps ... "
+          echo "PNPM changed - install deps ... "
           npm i pnpm -g
-          pnpm install
+          pnpm i --frozen-lockfile
 
       - name: Install sample deps
         id: install-sample-deps
+        # TODO: Temporary disabled because of switch to pnpm
+        if: ${{ false }}
         # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
         # if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: |
@@ -284,7 +307,7 @@ jobs:
         id: run-sample-e2e-tests
         run: |
           node -v
-          npx pnpm --filter ${{ matrix.container }} e2e:ci
+          pnpm --filter "...[origin/master]" e2e:ci
 
       - name: Create artifacts for Allure report
         id: create-artifacts-allure-report
