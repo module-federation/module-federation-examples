@@ -149,6 +149,8 @@ jobs:
           fetch-depth: 0
 
       - name: Free up some space
+        # TODO: Temporary disabled because of switch to pnpm
+        if: ${{ false }}
         id: free-up-space
         run: ${{ env.FILES_TO_DELETE }}
 
@@ -242,6 +244,8 @@ jobs:
 
       - name: Free up some space
         id: free-up-space-e2e
+        # TODO: Temporary disabled because of switch to pnpm
+        if: ${{ false }}
         run: ${{ env.FILES_TO_DELETE }}
 
       - name: Check disk space before install
