@@ -5,9 +5,9 @@ env:
   CACHE_PATH: |
     **/node_modules
     ~/.cache/Cypress
-    ~/.pnpm-store/v3
   YARN_CACHE_PATH: |
     ~/.cache/yarn/v6
+    ~/.pnpm-store/v3
   FILES_TO_DELETE: |
     sudo rm -rf "/usr/share/dotnet"
     sudo rm -rf "/usr/share/swift"
@@ -108,7 +108,7 @@ jobs:
       - name: Create matrix
         id: set-matrix
         run: |
-          pnpm i lerna@6 -g
+          npm i lerna@6 pnpm -g
           all="$(pnpm run list:all --silent)"
           diff="$(pnpm run list:changed --silent)"
           matrix="$(node checkChangedWorkspaces.js "$all" "$diff")"
