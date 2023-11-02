@@ -1,15 +1,8 @@
 {
   "name": "comprehensive-demo-react18",
-  "workspaces": [
-    "./app-01",
-    "./app-02",
-    "./app-03",
-    "./app-04",
-    "./app-05"
-  ],
   "version": "0.0.0",
   "scripts": {
-    "start": "concurrently \"pnpm --filter comprehensive-demo-react18_app* --parallel start\" \"yarn serve\"",
+    "start": "pnpm build && pnpm serve",
     "build": "pnpm --filter comprehensive-demo-react18_app* build",
     "serve": "pnpm --filter comprehensive-demo-react18_app* --parallel serve",
     "clean": "pnpm --filter comprehensive-demo-react18_app* --parallel clean",
