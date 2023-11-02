@@ -1,0 +1,25 @@
+{
+  "name": "umd-federation_app1",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack serve",
+    "build": "webpack --mode development"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.21.4",
+    "@babel/preset-react": "7.18.6",
+    "babel-loader": "8.2.5",
+    "html-webpack-plugin": "5.5.0",
+    "universal-module-federation-plugin": "1.0.5",
+    "webpack": "5.75.0",
+    "webpack-cli": "4.10.0",
+    "webpack-dev-server": "4.11.1"
+  }
+}
