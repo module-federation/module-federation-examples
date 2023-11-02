@@ -1,13 +1,12 @@
 {
-  "name": "@server-side-rendering/expose-jss",
-
+  "name": "federated-css-react-ssr_expose-jss",
   "version": "1.0.0",
   "scripts": {
-    "build": "yarn build:client && yarn build:server",
+    "build": "pnpm build:client && pnpm build:server",
     "build:client": "webpack --mode development --config config/webpack.client.js",
     "build:server": "webpack --mode development --config config/webpack.server.js",
     "serve": "npx serve dist/ -p 3002",
-    "start": "yarn build && yarn serve"
+    "start": "pnpm build && pnpm serve"
   },
   "license": "MIT",
   "devDependencies": {

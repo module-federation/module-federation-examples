@@ -3,10 +3,9 @@
   "version": "2.3.10",
   "main": "index.js",
   "license": "MIT",
-
   "scripts": {
     "dev": "genesis-ts-node --project=./tsconfig.node.json genesis.dev",
-    "build": "rm -rf dist types && yarn run build:dts && yarn run build:vue && yarn run build:node",
+    "build": "rm -rf dist types && pnpm run build:dts && pnpm run build:vue && pnpm run build:node",
     "build:node": "NODE_ENV=production tsc --build ./tsconfig.node.json",
     "build:vue": "NODE_ENV=production ts-node --project=./tsconfig.node.json genesis.build",
     "build:dts": "npx vue-tsc --declaration --emitDeclarationOnly",

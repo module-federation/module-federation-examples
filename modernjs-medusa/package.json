@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "start": "concurrently \"cd ./host && pnpm dev\" \"cd ./provider && pnpm dev\"",
+    "start": "concurrently \"cd ./host && npm run dev\" \"cd ./provider && npm run dev\"",
     "build": "concurrently \"cd ./host && pnpm build\" \"cd ./provider && pnpm build\"",
     "serve": "concurrently \"cd ./host && pnpm serve\" \"cd ./provider && pnpm serve\"",
     "clean": "concurrently \"cd ./host && pnpm clean\" \"cd ./provider && pnpm clean\""
