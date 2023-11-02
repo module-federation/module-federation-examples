@@ -24112,6 +24112,13 @@ init-package-json@3.0.2, init-package-json@^3.0.2:
     validate-npm-package-license "^3.0.4"
     validate-npm-package-name "^4.0.0"
 
+inject-webpack@^0.4.3:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/inject-webpack/-/inject-webpack-0.4.4.tgz#5e69d1111d068eaf6b2ba9db314eee4f714b01fd"
+  integrity sha512-UPGYp28G4bFHBX6glEljo9/qJgYjqnqMDmXvnhNQ5peHk4KmYodBgwzhWY0H4HXsMrbiQGfvX+zn499HpzFqBA==
+  dependencies:
+    webpack-virtual-modules "^0.4.6"
+
 injection-js@^2.2.1:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/injection-js/-/injection-js-2.4.0.tgz#ebe8871b1a349f23294eaa751bbd8209a636e754"
@@ -36320,6 +36327,11 @@ semver@~7.0.0:
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.0.0.tgz#5f3ca35761e47e05b206c6daff2cf814f0316b8e"
   integrity sha512-+GB6zVA9LWh6zovYQLALHwv5rb2PHGlJi3lfiqIHxR0uuwCgefcOJc59v9fv1w8GbStwxuuqqAjI9NMAOOgq1A==
 
+semverhook@^1.1.0, semverhook@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/semverhook/-/semverhook-1.2.0.tgz#2a69e82b3466d7aaa29fa04ea3468aed2bc188fb"
+  integrity sha512-S31ZtrvnP3m94QxsXccqjm/erIvWYcsN/ENc6Xlk6eBtSPgtFeeBPnMFro2uTmw9ST4S55uZAv094bvA1AlTcA==
+
 send@0.17.1:
   version "0.17.1"
   resolved "https://registry.yarnpkg.com/send/-/send-0.17.1.tgz#c1d8b059f7900f7466dd4938bdc44e11ddb376c8"
@@ -37610,6 +37622,11 @@ string_decoder@~1.1.1:
   dependencies:
     safe-buffer "~5.1.0"
 
+stringify-has-fn@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/stringify-has-fn/-/stringify-has-fn-1.0.3.tgz#20df76ed9c014b7b8c86f3ca706fd92c4cfcc243"
+  integrity sha512-f8Z4faG54hS1CJ+yydaOwjW7gFXHarcoriMlVPU7Al1k0XsDONq+mPzUoZIpgccaLm5GrZVm+svrLBCRamuEKw==
+
 stringify-object@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/stringify-object/-/stringify-object-3.3.0.tgz#703065aefca19300d3ce88af4f5b3956d7556629"
@@ -38157,6 +38174,11 @@ symbol-tree@^3.2.4:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
+
+systemjs@^6.13.0:
+  version "6.14.2"
+  resolved "https://registry.yarnpkg.com/systemjs/-/systemjs-6.14.2.tgz#e289f959f8c8b407403bd39c6abaa16f2c13f316"
+  integrity sha512-1TlOwvKWdXxAY9vba+huLu99zrQURDWA8pUTYsRIYDZYQbGyK+pyEP4h4dlySsqo7ozyJBmYD20F+iUHhAltEg==
 
 table@^6.0.9:
   version "6.8.1"
@@ -39348,6 +39370,14 @@ uglify-js@^3.1.4, uglify-js@^3.5.1:
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.17.4.tgz#61678cf5fa3f5b7eb789bb345df29afb8257c22c"
   integrity sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==
 
+umfjs@^0.3.4:
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/umfjs/-/umfjs-0.3.7.tgz#b08c354e0ebc8dc1fcf57a0adf03dc9937bd4b4f"
+  integrity sha512-xW3iGbe1n0BqtMkyIMHLJPNKZWhy5lTW5jhoue6qYAiB0mKOONTOFX2AjIkn8ZV8iEfANZjf1PJC9a5vTt07+A==
+  dependencies:
+    semverhook "^1.1.0"
+    systemjs "^6.13.0"
+
 unbox-primitive@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/unbox-primitive/-/unbox-primitive-1.0.2.tgz#29032021057d5e6cdbd08c5129c226dff8ed6f9e"
@@ -39495,6 +39525,17 @@ universal-analytics@0.4.23:
     debug "^4.1.1"
     request "^2.88.2"
     uuid "^3.0.0"
+
+universal-module-federation-plugin@1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/universal-module-federation-plugin/-/universal-module-federation-plugin-1.0.5.tgz#c1c3aae263440b6b481479a7d2dc9cca21743c50"
+  integrity sha512-KQHjQAvHfLAGNL3KlPbjDnOrrP6pv1fggk+dq57/8XIMx2aBKZ7viYIr51qx/yLhMYbYUjuvhJz60/tYqa7lcg==
+  dependencies:
+    inject-webpack "^0.4.3"
+    semverhook "^1.2.0"
+    stringify-has-fn "^1.0.3"
+    umfjs "^0.3.4"
+    webpack-virtual-modules "^0.4.6"
 
 universal-user-agent@^6.0.0:
   version "6.0.0"
@@ -40963,7 +41004,7 @@ webpack-subresource-integrity@5.1.0, webpack-subresource-integrity@^5.1.0:
   dependencies:
     typed-assert "^1.0.8"
 
-webpack-virtual-modules@^0.4.2:
+webpack-virtual-modules@^0.4.2, webpack-virtual-modules@^0.4.6:
   version "0.4.6"
   resolved "https://registry.yarnpkg.com/webpack-virtual-modules/-/webpack-virtual-modules-0.4.6.tgz#3e4008230731f1db078d9cb6f68baf8571182b45"
   integrity sha512-5tyDlKLqPfMqjT3Q9TAqf2YqjwmnUleZwzJi1A5qXnlBCdj2AtOJ6wAWdglTIDOPgOiOrXeBeFcsQ8+aGQ6QbA==
