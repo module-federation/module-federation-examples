@@ -1,8 +1,6 @@
 const { execSync } = require('child_process');
 const execOptions = { maxBuffer: Infinity }; // Increase maxBuffer to avoid "stdout maxBuffer length exceeded" error
 
-console.log(process.argv[2]);
-
 let allPackages = process.argv[2] ? JSON.parse(process.argv[2]) : null;
 let updatedPackages = process.argv[3] ? JSON.parse(process.argv[3]) : null;
 
