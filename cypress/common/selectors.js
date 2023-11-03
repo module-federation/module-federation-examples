@@ -1,6 +1,6 @@
-import {Constants} from "../fixtures/constants";
+const {Constants} = require("../fixtures/constants.js");
 
-export const baseSelectors = {
+module.exports.baseSelectors = {
     tags: {
         coreElements: {
             button: 'button',
@@ -57,7 +57,7 @@ export const baseSelectors = {
     },
 }
 
-export const commonSelectors = {
+module.exports.commonSelectors = {
     commonAngularAppsSelectors: {
         alertMessage: '.alert-danger',
         buttons: {
@@ -75,7 +75,7 @@ export const commonSelectors = {
     nextJsAppsLinkCard: '[data-e2e="TEXTED_LINK_CARD"]'
 }
 
-export const selectors = {
+module.exports.selectors = {
     vue3CliDemoApp: {
         tabs: {
             home: '.hello',
@@ -198,40 +198,40 @@ export const selectors = {
     }
 }
 
-export const updatedSelectors = {
+module.exports.updatedSelectors = {
     common: {
-        appName: `${baseSelectors.tags.coreElements.div} ${baseSelectors.tags.headers.h2}`,
+        appName: `${module.exports.baseSelectors.tags.coreElements.div} ${module.exports.baseSelectors.tags.headers.h2}`,
     },
     vue3CliDemoApp: {
-        navigationActiveStateTab:`${baseSelectors.tags.navigation} .router-link-active`,
-        linkContainer: `${selectors.vue3CliDemoApp.tabs.home} ${baseSelectors.tags.coreElements.link}`,
+        navigationActiveStateTab:`${module.exports.baseSelectors.tags.navigation} .router-link-active`,
+        linkContainer: `${module.exports.selectors.vue3CliDemoApp.tabs.home} ${module.exports.baseSelectors.tags.coreElements.link}`,
     },
     vue3DemoFederationWithViteApp: {
         buttons: {
-            vite: selectors.vue3DemoFederationWithViteApp.vueAppButton.replace('{appType}', Constants.selectorParts.vue3DemoFederationWithViteApp.vite),
-            webpack: selectors.vue3DemoFederationWithViteApp.vueAppButton.replace('{appType}', Constants.commonConstantsData.webpack),
-            common: `${baseSelectors.tags.coreElements.div}[class*= "content"]`,
+            vite: module.exports.selectors.vue3DemoFederationWithViteApp.vueAppButton.replace('{appType}', Constants.selectorParts.vue3DemoFederationWithViteApp.vite),
+            webpack: module.exports.selectors.vue3DemoFederationWithViteApp.vueAppButton.replace('{appType}', Constants.commonConstantsData.webpack),
+            common: `${module.exports.baseSelectors.tags.coreElements.div}[class*= "content"]`,
         }
     },
     sharedRoutingApp: {
-        hamburgerMenuButton: `${baseSelectors.tags.headers.header} ${baseSelectors.tags.coreElements.button}`,
+        hamburgerMenuButton: `${module.exports.baseSelectors.tags.headers.header} ${module.exports.baseSelectors.tags.coreElements.button}`,
     },
     vueCliApp: {
         sectionElements: {
-            name: `${baseSelectors.tags.section} ${baseSelectors.tags.headers.h1}`,
-            button: `${baseSelectors.tags.section} ${baseSelectors.tags.coreElements.button}`,
+            name: `${module.exports.baseSelectors.tags.section} ${module.exports.baseSelectors.tags.headers.h1}`,
+            button: `${module.exports.baseSelectors.tags.section} ${module.exports.baseSelectors.tags.coreElements.button}`,
         }
     },
     angularUniversalSsrApp: {
-        tab: `${baseSelectors.tags.coreElements.div} ${baseSelectors.tags.coreElements.link}`,
-        addedCity: `${selectors.angularUniversalSsrApp.citiesBlock} ${baseSelectors.tags.coreElements.list}`,
+        tab: `${module.exports.baseSelectors.tags.coreElements.div} ${module.exports.baseSelectors.tags.coreElements.link}`,
+        addedCity: `${module.exports.selectors.angularUniversalSsrApp.citiesBlock} ${module.exports.baseSelectors.tags.coreElements.list}`,
     },
     craReactAppRewiredApp: {
-        componentBorder: `${selectors.craReactRewiredApp.componentInfo}${baseSelectors.css.style
+        componentBorder: `${module.exports.selectors.craReactRewiredApp.componentInfo}${module.exports.baseSelectors.css.style
             .replace('{style}', Constants.color.nonRgbValues.borderRed)}`
     },
     viteReactSimpleApp: {
-        headerBlock: `${baseSelectors.tags.headers.header} ${baseSelectors.tags.coreElements.div}`,
+        headerBlock: `${module.exports.baseSelectors.tags.headers.header} ${module.exports.baseSelectors.tags.coreElements.div}`,
     }
 }
 

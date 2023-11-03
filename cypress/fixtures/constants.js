@@ -1,5 +1,5 @@
-export class Constants {
-    public static readonly filesPath = {
+module.exports = class Constants {
+    static filesPath = {
         typeScriptMonoRepoPackageJsonPath: 'typescript-monorepo/package.json',
         selfHealingAppsConfigs: {
             app1: 'self-healing/app1/webpack.config.js',
@@ -33,7 +33,7 @@ export class Constants {
         }
     }
 
-    public static readonly selectorParts = {
+    static selectorParts = {
         vue3DemoFederationWithViteApp: {
             vite: 'vite',
         },
@@ -52,7 +52,7 @@ export class Constants {
         },
     }
 
-    public static readonly commonConstantsData = {
+    static commonConstantsData = {
         commonCountAppNames: {
             app1: 'App 1',
             app2: 'App 2',
@@ -193,7 +193,7 @@ export class Constants {
         }
     }
 
-    public static readonly updatedConstantsData = {
+    static updatedConstantsData = {
         commonAppWithButton: {
             app1: `${Constants.commonConstantsData.commonCountAppNames.app1} ${Constants.commonConstantsData.button}`,
             app2: `${Constants.commonConstantsData.commonCountAppNames.app2} ${Constants.commonConstantsData.button}`,
@@ -252,7 +252,7 @@ export class Constants {
         },
     }
 
-    public static readonly elementsText = {
+    static elementsText = {
         reactNestedRoutersApp: {
             shellAppTextedLinks: [
                 'App1 Page1',
@@ -662,7 +662,7 @@ export class Constants {
             },
             app2: {
                 subHeader: 'This is the App 2 application.',
-            }, 
+            },
             splitedApp:{
                 header: 'App 2: Content',
                 subHeader: 'This is the content from app2.',
@@ -830,7 +830,7 @@ export class Constants {
         }
     }
 
-    public static readonly commonPhrases = {
+    static commonPhrases = {
         reactNestedRoutersApp: {
             pagesMessages: {
                 page1App1: 'Page 1 from App1',
@@ -1010,7 +1010,7 @@ export class Constants {
         }
     }
 
-    public static readonly color = {
+    static color = {
         nonRgbValues: {
             red: 'color: red;',
             borderBlack: 'border: 1px solid black; padding: 12px;',
@@ -1061,7 +1061,7 @@ export class Constants {
         transparent: 'rgba(0, 0, 0, 0)',
     }
 
-    public static readonly hrefs = {
+    static hrefs = {
         vueCliApp: {
             documentation: {
                 link: 'https://cli.vuejs.org',
@@ -1176,7 +1176,7 @@ export class Constants {
             product: '/product'
         }
     }
-    public static readonly fullTestData = {
+    static fullTestData = {
         federatedCssTestData: {
             css: {
                 path: 'consume-css-page',
@@ -1213,3 +1213,5 @@ export class Constants {
         }
     }
 }
+
+

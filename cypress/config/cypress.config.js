@@ -42,25 +42,25 @@ function setupNodeEvents(on, config) {
     return launchOptions
   })
 
-  on ('task', 
+  on ('task',
     {
       readFile({
-        filePath 
+        filePath
       }) {
         return fs.readFileSync(path.resolve(`../../${filePath}`),'utf8')
       }
     }
   )
 
-  on ('task', 
+  on ('task',
   {
     writeToFile({
       filePath,
-      content 
+      content
     }) {
       return new Promise((resolve, reject) => {
         //@ts-ignore
-        fs.writeFile(path.resolve(`../../${filePath}`), content, err => { 
+        fs.writeFile(path.resolve(`../../${filePath}`), content, err => {
           try {
             console.log(filePath)
             resolve(true)
@@ -83,7 +83,7 @@ export default defineConfig({
   e2e: {
     excludeSpecPattern: '*.js',
     specPattern: './**/e2e/**/*.cy.{js,jsx,ts,tsx}',
-    supportFile: './cypress/support/e2e.ts',
+    supportFile: './cypress/support/e2e.js',
     fixturesFolder: './cypress/fixtures',
     defaultCommandTimeout: 10000,
     video: true,
