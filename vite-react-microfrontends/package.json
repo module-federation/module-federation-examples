@@ -19,7 +19,7 @@
 		"build:remote": "npm --prefix ./remote run build",
 		"preview:host": "npm --prefix ./host run preview",
 		"preview:remote": "npm --prefix ./remote run preview",
-		"e2e:test": "npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/runAll*.cy.ts\" --browser=chrome",
+		"e2e:test": "npx cypress run --config-file ../cypress/config/cypress.config.js --config '{\\\"supportFile\\\": \\\"../cypress/support/e2e.ts\\\"}' --spec \\\"./e2e/tests/runAll*.cy.ts\\\" --browser=chrome",
 		"e2e:ci": "node e2e.ci.js"
 	},
 	"author": {

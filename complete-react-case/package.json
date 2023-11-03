@@ -9,7 +9,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "concurrently 'cd ./component-app && yarn start' 'cd ./lib-app && yarn start' 'cd ./main-app && yarn start'",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3002/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3002/ && npx cypress run --config-file ../cypress/config/cypress.config.js --config '{\\\"supportFile\\\": \\\"../cypress/support/e2e.ts\\\"}' --spec \\\"./e2e/*.cy.ts\\\" --browser=chrome"
   },
   "keywords": [],
   "author": "",

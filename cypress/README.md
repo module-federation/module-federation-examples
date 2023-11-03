@@ -22,7 +22,7 @@ cypress
 │   ├── base.ts
 │   └── selectors.ts
 ├── config
-│   └── cypress.config.ts (cypress system file)
+│   └── cypress.config.js (cypress system file)
 ├── fixtures
 │   └── constants.ts
 │   └── commonTestData.ts
@@ -42,7 +42,7 @@ cypress
 - `selectors.ts` - all selectors/locators that are used in tests.
 
 `config` - contains configuration files for the Cypress itself.
-- `cypress.config.ts` - Cypress config file. Since Cypress 10, all plugins and configs for Cypress should be placed here. [How to config Cypress](https://docs.cypress.io/guides/references/configuration)
+- `cypress.config.js` - Cypress config file. Since Cypress 10, all plugins and configs for Cypress should be placed here. [How to config Cypress](https://docs.cypress.io/guides/references/configuration)
 
 `fixtures` - contains files or data that are used in tests, such as images, json constants, etc.
 
@@ -105,12 +105,12 @@ The tests are executed in headless mode, which is useful for CI/CD. The system g
 To begin the test run, execute the following command in the Terminal. This command will execute all the tests without building or starting the application. It is necessary to manually start the application before running the command, and then run only the specific test that is required.
 
 ```bash
-npx cypress run --config-file cypress/config/cypress.config.ts --browser=chrome --spec "path_to_test"
+npx cypress run --config-file cypress/config/cypress.config.js --browser=chrome --spec "path_to_test"
 ```
 
 For example:
 ```bash
-npx cypress run --config-file cypress/config/cypress.config.ts --browser=chrome --spec "./advanced-api/automatic-vendor-sharing/e2e/*.cy.ts"
+npx cypress run --config-file cypress/config/cypress.config.js --browser=chrome --spec "./advanced-api/automatic-vendor-sharing/e2e/*.cy.ts"
 ```
 
 For ease of use, each sample includes a script that performs the following tasks: 

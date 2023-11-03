@@ -160,8 +160,8 @@
     "prettier": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\"",
     "prettier:check": "prettier --list-different \"**/*.{js,jsx,json,md,ts,tsx}\"",
     "test": "jest test/index.spec.js --maxWorkers=2",
-    "cypress:debug": "cypress open --e2e --config-file cypress/config/cypress.config.ts --browser=chrome",
-    "cypress:run": "cypress run --config-file cypress/config/cypress.config.ts --browser=chrome",
+    "cypress:debug": "cypress open --e2e --config-file cypress/config/cypress.config.js --browser=chrome",
+    "cypress:run": "cypress run --config-file cypress/config/cypress.config.js --browser=chrome",
     "report:generate": "allure generate ./cypress/results/allure-results --clean -o ./cypress/report",
     "report:open": "allure open ./cypress/report"
   }

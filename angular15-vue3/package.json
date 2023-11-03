@@ -12,7 +12,7 @@
     "start:shell": "ng serve shell --live-reload false",
     "build:shell": "ng build shell",
     "start:remote": "npm --prefix ./vue-remote run serve",
-    "e2e:test": "npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
+    "e2e:test": "npx cypress run --config-file ../cypress/config/cypress.config.js --config '{\\\"supportFile\\\": \\\"../cypress/support/e2e.ts\\\"}' --spec \\\"./e2e/*.cy.ts\\\" --browser=chrome",
     "e2e:ci": "node e2e.ci.js"
   },
   "dependencies": {

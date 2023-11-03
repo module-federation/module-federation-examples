@@ -12,7 +12,7 @@
     "build": "lerna run --scope=cra_* build'",
     "serve": "lerna run --scope=cra_* serve'",
     "clean": "lerna run --scope=cra_* clean'",
-    "e2e:ci": "yarn start && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome && yarn stop"
+    "e2e:ci": "yarn start && npx cypress run --config-file ../cypress/config/cypress.config.js --config '{\\\"supportFile\\\": \\\"../cypress/support/e2e.ts\\\"}' --spec \\\"./e2e/*.cy.ts\\\" --browser=chrome && yarn stop"
   },
   "devDependencies": {
     "concurrently": "7.6.0",

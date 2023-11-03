@@ -4,11 +4,7 @@ const fs = require('fs')
 const path = require('path');
 const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 
-async function setupNodeEvents(
-  on: Cypress.PluginEvents,
-  config: Cypress.PluginConfigOptions,
-): Promise<Cypress.PluginConfigOptions> {
-
+function setupNodeEvents(on, config) {
   // @ts-ignore
   on('before:browser:launch', (browser = {}, launchOptions) => {
     console.log(

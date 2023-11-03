@@ -21,7 +21,7 @@
     "scully:serve": "scully serve",
     "scully:route": "scully --scanRoutes",
     "scully:debug": "scully --scanRoutes --stats --showGuessError --watch --logSeverity=normal",
-    "e2e:ci": "yarn build:shared && yarn start:shell & wait-on http-get://localhost:4200/ && yarn start:profile & wait-on http-get://localhost:4201/ && yarn start:product & wait-on http-get://localhost:4202/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "e2e:ci": "yarn build:shared && yarn start:shell & wait-on http-get://localhost:4200/ && yarn start:profile & wait-on http-get://localhost:4201/ && yarn start:product & wait-on http-get://localhost:4202/ && npx cypress run --config-file ../cypress/config/cypress.config.js --config '{\\\"supportFile\\\": \\\"../cypress/support/e2e.ts\\\"}' --spec \\\"./e2e/*.cy.ts\\\" --browser=chrome"
   },
   "resolutions": {
     "webpack": "5.80.0"
