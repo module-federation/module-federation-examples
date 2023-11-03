@@ -177,6 +177,7 @@ jobs:
           npm install lerna@6 -g
           lerna bootstrap
       - name: Cache Yarn and Cypress
+        if: steps.restore-yarn-cypress-cache.outputs.cache-hit != 'true'
         id: cache-yarn-cypress
         uses: actions/cache/save@v3
         with:
@@ -184,6 +185,7 @@ jobs:
           key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash }} # Can use time based key as well
 
       - name: Create additional cache
+        if: steps.restore-yarn-global-cache.outputs.cache-hit != 'true'
         id: create-additional-cache
         uses: actions/cache/save@v3
         with:
