@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "start": "lerna run --scope=angular14-react_* --parallel start",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:4201/ && npx cypress run --config-file ../cypress/config/cypress.config.js --config '{\\\"supportFile\\\": \\\"../cypress/support/e2e.js\\\"}' --spec \\\"./e2e/*.cy.js\\\" --browser=chrome"
+    "e2e:ci": "yarn start & wait-on http-get://localhost:4201/ && npx cypress run --config-file ../cypress/config/cypress.config.js --config '{\"supportFile\": \"../../cypress/support/e2e.js\"}' --spec \"./e2e/tests/runAll.cy.js\" --browser=chrome"
   },
   "devDependencies": {
     "wait-on": "7.0.1"

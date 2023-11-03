@@ -11,7 +11,7 @@
     "build": "concurrently \"cd app1; yarn build\" \"cd app2; yarn build\"",
     "serve": "concurrently \"cd app1; yarn serve\" \"cd app2; yarn serve\"",
     "clean": "concurrently \"cd app1; yarn reset\" \"cd app2; yarn reset\"",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.js --config '{\\\"supportFile\\\": \\\"../cypress/support/e2e.js\\\"}' --spec \\\"./e2e/*.cy.js\\\" --browser=chrome"
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.js --config '{\"supportFile\": \"../../cypress/support/e2e.js\"}' --spec \"./e2e/tests/runAll.cy.js\" --browser=chrome"
   },
   "devDependencies": {
     "concurrently": "7.6.0",
