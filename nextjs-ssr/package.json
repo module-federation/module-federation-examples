@@ -12,7 +12,7 @@
     "start": "find . -type d -name '.next' -exec rm -rf {} + && concurrently \"cd checkout; npm run dev\" \"cd home; npm run dev\" \"cd shop; npm run dev\"",
     "build": "find . -type d -name '.next' -exec rm -rf {} +  && concurrently \"cd checkout; npm run build\" \"cd home; npm run build\" \"cd shop; npm run build\"",
     "serve": "concurrently \"cd checkout; npm run start\" \"cd home; npm run start\" \"cd shop; npm run start\"",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.js --config '{\\\"supportFile\\\": \\\"../cypress/support/e2e.ts\\\"}' --spec \\\"./e2e/*.cy.ts\\\" --browser=chrome"
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.js --config '{\\\"supportFile\\\": \\\"../cypress/support/e2e.js\\\"}' --spec \\\"./e2e/*.cy.js\\\" --browser=chrome"
   },
   "dependencies": {
     "concurrently": "^7.0.0",

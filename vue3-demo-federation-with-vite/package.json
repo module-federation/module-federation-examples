@@ -9,7 +9,7 @@
   "scripts": {
     "build": "pnpm --parallel --filter \"./**\" build",
     "serve": "pnpm --parallel --filter \"./**\"  serve",
-    "e2e:ci": "pnpm build && pnpm serve & wait-on http-get://localhost:5000/ && npx cypress run --config-file ../cypress/config/cypress.config.js --config '{\\\"supportFile\\\": \\\"../cypress/support/e2e.ts\\\"}' --spec \\\"./e2e/tests/runAll.cy.ts\\\" --browser=chrome"
+    "e2e:ci": "pnpm build && pnpm serve & wait-on http-get://localhost:5000/ && npx cypress run --config-file ../cypress/config/cypress.config.js --config '{\\\"supportFile\\\": \\\"../cypress/support/e2e.js\\\"}' --spec \\\"./e2e/tests/runAll.cy.js\\\" --browser=chrome"
   },
   "devDependencies": {
     "pnpm": "7.32.2",
