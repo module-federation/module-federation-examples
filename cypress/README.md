@@ -110,7 +110,7 @@ npx cypress run --config-file cypress/config/cypress.config.js --browser=chrome 
 
 For example:
 ```bash
-npx cypress run --config-file cypress/config/cypress.config.js --browser=chrome --spec "./advanced-api/automatic-vendor-sharing/e2e/*.cy.ts"
+npx cypress run --config-file cypress/config/cypress.config.js --browser=chrome --spec "./advanced-api/automatic-vendor-sharing/e2e/*.cy.js"
 ```
 
 For ease of use, each sample includes a script that performs the following tasks: 
@@ -188,11 +188,11 @@ In comment you can find a link to the report and a link to the workflow itself, 
 
 ### Create a test
 
-First, create a new, empty test file. It should be located in the `sample/e2e` directory. The file name should end with the `.cy.ts` extension, and should have a simple, self-explanatory name.
+First, create a new, empty test file. It should be located in the `sample/e2e` directory. The file name should end with the `.cy.js` extension, and should have a simple, self-explanatory name.
 
 For example:
-- hostChecks.cy.ts
-- name_of_sample.cy.ts
+- hostChecks.cy.js
+- name_of_sample.cy.js
 - etc.
 
 Then, import the `common` methods and `PageObject` for the test.
@@ -501,13 +501,13 @@ sample
 └── e2e
     ├── methods (optional)
     │   └── methods.ts (optional)
-    ├── hostChecks.cy.ts (for uncommon checks)
-    ├── commonChecks.cy.ts (for common checks)
-    └── runAllTest.cy.ts (for common and uncommon checks)
+    ├── hostChecks.cy.js (for uncommon checks)
+    ├── commonChecks.cy.js (for common checks)
+    └── runAllTest.cy.js (for common and uncommon checks)
 ```
-- `hostChecks.cy.ts` for non-similar checks. It contains all non-similar checks for each app;
-- `commonChecks.cy.ts` for similar checks. It contains all similar checks for each app;
-- `runAllTest.cy.ts` for similar and non-simillar checks. It contains all checks for each app. You don't need to duplicate code here, only import from your `commonChecks` and `hostChecks` files and that's all.
+- `hostChecks.cy.js` for non-similar checks. It contains all non-similar checks for each app;
+- `commonChecks.cy.js` for similar checks. It contains all similar checks for each app;
+- `runAllTest.cy.js` for similar and non-simillar checks. It contains all checks for each app. You don't need to duplicate code here, only import from your `commonChecks` and `hostChecks` files and that's all.
 
 ```typescript
 import './hostChecks.cy'

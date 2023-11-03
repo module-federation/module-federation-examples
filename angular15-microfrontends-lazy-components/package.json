@@ -15,7 +15,7 @@
     "test": "ng test mdmf-shared & ng test mdmf-profile & ng test mdmf-shell",
     "lint": "ng lint",
     "e2e": "ng e2e mdmf-profile & ng e2e mdmf-shell",
-    "e2e:ci": "yarn build:shared && yarn start:shell & wait-on http-get://localhost:4200/ && yarn start:profile & wait-on http-get://localhost:4201/ && npx cypress run --config-file ../cypress/config/cypress.config.js --config '{\\\"supportFile\\\": \\\"../cypress/support/e2e.ts\\\"}' --spec \\\"./e2e/*.cy.ts\\\" --browser=chrome"
+    "e2e:ci": "yarn build:shared && yarn start:shell & wait-on http-get://localhost:4200/ && yarn start:profile & wait-on http-get://localhost:4201/ && npx cypress run --config-file ../cypress/config/cypress.config.js --config '{\\\"supportFile\\\": \\\"../cypress/support/e2e.js\\\"}' --spec \\\"./e2e/*.cy.js\\\" --browser=chrome"
   },
   "dependencies": {
     "@angular/animations": "15.0.4",
