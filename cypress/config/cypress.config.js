@@ -1,4 +1,4 @@
-import { defineConfig } from "cypress";
+const { defineConfig } = require("cypress");
 
 const fs = require('fs')
 const path = require('path');
