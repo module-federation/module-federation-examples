@@ -5,6 +5,10 @@ module.exports = {
   entry: './index.js',
   mode: 'development',
   devtool: 'hidden-source-map',
+  cache:false,
+  // experiments: {
+  //   topLevelAwait: true
+  // },
   output: {
     publicPath: 'http://localhost:3002/',
     clean: true,
@@ -27,6 +31,11 @@ module.exports = {
         },
       },
     ],
+  },
+  devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
   },
   plugins: [
     new ModuleFederationPlugin({

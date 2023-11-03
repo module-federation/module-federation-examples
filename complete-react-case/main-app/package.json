@@ -2,10 +2,9 @@
   "name": "complete-react-case_main-app",
   "version": "1.0.0",
   "description": "",
-  "main": "webpack.config.js",
   "scripts": {
     "webpack": "webpack --watch",
-    "serve": "serve dist -p 3002",
+    "serve": "serve dist -p 3002 --cors",
     "start": "concurrently \"npm run webpack\" \"npm run serve\""
   },
   "keywords": [],
