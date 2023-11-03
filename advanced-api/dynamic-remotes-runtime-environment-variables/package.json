@@ -16,7 +16,7 @@
     "docker:build": "lerna run --scope=dynamic-remotes-runtime-environment-variables_* --parallel docker:build",
     "docker:run": "lerna run --scope=dynamic-remotes-runtime-environment-variables_* --parallel docker:run",
     "docker:rm": "lerna run --scope=dynamic-remotes-runtime-environment-variables_* --parallel docker:rm",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../../cypress/config/cypress.config.js --config '{\\\"supportFile\\\": \\\"../../cypress/support/e2e.js\\\"}' --spec \\\"./e2e/*.cy.js\\\" --browser=chrome"
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../../cypress/config/cypress.config.js --config '{\"supportFile\": \"../../cypress/support/e2e.js\"}' --spec \"./e2e/*.cy.js\" --browser=chrome"
   },
   "devDependencies": {
     "copy-webpack-plugin": "11.0.0",
