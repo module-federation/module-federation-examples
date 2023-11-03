@@ -148,7 +148,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           path: ${{ env.YARN_CACHE_PATH }}
-          key: yarn-global-cache-${{ github.run_id }} # Can use time based key as well
+          key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash }} # Can use time based key as well
           restore-keys: |
             yarn-global-cache
             yarn-global-cache-
@@ -181,7 +181,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           path: ${{ env.YARN_CACHE_PATH }}
-          key: yarn-global-cache-${{ github.run_id }} # Can use time based key as well
+          key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash }} # Can use time based key as well
 
       - name: Create additional cache
         id: create-additional-cache
@@ -243,7 +243,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           path: ${{ env.YARN_CACHE_PATH }}
-          key: yarn-global-cache-${{ github.run_id }} # Can use time based key as well
+          key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash }} # Can use time based key as well
           restore-keys: |
             yarn-global-cache
             yarn-global-cache-
