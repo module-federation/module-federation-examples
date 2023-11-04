@@ -268,6 +268,22 @@ jobs:
           # npx lerna exec --stream --scope="${{ matrix.container }}*" --concurrency=1 "yarn install"
           echo 'test'
 
+      - name: Cache Yarn and Cypress
+        if: steps.restore-yarn-cypress-cache-e2e.outputs.cache-hit != 'true'
+        id: cache-yarn-cypress
+        uses: actions/cache/save@v3
+        with:
+          path: ${{ env.YARN_CACHE_PATH }}
+          key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash }} # Can use time based key as well
+
+      - name: Create additional cache
+        if: steps.restore-yarn-global-cache-e2e.outputs.cache-hit != 'true'
+        id: create-additional-cache
+        uses: actions/cache/save@v3
+        with:
+          path: ${{ env.CACHE_PATH }}
+          key: e2e-cache-${{ steps.check-yarn-hash.outputs.yarnHash }}
+
       - name: Check disk space after install
         id: check-disk-space-after-install-e2e
         run: |
