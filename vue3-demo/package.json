@@ -13,7 +13,7 @@
     "build": "lerna run --scope=vue3-demo_* build",
     "serve": "lerna run --scope=vue3-demo_* --parallel serve",
     "clean": "lerna run --scope=vue3-demo_* --parallel clean",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.js --config '{\"supportFile\": \"../../cypress/support/e2e.js\"}' --spec \\\"./e2e/tests/runAll.cy.js\\\" --browser=chrome"
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "wait-on": "7.0.1"

@@ -1,14 +1,14 @@
-const getRandomTextString = require("../helpers/base-helper.js");
-const Constants = require("./constants");
-const {baseSelectors, selectors} = require("../common/selectors");
+import {getRandomTextString} from "../helpers/base-helper";
+import {Constants} from "./constants";
+import {baseSelectors, selectors} from "../common/selectors";
 
-const CommonTestData = {
-    multipleSizeStringsArray: [
+export class CommonTestData {
+    public static readonly multipleSizeStringsArray = [
         getRandomTextString(10),
         getRandomTextString(100),
         getRandomTextString(1000),
-    ],
-    sharedRoutingAppHosts: [
+    ];
+    public static readonly sharedRoutingAppHosts = [
         {
             host: 3000
         },
@@ -24,8 +24,8 @@ const CommonTestData = {
         {
             host: 3004
         },
-    ],
-    commonMicroFrontendsAppsData: [
+    ];
+    public static readonly commonMicroFrontendsAppsData = [
         {
             cardName: Constants.commonConstantsData.basicComponents.host.toLowerCase(),
             symbolName: Constants.commonConstantsData.commonMicroFrontendsAppsCardsSymbolsNames.starSymbol,
@@ -38,8 +38,8 @@ const CommonTestData = {
             symbol: selectors.viteReactMicroFrontendsApp.symbols.cloud,
             status: Constants.elementsText.commonMicroFrontendsApps.cardMessages.remoteCard,
         }
-    ],
-    commonTypeScriptAppsData: [
+    ];
+    public static readonly commonTypeScriptAppsData = [
         {
             host: 3001,
             header: Constants.commonConstantsData.typeScript.charAt(0).toUpperCase(),
@@ -50,8 +50,8 @@ const CommonTestData = {
             header: Constants.commonConstantsData.typeScript.charAt(0).toUpperCase(),
             appName: Constants.commonConstantsData.commonCountAppNames.app2
         }
-    ],
-    commonNextJsAppsData: [
+    ];
+    public static readonly commonNextJsAppsData = [
         {
             messageType: Constants.commonConstantsData.nextJsAppsCommonPhrases.messages.welcome.split(' ')[0].trim(),
             selector: baseSelectors.tags.headers.h1,
@@ -74,11 +74,11 @@ const CommonTestData = {
             selector: baseSelectors.tags.coreElements.body,
             message: Constants.commonConstantsData.nextJsAppsCommonPhrases.messages.footer,
         }
-    ],
-    nextJsAppsHeaderLinkName: Constants.commonConstantsData.nextJsAppsCommonPhrases.messages.welcome.split('to')[1].trim()
+    ]
+    public static readonly nextJsAppsHeaderLinkName = Constants.commonConstantsData.nextJsAppsCommonPhrases.messages.welcome.split('to')[1].trim()
 }
 
-function returnCommonDynamicAppsData(paragraphText) {
+export function returnCommonDynamicAppsData(paragraphText: string[]) {
     return [
         {
             headerSelector: baseSelectors.tags.headers.h1,
@@ -124,7 +124,7 @@ function returnCommonDynamicAppsData(paragraphText) {
     ]
 }
 
-function returnCommonAngularAppsData(welcomeText) {
+export function returnCommonAngularAppsData(welcomeText: string) {
     return [
         {
             appNameText: Constants.commonConstantsData.commonAngularAppsData.mdmfShellName,
@@ -153,8 +153,3 @@ function returnCommonAngularAppsData(welcomeText) {
     ]
 }
 
-module.exports = {
-    CommonTestData,
-    returnCommonDynamicAppsData,
-    returnCommonAngularAppsData
-}

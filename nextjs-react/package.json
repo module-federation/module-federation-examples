@@ -6,7 +6,7 @@
   "scripts": {
     "install:apps": "concurrently \"yarn --cwd host-app\" \"yarn --cwd remote-app\"",
     "start": "concurrently \"yarn --cwd remote-app start\" \"yarn --cwd host-app dev\"",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress/config/cypress.config.js --config '{\"supportFile\": \"../../cypress/support/e2e.js\"}' --spec \\\"./e2e/runAll*.cy.js\\\" --browser=chrome"
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/runAll*.cy.ts\" --browser=chrome"
   },
   "keywords": [],
   "author": "rahulteja-dev",

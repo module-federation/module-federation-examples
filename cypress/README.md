@@ -19,18 +19,18 @@ Structure of the cypress folder:
 ```
 cypress
 ├── common
-│   ├── base.js
-│   └── selectors.js
+│   ├── base.ts
+│   └── selectors.ts
 ├── config
-│   └── cypress.config.js (cypress system file)
+│   └── cypress.config.ts (cypress system file)
 ├── fixtures
-│   └── constants.js
-│   └── commonTestData.js
+│   └── constants.ts
+│   └── commonTestData.ts
 ├── helpers
-│   └── base-helper.js
+│   └── base-helper.ts
 ├── support
-│   ├── commands.js (cypress system file)
-│   └── e2e.js (cypress system file)
+│   ├── commands.ts (cypress system file)
+│   └── e2e.ts (cypress system file)
 ├── types
 ├── screenshots (optional)
 ├── videos (optional)
@@ -38,19 +38,19 @@ cypress
 ```
 
 `common` - contains common files for the tests.
-- `base.js` - all methods that could be used in more than one test should be placed in this file.
-- `selectors.js` - all selectors/locators that are used in tests.
+- `base.ts` - all methods that could be used in more than one test should be placed in this file.
+- `selectors.ts` - all selectors/locators that are used in tests.
 
 `config` - contains configuration files for the Cypress itself.
-- `cypress.config.js` - Cypress config file. Since Cypress 10, all plugins and configs for Cypress should be placed here. [How to config Cypress](https://docs.cypress.io/guides/references/configuration)
+- `cypress.config.ts` - Cypress config file. Since Cypress 10, all plugins and configs for Cypress should be placed here. [How to config Cypress](https://docs.cypress.io/guides/references/configuration)
 
 `fixtures` - contains files or data that are used in tests, such as images, json constants, etc.
 
-`helpers` - contains data-generation methods for tests. As an example, there is a method for generating data for the tests called `base-helper.js`.
+`helpers` - contains data-generation methods for tests. As an example, there is a method for generating data for the tests called `base-helper.ts`.
 
 `support` - contains files that are loaded automatically before every test, such as commands, etc.
-- `commands.js` - all custom commands that could be use in tests are placed in this file.
-- `e2e.js` - contains imports for our custom commands.
+- `commands.ts` - all custom commands that could be use in tests are placed in this file.
+- `e2e.ts` - contains imports for our custom commands.
 
 `types` - contains types ( Interfaces, enums ) for the tests. As an example, there are enums for the dates and css Values.
 
@@ -105,12 +105,12 @@ The tests are executed in headless mode, which is useful for CI/CD. The system g
 To begin the test run, execute the following command in the Terminal. This command will execute all the tests without building or starting the application. It is necessary to manually start the application before running the command, and then run only the specific test that is required.
 
 ```bash
-npx cypress run --config-file cypress/config/cypress.config.js --browser=chrome --spec "path_to_test"
+npx cypress run --config-file cypress/config/cypress.config.ts --browser=chrome --spec "path_to_test"
 ```
 
 For example:
 ```bash
-npx cypress run --config-file cypress/config/cypress.config.js --browser=chrome --spec "./advanced-api/automatic-vendor-sharing/e2e/*.cy.js"
+npx cypress run --config-file cypress/config/cypress.config.ts --browser=chrome --spec "./advanced-api/automatic-vendor-sharing/e2e/*.cy.ts"
 ```
 
 For ease of use, each sample includes a script that performs the following tasks: 
@@ -188,11 +188,11 @@ In comment you can find a link to the report and a link to the workflow itself, 
 
 ### Create a test
 
-First, create a new, empty test file. It should be located in the `sample/e2e` directory. The file name should end with the `.cy.js` extension, and should have a simple, self-explanatory name.
+First, create a new, empty test file. It should be located in the `sample/e2e` directory. The file name should end with the `.cy.ts` extension, and should have a simple, self-explanatory name.
 
 For example:
-- hostChecks.cy.js
-- name_of_sample.cy.js
+- hostChecks.cy.ts
+- name_of_sample.cy.ts
 - etc.
 
 Then, import the `common` methods and `PageObject` for the test.
@@ -240,7 +240,7 @@ describe(`Example test`, () => {
 
 Voilà, it is done! 😃
 
->**Note:** When writing tests, it is recommended to use the existing methods located in the `common` directory. If a new method is required, it should be added to the `common/base.js` file. However, if the new method will only be used in a single test, it can be added to the `sample/e2e/methods.ts` file.
+>**Note:** When writing tests, it is recommended to use the existing methods located in the `common` directory. If a new method is required, it should be added to the `common/base.ts` file. However, if the new method will only be used in a single test, it can be added to the `sample/e2e/methods.ts` file.
 
 The following is an example of how the test will appear when utilizing the pre-existing common methods:
 
@@ -258,9 +258,9 @@ describe(`Example test`, () => {
 
 ### Create methods
 
-If a new method is needed, and it will be reused across multiple test for multiple samples, it should be added to the `common/base.js` file.
+If a new method is needed, and it will be reused across multiple test for multiple samples, it should be added to the `common/base.ts` file.
 
->**Note:** New methods should only be added to the `base.js` file if they will be used in more than one sample.
+>**Note:** New methods should only be added to the `base.ts` file if they will be used in more than one sample.
 
 If the new method will only be used in a single sample, a new methods folder should be created within the `sample/e2e/` directory and a `methods.ts` file should be added to it. The new method can then be added to the `methods.ts` file, allowing it to be used only in the specific sample where it was created.
 
@@ -289,7 +289,7 @@ describe(`Example test`, () => {
 ## Rules
 ### File rules
 
-##### `base.js`
+##### `base.ts`
 
 - Only for reusable methods;
 - All methods should be clearly and correctly named, in an understandable matter:
@@ -310,7 +310,7 @@ describe(`Example test`, () => {
 - NOTE: Do not add almost similar methods (like checkElementVisibility & checkChildELementVisibility), if existed methods do not have enough functionality for specific case, find a way to increase it
 - NOTE: If new method should be added, always add it to the right section according to logic
 
-##### `selectors.js`
+##### `selectors.ts`
 
 - There are several blocks where `selectors/locators` can be added:
   - `baseSelectors` block includes `tags`, `css` and `ids` blocks. According to types only the most common selectors which can be found on the almost every page (like div, button, etc) should be added there;
@@ -323,7 +323,7 @@ describe(`Example test`, () => {
 - Try to avoid duplicating `selectors/locators` by utilizing/moving existing ones;
 - If a `selector/locator` appears to be common, but has an incorrect name, please rename it correctly and move to another block if necessary (e.g. `button` to `commonButton`) and make sure to update all places where it is used.
 
-##### `constants.js`
+##### `constants.ts`
 
 - All `constants` should be added to their corresponding blocks based on logic:
   - Files path (if you need to reach some system file by test) to `filesPath` block;
@@ -501,13 +501,13 @@ sample
 └── e2e
     ├── methods (optional)
     │   └── methods.ts (optional)
-    ├── hostChecks.cy.js (for uncommon checks)
-    ├── commonChecks.cy.js (for common checks)
-    └── runAllTest.cy.js (for common and uncommon checks)
+    ├── hostChecks.cy.ts (for uncommon checks)
+    ├── commonChecks.cy.ts (for common checks)
+    └── runAllTest.cy.ts (for common and uncommon checks)
 ```
-- `hostChecks.cy.js` for non-similar checks. It contains all non-similar checks for each app;
-- `commonChecks.cy.js` for similar checks. It contains all similar checks for each app;
-- `runAllTest.cy.js` for similar and non-simillar checks. It contains all checks for each app. You don't need to duplicate code here, only import from your `commonChecks` and `hostChecks` files and that's all.
+- `hostChecks.cy.ts` for non-similar checks. It contains all non-similar checks for each app;
+- `commonChecks.cy.ts` for similar checks. It contains all similar checks for each app;
+- `runAllTest.cy.ts` for similar and non-simillar checks. It contains all checks for each app. You don't need to duplicate code here, only import from your `commonChecks` and `hostChecks` files and that's all.
 
 ```typescript
 import './hostChecks.cy'
@@ -607,7 +607,7 @@ appsData.forEach(
 
 It will run your testCases on every host, as an example on 3001 and 3002. So you need to skip user deletion on 3001 host, and user creation user on 3002. Let's do this!
 
-Check how we already added `skipWhen()` custom command and keep in mind that you can add any custom command as simple as that if you need so. All custom commands are added to `cypress/support/commands.js` file:
+Check how we already added `skipWhen()` custom command and keep in mind that you can add any custom command as simple as that if you need so. All custom commands are added to `cypress/support/commands.ts` file:
 
 ```typescript
 declare global {
@@ -625,7 +625,7 @@ Cypress.Commands.add('skipWhen', function (condition) {
 })
 ```
 
-Then add it to `cypress/common/base.js` file, because we are going to use it as global:
+Then add it to `cypress/common/base.ts` file, because we are going to use it as global:
 
 ```typescript
 public skipTestByCondition(condition: any): void {

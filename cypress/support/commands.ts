@@ -28,17 +28,25 @@
 // declare global {
 //   namespace Cypress {
 //     interface Chainable {
-//       login(email, password): Chainable<void>
-//       drag(subject, options): Chainable<Element>
-//       dismiss(subject, options): Chainable<Element>
-//       visit(originalFn, url, options): Chainable<Element>
+//       login(email: string, password: string): Chainable<void>
+//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
+//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
+//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
 //     }
 //   }
 // }
 
-require('cypress-fill-command');
-require('cypress-real-events');
-require('cypress-wait-until');
+import 'cypress-fill-command';
+import 'cypress-real-events';
+import 'cypress-wait-until';
+
+declare global {
+    namespace Cypress {
+        interface Chainable {
+            skipWhen(condition: boolean): void;
+        }
+    }
+}
 
 Cypress.Commands.add('skipWhen', function (condition) {
     if (condition) {

@@ -14,16 +14,15 @@
  * Privates Section
  */
 
-const baseSelectors = require("./selectors").baseSelectors;
-const commonSelectors = require("./selectors").commonSelectors;
-const Constants = require("../fixtures/constants.js");
-const CssAttr = require("../types/cssAttr");
-const StubTypes = require("../types/stubTypes");
-const RequestsTypes = require("../types/requestsTypes");
-const { readFile, writeTofile } = require("../helpers/file-actions-helper.js");
-const CommonTestData = require("../fixtures/commonTestData.js");
+import {baseSelectors, commonSelectors} from "./selectors";
+import {Constants} from "../fixtures/constants";
+import {CssAttr} from "../types/cssAttr";
+import {StubTypes} from "../types/stubTypes";
+import {RequestsTypes} from "../types/requestsTypes";
+import { readFile, writeTofile } from "../helpers/file-actions-helper";
+import {CommonTestData} from "../fixtures/commonTestData";
 
-export default class BaseMethods {
+export class BaseMethods {
 
  /*
  *---------------------------------------------------
@@ -32,14 +31,21 @@ export default class BaseMethods {
  *---------------------------------------------------
  */
 
-    clickElementBySelector({
+    public clickElementBySelector({
          selector,
          index = 0,
          isForce = false,
          parentSelector,
          isMultiple = false,
          wait = 0
-    } = {}) {
+    }: {
+        selector: string,
+        index?: number,
+        isForce?: boolean,
+        parentSelector? : string,
+        isMultiple?: boolean,
+        wait?: number
+    }): Cypress.Chainable<JQuery<HTMLElement>> {
         if (parentSelector) {
             return cy.get(parentSelector).find(selector).wait(wait).click({force: isForce, multiple: isMultiple})
         }
@@ -47,7 +53,7 @@ export default class BaseMethods {
         return cy.get(selector).eq(index).wait(wait).click({force: isForce, multiple: isMultiple})
     }
 
-    clickElementWithText({
+    public clickElementWithText({
          selector,
          text,
          isForce = false,
@@ -56,10 +62,19 @@ export default class BaseMethods {
          index = 0,
          parentSelector,
          isTargetChanged = false
-    } = {}) {
+    }: {
+        selector: string,
+        text: string,
+        isForce?: boolean,
+        wait?: number,
+        isShadowRoot?: boolean,
+        index?: number,
+        parentSelector?: string,
+        isTargetChanged?: boolean
+    }): void {
         if(isTargetChanged) {
             cy.get(selector).contains(text)
-                .should(($button) => {
+                .should(($button: JQuery<HTMLElement>) => {
                     $button.attr('target', '_self');
                 }).click()
 
@@ -98,13 +113,18 @@ export default class BaseMethods {
  *---------------------------------------------------
  */
 
-    checkValueInReadFile({
+    public checkValueInReadFile({
          filePath,
          text,
          webpackFileSeparator,
          isContain = true
-     }) {
-        readFile(filePath).then((file) => {
+     }: {
+        filePath: string,
+        text: string,
+        webpackFileSeparator?: string
+        isContain?: boolean
+    }): void {
+        readFile(filePath).then((file: string) => {
             if(webpackFileSeparator) {
                 isContain ? expect(file.split(webpackFileSeparator)[1]).to.include(text) :
                     expect(file.split(webpackFileSeparator)[1]).not.to.include(text)
@@ -116,7 +136,7 @@ export default class BaseMethods {
         })
     }
 
-    checkUrlText(url, isInclude = false, isDifferentOrigin = false) {
+    public checkUrlText(url: string, isInclude: boolean = false, isDifferentOrigin: boolean = false): void {
         if(isDifferentOrigin) {
             cy.origin(url, { args: { isInclude, url } }, ({ isInclude, url }) => {
                 cy.url().should(isInclude ? 'include' : 'not.include', url);
@@ -128,7 +148,8 @@ export default class BaseMethods {
         cy.url().should(isInclude ? 'include' : 'not.include', url);
     }
 
-    checkElementVisibility ({
+    public checkElementVisibility
+    ({
          selector,
          isVisible = true,
          visibleState = 'be.visible',
@@ -136,7 +157,15 @@ export default class BaseMethods {
          text,
          parentElement,
          parentSelector
-    }) {
+    }: {
+        selector: string,
+        isVisible?: boolean,
+        visibleState?: string,
+        notVisibleState?: string,
+        text?: string,
+        parentElement?: boolean,
+        parentSelector?: string
+    }): Cypress.Chainable<JQuery<HTMLElement>> {
         if(parentSelector) {
             if(text && parentElement) {
                 return cy
@@ -170,7 +199,7 @@ export default class BaseMethods {
             .should(isVisible ? visibleState : notVisibleState);
     }
 
-    checkElementWithTextPresence({
+    public checkElementWithTextPresence({
          selector,
          text,
          isVisible = true,
@@ -181,7 +210,19 @@ export default class BaseMethods {
          index = 0,
          textArray,
          isShadowRoot = false
-    }) {
+    }: {
+        selector: string,
+        text: any,
+        isVisible?: boolean,
+        visibilityState?: string,
+        notVisibleState?: string,
+        parentSelector?: string,
+        isMultiple?: boolean,
+        wait?: number,
+        index?: number,
+        textArray?: string[],
+        isShadowRoot?: boolean
+    }): Cypress.Chainable<JQuery<HTMLElement>> {
         if(parentSelector && !textArray) {
             return this._checkChildElementWithTextPresence(parentSelector, selector, text, isVisible ? visibilityState : notVisibleState)
         }
@@ -196,18 +237,20 @@ export default class BaseMethods {
 
         if(isMultiple) {
             return cy.get(selector)
-                .each((element) => {
+                .each((element: JQuery<HTMLElement>) => {
                     expect(element.text()).to.include(text)
                 });
         }
 
         if(textArray) {
             for (let i = 0; i <  textArray.length; i++) {
+                // @ts-ignore
                 this._checkChildElementWithTextPresence(parentSelector, selector.replace(
                     '{cellType}', textArray[i]
                         .replace(/\s/g, '_').toUpperCase()), text[i], isVisible ? visibilityState : notVisibleState)
             }
 
+            // @ts-ignore
             return;
         }
 
@@ -217,6 +260,7 @@ export default class BaseMethods {
                 .contains(text)
                 .should(isVisible ? visibilityState : notVisibleState);
 
+            // @ts-ignore
             return;
         }
 
@@ -225,7 +269,7 @@ export default class BaseMethods {
             .should(isVisible ? visibilityState : notVisibleState);
     }
 
-    checkElementContainText({
+    public checkElementContainText({
          selector,
          text,
          index = 0,
@@ -234,7 +278,16 @@ export default class BaseMethods {
          parentSelector,
          isParent,
          link
-    }) {
+    }: {
+        selector: string,
+        text?: string | number,
+        index?: number,
+        isContain?: boolean,
+        checkType?: string,
+        parentSelector?: string
+        isParent?: boolean
+        link?: string
+    }): Cypress.Chainable<JQuery<HTMLElement>> {
         if(link) {
             if (isParent && text) {
                 return cy.get(selector)
@@ -245,7 +298,7 @@ export default class BaseMethods {
             }
 
             return cy.get(selector)
-                .each((element) => {
+                .each((element: JQuery<HTMLElement>) => {
                     if(element.text() === text && element.attr('href') === link) {
                         expect(element.attr('href')).to.be.eq(link)
                         expect(element.is(':disabled')).to.be.eq(false)
@@ -273,7 +326,7 @@ export default class BaseMethods {
             .should(isContain ? checkType : 'not.contain.text', text);
     }
 
-    checkInfoInConsole(info, chainer = StubTypes.beCalled, isReloaded = true, isStubbed = true) {
+    public checkInfoInConsole(info: string, chainer: StubTypes = StubTypes.beCalled, isReloaded: boolean = true, isStubbed: boolean = true): void {
         if(isStubbed) {
             cy.window().then((win) => {
                 cy.stub(win.console, "log").as('log');
@@ -285,7 +338,7 @@ export default class BaseMethods {
         }
     }
 
-    checkNetworkCallCreated(requestType, url, localhost, statusCode) {
+    public checkNetworkCallCreated(requestType: RequestsTypes, url: string, localhost: number, statusCode: number): void {
         cy.intercept(requestType, url).as('networkCall');
         // Extra visit required cause intercept needs to be created before visit
         this.openLocalhost({
@@ -298,7 +351,7 @@ export default class BaseMethods {
         })
     }
 
-    checkElementHaveProperty({
+    public checkElementHaveProperty({
          selector,
          attr = CssAttr.css,
          prop,
@@ -312,8 +365,22 @@ export default class BaseMethods {
          checkType = 'contains',
          isWithInvoke = true,
          isInclude = true
-     } = {}) 
-     {
+     }: {
+         selector: string,
+         attr?: string,
+         prop: string,
+         value: string,
+         index?: number
+         parentSelector?: string,
+         isMultiple? : boolean,
+         isShadowElement?: boolean,
+         text?: string,
+         isParent?: boolean,
+         checkType?: string,
+         isWithInvoke?: boolean,
+         isInclude?: boolean
+     }
+    ): Cypress.Chainable<JQuery<HTMLElement>> {
         if(text) {
             if(isParent) {
                 cy.get(selector)
@@ -322,6 +389,7 @@ export default class BaseMethods {
                     .invoke(attr, prop)
                     .should(isInclude? 'include' : 'not.include', value)
 
+                // @ts-ignore
                 return;
             }
 
@@ -333,6 +401,7 @@ export default class BaseMethods {
                 .invoke(attr, prop)
                 .should(isInclude? 'include' : 'not.include', value)
 
+              // @ts-ignore
               return;
             }
 
@@ -343,17 +412,19 @@ export default class BaseMethods {
                     .invoke(attr, prop)
                     .should(isInclude? 'include' : 'not.include', value)
 
+                // @ts-ignore
                 return;
             }
 
             if(checkType !== 'contains') {
                 cy.get(selector)
-                    .each((element) => {
+                    .each((element: JQuery<HTMLElement>) => {
                         if(element.text().includes(text)) {
                             this._checkCssValue(element, prop, value)
                         }
                     });
 
+                // @ts-ignore
                 return;
             }
 
@@ -387,7 +458,7 @@ export default class BaseMethods {
 
         if(isMultiple) {
             return cy.get(selector)
-                .each((element) => {
+                .each((element: JQuery<HTMLElement>) => {
                     this._checkCssValue(element, prop, value)
                 });
         }
@@ -401,7 +472,7 @@ export default class BaseMethods {
             .should(isInclude? 'include' : 'not.include', value)
     }
 
-    checkElementQuantity({
+    public checkElementQuantity({
          selector,
          quantity,
          parentSelector,
@@ -409,7 +480,15 @@ export default class BaseMethods {
          text,
          waitUntil = false,
          jqueryValue = false
-     }) {
+     }: {
+        selector: string,
+        quantity: number,
+        state?: string,
+        parentSelector?: string,
+        text?: string
+        waitUntil?: boolean
+        jqueryValue?: boolean
+    }): void {
         if(parentSelector) {
             cy.get(parentSelector).find(selector).should(state, quantity)
 
@@ -431,11 +510,11 @@ export default class BaseMethods {
         }
 
         if(jqueryValue) {
-            let counter = 0;
+            let counter: number = 0;
 
             cy.get(selector)
-                .each((element) => {
-                    if(element.text().includes(text)) {
+                .each((element: JQuery<HTMLElement>) => {
+                    if(element.text().includes(<string>text)) {
                         counter++
 
                         if(counter === quantity) {
@@ -450,14 +529,21 @@ export default class BaseMethods {
         cy.get(selector).should(state, quantity)
     }
 
-    checkElementState({
+    public checkElementState({
          selector,
          state = 'be.disabled',
          parentSelector,
          text,
          isMultiple = false,
          jqueryValue
-    } = {}) {
+    }: {
+        selector: string,
+        state?: string,
+        parentSelector?: string,
+        text?: string,
+        isMultiple?: boolean
+        jqueryValue?: any
+    }): void {
         if(parentSelector) {
             cy.get(parentSelector)
                 .find(selector)
@@ -474,7 +560,7 @@ export default class BaseMethods {
 
         if(isMultiple) {
             cy.get(selector)
-                .each((element) => {
+                .each((element: JQuery<HTMLElement>) => {
                     expect(element.is(state)).to.be.eq(jqueryValue)
                 });
 
@@ -485,12 +571,12 @@ export default class BaseMethods {
             .should(state)
     }
 
-    checkInputValue(value, parentElement, isLengthChecked = false) {
+    public checkInputValue(value: string, parentElement?: string, isLengthChecked: boolean = false): void {
         if (parentElement) {
             cy.get(parentElement)
                 .find(this.getInputSelector(parentElement))
                 .invoke('val')
-                .then((text) => {
+                .then((text: any) => {
                     this._checkInputValue(text, value, isLengthChecked)
                 });
 
@@ -499,12 +585,17 @@ export default class BaseMethods {
 
         cy.get(baseSelectors.tags.inputs.input)
             .invoke('val')
-            .then((text) => {
+            .then((text: any) => {
                 this._checkInputValue(text, value, isLengthChecked)
             });
     }
 
-    checkInfoOnNonDefaultHost(host, element, existedText, notExistedText) {
+    public checkInfoOnNonDefaultHost(
+        host: number,
+        element: string,
+        existedText: string,
+        notExistedText: string
+    ): Cypress.Chainable<JQuery<HTMLElement>> {
         return cy.origin(Cypress.env(`localhost${host}`), { args: { element, existedText, notExistedText } }, ({ element, existedText, notExistedText }) => {
             cy.visit('/')
             // do not get it as checkElementWithTextPresence() due to inability of origin to get outside methods
@@ -513,9 +604,31 @@ export default class BaseMethods {
         });
     }
 
-    checkCounterFunctionality({ button, counterText, buttonsCount, counterElement, isButtonTexted = true, isReloaded, isValueCompared, isCounterDecreased, counterValue, isCounterValueUsed }) {
+    public checkCounterFunctionality({
+         button,
+         counterText,
+         buttonsCount,
+         counterElement,
+         isButtonTexted = true,
+         isReloaded,
+         isValueCompared,
+         isCounterDecreased,
+         counterValue,
+         isCounterValueUsed
+     }: {
+        button: string,
+        counterText: string,
+        buttonsCount?: number,
+        counterElement?: string
+        isButtonTexted?: boolean
+        isReloaded?: boolean
+        isValueCompared?: boolean
+        isCounterDecreased?: boolean
+        counterValue?: string,
+        isCounterValueUsed?: boolean,
+    }) : void {
         let counter = 0
-        let counterElementSelector = counterElement? counterElement : button
+        let counterElementSelector: string = counterElement? counterElement : button
 
         this.checkElementWithTextPresence({
             selector: counterElementSelector,
@@ -563,13 +676,23 @@ export default class BaseMethods {
         }
     }
 
-    checkBrowserAlertByText({ selector, alertMessage, isEqual = true, index = 0 }) {
+    public checkBrowserAlertByText({
+         selector,
+         alertMessage,
+         isEqual = true,
+         index = 0
+    }: {
+        selector: string,
+        alertMessage: string,
+        isEqual?: boolean,
+        index?: number
+    }): void {
         this.clickElementBySelector({
             selector,
             index
         })
-        cy.wrap(new Promise((resolve, reject) => {
-            cy.on('window:alert', (alertText) => {
+        cy.wrap(new Promise<void>((resolve, reject) => {
+            cy.on('window:alert', (alertText: string) => {
                 try {
                     if(isEqual) {
                         expect(alertText).to.be.eq(alertMessage);
@@ -594,9 +717,19 @@ export default class BaseMethods {
 *---------------------------------------------------
 */
 
-     writeContentToFile(filePath, content, wait = 500, contentFilePath) {
+    public writeContentToFile({
+         filePath,
+         content,
+         wait = 500,
+         contentFilePath
+    }: {
+        filePath: string,
+        content?: string
+        wait?: number,
+        contentFilePath?: string
+    }): void {
         if(contentFilePath) {
-            readFile(contentFilePath).then((file) => {
+            readFile(contentFilePath).then((file: string) => {
                 writeTofile(filePath, file)
                 cy.wait(wait)
             })
@@ -608,7 +741,15 @@ export default class BaseMethods {
         }
     }
 
-     fillField(selector, text, parentSelector) {
+    public fillField({
+         selector,
+         text,
+         parentSelector
+    }: {
+        selector: string,
+        text: string,
+        parentSelector?: string
+    }): void {
         if (parentSelector) {
             cy.get(parentSelector)
                 .find(selector)
@@ -631,11 +772,19 @@ export default class BaseMethods {
 *---------------------------------------------------
 */
 
-    skipTestByCondition(condition) {
+    public skipTestByCondition(condition: any): void {
         cy.skipWhen(condition)
     }
 
-    hoverElement(selector, text, wait = 0) {
+    public hoverElement({
+         selector,
+         text,
+         wait = 0
+    }: {
+        selector: string,
+        text?: string,
+        wait?: number
+    }): void {
         if (text) {
             cy.wait(wait).get(selector).contains(text).realHover()
 
@@ -645,23 +794,29 @@ export default class BaseMethods {
         cy.wait(wait).get(selector).realHover()
     }
 
-    openLocalhost(number, path) {
-        if(path) {
-            return cy.visit(`${Cypress.env(`localhost${number}`)}/${path}`);
-        } else {
-            return cy.visit(Cypress.env(`localhost${number}`));
-        }
+    public openLocalhost({
+        number,
+        path
+    }: {
+        number: number,
+        path?: string
+    }): Cypress.Chainable<Cypress.AUTWindow> {
+        return path ?
+            cy.visit(`${Cypress.env(`localhost${number}`)}/${path}`)
+            :
+            cy.visit(Cypress.env(`localhost${number}`));
+
     }
 
-    reloadWindow(withoutCache = false) {
-        cy.reload(withoutCache);
+    public reloadWindow(withoutCache: boolean = false): void {
+        cy.reload(withoutCache)
     }
 
-    goBack() {
+    public goBack(): void {
         cy.go(-1)
     }
 
-    getInputSelector(selector) {
+    public getInputSelector(selector: string): string {
         return selector.includes(Constants.selectorParts.sharedRoutingAppSelectorsParts.userInfo.toUpperCase()) ? baseSelectors.tags.inputs.textarea : baseSelectors.tags.inputs.input
     }
 
@@ -671,7 +826,7 @@ export default class BaseMethods {
 * Base methods related to specific actions
 *---------------------------------------------------
 */
-    addUser(name, email) {
+    public addUser(name: string, email: string): void {
         this.fillField({
             selector: commonSelectors.formField.replace('{fieldName}', Constants.selectorParts.formFieldNames.nameField),
             text: name
@@ -689,12 +844,19 @@ export default class BaseMethods {
         })
     }
 
-    compareInfoBetweenHosts(selector, extraHost, isEqual = true, index = 0, clickSelector, wait = 0) {
+    public compareInfoBetweenHosts(
+        selector: string,
+        extraHost: number,
+        isEqual: boolean = true,
+        index: number = 0,
+        clickSelector?: string,
+        wait: number = 0
+    ): void {
         cy.get(selector)
             .wait(wait)
             .eq(index)
             .invoke('text')
-            .then((baseText) => {
+            .then((baseText: string) => {
                 cy.origin(Cypress.env(`localhost${extraHost}`), { args: { baseText, selector, isEqual, clickSelector, wait } }, ({ baseText, selector, isEqual, clickSelector, wait }) => {
                     cy.visit('/')
                     if(clickSelector) {
@@ -702,7 +864,7 @@ export default class BaseMethods {
                     }
                     cy.get(selector)
                         .invoke('text')
-                        .then((text) => {
+                        .then((text: string) => {
                             if(isEqual) {
                                 expect(text).to.be.eq(baseText)
 
@@ -715,7 +877,19 @@ export default class BaseMethods {
             });
     }
 
-    checkOutsideResourceUrl({ parentSelector, selector, text, link, isInclude = true }) {
+    public checkOutsideResourceUrl({
+         parentSelector,
+         selector,
+         text,
+         link,
+         isInclude = true
+     }: {
+        parentSelector?: string,
+        selector: string,
+        text: string,
+        link: string,
+        isInclude?: boolean
+    }): void {
         if(parentSelector) {
             this.clickElementWithText({
                 parentSelector,
@@ -733,7 +907,15 @@ export default class BaseMethods {
         this.checkUrlText(link, isInclude, true)
     }
 
-    changeRootFile(changedContentFilePath, rootFilePath, originalContentFilePath) {
+    public changeRootFile({
+         changedContentFilePath,
+         rootFilePath,
+         originalContentFilePath,
+     }: {
+        changedContentFilePath: string,
+        rootFilePath: string,
+        originalContentFilePath: string
+    }): void {
         cy.wait(2000)
         this.checkElementWithTextPresence({
             selector: baseSelectors.tags.paragraph,
@@ -769,14 +951,14 @@ export default class BaseMethods {
         })
     }
 
-    checkLinkedCardsFunctionality(host) {
+    public checkLinkedCardsFunctionality(host: number): void {
         this.checkOutsideResourceUrl({
             parentSelector: baseSelectors.tags.headers.h1,
             selector: baseSelectors.tags.coreElements.link,
             text: CommonTestData.nextJsAppsHeaderLinkName,
             link: Constants.commonConstantsData.commonLinks.nextJs,
         })
-        Constants.commonConstantsData.nextJsAppsCommonPhrases.linksCardsText.forEach((text, index) => {
+        Constants.commonConstantsData.nextJsAppsCommonPhrases.linksCardsText.forEach((text: string, index: number) => {
             this.openLocalhost({
                 number: host
             })
@@ -796,8 +978,8 @@ export default class BaseMethods {
         // })
     }
 
-    checkLinkedCardsHoverAnimation() {
-        Constants.commonConstantsData.nextJsAppsCommonPhrases.linksCardsText.forEach((text) => {
+    public checkLinkedCardsHoverAnimation(): void {
+        Constants.commonConstantsData.nextJsAppsCommonPhrases.linksCardsText.forEach((text: string) => {
             this.reloadWindow()
             this.checkElementHaveProperty({
                 selector: commonSelectors.nextJsAppsLinkCard,
@@ -828,7 +1010,7 @@ export default class BaseMethods {
 *---------------------------------------------------
 */
 
-    _checkInputValue(text, value, isLengthChecked = false) {
+    private _checkInputValue(text: string, value: string, isLengthChecked: boolean = false): void {
         if(isLengthChecked) {
             expect(text.length).to.be.eq(value.length)
 
@@ -840,7 +1022,7 @@ export default class BaseMethods {
     }
 
 
-    _checkCssValue(element, prop, value) {
+    private _checkCssValue(element: JQuery<HTMLElement>, prop: string, value: string): void {
         if(prop === CssAttr.css) {
             expect(element.css(CssAttr.backgroundColor)).to.be.eq(value)
         } else {
@@ -848,11 +1030,10 @@ export default class BaseMethods {
         }
     }
 
-    _checkChildElementWithTextPresence(parentSelector, selector, text, visibilityState) {
+    private _checkChildElementWithTextPresence(parentSelector: string, selector: string, text: string, visibilityState: string): Cypress.Chainable<JQuery<HTMLElement>> {
        return cy.get(parentSelector)
             .find(selector)
             .contains(text)
             .should(visibilityState);
     }
 }
-

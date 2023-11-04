@@ -1,8 +1,8 @@
-const moment = require("moment");
-const Dates = require("../types/dates");
+import moment from "moment";
+import { Dates } from "../types/dates";
 
-function getDateWithFormat(date, format) {
-  let days;
+export function getDateWithFormat(date: string, format: string): string {
+  let days: number;
 
   switch (date) {
     case Dates.TOMORROW:
@@ -33,22 +33,16 @@ function getDateWithFormat(date, format) {
   return moment().add(days, 'days').format(format);
 }
 
-function getRandomTextString(symbolsQuantity) {
+export function getRandomTextString(symbolsQuantity: number,): string {
   return _getRandomString(symbolsQuantity);
 }
 
-function getRandomIntegerString(stringLength) {
+export function getRandomIntegerString(stringLength: number): string {
   return _getRandomString(stringLength, '1'.charCodeAt(0), '9'.charCodeAt(0));
 }
 
-function _getRandomString(stringLength, from = 97, to = 122) {
+function _getRandomString(stringLength: number, from: number = 97, to: number = 122): string {
   return Array.from({ length: stringLength }, () =>
       String.fromCharCode(Math.floor(Math.random() * (to - from) + from)),
   ).join('');
-}
-
-module.exports = {
-  getDateWithFormat,
-  getRandomTextString,
-  getRandomIntegerString
 }

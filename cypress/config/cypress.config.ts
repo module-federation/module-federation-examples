@@ -1,10 +1,14 @@
-const { defineConfig } = require("cypress");
+import { defineConfig } from "cypress";
 
 const fs = require('fs')
 const path = require('path');
 const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 
-function setupNodeEvents(on, config) {
+async function setupNodeEvents(
+  on: Cypress.PluginEvents,
+  config: Cypress.PluginConfigOptions,
+): Promise<Cypress.PluginConfigOptions> {
+
   // @ts-ignore
   on('before:browser:launch', (browser = {}, launchOptions) => {
     console.log(
@@ -42,25 +46,25 @@ function setupNodeEvents(on, config) {
     return launchOptions
   })
 
-  on ('task',
+  on ('task', 
     {
       readFile({
-        filePath
+        filePath 
       }) {
         return fs.readFileSync(path.resolve(`../../${filePath}`),'utf8')
       }
     }
   )
 
-  on ('task',
+  on ('task', 
   {
     writeToFile({
       filePath,
-      content
+      content 
     }) {
       return new Promise((resolve, reject) => {
         //@ts-ignore
-        fs.writeFile(path.resolve(`../../${filePath}`), content, err => {
+        fs.writeFile(path.resolve(`../../${filePath}`), content, err => { 
           try {
             console.log(filePath)
             resolve(true)
@@ -83,7 +87,7 @@ export default defineConfig({
   e2e: {
     excludeSpecPattern: '*.js',
     specPattern: './**/e2e/**/*.cy.{js,jsx,ts,tsx}',
-    supportFile: './cypress/support/e2e.js',
+    supportFile: './cypress/support/e2e.ts',
     fixturesFolder: './cypress/fixtures',
     defaultCommandTimeout: 10000,
     video: true,
