@@ -2,10 +2,10 @@
   "name": "cra",
   "private": true,
   "version": "0.0.1",
-    "workspaces": [
-      "./host",
-      "./remote"
-    ],
+  "workspaces": [
+    "./host",
+    "./remote"
+  ],
   "scripts": {
     "start": "lerna run --scope=cra_* start",
     "stop": "lerna run --scope=cra_* stop",
