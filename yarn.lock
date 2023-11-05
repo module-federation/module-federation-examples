@@ -27070,7 +27070,7 @@ jiti@^1.18.2, jiti@^1.19.1:
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.20.0.tgz#2d823b5852ee8963585c8dd8b7992ffc1ae83b42"
   integrity sha512-3TV69ZbrvV6U5DfQimop50jE9Dl6J8O1ja1dvBbMba/sZ3YBEQqJ2VZRoQPVnhlzjNtU1vaXRZVrVjU4qtm8yA==
 
-joi@^17.4.0, joi@^17.7.0:
+joi@^17.11.0, joi@^17.4.0, joi@^17.7.0:
   version "17.11.0"
   resolved "https://registry.yarnpkg.com/joi/-/joi-17.11.0.tgz#aa9da753578ec7720e6f0ca2c7046996ed04fc1a"
   integrity sha512-NgB+lZLNoqISVy1rZocE9PZI36bL/77ie924Ri43yEvi9GUUMPeyVIr8KdFTMUlby1p0PBYMk9spIxEUQYqrJQ==
@@ -40888,6 +40888,17 @@ wait-on@7.0.1:
     lodash "^4.17.21"
     minimist "^1.2.7"
     rxjs "^7.8.0"
+
+wait-on@^7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/wait-on/-/wait-on-7.1.0.tgz#3184ccfff7eb8a4d62ef3dfa6a4ff3675617ff60"
+  integrity sha512-U7TF/OYYzAg+OoiT/B8opvN48UHt0QYMi4aD3PjRFpybQ+o6czQF8Ig3SKCCMJdxpBrCalIJ4O00FBof27Fu9Q==
+  dependencies:
+    axios "^0.27.2"
+    joi "^17.11.0"
+    lodash "^4.17.21"
+    minimist "^1.2.8"
+    rxjs "^7.8.1"
 
 walk-up-path@^1.0.0:
   version "1.0.0"
