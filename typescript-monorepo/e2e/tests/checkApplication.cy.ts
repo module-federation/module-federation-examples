@@ -1,5 +1,5 @@
-import {Constants} from "../../../cypress/fixtures/constants.js";
-import {BaseMethods} from "../../../cypress/common/base.js";
+import {Constants} from "../../cypress/fixtures/constants.js";
+import {BaseMethods} from "../../cypress/common/base.js";
 
 const basePage: BaseMethods = new BaseMethods()
 
