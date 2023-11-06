@@ -1,10 +1,10 @@
 {
   "name": "cra-react-app-rewired",
   "private": true,
-  "workspaces":  [
-      "./host",
-      "./remote"
-    ],
+  "workspaces": [
+    "./host",
+    "./remote"
+  ],
   "version": "0.0.0",
   "scripts": {
     "start": "concurrently 'cd ./host && yarn start' 'cd ./remote && yarn start'",
