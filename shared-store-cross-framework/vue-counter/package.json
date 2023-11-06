@@ -1,0 +1,33 @@
+{
+  "name": "shared-store-cross-framework_vue-counter",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "webpack-cli serve",
+    "build": "webpack --mode production",
+    "serve": "serve dist -p 3004",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@babel/core": "^7.11.0",
+    "@vue/compiler-sfc": "^3.0.11",
+    "babel-loader": "^8.1.0",
+    "effector": "^22.3.0",
+    "effector-vue": "^22.1.0",
+    "serve": "^13.0.0",
+    "vue": "^3.0.11"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "7.21.4",
+    "@babel/preset-env": "7.21.4",
+    "@vue/runtime-dom": "3.2.47",
+    "css-loader": "6.7.3",
+    "file-loader": "6.2.0",
+    "mini-css-extract-plugin": "2.7.5",
+    "url-loader": "4.1.1",
+    "vue-loader": "16.8.3",
+    "webpack": "5.80.0",
+    "webpack-cli": "4.10.0",
+    "webpack-dev-server": "4.13.3"
+  }
+}

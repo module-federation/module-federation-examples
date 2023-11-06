@@ -1,0 +1,23 @@
+{
+  "name": "shared-store-cross-framework_shared-store",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "7.21.4",
+    "serve": "13.0.4",
+    "webpack": "5.80.0",
+    "webpack-cli": "4.10.0",
+    "webpack-dev-server": "4.13.3"
+  },
+  "dependencies": {
+    "effector": "^22.3.0"
+  },
+  "scripts": {
+    "start": "webpack-cli serve",
+    "build": "webpack --mode production",
+    "serve": "serve dist -p 3001",
+    "clean": "rm -rf dist"
+  }
+}
