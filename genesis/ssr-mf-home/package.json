@@ -3,7 +3,6 @@
   "version": "2.3.10",
   "main": "index.js",
   "license": "MIT",
-
   "scripts": {
     "dev": "genesis-ts-node --project=./tsconfig.node.json genesis.dev",
     "build": "rm -rf dist types && yarn run build:dts && yarn run build:vue && yarn run build:node",
