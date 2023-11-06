@@ -1,8 +1,6 @@
 {
   "name": "vite-vue-microfrontends",
   "private": true,
-
-
   "workspaces": [
     "./host",
     "./remote"
@@ -12,7 +10,6 @@
   "main": "index.js",
   "scripts": {
     "install:deps": "npm --prefix ./host install && npm --prefix ./remote install",
-    "postinstall:deps": "npm --prefix ./host run build && npm --prefix ./remote run build",
     "serve:host": "npm --prefix ./host run dev",
     "serve:remote": "npm --prefix ./remote run dev",
     "build:host": "npm --prefix ./host run build",
