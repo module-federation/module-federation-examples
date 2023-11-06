@@ -257,16 +257,11 @@ jobs:
             ${{ env.CACHE_PATH }}
           key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash }} # Can use time based key as well
 
-      - name: Check disk space after install
-        id: check-disk-space-after-install-e2e
-        run: |
-          df -h
-
       - name: Set up node
         id: setup-node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
       - name: Run sample e2e tests
         id: run-sample-e2e-tests
