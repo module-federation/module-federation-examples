@@ -1,35 +1,30 @@
 {
-
   "version": "1.2.3",
   "private": true,
-
-
   "name": "federated-css-mono",
-    "workspaces": [
-      "expose-remotes/expose-css",
-      "expose-remotes/expose-css-module",
-      "expose-remotes/expose-jss",
-      "expose-remotes/expose-less",
-      "expose-remotes/expose-scss",
-      "expose-remotes/expose-styled-component",
-      "expose-remotes/expose-tailwind-css-global",
-      "expose-remotes/expose-tailwind-css-module",
-
-      "consumers-react/css-and-styled-component",
-      "consumers-react/less-and-scss",
-      "consumers-react/css-module-and-jss",
-      "consumers-react/tailwind-global-and-less",
-      "consumers-react/tailwind-module-and-jss",
-      "consumers-react/any-combination",
-      "consumers-react/combination-of-5",
-      "consumers-react/combination-of-4",
-
-      "consumers-nextjs/jss-and-tailwind-global",
-      "consumers-nextjs/jss-css-and-tailwind-module",
-      "consumers-nextjs/less-and-styled-component",
-      "consumers-nextjs/combination-of-4",
-      "consumers-nextjs/any-combination"
-    ],
+  "workspaces": [
+    "expose-remotes/expose-css",
+    "expose-remotes/expose-css-module",
+    "expose-remotes/expose-jss",
+    "expose-remotes/expose-less",
+    "expose-remotes/expose-scss",
+    "expose-remotes/expose-styled-component",
+    "expose-remotes/expose-tailwind-css-global",
+    "expose-remotes/expose-tailwind-css-module",
+    "consumers-react/css-and-styled-component",
+    "consumers-react/less-and-scss",
+    "consumers-react/css-module-and-jss",
+    "consumers-react/tailwind-global-and-less",
+    "consumers-react/tailwind-module-and-jss",
+    "consumers-react/any-combination",
+    "consumers-react/combination-of-5",
+    "consumers-react/combination-of-4",
+    "consumers-nextjs/jss-and-tailwind-global",
+    "consumers-nextjs/jss-css-and-tailwind-module",
+    "consumers-nextjs/less-and-styled-component",
+    "consumers-nextjs/combination-of-4",
+    "consumers-nextjs/any-combination"
+  ],
   "scripts": {
     "build": "lerna run build",
     "clean": "lerna run --parallel clean",
@@ -42,14 +37,11 @@
     "start:react:combination-of-5": "lerna run --scope=@federated-css/combination-of-5 --parallel start",
     "start:react:combination-of-4": "lerna run --scope=@federated-css/combination-of-4 --parallel start",
     "start:react:any-combination": "node ./consumers-react/any-combination/execute.js && lerna run --scope=@federated-css/any-combination --parallel start",
-
     "start:nextjs:combination-of-4": "lerna run --scope=@federated-css/next-combination-of-4 --parallel start",
     "start:nextjs:any-combination": "node ./consumers-nextjs/any-combination/execute.js && lerna run --scope=@federated-css/next-any-combination --parallel start",
     "start:nextjs:jss-tailwind-global": "lerna run --scope=@federated-css/next-jss-and-tailwind-global --parallel start",
     "start:nextjs:jss-css-and-tailwind-module": "lerna run --scope=@federated-css/next-jss-css-and-tailwind-module --parallel start",
     "start:nextjs:less-and-styled-component": "lerna run --scope=@federated-css/next-less-and-styled-component --parallel start"
   },
-  "devDependencies": {
-
-  }
+  "devDependencies": {}
 }

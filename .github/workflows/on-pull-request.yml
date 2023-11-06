@@ -147,20 +147,12 @@ jobs:
         id: restore-yarn-global-cache
         uses: actions/cache/restore@v3
         with:
-          path: ${{ env.YARN_CACHE_PATH }}
-          key: yarn-global-cache-${{ github.run_id }} # Can use time based key as well
+          path: |
+            ${{ env.YARN_CACHE_PATH }}
+            ${{ env.CACHE_PATH }}
+          key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash }} # Can use time based key as well
           restore-keys: |
-            yarn-global-cache
             yarn-global-cache-
-      - name: Restore Yarn and Cypress cache
-        id: restore-yarn-cypress-cache
-        uses: actions/cache/restore@v3
-        with:
-          path: ${{ env.CACHE_PATH }}
-          key: e2e-cache-${{ steps.check-yarn-hash.outputs.yarnHash }}
-          restore-keys: |
-            e2e-cache-
-            e2e-
 
       - name: Check disk space before install
         id: check-disk-space-before-install
@@ -169,7 +161,7 @@ jobs:
 
       - name: Install dependencies
         id: install-dependencies
-        if: steps.restore-yarn-cypress-cache.outputs.cache-hit != 'true'
+        if: steps.restore-yarn-global-cache.outputs.cache-hit != 'true'
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
@@ -177,18 +169,15 @@ jobs:
           npm install lerna@6 -g
           lerna bootstrap
       - name: Cache Yarn and Cypress
+        if: steps.restore-yarn-global-cache.outputs.cache-hit != 'true'
         id: cache-yarn-cypress
         uses: actions/cache/save@v3
         with:
-          path: ${{ env.YARN_CACHE_PATH }}
-          key: yarn-global-cache-${{ github.run_id }} # Can use time based key as well
+          path: |
+            ${{ env.YARN_CACHE_PATH }}
+            ${{ env.CACHE_PATH }}
+          key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash }} # Can use time based key as well
 
-      - name: Create additional cache
-        id: create-additional-cache
-        uses: actions/cache/save@v3
-        with:
-          path: ${{ env.CACHE_PATH }}
-          key: e2e-cache-${{ steps.check-yarn-hash.outputs.yarnHash }}
       - name: Check disk space after installation
         id: check-disk-space-after-installation
         run: |
@@ -223,34 +212,26 @@ jobs:
 
         # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
       - name: Check Yarn hash
-        id: check-yarn-hash-e2e
+        id: check-yarn-hash
         run: |
           yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
-
-      - name: Restore Yarn and Cypress cache
-        id: restore-yarn-cypress-cache-e2e
-        uses: actions/cache/restore@v3
-        with:
-          path: ${{ env.CACHE_PATH }}
-          key: e2e-cache-${{ steps.check-yarn-hash-e2e.outputs.yarnHash }}
-          restore-keys: |
-            e2e-cache-
-            e2e-
 
       - name: Restore Yarn Global Cache
         id: restore-yarn-global-cache-e2e
         uses: actions/cache/restore@v3
         with:
-          path: ${{ env.YARN_CACHE_PATH }}
-          key: yarn-global-cache-${{ github.run_id }} # Can use time based key as well
+          path: |
+            ${{ env.YARN_CACHE_PATH }}
+            ${{ env.CACHE_PATH }}
+          key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash }} # Can use time based key as well
           restore-keys: |
             yarn-global-cache
             yarn-global-cache-
 
       - name: Install deps
         id: install-deps-e2e
-        if: steps.restore-yarn-cypress-cache-e2e.outputs.cache-hit != 'true'
+        if: steps.restore-yarn-global-cache-e2e.outputs.cache-hit != 'true'
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
@@ -266,16 +247,21 @@ jobs:
           # npx lerna exec --stream --scope="${{ matrix.container }}*" --concurrency=1 "yarn install"
           echo 'test'
 
-      - name: Check disk space after install
-        id: check-disk-space-after-install-e2e
-        run: |
-          df -h
+      - name: Cache Yarn and Cypress
+        if: steps.restore-yarn-global-cache-e2e.outputs.cache-hit != 'true'
+        id: cache-yarn-cypress
+        uses: actions/cache/save@v3
+        with:
+          path: |
+            ${{ env.YARN_CACHE_PATH }}
+            ${{ env.CACHE_PATH }}
+          key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash }} # Can use time based key as well
 
       - name: Set up node
         id: setup-node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
       - name: Run sample e2e tests
         id: run-sample-e2e-tests
