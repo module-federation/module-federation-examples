@@ -9,6 +9,10 @@
   ],
   "license": "MIT",
   "private": true,
+  "nohoist": [
+    "@types/*",
+    "*/@types/*"
+  ],
   "workspaces": [
     "advanced-api/automatic-vendor-sharing/*",
     "advanced-api/automatic-vendor-sharing",

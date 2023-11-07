@@ -2,7 +2,7 @@
   "name": "nextjs-react_host-app",
   "version": "0.1.0",
   "scripts": {
-    "dev": "rm -rf ./.next && next dev",
+    "dev": "rm -rf ./.next && NODE_OPTIONS=\"--max_old_space_size=8000\"  next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
