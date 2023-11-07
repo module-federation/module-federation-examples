@@ -1,7 +1,7 @@
 import Button from '../components/Button';
 import {lazy} from 'react'
 let RemoteButton = ()=> null
-if(typeof window === 'undefined') {
+if(typeof window !== 'undefined') {
   RemoteButton = lazy(() => import('remote/Button'));
 }
 
