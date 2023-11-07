@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "concurrently 'cd ./app1; yarn run start' 'cd ./app2; yarn run start'"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "@module-federation/enhanced": "^0.2.0-canary.1"
+  }
+}
