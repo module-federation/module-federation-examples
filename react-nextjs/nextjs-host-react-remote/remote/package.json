@@ -1,0 +1,28 @@
+{
+  "name": "nextjs-host-react-remote_remote",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "^5.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "7.21.4",
+    "@babel/preset-react": "7.18.6",
+    "@emotion/react": "11.10.6",
+    "babel-loader": "8.2.5",
+    "concurrently": "7.6.0",
+    "html-webpack-plugin": "5.5.1",
+    "serve": "13.0.4",
+    "webpack": "5.80.0",
+    "webpack-cli": "4.10.0"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run start\" \"npm run serve\"",
+    "start": "webpack --watch",
+    "build": "webpack --mode production",
+    "serve": "serve dist -p 8081",
+    "clean": "rm -rf dist"
+  }
+}

@@ -10,7 +10,6 @@ Run app-exposes project first runs on 3001
 ```bash
 cd app-exposes
 yarn
-yarn setup-env:dev
 quasar dev 
 ```
 ### Step 2
@@ -18,7 +17,6 @@ Then run app-general project on 3002
 ```bash
 cd app-general
 yarn
-yarn setup-env:dev
 quasar dev 
 ```
 Note: You may change the port number as you wish but make sure the address is correct while adding a remote.

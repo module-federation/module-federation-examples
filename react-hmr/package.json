@@ -1,0 +1,23 @@
+{
+  "name": "react-hmr",
+  "private": true,
+  "workspaces": [
+    "./libs",
+    "./remote1",
+    "./host"
+  ],
+  "version": "1.0.0",
+  "description": "experiments with module federation in React with Webpack5",
+  "main": "index.js",
+  "repository": "https://github.com/burhanuday/module-federation-with-react",
+  "author": "burhanuday",
+  "license": "MIT",
+  "scripts": {
+    "start": "concurrently \"cd libs; yarn start\" \"cd remote1; yarn start\" \"cd host; yarn start\"",
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/runAll*.cy.ts\" --browser=chrome"
+  },
+  "devDependencies": {
+    "concurrently": "7.6.0",
+    "wait-on": "7.0.1"
+  }
+}
