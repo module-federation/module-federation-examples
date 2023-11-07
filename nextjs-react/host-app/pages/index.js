@@ -1,8 +1,10 @@
 import Button from '../components/Button';
-import dynamic from 'next/dynamic';
-const RemoteButton = dynamic(() => import('remote/Button'), {
-  ssr: false,
-});
+import {lazy} from 'react'
+let RemoteButton = ()=> null
+if(typeof window === 'undefined') {
+  RemoteButton = lazy(() => import('remote/Button'));
+}
+
 export default function Home() {
   return (
     <div style={{ padding: '2%' }}>
