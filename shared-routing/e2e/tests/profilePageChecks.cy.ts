@@ -3,7 +3,7 @@ import {baseSelectors, selectors} from "../../../cypress/common/selectors";
 import { Constants } from "../../../cypress/fixtures/constants";
 import {CssAttr} from "../../../cypress/types/cssAttr";
 import {SharedRoutingMethods} from "../methods/methods";
-import {getRandomIntegerString, getRandomTextString} from "../../../cypress/helpers/base-helper.js";
+import {getRandomIntegerString, getRandomTextString} from "../../../cypress/helpers/base-helper";
 import {CommonTestData} from "../../../cypress/fixtures/commonTestData";
 
 const basePage: BaseMethods = new BaseMethods()
