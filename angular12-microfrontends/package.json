@@ -14,7 +14,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "e2e:ci": "ng serve mdmf-shell & wait-on http-get://localhost:4200/ && ng serve mdmf-profile & wait-on http-get://localhost:4201/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "e2e:ci": "ng serve mdmf-shell & wait-on http-get://localhost:4200/ && ng serve mdmf-profile & wait-on http-get://localhost:4201/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "dependencies": {
     "@angular/animations": "12.2.16",
