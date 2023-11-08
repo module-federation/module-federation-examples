@@ -1,7 +1,7 @@
-import { BaseMethods } from "../../../cypress/common/base";
-import {baseSelectors, selectors} from "../../../cypress/common/selectors";
-import { Constants } from "../../../cypress/fixtures/constants";
-import {StubTypes} from "../../../cypress/types/stubTypes";
+import { BaseMethods } from "../../../cypress-e2e/common/base";
+import {baseSelectors, selectors} from "../../../cypress-e2e/common/selectors";
+import { Constants } from "../../../cypress-e2e/fixtures/constants";
+import {StubTypes} from "../../../cypress-e2e/types/stubTypes";
 import {RustWasmMethods} from "../methods/methods";
 
 const basePage: BaseMethods = new BaseMethods()

@@ -1,7 +1,7 @@
-import { BaseMethods } from '../../cypress/common/base';
-import { baseSelectors } from '../../cypress/common/selectors';
-import { Constants } from '../../cypress/fixtures/constants';
-import {CssAttr} from "../../cypress/types/cssAttr";
+import { BaseMethods } from '../../cypress-e2e/common/base';
+import { baseSelectors } from '../../cypress-e2e/common/selectors';
+import { Constants } from '../../cypress-e2e/fixtures/constants';
+import {CssAttr} from "../../cypress-e2e/types/cssAttr";
 
 const basePage: BaseMethods = new BaseMethods()
 
@@ -21,13 +21,13 @@ describe("NextJS React", () => {
                 number: 3001
             })
         })
-    
+
         it('Check button exists', () => {
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.tags.coreElements.button,
                 text: Constants.elementsText.nextJsReactApp.buttons.remote})
         })
-    
+
         it('Check button color', () => {
             basePage.checkElementHaveProperty({
                 selector: baseSelectors.tags.coreElements.button,

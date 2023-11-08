@@ -1,9 +1,9 @@
-import {baseSelectors, commonSelectors} from '../../cypress/common/selectors';
-import { BaseMethods } from "../../cypress/common/base";
-import { Constants } from "../../cypress/fixtures/constants";
-import { getDateWithFormat } from "../../cypress/helpers/base-helper";
-import { CssAttr } from '../../cypress/types/cssAttr';
-import {returnCommonDynamicAppsData} from "../../cypress/fixtures/commonTestData";
+import {baseSelectors, commonSelectors} from '../../cypress-e2e/common/selectors';
+import { BaseMethods } from "../../cypress-e2e/common/base";
+import { Constants } from "../../cypress-e2e/fixtures/constants";
+import { getDateWithFormat } from "../../cypress-e2e/helpers/base-helper";
+import { CssAttr } from '../../cypress-e2e/types/cssAttr';
+import {returnCommonDynamicAppsData} from "../../cypress-e2e/fixtures/commonTestData";
 
 const basePage: BaseMethods = new BaseMethods()
 
@@ -43,7 +43,7 @@ appsData.forEach(
                         selector: property.subHeaderSelector,
                         text: appName
                     })
-                    property.paragraph ? 
+                    property.paragraph ?
                         basePage.checkElementWithTextPresence({
                             selector: baseSelectors.tags.paragraph,
                             text: Constants.commonPhrases.dynamicSystemHostApp.hostParagraph,
@@ -55,7 +55,7 @@ appsData.forEach(
                             isVisible: false
                         })
                 })
-    
+
                 it(`Check buttons in ${appName} exist`, () => {
                     basePage.openLocalhost({
                         number: host
@@ -65,7 +65,7 @@ appsData.forEach(
                         basePage.checkElementWithTextPresence({
                             selector: property.buttonSelector,
                             text: button
-                        }) 
+                        })
                     })
                     :
                     basePage.checkElementVisibility({
@@ -73,7 +73,7 @@ appsData.forEach(
                         isVisible: property.isButtonExist
                     })
                 })
-    
+
                 it(`Check functionality in ${appName}`, () => {
                     basePage.openLocalhost({
                         number: host

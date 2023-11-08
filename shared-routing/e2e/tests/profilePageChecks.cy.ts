@@ -1,10 +1,10 @@
-import { BaseMethods } from "../../../cypress/common/base";
-import {baseSelectors, selectors} from "../../../cypress/common/selectors";
-import { Constants } from "../../../cypress/fixtures/constants";
-import {CssAttr} from "../../../cypress/types/cssAttr";
+import { BaseMethods } from "../../../cypress-e2e/common/base";
+import {baseSelectors, selectors} from "../../../cypress-e2e/common/selectors";
+import { Constants } from "../../../cypress-e2e/fixtures/constants";
+import {CssAttr} from "../../../cypress-e2e/types/cssAttr";
 import {SharedRoutingMethods} from "../methods/methods";
-import {getRandomIntegerString, getRandomTextString} from "../../../cypress/helpers/base-helper";
-import {CommonTestData} from "../../../cypress/fixtures/commonTestData";
+import {getRandomIntegerString, getRandomTextString} from "../../../cypress-e2e/helpers/base-helper";
+import {CommonTestData} from "../../../cypress-e2e/fixtures/commonTestData";
 
 const basePage: BaseMethods = new BaseMethods()
 const methodsPage: SharedRoutingMethods = new SharedRoutingMethods()

@@ -1,8 +1,8 @@
-import { selectors } from './../../cypress/common/selectors';
-import { baseSelectors, commonSelectors} from '../../cypress/common/selectors';
-import { Constants } from '../../cypress/fixtures/constants';
-import { BaseMethods } from '../../cypress/common/base';
-import {returnCommonAngularAppsData} from "../../cypress/fixtures/commonTestData";
+import { selectors } from './../../cypress-e2e/common/selectors';
+import { baseSelectors, commonSelectors} from '../../cypress-e2e/common/selectors';
+import { Constants } from '../../cypress-e2e/fixtures/constants';
+import { BaseMethods } from '../../cypress-e2e/common/base';
+import {returnCommonAngularAppsData} from "../../cypress-e2e/fixtures/commonTestData";
 
 const basePage: BaseMethods = new BaseMethods()
 

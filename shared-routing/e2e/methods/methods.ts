@@ -1,6 +1,6 @@
-import {baseSelectors, commonSelectors, selectors, updatedSelectors} from "../../../cypress/common/selectors";
-import {Constants} from "../../../cypress/fixtures/constants";
-import {BaseMethods} from "../../../cypress/common/base";
+import {baseSelectors, commonSelectors, selectors, updatedSelectors} from "../../../cypress-e2e/common/selectors";
+import {Constants} from "../../../cypress-e2e/fixtures/constants";
+import {BaseMethods} from "../../../cypress-e2e/common/base";
 
 export class SharedRoutingMethods extends BaseMethods {
 

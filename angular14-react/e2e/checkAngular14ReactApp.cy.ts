@@ -1,6 +1,6 @@
-import { Constants } from './../../cypress/fixtures/constants';
-import { baseSelectors, commonSelectors } from './../../cypress/common/selectors';
-import { BaseMethods } from "../../cypress/common/base";
+import { Constants } from './../../cypress-e2e/fixtures/constants';
+import { baseSelectors, commonSelectors } from './../../cypress-e2e/common/selectors';
+import { BaseMethods } from "../../cypress-e2e/common/base";
 
 const basePage: BaseMethods = new BaseMethods()
 
@@ -11,7 +11,7 @@ describe('Angular 14 React', () => {
                 number: 4201
             })
         })
-    
+
         it('Check App build and running', () => {
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.tags.headers.h2,
@@ -40,7 +40,7 @@ describe('Angular 14 React', () => {
                 text: Constants.elementsText.angularReactShellApp.emptyTableState
             })
         })
-    
+
         it('Add user to the table', () => {
             basePage.addUser(
                 Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
@@ -74,7 +74,7 @@ describe('Angular 14 React', () => {
                 text: Constants.elementsText.angularReactShellApp.userActions.remove
             })
         })
-    
+
         it('Remove user from the table', () => {
             basePage.addUser(
                 Constants.commonConstantsData.commonAngularAppsData.messages.testName.first,
@@ -89,7 +89,7 @@ describe('Angular 14 React', () => {
                 text: Constants.elementsText.angularReactShellApp.emptyTableState
             })
         })
-    
+
         it('Check fields validation', () => {
             basePage.clickElementBySelector({
                 selector: commonSelectors.formField.replace('{fieldName}', Constants.selectorParts.formFieldNames.nameField)

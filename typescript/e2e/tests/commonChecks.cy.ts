@@ -1,7 +1,7 @@
-import { BaseMethods } from "../../../cypress/common/base";
-import {baseSelectors} from "../../../cypress/common/selectors";
-import {Constants} from "../../../cypress/fixtures/constants";
-import {CommonTestData} from "../../../cypress/fixtures/commonTestData";
+import { BaseMethods } from "../../../cypress-e2e/common/base";
+import {baseSelectors} from "../../../cypress-e2e/common/selectors";
+import {Constants} from "../../../cypress-e2e/fixtures/constants";
+import {CommonTestData} from "../../../cypress-e2e/fixtures/commonTestData";
 
 const basePage: BaseMethods = new BaseMethods()
 

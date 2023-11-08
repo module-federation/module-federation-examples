@@ -1,6 +1,6 @@
-import {baseSelectors} from "../../../cypress/common/selectors";
-import {BaseMethods} from "../../../cypress/common/base";
-import {CssAttr} from "../../../cypress/types/cssAttr";
+import {baseSelectors} from "../../../cypress-e2e/common/selectors";
+import {BaseMethods} from "../../../cypress-e2e/common/base";
+import {CssAttr} from "../../../cypress-e2e/types/cssAttr";
 
 export class SharedStoreCrossFrameworkMethods extends BaseMethods {
 

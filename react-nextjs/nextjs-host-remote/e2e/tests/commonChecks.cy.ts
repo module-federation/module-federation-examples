@@ -1,6 +1,6 @@
-import {BaseMethods} from "../../../../cypress/common/base";
-import {baseSelectors} from "../../../../cypress/common/selectors";
-import {CommonTestData} from "../../../../cypress/fixtures/commonTestData";
+import {BaseMethods} from "../../../../cypress-e2e/common/base";
+import {baseSelectors} from "../../../../cypress-e2e/common/selectors";
+import {CommonTestData} from "../../../../cypress-e2e/fixtures/commonTestData";
 
 const basePage: BaseMethods = new BaseMethods()
 
