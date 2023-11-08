@@ -188,7 +188,6 @@ jobs:
     needs: [setup-matrix, install-main-dependencies]
     if: ${{ needs.setup-matrix.outputs.matrix != '{"container":[]}' }}
     runs-on: ubuntu-22.04
-    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix: ${{fromJson(needs.setup-matrix.outputs.matrix)}}
@@ -264,6 +263,7 @@ jobs:
           node-version: 18
 
       - name: Run sample e2e tests
+        timeout-minutes: 30
         id: run-sample-e2e-tests
         run: |
           node -v
