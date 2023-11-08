@@ -7,7 +7,7 @@
     "react-scripts": "5.0.1"
   },
   "scripts": {
-    "start": "PORT=3002 forever start ./scripts/start.js",
+    "start": "rm -rf ~/.forever/sock; PORT=3002 forever start ./scripts/start.js",
     "stop": "PORT=3002 forever stop ./scripts/start.js",
     "build": "node ./scripts/build.js",
     "test": "react-scripts test",
