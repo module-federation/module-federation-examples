@@ -8,7 +8,6 @@
     ":updateNotScheduled",
     ":automergeDisabled",
     ":ignoreModulesAndTests",
-    ":autodetectPinVersions",
     "group:monorepos",
     "group:recommended",
     ":pinAllExceptPeerDependencies",
@@ -16,11 +15,11 @@
   ],
   "packageRules": [
     {
-      "paths": ["version-discrepancy/app1/package.json"],
+      "matchFileNames": ["version-discrepancy/app1/package.json"],
       "ignoreDeps": ["lodash"]
     },
     {
-      "paths": [" angular-universal-ssr/*/package.json"],
+      "matchFileNames": [" angular-universal-ssr/*/package.json"],
       "ignoreDeps": ["@angular/cli", "@angular-devkit/build-angular"]
     }
   ]
