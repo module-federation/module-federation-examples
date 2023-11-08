@@ -53,6 +53,6 @@ const Shop = props => (
 export const getServerSideProps = async () => {
   console.log('loading slow api')
   const swapi = await fetch('https://jsonplaceholder.typicode.com/todos/2').then(res => res.json());
-  return swapi;
+  return {props:swapi};
 };
 export default Shop;

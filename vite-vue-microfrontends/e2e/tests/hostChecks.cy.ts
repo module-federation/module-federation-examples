@@ -1,7 +1,7 @@
-import {BaseMethods} from "../../../cypress/common/base";
-import {baseSelectors, commonSelectors} from "../../../cypress/common/selectors";
-import {Constants} from "../../../cypress/fixtures/constants";
-import {CssAttr} from "../../../cypress/types/cssAttr";
+import {BaseMethods} from "../../../cypress-e2e/common/base";
+import {baseSelectors, commonSelectors} from "../../../cypress-e2e/common/selectors";
+import {Constants} from "../../../cypress-e2e/fixtures/constants";
+import {CssAttr} from "../../../cypress-e2e/types/cssAttr";
 
 const basePage: BaseMethods = new BaseMethods()
 
@@ -14,11 +14,11 @@ describe('Vite Vue Microfrontends', () => {
                 number: 4173
             })
         })
-    
+
         it('Checks console greeting message', () => {
             basePage.checkInfoInConsole(Constants.commonPhrases.viteSvelteMicroFrontEndsApp.consoleMessages[2])
         })
-    
+
         it('Checks both cards includes button', () => {
             basePage.checkElementQuantity({
                 selector: baseSelectors.tags.coreElements.button,
@@ -31,7 +31,7 @@ describe('Vite Vue Microfrontends', () => {
                 quantity: commonButtonsQuantity,
             })
         })
-    
+
         it('Checks both cards button is not disabled', () => {
             basePage.checkElementQuantity({
                 selector: baseSelectors.tags.coreElements.button,
@@ -45,7 +45,7 @@ describe('Vite Vue Microfrontends', () => {
                 jqueryValue: false
             })
         })
-    
+
         it('Checks both cards button shares same color', () => {
             basePage.checkElementQuantity({
                 selector: baseSelectors.tags.coreElements.button,
@@ -59,7 +59,7 @@ describe('Vite Vue Microfrontends', () => {
                 isMultiple: true
             })
         })
-    
+
         it('Checks host app card color is set to blue', () => {
             basePage.checkElementHaveProperty({
                 selector: commonSelectors.commonMicroFrontendsAppsCard,
@@ -69,7 +69,7 @@ describe('Vite Vue Microfrontends', () => {
                 checkType: 'contain'
             })
         })
-    
+
         it('Checks remote app card color is set to black', () => {
             basePage.checkElementQuantity({
                 selector: commonSelectors.commonMicroFrontendsAppsCard,
@@ -84,7 +84,7 @@ describe('Vite Vue Microfrontends', () => {
                 checkType: 'contain'
             })
         })
-    
+
         it('Checks that host card button text includes counter which changed after click & check value reverted after reload', () => {
             basePage.checkCounterFunctionality({
                     button: baseSelectors.tags.coreElements.button,
@@ -92,7 +92,7 @@ describe('Vite Vue Microfrontends', () => {
                     isReloaded: true
                 })
         })
-    
+
         it('Checks that remote card button text includes counter which changed after click & check value reverted after reload', () => {
             basePage.checkElementQuantity({
                 selector: commonSelectors.commonMicroFrontendsAppsCard,

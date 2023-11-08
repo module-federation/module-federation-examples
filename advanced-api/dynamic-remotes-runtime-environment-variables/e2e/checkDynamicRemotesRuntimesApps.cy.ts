@@ -1,7 +1,7 @@
-import {BaseMethods} from "../../../cypress/common/base";
-import {baseSelectors} from "../../../cypress/common/selectors";
-import {Constants} from "../../../cypress/fixtures/constants";
-import {getDateWithFormat} from "../../../cypress/helpers/base-helper";
+import {BaseMethods} from "../../../cypress-e2e/common/base";
+import {baseSelectors} from "../../../cypress-e2e/common/selectors";
+import {Constants} from "../../../cypress-e2e/fixtures/constants";
+import {getDateWithFormat} from "../../../cypress-e2e/helpers/base-helper";
 const basePage: BaseMethods = new BaseMethods()
 
 const appsData = [

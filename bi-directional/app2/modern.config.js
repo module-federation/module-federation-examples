@@ -30,7 +30,7 @@ export default defineConfig({
             app1: 'app1@http://localhost:3001/static/js/remoteEntry.js',
           },
           exposes: {
-            './Button': './src/components/Button.js',
+            './Button': './src/components/button.js',
           },
           shared: {
             react: { singleton: true },

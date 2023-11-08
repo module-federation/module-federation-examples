@@ -8,10 +8,11 @@
   "scripts": {
     "build": "pnpm --parallel --filter \"./**\" build",
     "serve": "pnpm --parallel --filter \"./**\"  serve",
-    "e2e:ci": "pnpm build && pnpm serve & wait-on http-get://localhost:5000/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
+    "e2e:ci": "pnpm build && pnpm serve & wait-on http-get://localhost:5000/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "pnpm": "7.32.2",
     "wait-on": "7.0.1"
-  }
+  },
+  "private": true
 }

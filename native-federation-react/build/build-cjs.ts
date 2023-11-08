@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import { dirname } from 'path';
 import { readFileSync, writeFileSync } from 'fs';
 import * as esbuild from 'esbuild';
@@ -66,7 +68,7 @@ function cjsRequirePlugin(externals) {
             external: true
           }
         }
-  
+
         return null;
       });
 

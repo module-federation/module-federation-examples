@@ -2,16 +2,16 @@
   "name": "different-react-versions-typescript",
   "private": true,
   "version": "0.0.0",
-    "workspaces": [
-      "app1",
-      "app2"
-    ],
+  "workspaces": [
+    "app1",
+    "app2"
+  ],
   "scripts": {
     "start": "lerna run --scope=different-react-versions-typescript_* --parallel start",
     "build": "lerna run --scope=different-react-versions-typescript_* build",
     "serve": "lerna run --scope=different-react-versions-typescript_* --parallel serve",
     "clean": "lerna run --scope=different-react-versions-typescript_* --parallel clean",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ &&  npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ &&  npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "wait-on": "7.0.1"

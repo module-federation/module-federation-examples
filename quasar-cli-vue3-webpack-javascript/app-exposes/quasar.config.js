@@ -11,7 +11,6 @@
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const ESLintPlugin = require('eslint-webpack-plugin')
 const dependencies = require('./package.json').dependencies
-const environmentVars = require('./envs/env.json');
 
 const { configure } = require('quasar/wrappers');
 const path = require('path');
@@ -73,7 +72,7 @@ module.exports = configure(function (ctx) {
         );
       },
       // transpile: false,
-      publicPath: environmentVars.publicPath,
+      // publicPath: '/',
 
       // Add dependencies for transpiling with Babel (Array of string/regex)
       // (from node_modules, which are by default not transpiled).

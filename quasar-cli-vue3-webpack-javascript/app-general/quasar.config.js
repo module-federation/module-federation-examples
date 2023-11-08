@@ -9,9 +9,9 @@
 // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js
 
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
-const dependencies = require('./package.json').dependencies;
-const environmentVars = require('./envs/env.json');
+const ESLintPlugin = require('eslint-webpack-plugin')
+const dependencies = require('./package.json').dependencies
+
 
 
 const { configure } = require('quasar/wrappers');
@@ -57,7 +57,7 @@ module.exports = configure(function (ctx) {
       vueRouterMode: 'hash', // available values: 'hash', 'history'
 
       extendWebpack(cfg) {
-        cfg.entry = path.resolve(__dirname, './.quasar/main.js');
+        cfg.entry = path.resolve(__dirname, './.quasar/main.js')
         cfg.plugins.push(
           new ModuleFederationPlugin({
             name: 'app_general',
@@ -73,7 +73,7 @@ module.exports = configure(function (ctx) {
         );
       },
       // transpile: false,
-      publicPath: environmentVars.publicPath,
+      // publicPath: '/',
 
       // Add dependencies for transpiling with Babel (Array of string/regex)
       // (from node_modules, which are by default not transpiled).

@@ -1,6 +1,6 @@
-import { BaseMethods } from '../../cypress/common/base';
-import { baseSelectors } from '../../cypress/common/selectors';
-import { Constants } from '../../cypress/fixtures/constants';
+import { BaseMethods } from '../../cypress-e2e/common/base';
+import { baseSelectors } from '../../cypress-e2e/common/selectors';
+import { Constants } from '../../cypress-e2e/fixtures/constants';
 
 const basePage: BaseMethods = new BaseMethods()
 
@@ -17,7 +17,7 @@ const appsData = [
 
 appsData.forEach(
     function(
-        property: { 
+        property: {
             appNameText: string,
             host: number
     }) {
@@ -39,7 +39,7 @@ appsData.forEach(
                     visibilityState: 'be.visible'
                 })
             })
-        
+
             it(`Check button text visibility`, () => {
                 basePage.openLocalhost({
                     number: property.host

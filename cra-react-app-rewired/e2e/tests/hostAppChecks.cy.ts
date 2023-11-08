@@ -1,5 +1,5 @@
-import { BaseMethods } from "../../../cypress/common/base";
-import {selectors, updatedSelectors} from "../../../cypress/common/selectors";
+import { BaseMethods } from "../../../cypress-e2e/common/base";
+import {selectors, updatedSelectors} from "../../../cypress-e2e/common/selectors";
 
 const basePage: BaseMethods = new BaseMethods()
 

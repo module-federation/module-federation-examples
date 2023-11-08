@@ -1,8 +1,6 @@
 {
   "name": "vite-vue-microfrontends",
   "private": true,
-
-
   "workspaces": [
     "./host",
     "./remote"
@@ -12,14 +10,13 @@
   "main": "index.js",
   "scripts": {
     "install:deps": "npm --prefix ./host install && npm --prefix ./remote install",
-    "postinstall:deps": "npm --prefix ./host run build && npm --prefix ./remote run build",
     "serve:host": "npm --prefix ./host run dev",
     "serve:remote": "npm --prefix ./remote run dev",
     "build:host": "npm --prefix ./host run build",
     "build:remote": "npm --prefix ./remote run build",
     "preview:host": "npm --prefix ./host run build && npm --prefix ./host run preview",
     "preview:remote": "npm --prefix ./remote run build && npm --prefix ./remote run preview",
-    "e2e:ci": "yarn preview:remote && yarn preview:host & wait-on http-get://localhost:4173/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
+    "e2e:ci": "yarn preview:remote && yarn preview:host & wait-on http-get://localhost:4173/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
   },
   "author": {
     "name": "Giorgio Boa",

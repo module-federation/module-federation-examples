@@ -1,6 +1,6 @@
-import { Constants } from './../../cypress/fixtures/constants';
-import { baseSelectors } from './../../cypress/common/selectors';
-import { BaseMethods } from "../../cypress/common/base";
+import { Constants } from './../../cypress-e2e/fixtures/constants';
+import { baseSelectors } from './../../cypress-e2e/common/selectors';
+import { BaseMethods } from "../../cypress-e2e/common/base";
 import {DifferentReactVersionsMethods} from "./methods/methods";
 
 const basePage: BaseMethods = new BaseMethods()

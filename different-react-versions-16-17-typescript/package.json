@@ -1,10 +1,10 @@
 {
   "name": "different-react-versions-16-17-typescript",
   "version": "0.0.0",
-    "workspaces": [
-      "app1",
-      "app2"
-    ],
+  "workspaces": [
+    "app1",
+    "app2"
+  ],
   "private": true,
   "scripts": {
     "start": "lerna run --parallel start",
@@ -12,6 +12,5 @@
     "serve": "lerna run --parallel serve",
     "clean": "lerna run --parallel clean"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

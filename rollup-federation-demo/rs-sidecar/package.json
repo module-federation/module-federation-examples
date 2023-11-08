@@ -1,0 +1,31 @@
+{
+  "name": "rollup-federation-demo_wp5-starter-react",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "start": "webpack serve --open --mode development",
+    "start:live": "webpack-dev-server --open --mode development --liveReload"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Jack Herrington",
+    "email": "jherr@pobox.com"
+  },
+  "devDependencies": {
+    "@babel/core": "7.21.4",
+    "@babel/preset-env": "7.21.4",
+    "@babel/preset-react": "7.18.6",
+    "babel-loader": "8.2.5",
+    "css-loader": "6.7.3",
+    "html-webpack-plugin": "5.5.1",
+    "style-loader": "3.3.2",
+    "webpack": "5.80.0",
+    "webpack-cli": "4.10.0",
+    "webpack-dev-server": "4.13.3"
+  },
+  "dependencies": {
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  }
+}
