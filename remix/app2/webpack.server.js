@@ -6,14 +6,19 @@ import { EsbuildPlugin } from "esbuild-loader";
 import nodeExternals from "webpack-node-externals";
 
 import { getManifest } from "./utils/manifest.js";
-
+import {default as Enhanced} from '@module-federation/enhanced'
+import {default as NFP} from '@module-federation/node'
+const {AsyncBoundaryPlugin,ModuleFederationPlugin} = Enhanced
+const {UniversalFederationPlugin} = NFP
 const mode =
   process.env.NODE_ENV === "production" ? "production" : "development";
 const remixConfig = await readConfig();
 const isModule = remixConfig.serverModuleFormat === "esm";
 
 console.log({ isModule });
-
+if(!isModule) {
+  fs.writeFileSync('./build/package.json',JSON.stringify({type:"commonjs"}))
+}
 const manifest = getManifest();
 const serverBuildModule = "./.cache/server-build.js";
 const serverBuildEntry = createServerBuildEntry(remixConfig, manifest);
@@ -26,7 +31,7 @@ const config = {
   name: "server",
   mode,
   devtool: mode === "development" ? "inline-cheap-source-map" : undefined,
-  target: "node",
+  target: "async-node",
   entry: remixConfig.serverEntryPoint
     ? path.resolve(remixConfig.rootDirectory, remixConfig.serverEntryPoint)
     : serverBuildModule,
@@ -40,6 +45,9 @@ const config = {
     }),
   ],
   output: {
+    environment: {
+      module: isModule
+    },
     filename: path.basename(remixConfig.serverBuildPath),
     library: { type: isModule ? "module" : "commonjs" },
     chunkFormat: isModule ? "module" : "commonjs",
@@ -49,9 +57,10 @@ const config = {
     publicPath: remixConfig.publicPath,
     assetModuleFilename: "_assets/[name]-[contenthash][ext]",
     cssChunkFilename: "_assets/[name]-[contenthash][ext]",
+    chunkFilename: "[name]-[chunkhash].js",
   },
   optimization: {
-    moduleIds: "deterministic",
+    moduleIds: "named",
   },
   resolve: {
     alias: {
@@ -74,6 +83,40 @@ const config = {
       },
     ],
   },
+  plugins:[
+    new UniversalFederationPlugin({
+      isServer:true,
+      name: "app2",
+      filename: 'remoteEntry.js',
+      remotes: {
+        app1: 'app1@http://localhost:3000/server/remoteEntry.js'
+      },
+      remoteType: 'script',
+      library: {type: isModule ? "module" : 'commonjs-module'},
+      exposes: {
+        './button': './components/Button.jsx',
+      },
+      shared: {
+        "react/": {
+          singleton: true
+        },
+        "react": {
+          singleton: true
+        },
+        "react-dom/": {
+          singleton: true
+        },
+        "react-dom": {
+          singleton: true
+        }
+      }
+    }, {ModuleFederationPlugin}),
+    new AsyncBoundaryPlugin({
+      excludeChunk: (chunk)=> {
+        return chunk.name === 'app2'
+      }
+    }),
+  ]
 };
 
 export default config;
