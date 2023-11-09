@@ -37,8 +37,11 @@ const config = {
     topLevelAwait: true
   },
   output: {
+    environment: {
+      module: true
+    },
     path: remixConfig.assetsBuildDirectory,
-    publicPath: remixConfig.publicPath,
+    publicPath: 'auto',
     module: true,
     library: {type: "module"},
     chunkFormat: "module",
@@ -101,7 +104,16 @@ const config = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      runtime: false,
       name: "app2",
+      filename: 'remoteEntry.js',
+      remotes: {
+        app1: 'http://localhost:3000/build/remoteEntry.js'
+      },
+      remoteType: 'module',
+      library: {
+        type: 'module'
+      },
       exposes: {
         './button': './components/Button.jsx',
       },
@@ -109,12 +121,40 @@ const config = {
         "react/": {
           singleton: true
         },
+        "react": {
+          singleton: true
+        },
         "react-dom/": {
+          singleton: true
+        },
+        "react-dom": {
+          singleton: true
+        },
+        "react-router-dom": {
+          singleton: true
+        },
+        "react-router-dom/": {
+          singleton: true
+        },
+        "@remix-run/router": {
+          singleton: true
+        },
+        "@remix-run/router/": {
+          singleton: true
+        },
+        "@remix-run/react/": {
+          singleton: true
+        },
+        "@remix-run/": {
           singleton: true
         }
       }
     }),
-    new AsyncBoundaryPlugin(),
+    new AsyncBoundaryPlugin({
+      excludeChunk: (chunk)=> {
+        return chunk.name === 'app2'
+      }
+    }),
     {
       /**
        * @param {import("webpack").Compiler} compiler

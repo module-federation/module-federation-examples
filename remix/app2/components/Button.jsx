@@ -1,3 +1,5 @@
 export default () => {
-  return <button>test</button>
+  console.log('rendering button from app2')
+  return <button>Federated Button from App2</button>
+
 }

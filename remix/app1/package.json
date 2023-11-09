@@ -1,10 +1,12 @@
 {
-  "name": "remix-webpack-minimal",
+  "name": "remix-app1",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "build:browser": "webpack --mode=development --config webpack.browser.js",
     "build:server": "webpack --mode=development --config webpack.server.js",
-    "start":"rm -rf ./public/build; pnpm run build:browser && pnpm run build:server && node ./build/index.js"
+    "start":"rm -rf ./public/build; pnpm run build:browser && pnpm run build:server && node ./build/index.js",
+    "server":"node ./build/index.js"
   },
   "author": "Jacob Ebey",
   "license": "ISC",
@@ -23,6 +25,7 @@
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
+    "cors": "2.8.5",
     "@remix-run/express": "^2.2.0",
     "@remix-run/node": "^2.2.0",
     "@remix-run/react": "^2.2.0",
