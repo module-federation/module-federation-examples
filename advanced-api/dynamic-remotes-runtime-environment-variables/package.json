@@ -14,7 +14,7 @@
     "docker:build": "pnpm --filter dynamic-remotes-runtime-environment-variables_* --parallel docker:build",
     "docker:run": "pnpm --filter dynamic-remotes-runtime-environment-variables_* --parallel docker:run",
     "docker:rm": "pnpm --filter dynamic-remotes-runtime-environment-variables_* --parallel docker:rm",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "wait-on": "7.1.0"
