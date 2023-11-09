@@ -15,7 +15,7 @@
     "e2e:ci": "yarn start & wait-on http-get://localhost:3002/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "@babel/preset-react": "7.22.15",
+    "@babel/preset-react": "7.23.3",
     "lerna": "3.22.1",
     "wait-on": "7.0.1"
   }
