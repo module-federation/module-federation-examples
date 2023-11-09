@@ -1,3 +1,3 @@
 export default () => {
-  return <button>test</button>
+  return <button>Federated Button from App1</button>
 }

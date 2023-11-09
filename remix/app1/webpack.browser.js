@@ -4,8 +4,38 @@ import {readConfig} from "@remix-run/dev/dist/config.js";
 import {EsbuildPlugin} from "esbuild-loader";
 import {toManifest, writeManifest} from "./utils/manifest.js";
 import {default as Enhanced} from '@module-federation/enhanced'
+import DelegatesModulePlugin from '@module-federation/utilities/src/plugins/DelegateModulesPlugin.js'
 const {ModuleFederationPlugin, AsyncBoundaryPlugin} = Enhanced
-
+class HoistContainerReferences {
+  apply(compiler) {
+    compiler.hooks.thisCompilation.tap('stuff', (compilation) => {
+      compilation.hooks.afterOptimizeChunks.tap(
+        'EmbeddedContainerPlugin',
+        (chunks) => {
+          const chunkSet = new Map()
+          const externalRequests = new Set()
+          for (const chunk of chunks) {
+            chunkSet.set(chunk.id || chunk.name, chunk)
+          }
+          // console.log(chunkSet)
+          for (const chunk of chunks) {
+            const remoteModules = compilation.chunkGraph.getChunkModulesIterableBySourceType(chunk,'remote');
+            if(!remoteModules) continue
+            for (const remoteModule of remoteModules) {
+              remoteModule.dependencies.forEach((dep) => {
+                const mod = compilation.moduleGraph.getModule(dep)
+                externalRequests.add(mod);
+                const runtimeChunk = chunkSet.get(chunk.runtime)
+                compilation.chunkGraph.connectChunkAndModule(runtimeChunk, mod)
+              })
+            }
+          }
+           console.log(externalRequests);
+        }
+      );
+    })
+  }
+}
 
 const mode =
   process.env.NODE_ENV === "production" ? "production" : "development";
@@ -37,8 +67,11 @@ const config = {
     topLevelAwait: true
   },
   output: {
+    environment: {
+      module: true
+    },
     path: remixConfig.assetsBuildDirectory,
-    publicPath: remixConfig.publicPath,
+    publicPath: 'auto',
     module: true,
     library: {type: "module"},
     chunkFormat: "module",
@@ -99,9 +132,24 @@ const config = {
     minimizer: [new EsbuildPlugin({target: "es2019"})],
   },
   plugins: [
-    new AsyncBoundaryPlugin(),
+
+    new HoistContainerReferences(),
+    new AsyncBoundaryPlugin({
+      excludeChunk: (chunk)=> {
+        return chunk.name === 'app1'
+      }
+    }),
     new ModuleFederationPlugin({
+      runtime: false,
       name: "app1",
+      filename: 'remoteEntry.js',
+      library: {
+        type: 'module'
+      },
+      remoteType: 'module',
+      remotes: {
+        app2: 'http://localhost:3001/build/remoteEntry.js'
+      },
       exposes: {
         './button': './components/Button.jsx',
       },
@@ -109,7 +157,28 @@ const config = {
         "react/": {
           singleton: true
         },
+        "react": {
+          singleton: true
+        },
         "react-dom/": {
+          singleton: true
+        },
+        "react-dom": {
+          singleton: true
+        },
+        "react-router-dom": {
+          singleton: true
+        },
+        "react-router-dom/": {
+          singleton: true
+        },
+        "@remix-run/router": {
+          singleton: true
+        },
+        "@remix-run/router/": {
+          singleton: true
+        },
+        "@remix-run/react/": {
           singleton: true
         },
         "@remix-run/": {
