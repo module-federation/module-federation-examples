@@ -1,0 +1,18 @@
+{
+  "name": "ts-monorepo",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "yarn workspaces run build",
+    "serve": "wsrun --parallel serve",
+    "start": "concurrently \"wsrun --parallel start\" \"wsrun --parallel serve\""
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "wsrun": "^5.2.4"
+  }
+}

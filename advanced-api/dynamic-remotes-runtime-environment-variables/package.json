@@ -5,8 +5,6 @@
     "./remote"
   ],
   "private": true,
-
-
   "version": "0.0.0",
   "scripts": {
     "start": "pnpm --filter dynamic-remotes-runtime-environment-variables_* --parallel start",
@@ -19,8 +17,6 @@
     "e2e:ci": "pnpm start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "11.0.0",
-    "wait-on": "7.0.1",
-    "webpack-cli": "4.10.0"
+    "wait-on": "7.1.0"
   }
 }

@@ -1,24 +1,19 @@
 {
   "name": "cra_remote",
   "version": "0.0.0",
-
   "dependencies": {
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-scripts": "5.0.1"
   },
   "scripts": {
-    "start": "PORT=3002 forever start ./scripts/start.js",
+    "start": "rm -rf ~/.forever/sock; PORT=3002 forever start ./scripts/start.js",
     "stop": "PORT=3002 forever stop ./scripts/start.js",
     "build": "node ./scripts/build.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
-  },
+  "eslintConfig": {},
   "browserslist": {
     "production": [
       ">0.2%",

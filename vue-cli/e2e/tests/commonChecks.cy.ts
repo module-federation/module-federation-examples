@@ -1,7 +1,7 @@
-import {BaseMethods} from "../../../cypress/common/base";
+import {BaseMethods} from "../../../cypress-e2e/common/base";
 import {VueCliMethods} from "../methods/methods";
-import {baseSelectors} from "../../../cypress/common/selectors";
-import {Constants} from "../../../cypress/fixtures/constants";
+import {baseSelectors} from "../../../cypress-e2e/common/selectors";
+import {Constants} from "../../../cypress-e2e/fixtures/constants";
 
 const basePage: BaseMethods = new BaseMethods()
 const methodsPage: VueCliMethods = new VueCliMethods()

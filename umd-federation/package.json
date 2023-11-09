@@ -1,0 +1,22 @@
+{
+  "name": "umd-federation",
+  "private": true,
+  "workspaces": [
+    "./app1",
+    "./app2"
+  ],
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "lerna run --scope=umd-federation_app* --parallel start",
+    "e2e:ci": "yarn start & wait-on http-get://localhost:9001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "wait-on": "7.0.1"
+  }
+}

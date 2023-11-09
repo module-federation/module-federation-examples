@@ -6,6 +6,7 @@ const ModuleFederationPlugin =
 const { override, babelInclude } = require("customize-cra");
 
 module.exports = function (config, env) {
+  config.plugins = config.plugins.filter(p=>["CaseSensitivePathsPlugin"].includes(p.constructor.name))
   config.plugins.push(
     new ModuleFederationPlugin(
       (module.exports = {

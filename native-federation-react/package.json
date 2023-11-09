@@ -1,8 +1,6 @@
 {
   "name": "native-federation-react",
   "private": true,
-
-
   "workspaces": [
     "./host",
     "./remote"
@@ -17,7 +15,7 @@
     "start:remote": "serve dist/remote -l 3001 --cors",
     "start:host": "serve dist/host -l 3000",
     "start": "concurrently \"npm run start:remote\" \"npm run start:host\"",
-    "e2e:ci": "npm run build && npm run start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
+    "e2e:ci": "npm run build && npm run start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
   },
   "keywords": [],
   "author": "",
@@ -27,15 +25,17 @@
     "@softarc/native-federation": "0.9.2-beta.7",
     "@softarc/native-federation-runtime": "0.9.2-beta.7",
     "@types/node": "18.16.0",
+    "@types/react": "17.0.70",
+    "@types/webpack": "^5.28.5",
     "concurrently": "7.6.0",
-    "esbuild": "0.17.18",
+    "esbuild": "0.19.5",
     "esm-node-services": "0.7.14",
     "json5": "2.2.3",
-    "serve": "14.2.0",
+    "serve": "14.2.1",
     "wait-on": "7.0.1"
   },
   "dependencies": {
-    "date-fns": "^2.29.2",
+    "date-fns": "^2.30.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }

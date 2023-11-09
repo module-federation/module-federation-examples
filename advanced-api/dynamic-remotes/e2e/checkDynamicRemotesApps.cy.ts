@@ -1,9 +1,9 @@
-import {baseSelectors, commonSelectors} from '../../../cypress/common/selectors';
-import { BaseMethods } from "../../../cypress/common/base";
-import { Constants } from "../../../cypress/fixtures/constants";
-import { getDateWithFormat } from "../../../cypress/helpers/base-helper";
-import { CssAttr } from '../../../cypress/types/cssAttr';
-import {returnCommonDynamicAppsData} from "../../../cypress/fixtures/commonTestData";
+import {baseSelectors, commonSelectors} from '../../../cypress-e2e/common/selectors';
+import { BaseMethods } from "../../../cypress-e2e/common/base";
+import { Constants } from "../../../cypress-e2e/fixtures/constants";
+import { getDateWithFormat } from "../../../cypress-e2e/helpers/base-helper";
+import { CssAttr } from '../../../cypress-e2e/types/cssAttr';
+import {returnCommonDynamicAppsData} from "../../../cypress-e2e/fixtures/commonTestData";
 
 const basePage: BaseMethods = new BaseMethods()
 

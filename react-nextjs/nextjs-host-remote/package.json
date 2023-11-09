@@ -1,0 +1,20 @@
+{
+  "name": "nextjs-host-remote",
+  "private": true,
+  "workspaces": [
+    "./host",
+    "./remote"
+  ],
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"cd host; npm run dev\" \"cd remote; npm run dev\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Omher",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "7.6.0"
+  }
+}

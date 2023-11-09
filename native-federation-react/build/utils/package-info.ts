@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 // Copy-pasted from https://github.com/angular-architects/module-federation-plugin/blob/main/libs/native-federation-core/src/lib/utils/package-info.ts
 import * as fs from 'fs';
 import * as path from 'path';

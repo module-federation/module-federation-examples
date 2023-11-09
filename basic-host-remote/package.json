@@ -1,8 +1,8 @@
 {
   "name": "basic-host-remote",
   "workspaces": [
-    "./app3",
-    "./app4"
+    "./app1",
+    "./app2"
   ],
   "private": true,
   "version": "0.0.0",
@@ -14,7 +14,7 @@
     "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "concurrently": "^8.2.1",
-    "wait-on": "7.0.1"
+    "concurrently": "^8.2.2",
+    "wait-on": "7.1.0"
   }
 }

@@ -1,6 +1,6 @@
-import { BaseMethods } from '../../cypress/common/base';
-import { baseSelectors, selectors } from '../../cypress/common/selectors';
-import { Constants } from '../../cypress/fixtures/constants';
+import { BaseMethods } from '../../cypress-e2e/common/base';
+import { baseSelectors, selectors } from '../../cypress-e2e/common/selectors';
+import { Constants } from '../../cypress-e2e/fixtures/constants';
 
 const basePage: BaseMethods = new BaseMethods();
 
@@ -377,7 +377,7 @@ appsData.forEach(
                         path: Constants.hrefs.nextJsSsrApp.checkout
                     })
                 })
-    
+
                 navigationTextedLinks.forEach((property: { text: string, link: string }) => {
                     it(`Check that ${property.text} text includes link and is not disabled`, () => {
                         basePage.checkElementContainText({
@@ -387,7 +387,7 @@ appsData.forEach(
                         })
                     })
                 })
-    
+
                 commonTextedLinks.forEach((property: { text: string, link: string }) => {
                     it(`Check that ${property.text} text includes link and is not disabled`, () => {
                         basePage.checkElementContainText({
@@ -397,14 +397,14 @@ appsData.forEach(
                         })
                     })
                 })
-    
+
                 navigationTextedLinks.forEach((property: { text: string, url: string }) => {
                     it(`Check that ${property.text} text navigation link works`, () => {
                         basePage.clickElementWithText({
                             selector: baseSelectors.tags.coreElements.link,
                             text: property.text
                         })
-    
+
                         cy.wait(500)
                         basePage.checkUrlText(property.url, true)
                     })

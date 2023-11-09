@@ -1,13 +1,14 @@
-const { withNx } = require('@nx/next/plugins/with-nx');
+const { withNx } = require('@nrwl/next/plugins/with-nx');
 const { NextFederationPlugin } = require('@module-federation/nextjs-mf');
 
 const { dependencies } = require('../../package.json');
 
-const BUTTON_APP_URL = process.env.NEXT_PUBLIC_BUTTON_APP_URL || 'http://localhost:3003';
+const BUTTON_APP_URL =
+  process.env.NEXT_PUBLIC_BUTTON_APP_URL || 'http://localhost:3003';
 
 // this enables you to use import() and the webpack parser
 // loading remotes on demand, not ideal for SSR
-const remotes = isServer => {
+const remotes = (isServer) => {
   const location = isServer ? 'ssr' : 'chunks';
 
   return {
@@ -16,7 +17,7 @@ const remotes = isServer => {
 };
 
 /**
- * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
+ * @type {import('@nrwl/next/plugins/with-nx').WithNxOptions}
  **/
 const nextConfig = {
   nx: {
@@ -59,7 +60,7 @@ const nextConfig = {
             requiredVersion: dependencies['styled-components'],
           },
         },
-      }),
+      })
     );
 
     return config;
