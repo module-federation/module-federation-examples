@@ -1,6 +1,4 @@
 import { useLoaderData } from "@remix-run/react";
-import {lazy,Suspense}  from "react";
-import Button from 'app2/button'
 export function loader() {
   return { message: "Hello, World!" };
 }
@@ -12,9 +10,6 @@ export default function Home() {
     <div>
       <h1>Home</h1>
       <p>{message}</p>
-        <Suspense fallback={"loading remote"}>
-            <Button/>
-        </Suspense>
     </div>
   );
 }
