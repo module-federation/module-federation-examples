@@ -1,0 +1,20 @@
+{
+  "name": "remix",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": [
+    "app1",
+    "app2"
+  ],
+  "scripts": {
+    "start": "concurrently 'cd ./app2; yarn run start' 'cd ./app1; sleep 5 && yarn run start' ",
+    "server": "concurrently 'cd ./app1; sleep 5 && yarn run server' 'cd ./app2; yarn run server'"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "@module-federation/node": "^2.1.0-canary.4",
+    "@module-federation/utilities": "^3.0.0"
+  }
+}
