@@ -9836,9 +9836,6 @@ importers:
 
   self-healing:
     devDependencies:
-      lerna:
-        specifier: 3.22.1
-        version: 3.22.1(@octokit/core@4.2.4)
       wait-on:
         specifier: 7.0.1
         version: 7.0.1
@@ -9944,9 +9941,6 @@ importers:
       concurrently:
         specifier: ^7.6.0
         version: 7.6.0
-      lerna:
-        specifier: 3.22.1
-        version: 3.22.1(@octokit/core@4.2.4)
       nodemon:
         specifier: 2.0.22
         version: 2.0.22
@@ -10291,11 +10285,7 @@ importers:
         specifier: 4.15.1
         version: 4.15.1(webpack-cli@4.10.0)(webpack@5.80.0)
 
-  shared-routing:
-    devDependencies:
-      lerna:
-        specifier: 3.22.1
-        version: 3.22.1(@octokit/core@4.2.4)
+  shared-routing: {}
 
   shared-routing/dashboard:
     dependencies:
@@ -10434,6 +10424,9 @@ importers:
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.3)(webpack@5.80.0)
+      classnames:
+        specifier: 2.3.2
+        version: 2.3.2
       file-loader:
         specifier: 6.2.0
         version: 6.2.0(webpack@5.80.0)
@@ -10547,6 +10540,9 @@ importers:
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.3)(webpack@5.80.0)
+      clsx:
+        specifier: 2.0.0
+        version: 2.0.0
       find-up:
         specifier: 5.0.0
         version: 5.0.0
@@ -10568,9 +10564,6 @@ importers:
 
   shared-store-cross-framework:
     devDependencies:
-      lerna:
-        specifier: 3.22.1
-        version: 3.22.1(@octokit/core@4.2.4)
       wait-on:
         specifier: 7.0.1
         version: 7.0.1
@@ -10630,6 +10623,9 @@ importers:
       '@babel/core':
         specifier: 7.23.3
         version: 7.23.3
+      babel-loader:
+        specifier: 9.1.3
+        version: 9.1.3(@babel/core@7.23.3)(webpack@5.80.0)
       serve:
         specifier: 13.0.4
         version: 13.0.4
@@ -10783,6 +10779,16 @@ importers:
       '@module-federation/node':
         specifier: ^2.0.2-beta.6
         version: 2.0.2-beta.6(webpack@5.80.0)
+    devDependencies:
+      webpack:
+        specifier: 5.80.0
+        version: 5.80.0(webpack-cli@4.10.0)
+      webpack-cli:
+        specifier: ^4.0.0
+        version: 4.10.0(webpack-bundle-analyzer@4.9.1)(webpack-dev-server@4.15.1)(webpack@5.80.0)
+      webpack-dev-server:
+        specifier: ^4.0.0
+        version: 4.15.1(webpack-cli@4.10.0)(webpack@5.80.0)
 
   simple-node/node-remote:
     dependencies:
@@ -13170,7 +13176,7 @@ packages:
       '@ngtools/webpack': 10.2.4(@angular/compiler-cli@11.2.14)(typescript@4.0.2)(webpack@5.80.0)
       autoprefixer: 9.8.6
       babel-loader: 8.1.0(@babel/core@7.11.1)(webpack@5.80.0)
-      browserslist: 4.21.10
+      browserslist: 4.22.1
       cacache: 15.0.5
       caniuse-lite: 1.0.30001528
       circular-dependency-plugin: 5.2.0(webpack@5.80.0)
@@ -13266,7 +13272,7 @@ packages:
       '@ngtools/webpack': 10.2.4(@angular/compiler-cli@11.2.14)(typescript@4.0.2)(webpack@5.80.0)
       autoprefixer: 9.8.6
       babel-loader: 8.1.0(@babel/core@7.11.1)(webpack@5.80.0)
-      browserslist: 4.21.10
+      browserslist: 4.22.1
       cacache: 15.0.5
       caniuse-lite: 1.0.30001528
       circular-dependency-plugin: 5.2.0(webpack@5.80.0)
@@ -13362,7 +13368,7 @@ packages:
       '@ngtools/webpack': 10.2.4(@angular/compiler-cli@12.2.16)(typescript@4.3.5)(webpack@5.80.0)
       autoprefixer: 9.8.6
       babel-loader: 8.1.0(@babel/core@7.11.1)(webpack@5.80.0)
-      browserslist: 4.21.10
+      browserslist: 4.22.1
       cacache: 15.0.5
       caniuse-lite: 1.0.30001528
       circular-dependency-plugin: 5.2.0(webpack@5.80.0)
@@ -31085,7 +31091,7 @@ packages:
       http-compression: 1.0.6
       minimatch: 3.1.2
       path-to-regexp: 6.2.1
-      ws: 8.14.0
+      ws: 8.14.2
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@types/express'
@@ -38596,7 +38602,7 @@ packages:
       util-deprecate: 1.0.2
       watchpack: 2.4.0
       webpack: 5.80.0(webpack-cli@4.8.0)
-      ws: 8.14.0
+      ws: 8.14.2
       x-default-browser: 0.4.0
     transitivePeerDependencies:
       - '@storybook/mdx2-csf'
@@ -44977,7 +44983,7 @@ packages:
     resolution: {integrity: sha512-eM9d/swFopRt5gdJ7jrpCwgvEMIayITpojhkkSMRsFHYuH5bkSQ4p/9qTEHtmNudUZh22Tehu7I6CxAW0IXTKA==}
     hasBin: true
     dependencies:
-      browserslist: 4.21.10
+      browserslist: 4.22.1
       caniuse-lite: 1.0.30001528
       normalize-range: 0.1.2
       num2fraction: 1.2.2
@@ -47309,7 +47315,6 @@ packages:
 
   /classnames@2.3.2:
     resolution: {integrity: sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==}
-    dev: false
 
   /clean-css@4.2.4:
     resolution: {integrity: sha512-EJUDT7nDVFDvaQgAo2G/PJvxmp1o/c6iXLbswsBbUFXi1Nr+AjA2cKmfbKDMjMvzEe75g3P6JkaDDAKk96A85A==}
@@ -47537,6 +47542,11 @@ packages:
   /clsx@1.2.1:
     resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
     engines: {node: '>=6'}
+
+  /clsx@2.0.0:
+    resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
+    engines: {node: '>=6'}
+    dev: true
 
   /cmd-shim@4.1.0:
     resolution: {integrity: sha512-lb9L7EM4I/ZRVuljLPEtUJOP+xiQVknZ4ZMpMgEp4JzNldPb27HU03hi6K1/6CoIuit/Zm/LQXySErFeXxDprw==}
@@ -48513,7 +48523,7 @@ packages:
   /core-js-compat@3.32.2:
     resolution: {integrity: sha512-+GjlguTDINOijtVRUxrQOv3kfu9rl+qPNdX2LTbJ/ZyVTuxK+ksVSAGX1nHstu4hrv1En/uPTtWgq2gI5wt4AQ==}
     dependencies:
-      browserslist: 4.21.10
+      browserslist: 4.22.1
 
   /core-js-compat@3.33.1:
     resolution: {integrity: sha512-6pYKNOgD/j/bkC5xS5IIg6bncid3rfrI42oBH1SQJbsmYPKF7rhzcFzYCcxYMmNQQ0rCEB8WqpW7QHndOggaeQ==}
@@ -49270,7 +49280,7 @@ packages:
         optional: true
     dependencies:
       cssnano: 5.1.15(postcss@8.4.31)
-      jest-worker: 29.6.4
+      jest-worker: 29.7.0
       postcss: 8.4.31
       schema-utils: 4.2.0
       serialize-javascript: 6.0.1
@@ -59685,7 +59695,7 @@ packages:
       graceful-fs: 4.2.11
       jest-regex-util: 29.6.3
       jest-util: 29.7.0
-      jest-worker: 29.6.4
+      jest-worker: 29.7.0
       micromatch: 4.0.5
       walker: 1.0.8
     optionalDependencies:
@@ -60289,7 +60299,7 @@ packages:
       jest-runtime: 29.6.4
       jest-util: 29.7.0
       jest-watcher: 29.6.4
-      jest-worker: 29.6.4
+      jest-worker: 29.7.0
       p-limit: 3.1.0
       source-map-support: 0.5.13
     transitivePeerDependencies:
@@ -61138,7 +61148,7 @@ packages:
       whatwg-encoding: 2.0.0
       whatwg-mimetype: 3.0.0
       whatwg-url: 10.0.0
-      ws: 8.14.0
+      ws: 8.14.2
       xml-name-validator: 4.0.0
     transitivePeerDependencies:
       - bufferutil
@@ -61179,7 +61189,7 @@ packages:
       whatwg-encoding: 2.0.0
       whatwg-mimetype: 3.0.0
       whatwg-url: 11.0.0
-      ws: 8.14.0
+      ws: 8.14.2
       xml-name-validator: 4.0.0
     transitivePeerDependencies:
       - bufferutil
@@ -61220,7 +61230,7 @@ packages:
       whatwg-encoding: 2.0.0
       whatwg-mimetype: 3.0.0
       whatwg-url: 11.0.0
-      ws: 8.14.0
+      ws: 8.14.2
       xml-name-validator: 4.0.0
     transitivePeerDependencies:
       - bufferutil
@@ -82111,7 +82121,7 @@ packages:
       supports-color: 6.1.0
       url: 0.11.1
       webpack: 5.80.0(webpack-cli@4.8.0)
-      webpack-dev-middleware: 3.7.2(webpack@5.80.0)
+      webpack-dev-middleware: 3.7.3(webpack@5.80.0)
       webpack-log: 2.0.0
       ws: 6.2.2
       yargs: 13.3.2
@@ -82161,7 +82171,7 @@ packages:
       supports-color: 6.1.0
       url: 0.11.1
       webpack: 5.80.0(webpack-cli@4.8.0)
-      webpack-dev-middleware: 3.7.2(webpack@5.80.0)
+      webpack-dev-middleware: 3.7.3(webpack@5.80.0)
       webpack-log: 2.0.0
       ws: 6.2.2
       yargs: 13.3.2
@@ -82210,7 +82220,7 @@ packages:
       spdy: 4.0.2
       webpack: 5.80.0(esbuild@0.15.5)
       webpack-dev-middleware: 5.3.3(webpack@5.80.0)
-      ws: 8.14.0
+      ws: 8.14.2
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -82613,7 +82623,7 @@ packages:
       spdy: 4.0.2
       webpack: 5.80.0(webpack-cli@4.8.0)
       webpack-dev-middleware: 5.3.3(webpack@5.80.0)
-      ws: 8.14.0
+      ws: 8.14.2
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -82665,7 +82675,7 @@ packages:
       webpack: 5.80.0(webpack-cli@4.10.0)
       webpack-cli: 4.10.0(webpack-bundle-analyzer@4.9.1)(webpack-dev-server@4.15.1)(webpack@5.80.0)
       webpack-dev-middleware: 5.3.3(webpack@5.80.0)
-      ws: 8.14.0
+      ws: 8.14.2
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -82716,7 +82726,7 @@ packages:
       webpack: 5.80.0(webpack-cli@4.8.0)
       webpack-cli: 4.8.0(webpack-dev-server@4.15.1)(webpack@5.80.0)
       webpack-dev-middleware: 5.3.3(webpack@5.80.0)
-      ws: 8.14.0
+      ws: 8.14.2
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -82767,7 +82777,7 @@ packages:
       webpack: 5.80.0(webpack-cli@4.9.2)
       webpack-cli: 4.9.2(webpack-dev-server@4.15.1)(webpack@5.80.0)
       webpack-dev-middleware: 5.3.3(webpack@5.80.0)
-      ws: 8.14.0
+      ws: 8.14.2
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -82819,7 +82829,7 @@ packages:
       webpack: 5.80.0(esbuild@0.17.19)(webpack-cli@5.0.1)
       webpack-cli: 5.0.1(webpack-dev-server@4.15.1)(webpack@5.80.0)
       webpack-dev-middleware: 5.3.3(webpack@5.80.0)
-      ws: 8.14.0
+      ws: 8.14.2
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -83615,7 +83625,7 @@ packages:
       '@webassemblyjs/wasm-parser': 1.11.6
       acorn: 8.10.0
       acorn-import-assertions: 1.9.0(acorn@8.10.0)
-      browserslist: 4.21.10
+      browserslist: 4.22.1
       chrome-trace-event: 1.0.3
       enhanced-resolve: 5.15.0
       es-module-lexer: 1.3.0

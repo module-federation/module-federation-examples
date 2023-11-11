@@ -1,22 +1,12 @@
 {
   "name": "shared-routing",
   "private": true,
-  "workspaces": [
-    "./dashboard",
-    "./order",
-    "./profile",
-    "./sales",
-    "./shell"
-  ],
   "version": "0.0.0",
   "scripts": {
-    "start": "lerna run --scope=shared-routing_* --parallel start",
-    "build": "lerna run --scope=shared-routing_* build",
-    "serve": "lerna run --scope=shared-routing_* --parallel serve",
-    "clean": "lerna run --scope=shared-routing_* --parallel clean",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
-  },
-  "devDependencies": {
-    "lerna": "3.22.1"
+    "start": "pnpm --filter shared-routing_* --parallel start",
+    "build": "pnpm --filter shared-routing_* build",
+    "serve": "pnpm --filter shared-routing_* --parallel serve",
+    "clean": "pnpm --filter shared-routing_* --parallel clean",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
   }
 }
