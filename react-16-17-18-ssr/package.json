@@ -2,16 +2,8 @@
   "name": "react-16-17-18-ssr",
   "private": true,
   "version": "0.0.0",
-  "workspaces": [
-    "remote1",
-    "remote2",
-    "shell"
-  ],
   "scripts": {
-    "start": "lerna run --parallel start",
-    "build": "lerna run build"
-  },
-  "devDependencies": {
-    "lerna": "3.22.1"
+    "start": "pnpm --parallel --filter react-16-17-18-ssr_* run start",
+    "build": "pnpm --parallel --filter react-16-17-18-ssr_* run build"
   }
 }

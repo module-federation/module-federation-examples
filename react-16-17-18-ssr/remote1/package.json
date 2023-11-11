@@ -1,10 +1,10 @@
 {
-  "name": "@react-ssr/remote1",
+  "name": "react-16-17-18-ssr_remote1",
   "version": "0.0.0",
   "scripts": {
-    "start": "yarn build && yarn serve",
+    "start": "pnpm build && pnpm serve",
     "serve": "npx serve dist/ -p 3001",
-    "build": "yarn build:client && yarn build:server",
+    "build": "pnpm build:client && pnpm build:server",
     "build:client": "rimraf dist/client && webpack --mode production --config config/webpack.client.js",
     "build:server": "rimraf dist/server && webpack --mode production --config config/webpack.server.js"
   },
