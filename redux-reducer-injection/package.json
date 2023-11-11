@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "concurrently \"pnpm run --filter redux-reducer-injection_app* --parallel start\" \"yarn serve\"",
+    "start": "concurrently \"pnpm run --filter redux-reducer-injection_app* --parallel start\" \"pnpm serve\"",
     "build": "pnpm run --filter redux-reducer-injection_app* build",
     "serve": "pnpm run --filter redux-reducer-injection_app* --parallel serve",
     "clean": "pnpm run --filter redux-reducer-injection_app* --parallel clean",
