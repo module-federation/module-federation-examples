@@ -154,6 +154,7 @@ jobs:
           npm i pnpm -g
           pnpm i --frozen-lockfile
 
+      # Is this still required with PNPM - https://pnpm.io/continuous-integration#github-actions ?
       - name: Cache Yarn and Cypress
         if: steps.restore-yarn-global-cache-e2e.outputs.cache-hit != 'true'
         id: cache-yarn-cypress
