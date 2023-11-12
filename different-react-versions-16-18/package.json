@@ -1,16 +1,15 @@
 {
   "name": "different-react-versions-16-18",
-  "private": true,
   "version": "1.0.0",
   "workspaces": [
     "app1",
     "app2"
   ],
   "scripts": {
-    "start": "lerna run --parallel start",
-    "build": "lerna run build",
-    "serve": "lerna run --parallel serve",
-    "clean": "lerna run --parallel clean"
+    "start": "pnpm --filter different-react-versions-16-18_* --parallel start",
+    "build": "pnpm --filter different-react-versions-16-18_* build",
+    "serve": "pnpm --filter different-react-versions-16-18_* --parallel serve",
+    "clean": "pnpm --filter different-react-versions-16-18_* --parallel clean"
   },
   "devDependencies": {}
 }

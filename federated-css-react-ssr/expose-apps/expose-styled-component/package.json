@@ -1,12 +1,12 @@
 {
-  "name": "@server-side-rendering/expose-styled-components",
+  "name": "federated-css-react-ssr_expose-styled-components",
   "version": "1.0.0",
   "scripts": {
-    "build": "yarn build:client && yarn build:server",
+    "build": "pnpm build:client && pnpm build:server",
     "build:client": "webpack --mode production --config config/webpack.client.js",
     "build:server": "webpack --mode production --config config/webpack.server.js",
     "serve": "npx serve dist/ -p 3005",
-    "start": "yarn build && yarn serve"
+    "start": "pnpm build && pnpm serve"
   },
   "license": "MIT",
   "devDependencies": {
@@ -16,6 +16,8 @@
     "@babel/preset-react": "7.23.3",
     "@module-federation/node": "0.16.2",
     "babel-loader": "8.2.5",
+    "postcss-loader": "7.3.3",
+    "css-loader": "6.8.1",
     "html-webpack-plugin": "5.5.3",
     "webpack": "5.89.0",
     "webpack-cli": "4.9.2",

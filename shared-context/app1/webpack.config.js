@@ -14,6 +14,11 @@ module.exports = {
   output: {
     publicPath: 'auto',
   },
+  resolve: {
+    alias: {
+      'shared-context_shared-library': path.resolve(__dirname, '../shared-library'),
+    },
+  },
   module: {
     rules: [
       {

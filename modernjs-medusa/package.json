@@ -2,15 +2,11 @@
   "name": "modernjs-medusa",
   "private": true,
   "version": "1.0.0",
-  "workspaces": [
-    "host",
-    "provider"
-  ],
   "scripts": {
-    "start": "lerna run --parallel dev",
-    "build": "lerna run build",
-    "serve": "lerna run --parallel serve",
-    "clean": "lerna run --parallel clean"
+    "start": "concurrently \"cd ./host && npm run dev\" \"cd ./provider && npm run dev\"",
+    "build": "concurrently \"cd ./host && pnpm build\" \"cd ./provider && pnpm build\"",
+    "serve": "concurrently \"cd ./host && pnpm serve\" \"cd ./provider && pnpm serve\"",
+    "clean": "concurrently \"cd ./host && pnpm clean\" \"cd ./provider && pnpm clean\""
   },
   "devDependencies": {}
 }

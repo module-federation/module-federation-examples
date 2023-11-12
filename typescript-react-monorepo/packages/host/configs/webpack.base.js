@@ -10,8 +10,8 @@ const dotenv = require('dotenv').config({
 });
 
 const initModuleFederationConfig = federationConfig({
-  APP1: process.env.APP1_REMOTE_URL,
-  APP2: process.env.APP2_REMOTE_URL,
+  APP1: 'http://localhost:3001',
+  APP2: 'http://localhost:3002',
 });
 
 module.exports = {

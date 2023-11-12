@@ -9,9 +9,8 @@
   ],
   "main": "index.js",
   "scripts": {
-    "install:apps": "concurrently \"yarn --cwd host-app\" \"yarn --cwd remote-app\"",
-    "start": "concurrently \"yarn --cwd remote-app start\" \"yarn --cwd host-app dev\"",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/runAll*.cy.ts\" --browser=chrome"
+    "start": "pnpm --parallel --filter nextjs-react_* run dev",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/runAll*.cy.ts\" --browser=chrome"
   },
   "keywords": [],
   "author": "rahulteja-dev",

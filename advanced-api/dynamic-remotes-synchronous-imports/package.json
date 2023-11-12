@@ -7,11 +7,11 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "lerna run --scope=dynamic-remotes-synchronous-imports_app* --parallel start",
-    "build": "lerna run --scope=dynamic-remotes-synchronous-imports_app* --parallel build",
-    "serve": "lerna run --scope=dynamic-remotes-synchronous-imports_app* --parallel serve",
-    "clean": "lerna run --scope=dynamic-remotes-synchronous-imports_app* --parallel clean",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "start": "pnpm --filter dynamic-remotes-synchronous-imports_app* --parallel start",
+    "build": "pnpm --filter dynamic-remotes-synchronous-imports_app* --parallel build",
+    "serve": "pnpm --filter dynamic-remotes-synchronous-imports_app* --parallel serve",
+    "clean": "pnpm --filter dynamic-remotes-synchronous-imports_app* --parallel clean",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "wait-on": "7.1.0"

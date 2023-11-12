@@ -1,17 +1,13 @@
 {
   "name": "redux-reducer-injection",
   "private": true,
-  "workspaces": [
-    "./app1",
-    "./app2"
-  ],
   "version": "0.0.0",
   "scripts": {
-    "start": "concurrently \"lerna run --scope=redux-reducer-injection_app* --parallel start\" \"yarn serve\"",
-    "build": "lerna run --scope=redux-reducer-injection_app* build",
-    "serve": "lerna run --scope=redux-reducer-injection_app* --parallel serve",
-    "clean": "lerna run --scope=redux-reducer-injection_app* --parallel clean",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "start": "concurrently \"pnpm run --filter redux-reducer-injection_app* --parallel start\" \"pnpm serve\"",
+    "build": "pnpm run --filter redux-reducer-injection_app* build",
+    "serve": "pnpm run --filter redux-reducer-injection_app* --parallel serve",
+    "clean": "pnpm run --filter redux-reducer-injection_app* --parallel clean",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "concurrently": "7.6.0",

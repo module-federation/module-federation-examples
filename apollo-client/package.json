@@ -7,9 +7,9 @@
     "app2"
   ],
   "scripts": {
-    "start": "lerna run --parallel start",
-    "serve": "lerna run --parallel serve",
-    "build": "lerna run build"
+    "start": "pnpm --filter --parallel start",
+    "serve": "pnpm --filter --parallel serve",
+    "build": "pnpm --filter build"
   },
   "devDependencies": {}
 }

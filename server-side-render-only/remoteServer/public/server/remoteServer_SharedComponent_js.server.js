@@ -17,7 +17,7 @@ exports.modules = {
   \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar SharedComponent = function SharedComponent() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, \"Shared Component2222\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SharedComponent);\n\n//# sourceURL=webpack://server-side-render-only/./remoteServer/SharedComponent.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"../node_modules/.pnpm/react@16.14.0/node_modules/react/index.js\");\n\nvar SharedComponent = function SharedComponent() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, \"Shared Component2222\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SharedComponent);\n\n//# sourceURL=webpack://server-side-render-only/./remoteServer/SharedComponent.js?");
 
 /***/ })
 

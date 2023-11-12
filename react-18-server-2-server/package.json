@@ -2,18 +2,11 @@
   "name": "react-18-server-2-server",
   "private": true,
   "version": "0.0.0",
-  "workspaces": [
-    "app1",
-    "app2"
-  ],
   "scripts": {
-    "start": "lerna run --scope=react-18-server-2-server_* --parallel start",
-    "build": "lerna run --scope=react-18-server-2-server_* build",
-    "serve": "lerna run --scope=react-18-server-2-server_* --parallel serve",
-    "clean": "lerna run --scope=react-18-server-2-server_* --parallel clean",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
-  },
-  "devDependencies": {
-    "lerna": "3.22.1"
+    "start": "pnpm run --filter react-18-server-2-server_* --parallel start",
+    "build": "pnpm run --filter react-18-server-2-server_* build",
+    "serve": "pnpm run --filter react-18-server-2-server_* --parallel serve",
+    "clean": "pnpm run --filter react-18-server-2-server_* --parallel clean",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
   }
 }

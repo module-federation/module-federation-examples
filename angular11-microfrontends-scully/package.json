@@ -21,10 +21,7 @@
     "scully:serve": "scully serve",
     "scully:route": "scully --scanRoutes",
     "scully:debug": "scully --scanRoutes --stats --showGuessError --watch --logSeverity=normal",
-    "e2e:ci": "yarn build:shared && yarn start:shell & wait-on http-get://localhost:4200/ && yarn start:profile & wait-on http-get://localhost:4201/ && yarn start:product & wait-on http-get://localhost:4202/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
-  },
-  "resolutions": {
-    "webpack": "5.89.0"
+    "e2e:ci": "pnpm build:shared && pnpm start:shell & wait-on http-get://localhost:4200/ && pnpm start:profile & wait-on http-get://localhost:4201/ && pnpm start:product & wait-on http-get://localhost:4202/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "dependencies": {
     "@angular/animations": "11.2.14",

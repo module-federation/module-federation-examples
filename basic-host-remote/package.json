@@ -7,11 +7,11 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "concurrently 'cd app1; yarn dev' 'cd app2; yarn dev'",
-    "build": "concurrently 'cd app1; yarn build' 'cd app2; yarn build'",
-    "serve": "concurrently 'cd app1; yarn serve' 'cd app2; yarn serve'",
-    "clean": "concurrently 'cd app1; yarn reset' 'cd app2; yarn reset'",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "start": "pnpm --filter basic-host-remote_* run start",
+    "build": "pnpm --filter basic-host-remote_* run build",
+    "serve": "pnpm --filter basic-host-remote_* run serve",
+    "clean": "pnpm --filter basic-host-remote_* run reset",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",

@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+cd basic-host-remote/app2
 . "$(dirname -- "$0")/_/husky.sh"
 
 npx --no-install lint-staged

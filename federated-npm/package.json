@@ -8,11 +8,11 @@
   ],
   "version": "0.0.0",
   "scripts": {
-    "start": "lerna run --scope=federated-npm_* --parallel start",
-    "build": "lerna run build",
-    "serve": "lerna run --scope=federated-npm_* --parallel serve",
-    "clean": "lerna run --scope=federated-npm_* --parallel clean",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "start": "pnpm --filter federated-npm_* --parallel start",
+    "build": "pnpm --filter build",
+    "serve": "pnpm --filter federated-npm_* --parallel serve",
+    "clean": "pnpm --filter federated-npm_* --parallel clean",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "wait-on": "7.0.1"

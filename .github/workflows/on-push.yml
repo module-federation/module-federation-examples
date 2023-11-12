@@ -72,5 +72,4 @@ jobs:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
           echo "Yarn changed - install deps ... "
-          npm i lerna@6 -g
-          lerna bootstrap
+          pnpm install

@@ -2,11 +2,11 @@
   "name": "@styled-components-mf/app1",
   "version": "0.0.0",
   "scripts": {
-    "start": "yarn build && yarn serve",
-    "start:debug": "yarn build && yarn debug",
+    "start": "pnpm build && pnpm serve",
+    "start:debug": "pnpm build && pnpm debug",
     "serve": "node dist/server/main.js",
     "debug": "node-nightly --inspect dist/server/main.js",
-    "build": "yarn build:server && yarn build:client",
+    "build": "pnpm build:server && pnpm build:client",
     "build:client": "rimraf dist/client && npx webpack --mode=production --progress --config config/webpack.client.js",
     "build:server": "rimraf dist/server && npx webpack --mode=production --progress --config config/webpack.server.js"
   },

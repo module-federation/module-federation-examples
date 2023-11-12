@@ -2,13 +2,8 @@
   "name": "simple-node",
   "private": true,
   "version": "1.0.0",
-  "workspaces": [
-    "./node-remote",
-    "./node-local-remote",
-    "./node-host"
-  ],
   "scripts": {
-    "start": "concurrently \"cd node-remote && yarn start\" \"cd ./node-local-remote && yarn start\" \"cd ./node-host && sleep 5; yarn start\""
+    "start": "concurrently \"cd node-remote && pnpm start\" \"cd ./node-local-remote && pnpm start\" \"cd ./node-host && sleep 5; pnpm start\""
   },
   "dependencies": {
     "express": "^4.16.4",
