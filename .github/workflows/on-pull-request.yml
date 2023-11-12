@@ -106,18 +106,6 @@ jobs:
           fetch-depth: 0
 
       - name: Create matrix
-        id: set-matrix-temp
-        # TODO: Temporary disabled because of switch to pnpm
-        if: ${{ false }}
-        run: |
-          npm i lerna@6 -g
-          npm i pnpm -g
-          all="$(pnpm --silent run list:all)"
-          diff="$(pnpm --silent run list:changed)"
-          matrix="$(node checkChangedWorkspaces.js "$all" "$diff")"
-          echo "matrix=$matrix" >> $GITHUB_OUTPUT
-
-      - name: Create matrix
         id: set-matrix
         run: |
           npm i pnpm -g
@@ -125,86 +113,6 @@ jobs:
           diff="$(pnpm list --filter '...[origin/master]' --only-projects --depth -1 --json)"
           matrix="$(node checkChangedWorkspaces.js "$all" "$diff")"
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
-
-      - name: Changed workspaces
-        # TODO: Temporary disabled because of switch to pnpm
-        if: ${{ false }}
-        id: changed-workspaces
-        run: |
-          echo '${{ steps.set-matrix.outputs.matrix }}'
-
-  # Install main dependencies (yarn install) + Create cache for Yarn and Cypress
-  install-main-dependencies:
-    needs: setup-matrix
-    # TODO: Temporary disabled because of switch to pnpm
-    if: ${{ false }}
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout code
-        id: checkout-code
-        uses: actions/checkout@v3
-        with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
-
-      - name: Free up some space
-        # TODO: Temporary disabled because of switch to pnpm
-        if: ${{ false }}
-        id: free-up-space
-        run: ${{ env.FILES_TO_DELETE }}
-
-        # Hash pnpm.lock files to use it as a cache key, if pnpm.lock files are changed, the cache will be invalidated
-      - name: Check Yarn hash
-        # TODO: Temporary disabled because of switch to pnpm
-        if: ${{ false }}
-        id: check-yarn-hash
-        run: |
-          yarnHash="$(npx hash-files -f '["**/pnpm.lock"]' -a sha256)"
-          echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
-
-      - name: Restore Yarn Global Cache
-        # TODO: Temporary disabled because of switch to pnpm
-        if: ${{ false }}
-        id: restore-yarn-global-cache
-        uses: actions/cache/restore@v3
-        with:
-          path: |
-            ${{ env.YARN_CACHE_PATH }}
-            ${{ env.CACHE_PATH }}
-          key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash }} # Can use time based key as well
-          restore-keys: |
-            yarn-global-cache-
-
-      - name: Check disk space before install
-        id: check-disk-space-before-install
-        run: |
-          df -h
-
-      - name: Install dependencies
-        id: install-dependencies
-        if: steps.restore-yarn-global-cache.outputs.cache-hit != 'true'
-        env:
-          NODE_OPTIONS: '--max_old_space_size=4096'
-        run: |
-          echo "PNPM has changed - installing dependencies ... "
-          npm i pnpm -g
-          pnpm i --frozen-lockfile
-
-      - name: Cache Yarn and Cypress
-        if: steps.restore-yarn-global-cache.outputs.cache-hit != 'true'
-        id: cache-yarn-cypress
-        uses: actions/cache/save@v3
-        with:
-          path: |
-            ${{ env.YARN_CACHE_PATH }}
-            ${{ env.CACHE_PATH }}
-          key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash }} # Can use time based key as well
-
-      - name: Check disk space after installation
-        id: check-disk-space-after-installation
-        run: |
-          df -h
 
   # Run Cypress e2e tests for changed samples (additionally install deps for all changed samples if there is no any created cache in master branch) + Create artifacts for Cypress screenshots and videos
   run-e2e-test:
@@ -223,12 +131,6 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 1
 
-      - name: Free up some space
-        id: free-up-space-e2e
-        # TODO: Temporary disabled because of switch to pnpm
-        if: ${{ false }}
-        run: ${{ env.FILES_TO_DELETE }}
-
       - name: Check disk space before install
         id: check-disk-space-before-install-e2e
         run: |
@@ -242,20 +144,6 @@ jobs:
           yarnHash="$(npx hash-files -f '["**/pnpm.lock"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
-      - name: Restore Yarn Global Cache
-        id: restore-yarn-global-cache-e2e
-        # TODO: Temporary disabled because of switch to pnpm
-        if: ${{ false }}
-        uses: actions/cache/restore@v3
-        with:
-          path: |
-            ${{ env.YARN_CACHE_PATH }}
-            ${{ env.CACHE_PATH }}
-          key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash }} # Can use time based key as well
-          restore-keys: |
-            yarn-global-cache
-            yarn-global-cache-
-
       - name: Install deps
         id: install-deps-e2e
         if: steps.restore-yarn-global-cache-e2e.outputs.cache-hit != 'true'
@@ -266,16 +154,7 @@ jobs:
           npm i pnpm -g
           pnpm i --frozen-lockfile
 
-      - name: Install sample deps
-        id: install-sample-deps
-        # TODO: Temporary disabled because of switch to pnpm
-        if: ${{ false }}
-        # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
-        # if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: |
-          # npx lerna exec --stream --scope="${{ matrix.container }}*" --concurrency=1 "yarn install"
-          echo 'test'
-
+      # Is this still required with PNPM - https://pnpm.io/continuous-integration#github-actions ?
       - name: Cache Yarn and Cypress
         if: steps.restore-yarn-global-cache-e2e.outputs.cache-hit != 'true'
         id: cache-yarn-cypress
@@ -291,6 +170,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: 'pnpm'
 
       - name: Run sample e2e tests
         timeout-minutes: 30
