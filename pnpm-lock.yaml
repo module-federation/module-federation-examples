@@ -11648,8 +11648,8 @@ importers:
         specifier: 1.2.0
         version: 1.2.0
       universal-module-federation-plugin:
-        specifier: 1.0.5
-        version: 1.0.5
+        specifier: 1.0.9
+        version: 1.0.9
       webpack:
         specifier: 5.80.0
         version: 5.80.0(webpack-cli@4.10.0)
@@ -11682,8 +11682,8 @@ importers:
         specifier: 5.5.3
         version: 5.5.3(webpack@5.80.0)
       universal-module-federation-plugin:
-        specifier: 1.0.5
-        version: 1.0.5
+        specifier: 1.0.9
+        version: 1.0.9
       webpack:
         specifier: 5.80.0
         version: 5.80.0(webpack-cli@4.10.0)
@@ -63089,6 +63089,12 @@ packages:
     resolution: {integrity: sha512-23g5BFj4zdQL/b6tor7Ji+QY4pEfNH784BMslY9Qb0UnJWRAt+lQGLYmRaM0KDBwIG23ffEBELhZDP2rhi9f/Q==}
     dev: true
 
+  /module-federation-runtime@1.2.4:
+    resolution: {integrity: sha512-QThifBC/GANhXjamX5PmSGPs5oEzcuwbYpgA5GcJCfL12pltvr07x3XKFs9yVmswOE9Wyq9YnnVe7U8cUvSS+g==}
+    dependencies:
+      global: 4.4.0
+    dev: true
+
   /moment@2.29.4:
     resolution: {integrity: sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==}
 
@@ -79113,10 +79119,11 @@ packages:
       - supports-color
     dev: true
 
-  /universal-module-federation-plugin@1.0.5:
-    resolution: {integrity: sha512-KQHjQAvHfLAGNL3KlPbjDnOrrP6pv1fggk+dq57/8XIMx2aBKZ7viYIr51qx/yLhMYbYUjuvhJz60/tYqa7lcg==}
+  /universal-module-federation-plugin@1.0.9:
+    resolution: {integrity: sha512-UKnhi1tl2g/VM2uNwzAoopD6G34F5MM70z9f63bmLIQ/69RXiZkb1FpYsft2Yamwg8cB7ydKj4BmA98u1Z4J6g==}
     dependencies:
       inject-webpack: 0.4.4
+      module-federation-runtime: 1.2.4
       semverhook: 1.2.0
       stringify-has-fn: 1.0.3
       umfjs: 0.3.7
