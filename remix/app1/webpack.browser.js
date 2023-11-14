@@ -5,7 +5,7 @@ import { EsbuildPlugin } from 'esbuild-loader';
 import { default as Enhanced } from '@module-federation/enhanced';
 import { getRoutes, routeSet } from './utils/get-routes.js';
 import { RemixAssetsManifestPlugin } from './utils/RemixAssetsManifestPlugin.js';
-import { HoistContainerReferences } from './utils/HoistContainerReferences.js';
+import { HoistContainerReferences } from './utils/HoistContainerReferencesPlugin.js';
 const { ModuleFederationPlugin, AsyncBoundaryPlugin } = Enhanced;
 
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';

@@ -9594,8 +9594,6 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
 
-  remix/app1/build: {}
-
   remix/app2:
     dependencies:
       '@remix-run/express':
@@ -9659,8 +9657,6 @@ importers:
       webpack-node-externals:
         specifier: ^3.0.0
         version: 3.0.0
-
-  remix/app2/build: {}
 
   rollup-federation-demo:
     devDependencies:
@@ -15791,8 +15787,8 @@ packages:
     dependencies:
       '@babel/core': 7.11.1
       '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-environment-visitor': 7.22.20
-      '@babel/helper-function-name': 7.23.0
+      '@babel/helper-environment-visitor': 7.22.5
+      '@babel/helper-function-name': 7.22.5
       '@babel/helper-member-expression-to-functions': 7.22.15
       '@babel/helper-optimise-call-expression': 7.22.5
       '@babel/helper-replace-supers': 7.22.9(@babel/core@7.11.1)
@@ -15809,8 +15805,8 @@ packages:
     dependencies:
       '@babel/core': 7.12.10
       '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-environment-visitor': 7.22.20
-      '@babel/helper-function-name': 7.23.0
+      '@babel/helper-environment-visitor': 7.22.5
+      '@babel/helper-function-name': 7.22.5
       '@babel/helper-member-expression-to-functions': 7.22.15
       '@babel/helper-optimise-call-expression': 7.22.5
       '@babel/helper-replace-supers': 7.22.9(@babel/core@7.12.10)
@@ -15827,8 +15823,8 @@ packages:
     dependencies:
       '@babel/core': 7.14.8
       '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-environment-visitor': 7.22.20
-      '@babel/helper-function-name': 7.23.0
+      '@babel/helper-environment-visitor': 7.22.5
+      '@babel/helper-function-name': 7.22.5
       '@babel/helper-member-expression-to-functions': 7.22.15
       '@babel/helper-optimise-call-expression': 7.22.5
       '@babel/helper-replace-supers': 7.22.9(@babel/core@7.14.8)
@@ -15845,8 +15841,8 @@ packages:
     dependencies:
       '@babel/core': 7.18.10
       '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-environment-visitor': 7.22.20
-      '@babel/helper-function-name': 7.23.0
+      '@babel/helper-environment-visitor': 7.22.5
+      '@babel/helper-function-name': 7.22.5
       '@babel/helper-member-expression-to-functions': 7.22.15
       '@babel/helper-optimise-call-expression': 7.22.5
       '@babel/helper-replace-supers': 7.22.9(@babel/core@7.18.10)
@@ -15862,8 +15858,8 @@ packages:
     dependencies:
       '@babel/core': 7.20.12
       '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-environment-visitor': 7.22.20
-      '@babel/helper-function-name': 7.23.0
+      '@babel/helper-environment-visitor': 7.22.5
+      '@babel/helper-function-name': 7.22.5
       '@babel/helper-member-expression-to-functions': 7.22.15
       '@babel/helper-optimise-call-expression': 7.22.5
       '@babel/helper-replace-supers': 7.22.9(@babel/core@7.20.12)
@@ -15880,8 +15876,8 @@ packages:
     dependencies:
       '@babel/core': 7.22.17
       '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-environment-visitor': 7.22.20
-      '@babel/helper-function-name': 7.23.0
+      '@babel/helper-environment-visitor': 7.22.5
+      '@babel/helper-function-name': 7.22.5
       '@babel/helper-member-expression-to-functions': 7.22.15
       '@babel/helper-optimise-call-expression': 7.22.5
       '@babel/helper-replace-supers': 7.22.9(@babel/core@7.22.17)
@@ -17537,7 +17533,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.23.3
+      '@babel/compat-data': 7.22.9
       '@babel/core': 7.11.1
       '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
@@ -17552,7 +17548,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.23.3
+      '@babel/compat-data': 7.22.9
       '@babel/core': 7.12.10
       '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
@@ -17567,7 +17563,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.23.3
+      '@babel/compat-data': 7.22.9
       '@babel/core': 7.14.8
       '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
@@ -17582,7 +17578,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.23.3
+      '@babel/compat-data': 7.22.9
       '@babel/core': 7.18.10
       '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
@@ -17596,7 +17592,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.23.3
+      '@babel/compat-data': 7.22.9
       '@babel/core': 7.20.12
       '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
@@ -80662,7 +80658,7 @@ packages:
       rechoir: 0.8.0
       webpack: 5.80.0(esbuild@0.17.19)(webpack-cli@5.0.1)
       webpack-dev-server: 4.15.1(webpack-cli@5.0.1)(webpack@5.80.0)
-      webpack-merge: 5.10.0
+      webpack-merge: 5.8.0
     dev: true
 
   /webpack-cli@5.0.1(webpack@5.80.0):
@@ -80695,7 +80691,7 @@ packages:
       interpret: 3.1.1
       rechoir: 0.8.0
       webpack: 5.80.0(webpack-cli@5.0.1)
-      webpack-merge: 5.10.0
+      webpack-merge: 5.8.0
     dev: true
 
   /webpack-cli@5.0.2(webpack@5.80.0):
