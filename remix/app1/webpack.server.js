@@ -2,7 +2,6 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 
 import { readConfig } from '@remix-run/dev/dist/config.js';
-import { EsbuildPlugin } from 'esbuild-loader';
 import nodeExternals from 'webpack-node-externals';
 import { default as Enhanced } from '@module-federation/enhanced';
 import { default as NFP } from '@module-federation/node';
@@ -89,7 +88,6 @@ const config = {
   plugins: [
     new AsyncBoundaryPlugin({
       excludeChunk: chunk => {
-        console.log(chunk.name);
         return chunk.name === 'app1';
       },
     }),
