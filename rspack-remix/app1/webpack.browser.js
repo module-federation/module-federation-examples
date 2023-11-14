@@ -2,11 +2,8 @@ import * as path from "node:path";
 
 import {readConfig} from "@remix-run/dev/dist/config.js";
 import {EsbuildPlugin} from "esbuild-loader";
-
 import {toManifest, writeManifest} from "./utils/manifest.js";
-import {default as Enhanced} from '@module-federation/enhanced'
 
-const {ModuleFederationPlugin, AsyncBoundaryPlugin} = Enhanced
 const mode =
   process.env.NODE_ENV === "production" ? "production" : "development";
 const remixConfig = await readConfig();
@@ -37,9 +34,9 @@ const config = {
     topLevelAwait: true
   },
   output: {
-    environment: {
-      module: true
-    },
+    // environment: {
+    //   module: true
+    // },
     path: remixConfig.assetsBuildDirectory,
     publicPath: 'auto',
     module: true,
@@ -53,37 +50,45 @@ const config = {
   },
   module: {
     rules: [
-      {
-        include: (input) => routeSet.has(input),
-        use: [
-          {
-            loader: "babel-loader",
-            options: {
-              plugins: [["eliminator", {namedExports: ["action", "loader"]}]],
-            },
-          },
-          {
-            loader: "esbuild-loader",
-            options: {
-              target: "es2019",
-              jsx: "automatic",
-            },
-          },
-        ],
-      },
-      {
-        test: /\.[jt]sx?$/,
-        exclude: (input) => routeSet.has(input),
-        use: [
-          {
-            loader: "esbuild-loader",
-            options: {
-              target: "es2019",
-              jsx: "automatic",
-            },
-          },
-        ],
-      },
+      // {
+      //   include: (input) => routeSet.has(input),
+      //   use: [
+      //     // {
+      //     //   loader: "babel-loader",
+      //     //   options: {
+      //     //     plugins: [["eliminator", {namedExports: ["action", "loader"]}]],
+      //     //   },
+      //     // },
+      //     {
+      //       loader: 'builtin:swc-loader',
+      //       options: {
+      //         jsc: {
+      //           parser: {
+      //             syntax: 'ecmascript',
+      //             jsx: true,
+      //           },
+      //         }
+      //       },
+      //     },
+      //   ],
+      // },
+      // {
+      //   test: /\.[jt]sx?$/,
+      //   exclude: (input) => routeSet.has(input),
+      //   use: [
+      //     {
+      //       loader: 'builtin:swc-loader',
+      //       options: {
+      //         jsc: {
+      //           parser: {
+      //             syntax: 'ecmascript',
+      //             jsx: true,
+      //           },
+      //         }
+      //       },
+      //     },
+      //   ],
+      // },
     ],
   },
   cache: false,
@@ -91,7 +96,6 @@ const config = {
     moduleIds: "named",
     runtimeChunk: "single",
     chunkIds: 'named',
-
     // treeshake unused code in development
     // needed so that browser build does not pull in server code
     usedExports: true,
@@ -100,61 +104,9 @@ const config = {
       chunks: "async",
     },
     minimize: mode === "production",
-    minimizer: [new EsbuildPlugin({target: "es2019"})],
+    // minimizer: [new EsbuildPlugin({target: "es2019"})],
   },
   plugins: [
-    new ModuleFederationPlugin({
-      runtime: false,
-      name: "app2",
-      filename: 'remoteEntry.js',
-      remotes: {
-        app1: 'http://localhost:3000/build/remoteEntry.js'
-      },
-      remoteType: 'module',
-      library: {
-        type: 'module'
-      },
-      exposes: {
-        './button': './components/Button.jsx',
-      },
-      shared: {
-        "react/": {
-          singleton: true
-        },
-        "react": {
-          singleton: true
-        },
-        "react-dom/": {
-          singleton: true
-        },
-        "react-dom": {
-          singleton: true
-        },
-        "react-router-dom": {
-          singleton: true
-        },
-        "react-router-dom/": {
-          singleton: true
-        },
-        "@remix-run/router": {
-          singleton: true
-        },
-        "@remix-run/router/": {
-          singleton: true
-        },
-        "@remix-run/react/": {
-          singleton: true
-        },
-        "@remix-run/": {
-          singleton: true
-        }
-      }
-    }),
-    new AsyncBoundaryPlugin({
-      excludeChunk: (chunk)=> {
-        return chunk.name === 'app2'
-      }
-    }),
     {
       /**
        * @param {import("webpack").Compiler} compiler

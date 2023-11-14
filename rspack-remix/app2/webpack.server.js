@@ -4,11 +4,6 @@ import * as path from "node:path";
 import {readConfig} from "@remix-run/dev/dist/config.js";
 import {EsbuildPlugin} from "esbuild-loader";
 import nodeExternals from "webpack-node-externals";
-import {default as Enhanced} from '@module-federation/enhanced'
-import {default as NFP} from '@module-federation/node'
-
-const {AsyncBoundaryPlugin, ModuleFederationPlugin} = Enhanced
-const {UniversalFederationPlugin} = NFP
 import {getManifest} from "./utils/manifest.js";
 
 const mode =
@@ -19,6 +14,9 @@ const isModule = remixConfig.serverModuleFormat === "esm";
 console.log({isModule});
 
 if (!isModule) {
+  if (!fs.existsSync('./build')) {
+    fs.mkdirSync('./build');
+  }
   fs.writeFileSync('./build/package.json', JSON.stringify({type: "commonjs"}))
 }
 
@@ -88,39 +86,6 @@ const config = {
     ],
   },
   plugins: [
-    new AsyncBoundaryPlugin({
-      excludeChunk: (chunk) => {
-        console.log(chunk.name)
-        return chunk.name === 'app1'
-      }
-    }),
-    new UniversalFederationPlugin({
-      isServer: true,
-      name: "app1",
-      filename: 'remoteEntry.js',
-      remoteType: 'script',
-      remotes: {
-        app2: 'app2@http://localhost:3001/server/remoteEntry.js'
-      },
-      library: {type: isModule ? "module" : 'commonjs-module'},
-      exposes: {
-        './button': './components/Button.jsx',
-      },
-      shared: {
-        "react/": {
-          singleton: true
-        },
-        "react": {
-          singleton: true
-        },
-        "react-dom/": {
-          singleton: true
-        },
-        "react-dom": {
-          singleton: true
-        }
-      }
-    }, {ModuleFederationPlugin}),
   ]
 };
 

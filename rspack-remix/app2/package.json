@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build:browser": "webpack --mode=development --config webpack.browser.js",
-    "build:server": "webpack --mode=development --config webpack.server.js",
-    "start": "rm -rf ./public/build; pnpm run build:browser && pnpm run build:server && node ./build/index.js",
+    "build:browser": "rspack --mode=development --config webpack.browser.js",
+    "build:server": "rspack --mode=development --config webpack.server.js",
+    "start": "rm -rf ./public/build;rm -rf ./build/package.json; pnpm run build:browser && pnpm run build:server && node ./build/index.js",
     "server": "node ./build/index.js"
   },
   "author": "Jacob Ebey",
@@ -13,8 +13,8 @@
   "devDependencies": {
     "@babel/core": "^7.23.3",
     "@remix-run/dev": "^2.2.0",
-    "@rspack/cli": "^0.3.11",
-    "@rspack/core": "^0.3.11",
+    "@rspack/cli": "^0.3.12",
+    "@rspack/core": "^0.3.12",
     "@types/express": "^4.17.21",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
