@@ -2170,8 +2170,8 @@ importers:
         specifier: 3.58.0
         version: 3.58.0
       svelte-loader:
-        specifier: 3.1.7
-        version: 3.1.7(svelte@3.58.0)
+        specifier: 3.1.9
+        version: 3.1.9(svelte@3.58.0)
       webpack:
         specifier: 5.80.0
         version: 5.80.0(webpack-cli@4.10.0)
@@ -42387,7 +42387,6 @@ packages:
     dependencies:
       webpack-cli: 4.10.0(webpack-dev-server@4.13.2)(webpack@5.80.0)
       webpack-dev-server: 4.13.2(webpack-cli@4.10.0)(webpack@5.80.0)
-    dev: true
 
   /@webpack-cli/serve@1.7.0(webpack-cli@4.10.0)(webpack-dev-server@4.13.3):
     resolution: {integrity: sha512-oxnCNGj88fL+xzV+dacXs44HcDwf1ovs3AuEzvP7mqXw7fQntqIhQ1BRmynh4qEKQSSSRSWVyXRjmTbZIX9V2Q==}
@@ -76052,17 +76051,6 @@ packages:
       svelte: 3.58.0
     dev: true
 
-  /svelte-loader@3.1.7(svelte@3.58.0):
-    resolution: {integrity: sha512-YVg5gQaUdV26uaA5SEGj1VOUX0YQicD9PezKvVlkQ2JI644silWtJZ3hkxHtXSfjnlFr0OTNoyOgeINIODdT+A==}
-    peerDependencies:
-      svelte: '>3.0.0'
-    dependencies:
-      loader-utils: 2.0.4
-      svelte: 3.58.0
-      svelte-dev-helper: 1.1.9
-      svelte-hmr: 0.14.12(svelte@3.58.0)
-    dev: true
-
   /svelte-loader@3.1.9(svelte@3.58.0):
     resolution: {integrity: sha512-RITPqze3TppOhaZF8SEFTDTwFHov17k3UkOjpxyL/No/YVrvckKmXWOEj7QEpsZZZSNQPb28tMZbHEI2xLhJMQ==}
     peerDependencies:
@@ -76239,7 +76227,7 @@ packages:
       webpack: 5.80.0
     dependencies:
       '@swc/core': 1.3.96(@swc/helpers@0.5.3)
-      webpack: 5.80.0(@swc/core@1.3.96)(webpack-cli@5.0.2)
+      webpack: 5.80.0(@swc/core@1.3.96)(webpack-cli@4.10.0)
     dev: true
 
   /symbol-observable@1.2.0:
@@ -76629,7 +76617,7 @@ packages:
       schema-utils: 3.3.0
       serialize-javascript: 6.0.1
       terser: 5.19.4
-      webpack: 5.80.0(@swc/core@1.3.96)(webpack-cli@5.0.2)
+      webpack: 5.80.0(@swc/core@1.3.96)(webpack-cli@4.10.0)
 
   /terser-webpack-plugin@5.3.9(esbuild@0.13.8)(webpack@5.80.0):
     resolution: {integrity: sha512-ZuXsqE07EcggTWQjXUj+Aot/OMcD0bMKGgF63f7UxYcu5/AJF53aIpK1YoP5xR9l6s/Hy2b+t1AM0bLNPRuhwA==}
@@ -80299,7 +80287,6 @@ packages:
       webpack: 5.80.0(@swc/core@1.3.96)(webpack-cli@4.10.0)
       webpack-dev-server: 4.13.2(webpack-cli@4.10.0)(webpack@5.80.0)
       webpack-merge: 5.8.0
-    dev: true
 
   /webpack-cli@4.10.0(webpack-dev-server@4.13.3)(webpack@5.80.0):
     resolution: {integrity: sha512-NLhDfH/h4O6UOy+0LSso42xvYypClINuMNBVVzX4vX98TmTaTUxwRbXdhucbFMd2qLaCTcLq/PdYrvi8onw90w==}
@@ -81274,7 +81261,6 @@ packages:
       - debug
       - supports-color
       - utf-8-validate
-    dev: true
 
   /webpack-dev-server@4.13.3(webpack-cli@4.10.0)(webpack@5.80.0):
     resolution: {integrity: sha512-KqqzrzMRSRy5ePz10VhjyL27K2dxqwXQLP5rAKwRJBPUahe7Z2bBWzHw37jeb8GCPKxZRO79ZdQUAPesMh/Nug==}
@@ -81950,7 +81936,6 @@ packages:
       - '@swc/core'
       - esbuild
       - uglify-js
-    dev: true
 
   /webpack@5.80.0(@swc/core@1.3.96)(webpack-cli@5.0.2):
     resolution: {integrity: sha512-OIMiq37XK1rWO8mH9ssfFKZsXg4n6klTEDL7S8/HqbAOBBaiy8ABvXvz0dDCXeEF9gqwxSvVk611zFPjS8hJxA==}
