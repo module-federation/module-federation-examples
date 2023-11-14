@@ -14,7 +14,7 @@
     "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
+    "concurrently": "7.6.0",
     "wait-on": "7.1.0"
   }
 }
