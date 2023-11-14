@@ -2,7 +2,6 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 
 import {readConfig} from "@remix-run/dev/dist/config.js";
-import {EsbuildPlugin} from "esbuild-loader";
 import nodeExternals from "webpack-node-externals";
 import {getManifest} from "./utils/manifest.js";
 import {createServerBuildEntry} from "./utils/server-build-entry.js";
@@ -47,9 +46,6 @@ const config = {
     }),
   ],
   output: {
-    environment: {
-      module: isModule
-    },
     filename: path.basename(remixConfig.serverBuildPath),
     library: {type: isModule ? "module" : "commonjs"},
     chunkFormat: isModule ? "module" : "commonjs",
@@ -69,24 +65,8 @@ const config = {
       "@remix-run/dev/server-build.js": serverBuildModule,
     },
   },
-  module: {
-    rules: [
-      {
-        test: /\.[jt]sx?$/,
-        use: [
-          {
-            loader: "esbuild-loader",
-            options: {
-              target: "es2019",
-              jsx: "automatic",
-            },
-          },
-        ],
-      },
-    ],
-  },
-  plugins: [
-  ]
+  module: {},
+  plugins: []
 };
 
 export default config;

@@ -3,6 +3,7 @@ import * as path from "node:path";
 import {readConfig} from "@remix-run/dev/dist/config.js";
 import {EsbuildPlugin} from "esbuild-loader";
 import {toManifest, writeManifest} from "./utils/manifest.js";
+import {RemixAssetsManifestPlugin} from "./utils/RemixAssetsManifestPlugin.js";
 
 const mode =
   process.env.NODE_ENV === "production" ? "production" : "development";
@@ -34,9 +35,6 @@ const config = {
     topLevelAwait: true
   },
   output: {
-    // environment: {
-    //   module: true
-    // },
     path: remixConfig.assetsBuildDirectory,
     publicPath: 'auto',
     module: true,
@@ -107,21 +105,7 @@ const config = {
     // minimizer: [new EsbuildPlugin({target: "es2019"})],
   },
   plugins: [
-    {
-      /**
-       * @param {import("webpack").Compiler} compiler
-       */
-      apply(compiler) {
-        compiler.hooks.emit.tapPromise(
-          "RemixAssetsManifest",
-          async (compilation) => {
-            const stats = compilation.getStats();
-            const manifest = await toManifest(remixConfig, stats);
-            writeManifest(remixConfig, manifest);
-          }
-        );
-      },
-    },
+    new RemixAssetsManifestPlugin(remixConfig),
   ],
 };
 

@@ -144,7 +144,7 @@ const config = {
         return chunk.name === 'app2';
       },
     }),
-    new RemixAssetsManifestPlugin(),
+    new RemixAssetsManifestPlugin(remixConfig),
   ],
 };
 

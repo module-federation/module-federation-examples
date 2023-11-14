@@ -146,7 +146,7 @@ const config = {
         },
       },
     }),
-    new RemixAssetsManifestPlugin(),
+    new RemixAssetsManifestPlugin(remixConfig),
   ],
 };
 

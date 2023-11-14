@@ -1,7 +1,7 @@
 class HoistContainerReferences {
   apply(compiler) {
-    compiler.hooks.thisCompilation.tap('stuff', compilation => {
-      compilation.hooks.afterOptimizeChunks.tap('EmbeddedContainerPlugin', chunks => {
+    compiler.hooks.thisCompilation.tap('HoistContainerReferences', compilation => {
+      compilation.hooks.afterOptimizeChunks.tap('HoistContainerReferences', chunks => {
         const chunkSet = new Map();
         const externalRequests = new Set();
         for (const chunk of chunks) {

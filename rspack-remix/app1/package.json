@@ -5,7 +5,7 @@
   "scripts": {
     "build:browser": "rspack --mode=development --config webpack.browser.js",
     "build:server": "rspack --mode=development --config webpack.server.js",
-    "start": "rm -rf ./public/build;rm -rf ./build/package.json; pnpm run build:browser && pnpm run build:server && node ./build/index.js",
+    "start": "rm -rf ./public/build;rm -rf ./build/package.json; npm run build:browser && npm run build:server && node ./build/index.js",
     "server": "node ./build/index.js"
   },
   "author": "Jacob Ebey",
