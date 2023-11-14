@@ -7311,8 +7311,8 @@ importers:
         specifier: 0.19.5
         version: 0.19.5
       esm-node-services:
-        specifier: 0.7.14
-        version: 0.7.14
+        specifier: 0.9.1
+        version: 0.9.1
       json5:
         specifier: 2.2.3
         version: 2.2.3
@@ -50049,14 +50049,6 @@ packages:
       tapable: 2.2.1
     dev: true
 
-  /enhanced-resolve@5.13.0:
-    resolution: {integrity: sha512-eyV8f0y1+bzyfh8xAwW/WTSZpLbjhqc4ne9eGSH4Zo2ejdyiNG9pU6mf9DG8a7+Auk6MFTlNOT4Y2y/9k8GKVg==}
-    engines: {node: '>=10.13.0'}
-    dependencies:
-      graceful-fs: 4.2.11
-      tapable: 2.2.1
-    dev: true
-
   /enhanced-resolve@5.15.0:
     resolution: {integrity: sha512-LXYT42KJ7lpIKECr2mAXIaMldcNCh/7E0KBKOu4KSfkHmP+mZmSs+8V5gBAqisWBy0OO4W5Oyys0GO1Y8KtdKg==}
     engines: {node: '>=10.13.0'}
@@ -53025,15 +53017,15 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /esm-cjs-lexer@0.7.5:
-    resolution: {integrity: sha512-0MFynI5LrKHSU1T2eDeP9DlnvzG+qAjuinm2vdptr6B8vUUF7dpMCy56oWg7P1HzcCr1aGvulWwjXzcK94qwIA==}
+  /esm-cjs-lexer@0.9.1:
+    resolution: {integrity: sha512-IAsq3MawGWQoIPvIngBUNTf5AAhEvi0qZEx4i0oZ76j+fYHDPLDSUW7N95CmQGPHS+P5zxKC1C4uWCG8rZ2qwg==}
     dev: true
 
-  /esm-node-services@0.7.14:
-    resolution: {integrity: sha512-OsNITmO9IEnDjM6rFpPpVWVgWVyQkzVFT15SVV5FZ3AthFCo4nHHYs1mfgSv7kxagaOCaLsB9IvY9jptU492cA==}
+  /esm-node-services@0.9.1:
+    resolution: {integrity: sha512-RnCHXSjE720vRPRE2ImfOpXwYT1cVkWdg6zeqfjVfsIO7w09hGOZoYvHFN/wSS+x70K+xKPWnIoYuo3YIeWwUA==}
     dependencies:
-      enhanced-resolve: 5.13.0
-      esm-cjs-lexer: 0.7.5
+      enhanced-resolve: 5.15.0
+      esm-cjs-lexer: 0.9.1
     dev: true
 
   /espree@9.6.1:
