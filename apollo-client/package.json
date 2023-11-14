@@ -2,10 +2,10 @@
   "name": "apollo-client",
   "version": "0.0.0",
   "scripts": {
-    "start": "pnpm --filter --parallel start",
-    "serve": "pnpm --filter --parallel serve",
-    "build": "pnpm --filter build",
-    "e2e:ci": "pnpm --filter apollo-client-app2 run build && pnpm --filter apollo-client-app1 run build"
+    "start": "pnpm --filter apollo-client_* --parallel start",
+    "serve": "pnpm --filter apollo-client_* --parallel serve",
+    "build": "pnpm --filter apollo-client_* --parallel build",
+    "e2e:ci": "pnpm run build"
   },
   "devDependencies": {}
 }
