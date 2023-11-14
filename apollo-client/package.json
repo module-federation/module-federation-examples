@@ -1,15 +1,11 @@
 {
   "name": "apollo-client",
   "version": "0.0.0",
-  "private": true,
-  "workspaces": [
-    "app1",
-    "app2"
-  ],
   "scripts": {
     "start": "pnpm --filter --parallel start",
     "serve": "pnpm --filter --parallel serve",
-    "build": "pnpm --filter build"
+    "build": "pnpm --filter build",
+    "e2e:ci": "pnpm --filter apollo-client-app2 run build && pnpm --filter apollo-client-app1 run build"
   },
   "devDependencies": {}
 }
