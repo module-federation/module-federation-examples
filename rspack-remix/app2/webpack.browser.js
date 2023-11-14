@@ -1,50 +1,36 @@
-import * as path from "node:path";
-
-import {readConfig} from "@remix-run/dev/dist/config.js";
-import {EsbuildPlugin} from "esbuild-loader";
-import {toManifest, writeManifest} from "./utils/manifest.js";
-import {RemixAssetsManifestPlugin} from "./utils/RemixAssetsManifestPlugin.js";
-
-const mode =
-  process.env.NODE_ENV === "production" ? "production" : "development";
+import { readConfig } from '@remix-run/dev/dist/config.js';
+import { RemixAssetsManifestPlugin } from './utils/RemixAssetsManifestPlugin.js';
+import { getRoutes } from './utils/get-routes.js';
+const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 const remixConfig = await readConfig();
-
-const routeSet = new Set();
-const routes = Object.fromEntries(
-  Object.entries(remixConfig.routes).map(([key, route]) => {
-    const fullPath = path.resolve(remixConfig.appDirectory, route.file);
-    routeSet.add(fullPath);
-    return [key, fullPath];
-  })
-);
 
 /**
  * @type {import('webpack').Configuration}
  */
 const config = {
-  name: "browser",
+  name: 'browser',
   mode,
-  devtool: mode === "development" ? "inline-cheap-source-map" : undefined,
+  devtool: mode === 'development' ? 'inline-cheap-source-map' : undefined,
   entry: {
-    "entry.client": remixConfig.entryClientFilePath,
-    ...routes,
+    'entry.client': remixConfig.entryClientFilePath,
+    ...getRoutes(remixConfig),
   },
-  externalsType: "module",
+  externalsType: 'module',
   experiments: {
     outputModule: true,
-    topLevelAwait: true
+    topLevelAwait: true,
   },
   output: {
     path: remixConfig.assetsBuildDirectory,
     publicPath: 'auto',
     module: true,
-    library: {type: "module"},
-    chunkFormat: "module",
-    chunkLoading: "import",
-    assetModuleFilename: "_assets/[name]-[contenthash][ext]",
-    cssChunkFilename: "_assets/[name]-[contenthash].css",
-    filename: "[name]-[contenthash].js",
-    chunkFilename: "[name]-[contenthash].js",
+    library: { type: 'module' },
+    chunkFormat: 'module',
+    chunkLoading: 'import',
+    assetModuleFilename: '_assets/[name]-[contenthash][ext]',
+    cssChunkFilename: '_assets/[name]-[contenthash].css',
+    filename: '[name]-[contenthash].js',
+    chunkFilename: '[name]-[contenthash].js',
   },
   module: {
     rules: [
@@ -91,22 +77,20 @@ const config = {
   },
   cache: false,
   optimization: {
-    moduleIds: "named",
-    runtimeChunk: "single",
+    moduleIds: 'named',
+    runtimeChunk: 'single',
     chunkIds: 'named',
     // treeshake unused code in development
     // needed so that browser build does not pull in server code
     usedExports: true,
     innerGraph: true,
     splitChunks: {
-      chunks: "async",
+      chunks: 'async',
     },
-    minimize: mode === "production",
+    minimize: mode === 'production',
     // minimizer: [new EsbuildPlugin({target: "es2019"})],
   },
-  plugins: [
-    new RemixAssetsManifestPlugin(remixConfig),
-  ],
+  plugins: [new RemixAssetsManifestPlugin(remixConfig)],
 };
 
 export default config;
