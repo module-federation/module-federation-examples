@@ -3,19 +3,11 @@ import * as path from "node:path";
 import {readConfig} from "@remix-run/dev/dist/config.js";
 import {EsbuildPlugin} from "esbuild-loader";
 import {toManifest, writeManifest} from "./utils/manifest.js";
-
+import {getRoutes,routeSet} from './utils/get-routes.js'
 const mode =
   process.env.NODE_ENV === "production" ? "production" : "development";
 const remixConfig = await readConfig();
 
-const routeSet = new Set();
-const routes = Object.fromEntries(
-  Object.entries(remixConfig.routes).map(([key, route]) => {
-    const fullPath = path.resolve(remixConfig.appDirectory, route.file);
-    routeSet.add(fullPath);
-    return [key, fullPath];
-  })
-);
 
 /**
  * @type {import('webpack').Configuration}
@@ -26,7 +18,7 @@ const config = {
   devtool: mode === "development" ? "inline-cheap-source-map" : undefined,
   entry: {
     "entry.client": remixConfig.entryClientFilePath,
-    ...routes,
+    ...getRoutes(remixConfig),
   },
   externalsType: "module",
   experiments: {
