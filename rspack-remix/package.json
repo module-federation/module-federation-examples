@@ -1,0 +1,20 @@
+{
+  "name": "rspack-remix",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": [
+    "app1",
+    "app2"
+  ],
+  "scripts": {
+    "start": "pnpm --filter rspack-remix-* --parallel start",
+    "server": "pnpm --filter rspack-remix-* --parallel server"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "@module-federation/node": "^2.1.0-canary.4",
+    "@module-federation/utilities": "^3.0.0"
+  }
+}
