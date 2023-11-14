@@ -1,28 +1,30 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 
-import { readConfig } from "@remix-run/dev/dist/config.js";
-import { EsbuildPlugin } from "esbuild-loader";
+import {readConfig} from "@remix-run/dev/dist/config.js";
+import {EsbuildPlugin} from "esbuild-loader";
 import nodeExternals from "webpack-node-externals";
+import {getManifest} from "./utils/manifest.js";
 
-import { getManifest } from "./utils/manifest.js";
-import {default as Enhanced} from '@module-federation/enhanced'
-import {default as NFP} from '@module-federation/node'
-const {AsyncBoundaryPlugin,ModuleFederationPlugin} = Enhanced
-const {UniversalFederationPlugin} = NFP
 const mode =
   process.env.NODE_ENV === "production" ? "production" : "development";
 const remixConfig = await readConfig();
 const isModule = remixConfig.serverModuleFormat === "esm";
 
-console.log({ isModule });
-if(!isModule) {
-  fs.writeFileSync('./build/package.json',JSON.stringify({type:"commonjs"}))
+console.log({isModule});
+
+if (!isModule) {
+  if (!fs.existsSync('./build')) {
+    fs.mkdirSync('./build');
+  }
+  fs.writeFileSync('./build/package.json', JSON.stringify({type: "commonjs"}))
 }
+
 const manifest = getManifest();
 const serverBuildModule = "./.cache/server-build.js";
 const serverBuildEntry = createServerBuildEntry(remixConfig, manifest);
 fs.writeFileSync(serverBuildModule, serverBuildEntry, "utf8");
+
 
 /**
  * @type {import('webpack').Configuration}
@@ -30,14 +32,14 @@ fs.writeFileSync(serverBuildModule, serverBuildEntry, "utf8");
 const config = {
   name: "server",
   mode,
-  devtool: mode === "development" ? "inline-cheap-source-map" : undefined,
-  target: "async-node",
+  devtool: mode === "development" ? false : undefined,
+  target: 'async-node',
   entry: remixConfig.serverEntryPoint
     ? path.resolve(remixConfig.rootDirectory, remixConfig.serverEntryPoint)
     : serverBuildModule,
-  experiments: isModule ? { outputModule: true } : undefined,
+  experiments: isModule ? {outputModule: true} : undefined,
   externalsType: isModule ? "module" : undefined,
-  externalsPresets: { node: true },
+  externalsPresets: {node: true},
   externals: [
     nodeExternals({
       allowlist: [/^@remix-run\/dev/],
@@ -49,9 +51,9 @@ const config = {
       module: isModule
     },
     filename: path.basename(remixConfig.serverBuildPath),
-    library: { type: isModule ? "module" : "commonjs" },
+    library: {type: isModule ? "module" : "commonjs"},
     chunkFormat: isModule ? "module" : "commonjs",
-    chunkLoading: isModule ? "import" : "require",
+    chunkLoading: isModule ? "import" : undefined,
     module: isModule,
     path: path.dirname(remixConfig.serverBuildPath),
     publicPath: remixConfig.publicPath,
@@ -83,39 +85,7 @@ const config = {
       },
     ],
   },
-  plugins:[
-    new UniversalFederationPlugin({
-      isServer:true,
-      name: "app2",
-      filename: 'remoteEntry.js',
-      remotes: {
-        app1: 'app1@http://localhost:3000/server/remoteEntry.js'
-      },
-      remoteType: 'script',
-      library: {type: isModule ? "module" : 'commonjs-module'},
-      exposes: {
-        './button': './components/Button.jsx',
-      },
-      shared: {
-        "react/": {
-          singleton: true
-        },
-        "react": {
-          singleton: true
-        },
-        "react-dom/": {
-          singleton: true
-        },
-        "react-dom": {
-          singleton: true
-        }
-      }
-    }, {ModuleFederationPlugin}),
-    new AsyncBoundaryPlugin({
-      excludeChunk: (chunk)=> {
-        return chunk.name === 'app2'
-      }
-    }),
+  plugins: [
   ]
 };
 

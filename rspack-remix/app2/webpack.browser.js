@@ -3,7 +3,6 @@ import * as path from "node:path";
 import {readConfig} from "@remix-run/dev/dist/config.js";
 import {EsbuildPlugin} from "esbuild-loader";
 import {toManifest, writeManifest} from "./utils/manifest.js";
-// import {default as Enhanced} from '@module-federation/enhanced'
 
 const mode =
   process.env.NODE_ENV === "production" ? "production" : "development";
@@ -51,45 +50,45 @@ const config = {
   },
   module: {
     rules: [
-      {
-        include: (input) => routeSet.has(input),
-        use: [
-          // {
-          //   loader: "babel-loader",
-          //   options: {
-          //     plugins: [["eliminator", {namedExports: ["action", "loader"]}]],
-          //   },
-          // },
-          {
-            loader: 'builtin:swc-loader',
-            options: {
-              jsc: {
-                parser: {
-                  syntax: 'ecmascript',
-                  jsx: true,
-                },
-              }
-            },
-          },
-        ],
-      },
-      {
-        test: /\.[jt]sx?$/,
-        exclude: (input) => routeSet.has(input),
-        use: [
-          {
-            loader: 'builtin:swc-loader',
-            options: {
-              jsc: {
-                parser: {
-                  syntax: 'ecmascript',
-                  jsx: true,
-                },
-              }
-            },
-          },
-        ],
-      },
+      // {
+      //   include: (input) => routeSet.has(input),
+      //   use: [
+      //     // {
+      //     //   loader: "babel-loader",
+      //     //   options: {
+      //     //     plugins: [["eliminator", {namedExports: ["action", "loader"]}]],
+      //     //   },
+      //     // },
+      //     {
+      //       loader: 'builtin:swc-loader',
+      //       options: {
+      //         jsc: {
+      //           parser: {
+      //             syntax: 'ecmascript',
+      //             jsx: true,
+      //           },
+      //         }
+      //       },
+      //     },
+      //   ],
+      // },
+      // {
+      //   test: /\.[jt]sx?$/,
+      //   exclude: (input) => routeSet.has(input),
+      //   use: [
+      //     {
+      //       loader: 'builtin:swc-loader',
+      //       options: {
+      //         jsc: {
+      //           parser: {
+      //             syntax: 'ecmascript',
+      //             jsx: true,
+      //           },
+      //         }
+      //       },
+      //     },
+      //   ],
+      // },
     ],
   },
   cache: false,
