@@ -30,7 +30,7 @@ const config = {
     chunkFormat: 'module',
     chunkLoading: 'import',
     assetModuleFilename: '_assets/[name]-[contenthash][ext]',
-    cssChunkFilename: '_assets/[name]-[contenthash][ext]',
+    cssChunkFilename: '_assets/[name]-[contenthash].css',
     filename: '[name]-[contenthash].js',
     chunkFilename: '[name]-[contenthash].js',
   },

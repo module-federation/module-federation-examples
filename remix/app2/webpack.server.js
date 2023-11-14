@@ -58,7 +58,7 @@ const config = {
     path: path.dirname(remixConfig.serverBuildPath),
     publicPath: remixConfig.publicPath,
     assetModuleFilename: '_assets/[name]-[contenthash][ext]',
-    cssChunkFilename: '_assets/[name]-[contenthash][ext]',
+    cssChunkFilename: '_assets/[name]-[contenthash].css',
     chunkFilename: '[name]-[chunkhash].js',
   },
   optimization: {
