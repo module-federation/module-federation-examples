@@ -27,9 +27,6 @@ const config = {
     topLevelAwait: true
   },
   output: {
-    // environment: {
-    //   module: true
-    // },
     path: remixConfig.assetsBuildDirectory,
     publicPath: 'auto',
     module: true,
