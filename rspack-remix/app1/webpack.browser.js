@@ -2,6 +2,7 @@ import * as path from "node:path";
 
 import {readConfig} from "@remix-run/dev/dist/config.js";
 import {EsbuildPlugin} from "esbuild-loader";
+import {RemixAssetsManifestPlugin} from "./utils/RemixAssetsManifestPlugin";
 import {toManifest, writeManifest} from "./utils/manifest.js";
 import {getRoutes,routeSet} from './utils/get-routes.js'
 const mode =
