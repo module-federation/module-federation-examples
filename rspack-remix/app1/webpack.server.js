@@ -4,8 +4,8 @@ import * as path from "node:path";
 import {readConfig} from "@remix-run/dev/dist/config.js";
 import {EsbuildPlugin} from "esbuild-loader";
 import nodeExternals from "webpack-node-externals";
-import {getManifest} from "./utils/manifest.js";
-import {createServerBuildEntry} from "./utils/server-build-entry.js";
+import {getManifest} from "./utils/manifest.mjs";
+import {createServerBuildEntry} from "./utils/server-build-entry.mjs";
 
 const mode =
   process.env.NODE_ENV === "production" ? "production" : "development";

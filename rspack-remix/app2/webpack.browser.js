@@ -2,7 +2,7 @@ import * as path from "node:path";
 
 import {readConfig} from "@remix-run/dev/dist/config.js";
 import {EsbuildPlugin} from "esbuild-loader";
-import {toManifest, writeManifest} from "./utils/manifest.js";
+import {toManifest, writeManifest} from "./utils/manifest.mjs";
 
 const mode =
   process.env.NODE_ENV === "production" ? "production" : "development";
