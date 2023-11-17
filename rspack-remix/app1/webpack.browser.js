@@ -2,9 +2,9 @@ import * as path from "node:path";
 
 import {readConfig} from "@remix-run/dev/dist/config.js";
 import {EsbuildPlugin} from "esbuild-loader";
-import {RemixAssetsManifestPlugin} from "./utils/RemixAssetsManifestPlugin";
-import {toManifest, writeManifest} from "./utils/manifest.js";
-import {getRoutes,routeSet} from './utils/get-routes.js'
+import {RemixAssetsManifestPlugin} from "./utils/RemixAssetsManifestPlugin.mjs";
+import {toManifest, writeManifest} from "./utils/manifest.mjs";
+import {getRoutes,routeSet} from './utils/get-routes.mjs'
 const mode =
   process.env.NODE_ENV === "production" ? "production" : "development";
 const remixConfig = await readConfig();
@@ -97,21 +97,7 @@ const config = {
     // minimizer: [new EsbuildPlugin({target: "es2019"})],
   },
   plugins: [
-    {
-      /**
-       * @param {import("webpack").Compiler} compiler
-       */
-      apply(compiler) {
-        compiler.hooks.emit.tapPromise(
-          "RemixAssetsManifest",
-          async (compilation) => {
-            const stats = compilation.getStats();
-            const manifest = await toManifest(remixConfig, stats);
-            writeManifest(remixConfig, manifest);
-          }
-        );
-      },
-    },
+    new RemixAssetsManifestPlugin(remixConfig),
   ],
 };
 

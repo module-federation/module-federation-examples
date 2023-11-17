@@ -1,7 +1,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 
-import { getExports } from "./get-exports.js";
+import { getExports } from "./get-exports.mjs";
 
 function createUrl(publicPath, file) {
   return (

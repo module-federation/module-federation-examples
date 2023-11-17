@@ -1,6 +1,9 @@
-import {toManifest, writeManifest} from "./manifest.js";
+import {toManifest, writeManifest} from "./manifest.mjs";
 
 class RemixAssetsManifestPlugin {
+  constructor(remixConfig) {
+    this.remixConfig = remixConfig;
+  }
   /**
    * @param {import("webpack").Compiler} compiler
    */
@@ -9,8 +12,8 @@ class RemixAssetsManifestPlugin {
       "RemixAssetsManifest",
       async (compilation) => {
         const stats = compilation.getStats();
-        const manifest = await toManifest(remixConfig, stats);
-        writeManifest(remixConfig, manifest);
+        const manifest = await toManifest(this.remixConfig, stats);
+        writeManifest(this.remixConfig, manifest);
       }
     );
   }
