@@ -1,7 +1,6 @@
 import React, {Suspense,lazy} from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-console.log('fromHome',__webpack_share_scopes__, Link);
 
 export const HelloWorld = lazy(() => import('./helloWorld').then(mod => {
   return {default: mod.HelloWorld}
