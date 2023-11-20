@@ -49,7 +49,7 @@ try {
     }).filter(p=> {
       return p
     }).filter(p=>p.name && !p.name.includes('cypress'))
-    console.log(JSON.stringify({ container: newPackages.map(x => x.name) }));
+    console.log(JSON.stringify({ container: Array.from(new Set(newPackages.map(x => x.name)))}));
   } else {
     let newPackages = updatedPackages.map(package=>{
       let pkg
