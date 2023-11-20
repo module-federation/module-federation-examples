@@ -112,6 +112,7 @@ jobs:
           all="$(pnpm list --filter '*' --only-projects --depth -1 --json)"
           diff="$(pnpm list --filter '...[origin/master]' --only-projects --depth -1 --json)"
           matrix="$(node checkChangedWorkspaces.js "$all" "$diff")"
+          echo $matrix
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
   # Run Cypress e2e tests for changed samples (additionally install deps for all changed samples if there is no any created cache in master branch) + Create artifacts for Cypress screenshots and videos
