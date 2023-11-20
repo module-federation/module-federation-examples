@@ -24,20 +24,11 @@ if (!updatedPackages) {
 
 try {
   if (updatedPackages && updatedPackages.includes('cypress')) {
-    // TODO filter for "@" added temporary to not to add packages wich are not automated and formated yet.
-    const newPackages = allPackages.filter(
-      x =>
-        !x.name.includes('_') &&
-        !updatedPackages.includes(x) &&
-        !x.name.includes('cypress') &&
-        !x.name.includes('@'),
-    );
-    console.log(JSON.stringify({ container: newPackages.map(x => x.name) }));
+    console.log(JSON.stringify({ container: updatedPackages.map(x => x.name) }));
   } else {
     console.log(
       JSON.stringify({
         container: updatedPackages
-          .filter(x => !x.name.includes('_') && !x.name.includes('@'))
           .map(x => x.name),
       }),
     );
