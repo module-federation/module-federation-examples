@@ -475,7 +475,7 @@ export class Constants {
                 learn: 'Next.js Learn →',
                 examples: 'Examples →',
             },
-            json: '{\n  "userId": 1,\n  "id": 1,\n  "title": "delectus aut autem",\n  "completed": false\n}',
+            json: '{\n  "userId": 1,\n  "id": 1,\n  "title": "delectus aut autem",\n  "completed": false,\n  "className": "jsx-eac17076d5b70dbd "\n}',
         },
         sharedStoreCrossFrameworkApp: {
             pageMark: 'Shell',

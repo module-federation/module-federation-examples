@@ -17,9 +17,6 @@ importers:
 
   checkout:
     dependencies:
-      '@module-federation/enhanced':
-        specifier: canary
-        version: 0.2.0-canary.4(webpack@5.89.0)
       '@module-federation/nextjs-mf':
         specifier: 8.1.0-canary.6
         version: 8.1.0-canary.6(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
@@ -41,9 +38,6 @@ importers:
 
   home:
     dependencies:
-      '@module-federation/enhanced':
-        specifier: canary
-        version: 0.2.0-canary.4(webpack@5.89.0)
       '@module-federation/nextjs-mf':
         specifier: 8.1.0-canary.6
         version: 8.1.0-canary.6(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
@@ -65,9 +59,6 @@ importers:
 
   shop:
     dependencies:
-      '@module-federation/enhanced':
-        specifier: canary
-        version: 0.2.0-canary.4(webpack@5.89.0)
       '@module-federation/nextjs-mf':
         specifier: 8.1.0-canary.6
         version: 8.1.0-canary.6(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
@@ -159,7 +150,7 @@ packages:
       react: ^17 || ^18
       react-dom: ^17 || ^18
       styled-jsx: '*'
-      webpack: 5.80.0
+      webpack: ^5.40.0
     peerDependenciesMeta:
       styled-jsx:
         optional: true
