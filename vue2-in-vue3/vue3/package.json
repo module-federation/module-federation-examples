@@ -5,7 +5,8 @@
     "start": "webpack-cli serve",
     "serve": "serve dist -p 3002",
     "build": "webpack --mode production",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "e2e:ci": "pnpm --filter vue2-in-vue3 run e2e:ci"
   },
   "dependencies": {
     "@babel/core": "7.23.3",
