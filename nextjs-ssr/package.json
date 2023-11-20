@@ -2,13 +2,9 @@
   "name": "nextjs-ssr",
   "private": true,
   "version": "0.0.0",
-  "workspaces": [
-    "checkout",
-    "home",
-    "shop"
-  ],
   "scripts": {
-    "start": "NEXT_PRIVATE_LOCAL_WEBPACK=true  pnpm --parallel --filter nextjs-ssr_* dev",
+    "postinstall": "find . -name \"node_modules\" -type d -prune -exec rm -rf '{}' +; pnpm install --ignore-scripts",
+    "start": " pnpm --parallel --filter nextjs-ssr_* dev",
     "build": "pnpm --parallel --filter nextjs-ssr_* build",
     "serve": "pnpm --parallel --filter nextjs-ssr_* start",
     "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && wait-on http-get://localhost:3002/ && wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
