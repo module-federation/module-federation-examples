@@ -4,7 +4,8 @@
   "scripts": {
     "serve": "vue-cli-service serve --port=8081",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "e2e:ci": "pnpm run build"
   },
   "dependencies": {
     "core-js": "^3.33.2",
