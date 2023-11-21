@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "pnpm --parallel --filter rust-wasm_* --stream start",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:8080/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:8080/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "lerna": "4.0.0",
