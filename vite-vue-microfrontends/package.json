@@ -8,7 +8,7 @@
     "build": "pnpm --filter vite-vue-microfrontends_* --parallel run build",
     "preview:host": "npm --prefix ./host run build && npm --prefix ./host run preview",
     "preview:remote": "npm --prefix ./remote run build && npm --prefix ./remote run preview",
-    "e2e:ci": "pnpm preview:remote && pnpm preview:host & wait-on http-get://localhost:4173/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
+    "e2e:ci": "pnpm preview:remote && pnpm preview:host & wait-on http-get://localhost:4173/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/*.cy.ts\" --browser=chrome"
   },
   "author": {
     "name": "Giorgio Boa",
