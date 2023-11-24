@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic';
 import {lazy} from "react"
 const Nav = process.browser ? lazy(
   () => {
