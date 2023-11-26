@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
+    "postinstall": "find . -name \"node_modules\" -type d -prune -exec rm -rf '{}' +; pnpm install --ignore-scripts",
     "start": "pnpm --filter cra-react-app-rewired_* --parallel start",
     "build": "pnpm --filter cra-react-app-rewired_* --parallel build",
     "serve": "pnpm --filter cra-react-app-rewired_* --parallel serve",
