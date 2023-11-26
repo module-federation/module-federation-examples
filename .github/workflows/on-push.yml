@@ -52,11 +52,11 @@ jobs:
       - name: Free up some space
         run: ${{ env.FILES_TO_DELETE }}
 
-        # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
+        # Hash pnpm-lock.yaml files to use it as a cache key, if pnpm-lock.yaml files are changed, the cache will be invalidated
       - name: Check Yarn hash
         id: yarn-hash
         run: |
-          yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
+          yarnHash="$(npx hash-files -f '["**/pnpm-lock.yaml"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
       - name: Cache Yarn and Cypress
