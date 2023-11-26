@@ -2,12 +2,13 @@ var path = require("path");
 const { dependencies } = require("./package.json");
 const ModuleFederationPlugin =
   require("webpack").container.ModuleFederationPlugin;
-
+const MiniCss = require("mini-css-extract-plugin");
 const { override, babelInclude } = require("customize-cra");
 
 module.exports = function (config, env) {
   config.plugins = config.plugins.filter(p=>["CaseSensitivePathsPlugin"].includes(p.constructor.name))
   config.plugins.push(
+  new MiniCss(),
     new ModuleFederationPlugin(
       (module.exports = {
         name: "host",
