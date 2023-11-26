@@ -186,7 +186,6 @@ jobs:
         # Hash pnpm.lock files to use it as a cache key, if pnpm.lock files are changed, the cache will be invalidated
       - name: Check Yarn hash
         id: check-yarn-hash
-        if: ${{ false }}
         run: |
           yarnHash="$(npx hash-files -f '["**/pnpm-lock.yaml"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
