@@ -114,9 +114,56 @@ jobs:
           echo $matrix
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
+
+  install-deps:
+    runs-on: ubuntu-22.04
+    needs: setup-matrix
+    steps:
+      - name: Checkout
+        id: checkout-matrix
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Install
+        id: install
+        run: |
+          npm i pnpm -g
+          pnpm install
+
+      - name: Check Yarn hash
+        id: check-yarn-hash
+        if: ${{ false }}
+        run: |
+          yarnHash="$(npx hash-files -f '["**/pnpm-lock.yaml"]' -a sha256)"
+          echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
+
+      - name: Install deps
+        id: install-deps-e2e
+        if: steps.restore-yarn-global-cache-e2e.outputs.cache-hit != 'true'
+        env:
+          NODE_OPTIONS: '--max_old_space_size=4096'
+        run: |
+          echo "PNPM changed - install deps ... "
+          npm i pnpm -g
+          pnpm i --frozen-lockfile
+
+      # Is this still required with PNPM - https://pnpm.io/continuous-integration#github-actions ?
+      - name: Cache Yarn and Cypress
+        if: steps.restore-yarn-global-cache-e2e.outputs.cache-hit != 'true'
+        id: cache-yarn-cypress
+        uses: actions/cache/save@v3
+        with:
+          path: |
+            ${{ env.YARN_CACHE_PATH }}
+            ${{ env.CACHE_PATH }}
+          key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash }} # Can use time based key as well
+
   # Run Cypress e2e tests for changed samples (additionally install deps for all changed samples if there is no any created cache in master branch) + Create artifacts for Cypress screenshots and videos
   run-e2e-test:
-    needs: [setup-matrix]
+    needs: [setup-matrix, install-deps]
     if: ${{ needs.setup-matrix.outputs.matrix != '{"container":[]}' }}
     runs-on: ubuntu-22.04
     strategy:
