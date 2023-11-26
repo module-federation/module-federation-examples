@@ -142,7 +142,7 @@ jobs:
         id: check-yarn-hash
         if: ${{ false }}
         run: |
-          yarnHash="$(npx hash-files -f '["**/pnpm.lock"]' -a sha256)"
+          yarnHash="$(npx hash-files -f '["**/pnpm-lock.yaml"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
       - name: Install deps
