@@ -6,8 +6,7 @@ env:
     **/node_modules
     ~/.cache/Cypress
   YARN_CACHE_PATH: |
-    ~/.cache/yarn/v6
-    ~/.pnpm-store/v3
+    ~/.pnpm-store
   FILES_TO_DELETE: |
     sudo rm -rf "/usr/share/dotnet"
     sudo rm -rf "/usr/share/swift"
