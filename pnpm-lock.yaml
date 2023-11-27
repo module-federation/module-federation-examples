@@ -7927,7 +7927,7 @@ importers:
         version: 13.3.1(@babel/core@7.23.3)(react-dom@18.2.0)(react@18.2.0)
       nextjs-shared:
         specifier: file:../shared
-        version: file:nextjs-v13/shared
+        version: file:nextjs-v13/shared(next@13.3.1)(react-dom@18.2.0)(react@18.2.0)(webpack@5.80.0)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -7948,7 +7948,7 @@ importers:
         version: 13.3.1(@babel/core@7.23.3)(react-dom@18.2.0)(react@18.2.0)
       nextjs-shared:
         specifier: file:../shared
-        version: file:nextjs-v13/shared
+        version: file:nextjs-v13/shared(next@13.3.1)(react-dom@18.2.0)(react@18.2.0)(webpack@5.80.0)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -7965,6 +7965,9 @@ importers:
 
   nextjs-v13/shared:
     dependencies:
+      '@module-federation/utilities':
+        specifier: ^3.0.0
+        version: 3.0.0(next@13.3.1)(react-dom@18.2.0)(react@18.2.0)(webpack@5.80.0)
       feather-route-matcher:
         specifier: 4.0.0
         version: 4.0.0
@@ -7979,7 +7982,7 @@ importers:
         version: 13.3.1(@babel/core@7.23.3)(react-dom@18.2.0)(react@18.2.0)
       nextjs-shared:
         specifier: file:../shared
-        version: file:nextjs-v13/shared
+        version: file:nextjs-v13/shared(next@13.3.1)(react-dom@18.2.0)(react@18.2.0)(webpack@5.80.0)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -30266,6 +30269,27 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       webpack: 5.80.0(webpack-cli@5.1.4)
       webpack-sources: 3.2.3
+    dev: false
+
+  /@module-federation/utilities@3.0.0(next@13.3.1)(react-dom@18.2.0)(react@18.2.0)(webpack@5.80.0):
+    resolution: {integrity: sha512-Zqp+6RcuNj/jq5GAfXDDjmMZggFN3U6tOL/obj6KflEQzMVCeYFAl6UzQXdhWR2+K2g/23xuJTQJyqqS8ffUeQ==}
+    peerDependencies:
+      next: ^12 || ^13
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+      webpack: 5.80.0
+    peerDependenciesMeta:
+      next:
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      next: 13.3.1(@babel/core@7.23.3)(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      webpack: 5.80.0(webpack-cli@5.1.4)
     dev: false
 
   /@module-federation/utilities@3.0.3-0(webpack@5.80.0):
@@ -78803,9 +78827,16 @@ packages:
       feather-route-matcher: 4.0.0
     dev: false
 
-  file:nextjs-v13/shared:
+  file:nextjs-v13/shared(next@13.3.1)(react-dom@18.2.0)(react@18.2.0)(webpack@5.80.0):
     resolution: {directory: nextjs-v13/shared, type: directory}
+    id: file:nextjs-v13/shared
     name: nextjs-shared-v13
     dependencies:
+      '@module-federation/utilities': 3.0.0(next@13.3.1)(react-dom@18.2.0)(react@18.2.0)(webpack@5.80.0)
       feather-route-matcher: 4.0.0
+    transitivePeerDependencies:
+      - next
+      - react
+      - react-dom
+      - webpack
     dev: false
