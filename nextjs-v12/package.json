@@ -11,7 +11,8 @@
   "scripts": {
     "start": "concurrently \"npm --prefix checkout run dev\" \"npm --prefix home run dev\" \"npm --prefix shop run dev\"",
     "build": "concurrently \"npm --prefix checkout run build\" \"npm --prefix home run build\" \"npm --prefix shop run build\"",
-    "serve": "concurrently \"npm --prefix checkout run start\" \"npm --prefix home run start\" \"npm --prefix shop run start\""
+    "serve": "concurrently \"npm --prefix checkout run start\" \"npm --prefix home run start\" \"npm --prefix shop run start\"",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "dependencies": {
     "concurrently": "^7.0.0"
