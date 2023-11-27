@@ -165,10 +165,10 @@ export const selectors = {
     comprehensiveDemoApp: {
         app2Dialog: '[role="dialog"]',
         blockSelectors: {
-            firstBlock: '.makeStyles-root-1',
-            secondBlock: '.makeStyles-content-2',
-            thirdBlock: '.makeStyles-root-3',
-            sideBarBlock: '.makeStyles-drawerPaper-3',
+            firstBlock: '.jss1',
+            secondBlock: '.jss2',
+            thirdBlock: '.jss3',
+            sideBarBlock: '.jss4',
         },
         closeButton: '.closebtn',
         alert: '.alert'
