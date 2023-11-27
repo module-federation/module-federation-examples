@@ -11972,8 +11972,8 @@ importers:
         specifier: 0.2.8
         version: 0.2.8(@softarc/native-federation@1.1.2)
       '@rushstack/eslint-patch':
-        specifier: 1.5.1
-        version: 1.5.1
+        specifier: 1.6.0
+        version: 1.6.0
       '@softarc/native-federation':
         specifier: 1.1.2
         version: 1.1.2
@@ -12033,8 +12033,8 @@ importers:
         specifier: 0.2.8
         version: 0.2.8(@softarc/native-federation@1.1.2)
       '@rushstack/eslint-patch':
-        specifier: 1.5.1
-        version: 1.5.1
+        specifier: 1.6.0
+        version: 1.6.0
       '@softarc/native-federation':
         specifier: 1.1.2
         version: 1.1.2
@@ -17053,12 +17053,12 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.23.3
+      '@babel/compat-data': 7.22.9
       '@babel/core': 7.11.1
       '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.11.1)
-      '@babel/plugin-transform-parameters': 7.23.3(@babel/core@7.11.1)
+      '@babel/plugin-transform-parameters': 7.22.15(@babel/core@7.11.1)
     dev: true
 
   /@babel/plugin-proposal-object-rest-spread@7.20.7(@babel/core@7.12.10):
@@ -17068,12 +17068,12 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.23.3
+      '@babel/compat-data': 7.22.9
       '@babel/core': 7.12.10
       '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.12.10)
-      '@babel/plugin-transform-parameters': 7.23.3(@babel/core@7.12.10)
+      '@babel/plugin-transform-parameters': 7.22.15(@babel/core@7.12.10)
     dev: true
 
   /@babel/plugin-proposal-object-rest-spread@7.20.7(@babel/core@7.14.8):
@@ -17083,12 +17083,12 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.23.3
+      '@babel/compat-data': 7.22.9
       '@babel/core': 7.14.8
       '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.14.8)
-      '@babel/plugin-transform-parameters': 7.23.3(@babel/core@7.14.8)
+      '@babel/plugin-transform-parameters': 7.22.15(@babel/core@7.14.8)
     dev: true
 
   /@babel/plugin-proposal-object-rest-spread@7.20.7(@babel/core@7.18.10):
@@ -17098,12 +17098,12 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.23.3
+      '@babel/compat-data': 7.22.9
       '@babel/core': 7.18.10
       '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.18.10)
-      '@babel/plugin-transform-parameters': 7.23.3(@babel/core@7.18.10)
+      '@babel/plugin-transform-parameters': 7.22.15(@babel/core@7.18.10)
 
   /@babel/plugin-proposal-object-rest-spread@7.20.7(@babel/core@7.20.12):
     resolution: {integrity: sha512-d2S98yCiLxDVmBmE8UjGcfPvNEUbA1U5q5WxaWFUGRzJSVAZqm5W6MbPct0jxnegUZ0niLeNX+IOzEs7wYg9Dg==}
@@ -17112,12 +17112,12 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.23.3
+      '@babel/compat-data': 7.22.9
       '@babel/core': 7.20.12
       '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.20.12)
-      '@babel/plugin-transform-parameters': 7.23.3(@babel/core@7.20.12)
+      '@babel/plugin-transform-parameters': 7.22.15(@babel/core@7.20.12)
     dev: true
 
   /@babel/plugin-proposal-object-rest-spread@7.20.7(@babel/core@7.23.3):
@@ -20871,6 +20871,55 @@ packages:
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/helper-skip-transparent-expression-wrappers': 7.22.5
       '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.23.3)
+
+  /@babel/plugin-transform-parameters@7.22.15(@babel/core@7.11.1):
+    resolution: {integrity: sha512-hjk7qKIqhyzhhUvRT683TYQOFa/4cQKwQy7ALvTpODswN40MljzNDa0YldevS6tGbxwaEKVn502JmY0dP7qEtQ==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.11.1
+      '@babel/helper-plugin-utils': 7.22.5
+    dev: true
+
+  /@babel/plugin-transform-parameters@7.22.15(@babel/core@7.12.10):
+    resolution: {integrity: sha512-hjk7qKIqhyzhhUvRT683TYQOFa/4cQKwQy7ALvTpODswN40MljzNDa0YldevS6tGbxwaEKVn502JmY0dP7qEtQ==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.12.10
+      '@babel/helper-plugin-utils': 7.22.5
+    dev: true
+
+  /@babel/plugin-transform-parameters@7.22.15(@babel/core@7.14.8):
+    resolution: {integrity: sha512-hjk7qKIqhyzhhUvRT683TYQOFa/4cQKwQy7ALvTpODswN40MljzNDa0YldevS6tGbxwaEKVn502JmY0dP7qEtQ==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.14.8
+      '@babel/helper-plugin-utils': 7.22.5
+    dev: true
+
+  /@babel/plugin-transform-parameters@7.22.15(@babel/core@7.18.10):
+    resolution: {integrity: sha512-hjk7qKIqhyzhhUvRT683TYQOFa/4cQKwQy7ALvTpODswN40MljzNDa0YldevS6tGbxwaEKVn502JmY0dP7qEtQ==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.18.10
+      '@babel/helper-plugin-utils': 7.22.5
+
+  /@babel/plugin-transform-parameters@7.22.15(@babel/core@7.20.12):
+    resolution: {integrity: sha512-hjk7qKIqhyzhhUvRT683TYQOFa/4cQKwQy7ALvTpODswN40MljzNDa0YldevS6tGbxwaEKVn502JmY0dP7qEtQ==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.20.12
+      '@babel/helper-plugin-utils': 7.22.5
+    dev: true
 
   /@babel/plugin-transform-parameters@7.22.15(@babel/core@7.23.3):
     resolution: {integrity: sha512-hjk7qKIqhyzhhUvRT683TYQOFa/4cQKwQy7ALvTpODswN40MljzNDa0YldevS6tGbxwaEKVn502JmY0dP7qEtQ==}
@@ -34622,6 +34671,10 @@ packages:
 
   /@rushstack/eslint-patch@1.5.1:
     resolution: {integrity: sha512-6i/8UoL0P5y4leBIGzvkZdS85RDMG9y1ihZzmTZQ5LdHUYmZ7pKFoj8X0236s3lusPs1Fa5HTQUpwI+UfTcmeA==}
+    dev: true
+
+  /@rushstack/eslint-patch@1.6.0:
+    resolution: {integrity: sha512-2/U3GXA6YiPYQDLGwtGlnNgKYBSwCFIHf8Y9LUY5VATHdtbLlU0Y1R3QoBnT0aB4qv/BEiVVsj7LJXoQCgJ2vA==}
 
   /@schematics/angular@11.2.19:
     resolution: {integrity: sha512-cZys7nRo/CI81EtPu4VJiAyv53gPfIfLteykhrTQpAp9AZK9UuRHauiJq7BhHRAUEc3z148xjSQgMvEu7/vAuA==}
@@ -49496,7 +49549,7 @@ packages:
     dependencies:
       '@babel/core': 7.23.3
       '@babel/eslint-parser': 7.23.3(@babel/core@7.23.3)(eslint@8.54.0)
-      '@rushstack/eslint-patch': 1.5.1
+      '@rushstack/eslint-patch': 1.6.0
       '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.54.0)(typescript@4.9.5)
       '@typescript-eslint/parser': 5.62.0(eslint@8.54.0)(typescript@4.9.5)
       babel-preset-react-app: 10.0.1
