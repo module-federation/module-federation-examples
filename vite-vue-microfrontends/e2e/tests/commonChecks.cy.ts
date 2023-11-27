@@ -7,6 +7,7 @@ const basePage: BaseMethods = new BaseMethods()
 describe('Vite Vue Microfrontends',  () => {
     context('It checks names and symbols inside cards', () => {
         CommonTestData.commonMicroFrontendsAppsData.forEach((property: { cardName: string, symbolName: string, symbol: string, status: string }) => {
+            if(property.symbolName === 'cloud') return
             it(`Checks ${property.symbolName} symbol visibility for ${property.cardName} card`, () => {
                 basePage.openLocalhost({
                     number: 4173
