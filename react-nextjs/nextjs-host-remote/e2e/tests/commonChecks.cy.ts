@@ -12,7 +12,7 @@ describe('It checks elements visibility', () => {
         hosts.forEach((host: number) => {
             it(`Checks ${property.messageType} message visibility`, () => {
                 basePage.skipTestByCondition(host === 8081 && property.message === CommonTestData.commonNextJsAppsData[3].message)
-                basePage.openLocalhost(host)
+                basePage.openLocalhost({number:host})
                 basePage.checkElementWithTextPresence({
                     selector: property.selector,
                     text: property.message,
@@ -22,7 +22,7 @@ describe('It checks elements visibility', () => {
 
             it(`Checks ${property.messageType} message includes texted link`, () => {
                 basePage.skipTestByCondition(!property.linkText)
-                basePage.openLocalhost(host)
+                basePage.openLocalhost({number:host})
                 basePage.checkElementWithTextPresence({
                     parentSelector: property.selector,
                     selector: baseSelectors.tags.coreElements.link,
