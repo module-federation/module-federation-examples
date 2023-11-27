@@ -136,6 +136,12 @@ jobs:
         run: |
           df -h
 
+      - name: Set up node
+        id: setup-node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
 
       - name: Install deps
         id: install-deps-e2e
@@ -146,13 +152,6 @@ jobs:
           echo "PNPM changed - install deps ... "
           npm i pnpm -g
           pnpm i --frozen-lockfile
-
-      - name: Set up node
-        id: setup-node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'pnpm'
 
       - name: Run sample e2e tests
         timeout-minutes: 30
