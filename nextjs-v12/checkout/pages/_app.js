@@ -1,5 +1,5 @@
 import App from 'next/app';
-import {lazy} from "react"
+import {lazy, Suspense} from "react"
 const Nav = process.browser ? lazy(
   () => {
     const mod = import('home/nav').catch(console.error);
@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Suspense fallback={'loading nav'}>
-      <Nav />
+        <Nav />
       </Suspense>
       <Component {...pageProps} />
     </>

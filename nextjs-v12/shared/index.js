@@ -1,6 +1,6 @@
 const React = require('react');
 const createMatcher = require('feather-route-matcher');
-const { injectScript } = require('@module-federation/nextjs-mf/utils');
+const { injectScript } = require('@module-federation/utilities');
 const remoteVars = process.env.REMOTES || {};
 const remotes = Object.entries(remoteVars).reduce((acc, item) => {
   const [key, value] = item;
