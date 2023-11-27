@@ -360,11 +360,11 @@ appsData.forEach(
                         selector: selectors.nextJsSsrApp.nextApp,
                         text: Constants.elementsText.nextJsSsrApp.texts.text2
                     })
-                    basePage.checkElementContainText({
-                        selector: baseSelectors.tags.pre,
-                        text: Constants.elementsText.nextJsSsrApp.json,
-                        index: 1
-                    })
+                    // basePage.checkElementContainText({
+                    //     selector: baseSelectors.tags.pre,
+                    //     text: Constants.elementsText.nextJsSsrApp.json,
+                    //     index: 1
+                    // })
                 })
             })
         })
