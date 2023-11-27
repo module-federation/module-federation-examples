@@ -5634,8 +5634,8 @@ importers:
         specifier: ^6.1.8
         version: 6.1.8
       i18next-shared-lib:
-        specifier: file:../i18next-shared-lib
-        version: file:i18next-nextjs-react/i18next-shared-lib(i18next-browser-languagedetector@6.1.8)(i18next@21.10.0)(react-i18next@11.18.6)(react@18.2.0)
+        specifier: ../i18next-shared-lib
+        version: link:../i18next-shared-lib
       next:
         specifier: 12.3.4
         version: 12.3.4(@babel/core@7.23.3)(react-dom@18.2.0)(react@18.2.0)
@@ -5680,8 +5680,8 @@ importers:
         specifier: ^6.1.8
         version: 6.1.8
       i18next-shared-lib:
-        specifier: file:../i18next-shared-lib
-        version: file:i18next-nextjs-react/i18next-shared-lib(i18next-browser-languagedetector@6.1.8)(i18next@21.10.0)(react-i18next@11.18.6)(react@18.2.0)
+        specifier: ../i18next-shared-lib
+        version: link:../i18next-shared-lib
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -5756,8 +5756,8 @@ importers:
         specifier: ^6.1.8
         version: 6.1.8
       i18next-shared-lib:
-        specifier: file:../i18next-shared-lib
-        version: file:i18next-nextjs-react/i18next-shared-lib(i18next-browser-languagedetector@6.1.8)(i18next@21.10.0)(react-i18next@11.18.6)(react@18.2.0)
+        specifier: ../i18next-shared-lib
+        version: link:../i18next-shared-lib
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -17040,12 +17040,12 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.22.9
+      '@babel/compat-data': 7.23.3
       '@babel/core': 7.11.1
       '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.11.1)
-      '@babel/plugin-transform-parameters': 7.22.15(@babel/core@7.11.1)
+      '@babel/plugin-transform-parameters': 7.23.3(@babel/core@7.11.1)
     dev: true
 
   /@babel/plugin-proposal-object-rest-spread@7.20.7(@babel/core@7.12.10):
@@ -17055,12 +17055,12 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.22.9
+      '@babel/compat-data': 7.23.3
       '@babel/core': 7.12.10
       '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.12.10)
-      '@babel/plugin-transform-parameters': 7.22.15(@babel/core@7.12.10)
+      '@babel/plugin-transform-parameters': 7.23.3(@babel/core@7.12.10)
     dev: true
 
   /@babel/plugin-proposal-object-rest-spread@7.20.7(@babel/core@7.14.8):
@@ -17070,12 +17070,12 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.22.9
+      '@babel/compat-data': 7.23.3
       '@babel/core': 7.14.8
       '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.14.8)
-      '@babel/plugin-transform-parameters': 7.22.15(@babel/core@7.14.8)
+      '@babel/plugin-transform-parameters': 7.23.3(@babel/core@7.14.8)
     dev: true
 
   /@babel/plugin-proposal-object-rest-spread@7.20.7(@babel/core@7.18.10):
@@ -17085,12 +17085,12 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.22.9
+      '@babel/compat-data': 7.23.3
       '@babel/core': 7.18.10
       '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.18.10)
-      '@babel/plugin-transform-parameters': 7.22.15(@babel/core@7.18.10)
+      '@babel/plugin-transform-parameters': 7.23.3(@babel/core@7.18.10)
 
   /@babel/plugin-proposal-object-rest-spread@7.20.7(@babel/core@7.20.12):
     resolution: {integrity: sha512-d2S98yCiLxDVmBmE8UjGcfPvNEUbA1U5q5WxaWFUGRzJSVAZqm5W6MbPct0jxnegUZ0niLeNX+IOzEs7wYg9Dg==}
@@ -17099,12 +17099,12 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.22.9
+      '@babel/compat-data': 7.23.3
       '@babel/core': 7.20.12
       '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.20.12)
-      '@babel/plugin-transform-parameters': 7.22.15(@babel/core@7.20.12)
+      '@babel/plugin-transform-parameters': 7.23.3(@babel/core@7.20.12)
     dev: true
 
   /@babel/plugin-proposal-object-rest-spread@7.20.7(@babel/core@7.23.3):
@@ -20858,55 +20858,6 @@ packages:
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/helper-skip-transparent-expression-wrappers': 7.22.5
       '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.23.3)
-
-  /@babel/plugin-transform-parameters@7.22.15(@babel/core@7.11.1):
-    resolution: {integrity: sha512-hjk7qKIqhyzhhUvRT683TYQOFa/4cQKwQy7ALvTpODswN40MljzNDa0YldevS6tGbxwaEKVn502JmY0dP7qEtQ==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.11.1
-      '@babel/helper-plugin-utils': 7.22.5
-    dev: true
-
-  /@babel/plugin-transform-parameters@7.22.15(@babel/core@7.12.10):
-    resolution: {integrity: sha512-hjk7qKIqhyzhhUvRT683TYQOFa/4cQKwQy7ALvTpODswN40MljzNDa0YldevS6tGbxwaEKVn502JmY0dP7qEtQ==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.12.10
-      '@babel/helper-plugin-utils': 7.22.5
-    dev: true
-
-  /@babel/plugin-transform-parameters@7.22.15(@babel/core@7.14.8):
-    resolution: {integrity: sha512-hjk7qKIqhyzhhUvRT683TYQOFa/4cQKwQy7ALvTpODswN40MljzNDa0YldevS6tGbxwaEKVn502JmY0dP7qEtQ==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.14.8
-      '@babel/helper-plugin-utils': 7.22.5
-    dev: true
-
-  /@babel/plugin-transform-parameters@7.22.15(@babel/core@7.18.10):
-    resolution: {integrity: sha512-hjk7qKIqhyzhhUvRT683TYQOFa/4cQKwQy7ALvTpODswN40MljzNDa0YldevS6tGbxwaEKVn502JmY0dP7qEtQ==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.18.10
-      '@babel/helper-plugin-utils': 7.22.5
-
-  /@babel/plugin-transform-parameters@7.22.15(@babel/core@7.20.12):
-    resolution: {integrity: sha512-hjk7qKIqhyzhhUvRT683TYQOFa/4cQKwQy7ALvTpODswN40MljzNDa0YldevS6tGbxwaEKVn502JmY0dP7qEtQ==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.20.12
-      '@babel/helper-plugin-utils': 7.22.5
-    dev: true
 
   /@babel/plugin-transform-parameters@7.22.15(@babel/core@7.23.3):
     resolution: {integrity: sha512-hjk7qKIqhyzhhUvRT683TYQOFa/4cQKwQy7ALvTpODswN40MljzNDa0YldevS6tGbxwaEKVn502JmY0dP7qEtQ==}
@@ -29024,7 +28975,7 @@ packages:
     dependencies:
       '@modern-js/utils': 2.40.0
       '@swc/helpers': 0.5.1
-      axios: 0.21.4(debug@4.3.2)
+      axios: 0.21.4
       tar: 6.2.0
     transitivePeerDependencies:
       - debug
@@ -39521,7 +39472,7 @@ packages:
       acorn: 8.10.0
       acorn-walk: 8.2.0
       address: 1.2.2
-      autoprefixer: 10.4.14(postcss@8.4.29)
+      autoprefixer: 10.4.16(postcss@8.4.31)
       browserslist: 4.21.10
       case-sensitive-paths-webpack-plugin: 2.4.0
       cli-highlight: 2.1.11
@@ -39530,7 +39481,7 @@ packages:
       copy-webpack-plugin: 9.1.0(webpack@5.80.0)
       css-loader: 6.8.1(webpack@5.80.0)
       css-minimizer-webpack-plugin: 3.4.1(webpack@5.80.0)
-      cssnano: 5.1.15(postcss@8.4.29)
+      cssnano: 5.1.15(postcss@8.4.31)
       debug: 4.3.4(supports-color@5.5.0)
       default-gateway: 6.0.3
       dotenv: 10.0.0
@@ -39547,8 +39498,8 @@ packages:
       minimist: 1.2.8
       module-alias: 2.2.3
       portfinder: 1.0.32
-      postcss: 8.4.29
-      postcss-loader: 6.2.1(postcss@8.4.29)(webpack@5.80.0)
+      postcss: 8.4.31
+      postcss-loader: 6.2.1(postcss@8.4.31)(webpack@5.80.0)
       progress-webpack-plugin: 1.0.16(webpack@5.80.0)
       ssri: 8.0.1
       terser-webpack-plugin: 5.3.9(webpack@5.80.0)
@@ -41739,6 +41690,14 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
+  /axios@0.21.4:
+    resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
+    dependencies:
+      follow-redirects: 1.15.2(debug@4.3.4)
+    transitivePeerDependencies:
+      - debug
+    dev: true
+
   /axios@0.21.4(debug@4.3.2):
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
     dependencies:
@@ -41750,7 +41709,7 @@ packages:
   /axios@0.25.0:
     resolution: {integrity: sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==}
     dependencies:
-      follow-redirects: 1.15.2(debug@4.3.2)
+      follow-redirects: 1.15.2(debug@4.3.4)
     transitivePeerDependencies:
       - debug
     dev: false
@@ -41758,7 +41717,7 @@ packages:
   /axios@0.27.2:
     resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
     dependencies:
-      follow-redirects: 1.15.2(debug@4.3.2)
+      follow-redirects: 1.15.2(debug@4.3.4)
       form-data: 4.0.0
     transitivePeerDependencies:
       - debug
@@ -41766,7 +41725,7 @@ packages:
   /axios@1.6.1:
     resolution: {integrity: sha512-vfBmhDpKafglh0EldBEbVuoe7DyAavGSLWhuSm5ZSEKQnHhBf0xAAwybbNH1IkrJNGnS/VG4I5yxig1pCEXE4g==}
     dependencies:
-      follow-redirects: 1.15.2(debug@4.3.2)
+      follow-redirects: 1.15.2(debug@4.3.4)
       form-data: 4.0.0
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -41775,7 +41734,7 @@ packages:
   /axios@1.6.2:
     resolution: {integrity: sha512-7i24Ri4pmDRfJTR7LDBhsOTtcm+9kjX5WiY1X3wIisx6G9So3pfMkEiU7emUBe46oceVImccTEM3k6C5dbVW8A==}
     dependencies:
-      follow-redirects: 1.15.2(debug@4.3.2)
+      follow-redirects: 1.15.2(debug@4.3.4)
       form-data: 4.0.0
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -43059,7 +43018,7 @@ packages:
       etag: 1.8.1
       fresh: 0.5.2
       fs-extra: 3.0.1
-      http-proxy: 1.18.1
+      http-proxy: 1.18.1(debug@4.3.4)
       immutable: 3.8.2
       localtunnel: 2.0.2
       micromatch: 4.0.5
@@ -46831,6 +46790,7 @@ packages:
         optional: true
     dependencies:
       ms: 2.1.2
+    dev: true
 
   /debug@4.3.4(supports-color@5.5.0):
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
@@ -49362,7 +49322,7 @@ packages:
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.0)(eslint@8.54.0)
       eslint-plugin-import: 2.29.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-typescript@3.6.0)(eslint@8.54.0)
-      eslint-plugin-jsx-a11y: 6.7.1(eslint@8.54.0)
+      eslint-plugin-jsx-a11y: 6.8.0(eslint@8.54.0)
       eslint-plugin-react: 7.33.2(eslint@8.54.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.54.0)
       typescript: 4.8.4
@@ -51346,6 +51306,7 @@ packages:
         optional: true
     dependencies:
       debug: 4.3.2
+    dev: true
 
   /follow-redirects@1.15.2(debug@4.3.4):
     resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
@@ -51357,7 +51318,6 @@ packages:
         optional: true
     dependencies:
       debug: 4.3.4(supports-color@5.5.0)
-    dev: true
 
   /for-each@0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
@@ -53062,7 +53022,7 @@ packages:
     dependencies:
       '@types/express': 4.17.14
       '@types/http-proxy': 1.17.11
-      http-proxy: 1.18.1
+      http-proxy: 1.18.1(debug@4.3.4)
       is-glob: 4.0.3
       is-plain-obj: 3.0.0
       micromatch: 4.0.5
@@ -53088,16 +53048,6 @@ packages:
       - debug
     dev: true
 
-  /http-proxy@1.18.1:
-    resolution: {integrity: sha512-7mz/721AbnJwIVbnaSv1Cz3Am0ZLT/UBwkC92VlxhXv/k/BBQfM2fXElQNC27BVGr0uwUpplYPQM9LnaBMR5NQ==}
-    engines: {node: '>=8.0.0'}
-    dependencies:
-      eventemitter3: 4.0.7
-      follow-redirects: 1.15.2(debug@4.3.2)
-      requires-port: 1.0.0
-    transitivePeerDependencies:
-      - debug
-
   /http-proxy@1.18.1(debug@4.3.4):
     resolution: {integrity: sha512-7mz/721AbnJwIVbnaSv1Cz3Am0ZLT/UBwkC92VlxhXv/k/BBQfM2fXElQNC27BVGr0uwUpplYPQM9LnaBMR5NQ==}
     engines: {node: '>=8.0.0'}
@@ -53107,7 +53057,6 @@ packages:
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
-    dev: true
 
   /http-server@0.13.0:
     resolution: {integrity: sha512-/MjH9k/y470zbtXzKLkP8vioIVvxRArTkz8f9UX1ztkLZzr6S0hg6BW8h6MBn/HUfwjlTQvIe9DRknorN2u20Q==}
@@ -53118,7 +53067,7 @@ packages:
       colors: 1.4.0
       corser: 2.0.1
       he: 1.2.0
-      http-proxy: 1.18.1
+      http-proxy: 1.18.1(debug@4.3.4)
       mime: 1.6.0
       minimist: 1.2.8
       opener: 1.5.2
@@ -53141,7 +53090,7 @@ packages:
       corser: 2.0.1
       he: 1.2.0
       html-encoding-sniffer: 3.0.0
-      http-proxy: 1.18.1
+      http-proxy: 1.18.1(debug@4.3.4)
       mime: 1.6.0
       minimist: 1.2.8
       opener: 1.5.2
@@ -57196,7 +57145,7 @@ packages:
       dom-serialize: 2.2.1
       glob: 7.2.3
       graceful-fs: 4.2.11
-      http-proxy: 1.18.1
+      http-proxy: 1.18.1(debug@4.3.4)
       isbinaryfile: 4.0.10
       lodash: 4.17.21
       log4js: 6.9.1
@@ -57231,7 +57180,7 @@ packages:
       dom-serialize: 2.2.1
       glob: 7.2.3
       graceful-fs: 4.2.11
-      http-proxy: 1.18.1
+      http-proxy: 1.18.1(debug@4.3.4)
       isbinaryfile: 4.0.10
       lodash: 4.17.21
       log4js: 6.9.1
@@ -59604,7 +59553,7 @@ packages:
     dependencies:
       '@next/env': 12.3.4
       '@swc/helpers': 0.4.11
-      caniuse-lite: 1.0.30001528
+      caniuse-lite: 1.0.30001558
       postcss: 8.4.14
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -63812,7 +63761,7 @@ packages:
       klona: 2.0.6
       postcss: 8.4.31
       semver: 7.5.4
-      webpack: 5.80.0(@swc/core@1.3.99)(esbuild@0.19.5)
+      webpack: 5.80.0(webpack-cli@5.1.4)
     dev: true
 
   /postcss-loader@7.0.1(postcss@8.4.31)(webpack@5.80.0):
@@ -68057,7 +68006,7 @@ packages:
       react-native:
         optional: true
     dependencies:
-      '@babel/runtime': 7.22.15
+      '@babel/runtime': 7.23.2
       html-parse-stringify: 3.0.1
       i18next: 21.10.0
       react: 18.2.0
@@ -72507,7 +72456,7 @@ packages:
       webpack: 5.80.0
     dependencies:
       '@swc/core': 1.3.99(@swc/helpers@0.5.3)
-      webpack: 5.80.0(@swc/core@1.3.99)(webpack-cli@4.10.0)
+      webpack: 5.80.0(@swc/core@1.3.99)(webpack-cli@5.0.2)
     dev: true
 
   /symbol-observable@1.2.0:
@@ -72888,7 +72837,7 @@ packages:
       schema-utils: 3.3.0
       serialize-javascript: 6.0.1
       terser: 5.19.4
-      webpack: 5.80.0(@swc/core@1.3.99)(webpack-cli@4.10.0)
+      webpack: 5.80.0(@swc/core@1.3.99)(webpack-cli@5.0.2)
 
   /terser-webpack-plugin@5.3.9(esbuild@0.13.8)(webpack@5.80.0):
     resolution: {integrity: sha512-ZuXsqE07EcggTWQjXUj+Aot/OMcD0bMKGgF63f7UxYcu5/AJF53aIpK1YoP5xR9l6s/Hy2b+t1AM0bLNPRuhwA==}
@@ -76242,7 +76191,7 @@ packages:
       webpack: 5.80.0(webpack-cli@4.10.0)
       webpack-bundle-analyzer: 4.9.1
       webpack-dev-server: 4.15.1(webpack-cli@4.10.0)(webpack@5.80.0)
-      webpack-merge: 5.8.0
+      webpack-merge: 5.10.0
 
   /webpack-cli@4.10.0(webpack@5.80.0):
     resolution: {integrity: sha512-NLhDfH/h4O6UOy+0LSso42xvYypClINuMNBVVzX4vX98TmTaTUxwRbXdhucbFMd2qLaCTcLq/PdYrvi8onw90w==}
@@ -76276,7 +76225,7 @@ packages:
       interpret: 2.2.0
       rechoir: 0.7.1
       webpack: 5.80.0(webpack-cli@4.10.0)
-      webpack-merge: 5.8.0
+      webpack-merge: 5.10.0
 
   /webpack-cli@4.9.2(webpack-dev-server@4.15.1)(webpack@5.80.0):
     resolution: {integrity: sha512-m3/AACnBBzK/kMTcxWHcZFPrw/eQuY4Df1TxvIWfWM2x7mRqBQCqKEd96oCUa9jkapLBaFfRce33eGDb4Pr7YQ==}
@@ -77431,6 +77380,7 @@ packages:
       - '@swc/core'
       - esbuild
       - uglify-js
+    dev: true
 
   /webpack@5.80.0(@swc/core@1.3.99)(webpack-cli@5.0.2):
     resolution: {integrity: sha512-OIMiq37XK1rWO8mH9ssfFKZsXg4n6klTEDL7S8/HqbAOBBaiy8ABvXvz0dDCXeEF9gqwxSvVk611zFPjS8hJxA==}
@@ -78825,23 +78775,6 @@ packages:
   /zwitch@1.0.5:
     resolution: {integrity: sha512-V50KMwwzqJV0NpZIZFwfOD5/lyny3WlSzRiXgA0G7VUnRlqttta1L6UQIHzd6EuBY/cHGfwTIck7w1yH6Q5zUw==}
     dev: true
-
-  file:i18next-nextjs-react/i18next-shared-lib(i18next-browser-languagedetector@6.1.8)(i18next@21.10.0)(react-i18next@11.18.6)(react@18.2.0):
-    resolution: {directory: i18next-nextjs-react/i18next-shared-lib, type: directory}
-    id: file:i18next-nextjs-react/i18next-shared-lib
-    name: i18next-nextjs-react_i18next-shared-lib
-    requiresBuild: true
-    peerDependencies:
-      i18next: ^21.10.0
-      i18next-browser-languagedetector: ^6.1.8
-      react: ^18.2.0
-      react-i18next: ^11.18.6
-    dependencies:
-      i18next: 21.10.0
-      i18next-browser-languagedetector: 6.1.8
-      react: 18.2.0
-      react-i18next: 11.18.6(i18next@21.10.0)(react-dom@18.2.0)(react@18.2.0)
-    dev: false
 
   file:nextjs-v12/shared:
     resolution: {directory: nextjs-v12/shared, type: directory}
