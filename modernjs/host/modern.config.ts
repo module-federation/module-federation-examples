@@ -18,11 +18,13 @@ export default defineConfig({
   },
   tools: {
     webpack: (config, { webpack, appendPlugins }) => {
+      //@ts-ignore
+      config.output.publicPath = 'auto';
       appendPlugins([
         new webpack.container.ModuleFederationPlugin({
           name: 'host',
           remotes: {
-            provider: 'provider@http://localhost:3002/remoteEntry.js',
+            provider: 'provider@http://localhost:3002/static/js/remoteEntry.js',
           },
           shared: {
             react: { singleton: true },
