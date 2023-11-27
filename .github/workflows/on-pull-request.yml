@@ -136,13 +136,6 @@ jobs:
         run: |
           df -h
 
-        # Hash pnpm.lock files to use it as a cache key, if pnpm.lock files are changed, the cache will be invalidated
-      - name: Check Yarn hash
-        id: check-yarn-hash
-        if: ${{ false }}
-        run: |
-          yarnHash="$(npx hash-files -f '["**/pnpm-lock.yaml"]' -a sha256)"
-          echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
       - name: Install deps
         id: install-deps-e2e
@@ -153,17 +146,6 @@ jobs:
           echo "PNPM changed - install deps ... "
           npm i pnpm -g
           pnpm i --frozen-lockfile
-
-      # Is this still required with PNPM - https://pnpm.io/continuous-integration#github-actions ?
-      - name: Cache Yarn and Cypress
-        if: steps.restore-yarn-global-cache-e2e.outputs.cache-hit != 'true'
-        id: cache-yarn-cypress
-        uses: actions/cache/save@v3
-        with:
-          path: |
-            ${{ env.YARN_CACHE_PATH }}
-            ${{ env.CACHE_PATH }}
-          key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash }} # Can use time based key as well
 
       - name: Set up node
         id: setup-node
