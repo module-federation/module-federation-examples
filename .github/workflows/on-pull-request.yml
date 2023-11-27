@@ -131,10 +131,9 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 1
 
-      - name: Check disk space before install
+      - name: Install PNPM
         id: check-disk-space-before-install-e2e
-        run: |
-          df -h
+        run: npm i pnpm -g
 
       - name: Set up node
         id: setup-node
