@@ -19,11 +19,13 @@ export default defineConfig({
   },
   tools: {
     webpack: (config, { webpack, appendPlugins }) => {
+      //@ts-ignore
+      config.output.publicPath = 'auto';
       appendPlugins([
         new webpack.container.ModuleFederationPlugin({
           name: 'provider',
           library: { type: 'var', name: 'provider' },
-          filename: 'remoteEntry.js',
+          filename: 'static/js/remoteEntry.js',
           exposes: {
             './Button': './src/components/Button',
           },
