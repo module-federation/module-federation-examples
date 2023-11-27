@@ -15,7 +15,7 @@
     "start:remote": "pnpx serve dist/remote -l 3001 --cors",
     "start:host": "pnpx serve dist/host -l 3000",
     "start": "concurrently \"npm run start:remote\" \"npm run start:host\"",
-    "e2e:ci": "pnpm run build && pnpm run start & wait-on http-get://localhost:3000/ && pnpx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/*.cy.ts\" --browser=chrome"
+    "e2e:ci": "pnpm run build && pnpm run start & wait-on http-get://localhost:3000/ && pnpx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
   },
   "keywords": [],
   "author": "",
