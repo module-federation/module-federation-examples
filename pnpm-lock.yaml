@@ -5374,6 +5374,9 @@ importers:
 
   federated-npm/app3:
     dependencies:
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
       react:
         specifier: ^16.13.0
         version: 16.14.0
@@ -13365,7 +13368,7 @@ packages:
       webpack-dev-middleware: 5.3.3(webpack@5.80.0)
       webpack-dev-server: 4.11.0(webpack@5.80.0)
       webpack-merge: 5.8.0
-      webpack-subresource-integrity: 5.1.0(webpack@5.80.0)
+      webpack-subresource-integrity: 5.1.0(html-webpack-plugin@5.5.3)(webpack@5.80.0)
     optionalDependencies:
       esbuild: 0.15.5
     transitivePeerDependencies:
@@ -13475,7 +13478,7 @@ packages:
       webpack-dev-middleware: 5.3.3(webpack@5.80.0)
       webpack-dev-server: 4.11.0(webpack@5.80.0)
       webpack-merge: 5.8.0
-      webpack-subresource-integrity: 5.1.0(webpack@5.80.0)
+      webpack-subresource-integrity: 5.1.0(html-webpack-plugin@5.5.3)(webpack@5.80.0)
     optionalDependencies:
       esbuild: 0.15.5
     transitivePeerDependencies:
@@ -13587,7 +13590,7 @@ packages:
       webpack-dev-middleware: 6.0.1(webpack@5.80.0)
       webpack-dev-server: 4.11.1(webpack-cli@5.0.1)(webpack@5.80.0)
       webpack-merge: 5.8.0
-      webpack-subresource-integrity: 5.1.0(webpack@5.80.0)
+      webpack-subresource-integrity: 5.1.0(html-webpack-plugin@5.5.3)(webpack@5.80.0)
     optionalDependencies:
       esbuild: 0.17.8
     transitivePeerDependencies:
@@ -33671,7 +33674,7 @@ packages:
       webpack-merge: 5.10.0
       webpack-node-externals: 3.0.0
       webpack-sources: 3.2.3
-      webpack-subresource-integrity: 5.1.0(webpack@5.80.0)
+      webpack-subresource-integrity: 5.1.0(html-webpack-plugin@5.5.3)(webpack@5.80.0)
     transitivePeerDependencies:
       - '@babel/core'
       - '@parcel/css'
@@ -78658,20 +78661,6 @@ packages:
       html-webpack-plugin: 5.5.3(webpack@5.80.0)
       typed-assert: 1.0.9
       webpack: 5.80.0(esbuild@0.17.8)(webpack-cli@5.0.1)
-    dev: true
-
-  /webpack-subresource-integrity@5.1.0(webpack@5.80.0):
-    resolution: {integrity: sha512-sacXoX+xd8r4WKsy9MvH/q/vBtEHr86cpImXwyg74pFIpERKt6FmB8cXpeuh0ZLgclOlHI4Wcll7+R5L02xk9Q==}
-    engines: {node: '>= 12'}
-    peerDependencies:
-      html-webpack-plugin: '>= 5.0.0-beta.1 < 6'
-      webpack: 5.80.0
-    peerDependenciesMeta:
-      html-webpack-plugin:
-        optional: true
-    dependencies:
-      typed-assert: 1.0.9
-      webpack: 5.80.0(esbuild@0.15.5)
 
   /webpack-virtual-modules@0.2.2:
     resolution: {integrity: sha512-kDUmfm3BZrei0y+1NTHJInejzxfhtU8eDj2M7OKb2IWrPFAeO1SOH2KuQ68MSZu9IGEHcxbkKKR1v18FrUSOmA==}
