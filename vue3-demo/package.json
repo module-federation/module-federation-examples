@@ -6,7 +6,7 @@
     "build": "pnpm --filter vue3-demo_* --parallel build",
     "serve": "pnpm --filter vue3-demo_* --parallel serve",
     "clean": "pnpm --filter vue3-demo_* --parallel clean",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && pnpm cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "wait-on": "7.2.0"
