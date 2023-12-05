@@ -1,5 +1,6 @@
 import React from 'react';
 import { loadRemote, init } from '@module-federation/runtime';
+import ReactDOM from 'react-dom';
 
 init({
   remotes: [
@@ -31,6 +32,26 @@ init({
       },
     },
   ],
+  shared:{
+    react: {
+      version: "16.0.0",
+      scope: "default",
+      lib: ()=> React,
+      shareConfig: {
+          singleton: true,
+          requiredVersion: "^16.0.0"
+      }
+  },
+  "react-dom": {
+      version: "16.0.0",
+      scope: "default",
+      lib: ()=> ReactDOM,
+      shareConfig: {
+          singleton: true,
+          requiredVersion: "^16.0.0"
+      }
+  }
+  }
 });
 function System(props) {
   const { request } = props;
