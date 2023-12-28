@@ -33,7 +33,7 @@ https://scriptedalchemy.medium.com/
 >
 > - ⚠️: In Progress/Incomplete
 > - 🔒: Depends on access controled source
-> - 💰: commercially avaliable
+> - 💰: commercially available
 
 - [x] [Native Federation](./native-federation-core-microfrontend) &mdash; Module Federation using esBuild, ESM, Import Maps. Concept ported to other bundlers!!
 - [x] [Native Federation React](./native-federation-react) &mdash; React Example of Module Federation using esBuild, ESM, Import Maps. Concept ported to other bundlers!!
@@ -67,9 +67,9 @@ https://scriptedalchemy.medium.com/
 - [x] [Vue.js](./vue3-demo/README.md) &mdash; Simple host/remote (render function / sfc) example using Vue 3.0.
 - [x] [Vue 2 in Vue 3](./vue2-in-vue3/README.md) &mdash; Vue 3 application loading remote Vue 2 component.
 - [x] [Vue2 SSR](./genesis/README.md) &mdash; This example demonstrates module as a service.
-- [x] [React - Host/Remote and NextJS Host/Remote](./react-nextjs/README.md) &mdash; These examples demonstrates react/nextjs as host/remote and react/nextjs are host/remote
+- [x] [React - Host/Remote and NextJS Host/Remote](./react-nextjs/README.md) &mdash; These examples demonstrate react/nextjs as host/remote and react/nextjs are host/remote
 - [x] [Different React Versions in Isolation](./different-react-versions-isolated/README.md) &mdash; Simple host/remote example where the apps have different React and ReactDOM versions and don't share any dependencies.
-- [x] [CSS Isolated Host and Remote](./css-isolation/README.md) &mdash; Example on how to prevent CSS from leaking between federated applications.
+- [x] [CSS Isolated Host and Remote](./css-isolation/README.md) &mdash; Example of how to prevent CSS from leaking between federated applications.
 - [x] [vue3-demo-federation-with-vite](./vue3-demo-federation-with-vite/README.md) &mdash; wepack and vite federation integrated projects, webpack/vite both play the role of host and remote
 - [x] [quasar-cli-vue3-webpack-javascript](./quasar-cli-vue3-webpack-javascript/README.md) &mdash; Module federation integration with Quasar apps running vue3 using quasar-cli (javascript)
 - [x] [UMD Federation](./umd-federation) &mdash; Support importing umd remote module
@@ -98,7 +98,7 @@ You can then run `pnpm start` from any of the non-proprietary examples. Some exa
 
 <img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/ModuleFederationExamplesRoot">
 
-Module federation will work with any type of file that youre able to import, that Webpack understands how to process. It is not a JS only, or React only feature. Images, CSS, JSON, WASM, and anything else can be federated.
+Module federation will work with any type of file that you're able to import, that Webpack understands how to process. It is not a JS only, or React only feature. Images, CSS, JSON, WASM, and anything else can be federated.
 
 # Companies using Module Federation
 
