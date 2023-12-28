@@ -22,7 +22,7 @@ npm run dev
 ```
 npm run build
 ```
-### Insert library bundle endpoint "http//yourendpoint/remoteEntry.js" into the "remoteUrl" variable in the webpack config file and serve the two apps to see the fedarated component from the cdn (app1 on localHost:3000, app2 on localHost:3001)
+### Insert library bundle endpoint "http//yourendpoint/remoteEntry.js" into the "remoteUrl" variable in the webpack config file and serve the two apps to see the federated component from the cdn (app1 on localHost:3000, app2 on localHost:3001)
 ```
 npm run start
 ```
