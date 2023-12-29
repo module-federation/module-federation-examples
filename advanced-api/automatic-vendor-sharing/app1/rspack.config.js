@@ -1,5 +1,4 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { HtmlRspackPlugin, container: {ModuleFederationPlugin} } = require('@rspack/core');
 const path = require('path');
 
 // adds all your dependencies as shared modules
@@ -15,7 +14,6 @@ const deps = require('./package.json').dependencies;
 
 module.exports = {
   entry: './src/index',
-  cache: false,
   mode: 'development',
   devServer: {
     static: {
@@ -30,14 +28,26 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        options: {
-          presets: ['@babel/preset-react'],
-        },
-      },
-    ],
+        test: /\.js$/,
+        include: path.resolve(__dirname, "src"),
+        use: {
+          loader: "builtin:swc-loader",
+          options: {
+            jsc: {
+              parser: {
+                syntax: "ecmascript",
+                jsx: true
+              },
+              transform: {
+                react: {
+                  runtime: "automatic",
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
   },
   plugins: [
     new ModuleFederationPlugin({
@@ -59,7 +69,7 @@ module.exports = {
         },
       },
     }),
-    new HtmlWebpackPlugin({
+    new HtmlRspackPlugin({
       template: './public/index.html',
     }),
   ],
