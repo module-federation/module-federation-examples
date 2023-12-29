@@ -16,6 +16,7 @@ const deps = require('./package.json').dependencies;
 module.exports = {
   entry: './src/index',
   mode: 'development',
+  cache: false,
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
