@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "boilerplate LitElement setup with TypeScript",
   "scripts": {
-    "build": "cross-env NODE_ENV=production rspack build",
+    "build": "cross-env NODE_ENV=production rspack build --mode production",
     "legacy:build": "cross-env NODE_ENV=production webpack",
-    "start": "rspack --watch",
+    "start": "rspack serve",
     "legacy:start": "webpack --watch",
     "dev": "rspack serve",
     "legacy:dev": "webpack-dev-server --content-base public",

@@ -1,4 +1,6 @@
-const { container: { ModuleFederationPlugin } } = require('@rspack/core');
+const {
+  container: { ModuleFederationPlugin },
+} = require('@rspack/core');
 const path = require('path');
 
 const mode = process.env.NODE_ENV || 'development';
@@ -11,7 +13,7 @@ module.exports = {
   resolve: {
     extensions: ['.mjs', '.js', '.svelte'],
     mainFields: ['svelte', 'browser', 'module', 'main'],
-    conditionNames: ['svelte', 'browser', 'import']
+    conditionNames: ['svelte', 'browser', 'import'],
   },
   output: {
     path: path.resolve(__dirname, 'public'),

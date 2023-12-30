@@ -1,4 +1,7 @@
-const { container: { ModuleFederationPlugin }, HtmlRspackPlugin } = require('@rspack/core');
+const {
+  container: { ModuleFederationPlugin },
+  HtmlRspackPlugin,
+} = require('@rspack/core');
 const deps = require('./package.json').dependencies;
 
 module.exports = {
@@ -17,19 +20,18 @@ module.exports = {
 
   module: {
     rules: [
-
       {
         test: /\.jsx?$/,
         use: {
-          loader: "builtin:swc-loader",
+          loader: 'builtin:swc-loader',
           options: {
             jsc: {
               parser: {
-                syntax: "ecmascript",
-                jsx: true
+                syntax: 'ecmascript',
+                jsx: true,
               },
-            }
-          }
+            },
+          },
         },
         exclude: /node_modules/,
       },

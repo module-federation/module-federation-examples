@@ -12,7 +12,7 @@ module.exports = {
   resolve: {
     extensions: ['.mjs', '.js', '.svelte'],
     mainFields: ['svelte', 'browser', 'module', 'main'],
-    conditionNames: ['svelte', 'browser', 'import']
+    conditionNames: ['svelte', 'browser', 'import'],
   },
   output: {
     path: __dirname + '/public',

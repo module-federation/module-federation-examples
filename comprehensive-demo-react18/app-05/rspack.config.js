@@ -1,4 +1,7 @@
-const {HtmlRspackPlugin, container: {ModuleFederationPlugin}} = require("@rspack/core")
+const {
+  HtmlRspackPlugin,
+  container: { ModuleFederationPlugin },
+} = require('@rspack/core');
 const mode = process.env.NODE_ENV || 'development';
 
 module.exports = {
@@ -10,43 +13,43 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "builtin:swc-loader",
+            loader: 'builtin:swc-loader',
             options: {
               jsc: {
                 parser: {
-                  syntax: "typescript",
-                  "decorators": true,
-                  jsx: true
+                  syntax: 'typescript',
+                  decorators: true,
+                  jsx: true,
                 },
                 transform: {
                   react: {
-                    runtime: "automatic",
-                  }
-                }
-              }
-            }
+                    runtime: 'automatic',
+                  },
+                },
+              },
+            },
           },
         ],
       },
       {
         test: /\.(js|jsx)$/,
         use: {
-          loader: "builtin:swc-loader",
+          loader: 'builtin:swc-loader',
           options: {
             jsc: {
               parser: {
-                syntax: "ecmascript",
-                jsx: true
+                syntax: 'ecmascript',
+                jsx: true,
               },
               transform: {
                 react: {
-                  runtime: "automatic",
-                }
-              }
-            }
-          }
-        }
-      }
+                  runtime: 'automatic',
+                },
+              },
+            },
+          },
+        },
+      },
     ],
   },
   resolve: {
