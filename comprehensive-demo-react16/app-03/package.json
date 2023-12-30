@@ -17,8 +17,10 @@
     "@rspack/dev-server": "^0.4.5"
   },
   "scripts": {
-    "start": "webpack --watch",
-    "build": "webpack --mode production",
+    "start": "rspack --watch",
+    "build": "rspack --mode production",
+    "legacy:start": "webpack --watch",
+    "legacy:build": "webpack --mode production",
     "serve": "serve dist -p 3003",
     "clean": "rm -rf dist"
   }
