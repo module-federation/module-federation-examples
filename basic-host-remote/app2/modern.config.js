@@ -17,12 +17,12 @@ export default defineConfig({
     enableAsyncEntry: true,
   },
   tools: {
-    webpack: (config, { webpack, appendPlugins }) => {
+    rspack: (config, { rspack, appendPlugins }) => {
       delete config.optimization.splitChunks;
       config.output.publicPath = 'auto';
 
       appendPlugins([
-        new webpack.container.ModuleFederationPlugin({
+        new rspack.container.ModuleFederationPlugin({
           name: 'app2',
           library: { type: 'window', name: 'app2' },
           runtime: false,

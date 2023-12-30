@@ -17,12 +17,12 @@ export default defineConfig({
     enableAsyncEntry: true,
   },
   tools: {
-    webpack: (config, { webpack, appendPlugins }) => {
+    rspack: (config, { rspack, appendPlugins }) => {
       delete config.optimization.splitChunks;
       config.output.publicPath = 'auto';
 
       appendPlugins([
-        new webpack.container.ModuleFederationPlugin({
+        new rspack.container.ModuleFederationPlugin({
           name: 'app1',
           remotes: {
             app2: 'app2@http://localhost:3002/static/js/remoteEntry.js',
