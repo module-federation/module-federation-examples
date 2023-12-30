@@ -20,7 +20,7 @@
   "scripts": {
     "legacy:build": "cross-env NODE_ENV=production webpack",
     "build": "cross-env NODE_ENV=production rspack",
-    "start": "rspack --watch",
+    "start": "rspack serve",
     "legacy:start": "webpack --watch",
     "dev": "rspack serve",
     "legacy:dev": "webpack-dev-server --content-base public",
