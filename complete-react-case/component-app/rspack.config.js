@@ -4,6 +4,10 @@ const {
 } = require('@rspack/core');
 const path = require('path');
 module.exports = {
+  stats: {
+    preset: "none",
+    timings:true,
+  },
   entry: './index.js',
   mode: 'development',
   devtool: 'hidden-source-map',
