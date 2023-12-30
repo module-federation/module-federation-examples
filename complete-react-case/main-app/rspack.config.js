@@ -1,10 +1,6 @@
 const { container: {ModuleFederationPlugin}, HtmlRspackPlugin } = require('@rspack/core');
 const path = require('path');
 module.exports = {
-  stats: {
-    preset: "none",
-    timings:true,
-  },
   entry: './index.js',
   mode: 'development',
   devtool: 'hidden-source-map',
@@ -19,14 +15,13 @@ module.exports = {
         type: 'asset/resource'
       },
       {
-        test: /\.(js|jsx|ts|tsx)$/,
+        test: /\.(js|jsx)$/,
         use: {
           loader: "builtin:swc-loader",
           options: {
             jsc: {
               parser: {
-                syntax: "typescript",
-                "decorators": true,
+                syntax: "ecmascript",
                 jsx: true
               },
               transform: {

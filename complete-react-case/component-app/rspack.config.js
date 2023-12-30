@@ -4,19 +4,12 @@ const {
 } = require('@rspack/core');
 const path = require('path');
 module.exports = {
-  stats: {
-    preset: "none",
-    timings:true,
-  },
   entry: './index.js',
   mode: 'development',
   devtool: 'hidden-source-map',
   output: {
     publicPath: 'http://localhost:3001/',
     clean: true,
-  },
-  resolve: {
-    extensions: ['.jsx', '.js', '.json', '.css', '.scss', '.jpg', 'jpeg', 'png'],
   },
   experiments: {
     css: true,
@@ -28,25 +21,24 @@ module.exports = {
         type: 'asset/resource',
       },
       {
-        test: /\.jsx?$/,
-        include: path.resolve(__dirname),
+        test: /\.(js|jsx)$/,
         use: {
-          loader: 'builtin:swc-loader',
+          loader: "builtin:swc-loader",
           options: {
             jsc: {
               parser: {
-                syntax: 'ecmascript',
-                jsx: true,
+                syntax: "ecmascript",
+                jsx: true
               },
               transform: {
                 react: {
-                  runtime: 'automatic',
-                },
-              },
-            },
-          },
-        },
-      },
+                  runtime: "automatic",
+                }
+              }
+            }
+          }
+        }
+      }
     ],
   },
 
