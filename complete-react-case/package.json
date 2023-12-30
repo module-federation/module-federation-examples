@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "pnpm --filter complete-react-case_* --parallel start",
+    "legacy:start": "pnpm --filter complete-react-case_* --parallel legacy:start",
     "e2e:ci": "pnpm start & wait-on http-get://localhost:3002/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "keywords": [],
