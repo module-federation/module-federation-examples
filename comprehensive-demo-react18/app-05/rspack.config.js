@@ -1,35 +1,56 @@
-const path = require('path');
-const dist = path.resolve(__dirname, 'dist');
-const { HtmlRspackPlugin, container: {ModuleFederationPlugin} } = require('@rspack/core');
-
+const {HtmlRspackPlugin, container: {ModuleFederationPlugin}} = require("@rspack/core")
 const mode = process.env.NODE_ENV || 'development';
-const prod = mode === 'production';
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.ts',
   module: {
     rules: [
       {
-        test: /\.(t|j)sx?$/,
+        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        loader: 'builtin:swc-loader',
-        options: {
-          jsc: {
-            parser: {
-              syntax: 'typescript',
-              tsx: true,
-            },
+        use: [
+          {
+            loader: "builtin:swc-loader",
+            options: {
+              jsc: {
+                parser: {
+                  syntax: "typescript",
+                  "decorators": true,
+                  jsx: true
+                },
+                transform: {
+                  react: {
+                    runtime: "automatic",
+                  }
+                }
+              }
+            }
           },
-          transform: {
-            react: {
-              runtime: "automatic",
+        ],
+      },
+      {
+        test: /\.(js|jsx)$/,
+        use: {
+          loader: "builtin:swc-loader",
+          options: {
+            jsc: {
+              parser: {
+                syntax: "ecmascript",
+                jsx: true
+              },
+              transform: {
+                react: {
+                  runtime: "automatic",
+                }
+              }
             }
           }
-        },
-        type: 'javascript/auto',
-      },
+        }
+      }
     ],
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js', '.mjs'],
   },
   output: {
     path: __dirname + '/public',

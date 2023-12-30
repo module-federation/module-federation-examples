@@ -19,13 +19,14 @@ module.exports = {
         type: 'asset/resource'
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         use: {
           loader: "builtin:swc-loader",
           options: {
             jsc: {
               parser: {
-                syntax: "ecmascript",
+                syntax: "typescript",
+                "decorators": true,
                 jsx: true
               },
               transform: {
