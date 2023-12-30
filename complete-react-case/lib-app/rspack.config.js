@@ -2,6 +2,10 @@ const { container: {ModuleFederationPlugin}, HtmlRspackPlugin } = require('@rspa
 const path = require('path');
 module.exports = {
   entry: './index.js',
+  stats: {
+    preset: "none",
+    timings:true,
+  },
   mode: 'development',
   devtool: 'hidden-source-map',
   output: {
