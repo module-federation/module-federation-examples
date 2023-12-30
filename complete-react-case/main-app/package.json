@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "build": "rspack build --config rspack.config.js",
-    "legacy:build": "webpack --watch",
+    "legacy:build": "webpack --config webpack.config.js",
     "serve": "serve dist -p 3002",
     "start": "concurrently \"npm run build\" \"npm run serve\"",
     "legacy:start": "concurrently \"npm run legacy:build\" \"npm run serve\""

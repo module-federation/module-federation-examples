@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rspack build",
-    "legacy:build": "webpack --watch",
+    "build": "rspack build --config rspack.config.js",
+    "legacy:build": "webpack --config webpack.config.js",
     "serve": "serve dist -p 3001",
     "start": "concurrently \"npm run build\" \"npm run serve\""
   },
