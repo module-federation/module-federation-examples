@@ -1,5 +1,6 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const {
+  container: { ModuleFederationPlugin },
+} = require('@rspack/core');
 const path = require('path');
 
 const mode = process.env.NODE_ENV || 'development';
@@ -15,20 +16,13 @@ module.exports = {
     conditionNames: ['svelte', 'browser', 'import'],
   },
   output: {
-    path: __dirname + '/public',
+    path: path.resolve(__dirname, 'public'),
     filename: '[name].js',
     chunkFilename: '[name].[id].js',
     publicPath: 'auto',
   },
   module: {
     rules: [
-      {
-        test: /\.m?js$/,
-        type: 'javascript/auto',
-        resolve: {
-          fullySpecified: false,
-        },
-      },
       {
         test: /\.svelte$/,
         use: {
@@ -38,17 +32,6 @@ module.exports = {
             hotReload: true,
           },
         },
-      },
-      {
-        test: /\.css$/,
-        use: [
-          /**
-           * MiniCssExtractPlugin doesn't support HMR.
-           * For developing, use 'style-loader' instead.
-           * */
-          prod ? MiniCssExtractPlugin.loader : 'style-loader',
-          'css-loader',
-        ],
       },
     ],
   },
@@ -63,9 +46,9 @@ module.exports = {
       },
       shared: [],
     }),
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-    }),
   ],
   devtool: prod ? false : 'source-map',
+  experiments: {
+    css: true,
+  },
 };

@@ -1,13 +1,16 @@
-const {HtmlRspackPlugin, container: {ModuleFederationPlugin}} = require("@rspack/core")
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const {
+  HtmlRspackPlugin,
+  container: { ModuleFederationPlugin },
+} = require('@rspack/core');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const mode = process.env.NODE_ENV || 'development';
 
 module.exports = {
-  entry:{
+  entry: {
     bundle: ['./src/main.js'],
   },
   experiments: {
-    css: true
+    css: true,
   },
   module: {
     rules: [
@@ -16,21 +19,21 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "builtin:swc-loader",
+            loader: 'builtin:swc-loader',
             options: {
               jsc: {
                 parser: {
-                  syntax: "typescript",
-                  "decorators": true,
-                  jsx: true
+                  syntax: 'typescript',
+                  decorators: true,
+                  jsx: true,
                 },
                 transform: {
                   react: {
-                    runtime: "automatic",
-                  }
-                }
-              }
-            }
+                    runtime: 'automatic',
+                  },
+                },
+              },
+            },
           },
         ],
       },
@@ -43,7 +46,7 @@ module.exports = {
             hotReload: true,
           },
         },
-      }
+      },
     ],
   },
   resolve: {
@@ -65,6 +68,6 @@ module.exports = {
         './loadApp': './src/loadApp.js',
       },
       shared: [],
-    })
+    }),
   ],
 };

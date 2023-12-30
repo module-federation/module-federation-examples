@@ -1,13 +1,16 @@
-const {HtmlRspackPlugin, container: {ModuleFederationPlugin}} = require("@rspack/core")
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const {
+  HtmlRspackPlugin,
+  container: { ModuleFederationPlugin },
+} = require('@rspack/core');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const mode = process.env.NODE_ENV || 'development';
 
 module.exports = {
   entry: './src/index',
 
   experiments: {
-    css: true
+    css: true,
   },
   module: {
     rules: [
@@ -16,20 +19,20 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "builtin:swc-loader",
+            loader: 'builtin:swc-loader',
             options: {
               jsc: {
                 parser: {
-                  syntax: "ecmascript",
-                  jsx: true
+                  syntax: 'ecmascript',
+                  jsx: true,
                 },
                 transform: {
                   react: {
-                    runtime: "automatic",
-                  }
-                }
-              }
-            }
+                    runtime: 'automatic',
+                  },
+                },
+              },
+            },
           },
         ],
       },

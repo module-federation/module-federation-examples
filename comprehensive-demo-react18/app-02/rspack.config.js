@@ -1,39 +1,39 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const {
+  container: { ModuleFederationPlugin },
+  HtmlRspackPlugin,
+} = require('@rspack/core');
 const deps = require('./package.json').dependencies;
+
 module.exports = {
   entry: './src/index',
-  cache: false,
 
   mode: 'development',
   devtool: 'source-map',
 
-
+  optimization: {
+    minimize: false,
+  },
 
   output: {
     publicPath: 'auto',
   },
 
-  resolve: {
-    extensions: ['.jsx', '.js', '.json', '.mjs'],
-  },
-
   module: {
     rules: [
       {
-        test: /\.m?js$/,
-        type: 'javascript/auto',
-        resolve: {
-          fullySpecified: false,
-        },
-      },
-      {
         test: /\.jsx?$/,
-        loader: require.resolve('babel-loader'),
-        exclude: /node_modules/,
-        options: {
-          presets: [require.resolve('@babel/preset-react')],
+        use: {
+          loader: 'builtin:swc-loader',
+          options: {
+            jsc: {
+              parser: {
+                syntax: 'ecmascript',
+                jsx: true,
+              },
+            },
+          },
         },
+        exclude: /node_modules/,
       },
     ],
   },
@@ -66,7 +66,7 @@ module.exports = {
         },
       },
     }),
-    new HtmlWebpackPlugin({
+    new HtmlRspackPlugin({
       template: './public/index.html',
       chunks: ['main'],
     }),

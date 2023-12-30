@@ -1,4 +1,7 @@
-const { HtmlRspackPlugin, container: {ModuleFederationPlugin} } = require('@rspack/core');
+const {
+  HtmlRspackPlugin,
+  container: { ModuleFederationPlugin },
+} = require('@rspack/core');
 const deps = require('./package.json').dependencies;
 
 module.exports = {
@@ -18,14 +21,14 @@ module.exports = {
           jsc: {
             parser: {
               syntax: 'ecmascript',
-              jsx: true
+              jsx: true,
             },
             transform: {
               react: {
                 runtime: 'automatic',
-              }
-            }
-          }
+              },
+            },
+          },
         },
       },
       {

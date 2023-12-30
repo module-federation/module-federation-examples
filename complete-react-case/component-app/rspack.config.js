@@ -4,19 +4,12 @@ const {
 } = require('@rspack/core');
 const path = require('path');
 module.exports = {
-  stats: {
-    preset: "none",
-    timings:true,
-  },
   entry: './index.js',
   mode: 'development',
   devtool: 'hidden-source-map',
   output: {
     publicPath: 'http://localhost:3001/',
     clean: true,
-  },
-  resolve: {
-    extensions: ['.jsx', '.js', '.json', '.css', '.scss', '.jpg', 'jpeg', 'png'],
   },
   experiments: {
     css: true,
@@ -28,8 +21,7 @@ module.exports = {
         type: 'asset/resource',
       },
       {
-        test: /\.jsx?$/,
-        include: path.resolve(__dirname),
+        test: /\.(js|jsx)$/,
         use: {
           loader: 'builtin:swc-loader',
           options: {
@@ -62,7 +54,7 @@ module.exports = {
       },
       remotes: {
         'lib-app': 'lib_app@http://localhost:3000/remoteEntry.js',
-      }
+      },
     }),
     new HtmlRspackPlugin({
       template: './public/index.html',

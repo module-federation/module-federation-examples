@@ -2,23 +2,25 @@ const {
   container: { ModuleFederationPlugin },
   HtmlRspackPlugin,
 } = require('@rspack/core');
-const path = require('path');
+
 module.exports = {
-  entry: './index.js',
+  entry: './src/index',
+
   mode: 'development',
-  devtool: 'hidden-source-map',
-  output: {
-    publicPath: 'http://localhost:3002/',
-    clean: true,
+  devtool: 'source-map',
+
+  optimization: {
+    minimize: false,
   },
+
+  output: {
+    publicPath: 'auto',
+  },
+
   module: {
     rules: [
       {
-        test: /\.(jpg|png|gif|jpeg)$/,
-        type: 'asset/resource',
-      },
-      {
-        test: /\.(js|jsx)$/,
+        test: /\.jsx?$/,
         use: {
           loader: 'builtin:swc-loader',
           options: {
@@ -27,23 +29,31 @@ module.exports = {
                 syntax: 'ecmascript',
                 jsx: true,
               },
-              transform: {
-                react: {
-                  runtime: 'automatic',
-                },
-              },
             },
           },
         },
+        exclude: /node_modules/,
       },
     ],
   },
+
   plugins: [
     new ModuleFederationPlugin({
-      name: 'main_app',
+      name: 'app_03',
+      filename: 'remoteEntry.js',
       remotes: {
-        'lib-app': 'lib_app@http://localhost:3000/remoteEntry.js',
-        'component-app': 'component_app@http://localhost:3001/remoteEntry.js',
+        app_01: 'app_01@http://localhost:3001/remoteEntry.js',
+      },
+      exposes: {
+        './Button': './src/Button',
+      },
+      shared: {
+        'react-dom': {
+          singleton: true,
+        },
+        react: {
+          singleton: true,
+        },
       },
     }),
     new HtmlRspackPlugin({
