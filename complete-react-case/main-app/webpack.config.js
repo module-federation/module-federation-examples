@@ -12,7 +12,7 @@ module.exports = {
   resolve: {
     extensions: ['.jsx', '.js', '.json', '.css', '.scss', '.jpg', 'jpeg', 'png'],
   },
-  cache:false,
+  cache: false,
   module: {
     rules: [
       {

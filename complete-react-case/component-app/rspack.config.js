@@ -23,22 +23,22 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         use: {
-          loader: "builtin:swc-loader",
+          loader: 'builtin:swc-loader',
           options: {
             jsc: {
               parser: {
-                syntax: "ecmascript",
-                jsx: true
+                syntax: 'ecmascript',
+                jsx: true,
               },
               transform: {
                 react: {
-                  runtime: "automatic",
-                }
-              }
-            }
-          }
-        }
-      }
+                  runtime: 'automatic',
+                },
+              },
+            },
+          },
+        },
+      },
     ],
   },
 
@@ -54,7 +54,7 @@ module.exports = {
       },
       remotes: {
         'lib-app': 'lib_app@http://localhost:3000/remoteEntry.js',
-      }
+      },
     }),
     new HtmlRspackPlugin({
       template: './public/index.html',
