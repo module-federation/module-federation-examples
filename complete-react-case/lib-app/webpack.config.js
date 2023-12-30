@@ -9,6 +9,7 @@ module.exports = {
     clean: true,
   },
   module: {},
+  cache:false,
   plugins: [
     new ModuleFederationPlugin({
       name: 'lib_app',
