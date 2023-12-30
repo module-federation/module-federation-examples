@@ -85,11 +85,11 @@ importers:
         specifier: 4.6.4
         version: 4.6.4
       '@types/react':
-        specifier: 18.2.38
-        version: 18.2.38
+        specifier: 18.2.46
+        version: 18.2.46
       '@types/react-dom':
-        specifier: 18.2.16
-        version: 18.2.16
+        specifier: 18.2.18
+        version: 18.2.18
       jasmine-core:
         specifier: 4.3.0
         version: 4.3.0
@@ -140,8 +140,8 @@ importers:
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
       '@types/react':
-        specifier: 18.2.38
-        version: 18.2.38
+        specifier: 18.2.46
+        version: 18.2.46
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.5)(webpack@5.89.0)
@@ -3207,14 +3207,14 @@ packages:
   /@types/range-parser@1.2.7:
     resolution: {integrity: sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==}
 
-  /@types/react-dom@18.2.16:
-    resolution: {integrity: sha512-766c37araZ9vxtYs25gvY2wNdFWsT2ZiUvOd0zMhTaoGj6B911N8CKQWgXXJoPMLF3J82thpRqQA7Rf3rBwyJw==}
+  /@types/react-dom@18.2.18:
+    resolution: {integrity: sha512-TJxDm6OfAX2KJWJdMEVTwWke5Sc/E/RlnPGvGfS0W7+6ocy2xhDVQVh/KvC2Uf7kACs+gDytdusDSdWfWkaNzw==}
     dependencies:
-      '@types/react': 18.2.38
+      '@types/react': 18.2.46
     dev: true
 
-  /@types/react@18.2.38:
-    resolution: {integrity: sha512-cBBXHzuPtQK6wNthuVMV6IjHAFkdl/FOPFIlkd81/Cd1+IqkHu/A+w4g43kaQQoYHik/ruaQBDL72HyCy1vuMw==}
+  /@types/react@18.2.46:
+    resolution: {integrity: sha512-nNCvVBcZlvX4NU1nRRNV/mFl1nNRuTuslAJglQsq+8ldXe5Xv0Wd2f7WTE3jOxhLH2BFfiZGC6GCp+kHQbgG+w==}
     dependencies:
       '@types/prop-types': 15.7.11
       '@types/scheduler': 0.16.8
@@ -3724,7 +3724,7 @@ packages:
     engines: {node: '>= 8.9'}
     peerDependencies:
       '@babel/core': ^7.0.0
-      webpack: 5.80.0
+      webpack: '>=2'
     dependencies:
       '@babel/core': 7.18.10
       find-cache-dir: 3.3.2
@@ -3738,7 +3738,7 @@ packages:
     engines: {node: '>= 8.9'}
     peerDependencies:
       '@babel/core': ^7.0.0
-      webpack: 5.80.0
+      webpack: '>=2'
     dependencies:
       '@babel/core': 7.23.5
       find-cache-dir: 3.3.2
@@ -4403,7 +4403,7 @@ packages:
     resolution: {integrity: sha512-xDAXtEVGlD0gJ07iclwWVkLoZOpEvAWaSyf6W18S2pOC//K8+qUDIx8IIT3D+HjnmkJPQeesOPv5aiUaJsCM2g==}
     engines: {node: '>= 12.13.0'}
     peerDependencies:
-      webpack: 5.80.0
+      webpack: ^5.0.0
     dependencies:
       icss-utils: 5.1.0(postcss@8.4.32)
       postcss: 8.4.32
@@ -8032,7 +8032,7 @@ packages:
     resolution: {integrity: sha512-53BiGLXAcll9maCYtZi2RCQZKa8NQQai5C4horqKyRmHj9H7QmcUyucrH+4KW/gBQbXM2AsB0axoEcFZPlfPcw==}
     engines: {node: '>= 12.13.0'}
     peerDependencies:
-      webpack: 5.80.0
+      webpack: ^5.0.0
     dependencies:
       webpack: 5.89.0(webpack-cli@4.10.0)
     dev: true
