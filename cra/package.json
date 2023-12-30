@@ -8,9 +8,9 @@
   "scripts": {
     "start": "pnpm --filter cra_* start",
     "stop": "pnpm --filter cra_* stop",
-    "build": "pnpm --filter cra_* build'",
-    "serve": "pnpm --filter cra_* serve'",
-    "clean": "pnpm --filter cra_* clean'",
+    "build": "pnpm --filter cra_* build",
+    "serve": "pnpm --filter cra_* serve",
+    "clean": "pnpm --filter cra_* clean",
     "e2e:ci": "pnpm start && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome && pnpm stop"
   },
   "devDependencies": {
