@@ -1,52 +1,51 @@
-const { HtmlRspackPlugin, container: {ModuleFederationPlugin} } = require('@rspack/core');
+const { container: { ModuleFederationPlugin }, HtmlRspackPlugin } = require('@rspack/core');
 const deps = require('./package.json').dependencies;
 
 module.exports = {
   entry: './src/index',
+
   mode: 'development',
   devtool: 'source-map',
+
+  optimization: {
+    minimize: false,
+  },
+
   output: {
     publicPath: 'auto',
   },
+
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: 'builtin:swc-loader',
-        exclude: /node_modules/,
-        options: {
-          jsc: {
-            parser: {
-              syntax: 'ecmascript',
-              jsx: true
-            },
-            transform: {
-              react: {
-                runtime: 'automatic',
-              }
+        use: {
+          loader: "builtin:swc-loader",
+          options: {
+            jsc: {
+              parser: {
+                syntax: "ecmascript",
+                jsx: true
+              },
             }
           }
         },
-      },
-      {
-        test: /\.md$/,
-        type: 'asset/source',
+        exclude: /node_modules/,
       },
     ],
   },
+
   plugins: [
     new ModuleFederationPlugin({
-      name: 'app_01',
+      name: 'app_02',
       filename: 'remoteEntry.js',
       remotes: {
-        app_02: 'app_02@http://localhost:3002/remoteEntry.js',
+        app_01: 'app_01@http://localhost:3001/remoteEntry.js',
         app_03: 'app_03@http://localhost:3003/remoteEntry.js',
-        app_04: 'app_04@http://localhost:3004/remoteEntry.js',
-        app_05: 'app_05@http://localhost:3005/remoteEntry.js',
       },
       exposes: {
-        './SideNav': './src/SideNav',
-        './Page': './src/Page',
+        './Dialog': './src/Dialog',
+        './Tabs': './src/Tabs',
       },
       shared: {
         ...deps,
@@ -66,7 +65,7 @@ module.exports = {
     }),
     new HtmlRspackPlugin({
       template: './public/index.html',
+      chunks: ['main'],
     }),
   ],
 };
-
