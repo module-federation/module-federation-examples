@@ -15,6 +15,9 @@ module.exports = {
   output: {
     publicPath: 'auto',
   },
+  optimization:{
+    minimize:false
+  },
   module: {
     rules: [
       {

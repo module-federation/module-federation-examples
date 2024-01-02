@@ -12,6 +12,7 @@ module.exports = {
     },
     port: 3002,
   },
+
   output: {
     publicPath: 'auto',
   },
