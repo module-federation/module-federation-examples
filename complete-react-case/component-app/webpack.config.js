@@ -9,6 +9,7 @@ module.exports = {
     publicPath: 'http://localhost:3001/',
     clean: true,
   },
+  cache: false,
   resolve: {
     extensions: ['.jsx', '.js', '.json', '.css', '.scss', '.jpg', 'jpeg', 'png'],
   },

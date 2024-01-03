@@ -5,17 +5,22 @@
     "@babel/core": "^7.23.2",
     "@babel/preset-react": "^7.22.15",
     "babel-loader": "^8.0.6",
-    "html-webpack-plugin": "^5.5.3",
+    "html-webpack-plugin": "^5.6.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "serve": "^14.2.1",
     "styled-components": "^5.0.1",
     "webpack": "5.89.0",
-    "webpack-cli": "^4.0.0"
+    "webpack-cli": "^4.0.0",
+    "@rspack/core": "^0.4.5",
+    "@rspack/cli": "^0.4.5",
+    "@rspack/dev-server": "^0.4.5"
   },
   "scripts": {
-    "start": "webpack --watch",
-    "build": "webpack --mode production",
+    "start": "rspack serve",
+    "build": "rspack --mode production",
+    "legacy:start": "webpack --watch",
+    "legacy:build": "webpack --mode production",
     "serve": "serve dist -p 3003",
     "clean": "rm -rf dist"
   }

@@ -2,6 +2,7 @@
   "name": "angular14-react_angular-profile",
   "version": "0.0.0",
   "scripts": {
+    "postinstall": "find . -name \"node_modules\" -type d -prune -exec rm -rf '{}' +; pnpm install --ignore-scripts",
     "ng": "ng",
     "start": "ng serve -o",
     "build": "ng build",
@@ -9,6 +10,7 @@
     "test": "ng test"
   },
   "dependencies": {
+    "@babel/runtime": "^7.23.7",
     "@angular-builders/custom-webpack": "^14.0.1",
     "@angular/animations": "^14.2.0",
     "@angular/common": "^14.2.0",
@@ -24,7 +26,7 @@
     "react-dom": "^18.2.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
-    "webpack": "^5.89.0",
+    "webpack": "5.89.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

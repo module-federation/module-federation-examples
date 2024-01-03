@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "webpack": "webpack --watch",
+    "build": "rspack build --config rspack.config.js ",
+    "legacy:build": "webpack --config webpack.config.js --stats=minimal",
     "serve": "serve dist -p 3000",
-    "start": "concurrently \"npm run webpack\" \"npm run serve\""
+    "start": "concurrently \"npm run build\" \"npm run serve\"",
+    "legacy:start": "concurrently \"npm run legacy:build\" \"npm run serve\""
   },
   "keywords": [],
   "author": "",
@@ -15,7 +17,10 @@
     "concurrently": "8.2.2",
     "serve": "14.2.1",
     "webpack": "5.89.0",
-    "webpack-cli": "5.1.4"
+    "webpack-cli": "5.1.4",
+    "@rspack/core": "^0.4.5",
+    "@rspack/cli": "^0.4.5",
+    "@rspack/dev-server": "^0.4.5"
   },
   "dependencies": {
     "react": "^17.0.2",

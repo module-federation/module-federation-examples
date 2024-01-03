@@ -1,4 +1,7 @@
-const { HtmlRspackPlugin, container: {ModuleFederationPlugin} } = require('@rspack/core');
+const {
+  HtmlRspackPlugin,
+  container: { ModuleFederationPlugin },
+} = require('@rspack/core');
 const path = require('path');
 
 // adds all your dependencies as shared modules
@@ -29,25 +32,25 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        include: path.resolve(__dirname, "src"),
+        include: path.resolve(__dirname, 'src'),
         use: {
-          loader: "builtin:swc-loader",
+          loader: 'builtin:swc-loader',
           options: {
             jsc: {
               parser: {
-                syntax: "ecmascript",
-                jsx: true
+                syntax: 'ecmascript',
+                jsx: true,
               },
               transform: {
                 react: {
-                  runtime: "automatic",
-                }
-              }
-            }
-          }
-        }
-      }
-    ]
+                  runtime: 'automatic',
+                },
+              },
+            },
+          },
+        },
+      },
+    ],
   },
   plugins: [
     new ModuleFederationPlugin({
