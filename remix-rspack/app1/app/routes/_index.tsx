@@ -4,8 +4,7 @@ export function loader() {
 }
 // const Button = lazy(() => import('app2/button'));
 export default function Home() {
-    console.log('test');
-  const { message } = useLoaderData<typeof loader>();
+  const { message } = useLoaderData();
   return (
     <div>
       <h1>Home</h1>

@@ -117,6 +117,7 @@ const config = {
           "RemixAssetsManifest",
           async (compilation) => {
             const stats = compilation.getStats();
+
             const manifest = await toManifest(remixConfig, stats);
             writeManifest(remixConfig, manifest);
           }
