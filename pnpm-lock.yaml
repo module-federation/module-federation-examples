@@ -32513,6 +32513,14 @@ packages:
       tslib: 2.5.0
     dev: true
 
+  /@nrwl/devkit@16.0.0(nx@16.0.0):
+    resolution: {integrity: sha512-ycd4wD4v1N/ywjU1cwTVCPQJwxnGjEsWIll5z5cMtfHwJf+0OhMTqC3zeZibIwnjjoh721pyEzXODyUmjkGmVw==}
+    dependencies:
+      '@nx/devkit': 16.0.0(nx@16.0.0)
+    transitivePeerDependencies:
+      - nx
+    dev: true
+
   /@nrwl/devkit@16.0.0(nx@17.1.3):
     resolution: {integrity: sha512-ycd4wD4v1N/ywjU1cwTVCPQJwxnGjEsWIll5z5cMtfHwJf+0OhMTqC3zeZibIwnjjoh721pyEzXODyUmjkGmVw==}
     dependencies:
@@ -33497,7 +33505,7 @@ packages:
     peerDependencies:
       nx: '>= 15 <= 17'
     dependencies:
-      '@nrwl/devkit': 16.0.0(nx@17.1.3)
+      '@nrwl/devkit': 16.0.0(nx@16.0.0)
       ejs: 3.1.9
       ignore: 5.2.4
       nx: 16.0.0
