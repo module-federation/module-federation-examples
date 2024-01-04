@@ -5,7 +5,7 @@ module.exports = {
   entry: './src/index',
   cache: false,
 
-  mode: 'development',
+  mode: 'production',
   devtool: 'source-map',
 
   optimization: {
