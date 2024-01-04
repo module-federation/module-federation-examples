@@ -6,6 +6,11 @@ export default defineConfig({
     server: {
         port: 3000,
     },
+    source: {
+        alias: {
+            '@': './src/',
+        },
+    },
     performance: {
         chunkSplit: {
             override: {
