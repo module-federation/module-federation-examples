@@ -1,10 +1,10 @@
 const {
-  HtmlRspackPlugin,
+  CopyRspackPlugin,
   container: { ModuleFederationPlugin },
 } = require('@rspack/core');
-const CopyPlugin = require('copy-webpack-plugin');
 const deps = require('./package.json').dependencies;
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -44,7 +44,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new CopyPlugin({
+    new CopyRspackPlugin({
       patterns: [{ from: 'public/env-config.json', to: 'env-config.json' }],
     }),
     new ModuleFederationPlugin({
@@ -59,7 +59,7 @@ module.exports = {
         },
       },
     }),
-    new HtmlRspackPlugin({
+    new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
   ],
