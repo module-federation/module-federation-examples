@@ -6,7 +6,7 @@ pnpm start
 
 ## Webpack host Rspack Remotes
 App #1 is webpack
-Apps #1-#5 are Rspack
+Apps #2-#5 are Rspack (however the webpack commands still exist side by side)
 
 Open [http://localhost:3001](http://localhost:3001).
 
@@ -20,7 +20,7 @@ Included apps:
 - App #3 (ReactJS): [http://localhost:3003](http://localhost:3003)
 - App #4 (SvelteJS): [http://localhost:3004](http://localhost:3004)
 - App #5 (LitElement): [http://localhost:3005](http://localhost:3005)
-  <img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/ComprehensiveDemo">
+  <img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/rspack-webpack-interop">
 
 # Running Cypress E2E Tests
 
