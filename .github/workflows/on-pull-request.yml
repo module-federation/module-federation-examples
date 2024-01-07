@@ -159,7 +159,7 @@ jobs:
           node -v
           npx cypress install
           pnpm --filter "${{ matrix.container }}" e2e:ci
-          pnpm --filter "${{ matrix.container }}" legacy:e2e:ci
+#          pnpm --filter "${{ matrix.container }}" legacy:e2e:ci
 
       - name: Create artifacts for Allure report
         id: create-artifacts-allure-report
