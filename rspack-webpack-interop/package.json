@@ -1,0 +1,17 @@
+{
+  "name": "rspack_webpack",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "pnpm build && pnpm serve",
+    "legacy:start": "pnpm legacy:build && pnpm serve",
+    "build": "pnpm --filter rspack_webpack_app* build",
+    "legacy:build": "pnpm --filter rspack_webpack_app* legacy:build",
+    "serve": "pnpm --filter rspack_webpack_app* --parallel serve",
+    "clean": "pnpm --filter rspack_webpack_app* --parallel clean",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+  },
+  "devDependencies": {
+    "concurrently": "8.2.2",
+    "wait-on": "7.2.0"
+  }
+}

@@ -6,6 +6,9 @@ const mode = process.env.NODE_ENV || 'development';
 
 module.exports = {
   entry: './src/index.ts',
+  devServer:{
+    port: 3005,
+  },
   module: {
     rules: [
       {
