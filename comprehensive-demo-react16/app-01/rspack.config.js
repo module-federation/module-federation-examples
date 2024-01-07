@@ -8,6 +8,9 @@ module.exports = {
   entry: './src/index',
   mode: 'development',
   devtool: 'source-map',
+  devServer:{
+    port: 3001,
+  },
   output: {
     publicPath: 'auto',
   },

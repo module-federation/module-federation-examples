@@ -8,7 +8,9 @@ const mode = process.env.NODE_ENV || 'development';
 
 module.exports = {
   entry: './src/index',
-
+  devServer:{
+    port: 3003,
+  },
   experiments: {
     css: true,
   },
