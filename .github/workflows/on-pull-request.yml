@@ -152,7 +152,7 @@ jobs:
           npm i pnpm -g
           pnpm i --frozen-lockfile
           npx cypress install
-          cypress verify
+          npx cypress verify
 
       - name: Run sample webpack e2e tests
         timeout-minutes: 30
