@@ -1,5 +1,5 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { HtmlRspackPlugin, container: {ModuleFederationPlugin} } = require('@rspack/core');
+
 const path = require('path');
 const deps = require('./package.json').dependencies;
 module.exports = {
@@ -12,18 +12,32 @@ module.exports = {
     },
     port: 3002,
   },
-
   output: {
     publicPath: 'auto',
+  },
+  optimization:{
+    minimize:false
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        options: {
-          presets: ['@babel/preset-react'],
+        test: /\.(js|jsx)$/,
+        include: path.resolve(__dirname, 'src'),
+        use: {
+          loader: 'builtin:swc-loader',
+          options: {
+            jsc: {
+              parser: {
+                syntax: 'ecmascript',
+                jsx: true,
+              },
+              transform: {
+                react: {
+                  runtime: 'automatic',
+                },
+              },
+            },
+          },
         },
       },
     ],
@@ -50,7 +64,7 @@ module.exports = {
         },
       },
     }),
-    new HtmlWebpackPlugin({
+    new HtmlRspackPlugin({
       template: './public/index.html',
     }),
   ],

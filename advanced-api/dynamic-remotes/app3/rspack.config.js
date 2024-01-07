@@ -1,42 +1,57 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { HtmlRspackPlugin, container: {ModuleFederationPlugin} } = require('@rspack/core');
+
 const path = require('path');
 const deps = require('./package.json').dependencies;
 module.exports = {
   entry: './src/index',
   mode: 'development',
-  target: 'web',
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
-    port: 3002,
+    port: 3003,
   },
-
+  target: 'web',
   output: {
     publicPath: 'auto',
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        options: {
-          presets: ['@babel/preset-react'],
+        test: /\.(js|jsx)$/,
+        include: path.resolve(__dirname, 'src'),
+        use: {
+          loader: 'builtin:swc-loader',
+          options: {
+            jsc: {
+              parser: {
+                syntax: 'ecmascript',
+                jsx: true,
+              },
+              transform: {
+                react: {
+                  runtime: 'automatic',
+                },
+              },
+            },
+          },
         },
       },
     ],
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'app2',
+      name: 'app3',
+      library: { type: 'var', name: 'app3' },
       filename: 'remoteEntry.js',
       exposes: {
         './Widget': './src/Widget',
       },
+      // adds react as shared module
+      // version is inferred from package.json
+      // there is no version check for the required version
+      // so it will always use the higher version found
       shared: {
-        moment: deps.moment,
         react: {
           requiredVersion: deps.react,
           import: 'react', // the "react" package will be used a provided and fallback module
@@ -48,9 +63,13 @@ module.exports = {
           requiredVersion: deps['react-dom'],
           singleton: true, // only a single version of the shared module is allowed
         },
+        // adds moment as shared module
+        // version is inferred from package.json
+        // it will use the highest moment version that is >= 2.24 and < 3
+        moment: deps.moment,
       },
     }),
-    new HtmlWebpackPlugin({
+    new HtmlRspackPlugin({
       template: './public/index.html',
     }),
   ],
