@@ -151,13 +151,13 @@ jobs:
           echo "PNPM changed - install deps ... "
           npm i pnpm -g
           pnpm i --frozen-lockfile
+          npx cypress install
 
       - name: Run sample rspack e2e tests
         timeout-minutes: 30
         id: run-rspack-e2e-tests
         run: |
           node -v
-          npx cypress install
           pnpm --filter "${{ matrix.container }}" e2e:ci
 
       - name: Run sample webpack e2e tests
@@ -165,7 +165,6 @@ jobs:
         id: run-webpack-e2e-tests
         run: |
           node -v
-          npx cypress install
           pnpm --filter "${{ matrix.container }}" legacy:e2e:ci
 
       - name: Create artifacts for Allure report
