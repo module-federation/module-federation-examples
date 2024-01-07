@@ -154,7 +154,7 @@ jobs:
 
       - name: Run sample rspack e2e tests
         timeout-minutes: 30
-        id: run-sample-e2e-tests
+        id: run-rspack-e2e-tests
         run: |
           node -v
           npx cypress install
@@ -162,7 +162,7 @@ jobs:
 
       - name: Run sample webpack e2e tests
         timeout-minutes: 30
-        id: run-sample-e2e-tests
+        id: run-webpack-e2e-tests
         run: |
           node -v
           npx cypress install
