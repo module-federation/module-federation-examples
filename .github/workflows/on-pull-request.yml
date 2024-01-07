@@ -159,6 +159,8 @@ jobs:
         run: |
           node -v
           pnpm --filter "${{ matrix.container }}" e2e:ci
+          (lsof -i tcp:3000-3999 -i tcp:4000-4999 -i tcp:8080-8100 | awk 'NR!=1 {print $2}' | xargs -r kill) 2> /dev/null
+
 
       - name: Run sample webpack e2e tests
         timeout-minutes: 30
@@ -166,6 +168,7 @@ jobs:
         run: |
           node -v
           pnpm --filter "${{ matrix.container }}" legacy:e2e:ci
+          (lsof -i tcp:3000-3999 -i tcp:4000-4999 -i tcp:8080-8100 | awk 'NR!=1 {print $2}' | xargs -r kill) 2> /dev/null
 
       - name: Create artifacts for Allure report
         id: create-artifacts-allure-report
