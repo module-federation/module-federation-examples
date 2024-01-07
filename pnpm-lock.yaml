@@ -8642,8 +8642,8 @@ importers:
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
       '@module-federation/node':
-        specifier: 1.0.5
-        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
+        specifier: 1.0.7
+        version: 1.0.7(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
       '@types/react':
         specifier: 18.0.38
         version: 18.0.38
@@ -8697,8 +8697,8 @@ importers:
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
       '@module-federation/node':
-        specifier: 1.0.5
-        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
+        specifier: 1.0.7
+        version: 1.0.7(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
       '@types/react':
         specifier: 18.0.38
         version: 18.0.38
@@ -8764,8 +8764,8 @@ importers:
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
       '@module-federation/node':
-        specifier: 1.0.5
-        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
+        specifier: 1.0.7
+        version: 1.0.7(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
       '@types/express':
         specifier: 4.17.14
         version: 4.17.14
@@ -31165,30 +31165,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       webpack: 5.89.0(webpack-cli@4.9.2)
 
-  /@module-federation/node@1.0.5(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0):
-    resolution: {integrity: sha512-9NH9GE3uEIcL5laJKJgdyCk1n1mvn2ROFE3HdmHvQNfSsBDHKW3yBjYk0aOSvW0gelhEMVeltpFWqhXy7Q3exg==}
-    peerDependencies:
-      next: ^12||^13
-      react: ^16||^17||^18
-      react-dom: ^16||^17||^18
-      webpack: 5.89.0
-    peerDependenciesMeta:
-      next:
-        optional: true
-      react:
-        optional: true
-      react-dom:
-        optional: true
-    dependencies:
-      '@module-federation/utilities': 2.0.4(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
-      encoding: 0.1.13
-      node-fetch: 2.6.9(encoding@0.1.13)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      webpack: 5.89.0(webpack-cli@4.9.2)
-      webpack-sources: 3.2.3
-    dev: true
-
   /@module-federation/node@1.0.7(next@12.3.4)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0):
     resolution: {integrity: sha512-ZOdY8/qjAV8B8pL/+xf4KqEeQ6aJQoVjgn8IzS5Hk4qqMiow0Sf9EEX69LTI+GIVztVLjS/Q6N2QfS6ghsY1sw==}
     peerDependencies:
@@ -31262,6 +31238,30 @@ packages:
       webpack: 5.89.0(webpack-cli@5.1.4)
       webpack-sources: 3.2.3
     dev: false
+
+  /@module-federation/node@1.0.7(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0):
+    resolution: {integrity: sha512-ZOdY8/qjAV8B8pL/+xf4KqEeQ6aJQoVjgn8IzS5Hk4qqMiow0Sf9EEX69LTI+GIVztVLjS/Q6N2QfS6ghsY1sw==}
+    peerDependencies:
+      next: ^12||^13
+      react: ^16||^17||^18
+      react-dom: ^16||^17||^18
+      webpack: 5.89.0
+    peerDependenciesMeta:
+      next:
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      '@module-federation/utilities': 2.0.6(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
+      encoding: 0.1.13
+      node-fetch: 2.6.9(encoding@0.1.13)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      webpack: 5.89.0(webpack-cli@4.9.2)
+      webpack-sources: 3.2.3
+    dev: true
 
   /@module-federation/node@2.0.2-beta.6(webpack@5.89.0):
     resolution: {integrity: sha512-gv3eQDTuJ1IwMkzU1WRiTCbqfmd9kHrDdrPCve5x3C7Ns3WKO1GwXoU1UFLfl02TXlknJ8JSyCZ9iOB9J1LtUg==}
@@ -31671,7 +31671,7 @@ packages:
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      webpack: 5.89.0(webpack-cli@4.9.2)
+      webpack: 5.89.0(webpack-cli@5.0.1)
       webpack-sources: 3.2.3
 
   /@module-federation/utilities@2.0.6(next@12.3.4)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0):
@@ -31738,6 +31738,27 @@ packages:
       webpack: 5.89.0(webpack-cli@5.1.4)
       webpack-sources: 3.2.3
     dev: false
+
+  /@module-federation/utilities@2.0.6(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0):
+    resolution: {integrity: sha512-2/jfEkdi5U0SZDZMaZrTakhtacXIZib84jOHXrGEw3wQ1x8DfPyOtO7WW/G+DmsEGq4z+OVkMrDQTw+KjHTFNQ==}
+    peerDependencies:
+      next: ^12 || ^13
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+      webpack: 5.89.0
+    peerDependenciesMeta:
+      next:
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      webpack: 5.89.0(webpack-cli@4.9.2)
+      webpack-sources: 3.2.3
+    dev: true
 
   /@module-federation/utilities@2.0.7(next@13.5.6)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0):
     resolution: {integrity: sha512-NNXBzMEYlbiwqxZQR2qQEgQrXwIJ4LlVm2Of9nb0Y3qwCZXOUSgKeZxi5Je4E6xeP3uyyt8Vq1sEBOdANk4S4g==}
