@@ -22,11 +22,23 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        loader: 'builtin:swc-loader',
+        test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
-        options: {
-          presets: ['@babel/preset-react'],
+        use: {
+          loader: 'builtin:swc-loader',
+          options: {
+            jsc: {
+              parser: {
+                syntax: 'ecmascript',
+                jsx: true,
+              },
+              transform: {
+                react: {
+                  runtime: 'automatic',
+                },
+              },
+            },
+          },
         },
       },
     ],

@@ -23,19 +23,21 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        use: 'builtin:swc-loader',
+        test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
-        options: {
-          jsc: {
-            parser: {
-              syntax: 'ecmascript',
-              jsx: true
-            },
-            transform: {
-              react: {
-                runtime: 'automatic'
-              }
+        use: {
+          loader: 'builtin:swc-loader',
+          options: {
+            jsc: {
+              parser: {
+                syntax: 'ecmascript',
+                jsx: true,
+              },
+              transform: {
+                react: {
+                  runtime: 'automatic',
+                },
+              },
             },
           },
         },
