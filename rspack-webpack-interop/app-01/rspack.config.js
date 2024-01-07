@@ -1,38 +1,39 @@
 const {
-  HtmlRspackPlugin,
   container: { ModuleFederationPlugin },
+  HtmlRspackPlugin,
 } = require('@rspack/core');
 const deps = require('./package.json').dependencies;
 
 module.exports = {
   entry: './src/index',
+
   mode: 'development',
   devtool: 'source-map',
-  devServer:{
-    port: 3001,
+
+  optimization: {
+    minimize: false,
   },
+
   output: {
     publicPath: 'auto',
   },
+
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: 'builtin:swc-loader',
-        exclude: /node_modules/,
-        options: {
-          jsc: {
-            parser: {
-              syntax: 'ecmascript',
-              jsx: true,
-            },
-            transform: {
-              react: {
-                runtime: 'automatic',
+        use: {
+          loader: 'builtin:swc-loader',
+          options: {
+            jsc: {
+              parser: {
+                syntax: 'ecmascript',
+                jsx: true,
               },
             },
           },
         },
+        exclude: /node_modules/,
       },
       {
         test: /\.md$/,
@@ -40,6 +41,7 @@ module.exports = {
       },
     ],
   },
+
   plugins: [
     new ModuleFederationPlugin({
       name: 'app_01',

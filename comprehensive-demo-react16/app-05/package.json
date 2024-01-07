@@ -6,8 +6,7 @@
     "legacy:build": "cross-env NODE_ENV=production webpack",
     "build": "cross-env NODE_ENV=production rspack",
     "legacy:start": "webpack --watch",
-    "start": "rspack",
-    "dev": "rspack serve --port 3005",
+    "start": "rspack serve",
     "legacy:dev": "webpack-dev-server --content-base public",
     "serve": "serve public -p 3005",
     "clean": "rm -rf dist"
