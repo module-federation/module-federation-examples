@@ -12,13 +12,14 @@
     "webpack-dev-server": "4.15.1",
     "@rspack/core": "0.4.5-canary-ac74516-20240102083734",
     "@rspack/cli": "0.4.5-canary-ac74516-20240102083734",
-    "@rspack/dev-server": "0.4.5-canary-ac74516-20240102083734"
+    "@rspack/dev-server": "0.4.5-canary-ac74516-20240102083734",
+    "@module-federation/enhanced": "^0.0.0-next-20240105144747"
   },
   "scripts": {
     "start": "rspack serve",
     "build": "rspack --mode production",
-    "start:legacy": "webpack-cli serve",
-    "build:legacy": "webpack --mode production",
+    "legacy:start": "webpack-cli serve",
+    "legacy:build": "webpack --mode production",
     "serve": "serve dist -p 3003",
     "clean": "rm -rf dist"
   },
