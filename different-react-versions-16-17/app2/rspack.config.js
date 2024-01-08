@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@rspack/core').container;
 const path = require('path');
 
 /**
@@ -12,6 +12,7 @@ const webpackConfig = {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
+    hot:true,
     port: 3002,
   },
   output: {
@@ -27,11 +28,23 @@ const webpackConfig = {
         },
       },
       {
-        test: /\.jsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        options: {
-          presets: ['@babel/preset-react'],
+        test: /\.js$/,
+        include: path.resolve(__dirname, 'src'),
+        use: {
+          loader: 'builtin:swc-loader',
+          options: {
+            jsc: {
+              parser: {
+                syntax: 'ecmascript',
+                jsx: true,
+              },
+              transform: {
+                react: {
+                  runtime: 'automatic',
+                },
+              },
+            },
+          },
         },
       },
     ],
@@ -52,7 +65,6 @@ const webpackConfig = {
         {
           react: {
             import: 'react', // the "react" package will be used a provided and fallback module
-            shareKey: 'react', // under this name the shared module will be placed in the share scope
             shareScope: 'modern', // share scope with this name will be used
             singleton: true, // only a single version of the shared module is allowed
           },

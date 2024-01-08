@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@rspack/core').container;
 const path = require('path');
 const deps = require('./package.json').dependencies;
 
@@ -13,6 +13,7 @@ const webpackConfig = {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
+    hot: true,
     port: 3001,
   },
   output: {
