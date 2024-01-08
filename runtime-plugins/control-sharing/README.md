@@ -1,18 +1,23 @@
-# Dynamic vendor sharing
+# Controlled Vendor Sharing
 
-Implements a control panel in the runtime plugin for module federation 1.5 in rspack or `@module-federation/enhanced` 
-Control panel allows you to change the rules for shared modules and upgrade or downgrade applications deterministically based on the inputs from the react form.
+Dynamic Vendor Sharing is an application that implements a control panel in the runtime plugin for module federation 1.5 in rspack or `@module-federation/enhanced`. The control panel allows you to deterministically manage and modify the rules for shared modules, as well as upgrade or downgrade applications based on the inputs from the React form.
 
+## Features
 
-## Main parts
+- Runtime plugin that implements rules for module sharing.
+- React form for modifying the rules.
+- Ability to upgrade or downgrade applications.
+- `app1` and `app2` exposing different button components.
 
-- `./app1/control-share.ts` - the runtime plugin that implements the rules
-- `./app1/src/ControlPanel.js` - the react form that allows to change the rules
-##Read More:
-https://github.com/webpack/webpack/pull/10960
+## Main Components
 
-- `app1` exposes a red `<button>App 1 Button</button>` component.
-- `app2` exposes a blue `<button>App 2 Button</button>` component.
+### `./app1/control-share.ts`
+
+This is the runtime plugin that implements the rules for module federation.
+
+### `./app1/src/ControlPanel.js`
+
+This is a React form that allows for the modification of rules implemented in `control-share.ts`.
 
 # Running Demo
 
