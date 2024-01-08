@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const path = require('path');
 
 // adds all your dependencies as shared modules
@@ -46,6 +46,9 @@ module.exports = {
       remotes: {
         app2: 'app2@http://localhost:3002/remoteEntry.js',
       },
+      runtimePlugins: [
+        require.resolve('./control-share.js')
+      ],
       exposes: {
         './Button': './src/Button',
       },
