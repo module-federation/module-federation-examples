@@ -76,32 +76,26 @@ const RenderInstances = () => {
             <h2>{name}</h2>
             {Object.entries(shared).map(([key, {version, useIn}]) => {
               const singleton = singletons.has(key);
-              const defaultVersion = allVersions.find(ver => instances.some(({shared}) => Object.values(shared).some(({
-                                                                                                                        useIn,
-                                                                                                                        version
-                                                                                                                      }) => useIn.includes(name) && version === ver)));
-              const overrideVersion = formData[name]?.[key] || defaultVersion || {};
+              const overrideVersion = formData[name]?.[key] || version;
+
+              // Get all versions specific to the package
+              const packageVersions = instances.flatMap(instance =>
+                Object.entries(instance.shared)
+                  .filter(([pkgName]) => pkgName === key)
+                  .map(([, {version}]) => version)
+              );
+
+              const uniquePackageVersions = [...new Set(packageVersions)];
+
+
               return (
-                <div key={key} style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  marginBottom: "20px",
-                  padding: "15px",
-                  border: "1px solid #ddd",
-                  borderRadius: '5px'
-                }}>
+                <div key={key} style={{display: "flex", flexDirection: "column", marginBottom: "20px", padding: "15px", border: "1px solid #ddd", borderRadius: '5px'}}>
                   <h3 style={{margin: '10px 0'}}>{key}</h3>
-                  <div style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    fontSize: '0.9em',
-                    color: '#666'
-                  }}>
+                  <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: '0.9em', color: '#666'}}>
                     <div style={{marginBottom: '10px'}}>
                       <p>Ships With: {version}</p>
                       <p>Singleton: {singleton ? 'Yes' : 'No'}</p>
-                      <p>Currently using: {defaultVersion}</p>
+                      <p>Currently using: {version}</p>
                       <p>Override using: {overrideVersion}</p>
                     </div>
                     <div>
@@ -109,16 +103,8 @@ const RenderInstances = () => {
                         Override:
                         <select defaultValue={overrideVersion} value={overrideVersion}
                                 onChange={(e) => handleFormChange(name, key, e, singleton)}
-                                style={{
-                                  width: "100%",
-                                  border: "none",
-                                  backgroundColor: "#f4f4f4",
-                                  padding: "5px 10px",
-                                  fontSize: "0.9em",
-                                  margin: "5px 0 15px",
-                                  borderRadius: '5px'
-                                }}>
-                          {allVersions.map((ver, index) => (<option key={index} value={ver}>{ver}</option>))}
+                                style={{width: "100%", border: "none", backgroundColor: "#f4f4f4", padding: "5px 10px", fontSize: "0.9em", margin: "5px 0 15px", borderRadius: '5px'}}>
+                          {uniquePackageVersions.map((ver, index) => (<option key={index} value={ver}>{ver}</option>))}
                         </select>
                       </label>
                       <p>Use in: {Array.from(useIn).join(', ')}</p>

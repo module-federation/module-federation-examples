@@ -2,6 +2,7 @@ import LocalButton from './Button';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import RemoteButton from 'app2/Button';
+import lodash from 'lodash';
 import ControlPanel from './ControlPanel';
 const getColorFromString = (str) => {
   let primes = [1, 2, 3, 5, 7, 11, 13, 17, 19, 23];
@@ -22,6 +23,7 @@ const App = () => (
     <h2>App 1</h2>
     <h3 style={{color: getColorFromString(React.version)}}>Host Used React: {React.version}</h3>
     <h3 style={{color: getColorFromString(ReactDOM.version)}}>Host Used ReactDOM: {ReactDOM.version}</h3>
+    <h3 style={{color: getColorFromString(lodash.VERSION)}}>Host Used Lodash: {lodash.VERSION}</h3>
 
     <LocalButton/>
     <React.Suspense fallback="Loading Button">

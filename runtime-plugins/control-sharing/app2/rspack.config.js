@@ -50,6 +50,26 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.ts$/,
+        use: {
+          loader: 'builtin:swc-loader',
+          options: {
+            jsc: {
+              parser: {
+                syntax: 'typescript',
+                jsx: true,
+              },
+              transform: {
+                react: {
+                  runtime: 'automatic',
+                },
+              },
+            },
+          },
+        },
+      },
+
     ],
   },
   plugins: [
@@ -62,6 +82,9 @@ module.exports = {
       exposes: {
         './Button': './src/Button',
       },
+      runtimePlugins: [
+        require.resolve('./control-share.ts')
+      ],
       shared: {
         ...deps,
         react: {
@@ -70,6 +93,7 @@ module.exports = {
         'react-dom': {
           singleton: true,
         },
+        lodash: {}
       },
     }),
     new HtmlRspackPlugin({

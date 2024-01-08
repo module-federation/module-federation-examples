@@ -57,6 +57,7 @@ module.exports = {
         'react-dom': {
           singleton: true,
         },
+        lodash: {}
       },
     }),
     new HtmlWebpackPlugin({
