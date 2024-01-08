@@ -1,8 +1,7 @@
-# Advanced API
+# Runtime Plugin Examples
 
-This leverages pre-release implementations of Webpack 5 Module Federation's new advanced API
+Uses the federation 1.5 apis in rspack or `@module-federation/enhanced` to implement example runtime plugins for control inversion. 
 
-There are several configurations in here
 
-- Dynamic Remotes
-  - The ability to dynamically load and share code between remotes that are unknown to the host at build time.
+- control-share
+  - GUI that renders in-app, displays a form with all shared modules, allows you to alter the share resolver rules accordingly to the form. (gives you control over share module negotiations) 
