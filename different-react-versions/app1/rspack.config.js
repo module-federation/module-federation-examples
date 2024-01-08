@@ -1,32 +1,29 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@rspack/core').container;
 const path = require('path');
-const remotes = {
-  app2: "app2@http://localhost:3002/remoteEntry.js",
-}
-
-
-const delegatedRemotesObject = Object.entries(remotes).reduce((acc, [name, url]) => {
-  acc[name] = `./remote-delegate.js?remote=${url}`;
-  return acc;
-},{})
+const deps = require('./package.json').dependencies;
 module.exports = {
-  entry: [...Object.values(delegatedRemotesObject), './src/index'],
+  entry: './src/index',
   mode: 'development',
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
     port: 3001,
+    hot: true
   },
   output: {
     publicPath: 'auto',
   },
-  optimization: {
-    minimize: false,
-  },
   module: {
     rules: [
+      {
+        test: /\.m?js$/,
+        type: 'javascript/auto',
+        resolve: {
+          fullySpecified: false,
+        },
+      },
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
@@ -37,18 +34,26 @@ module.exports = {
       },
     ],
   },
-  //http://localhost:3002/remoteEntry.js
   plugins: [
     new ModuleFederationPlugin({
       name: 'app1',
-      remotes: Object.entries(delegatedRemotesObject).reduce((acc, [name, url]) => {
-        acc[name] = `internal ${url}`
-        return acc;
-      }, {}),
-      shared: { react: { singleton: true }, 'react-dom': { singleton: true } },
+      library: { type: 'var', name: 'app1' },
+      remotes: {
+        app2: 'app2',
+      },
+      shared: {
+        ...deps,
+        'react-dom': {
+          import: 'react-dom', // the "react" package will be used a provided and fallback module
+          shareKey: 'react-dom', // under this name the shared module will be placed in the share scope
+          shareScope: 'legacy', // share scope with this name will be used
+          singleton: true, // only a single version of the shared module is allowed
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
+      app2RemoteEntry: getRemoteEntryUrl(3002),
     }),
   ],
 };

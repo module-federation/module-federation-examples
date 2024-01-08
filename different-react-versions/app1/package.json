@@ -1,5 +1,6 @@
 {
   "name": "different-react-versions_app1",
+  "description": "Uses React 16.6.3 (before react hooks existed)",
   "version": "0.0.0",
   "devDependencies": {
     "@babel/core": "7.23.5",
@@ -10,16 +11,21 @@
     "serve": "14.2.1",
     "webpack": "5.89.0",
     "webpack-cli": "4.10.0",
-    "webpack-dev-server": "4.15.1"
+    "webpack-dev-server": "4.15.1",
+    "@rspack/core": "^0.4.5",
+    "@rspack/cli": "^0.4.5",
+    "@rspack/dev-server": "^0.4.5"
   },
   "scripts": {
-    "start": "webpack-cli serve",
-    "build": "webpack --mode production",
+    "legacy:start": "webpack-cli serve",
+    "start": "rspack serve",
+    "legacy:build": "webpack --mode production",
+    "build": "rspack --mode production",
     "serve": "serve dist -p 3001",
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "react": "16.14.0",
-    "react-dom": "16.14.0"
+    "react": "16.6.3",
+    "react-dom": "16.6.3"
   }
 }
