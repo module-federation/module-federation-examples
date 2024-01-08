@@ -1,0 +1,22 @@
+{
+  "name": "control-sharing",
+  "workspaces": [
+    "./app1",
+    "./app2"
+  ],
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "pnpm --filter control-sharing_app* --parallel start",
+    "build": "pnpm --filter control-sharing_app* --parallel build",
+    "serve": "pnpm --filter control-sharing_app* --parallel serve",
+    "clean": "pnpm --filter control-sharing_app* --parallel clean",
+    "legacy:start": "pnpm --filter control-sharing_app* --parallel legacy:start",
+    "legacy:build": "pnpm --filter control-sharing_app* --parallel legacy:build",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
+    "legacy:e2e:ci": "pnpm legacy:start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+  },
+  "devDependencies": {
+    "wait-on": "7.2.0"
+  }
+}
