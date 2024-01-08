@@ -71,7 +71,7 @@ const RenderInstances = () => {
             flexDirection: 'column',
             flex: '1 0 25%',
             boxSizing: 'border-box',
-            padding: '20px'
+            padding: '10px'
           }}>
             <h2>{name}</h2>
             {Object.entries(shared).map(([key, {version, useIn}]) => {
@@ -89,21 +89,21 @@ const RenderInstances = () => {
 
 
               return (
-                <div key={key} style={{display: "flex", flexDirection: "column", marginBottom: "20px", padding: "15px", border: "1px solid #ddd", borderRadius: '5px'}}>
+                <div key={key} style={{display: "flex", flexDirection: "column", marginBottom: "10px", padding: "5px", border: "1px solid #ddd", borderRadius: '5px'}}>
                   <h3 style={{margin: '10px 0'}}>{key}</h3>
                   <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: '0.9em', color: '#666'}}>
-                    <div style={{marginBottom: '10px'}}>
+                    <div style={{marginBottom: '5px'}}>
                       <p>Ships With: {version}</p>
                       <p>Singleton: {singleton ? 'Yes' : 'No'}</p>
                       <p>Currently using: {version}</p>
                       <p>Override using: {overrideVersion}</p>
                     </div>
                     <div>
-                      <label style={{display: 'block', marginBottom: '10px'}}>
+                      <label style={{display: 'block', marginBottom: '5px'}}>
                         Override:
                         <select defaultValue={overrideVersion} value={overrideVersion}
                                 onChange={(e) => handleFormChange(name, key, e, singleton)}
-                                style={{width: "100%", border: "none", backgroundColor: "#f4f4f4", padding: "5px 10px", fontSize: "0.9em", margin: "5px 0 15px", borderRadius: '5px'}}>
+                                style={{width: "100%", border: "none", backgroundColor: "#f4f4f4", padding: "5px 10px", fontSize: "0.9em", margin: "5px 0 10px", borderRadius: '5px'}}>
                           {uniquePackageVersions.map((ver, index) => (<option key={index} value={ver}>{ver}</option>))}
                         </select>
                       </label>
@@ -116,7 +116,7 @@ const RenderInstances = () => {
           </form>
         ))}
       </div>
-      <p style={{marginTop: '20px'}}>
+      <p style={{marginTop: '0px'}}>
         <button onClick={clearLocalStorage} style={buttonStyle}>Clear</button>
         <button onClick={handleReload} style={{...buttonStyle, marginLeft: '10px', backgroundColor: "#008CBA"}}>Save and
           Reload
