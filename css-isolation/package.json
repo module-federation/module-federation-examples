@@ -2,17 +2,16 @@
   "name": "css-isolation",
   "description": "This example shows a way to fully isolate CSS from leaking between the host and remote applications using a [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) wrapper. The same idea is used in [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components). Basically a Web Component renders a piece of HTML within a web document which contains its own isolated DOM (a.k.a the Shadow DOM). This enables it to have separate CSS rules from the outside document. In this example the same concept is used together with Module Federation. We have two applications - `app1` (the host) and `app2` (the remote). `app1` loads `app2` using Module Federation and then, upon loading, `app2` wraps itself with a Shadow DOM container. One could say it dynamically puts itself in a Web Component to achieve CSS isolation. For more technical details check the [Isolation Technique](#isolation-technique) section below. The example builds upon the [Different React Versions in Isolation](../different-react-versions-isolated/README.md) example in the same repo.",
   "private": true,
-  "workspaces": [
-    "./app1",
-    "./app2"
-  ],
   "version": "0.0.0",
   "scripts": {
     "start": "pnpm --filter css-isolation_app* --parallel start",
+    "legacy:start": "pnpm --filter css-isolation_app* --parallel legacy:start",
     "build": "pnpm --filter css-isolation_app* --parallel build",
+    "legacy:build": "pnpm --filter css-isolation_app* --parallel legacy:build",
     "serve": "pnpm --filter css-isolation_app* --parallel serve",
     "clean": "pnpm --filter css-isolation_app* --parallel clean",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
+    "legacy:e2e:ci": "pnpm legacy:start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "wait-on": "7.2.0"
