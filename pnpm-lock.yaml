@@ -60,6 +60,9 @@ importers:
       jest:
         specifier: 26.6.3
         version: 26.6.3
+      js-yaml:
+        specifier: ^4.1.0
+        version: 4.1.0
       lerna:
         specifier: ^6.6.2
         version: 6.6.2
@@ -84,6 +87,8 @@ importers:
       wait-on:
         specifier: 7.2.0
         version: 7.2.0
+
+  advanced-api: {}
 
   advanced-api/automatic-vendor-sharing:
     devDependencies:
@@ -1667,6 +1672,8 @@ importers:
         specifier: ~5.0.5
         version: 5.0.5
 
+  cloud: {}
+
   cloud/azure-functions-node-v4:
     devDependencies:
       concurrently:
@@ -2600,80 +2607,6 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2
 
-  delegate-modules:
-    devDependencies:
-      wait-on:
-        specifier: 7.2.0
-        version: 7.2.0
-
-  delegate-modules/app1:
-    dependencies:
-      react:
-        specifier: ^16.13.0
-        version: 16.14.0
-      react-dom:
-        specifier: ^16.13.0
-        version: 16.14.0(react@16.14.0)
-    devDependencies:
-      '@babel/core':
-        specifier: 7.23.5
-        version: 7.23.5
-      '@babel/preset-react':
-        specifier: 7.23.3
-        version: 7.23.3(@babel/core@7.23.5)
-      babel-loader:
-        specifier: 8.2.5
-        version: 8.2.5(@babel/core@7.23.5)(webpack@5.89.0)
-      html-webpack-plugin:
-        specifier: 5.6.0
-        version: 5.6.0(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack@5.89.0)
-      serve:
-        specifier: 14.2.1
-        version: 14.2.1
-      webpack:
-        specifier: 5.89.0
-        version: 5.89.0(webpack-cli@4.10.0)
-      webpack-cli:
-        specifier: 4.10.0
-        version: 4.10.0(webpack-bundle-analyzer@4.10.1)(webpack-dev-server@4.15.1)(webpack@5.89.0)
-      webpack-dev-server:
-        specifier: 4.15.1
-        version: 4.15.1(webpack-cli@4.10.0)(webpack@5.89.0)
-
-  delegate-modules/app2:
-    dependencies:
-      react:
-        specifier: ^16.13.0
-        version: 16.14.0
-      react-dom:
-        specifier: ^16.13.0
-        version: 16.14.0(react@16.14.0)
-    devDependencies:
-      '@babel/core':
-        specifier: 7.23.5
-        version: 7.23.5
-      '@babel/preset-react':
-        specifier: 7.23.3
-        version: 7.23.3(@babel/core@7.23.5)
-      babel-loader:
-        specifier: 8.2.5
-        version: 8.2.5(@babel/core@7.23.5)(webpack@5.89.0)
-      html-webpack-plugin:
-        specifier: 5.6.0
-        version: 5.6.0(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack@5.89.0)
-      serve:
-        specifier: 14.2.1
-        version: 14.2.1
-      webpack:
-        specifier: 5.89.0
-        version: 5.89.0(webpack-cli@4.10.0)
-      webpack-cli:
-        specifier: 4.10.0
-        version: 4.10.0(webpack-bundle-analyzer@4.10.1)(webpack-dev-server@4.15.1)(webpack@5.89.0)
-      webpack-dev-server:
-        specifier: 4.15.1
-        version: 4.15.1(webpack-cli@4.10.0)(webpack@5.89.0)
-
   different-react-versions:
     devDependencies:
       wait-on:
@@ -2785,11 +2718,11 @@ importers:
   different-react-versions-16-17/app1:
     dependencies:
       react:
-        specifier: 16.14.0
-        version: 16.14.0
+        specifier: 16.6.3
+        version: 16.6.3
       react-dom:
-        specifier: 16.14.0
-        version: 16.14.0(react@16.14.0)
+        specifier: 16.6.3
+        version: 16.6.3(react@16.6.3)
     devDependencies:
       '@babel/core':
         specifier: 7.23.5
@@ -2800,12 +2733,21 @@ importers:
       '@babel/preset-react':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
+      '@rspack/cli':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
+      '@rspack/core':
+        specifier: ^0.4.5
+        version: 0.4.5
+      '@rspack/dev-server':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.5)(webpack@5.89.0)
       html-webpack-plugin:
         specifier: 5.6.0
-        version: 5.6.0(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack@5.89.0)
+        version: 5.6.0(@rspack/core@0.4.5)(webpack@5.89.0)
       serve:
         specifier: 14.2.1
         version: 14.2.1
@@ -2837,12 +2779,21 @@ importers:
       '@babel/preset-react':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
+      '@rspack/cli':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
+      '@rspack/core':
+        specifier: ^0.4.5
+        version: 0.4.5
+      '@rspack/dev-server':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.5)(webpack@5.89.0)
       html-webpack-plugin:
         specifier: 5.6.0
-        version: 5.6.0(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack@5.89.0)
+        version: 5.6.0(@rspack/core@0.4.5)(webpack@5.89.0)
       serve:
         specifier: 14.2.1
         version: 14.2.1
@@ -3213,11 +3164,11 @@ importers:
   different-react-versions/app1:
     dependencies:
       react:
-        specifier: 16.14.0
-        version: 16.14.0
+        specifier: 16.6.3
+        version: 16.6.3
       react-dom:
-        specifier: 16.14.0
-        version: 16.14.0(react@16.14.0)
+        specifier: 16.6.3
+        version: 16.6.3(react@16.6.3)
     devDependencies:
       '@babel/core':
         specifier: 7.23.5
@@ -3228,12 +3179,21 @@ importers:
       '@babel/preset-react':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
+      '@rspack/cli':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
+      '@rspack/core':
+        specifier: ^0.4.5
+        version: 0.4.5
+      '@rspack/dev-server':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.5)(webpack@5.89.0)
       html-webpack-plugin:
         specifier: 5.6.0
-        version: 5.6.0(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack@5.89.0)
+        version: 5.6.0(@rspack/core@0.4.5)(webpack@5.89.0)
       serve:
         specifier: 14.2.1
         version: 14.2.1
@@ -3250,10 +3210,10 @@ importers:
   different-react-versions/app2:
     dependencies:
       react:
-        specifier: ^16.13.1
+        specifier: 16.14.0
         version: 16.14.0
       react-dom:
-        specifier: ^16.13.1
+        specifier: 16.14.0
         version: 16.14.0(react@16.14.0)
     devDependencies:
       '@babel/core':
@@ -3265,12 +3225,21 @@ importers:
       '@babel/preset-react':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
+      '@rspack/cli':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
+      '@rspack/core':
+        specifier: ^0.4.5
+        version: 0.4.5
+      '@rspack/dev-server':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.5)(webpack@5.89.0)
       html-webpack-plugin:
         specifier: 5.6.0
-        version: 5.6.0(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack@5.89.0)
+        version: 5.6.0(@rspack/core@0.4.5)(webpack@5.89.0)
       serve:
         specifier: 14.2.1
         version: 14.2.1
@@ -30072,7 +30041,7 @@ packages:
       '@modern-js/utils': 2.41.0
       '@swc/helpers': 0.5.3
       acorn: 8.10.0
-      caniuse-lite: 1.0.30001558
+      caniuse-lite: 1.0.30001572
       css-minimizer-webpack-plugin: 5.0.1(esbuild@0.17.19)(webpack@5.89.0)
       cssnano: 6.0.1(postcss@8.4.31)
       fork-ts-checker-webpack-plugin: 8.0.0(typescript@4.9.5)(webpack@5.89.0)
@@ -30121,7 +30090,7 @@ packages:
       '@modern-js/utils': 2.41.0
       '@swc/helpers': 0.5.3
       acorn: 8.10.0
-      caniuse-lite: 1.0.30001558
+      caniuse-lite: 1.0.30001572
       css-minimizer-webpack-plugin: 5.0.1(esbuild@0.17.19)(webpack@5.89.0)
       cssnano: 6.0.1(postcss@8.4.31)
       fork-ts-checker-webpack-plugin: 8.0.0(typescript@5.2.2)(webpack@5.89.0)
@@ -30173,7 +30142,7 @@ packages:
       '@swc/helpers': 0.5.3
       babel-plugin-import: 1.13.5
       babel-plugin-styled-components: 1.13.3(styled-components@5.3.11)
-      caniuse-lite: 1.0.30001558
+      caniuse-lite: 1.0.30001572
       html-webpack-plugin: 5.5.3(webpack@5.89.0)
       mini-css-extract-plugin: 2.7.6(webpack@5.89.0)
       postcss: 8.4.31
@@ -30231,7 +30200,7 @@ packages:
       '@swc/helpers': 0.5.3
       babel-plugin-import: 1.13.5
       babel-plugin-styled-components: 1.13.3(styled-components@5.3.11)
-      caniuse-lite: 1.0.30001558
+      caniuse-lite: 1.0.30001572
       html-webpack-plugin: 5.5.3(webpack@5.89.0)
       mini-css-extract-plugin: 2.7.6(webpack@5.89.0)
       postcss: 8.4.31
@@ -30830,7 +30799,7 @@ packages:
         optional: true
     dependencies:
       '@remix-run/router': 1.10.0
-      caniuse-lite: 1.0.30001558
+      caniuse-lite: 1.0.30001572
       lodash: 4.17.21
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -30842,7 +30811,7 @@ packages:
     resolution: {integrity: sha512-51Uv2oueWru4BvoE7VHai03wT0VZ1VFNPrDXR3Rd3DanRdM5BDBs28mB6+pz68SFQPjK7/f2ZgqRr0FjGWhUvg==}
     dependencies:
       '@swc/helpers': 0.5.1
-      caniuse-lite: 1.0.30001558
+      caniuse-lite: 1.0.30001572
       lodash: 4.17.21
       rslog: 1.1.0
     dev: false
@@ -30851,7 +30820,7 @@ packages:
     resolution: {integrity: sha512-sidqe9YHREF3T1Qe2zX8OA2qZaj1rP4F18ac67Xb1tt7G9qeyDrbNSjcvm6yg02K+4sZkkCt936/K5mfrcL7XA==}
     dependencies:
       '@swc/helpers': 0.5.3
-      caniuse-lite: 1.0.30001558
+      caniuse-lite: 1.0.30001572
       lodash: 4.17.21
       rslog: 1.1.0
     dev: true
@@ -33909,7 +33878,7 @@ packages:
       autoprefixer: 10.4.16(postcss@8.4.32)
       babel-loader: 8.2.5(@babel/core@7.23.5)(webpack@5.89.0)
       browserslist: 4.22.1
-      caniuse-lite: 1.0.30001558
+      caniuse-lite: 1.0.30001572
       chalk: 4.1.0
       chokidar: 3.5.3
       copy-webpack-plugin: 10.2.4(webpack@5.89.0)
@@ -43805,7 +43774,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.22.1
-      caniuse-lite: 1.0.30001558
+      caniuse-lite: 1.0.30001572
       colorette: 1.4.0
       fraction.js: 4.3.6
       normalize-range: 0.1.2
@@ -43837,7 +43806,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.22.1
-      caniuse-lite: 1.0.30001558
+      caniuse-lite: 1.0.30001572
       fraction.js: 4.3.6
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -43853,7 +43822,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.22.1
-      caniuse-lite: 1.0.30001558
+      caniuse-lite: 1.0.30001572
       fraction.js: 4.3.6
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -43913,7 +43882,7 @@ packages:
     hasBin: true
     dependencies:
       browserslist: 4.22.1
-      caniuse-lite: 1.0.30001558
+      caniuse-lite: 1.0.30001572
       colorette: 1.4.0
       normalize-range: 0.1.2
       num2fraction: 1.2.2
@@ -45409,7 +45378,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001558
+      caniuse-lite: 1.0.30001572
       electron-to-chromium: 1.4.569
       node-releases: 2.0.13
       update-browserslist-db: 1.0.13(browserslist@4.21.10)
@@ -45967,6 +45936,7 @@ packages:
 
   /caniuse-lite@1.0.30001528:
     resolution: {integrity: sha512-0Db4yyjR9QMNlsxh+kKWzQtkyflkG/snYheSzkjmvdEtEXB1+jt7A2HmSEiO6XIJPIbo92lHNGNySvE5pZcs5Q==}
+    dev: true
 
   /caniuse-lite@1.0.30001558:
     resolution: {integrity: sha512-/Et7DwLqpjS47JPEcz6VnxU9PwcIdVi0ciLXRWBQdj1XFye68pSQYpV0QtPTfUKWuOaEig+/Vez2l74eDc1tPQ==}
@@ -62041,7 +62011,7 @@ packages:
     dependencies:
       '@next/env': 13.1.2
       '@swc/helpers': 0.4.14
-      caniuse-lite: 1.0.30001558
+      caniuse-lite: 1.0.30001572
       postcss: 8.4.14
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -62089,7 +62059,7 @@ packages:
       '@next/env': 13.3.1
       '@swc/helpers': 0.5.0
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001528
+      caniuse-lite: 1.0.30001572
       postcss: 8.4.14
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -62126,7 +62096,7 @@ packages:
       '@next/env': 13.5.6
       '@swc/helpers': 0.5.2
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001558
+      caniuse-lite: 1.0.30001572
       postcss: 8.4.31
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -68038,7 +68008,7 @@ packages:
     dependencies:
       autoprefixer: 9.8.8
       browserslist: 4.22.1
-      caniuse-lite: 1.0.30001558
+      caniuse-lite: 1.0.30001572
       css-blank-pseudo: 0.1.4
       css-has-pseudo: 0.10.0
       css-prefers-color-scheme: 3.1.1
@@ -70854,6 +70824,18 @@ packages:
       react: 16.14.0
       scheduler: 0.19.1
 
+  /react-dom@16.6.3(react@16.6.3):
+    resolution: {integrity: sha512-8ugJWRCWLGXy+7PmNh8WJz3g1TaTUt1XyoIcFN+x0Zbkoz+KKdUyx1AQLYJdbFXjuF41Nmjn5+j//rxvhFjgSQ==}
+    peerDependencies:
+      react: ^16.6.3
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      prop-types: 15.8.1
+      react: 16.6.3
+      scheduler: 0.11.3
+    dev: false
+
   /react-dom@17.0.2(react@17.0.2):
     resolution: {integrity: sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==}
     peerDependencies:
@@ -71461,6 +71443,16 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       prop-types: 15.8.1
+
+  /react@16.6.3:
+    resolution: {integrity: sha512-zCvmH2vbEolgKxtqXL2wmGCUxUyNheYn/C+PD1YAjfxHC54+MhdruyhO7QieQrYsYeTxrn93PM2y0jRH1zEExw==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      prop-types: 15.8.1
+      scheduler: 0.11.3
+    dev: false
 
   /react@17.0.2:
     resolution: {integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==}
@@ -73016,6 +73008,13 @@ packages:
     engines: {node: '>=v12.22.7'}
     dependencies:
       xmlchars: 2.2.0
+
+  /scheduler@0.11.3:
+    resolution: {integrity: sha512-i9X9VRRVZDd3xZw10NY5Z2cVMbdYg6gqFecfj79USv1CFN+YrJ3gIPRKf1qlY+Sxly4djoKdfx1T+m9dnRB8kQ==}
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+    dev: false
 
   /scheduler@0.19.1:
     resolution: {integrity: sha512-n/zwRWRYSUj0/3g/otKDRPMh6qv2SYMWNq85IEa8iZyAv8od9zDYpGSnpBEjNgcMNq6Scbu5KfIPxNF72R/2EA==}
@@ -78021,7 +78020,7 @@ packages:
     dev: true
 
   /utils-merge@1.0.1:
-    resolution: {integrity: sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=}
+    resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
 
   /uuid-browser@3.1.0:
