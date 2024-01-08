@@ -83,7 +83,7 @@ module.exports = {
         './Button': './src/Button',
       },
       runtimePlugins: [
-        require.resolve('./control-share.ts')
+        require.resolve('../control-share.ts')
       ],
       shared: {
         ...deps,

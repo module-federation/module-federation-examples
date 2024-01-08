@@ -82,7 +82,7 @@ module.exports = {
         app2: 'app2@http://localhost:3002/remoteEntry.js',
       },
       runtimePlugins: [
-        require.resolve('./control-share.ts')
+        require.resolve('../control-share.ts')
       ],
       exposes: {
         './Button': './src/Button',
