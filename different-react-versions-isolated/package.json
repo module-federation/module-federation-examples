@@ -1,12 +1,16 @@
 {
   "name": "different-react-versions-isolated",
+  "description": "This example demos host and remote applications running in isolation with two different React versions and no shared libraries",
   "version": "0.0.0",
   "scripts": {
+    "legacy:start": "pnpm --filter different-react-versions-isolated_app* --parallel legacy:start",
     "start": "pnpm --filter different-react-versions-isolated_app* --parallel start",
     "build": "pnpm --filter different-react-versions-isolated_app* --parallel build",
+    "legacy:build": "pnpm --filter different-react-versions-isolated_app* --parallel legacy:build",
     "serve": "pnpm --filter different-react-versions-isolated_app* --parallel serve",
     "clean": "pnpm --filter different-react-versions-isolated_app* --parallel clean",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
+    "legacy:e2e:ci": "pnpm legacy:start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "wait-on": "7.2.0"
