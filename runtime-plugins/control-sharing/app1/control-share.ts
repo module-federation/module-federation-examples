@@ -65,7 +65,9 @@ const CustomPlugin = (): FederationRuntimePlugin => {
         },
         beforeLoadShare: async (args) => {
             console.log('beforeloadShare:', args);
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            while (__FEDERATION__.__INSTANCES__.length <= 1) {
+                await new Promise(r => setTimeout(r, 50));
+            }
             return args;
         },
     };
