@@ -26,9 +26,8 @@ It is a pure host.
 
 # how to use
 
-- `npm install`
-- `npx lerna bootstrap`
-- `npm run start`
+- `pnpm install`
+- `pnpm run start`
 
 after all the commands done, open your browser at `http://localhost:3002`, open the dev-tool's network tab to see resources loading details
 
