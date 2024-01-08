@@ -19,11 +19,11 @@ const getColorFromString = (str) => {
 };
 const App = () => (
   <div>
-    <h1>Bi-Directional</h1>
+    <h1>Share Control Panel</h1>
     <h2>App 1</h2>
-    <h3 style={{color: getColorFromString(React.version)}}>Host Used React: {React.version}</h3>
-    <h3 style={{color: getColorFromString(ReactDOM.version)}}>Host Used ReactDOM: {ReactDOM.version}</h3>
-    <h3 style={{color: getColorFromString(lodash.VERSION)}}>Host Used Lodash: {lodash.VERSION}</h3>
+    <h4 style={{color: getColorFromString(React.version)}}>Host Used React: {React.version}</h4>
+    <h4 style={{color: getColorFromString(ReactDOM.version)}}>Host Used ReactDOM: {ReactDOM.version}</h4>
+    <h4 style={{color: getColorFromString(lodash.VERSION)}}>Host Used Lodash: {lodash.VERSION}</h4>
 
     <LocalButton/>
     <React.Suspense fallback="Loading Button">
