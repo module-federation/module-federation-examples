@@ -1,7 +1,13 @@
 # Dynamic vendor sharing
 
-This example demos control-sharing, each host/remote will share all vendors possible, with react listed as a singleton
+Implements a control panel in the runtime plugin for module federation 1.5 in rspack or `@module-federation/enhanced` 
+Control panel allows you to change the rules for shared modules and upgrade or downgrade applications deterministically based on the inputs from the react form.
 
+
+## Main parts
+
+- `./app1/control-share.ts` - the runtime plugin that implements the rules
+- `./app1/src/ControlPanel.js` - the react form that allows to change the rules
 ##Read More:
 https://github.com/webpack/webpack/pull/10960
 
@@ -14,9 +20,6 @@ Run `yarn start`. This will build and serve both `app1` and `app2` on ports 3001
 
 - [localhost:3001](http://localhost:3001/)
 - [localhost:3002](http://localhost:3002/)
-
-Notice that `app1` will asynchronously load `app2`'s button and vice versa.
-<img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/advanced-api/automatic-vendor-federation">
 
 # Running Cypress E2E Tests
 
