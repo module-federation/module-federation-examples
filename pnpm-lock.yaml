@@ -3158,6 +3158,165 @@ importers:
         specifier: ^5.1.4
         version: 5.1.4(webpack@5.89.0)
 
+  dynamic-system-host:
+    devDependencies:
+      wait-on:
+        specifier: 7.2.0
+        version: 7.2.0
+
+  dynamic-system-host/app1:
+    dependencies:
+      '@module-federation/runtime':
+        specifier: 0.0.0-canary-1701694314517
+        version: 0.0.0-canary-1701694314517
+      '@module-federation/utilities':
+        specifier: ^1.4.0
+        version: 1.5.0(react-dom@16.14.0)(react@16.14.0)(webpack@5.89.0)
+      react:
+        specifier: ^16.13.0
+        version: 16.14.0
+      react-dom:
+        specifier: ^16.13.0
+        version: 16.14.0(react@16.14.0)
+    devDependencies:
+      '@babel/core':
+        specifier: 7.23.5
+        version: 7.23.5
+      '@babel/preset-react':
+        specifier: 7.23.3
+        version: 7.23.3(@babel/core@7.23.5)
+      '@rspack/cli':
+        specifier: 0.4.5-canary-ac74516-20240102083734
+        version: 0.4.5-canary-ac74516-20240102083734(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack-cli@4.10.0)(webpack@5.89.0)
+      '@rspack/core':
+        specifier: 0.4.5-canary-ac74516-20240102083734
+        version: 0.4.5-canary-ac74516-20240102083734
+      '@rspack/dev-server':
+        specifier: 0.4.5-canary-ac74516-20240102083734
+        version: 0.4.5-canary-ac74516-20240102083734(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack-cli@4.10.0)(webpack@5.89.0)
+      babel-loader:
+        specifier: 8.2.5
+        version: 8.2.5(@babel/core@7.23.5)(webpack@5.89.0)
+      html-webpack-plugin:
+        specifier: 5.6.0
+        version: 5.6.0(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack@5.89.0)
+      serve:
+        specifier: 14.2.1
+        version: 14.2.1
+      webpack:
+        specifier: 5.89.0
+        version: 5.89.0(webpack-cli@4.10.0)
+      webpack-cli:
+        specifier: 4.10.0
+        version: 4.10.0(webpack-bundle-analyzer@4.10.1)(webpack-dev-server@4.15.1)(webpack@5.89.0)
+      webpack-dev-server:
+        specifier: 4.15.1
+        version: 4.15.1(webpack-cli@4.10.0)(webpack@5.89.0)
+
+  dynamic-system-host/app2:
+    dependencies:
+      '@module-federation/runtime':
+        specifier: 0.0.0-canary-1701694314517
+        version: 0.0.0-canary-1701694314517
+      moment:
+        specifier: ^2.29.4
+        version: 2.29.4
+      react:
+        specifier: ^16.13.0
+        version: 16.14.0
+      react-dom:
+        specifier: ^16.13.0
+        version: 16.14.0(react@16.14.0)
+    devDependencies:
+      '@babel/core':
+        specifier: 7.23.5
+        version: 7.23.5
+      '@babel/preset-react':
+        specifier: 7.23.3
+        version: 7.23.3(@babel/core@7.23.5)
+      '@rspack/cli':
+        specifier: 0.4.5-canary-ac74516-20240102083734
+        version: 0.4.5-canary-ac74516-20240102083734(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack-cli@4.10.0)(webpack@5.89.0)
+      '@rspack/core':
+        specifier: 0.4.5-canary-ac74516-20240102083734
+        version: 0.4.5-canary-ac74516-20240102083734
+      '@rspack/dev-server':
+        specifier: 0.4.5-canary-ac74516-20240102083734
+        version: 0.4.5-canary-ac74516-20240102083734(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack-cli@4.10.0)(webpack@5.89.0)
+      babel-loader:
+        specifier: 8.2.5
+        version: 8.2.5(@babel/core@7.23.5)(webpack@5.89.0)
+      html-webpack-plugin:
+        specifier: 5.6.0
+        version: 5.6.0(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack@5.89.0)
+      serve:
+        specifier: 14.2.1
+        version: 14.2.1
+      webpack:
+        specifier: 5.89.0
+        version: 5.89.0(webpack-cli@4.10.0)
+      webpack-cli:
+        specifier: 4.10.0
+        version: 4.10.0(webpack-bundle-analyzer@4.10.1)(webpack-dev-server@4.15.1)(webpack@5.89.0)
+      webpack-dev-server:
+        specifier: 4.15.1
+        version: 4.15.1(webpack-cli@4.10.0)(webpack@5.89.0)
+
+  dynamic-system-host/app3:
+    dependencies:
+      '@module-federation/runtime':
+        specifier: 0.0.0-canary-1701694314517
+        version: 0.0.0-canary-1701694314517
+      moment:
+        specifier: ^2.29.4
+        version: 2.29.4
+      react:
+        specifier: ^16.13.0
+        version: 16.14.0
+      react-dom:
+        specifier: ^16.13.0
+        version: 16.14.0(react@16.14.0)
+      react-redux:
+        specifier: ^7.2.0
+        version: 7.2.9(react-dom@16.14.0)(react@16.14.0)
+      redux:
+        specifier: ^4.0.5
+        version: 4.2.1
+    devDependencies:
+      '@babel/core':
+        specifier: 7.23.5
+        version: 7.23.5
+      '@babel/preset-react':
+        specifier: 7.23.3
+        version: 7.23.3(@babel/core@7.23.5)
+      '@rspack/cli':
+        specifier: 0.4.5-canary-ac74516-20240102083734
+        version: 0.4.5-canary-ac74516-20240102083734(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack-cli@4.10.0)(webpack@5.89.0)
+      '@rspack/core':
+        specifier: 0.4.5-canary-ac74516-20240102083734
+        version: 0.4.5-canary-ac74516-20240102083734
+      '@rspack/dev-server':
+        specifier: 0.4.5-canary-ac74516-20240102083734
+        version: 0.4.5-canary-ac74516-20240102083734(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack-cli@4.10.0)(webpack@5.89.0)
+      babel-loader:
+        specifier: 8.2.5
+        version: 8.2.5(@babel/core@7.23.5)(webpack@5.89.0)
+      html-webpack-plugin:
+        specifier: 5.6.0
+        version: 5.6.0(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack@5.89.0)
+      serve:
+        specifier: 14.2.1
+        version: 14.2.1
+      webpack:
+        specifier: 5.89.0
+        version: 5.89.0(webpack-cli@4.10.0)
+      webpack-cli:
+        specifier: 4.10.0
+        version: 4.10.0(webpack-bundle-analyzer@4.10.1)(webpack-dev-server@4.15.1)(webpack@5.89.0)
+      webpack-dev-server:
+        specifier: 4.15.1
+        version: 4.15.1(webpack-cli@4.10.0)(webpack@5.89.0)
+
   federated-css: {}
 
   federated-css-react-ssr: {}
@@ -14497,6 +14656,7 @@ packages:
   /@babel/compat-data@7.23.3:
     resolution: {integrity: sha512-BmR4bWbDIoFJmJ9z2cZ8Gmm2MXgEDgjdWgpKmKWUt54UGFJdlj31ECtbaDvCG/qVdG3AQ1SfpZEs01lUFbzLOQ==}
     engines: {node: '>=6.9.0'}
+    dev: true
 
   /@babel/compat-data@7.23.5:
     resolution: {integrity: sha512-uU27kfDRlhfKl+w1U6vp16IuvSLtjAxdArVXPa9BvLkrr7CYIsxH5adpHObeAGY/41+syctUWOZ140a2Rvkgjw==}
@@ -14819,7 +14979,7 @@ packages:
     resolution: {integrity: sha512-y6EEzULok0Qvz8yyLkCvVX+02ic+By2UdOhylwUOvOn9dvYc9mKICJuuU1n1XBI02YWsNsnrY1kc6DVbjcXbtw==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/compat-data': 7.23.3
+      '@babel/compat-data': 7.23.5
       '@babel/helper-validator-option': 7.23.5
       browserslist: 4.22.1
       lru-cache: 5.1.1
@@ -14833,8 +14993,8 @@ packages:
     dependencies:
       '@babel/core': 7.11.1
       '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-environment-visitor': 7.22.5
-      '@babel/helper-function-name': 7.22.5
+      '@babel/helper-environment-visitor': 7.22.20
+      '@babel/helper-function-name': 7.23.0
       '@babel/helper-member-expression-to-functions': 7.22.15
       '@babel/helper-optimise-call-expression': 7.22.5
       '@babel/helper-replace-supers': 7.22.9(@babel/core@7.11.1)
@@ -14851,8 +15011,8 @@ packages:
     dependencies:
       '@babel/core': 7.12.10
       '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-environment-visitor': 7.22.5
-      '@babel/helper-function-name': 7.22.5
+      '@babel/helper-environment-visitor': 7.22.20
+      '@babel/helper-function-name': 7.23.0
       '@babel/helper-member-expression-to-functions': 7.22.15
       '@babel/helper-optimise-call-expression': 7.22.5
       '@babel/helper-replace-supers': 7.22.9(@babel/core@7.12.10)
@@ -14869,8 +15029,8 @@ packages:
     dependencies:
       '@babel/core': 7.18.10
       '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-environment-visitor': 7.22.5
-      '@babel/helper-function-name': 7.22.5
+      '@babel/helper-environment-visitor': 7.22.20
+      '@babel/helper-function-name': 7.23.0
       '@babel/helper-member-expression-to-functions': 7.22.15
       '@babel/helper-optimise-call-expression': 7.22.5
       '@babel/helper-replace-supers': 7.22.9(@babel/core@7.18.10)
@@ -14887,8 +15047,8 @@ packages:
     dependencies:
       '@babel/core': 7.20.12
       '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-environment-visitor': 7.22.5
-      '@babel/helper-function-name': 7.22.5
+      '@babel/helper-environment-visitor': 7.22.20
+      '@babel/helper-function-name': 7.23.0
       '@babel/helper-member-expression-to-functions': 7.22.15
       '@babel/helper-optimise-call-expression': 7.22.5
       '@babel/helper-replace-supers': 7.22.9(@babel/core@7.20.12)
@@ -14905,8 +15065,8 @@ packages:
     dependencies:
       '@babel/core': 7.22.17
       '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-environment-visitor': 7.22.5
-      '@babel/helper-function-name': 7.22.5
+      '@babel/helper-environment-visitor': 7.22.20
+      '@babel/helper-function-name': 7.23.0
       '@babel/helper-member-expression-to-functions': 7.22.15
       '@babel/helper-optimise-call-expression': 7.22.5
       '@babel/helper-replace-supers': 7.22.9(@babel/core@7.22.17)
@@ -14923,8 +15083,8 @@ packages:
     dependencies:
       '@babel/core': 7.23.3
       '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-environment-visitor': 7.22.5
-      '@babel/helper-function-name': 7.22.5
+      '@babel/helper-environment-visitor': 7.22.20
+      '@babel/helper-function-name': 7.23.0
       '@babel/helper-member-expression-to-functions': 7.22.15
       '@babel/helper-optimise-call-expression': 7.22.5
       '@babel/helper-replace-supers': 7.22.9(@babel/core@7.23.3)
@@ -21683,7 +21843,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.23.3
+      '@babel/compat-data': 7.23.5
       '@babel/core': 7.22.17
       '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
@@ -22082,7 +22242,7 @@ packages:
     dependencies:
       '@babel/core': 7.22.17
       '@babel/helper-plugin-utils': 7.22.5
-      '@babel/helper-validator-option': 7.22.15
+      '@babel/helper-validator-option': 7.23.5
       '@babel/plugin-syntax-jsx': 7.23.3(@babel/core@7.22.17)
       '@babel/plugin-transform-modules-commonjs': 7.23.3(@babel/core@7.22.17)
       '@babel/plugin-transform-typescript': 7.23.3(@babel/core@7.22.17)
@@ -29570,6 +29730,12 @@ packages:
       '@module-federation/webpack-bundler-runtime': 0.0.0-next-20240105144747
     dev: true
 
+  /@module-federation/runtime@0.0.0-canary-1701694314517:
+    resolution: {integrity: sha512-qTOuEI+EwHEHQy/5J8KQ7uJbcO30fNZBqOMZhln6Iq605heXOwzvYUleQEMtjiVw2m0zpkMyqjiRUU7xkjpsnA==}
+    dependencies:
+      '@module-federation/sdk': 0.0.0-canary-1701694314517
+    dev: false
+
   /@module-federation/runtime@0.0.0-next-20231225095220:
     resolution: {integrity: sha512-tsST3igVpXKclGpqq2NNm1wzROks29PGte7GCgSPhoaFVNg076Nl8XzFNPGflCF6g/z13oFw/vahYpBAHkEZgQ==}
     dependencies:
@@ -29597,6 +29763,10 @@ packages:
     dependencies:
       '@module-federation/sdk': 0.0.8
     dev: true
+
+  /@module-federation/sdk@0.0.0-canary-1701694314517:
+    resolution: {integrity: sha512-qDv5/M2pbjj8PlA7vsWgvtaC/JbrBL5HYd2aGlWQWdK60c1HhcEx9t25QUIZUiPoTh1CGZRimS+QI7EsQltc3w==}
+    dev: false
 
   /@module-federation/sdk@0.0.0-next-20231225095220:
     resolution: {integrity: sha512-0vS5UXCkbKyotZIXAsF+mrL8PQ+xKmKfaDYHdBxXR4kyGSRjSRRokSKkXZNVfPEhy1f1z/oAgUo5AZoOisrrQA==}
@@ -29746,6 +29916,26 @@ packages:
       - babel-plugin-macros
       - react-dom
       - sass
+    dev: false
+
+  /@module-federation/utilities@1.5.0(react-dom@16.14.0)(react@16.14.0)(webpack@5.89.0):
+    resolution: {integrity: sha512-LK0B+AYVSZXlCun8rasNVAXr7C+onqrO8f72Uw4Eg7c7vSY9mp8GN1IA+ewDH8UAiVAp5f0AfVwEIW9oQbeskg==}
+    peerDependencies:
+      next: ^12 || ^13
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+      webpack: ^5.40.0
+    peerDependenciesMeta:
+      next:
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
+      webpack: 5.89.0(webpack-cli@4.10.0)
     dev: false
 
   /@module-federation/utilities@1.5.0(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0):
@@ -34226,6 +34416,33 @@ packages:
       - utf-8-validate
       - webpack-cli
 
+  /@rspack/cli@0.4.5-canary-ac74516-20240102083734(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack-cli@4.10.0)(webpack@5.89.0):
+    resolution: {integrity: sha512-PC0FNAjOM9RvFpcI586WdtWhdKT/PFzmyc2c3glXeQYYR0OrWjntIUdkgKY2TSO25hT9TjOa6RMrIvBwYf9aJw==}
+    hasBin: true
+    peerDependencies:
+      '@rspack/core': '>=0.4.0'
+    dependencies:
+      '@discoveryjs/json-ext': 0.5.7
+      '@rspack/core': 0.4.5-canary-ac74516-20240102083734
+      '@rspack/dev-server': 0.4.5-canary-ac74516-20240102083734(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack-cli@4.10.0)(webpack@5.89.0)
+      colorette: 2.0.19
+      exit-hook: 3.2.0
+      interpret: 3.1.1
+      rechoir: 0.8.0
+      semver: 6.3.1
+      webpack-bundle-analyzer: 4.6.1
+      yargs: 17.6.2
+    transitivePeerDependencies:
+      - '@types/express'
+      - bufferutil
+      - debug
+      - react-refresh
+      - supports-color
+      - utf-8-validate
+      - webpack
+      - webpack-cli
+    dev: true
+
   /@rspack/cli@0.4.5-canary-ac74516-20240102083734(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack-cli@5.1.4)(webpack@5.89.0):
     resolution: {integrity: sha512-PC0FNAjOM9RvFpcI586WdtWhdKT/PFzmyc2c3glXeQYYR0OrWjntIUdkgKY2TSO25hT9TjOa6RMrIvBwYf9aJw==}
     hasBin: true
@@ -34379,6 +34596,32 @@ packages:
       - uglify-js
       - utf-8-validate
       - webpack-cli
+
+  /@rspack/dev-server@0.4.5-canary-ac74516-20240102083734(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack-cli@4.10.0)(webpack@5.89.0):
+    resolution: {integrity: sha512-8SSLx3Xm2rClpAv1LfoRwzWVKveHF87GRr1XyloQvn+kKmNhXu9ZoIB8boxhOc4cn/XQDUQqGHj6hQh8k3IGKA==}
+    peerDependencies:
+      '@rspack/core': '*'
+    dependencies:
+      '@rspack/core': 0.4.5-canary-ac74516-20240102083734
+      '@rspack/plugin-react-refresh': 0.4.5-canary-ac74516-20240102083734
+      chokidar: 3.5.3
+      connect-history-api-fallback: 2.0.0
+      express: 4.18.1
+      http-proxy-middleware: 2.0.6(@types/express@4.17.14)
+      mime-types: 2.1.35
+      webpack-dev-middleware: 6.0.2(webpack@5.89.0)
+      webpack-dev-server: 4.13.1(webpack-cli@4.10.0)(webpack@5.89.0)
+      ws: 8.8.1
+    transitivePeerDependencies:
+      - '@types/express'
+      - bufferutil
+      - debug
+      - react-refresh
+      - supports-color
+      - utf-8-validate
+      - webpack
+      - webpack-cli
+    dev: true
 
   /@rspack/dev-server@0.4.5-canary-ac74516-20240102083734(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack-cli@5.1.4)(webpack@5.89.0):
     resolution: {integrity: sha512-8SSLx3Xm2rClpAv1LfoRwzWVKveHF87GRr1XyloQvn+kKmNhXu9ZoIB8boxhOc4cn/XQDUQqGHj6hQh8k3IGKA==}
@@ -69064,7 +69307,7 @@ packages:
   /redux@4.2.1:
     resolution: {integrity: sha512-LAUYz4lc+Do8/g7aeRa8JkyDErK6ekstQaqWQrNRW//MY1TvCEpMtpTWvlQ+FPbWCx+Xixu/6SHt5N0HR+SB4w==}
     dependencies:
-      '@babel/runtime': 7.23.2
+      '@babel/runtime': 7.23.7
     dev: false
 
   /reflect-metadata@0.1.13:
