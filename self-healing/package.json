@@ -2,6 +2,7 @@
   "name": "self-healing",
   "private": true,
   "version": "0.0.0",
+  "description": "This example demos self-healing capabilities with Module Federation. `app2` depends on and is expecting a shared dependency to be provided in `app1`.",
   "scripts": {
     "start": "pnpm --parallel --filter self-healing_app* --parallel start",
     "build": "pnpm run --filter self-healing_app* build",
