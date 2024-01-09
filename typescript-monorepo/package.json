@@ -2,6 +2,7 @@
   "name": "typescript-monorepo",
   "private": true,
   "version": "0.0.0",
+  "description": "This example demos a basic host/remote application with TypeScript using yarn workspaces and using [typesVersions](https://www.typescriptlang.org/docs/handbook/declaration-files/publishing.html#version-selection-with-typesversions)",
   "scripts": {
     "start": "pnpm --filter typescript-monorepo_app* --parallel start",
     "build": "pnpm --filter typescript-monorepo_app* build",
