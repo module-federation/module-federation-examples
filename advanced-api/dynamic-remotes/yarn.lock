@@ -322,6 +322,14 @@
   resolved "https://registry.npmjs.org/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
+"@module-federation/enhanced@^0.0.0-next-20240105144747":
+  version "0.0.0-next-20240108101321"
+  resolved "https://registry.yarnpkg.com/@module-federation/enhanced/-/enhanced-0.0.0-next-20240108101321.tgz#a91223c291a5a2582d5896bf46e1cca65400815f"
+  integrity sha512-xYtplIgAqcH/O28yD8IWPJWcsWIfldipzFW5uLdzlZX7E0l12ii5V+enBo/HONj1Xi3Amd7sD3HQTKwMm2piHQ==
+  dependencies:
+    "@module-federation/runtime-tools" "0.0.0-next-20240108101321"
+    "@module-federation/sdk" "0.0.0-next-20240108101321"
+
 "@module-federation/runtime-tools@0.0.0-next-20240102063242":
   version "0.0.0-next-20240102063242"
   resolved "https://registry.npmjs.org/@module-federation/runtime-tools/-/runtime-tools-0.0.0-next-20240102063242.tgz#e2e54a27ed3d0d1c8d82ceb183c1f0162f1f7039"
@@ -330,6 +338,14 @@
     "@module-federation/runtime" "0.0.0-next-20240102063242"
     "@module-federation/webpack-bundler-runtime" "0.0.0-next-20240102063242"
 
+"@module-federation/runtime-tools@0.0.0-next-20240108101321":
+  version "0.0.0-next-20240108101321"
+  resolved "https://registry.yarnpkg.com/@module-federation/runtime-tools/-/runtime-tools-0.0.0-next-20240108101321.tgz#d3d6e5bad167e279a8404adc03cdf9ce77f89933"
+  integrity sha512-SXyF3vV+L5yiSjEQ4PbAsFcjVYTsDvpx1qkiBhu1C/ARhrffKPx/6K5tIRvdsVghhH6hyrJEfSLytZzhsr8SBg==
+  dependencies:
+    "@module-federation/runtime" "0.0.0-next-20240108101321"
+    "@module-federation/webpack-bundler-runtime" "0.0.0-next-20240108101321"
+
 "@module-federation/runtime@0.0.0-next-20240102063242":
   version "0.0.0-next-20240102063242"
   resolved "https://registry.npmjs.org/@module-federation/runtime/-/runtime-0.0.0-next-20240102063242.tgz#fdce1b7ed8bf31ae00fe92d2a596d4b77a600fb7"
@@ -337,10 +353,34 @@
   dependencies:
     "@module-federation/sdk" "0.0.0-next-20240102063242"
 
+"@module-federation/runtime@0.0.0-next-20240108101321":
+  version "0.0.0-next-20240108101321"
+  resolved "https://registry.yarnpkg.com/@module-federation/runtime/-/runtime-0.0.0-next-20240108101321.tgz#3e21aada27f84c1e600f53b5afc33a78b7d663e3"
+  integrity sha512-iKFJ2VHKX4Gp6KNaei0dgzqNmiezvs99nFXCQxiULsA6ap4memr/EY8O7BdVE9w1QcrhcxWyvTlU6NS/GiOLpw==
+  dependencies:
+    "@module-federation/sdk" "0.0.0-next-20240108101321"
+
+"@module-federation/runtime@0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@module-federation/runtime/-/runtime-0.0.8.tgz#21929e1e7499d9f01f8c93abd71620815ca9db95"
+  integrity sha512-Hi9g10aHxHdQ7CbchSvke07YegYwkf162XPOmixNmJr5Oy4wVa2d9yIVSrsWFhBRbbvM5iJP6GrSuEq6HFO3ug==
+  dependencies:
+    "@module-federation/sdk" "0.0.8"
+
 "@module-federation/sdk@0.0.0-next-20240102063242":
   version "0.0.0-next-20240102063242"
   resolved "https://registry.npmjs.org/@module-federation/sdk/-/sdk-0.0.0-next-20240102063242.tgz#6f4843b5a074f6fcde1f3d31d7672df5bcce725c"
   integrity sha512-yj6osXfRHu1cOareK1Fkh/fAnym93f4McfUIARL53Kdgj2hTIoj/W3SNPtuv6Xo+mDhAoZhyHVqPGpckTG1SqA==
+
+"@module-federation/sdk@0.0.0-next-20240108101321":
+  version "0.0.0-next-20240108101321"
+  resolved "https://registry.yarnpkg.com/@module-federation/sdk/-/sdk-0.0.0-next-20240108101321.tgz#20dbe395653601cd281973713f2c619b7fb408cd"
+  integrity sha512-joXwGd+5/v+oI219ws1Xi6/rhpZW9Ui6aiH80DmB4mDGu54VZ9oHCgjlfXJMmMYQf+cAYNPscCJ44gMkPF+zMw==
+
+"@module-federation/sdk@0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@module-federation/sdk/-/sdk-0.0.8.tgz#caaae677b06a22be8c6b3f10e1c58a112a6f8830"
+  integrity sha512-lkasywBItjUTNT0T0IskonDE2E/2tXE9UhUCPVoDL3NteDUSFGg4tpkF+cey1pD8mHh0XJcGrCuOW7s96peeAg==
 
 "@module-federation/webpack-bundler-runtime@0.0.0-next-20240102063242":
   version "0.0.0-next-20240102063242"
@@ -349,6 +389,14 @@
   dependencies:
     "@module-federation/runtime" "0.0.0-next-20240102063242"
     "@module-federation/sdk" "0.0.0-next-20240102063242"
+
+"@module-federation/webpack-bundler-runtime@0.0.0-next-20240108101321":
+  version "0.0.0-next-20240108101321"
+  resolved "https://registry.yarnpkg.com/@module-federation/webpack-bundler-runtime/-/webpack-bundler-runtime-0.0.0-next-20240108101321.tgz#475a8c5f4e08fdfa3706b478a6340977911eef06"
+  integrity sha512-twllJCz5wtPGZPNzZPxTUmQUD+gKN8spDUFW0viPc5g4oWkY8NqJUTIreHdAGvVac2Wiubt0/bC6X2+LYymQ1A==
+  dependencies:
+    "@module-federation/runtime" "0.0.0-next-20240108101321"
+    "@module-federation/sdk" "0.0.0-next-20240108101321"
 
 "@polka/url@^1.0.0-next.20":
   version "1.0.0-next.24"
@@ -2018,10 +2066,10 @@ html-minifier-terser@^6.0.2:
     relateurl "^0.2.7"
     terser "^5.10.0"
 
-html-webpack-plugin@5.5.3:
-  version "5.5.3"
-  resolved "https://registry.npmjs.org/html-webpack-plugin/-/html-webpack-plugin-5.5.3.tgz#72270f4a78e222b5825b296e5e3e1328ad525a3e"
-  integrity sha512-6YrDKTuqaP/TquFH7h4srYWsZx+x6k6+FbsTm0ziCwGHDP78Unr1r9F/H4+sGmMbX08GQcJ+K64x55b+7VM/jg==
+html-webpack-plugin@5.6.0:
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-5.6.0.tgz#50a8fa6709245608cb00e811eacecb8e0d7b7ea0"
+  integrity sha512-iwaY4wzbe48AfKLZ/Cc8k0L+FKG6oSNRaZ8x5A/T/IVDGyXcbHncM9TdDa93wn0FsSm82FhTKW7f3vS61thXAw==
   dependencies:
     "@types/html-minifier-terser" "^6.0.0"
     html-minifier-terser "^6.0.2"
