@@ -3254,6 +3254,9 @@ importers:
 
   dynamic-system-host/app1:
     dependencies:
+      '@module-federation/runtime':
+        specifier: next
+        version: 0.0.0-next-20240105144747
       '@module-federation/utilities':
         specifier: ^1.4.0
         version: 1.7.0(react-dom@16.14.0)(react@16.14.0)(webpack@5.89.0)
@@ -4370,6 +4373,8 @@ importers:
         specifier: 5.10.0
         version: 5.10.0
 
+  federated-css/consumers-nextjs: {}
+
   federated-css/consumers-nextjs/any-combination:
     dependencies:
       '@module-federation/nextjs-mf':
@@ -4524,6 +4529,8 @@ importers:
       eslint-config-next:
         specifier: 13.5.6
         version: 13.5.6(eslint@8.55.0)(typescript@5.2.2)
+
+  federated-css/consumers-react: {}
 
   federated-css/consumers-react/any-combination:
     dependencies:
@@ -4821,6 +4828,8 @@ importers:
         specifier: 4.15.1
         version: 4.15.1(webpack-cli@4.10.0)(webpack@5.89.0)
 
+  federated-css/expose-remotes: {}
+
   federated-css/expose-remotes/expose-css:
     dependencies:
       css-loader:
@@ -4842,12 +4851,21 @@ importers:
       '@babel/preset-react':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
+      '@rspack/cli':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
+      '@rspack/core':
+        specifier: ^0.4.5
+        version: 0.4.5
+      '@rspack/dev-server':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.5)(webpack@5.89.0)
       html-webpack-plugin:
         specifier: 5.6.0
-        version: 5.6.0(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack@5.89.0)
+        version: 5.6.0(@rspack/core@0.4.5)(webpack@5.89.0)
       serve:
         specifier: 14.2.1
         version: 14.2.1
@@ -4882,12 +4900,21 @@ importers:
       '@babel/preset-react':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
+      '@rspack/cli':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
+      '@rspack/core':
+        specifier: ^0.4.5
+        version: 0.4.5
+      '@rspack/dev-server':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.5)(webpack@5.89.0)
       html-webpack-plugin:
         specifier: 5.6.0
-        version: 5.6.0(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack@5.89.0)
+        version: 5.6.0(@rspack/core@0.4.5)(webpack@5.89.0)
       serve:
         specifier: 14.2.1
         version: 14.2.1
@@ -4919,12 +4946,21 @@ importers:
       '@babel/preset-react':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
+      '@rspack/cli':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
+      '@rspack/core':
+        specifier: ^0.4.5
+        version: 0.4.5
+      '@rspack/dev-server':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.5)(webpack@5.89.0)
       html-webpack-plugin:
         specifier: 5.6.0
-        version: 5.6.0(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack@5.89.0)
+        version: 5.6.0(@rspack/core@0.4.5)(webpack@5.89.0)
       serve:
         specifier: 14.2.1
         version: 14.2.1
@@ -4962,12 +4998,21 @@ importers:
       '@babel/preset-react':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
+      '@rspack/cli':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
+      '@rspack/core':
+        specifier: ^0.4.5
+        version: 0.4.5
+      '@rspack/dev-server':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.5)(webpack@5.89.0)
       html-webpack-plugin:
         specifier: 5.6.0
-        version: 5.6.0(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack@5.89.0)
+        version: 5.6.0(@rspack/core@0.4.5)(webpack@5.89.0)
       serve:
         specifier: 14.2.1
         version: 14.2.1
@@ -5008,12 +5053,21 @@ importers:
       '@babel/preset-react':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
+      '@rspack/cli':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
+      '@rspack/core':
+        specifier: ^0.4.5
+        version: 0.4.5
+      '@rspack/dev-server':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.5)(webpack@5.89.0)
       html-webpack-plugin:
         specifier: 5.6.0
-        version: 5.6.0(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack@5.89.0)
+        version: 5.6.0(@rspack/core@0.4.5)(webpack@5.89.0)
       serve:
         specifier: 14.2.1
         version: 14.2.1
@@ -5045,12 +5099,21 @@ importers:
       '@babel/preset-react':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
+      '@rspack/cli':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
+      '@rspack/core':
+        specifier: ^0.4.5
+        version: 0.4.5
+      '@rspack/dev-server':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.5)(webpack@5.89.0)
       html-webpack-plugin:
         specifier: 5.6.0
-        version: 5.6.0(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack@5.89.0)
+        version: 5.6.0(@rspack/core@0.4.5)(webpack@5.89.0)
       serve:
         specifier: 14.2.1
         version: 14.2.1
@@ -5091,12 +5154,21 @@ importers:
       '@babel/preset-react':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
+      '@rspack/cli':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
+      '@rspack/core':
+        specifier: ^0.4.5
+        version: 0.4.5
+      '@rspack/dev-server':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.5)(webpack@5.89.0)
       html-webpack-plugin:
         specifier: 5.6.0
-        version: 5.6.0(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack@5.89.0)
+        version: 5.6.0(@rspack/core@0.4.5)(webpack@5.89.0)
       serve:
         specifier: 14.2.1
         version: 14.2.1
@@ -5140,12 +5212,21 @@ importers:
       '@babel/preset-react':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
+      '@rspack/cli':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
+      '@rspack/core':
+        specifier: ^0.4.5
+        version: 0.4.5
+      '@rspack/dev-server':
+        specifier: ^0.4.5
+        version: 0.4.5(@rspack/core@0.4.5)(webpack-cli@4.10.0)
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.5)(webpack@5.89.0)
       html-webpack-plugin:
         specifier: 5.6.0
-        version: 5.6.0(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack@5.89.0)
+        version: 5.6.0(@rspack/core@0.4.5)(webpack@5.89.0)
       serve:
         specifier: 14.2.1
         version: 14.2.1
@@ -31381,7 +31462,6 @@ packages:
     resolution: {integrity: sha512-FrVEdqYi08Qmwo8PBdoE7ta+C431X1DoZGcuAGB737G+lQ/EVR/ru2kBzQD0+6S0Qu9NN3vpnD5sbOzoRI7yHg==}
     dependencies:
       '@module-federation/sdk': 0.0.0-next-20240105144747
-    dev: true
 
   /@module-federation/sdk@0.0.0-next-20231225095220:
     resolution: {integrity: sha512-0vS5UXCkbKyotZIXAsF+mrL8PQ+xKmKfaDYHdBxXR4kyGSRjSRRokSKkXZNVfPEhy1f1z/oAgUo5AZoOisrrQA==}
@@ -31391,7 +31471,6 @@ packages:
 
   /@module-federation/sdk@0.0.0-next-20240105144747:
     resolution: {integrity: sha512-3mpxLaYbO2oHPWbjEpSlaNaszImiDWa0ZcTb+BEqkpkvAUjPQoatAOSwsCZEc76C60EVuFcyqjW/7MrU4OpsLw==}
-    dev: true
 
   /@module-federation/storybook-addon@0.2.0(@babel/core@7.23.5)(@module-federation/utilities@1.7.0)(@storybook/core-common@6.5.16)(@storybook/node-logger@6.5.16)(eslint@8.55.0)(nx@17.1.3)(typescript@5.2.2)(webpack-virtual-modules@0.6.1)(webpack@5.89.0):
     resolution: {integrity: sha512-K+AgmzDfukKYiebzvNt9V6U73Y12nEBF7uk2bvwF0oKeIDStNE0sAbeHFlQKxwOLfvYHIzn6pW6WgwBuOmWiSA==}
@@ -33084,6 +33163,14 @@ packages:
       tslib: 2.5.0
     dev: true
 
+  /@nrwl/devkit@16.0.0(nx@16.0.0):
+    resolution: {integrity: sha512-ycd4wD4v1N/ywjU1cwTVCPQJwxnGjEsWIll5z5cMtfHwJf+0OhMTqC3zeZibIwnjjoh721pyEzXODyUmjkGmVw==}
+    dependencies:
+      '@nx/devkit': 16.0.0(nx@16.0.0)
+    transitivePeerDependencies:
+      - nx
+    dev: true
+
   /@nrwl/devkit@16.0.0(nx@17.1.3):
     resolution: {integrity: sha512-ycd4wD4v1N/ywjU1cwTVCPQJwxnGjEsWIll5z5cMtfHwJf+0OhMTqC3zeZibIwnjjoh721pyEzXODyUmjkGmVw==}
     dependencies:
@@ -34068,7 +34155,7 @@ packages:
     peerDependencies:
       nx: '>= 15 <= 17'
     dependencies:
-      '@nrwl/devkit': 16.0.0(nx@17.1.3)
+      '@nrwl/devkit': 16.0.0(nx@16.0.0)
       ejs: 3.1.9
       ignore: 5.2.4
       nx: 16.0.0
