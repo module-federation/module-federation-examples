@@ -2,6 +2,36 @@
 const fs = require('fs');
 const path = require('path');
 
+// Function to recursively search for configuration files
+function searchConfigFiles(dirPath) {
+  // List files to search for
+  const configFiles = ['rspack.config.js', 'rspack.config.ts', 'rsbuild.config.js', 'rsbuild.config.ts', 'webpack.config.js'];
+  const foundFiles = { rspack: false, webpack: false };
+
+  // Traverse the directory tree
+  const files = fs.readdirSync(dirPath);
+  for (let i = 0; i < files.length; i++) {
+    const filePath = path.resolve(dirPath, files[i]);
+    const stat = fs.statSync(filePath);
+
+    // If the file is a directory and not 'node_modules', search it for configuration files
+    if (stat.isDirectory() && files[i] !== 'node_modules') {
+      const found = searchConfigFiles(filePath);
+      foundFiles.rspack = foundFiles.rspack || found.rspack;
+      foundFiles.webpack = foundFiles.webpack || found.webpack;
+    } else if (configFiles.includes(files[i])) {
+      // If the file is a configuration file, update foundFiles
+      if (files[i].includes('rspack') || files[i].includes('rsbuild')) {
+        foundFiles.rspack = true;
+      } else if (files[i].includes('webpack')) {
+        foundFiles.webpack = true;
+      }
+    }
+  }
+
+  return foundFiles;
+}
+
 // Function to get directory tree
 function getDirectoryTree(dirPath, rootPath, depth = 0) {
   // If there's no 'package.json' in the directory, return null
@@ -9,7 +39,7 @@ function getDirectoryTree(dirPath, rootPath, depth = 0) {
     return null;
   }
 
-  const result = { name: path.basename(dirPath), path: path.relative(rootPath, dirPath), children: [], description: 'No description' };
+  const result = { name: path.basename(dirPath), path: path.relative(rootPath, dirPath), children: [], description: 'No description', rspack: false, webpack: false };
 
   // Check if 'package.json' exists in the directory
   const packageJson = require(path.join(dirPath, 'package.json'));
@@ -23,6 +53,11 @@ function getDirectoryTree(dirPath, rootPath, depth = 0) {
 
   result.name = packageJson.name || result.name;
   result.description = packageJson.description || result.description;
+
+  // Check for 'rspack' or 'webpack' configuration files
+  const foundFiles = searchConfigFiles(dirPath);
+  result.rspack = foundFiles.rspack;
+  result.webpack = foundFiles.webpack;
 
   const files = fs.readdirSync(dirPath);
 
@@ -49,7 +84,7 @@ function treeToMarkdown(tree, depth = 0) {
     return '';
   }
 
-  let markdown = `${'  '.repeat(depth)}- [${tree.name}](${tree.path}) &mdash; ${tree.description}\n`;
+  let markdown = `${'  '.repeat(depth)}- [${tree.name}](${tree.path}) -- ${tree.rspack ? '✅ rspack' : '❌ rspack'} | ${tree.webpack ? '✅ webpack' : '❌ webpack'} <br> ${tree.description} \n`;
 
   tree.children.forEach((child) => {
     markdown += treeToMarkdown(child, depth + 1);
