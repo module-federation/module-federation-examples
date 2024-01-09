@@ -9,11 +9,16 @@
     "serve": "14.2.1",
     "webpack": "5.89.0",
     "webpack-cli": "4.10.0",
-    "webpack-dev-server": "4.15.1"
+    "webpack-dev-server": "4.15.1",
+    "@rspack/core": "^0.4.5",
+    "@rspack/cli": "^0.4.5",
+    "@rspack/dev-server": "^0.4.5"
   },
   "scripts": {
-    "start": "webpack-cli serve",
-    "build": "webpack --mode production",
+    "start": "rspack serve",
+    "legacy:start": "webpack-cli serve",
+    "build": "rspack --mode production",
+    "legacy:build": "webpack --mode production",
     "serve": "serve dist -p 4000",
     "clean": "rm -rf dist"
   },
