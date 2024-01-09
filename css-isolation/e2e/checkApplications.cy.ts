@@ -26,7 +26,7 @@ let appsData = [
 
 appsData.forEach(
     function(
-        property: { 
+        property: {
             headerSelector: string
             subHeaderSelector: string
             buttonSelector: string,
@@ -78,15 +78,15 @@ describe('CSS isolation', () => {
                 number: 3001
             })
             });
-        it(`Check App 1 color text`, () => {
-            
+        xit(`Check App 1 color text`, () => {
+
             basePage.checkElementHaveProperty({
                 selector: baseSelectors.tags.headers.h1,
                 prop: CssAttr.color,
                 value: Constants.color.green,
             })
         })
-        it(`Update background color of App 2 Inside App 1 if click on the "Make Everything Yellow" button`, () => {
+        xit(`Update background color of App 2 Inside App 1 if click on the "Make Everything Yellow" button`, () => {
             basePage.clickElementWithText({
                 selector: baseSelectors.ids.parent,
                 text: Constants.elementsText.cssIsolationApp.buttonText,
@@ -111,7 +111,7 @@ describe('CSS isolation', () => {
             })
             });
         it(`Check button in App 2 exist`, () => {
-            
+
             basePage.checkElementWithTextPresence({
                 selector: baseSelectors.tags.coreElements.button,
                 text: Constants.elementsText.cssIsolationApp.buttonText

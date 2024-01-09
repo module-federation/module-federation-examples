@@ -2,6 +2,7 @@
   "name": "server-side-render-only",
   "private": true,
   "version": "0.0.0",
+  "description": "Module Federation Server Side Rendering, no client side implementation",
   "scripts": {
     "start": "concurrently \"npm run buildHost\" \"npm run startHost\" \"npm run buildRemote\" \"npm run startRemote\"",
     "buildHost": "webpack --config=hostServer/webpack.config.js -w",
@@ -15,9 +16,9 @@
     "name": "Pini Tayeb"
   },
   "devDependencies": {
-    "@babel/core": "7.23.3",
+    "@babel/core": "7.23.5",
     "@babel/polyfill": "7.12.1",
-    "@babel/preset-env": "7.23.3",
+    "@babel/preset-env": "7.23.5",
     "@babel/preset-react": "7.23.3",
     "babel-loader": "8.2.5",
     "concurrently": "7.6.0",

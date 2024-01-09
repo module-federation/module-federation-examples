@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.11.0
+        uses: styfle/cancel-workflow-action@0.12.0
         with:
           access_token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -151,13 +151,24 @@ jobs:
           echo "PNPM changed - install deps ... "
           npm i pnpm -g
           pnpm i --frozen-lockfile
+          npx cypress install
+          npx cypress verify
 
-      - name: Run sample e2e tests
+      - name: Run sample webpack e2e tests
         timeout-minutes: 30
-        id: run-sample-e2e-tests
+        id: run-webpack-e2e-tests
+        run: |
+          node -v
+          pnpm --filter "${{ matrix.container }}" legacy:e2e:ci
+          (lsof -i tcp:3000-3999 -i tcp:4000-4999 -i tcp:8080-8100 | awk 'NR!=1 {print $2}' | xargs -r kill) 2> /dev/null
+
+      - name: Run sample rspack e2e tests
+        timeout-minutes: 30
+        id: run-rspack-e2e-tests
         run: |
           node -v
           pnpm --filter "${{ matrix.container }}" e2e:ci
+          (lsof -i tcp:3000-3999 -i tcp:4000-4999 -i tcp:8080-8100 | awk 'NR!=1 {print $2}' | xargs -r kill) 2> /dev/null
 
       - name: Create artifacts for Allure report
         id: create-artifacts-allure-report

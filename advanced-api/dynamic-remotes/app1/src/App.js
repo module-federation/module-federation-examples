@@ -1,14 +1,24 @@
 import React from 'react';
+import { init,loadRemote } from '@module-federation/runtime'
+
+init({
+  name: 'app1',
+  remotes: [
+    {
+      name:'app2',
+      entry: 'http://localhost:3002/remoteEntry.js'
+    },
+    {
+      name:'app3',
+      entry: 'http://localhost:3003/remoteEntry.js'
+    },
+  ]
+})
 
 function loadComponent(scope, module) {
   return async () => {
     // Initializes the share scope. This fills it with known provided modules from this build and all remotes
-    await __webpack_init_sharing__('default');
-    const container = window[scope]; // or get the container somewhere else
-    // Initialize the container, it may provide shared modules
-    await container.init(__webpack_share_scopes__.default);
-    const factory = await window[scope].get(module);
-    const Module = factory();
+    const Module = await loadRemote(`${scope}/${module.slice(2)}`);
     return Module;
   };
 }

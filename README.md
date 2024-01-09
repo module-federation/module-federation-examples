@@ -28,55 +28,92 @@ https://www.youtube.com/playlist?list=PLWSiF9YHHK-DqsFHGYbeAMwbd9xcZbEWJ
 https://scriptedalchemy.medium.com/
 
 # Examples
+- [advanced-apis](advanced-api) -- ✅ rspack |  ✅ webpack <br> More Examples using advanced apis or concepts
+  - [automatic-vendor-sharing](advanced-api/automatic-vendor-sharing) -- ✅ rspack |  ✅ webpack <br> This example demos automatic-vendor-sharing, each host/remote will share all vendors possible
+  - [dynamic-remotes](advanced-api/dynamic-remotes) -- ✅ rspack |  ✅ webpack <br> Basic demo of a host app loading remote components and dynamically sharing vendor code with unknown remotes, or without a Federation Plugin
+- [angular-universal-ssr](angular-universal-ssr) -- ❌ rspack |  ✅ webpack <br> Angular Universal SSR with Module Federation
+- [angular11-microfrontends-ngrx](angular11-microfrontends-ngrx) -- ❌ rspack |  ✅ webpack <br> Module Federation with Angular 11, featuring shared modules and NgRx
+- [angular11-microfrontends-ngxs](angular11-microfrontends-ngxs) -- ❌ rspack |  ✅ webpack <br> Module Federation with Angular 11, featuring shared modules and NGXS.
+- [angular14-react](angular14-react) -- ✅ rspack |  ✅ webpack <br> Module Federation for Angular 14 and React 18 apps, with NGXS state management and shared state between Angular and React modules.
+- [angular15-microfrontends-lazy-components](angular15-microfrontends-lazy-components) -- ❌ rspack |  ✅ webpack <br> Module Federation with Angular 15, featuring shared modules and NGXS state management
+- [angular15-vue3](angular15-vue3) -- ✅ rspack |  ✅ webpack <br> This project shows an example of using Webpack 5 Module Federation with Angular `15` using Vue 3 components from remote.
+- [apollo-client](apollo-client) -- ❌ rspack |  ❌ webpack <br> This example demonstrates using Apollo Client with Module Federation.
+- [basic-host-remote](basic-host-remote) -- ❌ rspack |  ❌ webpack <br> Basic Host and Remote Example
+- [bi-directional](bi-directional) -- ❌ rspack |  ❌ webpack <br> Basic Bi-directional Federation application
+- [cloud](cloud) -- ❌ rspack |  ✅ webpack <br> Various Cloud based Examples
+- [complete-react-case](complete-react-case) -- ✅ rspack |  ✅ webpack <br> A complete Module Federation Case with React.
+- [comprehensive-demo-react16](comprehensive-demo-react16) -- ✅ rspack |  ✅ webpack <br> Multi-framework comprehensive demo for React 16
+- [comprehensive-demo-react18](comprehensive-demo-react18) -- ✅ rspack |  ✅ webpack <br> Multi-framework comprehensive demo for React 18
+- [cra](cra) -- ✅ rspack |  ❌ webpack <br> Create React app Running with rsbuild
+- [cra-react-app-rewired](cra-react-app-rewired) -- ❌ rspack |  ❌ webpack <br> CRA with react-app-rewired
+- [css-isolation](css-isolation) -- ✅ rspack |  ✅ webpack <br> Demonstration of CSS isolation between host and remote apps using Shadow DOM with Module Federation. Features 'app1' (host) loading 'app2' (remote) for CSS-isolated components.
+- [different-react-versions](different-react-versions) -- ✅ rspack |  ✅ webpack <br> This example demos the ability to load two separate versions of react (v16.6.3 and v16.13.1).
+- [different-react-versions-16-17](different-react-versions-16-17) -- ✅ rspack |  ✅ webpack <br> This example demos the ability to load two separate versions of react (16 & 17).
+- [different-react-versions-16-17-typescript](different-react-versions-16-17-typescript) -- ✅ rspack |  ✅ webpack <br> TypeScript example demos the ability to load two separate versions of react.
+- [different-react-versions-16-18](different-react-versions-16-18) -- ✅ rspack |  ✅ webpack <br> Two apps, one using React 16 and the other using React 18
+- [different-react-versions-isolated](different-react-versions-isolated) -- ✅ rspack |  ✅ webpack <br> This example demos host and remote applications running in isolation with two different React versions and no shared libraries
+- [different-react-versions-typescript](different-react-versions-typescript) -- ❌ rspack |  ✅ webpack <br> No description
+- [dynamic-remotes-node](dynamic-remotes-node) -- ❌ rspack |  ✅ webpack <br> Dynamic Remotes on server side with Node Federation
+- [dynamic-system-host](dynamic-system-host) -- ✅ rspack |  ✅ webpack <br> Runtime API based Dynamic Remote Loading
+- [federated-css-mono](federated-css) -- ✅ rspack |  ✅ webpack <br> Examples Federating Styles
+  - [consumers-nextjs](federated-css/consumers-nextjs) -- ❌ rspack |  ❌ webpack <br> NextJs apps consumes exposed components in different combinations.
+  - [consumers-react](federated-css/consumers-react) -- ❌ rspack |  ✅ webpack <br> React apps consumes exposed components in different combinations.
+  - [expose-remotes](federated-css/expose-remotes) -- ✅ rspack |  ✅ webpack <br> apps exposes components with a different types of components styling
+- [federated-css-react-ssr](federated-css-react-ssr) -- ❌ rspack |  ✅ webpack <br> Example of server side rendering with module federation using React 18 and different types of component styling
+- [federated-library-from-cdn](federated-library-from-cdn) -- ❌ rspack |  ✅ webpack <br> Basic example of two applications that share the same library served from a CDN.
+- [frontend-discovery-service](frontend-discovery-service) -- ❌ rspack |  ✅ webpack <br> Demonstrates running Micro Frontends with Module Federation and Frontend Service Discovery on AWS, including Blue/Green deployment for version updates.
+- [genesis](genesis) -- ❌ rspack |  ❌ webpack <br> Vue Genesis Example
+- [i18next-nextjs-react](i18next-nextjs-react) -- ❌ rspack |  ✅ webpack <br> Demonstrates using dedicated i18next instances in micro frontends, enabling language change in one that affects all.
+- [medusa-example](medusa-example) -- ❌ rspack |  ✅ webpack <br> https://medusa.codes Demo
+- [modernjs](modernjs) -- ❌ rspack |  ❌ webpack <br> Module Federation Example for ByteDance's Modern.js Framework.
+- [nested](nested) -- ❌ rspack |  ✅ webpack <br> Demonstration of loading nested remote components: 'app1' (host) async loads 'ButtonContainer' from 'app2', which in turn async loads 'Button' from 'app3'.
+- [nextjs-react](nextjs-react) -- ❌ rspack |  ✅ webpack <br> Module Federation with NextJS and Client-Side React Remotes
+- [nextjs-ssr](nextjs-ssr) -- ❌ rspack |  ❌ webpack <br> Server Side Rendering with Next.js
+- [nextjs-ssr-react-query](nextjs-ssr-react-query) -- ❌ rspack |  ❌ webpack <br> Server Side Rendering with Next.js and React Query
+- [nextjs-v12](nextjs-v12) -- ❌ rspack |  ❌ webpack <br> Next.js 12 Example
+- [nextjs-v13](nextjs-v13) -- ❌ rspack |  ❌ webpack <br> Next.js 13 Example
+- [quasar](quasar-cli-vue3-webpack-javascript) -- ❌ rspack |  ❌ webpack <br> Quasar Framework Example
+- [react-16-17-18-ssr](react-16-17-18-ssr) -- ❌ rspack |  ✅ webpack <br> React 16, 17, 18 SSR
+- [react-18-code-splitting](react-18-code-splitting) -- ❌ rspack |  ❌ webpack <br> React 18 Code Splitting
+- [react-18-server-2-server](react-18-server-2-server) -- ❌ rspack |  ❌ webpack <br> Server 2 Server React 18
+- [react-ssr](react-18-ssr) -- ❌ rspack |  ✅ webpack <br> React 18 SSR
+- [react-in-vue](react-in-vue) -- ❌ rspack |  ✅ webpack <br> Demo of fetching a React component in a Vue app via Module Federation, showcasing two-way communication and lifecycle management.
+- [react-hmr](react-livereload) -- ❌ rspack |  ✅ webpack <br> LiveReload with a React app
+- [react-storybook](react-storybook) -- ❌ rspack |  ❌ webpack <br> Storybook Example
+- [redux-reducer-injection](redux-reducer-injection) -- ❌ rspack |  ✅ webpack <br> Sharing a Redux store across remote apps with dynamic reducer injection; 'app1' hosts and creates the store, 'app2' injects its reducer.
+- [rspack_webpack](rspack-webpack-interop) -- ✅ rspack |  ✅ webpack <br> Webpack Host with [Rspack](https://rspack.dev) Remotes: App #1 as Webpack, Apps #2-#5 as [Rspack](https://rspack.dev), with coexisting webpack commands.
+- [rspack_offload](rspack-webpack-offload) -- ✅ rspack |  ✅ webpack <br> Speed up Webpack by offloading some workload to [rspack](https://rspack.dev)
+- [runtime-plugins](runtime-plugins) -- ✅ rspack |  ✅ webpack <br> Runtime Plugin Examples for Module Federation 1.5
+  - [control-sharing](runtime-plugins/control-sharing) -- ✅ rspack |  ✅ webpack <br> Control Sharing Panel. Lets you change share resolver in the app via GUI
+- [rust-wasm](rust-wasm) -- ❌ rspack |  ✅ webpack <br> Using Module Federation to federate Wasm modules across independent applications. In this demo, we will use Conways Game of Life to illustrate how Wasm can be shared.
+- [self-healing](self-healing) -- ❌ rspack |  ✅ webpack <br> This example demos self-healing capabilities with Module Federation. `app2` depends on and is expecting a shared dependency to be provided in `app1`.
+- [server-side-render-only](server-side-render-only) -- ❌ rspack |  ✅ webpack <br> Module Federation Server Side Rendering, no client side implementation
+- [server-side-rendering](server-side-rendering) -- ❌ rspack |  ✅ webpack <br> Example of server side rendering with module federation using React 18 and Suspense
+  - [server-side-rendering_shell](server-side-rendering/shell) -- ❌ rspack |  ❌ webpack <br> React 18 architecture at scale with module federation
+- [shared-context](shared-context) -- ❌ rspack |  ✅ webpack <br> This example demos a host application wrapped in a ContextProvider and renders a remote component consuming the ContextProvider value.
+- [shared-routes2](shared-routes2) -- ❌ rspack |  ✅ webpack <br> This example demos two applications with their own sets of routes and deployments but a seamless experience for the user.
+- [shared-routing](shared-routing) -- ❌ rspack |  ✅ webpack <br> This example demos a basic host application loading remote component.
+- [shared-store-cross-framework](shared-store-cross-framework) -- ❌ rspack |  ✅ webpack <br> This example demos a Vue3 in React application which shares the same store.
+- [simple-node](simple-node) -- ❌ rspack |  ✅ webpack <br> Node.js Examples
+- [013-styled-components](styled-components) -- ❌ rspack |  ❌ webpack <br> This sample shows how to use [Styled Components](https://www.styled-components.com/) with MF and React SSR.
+- [third-party-scripts](third-party-scripts) -- ❌ rspack |  ✅ webpack <br> This example demos a basic host-remote application with third-party remotes or vendor code.
+- [typescript-repo](typescript) -- ❌ rspack |  ✅ webpack <br> This example demos a basic host/remote application with TypeScript and also streams types.
+- [typescript-monorepo](typescript-monorepo) -- ❌ rspack |  ✅ webpack <br> This example demos a basic host/remote application with TypeScript using yarn workspaces and using [typesVersions](https://www.typescriptlang.org/docs/handbook/declaration-files/publishing.html#version-selection-with-typesversions)
+- [typescript-project-references](typescript-project-references) -- ❌ rspack |  ✅ webpack <br> This example demos a basic host/remote application with TypeScript using [Project References](https://www.typescriptlang.org/docs/handbook/project-references.html).
+- [typescript-react-fallback](typescript-react-fallback) -- ❌ rspack |  ✅ webpack <br> This example demos a basic host/remote application with TypeScript using [Project References], to show how to render another remote as a fallback if a remote fails to render.
+- [ts-monorepo](typescript-react-monorepo) -- ❌ rspack |  ❌ webpack <br> This example demos a basic host/remote application with TypeScript and also streams types.
+- [typescript-react-monorepo-test](typescript-react-monorepo-test) -- ❌ rspack |  ❌ webpack <br> This example demos a basic host/remote application with TypeScript and also streams types.
+- [umd-federation](umd-federation) -- ❌ rspack |  ✅ webpack <br> UMD output target for Module Federation
+- [vite-react-microfrontends](vite-react-microfrontends) -- ❌ rspack |  ❌ webpack <br> Vite React Microfrontends
+- [vite-react-simple](vite-react-simple) -- ❌ rspack |  ✅ webpack <br> Vite & Webpack React Simple
+- [vite-svelte-microfrontends](vite-svelte-microfrontends) -- ❌ rspack |  ❌ webpack <br> Svelte Vite Based Microfrontends
+- [vite-vue-microfrontends](vite-vue-microfrontends) -- ❌ rspack |  ❌ webpack <br> Vue Vite Based Microfrontends
+- [vue-cli](vue-cli) -- ❌ rspack |  ❌ webpack <br> Vue CLI Examples
+- [vue2-in-vue3](vue2-in-vue3) -- ❌ rspack |  ✅ webpack <br> This example demos a vue3 application loading remote vue2 component.`vue3` app depends on a component exposed by `vue2` app.
+- [vue3-cli-demo](vue3-cli-demo) -- ❌ rspack |  ❌ webpack <br> Vue 3 using vue-cli OR rsbuild
+- [vue3-demo](vue3-demo) -- ❌ rspack |  ✅ webpack <br> This example demos consumption of federated modules from a Webpack bundle. `layout` app depends on a component exposed by `home` app.
+- [vue3-demo-federation-with-vite](vue3-demo-federation-with-vite) -- ❌ rspack |  ✅ webpack <br> This project is a mix of `webpack-federation` and `vite-federation`
 
-> Legend:
->
-> - ⚠️: In Progress/Incomplete
-> - 🔒: Depends on access controled source
-> - 💰: commercially avaliable
-
-- [x] [Native Federation](./native-federation-core-microfrontend) &mdash; Module Federation using esBuild, ESM, Import Maps. Concept ported to other bundlers!!
-- [x] [Native Federation React](./native-federation-react) &mdash; React Example of Module Federation using esBuild, ESM, Import Maps. Concept ported to other bundlers!!
-- [x] [Advanced API](./advanced-api) &mdash; Showcasing advanced API use, also seen in other examples.
-- [x] [Basic Host-Remote](./basic-host-remote/README.md) &mdash; App 1 consumes remote components from App2.
-- [x] [Create React App](./cra/README.md) &mdash; Module Federation using CRA.
-- [x] [Create React App using React App Rewired](./cra-react-app-rewired/README.md) &mdash; Module Federation using CRA and React App Rewired.
-- [x] [HMR Remotes](./react-hmr/README.md) &mdash; Hot Reloading Remotes inside Hosts.
-- [x] [Startup Code](./startup-code/README.md) &mdash; Advanced implementation that attaches initialization code to the remote container itself. Useful for dynamically setting publicPath in the remote.
-- [x] [Dynamic Remotes in Node](./dynamic-remotes-node/README.md) &mdash; Dynamically load remotes in Node.
-- [x] [Bi-Directional Hosts](./bi-directional/README.md) &mdash; App1 consumes App2 components; App2 consumes App1 components.
-- [x] [Self-Healing](./self-healing/README.md) &mdash; Fallback to remote apps vendors if a dependency fails to load.
-- [x] [Server-Side Rendering](./server-side-rendering/README.md) &mdash; App1 and App2 with SSR.
-- [x] [Server-Side Rendering (simplified)](./server-side-render-only/README.md) &mdash; Less complex boilerplate.
-- [x] [Multi UI Framework Federation](./comprehensive-demo/README.md) &mdash; Multiple Apps in different technologies federated.
-- [x] [Dynamic System Host](./dynamic-system-host/README.md) &mdash; Swap between remotes at runtime.
-- [x] [Redux Reducer Injection](./redux-reducer-injection/README.md) &mdash; Dynamically inject reducers to host store at runtime.
-- [x] [Shared Routes](./shared-routes2) &mdash; Compose federated routes for a seamless user experience.
-- [x] [Nested Components](./nested/README.md) &mdash; Nested remote components.
-- [x] [Share Context Provider](./shared-context/README.md) &mdash; App1 and App2 with shared Context Provider.
-- [x] [Medusa Example](./dashboard-example/README.md) &mdash; Single example implementing [Module Federation Dashboard](https://www.npmjs.com/package/@module-federation/dashboard-plugin)
-- [x] Non-UI Module
-- [x] [Routing](./shared-routing/README.md) &mdash; An example of sharing router context. Also worth looking at - [Routing 2](./shared-routes2/README.md)
-- [x] [Version Discrepancy](./version-discrepancy/README.md) &mdash; Federated apps depending on different versions of a dependency without side-effects.
-- [x] [TypeScript](./typescript/README.md) &mdash; Streaming TypeScript between module-federation apps.
-- [x] [Angular Universal](./angular-universal-ssr/README.md) &mdash; Remote and Host app with SSR, lazy modules and components.
-- [x] [NextJS v13](./nextjs-v13/README.md) &mdash; Operation, with [nextjs-mf](https://www.npmjs.com/package/@module-federation/nextjs-mf).
-- [x] [NextJS SSR](./nextjs-ssr/README.md) &mdash; Powered by software streams, with [nextjs-ssr](https://github.com/module-federation/universe)
-- [x] [NextJS SSR via Delegates](./nextjs-ssr-delegate-modules/README.md) &mdash; Custom glue code for containers and hosts [nextjs-ssr](https://github.com/module-federation/universe)
-- [x] [Building A Plugin-based Workflow Designer With Angular and Module Federation](https://github.com/manfredsteyer/module-federation-with-angular-dynamic-workflow-designer) &mdash; External Example
-- [x] [Vue.js](./vue3-demo/README.md) &mdash; Simple host/remote (render function / sfc) example using Vue 3.0.
-- [x] [Vue 2 in Vue 3](./vue2-in-vue3/README.md) &mdash; Vue 3 application loading remote Vue 2 component.
-- [x] [Vue2 SSR](./genesis/README.md) &mdash; This example demonstrates module as a service.
-- [x] [React - Host/Remote and NextJS Host/Remote](./react-nextjs/README.md) &mdash; These examples demonstrates react/nextjs as host/remote and react/nextjs are host/remote
-- [x] [Different React Versions in Isolation](./different-react-versions-isolated/README.md) &mdash; Simple host/remote example where the apps have different React and ReactDOM versions and don't share any dependencies.
-- [x] [CSS Isolated Host and Remote](./css-isolation/README.md) &mdash; Example on how to prevent CSS from leaking between federated applications.
-- [x] [vue3-demo-federation-with-vite](./vue3-demo-federation-with-vite/README.md) &mdash; wepack and vite federation integrated projects, webpack/vite both play the role of host and remote
-- [x] [quasar-cli-vue3-webpack-javascript](./quasar-cli-vue3-webpack-javascript/README.md) &mdash; Module federation integration with Quasar apps running vue3 using quasar-cli (javascript)
-- [x] [UMD Federation](./umd-federation) &mdash; Support importing umd remote module
-- [x] [Modernjs](./modernjs) &mdash; Basic Module Federation Usage in Modern.js Framework
-- [x] [Modernjs Medusa](./modernjs-medusa) &mdash; Using Medusa in Modern.js Framework
-
-**Module Federation Examples** covered by e2e tests with **Cypress** framework, more info about structure and configuration 👉 [here](./cypress/README.md) 👈
 
 # Check out our book
 
@@ -98,7 +135,7 @@ You can then run `pnpm start` from any of the non-proprietary examples. Some exa
 
 <img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/ModuleFederationExamplesRoot">
 
-Module federation will work with any type of file that youre able to import, that Webpack understands how to process. It is not a JS only, or React only feature. Images, CSS, JSON, WASM, and anything else can be federated.
+Module federation will work with any type of file that you're able to import, that Webpack understands how to process. It is not a JS only, or React only feature. Images, CSS, JSON, WASM, and anything else can be federated.
 
 # Companies using Module Federation
 

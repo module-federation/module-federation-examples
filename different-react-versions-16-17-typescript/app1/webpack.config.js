@@ -52,12 +52,6 @@ const webpackConfig = {
           shareScope: 'legacy', // share scope with this name will be used
           singleton: true, // only a single version of the shared module is allowed
         },
-        // oldReact: {
-        //   import: "react", // the "react" package will be used a provided and fallback module
-        //   shareKey: "oldReact", // under this name the shared module will be placed in the share scope
-        //   shareScope: "legacy", // share scope with this name will be used
-        //   singleton: true, // only a single version of the shared module is allowed
-        // }
       },
     }),
     new HtmlWebpackPlugin({

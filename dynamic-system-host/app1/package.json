@@ -2,23 +2,29 @@
   "name": "dynamic-system-host_app1",
   "version": "0.0.0",
   "devDependencies": {
-    "@babel/core": "7.23.3",
+    "@babel/core": "7.23.5",
     "@babel/preset-react": "7.23.3",
     "babel-loader": "8.2.5",
-    "html-webpack-plugin": "5.5.3",
+    "html-webpack-plugin": "5.6.0",
     "serve": "14.2.1",
     "webpack": "5.89.0",
     "webpack-cli": "4.10.0",
-    "webpack-dev-server": "4.15.1"
+    "webpack-dev-server": "4.15.1",
+    "@rspack/core": "0.4.5-canary-ac74516-20240102083734",
+    "@rspack/cli": "0.4.5-canary-ac74516-20240102083734",
+    "@rspack/dev-server": "0.4.5-canary-ac74516-20240102083734"
   },
   "scripts": {
-    "start": "webpack-cli serve",
-    "build": "webpack --mode production",
+    "start": "rspack serve",
+    "build": "rspack --mode production",
+    "legacy:start": "webpack-cli serve",
+    "legacy:build": "webpack --mode production",
     "serve": "serve dist -p 3001",
     "clean": "rm -rf dist"
   },
   "dependencies": {
     "@module-federation/utilities": "^1.4.0",
+    "@module-federation/runtime": "next",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "@module-federation/runtime": "0.0.0-canary-1701694314517"

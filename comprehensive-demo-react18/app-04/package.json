@@ -1,6 +1,8 @@
 {
   "name": "comprehensive-demo-react18_app-04",
+  "description": "SvelteJS",
   "version": "1.0.0",
+  "ignored": true,
   "devDependencies": {
     "cross-env": "7.0.3",
     "css-loader": "6.8.1",
@@ -8,16 +10,22 @@
     "style-loader": "3.3.3",
     "svelte": "3.59.2",
     "svelte-loader": "3.1.9",
-    "html-webpack-plugin": "5.5.3",
+    "html-webpack-plugin": "5.6.0",
     "webpack": "5.89.0",
     "webpack-cli": "5.1.4",
     "webpack-dev-server": "4.15.1",
-    "serve": "14.2.1"
+    "serve": "14.2.1",
+    "@rspack/core": "^0.4.5",
+    "@rspack/cli": "^0.4.5",
+    "@rspack/dev-server": "^0.4.5"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack",
-    "start": "webpack --watch",
-    "dev": "webpack-dev-server --content-base public",
+    "build": "cross-env NODE_ENV=production rspack build --mode production",
+    "legacy:build": "cross-env NODE_ENV=production webpack",
+    "start": "rspack serve",
+    "legacy:start": "webpack --watch",
+    "dev": "rspack serve",
+    "legacy:dev": "webpack-dev-server --content-base public",
     "serve": "serve public -p 3004",
     "clean": "rm -rf dist"
   }

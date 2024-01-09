@@ -1,6 +1,7 @@
 {
   "name": "native-federation-react",
   "private": true,
+  "ignored": true,
   "workspaces": [
     "./host",
     "./remote"
@@ -21,11 +22,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@hyrious/esbuild-plugin-commonjs": "0.2.2",
+    "@hyrious/esbuild-plugin-commonjs": "0.2.4",
     "@softarc/native-federation": "0.9.2-beta.7",
     "@softarc/native-federation-runtime": "0.9.2-beta.7",
-    "@types/node": "18.18.13",
-    "@types/react": "17.0.71",
+    "@types/node": "18.19.3",
+    "@types/react": "17.0.74",
     "@types/webpack": "^5.28.5",
     "concurrently": "7.6.0",
     "esbuild": "0.19.8",

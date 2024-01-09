@@ -15,6 +15,7 @@ const deps = require('./package.json').dependencies;
 
 module.exports = {
   entry: './src/index',
+  cache: false,
   mode: 'development',
   devServer: {
     static: {

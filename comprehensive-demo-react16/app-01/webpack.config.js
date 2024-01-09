@@ -8,10 +8,6 @@ module.exports = {
   mode: 'development',
   devtool: 'source-map',
 
-  optimization: {
-    minimize: false,
-  },
-
   output: {
     publicPath: 'auto',
   },

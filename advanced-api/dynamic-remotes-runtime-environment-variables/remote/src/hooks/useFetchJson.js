@@ -11,11 +11,10 @@ const useFetchJson = path => {
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
-    })
-      .then(json => {
-        setData(json);
-        setIsLoading(false);
-      });
+    }).then(json => {
+      setData(json);
+      setIsLoading(false);
+    });
   };
 
   useEffect(() => {

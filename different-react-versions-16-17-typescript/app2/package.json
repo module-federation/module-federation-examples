@@ -1,9 +1,13 @@
 {
   "name": "different-react-versions-16-17-typescript_app2",
+  "description": "React 17",
+  "ignored": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "webpack-cli serve",
-    "build": "webpack --mode production",
+    "start": "rspack serve",
+    "legacy:start": "webpack-cli serve",
+    "build": "rspack --mode production",
+    "legacy:build": "webpack --mode production",
     "serve": "serve dist -p 3002",
     "clean": "rm -rf dist"
   },
@@ -12,18 +16,21 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@babel/core": "7.23.3",
+    "@babel/core": "7.23.5",
     "@babel/plugin-proposal-class-properties": "7.18.6",
     "@babel/preset-react": "7.23.3",
     "@babel/preset-typescript": "7.23.3",
-    "@types/react": "17.0.71",
-    "@types/react-dom": "17.0.24",
+    "@types/react": "17.0.74",
+    "@types/react-dom": "17.0.25",
     "babel-loader": "8.2.5",
-    "html-webpack-plugin": "5.5.3",
+    "html-webpack-plugin": "5.6.0",
     "serve": "14.2.1",
     "typescript": "4.8.4",
     "webpack": "5.89.0",
     "webpack-cli": "4.10.0",
-    "webpack-dev-server": "4.15.1"
+    "webpack-dev-server": "4.15.1",
+    "@rspack/core": "^0.4.5",
+    "@rspack/cli": "^0.4.5",
+    "@rspack/dev-server": "^0.4.5"
   }
 }

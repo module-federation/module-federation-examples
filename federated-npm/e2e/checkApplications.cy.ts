@@ -13,10 +13,10 @@ const appsData = [
         appNameText: Constants.commonConstantsData.commonCountAppNames.app2,
         host: 3002
     },
-    {
-        appNameText: Constants.commonConstantsData.commonCountAppNames.app3,
-        host: 3003
-    },
+    // {
+    //     appNameText: Constants.commonConstantsData.commonCountAppNames.app3,
+    //     host: 3003
+    // },
 ]
 
 appsData.forEach(

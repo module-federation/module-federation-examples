@@ -1,5 +1,6 @@
 {
   "name": "vue-cli",
+  "description": "Vue CLI Examples",
   "private": true,
   "workspaces": [
     "./consumer",
@@ -12,7 +13,7 @@
     "build": "pnpm --filter @vue-cli/* build",
     "serve": "pnpm --filter @vue-cli/* --parallel serve",
     "clean": "pnpm --filter @vue-cli/* --parallel clean",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:8080/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
   },
   "devDependencies": {}
 }

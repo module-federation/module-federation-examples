@@ -24,7 +24,10 @@ class ReactAdapterProvider extends React.Component {
   }
 
   render() {
-    return <div ref={ref => (this.refHold = ref)} />;
+    return <>
+      React version: {React.version}
+      <div ref={ref => (this.refHold = ref)} />
+    </>;
   }
 }
 
