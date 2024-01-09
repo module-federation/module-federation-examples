@@ -1,31 +1,104 @@
 import React from 'react';
-import { importRemote } from '@module-federation/utilities';
+import { init,loadRemote } from '@module-federation/runtime'
 
-function System(props) {
-  const {
-    system,
-    system: { url, scope, module },
-  } = props;
+init({
+  name: 'app1',
+  remotes: [
+    {
+      name:'app2',
+      entry: 'http://localhost:3002/remoteEntry.js'
+    },
+    {
+      name:'app3',
+      entry: 'http://localhost:3003/remoteEntry.js'
+    },
+  ]
+})
 
-  if (!system || !url || !scope || !module) {
-    return <h2>No system specified</h2>;
-  }
-
-  const Component = React.lazy(() => importRemote({ url, scope, module }));
-
-  return (
-    <React.Suspense fallback="Loading System">
-      <Component />
-    </React.Suspense>
-  );
+function loadComponent(scope, module) {
+  return async () => {
+    // Initializes the share scope. This fills it with known provided modules from this build and all remotes
+    const Module = await loadRemote(`${scope}/${module.slice(2)}`);
+    return Module;
+  };
 }
 
+const urlCache = new Set();
+const useDynamicScript = url => {
+  const [ready, setReady] = React.useState(false);
+  const [errorLoading, setErrorLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!url) return;
+
+    if (urlCache.has(url)) {
+      setReady(true);
+      setErrorLoading(false);
+      return;
+    }
+
+    setReady(false);
+    setErrorLoading(false);
+
+    const element = document.createElement('script');
+
+    element.src = url;
+    element.type = 'text/javascript';
+    element.async = true;
+
+    element.onload = () => {
+      urlCache.add(url);
+      setReady(true);
+    };
+
+    element.onerror = () => {
+      setReady(false);
+      setErrorLoading(true);
+    };
+
+    document.head.appendChild(element);
+
+    return () => {
+      urlCache.delete(url);
+      document.head.removeChild(element);
+    };
+  }, [url]);
+
+  return {
+    errorLoading,
+    ready,
+  };
+};
+
+const componentCache = new Map();
+export const useFederatedComponent = (remoteUrl, scope, module) => {
+  const key = `${remoteUrl}-${scope}-${module}`;
+  const [Component, setComponent] = React.useState(null);
+
+  const { ready, errorLoading } = useDynamicScript(remoteUrl);
+  React.useEffect(() => {
+    if (Component) setComponent(null);
+    // Only recalculate when key changes
+  }, [key]);
+
+  React.useEffect(() => {
+    if (ready && !Component) {
+      const Comp = React.lazy(loadComponent(scope, module));
+      componentCache.set(key, Comp);
+      setComponent(Comp);
+    }
+    // key includes all dependencies (scope/module)
+  }, [Component, ready, key]);
+
+  return { errorLoading, Component };
+};
+
 function App() {
-  const [system, setSystem] = React.useState({});
+  const [{ module, scope, url }, setSystem] = React.useState({});
 
   function setApp2() {
     setSystem({
-      url: 'http://localhost:3002',
+      url: 'http://localhost:3002/remoteEntry.js',
       scope: 'app2',
       module: './Widget',
     });
@@ -33,11 +106,13 @@ function App() {
 
   function setApp3() {
     setSystem({
-      url: 'http://localhost:3003',
+      url: 'http://localhost:3003/remoteEntry.js',
       scope: 'app3',
       module: './Widget',
     });
   }
+
+  const { Component: FederatedComponent, errorLoading } = useFederatedComponent(url, scope, module);
 
   return (
     <div
@@ -56,7 +131,11 @@ function App() {
       <button onClick={setApp2}>Load App 2 Widget</button>
       <button onClick={setApp3}>Load App 3 Widget</button>
       <div style={{ marginTop: '2em' }}>
-        <System system={system} />
+        <React.Suspense fallback="Loading System">
+          {errorLoading
+            ? `Error loading module "${module}"`
+            : FederatedComponent && <FederatedComponent />}
+        </React.Suspense>
       </div>
     </div>
   );

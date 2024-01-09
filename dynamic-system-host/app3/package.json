@@ -9,11 +9,16 @@
     "serve": "14.2.1",
     "webpack": "5.89.0",
     "webpack-cli": "4.10.0",
-    "webpack-dev-server": "4.15.1"
+    "webpack-dev-server": "4.15.1",
+    "@rspack/core": "0.4.5-canary-ac74516-20240102083734",
+    "@rspack/cli": "0.4.5-canary-ac74516-20240102083734",
+    "@rspack/dev-server": "0.4.5-canary-ac74516-20240102083734"
   },
   "scripts": {
-    "start": "webpack-cli serve",
-    "build": "webpack --mode production",
+    "start": "rspack serve",
+    "build": "rspack --mode production",
+    "legacy:start": "webpack-cli serve",
+    "legacy:build": "webpack --mode production",
     "serve": "serve dist -p 3003",
     "clean": "rm -rf dist"
   },

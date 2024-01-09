@@ -2,6 +2,7 @@
   "name": "modernjs-medusa",
   "private": true,
   "version": "1.0.0",
+  "ignored": true,
   "scripts": {
     "start": "concurrently \"cd ./host && npm run dev\" \"cd ./provider && npm run dev\"",
     "build": "concurrently \"cd ./host && pnpm build\" \"cd ./provider && pnpm build\"",

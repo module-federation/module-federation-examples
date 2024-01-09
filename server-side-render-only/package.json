@@ -2,6 +2,7 @@
   "name": "server-side-render-only",
   "private": true,
   "version": "0.0.0",
+  "description": "Module Federation Server Side Rendering, no client side implementation",
   "scripts": {
     "start": "concurrently \"npm run buildHost\" \"npm run startHost\" \"npm run buildRemote\" \"npm run startRemote\"",
     "buildHost": "webpack --config=hostServer/webpack.config.js -w",
