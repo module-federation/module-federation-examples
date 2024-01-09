@@ -421,13 +421,13 @@
     "@rspack/binding-linux-x64-gnu" "0.4.5-canary-ac74516-20240102083734"
     "@rspack/binding-win32-x64-msvc" "0.4.5-canary-ac74516-20240102083734"
 
-"@rspack/cli@0.4.5-canary-ac74516-20240102083734":
-  version "0.4.5-canary-ac74516-20240102083734"
-  resolved "https://registry.npmjs.org/@rspack/cli/-/cli-0.4.5-canary-ac74516-20240102083734.tgz#2c9bd0bf777ae07c02abd40f6f57d51adb496583"
-  integrity sha512-PC0FNAjOM9RvFpcI586WdtWhdKT/PFzmyc2c3glXeQYYR0OrWjntIUdkgKY2TSO25hT9TjOa6RMrIvBwYf9aJw==
+"@rspack/cli@0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@rspack/cli/-/cli-0.5.0.tgz#a823b8f09272af4cfaad8e436c9e855495930f2d"
+  integrity sha512-69D4mK/KcGQ0yv7orR76ephyTgct/ttuu0PBeh8rdfcvUG8gyzPaWOPm2yG+pCIyqK22pugk+G90vxU8/e4O9w==
   dependencies:
     "@discoveryjs/json-ext" "^0.5.7"
-    "@rspack/dev-server" "0.4.5-canary-ac74516-20240102083734"
+    "@rspack/dev-server" "0.5.0"
     colorette "2.0.19"
     exit-hook "^3.2.0"
     interpret "^3.1.1"
@@ -473,10 +473,31 @@
     webpack-dev-server "4.13.1"
     ws "8.8.1"
 
+"@rspack/dev-server@0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@rspack/dev-server/-/dev-server-0.5.0.tgz#4b42c001754d50a054d8dabfcd6f2f176cd4fcda"
+  integrity sha512-3TIBoi17h/d99v5zdGoeODds4vWAGlPnjqS1IKYSDwjqDfnneYbCB8TqGfwdoS4qZOHjCSl75BS1SspwKe69yw==
+  dependencies:
+    "@rspack/plugin-react-refresh" "0.5.0"
+    chokidar "3.5.3"
+    connect-history-api-fallback "2.0.0"
+    express "4.18.1"
+    http-proxy-middleware "2.0.6"
+    mime-types "2.1.35"
+    webpack "5.89.0"
+    webpack-dev-middleware "6.0.2"
+    webpack-dev-server "4.13.1"
+    ws "8.8.1"
+
 "@rspack/plugin-react-refresh@0.4.5-canary-ac74516-20240102083734":
   version "0.4.5-canary-ac74516-20240102083734"
   resolved "https://registry.npmjs.org/@rspack/plugin-react-refresh/-/plugin-react-refresh-0.4.5-canary-ac74516-20240102083734.tgz#2c213c1f820e6c6bfe646a50c29abf5c1fd9f638"
   integrity sha512-Kr/l06ckskdx7HYWvsgVyYAdFHgGWuUTPxj4nRVdulCIHBgGtIXUHJt+u3JWiJoD1msbFUfvbfNTllazEhtguQ==
+
+"@rspack/plugin-react-refresh@0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@rspack/plugin-react-refresh/-/plugin-react-refresh-0.5.0.tgz#c1e6aee9539202e90c87877a8ad8f60a0d6502c3"
+  integrity sha512-Tas91XaFgRmgdLFzgeei/LybMFvnYBicMf4Y7Yt9lZHRHfgONrGbmqSVeS+nWWTW9U8Q31K9uiM2Z2a02hq2Vw==
 
 "@sideway/address@^4.1.3":
   version "4.1.4"
