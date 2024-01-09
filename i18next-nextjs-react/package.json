@@ -2,7 +2,7 @@
   "name": "i18next-nextjs-react",
   "private": true,
   "version": "1.0.0",
-  "description": "",
+  "description": "Demonstrates using dedicated i18next instances in micro frontends, enabling language change in one that affects all.",
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"cd next-host; npm run dev\" \"cd react-host; npm run start:live\" \"cd react-remote; npm run start:live\" \"cd i18next-shared-lib; npm run dev\"",
