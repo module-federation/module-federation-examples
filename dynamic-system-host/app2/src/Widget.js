@@ -14,8 +14,7 @@ export default function Widget() {
     >
       <h2>App 2 Widget</h2>
       <p>
-        Moment shouldn't download twice, the host has no moment.js <br />{' '}
-        {moment().format('MMMM Do YYYY, h:mm:ss a')}
+        App2 Moment Dep ({moment.version}): {moment().format('MMMM Do YYYY, h:mm:ss a')}
       </p>
     </div>
   );

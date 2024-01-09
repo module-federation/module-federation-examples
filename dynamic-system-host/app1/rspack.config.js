@@ -1,5 +1,6 @@
-const { HtmlRspackPlugin, container: {ModuleFederationPlugin} } = require('@rspack/core');
+const {  container: {ModuleFederationPlugin} } = require('@rspack/core');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index',
@@ -57,7 +58,7 @@ module.exports = {
         },
       },
     }),
-    new HtmlRspackPlugin({
+    new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
   ],

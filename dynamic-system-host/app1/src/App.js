@@ -125,7 +125,8 @@ function App() {
       <h2>App 1</h2>
       <p>
         The Dynamic System will take advantage Module Federation <strong>remotes</strong> and{' '}
-        <strong>exposes</strong>. It will no load components that have been loaded already.
+        <strong>exposes</strong>. It will not load any components or modules that have been loaded
+        already.
       </p>
       <button onClick={setApp2}>Load App 2 Widget</button>
       <button onClick={setApp3}>Load App 3 Widget</button>
