@@ -7,11 +7,11 @@ const basePage: BaseMethods = new BaseMethods();
 describe("React HMR", () => {
     // TODO cy.exec don't build the apps correctly cause lerna executes without exit code. Uncomment after fix this issue!
         // before(() => {
-        //     basePage.buildTheSample(Constants.samplesPath.react-hmr)
+        //     basePage.buildTheSample(Constants.samplesPath.react-livereload)
         // })
 
         // after(() => {
-        //     basePage.shutdownTheSample(Constants.samplesPath.react-hmr)
+        //     basePage.shutdownTheSample(Constants.samplesPath.react-livereload)
         // })
     context('Check remote app', () => {
         beforeEach(() => {
