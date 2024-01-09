@@ -394,8 +394,8 @@ importers:
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
       '@module-federation/enhanced':
-        specifier: ^0.0.0-next-20240105144747
-        version: 0.0.0-next-20240105144747(webpack@5.89.0)
+        specifier: ^0.0.8
+        version: 0.0.8(webpack@5.89.0)
       '@module-federation/runtime':
         specifier: 0.0.8
         version: 0.0.8
@@ -446,8 +446,8 @@ importers:
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
       '@module-federation/enhanced':
-        specifier: ^0.0.0-next-20240105144747
-        version: 0.0.0-next-20240105144747(webpack@5.89.0)
+        specifier: ^0.0.8
+        version: 0.0.8(webpack@5.89.0)
       '@rspack/cli':
         specifier: 0.4.5-canary-ac74516-20240102083734
         version: 0.4.5-canary-ac74516-20240102083734(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack-cli@5.1.4)(webpack@5.89.0)
@@ -501,8 +501,8 @@ importers:
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
       '@module-federation/enhanced':
-        specifier: ^0.0.0-next-20240105144747
-        version: 0.0.0-next-20240105144747(webpack@5.89.0)
+        specifier: ^0.0.8
+        version: 0.0.8(webpack@5.89.0)
       '@rspack/cli':
         specifier: 0.4.5-canary-ac74516-20240102083734
         version: 0.4.5-canary-ac74516-20240102083734(@rspack/core@0.4.5-canary-ac74516-20240102083734)(webpack-cli@5.1.4)(webpack@5.89.0)
@@ -29298,6 +29298,16 @@ packages:
       webpack: 5.89.0(webpack-cli@5.1.4)
     dev: true
 
+  /@module-federation/enhanced@0.0.8(webpack@5.89.0):
+    resolution: {integrity: sha512-gK783ienOhWbXL0xPJMuObSVexc2KogsjLgYmQy8zb3w0qwymechV9JBcVzJ1QApsmq1e3zywPqak24TNvdYdA==}
+    peerDependencies:
+      webpack: 5.89.0
+    dependencies:
+      '@module-federation/runtime-tools': 0.0.8
+      '@module-federation/sdk': 0.0.8
+      webpack: 5.89.0(webpack-cli@5.1.4)
+    dev: true
+
   /@module-federation/enhanced@0.1.0(webpack@5.89.0):
     resolution: {integrity: sha512-CymUY20htVd55Ff0G8tNeh1q3at/6xRa26Db8KcO1537aV41CFC5qRcTWd58EG9pgJhu9psyJPVaAjFXliB66g==}
     peerDependencies:
@@ -29741,6 +29751,13 @@ packages:
     dependencies:
       '@module-federation/runtime': 0.0.0-next-20240105144747
       '@module-federation/webpack-bundler-runtime': 0.0.0-next-20240105144747
+    dev: true
+
+  /@module-federation/runtime-tools@0.0.8:
+    resolution: {integrity: sha512-tqx3wlVHnpWLk+vn22c0x9Nv1BqdZnoS6vdMb53IsVpbQIFP70nhhvymHUyFuPkoLzMFidS7GpG58DYT/4lvCw==}
+    dependencies:
+      '@module-federation/runtime': 0.0.8
+      '@module-federation/webpack-bundler-runtime': 0.0.8
     dev: true
 
   /@module-federation/runtime@0.0.0-canary-1701694314517:
@@ -30311,6 +30328,13 @@ packages:
     dependencies:
       '@module-federation/runtime': 0.0.0-next-20240105144747
       '@module-federation/sdk': 0.0.0-next-20240105144747
+    dev: true
+
+  /@module-federation/webpack-bundler-runtime@0.0.8:
+    resolution: {integrity: sha512-ULwrTVzF47+6XnWybt6SIq97viEYJRv4P/DByw5h7PSX9PxSGyMm5pHfXdhcb7tno7VknL0t2V8F48fetVL9kA==}
+    dependencies:
+      '@module-federation/runtime': 0.0.8
+      '@module-federation/sdk': 0.0.8
     dev: true
 
   /@mole-inc/bin-wrapper@8.0.1:
