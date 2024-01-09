@@ -1,7 +1,5 @@
-const webpack = require('webpack');
+const { ModuleFederationPlugin } = require('@rspack/core').container;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = webpack.container;
-const { DefinePlugin } = webpack;
 const path = require('path');
 
 module.exports = {
