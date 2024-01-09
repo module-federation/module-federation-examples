@@ -17,7 +17,7 @@ export default function Widget() {
     >
       <h2>App 3 Widget</h2>
       <p>
-        Using <strong>momentjs</strong> ({moment.version}) for format the date
+        Using <strong>momentjs</strong> for format the date
       </p>
       <p>{moment().format('MMMM Do YYYY, h:mm:ss a')}</p>
     </div>
