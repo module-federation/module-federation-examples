@@ -5,7 +5,7 @@ const path = require('path');
 // Function to recursively search for configuration files
 function searchConfigFiles(dirPath) {
   // List files to search for
-  const configFiles = ['rspack.config.js', 'rspack.config.ts', 'rsbuild.config.js', 'rsbuild.config.ts', 'webpack.config.js'];
+  const configFiles = ['rspack.config.js', 'rspack.config.ts', 'rsbuild.config.js', 'rsbuild.config.ts', 'webpack.config.js','webpack.client.js','modern.config.js','next.config.js'];
   const foundFiles = { rspack: false, webpack: false };
 
   // Traverse the directory tree
@@ -23,7 +23,7 @@ function searchConfigFiles(dirPath) {
       // If the file is a configuration file, update foundFiles
       if (files[i].includes('rspack') || files[i].includes('rsbuild')) {
         foundFiles.rspack = true;
-      } else if (files[i].includes('webpack')) {
+      } else if (files[i].includes('webpack') || files[i].includes('next.config')) {
         foundFiles.webpack = true;
       }
     }
@@ -83,8 +83,13 @@ function treeToMarkdown(tree, depth = 0) {
   if(!tree){
     return '';
   }
+  let markdown = `${'  '.repeat(depth)}- [${tree.name}](${tree.path})`;
 
-  let markdown = `${'  '.repeat(depth)}- [${tree.name}](${tree.path}) -- ${tree.rspack ? '✅ rspack' : '❌ rspack'} | ${tree.webpack ? '✅ webpack' : '❌ webpack'} <br> ${tree.description} \n`;
+  if (tree.rspack || tree.webpack) {
+    markdown += ` -- ${tree.rspack ? '✅ rspack' : '❌ rspack'} | ${tree.webpack ? '✅ webpack' : '❌ webpack'}`;
+  }
+
+  markdown += ` <br> ${tree.description} \n`;
 
   tree.children.forEach((child) => {
     markdown += treeToMarkdown(child, depth + 1);
