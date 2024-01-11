@@ -20,6 +20,9 @@ module.exports = {
   output: {
     publicPath: 'auto',
   },
+  resolve: {
+    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+  },
   module: {
     rules: [
       {
