@@ -892,11 +892,11 @@ importers:
         specifier: 11.2.14
         version: 11.2.14(@angular/compiler@11.2.14)(typescript@4.0.2)
       '@ngxs/devtools-plugin':
-        specifier: 3.8.1
-        version: 3.8.1(@angular/core@11.2.14)(@ngxs/store@3.7.6)(rxjs@6.6.7)
+        specifier: 3.8.2
+        version: 3.8.2(@angular/core@11.2.14)(@ngxs/store@3.7.6)(rxjs@6.6.7)
       '@ngxs/logger-plugin':
-        specifier: 3.8.1
-        version: 3.8.1(@angular/core@11.2.14)(@ngxs/store@3.7.6)(rxjs@6.6.7)
+        specifier: 3.8.2
+        version: 3.8.2(@angular/core@11.2.14)(@ngxs/store@3.7.6)(rxjs@6.6.7)
       '@types/jasmine':
         specifier: 4.6.4
         version: 4.6.4
@@ -997,8 +997,8 @@ importers:
         specifier: 15.0.4
         version: 15.0.4(@angular/common@15.0.4)(@angular/core@15.0.4)(@angular/platform-browser@15.0.4)(rxjs@6.6.7)
       '@ngxs/store':
-        specifier: 3.8.1
-        version: 3.8.1(@angular/core@15.0.4)(rxjs@6.6.7)
+        specifier: 3.8.2
+        version: 3.8.2(@angular/core@15.0.4)(rxjs@6.6.7)
       bootstrap:
         specifier: ^4.5.3
         version: 4.6.2(jquery@3.7.1)(popper.js@1.16.1)
@@ -1088,8 +1088,8 @@ importers:
         specifier: 13.3.11
         version: 13.3.11(rxjs@7.8.1)(zone.js@0.11.8)
       '@ngxs/store':
-        specifier: 3.8.1
-        version: 3.8.1(@angular/core@13.3.11)(rxjs@7.8.1)
+        specifier: 3.8.2
+        version: 3.8.2(@angular/core@13.3.11)(rxjs@7.8.1)
       tslib:
         specifier: ^2.0.0
         version: 2.5.0
@@ -1121,8 +1121,8 @@ importers:
         specifier: 15.0.4
         version: 15.0.4(@angular/common@15.0.4)(@angular/core@15.0.4)(@angular/platform-browser@15.0.4)(rxjs@6.6.7)
       '@ngxs/store':
-        specifier: 3.8.1
-        version: 3.8.1(@angular/core@15.0.4)(rxjs@6.6.7)
+        specifier: 3.8.2
+        version: 3.8.2(@angular/core@15.0.4)(rxjs@6.6.7)
       bootstrap:
         specifier: ^4.5.3
         version: 4.6.2(jquery@3.7.1)(popper.js@1.16.1)
@@ -30935,11 +30935,11 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@ngxs/devtools-plugin@3.8.1(@angular/core@11.2.14)(@ngxs/store@3.7.6)(rxjs@6.6.7):
-    resolution: {integrity: sha512-IRHoHdV/lxNXaisKGdcGvSNbrgjCpM06eiqC93K+tOfwgmDY/hNsDNmKlXn9xmdYxF9U6v/1CXtAr0Q0Ux7dVQ==}
+  /@ngxs/devtools-plugin@3.8.2(@angular/core@11.2.14)(@ngxs/store@3.7.6)(rxjs@6.6.7):
+    resolution: {integrity: sha512-4FWZWJTtgrlTUsiprIBGHaQqvvFKiTesYK9+dg03NGv7z74Z5pNtPVbO1hMeuMmqaJ8r18fDZ3wIfXlXC6noNA==}
     peerDependencies:
-      '@angular/core': '>=12.0.0 <17.0.0'
-      '@ngxs/store': ^3.8.1 || ^3.8.1-dev
+      '@angular/core': '>=12.0.0 <18.0.0'
+      '@ngxs/store': ^3.8.2 || ^3.8.2-dev
       rxjs: '>=6.5.5'
     dependencies:
       '@angular/core': 11.2.14(rxjs@6.6.7)(zone.js@0.11.8)
@@ -30948,11 +30948,11 @@ packages:
       tslib: 2.5.0
     dev: true
 
-  /@ngxs/logger-plugin@3.8.1(@angular/core@11.2.14)(@ngxs/store@3.7.6)(rxjs@6.6.7):
-    resolution: {integrity: sha512-ySgt8jUkLQJcp3jxg1a1d7pkD141ltHeOHdtjrTP4MT4ICazE9s6NJV2Gzb616R/IYOVES4xUA8XSg0+ng8Pzg==}
+  /@ngxs/logger-plugin@3.8.2(@angular/core@11.2.14)(@ngxs/store@3.7.6)(rxjs@6.6.7):
+    resolution: {integrity: sha512-m2gjhzDz6Y99FQdSR56zMZ/WRw9wT2i6e6MDfs8zBSPBWLfJLuD8VznIZDaxmNzBJl+HQ/3a+uEKQm3ImJBnwA==}
     peerDependencies:
-      '@angular/core': '>=12.0.0 <17.0.0'
-      '@ngxs/store': ^3.8.1 || ^3.8.1-dev
+      '@angular/core': '>=12.0.0 <18.0.0'
+      '@ngxs/store': ^3.8.2 || ^3.8.2-dev
       rxjs: '>=6.5.5'
     dependencies:
       '@angular/core': 11.2.14(rxjs@6.6.7)(zone.js@0.11.8)
@@ -30971,10 +30971,10 @@ packages:
       rxjs: 6.6.7
       tslib: 1.14.1
 
-  /@ngxs/store@3.8.1(@angular/core@13.3.11)(rxjs@7.8.1):
-    resolution: {integrity: sha512-nbapLdMx+mtnb57BUWXbD6qYfVICv6Rp2NdoGx1++qDbc44ALC49KbF7rSjyPltlExxharAzoNpzO3JuueCP+A==}
+  /@ngxs/store@3.8.2(@angular/core@13.3.11)(rxjs@7.8.1):
+    resolution: {integrity: sha512-IovxuGQDEpB9VefmbTaV1k4hms4iZ4aS9gPVZOC+qzyfvpi7zrUEsjo+yT6FfVBmBg/RLUmPCtqArzbKU5XrLQ==}
     peerDependencies:
-      '@angular/core': '>=12.0.0 <17.0.0'
+      '@angular/core': '>=12.0.0 <18.0.0'
       rxjs: '>=6.5.5'
     dependencies:
       '@angular/core': 13.3.11(rxjs@7.8.1)(zone.js@0.11.8)
@@ -30982,10 +30982,10 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@ngxs/store@3.8.1(@angular/core@15.0.4)(rxjs@6.6.7):
-    resolution: {integrity: sha512-nbapLdMx+mtnb57BUWXbD6qYfVICv6Rp2NdoGx1++qDbc44ALC49KbF7rSjyPltlExxharAzoNpzO3JuueCP+A==}
+  /@ngxs/store@3.8.2(@angular/core@15.0.4)(rxjs@6.6.7):
+    resolution: {integrity: sha512-IovxuGQDEpB9VefmbTaV1k4hms4iZ4aS9gPVZOC+qzyfvpi7zrUEsjo+yT6FfVBmBg/RLUmPCtqArzbKU5XrLQ==}
     peerDependencies:
-      '@angular/core': '>=12.0.0 <17.0.0'
+      '@angular/core': '>=12.0.0 <18.0.0'
       rxjs: '>=6.5.5'
     dependencies:
       '@angular/core': 15.0.4(rxjs@6.6.7)(zone.js@0.11.8)
