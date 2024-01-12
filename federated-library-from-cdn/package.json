@@ -10,7 +10,9 @@
   "version": "1.0.0",
   "scripts": {
     "build": "pnpm --filter federated-library-from-cdn-* --parallel build",
-    "start": "pnpm --filter federated-library-from-cdn-* --parallel start"
+    "legacy:build": "pnpm --filter federated-library-from-cdn-* --parallel legacy:build",
+    "start": "pnpm --filter federated-library-from-cdn-* --parallel start",
+    "legacy:start": "pnpm --filter federated-library-from-cdn-* --parallel legacy:start"
   },
   "devDependencies": {
     "concurrently": "^8.2.1"

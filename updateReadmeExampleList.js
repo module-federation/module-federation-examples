@@ -5,7 +5,7 @@ const path = require('path');
 // Function to recursively search for configuration files
 function searchConfigFiles(dirPath) {
   // List files to search for
-  const configFiles = ['rspack.config.js', 'rspack.config.ts', 'rsbuild.config.js', 'rsbuild.config.ts', 'webpack.config.js','webpack.client.js','modern.config.js','next.config.js'];
+  const configFiles = ['rspack.config.js', 'rspack.config.ts','rspack.dev.js','rspack.prod.js', 'rsbuild.config.js', 'rsbuild.config.ts', 'webpack.config.js','webpack.client.js','modern.config.js','next.config.js'];
   const foundFiles = { rspack: false, webpack: false };
 
   // Traverse the directory tree
