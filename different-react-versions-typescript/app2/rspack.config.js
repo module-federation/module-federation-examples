@@ -1,35 +1,24 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@rspack/core').container;
+const {ModuleFederationPlugin} = require('@rspack/core').container;
 const path = require('path');
 
-/**
- * @type {import('webpack').Configuration}
- **/
-const webpackConfig = {
+module.exports = {
   entry: './src/index',
   mode: 'development',
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
-    hot:true,
     port: 3002,
-  },
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
   },
   output: {
     publicPath: 'auto',
   },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js']
+  },
   module: {
     rules: [
-      {
-        test: /\.m?js$/,
-        type: 'javascript/auto',
-        resolve: {
-          fullySpecified: false,
-        },
-      },
       {
         test: /\.(js|ts)x?$/,
         include: path.resolve(__dirname, 'src'),
@@ -68,9 +57,16 @@ const webpackConfig = {
         {
           react: {
             import: 'react', // the "react" package will be used a provided and fallback module
-            shareScope: 'modern', // share scope with this name will be used
+            shareKey: 'newReact', // under this name the shared module will be placed in the share scope
+            shareScope: 'default', // share scope with this name will be used
             singleton: true, // only a single version of the shared module is allowed
           },
+          // reactNew: {
+          //   import: "react", // the "react" package will be used a provided and fallback module
+          //   shareKey: "reactNew", // under this name the shared module will be placed in the share scope
+          //   shareScope: "modern", // share scope with this name will be used
+          //   singleton: true, // only a single version of the shared module is allowed
+          // },
         },
       ],
     }),
@@ -79,5 +75,3 @@ const webpackConfig = {
     }),
   ],
 };
-
-module.exports = webpackConfig;

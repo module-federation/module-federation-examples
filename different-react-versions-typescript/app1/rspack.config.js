@@ -1,36 +1,25 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@rspack/core').container;
+const {ModuleFederationPlugin} = require('@rspack/core').container;
 const path = require('path');
 const deps = require('./package.json').dependencies;
 
-/**
- * @type {import('webpack').Configuration}
- **/
-const webpackConfig = {
+module.exports = {
   entry: './src/index',
   mode: 'development',
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
-    hot: true,
     port: 3001,
-  },
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
   },
   output: {
     publicPath: 'auto',
   },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js']
+  },
   module: {
     rules: [
-      {
-        test: /\.m?js$/,
-        type: 'javascript/auto',
-        resolve: {
-          fullySpecified: false,
-        },
-      },
       {
         test: /\.(js|ts)x?$/,
         include: path.resolve(__dirname, 'src'),
@@ -53,6 +42,7 @@ const webpackConfig = {
       },
     ],
   },
+  //http://localhost:3002/remoteEntry.js
   plugins: [
     new ModuleFederationPlugin({
       name: 'app1',
@@ -68,6 +58,12 @@ const webpackConfig = {
           shareScope: 'legacy', // share scope with this name will be used
           singleton: true, // only a single version of the shared module is allowed
         },
+        // oldReact: {
+        //   import: "react", // the "react" package will be used a provided and fallback module
+        //   shareKey: "oldReact", // under this name the shared module will be placed in the share scope
+        //   shareScope: "legacy", // share scope with this name will be used
+        //   singleton: true, // only a single version of the shared module is allowed
+        // }
       },
     }),
     new HtmlWebpackPlugin({
@@ -77,10 +73,8 @@ const webpackConfig = {
   ],
 };
 
-module.exports = webpackConfig;
-
 function getRemoteEntryUrl(port) {
-  const { CODESANDBOX_SSE, HOSTNAME = '' } = process.env;
+  const {CODESANDBOX_SSE, HOSTNAME = ''} = process.env;
 
   // Check if the example is running on codesandbox
   // https://codesandbox.io/docs/environment
