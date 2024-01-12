@@ -4,8 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack serve",
-    "build": "webpack --mode production"
+    "start": "rspack serve",
+    "legacy:start": "webpack serve",
+    "build": "rspack --mode production",
+    "legacy:build": "webpack --mode production"
   },
   "dependencies": {
     "dotenv": "^16.3.1",
@@ -13,6 +15,9 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@rspack/core": "^0.5.0",
+    "@rspack/cli": "^0.5.0",
+    "@rspack/dev-server": "^0.5.0",
     "@babel/core": "7.23.7",
     "@babel/preset-react": "7.23.3",
     "@babel/preset-env": "7.23.8",
