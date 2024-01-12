@@ -16,6 +16,9 @@ module.exports = {
     },
     port: 3002,
   },
+  resolve: {
+    extensions: ['.js', '.tsx', '.ts'],
+  },
   target: 'web',
   output: {
     publicPath: 'auto',
