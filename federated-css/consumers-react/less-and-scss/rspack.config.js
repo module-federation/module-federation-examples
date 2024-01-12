@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@rspack/core').container;
+const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
 const mfConfig = require('./mf-plugin.config');
 
@@ -10,7 +10,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
-    port: 3000,
+    port: 3005,
   },
   output: {
     publicPath: 'auto',
@@ -18,11 +18,21 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        loader: 'babel-loader',
+        test: /\.(js|jsx)?$/,
+        loader: 'builtin:swc-loader',
         exclude: /node_modules/,
         options: {
-          presets: ['@babel/preset-react'],
+          jsc: {
+            parser: {
+              syntax: 'ecmascript',
+              jsx: true,
+            },
+            transform: {
+              react: {
+                runtime: 'automatic',
+              },
+            },
+          },
         },
       },
     ],

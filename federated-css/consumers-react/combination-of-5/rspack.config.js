@@ -10,7 +10,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
-    port: 3000,
+    port: 3002,
   },
   output: {
     publicPath: 'auto',
@@ -18,11 +18,21 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        loader: 'babel-loader',
+        test: /\.(js|jsx)?$/,
+        loader: 'builtin:swc-loader',
         exclude: /node_modules/,
         options: {
-          presets: ['@babel/preset-react'],
+          jsc: {
+            parser: {
+              syntax: 'ecmascript',
+              jsx: true,
+            },
+            transform: {
+              react: {
+                runtime: 'automatic',
+              },
+            },
+          },
         },
       },
     ],
