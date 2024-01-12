@@ -28,7 +28,7 @@
   - [dynamic-system-host](dynamic-system-host) -- ✅ rspack | ✅ webpack <br> Runtime API based Dynamic Remote Loading 
   - [federated-css-mono](federated-css) -- ✅ rspack | ✅ webpack <br> Examples Federating Styles 
     - [consumers-nextjs](federated-css/consumers-nextjs) -- ❌ rspack | ✅ webpack <br> NextJs apps consumes exposed components in different combinations. 
-    - [consumers-react](federated-css/consumers-react) -- ❌ rspack | ✅ webpack <br> React apps consumes exposed components in different combinations. 
+    - [consumers-react](federated-css/consumers-react) -- ✅ rspack | ✅ webpack <br> React apps consumes exposed components in different combinations. 
     - [expose-remotes](federated-css/expose-remotes) -- ✅ rspack | ✅ webpack <br> apps exposes components with a different types of components styling 
   - [federated-css-react-ssr](federated-css-react-ssr) -- ❌ rspack | ✅ webpack <br> Example of server side rendering with module federation using React 18 and different types of component styling 
   - [federated-library-from-cdn](federated-library-from-cdn) -- ❌ rspack | ✅ webpack <br> Basic example of two applications that share the same library served from a CDN. 

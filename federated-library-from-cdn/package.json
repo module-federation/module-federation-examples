@@ -9,9 +9,8 @@
   ],
   "version": "1.0.0",
   "scripts": {
-    "dev": "concurrently 'cd remoteLibrary; npm run dev'",
-    "build": "concurrently 'cd remoteLibrary; npm run build'",
-    "start": "concurrently 'cd app1; npm run start' 'cd app2; npm run start'"
+    "build": "pnpm --filter federated-library-from-cdn-* --parallel build",
+    "start": "pnpm --filter federated-library-from-cdn-* --parallel start"
   },
   "devDependencies": {
     "concurrently": "^8.2.1"
