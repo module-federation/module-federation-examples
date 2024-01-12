@@ -16,6 +16,9 @@ const webpackConfig = {
     hot: true,
     port: 3001,
   },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+  },
   output: {
     publicPath: 'auto',
   },
