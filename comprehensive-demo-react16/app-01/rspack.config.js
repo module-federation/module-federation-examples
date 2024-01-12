@@ -6,6 +6,9 @@ const deps = require('./package.json').dependencies;
 
 module.exports = {
   entry: './src/index',
+  resolve: {
+    extensions: ['.jsx', '.js', '.json', '.mjs'],
+  },
   mode: 'development',
   devtool: 'source-map',
   devServer:{
