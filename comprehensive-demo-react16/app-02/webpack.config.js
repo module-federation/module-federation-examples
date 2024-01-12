@@ -7,9 +7,6 @@ module.exports = {
 
   mode: 'development',
   devtool: 'source-map',
-
-
-
   output: {
     publicPath: 'auto',
   },

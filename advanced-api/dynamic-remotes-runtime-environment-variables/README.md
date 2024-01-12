@@ -10,7 +10,7 @@ The runtime environment variables when using Client-Side-Rendering solution was 
 
 # Running Demo
 
-Run `yarn start`. This will build and serve both `host` and `remote` on ports 3000 and 3001 respectively.
+Run `pnpm start`. This will build and serve both `host` and `remote` on ports 3000 and 3001 respectively.
 
 - [localhost:3000](http://localhost:3000/) (HOST)
 - [localhost:3001](http://localhost:3001/) (STANDALONE REMOTE)
