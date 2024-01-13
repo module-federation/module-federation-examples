@@ -4,7 +4,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "pnpm --filter comprehensive-demo-react16_app* start",
+    "dev": "pnpm --filter comprehensive-demo-react16_app* --parallel start ",
     "start": "pnpm build && pnpm serve",
     "legacy:start": "pnpm legacy:build && pnpm serve",
     "build": "pnpm --filter comprehensive-demo-react16_app* build",
