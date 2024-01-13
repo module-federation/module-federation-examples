@@ -2,8 +2,8 @@
   "name": "i18next-nextjs-react_next-host",
   "version": "1.0.0",
   "scripts": {
-    "dev": "rm -rf .next && PORT=3000 next dev",
-    "build": "next build",
+    "dev": "rm -rf .next && PORT=3000 NEXT_PRIVATE_LOCAL_WEBPACK=true next dev",
+    "build": "NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
     "start": "PORT=3000 next start"
   },
   "author": {
