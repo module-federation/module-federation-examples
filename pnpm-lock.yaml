@@ -1079,6 +1079,21 @@ importers:
         specifier: 7.2.0
         version: 7.2.0
 
+  angular15-microfrontends-lazy-components/dist/mdmf-shared:
+    dependencies:
+      '@angular/common':
+        specifier: 13.3.11
+        version: 13.3.11(@angular/core@13.3.11)(rxjs@7.8.1)
+      '@angular/core':
+        specifier: 13.3.11
+        version: 13.3.11(rxjs@7.8.1)(zone.js@0.11.8)
+      '@ngxs/store':
+        specifier: 3.8.1
+        version: 3.8.1(@angular/core@13.3.11)(rxjs@7.8.1)
+      tslib:
+        specifier: ^2.0.0
+        version: 2.5.0
+
   angular15-microfrontends-lazy-components/projects/mdmf-shared:
     dependencies:
       '@angular/common':
@@ -9422,6 +9437,14 @@ importers:
         specifier: 4.10.0
         version: 4.10.0(webpack@5.89.0)
 
+  remix-rspack/app1/build: {}
+
+  remix-rspack/app2/build: {}
+
+  remix/app1/build: {}
+
+  remix/app2/build: {}
+
   rollup-federation-demo:
     devDependencies:
       concurrently:
@@ -16595,12 +16618,12 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.23.5
+      '@babel/compat-data': 7.22.9
       '@babel/core': 7.11.1
-      '@babel/helper-compilation-targets': 7.23.6
+      '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.11.1)
-      '@babel/plugin-transform-parameters': 7.23.3(@babel/core@7.11.1)
+      '@babel/plugin-transform-parameters': 7.22.15(@babel/core@7.11.1)
     dev: true
 
   /@babel/plugin-proposal-object-rest-spread@7.20.7(@babel/core@7.12.10):
@@ -16610,12 +16633,12 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.23.5
+      '@babel/compat-data': 7.22.9
       '@babel/core': 7.12.10
-      '@babel/helper-compilation-targets': 7.23.6
+      '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.12.10)
-      '@babel/plugin-transform-parameters': 7.23.3(@babel/core@7.12.10)
+      '@babel/plugin-transform-parameters': 7.22.15(@babel/core@7.12.10)
     dev: true
 
   /@babel/plugin-proposal-object-rest-spread@7.20.7(@babel/core@7.18.10):
@@ -16625,12 +16648,12 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.23.5
+      '@babel/compat-data': 7.22.9
       '@babel/core': 7.18.10
-      '@babel/helper-compilation-targets': 7.23.6
+      '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.18.10)
-      '@babel/plugin-transform-parameters': 7.23.3(@babel/core@7.18.10)
+      '@babel/plugin-transform-parameters': 7.22.15(@babel/core@7.18.10)
     dev: true
 
   /@babel/plugin-proposal-object-rest-spread@7.20.7(@babel/core@7.20.12):
@@ -16640,12 +16663,12 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.23.5
+      '@babel/compat-data': 7.22.9
       '@babel/core': 7.20.12
-      '@babel/helper-compilation-targets': 7.23.6
+      '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.20.12)
-      '@babel/plugin-transform-parameters': 7.23.3(@babel/core@7.20.12)
+      '@babel/plugin-transform-parameters': 7.22.15(@babel/core@7.20.12)
     dev: true
 
   /@babel/plugin-proposal-object-rest-spread@7.20.7(@babel/core@7.23.7):
@@ -20298,6 +20321,46 @@ packages:
       '@babel/helper-skip-transparent-expression-wrappers': 7.22.5
       '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.23.7)
 
+  /@babel/plugin-transform-parameters@7.22.15(@babel/core@7.11.1):
+    resolution: {integrity: sha512-hjk7qKIqhyzhhUvRT683TYQOFa/4cQKwQy7ALvTpODswN40MljzNDa0YldevS6tGbxwaEKVn502JmY0dP7qEtQ==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.11.1
+      '@babel/helper-plugin-utils': 7.22.5
+    dev: true
+
+  /@babel/plugin-transform-parameters@7.22.15(@babel/core@7.12.10):
+    resolution: {integrity: sha512-hjk7qKIqhyzhhUvRT683TYQOFa/4cQKwQy7ALvTpODswN40MljzNDa0YldevS6tGbxwaEKVn502JmY0dP7qEtQ==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.12.10
+      '@babel/helper-plugin-utils': 7.22.5
+    dev: true
+
+  /@babel/plugin-transform-parameters@7.22.15(@babel/core@7.18.10):
+    resolution: {integrity: sha512-hjk7qKIqhyzhhUvRT683TYQOFa/4cQKwQy7ALvTpODswN40MljzNDa0YldevS6tGbxwaEKVn502JmY0dP7qEtQ==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.18.10
+      '@babel/helper-plugin-utils': 7.22.5
+    dev: true
+
+  /@babel/plugin-transform-parameters@7.22.15(@babel/core@7.20.12):
+    resolution: {integrity: sha512-hjk7qKIqhyzhhUvRT683TYQOFa/4cQKwQy7ALvTpODswN40MljzNDa0YldevS6tGbxwaEKVn502JmY0dP7qEtQ==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.20.12
+      '@babel/helper-plugin-utils': 7.22.5
+    dev: true
+
   /@babel/plugin-transform-parameters@7.22.15(@babel/core@7.23.7):
     resolution: {integrity: sha512-hjk7qKIqhyzhhUvRT683TYQOFa/4cQKwQy7ALvTpODswN40MljzNDa0YldevS6tGbxwaEKVn502JmY0dP7qEtQ==}
     engines: {node: '>=6.9.0'}
@@ -22284,7 +22347,7 @@ packages:
     dependencies:
       '@babel/core': 7.22.17
       '@babel/helper-plugin-utils': 7.22.5
-      '@babel/helper-validator-option': 7.23.5
+      '@babel/helper-validator-option': 7.22.15
       '@babel/plugin-syntax-jsx': 7.23.3(@babel/core@7.22.17)
       '@babel/plugin-transform-modules-commonjs': 7.23.3(@babel/core@7.22.17)
       '@babel/plugin-transform-typescript': 7.23.3(@babel/core@7.22.17)
@@ -42535,8 +42598,8 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
-      browserslist: 4.22.2
-      caniuse-lite: 1.0.30001572
+      browserslist: 4.22.1
+      caniuse-lite: 1.0.30001558
       fraction.js: 4.3.6
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -42551,8 +42614,8 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
-      browserslist: 4.22.2
-      caniuse-lite: 1.0.30001572
+      browserslist: 4.22.1
+      caniuse-lite: 1.0.30001558
       fraction.js: 4.3.6
       normalize-range: 0.1.2
       picocolors: 1.0.0
