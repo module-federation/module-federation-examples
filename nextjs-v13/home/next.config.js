@@ -16,7 +16,7 @@ module.exports = {
             './home': './pages/index.js',
             './pages-map': './pages-map.js',
           },
-          shared: {}
+          shared: {},
         }),
       );
     }

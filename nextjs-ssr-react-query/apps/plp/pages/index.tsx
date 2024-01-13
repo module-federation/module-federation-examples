@@ -12,7 +12,7 @@ const StyledPage = styled.div`
   align-items: center;
   margin: 15px;
   padding: 15px;
-  border: 4px dashed ${(props) => props.color || 'orangered'};
+  border: 4px dashed ${props => props.color || 'orangered'};
   border-radius: 0.25rem;
 `;
 

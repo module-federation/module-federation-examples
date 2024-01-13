@@ -1,22 +1,20 @@
 import React, { Fragment, Suspense } from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import {lazy} from 'react';
-let useCustomHook
-let RemoteTitle = ()=>null
+import { lazy } from 'react';
+let useCustomHook;
+let RemoteTitle = () => null;
 if (process.browser) {
   //useCustomHook = require('shop/customHook').default;
-   RemoteTitle = lazy(
-    () => {
-      return import('checkout/title');
-    }
-  );
+  RemoteTitle = lazy(() => {
+    return import('checkout/title');
+  });
 }
-console.log('test')
+console.log('test');
 
 const Home = ({ loaded }) => {
   if (process.browser) {
-   // useCustomHook();
+    // useCustomHook();
   }
   return (
     <div>

@@ -1,6 +1,6 @@
 import { useEffect, lazy } from 'react';
 import { useRouter } from 'next/router';
-const Home = lazy(()=>import('home/home'));
+const Home = lazy(() => import('home/home'));
 const Page = props => {
   const router = useRouter();
   useEffect(() => {

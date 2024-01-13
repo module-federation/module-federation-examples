@@ -1,11 +1,11 @@
 import App from 'next/app';
-import {lazy, Suspense} from "react"
-const Nav = process.browser ? lazy(
-  () => {
-    const mod = import('home/nav').catch(console.error);
-    return mod;
-  }
-) : ()=>null
+import { lazy, Suspense } from 'react';
+const Nav = process.browser
+  ? lazy(() => {
+      const mod = import('home/nav').catch(console.error);
+      return mod;
+    })
+  : () => null;
 
 function MyApp({ Component, pageProps }) {
   return (
