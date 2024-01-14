@@ -1,3 +1,4 @@
-import { createFederatedCatchAll } from 'nextjs-shared-v12';
-
-export default createFederatedCatchAll(['checkout', 'home']);
+import HomePage from 'home/home';
+const Page = HomePage;
+Page.getInitialProps = HomePage.getInitialProps;
+export default Page;

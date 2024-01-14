@@ -24,7 +24,7 @@ appsData.forEach((property: { appName: string; host: number }) => {
       basePage.openLocalhost({
         number: property.host,
       });
-      cy.wait(2000);
+      cy.wait(5000);
     });
     it('Check the items on the Home page and the links to ZEIT and GitHub in the header', () => {
       basePage.checkElementWithTextPresence({
