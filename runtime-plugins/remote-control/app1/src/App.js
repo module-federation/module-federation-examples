@@ -29,7 +29,7 @@ const getColorFromString = (str) => {
 // The main App component
 const App = () => (
   <div>
-    <h1>Api controlled remote configs</h1>
+    <h1>API controlled remote configs</h1>
     <h2>Remotes currently in use</h2>
     {/* Display the names of the remotes loaded by the CustomPlugin */}
     {__FEDERATION__.__INSTANCES__.map((inst) => (
