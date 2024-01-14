@@ -49,9 +49,7 @@ module.exports = {
       exposes: {
         './Button': './src/Button',
       },
-      runtimePlugins: [
-        require.resolve('../pick-remote.js')
-      ],
+      runtimePlugins: [require.resolve('../pick-remote.js')],
       shared: {
         ...deps,
         react: {
@@ -60,7 +58,7 @@ module.exports = {
         'react-dom': {
           singleton: true,
         },
-        lodash: {}
+        lodash: {},
       },
     }),
     new HtmlWebpackPlugin({

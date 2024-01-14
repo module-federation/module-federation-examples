@@ -18,7 +18,7 @@ const deps = require('./package.json').dependencies;
 module.exports = {
   entry: './src/index',
   mode: 'development',
-  watch:true,
+  watch: true,
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
@@ -81,9 +81,7 @@ module.exports = {
       remotes: {
         app2: 'app2@http://localhost:3002/remoteEntry.js',
       },
-      runtimePlugins: [
-        require.resolve('../control-share.ts')
-      ],
+      runtimePlugins: [require.resolve('../control-share.ts')],
       exposes: {
         './Button': './src/Button',
       },
@@ -95,7 +93,7 @@ module.exports = {
         'react-dom': {
           singleton: true,
         },
-        lodash: {}
+        lodash: {},
       },
     }),
     new HtmlRspackPlugin({
