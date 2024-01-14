@@ -10099,11 +10099,11 @@ importers:
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
       '@module-federation/enhanced':
-        specifier: next
-        version: 0.0.0-next-20240114005722(webpack@5.89.0)
+        specifier: 0.0.8
+        version: 0.0.8(webpack@5.89.0)
       '@module-federation/runtime':
-        specifier: next
-        version: 0.0.0-next-20240114005722
+        specifier: 0.0.8
+        version: 0.0.8
       '@rspack/cli':
         specifier: ^0.5.0
         version: 0.5.0(@rspack/core@0.5.0)(webpack-cli@5.1.4)
@@ -10151,11 +10151,11 @@ importers:
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
       '@module-federation/enhanced':
-        specifier: next
-        version: 0.0.0-next-20240114005722(webpack@5.89.0)
+        specifier: 0.0.8
+        version: 0.0.8(webpack@5.89.0)
       '@module-federation/runtime':
-        specifier: next
-        version: 0.0.0-next-20240114005722
+        specifier: 0.0.8
+        version: 0.0.8
       '@rspack/cli':
         specifier: ^0.5.0
         version: 0.5.0(@rspack/core@0.5.0)(webpack-cli@5.1.4)
@@ -10203,11 +10203,11 @@ importers:
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
       '@module-federation/enhanced':
-        specifier: next
-        version: 0.0.0-next-20240114005722(webpack@5.89.0)
+        specifier: 0.0.8
+        version: 0.0.8(webpack@5.89.0)
       '@module-federation/runtime':
-        specifier: next
-        version: 0.0.0-next-20240114005722
+        specifier: 0.0.8
+        version: 0.0.8
       '@rspack/cli':
         specifier: ^0.5.0
         version: 0.5.0(@rspack/core@0.5.0)(webpack-cli@5.1.4)
@@ -29652,16 +29652,6 @@ packages:
       webpack: 5.89.0(webpack-cli@5.1.4)
     dev: true
 
-  /@module-federation/enhanced@0.0.0-next-20240114005722(webpack@5.89.0):
-    resolution: {integrity: sha512-c8DmKx4EJ8QEWevmFUEw+x+Ulonw7+4W6rBbvgubs907cLC4fvDNJAQj94zQ25E4mZMaQzWD5LCcLR7bTANnIQ==}
-    peerDependencies:
-      webpack: 5.89.0
-    dependencies:
-      '@module-federation/runtime-tools': 0.0.0-next-20240114005722
-      '@module-federation/sdk': 0.0.0-next-20240114005722
-      webpack: 5.89.0(webpack-cli@5.1.4)
-    dev: true
-
   /@module-federation/enhanced@0.0.8(webpack@5.89.0):
     resolution: {integrity: sha512-gK783ienOhWbXL0xPJMuObSVexc2KogsjLgYmQy8zb3w0qwymechV9JBcVzJ1QApsmq1e3zywPqak24TNvdYdA==}
     peerDependencies:
@@ -30044,13 +30034,6 @@ packages:
       '@module-federation/webpack-bundler-runtime': 0.0.0-next-20240112082805
     dev: true
 
-  /@module-federation/runtime-tools@0.0.0-next-20240114005722:
-    resolution: {integrity: sha512-ypJPx/rlMuPR/VA1ZSedSgyZmU6g9U5PPQZqzjX61tflqw0ntPNeR1/E/t/13rhW4q9J2TGbc5A26PyWWKzxdA==}
-    dependencies:
-      '@module-federation/runtime': 0.0.0-next-20240114005722
-      '@module-federation/webpack-bundler-runtime': 0.0.0-next-20240114005722
-    dev: true
-
   /@module-federation/runtime-tools@0.0.8:
     resolution: {integrity: sha512-tqx3wlVHnpWLk+vn22c0x9Nv1BqdZnoS6vdMb53IsVpbQIFP70nhhvymHUyFuPkoLzMFidS7GpG58DYT/4lvCw==}
     dependencies:
@@ -30069,12 +30052,6 @@ packages:
       '@module-federation/sdk': 0.0.0-next-20240112082805
     dev: true
 
-  /@module-federation/runtime@0.0.0-next-20240114005722:
-    resolution: {integrity: sha512-OdYOVG7QZ4QkA2pGBswsdtBGAGkUuF7Qir+hXhtk2w6a4sF4q3OI0fmtQEDvo8xpVT4JXiMX9hSvE2XsyDc2Tg==}
-    dependencies:
-      '@module-federation/sdk': 0.0.0-next-20240114005722
-    dev: true
-
   /@module-federation/runtime@0.0.8:
     resolution: {integrity: sha512-Hi9g10aHxHdQ7CbchSvke07YegYwkf162XPOmixNmJr5Oy4wVa2d9yIVSrsWFhBRbbvM5iJP6GrSuEq6HFO3ug==}
     dependencies:
@@ -30086,10 +30063,6 @@ packages:
 
   /@module-federation/sdk@0.0.0-next-20240112082805:
     resolution: {integrity: sha512-zuoF7kX4lo+uYknzo2CKSQSmlOfHCVjq3TJw0pcnc+EP6JClkkTy27nSy+9Li+eodk0YazEp+WU4utt/d97vpg==}
-    dev: true
-
-  /@module-federation/sdk@0.0.0-next-20240114005722:
-    resolution: {integrity: sha512-PinuqVN+pQoOon04occl9I/RXpBVXvJHykIDlBnTyZV8t8pG5wrynQdPYjKr5JcHBF7esTAkFj1Yk6u48P2blQ==}
     dev: true
 
   /@module-federation/sdk@0.0.8:
@@ -30554,13 +30527,6 @@ packages:
     dependencies:
       '@module-federation/runtime': 0.0.0-next-20240112082805
       '@module-federation/sdk': 0.0.0-next-20240112082805
-    dev: true
-
-  /@module-federation/webpack-bundler-runtime@0.0.0-next-20240114005722:
-    resolution: {integrity: sha512-PanuJmJn+AA8a2WqAurmJrp8ArExjLVNlYnrovqtGxkStttSH8k5kVV2KJnc7AEptMscCjoH9LPt9C4wXtNQ3Q==}
-    dependencies:
-      '@module-federation/runtime': 0.0.0-next-20240114005722
-      '@module-federation/sdk': 0.0.0-next-20240114005722
     dev: true
 
   /@module-federation/webpack-bundler-runtime@0.0.8:
@@ -31687,6 +31653,14 @@ packages:
       tslib: 2.6.2
     dev: true
 
+  /@nrwl/devkit@16.0.0(nx@16.0.0):
+    resolution: {integrity: sha512-ycd4wD4v1N/ywjU1cwTVCPQJwxnGjEsWIll5z5cMtfHwJf+0OhMTqC3zeZibIwnjjoh721pyEzXODyUmjkGmVw==}
+    dependencies:
+      '@nx/devkit': 16.0.0(nx@16.0.0)
+    transitivePeerDependencies:
+      - nx
+    dev: true
+
   /@nrwl/devkit@16.0.0(nx@17.1.3):
     resolution: {integrity: sha512-ycd4wD4v1N/ywjU1cwTVCPQJwxnGjEsWIll5z5cMtfHwJf+0OhMTqC3zeZibIwnjjoh721pyEzXODyUmjkGmVw==}
     dependencies:
@@ -32671,7 +32645,7 @@ packages:
     peerDependencies:
       nx: '>= 15 <= 17'
     dependencies:
-      '@nrwl/devkit': 16.0.0(nx@17.1.3)
+      '@nrwl/devkit': 16.0.0(nx@16.0.0)
       ejs: 3.1.9
       ignore: 5.2.4
       nx: 16.0.0
