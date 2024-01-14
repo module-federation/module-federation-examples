@@ -95,7 +95,7 @@ const RenderInstances = () => {
                     <div style={{marginBottom: '5px'}}>
                       <p>Ships With: {version}</p>
                       <p>Singleton: {singleton ? 'Yes' : 'No'}</p>
-                      <p>Currently using: {version}</p>
+                      <p>Currently using: {overrideVersion}</p>
                       <p>Override using: {overrideVersion}</p>
                     </div>
                     <div>
