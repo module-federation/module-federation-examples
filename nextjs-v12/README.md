@@ -6,7 +6,7 @@ NOTE: There seems to be a problem with css-in-js sharing between federated modul
 
 ## Getting Started
 
-1. run `yarn start` and browse to `http://localhost:3001`
+1. run `pnpm run start` and browse to `http://localhost:3001`
 
 # We are available to consult
 

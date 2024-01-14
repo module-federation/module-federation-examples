@@ -15,7 +15,7 @@ This example demos a Vue3 in React application which shares the same store.
 ## Run it locally
 
 Run `yarn` to install the dependencies.\
-Run `yarn start` to build and serve the shell, shared-store, react-counter and vue-counter at once.
+Run `pnpm run start` to build and serve the shell, shared-store, react-counter and vue-counter at once.
 
 The shell will be accessible on [localhost:3001](http://localhost:3001/)
 <img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/SharedStoreCrossFramework">

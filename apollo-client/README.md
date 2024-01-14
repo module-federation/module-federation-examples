@@ -11,7 +11,7 @@ The `app2` is used to expose a component called `Content` and a route called `us
 
 Run `yarn` to install the dependencies.
 
-Run `yarn start` this will build and start all applications.
+Run `pnpm run start` this will build and start all applications.
 
 Bellow you can see the port mapping:
 

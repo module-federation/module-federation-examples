@@ -7,7 +7,7 @@ This example demos a basic host-remote application with third-party network call
 # Running Demo
 
 Run `yarn`
-Run `yarn start`.
+Run `pnpm run start`.
 This will build and serve `app1` on port 3001
 
 - [localhost:3001](http://localhost:3001/) (HOST)

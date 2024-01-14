@@ -14,13 +14,13 @@ To run this demo you will need to open 2 terminals.
 ```bash
 # Terminal 1
 cd app1
-yarn start
+pnpm run start
 ```
 
 ```bash
 # Terminal 2
 cd app2
-yarn start
+pnpm run start
 ```
 
 Bellow you can see the port mapping:
