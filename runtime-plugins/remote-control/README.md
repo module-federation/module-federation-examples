@@ -10,7 +10,7 @@ API based Remote Module Loading is an example application that showcases the dyn
 
 ## Main Components
 
-### `./pick-remote.ts`
+### `./app1/pick-remote.ts`
 
 This is the runtime plugin that controls the loading rules for module federation.
 

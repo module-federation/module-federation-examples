@@ -80,7 +80,7 @@ module.exports = {
       remotes: {
         app2: 'app2@http://localhost:3002/remoteEntry.js',
       },
-      runtimePlugins: [require.resolve('../pick-remote.ts')],
+      runtimePlugins: [require.resolve('./pick-remote.ts')],
       exposes: {
         './Button': './src/Button',
       },
