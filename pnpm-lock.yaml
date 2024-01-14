@@ -1219,8 +1219,8 @@ importers:
         specifier: ^0.3.0
         version: 0.3.2
       '@rsbuild/plugin-vue':
-        specifier: ^0.2.15
-        version: 0.2.15(@rsbuild/core@0.3.2)(vue@3.2.47)
+        specifier: ^0.3.0
+        version: 0.3.2(@rsbuild/core@0.3.2)(vue@3.2.47)
       '@rspack/core':
         specifier: ^0.5.0
         version: 0.5.0(@swc/helpers@0.5.3)
@@ -34247,17 +34247,18 @@ packages:
       react-refresh: 0.14.0
     dev: true
 
-  /@rsbuild/plugin-vue@0.2.15(@rsbuild/core@0.3.2)(vue@3.2.47):
-    resolution: {integrity: sha512-fscWw/4PFicK24FjSrd8SU9fLIE1x+wtAyXgEN4Y9WKh+qHHwEksJai4Z0k7aq5qQPKk1N2EsQEn/LuhMmVmnQ==}
+  /@rsbuild/plugin-vue@0.3.2(@rsbuild/core@0.3.2)(vue@3.2.47):
+    resolution: {integrity: sha512-LDnIpQiXx95LPObijcp6wAIRI/PBnSFbvNGEOP+JolAzUXwMupXclQVcuklJqDTXFUJK5f8U1t2Vgfm4YeY54w==}
     peerDependencies:
       '@rsbuild/core': 0.x
     dependencies:
       '@rsbuild/core': 0.3.2
-      '@rsbuild/shared': 0.2.15
+      '@rsbuild/shared': 0.3.2(@swc/helpers@0.5.3)
       vue-loader: 17.4.2(vue@3.2.47)(webpack@5.89.0)
       webpack: 5.89.0(webpack-cli@5.0.1)
     transitivePeerDependencies:
       - '@swc/core'
+      - '@swc/helpers'
       - '@vue/compiler-sfc'
       - esbuild
       - uglify-js
