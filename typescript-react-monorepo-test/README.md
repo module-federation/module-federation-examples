@@ -11,7 +11,7 @@ yarn
 
 # Running Demo
 
-Run `REMOTE_URL=http://localhost:4000 yarn start` in root folder. This will build and serve both `host` and `remote` on ports 3000 and 4000 respectively.
+Run `REMOTE_URL=http://localhost:4000 pnpm run start` in root folder. This will build and serve both `host` and `remote` on ports 3000 and 4000 respectively.
 
 - [localhost:3000](http://localhost:3000/)
 - [localhost:4000](http://localhost:4000/)

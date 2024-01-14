@@ -6,7 +6,7 @@ This repo uses Webpack5 Module Federation plugin to build a React microfrontend
 
 ```shell
 yarn install
-yarn start
+pnpm run start
 ```
 
 Host runs at http://localhost:3000 (live reload only)

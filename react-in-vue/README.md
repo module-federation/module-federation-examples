@@ -16,7 +16,7 @@ Install dependencies
 
 Then run development servers with
 
-`yarn start`
+`pnpm run start`
 
 This will build and serve both `home` and `layout` on ports `3002` and `3001` respectively.
 

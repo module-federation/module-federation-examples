@@ -5,7 +5,7 @@
 
 # Running Demo
 
-Run `yarn start`. This will build and serve both `client-app`, `host-app`, on
+Run `pnpm run start`. This will build and serve both `client-app`, `host-app`, on
 ports `4000`, `5000`, respectively.
 
 - [localhost:4000](http://localhost:4000/) (CLIENT_APP)

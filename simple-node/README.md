@@ -8,6 +8,6 @@ This repository contains a basic example of how to use Node Federation. It demon
    `yarn install`
 
 2. Start the project by executing the command:
-   `yarn start`
+   `pnpm run start`
 
 After following these steps, your Node Federation example should be up and running.
