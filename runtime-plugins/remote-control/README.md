@@ -1,35 +1,32 @@
 # Controlled Vendor Sharing
 
-Dynamic Vendor Sharing is an application that implements a control panel in the runtime plugin for module federation 1.5 in rspack or `@module-federation/enhanced`. The control panel allows you to deterministically manage and modify the rules for shared modules, as well as upgrade or downgrade applications based on the inputs from the React form.
+Controlled Vendor Sharing is a dynamic application that introduces a control panel within the runtime plugin for Module Federation in rspack or `@module-federation/enhanced`. The control panel allows you to manage and modify the loading rules for shared modules, as well as upgrade or downgrade applications based on inputs from a React form.
 
 ## Features
 
-- Runtime plugin that implements rules for module sharing.
-- React form for modifying the rules.
-- Ability to upgrade or downgrade applications.
-- `app1` and `app2` exposing different button components.
+- **Runtime Plugin**: A runtime plugin that controls the loading rules for shared modules.
+- **React Form**: A form built with React that allows for the modification of loading rules.
+- **Upgrade or Downgrade Applications**: The ability to upgrade or downgrade applications based on the inputs from the React form.
+- **Exposing Button Components**: `app1`, `app2`, and `app3` expose different button components for demonstration purposes. Clicking the button on `app1` dynamically loads either `app2` or `app3`, simulating the replacement of one remote with another, which could be a different version of the remote like a deployed version.
 
 ## Main Components
 
-### `./app1/pick-remote.ts`
+### `./pick-remote.ts`
 
-This is the runtime plugin that implements the rules for module federation.
-
-### `./app1/src/ControlPanel.js`
-
-This is a React form that allows for the modification of rules implemented in `pick-remote.ts`.
+This is the runtime plugin that controls the loading rules for module federation.
 
 # Running Demo
 
-Run `yarn start`. This will build and serve both `app1` and `app2` on ports 3001 and 3002 respectively.
+To give the application a spin, run `pnpm start`. This command will build and serve `app1`, `app2`, and `app3` on ports 3001, 3002, and 3003 respectively.
 
 - [localhost:3001](http://localhost:3001/)
 - [localhost:3002](http://localhost:3002/)
+- [localhost:3003](http://localhost:3003/)
 
 # Running Cypress E2E Tests
 
-To run tests in interactive mode, run `npm run cypress:debug` from the root directory of the project. It will open Cypress Test Runner and allow to run tests in interactive mode. [More info about "How to run tests"](../../cypress/README.md#how-to-run-tests)
+For running tests in interactive mode, execute `npm run cypress:debug` from the root directory of the project. This will open the Cypress Test Runner and allow you to run tests interactively. [More info about "How to run tests"](../../cypress/README.md#how-to-run-tests)
 
-To build app and run test in headless mode, run `yarn e2e:ci`. It will build app and run tests for this workspace in headless mode. If tets failed cypress will create `cypress` directory in sample root folder with screenshots and videos.
+To build the app and run tests in headless mode, run `yarn e2e:ci`. This command will build the app and run tests for this workspace in headless mode. If tests fail, Cypress will create a `cypress` directory in the sample root folder with screenshots and videos.
 
-["Best Practices, Rules amd more interesting information here](../../cypress/README.md)
+["Best Practices, Rules and more interesting information here](../../cypress/README.md)
