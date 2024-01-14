@@ -42,7 +42,7 @@ appsData.forEach(
     const appName = property.host === 3002 ? appsData[1].appNameText : appsData[0].appNameText;
     const color = property.host === 3002 ? appsData[1].buttonColor : appsData[0].buttonColor;
 
-    describe(`Automatic Vendor Sharing`, () => {
+    describe(`Endpoint Based Remotes`, () => {
       context(`Check ${appName}`, () => {
         beforeEach(() => {
           basePage.openLocalhost({
