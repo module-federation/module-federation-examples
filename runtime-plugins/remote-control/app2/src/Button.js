@@ -10,6 +10,6 @@ const style = {
 const Button = () => <button onClick={()=>{
   window.localStorage.setItem('button', 'green');
   window.location.reload()
-}} style={style}>App 2 Button - lodash {lodash.VERSION}</button>;
+}} style={style}>App 2 Button - CLICK ME</button>;
 
 export default Button;
