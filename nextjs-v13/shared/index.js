@@ -21,15 +21,15 @@ const remotes = Object.entries(remoteVars).reduce((acc, item) => {
 
 async function matchFederatedPage(path) {
   const maps = await Promise.all(
-      Object.keys(remotes).map(async remote => {
-        const foundContainer = injectScript(remote);
-        const container = await foundContainer;
+    Object.keys(remotes).map(async remote => {
+      const foundContainer = injectScript(remote);
+      const container = await foundContainer;
 
-        return container
-            .get('./pages-map')
-            .then(factory => ({ remote, config: factory().default }))
-            .catch(() => null);
-      }),
+      return container
+        .get('./pages-map')
+        .then(factory => ({ remote, config: factory().default }))
+        .catch(() => null);
+    }),
   );
 
   const config = {};
@@ -48,8 +48,7 @@ async function matchFederatedPage(path) {
   console.log(config);
   const matcher = createMatcher.default(config);
   return matcher(path);
-};
-
+}
 
 module.exports = {
   matchFederatedPage,
@@ -134,6 +133,5 @@ module.exports = {
     };
 
     return FederatedCatchAll;
-  }
-}
-
+  },
+};

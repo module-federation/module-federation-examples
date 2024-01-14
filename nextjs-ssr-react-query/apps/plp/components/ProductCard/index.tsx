@@ -5,12 +5,9 @@ import styled from 'styled-components';
 
 import type { Product } from '@acme/domain';
 
-const Button = dynamic(
-  () => import('button/Button').then((mod) => mod.Button),
-  {
-    ssr: true,
-  }
-);
+const Button = dynamic(() => import('button/Button').then(mod => mod.Button), {
+  ssr: true,
+});
 
 export const CardOutline = styled.div`
   display: flex;
@@ -56,8 +53,7 @@ export function ProductCard({ product, ...linkProps }: ProductCardProps) {
           <h4>{product.title}</h4>
           <p>{product.brand}</p>
           <div>
-            <span>price: {product.price}</span>{' '}
-            <span>rating: {product.rating}</span>
+            <span>price: {product.price}</span> <span>rating: {product.rating}</span>
           </div>
         </Link>
       </CardBody>

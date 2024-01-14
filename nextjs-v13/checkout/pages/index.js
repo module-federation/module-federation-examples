@@ -1,7 +1,7 @@
-import { useEffect,lazy } from 'react';
+import { useEffect, lazy } from 'react';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-const Home = process.browser ? lazy(()=>import('home/home')) : ()=>null;
+const Home = process.browser ? lazy(() => import('home/home')) : () => null;
 const Page = props => {
   const router = useRouter();
   useEffect(() => {
