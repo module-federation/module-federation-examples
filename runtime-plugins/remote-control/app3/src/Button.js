@@ -1,5 +1,5 @@
 import React from 'react';
-import * as lodash from 'lodash'
+import * as lodash from 'lodash';
 
 const style = {
   background: 'green',
@@ -7,9 +7,16 @@ const style = {
   padding: 12,
 };
 
-const Button = () => <button onClick={()=>{
-  window.localStorage.setItem('button', 'blue');
-  window.location.reload()
-}} style={style}>App 3 Button - CLICK ME</button>;
+const Button = () => (
+  <button
+    onClick={() => {
+      window.localStorage.setItem('button', 'blue');
+      window.location.reload();
+    }}
+    style={style}
+  >
+    App 3 Button - CLICK ME
+  </button>
+);
 
 export default Button;

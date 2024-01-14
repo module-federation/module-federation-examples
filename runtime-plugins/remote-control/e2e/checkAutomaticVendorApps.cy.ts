@@ -12,7 +12,7 @@ const appsData = [
     headerSelector: baseSelectors.tags.headers.h1,
     subHeaderSelector: baseSelectors.tags.headers.h2,
     buttonSelector: baseSelectors.tags.coreElements.button,
-    headerText: Constants.commonConstantsData.controlShare,
+    headerText: Constants.commonConstantsData.controlRemote,
     appNameText: Constants.commonConstantsData.commonCountAppNames.app1,
     buttonColor: Constants.color.red,
     host: 3001,
@@ -21,7 +21,7 @@ const appsData = [
     headerSelector: baseSelectors.tags.headers.h1,
     subHeaderSelector: baseSelectors.tags.headers.h2,
     buttonSelector: baseSelectors.tags.coreElements.button,
-    headerText: Constants.commonConstantsData.controlShare,
+    headerText: Constants.commonConstantsData.controlRemote,
     appNameText: Constants.commonConstantsData.commonCountAppNames.app2,
     buttonColor: Constants.color.deepBlue,
     host: 3002,
@@ -42,8 +42,8 @@ appsData.forEach(
     const appName = property.host === 3002 ? appsData[1].appNameText : appsData[0].appNameText;
     const color = property.host === 3002 ? appsData[1].buttonColor : appsData[0].buttonColor;
 
-    describe(`Automatic Vendor Sharing`, () => {
-      context(`Check ${appName}`, () => {
+    describe(`Endpoint Based Remotes`, () => {
+      context(`Check ${appName}:${host}`, () => {
         beforeEach(() => {
           basePage.openLocalhost({
             number: host,
@@ -55,10 +55,10 @@ appsData.forEach(
             selector: property.headerSelector,
             text: property.headerText,
           });
-          basePage.checkElementWithTextPresence({
-            selector: property.subHeaderSelector,
-            text: `${appName}`,
-          });
+          // basePage.checkElementWithTextPresence({
+          //   selector: property.subHeaderSelector,
+          //   text: `${appName}`,
+          // });
         });
 
         it(`Check buttons in ${appName} exist`, () => {

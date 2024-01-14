@@ -69,7 +69,6 @@ module.exports = {
           },
         },
       },
-
     ],
   },
   plugins: [
@@ -82,9 +81,6 @@ module.exports = {
       exposes: {
         './Button': './src/Button',
       },
-      runtimePlugins: [
-        require.resolve('../pick-remote.ts')
-      ],
       shared: {
         ...deps,
         react: {
@@ -93,7 +89,7 @@ module.exports = {
         'react-dom': {
           singleton: true,
         },
-        lodash: {}
+        lodash: {},
       },
     }),
     new HtmlRspackPlugin({

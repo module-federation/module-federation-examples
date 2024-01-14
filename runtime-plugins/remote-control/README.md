@@ -1,17 +1,16 @@
-# Controlled Vendor Sharing
+# Backend Controlled Configs
 
-Controlled Vendor Sharing is a dynamic application that introduces a control panel within the runtime plugin for Module Federation in rspack or `@module-federation/enhanced`. The control panel allows you to manage and modify the loading rules for shared modules, as well as upgrade or downgrade applications based on inputs from a React form.
+API based Remote Module Loading is an example application that showcases the dynamic control over the loading of remote modules in a web application using the Module Federation plugin. The application is divided into two segments: the host application and the remote application. The host application features a local button, and it also loads a button from the remote application.
 
 ## Features
 
 - **Runtime Plugin**: A runtime plugin that controls the loading rules for shared modules.
-- **React Form**: A form built with React that allows for the modification of loading rules.
-- **Upgrade or Downgrade Applications**: The ability to upgrade or downgrade applications based on the inputs from the React form.
+- **Switch remotes by clicking button**: The ability to upgrade or downgrade applications or remote urls dynamically
 - **Exposing Button Components**: `app1`, `app2`, and `app3` expose different button components for demonstration purposes. Clicking the button on `app1` dynamically loads either `app2` or `app3`, simulating the replacement of one remote with another, which could be a different version of the remote like a deployed version.
 
 ## Main Components
 
-### `./pick-remote.ts`
+### `./app1/pick-remote.ts`
 
 This is the runtime plugin that controls the loading rules for module federation.
 

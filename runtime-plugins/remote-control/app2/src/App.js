@@ -5,11 +5,11 @@ const RemoteButton = React.lazy(() => import('app1/Button'));
 
 const App = () => (
   <div>
-    <h1>Share Control Panel</h1>
+    <h1>API controlled remote configs</h1>
     <h2>App 2</h2>
-    <LocalButton/>
+    <LocalButton />
     <React.Suspense fallback="Loading Button">
-      <RemoteButton/>
+      <RemoteButton />
     </React.Suspense>
   </div>
 );
