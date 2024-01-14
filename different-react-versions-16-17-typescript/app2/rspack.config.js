@@ -8,12 +8,18 @@ const path = require('path');
 const webpackConfig = {
   entry: './src/index',
   mode: 'development',
+  resolve: {
+    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+  },
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
     hot:true,
     port: 3002,
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
   },
   output: {
     publicPath: 'auto',

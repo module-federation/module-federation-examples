@@ -11,8 +11,14 @@ module.exports = {
   devServer:{
     port: 3003,
   },
+  resolve: {
+    extensions: ['.jsx', '.js', '.json', '.mjs'],
+  },
   experiments: {
     css: true,
+  },
+  resolve: {
+    extensions: ['.jsx', '.js', '.json', '.mjs'],
   },
   module: {
     rules: [

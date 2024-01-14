@@ -1,4 +1,4 @@
-const NextFederationPlugin = require('@module-federation/nextjs-mf/lib/NextFederationPlugin');
+const NextFederationPlugin = require('@module-federation/nextjs-mf');
 
 module.exports = {
   webpack(config, options) {
@@ -17,9 +17,6 @@ module.exports = {
               requiredVersion: false,
               singleton: true,
             },
-          },
-          extraOptions: {
-            skipSharingNextInternals: true,
           },
         }),
       );

@@ -2,10 +2,7 @@ import type { GetStaticPropsContext } from 'next';
 import styled from 'styled-components';
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 
-import {
-  ProductOverview,
-  fetchProductById,
-} from '../../components/ProductOverview';
+import { ProductOverview, fetchProductById } from '../../components/ProductOverview';
 
 const StyledPage = styled.div`
   min-height: calc(100vh - 16px);
@@ -35,7 +32,7 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
     () => fetchProductById(productId as string),
     {
       staleTime: 5000, // will give 5 seconds for all queries to be fetched, before the page is rendered, if the data is not already processed by the time the page is rendered with the pre-fetched data
-    }
+    },
   );
 
   return {

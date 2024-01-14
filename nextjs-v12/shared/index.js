@@ -21,15 +21,15 @@ const remotes = Object.entries(remoteVars).reduce((acc, item) => {
 
 async function matchFederatedPage(path) {
   const maps = await Promise.all(
-      Object.keys(remotes).map(async remote => {
-        const foundContainer = injectScript(remote);
-        const container = await foundContainer;
-await container.init(__webpack_share_scopes__.default)
-        return container
-            .get('./pages-map')
-            .then(factory => ({ remote, config: factory().default }))
-            .catch(() => null);
-      }),
+    Object.keys(remotes).map(async remote => {
+      const foundContainer = injectScript(remote);
+      const container = await foundContainer;
+      await container.init(__webpack_share_scopes__.default);
+      return container
+        .get('./pages-map')
+        .then(factory => ({ remote, config: factory().default }))
+        .catch(() => null);
+    }),
   );
 
   const config = {};
@@ -48,8 +48,7 @@ await container.init(__webpack_share_scopes__.default)
   console.log(config);
   const matcher = createMatcher.default(config);
   return matcher(path);
-};
-
+}
 
 module.exports = {
   matchFederatedPage,
@@ -115,7 +114,7 @@ module.exports = {
         const container = await injectScript(remote);
         console.log('container', container);
         await container.init(__webpack_share_scopes__.default);
-        const FederatedPageFactory = await container.get(mod)
+        const FederatedPageFactory = await container.get(mod);
         console.log('FederatedPageFactory', FederatedPageFactory);
         const FederatedPage = FederatedPageFactory().default;
         console.log('FederatedPage', FederatedPage);
@@ -138,6 +137,5 @@ module.exports = {
     };
 
     return FederatedCatchAll;
-  }
-}
-
+  },
+};

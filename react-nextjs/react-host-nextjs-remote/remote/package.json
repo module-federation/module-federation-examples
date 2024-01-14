@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 8081",
-    "build": "next build",
+    "dev": "NEXT_PRIVATE_LOCAL_WEBPACK=true next dev -p 8081",
+    "build": "NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@module-federation/nextjs-mf": "5.2.1",
+    "@module-federation/nextjs-mf": "8.1.5",
     "next": "12.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0"

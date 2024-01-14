@@ -4,20 +4,25 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack serve --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "start": "rspack serve --config rspack.dev.js",
+    "legacy:start": "webpack serve --config webpack.dev.js",
+    "build": "rspack --config rspack.prod.js",
+    "legacy:build": "webpack --config webpack.prod.js"
   },
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@babel/core": "7.23.5",
+    "@rspack/core": "^0.5.0",
+    "@rspack/cli": "^0.5.0",
+    "@rspack/dev-server": "^0.5.0",
+    "@babel/core": "7.23.7",
     "@babel/preset-react": "7.23.3",
     "babel-loader": "8.2.5",
     "css-loader": "6.8.1",
     "html-webpack-plugin": "5.6.0",
-    "postcss": "^8.4.31",
+    "postcss": "^8.4.32",
     "postcss-loader": "^7.3.3",
     "postcss-preset-env": "^9.3.0",
     "style-loader": "^3.3.3",

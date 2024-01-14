@@ -76,7 +76,7 @@ const RenderInstances = () => {
             <h2>{name}</h2>
             {Object.entries(shared).map(([key, {version, useIn}]) => {
               const singleton = singletons.has(key);
-              const overrideVersion = formData[name]?.[key] || version;
+              const overrideVersion = formData[name]?.[key];
 
               // Get all versions specific to the package
               const packageVersions = instances.flatMap(instance =>
@@ -95,8 +95,8 @@ const RenderInstances = () => {
                     <div style={{marginBottom: '5px'}}>
                       <p>Ships With: {version}</p>
                       <p>Singleton: {singleton ? 'Yes' : 'No'}</p>
-                      <p>Currently using: {version}</p>
-                      <p>Override using: {overrideVersion}</p>
+                      <p>Currently using: {overrideVersion || version}</p>
+                      <p>Override using: {overrideVersion || 'not set'}</p>
                     </div>
                     <div>
                       <label style={{display: 'block', marginBottom: '5px'}}>
