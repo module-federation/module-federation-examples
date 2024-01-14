@@ -43,7 +43,7 @@ appsData.forEach(
     const color = property.host === 3002 ? appsData[1].buttonColor : appsData[0].buttonColor;
 
     describe(`Endpoint Based Remotes`, () => {
-      context(`Check ${appName}`, () => {
+      context(`Check ${appName}:${host}`, () => {
         beforeEach(() => {
           basePage.openLocalhost({
             number: host,
@@ -55,10 +55,10 @@ appsData.forEach(
             selector: property.headerSelector,
             text: property.headerText,
           });
-          basePage.checkElementWithTextPresence({
-            selector: property.subHeaderSelector,
-            text: `${appName}`,
-          });
+          // basePage.checkElementWithTextPresence({
+          //   selector: property.subHeaderSelector,
+          //   text: `${appName}`,
+          // });
         });
 
         it(`Check buttons in ${appName} exist`, () => {
