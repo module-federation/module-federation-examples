@@ -5,8 +5,7 @@ Controlled Vendor Sharing is a dynamic application that introduces a control pan
 ## Features
 
 - **Runtime Plugin**: A runtime plugin that controls the loading rules for shared modules.
-- **React Form**: A form built with React that allows for the modification of loading rules.
-- **Upgrade or Downgrade Applications**: The ability to upgrade or downgrade applications based on the inputs from the React form.
+- **Switch remotes by clicking button**: The ability to upgrade or downgrade applications or remote urls dynamically
 - **Exposing Button Components**: `app1`, `app2`, and `app3` expose different button components for demonstration purposes. Clicking the button on `app1` dynamically loads either `app2` or `app3`, simulating the replacement of one remote with another, which could be a different version of the remote like a deployed version.
 
 ## Main Components
