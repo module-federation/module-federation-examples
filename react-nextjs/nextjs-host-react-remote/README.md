@@ -21,11 +21,11 @@ cd ./host
 
 yarn build
 
-yarn start
+pnpm run start
 ```
 
 ```bash
-yarn start
+pnpm run start
 ```
 
 Open [http://localhost:8080](http://localhost:8080) with your browser to see the result.

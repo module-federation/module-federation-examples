@@ -7,7 +7,7 @@
 
 # Running Demo
 
-Run `yarn && yarn dev` or `yarn && yarn build && yarn start`
+Run `yarn && yarn dev` or `yarn && yarn build && pnpm run start`
 
 - [localhost:3001](http://localhost:3001) (ssr-mf-home)
 - [localhost:3002](http://localhost:3002/about) (ssr-mf-about)

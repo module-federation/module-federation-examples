@@ -8,7 +8,7 @@ This example demos loading nested remote components.
 
 # Running Demo
 
-Run `yarn start`. This will build and serve both `app1`, `app2`, and `app3` on ports 3001, 3002, and 3003 respectively.
+Run `pnpm run start`. This will build and serve both `app1`, `app2`, and `app3` on ports 3001, 3002, and 3003 respectively.
 
 - [localhost:3001](http://localhost:3001/) (HOST)
 - [localhost:3002](http://localhost:3002/) (STANDALONE REMOTE)

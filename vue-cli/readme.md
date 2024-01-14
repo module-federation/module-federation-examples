@@ -14,7 +14,7 @@
 - Build
   - `yarn build`
 - Run builded app
-  - `yarn start`
+  - `pnpm run start`
 
 ---
 

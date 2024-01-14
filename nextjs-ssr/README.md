@@ -3,7 +3,7 @@
 
 ## Getting Started
 
-2. run `yarn start` and browse to `http://localhost:3001` or one of the others
+2. run `pnpm run start` and browse to `http://localhost:3001` or one of the others
 
 # We are available to consult
 

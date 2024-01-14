@@ -41,7 +41,7 @@ Commands will run host react App on `http://localhost:3001-3008/`
 
 Since there are 9! variants of remotes combinations you are able to create and run your own `start:react:any-combination --scopes=@federated-css/{REQUIRED_COMBINATION_OF_REMOTES}`
 
-ex. `yarn start:react:any-combination @federated-css/{expose-css,expose-scss,expose-less,expose-tailwind-css-global}`
+ex. `pnpm run start:react:any-combination @federated-css/{expose-css,expose-scss,expose-less,expose-tailwind-css-global}`
 it will run all required expose remotes and creates host app with provided depth.
 Note. you don't need to start required remotes separately for this command.
 
@@ -64,7 +64,7 @@ Commands will run host NextJs App on `http://localhost:8081-8084/`.
 
 Since there are 9! variants of remotes combinations you are able to create and run your own `start:nextjs:any-combination --scopes=@federated-css/{REQUIRED_COMBINATION_OF_REMOTES}`
 
-ex. `yarn start:nextjs:any-combination @federated-css/{expose-css,expose-scss,expose-less,expose-tailwind-css-global}`
+ex. `pnpm run start:nextjs:any-combination @federated-css/{expose-css,expose-scss,expose-less,expose-tailwind-css-global}`
 it will run all required expose remotes and creates host app with provided depth.
 Note. you don't need to start required remotes separately for this command.
 

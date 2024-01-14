@@ -1,6 +1,6 @@
 const concurrently = require('concurrently');
 const commands = {
-    startHost: 'yarn start',
+    startHost: 'pnpm run start',
     startE2e: 'wait-on http://localhost:4000 && yarn e2e:test'
 };
 

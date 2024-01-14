@@ -10,7 +10,7 @@ This example demonstrates a shell application loading remote components and rend
 
 Run `yarn` to install the dependencies.
 
-Run `yarn start` this will build and start all applications.
+Run `pnpm run start` this will build and start all applications.
 
 Bellow you can see the port mapping:
 
