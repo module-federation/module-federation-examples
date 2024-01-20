@@ -111,6 +111,9 @@ importers:
       '@babel/preset-react':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
+      '@module-federation/enhanced':
+        specifier: ^0.0.9
+        version: 0.0.9(webpack@5.89.0)
       '@rspack/cli':
         specifier: ^0.5.0
         version: 0.5.0(@rspack/core@0.4.5)(webpack-cli@5.1.4)
@@ -154,6 +157,9 @@ importers:
       '@babel/preset-react':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
+      '@module-federation/enhanced':
+        specifier: ^0.0.9
+        version: 0.0.9(webpack@5.89.0)
       '@rspack/cli':
         specifier: ^0.5.0
         version: 0.5.0(@rspack/core@0.4.5)(webpack-cli@5.1.4)
@@ -212,6 +218,9 @@ importers:
       '@babel/preset-react':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
+      '@module-federation/enhanced':
+        specifier: ^0.0.9
+        version: 0.0.9(webpack@5.89.0)
       '@rspack/cli':
         specifier: ^0.5.0
         version: 0.5.0(@rspack/core@0.4.5)(webpack-cli@5.1.4)
@@ -264,6 +273,9 @@ importers:
       '@babel/preset-react':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
+      '@module-federation/enhanced':
+        specifier: ^0.0.9
+        version: 0.0.9(webpack@5.89.0)
       '@rspack/cli':
         specifier: ^0.5.0
         version: 0.5.0(@rspack/core@0.4.5)(webpack-cli@5.1.4)
@@ -316,6 +328,9 @@ importers:
       '@babel/preset-react':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
+      '@module-federation/enhanced':
+        specifier: ^0.0.9
+        version: 0.0.9(webpack@5.89.0)
       babel-loader:
         specifier: 9.1.3
         version: 9.1.3(@babel/core@7.23.5)(webpack@5.89.0)
@@ -359,6 +374,9 @@ importers:
       '@babel/preset-react':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.5)
+      '@module-federation/enhanced':
+        specifier: ^0.0.9
+        version: 0.0.9(webpack@5.89.0)
       babel-loader:
         specifier: 9.1.3
         version: 9.1.3(@babel/core@7.23.5)(webpack@5.89.0)
@@ -29272,6 +29290,16 @@ packages:
       webpack: 5.89.0(webpack-cli@5.1.4)
     dev: true
 
+  /@module-federation/enhanced@0.0.9(webpack@5.89.0):
+    resolution: {integrity: sha512-ltYnLDLDAlcZW050aLGhrJw7GdpKWWGleXU+Ia8OXzP/0Ii//r8c6RMQC3IMDOKXPPKUhf3P1zllSMLEuOtW7A==}
+    peerDependencies:
+      webpack: 5.89.0
+    dependencies:
+      '@module-federation/runtime-tools': 0.0.9
+      '@module-federation/sdk': 0.0.9
+      webpack: 5.89.0(webpack-cli@5.1.4)
+    dev: true
+
   /@module-federation/enhanced@0.1.0(webpack@5.89.0):
     resolution: {integrity: sha512-CymUY20htVd55Ff0G8tNeh1q3at/6xRa26Db8KcO1537aV41CFC5qRcTWd58EG9pgJhu9psyJPVaAjFXliB66g==}
     peerDependencies:
@@ -29724,6 +29752,13 @@ packages:
       '@module-federation/webpack-bundler-runtime': 0.0.8
     dev: true
 
+  /@module-federation/runtime-tools@0.0.9:
+    resolution: {integrity: sha512-x70kwvKASdGqfRRw7xJnF72aZPdrHabBde3M1htDXOIMUS17tu/POfiPrhfDT+NWAu0QLkc9IqnaQAAwa/sCwA==}
+    dependencies:
+      '@module-federation/runtime': 0.0.9
+      '@module-federation/webpack-bundler-runtime': 0.0.9
+    dev: true
+
   /@module-federation/runtime@0.0.0-canary-1701694314517:
     resolution: {integrity: sha512-qTOuEI+EwHEHQy/5J8KQ7uJbcO30fNZBqOMZhln6Iq605heXOwzvYUleQEMtjiVw2m0zpkMyqjiRUU7xkjpsnA==}
     dependencies:
@@ -29758,6 +29793,12 @@ packages:
       '@module-federation/sdk': 0.0.8
     dev: true
 
+  /@module-federation/runtime@0.0.9:
+    resolution: {integrity: sha512-a6H789zf4yuOgNMwKlt55oSyOHwBZ2fR2Dt9WQbCLfWZNZRzOqZwF90YMA4YzvYkAHAQNmqIRpA9ECtRtLnaXw==}
+    dependencies:
+      '@module-federation/sdk': 0.0.9
+    dev: true
+
   /@module-federation/sdk@0.0.0-canary-1701694314517:
     resolution: {integrity: sha512-qDv5/M2pbjj8PlA7vsWgvtaC/JbrBL5HYd2aGlWQWdK60c1HhcEx9t25QUIZUiPoTh1CGZRimS+QI7EsQltc3w==}
     dev: false
@@ -29778,6 +29819,10 @@ packages:
 
   /@module-federation/sdk@0.0.8:
     resolution: {integrity: sha512-lkasywBItjUTNT0T0IskonDE2E/2tXE9UhUCPVoDL3NteDUSFGg4tpkF+cey1pD8mHh0XJcGrCuOW7s96peeAg==}
+    dev: true
+
+  /@module-federation/sdk@0.0.9:
+    resolution: {integrity: sha512-6UHB3cGzihXVv/GjFtG3FpV4NEfWHB1mPy00XIgNaHMLzcSLyGWTT0I/3KiMFdVWrwb5exNfevohX2hiee4McQ==}
     dev: true
 
   /@module-federation/storybook-addon@0.2.0(@babel/core@7.23.5)(@module-federation/utilities@1.7.0)(@storybook/core-common@6.5.16)(@storybook/node-logger@6.5.16)(eslint@8.55.0)(nx@17.1.3)(typescript@5.2.2)(webpack-virtual-modules@0.6.1)(webpack@5.89.0):
@@ -30299,6 +30344,13 @@ packages:
     dependencies:
       '@module-federation/runtime': 0.0.8
       '@module-federation/sdk': 0.0.8
+    dev: true
+
+  /@module-federation/webpack-bundler-runtime@0.0.9:
+    resolution: {integrity: sha512-TEUVsqRkJe/Cl6zjjERnEQpI9IHLdnbr5ZIe3kXynQdeGLHn1zu0ZkO9rqlim4inlH7vyxGdtKxnkvV9JsAI6g==}
+    dependencies:
+      '@module-federation/runtime': 0.0.9
+      '@module-federation/sdk': 0.0.9
     dev: true
 
   /@mole-inc/bin-wrapper@8.0.1:
@@ -42247,7 +42299,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.22.1
-      caniuse-lite: 1.0.30001558
+      caniuse-lite: 1.0.30001572
       fraction.js: 4.3.6
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -68423,6 +68475,7 @@ packages:
       prop-types: 15.8.1
       react: 16.14.0
       scheduler: 0.19.1
+    bundledDependencies: false
 
   /react-dom@16.6.3(react@16.6.3):
     resolution: {integrity: sha512-8ugJWRCWLGXy+7PmNh8WJz3g1TaTUt1XyoIcFN+x0Zbkoz+KKdUyx1AQLYJdbFXjuF41Nmjn5+j//rxvhFjgSQ==}
@@ -69043,6 +69096,7 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       prop-types: 15.8.1
+    bundledDependencies: false
 
   /react@16.6.3:
     resolution: {integrity: sha512-zCvmH2vbEolgKxtqXL2wmGCUxUyNheYn/C+PD1YAjfxHC54+MhdruyhO7QieQrYsYeTxrn93PM2y0jRH1zEExw==}
