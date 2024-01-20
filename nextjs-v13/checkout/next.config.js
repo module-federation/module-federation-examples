@@ -19,8 +19,7 @@ module.exports = {
             './pages-map': './pages-map.js',
           },
           shared: {},
-          extraOptions: {
-          }
+          extraOptions: {},
         }),
       );
     }

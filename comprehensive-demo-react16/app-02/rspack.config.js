@@ -11,6 +11,9 @@ module.exports = {
   devServer:{
     port: 3002,
   },
+  resolve: {
+    extensions: ['.jsx', '.js', '.json', '.mjs'],
+  },
   output: {
     publicPath: 'auto',
   },

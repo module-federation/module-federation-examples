@@ -27,7 +27,7 @@ It is a middle-level app, which depends on modules exposed from remote app, for 
   - For example we will illustrate for: `nextjs-host-remote`
   - Navigate to `nextjs-host-remote` folder
   - Run in the root folder: `yarn`
-  - Run: `yarn start`
+  - Run: `pnpm run start`
   - Navigate to: [http://localhost:8080/](http://localhost:8080/)
 
 ## 🖇️ Types

@@ -1,16 +1,13 @@
-import React, { Fragment, Suspense } from 'react';
+import React, { Fragment, Suspense, lazy } from 'react';
 import Head from 'next/head';
-import dynamic from 'next/dynamic';
+
 let useCustomHook;
 if (process.browser) {
   useCustomHook = require('shop/customHook').default;
 }
-const RemoteTitle = dynamic(
-  () => {
-    return import('checkout/title');
-  },
-  { ssr: false },
-);
+const RemoteTitle = lazy(() => {
+  return import('checkout/title');
+});
 
 const Home = ({ loaded }) => {
   if (process.browser) {
@@ -24,7 +21,9 @@ const Home = ({ loaded }) => {
       </Head>
 
       <div className="hero">
-        <RemoteTitle />
+        <Suspense fallback={'loading...'}>
+          <RemoteTitle />
+        </Suspense>
         <h1 className="title">
           Welcome to Next.js on Webpack 5! <code>home</code>
         </h1>
@@ -53,6 +52,7 @@ const Home = ({ loaded }) => {
           width: 100%;
           color: #333;
         }
+
         .title {
           margin: 0;
           width: 100%;
@@ -60,10 +60,12 @@ const Home = ({ loaded }) => {
           line-height: 1.15;
           font-size: 48px;
         }
+
         .title,
         .description {
           text-align: center;
         }
+
         .row {
           max-width: 880px;
           margin: 80px auto 40px;
@@ -71,6 +73,7 @@ const Home = ({ loaded }) => {
           flex-direction: row;
           justify-content: space-around;
         }
+
         .card {
           padding: 18px 18px 24px;
           width: 220px;
@@ -79,14 +82,17 @@ const Home = ({ loaded }) => {
           color: #434343;
           border: 1px solid #9b9b9b;
         }
+
         .card:hover {
           border-color: #067df7;
         }
+
         .card h3 {
           margin: 0;
           color: #067df7;
           font-size: 18px;
         }
+
         .card p {
           margin: 0;
           padding: 12px 0 0;

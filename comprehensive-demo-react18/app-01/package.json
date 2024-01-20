@@ -16,14 +16,14 @@
     "serve": "^14.2.1",
     "webpack": "5.89.0",
     "webpack-cli": "^5.1.4",
-    "@rspack/core": "^0.4.5",
+    "@rspack/core": "^0.5.0",
     "@rspack/cli": "^0.5.0",
-    "@rspack/dev-server": "^0.4.5"
+    "@rspack/dev-server": "^0.5.0"
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production rspack build --mode production",
-    "legacy:build": "cross-env NODE_ENV=production webpack",
-    "start": "rspack cross-env NODE_ENV=production --watch",
+    "legacy:build": "cross-env NODE_ENV=production webpack --mode production",
+    "start": "rspack --watch",
     "legacy:start": "webpack --watch",
     "dev": "rspack serve",
     "legacy:dev": "webpack-dev-server --content-base public",

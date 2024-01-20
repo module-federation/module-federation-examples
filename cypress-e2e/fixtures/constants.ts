@@ -84,6 +84,7 @@ export class Constants {
         loading: 'Loading',
         biDirectional: 'Bi-Directional',
         controlShare: 'Share Control Panel',
+        controlRemote: 'API controlled remote configs',
         sharedRoutingAppPagesComponents: {
             dashboard: 'Dashboard',
             orders: 'Orders',

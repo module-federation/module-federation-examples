@@ -7,7 +7,7 @@ This example shows how you can share your redux store across your remote app and
 
 # Running Demo
 
-1. `yarn install && yarn start`
+1. `yarn install && pnpm run start`
 2. Browse to localhost:3001
 
 You should see a `Welcome to Host App` and a `button`

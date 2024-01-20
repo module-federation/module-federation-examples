@@ -5,7 +5,7 @@ Using Module Federation to federate Wasm modules across independent applications
 ## Up and Running
 
 1. Make sure you have node.js installed locally
-2. From the root of the project run: `yarn && yarn start`.
+2. From the root of the project run: `yarn && pnpm run start`.
 
 This will start the `Host` and `Remote` applications in dev mode.
 
@@ -92,9 +92,9 @@ In order to run the Rust->Wasm toolchain, please make sure you have the project 
 
 Once those are installed, go to `packages/remote/webpack.config.js` and uncomment the code that has been commented out.
 
-you can start developing on the `Remote` app or the `Host` app with `yarn start`.
+you can start developing on the `Remote` app or the `Host` app with `pnpm run start`.
 
-> 💡 For local development of Host app, make sure that the Remote app is also running so that the import of the Wasm module does not fail. You can start both apps by running yarn start in the top-level dir.
+> 💡 For local development of Host app, make sure that the Remote app is also running so that the import of the Wasm module does not fail. You can start both apps by running pnpm run start in the top-level dir.
 
 ## Project Dependencies
 

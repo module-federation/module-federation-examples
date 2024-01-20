@@ -5,8 +5,8 @@ This project shows an example of using Webpack 5 Module Federation with Angular 
 ## Running the demo
 
 - Install packages: `yarn install`
-- Start the shell: `yarn start:shell`
-- Start the shell: `yarn start:remote`
+- Start the shell: `pnpm run start:shell`
+- Start the shell: `pnpm run start:remote`
 - Open the shell http://localhost:4200
 
 # Running Cypress E2E Tests

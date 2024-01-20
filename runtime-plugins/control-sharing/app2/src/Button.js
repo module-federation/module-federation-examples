@@ -1,5 +1,5 @@
 import React from 'react';
-import * as lodash from 'lodash'
+import * as lodash from 'lodash';
 
 const style = {
   background: '#00c',

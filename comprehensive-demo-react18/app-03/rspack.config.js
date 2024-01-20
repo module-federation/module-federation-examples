@@ -12,7 +12,9 @@ module.exports = {
   optimization: {
     minimize: false,
   },
-
+  resolve: {
+    extensions: ['.jsx', '.js', '.json', '.mjs'],
+  },
   output: {
     publicPath: 'auto',
   },

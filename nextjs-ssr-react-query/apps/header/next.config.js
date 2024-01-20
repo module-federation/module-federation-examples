@@ -34,7 +34,7 @@ const nextConfig = {
             requiredVersion: dependencies['styled-components'],
           },
         },
-      })
+      }),
     );
 
     return config;

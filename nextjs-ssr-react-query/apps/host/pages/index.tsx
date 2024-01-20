@@ -2,26 +2,17 @@ import type { GetServerSidePropsContext } from 'next';
 import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 
-const Header = dynamic(
-  () => import('header/Header').then((mod) => mod.Header),
-  {
-    ssr: true,
-  }
-);
+const Header = dynamic(() => import('header/Header').then(mod => mod.Header), {
+  ssr: true,
+});
 
-const Button = dynamic(
-  () => import('button/Button').then((mod) => mod.Button),
-  {
-    ssr: true,
-  }
-);
+const Button = dynamic(() => import('button/Button').then(mod => mod.Button), {
+  ssr: true,
+});
 
-const PlpProductsPage = dynamic(
-  () => import('plp/ProductsPage').then((mod) => mod.Page),
-  {
-    ssr: true,
-  }
-);
+const PlpProductsPage = dynamic(() => import('plp/ProductsPage').then(mod => mod.Page), {
+  ssr: true,
+});
 
 const StyledPage = styled.div`
   align-items: center;
@@ -47,9 +38,7 @@ export function Page() {
   return (
     <StyledPage>
       <Header>
-        <Button onClick={() => alert('You clicked on a header button')}>
-          Hello Button
-        </Button>
+        <Button onClick={() => alert('You clicked on a header button')}>Hello Button</Button>
       </Header>
 
       <PlpProductsPage color="forestgreen" />

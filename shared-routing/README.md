@@ -16,7 +16,7 @@ Run the following commands:
 2. `yarn lerna bootstrap --npm-client yarn`
 3. `yarn build`
 
-To run the applicatio, run `yarn start`. This will build all the apps `shell`, `dashboard`, `order`, `profile`, `sales` on different ports as shown below
+To run the applicatio, run `pnpm run start`. This will build all the apps `shell`, `dashboard`, `order`, `profile`, `sales` on different ports as shown below
 
 - [localhost:3000](http://localhost:3000/) (HOST) - `shell`
 - [localhost:3001](http://localhost:3001/) (STANDALONE REMOTE) - `dashboard`
