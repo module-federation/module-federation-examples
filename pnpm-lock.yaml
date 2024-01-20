@@ -397,8 +397,8 @@ importers:
         specifier: ^0.0.9
         version: 0.0.9(webpack@5.89.0)
       '@module-federation/runtime':
-        specifier: 0.0.8
-        version: 0.0.8
+        specifier: 0.0.9
+        version: 0.0.9
       '@rspack/cli':
         specifier: 0.5.0
         version: 0.5.0(@rspack/core@0.5.0)(webpack-cli@5.1.4)
@@ -3182,8 +3182,8 @@ importers:
   dynamic-system-host/app1:
     dependencies:
       '@module-federation/runtime':
-        specifier: 0.0.8
-        version: 0.0.8
+        specifier: 0.0.9
+        version: 0.0.9
       '@module-federation/utilities':
         specifier: ^1.4.0
         version: 1.5.0(react-dom@16.14.0)(react@16.14.0)(webpack@5.89.0)
@@ -3231,8 +3231,8 @@ importers:
   dynamic-system-host/app2:
     dependencies:
       '@module-federation/runtime':
-        specifier: 0.0.8
-        version: 0.0.8
+        specifier: 0.0.9
+        version: 0.0.9
       moment:
         specifier: ^2.29.4
         version: 2.29.4
@@ -3280,8 +3280,8 @@ importers:
   dynamic-system-host/app3:
     dependencies:
       '@module-federation/runtime':
-        specifier: 0.0.8
-        version: 0.0.8
+        specifier: 0.0.9
+        version: 0.0.9
       moment:
         specifier: ^2.29.4
         version: 2.29.4
@@ -9969,8 +9969,8 @@ importers:
         specifier: 0.0.9
         version: 0.0.9(webpack@5.89.0)
       '@module-federation/runtime':
-        specifier: 0.0.0-next-20240112082805
-        version: 0.0.0-next-20240112082805
+        specifier: 0.0.9
+        version: 0.0.9
       '@rspack/cli':
         specifier: ^0.5.0
         version: 0.5.0(@rspack/core@0.5.0)(webpack-cli@5.1.4)
@@ -10021,8 +10021,8 @@ importers:
         specifier: 0.0.9
         version: 0.0.9(webpack@5.89.0)
       '@module-federation/runtime':
-        specifier: 0.0.0-next-20240112082805
-        version: 0.0.0-next-20240112082805
+        specifier: 0.0.9
+        version: 0.0.9
       '@rspack/cli':
         specifier: ^0.5.0
         version: 0.5.0(@rspack/core@0.5.0)(webpack-cli@5.1.4)
@@ -10079,8 +10079,8 @@ importers:
         specifier: 0.0.9
         version: 0.0.9(webpack@5.89.0)
       '@module-federation/runtime':
-        specifier: 0.0.8
-        version: 0.0.8
+        specifier: 0.0.9
+        version: 0.0.9
       '@rspack/cli':
         specifier: ^0.5.0
         version: 0.5.0(@rspack/core@0.5.0)(webpack-cli@5.1.4)
@@ -10131,8 +10131,8 @@ importers:
         specifier: 0.0.9
         version: 0.0.9(webpack@5.89.0)
       '@module-federation/runtime':
-        specifier: 0.0.8
-        version: 0.0.8
+        specifier: 0.0.9
+        version: 0.0.9
       '@rspack/cli':
         specifier: ^0.5.0
         version: 0.5.0(@rspack/core@0.5.0)(webpack-cli@5.1.4)
@@ -10183,8 +10183,8 @@ importers:
         specifier: 0.0.9
         version: 0.0.9(webpack@5.89.0)
       '@module-federation/runtime':
-        specifier: 0.0.8
-        version: 0.0.8
+        specifier: 0.0.9
+        version: 0.0.9
       '@rspack/cli':
         specifier: ^0.5.0
         version: 0.5.0(@rspack/core@0.5.0)(webpack-cli@5.1.4)
@@ -22488,7 +22488,7 @@ packages:
     dependencies:
       '@babel/core': 7.22.17
       '@babel/helper-plugin-utils': 7.22.5
-      '@babel/helper-validator-option': 7.23.5
+      '@babel/helper-validator-option': 7.22.15
       '@babel/plugin-syntax-jsx': 7.23.3(@babel/core@7.22.17)
       '@babel/plugin-transform-modules-commonjs': 7.23.3(@babel/core@7.22.17)
       '@babel/plugin-transform-typescript': 7.23.3(@babel/core@7.22.17)
@@ -30061,12 +30061,6 @@ packages:
       '@module-federation/sdk': 0.0.0-next-20231225095220
     dev: true
 
-  /@module-federation/runtime@0.0.0-next-20240112082805:
-    resolution: {integrity: sha512-uyOeAZgnW8T9HcdxYidk0b8NpzK5/YBJ4/m4m7sQNNFXuXxHoJGra0msIxG/CrpmfecG8Y6rPK/Z1FDVXxXmdA==}
-    dependencies:
-      '@module-federation/sdk': 0.0.0-next-20240112082805
-    dev: true
-
   /@module-federation/runtime@0.0.8:
     resolution: {integrity: sha512-Hi9g10aHxHdQ7CbchSvke07YegYwkf162XPOmixNmJr5Oy4wVa2d9yIVSrsWFhBRbbvM5iJP6GrSuEq6HFO3ug==}
     dependencies:
@@ -30076,14 +30070,9 @@ packages:
     resolution: {integrity: sha512-a6H789zf4yuOgNMwKlt55oSyOHwBZ2fR2Dt9WQbCLfWZNZRzOqZwF90YMA4YzvYkAHAQNmqIRpA9ECtRtLnaXw==}
     dependencies:
       '@module-federation/sdk': 0.0.9
-    dev: true
 
   /@module-federation/sdk@0.0.0-next-20231225095220:
     resolution: {integrity: sha512-0vS5UXCkbKyotZIXAsF+mrL8PQ+xKmKfaDYHdBxXR4kyGSRjSRRokSKkXZNVfPEhy1f1z/oAgUo5AZoOisrrQA==}
-    dev: true
-
-  /@module-federation/sdk@0.0.0-next-20240112082805:
-    resolution: {integrity: sha512-zuoF7kX4lo+uYknzo2CKSQSmlOfHCVjq3TJw0pcnc+EP6JClkkTy27nSy+9Li+eodk0YazEp+WU4utt/d97vpg==}
     dev: true
 
   /@module-federation/sdk@0.0.8:
@@ -30091,7 +30080,6 @@ packages:
 
   /@module-federation/sdk@0.0.9:
     resolution: {integrity: sha512-6UHB3cGzihXVv/GjFtG3FpV4NEfWHB1mPy00XIgNaHMLzcSLyGWTT0I/3KiMFdVWrwb5exNfevohX2hiee4McQ==}
-    dev: true
 
   /@module-federation/storybook-addon@0.2.0(@babel/core@7.23.7)(@module-federation/utilities@1.7.0)(@storybook/core-common@6.5.16)(@storybook/node-logger@6.5.16)(eslint@8.56.0)(nx@17.2.8)(typescript@5.2.2)(webpack-virtual-modules@0.6.1)(webpack@5.89.0):
     resolution: {integrity: sha512-K+AgmzDfukKYiebzvNt9V6U73Y12nEBF7uk2bvwF0oKeIDStNE0sAbeHFlQKxwOLfvYHIzn6pW6WgwBuOmWiSA==}
@@ -42178,8 +42166,8 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
-      browserslist: 4.22.2
-      caniuse-lite: 1.0.30001576
+      browserslist: 4.22.1
+      caniuse-lite: 1.0.30001558
       fraction.js: 4.3.6
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -42194,8 +42182,8 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
-      browserslist: 4.22.2
-      caniuse-lite: 1.0.30001576
+      browserslist: 4.22.1
+      caniuse-lite: 1.0.30001558
       fraction.js: 4.3.6
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -62232,6 +62220,7 @@ packages:
   /pinkie@2.0.4:
     resolution: {integrity: sha512-MnUuEycAemtSaeFSjXKW/aroV7akBbY+Sv+RkyqFjgAe73F+MR0TBWKBRDkmfWq/HiFmdavfZ1G7h4SPZXaCSg==}
     engines: {node: '>=0.10.0'}
+    requiresBuild: true
 
   /pirates@4.0.6:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
