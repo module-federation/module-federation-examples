@@ -31,7 +31,7 @@
     - [consumers-react](federated-css/consumers-react) -- ✅ rspack | ✅ webpack <br> React apps consumes exposed components in different combinations. 
     - [expose-remotes](federated-css/expose-remotes) -- ✅ rspack | ✅ webpack <br> apps exposes components with a different types of components styling 
   - [federated-css-react-ssr](federated-css-react-ssr) -- ❌ rspack | ✅ webpack <br> Example of server side rendering with module federation using React 18 and different types of component styling 
-  - [federated-library-from-cdn](federated-library-from-cdn) -- ❌ rspack | ✅ webpack <br> Basic example of two applications that share the same library served from a CDN. 
+  - [federated-library-from-cdn](federated-library-from-cdn) -- ✅ rspack | ✅ webpack <br> Basic example of two applications that share the same library served from a CDN. 
   - [frontend-discovery-service](frontend-discovery-service) -- ❌ rspack | ✅ webpack <br> Demonstrates running Micro Frontends with Module Federation and Frontend Service Discovery on AWS, including Blue/Green deployment for version updates. 
   - [genesis](genesis) <br> Vue Genesis Example 
   - [i18next-nextjs-react](i18next-nextjs-react) -- ❌ rspack | ✅ webpack <br> Demonstrates using dedicated i18next instances in micro frontends, enabling language change in one that affects all. 
@@ -56,6 +56,7 @@
   - [rspack_offload](rspack-webpack-offload) -- ✅ rspack | ✅ webpack <br> Speed up Webpack by offloading some workload to [rspack](https://rspack.dev) 
   - [runtime-plugins](runtime-plugins) -- ✅ rspack | ✅ webpack <br> Runtime Plugin Examples for Module Federation 1.5 
     - [control-sharing](runtime-plugins/control-sharing) -- ✅ rspack | ✅ webpack <br> Control Sharing Panel. Lets you change share resolver in the app via GUI 
+    - [backend-control](runtime-plugins/remote-control) -- ✅ rspack | ✅ webpack <br> Control Sharing Panel. Lets you change share resolver in the app via GUI 
   - [rust-wasm](rust-wasm) -- ❌ rspack | ✅ webpack <br> Using Module Federation to federate Wasm modules across independent applications. In this demo, we will use Conways Game of Life to illustrate how Wasm can be shared. 
   - [self-healing](self-healing) -- ❌ rspack | ✅ webpack <br> This example demos self-healing capabilities with Module Federation. `app2` depends on and is expecting a shared dependency to be provided in `app1`. 
   - [server-side-render-only](server-side-render-only) -- ❌ rspack | ✅ webpack <br> Module Federation Server Side Rendering, no client side implementation 
