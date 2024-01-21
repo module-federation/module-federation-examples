@@ -8,7 +8,7 @@ const mode = process.env.NODE_ENV || 'development';
 
 module.exports = {
   entry: './src/index',
-  devServer:{
+  devServer: {
     port: 3003,
   },
   resolve: {

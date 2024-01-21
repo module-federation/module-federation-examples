@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {ModuleFederationPlugin} = require('@rspack/core').container;
+const { ModuleFederationPlugin } = require('@rspack/core').container;
 const path = require('path');
 const deps = require('./package.json').dependencies;
 
@@ -16,7 +16,7 @@ module.exports = {
     publicPath: 'auto',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js']
+    extensions: ['.ts', '.tsx', '.js'],
   },
   module: {
     rules: [
@@ -74,7 +74,7 @@ module.exports = {
 };
 
 function getRemoteEntryUrl(port) {
-  const {CODESANDBOX_SSE, HOSTNAME = ''} = process.env;
+  const { CODESANDBOX_SSE, HOSTNAME = '' } = process.env;
 
   // Check if the example is running on codesandbox
   // https://codesandbox.io/docs/environment

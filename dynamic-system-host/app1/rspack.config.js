@@ -1,4 +1,6 @@
-const {  container: {ModuleFederationPlugin} } = require('@rspack/core');
+const {
+  container: { ModuleFederationPlugin },
+} = require('@rspack/core');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -63,9 +65,9 @@ module.exports = {
     }),
   ],
   // it will be fixed soon...
-  resolve:{
-    alias:{
+  resolve: {
+    alias: {
       '@module-federation/runtime$': require.resolve('@module-federation/runtime'),
-    }
-  }
+    },
+  },
 };

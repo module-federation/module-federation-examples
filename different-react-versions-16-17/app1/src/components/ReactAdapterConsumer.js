@@ -3,7 +3,7 @@ import React from 'react';
 class ReactAdapterConsumer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {Component: () => null};
+    this.state = { Component: () => null };
     this.RemoteComponent = React.lazy(() =>
       this.props.importer().then(component => {
         return {

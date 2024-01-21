@@ -9,7 +9,7 @@ module.exports = {
   entry: {
     bundle: ['./src/main.js'],
   },
-  devServer:{
+  devServer: {
     port: 3004,
   },
   experiments: {

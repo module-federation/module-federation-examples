@@ -36,8 +36,9 @@ class App extends React.Component<AppProps, AppState> {
         <h2>App 1, Uses react version not compatible with hooks</h2>
         <input onChange={this.setValue} placeholder="Type something into this input" />
 
-        <div style={{ border: '1px red solid', padding: '10px', margin: '20px 0' }}
-         data-e2e="REACT__DIV_BLOCK"
+        <div
+          style={{ border: '1px red solid', padding: '10px', margin: '20px 0' }}
+          data-e2e="REACT__DIV_BLOCK"
         >
           {/* the generic component accepts property types */}
           <ReactAdapterConsumer<AppState>
@@ -55,9 +56,10 @@ class App extends React.Component<AppProps, AppState> {
         {/*This will Fail*/}
         {/*<HookComponent/>*/}
 
-        <div style={{ border: '1px red solid', padding: '10px', margin: '20px 0' }}
-         data-e2e="REACT__BUTTON_BLOCK"
-         >
+        <div
+          style={{ border: '1px red solid', padding: '10px', margin: '20px 0' }}
+          data-e2e="REACT__BUTTON_BLOCK"
+        >
           <React.Suspense fallback="Loading Button">
             {/* The autocomplete works here, try it modifing the color value */}
             <RemoteButton color="red" />

@@ -12,7 +12,7 @@ const webpackConfig = {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
-    hot:true,
+    hot: true,
     port: 3002,
   },
   output: {

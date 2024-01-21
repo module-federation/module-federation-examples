@@ -1,6 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
-const path = require('path');
+const ModuleFederationPlugin = require('@module-federation/enhanced').ModuleFederationPlugin;
 
 const mode = process.env.NODE_ENV || 'development';
 const prod = mode === 'production';

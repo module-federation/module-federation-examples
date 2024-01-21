@@ -14,8 +14,8 @@ module.exports = {
   output: {
     publicPath: 'auto',
   },
-  experiments:{
-    css:true
+  experiments: {
+    css: true,
   },
   module: {
     rules: [
@@ -38,7 +38,7 @@ module.exports = {
             },
           },
         },
-      }
+      },
     ],
   },
   //http://localhost:3002/remoteEntry.js

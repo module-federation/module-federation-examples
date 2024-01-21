@@ -8,7 +8,7 @@ module.exports = merge(common, {
     filename: 'bundle.js',
     library: {
       type: 'commonjs',
-      name: "remoteLibrary"
+      name: 'remoteLibrary',
     },
   },
 });

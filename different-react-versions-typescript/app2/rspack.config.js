@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {ModuleFederationPlugin} = require('@rspack/core').container;
+const { ModuleFederationPlugin } = require('@rspack/core').container;
 const path = require('path');
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
     publicPath: 'auto',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js']
+    extensions: ['.ts', '.tsx', '.js'],
   },
   module: {
     rules: [

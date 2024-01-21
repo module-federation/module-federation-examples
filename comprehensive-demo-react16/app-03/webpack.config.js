@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const ModuleFederationPlugin = require('@module-federation/enhanced').ModuleFederationPlugin;
 
 module.exports = {
   entry: './src/index',
@@ -7,8 +7,6 @@ module.exports = {
 
   mode: 'development',
   devtool: 'source-map',
-
-
 
   output: {
     publicPath: 'auto',

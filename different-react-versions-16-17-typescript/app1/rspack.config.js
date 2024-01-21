@@ -10,7 +10,7 @@ const webpackConfig = {
   entry: './src/index',
   mode: 'development',
   resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
   },
   devServer: {
     static: {
