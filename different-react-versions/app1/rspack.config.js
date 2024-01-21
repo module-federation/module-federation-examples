@@ -10,7 +10,7 @@ module.exports = {
       directory: path.join(__dirname, 'dist'),
     },
     port: 3001,
-    hot: true
+    hot: true,
   },
   output: {
     publicPath: 'auto',

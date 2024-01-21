@@ -10,7 +10,7 @@ module.exports = {
       directory: path.join(__dirname, 'dist'),
     },
     port: 3002,
-    hot:true
+    hot: true,
   },
   output: {
     publicPath: 'auto',
@@ -56,7 +56,7 @@ module.exports = {
       filename: 'remoteEntry.js',
       exposes: {
         './Button': './src/components/Button',
-        './ModernComponent': './src/components/ModernReactComponent'
+        './ModernComponent': './src/components/ModernReactComponent',
       },
       shared: [
         'react-dom',

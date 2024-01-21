@@ -1,4 +1,6 @@
-const {  container: {ModuleFederationPlugin} } = require('@rspack/core');
+const {
+  container: { ModuleFederationPlugin },
+} = require('@rspack/core');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const path = require('path');
@@ -16,8 +18,8 @@ module.exports = {
   output: {
     publicPath: 'auto',
   },
-  optimization:{
-    minimize:false
+  optimization: {
+    minimize: false,
   },
   module: {
     rules: [

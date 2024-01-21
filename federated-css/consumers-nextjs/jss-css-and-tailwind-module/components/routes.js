@@ -2,15 +2,15 @@ import React from 'react';
 import consumedRoutes from './pages/consumed-routes';
 
 const homeRoute = {
-    path: '/',
+  path: '/',
 };
 
 const routes = [
-    homeRoute,
-    ...consumedRoutes,
-    {
-        path: 'combined',
-    },
+  homeRoute,
+  ...consumedRoutes,
+  {
+    path: 'combined',
+  },
 ];
 
 export default routes;

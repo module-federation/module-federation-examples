@@ -8,7 +8,7 @@ module.exports = {
   entry: './src/index',
   mode: 'development',
   devtool: 'source-map',
-  devServer:{
+  devServer: {
     port: 3002,
   },
   resolve: {

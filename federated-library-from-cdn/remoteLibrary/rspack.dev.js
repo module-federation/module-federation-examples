@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { merge } = require('webpack-merge');
-const {ModuleFederationPlugin} = require('@rspack/core').container
+const { ModuleFederationPlugin } = require('@rspack/core').container;
 const common = require('./webpack.common.js');
 delete common.plugins;
 module.exports = merge(common, {

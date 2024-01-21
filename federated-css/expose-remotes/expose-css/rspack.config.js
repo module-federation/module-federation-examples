@@ -1,6 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('@rspack/core').container;
-const { remotes: { css }, mfeBaseConfig } = require('../remotes.config');
+const {
+  remotes: { css },
+  mfeBaseConfig,
+} = require('../remotes.config');
 
 const path = require('path');
 
@@ -38,7 +41,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader", ],
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },

@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const ModuleFederationPlugin = require('@module-federation/enhanced').ModuleFederationPlugin;
 const path = require('path');
 
 module.exports = {
@@ -14,11 +14,11 @@ module.exports = {
   output: {
     publicPath: 'auto',
   },
-  resolve:{
+  resolve: {
     fallback: {
-      "path": require.resolve("path-browserify"),
-      "os": require.resolve("os-browserify/browser"),
-    }
+      path: require.resolve('path-browserify'),
+      os: require.resolve('os-browserify/browser'),
+    },
   },
   module: {
     rules: [

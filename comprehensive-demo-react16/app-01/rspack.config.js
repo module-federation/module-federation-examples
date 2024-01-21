@@ -11,7 +11,7 @@ module.exports = {
   },
   mode: 'development',
   devtool: 'source-map',
-  devServer:{
+  devServer: {
     port: 3001,
   },
   resolve: {

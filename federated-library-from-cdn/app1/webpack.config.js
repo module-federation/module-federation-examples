@@ -1,11 +1,11 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const {ModuleFederationPlugin} = require("webpack").container;
-require('dotenv').config({ path: './.env' }); 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+require('dotenv').config({ path: './.env' });
 
-const remoteUrl = "https://federated-library.pages.dev/remoteEntry.js"
+const remoteUrl = 'https://federated-library.pages.dev/remoteEntry.js';
 
 module.exports = {
-  mode: "development",
+  mode: 'development',
   devServer: {
     port: 3000,
     hot: true,
@@ -23,10 +23,10 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|tsx|js|jsx)$/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          presets: ["@babel/preset-react", "@babel/preset-env"],
+          presets: ['@babel/preset-react', '@babel/preset-env'],
         },
       },
       {
@@ -37,14 +37,13 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
+      template: './public/index.html',
     }),
     new ModuleFederationPlugin({
-      name: "app1",
+      name: 'app1',
       remotes: {
         remoteLibrary: `remoteLibrary@${remoteUrl}`,
       },
     }),
   ],
 };
-
