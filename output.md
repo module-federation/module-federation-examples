@@ -32,6 +32,7 @@
     - [expose-remotes](federated-css/expose-remotes) -- ✅ rspack | ✅ webpack <br> apps exposes components with a different types of components styling 
   - [federated-css-react-ssr](federated-css-react-ssr) -- ❌ rspack | ✅ webpack <br> Example of server side rendering with module federation using React 18 and different types of component styling 
   - [federated-library-from-cdn](federated-library-from-cdn) -- ✅ rspack | ✅ webpack <br> Basic example of two applications that share the same library served from a CDN. 
+  - [federated-npm](federated-npm) -- ✅ rspack | ✅ webpack <br> Use Unpkg or esm.sh to retrieve all shared modules needed. Allowing you to access all of npm on demand 
   - [frontend-discovery-service](frontend-discovery-service) -- ❌ rspack | ✅ webpack <br> Demonstrates running Micro Frontends with Module Federation and Frontend Service Discovery on AWS, including Blue/Green deployment for version updates. 
   - [genesis](genesis) <br> Vue Genesis Example 
   - [i18next-nextjs-react](i18next-nextjs-react) -- ❌ rspack | ✅ webpack <br> Demonstrates using dedicated i18next instances in micro frontends, enabling language change in one that affects all. 
