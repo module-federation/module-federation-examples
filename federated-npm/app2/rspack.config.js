@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@rspack/core').container;
 const path = require('path');
 
 module.exports = {
@@ -9,41 +9,47 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
-    port: 3003,
+    port: 3002,
   },
   output: {
     publicPath: 'auto',
   },
-
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
         exclude: /node_modules/,
-        options: {
-          presets: ['@babel/preset-react'],
+        use: {
+          loader: 'builtin:swc-loader',
+          options: {
+            jsc: {
+              parser: {
+                syntax: 'ecmascript',
+                jsx: true,
+              },
+              transform: {
+                react: {
+                  runtime: 'automatic',
+                },
+              },
+            },
+          },
         },
       },
     ],
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'app3',
-      library: { type: 'var', name: 'app3' },
+      name: 'app2',
+      library: { type: 'var', name: 'app2' },
       filename: 'remoteEntry.js',
-      exposes: {
-        '.': 'data:text/javascript,export default "nothing here"',
-      },
       runtimePlugins: [
         // uses global plugin injected by app1
       ],
-      shared: {
-        qs: {
-          import: 'qs',
-          requiredVersion: '^6.9.4',
-        },
+      exposes: {
+        './Button': './src/Button',
       },
+      shared: { react: { singleton: true }, 'react-dom': { singleton: true } },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',

@@ -1,1 +1,1 @@
-import('qs')
+import('qs');
