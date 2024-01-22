@@ -1,6 +1,6 @@
 import LocalButton from './Button';
 import React from 'react';
-import '../empty'
+import '../empty';
 const App = () => (
   <div>
     <h1>Basic Host-Remote</h1>
