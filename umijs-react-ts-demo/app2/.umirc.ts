@@ -1,6 +1,11 @@
 import { defineConfig } from "umi";
 import { join } from 'path';
 
+const externals = {
+  react: "window.React",
+  "react-dom": "window.ReactDOM",
+}
+
 function webpackDeepPathImportWorkaround() {
   const mod = require('module');
   const resolveFilename = mod._resolveFilename;
@@ -11,7 +16,7 @@ function webpackDeepPathImportWorkaround() {
     if (/@umijs\/bundler-webpack\/compiled\/(lib|schemas)\//.test(request)) {
       newRequest = request.replace(
         /.*\/@umijs\/bundler-webpack\/compiled\/(lib|schemas)\//,
-        join(__dirname, '../node_modules/webpack/$1', './'),
+        join(__dirname, './node_modules/webpack/$1', './'),
       );
     }
 
@@ -25,38 +30,35 @@ export default defineConfig({
     { path: "/docs", component: "docs" },
   ],
   npmClient: 'pnpm',
-  chainWebpack: (config) => {
+  chainWebpack: (config: any) => {
     // reference https://github.com/umijs/umi/issues/10583
     webpackDeepPathImportWorkaround();
 
     const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 
     config.plugin('mf').use(ModuleFederationPlugin, [{
-      remotes: [
-        {
-          name: "app1",
-          entry: `http://localhost:3001/remoteEntry.js`,
-          alias: "app1",
-        },
-      ],
+      remotes: {
+        app1: 'app1@http://localhost:3001/remoteEntry.js'
+      },
       shared: {
         react: {
+          import: false,
           singleton: true,
           version: '18.2.0',
         },
         'react-dom': {
+          import: false,
           singleton: true,
-          version: '18.2.0',
+          version: "16.14.0",
         },
       },
+      runtimePlugins: [require.resolve('./runtime.js')],
     }])
   },
   headScripts: [
     "https://cdn.bootcdn.net/ajax/libs/react/18.2.0/umd/react.production.min.js",
     "https://cdn.bootcdn.net/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js",
   ],
-  externals: {
-    react: "var window.React",
-    "react-dom": "var window.ReactDOM",
-  }
+  externals,
+  mfsu: false
 });

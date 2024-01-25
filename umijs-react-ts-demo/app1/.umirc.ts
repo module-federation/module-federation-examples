@@ -30,13 +30,15 @@ export default defineConfig({
     { path: '/', component: '@/pages/index' },
   ],
   fastRefresh: {},
-  chainWebpack: (config) => {
+  webpack5: {},
+  chainWebpack: (config, { webpack }: any) => {
     // reference https://github.com/umijs/umi/issues/10583
     webpackDeepPathImportWorkaround();
 
-    const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+    // error: Not found module './src/pages/index'
+    // const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 
-    config.plugin('mf').use(ModuleFederationPlugin, [{
+    config.plugin('mf').use(webpack.container.ModuleFederationPlugin, [{
       name: 'app1',
       filename: 'remoteEntry.js',
       exposes: {
@@ -45,11 +47,13 @@ export default defineConfig({
       shared: {
         ...deps,
         react: {
+          eager: true,
           singleton: true,
           requiredVersion: '^17.0.0',
           version: '0',
         },
         'react-dom': {
+          eager: true,
           singleton: true,
           requiredVersion: '^17.0.0',
           version: '0',
