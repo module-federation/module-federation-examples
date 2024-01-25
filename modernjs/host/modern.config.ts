@@ -17,11 +17,27 @@ export default defineConfig({
     enableAsyncEntry: true,
   },
   tools: {
-    webpack: (config, { webpack, appendPlugins }) => {
+    // webpack: (config, { webpack, appendPlugins }) => {
+    //   //@ts-ignore
+    //   config.output.publicPath = 'auto';
+    //   appendPlugins([
+    //     new webpack.container.ModuleFederationPlugin({
+    //       name: 'host',
+    //       remotes: {
+    //         provider: 'provider@http://localhost:3002/static/js/remoteEntry.js',
+    //       },
+    //       shared: {
+    //         react: { singleton: true },
+    //         'react-dom': { singleton: true },
+    //       },
+    //     }),
+    //   ]);
+    // },
+    rspack: (config, { rspack, appendPlugins }) => {
       //@ts-ignore
       config.output.publicPath = 'auto';
       appendPlugins([
-        new webpack.container.ModuleFederationPlugin({
+        new rspack.container.ModuleFederationPlugin({
           name: 'host',
           remotes: {
             provider: 'provider@http://localhost:3002/static/js/remoteEntry.js',
@@ -34,5 +50,9 @@ export default defineConfig({
       ]);
     },
   },
-  plugins: [appTools()],
+  plugins: [
+    appTools({
+      bundler: 'experimental-rspack',
+    }),
+  ],
 });
