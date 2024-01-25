@@ -42,13 +42,21 @@ export default defineConfig({
       shared: {
         react: {
           singleton: true,
-          version: '18.2.48',
+          version: '18.2.0',
         },
         'react-dom': {
           singleton: true,
-          version: '18.2.18',
+          version: '18.2.0',
         },
       },
     }])
+  },
+  headScripts: [
+    "https://cdn.bootcdn.net/ajax/libs/react/18.2.0/umd/react.production.min.js",
+    "https://cdn.bootcdn.net/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js",
+  ],
+  externals: {
+    react: "var window.React",
+    "react-dom": "var window.ReactDOM",
   }
 });
