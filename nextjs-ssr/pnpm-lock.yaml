@@ -18,8 +18,8 @@ importers:
   checkout:
     dependencies:
       '@module-federation/nextjs-mf':
-        specifier: 8.1.5
-        version: 8.1.5(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
+        specifier: 8.1.7
+        version: 8.1.7(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -39,8 +39,8 @@ importers:
   home:
     dependencies:
       '@module-federation/nextjs-mf':
-        specifier: 8.1.5
-        version: 8.1.5(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
+        specifier: 8.1.7
+        version: 8.1.7(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -60,8 +60,8 @@ importers:
   shop:
     dependencies:
       '@module-federation/nextjs-mf':
-        specifier: 8.1.5
-        version: 8.1.5(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
+        specifier: 8.1.7
+        version: 8.1.7(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -134,18 +134,18 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: false
 
-  /@module-federation/enhanced@0.0.8(webpack@5.89.0):
-    resolution: {integrity: sha512-gK783ienOhWbXL0xPJMuObSVexc2KogsjLgYmQy8zb3w0qwymechV9JBcVzJ1QApsmq1e3zywPqak24TNvdYdA==}
+  /@module-federation/enhanced@0.0.10(webpack@5.89.0):
+    resolution: {integrity: sha512-yP8LCH3moQN7Z9I0wpeFVfwahjVZNbL2LYoemj4rF66rIioap31D4knkml0LdRkmzNH97/SEl/FSRVM7a1hMLg==}
     peerDependencies:
       webpack: 5.89.0
     dependencies:
-      '@module-federation/runtime-tools': 0.0.8
-      '@module-federation/sdk': 0.0.8
+      '@module-federation/runtime-tools': 0.0.10
+      '@module-federation/sdk': 0.0.10
       webpack: 5.89.0
     dev: false
 
-  /@module-federation/nextjs-mf@8.1.5(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0):
-    resolution: {integrity: sha512-vVTuTreFsSJJOc3asJY1HsKLXi4XQMHzc+m6EOpyfUmsJuPLBZSabPjCj24pbx2vo2yGv+lv2xjaYBhkRJDKFw==}
+  /@module-federation/nextjs-mf@8.1.7(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0):
+    resolution: {integrity: sha512-7c33XA5rXfuSoTKAsqXdNehNHXXLcO6zjWulrxQE2DTym2Gp0xSL2OMRf0/ucyxp1kRUvh97XCB4i0wrlN0zfQ==}
     peerDependencies:
       next: ^12 || ^13 || ^14
       react: ^17 || ^18
@@ -156,10 +156,10 @@ packages:
       styled-jsx:
         optional: true
     dependencies:
-      '@module-federation/enhanced': 0.0.8(webpack@5.89.0)
-      '@module-federation/node': 2.0.6(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
-      '@module-federation/runtime': 0.0.8
-      '@module-federation/sdk': 0.0.8
+      '@module-federation/enhanced': 0.0.10(webpack@5.89.0)
+      '@module-federation/node': 2.0.8(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
+      '@module-federation/runtime': 0.0.10
+      '@module-federation/sdk': 0.0.10
       '@module-federation/utilities': 3.0.5(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
       '@module-federation/webpack-type': 0.0.1
       eventemitter3: 5.0.1
@@ -173,8 +173,8 @@ packages:
       - encoding
     dev: false
 
-  /@module-federation/node@2.0.6(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0):
-    resolution: {integrity: sha512-evE7Y60rbKyvlU8MAqnNI1QBPqJV9UD31sE7rGNR4TyeuNNM7uzll6fK+1Cw9cQktEZRSOEOnX0Y+xAwGOOEmQ==}
+  /@module-federation/node@2.0.8(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0):
+    resolution: {integrity: sha512-pCqXJQ29AwJAV0Qh2Sw6D9oP/3IEuFsL7NN1UHfP6CNzUEa7Qr6ecT/7MnP6G4pJnu26KzHNnRBf1J8FtB5K3A==}
     peerDependencies:
       next: ^12||^13
       react: ^16||^17||^18
@@ -188,8 +188,9 @@ packages:
       react-dom:
         optional: true
     dependencies:
-      '@module-federation/enhanced': 0.0.8(webpack@5.89.0)
-      '@module-federation/sdk': 0.0.8
+      '@module-federation/enhanced': 0.0.10(webpack@5.89.0)
+      '@module-federation/runtime': 0.0.10
+      '@module-federation/sdk': 0.0.10
       '@module-federation/utilities': 3.0.5(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
       next: 14.0.3(react-dom@18.2.0)(react@18.2.0)
       node-fetch: 2.7.0
@@ -200,21 +201,21 @@ packages:
       - encoding
     dev: false
 
-  /@module-federation/runtime-tools@0.0.8:
-    resolution: {integrity: sha512-tqx3wlVHnpWLk+vn22c0x9Nv1BqdZnoS6vdMb53IsVpbQIFP70nhhvymHUyFuPkoLzMFidS7GpG58DYT/4lvCw==}
+  /@module-federation/runtime-tools@0.0.10:
+    resolution: {integrity: sha512-2u2v7oRSn6JaCwj7jFU90MCwwRY+iONHPW3sPjaMr6DJ1wa10eHAv07qmHvQUipJ/Jm6AGaS2oep3c0gA2HEzg==}
     dependencies:
-      '@module-federation/runtime': 0.0.8
-      '@module-federation/webpack-bundler-runtime': 0.0.8
+      '@module-federation/runtime': 0.0.10
+      '@module-federation/webpack-bundler-runtime': 0.0.10
     dev: false
 
-  /@module-federation/runtime@0.0.8:
-    resolution: {integrity: sha512-Hi9g10aHxHdQ7CbchSvke07YegYwkf162XPOmixNmJr5Oy4wVa2d9yIVSrsWFhBRbbvM5iJP6GrSuEq6HFO3ug==}
+  /@module-federation/runtime@0.0.10:
+    resolution: {integrity: sha512-M57xoGcN64JDyNwerOoAlUyyplA1fGKlGWWc6sw5A+eRb+mt/Nj2Yh5g3+C3iZ0b3eoLtDe3qlX12UuddmySPg==}
     dependencies:
-      '@module-federation/sdk': 0.0.8
+      '@module-federation/sdk': 0.0.10
     dev: false
 
-  /@module-federation/sdk@0.0.8:
-    resolution: {integrity: sha512-lkasywBItjUTNT0T0IskonDE2E/2tXE9UhUCPVoDL3NteDUSFGg4tpkF+cey1pD8mHh0XJcGrCuOW7s96peeAg==}
+  /@module-federation/sdk@0.0.10:
+    resolution: {integrity: sha512-qHK7FoOSd8HCBal0bSBCn/BB1e5XXwdfwzPt4ACP/o4YyHTnIIavX9qyA9bufvHltVgP/JL5jpBOpK7sdZ1bYQ==}
     dev: false
 
   /@module-federation/utilities@3.0.5(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0):
@@ -238,11 +239,11 @@ packages:
       webpack: 5.89.0
     dev: false
 
-  /@module-federation/webpack-bundler-runtime@0.0.8:
-    resolution: {integrity: sha512-ULwrTVzF47+6XnWybt6SIq97viEYJRv4P/DByw5h7PSX9PxSGyMm5pHfXdhcb7tno7VknL0t2V8F48fetVL9kA==}
+  /@module-federation/webpack-bundler-runtime@0.0.10:
+    resolution: {integrity: sha512-D7hHTP/SIYGzUa9Jz6gVX3p2F3tAyChjtB4Yhi1BgoNiZVQvwXsWi+KXPccT5sL/Br6g5EVupYQTnR0OGR8P2A==}
     dependencies:
-      '@module-federation/runtime': 0.0.8
-      '@module-federation/sdk': 0.0.8
+      '@module-federation/runtime': 0.0.10
+      '@module-federation/sdk': 0.0.10
     dev: false
 
   /@module-federation/webpack-type@0.0.1:
