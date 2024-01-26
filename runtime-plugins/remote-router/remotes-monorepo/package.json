@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "preinstall": "find . -name \"noexist\" -type d -prune -exec rm -rf '{}' +; pnpm install --ignore-scripts",
-    "start": "nx run-many -t serve"
+    "start": "nx run-many -t serve",
+    "e2e:ci": "echo 'no tests'"
   },
   "private": true,
   "devDependencies": {
