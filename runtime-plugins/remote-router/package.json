@@ -1,0 +1,8 @@
+{
+  "name": "remote-router",
+  "description": "A ingress host who can dynamically load and control all remotes",
+  "scripts": {
+    "start": "pnpm --filter remote-router* --parallel start",
+    "e2e:ci": "echo 'no tests'"
+  }
+}
