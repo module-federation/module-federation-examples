@@ -4,5 +4,10 @@
   "scripts": {
     "start": "pnpm --filter remote-router* --parallel start",
     "e2e:ci": "echo 'no tests'"
-  }
+  },
+  "scannableFiles": [
+    "./host/config/runtimePlugin.js",
+    "./host/config/webpack.config.modulefederation.js",
+    "./host/src/features/Home/Home.jsx"
+  ]
 }
