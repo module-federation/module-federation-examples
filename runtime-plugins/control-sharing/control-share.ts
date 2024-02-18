@@ -2,9 +2,9 @@ import { FederationRuntimePlugin } from '@module-federation/runtime/types';
 
 const store = {};
 
-const CustomPlugin = (): FederationRuntimePlugin => {
+const ControlShareScopeResovleRuntimePlugin = (): FederationRuntimePlugin => {
   return {
-    name: 'custom-plugin',
+    name: 'control-share-scope-plugin',
     beforeInit: args => {
       store.name = args.options.name;
       return args;
@@ -75,4 +75,4 @@ const CustomPlugin = (): FederationRuntimePlugin => {
   };
 };
 
-export default CustomPlugin;
+export default ControlShareScopeResovleRuntimePlugin;
