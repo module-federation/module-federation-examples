@@ -1,25 +1,19 @@
-const store = {};
+const runtimeStore = {};
 
-const CustomPlugin = () => {
+const ControlScopePlugin = () => {
   return {
-    name: 'custom-plugin',
+    name: 'control-scope-plugin',
     beforeInit: args => {
-      store.name = args.options.name;
+      runtimeStore.name = args.options.name;
       return args;
     },
-    init: args => {
-      return args;
-    },
+    init: args => args,
     beforeRequest: args => {
       console.log('beforeRequest: ', args);
       return args;
     },
-    afterResolve: args => {
-      return args;
-    },
-    onLoad: args => {
-      return args;
-    },
+    afterResolve: args => args,
+    onLoad: args => args,
     resolveShare: args => {
       if (!localStorage.getItem('formDataVMSC')) return args;
       const overrides = JSON.parse(localStorage.getItem('formDataVMSC'));
@@ -27,11 +21,11 @@ const CustomPlugin = () => {
       const { shareScopeMap, scope, pkgName, version, GlobalFederation } = args;
 
       args.resolver = function () {
-        if (!overrides[store.name]) {
+        if (!overrides[runtimeStore.name]) {
           return originalResolver();
         }
 
-        const overrideVersion = overrides[store.name][pkgName];
+        const overrideVersion = overrides[runtimeStore.name][pkgName];
         const matchingInstance = GlobalFederation.__INSTANCES__.find(instance => {
           return instance.options.shared[pkgName].version === overrideVersion;
         });
@@ -64,7 +58,7 @@ const CustomPlugin = () => {
       console.log('loadShare:', args);
     },
     beforeLoadShare: async args => {
-      console.log('beforeloadShare:', args);
+      console.log('beforeLoadShare:', args);
       while (__FEDERATION__.__INSTANCES__.length <= 1) {
         await new Promise(r => setTimeout(r, 50));
       }
@@ -73,4 +67,4 @@ const CustomPlugin = () => {
   };
 };
 
-export default CustomPlugin;
+export default ControlScopePlugin;

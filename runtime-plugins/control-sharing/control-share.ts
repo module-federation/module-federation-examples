@@ -1,27 +1,21 @@
 import { FederationRuntimePlugin } from '@module-federation/runtime/types';
 
-const store = {};
+const runtimeStore = {};
 
-const ControlShareScopeResovleRuntimePlugin = (): FederationRuntimePlugin => {
+const ControlScopeResolvePlugin = (): FederationRuntimePlugin => {
   return {
-    name: 'control-share-scope-plugin',
+    name: 'control-scope-resolve-plugin',
     beforeInit: args => {
-      store.name = args.options.name;
+      runtimeStore.name = args.options.name;
       return args;
     },
-    init: args => {
-      return args;
-    },
+    init: args => args,
     beforeRequest: args => {
       console.log('beforeRequest: ', args);
       return args;
     },
-    afterResolve: args => {
-      return args;
-    },
-    onLoad: args => {
-      return args;
-    },
+    afterResolve: args => args,
+    onLoad: args => args,
     resolveShare: args => {
       if (!localStorage.getItem('formDataVMSC')) return args;
       const overrides = JSON.parse(localStorage.getItem('formDataVMSC'));
@@ -29,11 +23,11 @@ const ControlShareScopeResovleRuntimePlugin = (): FederationRuntimePlugin => {
       const { shareScopeMap, scope, pkgName, version, GlobalFederation } = args;
 
       args.resolver = function () {
-        if (!overrides[store.name]) {
+        if (!overrides[runtimeStore.name]) {
           return originalResolver();
         }
 
-        const overrideVersion = overrides[store.name][pkgName];
+        const overrideVersion = overrides[runtimeStore.name][pkgName];
         const matchingInstance = GlobalFederation.__INSTANCES__.find(instance => {
           return instance.options.shared[pkgName].version === overrideVersion;
         });
@@ -48,10 +42,10 @@ const ControlShareScopeResovleRuntimePlugin = (): FederationRuntimePlugin => {
 
           originInstance.options.shared[pkgName].useIn = originInstance.options.shared[
             pkgName
-          ].useIn.filter(i => i !== store.name);
+          ].useIn.filter(i => i !== runtimeStore.name);
           shareScopeMap[scope][pkgName][version] = matchingInstance.options.shared[pkgName];
-          if (!shareScopeMap[scope][pkgName][version].useIn.includes(store.name)) {
-            shareScopeMap[scope][pkgName][version].useIn.push(store.name);
+          if (!shareScopeMap[scope][pkgName][version].useIn.includes(runtimeStore.name)) {
+            shareScopeMap[scope][pkgName][version].useIn.push(runtimeStore.name);
           }
           return matchingInstance.options.shared[pkgName];
         } else {
@@ -66,7 +60,7 @@ const ControlShareScopeResovleRuntimePlugin = (): FederationRuntimePlugin => {
       console.log('loadShare:', args);
     },
     beforeLoadShare: async args => {
-      console.log('beforeloadShare:', args);
+      console.log('beforeLoadShare:', args);
       while (__FEDERATION__.__INSTANCES__.length <= 1) {
         await new Promise(r => setTimeout(r, 50));
       }
@@ -75,4 +69,4 @@ const ControlShareScopeResovleRuntimePlugin = (): FederationRuntimePlugin => {
   };
 };
 
-export default ControlShareScopeResovleRuntimePlugin;
+export default ControlScopeResolvePlugin;
