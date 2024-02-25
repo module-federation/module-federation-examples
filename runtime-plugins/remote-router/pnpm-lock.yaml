@@ -30,8 +30,8 @@ importers:
         specifier: ^7.23.3
         version: 7.23.3(@babel/core@7.23.9)
       '@module-federation/enhanced':
-        specifier: ^0.0.11
-        version: 0.0.11(webpack@5.90.0)
+        specifier: ^0.0.13
+        version: 0.0.13(webpack@5.90.0)
       autoprefixer:
         specifier: ^10.4.16
         version: 10.4.17(postcss@8.4.33)
@@ -1917,38 +1917,39 @@ packages:
     resolution: {integrity: sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==}
     dev: true
 
-  /@module-federation/enhanced@0.0.11(webpack@5.90.0):
-    resolution: {integrity: sha512-nvuv2nZbe4lYVDN/zxqOTvyZmtHpjxSJ45lGxdua1RU7elSYB4uI7tn+IkAM5AUlX39OfNv6QKHEHEwXgZcF9Q==}
+  /@module-federation/enhanced@0.0.13(webpack@5.90.0):
+    resolution: {integrity: sha512-9WHFhKpxD7HQaPdVW66yz2a4YV7wTDtrwZbF7GLtCSS1bwHUCtwRVersV1oMqWATxPWyeQylG77R0B8WC7QKYw==}
     peerDependencies:
       webpack: ^5.0.0
     dependencies:
-      '@module-federation/runtime-tools': 0.0.11
-      '@module-federation/sdk': 0.0.11
+      '@module-federation/runtime-tools': 0.0.13
+      '@module-federation/sdk': 0.0.13
+      upath: 2.0.1
       webpack: 5.90.0(webpack-cli@5.1.4)
     dev: true
 
-  /@module-federation/runtime-tools@0.0.11:
-    resolution: {integrity: sha512-17hndLUgiaB85YTWAvXgSEDEz7aLSZ3sjPakrHU0VkZeXeqlseqqJgKcfg1qsNlanRUGgaIv2v+59B2RdAZfgQ==}
+  /@module-federation/runtime-tools@0.0.13:
+    resolution: {integrity: sha512-pbp82JEzI9aWSNDrLGk49spbAe5h6RxQv5RlCCN3mxbUCqfT8Mz1fozqQ5VOZT2o5rJDatoHd3S04bx7/4FhrA==}
     dependencies:
-      '@module-federation/runtime': 0.0.11
-      '@module-federation/webpack-bundler-runtime': 0.0.11
+      '@module-federation/runtime': 0.0.13
+      '@module-federation/webpack-bundler-runtime': 0.0.13
     dev: true
 
-  /@module-federation/runtime@0.0.11:
-    resolution: {integrity: sha512-LdTQGdwcoVwkIMh9mUwsVwDD1UeTAMFEhs+hyE3zvhenGT7FOEC9Qo15QxialIqI9bDYC0OgksBcL9Ab745Hhg==}
+  /@module-federation/runtime@0.0.13:
+    resolution: {integrity: sha512-c7TCfNQZvNV4ITCLQyDC7AG7AN3uPxFvBW7xNZ38EOIjuQjBm0JoAr8pxIoK6cdNf5VToIbVHaEJ1D+9DaJZmA==}
     dependencies:
-      '@module-federation/sdk': 0.0.11
+      '@module-federation/sdk': 0.0.13
     dev: true
 
-  /@module-federation/sdk@0.0.11:
-    resolution: {integrity: sha512-OuTLwpvYygTsi/vEdC/nj8PYvNRKjCm0BxOSIJobHAA/S4o4CpKniTlfLfyIW86LPWwvGp2cY1czaL3Xvc8fqA==}
+  /@module-federation/sdk@0.0.13:
+    resolution: {integrity: sha512-ALapAGystaXSlwqGTcioPzGEhzKDVq+2U+MLXpm71/L/SaDOD54l8sqy8I/bdofay4c7rcrstlAlZfAwMmWW1g==}
     dev: true
 
-  /@module-federation/webpack-bundler-runtime@0.0.11:
-    resolution: {integrity: sha512-KrTkq2VKKFrOyuBnilwboknc6eSDskoXW/qOa0T2bPLtsY+dp0D5vbYCZFDpUfimNbFNLK+6NIjec21TP0pX4g==}
+  /@module-federation/webpack-bundler-runtime@0.0.13:
+    resolution: {integrity: sha512-yf8W8wngxnmLGlgqR5WfsqKPZvmcY1zhgqMYe20kguVZp8U7FBAt3sY6voL8S00hyEQD6i4+6yHW5vk1uFvMFA==}
     dependencies:
-      '@module-federation/runtime': 0.0.11
-      '@module-federation/sdk': 0.0.11
+      '@module-federation/runtime': 0.0.13
+      '@module-federation/sdk': 0.0.13
     dev: true
 
   /@mole-inc/bin-wrapper@8.0.1:
@@ -7968,8 +7969,6 @@ packages:
     peerDependenciesMeta:
       webpack:
         optional: true
-      webpack-sources:
-        optional: true
     dependencies:
       webpack: 5.89.0(@swc/core@1.3.106)
       webpack-sources: 3.2.3
@@ -10934,6 +10933,11 @@ packages:
   /unpipe@1.0.0:
     resolution: {integrity: sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ==}
     engines: {node: '>= 0.8'}
+    dev: true
+
+  /upath@2.0.1:
+    resolution: {integrity: sha512-1uEe95xksV1O0CYKXo8vQvN1JEbtJp7lb7C5U9HMsIp6IVwntkH/oNUzyVNQSd4S1sYk2FpSSW44FqMc8qee5w==}
+    engines: {node: '>=4'}
     dev: true
 
   /update-browserslist-db@1.0.13(browserslist@4.22.2):
