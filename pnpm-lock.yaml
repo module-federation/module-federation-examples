@@ -415,8 +415,8 @@ importers:
         specifier: ^0.0.13
         version: 0.0.13(webpack@5.89.0)
       '@module-federation/runtime':
-        specifier: 0.0.11
-        version: 0.0.11
+        specifier: 0.0.13
+        version: 0.0.13
       '@rspack/cli':
         specifier: 0.5.1
         version: 0.5.1(@rspack/core@0.5.1)(webpack-cli@5.1.4)
@@ -3281,8 +3281,8 @@ importers:
   dynamic-system-host/app1:
     dependencies:
       '@module-federation/runtime':
-        specifier: 0.0.11
-        version: 0.0.11
+        specifier: 0.0.13
+        version: 0.0.13
       '@module-federation/utilities':
         specifier: ^1.4.0
         version: 1.5.0(react-dom@16.14.0)(react@16.14.0)(webpack@5.89.0)
@@ -3333,8 +3333,8 @@ importers:
   dynamic-system-host/app2:
     dependencies:
       '@module-federation/runtime':
-        specifier: 0.0.11
-        version: 0.0.11
+        specifier: 0.0.13
+        version: 0.0.13
       moment:
         specifier: ^2.29.4
         version: 2.29.4
@@ -3385,8 +3385,8 @@ importers:
   dynamic-system-host/app3:
     dependencies:
       '@module-federation/runtime':
-        specifier: 0.0.11
-        version: 0.0.11
+        specifier: 0.0.13
+        version: 0.0.13
       moment:
         specifier: ^2.29.4
         version: 2.29.4
@@ -5624,8 +5624,8 @@ importers:
         specifier: ^0.0.13
         version: 0.0.13(webpack@5.89.0)
       '@module-federation/runtime':
-        specifier: ^0.0.11
-        version: 0.0.11
+        specifier: ^0.0.13
+        version: 0.0.13
       '@rspack/cli':
         specifier: 0.5.1
         version: 0.5.1(@rspack/core@0.5.1)(webpack-cli@4.10.0)
@@ -5673,8 +5673,8 @@ importers:
         specifier: ^0.0.13
         version: 0.0.13(webpack@5.89.0)
       '@module-federation/runtime':
-        specifier: ^0.0.11
-        version: 0.0.11
+        specifier: ^0.0.13
+        version: 0.0.13
       '@rspack/cli':
         specifier: 0.5.1
         version: 0.5.1(@rspack/core@0.5.1)(webpack-cli@4.10.0)
@@ -10183,8 +10183,8 @@ importers:
         specifier: 0.0.13
         version: 0.0.13(webpack@5.89.0)
       '@module-federation/runtime':
-        specifier: 0.0.11
-        version: 0.0.11
+        specifier: 0.0.13
+        version: 0.0.13
       '@rspack/cli':
         specifier: ^0.5.0
         version: 0.5.0(@rspack/core@0.5.0)(webpack-cli@5.1.4)
@@ -10235,8 +10235,8 @@ importers:
         specifier: 0.0.13
         version: 0.0.13(webpack@5.89.0)
       '@module-federation/runtime':
-        specifier: 0.0.11
-        version: 0.0.11
+        specifier: 0.0.13
+        version: 0.0.13
       '@rspack/cli':
         specifier: ^0.5.0
         version: 0.5.0(@rspack/core@0.5.0)(webpack-cli@5.1.4)
@@ -10293,8 +10293,8 @@ importers:
         specifier: 0.0.13
         version: 0.0.13(webpack@5.89.0)
       '@module-federation/runtime':
-        specifier: 0.0.11
-        version: 0.0.11
+        specifier: 0.0.13
+        version: 0.0.13
       '@rspack/cli':
         specifier: ^0.5.0
         version: 0.5.0(@rspack/core@0.5.0)(webpack-cli@5.1.4)
@@ -10345,8 +10345,8 @@ importers:
         specifier: 0.0.13
         version: 0.0.13(webpack@5.89.0)
       '@module-federation/runtime':
-        specifier: 0.0.11
-        version: 0.0.11
+        specifier: 0.0.13
+        version: 0.0.13
       '@rspack/cli':
         specifier: ^0.5.0
         version: 0.5.0(@rspack/core@0.5.0)(webpack-cli@5.1.4)
@@ -10397,8 +10397,8 @@ importers:
         specifier: 0.0.13
         version: 0.0.13(webpack@5.89.0)
       '@module-federation/runtime':
-        specifier: 0.0.11
-        version: 0.0.11
+        specifier: 0.0.13
+        version: 0.0.13
       '@rspack/cli':
         specifier: ^0.5.0
         version: 0.5.0(@rspack/core@0.5.0)(webpack-cli@5.1.4)
@@ -30512,11 +30512,6 @@ packages:
     dependencies:
       '@module-federation/sdk': 0.0.10
 
-  /@module-federation/runtime@0.0.11:
-    resolution: {integrity: sha512-LdTQGdwcoVwkIMh9mUwsVwDD1UeTAMFEhs+hyE3zvhenGT7FOEC9Qo15QxialIqI9bDYC0OgksBcL9Ab745Hhg==}
-    dependencies:
-      '@module-federation/sdk': 0.0.11
-
   /@module-federation/runtime@0.0.13:
     resolution: {integrity: sha512-c7TCfNQZvNV4ITCLQyDC7AG7AN3uPxFvBW7xNZ38EOIjuQjBm0JoAr8pxIoK6cdNf5VToIbVHaEJ1D+9DaJZmA==}
     dependencies:
@@ -30533,9 +30528,6 @@ packages:
 
   /@module-federation/sdk@0.0.10:
     resolution: {integrity: sha512-qHK7FoOSd8HCBal0bSBCn/BB1e5XXwdfwzPt4ACP/o4YyHTnIIavX9qyA9bufvHltVgP/JL5jpBOpK7sdZ1bYQ==}
-
-  /@module-federation/sdk@0.0.11:
-    resolution: {integrity: sha512-OuTLwpvYygTsi/vEdC/nj8PYvNRKjCm0BxOSIJobHAA/S4o4CpKniTlfLfyIW86LPWwvGp2cY1czaL3Xvc8fqA==}
 
   /@module-federation/sdk@0.0.13:
     resolution: {integrity: sha512-ALapAGystaXSlwqGTcioPzGEhzKDVq+2U+MLXpm71/L/SaDOD54l8sqy8I/bdofay4c7rcrstlAlZfAwMmWW1g==}
@@ -32134,6 +32126,14 @@ packages:
       tslib: 2.6.2
     dev: true
 
+  /@nrwl/devkit@16.0.0(nx@16.0.0):
+    resolution: {integrity: sha512-ycd4wD4v1N/ywjU1cwTVCPQJwxnGjEsWIll5z5cMtfHwJf+0OhMTqC3zeZibIwnjjoh721pyEzXODyUmjkGmVw==}
+    dependencies:
+      '@nx/devkit': 16.0.0(nx@16.0.0)
+    transitivePeerDependencies:
+      - nx
+    dev: true
+
   /@nrwl/devkit@16.0.0(nx@17.2.8):
     resolution: {integrity: sha512-ycd4wD4v1N/ywjU1cwTVCPQJwxnGjEsWIll5z5cMtfHwJf+0OhMTqC3zeZibIwnjjoh721pyEzXODyUmjkGmVw==}
     dependencies:
@@ -33269,7 +33269,7 @@ packages:
     peerDependencies:
       nx: '>= 15 <= 17'
     dependencies:
-      '@nrwl/devkit': 16.0.0(nx@17.2.8)
+      '@nrwl/devkit': 16.0.0(nx@16.0.0)
       ejs: 3.1.9
       ignore: 5.2.4
       nx: 16.0.0
