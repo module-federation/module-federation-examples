@@ -46,7 +46,7 @@
   "scripts": {
     "dev:webpack": "webpack serve --mode development",
     "build:webpack": "webpack --mode production",
-    "dev:vite": "vite",
+    "dev:vite": "vite build --watch & vite serve",
     "build:vite": "vite build",
     "dev:rspack": "rspack serve --mode development",
     "build:rspack": "rspack --mode production"
