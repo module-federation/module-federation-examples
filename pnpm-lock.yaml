@@ -32085,6 +32085,14 @@ packages:
       tslib: 2.6.2
     dev: true
 
+  /@nrwl/devkit@16.0.0(nx@16.0.0):
+    resolution: {integrity: sha512-ycd4wD4v1N/ywjU1cwTVCPQJwxnGjEsWIll5z5cMtfHwJf+0OhMTqC3zeZibIwnjjoh721pyEzXODyUmjkGmVw==}
+    dependencies:
+      '@nx/devkit': 16.0.0(nx@16.0.0)
+    transitivePeerDependencies:
+      - nx
+    dev: true
+
   /@nrwl/devkit@16.0.0(nx@17.2.8):
     resolution: {integrity: sha512-ycd4wD4v1N/ywjU1cwTVCPQJwxnGjEsWIll5z5cMtfHwJf+0OhMTqC3zeZibIwnjjoh721pyEzXODyUmjkGmVw==}
     dependencies:
@@ -33220,7 +33228,7 @@ packages:
     peerDependencies:
       nx: '>= 15 <= 17'
     dependencies:
-      '@nrwl/devkit': 16.0.0(nx@17.2.8)
+      '@nrwl/devkit': 16.0.0(nx@16.0.0)
       ejs: 3.1.9
       ignore: 5.2.4
       nx: 16.0.0
@@ -41685,7 +41693,7 @@ packages:
       launch-editor-middleware: 2.6.0
       lodash.defaultsdeep: 4.6.1
       lodash.mapvalues: 4.6.0
-      mini-css-extract-plugin: 2.7.7(webpack@5.89.0)
+      mini-css-extract-plugin: 2.7.6(webpack@5.89.0)
       minimist: 1.2.8
       module-alias: 2.2.3
       portfinder: 1.0.32
@@ -41702,7 +41710,7 @@ packages:
       webpack-bundle-analyzer: 4.9.1
       webpack-chain: 6.5.1
       webpack-dev-server: 4.15.1(debug@4.3.4)(webpack@5.89.0)
-      webpack-merge: 5.10.0
+      webpack-merge: 5.8.0
       webpack-virtual-modules: 0.4.6
       whatwg-fetch: 3.6.18
     transitivePeerDependencies:
@@ -41843,7 +41851,7 @@ packages:
       launch-editor-middleware: 2.6.0
       lodash.defaultsdeep: 4.6.1
       lodash.mapvalues: 4.6.0
-      mini-css-extract-plugin: 2.7.7(webpack@5.89.0)
+      mini-css-extract-plugin: 2.7.6(webpack@5.89.0)
       minimist: 1.2.8
       module-alias: 2.2.3
       portfinder: 1.0.32
@@ -41859,7 +41867,7 @@ packages:
       webpack-bundle-analyzer: 4.9.1
       webpack-chain: 6.5.1
       webpack-dev-server: 4.15.1(debug@4.3.4)(webpack@5.89.0)
-      webpack-merge: 5.10.0
+      webpack-merge: 5.8.0
       webpack-virtual-modules: 0.4.6
       whatwg-fetch: 3.6.18
     transitivePeerDependencies:
@@ -60222,8 +60230,6 @@ packages:
     peerDependenciesMeta:
       webpack:
         optional: true
-      webpack-sources:
-        optional: true
     dependencies:
       webpack: 5.89.0(esbuild@0.17.8)(webpack-cli@5.0.1)
       webpack-sources: 3.2.3
@@ -70594,7 +70600,6 @@ packages:
       prop-types: 15.8.1
       react: 16.14.0
       scheduler: 0.19.1
-    bundledDependencies: false
 
   /react-dom@16.6.3(react@16.6.3):
     resolution: {integrity: sha512-8ugJWRCWLGXy+7PmNh8WJz3g1TaTUt1XyoIcFN+x0Zbkoz+KKdUyx1AQLYJdbFXjuF41Nmjn5+j//rxvhFjgSQ==}
@@ -71238,7 +71243,6 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       prop-types: 15.8.1
-    bundledDependencies: false
 
   /react@16.6.3:
     resolution: {integrity: sha512-zCvmH2vbEolgKxtqXL2wmGCUxUyNheYn/C+PD1YAjfxHC54+MhdruyhO7QieQrYsYeTxrn93PM2y0jRH1zEExw==}
