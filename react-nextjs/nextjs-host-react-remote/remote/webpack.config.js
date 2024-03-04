@@ -50,8 +50,6 @@ module.exports = {
       name: 'remote',
       filename: 'remoteEntry.js',
       exposes: {
-        // './react': 'react',
-        // './react-dom': 'react-dom',
         './Nav': './src/components/Nav',
       },
       shared: {},
