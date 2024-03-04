@@ -1,7 +1,7 @@
 var path = require("path");
 const { dependencies } = require("./package.json");
 const ModuleFederationPlugin =
-  require("webpack").container.ModuleFederationPlugin;
+  require("@module-federation/enhanced").ModuleFederationPlugin;
 const MiniCss = require("mini-css-extract-plugin");
 const { override, babelInclude } = require("customize-cra");
 

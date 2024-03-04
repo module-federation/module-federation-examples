@@ -60,6 +60,9 @@ importers:
 
   remote:
     dependencies:
+      '@module-federation/enhanced':
+        specifier: ^0.0.13
+        version: 0.0.13(webpack@5.89.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -1938,6 +1941,41 @@ packages:
 
   /@leichtgewicht/ip-codec@2.0.4:
     resolution: {integrity: sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==}
+
+  /@module-federation/enhanced@0.0.13(webpack@5.89.0):
+    resolution: {integrity: sha512-9WHFhKpxD7HQaPdVW66yz2a4YV7wTDtrwZbF7GLtCSS1bwHUCtwRVersV1oMqWATxPWyeQylG77R0B8WC7QKYw==}
+    peerDependencies:
+      webpack: ^5.0.0
+    dependencies:
+      '@module-federation/runtime-tools': 0.0.13
+      '@module-federation/sdk': 0.0.13
+      upath: 2.0.1
+      webpack: 5.89.0
+    dev: false
+
+  /@module-federation/runtime-tools@0.0.13:
+    resolution: {integrity: sha512-pbp82JEzI9aWSNDrLGk49spbAe5h6RxQv5RlCCN3mxbUCqfT8Mz1fozqQ5VOZT2o5rJDatoHd3S04bx7/4FhrA==}
+    dependencies:
+      '@module-federation/runtime': 0.0.13
+      '@module-federation/webpack-bundler-runtime': 0.0.13
+    dev: false
+
+  /@module-federation/runtime@0.0.13:
+    resolution: {integrity: sha512-c7TCfNQZvNV4ITCLQyDC7AG7AN3uPxFvBW7xNZ38EOIjuQjBm0JoAr8pxIoK6cdNf5VToIbVHaEJ1D+9DaJZmA==}
+    dependencies:
+      '@module-federation/sdk': 0.0.13
+    dev: false
+
+  /@module-federation/sdk@0.0.13:
+    resolution: {integrity: sha512-ALapAGystaXSlwqGTcioPzGEhzKDVq+2U+MLXpm71/L/SaDOD54l8sqy8I/bdofay4c7rcrstlAlZfAwMmWW1g==}
+    dev: false
+
+  /@module-federation/webpack-bundler-runtime@0.0.13:
+    resolution: {integrity: sha512-yf8W8wngxnmLGlgqR5WfsqKPZvmcY1zhgqMYe20kguVZp8U7FBAt3sY6voL8S00hyEQD6i4+6yHW5vk1uFvMFA==}
+    dependencies:
+      '@module-federation/runtime': 0.0.13
+      '@module-federation/sdk': 0.0.13
+    dev: false
 
   /@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1:
     resolution: {integrity: sha512-54/JRvkLIzzDWshCWfuhadfrfZVPiElY8Fcgmg1HroEly/EDSszzhBAsarCux+D/kOslTRquNzuyGSmUSTTHGg==}
@@ -9363,6 +9401,11 @@ packages:
   /upath@1.2.0:
     resolution: {integrity: sha512-aZwGpamFO61g3OlfT7OQCHqhGnW43ieH9WZeP7QxN/G/jS4jfqUkZxoryvJgVPEcrl5NL/ggHsSmLMHuH64Lhg==}
     engines: {node: '>=4'}
+
+  /upath@2.0.1:
+    resolution: {integrity: sha512-1uEe95xksV1O0CYKXo8vQvN1JEbtJp7lb7C5U9HMsIp6IVwntkH/oNUzyVNQSd4S1sYk2FpSSW44FqMc8qee5w==}
+    engines: {node: '>=4'}
+    dev: false
 
   /update-browserslist-db@1.0.13(browserslist@4.22.1):
     resolution: {integrity: sha512-xebP81SNcPuNpPP3uzeW1NYXxI3rxyJzF3pD6sH4jE7o/IX+WtSpwnVU+qIsDPyk0d3hmFQ7mjqc6AtV604hbg==}
