@@ -4,7 +4,6 @@ module.exports = {
   webpack(config, options) {
     const { webpack } = options;
     if (!options.isServer) {
-      //config.cache=false
       config.plugins.push(
         new NextFederationPlugin({
           name: 'checkout',
