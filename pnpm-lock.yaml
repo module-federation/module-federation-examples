@@ -6248,8 +6248,8 @@ importers:
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.7)
       '@module-federation/node':
-        specifier: 0.16.2
-        version: 0.16.2(react-dom@16.14.0)(react@16.14.0)(webpack@5.89.0)
+        specifier: ^2.0.11
+        version: 2.0.12(react-dom@16.14.0)(react@16.14.0)(webpack@5.89.0)
       '@types/express':
         specifier: 4.17.14
         version: 4.17.14
@@ -6336,8 +6336,8 @@ importers:
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.7)
       '@module-federation/node':
-        specifier: 0.16.2
-        version: 0.16.2(react-dom@16.14.0)(react@16.14.0)(webpack@5.89.0)
+        specifier: ^2.0.11
+        version: 2.0.12(react-dom@16.14.0)(react@16.14.0)(webpack@5.89.0)
       '@types/express':
         specifier: 4.17.14
         version: 4.17.14
@@ -31510,7 +31510,7 @@ packages:
       node-fetch: 2.6.9(encoding@0.1.13)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      webpack: 5.89.0(webpack-cli@4.10.0)
+      webpack: 5.89.0(@swc/core@1.3.105)(webpack-cli@5.0.2)
 
   /@module-federation/node@1.0.7(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0):
     resolution: {integrity: sha512-ZOdY8/qjAV8B8pL/+xf4KqEeQ6aJQoVjgn8IzS5Hk4qqMiow0Sf9EEX69LTI+GIVztVLjS/Q6N2QfS6ghsY1sw==}
@@ -31590,6 +31590,32 @@ packages:
     transitivePeerDependencies:
       - encoding
     dev: false
+
+  /@module-federation/node@2.0.12(react-dom@16.14.0)(react@16.14.0)(webpack@5.89.0):
+    resolution: {integrity: sha512-0snpe9lKFyZqwKbTNbhShvMRzfocNma7rdP2HknTBVVh4w47cONHLK5V21DeEkWxl6zYGeEu9ShrCn08yNazAQ==}
+    peerDependencies:
+      next: ^12||^13
+      react: ^16||^17||^18
+      react-dom: ^16||^17||^18
+      webpack: 5.89.0
+    peerDependenciesMeta:
+      next:
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      '@module-federation/enhanced': 0.0.14(webpack@5.89.0)
+      '@module-federation/runtime': 0.0.14
+      '@module-federation/sdk': 0.0.14
+      '@module-federation/utilities': 3.0.6(react-dom@16.14.0)(react@16.14.0)(webpack@5.89.0)
+      encoding: 0.1.13
+      node-fetch: 2.7.0(encoding@0.1.13)
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
+      webpack: 5.89.0(webpack-cli@4.9.2)
+    dev: true
 
   /@module-federation/node@2.0.12(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0):
     resolution: {integrity: sha512-0snpe9lKFyZqwKbTNbhShvMRzfocNma7rdP2HknTBVVh4w47cONHLK5V21DeEkWxl6zYGeEu9ShrCn08yNazAQ==}
@@ -32063,7 +32089,7 @@ packages:
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      webpack: 5.89.0(webpack-cli@4.10.0)
+      webpack: 5.89.0(@swc/core@1.3.105)(webpack-cli@5.0.2)
 
   /@module-federation/utilities@2.0.4(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0):
     resolution: {integrity: sha512-2youICrL7FWSGGPe+GwZTr5IsNZMdUv6kFRrH+gXV1/TfR1zeQ0y0ixRJUFskOt22nSeH6fOEhiCuqIWD1dQGQ==}
@@ -32185,6 +32211,26 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       webpack: 5.89.0(webpack-cli@5.1.4)
     dev: false
+
+  /@module-federation/utilities@3.0.6(react-dom@16.14.0)(react@16.14.0)(webpack@5.89.0):
+    resolution: {integrity: sha512-UFSVK/aeSqVLTXhnitHOC1ljWAU5XRTdm3cSyVGtzCJcyd0iSBphO6CvNlTtscQTfuduvyCZjn+MHHGdfOXaqw==}
+    peerDependencies:
+      next: '*'
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+      webpack: 5.89.0
+    peerDependenciesMeta:
+      next:
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
+      webpack: 5.89.0(webpack-cli@4.9.2)
+    dev: true
 
   /@module-federation/utilities@3.0.6(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0):
     resolution: {integrity: sha512-UFSVK/aeSqVLTXhnitHOC1ljWAU5XRTdm3cSyVGtzCJcyd0iSBphO6CvNlTtscQTfuduvyCZjn+MHHGdfOXaqw==}
@@ -68275,7 +68321,7 @@ packages:
       cosmiconfig: 8.3.6(typescript@5.2.2)
       jiti: 1.20.0
       postcss: 8.4.32
-      semver: 7.6.0
+      semver: 7.5.4
       webpack: 5.89.0(webpack-cli@5.1.4)
     transitivePeerDependencies:
       - typescript
