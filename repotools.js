@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const semver = require('semver');
 
-
 function getDirectories(srcPath) {
   return fs.readdirSync(srcPath).filter(file => {
     try {
@@ -19,12 +18,11 @@ function getDirectories(srcPath) {
   });
 }
 
-
-function getPackages(dir, outdatedApps = [], packagesWithoutEnhanced = []) {
+function getPackages(dir, outdatedApps = [], packagesWithoutEnhanced = [], packagesWithUtilities = []) {
   const directories = getDirectories(dir);
   directories.forEach(directory => {
     // Skip directories that start with 'angular'
-    if (directory.startsWith('angular') || directory.startsWith('.') || directory.startsWith('node_modules')) {
+    if (directory.startsWith('angular') || directory.startsWith('.') || directory === 'node_modules') {
       return;
     }
 
@@ -32,19 +30,20 @@ function getPackages(dir, outdatedApps = [], packagesWithoutEnhanced = []) {
     const packageJsonPath = path.join(nestedDir, 'package.json');
 
     if (fs.existsSync(packageJsonPath)) {
+      let packageJson;
       try {
-         JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+        packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
       } catch (e) {
-        console.log(packageJsonPath)
+        console.error(`Error reading or parsing package.json at ${packageJsonPath}: ${e}`);
+        return; // Skip this package on error
       }
-      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
       // Skip if no dependencies or devDependencies
       if (!packageJson.dependencies && !packageJson.devDependencies) {
         return;
       }
 
-      // Check for module-federation/node and its version
+      // Check for @module-federation/node and its version
       const mfNodeVersion = packageJson.dependencies?.['@module-federation/node'] || packageJson.devDependencies?.['@module-federation/node'];
       if (mfNodeVersion && !semver.satisfies(semver.coerce(mfNodeVersion), '>=2.0.0')) {
         outdatedApps.push(nestedDir);
@@ -54,13 +53,20 @@ function getPackages(dir, outdatedApps = [], packagesWithoutEnhanced = []) {
       if (!packageJson.dependencies?.['@module-federation/enhanced'] && !packageJson.devDependencies?.['@module-federation/enhanced']) {
         packagesWithoutEnhanced.push(nestedDir);
       }
+
+      // Check if @module-federation/utilities is present
+      if (packageJson.dependencies?.['@module-federation/utilities'] || packageJson.devDependencies?.['@module-federation/utilities']) {
+        packagesWithUtilities.push(nestedDir);
+      }
     }
     // Recursively call getPackages
-    getPackages(nestedDir, outdatedApps, packagesWithoutEnhanced);
+    getPackages(nestedDir, outdatedApps, packagesWithoutEnhanced, packagesWithUtilities);
   });
-  return { outdatedApps, packagesWithoutEnhanced };
+  return { outdatedApps, packagesWithoutEnhanced, packagesWithUtilities };
 }
 
-const { outdatedApps, packagesWithoutEnhanced } = getPackages('./'); // start from the current directory
+// Running the modified function
+const { outdatedApps, packagesWithoutEnhanced, packagesWithUtilities } = getPackages('./'); // start from the current directory
 console.log("Outdated Apps:", outdatedApps);
 console.log("Packages without Enhanced:", packagesWithoutEnhanced);
+console.log("Packages with Utilities:", packagesWithUtilities);
