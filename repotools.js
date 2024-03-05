@@ -1,48 +1,66 @@
 const fs = require('fs');
 const path = require('path');
-const execSync = require('child_process').execSync;
+const semver = require('semver');
+
 
 function getDirectories(srcPath) {
-  return fs.readdirSync(srcPath)
-    .filter(file => fs.statSync(path.join(srcPath, file)).isDirectory());
-}
-
-function getPackages(dir, since) {
-  let packages = [];
-  const directories = getDirectories(dir);
-  directories.forEach(directory => {
-    if (directory !== 'node_modules' && !directory.startsWith('.')) {
-      const nestedDir = path.join(dir, directory);
-      const packageJsonPath = path.join(nestedDir, 'package.json');
-      if (fs.existsSync(packageJsonPath)) {
-        const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
-        if (since) {
-          const result = execSync(`git diff --name-only ${since}..HEAD -- ${nestedDir}`, { encoding: 'utf8' });
-
-          if (result) {
-            packages.push({
-              name: packageJson.name,
-              version: packageJson.version,
-              private: packageJson.private || false,
-              location: nestedDir
-            });
-          }
-        } else {
-          packages.push({
-            name: packageJson.name,
-            version: packageJson.version,
-            private: packageJson.private || false,
-            location: nestedDir
-          });
-        }
+  return fs.readdirSync(srcPath).filter(file => {
+    try {
+      return fs.statSync(path.join(srcPath, file)).isDirectory();
+    } catch (err) {
+      if (err.code === 'ENOENT') {
+        // Ignore missing files/directories and continue
+        return false;
+      } else {
+        // Re-throw other errors
+        throw err;
       }
-      packages = packages.concat(getPackages(nestedDir, since));
     }
   });
-  return packages;
 }
 
-const since = process.argv[2] === '--since' ? process.argv[3] : null;
-// const packages = getPackages('./', since); // start from current directory
-// console.log(JSON.stringify(packages, null, 2));
-module.exports = getPackages
+
+function getPackages(dir, outdatedApps = [], packagesWithoutEnhanced = []) {
+  const directories = getDirectories(dir);
+  directories.forEach(directory => {
+    // Skip directories that start with 'angular'
+    if (directory.startsWith('angular') || directory.startsWith('.') || directory.startsWith('node_modules')) {
+      return;
+    }
+
+    const nestedDir = path.join(dir, directory);
+    const packageJsonPath = path.join(nestedDir, 'package.json');
+
+    if (fs.existsSync(packageJsonPath)) {
+      try {
+         JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+      } catch (e) {
+        console.log(packageJsonPath)
+      }
+      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+
+      // Skip if no dependencies or devDependencies
+      if (!packageJson.dependencies && !packageJson.devDependencies) {
+        return;
+      }
+
+      // Check for module-federation/node and its version
+      const mfNodeVersion = packageJson.dependencies?.['@module-federation/node'] || packageJson.devDependencies?.['@module-federation/node'];
+      if (mfNodeVersion && !semver.satisfies(semver.coerce(mfNodeVersion), '>=2.0.0')) {
+        outdatedApps.push(nestedDir);
+      }
+
+      // Check if @module-federation/enhanced is missing
+      if (!packageJson.dependencies?.['@module-federation/enhanced'] && !packageJson.devDependencies?.['@module-federation/enhanced']) {
+        packagesWithoutEnhanced.push(nestedDir);
+      }
+    }
+    // Recursively call getPackages
+    getPackages(nestedDir, outdatedApps, packagesWithoutEnhanced);
+  });
+  return { outdatedApps, packagesWithoutEnhanced };
+}
+
+const { outdatedApps, packagesWithoutEnhanced } = getPackages('./'); // start from the current directory
+console.log("Outdated Apps:", outdatedApps);
+console.log("Packages without Enhanced:", packagesWithoutEnhanced);
