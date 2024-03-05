@@ -427,8 +427,8 @@ importers:
         specifier: 0.5.6
         version: 0.5.6
       '@rspack/dev-server':
-        specifier: 0.5.5
-        version: 0.5.5(@rspack/core@0.5.6)(webpack-cli@5.1.4)(webpack@5.89.0)
+        specifier: 0.5.6
+        version: 0.5.6(@rspack/core@0.5.6)(webpack-cli@5.1.4)(webpack@5.89.0)
       babel-loader:
         specifier: 9.1.3
         version: 9.1.3(@babel/core@7.23.7)(webpack@5.89.0)
@@ -476,8 +476,8 @@ importers:
         specifier: 0.5.6
         version: 0.5.6
       '@rspack/dev-server':
-        specifier: 0.5.5
-        version: 0.5.5(@rspack/core@0.5.6)(webpack-cli@5.1.4)(webpack@5.89.0)
+        specifier: 0.5.6
+        version: 0.5.6(@rspack/core@0.5.6)(webpack-cli@5.1.4)(webpack@5.89.0)
       babel-loader:
         specifier: 9.1.3
         version: 9.1.3(@babel/core@7.23.7)(webpack@5.89.0)
@@ -531,8 +531,8 @@ importers:
         specifier: 0.5.6
         version: 0.5.6
       '@rspack/dev-server':
-        specifier: 0.5.5
-        version: 0.5.5(@rspack/core@0.5.6)(webpack-cli@5.1.4)(webpack@5.89.0)
+        specifier: 0.5.6
+        version: 0.5.6(@rspack/core@0.5.6)(webpack-cli@5.1.4)(webpack@5.89.0)
       babel-loader:
         specifier: 9.1.3
         version: 9.1.3(@babel/core@7.23.7)(webpack@5.89.0)
@@ -3312,8 +3312,8 @@ importers:
         specifier: 0.5.6
         version: 0.5.6
       '@rspack/dev-server':
-        specifier: 0.5.5
-        version: 0.5.5(@rspack/core@0.5.6)(webpack-cli@4.10.0)(webpack@5.89.0)
+        specifier: 0.5.6
+        version: 0.5.6(@rspack/core@0.5.6)(webpack-cli@4.10.0)(webpack@5.89.0)
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.7)(webpack@5.89.0)
@@ -3364,8 +3364,8 @@ importers:
         specifier: 0.5.6
         version: 0.5.6
       '@rspack/dev-server':
-        specifier: 0.5.5
-        version: 0.5.5(@rspack/core@0.5.6)(webpack-cli@4.10.0)(webpack@5.89.0)
+        specifier: 0.5.6
+        version: 0.5.6(@rspack/core@0.5.6)(webpack-cli@4.10.0)(webpack@5.89.0)
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.7)(webpack@5.89.0)
@@ -3422,8 +3422,8 @@ importers:
         specifier: 0.5.6
         version: 0.5.6
       '@rspack/dev-server':
-        specifier: 0.5.5
-        version: 0.5.5(@rspack/core@0.5.6)(webpack-cli@4.10.0)(webpack@5.89.0)
+        specifier: 0.5.6
+        version: 0.5.6(@rspack/core@0.5.6)(webpack-cli@4.10.0)(webpack@5.89.0)
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.7)(webpack@5.89.0)
@@ -5636,8 +5636,8 @@ importers:
         specifier: 0.5.6
         version: 0.5.6
       '@rspack/dev-server':
-        specifier: 0.5.5
-        version: 0.5.5(@rspack/core@0.5.6)(webpack-cli@4.10.0)(webpack@5.89.0)
+        specifier: 0.5.6
+        version: 0.5.6(@rspack/core@0.5.6)(webpack-cli@4.10.0)(webpack@5.89.0)
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.7)(webpack@5.89.0)
@@ -5685,8 +5685,8 @@ importers:
         specifier: 0.5.6
         version: 0.5.6
       '@rspack/dev-server':
-        specifier: 0.5.5
-        version: 0.5.5(@rspack/core@0.5.6)(webpack-cli@4.10.0)(webpack@5.89.0)
+        specifier: 0.5.6
+        version: 0.5.6(@rspack/core@0.5.6)(webpack-cli@4.10.0)(webpack@5.89.0)
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.7)(webpack@5.89.0)
@@ -5737,8 +5737,8 @@ importers:
         specifier: 0.5.6
         version: 0.5.6
       '@rspack/dev-server':
-        specifier: 0.5.5
-        version: 0.5.5(@rspack/core@0.5.6)(webpack-cli@4.10.0)(webpack@5.89.0)
+        specifier: 0.5.6
+        version: 0.5.6(@rspack/core@0.5.6)(webpack-cli@4.10.0)(webpack@5.89.0)
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.23.7)(webpack@5.89.0)
@@ -37737,6 +37737,54 @@ packages:
 
   /@rspack/dev-server@0.5.5(@rspack/core@0.5.6)(webpack-cli@5.1.4)(webpack@5.89.0):
     resolution: {integrity: sha512-dPi3icKaJ8kmdB3p1gYD2rVm9QCb9h9ZPHD/Jsqy+alGuNnBnZf5U4DhNBI6pKfmar8WXrHVPrMTd2QR6ntpng==}
+    peerDependencies:
+      '@rspack/core': '*'
+    dependencies:
+      '@rspack/core': 0.5.6
+      chokidar: 3.5.3
+      connect-history-api-fallback: 2.0.0
+      express: 4.18.1
+      http-proxy-middleware: 2.0.6(@types/express@4.17.14)
+      mime-types: 2.1.35
+      webpack-dev-middleware: 6.0.2(webpack@5.89.0)
+      webpack-dev-server: 4.13.1(webpack-cli@5.1.4)(webpack@5.89.0)
+      ws: 8.8.1
+    transitivePeerDependencies:
+      - '@types/express'
+      - bufferutil
+      - debug
+      - supports-color
+      - utf-8-validate
+      - webpack
+      - webpack-cli
+    dev: true
+
+  /@rspack/dev-server@0.5.6(@rspack/core@0.5.6)(webpack-cli@4.10.0)(webpack@5.89.0):
+    resolution: {integrity: sha512-8aJHL7QI7fyU6+MXVXoITs+Vok65fCj/b7hKevOi5WzghCrpH8XSgFTS9/TS36EXRwU8saemRxJnSGHf7yutYA==}
+    peerDependencies:
+      '@rspack/core': '*'
+    dependencies:
+      '@rspack/core': 0.5.6
+      chokidar: 3.5.3
+      connect-history-api-fallback: 2.0.0
+      express: 4.18.1
+      http-proxy-middleware: 2.0.6(@types/express@4.17.14)
+      mime-types: 2.1.35
+      webpack-dev-middleware: 6.0.2(webpack@5.89.0)
+      webpack-dev-server: 4.13.1(webpack-cli@4.10.0)(webpack@5.89.0)
+      ws: 8.8.1
+    transitivePeerDependencies:
+      - '@types/express'
+      - bufferutil
+      - debug
+      - supports-color
+      - utf-8-validate
+      - webpack
+      - webpack-cli
+    dev: true
+
+  /@rspack/dev-server@0.5.6(@rspack/core@0.5.6)(webpack-cli@5.1.4)(webpack@5.89.0):
+    resolution: {integrity: sha512-8aJHL7QI7fyU6+MXVXoITs+Vok65fCj/b7hKevOi5WzghCrpH8XSgFTS9/TS36EXRwU8saemRxJnSGHf7yutYA==}
     peerDependencies:
       '@rspack/core': '*'
     dependencies:
