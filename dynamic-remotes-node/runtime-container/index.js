@@ -1,4 +1,4 @@
-import {injectScript} from '@module-federation/utilities'
+import {loadRemote} from '@module-federation/runtime'
 
 
-export default injectScript
+export default loadRemote()

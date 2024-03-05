@@ -1,23 +1,18 @@
-const {injectScript, getModule} = require('@module-federation/utilities')
+const {loadRemote, init} = require('@module-federation/runtime')
 console.log('hello from host app1')
-// fake import needed in order to tell webpack to include chunk loading runtime code
-import('fake')
-injectScript({
-  global: 'app2',
-  url: 'http://localhost:3002/remoteEntry.js',
-}).then((container) => {
-  console.log(container);
-  container.get('./sample').then((sample) => {
-    console.log(sample())
-  })
+
+
+init({
+  name: 'app1',
+  remotes: [
+    {
+      name:'app2',
+      entry: 'http://localhost:3002/remoteEntry.js'
+    },
+  ]
 })
 
-getModule({
-  remoteContainer: {
-    global: 'app2',
-    url: 'http://localhost:3002/remoteEntry.js',
-  },
-  modulePath: './sample'
-}).then((sample) => {
+
+loadRemote('app2/sample').then((sample) => {
   console.log(sample)
 });
