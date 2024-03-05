@@ -3269,11 +3269,11 @@ importers:
   dynamic-remotes-node:
     dependencies:
       '@module-federation/node':
-        specifier: ^2.0.11
-        version: 2.0.11(webpack@5.89.0)
+        specifier: next
+        version: 0.0.0-next-20240305014714(webpack@5.89.0)
       '@module-federation/runtime':
-        specifier: ^0.0.13
-        version: 0.0.13
+        specifier: next
+        version: 0.0.0-next-20240305014714
       concurrently:
         specifier: ^7.6.0
         version: 7.6.0
@@ -31236,6 +31236,17 @@ packages:
       - encoding
     dev: true
 
+  /@module-federation/enhanced@0.0.0-next-20240305014714(webpack@5.89.0):
+    resolution: {integrity: sha512-RlfptLsqsrxBRjcFdG4bjZaCkxAVg1BZAzHbwfXwipGmqAegvPVSt9g72DzFYRr1OzTqTjm6Nt7zCNmVoz1cXw==}
+    peerDependencies:
+      webpack: 5.89.0
+    dependencies:
+      '@module-federation/runtime-tools': 0.0.0-next-20240305014714
+      '@module-federation/sdk': 0.0.0-next-20240305014714
+      upath: 2.0.1
+      webpack: 5.89.0(webpack-cli@5.1.4)
+    dev: false
+
   /@module-federation/enhanced@0.0.10(webpack@5.89.0):
     resolution: {integrity: sha512-yP8LCH3moQN7Z9I0wpeFVfwahjVZNbL2LYoemj4rF66rIioap31D4knkml0LdRkmzNH97/SEl/FSRVM7a1hMLg==}
     peerDependencies:
@@ -31454,6 +31465,31 @@ packages:
       - encoding
     dev: false
 
+  /@module-federation/node@0.0.0-next-20240305014714(webpack@5.89.0):
+    resolution: {integrity: sha512-ZDtzT+iIdQb54gfojooki0eU8tZ5QYHv51slQJ8CVa0E38fMfOcKC944+cFygAThCPZdsOHcMlp20fFajnGmHg==}
+    peerDependencies:
+      next: ^12||^13
+      react: ^16||^17||^18
+      react-dom: ^16||^17||^18
+      webpack: 5.89.0
+    peerDependenciesMeta:
+      next:
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      '@module-federation/enhanced': 0.0.0-next-20240305014714(webpack@5.89.0)
+      '@module-federation/runtime': 0.0.0-next-20240305014714
+      '@module-federation/sdk': 0.0.0-next-20240305014714
+      '@module-federation/utilities': 0.0.0-next-20240305014714(webpack@5.89.0)
+      node-fetch: 2.7.0
+      webpack: 5.89.0(webpack-cli@5.1.4)
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
   /@module-federation/node@0.16.2(react-dom@16.14.0)(react@16.14.0)(webpack@5.89.0):
     resolution: {integrity: sha512-9zyB1D76lKsoSHcpaM5V+ifNqS2wevCQQgbw3Q7/C9JhoBM2GFhXkKXR2FxTlWdPZz4dmkN+jC5ZYW/w8v+mEA==}
     peerDependencies:
@@ -31545,31 +31581,6 @@ packages:
       webpack: 5.89.0(webpack-cli@4.9.2)
       webpack-sources: 3.2.3
     dev: true
-
-  /@module-federation/node@2.0.11(webpack@5.89.0):
-    resolution: {integrity: sha512-x1HT3v/PPmDITjLSOq4EBX/oRMQ8JJj+ROp6jht39gY0ntw3LQPR67ilDxG0nLwGbh6WiOIHXXxg+YnSbHaDBw==}
-    peerDependencies:
-      next: ^12||^13
-      react: ^16||^17||^18
-      react-dom: ^16||^17||^18
-      webpack: 5.89.0
-    peerDependenciesMeta:
-      next:
-        optional: true
-      react:
-        optional: true
-      react-dom:
-        optional: true
-    dependencies:
-      '@module-federation/enhanced': 0.0.13(webpack@5.89.0)
-      '@module-federation/runtime': 0.0.13
-      '@module-federation/sdk': 0.0.13
-      '@module-federation/utilities': 3.0.5(next@13.5.6)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
-      node-fetch: 2.7.0
-      webpack: 5.89.0(webpack-cli@5.1.4)
-    transitivePeerDependencies:
-      - encoding
-    dev: false
 
   /@module-federation/node@2.0.2-beta.6(webpack@5.89.0):
     resolution: {integrity: sha512-gv3eQDTuJ1IwMkzU1WRiTCbqfmd9kHrDdrPCve5x3C7Ns3WKO1GwXoU1UFLfl02TXlknJ8JSyCZ9iOB9J1LtUg==}
@@ -31749,6 +31760,13 @@ packages:
       '@module-federation/webpack-bundler-runtime': 0.0.0-next-20231225095220
     dev: true
 
+  /@module-federation/runtime-tools@0.0.0-next-20240305014714:
+    resolution: {integrity: sha512-Yjny/bsF27x8WgEvjTHKT1ZmSMuti0/c0yJhy9Pg7baRnBFg946VRzCAeoINW8oCMjwLTN56K73dha14G8+FeQ==}
+    dependencies:
+      '@module-federation/runtime': 0.0.0-next-20240305014714
+      '@module-federation/webpack-bundler-runtime': 0.0.0-next-20240305014714
+    dev: false
+
   /@module-federation/runtime-tools@0.0.10:
     resolution: {integrity: sha512-2u2v7oRSn6JaCwj7jFU90MCwwRY+iONHPW3sPjaMr6DJ1wa10eHAv07qmHvQUipJ/Jm6AGaS2oep3c0gA2HEzg==}
     dependencies:
@@ -31773,6 +31791,12 @@ packages:
       '@module-federation/sdk': 0.0.0-next-20231225095220
     dev: true
 
+  /@module-federation/runtime@0.0.0-next-20240305014714:
+    resolution: {integrity: sha512-isdkARJlJc/t2p39hkBvKTDrL4ua5c+SD8Cro0BMfdKpo0iBAC61xiXAeLisRmgBfpRMDN8MyuOvt/Aef49Ldw==}
+    dependencies:
+      '@module-federation/sdk': 0.0.0-next-20240305014714
+    dev: false
+
   /@module-federation/runtime@0.0.10:
     resolution: {integrity: sha512-M57xoGcN64JDyNwerOoAlUyyplA1fGKlGWWc6sw5A+eRb+mt/Nj2Yh5g3+C3iZ0b3eoLtDe3qlX12UuddmySPg==}
     dependencies:
@@ -31791,6 +31815,10 @@ packages:
   /@module-federation/sdk@0.0.0-next-20231225095220:
     resolution: {integrity: sha512-0vS5UXCkbKyotZIXAsF+mrL8PQ+xKmKfaDYHdBxXR4kyGSRjSRRokSKkXZNVfPEhy1f1z/oAgUo5AZoOisrrQA==}
     dev: true
+
+  /@module-federation/sdk@0.0.0-next-20240305014714:
+    resolution: {integrity: sha512-tiK4m8T5JmhUsdnCqeOCfr4D/Ip/+qFgiZmPnUTbpS2jO9i+4Yx9MBSSXBJygPQhr7hsI3Amkq1lkYPbU91RiA==}
+    dev: false
 
   /@module-federation/sdk@0.0.10:
     resolution: {integrity: sha512-qHK7FoOSd8HCBal0bSBCn/BB1e5XXwdfwzPt4ACP/o4YyHTnIIavX9qyA9bufvHltVgP/JL5jpBOpK7sdZ1bYQ==}
@@ -31896,6 +31924,24 @@ packages:
     transitivePeerDependencies:
       - debug
       - encoding
+
+  /@module-federation/utilities@0.0.0-next-20240305014714(webpack@5.89.0):
+    resolution: {integrity: sha512-Hr870DgJir2NmnndKoI8vmHVXvC08BInIRmiDBjhup51hFeDzqHM3+7a8yKza+r+GRh6d3Vc6XCbPET3Bd8yTw==}
+    peerDependencies:
+      next: '*'
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+      webpack: 5.89.0
+    peerDependenciesMeta:
+      next:
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      webpack: 5.89.0(webpack-cli@5.1.4)
+    dev: false
 
   /@module-federation/utilities@1.1.2(@babel/core@7.23.7)(react-dom@18.2.0)(webpack@5.89.0):
     resolution: {integrity: sha512-3oCy1zYqZY0T72SvPPthQcvuHeuadzYjYh6oBcRcOzDhutvl5mLKCsp/RdAXxy/oPSXK1RouxuQzZUUu3FGXbQ==}
@@ -32236,6 +32282,13 @@ packages:
       '@module-federation/runtime': 0.0.0-next-20231225095220
       '@module-federation/sdk': 0.0.0-next-20231225095220
     dev: true
+
+  /@module-federation/webpack-bundler-runtime@0.0.0-next-20240305014714:
+    resolution: {integrity: sha512-NpPnEwTmOddqrlhZyWvxMqFbISIeq3siNzF+IUeu67MCv5+7uZ2rDGtGm+RMP5LP5UqoAzIIuKbL5BI0SLiEqw==}
+    dependencies:
+      '@module-federation/runtime': 0.0.0-next-20240305014714
+      '@module-federation/sdk': 0.0.0-next-20240305014714
+    dev: false
 
   /@module-federation/webpack-bundler-runtime@0.0.10:
     resolution: {integrity: sha512-D7hHTP/SIYGzUa9Jz6gVX3p2F3tAyChjtB4Yhi1BgoNiZVQvwXsWi+KXPccT5sL/Br6g5EVupYQTnR0OGR8P2A==}
