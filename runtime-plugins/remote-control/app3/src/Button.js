@@ -15,7 +15,7 @@ const Button = () => (
     }}
     style={style}
   >
-    App 3 Button - CLICK ME
+    App 2 Button - CLICK ME
   </button>
 );
 

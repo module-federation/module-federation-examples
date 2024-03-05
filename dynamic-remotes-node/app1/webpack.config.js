@@ -10,9 +10,6 @@ module.exports = {
     new UniversalFederationPlugin({
       isServer: true,
       name: 'app1',
-      remotes: {
-        'fake': 'promise new Promise((resolve) => {resolve({get:()=>Promise.resolve(()=>{}),init:()=>{}})})',
-      },
       exposes: {
         './noop': './noop.js',
       }

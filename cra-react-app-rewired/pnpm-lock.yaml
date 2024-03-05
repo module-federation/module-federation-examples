@@ -14,21 +14,24 @@ importers:
 
   host:
     dependencies:
+      '@module-federation/enhanced':
+        specifier: ^0.0.13
+        version: 0.0.13(webpack@5.89.0)
       '@testing-library/jest-dom':
         specifier: 6.1.4
-        version: 6.1.4(@types/jest@29.5.11)(jest@27.5.1)
+        version: 6.1.4(@types/jest@29.5.12)(jest@27.5.1)
       '@testing-library/react':
         specifier: ^13.4.0
         version: 13.4.0(react-dom@18.2.0)(react@18.2.0)
       '@types/jest':
-        specifier: 29.5.11
-        version: 29.5.11
+        specifier: 29.5.12
+        version: 29.5.12
       '@types/react':
-        specifier: 18.2.46
-        version: 18.2.46
+        specifier: 18.2.62
+        version: 18.2.62
       '@types/react-dom':
-        specifier: 18.2.18
-        version: 18.2.18
+        specifier: 18.2.19
+        version: 18.2.19
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -60,6 +63,9 @@ importers:
 
   remote:
     dependencies:
+      '@module-federation/enhanced':
+        specifier: ^0.0.13
+        version: 0.0.13(webpack@5.89.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -75,19 +81,19 @@ importers:
     devDependencies:
       '@testing-library/jest-dom':
         specifier: 6.1.4
-        version: 6.1.4(@types/jest@29.5.11)(jest@27.5.1)
+        version: 6.1.4(@types/jest@29.5.12)(jest@27.5.1)
       '@testing-library/react':
         specifier: ^13.4.0
         version: 13.4.0(react-dom@18.2.0)(react@18.2.0)
       '@types/jest':
-        specifier: 29.5.11
-        version: 29.5.11
+        specifier: 29.5.12
+        version: 29.5.12
       '@types/react':
-        specifier: 18.2.46
-        version: 18.2.46
+        specifier: 18.2.62
+        version: 18.2.62
       '@types/react-dom':
-        specifier: 18.2.18
-        version: 18.2.18
+        specifier: 18.2.19
+        version: 18.2.19
       customize-cra:
         specifier: 1.0.0
         version: 1.0.0
@@ -1939,6 +1945,41 @@ packages:
   /@leichtgewicht/ip-codec@2.0.4:
     resolution: {integrity: sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==}
 
+  /@module-federation/enhanced@0.0.13(webpack@5.89.0):
+    resolution: {integrity: sha512-9WHFhKpxD7HQaPdVW66yz2a4YV7wTDtrwZbF7GLtCSS1bwHUCtwRVersV1oMqWATxPWyeQylG77R0B8WC7QKYw==}
+    peerDependencies:
+      webpack: ^5.0.0
+    dependencies:
+      '@module-federation/runtime-tools': 0.0.13
+      '@module-federation/sdk': 0.0.13
+      upath: 2.0.1
+      webpack: 5.89.0
+    dev: false
+
+  /@module-federation/runtime-tools@0.0.13:
+    resolution: {integrity: sha512-pbp82JEzI9aWSNDrLGk49spbAe5h6RxQv5RlCCN3mxbUCqfT8Mz1fozqQ5VOZT2o5rJDatoHd3S04bx7/4FhrA==}
+    dependencies:
+      '@module-federation/runtime': 0.0.13
+      '@module-federation/webpack-bundler-runtime': 0.0.13
+    dev: false
+
+  /@module-federation/runtime@0.0.13:
+    resolution: {integrity: sha512-c7TCfNQZvNV4ITCLQyDC7AG7AN3uPxFvBW7xNZ38EOIjuQjBm0JoAr8pxIoK6cdNf5VToIbVHaEJ1D+9DaJZmA==}
+    dependencies:
+      '@module-federation/sdk': 0.0.13
+    dev: false
+
+  /@module-federation/sdk@0.0.13:
+    resolution: {integrity: sha512-ALapAGystaXSlwqGTcioPzGEhzKDVq+2U+MLXpm71/L/SaDOD54l8sqy8I/bdofay4c7rcrstlAlZfAwMmWW1g==}
+    dev: false
+
+  /@module-federation/webpack-bundler-runtime@0.0.13:
+    resolution: {integrity: sha512-yf8W8wngxnmLGlgqR5WfsqKPZvmcY1zhgqMYe20kguVZp8U7FBAt3sY6voL8S00hyEQD6i4+6yHW5vk1uFvMFA==}
+    dependencies:
+      '@module-federation/runtime': 0.0.13
+      '@module-federation/sdk': 0.0.13
+    dev: false
+
   /@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1:
     resolution: {integrity: sha512-54/JRvkLIzzDWshCWfuhadfrfZVPiElY8Fcgmg1HroEly/EDSszzhBAsarCux+D/kOslTRquNzuyGSmUSTTHGg==}
     dependencies:
@@ -2200,7 +2241,7 @@ packages:
       lz-string: 1.5.0
       pretty-format: 27.5.1
 
-  /@testing-library/jest-dom@6.1.4(@types/jest@29.5.11)(jest@27.5.1):
+  /@testing-library/jest-dom@6.1.4(@types/jest@29.5.12)(jest@27.5.1):
     resolution: {integrity: sha512-wpoYrCYwSZ5/AxcrjLxJmCU6I5QAJXslEeSiMQqaWmP2Kzpd1LvF/qxmAIW2qposULGWq2gw30GgVNFLSc2Jnw==}
     engines: {node: '>=14', npm: '>=6', yarn: '>=1'}
     peerDependencies:
@@ -2220,7 +2261,7 @@ packages:
     dependencies:
       '@adobe/css-tools': 4.3.1
       '@babel/runtime': 7.23.4
-      '@types/jest': 29.5.11
+      '@types/jest': 29.5.12
       aria-query: 5.3.0
       chalk: 3.0.0
       css.escape: 1.5.1
@@ -2238,7 +2279,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.4
       '@testing-library/dom': 8.20.1
-      '@types/react-dom': 18.2.18
+      '@types/react-dom': 18.2.19
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
@@ -2363,8 +2404,8 @@ packages:
     dependencies:
       '@types/istanbul-lib-report': 3.0.3
 
-  /@types/jest@29.5.11:
-    resolution: {integrity: sha512-S2mHmYIVe13vrm6q4kN6fLYYAka15ALQki/vgDC3mIukEOx8WJlv0kQPM+d4w8Gp6u0uSdKND04IlTXBv0rwnQ==}
+  /@types/jest@29.5.12:
+    resolution: {integrity: sha512-eDC8bTvT/QhYdxJAulQikueigY5AsdBRH2yDKW3yveW7svY3+DzN84/2NUgkw10RTiJbWqZrTtoGVdYlvFJdLw==}
     dependencies:
       expect: 29.7.0
       pretty-format: 29.7.0
@@ -2409,13 +2450,13 @@ packages:
   /@types/range-parser@1.2.7:
     resolution: {integrity: sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==}
 
-  /@types/react-dom@18.2.18:
-    resolution: {integrity: sha512-TJxDm6OfAX2KJWJdMEVTwWke5Sc/E/RlnPGvGfS0W7+6ocy2xhDVQVh/KvC2Uf7kACs+gDytdusDSdWfWkaNzw==}
+  /@types/react-dom@18.2.19:
+    resolution: {integrity: sha512-aZvQL6uUbIJpjZk4U8JZGbau9KDeAwMfmhyWorxgBkqDIEf6ROjRozcmPIicqsUwPUjbkDfHKgGee1Lq65APcA==}
     dependencies:
-      '@types/react': 18.2.46
+      '@types/react': 18.2.62
 
-  /@types/react@18.2.46:
-    resolution: {integrity: sha512-nNCvVBcZlvX4NU1nRRNV/mFl1nNRuTuslAJglQsq+8ldXe5Xv0Wd2f7WTE3jOxhLH2BFfiZGC6GCp+kHQbgG+w==}
+  /@types/react@18.2.62:
+    resolution: {integrity: sha512-l3f57BbaEKP0xcFzf+5qRG8/PXykZiuVM6eEoPtqBPCp6dxO3HhDkLIgIyXPhPKNAeXn3KO2pEaNgzaEo/asaw==}
     dependencies:
       '@types/prop-types': 15.7.11
       '@types/scheduler': 0.16.8
@@ -9363,6 +9404,11 @@ packages:
   /upath@1.2.0:
     resolution: {integrity: sha512-aZwGpamFO61g3OlfT7OQCHqhGnW43ieH9WZeP7QxN/G/jS4jfqUkZxoryvJgVPEcrl5NL/ggHsSmLMHuH64Lhg==}
     engines: {node: '>=4'}
+
+  /upath@2.0.1:
+    resolution: {integrity: sha512-1uEe95xksV1O0CYKXo8vQvN1JEbtJp7lb7C5U9HMsIp6IVwntkH/oNUzyVNQSd4S1sYk2FpSSW44FqMc8qee5w==}
+    engines: {node: '>=4'}
+    dev: false
 
   /update-browserslist-db@1.0.13(browserslist@4.22.1):
     resolution: {integrity: sha512-xebP81SNcPuNpPP3uzeW1NYXxI3rxyJzF3pD6sH4jE7o/IX+WtSpwnVU+qIsDPyk0d3hmFQ7mjqc6AtV604hbg==}

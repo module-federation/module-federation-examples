@@ -51,9 +51,6 @@ export default function () {
 
             return getModule(pg, from);
         },
-        init(args) {
-            return args;
-        },
         beforeRequest(args) {
             console.log('before request', args);
             args.options.remotes.forEach((r) => {
