@@ -1015,8 +1015,8 @@ importers:
         specifier: 15.0.4
         version: 15.0.4(@angular/common@15.0.4)(@angular/core@15.0.4)(@angular/platform-browser@15.0.4)(rxjs@6.6.7)
       '@ngxs/store':
-        specifier: 3.8.1
-        version: 3.8.1(@angular/core@15.0.4)(rxjs@6.6.7)
+        specifier: 3.8.2
+        version: 3.8.2(@angular/core@15.0.4)(rxjs@6.6.7)
       bootstrap:
         specifier: ^4.5.3
         version: 4.6.2(jquery@3.7.1)(popper.js@1.16.1)
@@ -1106,8 +1106,8 @@ importers:
         specifier: 13.3.11
         version: 13.3.11(rxjs@7.8.1)(zone.js@0.11.8)
       '@ngxs/store':
-        specifier: 3.8.1
-        version: 3.8.1(@angular/core@13.3.11)(rxjs@7.8.1)
+        specifier: 3.8.2
+        version: 3.8.2(@angular/core@13.3.11)(rxjs@7.8.1)
       tslib:
         specifier: ^2.0.0
         version: 2.5.0
@@ -1139,8 +1139,8 @@ importers:
         specifier: 15.0.4
         version: 15.0.4(@angular/common@15.0.4)(@angular/core@15.0.4)(@angular/platform-browser@15.0.4)(rxjs@6.6.7)
       '@ngxs/store':
-        specifier: 3.8.1
-        version: 3.8.1(@angular/core@15.0.4)(rxjs@6.6.7)
+        specifier: 3.8.2
+        version: 3.8.2(@angular/core@15.0.4)(rxjs@6.6.7)
       bootstrap:
         specifier: ^4.5.3
         version: 4.6.2(jquery@3.7.1)(popper.js@1.16.1)
@@ -22512,7 +22512,7 @@ packages:
     dependencies:
       '@babel/core': 7.23.3
       '@babel/helper-module-imports': 7.22.15
-      '@babel/helper-plugin-utils': 7.24.0
+      '@babel/helper-plugin-utils': 7.22.5
       babel-plugin-polyfill-corejs2: 0.4.8(@babel/core@7.23.3)
       babel-plugin-polyfill-corejs3: 0.8.7(@babel/core@7.23.3)
       babel-plugin-polyfill-regenerator: 0.5.5(@babel/core@7.23.3)
@@ -22546,7 +22546,7 @@ packages:
     dependencies:
       '@babel/core': 7.24.0
       '@babel/helper-module-imports': 7.22.15
-      '@babel/helper-plugin-utils': 7.24.0
+      '@babel/helper-plugin-utils': 7.22.5
       babel-plugin-polyfill-corejs2: 0.4.8(@babel/core@7.24.0)
       babel-plugin-polyfill-corejs3: 0.8.7(@babel/core@7.24.0)
       babel-plugin-polyfill-regenerator: 0.5.5(@babel/core@7.24.0)
@@ -32921,26 +32921,26 @@ packages:
       rxjs: 6.6.7
       tslib: 1.14.1
 
-  /@ngxs/store@3.8.1(@angular/core@13.3.11)(rxjs@7.8.1):
-    resolution: {integrity: sha512-nbapLdMx+mtnb57BUWXbD6qYfVICv6Rp2NdoGx1++qDbc44ALC49KbF7rSjyPltlExxharAzoNpzO3JuueCP+A==}
+  /@ngxs/store@3.8.2(@angular/core@13.3.11)(rxjs@7.8.1):
+    resolution: {integrity: sha512-IovxuGQDEpB9VefmbTaV1k4hms4iZ4aS9gPVZOC+qzyfvpi7zrUEsjo+yT6FfVBmBg/RLUmPCtqArzbKU5XrLQ==}
     peerDependencies:
-      '@angular/core': '>=12.0.0 <17.0.0'
+      '@angular/core': '>=12.0.0 <18.0.0'
       rxjs: '>=6.5.5'
     dependencies:
       '@angular/core': 13.3.11(rxjs@7.8.1)(zone.js@0.11.8)
       rxjs: 7.8.1
-      tslib: 2.6.2
+      tslib: 2.5.0
     dev: false
 
-  /@ngxs/store@3.8.1(@angular/core@15.0.4)(rxjs@6.6.7):
-    resolution: {integrity: sha512-nbapLdMx+mtnb57BUWXbD6qYfVICv6Rp2NdoGx1++qDbc44ALC49KbF7rSjyPltlExxharAzoNpzO3JuueCP+A==}
+  /@ngxs/store@3.8.2(@angular/core@15.0.4)(rxjs@6.6.7):
+    resolution: {integrity: sha512-IovxuGQDEpB9VefmbTaV1k4hms4iZ4aS9gPVZOC+qzyfvpi7zrUEsjo+yT6FfVBmBg/RLUmPCtqArzbKU5XrLQ==}
     peerDependencies:
-      '@angular/core': '>=12.0.0 <17.0.0'
+      '@angular/core': '>=12.0.0 <18.0.0'
       rxjs: '>=6.5.5'
     dependencies:
       '@angular/core': 15.0.4(rxjs@6.6.7)(zone.js@0.11.8)
       rxjs: 6.6.7
-      tslib: 2.6.2
+      tslib: 2.5.0
     dev: false
 
   /@nicolo-ribaudo/chokidar-2@2.1.8-no-fsevents.3:
@@ -33371,7 +33371,7 @@ packages:
       ejs: 3.1.9
       ignore: 5.2.4
       nx: 14.8.9(@swc-node/register@1.6.8)(@swc/core@1.3.105)
-      tslib: 2.6.2
+      tslib: 2.5.0
     transitivePeerDependencies:
       - typescript
     dev: true
@@ -33385,7 +33385,7 @@ packages:
       ejs: 3.1.9
       ignore: 5.2.4
       nx: 15.9.7(@swc-node/register@1.6.8)(@swc/core@1.3.105)
-      tslib: 2.6.2
+      tslib: 2.5.0
     transitivePeerDependencies:
       - typescript
     dev: true
@@ -33752,7 +33752,7 @@ packages:
       eslint: 8.56.0
       nx: 14.8.9(@swc-node/register@1.6.8)(@swc/core@1.3.105)
       tmp: 0.2.1
-      tslib: 2.6.2
+      tslib: 2.5.0
     transitivePeerDependencies:
       - '@swc-node/register'
       - '@swc/core'
@@ -34436,7 +34436,7 @@ packages:
       rxjs: 6.6.7
       semver: 7.3.4
       tmp: 0.2.1
-      tslib: 2.6.2
+      tslib: 2.5.0
       yargs: 17.7.2
       yargs-parser: 21.0.1
     transitivePeerDependencies:
@@ -34582,7 +34582,7 @@ packages:
       nx: 17.2.8(@swc-node/register@1.6.8)(@swc/core@1.3.105)
       semver: 7.5.3
       tmp: 0.2.1
-      tslib: 2.6.2
+      tslib: 2.5.0
     dev: true
 
   /@nx/eslint-plugin@17.2.8(@swc-node/register@1.6.8)(@swc/core@1.3.105)(@types/node@18.16.9)(@typescript-eslint/parser@6.19.1)(eslint-config-prettier@9.0.0)(eslint@8.48.0)(nx@17.2.8)(typescript@5.2.2):
@@ -40215,7 +40215,7 @@ packages:
     resolution: {integrity: sha512-gqBJSmJMWomZFxlppaKea7NeAqFrDrrS0RMt24No92M3nJWcyI9YKGEQKl+EyJqZ5gh6w1s0cTklMHMzRwA1NA==}
     dependencies:
       source-map-support: 0.5.21
-      tslib: 2.6.2
+      tslib: 2.5.0
     dev: true
 
   /@swc/cli@0.1.64(@swc/core@1.3.105):
@@ -40354,7 +40354,7 @@ packages:
   /@swc/helpers@0.4.11:
     resolution: {integrity: sha512-rEUrBSGIoSFuYxwBYtlUFMlE2CwGhmW+w9355/5oduSw8e5h2+Tj4UrAGNNgP9915++wj5vkQo0UuOBqOAq4nw==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.0
 
   /@swc/helpers@0.4.14:
     resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
@@ -40365,7 +40365,7 @@ packages:
   /@swc/helpers@0.5.0:
     resolution: {integrity: sha512-SjY/p4MmECVVEWspzSRpQEM3sjR17sP8PbGxELWrT+YZMBfiUyt1MRUNjMV23zohwlG2HYtCQOsCwsTHguXkyg==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.0
 
   /@swc/helpers@0.5.1:
     resolution: {integrity: sha512-sJ902EfIzn1Fa+qYmjdQqh8tPsoxyBz+8yBKC2HKUxyezKJFwPGOn7pv4WY6QuQW//ySQi5lJjA/ZT9sNWWNTg==}
@@ -40376,7 +40376,7 @@ packages:
   /@swc/helpers@0.5.2:
     resolution: {integrity: sha512-E4KcWTpoLHqwPHLxidpOqQbcrZVgi0rsmmZXUle1jXmJfuIf/UWpczUJ7MZZ5tlxytgJXyp0w4PGkkeLiuIdZw==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.0
 
   /@swc/helpers@0.5.3:
     resolution: {integrity: sha512-FaruWX6KdudYloq1AHD/4nU+UsMTdNE8CKyrseXWEcgjDAbvkwJg2QGPAnfIJLIWsjZOSPLOAykK6fuYp4vp4A==}
