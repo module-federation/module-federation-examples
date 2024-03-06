@@ -6,7 +6,7 @@ const FederationStatsPlugin = require('webpack-federation-stats-plugin');
 
 module.exports = {
   client: [
-    new FederationStatsPlugin(),
+    // new FederationStatsPlugin(),
     new ModuleFederationPlugin({
       name: 'app1',
       filename: 'remoteEntry.js',
@@ -20,11 +20,11 @@ module.exports = {
     new UniversalFederationPlugin({
       isServer: true,
       name: 'app1',
-      library: { type: 'commonjs-module' },
       filename: 'remoteEntry.js',
       remotes: {
         app2: 'app2@http://localhost:3001/server/remoteEntry.js',
       },
+      exposes: {},
       shared: [
         {
           react: { requiredVersion: deps.react, eager: true },

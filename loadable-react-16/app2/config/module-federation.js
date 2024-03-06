@@ -21,7 +21,6 @@ module.exports = {
     new UniversalFederationPlugin({
       isServer: true,
       name: 'app2',
-      library: { type: 'commonjs-module' },
       filename: 'remoteEntry.js',
       exposes: {
         './Content': './src/client/components/Content',
