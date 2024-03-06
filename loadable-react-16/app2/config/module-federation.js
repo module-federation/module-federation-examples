@@ -22,6 +22,8 @@ module.exports = {
       isServer: true,
       name: 'app2',
       filename: 'remoteEntry.js',
+      library: {type:'commonjs-module'},
+      remoteType: 'script',
       exposes: {
         './Content': './src/client/components/Content',
       },
