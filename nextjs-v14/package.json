@@ -1,0 +1,17 @@
+{
+  "name": "nextjs-v14",
+  "private": true,
+  "description": "Next.js 14 Example",
+  "workspaces": [
+    "./home",
+    "./shop"
+  ],
+  "version": "0.0.0",
+  "scripts": {
+    "start": "concurrently \"npm --prefix home run dev\" \"npm --prefix shop run dev\"",
+    "e2e:ci": "pnpm run build"
+  },
+  "dependencies": {
+    "concurrently": "7.6.0"
+  }
+}
