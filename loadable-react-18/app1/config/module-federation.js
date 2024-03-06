@@ -19,7 +19,9 @@ module.exports = {
     new UniversalFederationPlugin({
       isServer: true,
       name: 'app1',
+      library: {type: 'commonjs-module'},
       filename: 'remoteEntry.js',
+      remoteType: 'script',
       remotes: {
         app2: 'app2@http://localhost:3001/server/remoteEntry.js',
       },
