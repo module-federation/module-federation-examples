@@ -6,7 +6,7 @@ const FederationStatsPlugin = require('webpack-federation-stats-plugin');
 
 module.exports = {
   client: [
-    // new FederationStatsPlugin(),
+    new FederationStatsPlugin(),
     new ModuleFederationPlugin({
       name: 'app1',
       filename: 'remoteEntry.js',
