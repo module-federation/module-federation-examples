@@ -2459,8 +2459,8 @@ importers:
         specifier: ^0.4.0
         version: 0.4.8(webpack@5.89.0)
       '@rsbuild/plugin-react':
-        specifier: ^0.3.5
-        version: 0.3.5(@rsbuild/core@0.4.8)
+        specifier: ^0.4.0
+        version: 0.4.8(@rsbuild/core@0.4.8)(@swc/helpers@0.5.3)
       '@rspack/core':
         specifier: ^0.5.0
         version: 0.5.0(@swc/helpers@0.5.3)
@@ -2478,8 +2478,8 @@ importers:
         specifier: ^0.4.0
         version: 0.4.8(webpack@5.89.0)
       '@rsbuild/plugin-react':
-        specifier: ^0.3.5
-        version: 0.3.5(@rsbuild/core@0.4.8)
+        specifier: ^0.4.0
+        version: 0.4.8(@rsbuild/core@0.4.8)(@swc/helpers@0.5.3)
       '@rspack/core':
         specifier: ^0.5.0
         version: 0.5.0(@swc/helpers@0.5.3)
@@ -36342,19 +36342,6 @@ packages:
       - '@swc/helpers'
     dev: true
 
-  /@rsbuild/plugin-react@0.3.5(@rsbuild/core@0.4.8):
-    resolution: {integrity: sha512-o9WQyz1EUJMM5+lcs6xq0Mvy2xXv3XepMOmwLcg+P/a2M9kWk8OStR9CKmGQZbNo0BT4vnXs/IY7+zZ4/I7VzA==}
-    peerDependencies:
-      '@rsbuild/core': ^0.3.5
-    dependencies:
-      '@rsbuild/core': 0.4.8(webpack@5.89.0)
-      '@rsbuild/shared': 0.3.5
-      '@rspack/plugin-react-refresh': 0.5.0(react-refresh@0.14.0)
-      react-refresh: 0.14.0
-    transitivePeerDependencies:
-      - '@swc/helpers'
-    dev: true
-
   /@rsbuild/plugin-react@0.4.8(@rsbuild/core@0.4.8)(@swc/helpers@0.5.3):
     resolution: {integrity: sha512-OemgcDEBKfFix+d52u0yyIKdIVm6Kp2NKq4SZsNnu+24WHdFo+A707CfMBT6aGaxnfaWGYYgQh4z8ivVJMCj2g==}
     peerDependencies:
@@ -37224,7 +37211,7 @@ packages:
       '@rspack/core': '*'
     dependencies:
       '@rspack/core': 0.5.0(@swc/helpers@0.5.3)
-      '@rspack/plugin-react-refresh': 0.5.0(react-refresh@0.14.0)
+      '@rspack/plugin-react-refresh': 0.5.0
       chokidar: 3.5.3
       connect-history-api-fallback: 2.0.0
       express: 4.18.1
@@ -37252,7 +37239,7 @@ packages:
       '@rspack/core': '*'
     dependencies:
       '@rspack/core': 0.5.0(@swc/helpers@0.5.3)
-      '@rspack/plugin-react-refresh': 0.5.0(react-refresh@0.14.0)
+      '@rspack/plugin-react-refresh': 0.5.0
       chokidar: 3.5.3
       connect-history-api-fallback: 2.0.0
       express: 4.18.1
@@ -37348,15 +37335,13 @@ packages:
       react-refresh: 0.14.0
     dev: true
 
-  /@rspack/plugin-react-refresh@0.5.0(react-refresh@0.14.0):
+  /@rspack/plugin-react-refresh@0.5.0:
     resolution: {integrity: sha512-Tas91XaFgRmgdLFzgeei/LybMFvnYBicMf4Y7Yt9lZHRHfgONrGbmqSVeS+nWWTW9U8Q31K9uiM2Z2a02hq2Vw==}
     peerDependencies:
       react-refresh: '>=0.10.0 <1.0.0'
     peerDependenciesMeta:
       react-refresh:
         optional: true
-    dependencies:
-      react-refresh: 0.14.0
 
   /@rspack/plugin-react-refresh@0.5.5(react-refresh@0.14.0):
     resolution: {integrity: sha512-vSYtIkoXSRhGLkE7fci5fW/tgpod1Mgps46sNe3FQ0ENP/ZfCTCFdVvuOSba4Kubcv8UWr/yd1CBjVuQIZR5eQ==}
@@ -71206,6 +71191,7 @@ packages:
   /react-refresh@0.14.0:
     resolution: {integrity: sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==}
     engines: {node: '>=0.10.0'}
+    dev: true
 
   /react-resize-detector@2.3.0(react@16.14.0):
     resolution: {integrity: sha512-oCAddEWWeFWYH5FAcHdBYcZjAw9fMzRUK9sWSx6WvSSOPVRxcHd5zTIGy/mOus+AhN/u6T4TMiWxvq79PywnJQ==}
