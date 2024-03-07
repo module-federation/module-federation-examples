@@ -8464,6 +8464,9 @@ importers:
       '@babel/preset-typescript':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.24.0)
+      '@module-federation/enhanced':
+        specifier: ^0.0.13
+        version: 0.0.13(webpack@5.89.0)
       '@module-federation/node':
         specifier: 0.16.2
         version: 0.16.2(react-dom@16.14.0)(react@16.14.0)(webpack@5.89.0)
@@ -8519,6 +8522,9 @@ importers:
       '@babel/preset-typescript':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.24.0)
+      '@module-federation/enhanced':
+        specifier: ^0.0.13
+        version: 0.0.13(webpack@5.89.0)
       '@module-federation/node':
         specifier: 0.16.2
         version: 0.16.2(react-dom@17.0.2)(react@17.0.2)(webpack@5.89.0)
@@ -8586,6 +8592,9 @@ importers:
       '@babel/preset-typescript':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.24.0)
+      '@module-federation/enhanced':
+        specifier: ^0.0.13
+        version: 0.0.13(webpack@5.89.0)
       '@module-federation/node':
         specifier: 0.16.2
         version: 0.16.2(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
@@ -8658,9 +8667,12 @@ importers:
       '@babel/preset-typescript':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.24.0)
+      '@module-federation/enhanced':
+        specifier: ^0.0.13
+        version: 0.0.13(webpack@5.89.0)
       '@module-federation/node':
-        specifier: 0.16.2
-        version: 0.16.2(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
+        specifier: ^2.0.11
+        version: 2.0.11(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
       '@types/express':
         specifier: 4.17.14
         version: 4.17.14
@@ -8728,9 +8740,12 @@ importers:
       '@babel/preset-typescript':
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.24.0)
+      '@module-federation/enhanced':
+        specifier: ^0.0.13
+        version: 0.0.13(webpack@5.89.0)
       '@module-federation/node':
-        specifier: 0.16.2
-        version: 0.16.2(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
+        specifier: ^2.0.11
+        version: 2.0.11(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
       '@types/express':
         specifier: 4.17.14
         version: 4.17.14
@@ -11763,7 +11778,7 @@ importers:
         version: 22.8.7
       effector-vue:
         specifier: ^22.2.0
-        version: 22.2.0(@vue/reactivity@3.4.19)(@vue/runtime-core@3.4.19)(effector@22.8.7)(vue@3.3.7)
+        version: 22.2.0(@vue/reactivity@3.4.21)(@vue/runtime-core@3.4.21)(effector@22.8.7)(vue@3.3.7)
       serve:
         specifier: ^13.0.0
         version: 13.0.4
@@ -30268,7 +30283,7 @@ packages:
   /@module-federation/enhanced@0.0.14(webpack@5.89.0):
     resolution: {integrity: sha512-KoV8NW0n34XFZMDtjGwt4ZBFXcxTynhx1e5sI88/lL8zb+DpeQcoPj79QvMyq13QFq2fswrkB2mQ2tyocC/UMA==}
     peerDependencies:
-      webpack: ^5.0.0
+      webpack: 5.89.0
     dependencies:
       '@module-federation/runtime-tools': 0.0.14
       '@module-federation/sdk': 0.0.14
@@ -32608,6 +32623,14 @@ packages:
       tslib: 2.6.2
     dev: true
 
+  /@nrwl/devkit@16.0.0(nx@16.0.0):
+    resolution: {integrity: sha512-ycd4wD4v1N/ywjU1cwTVCPQJwxnGjEsWIll5z5cMtfHwJf+0OhMTqC3zeZibIwnjjoh721pyEzXODyUmjkGmVw==}
+    dependencies:
+      '@nx/devkit': 16.0.0(nx@16.0.0)
+    transitivePeerDependencies:
+      - nx
+    dev: true
+
   /@nrwl/devkit@16.0.0(nx@17.2.8):
     resolution: {integrity: sha512-ycd4wD4v1N/ywjU1cwTVCPQJwxnGjEsWIll5z5cMtfHwJf+0OhMTqC3zeZibIwnjjoh721pyEzXODyUmjkGmVw==}
     dependencies:
@@ -33789,7 +33812,7 @@ packages:
     peerDependencies:
       nx: '>= 15 <= 17'
     dependencies:
-      '@nrwl/devkit': 16.0.0(nx@17.2.8)
+      '@nrwl/devkit': 16.0.0(nx@16.0.0)
       ejs: 3.1.9
       ignore: 5.2.4
       nx: 16.0.0
@@ -43090,17 +43113,10 @@ packages:
     dependencies:
       '@vue/shared': 3.3.7
 
-  /@vue/reactivity@3.4.19:
-    resolution: {integrity: sha512-+VcwrQvLZgEclGZRHx4O2XhyEEcKaBi50WbxdVItEezUf4fqRh838Ix6amWTdX0CNb/b6t3Gkz3eOebfcSt+UA==}
-    dependencies:
-      '@vue/shared': 3.4.19
-    dev: false
-
   /@vue/reactivity@3.4.21:
     resolution: {integrity: sha512-UhenImdc0L0/4ahGCyEzc/pZNwVgcglGy9HVzJ1Bq2Mm9qXOpP8RyNTjookw/gOCUlXSEtuZ2fUg5nrHcoqJcw==}
     dependencies:
       '@vue/shared': 3.4.21
-    dev: true
 
   /@vue/runtime-core@3.2.47:
     resolution: {integrity: sha512-RZxbLQIRB/K0ev0K9FXhNbBzT32H9iRtYbaXb0ZIz2usLms/D55dJR2t6cIEUn6vyhS3ALNvNthI+Q95C+NOpA==}
@@ -43114,19 +43130,11 @@ packages:
       '@vue/reactivity': 3.3.7
       '@vue/shared': 3.3.7
 
-  /@vue/runtime-core@3.4.19:
-    resolution: {integrity: sha512-/Z3tFwOrerJB/oyutmJGoYbuoadphDcJAd5jOuJE86THNZji9pYjZroQ2NFsZkTxOq0GJbb+s2kxTYToDiyZzw==}
-    dependencies:
-      '@vue/reactivity': 3.4.19
-      '@vue/shared': 3.4.19
-    dev: false
-
   /@vue/runtime-core@3.4.21:
     resolution: {integrity: sha512-pQthsuYzE1XcGZznTKn73G0s14eCJcjaLvp3/DKeYWoFacD9glJoqlNBxt3W2c5S40t6CCcpPf+jG01N3ULyrA==}
     dependencies:
       '@vue/reactivity': 3.4.21
       '@vue/shared': 3.4.21
-    dev: true
 
   /@vue/runtime-dom@3.2.47:
     resolution: {integrity: sha512-ArXrFTjS6TsDei4qwNvgrdmHtD930KgSKGhS5M+j8QxXrDJYLqYw4RRcDy1bz1m1wMmb6j+zGLifdVHtkXA7gA==}
@@ -43176,6 +43184,7 @@ packages:
 
   /@vue/shared@3.4.19:
     resolution: {integrity: sha512-/KliRRHMF6LoiThEy+4c1Z4KB/gbPrGjWwJR+crg2otgrf/egKzRaCPvJ51S5oetgsgXLfc4Rm5ZgrKHZrtMSw==}
+    dev: true
 
   /@vue/shared@3.4.21:
     resolution: {integrity: sha512-PuJe7vDIi6VYSinuEbUIQgMIRZGgM8e4R+G+/dQTk0X1NEdvgvvgv7m+rfmDH1gZzyA1OjjoWskvHlfRNfQf3g==}
@@ -50866,7 +50875,7 @@ packages:
       use-sync-external-store: 1.2.0(react@16.14.0)
     dev: false
 
-  /effector-vue@22.2.0(@vue/reactivity@3.4.19)(@vue/runtime-core@3.4.19)(effector@22.8.7)(vue@3.3.7):
+  /effector-vue@22.2.0(@vue/reactivity@3.4.21)(@vue/runtime-core@3.4.21)(effector@22.8.7)(vue@3.3.7):
     resolution: {integrity: sha512-ltiGrWizwBFXuIL0KuW11GXl253/AI/xSnSR1EtWlgDobzzEZ9G6gV6eUmcC36S4Jo34K7FJpKTmE/ODfGED6w==}
     engines: {node: '>=11.0.0'}
     peerDependencies:
@@ -50875,8 +50884,8 @@ packages:
       effector: ^22.0.2
       vue: '*'
     dependencies:
-      '@vue/reactivity': 3.4.19
-      '@vue/runtime-core': 3.4.19
+      '@vue/reactivity': 3.4.21
+      '@vue/runtime-core': 3.4.21
       effector: 22.8.7
       vue: 3.3.7(typescript@5.2.2)
     dev: false
