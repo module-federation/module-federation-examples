@@ -7208,8 +7208,8 @@ importers:
         specifier: 1.9.0
         version: 1.9.0(@swc/core@1.3.105)(@swc/types@0.1.5)(typescript@4.8.4)
       '@swc/cli':
-        specifier: 0.1.64
-        version: 0.1.64(@swc/core@1.3.105)
+        specifier: 0.3.10
+        version: 0.3.10(@swc/core@1.3.105)
       '@swc/core':
         specifier: 1.3.105
         version: 1.3.105(@swc/helpers@0.5.3)
@@ -10616,8 +10616,8 @@ importers:
         specifier: ~1.9.0
         version: 1.9.0(@swc/core@1.3.105)(@swc/types@0.1.5)(typescript@5.2.2)
       '@swc/cli':
-        specifier: ~0.1.62
-        version: 0.1.64(@swc/core@1.3.105)
+        specifier: ~0.3.0
+        version: 0.3.10(@swc/core@1.3.105)
       '@swc/core':
         specifier: ~1.3.85
         version: 1.3.105(@swc/helpers@0.5.3)
@@ -39569,9 +39569,9 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /@swc/cli@0.1.64(@swc/core@1.3.105):
-    resolution: {integrity: sha512-k0le1bh/7xCoutC9JH4ONd+NQnyYxFbMprPjz6xihwaOkdLdcSfUCmv20U4nRRjQRk89bOVhq6m/BehogEPeAA==}
-    engines: {node: '>= 12.13'}
+  /@swc/cli@0.3.10(@swc/core@1.3.105):
+    resolution: {integrity: sha512-YWfYo9kXdbmIuGwIPth9geKgb0KssCMTdZa44zAN5KoqcuCP2rTW9s60heQDSRNpbtCmUr7BKF1VivsoHXrvrQ==}
+    engines: {node: '>= 16.14.0'}
     hasBin: true
     peerDependencies:
       '@swc/core': ^1.2.66
@@ -39582,10 +39582,12 @@ packages:
     dependencies:
       '@mole-inc/bin-wrapper': 8.0.1
       '@swc/core': 1.3.105(@swc/helpers@0.5.3)
-      commander: 7.2.0
+      '@swc/counter': 0.1.3
+      commander: 8.3.0
       fast-glob: 3.3.1
       minimatch: 9.0.3
-      semver: 7.5.4
+      piscina: 4.4.0
+      semver: 7.6.0
       slash: 3.0.0
       source-map: 0.7.4
     dev: true
@@ -65713,6 +65715,12 @@ packages:
       nice-napi: 1.0.2
     dev: true
 
+  /piscina@4.4.0:
+    resolution: {integrity: sha512-+AQduEJefrOApE4bV7KRmp3N2JnnyErlVqq4P/jmko4FPz9Z877BCccl/iB3FdrWSUkvbGV9Kan/KllJgat3Vg==}
+    optionalDependencies:
+      nice-napi: 1.0.2
+    dev: true
+
   /pkg-dir@3.0.0:
     resolution: {integrity: sha512-/E57AYkoeQ25qkxMj5PBOVgF8Kiu/h7cYS30Z5+R7WaiCCBfLq58ZI/dSeaEKb9WVJV5n/03QwrN3IeWIFllvw==}
     engines: {node: '>=6'}
@@ -67149,7 +67157,7 @@ packages:
       cosmiconfig: 8.3.6(typescript@5.2.2)
       jiti: 1.20.0
       postcss: 8.4.32
-      semver: 7.5.4
+      semver: 7.6.0
       webpack: 5.89.0(webpack-cli@5.0.1)
     transitivePeerDependencies:
       - typescript
@@ -76649,7 +76657,7 @@ packages:
       chalk: 4.1.2
       enhanced-resolve: 5.15.0
       micromatch: 4.0.5
-      semver: 7.5.4
+      semver: 7.6.0
       typescript: 4.9.4
       webpack: 5.89.0(webpack-cli@5.0.1)
     dev: true
@@ -76725,7 +76733,7 @@ packages:
       chalk: 4.1.2
       enhanced-resolve: 5.15.0
       micromatch: 4.0.5
-      semver: 7.5.4
+      semver: 7.6.0
       source-map: 0.7.4
       typescript: 4.5.5
       webpack: 5.89.0(webpack-cli@5.0.1)
@@ -76741,7 +76749,7 @@ packages:
       chalk: 4.1.2
       enhanced-resolve: 5.15.0
       micromatch: 4.0.5
-      semver: 7.5.4
+      semver: 7.6.0
       source-map: 0.7.4
       typescript: 4.8.4
       webpack: 5.89.0(@swc/core@1.3.105)(esbuild@0.19.11)
@@ -76757,7 +76765,7 @@ packages:
       chalk: 4.1.2
       enhanced-resolve: 5.15.0
       micromatch: 4.0.5
-      semver: 7.5.4
+      semver: 7.6.0
       source-map: 0.7.4
       typescript: 5.2.2
       webpack: 5.89.0(@swc/core@1.3.105)(webpack-cli@4.10.0)
