@@ -54,7 +54,6 @@ module.exports = {
       filename: 'remoteEntry.js',
       remotes: {
         remote: 'remote@http://localhost:8080/server/remote.js',
-        fake: 'promise new Promise((resolve) => {resolve({get:()=>Promise.resolve(()=>{}),init:()=>{}})})',
       },
       shared: [],
     }),
