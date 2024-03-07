@@ -43,10 +43,21 @@ function getPackages(dir, outdatedApps = [], packagesWithoutEnhanced = [], packa
         return;
       }
 
+      const newVersion = '2.0.11'; // This should be dynamically determined based on your criteria or a command to fetch the latest version
+
       // Check for @module-federation/node and its version
-      const mfNodeVersion = packageJson.dependencies?.['@module-federation/node'] || packageJson.devDependencies?.['@module-federation/node'];
+      let needsUpdate = false;
+      const mfNodeDepKey = '@module-federation/node';
+      const mfNodeVersion = packageJson.dependencies?.[mfNodeDepKey] || packageJson.devDependencies?.[mfNodeDepKey];
       if (mfNodeVersion && !semver.satisfies(semver.coerce(mfNodeVersion), '>=2.0.0')) {
         outdatedApps.push(nestedDir);
+        needsUpdate = true;
+        // Assume we want to update to a specific latest version, e.g., '2.1.0'
+        if (packageJson.dependencies?.[mfNodeDepKey]) {
+          packageJson.dependencies[mfNodeDepKey] = `^${newVersion}`;
+        } else if (packageJson.devDependencies?.[mfNodeDepKey]) {
+          packageJson.devDependencies[mfNodeDepKey] = `^${newVersion}`;
+        }
       }
 
       // Check if @module-federation/enhanced is missing
@@ -59,12 +70,23 @@ function getPackages(dir, outdatedApps = [], packagesWithoutEnhanced = [], packa
         packagesWithUtilities.push(nestedDir);
       }
 
-      // Check for @module-federation/nextjs-mf and its version
-      const nextjsMFVersion = packageJson.dependencies?.['@module-federation/nextjs-mf'] || packageJson.devDependencies?.['@module-federation/nextjs-mf'];
-      if(semver.coerce(nextjsMFVersion)?.version) {
-        if (nextjsMFVersion && semver.lt(semver.coerce(nextjsMFVersion)?.version, '8.2.0')) {
-          packagesWithOutdatedNextjsMF.push(nestedDir);
+      const nextjsMFKey = '@module-federation/nextjs-mf';
+      const nextjsMFVersion = packageJson.dependencies?.[nextjsMFKey] || packageJson.devDependencies?.[nextjsMFKey];
+      const hasVersion = semver.coerce(nextjsMFVersion)?.version
+      if (hasVersion && nextjsMFVersion && semver.lt(semver.coerce(nextjsMFVersion)?.version, '8.2.0')) {
+        packagesWithOutdatedNextjsMF.push(nestedDir);
+        needsUpdate = true;
+        const nextjsMFNewVersion = '8.2.0'; // This is the version we want to update to
+        if (packageJson.dependencies?.[nextjsMFKey]) {
+          packageJson.dependencies[nextjsMFKey] = `^${nextjsMFNewVersion}`;
+        } else if (packageJson.devDependencies?.[nextjsMFKey]) {
+          packageJson.devDependencies[nextjsMFKey] = `^${nextjsMFNewVersion}`;
         }
+      }
+
+      if (needsUpdate) {
+        fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2), 'utf8');
+        console.log(`Updated ${mfNodeDepKey} to version ${newVersion} in ${packageJsonPath}`);
       }
     }
     // Recursively call getPackages
