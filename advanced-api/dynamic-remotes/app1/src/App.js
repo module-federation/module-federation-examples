@@ -15,6 +15,7 @@ init({
   ]
 })
 
+
 function loadComponent(scope, module) {
   return async () => {
     // Initializes the share scope. This fills it with known provided modules from this build and all remotes

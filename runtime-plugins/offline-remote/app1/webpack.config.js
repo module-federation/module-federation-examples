@@ -15,13 +15,13 @@ const deps = require('./package.json').dependencies;
 
 module.exports = {
   entry: './src/index',
-  mode: 'development',
   cache: false,
+  mode: 'development',
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
-    port: 3002,
+    port: 3001,
   },
   target: 'web',
   output: {
@@ -41,11 +41,12 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'app2',
+      name: 'app1',
       filename: 'remoteEntry.js',
       remotes: {
-        app1: 'app1@http://localhost:3001/remoteEntry.js',
+        app2: 'app2@http://localhost:3002/remoteEntry.js',
       },
+      runtimePlugins: [require.resolve('./pick-remote.js')],
       exposes: {
         './Button': './src/Button',
       },
@@ -57,7 +58,6 @@ module.exports = {
         'react-dom': {
           singleton: true,
         },
-        lodash: {},
       },
     }),
     new HtmlWebpackPlugin({

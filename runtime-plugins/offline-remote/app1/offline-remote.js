@@ -1,6 +1,4 @@
-import { FederationRuntimePlugin } from '@module-federation/runtime/types';
-
-export default function ():FederationRuntimePlugin {
+export default function () {
 
   const getErrorMessage = (id, error) => `remote ${id} is offline due to error: ${error}`;
 
