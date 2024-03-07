@@ -1237,11 +1237,11 @@ importers:
         version: 4.2.4(vue@3.2.47)
     devDependencies:
       '@rsbuild/core':
-        specifier: ^0.3.5
-        version: 0.3.5
+        specifier: ^0.4.0
+        version: 0.4.8(webpack@5.89.0)
       '@rsbuild/plugin-vue':
         specifier: ^0.3.5
-        version: 0.3.5(@rsbuild/core@0.3.5)(vue@3.2.47)
+        version: 0.3.5(@rsbuild/core@0.4.8)(vue@3.2.47)
       '@rspack/core':
         specifier: ^0.5.0
         version: 0.5.0(@swc/helpers@0.5.3)
@@ -2456,11 +2456,11 @@ importers:
         version: 17.0.2(react@17.0.2)
     devDependencies:
       '@rsbuild/core':
-        specifier: ^0.3.5
-        version: 0.3.5
+        specifier: ^0.4.0
+        version: 0.4.8(webpack@5.89.0)
       '@rsbuild/plugin-react':
         specifier: ^0.3.5
-        version: 0.3.5(@rsbuild/core@0.3.5)
+        version: 0.3.5(@rsbuild/core@0.4.8)
       '@rspack/core':
         specifier: ^0.5.0
         version: 0.5.0(@swc/helpers@0.5.3)
@@ -2475,11 +2475,11 @@ importers:
         version: 17.0.2(react@17.0.2)
     devDependencies:
       '@rsbuild/core':
-        specifier: ^0.3.5
-        version: 0.3.5
+        specifier: ^0.4.0
+        version: 0.4.8(webpack@5.89.0)
       '@rsbuild/plugin-react':
         specifier: ^0.3.5
-        version: 0.3.5(@rsbuild/core@0.3.5)
+        version: 0.3.5(@rsbuild/core@0.4.8)
       '@rspack/core':
         specifier: ^0.5.0
         version: 0.5.0(@swc/helpers@0.5.3)
@@ -36194,19 +36194,6 @@ packages:
       postcss: 8.4.35
     dev: true
 
-  /@rsbuild/core@0.3.5:
-    resolution: {integrity: sha512-Fz6uyi3zsu9XK6zFKEy9WIiDi0dKCNtuetW169hVwZk5PAljQ/CmEKSGv4P6W+2Bd0H3652tIdS9bTA+gCsKyw==}
-    engines: {node: '>=14.0.0'}
-    hasBin: true
-    dependencies:
-      '@rsbuild/shared': 0.3.5(@swc/helpers@0.5.3)
-      '@rspack/core': 0.5.0(@swc/helpers@0.5.3)
-      '@swc/helpers': 0.5.3
-      core-js: 3.32.2
-      html-webpack-plugin: /html-rspack-plugin@5.5.7
-      postcss: 8.4.35
-    dev: true
-
   /@rsbuild/core@0.4.8(webpack@5.89.0):
     resolution: {integrity: sha512-Qfu8FSZhoBT5qZgjdXTdByYpqOaruaWca6n1tixM3+cRvOkJwuC7W1ebUX2kqN8BxTCvJP/CdAUi2uftWNyTwA==}
     engines: {node: '>=14.0.0'}
@@ -36373,13 +36360,13 @@ packages:
       - '@swc/helpers'
     dev: true
 
-  /@rsbuild/plugin-react@0.3.5(@rsbuild/core@0.3.5):
+  /@rsbuild/plugin-react@0.3.5(@rsbuild/core@0.4.8):
     resolution: {integrity: sha512-o9WQyz1EUJMM5+lcs6xq0Mvy2xXv3XepMOmwLcg+P/a2M9kWk8OStR9CKmGQZbNo0BT4vnXs/IY7+zZ4/I7VzA==}
     peerDependencies:
       '@rsbuild/core': ^0.3.5
     dependencies:
-      '@rsbuild/core': 0.3.5
-      '@rsbuild/shared': 0.3.5(@swc/helpers@0.5.3)
+      '@rsbuild/core': 0.4.8(webpack@5.89.0)
+      '@rsbuild/shared': 0.3.5
       '@rspack/plugin-react-refresh': 0.5.0(react-refresh@0.14.0)
       react-refresh: 0.14.0
     transitivePeerDependencies:
@@ -36515,13 +36502,13 @@ packages:
       - webpack-cli
     dev: true
 
-  /@rsbuild/plugin-vue@0.3.5(@rsbuild/core@0.3.5)(vue@3.2.47):
+  /@rsbuild/plugin-vue@0.3.5(@rsbuild/core@0.4.8)(vue@3.2.47):
     resolution: {integrity: sha512-aPRqeD0LeMFhcet4u9/XIobmC0n3bi4J21k8xMVuApHQKt0CQfEhWoVxBUEcuhZypqNrU1Mk1/aTJ7e67X0j0Q==}
     peerDependencies:
       '@rsbuild/core': ^0.3.5
     dependencies:
-      '@rsbuild/core': 0.3.5
-      '@rsbuild/shared': 0.3.5(@swc/helpers@0.5.3)
+      '@rsbuild/core': 0.4.8(webpack@5.89.0)
+      '@rsbuild/shared': 0.3.5
       vue-loader: 17.4.2(vue@3.2.47)(webpack@5.89.0)
       webpack: 5.89.0(webpack-cli@5.0.1)
     transitivePeerDependencies:
@@ -36567,7 +36554,7 @@ packages:
       - '@swc/helpers'
     dev: true
 
-  /@rsbuild/shared@0.3.5(@swc/helpers@0.5.3):
+  /@rsbuild/shared@0.3.5:
     resolution: {integrity: sha512-VGfZx8AufGLP19t86A3a9PUmA5aIKZB1r/zpnkmkP5F4yW22J1KmMO8fyzj5cg+EB8OSqKhSO7FTgTspmologg==}
     dependencies:
       '@rspack/core': 0.5.0(@swc/helpers@0.5.3)
@@ -76865,7 +76852,7 @@ packages:
       chalk: 4.1.2
       enhanced-resolve: 5.15.0
       micromatch: 4.0.5
-      semver: 7.6.0
+      semver: 7.5.4
       typescript: 4.9.4
       webpack: 5.89.0(webpack-cli@5.0.1)
     dev: true
@@ -76941,7 +76928,7 @@ packages:
       chalk: 4.1.2
       enhanced-resolve: 5.15.0
       micromatch: 4.0.5
-      semver: 7.6.0
+      semver: 7.5.4
       source-map: 0.7.4
       typescript: 4.5.5
       webpack: 5.89.0(webpack-cli@5.0.1)
@@ -76957,7 +76944,7 @@ packages:
       chalk: 4.1.2
       enhanced-resolve: 5.15.0
       micromatch: 4.0.5
-      semver: 7.6.0
+      semver: 7.5.4
       source-map: 0.7.4
       typescript: 4.8.4
       webpack: 5.89.0(@swc/core@1.3.105)(esbuild@0.19.11)
@@ -76973,7 +76960,7 @@ packages:
       chalk: 4.1.2
       enhanced-resolve: 5.15.0
       micromatch: 4.0.5
-      semver: 7.6.0
+      semver: 7.5.4
       source-map: 0.7.4
       typescript: 5.2.2
       webpack: 5.89.0(@swc/core@1.3.105)(webpack-cli@4.10.0)
