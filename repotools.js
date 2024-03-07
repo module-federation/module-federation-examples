@@ -18,7 +18,7 @@ function getDirectories(srcPath) {
   });
 }
 
-function getPackages(dir, outdatedApps = [], packagesWithoutEnhanced = [], packagesWithUtilities = []) {
+function getPackages(dir, outdatedApps = [], packagesWithoutEnhanced = [], packagesWithUtilities = [], packagesWithOutdatedNextjsMF = []) {
   const directories = getDirectories(dir);
   directories.forEach(directory => {
     // Skip directories that start with 'angular'
@@ -58,15 +58,24 @@ function getPackages(dir, outdatedApps = [], packagesWithoutEnhanced = [], packa
       if (packageJson.dependencies?.['@module-federation/utilities'] || packageJson.devDependencies?.['@module-federation/utilities']) {
         packagesWithUtilities.push(nestedDir);
       }
+
+      // Check for @module-federation/nextjs-mf and its version
+      const nextjsMFVersion = packageJson.dependencies?.['@module-federation/nextjs-mf'] || packageJson.devDependencies?.['@module-federation/nextjs-mf'];
+      if(semver.coerce(nextjsMFVersion)?.version) {
+        if (nextjsMFVersion && semver.lt(semver.coerce(nextjsMFVersion)?.version, '8.2.0')) {
+          packagesWithOutdatedNextjsMF.push(nestedDir);
+        }
+      }
     }
     // Recursively call getPackages
-    getPackages(nestedDir, outdatedApps, packagesWithoutEnhanced, packagesWithUtilities);
+    getPackages(nestedDir, outdatedApps, packagesWithoutEnhanced, packagesWithUtilities, packagesWithOutdatedNextjsMF);
   });
-  return { outdatedApps, packagesWithoutEnhanced, packagesWithUtilities };
+  return { outdatedApps, packagesWithoutEnhanced, packagesWithUtilities, packagesWithOutdatedNextjsMF };
 }
 
 // Running the modified function
-const { outdatedApps, packagesWithoutEnhanced, packagesWithUtilities } = getPackages('./'); // start from the current directory
+const { outdatedApps, packagesWithoutEnhanced, packagesWithUtilities, packagesWithOutdatedNextjsMF } = getPackages('./'); // start from the current directory
 console.log("Outdated Apps:", outdatedApps);
 console.log("Packages without Enhanced:", packagesWithoutEnhanced);
 console.log("Packages with Utilities:", packagesWithUtilities);
+console.log("Packages with Outdated @module-federation/nextjs-mf:", packagesWithOutdatedNextjsMF);
