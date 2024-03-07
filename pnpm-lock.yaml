@@ -7993,8 +7993,8 @@ importers:
         specifier: 17.3.2
         version: 17.3.2(@types/node@18.19.8)(js-yaml@4.1.0)(nx@17.2.8)(typescript@5.1.6)(webpack@5.89.0)
       '@nx/workspace':
-        specifier: 17.2.8
-        version: 17.2.8
+        specifier: 17.3.2
+        version: 17.3.2
       '@testing-library/react':
         specifier: 14.0.0
         version: 14.0.0(react-dom@18.2.0)(react@18.2.0)
@@ -10604,8 +10604,8 @@ importers:
         specifier: 17.2.8
         version: 17.2.8(@swc-node/register@1.6.8)(@swc/core@1.3.105)(@types/node@18.16.9)(nx@17.2.8)(typescript@5.2.2)
       '@nx/workspace':
-        specifier: 17.2.8
-        version: 17.2.8(@swc-node/register@1.6.8)(@swc/core@1.3.105)
+        specifier: 17.3.2
+        version: 17.3.2(@swc-node/register@1.6.8)(@swc/core@1.3.105)
       '@pmmmwh/react-refresh-webpack-plugin':
         specifier: ^0.5.7
         version: 0.5.11(react-refresh@0.10.0)(webpack@5.89.0)
@@ -33620,16 +33620,6 @@ packages:
       - debug
     dev: true
 
-  /@nrwl/workspace@17.2.8:
-    resolution: {integrity: sha512-RiTDTuzdueZ+++kNQAENHdHbYToOhzO56XWxKOGoMEUSpcmbKRAFReFBzNqD91Fnv562vkW1VNRIb6Ey7X1YHQ==}
-    dependencies:
-      '@nx/workspace': 17.2.8
-    transitivePeerDependencies:
-      - '@swc-node/register'
-      - '@swc/core'
-      - debug
-    dev: true
-
   /@nrwl/workspace@17.2.8(@swc-node/register@1.6.8)(@swc/core@1.3.105):
     resolution: {integrity: sha512-RiTDTuzdueZ+++kNQAENHdHbYToOhzO56XWxKOGoMEUSpcmbKRAFReFBzNqD91Fnv562vkW1VNRIb6Ey7X1YHQ==}
     dependencies:
@@ -34872,22 +34862,6 @@ packages:
       - debug
     dev: true
 
-  /@nx/workspace@17.2.8:
-    resolution: {integrity: sha512-QCriI4CFCuG+0WTbpu3fHljVR1x6bjNSrbq8nqu8Z/3y+si2/O+7lVNSTkQNr1X2eBPqtIX74APS7ExG8c4vog==}
-    dependencies:
-      '@nrwl/workspace': 17.2.8
-      '@nx/devkit': 17.2.8(nx@17.2.8)
-      chalk: 4.1.2
-      enquirer: 2.3.6
-      nx: 17.2.8
-      tslib: 2.6.2
-      yargs-parser: 21.1.1
-    transitivePeerDependencies:
-      - '@swc-node/register'
-      - '@swc/core'
-      - debug
-    dev: true
-
   /@nx/workspace@17.2.8(@swc-node/register@1.6.8)(@swc/core@1.3.105):
     resolution: {integrity: sha512-QCriI4CFCuG+0WTbpu3fHljVR1x6bjNSrbq8nqu8Z/3y+si2/O+7lVNSTkQNr1X2eBPqtIX74APS7ExG8c4vog==}
     dependencies:
@@ -34896,7 +34870,7 @@ packages:
       chalk: 4.1.2
       enquirer: 2.3.6
       nx: 17.2.8(@swc-node/register@1.6.8)(@swc/core@1.3.105)
-      tslib: 2.6.2
+      tslib: 2.5.0
       yargs-parser: 21.1.1
     transitivePeerDependencies:
       - '@swc-node/register'
