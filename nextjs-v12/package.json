@@ -13,7 +13,8 @@
     "start:legacy": "concurrently \"npm --prefix checkout run dev\" \"npm --prefix home run dev\" \"npm --prefix shop run dev\"",
     "build:legacy": "concurrently \"npm --prefix checkout run build\" \"npm --prefix home run build\" \"npm --prefix shop run build\"",
     "serve:legacy": "concurrently \"npm --prefix checkout run start\" \"npm --prefix home run start\" \"npm --prefix shop run start\"",
-    "e2e:ci:legacy": "pnpm start & wait-on http-get://localhost:3001/ && wait-on http-get://localhost:3000/ && wait-on http-get://localhost:3002/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "e2e:ci:legacy": "pnpm start & wait-on http-get://localhost:3001/ && wait-on http-get://localhost:3000/ && wait-on http-get://localhost:3002/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
+    "e2e:ci": "echo 'no rspack'"
   },
   "dependencies": {
     "concurrently": "^7.0.0",
