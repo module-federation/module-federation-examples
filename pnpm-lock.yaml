@@ -1240,8 +1240,8 @@ importers:
         specifier: ^0.4.8
         version: 0.4.8(webpack@5.89.0)
       '@rsbuild/plugin-vue':
-        specifier: ^0.3.5
-        version: 0.3.5(@rsbuild/core@0.4.8)(vue@3.2.47)
+        specifier: ^0.4.0
+        version: 0.4.12(@rsbuild/core@0.4.8)(vue@3.2.47)
       '@rspack/core':
         specifier: ^0.5.0
         version: 0.5.0(@swc/helpers@0.5.3)
@@ -36302,13 +36302,13 @@ packages:
       - webpack-cli
     dev: true
 
-  /@rsbuild/plugin-vue@0.3.5(@rsbuild/core@0.4.8)(vue@3.2.47):
-    resolution: {integrity: sha512-aPRqeD0LeMFhcet4u9/XIobmC0n3bi4J21k8xMVuApHQKt0CQfEhWoVxBUEcuhZypqNrU1Mk1/aTJ7e67X0j0Q==}
+  /@rsbuild/plugin-vue@0.4.12(@rsbuild/core@0.4.8)(vue@3.2.47):
+    resolution: {integrity: sha512-pDa505rrw1PmYmVClwJO/5qeutYvjAXj70BXEV1F6tHgV2pqcblE2z46SGYymI5/dAkFuvM7icqmQXbZOnSWpA==}
     peerDependencies:
-      '@rsbuild/core': ^0.3.5
+      '@rsbuild/core': ^0.4.12
     dependencies:
       '@rsbuild/core': 0.4.8(webpack@5.89.0)
-      '@rsbuild/shared': 0.3.5
+      '@rsbuild/shared': 0.4.12
       vue-loader: 17.4.2(vue@3.2.47)(webpack@5.89.0)
       webpack: 5.89.0(webpack-cli@5.0.1)
     transitivePeerDependencies:
@@ -36354,12 +36354,11 @@ packages:
       - '@swc/helpers'
     dev: true
 
-  /@rsbuild/shared@0.3.5:
-    resolution: {integrity: sha512-VGfZx8AufGLP19t86A3a9PUmA5aIKZB1r/zpnkmkP5F4yW22J1KmMO8fyzj5cg+EB8OSqKhSO7FTgTspmologg==}
+  /@rsbuild/shared@0.4.12:
+    resolution: {integrity: sha512-2lPbqcLNjUoHfdQCB6XdoqCqiLwpVeXcydv8cvTeiNCGseLY1WWTSn14b/L6Aj72TJbWWCqAAsm7YVL7Oibqvg==}
     dependencies:
-      '@rspack/core': 0.5.0(@swc/helpers@0.5.3)
+      '@rspack/core': 0.5.6
       caniuse-lite: 1.0.30001593
-      lodash: 4.17.21
       postcss: 8.4.35
     transitivePeerDependencies:
       - '@swc/helpers'
