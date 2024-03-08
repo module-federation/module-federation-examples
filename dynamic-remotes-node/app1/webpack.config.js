@@ -8,6 +8,7 @@ module.exports = {
   target: false,
   plugins: [
     new UniversalFederationPlugin({
+      remoteType: 'script',
       isServer: true,
       name: 'app1',
       exposes: {

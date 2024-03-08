@@ -14,6 +14,7 @@ module.exports = {
   }),
   server: [
     new UniversalFederationPlugin({
+      remoteType: 'script',
       isServer:true,
       name: 'app2',
       library: { type: 'commonjs-module' },

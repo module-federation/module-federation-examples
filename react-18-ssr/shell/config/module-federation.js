@@ -13,6 +13,7 @@ module.exports = {
   }),
   server: [
     new UniversalFederationPlugin({
+      remoteType: 'script',
       name: 'shell',
       isServer: true,
       library: { type: 'commonjs-module' },

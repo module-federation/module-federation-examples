@@ -24,6 +24,7 @@ module.exports = {
   }),
   server: [
     new UniversalFederationPlugin({
+      remoteType: 'script',
       name: 'remote2',
       isServer: true,
       filename: 'remoteEntry.js',
