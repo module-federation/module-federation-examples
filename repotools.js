@@ -11,7 +11,9 @@ const CONFIG = [
   },
   {
     packageName: '@module-federation/enhanced',
-    shouldUpdate: false // Assumes no targetVersion needed
+    shouldUpdate: true, // Assumes no targetVersion needed
+    versionToCheck: "0.0.13",
+    targetVersion: "0.0.13",
   },
   {
     packageName: '@module-federation/utilities',
