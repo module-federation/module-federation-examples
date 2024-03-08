@@ -3,6 +3,7 @@ const { UniversalFederationPlugin } = require('@module-federation/node');
 
 module.exports = {
   client: new UniversalFederationPlugin({
+    remoteType: 'script',
     name: 'app2',
     filename: 'remoteEntry.js',
     exposes: {
@@ -25,6 +26,7 @@ module.exports = {
   }),
   server: [
     new UniversalFederationPlugin({
+      remoteType: 'script',
       isServer:true,
       name: 'app2',
       library: { type: 'commonjs-module' },
