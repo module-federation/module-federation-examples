@@ -1,5 +1,5 @@
 const path = require("path");
-const { ModuleFederationPlugin } = require("webpack").container;
+const { ModuleFederationPlugin } = require("@module-federation/enhanced");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 module.exports = {

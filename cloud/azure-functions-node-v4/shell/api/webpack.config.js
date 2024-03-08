@@ -1,9 +1,7 @@
 const path = require('path');
 const deps = require('./package.json').dependencies;
 const {
-  UniversalFederationPlugin,
-  NodeFederationPlugin,
-  StreamingTargetPlugin,
+  UniversalFederationPlugin
 } = require('@module-federation/node');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
@@ -49,23 +47,15 @@ module.exports = {
     ],
   },
   plugins: [
-    new NodeFederationPlugin({
+    new UniversalFederationPlugin({
+      isServer: true,
       name: 'shell',
       library: { type: 'commonjs-module' },
       filename: 'remoteEntry.js',
       remotes: {
         remote: 'remote@http://localhost:8080/server/remote.js',
-        fake: 'promise new Promise((resolve) => {resolve({get:()=>Promise.resolve(()=>{}),init:()=>{}})})',
       },
       shared: [],
-    }),
-    new StreamingTargetPlugin({
-      name: 'shell',
-      library: { type: 'commonjs-module' },
-      remotes: {
-        remote: 'remote@http://localhost:8080/server/remote.js',
-        fake: 'promise new Promise((resolve) => {resolve({get:()=>Promise.resolve(()=>{}),init:()=>{}})})',
-      },
     }),
   ],
 };
