@@ -2,7 +2,7 @@
   "name": "cra-react-app-rewired_remote",
   "version": "0.1.0",
   "dependencies": {
-    "@module-federation/enhanced": "^0.0.13",
+    "@module-federation/enhanced": "^0.0.15",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -12,6 +12,7 @@
     "start": "PORT=3001 react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
+    "serve": "serve ./build -p 3001",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {},
