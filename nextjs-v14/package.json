@@ -9,7 +9,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "concurrently \"npm --prefix home run dev\" \"npm --prefix shop run dev\"",
-    "e2e:ci": "pnpm run build"
+    "e2e:ci": "concurrently \"npm --prefix home run build\" \"npm --prefix shop run build\""
   },
   "dependencies": {
     "concurrently": "7.6.0"
