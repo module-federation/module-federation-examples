@@ -6,14 +6,14 @@ const CONFIG = [
   {
     packageName: '@module-federation/node',
     shouldUpdate: true,
-    versionToCheck: '2.0.0',
-    targetVersion: '2.0.11'
+    versionToCheck: '2.0.13',
+    targetVersion: '2.0.13'
   },
   {
     packageName: '@module-federation/enhanced',
     shouldUpdate: true, // Assumes no targetVersion needed
-    versionToCheck: "0.0.13",
-    targetVersion: "0.0.13",
+    versionToCheck: "0.0.15",
+    targetVersion: "0.0.15",
   },
   {
     packageName: '@module-federation/utilities',
@@ -22,8 +22,8 @@ const CONFIG = [
   {
     packageName: '@module-federation/nextjs-mf',
     shouldUpdate: true,
-    versionToCheck: '8.2.0',
-    targetVersion: '8.2.0'
+    versionToCheck: '8.2.2',
+    targetVersion: '8.2.2'
   }
 ];
 

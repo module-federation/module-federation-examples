@@ -1,41 +1,41 @@
 {
-	"name": "shell",
-	"version": "1.0.0",
-	"description": "",
-	"scripts": {
-		"build": "webpack",
-		"watch": "tsc -w",
-		"start": "func start",
-		"test": "echo \"No tests yet...\""
-	},
-	"dependencies": {
-		"@azure/functions": "^4.0.0-alpha.9",
-		"@module-federation/node": "^2.0.11",
-		"@module-federation/runtime": "^0.0.13",
-		"memory-stream": "1.0.0",
-		"react": "18.2.0",
-		"react-dom": "18.2.0",
-		"react-router-dom": "6.10.0",
-		"webpack": "5.90.3",
-		"tslib": "2.5.0"
-	},
-	"devDependencies": {
-		"@babel/polyfill": "7.12.1",
-		"@babel/core": "7.24.0",
-		"@babel/preset-react": "7.23.3",
-		"@babel/preset-typescript": "7.23.3",
-		"tsconfig-paths-webpack-plugin": "4.0.1",
-		"babel-loader": "8.2.5",
-		"css-loader": "6.10.0",
-		"style-loader": "3.3.4",
-		"mini-css-extract-plugin": "2.8.1",
-		"@swc/core": "1.4.6",
-		"@types/node": "18.19.22",
-		"@types/react": "18.2.62",
-		"@types/react-dom": "18.2.19",
-		"swc-loader": "0.2.6",
-		"typescript": "5.0.4",
-		"webpack-cli": "5.0.2"
-	},
-	"main": "dist/server/index.js"
+  "name": "shell",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "webpack",
+    "watch": "tsc -w",
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "@azure/functions": "^4.0.0-alpha.9",
+    "@module-federation/node": "^2.0.13",
+    "@module-federation/runtime": "^0.0.13",
+    "memory-stream": "1.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.10.0",
+    "webpack": "5.90.3",
+    "tslib": "2.5.0"
+  },
+  "devDependencies": {
+    "@babel/polyfill": "7.12.1",
+    "@babel/core": "7.24.0",
+    "@babel/preset-react": "7.23.3",
+    "@babel/preset-typescript": "7.23.3",
+    "tsconfig-paths-webpack-plugin": "4.0.1",
+    "babel-loader": "8.2.5",
+    "css-loader": "6.10.0",
+    "style-loader": "3.3.4",
+    "mini-css-extract-plugin": "2.8.1",
+    "@swc/core": "1.4.6",
+    "@types/node": "18.19.22",
+    "@types/react": "18.2.62",
+    "@types/react-dom": "18.2.19",
+    "swc-loader": "0.2.6",
+    "typescript": "5.0.4",
+    "webpack-cli": "5.0.2"
+  },
+  "main": "dist/server/index.js"
 }
