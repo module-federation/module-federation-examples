@@ -1,0 +1,15 @@
+{
+  "name": "isolate-shared-dependencies",
+  "version": "0.0.0",
+  "description": "Share dependencies but create isolated instances for each container",
+  "workspaces": [
+    "app1",
+    "app2",
+    "app3",
+    "shared-lib",
+    "shared-lib-2"
+  ],
+  "scripts": {
+    "start": "pnpm --filter isolate-shared-dependencies_app* --parallel start"
+  }
+}
