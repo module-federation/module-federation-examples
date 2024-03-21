@@ -10,18 +10,18 @@ import { UserState } from 'projects/mdmf-shared/src/lib/app-state/state/user.sta
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-profile-list-user',
+  selector: 'shell-profile-list-user',
   templateUrl: './list-user.component.html',
   styleUrls: ['./list-user.component.css'],
-  exportAs: 'ListUserComponent',
 })
 export class ListUserComponent implements OnInit {
   @Select(UserState.getUsers) users: Observable<User[]>;
 
   @Input() label = '';
   @Input() foo = '';
+
   constructor(private store: Store) {
-    console.log('Federated component Created');
+    console.log('Regular component Created');
   }
 
   ngOnInit(): void {}
