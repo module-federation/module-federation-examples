@@ -9,7 +9,6 @@ async function matchFederatedPage(path) {
   }))
   const maps = await Promise.all(
     Array.from(remotes).map(async remote => {
-      console.log(loadRemote(remote + '/pages-map'));
       return  loadRemote(remote + '/pages-map')
         .then(factory => ({remote, config: factory.default}))
         .catch(() => null);
@@ -29,7 +28,6 @@ async function matchFederatedPage(path) {
     }
   }
 
-  console.log(config);
   const matcher = createMatcher.default(config);
   return matcher(path);
 }
