@@ -1,0 +1,18 @@
+{
+  "name": "nextjs-dynamic-ssr_home",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "rm -rf .next;NEXT_PRIVATE_LOCAL_WEBPACK=true next dev -p 3001",
+    "build": "NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
+    "start": "NEXT_PRIVATE_LOCAL_WEBPACK=true NODE_ENV=production next start -p 3001"
+  },
+  "dependencies": {
+    "@module-federation/nextjs-mf": "^8.2.6",
+    "@module-federation/runtime": "^0.0.17",
+    "lodash": "4.17.21",
+    "next": "^14.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "webpack": "5.90.3"
+  }
+}

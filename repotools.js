@@ -12,7 +12,7 @@ const CONFIG = [
   {
     packageName: '@module-federation/enhanced',
     shouldUpdate: true, // Assumes no targetVersion needed
-    versionToCheck: "0.0.15",
+    versionToCheck: "1.0.0",
     targetVersion: "latest",
   },
   {
@@ -21,6 +21,12 @@ const CONFIG = [
   },
   {
     packageName: '@module-federation/nextjs-mf',
+    shouldUpdate: true,
+    versionToCheck: '9.2.2',
+    targetVersion: 'latest'
+  },
+  {
+    packageName: '@module-federation/runtime',
     shouldUpdate: true,
     versionToCheck: '9.2.2',
     targetVersion: 'latest'
