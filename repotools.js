@@ -6,13 +6,13 @@ const CONFIG = [
   {
     packageName: '@module-federation/node',
     shouldUpdate: true,
-    versionToCheck: '2.0.13',
-    targetVersion: '2.0.13'
+    versionToCheck: '3.0.13',
+    targetVersion: 'latest'
   },
   {
     packageName: '@module-federation/enhanced',
     shouldUpdate: true, // Assumes no targetVersion needed
-    versionToCheck: "1.0.0",
+    versionToCheck: "2.0.0",
     targetVersion: "latest",
   },
   {
