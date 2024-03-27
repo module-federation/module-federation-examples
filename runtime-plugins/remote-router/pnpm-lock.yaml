@@ -30,8 +30,8 @@ importers:
         specifier: ^7.23.3
         version: 7.23.3(@babel/core@7.24.0)
       '@module-federation/enhanced':
-        specifier: ^0.0.17
-        version: 0.0.17(webpack@5.90.0)
+        specifier: ^0.1.1
+        version: 0.1.1(webpack@5.90.0)
       autoprefixer:
         specifier: ^10.4.17
         version: 10.4.17(postcss@8.4.33)
@@ -1935,58 +1935,58 @@ packages:
     resolution: {integrity: sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==}
     dev: true
 
-  /@module-federation/enhanced@0.0.17(webpack@5.90.0):
-    resolution: {integrity: sha512-7RRHe+MxS/e9N9+DLO39uVK+GP69UF5wivAp4zJXuRHKDN6fSDLqtWkIe1KXobuVHEVO2qnxqKXahcYTx8/W3w==}
+  /@module-federation/enhanced@0.1.1(webpack@5.90.0):
+    resolution: {integrity: sha512-lDW0LKYLi5jG5VXw31iyYY4cf4QYpvueHz6otXXENBM2539gkqLIgjHc1aECGT7QG0VXqXsY9QGpdxC7UMFH9A==}
     peerDependencies:
       webpack: ^5.0.0
     dependencies:
-      '@module-federation/managers': 0.0.17
-      '@module-federation/manifest': 0.0.17
-      '@module-federation/runtime-tools': 0.0.17
-      '@module-federation/sdk': 0.0.17
+      '@module-federation/managers': 0.1.1
+      '@module-federation/manifest': 0.1.1
+      '@module-federation/runtime-tools': 0.1.1
+      '@module-federation/sdk': 0.1.1
       upath: 2.0.1
       webpack: 5.90.0(webpack-cli@5.1.4)
     dev: true
 
-  /@module-federation/managers@0.0.17:
-    resolution: {integrity: sha512-Itft13t0/XgWUvhPTuUDmm3hUnw0AwZOmVRk/J2AR2vLYBnibgtgNWYVZf6+k0/w4LwdM6htminDFQwiC/6VHA==}
+  /@module-federation/managers@0.1.1:
+    resolution: {integrity: sha512-wUwMyKLaDZGbVm3edvBiYHsRfvUahOSuKqZlmTF7mUTJiW+rsX5bFwWChnmELnQgJSUpcby5AyLSQR+MOiZ53w==}
     dependencies:
-      '@module-federation/sdk': 0.0.17
+      '@module-federation/sdk': 0.1.1
       find-pkg: 2.0.0
       fs-extra: 9.1.0
     dev: true
 
-  /@module-federation/manifest@0.0.17:
-    resolution: {integrity: sha512-fmby2NsZkH8NGRNtT86Nk0a/MSuwq5VTiTx0nQJsYWKW5/FGynIQYwm7wtoxi00I1csY3ORq511PXU/ifHpBLw==}
+  /@module-federation/manifest@0.1.1:
+    resolution: {integrity: sha512-3wxIvC9+0EBvkQJmDRUYm74m6zIZHnypLWGrQ03+ij/gh8amTDtXQCgzta3OQg7wsucHjh+MimcaO0xlR3YA+w==}
     dependencies:
-      '@module-federation/managers': 0.0.17
-      '@module-federation/sdk': 0.0.17
+      '@module-federation/managers': 0.1.1
+      '@module-federation/sdk': 0.1.1
       chalk: 3.0.0
       find-pkg: 2.0.0
     dev: true
 
-  /@module-federation/runtime-tools@0.0.17:
-    resolution: {integrity: sha512-4nrQDlPJ045EOA4xpR/gcqpv7Q9cX58tKuYqHz/g1C3ggjkwBSbhIUAlMsVM+DqfR+X0VkxUxZUrNNY6Zeafzg==}
+  /@module-federation/runtime-tools@0.1.1:
+    resolution: {integrity: sha512-gUg7RLRaiyDGUPODnMHEyyyU407jgnShLcOx30gEmUsbwN1lHVISeam9RUvIbY7fOG2qTVeDUR5GH4fr7aSYAQ==}
     dependencies:
-      '@module-federation/runtime': 0.0.17
-      '@module-federation/webpack-bundler-runtime': 0.0.17
+      '@module-federation/runtime': 0.1.1
+      '@module-federation/webpack-bundler-runtime': 0.1.1
     dev: true
 
-  /@module-federation/runtime@0.0.17:
-    resolution: {integrity: sha512-HooFbBDYs7Q0xumdoOEzULM4JJg9/ZjhDv9oXpSMU9yzRNXzRGcmDmEMF2DuQ7+oWOauEceNTKSZj41Nwl22Ng==}
+  /@module-federation/runtime@0.1.1:
+    resolution: {integrity: sha512-oZaRK1n317A0I4JWMq4Upsz7K3r6PNXXpxZ9DOH6Sy6g6tbR1dBHroGMK3TdzIP2xS6pQJlVMbmI4/ixHm5Taw==}
     dependencies:
-      '@module-federation/sdk': 0.0.17
+      '@module-federation/sdk': 0.1.1
     dev: true
 
-  /@module-federation/sdk@0.0.17:
-    resolution: {integrity: sha512-nq3LNJt5GKVxnXRx+e7Too4lDRfL/mWVlP8zA62zFCV11fYUNV1G+1pKhLLTppdwL7d89rdfYZB4IvDcNhgQGg==}
+  /@module-federation/sdk@0.1.1:
+    resolution: {integrity: sha512-nQL4y+WctG03Qf5DR2beGCIGORFTZQVubZTdv/6jQLMRu+CvrS5dlzEpXYoYUPq/VS53R24QFEPZgPWz+E9XUw==}
     dev: true
 
-  /@module-federation/webpack-bundler-runtime@0.0.17:
-    resolution: {integrity: sha512-4uLGI69df0KG+oEZlYEr8XTOK/dSRX7eVOtonHAGODj+EeOJGC4IKUdOanS0ypP3A0r0hdY2TJ+OdMjKPM0jCw==}
+  /@module-federation/webpack-bundler-runtime@0.1.1:
+    resolution: {integrity: sha512-x8qp0YeuzpOBdAT9qD+/bf7UAgPRPCcu5PZM7FT8SCf7/EJ07nSvjiL/hV7iwJOtZQJvDLbmxpBdaE3r9LUrLw==}
     dependencies:
-      '@module-federation/runtime': 0.0.17
-      '@module-federation/sdk': 0.0.17
+      '@module-federation/runtime': 0.1.1
+      '@module-federation/sdk': 0.1.1
     dev: true
 
   /@mole-inc/bin-wrapper@8.0.1:
