@@ -1,7 +1,7 @@
 const getRemote = () => {
     return {
         name: 'get-remote-from-window-plugin',
-        beforeInit: (args) => {
+        beforeRequest: (args) => {
             // The 'beforeRequest' hook is called before a request is made.
             // It iterates over each 'remote' in 'args.options.remotes'.
             args.options.remotes.forEach((remote) => {
