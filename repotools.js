@@ -10,6 +10,12 @@ const CONFIG = [
     targetVersion: 'next'
   },
   {
+    packageName: '@module-federation/sdk',
+    shouldUpdate: true,
+    versionToCheck: '3.0.13',
+    targetVersion: 'next'
+  },
+  {
     packageName: '@module-federation/enhanced',
     shouldUpdate: true, // Assumes no targetVersion needed
     versionToCheck: "2.0.0",
