@@ -79,8 +79,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
-    new RsdoctorWebpackPlugin({
-      // plugin options
-    }),
+    // new RsdoctorWebpackPlugin({
+    //   // plugin options
+    // }),
   ],
 };
