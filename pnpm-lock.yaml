@@ -10952,10 +10952,10 @@ importers:
         specifier: ^0.0.17
         version: 0.0.17
       shared-lib:
-        specifier: ^1.0.0
+        specifier: workspace:*
         version: link:../shared-lib
       shared-lib-2:
-        specifier: ^1.0.0
+        specifier: workspace:*
         version: link:../shared-lib-2
       vue:
         specifier: ~2.6.14
@@ -10995,10 +10995,10 @@ importers:
         specifier: ^0.0.17
         version: 0.0.17
       shared-lib:
-        specifier: ^1.0.0
+        specifier: workspace:*
         version: link:../shared-lib
       shared-lib-2:
-        specifier: ^1.0.0
+        specifier: workspace:*
         version: link:../shared-lib-2
       vue:
         specifier: ~2.6.14
@@ -11038,10 +11038,10 @@ importers:
         specifier: ^0.0.17
         version: 0.0.17
       shared-lib:
-        specifier: ^1.0.0
+        specifier: workspace:*
         version: link:../shared-lib
       shared-lib-2:
-        specifier: ^1.0.0
+        specifier: workspace:*
         version: link:../shared-lib-2
       vue:
         specifier: ~2.6.14
@@ -11084,7 +11084,7 @@ importers:
   runtime-plugins/isolate-shared-dependencies/shared-lib:
     dependencies:
       shared-lib-2:
-        specifier: ^1.0.0
+        specifier: workspace:*
         version: link:../shared-lib-2
 
   runtime-plugins/isolate-shared-dependencies/shared-lib-2: {}
@@ -25102,23 +25102,6 @@ packages:
       '@babel/parser': 7.24.1
       '@babel/types': 7.24.0
       debug: 4.3.4(supports-color@8.1.1)
-      globals: 11.12.0
-    transitivePeerDependencies:
-      - supports-color
-
-  /@babel/traverse@7.24.1(supports-color@5.5.0):
-    resolution: {integrity: sha512-xuU6o9m68KeqZbQuDt2TcKSxUw/mrsvavlEqQ1leZ/B+C9tk6E4sRWy97WaXgvq5E+nU3cXMxv3WKOCanVMCmQ==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/code-frame': 7.24.2
-      '@babel/generator': 7.24.1
-      '@babel/helper-environment-visitor': 7.22.20
-      '@babel/helper-function-name': 7.23.0
-      '@babel/helper-hoist-variables': 7.22.5
-      '@babel/helper-split-export-declaration': 7.22.6
-      '@babel/parser': 7.24.1
-      '@babel/types': 7.24.0
-      debug: 4.3.4(supports-color@5.5.0)
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
@@ -79791,7 +79774,7 @@ packages:
       react-is: '>= 16.8.0'
     dependencies:
       '@babel/helper-module-imports': 7.22.15
-      '@babel/traverse': 7.24.1(supports-color@5.5.0)
+      '@babel/traverse': 7.24.0(supports-color@5.5.0)
       '@emotion/is-prop-valid': 1.2.2
       '@emotion/stylis': 0.8.5
       '@emotion/unitless': 0.7.5
