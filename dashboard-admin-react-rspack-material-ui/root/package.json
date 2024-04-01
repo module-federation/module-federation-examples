@@ -1,0 +1,44 @@
+{
+  "name": "mfe-shell-container",
+  "version": "1.0.0",
+  "description": "Shell container",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve --mode development --hot",
+    "build": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "srikanth.naidu65@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "@emotion/react": "11.10.0",
+    "@emotion/styled": "11.10.0",
+    "@mui/icons-material": "5.10.2",
+    "@mui/material": "5.10.2",
+    "@mui/styled-engine-sc": "5.10.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hot-loader": "4.13.1",
+    "react-router-dom": "6.21.3",
+    "styled-components": "5.3.5"
+  },
+  "devDependencies": {
+    "@babel/core": "7.24.3",
+    "@babel/plugin-proposal-class-properties": "7.18.6",
+    "@babel/preset-env": "7.18.10",
+    "@babel/preset-react": "7.18.6",
+    "babel-loader": "8.2.5",
+    "css-loader": "6.7.1",
+    "file-loader": "6.2.0",
+    "html-webpack-plugin": "5.5.0",
+    "mini-css-extract-plugin": "^2.8.1",
+    "sass": "1.54.5",
+    "sass-loader": "13.0.2",
+    "style-loader": "3.3.3",
+    "webpack": "^5.91.0",
+    "webpack-cli": "4.10.0",
+    "webpack-dev-server": "4.10.0",
+    "webpack-pwa-manifest": "^4.3.0"
+  }
+}

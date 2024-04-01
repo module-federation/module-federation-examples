@@ -1,5 +1,6 @@
 {
   "name": "medusa-example",
+  "description": "https://medusa.codes Demo",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -12,7 +13,8 @@
     "serve:nav": "cd nav; pnpm serve",
     "serve:search": "cd search; pnpm serve",
     "serve:utils": "cd utils; pnpm serve",
-    "clean": "pnpm --filter --scope @dashboard/* --parallel clean"
+    "clean": "pnpm --filter --scope @dashboard/* --parallel clean",
+    "e2e:ci": "pnpm run build && echo \"No e2e tests yet\""
   },
   "devDependencies": {
     "concurrently": "7.6.0"

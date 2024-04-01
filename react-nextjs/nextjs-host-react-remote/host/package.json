@@ -3,20 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 8080",
-    "build": "next build",
-    "start": "next start",
+    "start": "NEXT_PRIVATE_LOCAL_WEBPACK=true next dev -p 8080",
+    "build": "NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
+    "start:prod": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@module-federation/nextjs-mf": "6.0.4",
+    "@module-federation/nextjs-mf": "^0.0.0-next-20240330232226",
     "next-transpile-modules": "9.1.0",
     "next": "12.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "eslint": "8.53.0",
+    "eslint": "8.57.0",
     "eslint-config-next": "12.3.4"
   }
 }

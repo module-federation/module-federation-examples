@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {ModuleFederationPlugin} = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const path = require('path');
 
 module.exports = {
@@ -30,16 +30,19 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: 'app3',
-      library: {type: 'var', name: 'app3'},
+      library: { type: 'var', name: 'app3' },
       filename: 'remoteEntry.js',
       exposes: {
         '.': 'data:text/javascript,export default "nothing here"',
       },
+      runtimePlugins: [
+        // uses global plugin injected by app1
+      ],
       shared: {
-        'qs': {
+        qs: {
           import: 'qs',
           requiredVersion: '^6.9.4',
-        }
+        },
       },
     }),
     new HtmlWebpackPlugin({

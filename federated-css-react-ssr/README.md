@@ -57,7 +57,7 @@ Basically there is two main parts of this
 2. Application Hydration in runtime
 
 The main SSR related staff of each shell is a `/shell/server/render.js`;
-Overall understanding: before you send the response with you SSR html you need to collect all `CSS` that is used inside your application.
+Overall understanding: before you send the response with your SSR html you need to collect all `CSS` that is used inside your application.
 For `isomorphic-style-loader` and `react-jss` this could be done through corresponding ContextProviders during the DOM Rendering function call 
 and for `styled-components` after DOM Rendering;
 

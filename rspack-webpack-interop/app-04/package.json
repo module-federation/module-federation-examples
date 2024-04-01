@@ -1,0 +1,30 @@
+{
+  "name": "rspack_webpack_app-04",
+  "version": "1.0.0",
+  "devDependencies": {
+    "cross-env": "7.0.3",
+    "css-loader": "6.10.0",
+    "mini-css-extract-plugin": "^2.8.1",
+    "style-loader": "3.3.4",
+    "svelte": "3.59.2",
+    "svelte-loader": "3.1.9",
+    "html-webpack-plugin": "5.6.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "5.1.4",
+    "webpack-dev-server": "4.15.1",
+    "serve": "14.2.1",
+    "@rspack/core": "^0.5.6",
+    "@rspack/cli": "^0.5.6",
+    "@rspack/dev-server": "^0.5.6"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production rspack build --mode production",
+    "legacy:build": "cross-env NODE_ENV=production webpack",
+    "start": "rspack serve",
+    "legacy:start": "webpack --watch",
+    "dev": "rspack serve",
+    "legacy:dev": "webpack-dev-server --content-base public",
+    "serve": "serve public -p 3004",
+    "clean": "rm -rf dist"
+  }
+}

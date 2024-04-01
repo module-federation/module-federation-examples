@@ -27,6 +27,7 @@ module.exports = {
   },
   plugins: [
     new UniversalFederationPlugin({
+      remoteType: 'script',
       isServer: true,
       name: 'node_host',
       remotes: {

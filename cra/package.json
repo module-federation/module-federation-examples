@@ -1,17 +1,16 @@
 {
   "name": "cra",
   "version": "0.0.1",
+  "description": "Create React app Running with rsbuild",
   "workspaces": [
     "./host",
     "./remote"
   ],
   "scripts": {
     "start": "pnpm --filter cra_* start",
-    "stop": "pnpm --filter cra_* stop",
-    "build": "pnpm --filter cra_* build'",
-    "serve": "pnpm --filter cra_* serve'",
-    "clean": "pnpm --filter cra_* clean'",
-    "e2e:ci": "pnpm start && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome && pnpm stop"
+    "build": "pnpm --filter cra_* build",
+    "preview": "pnpm run build && pnpm --filter cra_* preview",
+    "e2e:ci": "pnpm start & npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome && lsof -ti tcp:3000,3001,3002 | xargs kill"
   },
   "devDependencies": {
     "wait-on": "^7.1.0",

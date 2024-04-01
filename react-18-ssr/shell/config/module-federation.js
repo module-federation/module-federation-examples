@@ -1,5 +1,5 @@
 const deps = require('../package.json').dependencies;
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const { UniversalFederationPlugin } = require('@module-federation/node');
 
 module.exports = {
@@ -13,6 +13,7 @@ module.exports = {
   }),
   server: [
     new UniversalFederationPlugin({
+      remoteType: 'script',
       name: 'shell',
       isServer: true,
       library: { type: 'commonjs-module' },

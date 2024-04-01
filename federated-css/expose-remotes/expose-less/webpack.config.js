@@ -1,7 +1,10 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const path = require('path');
-const { remotes: { less }, mfeBaseConfig } = require('../remotes.config');
+const {
+  remotes: { less },
+  mfeBaseConfig,
+} = require('../remotes.config');
 
 module.exports = {
   entry: './src/index',
@@ -29,11 +32,11 @@ module.exports = {
         test: /\.less$/i,
         use: [
           // Creates `style` nodes from JS strings
-          "style-loader",
+          'style-loader',
           // Translates CSS into CommonJS
-          "css-loader",
+          'css-loader',
           // compiles Less to CSS
-          "less-loader",
+          'less-loader',
         ],
       },
     ],

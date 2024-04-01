@@ -2,8 +2,8 @@
   "name": "i18next-nextjs-react_next-host",
   "version": "1.0.0",
   "scripts": {
-    "dev": "rm -rf .next && PORT=3000 next dev",
-    "build": "next build",
+    "dev": "rm -rf .next && PORT=3000 NEXT_PRIVATE_LOCAL_WEBPACK=true next dev",
+    "build": "NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
     "start": "PORT=3000 next start"
   },
   "author": {
@@ -12,19 +12,19 @@
   "dependencies": {
     "i18next": "^21.10.0",
     "i18next-browser-languagedetector": "^6.1.8",
-    "i18next-shared-lib": "file:../i18next-shared-lib",
+    "i18next-shared-lib": "../i18next-shared-lib",
     "next": "12.3.4",
     "react": "^18.2.0",
     "react-dom": "18.2.0",
     "react-i18next": "^11.18.6"
   },
   "devDependencies": {
-    "@module-federation/nextjs-mf": "7.0.8",
+    "@module-federation/nextjs-mf": "^0.0.0-next-20240330232226",
     "@types/node": "20.9.0",
-    "@types/react": "18.2.37",
-    "@types/react-dom": "18.2.15",
-    "eslint": "8.53.0",
-    "eslint-config-next": "14.0.1",
+    "@types/react": "18.2.64",
+    "@types/react-dom": "18.2.21",
+    "eslint": "8.57.0",
+    "eslint-config-next": "14.0.4",
     "typescript": "4.8.4"
   }
 }

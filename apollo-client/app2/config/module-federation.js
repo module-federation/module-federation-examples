@@ -1,9 +1,9 @@
 const deps = require('../package.json').dependencies;
-const { ModuleFederationPlugin } = require('webpack').container;
-const { NodeFederationPlugin, StreamingTargetPlugin } = require('@module-federation/node');
+const { UniversalFederationPlugin } = require('@module-federation/node');
 
 module.exports = {
-  client: new ModuleFederationPlugin({
+  client: new UniversalFederationPlugin({
+    remoteType: 'script',
     name: 'app2',
     filename: 'remoteEntry.js',
     exposes: {
@@ -25,7 +25,9 @@ module.exports = {
     ],
   }),
   server: [
-    new NodeFederationPlugin({
+    new UniversalFederationPlugin({
+      remoteType: 'script',
+      isServer:true,
       name: 'app2',
       library: { type: 'commonjs-module' },
       filename: 'remoteEntry.js',
@@ -46,11 +48,6 @@ module.exports = {
           'serialize-javascript': deps['serialize-javascript'],
         },
       ],
-    }),
-    new StreamingTargetPlugin({
-      name: 'app2',
-      library: { type: 'commonjs-module' },
-      remotes: {},
-    }),
+    })
   ],
 };

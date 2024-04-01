@@ -3,15 +3,12 @@
   "version": "0.0.0",
   "dependencies": {
     "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-scripts": "5.0.1"
+    "react-dom": "17.0.2"
   },
   "scripts": {
-    "start": "rm -rf ~/.forever/sock; PORT=3002 forever start ./scripts/start.js",
-    "stop": "PORT=3002 forever stop ./scripts/start.js",
-    "build": "node ./scripts/build.js",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "rsbuild dev",
+    "build": "rsbuild build",
+    "preview": "rsbuild preview"
   },
   "eslintConfig": {},
   "browserslist": {
@@ -25,5 +22,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@rsbuild/core": "^0.5.5",
+    "@rsbuild/plugin-react": "^0.5.5",
+    "@rspack/core": "^0.5.9"
   }
 }

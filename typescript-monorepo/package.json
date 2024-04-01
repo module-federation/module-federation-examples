@@ -2,14 +2,15 @@
   "name": "typescript-monorepo",
   "private": true,
   "version": "0.0.0",
+  "description": "This example demos a basic host/remote application with TypeScript using yarn workspaces and using [typesVersions](https://www.typescriptlang.org/docs/handbook/declaration-files/publishing.html#version-selection-with-typesversions)",
   "scripts": {
     "start": "pnpm --filter typescript-monorepo_app* --parallel start",
     "build": "pnpm --filter typescript-monorepo_app* build",
     "serve": "pnpm --filter typescript-monorepo_app* --parallel serve",
     "clean": "pnpm --filter typescript-monorepo_app* --parallel clean",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/*.cy.ts\" --browser=chrome"
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "wait-on": "7.0.1"
+    "wait-on": "7.2.0"
   }
 }

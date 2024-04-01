@@ -2,6 +2,7 @@
   "name": "redux-reducer-injection",
   "private": true,
   "version": "0.0.0",
+  "description": "Sharing a Redux store across remote apps with dynamic reducer injection; 'app1' hosts and creates the store, 'app2' injects its reducer.",
   "scripts": {
     "start": "concurrently \"pnpm run --filter redux-reducer-injection_app* --parallel start\" \"pnpm serve\"",
     "build": "pnpm run --filter redux-reducer-injection_app* build",
@@ -11,6 +12,6 @@
   },
   "devDependencies": {
     "concurrently": "7.6.0",
-    "wait-on": "7.0.1"
+    "wait-on": "7.2.0"
   }
 }

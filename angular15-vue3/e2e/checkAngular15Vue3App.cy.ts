@@ -10,7 +10,7 @@ const basePage: BaseMethods = new BaseMethods();
 describe('Angular 15 and Vue 3 microfrontends', () => {
   context("Check Angular 15 and Vue 3 elements", () => {
     beforeEach(() => {
-      basePage.openLocalhost(4200);
+      basePage.openLocalhost({number:4200});
     });
     it('Check Angular App is running', () => {
 

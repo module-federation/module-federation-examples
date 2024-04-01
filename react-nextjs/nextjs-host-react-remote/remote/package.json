@@ -8,19 +8,19 @@
     "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
-    "@babel/core": "7.23.3",
+    "@babel/core": "7.24.3",
     "@babel/preset-react": "7.23.3",
-    "@emotion/react": "11.11.1",
+    "@emotion/react": "11.11.4",
     "babel-loader": "8.2.5",
     "concurrently": "7.6.0",
-    "html-webpack-plugin": "5.5.3",
+    "html-webpack-plugin": "5.6.0",
     "serve": "13.0.4",
-    "webpack": "5.80.0",
+    "webpack": "^5.91.0",
     "webpack-cli": "4.10.0"
   },
   "scripts": {
-    "dev": "concurrently \"npm run start\" \"npm run serve\"",
-    "start": "webpack --watch",
+    "start": "concurrently \"npm run watch\" \"npm run serve\"",
+    "watch": "webpack --watch",
     "build": "webpack --mode production",
     "serve": "serve dist -p 8081",
     "clean": "rm -rf dist"

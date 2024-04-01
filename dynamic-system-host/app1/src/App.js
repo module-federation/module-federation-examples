@@ -1,17 +1,66 @@
 import React from 'react';
-import { importRemote } from '@module-federation/utilities';
+import { loadRemote, init } from '@module-federation/runtime';
+import ReactDOM from 'react-dom';
 
+init({
+  remotes: [
+    {
+      name: 'app2',
+      alias: 'app2',
+      entry: 'http://localhost:3002/remoteEntry.js',
+    },
+    {
+      name: 'app3',
+      alias: 'app3',
+      entry: 'http://localhost:3003/remoteEntry.js',
+    },
+  ],
+  plugins: [
+    {
+      name: 'custom-plugin',
+      beforeInit(args) {
+        return args;
+      },
+      init(args) {
+        console.log('init: ', args);
+        return args;
+      },
+      beforeLoadShare(args) {
+        console.log('beforeLoadShare: ', args);
+
+        return args;
+      },
+    },
+  ],
+  shared: {
+    react: {
+      version: '16.0.0',
+      scope: 'default',
+      lib: () => React,
+      shareConfig: {
+        singleton: true,
+        requiredVersion: '^16.0.0',
+      },
+    },
+    'react-dom': {
+      version: '16.0.0',
+      scope: 'default',
+      lib: () => ReactDOM,
+      shareConfig: {
+        singleton: true,
+        requiredVersion: '^16.0.0',
+      },
+    },
+  },
+});
 function System(props) {
-  const {
-    system,
-    system: { url, scope, module },
-  } = props;
+  const { request } = props;
 
-  if (!system || !url || !scope || !module) {
+  if (!request) {
     return <h2>No system specified</h2>;
   }
 
-  const Component = React.lazy(() => importRemote({ url, scope, module }));
+  const Component = React.lazy(() => loadRemote(request));
 
   return (
     <React.Suspense fallback="Loading System">
@@ -21,22 +70,14 @@ function System(props) {
 }
 
 function App() {
-  const [system, setSystem] = React.useState({});
+  const [system, setSystem] = React.useState(false);
 
   function setApp2() {
-    setSystem({
-      url: 'http://localhost:3002',
-      scope: 'app2',
-      module: './Widget',
-    });
+    setSystem('app2/Widget');
   }
 
   function setApp3() {
-    setSystem({
-      url: 'http://localhost:3003',
-      scope: 'app3',
-      module: './Widget',
-    });
+    setSystem('app3/Widget');
   }
 
   return (
@@ -56,7 +97,7 @@ function App() {
       <button onClick={setApp2}>Load App 2 Widget</button>
       <button onClick={setApp3}>Load App 3 Widget</button>
       <div style={{ marginTop: '2em' }}>
-        <System system={system} />
+        <System request={system} />
       </div>
     </div>
   );

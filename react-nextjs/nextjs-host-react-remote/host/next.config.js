@@ -12,6 +12,8 @@ module.exports = {
             filename: 'static/chunks/remoteEntry.js',
           }),
       );
+    } else {
+      config.resolve.alias['remote'] = false
     }
 
     return config;

@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const path = require('path');
 
 module.exports = {
@@ -31,6 +31,9 @@ module.exports = {
       name: 'app2',
       library: { type: 'var', name: 'app2' },
       filename: 'remoteEntry.js',
+      runtimePlugins: [
+        // uses global plugin injected by app1
+      ],
       exposes: {
         './Button': './src/Button',
       },

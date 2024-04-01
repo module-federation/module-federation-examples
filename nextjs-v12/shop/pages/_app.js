@@ -1,16 +1,15 @@
-import dynamic from 'next/dynamic';
-const Nav = dynamic(
-  () => {
-    const mod = import('home/nav');
-    return mod;
-  },
-  { ssr: false },
-);
+import { Suspense, lazy } from 'react';
+const Nav = lazy(() => {
+  const mod = import('home/nav');
+  return mod;
+});
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Nav />
+      <Suspense fallback={'loading'}>
+        <Nav />
+      </Suspense>
       <Component {...pageProps} />
     </>
   );

@@ -1,14 +1,15 @@
 {
   "name": "loadable-react-18",
+  "ignored": true,
   "version": "0.0.1",
   "scripts": {
     "start": "pnpm --filter loadable-react-18_* --parallel start",
     "build": "pnpm --filter loadable-react-18_* build",
     "serve": "pnpm --filter loadable-react-18_* --parallel serve",
     "clean": "pnpm --filter loadable-react-18_* --parallel clean",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "e2e:ci": "pnpm start & sleep 20 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome && lsof -ti tcp:3000,3001,3002 | xargs kill"
   },
   "devDependencies": {
-    "wait-on": "7.0.1"
+    "wait-on": "7.2.0"
   }
 }

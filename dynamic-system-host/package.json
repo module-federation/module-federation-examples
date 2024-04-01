@@ -1,20 +1,19 @@
 {
   "name": "dynamic-system-host",
+  "description": "Runtime API based Dynamic Remote Loading",
   "private": true,
-  "workspaces": [
-    "./app1",
-    "./app2",
-    "./app3"
-  ],
   "version": "0.0.0",
   "scripts": {
     "start": "pnpm --filter dynamic-system-host_app* --parallel start",
+    "legacy:start": "pnpm --filter dynamic-system-host_app* --parallel legacy:start",
     "build": "pnpm --filter dynamic-system-host_app* build",
+    "legacy:build": "pnpm --filter dynamic-system-host_app* legacy:build",
     "serve": "pnpm --filter dynamic-system-host_app* --parallel serve",
     "clean": "pnpm --filter dynamic-system-host_app* --parallel clean",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
+    "legacy:e2e:ci": "pnpm legacy:start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "wait-on": "7.0.1"
+    "wait-on": "7.2.0"
   }
 }

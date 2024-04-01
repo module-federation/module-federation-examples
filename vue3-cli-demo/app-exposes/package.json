@@ -4,7 +4,8 @@
   "scripts": {
     "serve": "vue-cli-service serve --port=8082",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "e2e:ci": "pnpm run build"
   },
   "dependencies": {
     "core-js": "^3.33.2",
@@ -13,8 +14,8 @@
     "vuex": "^4.0.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "5.21.0",
-    "@typescript-eslint/parser": "5.21.0",
+    "@typescript-eslint/eslint-plugin": "5.62.0",
+    "@typescript-eslint/parser": "5.62.0",
     "@vue/cli-plugin-babel": "5.0.8",
     "@vue/cli-plugin-eslint": "5.0.8",
     "@vue/cli-plugin-router": "5.0.8",
@@ -23,11 +24,11 @@
     "@vue/cli-service": "5.0.8",
     "@vue/eslint-config-airbnb": "6.0.0",
     "@vue/eslint-config-typescript": "11.0.3",
-    "eslint": "8.53.0",
-    "eslint-plugin-import": "2.29.0",
+    "eslint": "8.57.0",
+    "eslint-plugin-import": "2.29.1",
     "eslint-plugin-vue": "8.6.0",
     "eslint-plugin-vuejs-accessibility": "1.2.0",
     "typescript": "4.5.5",
-    "webpack": "5.89.0"
+    "webpack": "^5.91.0"
   }
 }

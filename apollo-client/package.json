@@ -1,15 +1,11 @@
 {
   "name": "apollo-client",
+  "description": "This example demonstrates using Apollo Client with Module Federation.",
   "version": "0.0.0",
-  "private": true,
-  "workspaces": [
-    "app1",
-    "app2"
-  ],
   "scripts": {
-    "start": "pnpm --filter --parallel start",
-    "serve": "pnpm --filter --parallel serve",
-    "build": "pnpm --filter build"
-  },
-  "devDependencies": {}
+    "start": "pnpm --filter apollo-client_* --parallel start",
+    "serve": "pnpm --filter apollo-client_* --parallel serve",
+    "build": "pnpm --filter apollo-client_* --parallel build",
+    "e2e:ci": "pnpm run build"
+  }
 }

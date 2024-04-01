@@ -1,9 +1,11 @@
 {
   "name": "native-federation-tests-typescript-plugins",
   "private": true,
+  "ignored": true,
   "version": "1.0.0",
   "scripts": {
     "start:webpack": "pnpm --filter native-federation-tests-typescript-remote dev:webpack & wait-on http-get://localhost:3000/ && pnpm --filter native-federation-tests-typescript-host dev:webpack",
+    "start:vite": "pnpm --filter native-federation-tests-typescript-remote dev:vite & wait-on tcp:3000 && pnpm --filter native-federation-tests-typescript-host dev:vite",
     "start:rspack": "pnpm --filter native-federation-tests-typescript-remote dev:rspack & wait-on http-get://localhost:3000/ && pnpm --filter native-federation-tests-typescript-host dev:rspack"
   },
   "workspaces": [
@@ -11,6 +13,6 @@
     "host"
   ],
   "devDependencies": {
-    "wait-on": "7.0.1"
+    "wait-on": "7.2.0"
   }
 }

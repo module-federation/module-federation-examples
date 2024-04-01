@@ -1,4 +1,4 @@
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const path = require('path');
 module.exports = {
   entry: './index.js',
@@ -9,6 +9,7 @@ module.exports = {
     clean: true,
   },
   module: {},
+  cache: false,
   plugins: [
     new ModuleFederationPlugin({
       name: 'lib_app',

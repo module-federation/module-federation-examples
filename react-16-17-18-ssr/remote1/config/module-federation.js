@@ -1,6 +1,6 @@
 const deps = require('../package.json').dependencies;
-const { ModuleFederationPlugin } = require('webpack').container;
-const { NodeFederationPlugin, StreamingTargetPlugin } = require('@module-federation/node');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const {  UniversalFederationPlugin } = require('@module-federation/node');
 
 module.exports = {
   client: new ModuleFederationPlugin({
@@ -25,7 +25,9 @@ module.exports = {
     },
   }),
   server: [
-    new NodeFederationPlugin({
+    new UniversalFederationPlugin({
+      remoteType: 'script',
+      isServer:true,
       name: 'remote1',
       filename: 'remoteEntry.js',
       library: { type: 'commonjs-module' },
@@ -46,13 +48,6 @@ module.exports = {
           requiredVersion: deps['react-dom'],
         },
       },
-    }),
-    new StreamingTargetPlugin({
-      name: 'remote1',
-      library: { type: 'commonjs-module' },
-      remotes: {
-        remote2: 'remote2@http://localhost:3002/server/remoteEntry.js',
-      },
-    }),
+    })
   ],
 };

@@ -83,6 +83,8 @@ export class Constants {
         commonButtonWithEmoji: '💅 Button',
         loading: 'Loading',
         biDirectional: 'Bi-Directional',
+        controlShare: 'Share Control Panel',
+        controlRemote: 'API controlled remote configs',
         sharedRoutingAppPagesComponents: {
             dashboard: 'Dashboard',
             orders: 'Orders',
@@ -662,7 +664,7 @@ export class Constants {
             },
             app2: {
                 subHeader: 'This is the App 2 application.',
-            }, 
+            },
             splitedApp:{
                 header: 'App 2: Content',
                 subHeader: 'This is the content from app2.',

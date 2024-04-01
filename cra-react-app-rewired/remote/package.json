@@ -2,6 +2,7 @@
   "name": "cra-react-app-rewired_remote",
   "version": "0.1.0",
   "dependencies": {
+    "@module-federation/enhanced": "^0.0.0-next-20240330232226",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -11,6 +12,7 @@
     "start": "PORT=3001 react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
+    "serve": "serve ./build -p 3001",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {},
@@ -27,14 +29,15 @@
     ]
   },
   "devDependencies": {
-    "customize-cra": "1.0.0",
-    "react-app-rewired": "2.2.1",
-    "webpack": "5.80.0",
-    "typescript": "5.2.2",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/jest-dom": "6.1.4",
-    "@types/react": "18.0.38",
-    "@types/react-dom": "18.0.11",
-    "@types/jest": "29.5.8"
+    "@testing-library/react": "^13.4.0",
+    "@types/jest": "29.5.12",
+    "@types/react": "18.2.64",
+    "@types/react-dom": "18.2.21",
+    "customize-cra": "1.0.0",
+    "mini-css-extract-plugin": "^2.8.1",
+    "react-app-rewired": "2.2.1",
+    "typescript": "5.2.2",
+    "webpack": "^5.91.0"
   }
 }

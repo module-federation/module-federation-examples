@@ -6,7 +6,7 @@
     "./remote"
   ],
   "version": "0.0.0",
-  "description": "Vite + Module Federation is now possible",
+  "description": "Vite React Microfrontends",
   "main": "index.js",
   "scripts": {
     "install:deps": "npm --prefix ./host install && npm --prefix ./remote install",
@@ -16,7 +16,7 @@
     "build:remote": "npm --prefix ./remote run build",
     "preview:host": "npm --prefix ./host run preview",
     "preview:remote": "npm --prefix ./remote run preview",
-    "e2e:test": "npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll*.cy.ts\" --browser=chrome",
+    "e2e:test": "npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome",
     "e2e:ci": "node e2e.ci.js"
   },
   "author": {
@@ -27,6 +27,6 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "8.2.2",
-    "wait-on": "7.1.0"
+    "wait-on": "7.2.0"
   }
 }

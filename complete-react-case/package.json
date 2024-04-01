@@ -1,10 +1,15 @@
 {
   "name": "complete-react-case",
+  "description": "A complete Module Federation Case with React.",
   "private": true,
   "version": "0.0.0",
   "scripts": {
     "start": "pnpm --filter complete-react-case_* --parallel start",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3002/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "build": "pnpm --filter complete-react-case_* --parallel build",
+    "legacy:build": "pnpm --filter complete-react-case_* --parallel legacy:build",
+    "legacy:start": "pnpm --filter complete-react-case_* --parallel legacy:start",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3002/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
+    "legacy:e2e:ci": "pnpm legacy:start & wait-on http-get://localhost:3002/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +19,6 @@
   },
   "homepage": "https://github.com/anderlaw/react-webpack-MF#readme",
   "devDependencies": {
-    "wait-on": "7.0.1"
+    "wait-on": "7.2.0"
   }
 }

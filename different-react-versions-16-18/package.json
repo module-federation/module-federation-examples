@@ -1,5 +1,6 @@
 {
   "name": "different-react-versions-16-18",
+  "description": "Two apps, one using React 16 and the other using React 18",
   "version": "1.0.0",
   "workspaces": [
     "app1",
@@ -7,9 +8,13 @@
   ],
   "scripts": {
     "start": "pnpm --filter different-react-versions-16-18_* --parallel start",
+    "legacy:start": "pnpm --filter different-react-versions-16-18_* --parallel legacy:start",
     "build": "pnpm --filter different-react-versions-16-18_* build",
+    "legacy:build": "pnpm --filter different-react-versions-16-18_* legacy:build",
     "serve": "pnpm --filter different-react-versions-16-18_* --parallel serve",
-    "clean": "pnpm --filter different-react-versions-16-18_* --parallel clean"
+    "clean": "pnpm --filter different-react-versions-16-18_* --parallel clean",
+    "legacy:e2e:ci": "pnpm run legacy:build",
+    "e2e:ci": "pnpm run build"
   },
   "devDependencies": {}
 }

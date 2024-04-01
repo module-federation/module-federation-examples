@@ -6,8 +6,7 @@ env:
     **/node_modules
     ~/.cache/Cypress
   YARN_CACHE_PATH: |
-    ~/.cache/yarn/v6
-    ~/.pnpm-store/v3
+    ~/.pnpm-store
   FILES_TO_DELETE: |
     sudo rm -rf "/usr/share/dotnet"
     sudo rm -rf "/usr/share/swift"
@@ -29,7 +28,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.11.0
+        uses: styfle/cancel-workflow-action@0.12.1
         with:
           access_token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -112,6 +111,7 @@ jobs:
           all="$(pnpm list --filter '*' --only-projects --depth -1 --json)"
           diff="$(pnpm list --filter '...[origin/master]' --only-projects --depth -1 --json)"
           matrix="$(node checkChangedWorkspaces.js "$all" "$diff")"
+          echo $matrix
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
   # Run Cypress e2e tests for changed samples (additionally install deps for all changed samples if there is no any created cache in master branch) + Create artifacts for Cypress screenshots and videos
@@ -131,18 +131,16 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 1
 
-      - name: Check disk space before install
+      - name: Install PNPM
         id: check-disk-space-before-install-e2e
-        run: |
-          df -h
+        run: npm i pnpm -g
 
-        # Hash pnpm.lock files to use it as a cache key, if pnpm.lock files are changed, the cache will be invalidated
-      - name: Check Yarn hash
-        id: check-yarn-hash
-        if: ${{ false }}
-        run: |
-          yarnHash="$(npx hash-files -f '["**/pnpm.lock"]' -a sha256)"
-          echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
+      - name: Set up node
+        id: setup-node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
 
       - name: Install deps
         id: install-deps-e2e
@@ -153,31 +151,24 @@ jobs:
           echo "PNPM changed - install deps ... "
           npm i pnpm -g
           pnpm i --frozen-lockfile
+          npx cypress install
+          npx cypress verify
 
-      # Is this still required with PNPM - https://pnpm.io/continuous-integration#github-actions ?
-      - name: Cache Yarn and Cypress
-        if: steps.restore-yarn-global-cache-e2e.outputs.cache-hit != 'true'
-        id: cache-yarn-cypress
-        uses: actions/cache/save@v3
-        with:
-          path: |
-            ${{ env.YARN_CACHE_PATH }}
-            ${{ env.CACHE_PATH }}
-          key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash }} # Can use time based key as well
-
-      - name: Set up node
-        id: setup-node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'pnpm'
-
-      - name: Run sample e2e tests
+      - name: Run sample webpack e2e tests
         timeout-minutes: 30
-        id: run-sample-e2e-tests
+        id: run-webpack-e2e-tests
+        run: |
+          node -v
+          pnpm --filter "${{ matrix.container }}" legacy:e2e:ci
+          (lsof -i tcp:3000-3999 -i tcp:4000-4999 -i tcp:8080-8100 | awk 'NR!=1 {print $2}' | xargs -r kill) 2> /dev/null
+
+      - name: Run sample rspack e2e tests
+        timeout-minutes: 30
+        id: run-rspack-e2e-tests
         run: |
           node -v
           pnpm --filter "${{ matrix.container }}" e2e:ci
+          (lsof -i tcp:3000-3999 -i tcp:4000-4999 -i tcp:8080-8100 | awk 'NR!=1 {print $2}' | xargs -r kill) 2> /dev/null
 
       - name: Create artifacts for Allure report
         id: create-artifacts-allure-report

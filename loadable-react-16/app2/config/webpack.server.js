@@ -6,7 +6,7 @@ const moduleFederationPlugin = require('./module-federation');
 
 module.exports = merge(shared, {
   name: 'server',
-  target: false,
+  target: 'async-node',
   entry: {
     main: ['@babel/polyfill', path.resolve(__dirname, '../src/server/index')],
     serverAppEntrypoint: path.resolve(__dirname, '../src/server/serverAppEntrypoint'),

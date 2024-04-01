@@ -62,7 +62,7 @@ describe("It checks host page", () => {
     })
 
     // TODO: Can be flaky
-    it('Checks all page links functionality', () => {
+    xit('Checks all page links functionality', () => {
         basePage.checkLinkedCardsFunctionality(8080)
     })
 

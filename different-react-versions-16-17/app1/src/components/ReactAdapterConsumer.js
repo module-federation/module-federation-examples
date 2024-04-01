@@ -17,9 +17,12 @@ class ReactAdapterConsumer extends React.Component {
 
   render() {
     return (
-      <React.Suspense fallback="loading">
-        <this.RemoteComponent {...this.props} />
-      </React.Suspense>
+      <>
+        React version: {React.version}
+        <React.Suspense fallback="loading">
+          <this.RemoteComponent {...this.props} />
+        </React.Suspense>
+      </>
     );
   }
 }

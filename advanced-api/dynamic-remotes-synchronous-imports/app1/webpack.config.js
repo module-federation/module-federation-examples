@@ -1,6 +1,5 @@
-const ExternalTemplateRemotesPlugin = require('./ExternalTemplateRemotesPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const path = require('path');
 const deps = require('./package.json').dependencies;
 const { app2Module, app1Module } = require('../moduleConfig');
@@ -37,6 +36,9 @@ module.exports = {
       remotes: {
         app2: app2Module.federationConfig,
       },
+      runtimePlugins: [
+          require.resolve('./runtimePlugin.js')
+      ],
       shared: {
         moment: deps.moment,
         react: {
@@ -52,7 +54,6 @@ module.exports = {
         },
       },
     }),
-    new ExternalTemplateRemotesPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
