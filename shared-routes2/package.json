@@ -1,0 +1,16 @@
+{
+  "name": "shared-routes2",
+  "private": true,
+  "version": "0.0.0",
+  "description": "This example demos two applications with their own sets of routes and deployments but a seamless experience for the user.",
+  "scripts": {
+    "start": "pnpm --filter shared-routes2_app* --parallel start",
+    "build": "pnpm --filter shared-routes2_app* build",
+    "serve": "pnpm --filter shared-routes2_app* --parallel serve",
+    "clean": "pnpm --filter shared-routes2_app* --parallel clean",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+  },
+  "devDependencies": {
+    "wait-on": "7.2.0"
+  }
+}

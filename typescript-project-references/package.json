@@ -1,19 +1,16 @@
 {
   "name": "typescript-project-references",
+  "description": "This example demos a basic host/remote application with TypeScript using [Project References](https://www.typescriptlang.org/docs/handbook/project-references.html).",
   "private": true,
-  "workspaces": [
-    "./app1",
-    "./app2"
-  ],
   "version": "0.0.0",
   "scripts": {
-    "start": "lerna run --scope=typescript-project-references_app* --parallel start",
-    "build": "lerna run --scope=typescript-project-references_app* build",
-    "serve": "lerna run --scope=typescript-project-references_app* --parallel serve",
-    "clean": "lerna run --scope=typescript-project-references_app* --parallel clean",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/*.cy.ts\" --browser=chrome"
+    "start": "pnpm --filter typescript-project-references_app* --parallel start",
+    "build": "pnpm --filter typescript-project-references_app* build",
+    "serve": "pnpm --filter typescript-project-references_app* --parallel serve",
+    "clean": "pnpm --filter typescript-project-references_app* --parallel clean",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "wait-on": "7.0.1"
+    "wait-on": "7.2.0"
   }
 }

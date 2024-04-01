@@ -1,0 +1,16 @@
+{
+  "name": "ts-monorepo",
+  "version": "1.0.0",
+  "description": "This example demos a basic host/remote application with TypeScript and also streams types.",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "pnpm --parallel --filter ts-monorepo_* run build",
+    "serve": "wsrun --parallel serve",
+    "start": "concurrently \"wsrun --parallel start\" \"wsrun --parallel serve\""
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "wsrun": "^5.2.4"
+  }
+}

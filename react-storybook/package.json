@@ -1,0 +1,21 @@
+{
+  "name": "react-storybook",
+  "description": "Storybook Example",
+  "private": true,
+  "version": "0.0.1",
+  "workspaces": {
+    "packages": [
+      "./host",
+      "./remote"
+    ]
+  },
+  "scripts": {
+    "start": "concurrently 'cd ./host && pnpm start' 'cd ./remote && pnpm start'",
+    "build": "concurrently 'cd ./host && pnpm build' 'cd ./remote && pnpm build'",
+    "serve": "concurrently 'cd ./host && pnpm serve' 'cd ./remote && pnpm serve'",
+    "clean": "concurrently 'cd ./host && pnpm clean' 'cd ./remote && pnpm clean'"
+  },
+  "devDependencies": {
+    "concurrently": "7.6.0"
+  }
+}

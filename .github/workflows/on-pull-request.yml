@@ -6,7 +6,7 @@ env:
     **/node_modules
     ~/.cache/Cypress
   YARN_CACHE_PATH: |
-    ~/.cache/yarn/v6
+    ~/.pnpm-store
   FILES_TO_DELETE: |
     sudo rm -rf "/usr/share/dotnet"
     sudo rm -rf "/usr/share/swift"
@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.11.0
+        uses: styfle/cancel-workflow-action@0.12.1
         with:
           access_token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -79,7 +79,7 @@ jobs:
           export BASE_MASTER_SHA=$(git log -n 1 --pretty=format:"%H" base/${{ github.event.pull_request.base.ref }})
           echo "$FORKED_MASTER_SHA"
           echo "$BASE_MASTER_SHA"
-          
+
           if [ "$FORKED_MASTER_SHA" == "$BASE_MASTER_SHA" ];
           then
             echo "The forked master is up to date with the base master branch"
@@ -107,88 +107,18 @@ jobs:
       - name: Create matrix
         id: set-matrix
         run: |
-          npm i lerna@6 -g
-          all="$(npm run list:all --silent)"
-          diff="$(npm run list:changed --silent)"
+          npm i pnpm -g
+          all="$(pnpm list --filter '*' --only-projects --depth -1 --json)"
+          diff="$(pnpm list --filter '...[origin/master]' --only-projects --depth -1 --json)"
           matrix="$(node checkChangedWorkspaces.js "$all" "$diff")"
+          echo $matrix
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
-
-      - name: Changed workspaces
-        id: changed-workspaces
-        run: |
-          echo '${{ steps.set-matrix.outputs.matrix }}'
-
-  # Install main dependencies (yarn install) + Create cache for Yarn and Cypress
-  install-main-dependencies:
-    needs: setup-matrix
-    if: ${{ needs.setup-matrix.outputs.matrix != '{"container":[]}' }}
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout code
-        id: checkout-code
-        uses: actions/checkout@v3
-        with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
-
-      - name: Free up some space
-        id: free-up-space
-        run: ${{ env.FILES_TO_DELETE }}
-
-        # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
-      - name: Check Yarn hash
-        id: check-yarn-hash
-        run: |
-          yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
-          echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
-
-      - name: Restore Yarn Global Cache
-        id: restore-yarn-global-cache
-        uses: actions/cache/restore@v3
-        with:
-          path: |
-            ${{ env.YARN_CACHE_PATH }}
-            ${{ env.CACHE_PATH }}
-          key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash }} # Can use time based key as well
-          restore-keys: |
-            yarn-global-cache-
-
-      - name: Check disk space before install
-        id: check-disk-space-before-install
-        run: |
-          df -h
-
-      - name: Install dependencies
-        id: install-dependencies
-        if: steps.restore-yarn-global-cache.outputs.cache-hit != 'true'
-        env:
-          NODE_OPTIONS: "--max_old_space_size=4096"
-        run: |
-          echo "Yarn has changed - installing dependencies ... "
-          npm install lerna@6 -g
-          lerna bootstrap
-      - name: Cache Yarn and Cypress
-        if: steps.restore-yarn-global-cache.outputs.cache-hit != 'true'
-        id: cache-yarn-cypress
-        uses: actions/cache/save@v3
-        with:
-          path: |
-            ${{ env.YARN_CACHE_PATH }}
-            ${{ env.CACHE_PATH }}
-          key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash }} # Can use time based key as well
-
-      - name: Check disk space after installation
-        id: check-disk-space-after-installation
-        run: |
-          df -h
 
   # Run Cypress e2e tests for changed samples (additionally install deps for all changed samples if there is no any created cache in master branch) + Create artifacts for Cypress screenshots and videos
   run-e2e-test:
-    needs: [setup-matrix, install-main-dependencies]
+    needs: [setup-matrix]
     if: ${{ needs.setup-matrix.outputs.matrix != '{"container":[]}' }}
     runs-on: ubuntu-22.04
-    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix: ${{fromJson(needs.setup-matrix.outputs.matrix)}}
@@ -199,75 +129,46 @@ jobs:
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
+          fetch-depth: 1
 
-      - name: Free up some space
-        id: free-up-space-e2e
-        run: ${{ env.FILES_TO_DELETE }}
-
-      - name: Check disk space before install
+      - name: Install PNPM
         id: check-disk-space-before-install-e2e
-        run: |
-          df -h
-
-        # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
-      - name: Check Yarn hash
-        id: check-yarn-hash
-        run: |
-          yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
-          echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
-
-      - name: Restore Yarn Global Cache
-        id: restore-yarn-global-cache-e2e
-        uses: actions/cache/restore@v3
-        with:
-          path: |
-            ${{ env.YARN_CACHE_PATH }}
-            ${{ env.CACHE_PATH }}
-          key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash }} # Can use time based key as well
-          restore-keys: |
-            yarn-global-cache
-            yarn-global-cache-
-
-      - name: Install deps
-        id: install-deps-e2e
-        if: steps.restore-yarn-global-cache-e2e.outputs.cache-hit != 'true'
-        env:
-          NODE_OPTIONS: "--max_old_space_size=4096"
-        run: |
-          echo "Yarn changed - install deps ... "
-          npm i lerna@6 -g
-          lerna bootstrap
-
-      - name: Install sample deps
-        id: install-sample-deps
-        # TODO Uncomment when yarn will work properly from the root and install all nessessary deps. Also please, add yarn install to the run section below instead of npx lerna exec
-        # if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: |
-          # npx lerna exec --stream --scope="${{ matrix.container }}*" --concurrency=1 "yarn install"
-          echo 'test'
-
-      - name: Cache Yarn and Cypress
-        if: steps.restore-yarn-global-cache-e2e.outputs.cache-hit != 'true'
-        id: cache-yarn-cypress
-        uses: actions/cache/save@v3
-        with:
-          path: |
-            ${{ env.YARN_CACHE_PATH }}
-            ${{ env.CACHE_PATH }}
-          key: yarn-global-cache-${{ steps.check-yarn-hash.outputs.yarnHash }} # Can use time based key as well
+        run: npm i pnpm -g
 
       - name: Set up node
         id: setup-node
         uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: 'pnpm'
 
-      - name: Run sample e2e tests
-        id: run-sample-e2e-tests
+      - name: Install deps
+        id: install-deps-e2e
+        if: steps.restore-yarn-global-cache-e2e.outputs.cache-hit != 'true'
+        env:
+          NODE_OPTIONS: '--max_old_space_size=4096'
+        run: |
+          echo "PNPM changed - install deps ... "
+          npm i pnpm -g
+          pnpm i --frozen-lockfile
+          npx cypress install
+          npx cypress verify
+
+      - name: Run sample webpack e2e tests
+        timeout-minutes: 30
+        id: run-webpack-e2e-tests
         run: |
           node -v
-          npx lerna run --scope=${{ matrix.container }} e2e:ci
+          pnpm --filter "${{ matrix.container }}" legacy:e2e:ci
+          (lsof -i tcp:3000-3999 -i tcp:4000-4999 -i tcp:8080-8100 | awk 'NR!=1 {print $2}' | xargs -r kill) 2> /dev/null
+
+      - name: Run sample rspack e2e tests
+        timeout-minutes: 30
+        id: run-rspack-e2e-tests
+        run: |
+          node -v
+          pnpm --filter "${{ matrix.container }}" e2e:ci
+          (lsof -i tcp:3000-3999 -i tcp:4000-4999 -i tcp:8080-8100 | awk 'NR!=1 {print $2}' | xargs -r kill) 2> /dev/null
 
       - name: Create artifacts for Allure report
         id: create-artifacts-allure-report
@@ -277,4 +178,3 @@ jobs:
           name: allure-results
           path: 'cypress/results/allure-results'
           retention-days: 7
-

@@ -1,16 +1,16 @@
 import {
   baseSelectors,
   selectors,
-} from './../../cypress/common/selectors';
-import { Constants } from '../../cypress/fixtures/constants';
-import { BaseMethods } from '../../cypress/common/base';
+} from './../../cypress-e2e/common/selectors';
+import { Constants } from '../../cypress-e2e/fixtures/constants';
+import { BaseMethods } from '../../cypress-e2e/common/base';
 
 const basePage: BaseMethods = new BaseMethods();
 
 describe('Angular 15 and Vue 3 microfrontends', () => {
   context("Check Angular 15 and Vue 3 elements", () => {
     beforeEach(() => {
-      basePage.openLocalhost(4200);
+      basePage.openLocalhost({number:4200});
     });
     it('Check Angular App is running', () => {
 

@@ -1,23 +1,24 @@
-import { selectors } from '../../cypress/common/selectors';
-import { CssAttr } from '../../cypress/types/cssAttr';
-import { Constants } from '../../cypress/fixtures/constants';
-import { BaseMethods } from '../../cypress/common/base';
+import { selectors } from '../../cypress-e2e/common/selectors';
+import { CssAttr } from '../../cypress-e2e/types/cssAttr';
+import { Constants } from '../../cypress-e2e/fixtures/constants';
+import { BaseMethods } from '../../cypress-e2e/common/base';
 
 const basePage: BaseMethods = new BaseMethods();
 
 describe('It checks federated css apps', () => {
-  const { fullTestData: {
-    federatedCssTestData: {
-      css,
-      cssModule,
-      jss,
-      less,
-      scss,
-      styledComponent,
-      tailwindGlobal,
-      tailwindModule,
-    }
-   }
+  const {
+    fullTestData: {
+      federatedCssTestData: {
+        css,
+        cssModule,
+        jss,
+        less,
+        scss,
+        styledComponent,
+        tailwindGlobal,
+        tailwindModule,
+      },
+    },
   } = Constants;
   const appsData = [
     {
@@ -105,9 +106,10 @@ describe('It checks federated css apps', () => {
   appsData.forEach(appConfig => {
     appConfig.buttons.forEach(cfg => {
       it(`should verify consumed ${cfg.path} page`, () => {
-        basePage.openLocalhost(appConfig.port, appConfig.buttons.length > 1
-          ? `${appConfig.isNextJs ? '' : '#/'}${cfg.path}`
-          : '');
+        basePage.openLocalhost(
+          appConfig.port,
+          appConfig.buttons.length > 1 ? `${appConfig.isNextJs ? '' : '#/'}${cfg.path}` : '',
+        );
         basePage.checkElementHaveProperty({
           selector: selectors.federatedCssButton,
           prop: CssAttr.backgroundColor,
@@ -117,7 +119,7 @@ describe('It checks federated css apps', () => {
     });
 
     it('should verify exposed buttons colors on combined page', () => {
-      basePage.skipTestByCondition(appConfig.buttons.length <= 1)
+      basePage.skipTestByCondition(appConfig.buttons.length <= 1);
       basePage.openLocalhost(appConfig.port, `${appConfig.isNextJs ? '' : '#/'}combined`);
       appConfig.buttons.forEach((cfg, idx) => {
         basePage.checkElementHaveProperty({
@@ -128,5 +130,5 @@ describe('It checks federated css apps', () => {
         });
       });
     });
-  })
+  });
 });

@@ -1,0 +1,16 @@
+{
+  "name": "typescript-react-fallback",
+  "description": "This example demos a basic host/remote application with TypeScript using [Project References], to show how to render another remote as a fallback if a remote fails to render.",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "pnpm run --filter typescript-react-fallback_app* --parallel start",
+    "build": "pnpm run --filter typescript-react-fallback_app* build",
+    "serve": "pnpm run --filter typescript-react-fallback_app* --parallel serve",
+    "clean": "pnpm run --filter typescript-react-fallback_app* --parallel clean",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/*.cy.ts\" --browser=chrome"
+  },
+  "devDependencies": {
+    "wait-on": "7.2.0"
+  }
+}

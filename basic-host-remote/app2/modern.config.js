@@ -28,7 +28,7 @@ export default defineConfig({
           runtime: false,
           filename: 'static/js/remoteEntry.js',
           exposes: {
-            './Button': './src/components/Button.js',
+            './Button': './src/components/button.js',
           },
           shared: {
             react: { singleton: true },

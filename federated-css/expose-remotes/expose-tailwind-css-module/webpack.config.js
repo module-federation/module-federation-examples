@@ -1,7 +1,10 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const path = require('path');
-const { remotes: { tailwindCssModule }, mfeBaseConfig } = require('../remotes.config');
+const {
+  remotes: { tailwindCssModule },
+  mfeBaseConfig,
+} = require('../remotes.config');
 
 module.exports = {
   entry: './src/index',
@@ -27,7 +30,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader", "postcss-loader"],
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
     ],
   },

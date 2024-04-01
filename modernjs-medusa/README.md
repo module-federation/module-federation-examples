@@ -6,7 +6,7 @@
 2. Login to medusa https://medusa.codes/
 3. Generate Read/Write Tokens and save https://app.medusa.codes/settings
 4. Copy Read/Write Tokens and add them to `.env` in the root of this directory.
-5. Run a build with yarn start, then go check medusa.
+5. Run a build with pnpm run start, then go check medusa.
 
 # Running Demo
 

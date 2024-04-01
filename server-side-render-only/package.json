@@ -1,0 +1,35 @@
+{
+  "name": "server-side-render-only",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Module Federation Server Side Rendering, no client side implementation",
+  "scripts": {
+    "start": "concurrently \"npm run buildHost\" \"npm run startHost\" \"npm run buildRemote\" \"npm run startRemote\"",
+    "buildHost": "webpack --config=hostServer/webpack.config.js -w",
+    "startHost": "nodemon hostServer/public/server/server.js",
+    "buildRemote": "webpack --config=remoteServer/webpack.config.js -w",
+    "startRemote": "nodemon remoteServer/public/server/server.js",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/*.cy.ts\" --browser=chrome"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Pini Tayeb"
+  },
+  "devDependencies": {
+    "@babel/core": "7.24.3",
+    "@babel/polyfill": "7.12.1",
+    "@babel/preset-env": "7.23.8",
+    "@babel/preset-react": "7.23.3",
+    "babel-loader": "8.2.5",
+    "concurrently": "7.6.0",
+    "nodemon": "2.0.22",
+    "wait-on": "7.2.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "4.10.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  }
+}

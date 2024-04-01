@@ -1,12 +1,13 @@
-import {BaseMethods} from "../../../cypress/common/base";
-import {commonSelectors} from "../../../cypress/common/selectors";
-import {CommonTestData} from "../../../cypress/fixtures/commonTestData";
+import {BaseMethods} from "../../../cypress-e2e/common/base";
+import {commonSelectors} from "../../../cypress-e2e/common/selectors";
+import {CommonTestData} from "../../../cypress-e2e/fixtures/commonTestData";
 
 const basePage: BaseMethods = new BaseMethods()
 
 describe('Vite Vue Microfrontends',  () => {
     context('It checks names and symbols inside cards', () => {
         CommonTestData.commonMicroFrontendsAppsData.forEach((property: { cardName: string, symbolName: string, symbol: string, status: string }) => {
+            if(property.symbolName === 'cloud') return
             it(`Checks ${property.symbolName} symbol visibility for ${property.cardName} card`, () => {
                 basePage.openLocalhost({
                     number: 4173

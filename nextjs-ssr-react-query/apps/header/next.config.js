@@ -1,10 +1,10 @@
-const { withNx } = require('@nx/next/plugins/with-nx');
+const { withNx } = require('@nrwl/next/plugins/with-nx');
 const { NextFederationPlugin } = require('@module-federation/nextjs-mf');
 
 const { dependencies } = require('../../package.json');
 
 /**
- * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
+ * @type {import('@nrwl/next/plugins/with-nx').WithNxOptions}
  **/
 const nextConfig = {
   nx: {

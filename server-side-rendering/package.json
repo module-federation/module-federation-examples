@@ -1,0 +1,15 @@
+{
+  "name": "server-side-rendering",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Example of server side rendering with module federation using React 18 and Suspense",
+  "author": "Adam Hammad <mail@adamham.dev>",
+  "license": "MIT",
+  "scripts": {
+    "build": "pnpm --parallel --filter server-side-rendering* run build",
+    "serve": "pnpm --parallel --filter server-side-rendering* run serve"
+  },
+  "devDependencies": {
+    "concurrently": "6.5.1"
+  }
+}

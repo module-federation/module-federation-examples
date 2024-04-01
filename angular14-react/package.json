@@ -1,5 +1,6 @@
 {
   "name": "angular14-react",
+  "description": "Module Federation for Angular 14 and React 18 apps, with NGXS state management and shared state between Angular and React modules.",
   "workspaces": [
     "./angular-profile",
     "./react-user-list"
@@ -9,10 +10,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "lerna run --scope=angular14-react_* --parallel start",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:4201/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "start": "pnpm --filter angular14-react_* --parallel start",
+    "e2e:ci": "pnpm run start & wait-on http-get://localhost:4201/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
+    "preinstall": "find . -name \"noexist\" -type d -prune -exec rm -rf '{}' +; pnpm install --ignore-scripts"
   },
   "devDependencies": {
-    "wait-on": "7.0.1"
+    "wait-on": "7.2.0"
   }
 }

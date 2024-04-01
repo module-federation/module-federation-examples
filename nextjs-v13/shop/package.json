@@ -1,18 +1,17 @@
 {
   "name": "shop-v13",
   "version": "0.1.0",
-
   "scripts": {
-    "dev": "rm -rf .next && next dev -p 3002",
-    "build": "next build",
+    "dev": "rm -rf .next && NEXT_PRIVATE_LOCAL_WEBPACK=true next dev -p 3002",
+    "build": "NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
     "start": "next start -p 3002"
   },
   "dependencies": {
-    "@module-federation/nextjs-mf": "^7.0.8",
-    "next": "13.3.1",
-    "nextjs-shared": "file:../shared",
+    "@module-federation/nextjs-mf": "^0.0.0-next-20240330232226",
+    "next": "13.5.6",
+    "nextjs-shared-v13": "workspace:*",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "webpack": "5.80.0"
+    "webpack": "^5.91.0"
   }
 }

@@ -12,7 +12,10 @@ const HomePage = () => (
     <h1>Home Page</h1>
     <h2>Welcome to the future!</h2>
     <p>
-        <em>Example of injecting Css and Tailwind Module and Less and Scss and Jss and Styled-component component together</em>
+      <em>
+        Example of injecting Css and Tailwind Module and Less and Scss and Jss and Styled-component
+        component together
+      </em>
     </p>
   </div>
 );

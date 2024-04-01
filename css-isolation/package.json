@@ -1,19 +1,19 @@
 {
   "name": "css-isolation",
+  "description": "Demonstration of CSS isolation between host and remote apps using Shadow DOM with Module Federation. Features 'app1' (host) loading 'app2' (remote) for CSS-isolated components.",
   "private": true,
-  "workspaces": [
-    "./app1",
-    "./app2"
-  ],
   "version": "0.0.0",
   "scripts": {
-    "start": "lerna run --scope=css-isolation_app* --parallel start",
-    "build": "lerna run --scope=css-isolation_app* --parallel build",
-    "serve": "lerna run --scope=css-isolation_app* --parallel serve",
-    "clean": "lerna run --scope=css-isolation_app* --parallel clean",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "start": "pnpm --filter css-isolation_app* --parallel start",
+    "legacy:start": "pnpm --filter css-isolation_app* --parallel legacy:start",
+    "build": "pnpm --filter css-isolation_app* --parallel build",
+    "legacy:build": "pnpm --filter css-isolation_app* --parallel legacy:build",
+    "serve": "pnpm --filter css-isolation_app* --parallel serve",
+    "clean": "pnpm --filter css-isolation_app* --parallel clean",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
+    "legacy:e2e:ci": "pnpm legacy:start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "wait-on": "7.0.1"
+    "wait-on": "7.2.0"
   }
 }

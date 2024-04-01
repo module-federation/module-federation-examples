@@ -1,0 +1,18 @@
+{
+  "name": "shared-context",
+  "private": true,
+  "version": "0.0.0",
+  "description": "This example demos a host application wrapped in a ContextProvider and renders a remote component consuming the ContextProvider value.",
+  "scripts": {
+    "start": "pnpm --filter shared-context_* --parallel start",
+    "build": "pnpm --filter shared-context_* build",
+    "serve": "pnpm --filter shared-context_* --parallel serve",
+    "clean": "pnpm --filter shared-context_* --parallel clean",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+  },
+  "devDependencies": {
+    "lerna": "3.22.1",
+    "wait-on": "7.2.0",
+    "webpack-cli": "5.0.1"
+  }
+}

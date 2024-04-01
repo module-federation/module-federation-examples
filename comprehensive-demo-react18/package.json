@@ -1,23 +1,21 @@
 {
   "name": "comprehensive-demo-react18",
-  "private": true,
-  "workspaces": [
-    "./app-01",
-    "./app-02",
-    "./app-03",
-    "./app-04",
-    "./app-05"
-  ],
+  "description": "Multi-framework comprehensive demo for React 18",
   "version": "0.0.0",
   "scripts": {
-    "start": "concurrently \"lerna run --scope=comprehensive-demo-react18_app* --parallel start\" \"yarn serve\"",
-    "build": "lerna run --scope=comprehensive-demo-react18_app* build",
-    "serve": "lerna run --scope=comprehensive-demo-react18_app* --parallel serve",
-    "clean": "lerna run --scope=comprehensive-demo-react18_app* --parallel clean",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/runAll*.cy.ts\" --browser=chrome"
+    "start": "pnpm build && pnpm serve",
+    "legacy:start": "pnpm legacy:build && pnpm serve",
+    "build": "pnpm --filter comprehensive-demo-react18_app* build",
+    "legacy:build": "pnpm --filter comprehensive-demo-react18_app* legacy:build",
+    "serve": "pnpm --filter comprehensive-demo-react18_app* --parallel serve",
+    "clean": "pnpm --filter comprehensive-demo-react18_app* --parallel clean",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
+    "legacy:e2e:ci": "pnpm legacy:start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "concurrently": "7.6.0",
-    "wait-on": "7.0.1"
+    "@rsdoctor/rspack-plugin": "^0.1.8",
+    "@rsdoctor/webpack-plugin": "^0.1.8",
+    "concurrently": "8.2.2",
+    "wait-on": "7.2.0"
   }
 }

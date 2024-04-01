@@ -7,13 +7,7 @@ NOTE: There seems to be a problem with css-in-js sharing between federated modul
 ## Getting Started
 
 1. run `npm install @module-federation/nextjs-mf` with npm 7 (yarn probably better) or install it directly in each folder/app
-2. run `yarn start` and browse to `http://localhost:3001`
-
-# We are available to consult
-
-Looking for SSR over `fetch()` or architecture support and designs for module federation and Next.js?
-
-Contact me <a href="mailto:zackary.l.jackson@gmail.com">zackary.l.jackson@gmail.com</a> or <a href="https://twitter.com/scriptedalchemy">@ScriptedAlchemy</a> on Twitter
+2. run `pnpm run start` and browse to `http://localhost:3001`
 
 ## Context
 

@@ -8,13 +8,13 @@ Note the use of **yarn**, this is required to override the webpack version for t
 
 For `react-user-list`:
 - Install packages: `yarn install`
-- Start: `yarn start`(the app uses port 3002)
+- Start: `pnpm run start`(the app uses port 3002)
 
 
 For `angular-profile`:
 
 - Install packages: `yarn install`
-- Start: `yarn start`
+- Start: `pnpm run start`
 - Open the shell http://localhost:4201
 
 Ports could be changed in `webpack.config.js` files located in `react-user-list` and `angular-profile` folders.

@@ -1,5 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const path = require('path');
 
 const mode = process.env.NODE_ENV || 'development';
@@ -12,7 +12,7 @@ module.exports = {
   resolve: {
     extensions: ['.mjs', '.js', '.svelte'],
     mainFields: ['svelte', 'browser', 'module', 'main'],
-    conditionNames: ['svelte', 'browser', 'import']
+    conditionNames: ['svelte', 'browser', 'import'],
   },
   output: {
     path: __dirname + '/public',

@@ -1,0 +1,17 @@
+{
+  "name": "react-in-vue",
+  "description": "Demo of fetching a React component in a Vue app via Module Federation, showcasing two-way communication and lifecycle management.",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "pnpm run --filter react-in-vue_* --parallel start",
+    "build": "pnpm run --filter react-in-vue_* build",
+    "serve": "pnpm run --filter react-in-vue_* --parallel serve",
+    "clean": "pnpm run --filter react-in-vue_* --parallel clean",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3002/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "7.23.3",
+    "wait-on": "7.2.0"
+  }
+}

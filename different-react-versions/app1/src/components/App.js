@@ -41,7 +41,7 @@ class App extends React.Component {
         {/*This will Fail*/}
         {/*<HookComponent/>*/}
 
-        <div 
+        <div
           style={{ border: '1px red solid', padding: '10px', margin: '20px 0' }}
           data-e2e="REACT__BUTTON_BLOCK"
         >

@@ -24,12 +24,6 @@ export default defineConfig({
         NativeFederationTypeScriptRemote({ moduleFederationConfig }),
         NativeFederationTestsRemote({moduleFederationConfig})
     ],
-    build: {
-        lib: {
-            entry: 'src/index.ts',
-            formats: ['es']
-        }
-    },
     server: {
         port: 3000,
         proxy: {
@@ -40,7 +34,7 @@ export default defineConfig({
             }
         },
         fs: {
-            allow: ['./dist']
+            allow: ['./dist', './src']
         }
     }
 })

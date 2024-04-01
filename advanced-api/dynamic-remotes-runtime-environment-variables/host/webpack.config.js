@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const ModuleFederationPlugin = require('@module-federation/enhanced').ModuleFederationPlugin;
 const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 

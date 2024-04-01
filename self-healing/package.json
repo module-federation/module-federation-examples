@@ -1,0 +1,16 @@
+{
+  "name": "self-healing",
+  "private": true,
+  "version": "0.0.0",
+  "description": "This example demos self-healing capabilities with Module Federation. `app2` depends on and is expecting a shared dependency to be provided in `app1`.",
+  "scripts": {
+    "start": "pnpm --parallel --filter self-healing_app* --parallel start",
+    "build": "pnpm run --filter self-healing_app* build",
+    "serve": "pnpm run --filter self-healing_app* --parallel serve",
+    "clean": "pnpm run --filter self-healing_app* --parallel clean",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/*.cy.ts\" --browser=chrome"
+  },
+  "devDependencies": {
+    "wait-on": "7.2.0"
+  }
+}

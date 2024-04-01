@@ -1,19 +1,18 @@
 {
   "name": "different-react-versions",
-  "private": true,
-  "workspaces": [
-    "./app1",
-    "./app2"
-  ],
+  "description": "This example demos the ability to load two separate versions of react (v16.6.3 and v16.13.1).",
   "version": "0.0.0",
   "scripts": {
-    "start": "lerna run --scope=different-react-versions_app* --parallel start",
-    "build": "lerna run --scope=different-react-versions_app* build",
-    "serve": "lerna run --scope=different-react-versions_app* --parallel serve",
-    "clean": "lerna run --scope=different-react-versions_app* --parallel clean",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "start": "pnpm --filter different-react-versions_app* --parallel start",
+    "legacy:start": "pnpm --filter different-react-versions_app* --parallel legacy:start",
+    "build": "pnpm --filter different-react-versions_app* build",
+    "legacy:build": "pnpm --filter different-react-versions_app* legacy:build",
+    "serve": "pnpm --filter different-react-versions_app* --parallel serve",
+    "clean": "pnpm --filter different-react-versions_app* --parallel clean",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
+    "legacy:e2e:ci": "pnpm legacy:start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "wait-on": "7.0.1"
+    "wait-on": "7.2.0"
   }
 }

@@ -7,16 +7,18 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "lerna run --scope=dynamic-remotes-runtime-environment-variables_* --parallel start",
-    "build": "lerna run --scope=dynamic-remotes-runtime-environment-variables_* --parallel build",
-    "serve": "lerna run --scope=dynamic-remotes-runtime-environment-variables_* --parallel serve",
-    "clean": "lerna run --scope=dynamic-remotes-runtime-environment-variables_* --parallel clean",
-    "docker:build": "lerna run --scope=dynamic-remotes-runtime-environment-variables_* --parallel docker:build",
-    "docker:run": "lerna run --scope=dynamic-remotes-runtime-environment-variables_* --parallel docker:run",
-    "docker:rm": "lerna run --scope=dynamic-remotes-runtime-environment-variables_* --parallel docker:rm",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "start": "pnpm --filter dynamic-remotes-runtime-environment-variables_* --parallel start",
+    "legacy:start": "pnpm --filter dynamic-remotes-runtime-environment-variables_* --parallel legacy:start",
+    "build": "pnpm --filter dynamic-remotes-runtime-environment-variables_* --parallel build",
+    "serve": "pnpm --filter dynamic-remotes-runtime-environment-variables_* --parallel serve",
+    "clean": "pnpm --filter dynamic-remotes-runtime-environment-variables_* --parallel clean",
+    "docker:build": "pnpm --filter dynamic-remotes-runtime-environment-variables_* --parallel docker:build",
+    "docker:run": "pnpm --filter dynamic-remotes-runtime-environment-variables_* --parallel docker:run",
+    "docker:rm": "pnpm --filter dynamic-remotes-runtime-environment-variables_* --parallel docker:rm",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
+    "legacy:e2e:ci": "pnpm legacy:start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "wait-on": "7.0.1"
+    "wait-on": "7.2.0"
   }
 }

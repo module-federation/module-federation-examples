@@ -6,10 +6,11 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "clean": "rm -rf dist",
-    "start": "http-server -c-1 -p 9000 ./dist"
+    "start": "http-server -c-1 -p 9000 ./dist",
+    "e2e:ci": "pnpm --filter vue-cli run e2e:ci"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
+    "core-js": "^3.33.2",
     "http-server": "^0.13.0",
     "vue": "^2.6.11"
   },
@@ -18,10 +19,11 @@
     "@vue/cli-plugin-eslint": "5.0.8",
     "@vue/cli-service": "5.0.8",
     "babel-eslint": "10.1.0",
-    "eslint": "8.53.0",
+    "eslint": "8.57.0",
     "eslint-plugin-vue": "8.6.0",
-    "vue-template-compiler": "2.7.14",
-    "webpack": "5.89.0"
+    "vue-template-compiler": "2.7.16",
+    "webpack": "^5.91.0",
+    "http-server": "^14.1.1"
   },
   "eslintConfig": {
     "root": true,

@@ -1,0 +1,16 @@
+{
+  "name": "react-18-server-2-server",
+  "description": "Server 2 Server React 18",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "pnpm run --filter react-18-server-2-server_* --parallel start",
+    "build": "pnpm run --filter react-18-server-2-server_* build",
+    "serve": "pnpm run --filter react-18-server-2-server_* --parallel serve",
+    "clean": "pnpm run --filter react-18-server-2-server_* --parallel clean",
+    "e2e:ci:legacy": "pnpm start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+  },
+  "dependencies": {
+    "wait-on": "^7.2.0"
+  }
+}

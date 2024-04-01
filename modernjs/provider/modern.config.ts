@@ -18,12 +18,37 @@ export default defineConfig({
     port: 3002,
   },
   tools: {
-    webpack: (config, { webpack, appendPlugins }) => {
+    // webpack: (config, { webpack, appendPlugins }) => {
+    //   //@ts-ignore
+    //   config.output.publicPath = 'auto';
+    //   appendPlugins([
+    //     new webpack.container.ModuleFederationPlugin({
+    //       name: 'provider',
+    //       library: { type: 'var', name: 'provider' },
+    //       filename: 'static/js/remoteEntry.js',
+    //       exposes: {
+    //         './Button': './src/components/Button',
+    //       },
+    //       shared: {
+    //         react: { singleton: true },
+    //         'react-dom': { singleton: true },
+    //       },
+    //     }),
+    //     // modern.js has default ChunkSplit strategy which will cause remoteEntry chunk can not load normally
+    //     // user can config config.optimization?.splitChunks or delete config.optimization?.splitChunks and then use webpack default ChunkSplit strategy directly
+    //     new ChunkPatchPlugin('provider'),
+    //   ]);
+    //   // modern.js set runtimeChunk true by default
+    //   delete config.optimization?.runtimeChunk;
+    // },
+    rspack: (config, { rspack, appendPlugins }) => {
+      //@ts-ignore
+      config.output.publicPath = 'auto';
       appendPlugins([
-        new webpack.container.ModuleFederationPlugin({
+        new rspack.container.ModuleFederationPlugin({
           name: 'provider',
           library: { type: 'var', name: 'provider' },
-          filename: 'remoteEntry.js',
+          filename: 'static/js/remoteEntry.js',
           exposes: {
             './Button': './src/components/Button',
           },
@@ -40,5 +65,9 @@ export default defineConfig({
       delete config.optimization?.runtimeChunk;
     },
   },
-  plugins: [appTools()],
+  plugins: [
+    appTools({
+      bundler: 'experimental-rspack',
+    }),
+  ],
 });

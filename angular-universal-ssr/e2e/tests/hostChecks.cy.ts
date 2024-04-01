@@ -1,9 +1,9 @@
-import {BaseMethods} from "../../../cypress/common/base";
-import {baseSelectors, selectors, updatedSelectors} from "../../../cypress/common/selectors";
-import {Constants} from "../../../cypress/fixtures/constants";
-import {CssAttr} from "../../../cypress/types/cssAttr";
+import {BaseMethods} from "../../../cypress-e2e/common/base";
+import {baseSelectors, selectors, updatedSelectors} from "../../../cypress-e2e/common/selectors";
+import {Constants} from "../../../cypress-e2e/fixtures/constants";
+import {CssAttr} from "../../../cypress-e2e/types/cssAttr";
 import {AngularUniversalSsrMethods} from "../methods/methods";
-import {CommonTestData} from "../../../cypress/fixtures/commonTestData";
+import {CommonTestData} from "../../../cypress-e2e/fixtures/commonTestData";
 
 const basePage: BaseMethods = new BaseMethods()
 const methodsPage: AngularUniversalSsrMethods = new AngularUniversalSsrMethods()

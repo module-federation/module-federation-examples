@@ -57,7 +57,7 @@ module.exports = (env = {}) => ({
         './Content': './src/components/Content',
       },
       remotes: {
-        'vite-side': 'http://localhost:5000/assets/remoteEntry.js',
+        'vite-side': 'http://localhost:5173/assets/remoteEntry.js',
       },
       shared: {
         vue: {

@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import * as esbuild from 'esbuild';
 import * as path from 'path';
 import * as fs from 'fs';

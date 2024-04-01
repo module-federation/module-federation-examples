@@ -1,6 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
-const { remotes: { jss }, mfeBaseConfig } = require('../remotes.config');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const {
+  remotes: { jss },
+  mfeBaseConfig,
+} = require('../remotes.config');
 const path = require('path');
 
 module.exports = {

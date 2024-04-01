@@ -2,7 +2,7 @@
 yarn install
 
 ```bash
-yarn start
+pnpm run start
 ```
 
 ## view

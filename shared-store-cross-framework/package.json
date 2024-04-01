@@ -1,0 +1,16 @@
+{
+  "name": "shared-store-cross-framework",
+  "private": true,
+  "version": "0.0.0",
+  "description": "This example demos a Vue3 in React application which shares the same store.",
+  "scripts": {
+    "start": "pnpm --filter shared-store-cross-framework_* --parallel start",
+    "build": "pnpm --filter shared-store-cross-framework_* build",
+    "serve": "pnpm --filter shared-store-cross-framework_* --parallel serve",
+    "clean": "pnpm --filter shared-store-cross-framework_* --parallel clean",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
+  },
+  "devDependencies": {
+    "wait-on": "7.2.0"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "simple-node",
+  "description": "Node.js Examples",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"cd node-remote && pnpm start\" \"cd ./node-local-remote && pnpm start\" \"cd ./node-host && sleep 5; pnpm start\""
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "concurrently": "8.2.1"
+  }
+}

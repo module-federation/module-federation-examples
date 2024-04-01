@@ -1,6 +1,5 @@
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
 module.exports = {
   entry: './index.js',
   mode: 'development',
@@ -9,6 +8,7 @@ module.exports = {
     publicPath: 'http://localhost:3001/',
     clean: true,
   },
+  cache: false,
   resolve: {
     extensions: ['.jsx', '.js', '.json', '.css', '.scss', '.jpg', 'jpeg', 'png'],
   },

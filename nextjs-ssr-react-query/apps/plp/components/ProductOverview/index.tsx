@@ -25,9 +25,7 @@ const ProductOverviewStyled = styled.div`
 `;
 
 export const fetchProductById = async (productId: string) => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_PLP_URL}/api/products/${productId}`
-  );
+  const response = await fetch(`${process.env.NEXT_PUBLIC_PLP_URL}/api/products/${productId}`);
   const product = (await response.json()) as Product;
   return product;
 };
@@ -51,7 +49,7 @@ export function ProductOverview() {
       {product && (
         <div className="product">
           <div className="images">
-            {product?.images?.map((imageUrl) => (
+            {product?.images?.map(imageUrl => (
               <Image
                 src={imageUrl}
                 alt={product.title}
@@ -67,8 +65,7 @@ export function ProductOverview() {
           <p>{product.brand}</p>
 
           <div>
-            <span>price: {product.price}</span>{' '}
-            <span>rating: {product.rating}</span>
+            <span>price: {product.price}</span> <span>rating: {product.rating}</span>
           </div>
         </div>
       )}

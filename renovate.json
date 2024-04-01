@@ -8,19 +8,41 @@
     ":updateNotScheduled",
     ":automergeDisabled",
     ":ignoreModulesAndTests",
-    ":autodetectPinVersions",
-    "group:monorepos",
     "group:recommended",
     ":pinAllExceptPeerDependencies",
     ":pinOnlyDevDependencies"
   ],
   "packageRules": [
     {
-      "paths": ["version-discrepancy/app1/package.json"],
+      "matchFileNames": [
+        "version-discrepancy/app1/package.json",
+        "version-discrepancy/app2/package.json"
+      ],
       "ignoreDeps": ["lodash"]
     },
     {
-      "paths": [" angular-universal-ssr/*/package.json"],
+      "matchFileNames": [
+        "different-react-versions/app1/package.json",
+        "different-react-versions/app2/package.json",
+        "different-react-versions-16-17/app1/package.json",
+        "different-react-versions-16-17/app2/package.json",
+        "different-react-versions-16-17-typescript/app1/package.json",
+        "different-react-versions-16-17-typescript/app2/package.json",
+        "different-react-versions-16-18/app1/package.json",
+        "different-react-versions-16-18/app2/package.json",
+        "different-react-versions-isolated/app1/package.json",
+        "different-react-versions-isolated/app2/package.json",
+        "different-react-versions-typescript/app1/package.json",
+        "different-react-versions-typescript/app2/package.json"
+      ],
+      "ignoreDeps": ["lodash"]
+    },
+    {
+      "matchFileNames": ["version-discrepancy/app1/package.json"],
+      "ignoreDeps": ["lodash"]
+    },
+    {
+      "matchFileNames": [" angular-universal-ssr/*/package.json"],
       "ignoreDeps": ["@angular/cli", "@angular-devkit/build-angular"]
     }
   ]

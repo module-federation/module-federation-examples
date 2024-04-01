@@ -49,32 +49,32 @@ console.info('[Quasar] Running SPA.')
 
 
 
-const publicPath = `/`
+const publicPath = ``
 
 
 async function start ({
   app,
   router
-  
-}) {
-  
 
-  
+}) {
+
+
+
 
   app.use(router)
-  
 
-  
 
-    
 
-    
+
+
+
+
       app.mount('#q-app')
-    
 
-    
 
-  
+
+
+
 
 }
 

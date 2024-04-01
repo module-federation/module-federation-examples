@@ -1,6 +1,6 @@
-# React 18 Code Splitting
+# Apollo Client
 
-This example demonstrates how to use Code Splitting with React 18.
+This example demonstrates using Apollo Client with Module Federation.
 
 - `app1` This app consumes the `Content` component from `app2` and uses React.lazy to load it.
 - `app2`This app exposes the `Content` component and split it into a separate chunk using `React.lazy`.
@@ -11,7 +11,7 @@ The `app2` is used to expose a component called `Content` and a route called `us
 
 Run `yarn` to install the dependencies.
 
-Run `yarn start` this will build and start all applications.
+Run `pnpm run start` this will build and start all applications.
 
 Bellow you can see the port mapping:
 

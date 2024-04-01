@@ -1,7 +1,7 @@
 const concurrently = require('concurrently');
 const commands = {
-    startHost: 'yarn start:shell',
-    startRemote: 'yarn start:remote',
+    startHost: 'pnpm run start:shell',
+    startRemote: 'pnpm run start:remote',
     startE2e: 'yarn e2e:test'
 };
 

@@ -1,21 +1,20 @@
 {
   "name": "cra",
-  "private": true,
   "version": "0.0.1",
+  "description": "Create React app Running with rsbuild",
   "workspaces": [
     "./host",
     "./remote"
   ],
   "scripts": {
-    "start": "lerna run --scope=cra_* start",
-    "stop": "lerna run --scope=cra_* stop",
-    "build": "lerna run --scope=cra_* build'",
-    "serve": "lerna run --scope=cra_* serve'",
-    "clean": "lerna run --scope=cra_* clean'",
-    "e2e:ci": "yarn start && wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome && yarn stop"
+    "start": "pnpm --filter cra_* start",
+    "build": "pnpm --filter cra_* build",
+    "preview": "pnpm run build && pnpm --filter cra_* preview",
+    "e2e:ci": "pnpm start & npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome && lsof -ti tcp:3000,3001,3002 | xargs kill"
   },
   "devDependencies": {
     "wait-on": "^7.1.0",
-    "concurrently": "7.6.0"
+    "concurrently": "7.6.0",
+    "forever": "4.0.3"
   }
 }

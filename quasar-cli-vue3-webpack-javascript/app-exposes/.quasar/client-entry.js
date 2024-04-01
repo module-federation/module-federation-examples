@@ -49,35 +49,32 @@ console.info('[Quasar] Running SPA.')
 
 
 
-const publicPath = `http://localhost:3001/`
-
-const doubleSlashRE = /\/\//
-const addPublicPath = url => (publicPath + url).replace(doubleSlashRE, '/')
+const publicPath = ``
 
 
 async function start ({
   app,
   router
-  
-}) {
-  
 
-  
+}) {
+
+
+
 
   app.use(router)
-  
 
-  
 
-    
 
-    
+
+
+
+
       app.mount('#q-app')
-    
 
-    
 
-  
+
+
+
 
 }
 

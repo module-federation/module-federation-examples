@@ -9,11 +9,11 @@ const moduleFederationPlugin = require('./module-federation');
  **/
 const webpackConfig = {
   name: 'server',
-  target: false,
   entry: {
     main: ['@babel/polyfill', path.resolve(__dirname, '../src/server/index')],
     serverAppEntrypoint: path.resolve(__dirname, '../src/server/serverAppEntrypoint'),
   },
+  target: 'async-node',
   externals: {
     express: 'express',
   },

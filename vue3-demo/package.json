@@ -1,19 +1,15 @@
 {
   "name": "vue3-demo",
-  "private": true,
-  "workspaces": [
-    "./home",
-    "./layout"
-  ],
+  "description": "This example demos consumption of federated modules from a Webpack bundle. `layout` app depends on a component exposed by `home` app.",
   "version": "0.0.0",
   "scripts": {
-    "start": "lerna run --scope=vue3-demo_* --parallel start",
-    "build": "lerna run --scope=vue3-demo_* build",
-    "serve": "lerna run --scope=vue3-demo_* --parallel serve",
-    "clean": "lerna run --scope=vue3-demo_* --parallel clean",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
+    "start": "pnpm --filter vue3-demo_* --parallel start",
+    "build": "pnpm --filter vue3-demo_* --parallel build",
+    "serve": "pnpm --filter vue3-demo_* --parallel serve",
+    "clean": "pnpm --filter vue3-demo_* --parallel clean",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "wait-on": "7.0.1"
+    "wait-on": "7.2.0"
   }
 }

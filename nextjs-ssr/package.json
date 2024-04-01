@@ -1,21 +1,17 @@
 {
   "name": "nextjs-ssr",
-  "workspaces": [
-    "./checkout",
-    "./home",
-    "./shared",
-    "./shop"
-  ],
+  "description": "Server Side Rendering with Next.js",
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "find . -type d -name '.next' -exec rm -rf {} + && concurrently \"cd checkout; npm run dev\" \"cd home; npm run dev\" \"cd shop; npm run dev\"",
-    "build": "find . -type d -name '.next' -exec rm -rf {} +  && concurrently \"cd checkout; npm run build\" \"cd home; npm run build\" \"cd shop; npm run build\"",
-    "serve": "concurrently \"cd checkout; npm run start\" \"cd home; npm run start\" \"cd shop; npm run start\"",
-    "e2e:ci": "yarn start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress/config/cypress.config.ts --config '{\"supportFile\": \"../cypress/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "preinstall": "find . -name \"noexist\" -type d -prune -exec rm -rf '{}' +; pnpm install --ignore-scripts",
+    "start": " pnpm --parallel --filter nextjs-ssr_* dev",
+    "build": "pnpm --parallel --filter nextjs-ssr_* build",
+    "serve": "pnpm --parallel --filter nextjs-ssr_* start",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && wait-on http-get://localhost:3002/ && wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "dependencies": {
-    "concurrently": "^7.0.0",
-    "wait-on": "7.0.1"
+    "concurrently": "^8.2.2",
+    "wait-on": "7.2.0"
   }
 }

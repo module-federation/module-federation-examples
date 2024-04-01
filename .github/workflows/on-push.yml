@@ -8,7 +8,7 @@ env:
   CACHE_PATH: |
     **/node_modules
     ~/.cache/Cypress
-    ~/.cache/yarn/v6
+    ~/.pnpm-store
   FILES_TO_DELETE: |
     sudo rm -rf "/usr/share/dotnet"
     sudo rm -rf "/usr/share/swift"
@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.11.0
+        uses: styfle/cancel-workflow-action@0.12.1
         with:
           access_token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -52,11 +52,11 @@ jobs:
       - name: Free up some space
         run: ${{ env.FILES_TO_DELETE }}
 
-        # Hash yarn.lock files to use it as a cache key, if yarn.lock files are changed, the cache will be invalidated
+        # Hash pnpm-lock.yaml files to use it as a cache key, if pnpm-lock.yaml files are changed, the cache will be invalidated
       - name: Check Yarn hash
         id: yarn-hash
         run: |
-          yarnHash="$(npx hash-files -f '["**/yarn.lock"]' -a sha256)"
+          yarnHash="$(npx hash-files -f '["**/pnpm-lock.yaml"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
       - name: Cache Yarn and Cypress
@@ -72,5 +72,4 @@ jobs:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
           echo "Yarn changed - install deps ... "
-          npm i lerna@6 -g
-          lerna bootstrap
+          pnpm install

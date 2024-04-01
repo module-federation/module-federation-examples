@@ -1,0 +1,14 @@
+{
+  "name": "third-party-scripts",
+  "description": "This example demos a basic host-remote application with third-party remotes or vendor code.",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "pnpm --filter third-party-scripts_* --parallel start",
+    "build": "pnpm --filter third-party-scripts_* --parallel build",
+    "serve": "pnpm --filter third-party-scripts_* --parallel serve",
+    "clean": "pnpm --filter third-party-scripts_* --parallel clean",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/*.cy.ts\" --browser=chrome"
+  },
+  "devDependencies": {}
+}
