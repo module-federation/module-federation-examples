@@ -1,0 +1,37 @@
+version: '3.3'
+services:
+  team:
+    build:
+      context: team-app/
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3004:3004'
+  faq:
+    build:
+      context: faq-app/
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3003:3003'
+
+  dashboard:
+    build:
+      context: dashboard-app/
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3001:3001'
+
+  sidebar:
+    build:
+      context: sidebar/
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3002:3002'
+  root:
+    build:
+      context: root/
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3000:3000' 
+    depends_on:
+      - sidebar
+

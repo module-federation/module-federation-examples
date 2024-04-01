@@ -6,14 +6,32 @@ const CONFIG = [
   {
     packageName: '@module-federation/node',
     shouldUpdate: true,
-    versionToCheck: '2.0.13',
-    targetVersion: '2.0.13'
+    versionToCheck: '3.0.13',
+    targetVersion: 'latest'
+  },
+  {
+    packageName: '@module-federation/sdk',
+    shouldUpdate: true,
+    versionToCheck: '3.0.13',
+    targetVersion: 'latest'
   },
   {
     packageName: '@module-federation/enhanced',
     shouldUpdate: true, // Assumes no targetVersion needed
-    versionToCheck: "0.0.15",
-    targetVersion: "0.0.15",
+    versionToCheck: "2.0.0",
+    targetVersion: "latest",
+  },
+  {
+    packageName: 'webpack',
+    shouldUpdate: true, // Assumes no targetVersion needed
+    versionToCheck: "6.0.0",
+    targetVersion: "latest",
+  },
+  {
+    packageName: 'mini-css-extract-plugin',
+    shouldUpdate: true, // Assumes no targetVersion needed
+    versionToCheck: "9.0.0",
+    targetVersion: "latest",
   },
   {
     packageName: '@module-federation/utilities',
@@ -22,10 +40,35 @@ const CONFIG = [
   {
     packageName: '@module-federation/nextjs-mf',
     shouldUpdate: true,
-    versionToCheck: '8.2.2',
-    targetVersion: '8.2.2'
+    versionToCheck: '9.2.2',
+    targetVersion: 'latest'
+  },
+  {
+    packageName: '@module-federation/runtime',
+    shouldUpdate: true,
+    versionToCheck: '9.2.2',
+    targetVersion: 'latest'
   }
 ];
+
+const versionCache = {};
+
+async function getLatestVersion(packageName,targetVersion) {
+  if (versionCache[packageName]) {
+    return versionCache[packageName];
+  }
+
+  const url = `https://registry.npmjs.org/${packageName}/${targetVersion}`;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    versionCache[packageName] = data.version;
+    return data.version;
+  } catch (error) {
+    console.error(`Failed to fetch latest version for ${packageName}: ${error}`);
+    return null;
+  }
+}
 
 function getDirectories(srcPath) {
   return fs.readdirSync(srcPath).filter(file => {
@@ -46,23 +89,35 @@ function readPackageJson(packageJsonPath) {
   }
 }
 
-function checkAndUpdatePackages(nestedDir, packageJson, results) {
+async function checkAndUpdatePackages(nestedDir, packageJson, results) {
   let needsUpdate = false;
 
-  CONFIG.forEach(config => {
-    const { packageName, shouldUpdate, versionToCheck, targetVersion } = config;
+  for (const config of CONFIG) {
+    const { packageName, shouldUpdate, versionToCheck } = config;
+    let { targetVersion } = config;
     const currentVersion = packageJson.dependencies?.[packageName] || packageJson.devDependencies?.[packageName];
 
-    // Check if the package needs an update based on versionToCheck
+    if (targetVersion === 'latest') {
+      targetVersion = await getLatestVersion(packageName, targetVersion);
+      if (!targetVersion) continue; // Skip if failed to fetch latest version
+    }
+    if (targetVersion === 'next') {
+      targetVersion = await getLatestVersion(packageName, targetVersion);
+      if (!targetVersion) continue; // Skip if failed to fetch latest version
+      updateDependencies(packageJson, packageName, targetVersion);
+
+    }
+
     if (currentVersion && semver.satisfies(semver.coerce(currentVersion), `<${versionToCheck}`)) {
       if (shouldUpdate && targetVersion) {
         updateDependencies(packageJson, packageName, targetVersion);
+      }
+      if(shouldUpdate) {
         needsUpdate = true;
       }
-      // Track packages based on condition
       trackPackage(nestedDir, packageName, results);
     }
-  });
+  }
 
   if (needsUpdate) {
     fs.writeFileSync(path.join(nestedDir, 'package.json'), JSON.stringify(packageJson, null, 2), 'utf8');
@@ -79,37 +134,38 @@ function updateDependencies(packageJson, dependencyKey, newVersion) {
 }
 
 function trackPackage(nestedDir, packageName, results) {
-  // Logic to track different conditions based on packageName
   if (!results[packageName]) {
     results[packageName] = [];
   }
   results[packageName].push(nestedDir);
 }
 
-function traverseDirectories(dir, results) {
+async function traverseDirectories(dir, results) {
   const directories = getDirectories(dir);
-  directories.forEach(directory => {
+  for (const directory of directories) {
     if (directory.startsWith('angular') || directory.startsWith('.') || directory === 'node_modules') {
-      return;
+      continue;
     }
     const nestedDir = path.join(dir, directory);
     const packageJsonPath = path.join(nestedDir, 'package.json');
     if (fs.existsSync(packageJsonPath)) {
       const packageJson = readPackageJson(packageJsonPath);
       if (packageJson && (packageJson.dependencies || packageJson.devDependencies)) {
-        checkAndUpdatePackages(nestedDir, packageJson, results);
+        await checkAndUpdatePackages(nestedDir, packageJson, results);
       }
     }
-    traverseDirectories(nestedDir, results); // Recursively traverse directories
-  });
+    await traverseDirectories(nestedDir, results); // Recursively traverse directories
+  }
 }
 
-function getPackages(dir) {
+async function getPackages(dir) {
   const results = {};
-  traverseDirectories(dir, results);
+  await traverseDirectories(dir, results);
   return results;
 }
 
 // Running the modified function
-const results = getPackages('./'); // Start from the current directory
-console.log("Package Updates:", results);
+(async () => {
+  const results = await getPackages('./'); // Start from the current directory
+  console.log("Package Updates:", results);
+})();

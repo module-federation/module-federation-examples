@@ -2,6 +2,8 @@ const {
   container: { ModuleFederationPlugin },
   HtmlRspackPlugin,
 } = require('@rspack/core');
+const { RsdoctorRspackPlugin } = require('@rsdoctor/rspack-plugin');
+
 const deps = require('./package.json').dependencies;
 
 module.exports = {
