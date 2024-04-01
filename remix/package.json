@@ -1,0 +1,16 @@
+{
+  "name": "remix",
+  "version": "0.0.0",
+  "scripts": {
+    "server": "concurrently 'cd ./app1; sleep 1 && yarn run server' 'cd ./app2; yarn run server'",
+    "start": "pnpm --filter remix-* --parallel start"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "@module-federation/node": "^2.1.0-canary.4",
+    "@module-federation/enhanced": "canary",
+    "@module-federation/utilities": "3.0.0"
+  }
+}

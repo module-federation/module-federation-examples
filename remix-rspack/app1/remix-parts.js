@@ -1,0 +1,75 @@
+import * as path from "node:path";
+
+/**
+ *
+ * @param {import("@remix-run/dev").ResolvedRemixConfig} config
+ * @param {import("@remix-run/dev").AssetsManifest} manifest
+ * @returns
+ */
+export function createServerBuildEntry(config, manifest) {
+  const routeImports = Object.values(config.routes).map((route, index) => {
+    return `import * as route${index} from "${path
+      .relative(
+        path.resolve("./.cache"),
+        path.resolve(config.appDirectory, route.file)
+      )
+      .replace(/\\/g, "/")}";`;
+  });
+  const routes = Object.entries(config.routes).map(
+    ([routeId, route], index) => {
+      return `${JSON.stringify(routeId)}: {
+      id: ${JSON.stringify(route.id)},
+      parentId: ${JSON.stringify(route.parentId)},
+      path: ${JSON.stringify(route.path)},
+      index: ${JSON.stringify(route.index)},
+      caseSensitive: ${JSON.stringify(route.caseSensitive)},
+      module: route${index}
+    }`;
+    }
+  );
+
+  return `
+  import * as entryServer from "${config.entryServerFilePath.replace(
+    /\\/g,
+    "/"
+  )}";
+  ${routeImports.join("\n")}
+  export const entry = { module: entryServer };
+  export const routes = {
+    ${routes.join(",\n  ")}
+  };
+  export const assets = ${JSON.stringify(manifest)};
+  export const future = ${JSON.stringify(config.future)};
+  export const publicPath = ${JSON.stringify(config.publicPath)};
+`;
+}
+export class HoistContainerReferences {
+  apply(compiler) {
+    compiler.hooks.thisCompilation.tap('stuff', (compilation) => {
+      compilation.hooks.afterOptimizeChunks.tap(
+        'EmbeddedContainerPlugin',
+        (chunks) => {
+          const chunkSet = new Map()
+          const externalRequests = new Set()
+          for (const chunk of chunks) {
+            chunkSet.set(chunk.id || chunk.name, chunk)
+          }
+          // console.log(chunkSet)
+          for (const chunk of chunks) {
+            const remoteModules = compilation.chunkGraph.getChunkModulesIterableBySourceType(chunk,'remote');
+            if(!remoteModules) continue
+            for (const remoteModule of remoteModules) {
+              remoteModule.dependencies.forEach((dep) => {
+                const mod = compilation.moduleGraph.getModule(dep)
+                externalRequests.add(mod);
+                const runtimeChunk = chunkSet.get(chunk.runtime)
+                compilation.chunkGraph.connectChunkAndModule(runtimeChunk, mod)
+              })
+            }
+          }
+           console.log(externalRequests);
+        }
+      );
+    })
+  }
+}
