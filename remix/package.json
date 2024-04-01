@@ -2,6 +2,7 @@
   "name": "remix",
   "version": "0.0.0",
   "scripts": {
+    "preinstall": "find . -name \"noexist\" -type d -prune -exec rm -rf '{}' +; pnpm install --ignore-scripts",
     "server": "concurrently 'cd ./app1; sleep 1 && yarn run server' 'cd ./app2; yarn run server'",
     "start": "pnpm --filter remix-* --parallel start"
   },
