@@ -95,7 +95,7 @@ const config = {
           app1: 'app1@http://localhost:3000/server/remoteEntry.js',
         },
         remoteType: 'script',
-        library: { type: isModule ? 'module' : 'commonjs-module' },
+        library: { name:'app2', type: isModule ? 'module' : 'commonjs-module' },
         exposes: {
           './button': './components/Button.jsx',
         },

@@ -92,53 +92,53 @@ const config = {
     minimizer: [new EsbuildPlugin({ target: 'es2019' })],
   },
   plugins: [
-    new ModuleFederationPlugin({
-      runtime: false,
-      name: 'app2',
-      filename: 'remoteEntry.js',
-      remotes: {
-        app1: 'http://localhost:3000/build/remoteEntry.js',
-      },
-      remoteType: 'module',
-      library: {
-        type: 'module',
-      },
-      exposes: {
-        './button': './components/Button.jsx',
-      },
-      shared: {
-        'react/': {
-          singleton: true,
-        },
-        react: {
-          singleton: true,
-        },
-        'react-dom/': {
-          singleton: true,
-        },
-        'react-dom': {
-          singleton: true,
-        },
-        'react-router-dom': {
-          singleton: true,
-        },
-        'react-router-dom/': {
-          singleton: true,
-        },
-        '@remix-run/router': {
-          singleton: true,
-        },
-        '@remix-run/router/': {
-          singleton: true,
-        },
-        '@remix-run/react/': {
-          singleton: true,
-        },
-        '@remix-run/': {
-          singleton: true,
-        },
-      },
-    }),
+    // new ModuleFederationPlugin({
+    //   runtime: false,
+    //   name: 'app2',
+    //   filename: 'remoteEntry.js',
+    //   remotes: {
+    //     app1: 'http://localhost:3000/build/remoteEntry.js',
+    //   },
+    //   remoteType: 'module',
+    //   library: {
+    //     type: 'module',
+    //   },
+    //   exposes: {
+    //     './button': './components/Button.jsx',
+    //   },
+    //   shared: {
+    //     'react/': {
+    //       singleton: true,
+    //     },
+    //     react: {
+    //       singleton: true,
+    //     },
+    //     'react-dom/': {
+    //       singleton: true,
+    //     },
+    //     'react-dom': {
+    //       singleton: true,
+    //     },
+    //     'react-router-dom': {
+    //       singleton: true,
+    //     },
+    //     'react-router-dom/': {
+    //       singleton: true,
+    //     },
+    //     '@remix-run/router': {
+    //       singleton: true,
+    //     },
+    //     '@remix-run/router/': {
+    //       singleton: true,
+    //     },
+    //     '@remix-run/react/': {
+    //       singleton: true,
+    //     },
+    //     '@remix-run/': {
+    //       singleton: true,
+    //     },
+    //   },
+    // }),
     new AsyncBoundaryPlugin({
       excludeChunk: chunk => {
         return chunk.name === 'app2';

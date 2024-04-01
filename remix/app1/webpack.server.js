@@ -94,13 +94,13 @@ const config = {
     new UniversalFederationPlugin(
       {
         isServer: true,
-        name: 'app1',
+        name: 'app1' ,
         filename: 'remoteEntry.js',
         remoteType: 'script',
         remotes: {
           app2: 'app2@http://localhost:3001/server/remoteEntry.js',
         },
-        library: { type: isModule ? 'module' : 'commonjs-module' },
+        library: { type: isModule ? 'module' : 'commonjs-module', name: 'app1' },
         exposes: {
           './button': './components/Button.jsx',
         },
