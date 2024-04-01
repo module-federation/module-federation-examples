@@ -5,6 +5,7 @@
   "description": "UMD output target for Module Federation",
   "main": "index.js",
   "scripts": {
+    "preinstall": "find . -name \"noexist\" -type d -prune -exec rm -rf '{}' +; pnpm install --ignore-scripts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "pnpm --filter umd-federation_app* --parallel start",
     "e2e:ci": "pnpm start & wait-on http-get://localhost:9001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"

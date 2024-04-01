@@ -6,13 +6,31 @@ const CONFIG = [
   {
     packageName: '@module-federation/node',
     shouldUpdate: true,
-    versionToCheck: '2.0.13',
-    targetVersion: '2.0.13'
+    versionToCheck: '3.0.13',
+    targetVersion: 'latest'
+  },
+  {
+    packageName: '@module-federation/sdk',
+    shouldUpdate: true,
+    versionToCheck: '3.0.13',
+    targetVersion: 'latest'
   },
   {
     packageName: '@module-federation/enhanced',
     shouldUpdate: true, // Assumes no targetVersion needed
-    versionToCheck: "1.0.0",
+    versionToCheck: "2.0.0",
+    targetVersion: "latest",
+  },
+  {
+    packageName: 'webpack',
+    shouldUpdate: true, // Assumes no targetVersion needed
+    versionToCheck: "6.0.0",
+    targetVersion: "latest",
+  },
+  {
+    packageName: 'mini-css-extract-plugin',
+    shouldUpdate: true, // Assumes no targetVersion needed
+    versionToCheck: "9.0.0",
     targetVersion: "latest",
   },
   {
@@ -35,12 +53,12 @@ const CONFIG = [
 
 const versionCache = {};
 
-async function getLatestVersion(packageName) {
+async function getLatestVersion(packageName,targetVersion) {
   if (versionCache[packageName]) {
     return versionCache[packageName];
   }
 
-  const url = `https://registry.npmjs.org/${packageName}/latest`;
+  const url = `https://registry.npmjs.org/${packageName}/${targetVersion}`;
   try {
     const response = await fetch(url);
     const data = await response.json();
@@ -80,8 +98,14 @@ async function checkAndUpdatePackages(nestedDir, packageJson, results) {
     const currentVersion = packageJson.dependencies?.[packageName] || packageJson.devDependencies?.[packageName];
 
     if (targetVersion === 'latest') {
-      targetVersion = await getLatestVersion(packageName);
+      targetVersion = await getLatestVersion(packageName, targetVersion);
       if (!targetVersion) continue; // Skip if failed to fetch latest version
+    }
+    if (targetVersion === 'next') {
+      targetVersion = await getLatestVersion(packageName, targetVersion);
+      if (!targetVersion) continue; // Skip if failed to fetch latest version
+      updateDependencies(packageJson, packageName, targetVersion);
+
     }
 
     if (currentVersion && semver.satisfies(semver.coerce(currentVersion), `<${versionToCheck}`)) {

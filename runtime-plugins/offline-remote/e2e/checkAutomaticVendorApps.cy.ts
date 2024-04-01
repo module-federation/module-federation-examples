@@ -16,8 +16,7 @@ const appsData = [
     appNameText: Constants.commonConstantsData.commonCountAppNames.app1,
     buttonColor: Constants.color.red,
     host: 3001,
-  } i
-    
+  }
 ];
 
 appsData.forEach(
