@@ -18,8 +18,8 @@ importers:
   checkout:
     dependencies:
       '@module-federation/nextjs-mf':
-        specifier: ^0.0.0-next-20240402000503
-        version: 0.0.0-next-20240402000503(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0)
+        specifier: ^0.0.0-next-20240402175026
+        version: 0.0.0-next-20240402175026(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0)
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -38,9 +38,12 @@ importers:
 
   home:
     dependencies:
+      '@module-federation/enhanced':
+        specifier: ^0.0.0-next-20240402175026
+        version: 0.0.0-next-20240402175026(webpack@5.91.0)
       '@module-federation/nextjs-mf':
-        specifier: ^0.0.0-next-20240402000503
-        version: 0.0.0-next-20240402000503(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0)
+        specifier: ^0.0.0-next-20240402175026
+        version: 0.0.0-next-20240402175026(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0)
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -59,15 +62,18 @@ importers:
 
   shop:
     dependencies:
+      '@module-federation/enhanced':
+        specifier: ^0.0.0-next-20240402175026
+        version: 0.0.0-next-20240402175026(webpack@5.91.0)
       '@module-federation/nextjs-mf':
-        specifier: ^0.0.0-next-20240402000503
-        version: 0.0.0-next-20240402000503(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0)
+        specifier: ^0.0.0-next-20240402175026
+        version: 0.0.0-next-20240402175026(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0)
       lodash:
         specifier: 4.17.21
         version: 4.17.21
       next:
-        specifier: ^14.0.3
-        version: 14.0.3(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^14.1.4
+        version: 14.1.4(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -134,38 +140,38 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: false
 
-  /@module-federation/enhanced@0.0.0-next-20240402000503(webpack@5.91.0):
-    resolution: {integrity: sha512-2A0oaQpy26DpN5fgd84Ld/EJhasDJumjtML6oX4+oqpU5qek0vq4MYwgl5yJF/zHPpej0m+Hp3+jyZ69BQ5qgA==}
+  /@module-federation/enhanced@0.0.0-next-20240402175026(webpack@5.91.0):
+    resolution: {integrity: sha512-2QhJ8rQSgcHu8+oEPudlt6wX2OSM6fgg/OPjGNRscK7MIyNqFW7S5remglqq8vIAlDWe8u5Md+ZcGdIRdqSg9w==}
     peerDependencies:
       webpack: ^5.0.0
     dependencies:
-      '@module-federation/managers': 0.0.0-next-20240402000503
-      '@module-federation/manifest': 0.0.0-next-20240402000503
-      '@module-federation/runtime-tools': 0.0.0-next-20240402000503
-      '@module-federation/sdk': 0.0.0-next-20240402000503
+      '@module-federation/managers': 0.0.0-next-20240402175026
+      '@module-federation/manifest': 0.0.0-next-20240402175026
+      '@module-federation/runtime-tools': 0.0.0-next-20240402175026
+      '@module-federation/sdk': 0.0.0-next-20240402175026
       upath: 2.0.1
       webpack: 5.91.0
     dev: false
 
-  /@module-federation/managers@0.0.0-next-20240402000503:
-    resolution: {integrity: sha512-nCdlfdf1HcnW9Ykye762vpmHBUNaRfaFZcm2UI0QPIh4C0/WS4hrmnE6VE6k5uwtHd44o4e2uDz7KIzUc0wmOw==}
+  /@module-federation/managers@0.0.0-next-20240402175026:
+    resolution: {integrity: sha512-L19N85jk5+1BRAw53K+Df2rmqgjQdOFDTE/V+WL8ZU3x8IDzXwcR1fFQk+XYqIJSoi9DV71A1NGbCwRxt12evA==}
     dependencies:
-      '@module-federation/sdk': 0.0.0-next-20240402000503
+      '@module-federation/sdk': 0.0.0-next-20240402175026
       find-pkg: 2.0.0
       fs-extra: 9.1.0
     dev: false
 
-  /@module-federation/manifest@0.0.0-next-20240402000503:
-    resolution: {integrity: sha512-vpl2DgOYxnA4D5EePO+Uo2xe/1t4goU5TM5lWZiG/cI78n9t+p71IpdBgmX1LNte0IMzHFPbxRBTYhsQeCsj7g==}
+  /@module-federation/manifest@0.0.0-next-20240402175026:
+    resolution: {integrity: sha512-ulR946jIlog9asJiprol3OF9lNzbPdhGfOUrfkFF0nkxzM2yzq5EAgonjCaWdFGE826/ljbd+lqdIsDvgqiMjQ==}
     dependencies:
-      '@module-federation/managers': 0.0.0-next-20240402000503
-      '@module-federation/sdk': 0.0.0-next-20240402000503
+      '@module-federation/managers': 0.0.0-next-20240402175026
+      '@module-federation/sdk': 0.0.0-next-20240402175026
       chalk: 3.0.0
       find-pkg: 2.0.0
     dev: false
 
-  /@module-federation/nextjs-mf@0.0.0-next-20240402000503(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0):
-    resolution: {integrity: sha512-31tg9f6TX961VDRdd/9vcVCup41gcGIo+KXgEimVWuk+VrDEL8Qljf1z91rbZfhVcw0Hhu0KQTEVIo2pTLpSUA==}
+  /@module-federation/nextjs-mf@0.0.0-next-20240402175026(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0):
+    resolution: {integrity: sha512-XT/tvBHqJjpPDsdt6PYyNPjSHTh65adTY9mZFo79u/qHC1p7EKZaArJp+Fx3+tbwMVy6dgWO4/4Cm5kQMOvyhw==}
     peerDependencies:
       next: ^12 || ^13 || ^14
       react: ^17 || ^18
@@ -176,10 +182,10 @@ packages:
       styled-jsx:
         optional: true
     dependencies:
-      '@module-federation/enhanced': 0.0.0-next-20240402000503(webpack@5.91.0)
-      '@module-federation/node': 0.0.0-next-20240402000503(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0)
-      '@module-federation/runtime': 0.0.0-next-20240402000503
-      '@module-federation/sdk': 0.0.0-next-20240402000503
+      '@module-federation/enhanced': 0.0.0-next-20240402175026(webpack@5.91.0)
+      '@module-federation/node': 0.0.0-next-20240402175026(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0)
+      '@module-federation/runtime': 0.0.0-next-20240402175026
+      '@module-federation/sdk': 0.0.0-next-20240402175026
       '@module-federation/utilities': 3.0.6(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0)
       '@module-federation/webpack-type': 0.0.1
       eventemitter3: 5.0.1
@@ -191,13 +197,40 @@ packages:
       webpack-sources: 3.2.3
     dev: false
 
-  /@module-federation/node@0.0.0-next-20240402000503(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0):
-    resolution: {integrity: sha512-/FKH0GmrVG2Bu5xrd+Fho0IQJ9lbKNBEJLeoAoKLqiETb8G4MH+fjnkNAFnwXQpGDGAVQZYAyIE+5Dr5deA3rw==}
+  /@module-federation/nextjs-mf@0.0.0-next-20240402175026(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0):
+    resolution: {integrity: sha512-XT/tvBHqJjpPDsdt6PYyNPjSHTh65adTY9mZFo79u/qHC1p7EKZaArJp+Fx3+tbwMVy6dgWO4/4Cm5kQMOvyhw==}
+    peerDependencies:
+      next: ^12 || ^13 || ^14
+      react: ^17 || ^18
+      react-dom: ^17 || ^18
+      styled-jsx: '*'
+      webpack: ^5.40.0
+    peerDependenciesMeta:
+      styled-jsx:
+        optional: true
+    dependencies:
+      '@module-federation/enhanced': 0.0.0-next-20240402175026(webpack@5.91.0)
+      '@module-federation/node': 0.0.0-next-20240402175026(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0)
+      '@module-federation/runtime': 0.0.0-next-20240402175026
+      '@module-federation/sdk': 0.0.0-next-20240402175026
+      '@module-federation/utilities': 3.0.6(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0)
+      '@module-federation/webpack-type': 0.0.1
+      eventemitter3: 5.0.1
+      fast-glob: 3.3.2
+      next: 14.1.4(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      webpack: 5.91.0
+      webpack-sources: 3.2.3
+    dev: false
+
+  /@module-federation/node@0.0.0-next-20240402175026(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0):
+    resolution: {integrity: sha512-67SOLHOqNQeuU7VazEBMdX8KG7Jgk+uK63wRkrqnFU4yfouhnshaZqtSn3SykaONVioONltJ8YN1VcWYl9DS4g==}
     peerDependencies:
       next: ^12||^13
       react: ^16||^17||^18
       react-dom: ^16||^17||^18
-      webpack: ^5.40.0
+      webpack: 5.89.0
     peerDependenciesMeta:
       next:
         optional: true
@@ -206,9 +239,9 @@ packages:
       react-dom:
         optional: true
     dependencies:
-      '@module-federation/enhanced': 0.0.0-next-20240402000503(webpack@5.91.0)
-      '@module-federation/runtime': 0.0.0-next-20240402000503
-      '@module-federation/sdk': 0.0.0-next-20240402000503
+      '@module-federation/enhanced': 0.0.0-next-20240402175026(webpack@5.91.0)
+      '@module-federation/runtime': 0.0.0-next-20240402175026
+      '@module-federation/sdk': 0.0.0-next-20240402175026
       '@module-federation/utilities': 3.0.6(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0)
       encoding: 0.1.13
       next: 14.0.3(react-dom@18.2.0)(react@18.2.0)
@@ -218,21 +251,48 @@ packages:
       webpack: 5.91.0
     dev: false
 
-  /@module-federation/runtime-tools@0.0.0-next-20240402000503:
-    resolution: {integrity: sha512-lmVfYEmVAUuVu6H1ng8Eg2xkW5eVLmn+5/2OQa4eKhnFFVBS7BT1tWf4xTmOLhMZDeqjYNVa8KcLL9B2QFIMEg==}
+  /@module-federation/node@0.0.0-next-20240402175026(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0):
+    resolution: {integrity: sha512-67SOLHOqNQeuU7VazEBMdX8KG7Jgk+uK63wRkrqnFU4yfouhnshaZqtSn3SykaONVioONltJ8YN1VcWYl9DS4g==}
+    peerDependencies:
+      next: ^12||^13
+      react: ^16||^17||^18
+      react-dom: ^16||^17||^18
+      webpack: 5.89.0
+    peerDependenciesMeta:
+      next:
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
-      '@module-federation/runtime': 0.0.0-next-20240402000503
-      '@module-federation/webpack-bundler-runtime': 0.0.0-next-20240402000503
+      '@module-federation/enhanced': 0.0.0-next-20240402175026(webpack@5.91.0)
+      '@module-federation/runtime': 0.0.0-next-20240402175026
+      '@module-federation/sdk': 0.0.0-next-20240402175026
+      '@module-federation/utilities': 3.0.6(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0)
+      encoding: 0.1.13
+      next: 14.1.4(react-dom@18.2.0)(react@18.2.0)
+      node-fetch: 2.7.0(encoding@0.1.13)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      webpack: 5.91.0
     dev: false
 
-  /@module-federation/runtime@0.0.0-next-20240402000503:
-    resolution: {integrity: sha512-KA8waXF5EzH7RrNmgYxwLmnAZ2XmMJyrTEvt/FAjg9tvkyTXhdvUzi3DfkOBvBZyQK7qvL1Y/ma4tLSYxmejcA==}
+  /@module-federation/runtime-tools@0.0.0-next-20240402175026:
+    resolution: {integrity: sha512-EROeiFhV6OCtLs0Tu+/c+i1GoWOCSnnJnQIDhX5qMxYfWnaAwYA1KST0nLS7jtCOyZ/c/We3hTZYajLwKcvdXQ==}
     dependencies:
-      '@module-federation/sdk': 0.0.0-next-20240402000503
+      '@module-federation/runtime': 0.0.0-next-20240402175026
+      '@module-federation/webpack-bundler-runtime': 0.0.0-next-20240402175026
     dev: false
 
-  /@module-federation/sdk@0.0.0-next-20240402000503:
-    resolution: {integrity: sha512-xGPm4PImr/aK8wLPiPx92pk0Wmwzz1SH1DRcGgxTLVRGiWm6g8iN0LJXmI/ouxpy3ZAdZEaFc+ckMYi+b1hbDw==}
+  /@module-federation/runtime@0.0.0-next-20240402175026:
+    resolution: {integrity: sha512-x+iMAap/s4DlU8qoNPgiLsgKKOWVmDUU8U6TA/vbc4nif3sHM1PxXHyGyU+demy+PBdLoWtILjO18zH7X2thXw==}
+    dependencies:
+      '@module-federation/sdk': 0.0.0-next-20240402175026
+    dev: false
+
+  /@module-federation/sdk@0.0.0-next-20240402175026:
+    resolution: {integrity: sha512-2VoC7S8ZFDYy0I2oFlqXdBtSoiZfgCBctpFOE8O2TDx/z/owdI7fMuTrEYxe+HH0Tc7p93c5l7LIL+E5utYPsw==}
     dev: false
 
   /@module-federation/utilities@3.0.6(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0):
@@ -256,11 +316,32 @@ packages:
       webpack: 5.91.0
     dev: false
 
-  /@module-federation/webpack-bundler-runtime@0.0.0-next-20240402000503:
-    resolution: {integrity: sha512-DTr4LrEJR+Ygw54lYc4+lRm7Rpqkwtm/X7Q/klHMVwMdRXRmAiaMJnPZ0OAziyFl3KmkpTO8t4Qk0mgdYF0wcw==}
+  /@module-federation/utilities@3.0.6(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0):
+    resolution: {integrity: sha512-UFSVK/aeSqVLTXhnitHOC1ljWAU5XRTdm3cSyVGtzCJcyd0iSBphO6CvNlTtscQTfuduvyCZjn+MHHGdfOXaqw==}
+    peerDependencies:
+      next: '*'
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+      webpack: ^5.40.0
+    peerDependenciesMeta:
+      next:
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
-      '@module-federation/runtime': 0.0.0-next-20240402000503
-      '@module-federation/sdk': 0.0.0-next-20240402000503
+      next: 14.1.4(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      webpack: 5.91.0
+    dev: false
+
+  /@module-federation/webpack-bundler-runtime@0.0.0-next-20240402175026:
+    resolution: {integrity: sha512-k5ie81J7CFdiTUmK7jAC5DlITb54ap6x7bZy6vlQplOOPeMUcU5bjQgOdOG0lM052PLptMA2uk2BZhYPMxDogQ==}
+    dependencies:
+      '@module-federation/runtime': 0.0.0-next-20240402175026
+      '@module-federation/sdk': 0.0.0-next-20240402175026
     dev: false
 
   /@module-federation/webpack-type@0.0.1:
@@ -271,8 +352,21 @@ packages:
     resolution: {integrity: sha512-7xRqh9nMvP5xrW4/+L0jgRRX+HoNRGnfJpD+5Wq6/13j3dsdzxO3BCXn7D3hMqsDb+vjZnJq+vI7+EtgrYZTeA==}
     dev: false
 
+  /@next/env@14.1.4:
+    resolution: {integrity: sha512-e7X7bbn3Z6DWnDi75UWn+REgAbLEqxI8Tq2pkFOFAMpWAWApz/YCUhtWMWn410h8Q2fYiYL7Yg5OlxMOCfFjJQ==}
+    dev: false
+
   /@next/swc-darwin-arm64@14.0.3:
     resolution: {integrity: sha512-64JbSvi3nbbcEtyitNn2LEDS/hcleAFpHdykpcnrstITFlzFgB/bW0ER5/SJJwUPj+ZPY+z3e+1jAfcczRLVGw==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@next/swc-darwin-arm64@14.1.4:
+    resolution: {integrity: sha512-ubmUkbmW65nIAOmoxT1IROZdmmJMmdYvXIe8211send9ZYJu+SqxSnJM4TrPj9wmL6g9Atvj0S/2cFmMSS99jg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
@@ -289,8 +383,26 @@ packages:
     dev: false
     optional: true
 
+  /@next/swc-darwin-x64@14.1.4:
+    resolution: {integrity: sha512-b0Xo1ELj3u7IkZWAKcJPJEhBop117U78l70nfoQGo4xUSvv0PJSTaV4U9xQBLvZlnjsYkc8RwQN1HoH/oQmLlQ==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: false
+    optional: true
+
   /@next/swc-linux-arm64-gnu@14.0.3:
     resolution: {integrity: sha512-3tBWGgz7M9RKLO6sPWC6c4pAw4geujSwQ7q7Si4d6bo0l6cLs4tmO+lnSwFp1Tm3lxwfMk0SgkJT7EdwYSJvcg==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@next/swc-linux-arm64-gnu@14.1.4:
+    resolution: {integrity: sha512-457G0hcLrdYA/u1O2XkRMsDKId5VKe3uKPvrKVOyuARa6nXrdhJOOYU9hkKKyQTMru1B8qEP78IAhf/1XnVqKA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -307,8 +419,26 @@ packages:
     dev: false
     optional: true
 
+  /@next/swc-linux-arm64-musl@14.1.4:
+    resolution: {integrity: sha512-l/kMG+z6MB+fKA9KdtyprkTQ1ihlJcBh66cf0HvqGP+rXBbOXX0dpJatjZbHeunvEHoBBS69GYQG5ry78JMy3g==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
   /@next/swc-linux-x64-gnu@14.0.3:
     resolution: {integrity: sha512-VM1aE1tJKLBwMGtyBR21yy+STfl0MapMQnNrXkxeyLs0GFv/kZqXS5Jw/TQ3TSUnbv0QPDf/X8sDXuMtSgG6eg==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@next/swc-linux-x64-gnu@14.1.4:
+    resolution: {integrity: sha512-BapIFZ3ZRnvQ1uWbmqEGJuPT9cgLwvKtxhK/L2t4QYO7l+/DxXuIGjvp1x8rvfa/x1FFSsipERZK70pewbtJtw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -325,8 +455,26 @@ packages:
     dev: false
     optional: true
 
+  /@next/swc-linux-x64-musl@14.1.4:
+    resolution: {integrity: sha512-mqVxTwk4XuBl49qn2A5UmzFImoL1iLm0KQQwtdRJRKl21ylQwwGCxJtIYo2rbfkZHoSKlh/YgztY0qH3wG1xIg==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
   /@next/swc-win32-arm64-msvc@14.0.3:
     resolution: {integrity: sha512-WRDp8QrmsL1bbGtsh5GqQ/KWulmrnMBgbnb+59qNTW1kVi1nG/2ndZLkcbs2GX7NpFLlToLRMWSQXmPzQm4tog==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@next/swc-win32-arm64-msvc@14.1.4:
+    resolution: {integrity: sha512-xzxF4ErcumXjO2Pvg/wVGrtr9QQJLk3IyQX1ddAC/fi6/5jZCZ9xpuL9Tzc4KPWMFq8GGWFVDMshZOdHGdkvag==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
@@ -343,8 +491,26 @@ packages:
     dev: false
     optional: true
 
+  /@next/swc-win32-ia32-msvc@14.1.4:
+    resolution: {integrity: sha512-WZiz8OdbkpRw6/IU/lredZWKKZopUMhcI2F+XiMAcPja0uZYdMTZQRoQ0WZcvinn9xZAidimE7tN9W5v9Yyfyw==}
+    engines: {node: '>= 10'}
+    cpu: [ia32]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
   /@next/swc-win32-x64-msvc@14.0.3:
     resolution: {integrity: sha512-ERhKPSJ1vQrPiwrs15Pjz/rvDHZmkmvbf/BjPN/UCOI++ODftT0GtasDPi0j+y6PPJi5HsXw+dpRaXUaw4vjuQ==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@next/swc-win32-x64-msvc@14.1.4:
+    resolution: {integrity: sha512-4Rto21sPfw555sZ/XNLqfxDUNeLhNYGO2dlPqsnuCg8N8a2a9u1ltqBOPQ4vj1Gf7eJC0W2hHG2eYUHuiXgY2w==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -628,6 +794,10 @@ packages:
 
   /caniuse-lite@1.0.30001563:
     resolution: {integrity: sha512-na2WUmOxnwIZtwnFI2CZ/3er0wdNzU7hN+cPYz/z2ajHThnkWjNBOpEPP4n+4r2WPM847JaMotaJE3bnfzjyKw==}
+    dev: false
+
+  /caniuse-lite@1.0.30001603:
+    resolution: {integrity: sha512-iL2iSS0eDILMb9n5yKQoTBim9jMZ0Yrk8g0N9K7UzYyWnfIKzXBZD5ngpM37ZcL/cv0Mli8XtVMRYMQAfFpi5Q==}
     dev: false
 
   /chalk@3.0.0:
@@ -1087,6 +1257,45 @@ packages:
       '@next/swc-win32-arm64-msvc': 14.0.3
       '@next/swc-win32-ia32-msvc': 14.0.3
       '@next/swc-win32-x64-msvc': 14.0.3
+    transitivePeerDependencies:
+      - '@babel/core'
+      - babel-plugin-macros
+    dev: false
+
+  /next@14.1.4(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-1WTaXeSrUwlz/XcnhGTY7+8eiaFvdet5z9u3V2jb+Ek1vFo0VhHKSAIJvDWfQpttWjnyw14kBeq28TPq7bTeEQ==}
+    engines: {node: '>=18.17.0'}
+    hasBin: true
+    peerDependencies:
+      '@opentelemetry/api': ^1.1.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      sass: ^1.3.0
+    peerDependenciesMeta:
+      '@opentelemetry/api':
+        optional: true
+      sass:
+        optional: true
+    dependencies:
+      '@next/env': 14.1.4
+      '@swc/helpers': 0.5.2
+      busboy: 1.6.0
+      caniuse-lite: 1.0.30001603
+      graceful-fs: 4.2.11
+      postcss: 8.4.31
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      styled-jsx: 5.1.1(react@18.2.0)
+    optionalDependencies:
+      '@next/swc-darwin-arm64': 14.1.4
+      '@next/swc-darwin-x64': 14.1.4
+      '@next/swc-linux-arm64-gnu': 14.1.4
+      '@next/swc-linux-arm64-musl': 14.1.4
+      '@next/swc-linux-x64-gnu': 14.1.4
+      '@next/swc-linux-x64-musl': 14.1.4
+      '@next/swc-win32-arm64-msvc': 14.1.4
+      '@next/swc-win32-ia32-msvc': 14.1.4
+      '@next/swc-win32-x64-msvc': 14.1.4
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros

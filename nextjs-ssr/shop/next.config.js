@@ -22,7 +22,6 @@ module.exports = {
         remotes: remotes(options.isServer),
         shared: {},
         extraOptions:{
-          
           exposePages: true
         }
       }),
