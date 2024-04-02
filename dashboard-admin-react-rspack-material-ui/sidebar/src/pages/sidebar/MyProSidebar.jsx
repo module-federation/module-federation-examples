@@ -158,7 +158,7 @@ const MyProSidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Harun Jeylan
+                  Érky Lima
                 </Typography>
               </Box>
             </Box>
