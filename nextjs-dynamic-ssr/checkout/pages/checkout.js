@@ -1,7 +1,6 @@
 import React, {lazy, Suspense} from 'react';
 import Head from 'next/head';
-import dynamic from 'next/dynamic'
-const CC = dynamic(() => import('../components/test'));
+const CC = lazy(() => import('../components/test'));
 const Checkout = props => (
   <div>
     <Head>
@@ -22,23 +21,6 @@ const Checkout = props => (
       <br />
       <pre>{JSON.stringify(props, null, 2)}</pre>
     </div>
-    <style jsx>{`
-      .hero {
-        width: 100%;
-        color: #333;
-      }
-      .title {
-        margin: 0;
-        width: 100%;
-        padding-top: 80px;
-        line-height: 1.15;
-        font-size: 20px;
-      }
-      .title,
-      .description {
-        text-align: center;
-      }
-    `}</style>
   </div>
 );
 Checkout.getInitialProps = async () => {

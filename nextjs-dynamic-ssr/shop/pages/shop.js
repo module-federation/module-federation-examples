@@ -50,9 +50,9 @@ const Shop = props => (
     `}</style>
   </div>
 );
-export const getServerSideProps = async () => {
+Shop.getInitialProps = async () => {
   console.log('loading slow api')
 
-  return {props: {testing: 1234}};
+  return {testing: 1234}
 };
 export default Shop;

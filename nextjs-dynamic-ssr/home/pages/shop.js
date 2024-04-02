@@ -11,11 +11,12 @@ const Shop = (props) => {
   )
 }
 
-export const getServerSideProps = async (ctx) => {
+Shop.getInitialProps = async (ctx)=>{
   const res = await loadRemote('shop/shop')
 
 
-  return res.getServerSideProps(ctx)
+  return res.default.getInitialProps(ctx)
 }
+
 
 export default Shop;

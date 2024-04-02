@@ -15,7 +15,6 @@ module.exports = {
         },
         shared: {},
         extraOptions:{
-
           exposePages: true
         }
       }),
