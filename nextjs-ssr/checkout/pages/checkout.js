@@ -40,7 +40,6 @@ const Checkout = props => (
   </div>
 );
 Checkout.getInitialProps = async () => {
-  const swapi = await Promise.resolve({test:'object'})
-  return swapi;
+  return {test: 123};
 };
 export default Checkout;
