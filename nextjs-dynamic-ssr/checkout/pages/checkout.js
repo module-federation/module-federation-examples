@@ -1,20 +1,47 @@
-import {lazy, Suspense} from 'react'
-import {loadRemote} from '@module-federation/runtime'
+import React, {lazy, Suspense} from 'react';
+import Head from 'next/head';
+import dynamic from 'next/dynamic'
+const CC = dynamic(() => import('../components/test'));
+const Checkout = props => (
+  <div>
+    <Head>
+      <title>checkout</title>
+      <link rel="icon" href="/nextjs-ssr/checkout/public/favicon.ico" />
+    </Head>
 
-const CheckoutPage = lazy(() => loadRemote('checkout/checkout'));
-
-const Checkout = (props) => {
-  return (
-    <Suspense fallback={'loading'}>
-      <CheckoutPage {...props}/>
-    </Suspense>
-  )
-}
-
-Checkout.getInitialProps = async (ctx) => {
-  const res = await loadRemote('checkout/checkout')
-
-  return res.default.getInitialProps(ctx)
-}
-
+    <div className="hero">
+      <h1>checkout page</h1>
+      <Suspense fallback={'loading'}>
+      <CC />
+      </Suspense>
+      <h3 className="title">This is a federated page owned by localhost:3000</h3>
+      <span>
+        {' '}
+        Data from federated <pre>getInitalProps</pre>
+      </span>
+      <br />
+      <pre>{JSON.stringify(props, null, 2)}</pre>
+    </div>
+    <style jsx>{`
+      .hero {
+        width: 100%;
+        color: #333;
+      }
+      .title {
+        margin: 0;
+        width: 100%;
+        padding-top: 80px;
+        line-height: 1.15;
+        font-size: 20px;
+      }
+      .title,
+      .description {
+        text-align: center;
+      }
+    `}</style>
+  </div>
+);
+Checkout.getInitialProps = async () => {
+  return {test: 123};
+};
 export default Checkout;
