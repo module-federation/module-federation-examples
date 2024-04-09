@@ -6,10 +6,13 @@ const moduleFederationPlugin = require('./module-federation');
 
 module.exports = merge(shared, {
   name: 'server',
-  target: false,
+  target: 'node',
   entry: {
     main: ['@babel/polyfill', path.resolve(__dirname, '../src/server/index')],
     serverAppEntrypoint: path.resolve(__dirname, '../src/server/serverAppEntrypoint'),
+  },
+  optimization: {
+    emitOnErrors: true
   },
   externals: ['express'],
   output: {
