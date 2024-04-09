@@ -11,6 +11,7 @@ module.exports = merge(shared, {
     main: ['@babel/polyfill', path.resolve(__dirname, '../src/server/index')],
     serverAppEntrypoint: path.resolve(__dirname, '../src/server/serverAppEntrypoint'),
   },
+  externals: ['express'],
   output: {
     path: path.resolve(__dirname, '../dist/server'),
     filename: '[name].js',
