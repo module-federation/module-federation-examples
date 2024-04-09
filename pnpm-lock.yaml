@@ -36089,14 +36089,6 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /@nrwl/devkit@16.0.0(nx@16.0.0):
-    resolution: {integrity: sha512-ycd4wD4v1N/ywjU1cwTVCPQJwxnGjEsWIll5z5cMtfHwJf+0OhMTqC3zeZibIwnjjoh721pyEzXODyUmjkGmVw==}
-    dependencies:
-      '@nx/devkit': 16.0.0(nx@16.0.0)
-    transitivePeerDependencies:
-      - nx
-    dev: true
-
   /@nrwl/devkit@16.0.0(nx@17.3.2):
     resolution: {integrity: sha512-ycd4wD4v1N/ywjU1cwTVCPQJwxnGjEsWIll5z5cMtfHwJf+0OhMTqC3zeZibIwnjjoh721pyEzXODyUmjkGmVw==}
     dependencies:
@@ -37247,7 +37239,7 @@ packages:
     peerDependencies:
       nx: '>= 15 <= 17'
     dependencies:
-      '@nrwl/devkit': 16.0.0(nx@16.0.0)
+      '@nrwl/devkit': 16.0.0(nx@17.3.2)
       ejs: 3.1.9
       ignore: 5.3.1
       nx: 16.0.0
@@ -66015,6 +66007,8 @@ packages:
     peerDependenciesMeta:
       webpack:
         optional: true
+      webpack-sources:
+        optional: true
     dependencies:
       webpack: 5.89.0(esbuild@0.17.8)(webpack-cli@5.0.1)
       webpack-sources: 3.2.3
@@ -77157,6 +77151,7 @@ packages:
       prop-types: 15.8.1
       react: 16.14.0
       scheduler: 0.19.1
+    bundledDependencies: false
 
   /react-dom@16.6.3(react@16.6.3):
     resolution: {integrity: sha512-8ugJWRCWLGXy+7PmNh8WJz3g1TaTUt1XyoIcFN+x0Zbkoz+KKdUyx1AQLYJdbFXjuF41Nmjn5+j//rxvhFjgSQ==}
@@ -77863,6 +77858,7 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       prop-types: 15.8.1
+    bundledDependencies: false
 
   /react@16.6.3:
     resolution: {integrity: sha512-zCvmH2vbEolgKxtqXL2wmGCUxUyNheYn/C+PD1YAjfxHC54+MhdruyhO7QieQrYsYeTxrn93PM2y0jRH1zEExw==}
