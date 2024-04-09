@@ -22,7 +22,7 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production rspack build --mode production",
-    "legacy:build": "cross-env NODE_ENV=production webpack --mode production",
+    "legacy:build": "cross-env NODE_ENV=production webpack --mode production --stats none",
     "start": "rspack --watch",
     "legacy:start": "webpack",
     "dev": "rspack serve",
@@ -31,9 +31,11 @@
     "clean": "rm -rf dist"
   },
   "devDependencies": {
+    "@rspack/plugin-react-refresh": "^0.5.9",
+    "react-refresh": "^0.14.0",
     "raw-loader": "4.0.2",
-    "@module-federation/enhanced": "^0.0.0-next-20240403002421",
-    "@module-federation/runtime": "^0.0.0-next-20240403002421",
-    "@module-federation/sdk": "^0.0.0-next-20240403002421"
+    "@module-federation/enhanced": "^0.0.0-next-20240409025309",
+    "@module-federation/runtime": "^0.0.0-next-20240409025309",
+    "@module-federation/sdk": "^0.0.0-next-20240409025309"
   }
 }

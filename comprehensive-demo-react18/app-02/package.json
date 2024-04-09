@@ -6,7 +6,7 @@
   "dependencies": {
     "@babel/core": "^7.23.2",
     "@babel/preset-react": "^7.22.15",
-    "@module-federation/enhanced": "^0.0.0-next-20240403002421",
+    "@module-federation/enhanced": "^0.0.0-next-20240409025309",
     "@material-ui/core": "^4.12.4",
     "babel-loader": "^9.1.3",
     "html-webpack-plugin": "^5.6.0",
@@ -20,9 +20,13 @@
     "@rspack/cli": "^0.5.0",
     "@rspack/dev-server": "^0.5.0"
   },
+  "devDependencies": {
+    "@rspack/plugin-react-refresh": "^0.5.9",
+    "react-refresh": "^0.14.0"
+  },
   "scripts": {
     "build": "cross-env NODE_ENV=production rspack build --mode production",
-    "legacy:build": "cross-env NODE_ENV=production webpack --mode production",
+    "legacy:build": "cross-env NODE_ENV=production webpack --mode production --stats none",
     "start": "rspack cross-env NODE_ENV=production --watch",
     "legacy:start": "webpack --watch",
     "dev": "rspack serve",

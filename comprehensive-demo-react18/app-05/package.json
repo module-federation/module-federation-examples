@@ -5,7 +5,7 @@
   "ignored": true,
   "scripts": {
     "build": "cross-env NODE_ENV=production rspack build --mode production",
-    "legacy:build": "cross-env NODE_ENV=production webpack --mode production",
+    "legacy:build": "cross-env NODE_ENV=production webpack --mode production --stats none",
     "start": "rspack serve",
     "legacy:start": "webpack --watch",
     "dev": "rspack serve",
@@ -16,7 +16,7 @@
   "devDependencies": {
     "cross-env": "7.0.3",
     "lit-element": "2.5.1",
-    "@module-federation/enhanced": "^0.0.0-next-20240403002421",
+    "@module-federation/enhanced": "^0.0.0-next-20240409025309",
     "ts-loader": "5.4.5",
     "typescript": "4.3.5",
     "html-webpack-plugin": "5.6.0",

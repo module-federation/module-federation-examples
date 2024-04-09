@@ -1,5 +1,5 @@
 const {
-  container: { ModuleFederationPlugin },
+  container: {ModuleFederationPlugin},
   HtmlRspackPlugin,
 } = require('@rspack/core');
 
@@ -8,15 +8,29 @@ module.exports = {
 
   mode: 'development',
   devtool: 'source-map',
-
+  experiments: {
+    rspackFuture: {
+      disableTransformByDefault: true,
+    },
+  },
   optimization: {
     minimize: false,
+  },
+  devServer: {
+    port: 3003,
+    hot: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+    }
   },
   resolve: {
     extensions: ['.jsx', '.js', '.json', '.mjs'],
   },
   output: {
     publicPath: 'auto',
+    uniqueName: 'app3'
   },
 
   module: {
@@ -30,6 +44,12 @@ module.exports = {
               parser: {
                 syntax: 'ecmascript',
                 jsx: true,
+              },
+              transform: {
+                react: {
+                  development: true,
+                  refresh: true,
+                },
               },
             },
           },

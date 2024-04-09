@@ -3,6 +3,7 @@ const {
   HtmlRspackPlugin,
 } = require('@rspack/core');
 const deps = require('./package.json').dependencies;
+const ReactRefreshWebpackPlugin = require('@rspack/plugin-react-refresh');
 
 module.exports = {
   entry: './src/index',
@@ -15,9 +16,18 @@ module.exports = {
   optimization: {
     minimize: false,
   },
-
+  devServer: {
+    port: 3002,
+    hot: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+    }
+  },
   output: {
     publicPath: 'auto',
+    uniqueName: 'app2'
   },
 
   module: {
@@ -32,12 +42,24 @@ module.exports = {
                 syntax: 'ecmascript',
                 jsx: true,
               },
+              transform: {
+                react: {
+                  development: true,
+                  refresh: true,
+                },
+              },
             },
           },
         },
         exclude: /node_modules/,
       },
     ],
+  },
+  experiments: {
+    css: true,
+    rspackFuture: {
+      disableTransformByDefault: true,
+    },
   },
 
   plugins: [
@@ -72,5 +94,6 @@ module.exports = {
       template: './public/index.html',
       chunks: ['main'],
     }),
+    new ReactRefreshWebpackPlugin()
   ],
 };

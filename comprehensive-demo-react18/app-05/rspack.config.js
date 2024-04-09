@@ -5,7 +5,21 @@ const {
 const mode = process.env.NODE_ENV || 'development';
 
 module.exports = {
+  experiments: {
+    rspackFuture: {
+      disableTransformByDefault: true,
+    },
+  },
   entry: './src/index.ts',
+  devServer: {
+    port: 3005,
+    hot: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+    }
+  },
   module: {
     rules: [
       {
@@ -24,6 +38,8 @@ module.exports = {
                 transform: {
                   react: {
                     runtime: 'automatic',
+                    development: true,
+                    refresh: true,
                   },
                 },
               },
@@ -60,6 +76,7 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: '[name].[id].js',
     publicPath: 'auto',
+    uniqueName: 'app5'
   },
   mode,
   plugins: [
