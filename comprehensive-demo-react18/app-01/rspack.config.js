@@ -98,6 +98,6 @@ module.exports = {
       template: './public/index.html',
     }),
     new ReactRefreshWebpackPlugin(),
-    new RsdoctorRspackPlugin()
+    // new RsdoctorRspackPlugin()
   ],
 };
