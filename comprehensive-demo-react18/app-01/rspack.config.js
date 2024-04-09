@@ -6,7 +6,7 @@ const { RsdoctorRspackPlugin } = require('@rsdoctor/rspack-plugin');
 const ReactRefreshWebpackPlugin = require('@rspack/plugin-react-refresh');
 
 const deps = require('./package.json').dependencies;
-
+const isProd = process.env.NODE_ENV === 'production'
 module.exports = {
   entry: './src/index',
 
@@ -40,8 +40,8 @@ module.exports = {
               },
               transform: {
                 react: {
-                  development: true,
-                  refresh: true,
+                  development: !isProd,
+                  refresh: !isProd,
                 },
               },
             },
@@ -97,7 +97,7 @@ module.exports = {
     new HtmlRspackPlugin({
       template: './public/index.html',
     }),
-    new ReactRefreshWebpackPlugin(),
+    isProd ? new ReactRefreshWebpackPlugin() : undefined,
     // new RsdoctorRspackPlugin()
   ],
 };

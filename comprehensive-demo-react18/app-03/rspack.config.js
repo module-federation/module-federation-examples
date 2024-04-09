@@ -2,17 +2,13 @@ const {
   container: {ModuleFederationPlugin},
   HtmlRspackPlugin,
 } = require('@rspack/core');
+const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   entry: './src/index',
 
   mode: 'development',
   devtool: 'source-map',
-  experiments: {
-    rspackFuture: {
-      disableTransformByDefault: true,
-    },
-  },
   optimization: {
     minimize: false,
   },
@@ -47,8 +43,8 @@ module.exports = {
               },
               transform: {
                 react: {
-                  development: true,
-                  refresh: true,
+                  development: !isProd,
+                  refresh: !isProd,
                 },
               },
             },

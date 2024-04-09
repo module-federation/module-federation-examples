@@ -3,13 +3,9 @@ const {
   container: { ModuleFederationPlugin },
 } = require('@rspack/core');
 const mode = process.env.NODE_ENV || 'development';
+const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
-  experiments: {
-    rspackFuture: {
-      disableTransformByDefault: true,
-    },
-  },
   entry: './src/index.ts',
   devServer: {
     port: 3005,
@@ -38,8 +34,8 @@ module.exports = {
                 transform: {
                   react: {
                     runtime: 'automatic',
-                    development: true,
-                    refresh: true,
+                    development: !isProd,
+                    refresh: !isProd,
                   },
                 },
               },

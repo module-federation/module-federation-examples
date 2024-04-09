@@ -4,6 +4,7 @@ const {
 } = require('@rspack/core');
 const deps = require('./package.json').dependencies;
 const ReactRefreshWebpackPlugin = require('@rspack/plugin-react-refresh');
+const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   entry: './src/index',
@@ -44,8 +45,8 @@ module.exports = {
               },
               transform: {
                 react: {
-                  development: true,
-                  refresh: true,
+                  development: !isProd,
+                  refresh: !isProd,
                 },
               },
             },

@@ -59,9 +59,6 @@ module.exports = {
   ],
   devtool: prod ? false : 'source-map',
   experiments: {
-    css: true,
-    rspackFuture: {
-      disableTransformByDefault: true,
-    },
+    css: true
   },
 };
