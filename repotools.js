@@ -19,7 +19,7 @@ const CONFIG = [
     packageName: '@module-federation/enhanced',
     shouldUpdate: true, // Assumes no targetVersion needed
     versionToCheck: "2.0.0",
-    targetVersion: "next",
+    targetVersion: "latest",
   },
   {
     packageName: 'webpack',
