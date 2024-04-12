@@ -14,6 +14,7 @@ module.exports = {
       new NextFederationPlugin({
         name: 'shop',
         filename: 'static/chunks/remoteEntry.js',
+        dts:false,
         exposes: {
           './shop': './pages/shop.js',
           './pdp': './pages/p/[...slug].js',

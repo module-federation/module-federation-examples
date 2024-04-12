@@ -14,6 +14,7 @@ module.exports = {
       new NextFederationPlugin({
         name: 'home',
         filename: 'static/chunks/remoteEntry.js',
+        dts:false,
         exposes: {
           './nav': './components/nav.js',
           './home': './pages/index.js',
@@ -22,7 +23,7 @@ module.exports = {
         remotes: remotes(options.isServer),
         shared: {},
         extraOptions:{
-          
+
           exposePages: true
         }
       }),
