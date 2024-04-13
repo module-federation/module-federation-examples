@@ -5,7 +5,7 @@
   "version": "0.0.0",
   "scripts": {
     "preinstall": "find . -name \"noexist\" -type d -prune -exec rm -rf '{}' +; pnpm install --ignore-scripts",
-    "start": "pnpm --filter cra-react-app-rewired_* --parallel start",
+    "start": "pnpm build && pnpm serve",
     "build": "pnpm --filter cra-react-app-rewired_* --parallel build",
     "serve": "pnpm --filter cra-react-app-rewired_* --parallel serve",
     "clean": "pnpm --filter cra-react-app-rewired_* --parallel clean",
