@@ -9,6 +9,7 @@
     "legacy:build": "time pnpm --filter comprehensive-demo-react18_app* legacy:build",
     "serve": "pnpm --filter comprehensive-demo-react18_app* --parallel serve",
     "dev": "pnpm --filter comprehensive-demo-react18_app* --parallel dev",
+    "legacy:dev": "pnpm --filter comprehensive-demo-react18_app* --parallel legacy:dev",
     "clean": "pnpm --filter comprehensive-demo-react18_app* --parallel clean",
     "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
     "legacy:e2e:ci": "pnpm legacy:start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
