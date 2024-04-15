@@ -2,7 +2,7 @@
  * This is not a production server yet!
  * This is only a minimal backend to get started.
  */
-
+console.log(__webpack_require__)
 import express from 'express';
 import * as path from 'path';
 
