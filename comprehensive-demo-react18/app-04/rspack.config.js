@@ -1,5 +1,5 @@
 const {
-  container: { ModuleFederationPlugin },
+  container: {ModuleFederationPlugin},
 } = require('@rspack/core');
 const path = require('path');
 
@@ -20,6 +20,16 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: '[name].[id].js',
     publicPath: 'auto',
+    uniqueName: 'app4'
+  },
+  devServer: {
+    port: 3004,
+    hot: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+    }
   },
   module: {
     rules: [
@@ -49,6 +59,6 @@ module.exports = {
   ],
   devtool: prod ? false : 'source-map',
   experiments: {
-    css: true,
+    css: true
   },
 };

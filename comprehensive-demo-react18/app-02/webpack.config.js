@@ -1,6 +1,11 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const deps = require('./package.json').dependencies;
+
+const isProd = process.env.NODE_ENV === 'production';
+const isDevelopment = !isProd;
+
 module.exports = {
   entry: './src/index',
   cache: false,
@@ -12,8 +17,18 @@ module.exports = {
     minimize: false,
   },
 
+  devServer: {
+    port: 3002,
+    hot: !isProd,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+    }
+  },
   output: {
     publicPath: 'auto',
+    uniqueName: 'app2'
   },
 
   resolve: {
@@ -31,16 +46,22 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        loader: require.resolve('babel-loader'),
         exclude: /node_modules/,
-        options: {
-          presets: [require.resolve('@babel/preset-react')],
-        },
+        use: [
+          {
+            loader: require.resolve('babel-loader'),
+            options: {
+              presets: [require.resolve('@babel/preset-react')],
+              plugins: [isDevelopment && require.resolve('react-refresh/babel')].filter(Boolean),
+            },
+          },
+        ],
       },
     ],
   },
 
   plugins: [
+    !isProd && new ReactRefreshWebpackPlugin(),
     new ModuleFederationPlugin({
       name: 'app_02',
       filename: 'remoteEntry.js',
@@ -72,5 +93,6 @@ module.exports = {
       template: './public/index.html',
       chunks: ['main'],
     }),
-  ],
+  ].filter(Boolean),
 };
+

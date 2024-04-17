@@ -1,4 +1,5 @@
 import appTools, { defineConfig } from '@modern-js/app-tools';
+import {ModuleFederationPlugin} from "@module-federation/enhanced"
 
 // https://modernjs.dev/en/configure/app/usage
 export default defineConfig({
@@ -22,7 +23,7 @@ export default defineConfig({
       config.output.publicPath = 'auto';
 
       appendPlugins([
-        new webpack.container.ModuleFederationPlugin({
+        new ModuleFederationPlugin({
           name: 'app1',
           remotes: {
             app2: 'app2@http://localhost:3002/static/js/remoteEntry.js',

@@ -35,6 +35,7 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: '[name].[id].js',
     publicPath: 'auto',
+    uniqueName: 'app5'
   },
   mode,
   plugins: [

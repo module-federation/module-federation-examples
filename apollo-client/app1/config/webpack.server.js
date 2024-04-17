@@ -15,6 +15,7 @@ const webpackConfig = {
     filename: '[name].js',
     libraryTarget: 'commonjs-module',
   },
+  externals: ['express'],
   mode: 'production',
   plugins: [...moduleFederationPlugin.server],
   stats: {
