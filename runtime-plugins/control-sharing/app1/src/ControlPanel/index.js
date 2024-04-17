@@ -76,7 +76,6 @@ const RenderInstances = () => {
       <div style={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'space-between' }}>
         {instances &&
           instances.map(({ name, shared }, index) => {
-            console.log(shared);
             return (
               <form
                 key={index}
