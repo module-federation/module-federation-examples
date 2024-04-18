@@ -18,8 +18,8 @@ importers:
   checkout:
     dependencies:
       '@module-federation/nextjs-mf':
-        specifier: ^0.0.0-next-20240417205114
-        version: 0.0.0-next-20240417205114(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
+        specifier: ^8.3.8
+        version: 8.3.8(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -39,11 +39,11 @@ importers:
   home:
     dependencies:
       '@module-federation/enhanced':
-        specifier: ^0.0.0-next-20240417205114
-        version: 0.0.0-next-20240417205114(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
+        specifier: ^0.1.7
+        version: 0.1.7(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
       '@module-federation/nextjs-mf':
-        specifier: ^0.0.0-next-20240417205114
-        version: 0.0.0-next-20240417205114(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
+        specifier: ^8.3.8
+        version: 8.3.8(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -63,11 +63,11 @@ importers:
   shop:
     dependencies:
       '@module-federation/enhanced':
-        specifier: ^0.0.0-next-20240417205114
-        version: 0.0.0-next-20240417205114(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
+        specifier: ^0.1.7
+        version: 0.1.7(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
       '@module-federation/nextjs-mf':
-        specifier: ^0.0.0-next-20240417205114
-        version: 0.0.0-next-20240417205114(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
+        specifier: ^8.3.8
+        version: 8.3.8(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -167,15 +167,15 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: false
 
-  /@module-federation/dts-plugin@0.0.0-next-20240417205114(typescript@5.4.3)(vue-tsc@1.8.27):
-    resolution: {integrity: sha512-yHgiElpUx26wV3tYYIj/hbc0WLMh4sx+zmmkZnfpLdksbnPyki+MLqH6eUM5UaRXOq7lmBWyFLVJiSfpaRgrTA==}
+  /@module-federation/dts-plugin@0.1.7(typescript@5.4.3)(vue-tsc@1.8.27):
+    resolution: {integrity: sha512-mQzpVxIRJLD6js88aPlgF0d1evqbBbNhesYoGUsZxHnRhkvhS0tA58xsJo8oBmnzh3gUhUha0QvFlA3zlMfCkQ==}
     peerDependencies:
       typescript: ^4.9.0 || ^5.0.0
       vue-tsc: ^1.0.24
     dependencies:
-      '@module-federation/managers': 0.0.0-next-20240417205114
-      '@module-federation/sdk': 0.0.0-next-20240417205114
-      '@module-federation/third-party-dts-extractor': 0.0.0-next-20240417205114
+      '@module-federation/managers': 0.1.7
+      '@module-federation/sdk': 0.1.7
+      '@module-federation/third-party-dts-extractor': 0.1.7
       adm-zip: 0.5.12
       ansi-colors: 4.1.3
       axios: 1.6.8
@@ -197,17 +197,17 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@module-federation/enhanced@0.0.0-next-20240417205114(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0):
-    resolution: {integrity: sha512-7vsPXDW51JDGPZZuNk/3w5lfOdz/YwEsImY2mtib9nChWZ34j1I7vclxqtCMx3m3p0D1HRJ26Xg99geLM93iDA==}
+  /@module-federation/enhanced@0.1.7(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0):
+    resolution: {integrity: sha512-llBFqd+WzQJfgle3YqScjGPgmY5yLQlKSro3mdBf5o8jDvNhV6nMznAlkYy4795btavWP+N6nBXTLNj4XHdy3g==}
     peerDependencies:
       webpack: ^5.0.0
     dependencies:
-      '@module-federation/dts-plugin': 0.0.0-next-20240417205114(typescript@5.4.3)(vue-tsc@1.8.27)
-      '@module-federation/managers': 0.0.0-next-20240417205114
-      '@module-federation/manifest': 0.0.0-next-20240417205114(typescript@5.4.3)(vue-tsc@1.8.27)
-      '@module-federation/rspack': 0.0.0-next-20240417205114(typescript@5.4.3)(vue-tsc@1.8.27)
-      '@module-federation/runtime-tools': 0.0.0-next-20240417205114
-      '@module-federation/sdk': 0.0.0-next-20240417205114
+      '@module-federation/dts-plugin': 0.1.7(typescript@5.4.3)(vue-tsc@1.8.27)
+      '@module-federation/managers': 0.1.7
+      '@module-federation/manifest': 0.1.7(typescript@5.4.3)(vue-tsc@1.8.27)
+      '@module-federation/rspack': 0.1.7(typescript@5.4.3)(vue-tsc@1.8.27)
+      '@module-federation/runtime-tools': 0.1.7
+      '@module-federation/sdk': 0.1.7
       upath: 2.0.1
       webpack: 5.91.0
     transitivePeerDependencies:
@@ -219,20 +219,20 @@ packages:
       - vue-tsc
     dev: false
 
-  /@module-federation/managers@0.0.0-next-20240417205114:
-    resolution: {integrity: sha512-EeQ2Nufb7hgLZVpKnlOzb7T3bLGu94G/2BmX+CoVpvlpuyhuV34J0rgdZHIU/k4Y8ooZeubmDOz9c9mUILKRaA==}
+  /@module-federation/managers@0.1.7:
+    resolution: {integrity: sha512-n7kxLPLf4oGceH5VDQFKuGc33uPx0SlELjEacU26eYouOf8dDCVG6Ou7fM/bfpwZHNYqVf09SBEMdO0d+FDt4A==}
     dependencies:
-      '@module-federation/sdk': 0.0.0-next-20240417205114
+      '@module-federation/sdk': 0.1.7
       find-pkg: 2.0.0
       fs-extra: 9.1.0
     dev: false
 
-  /@module-federation/manifest@0.0.0-next-20240417205114(typescript@5.4.3)(vue-tsc@1.8.27):
-    resolution: {integrity: sha512-xjVv/NIF7XLpnC4DoPpXY8YOuOBZNPGp/7uuYkgkcilpEfZBpWCgJCHDJ2wqavFWAlkgSgtVdPs5JThT8nmFBQ==}
+  /@module-federation/manifest@0.1.7(typescript@5.4.3)(vue-tsc@1.8.27):
+    resolution: {integrity: sha512-9P4tJGB+T0lZxYKGmltETYfwKT2NJpJbUt1glcUmuy1G1JWrKdp9hxQz/o7Lv5a54qCy52bLeu4si1dq77LQOQ==}
     dependencies:
-      '@module-federation/dts-plugin': 0.0.0-next-20240417205114(typescript@5.4.3)(vue-tsc@1.8.27)
-      '@module-federation/managers': 0.0.0-next-20240417205114
-      '@module-federation/sdk': 0.0.0-next-20240417205114
+      '@module-federation/dts-plugin': 0.1.7(typescript@5.4.3)(vue-tsc@1.8.27)
+      '@module-federation/managers': 0.1.7
+      '@module-federation/sdk': 0.1.7
       chalk: 3.0.0
       find-pkg: 2.0.0
     transitivePeerDependencies:
@@ -244,8 +244,8 @@ packages:
       - vue-tsc
     dev: false
 
-  /@module-federation/nextjs-mf@0.0.0-next-20240417205114(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0):
-    resolution: {integrity: sha512-g2S2SgjvgerePq7I3TOKRU8qeWlOge6KWILVCyseX29taWAnWwuSFHjE7OMOPxTB3IAAbMwZkCmiS/AcV7JvjA==}
+  /@module-federation/nextjs-mf@8.3.8(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0):
+    resolution: {integrity: sha512-qFgerEXQbAd05eIDx8jrcmqkgOX3BmsHXBf9tg+tKQpHnN0wC02kg67/tzyTPnaOC64V0V0xbKaDi4Oo4ZnZEQ==}
     peerDependencies:
       next: ^12 || ^13 || ^14
       react: ^17 || ^18
@@ -256,11 +256,11 @@ packages:
       styled-jsx:
         optional: true
     dependencies:
-      '@module-federation/enhanced': 0.0.0-next-20240417205114(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
-      '@module-federation/node': 0.0.0-next-20240417205114(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
-      '@module-federation/runtime': 0.0.0-next-20240417205114
-      '@module-federation/sdk': 0.0.0-next-20240417205114
-      '@module-federation/utilities': 0.0.0-next-20240417205114(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0)
+      '@module-federation/enhanced': 0.1.7(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
+      '@module-federation/node': 2.1.7(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
+      '@module-federation/runtime': 0.1.7
+      '@module-federation/sdk': 0.1.7
+      '@module-federation/utilities': 3.0.12(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0)
       '@module-federation/webpack-type': 0.0.1
       eventemitter3: 5.0.1
       fast-glob: 3.3.2
@@ -278,8 +278,8 @@ packages:
       - vue-tsc
     dev: false
 
-  /@module-federation/node@0.0.0-next-20240417205114(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0):
-    resolution: {integrity: sha512-z1MF2UvlVbF8UMeRY6Xpct/FzUshlDYV8WX3Ao7M0V8T0/givFg8QwHP+5Upobj/d0xss2/C7njG+VKYKhz3GQ==}
+  /@module-federation/node@2.1.7(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0):
+    resolution: {integrity: sha512-KXjP7RgVNMU6Elg6k/DduuuWPYkeIl3Cqklf/+HPL+xjI+m/LS25V+cL6nodTngpKdQBlatN+roCdqjMxPowiQ==}
     peerDependencies:
       next: ^12||^13
       react: ^16||^17||^18
@@ -293,10 +293,10 @@ packages:
       react-dom:
         optional: true
     dependencies:
-      '@module-federation/enhanced': 0.0.0-next-20240417205114(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
-      '@module-federation/runtime': 0.0.0-next-20240417205114
-      '@module-federation/sdk': 0.0.0-next-20240417205114
-      '@module-federation/utilities': 0.0.0-next-20240417205114(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0)
+      '@module-federation/enhanced': 0.1.7(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
+      '@module-federation/runtime': 0.1.7
+      '@module-federation/sdk': 0.1.7
+      '@module-federation/utilities': 3.0.12(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0)
       encoding: 0.1.13
       next: 14.1.4(react-dom@18.2.0)(react@18.2.0)
       node-fetch: 2.7.0(encoding@0.1.13)
@@ -312,14 +312,14 @@ packages:
       - vue-tsc
     dev: false
 
-  /@module-federation/rspack@0.0.0-next-20240417205114(typescript@5.4.3)(vue-tsc@1.8.27):
-    resolution: {integrity: sha512-bdXC16RNRpZRMT0lIU9Igo4v5R1ap3R59U0cya5vDB6boAX52nPJ7A7OwcCqA+/d9WqWR+6Ny5AwX2Qp/cjwxw==}
+  /@module-federation/rspack@0.1.7(typescript@5.4.3)(vue-tsc@1.8.27):
+    resolution: {integrity: sha512-/5vbHpD9qut/jwsgrcn4U77ZN03ji4vkQFySP+OA0sa4hHkLC3pXwJq+g6RfBsf7RDEDUfLQh6CfmVN9rtuuHw==}
     dependencies:
-      '@module-federation/dts-plugin': 0.0.0-next-20240417205114(typescript@5.4.3)(vue-tsc@1.8.27)
-      '@module-federation/managers': 0.0.0-next-20240417205114
-      '@module-federation/manifest': 0.0.0-next-20240417205114(typescript@5.4.3)(vue-tsc@1.8.27)
-      '@module-federation/runtime-tools': 0.0.0-next-20240417205114
-      '@module-federation/sdk': 0.0.0-next-20240417205114
+      '@module-federation/dts-plugin': 0.1.7(typescript@5.4.3)(vue-tsc@1.8.27)
+      '@module-federation/managers': 0.1.7
+      '@module-federation/manifest': 0.1.7(typescript@5.4.3)(vue-tsc@1.8.27)
+      '@module-federation/runtime-tools': 0.1.7
+      '@module-federation/sdk': 0.1.7
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -329,33 +329,33 @@ packages:
       - vue-tsc
     dev: false
 
-  /@module-federation/runtime-tools@0.0.0-next-20240417205114:
-    resolution: {integrity: sha512-3QZbw36ufzqABfGraXMAlF8e/WDVEkT8iVRXVV5DkD2ZL4KbIU1jZ+hVxl48JNc0LzunhY29f9WCl0tzRUwI2g==}
+  /@module-federation/runtime-tools@0.1.7:
+    resolution: {integrity: sha512-YZuAHXHa77Ao4esgqnttQ+jxtQkrX282JOahm0NMYEM1ATAIBgTDX4uJy5JqtF8zuqOo5kJdcT/njcO4l3FfSg==}
     dependencies:
-      '@module-federation/runtime': 0.0.0-next-20240417205114
-      '@module-federation/webpack-bundler-runtime': 0.0.0-next-20240417205114
+      '@module-federation/runtime': 0.1.7
+      '@module-federation/webpack-bundler-runtime': 0.1.7
     dev: false
 
-  /@module-federation/runtime@0.0.0-next-20240417205114:
-    resolution: {integrity: sha512-84fxiWi65hMOju5fJWuUfOP8b0hIQJ0nIGvzmlg5INqSpF46/AzVgCVYjP5QddeJf0fyoXMZTP9Etvhv+YemVQ==}
+  /@module-federation/runtime@0.1.7:
+    resolution: {integrity: sha512-ZYlKfi+xPRHAxaCmvLd9qMZNNxgviARGGE6Xq8ZC7JCvSQXTKVhweH8tLU5J+dlFQnGZqnzsWTU2JIICl+trbw==}
     dependencies:
-      '@module-federation/sdk': 0.0.0-next-20240417205114
+      '@module-federation/sdk': 0.1.7
     dev: false
 
-  /@module-federation/sdk@0.0.0-next-20240417205114:
-    resolution: {integrity: sha512-vw8r8hQcr4ZE0/hvbmIMutbJ3GFMmUARC3poBkMEm5fAl4QvGa/UBx6zP9gQa6yRx6lYXtRE1TBlvqJYTiYZ0A==}
+  /@module-federation/sdk@0.1.7:
+    resolution: {integrity: sha512-L5LHLdeoFLNZwHdSo8St6MaejvcHwp9T/ggg9kh28GIauIi6URJdOJ4PLN7lhgCdp3TMx/8DzgBJupsg3j/f+Q==}
     dev: false
 
-  /@module-federation/third-party-dts-extractor@0.0.0-next-20240417205114:
-    resolution: {integrity: sha512-25OKaO7BUK5+D823I9m6oPIBJIGl4DNTXfDEriy7oacx58699S+2ek+zQEhuoS9UK/HjjIjJ2+TQR2TeMPF+7g==}
+  /@module-federation/third-party-dts-extractor@0.1.7:
+    resolution: {integrity: sha512-oeia/WqY3WwlwuOymoTI9aNwlaONE1yyJGi6TuvePrqZpDzRJJ2OYGCQxYbeB6GSVEKoL0cqMyJGgMfZRAeBvw==}
     dependencies:
       find-pkg: 2.0.0
       fs-extra: 9.1.0
       resolve: 1.22.8
     dev: false
 
-  /@module-federation/utilities@0.0.0-next-20240417205114(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0):
-    resolution: {integrity: sha512-/gVq8zoHGRAoKDdntEZ8HP5nDRVgmicLNEJ7nvFWE0qByJ69kjnVhujJwsbW10JFSppmz4Z4P+qWKhZDXEph3g==}
+  /@module-federation/utilities@3.0.12(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(webpack@5.91.0):
+    resolution: {integrity: sha512-H85putdCdesqUg4kNcgHqqTbeMxDY5ohTdHhuqPscETekkE8og0MLRy2HjMkdjLxMOLofg3RPwuvvcAxNLcnHg==}
     peerDependencies:
       next: '*'
       react: ^16 || ^17 || ^18
@@ -369,18 +369,18 @@ packages:
       react-dom:
         optional: true
     dependencies:
-      '@module-federation/sdk': 0.0.0-next-20240417205114
+      '@module-federation/sdk': 0.1.7
       next: 14.1.4(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       webpack: 5.91.0
     dev: false
 
-  /@module-federation/webpack-bundler-runtime@0.0.0-next-20240417205114:
-    resolution: {integrity: sha512-9rUpDGbpzAGWAUwixp7R43GTcCjivoAeoCVB5NhkYwDgnenLyAmTWKh8x9huuCNA7PniEfMU3H0oEXy6Cdb7eA==}
+  /@module-federation/webpack-bundler-runtime@0.1.7:
+    resolution: {integrity: sha512-Juds4LDvszkKX94+oOkUubVkhZZiWMMfwkj0RO9/NBpD0o/mkBnbXZz0P0PDh9j3DNXL7cbjNDgM0OyxfNZ2QA==}
     dependencies:
-      '@module-federation/runtime': 0.0.0-next-20240417205114
-      '@module-federation/sdk': 0.0.0-next-20240417205114
+      '@module-federation/runtime': 0.1.7
+      '@module-federation/sdk': 0.1.7
     dev: false
 
   /@module-federation/webpack-type@0.0.1:
