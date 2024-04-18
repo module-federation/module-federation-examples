@@ -7,9 +7,10 @@
     "build": "pnpm --filter loadable-react-18_* build",
     "serve": "pnpm --filter loadable-react-18_* --parallel serve",
     "clean": "pnpm --filter loadable-react-18_* --parallel clean",
-    "e2e:ci": "pnpm start & sleep 20 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome && lsof -ti tcp:3000,3001,3002 | xargs kill"
+    "e2e:ci": "pnpm start & wait-on tcp:3000 && wait-on tcp:3001 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome && kill-port 3000 3001 3002"
   },
   "devDependencies": {
-    "wait-on": "7.2.0"
+    "wait-on": "7.2.0",
+    "kill-port": "^2.0.1"
   }
 }

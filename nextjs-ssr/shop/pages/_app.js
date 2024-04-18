@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Suspense fallback={'loading'}>
-      <Nav />
+        <Nav />
       </Suspense>
       <Component {...pageProps} />
     </>

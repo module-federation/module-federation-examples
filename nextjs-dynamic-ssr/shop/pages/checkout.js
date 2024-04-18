@@ -2,7 +2,7 @@ import {lazy, Suspense} from 'react'
 import {loadRemote} from '@module-federation/runtime'
 
 const CheckoutPage = lazy(() => loadRemote('checkout/checkout'));
-
+loadRemote('checkout/checkout').then(console.log)
 const Checkout = (props) => {
   return (
     <Suspense fallback={'loading'}>

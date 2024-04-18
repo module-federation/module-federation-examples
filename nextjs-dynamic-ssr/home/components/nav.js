@@ -1,6 +1,5 @@
 import React, {Suspense,lazy} from 'react';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
 
 export const HelloWorld = lazy(() => import('./helloWorld').then(mod => {
   return {default: mod.HelloWorld}
@@ -15,8 +14,8 @@ const links = [
 
 const Nav = () => (
   <nav>
-    <Suspense>
-    <HelloWorld />
+    <Suspense fallback={'loading'}>
+      <HelloWorld />
     </Suspense>
     <ul>
       <li>

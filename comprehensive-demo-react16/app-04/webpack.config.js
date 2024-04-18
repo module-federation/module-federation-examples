@@ -44,7 +44,7 @@ module.exports = {
            * MiniCssExtractPlugin doesn't support HMR.
            * For developing, use 'style-loader' instead.
            * */
-          prod ? MiniCssExtractPlugin.loader : 'style-loader',
+           MiniCssExtractPlugin.loader,
           'css-loader',
         ],
       },
@@ -62,7 +62,7 @@ module.exports = {
       shared: [],
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
+      filename: '[name]-style.css',
     }),
   ],
   devtool: prod ? false : 'source-map',

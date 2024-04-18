@@ -3,9 +3,10 @@ const {
   HtmlRspackPlugin,
 } = require('@rspack/core');
 const { RsdoctorRspackPlugin } = require('@rsdoctor/rspack-plugin');
+const ReactRefreshWebpackPlugin = require('@rspack/plugin-react-refresh');
 
 const deps = require('./package.json').dependencies;
-
+const isProd = process.env.NODE_ENV === 'production'
 module.exports = {
   entry: './src/index',
 
@@ -17,9 +18,12 @@ module.exports = {
   optimization: {
     minimize: false,
   },
-
   output: {
     publicPath: 'auto',
+    uniqueName: 'app1'
+  },
+  experiments: {
+    css: true
   },
 
   module: {
@@ -34,6 +38,12 @@ module.exports = {
                 syntax: 'ecmascript',
                 jsx: true,
               },
+              transform: {
+                react: {
+                  development: !isProd,
+                  refresh: !isProd,
+                },
+              },
             },
           },
         },
@@ -45,7 +55,15 @@ module.exports = {
       },
     ],
   },
-
+  devServer: {
+    port: 3001,
+    hot: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+    }
+  },
   plugins: [
     new ModuleFederationPlugin({
       name: 'app_01',
@@ -79,5 +97,7 @@ module.exports = {
     new HtmlRspackPlugin({
       template: './public/index.html',
     }),
+    isProd ? new ReactRefreshWebpackPlugin() : undefined,
+    // new RsdoctorRspackPlugin()
   ],
 };

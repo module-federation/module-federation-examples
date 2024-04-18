@@ -19,6 +19,10 @@ const webpackConfig = {
     publicPath: 'http://localhost:3001/static/',
   },
   plugins: [moduleFederationPlugin.client],
+  optimization:{
+    emitOnErrors: true,
+    moduleIds: 'named'
+  }
 };
 
 module.exports = merge(shared, webpackConfig);

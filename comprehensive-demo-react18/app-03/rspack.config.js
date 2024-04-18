@@ -1,22 +1,32 @@
 const {
-  container: { ModuleFederationPlugin },
+  container: {ModuleFederationPlugin},
   HtmlRspackPlugin,
 } = require('@rspack/core');
+const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   entry: './src/index',
 
   mode: 'development',
   devtool: 'source-map',
-
   optimization: {
     minimize: false,
+  },
+  devServer: {
+    port: 3003,
+    hot: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+    }
   },
   resolve: {
     extensions: ['.jsx', '.js', '.json', '.mjs'],
   },
   output: {
     publicPath: 'auto',
+    uniqueName: 'app3'
   },
 
   module: {
@@ -30,6 +40,12 @@ module.exports = {
               parser: {
                 syntax: 'ecmascript',
                 jsx: true,
+              },
+              transform: {
+                react: {
+                  development: !isProd,
+                  refresh: !isProd,
+                },
               },
             },
           },
