@@ -12592,11 +12592,13 @@ importers:
         version: 4.18.2(supports-color@6.1.0)
 
   simple-node/node-host:
-    dependencies:
+    devDependencies:
+      '@module-federation/enhanced':
+        specifier: ^0.0.0-next-20240418224727
+        version: 0.0.0-next-20240418224727(typescript@5.2.2)(vue-tsc@1.8.27)(webpack@5.89.0)
       '@module-federation/node':
         specifier: ^0.0.0-next-20240418224727
         version: 0.0.0-next-20240418224727(typescript@5.2.2)(vue-tsc@1.8.27)(webpack@5.89.0)
-    devDependencies:
       '@rspack/cli':
         specifier: 0.6.2-canary-796c734-20240418055822
         version: 0.6.2-canary-796c734-20240418055822(@rspack/core@0.6.2-canary-796c734-20240418055822)(webpack-cli@4.10.0)(webpack@5.89.0)
@@ -12617,11 +12619,13 @@ importers:
         version: 4.15.1(webpack-cli@4.10.0)(webpack@5.89.0)
 
   simple-node/node-local-remote:
-    dependencies:
+    devDependencies:
+      '@module-federation/enhanced':
+        specifier: ^0.0.0-next-20240418224727
+        version: 0.0.0-next-20240418224727(typescript@5.2.2)(vue-tsc@1.8.27)(webpack@5.89.0)
       '@module-federation/node':
         specifier: ^0.0.0-next-20240418224727
         version: 0.0.0-next-20240418224727(typescript@5.2.2)(vue-tsc@1.8.27)(webpack@5.89.0)
-    devDependencies:
       '@rspack/cli':
         specifier: 0.6.2-canary-796c734-20240418055822
         version: 0.6.2-canary-796c734-20240418055822(@rspack/core@0.6.2-canary-796c734-20240418055822)(webpack-cli@4.10.0)(webpack@5.89.0)
@@ -12642,11 +12646,13 @@ importers:
         version: 4.15.1(webpack-cli@4.10.0)(webpack@5.89.0)
 
   simple-node/node-remote:
-    dependencies:
+    devDependencies:
+      '@module-federation/enhanced':
+        specifier: ^0.0.0-next-20240418224727
+        version: 0.0.0-next-20240418224727(typescript@5.2.2)(vue-tsc@1.8.27)(webpack@5.89.0)
       '@module-federation/node':
         specifier: ^0.0.0-next-20240418224727
         version: 0.0.0-next-20240418224727(typescript@5.2.2)(vue-tsc@1.8.27)(webpack@5.89.0)
-    devDependencies:
       '@rspack/cli':
         specifier: 0.6.2-canary-796c734-20240418055822
         version: 0.6.2-canary-796c734-20240418055822(@rspack/core@0.6.2-canary-796c734-20240418055822)(webpack-cli@4.10.0)(webpack@5.89.0)
@@ -34177,7 +34183,7 @@ packages:
       - debug
       - supports-color
       - utf-8-validate
-    dev: false
+    dev: true
 
   /@module-federation/dts-plugin@0.1.6(typescript@5.0.4)(vue-tsc@1.8.27):
     resolution: {integrity: sha512-69Hh/kNOPfRA3/hQK5pFHv858jcThTjUDTEhmbEOUwMaTM+lXBHna+29E5tLv29cvH8Wi/Ltg0Va78MvasHQ9Q==}
@@ -34406,7 +34412,7 @@ packages:
       - typescript
       - utf-8-validate
       - vue-tsc
-    dev: false
+    dev: true
 
   /@module-federation/enhanced@0.1.6(typescript@5.0.4)(vue-tsc@1.8.27)(webpack@5.89.0):
     resolution: {integrity: sha512-L8TaNZMbvKwkgMD+BpVpqTEF2jGppws6/kaF9EwWrQ2ODJTtARN4gKjaunYQ5kTMIX4gKlSMqhVUtSiW4XgUgw==}
@@ -34565,7 +34571,7 @@ packages:
       '@module-federation/sdk': 0.0.0-next-20240418224727
       find-pkg: 2.0.0
       fs-extra: 9.1.0
-    dev: false
+    dev: true
 
   /@module-federation/managers@0.1.6:
     resolution: {integrity: sha512-uFuK2gasABHSs6eY7pMt5jdEgscj4uF+0/MPwC769B1EQZSrJrDoJ5reBQcY+dyV9ewvZU03HBtpF7RaXX94hw==}
@@ -34596,7 +34602,7 @@ packages:
       - typescript
       - utf-8-validate
       - vue-tsc
-    dev: false
+    dev: true
 
   /@module-federation/manifest@0.1.6(typescript@5.0.4)(vue-tsc@1.8.27):
     resolution: {integrity: sha512-2YyPJiXx/OVO9Kv8ZKYg/3SOrs3qg5KxgdklkuGbz/qgA0sh+hPe3l8Q83H7aRl3qbHZitHgLLeOhE65Z/KScA==}
@@ -34948,7 +34954,7 @@ packages:
       - typescript
       - utf-8-validate
       - vue-tsc
-    dev: false
+    dev: true
 
   /@module-federation/node@2.1.6(react-dom@16.14.0)(react@16.14.0)(typescript@5.2.2)(vue-tsc@1.8.27)(webpack@5.89.0):
     resolution: {integrity: sha512-yS1aNFvorlikz7tBuDzE0L/XvVpRfm7op1Dzi8/U4jos66GYrWyC6nYBt9eoSoHwI24Zi6bEDfgUmtU+oXFUUA==}
@@ -35309,7 +35315,7 @@ packages:
       - typescript
       - utf-8-validate
       - vue-tsc
-    dev: false
+    dev: true
 
   /@module-federation/rspack@0.1.6(typescript@5.0.4)(vue-tsc@1.8.27):
     resolution: {integrity: sha512-URSP6s4r7vvkszgI8IM6O0pgtt1E+DbSaJ0hdq9Z00tr20349CBZqquaYVQ3Px44WMSeefonIaUil/EQC0aBhw==}
@@ -35439,7 +35445,7 @@ packages:
     dependencies:
       '@module-federation/runtime': 0.0.0-next-20240418224727
       '@module-federation/webpack-bundler-runtime': 0.0.0-next-20240418224727
-    dev: false
+    dev: true
 
   /@module-federation/runtime-tools@0.0.8:
     resolution: {integrity: sha512-tqx3wlVHnpWLk+vn22c0x9Nv1BqdZnoS6vdMb53IsVpbQIFP70nhhvymHUyFuPkoLzMFidS7GpG58DYT/4lvCw==}
@@ -35469,7 +35475,7 @@ packages:
     resolution: {integrity: sha512-Wl6zTJnISviIEmoc0FZWTf5dbZqBiVRr3163OL/z1qh8WFvIBXaQ6wHX40jyTJkXzK9p4HIfI4kTIPQtk36f1Q==}
     dependencies:
       '@module-federation/sdk': 0.0.0-next-20240418224727
-    dev: false
+    dev: true
 
   /@module-federation/runtime@0.0.8:
     resolution: {integrity: sha512-Hi9g10aHxHdQ7CbchSvke07YegYwkf162XPOmixNmJr5Oy4wVa2d9yIVSrsWFhBRbbvM5iJP6GrSuEq6HFO3ug==}
@@ -35492,7 +35498,7 @@ packages:
 
   /@module-federation/sdk@0.0.0-next-20240418224727:
     resolution: {integrity: sha512-Lpyr1wwszlhJr6JVrcfYFqzkQzBtwOLHEmBZ81Sit4fovHuqOwqLJg5CEP0jMCU++4NyvjD2Pwqv7QspgVki5g==}
-    dev: false
+    dev: true
 
   /@module-federation/sdk@0.0.8:
     resolution: {integrity: sha512-lkasywBItjUTNT0T0IskonDE2E/2tXE9UhUCPVoDL3NteDUSFGg4tpkF+cey1pD8mHh0XJcGrCuOW7s96peeAg==}
@@ -35546,7 +35552,7 @@ packages:
       find-pkg: 2.0.0
       fs-extra: 9.1.0
       resolve: 1.22.8
-    dev: false
+    dev: true
 
   /@module-federation/third-party-dts-extractor@0.1.6:
     resolution: {integrity: sha512-cNUGZ4AQ3DPZs/X9CxAn+nfUDgrEs55Qgh2gkBMkFSHo6RMIQ75k9GxiJRZlWOovUCrUrgEylXP1LSEgc2LRtw==}
@@ -35638,7 +35644,7 @@ packages:
     dependencies:
       '@module-federation/sdk': 0.0.0-next-20240418224727
       webpack: 5.89.0(webpack-cli@4.10.0)
-    dev: false
+    dev: true
 
   /@module-federation/utilities@1.1.2(@babel/core@7.24.3)(react-dom@18.2.0)(webpack@5.89.0):
     resolution: {integrity: sha512-3oCy1zYqZY0T72SvPPthQcvuHeuadzYjYh6oBcRcOzDhutvl5mLKCsp/RdAXxy/oPSXK1RouxuQzZUUu3FGXbQ==}
@@ -35930,7 +35936,7 @@ packages:
     dependencies:
       '@module-federation/runtime': 0.0.0-next-20240418224727
       '@module-federation/sdk': 0.0.0-next-20240418224727
-    dev: false
+    dev: true
 
   /@module-federation/webpack-bundler-runtime@0.0.8:
     resolution: {integrity: sha512-ULwrTVzF47+6XnWybt6SIq97viEYJRv4P/DByw5h7PSX9PxSGyMm5pHfXdhcb7tno7VknL0t2V8F48fetVL9kA==}
