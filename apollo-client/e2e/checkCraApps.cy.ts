@@ -13,7 +13,7 @@ const appsData = [
 appsData.forEach((property: { appNameText: string; host: number }) => {
   const appName = property.appNameText;
 
-  describe('CRA', () => {
+  describe('Apollo Client', () => {
     context(`Check apollo-client`, () => {
       beforeEach(() => {
         basePage.openLocalhost({
