@@ -7,13 +7,13 @@ const CONFIG = [
     packageName: '@module-federation/node',
     shouldUpdate: true,
     versionToCheck: '3.0.13',
-    targetVersion: 'latest'
+    targetVersion: "latest"
   },
   {
     packageName: '@module-federation/sdk',
     shouldUpdate: true,
     versionToCheck: '3.0.13',
-    targetVersion: 'latest'
+    targetVersion: "latest"
   },
   {
     packageName: '@module-federation/enhanced',
@@ -41,13 +41,13 @@ const CONFIG = [
     packageName: '@module-federation/nextjs-mf',
     shouldUpdate: true,
     versionToCheck: '9.2.2',
-    targetVersion: 'latest'
+    targetVersion: "latest"
   },
   {
     packageName: '@module-federation/runtime',
     shouldUpdate: true,
     versionToCheck: '9.2.2',
-    targetVersion: 'latest'
+    targetVersion: "latest"
   }
 ];
 
@@ -101,7 +101,7 @@ async function checkAndUpdatePackages(nestedDir, packageJson, results) {
       targetVersion = await getLatestVersion(packageName, targetVersion);
       if (!targetVersion) continue; // Skip if failed to fetch latest version
     }
-    if (targetVersion === 'next') {
+    if (targetVersion === "latest") {
       targetVersion = await getLatestVersion(packageName, targetVersion);
       if (!targetVersion) continue; // Skip if failed to fetch latest version
       updateDependencies(packageJson, packageName, targetVersion);
