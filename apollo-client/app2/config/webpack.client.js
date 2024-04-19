@@ -2,6 +2,7 @@ const path = require('path');
 const { merge } = require('webpack-merge');
 const shared = require('./webpack.shared');
 const moduleFederationPlugin = require('./module-federation');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 
 /**
  * @type {import('webpack').Configuration}
@@ -18,7 +19,7 @@ const webpackConfig = {
     chunkFilename: '[name].js',
     publicPath: 'http://localhost:3001/static/',
   },
-  plugins: [moduleFederationPlugin.client],
+  plugins: [moduleFederationPlugin(ModuleFederationPlugin).client],
 };
 
 module.exports = merge(shared, webpackConfig);

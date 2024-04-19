@@ -1,8 +1,14 @@
 const deps = require('../package.json').dependencies;
-const { UniversalFederationPlugin } = require('@module-federation/node');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const rspack = require('@rspack/core')
 
-module.exports = {
-  client: new UniversalFederationPlugin({
+module.exports = (FederationPlugin)=> {
+//   let FederationPlugin;
+//   if(type === 'rspack') {
+// FederationPlugin = rspack.container.ModuleFederationPlugin
+//   } else if(type === 'uni')
+  return {
+  client: new FederationPlugin({
     remoteType: 'script',
     name: 'app1',
     filename: 'remoteEntry.js',
@@ -24,16 +30,19 @@ module.exports = {
       },
     ],
   }),
-  server: [
-    new UniversalFederationPlugin({
+    server
+:
+  [
+    new FederationPlugin({
       remoteType: 'script',
-      isServer:true,
+      isServer: true,
       name: 'app1',
-      library: { type: 'commonjs-module' },
+      library: {type: 'commonjs-module'},
       filename: 'remoteEntry.js',
       remotes: {
         app2: 'app2@http://localhost:3001/server/remoteEntry.js',
       },
+      runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],
       shared: [
         {
           react: {requiredVersion: deps.react, eager: true},
@@ -49,5 +58,6 @@ module.exports = {
         },
       ],
     }),
-  ],
-};
+  ]
+}
+}
