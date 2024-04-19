@@ -6640,7 +6640,14 @@ importers:
         specifier: 4.15.1
         version: 4.15.1(webpack-cli@4.10.0)(webpack@5.89.0)
 
-  loadable-react-16: {}
+  loadable-react-16:
+    devDependencies:
+      kill-port:
+        specifier: ^2.0.1
+        version: 2.0.1
+      wait-on:
+        specifier: ^7.2.0
+        version: 7.2.0
 
   loadable-react-16/app1:
     dependencies:
