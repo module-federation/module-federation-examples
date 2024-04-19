@@ -7,19 +7,19 @@ const CONFIG = [
     packageName: '@module-federation/node',
     shouldUpdate: true,
     versionToCheck: '3.0.13',
-    targetVersion: 'latest'
+    targetVersion: 'next'
   },
   {
     packageName: '@module-federation/sdk',
     shouldUpdate: true,
     versionToCheck: '3.0.13',
-    targetVersion: 'latest'
+    targetVersion: 'next'
   },
   {
     packageName: '@module-federation/enhanced',
     shouldUpdate: true, // Assumes no targetVersion needed
     versionToCheck: "2.0.0",
-    targetVersion: "latest",
+    targetVersion: "next",
   },
   {
     packageName: 'webpack',
@@ -31,7 +31,7 @@ const CONFIG = [
     packageName: 'mini-css-extract-plugin',
     shouldUpdate: true, // Assumes no targetVersion needed
     versionToCheck: "9.0.0",
-    targetVersion: "latest",
+    targetVersion: "next",
   },
   {
     packageName: '@module-federation/utilities',
@@ -41,13 +41,13 @@ const CONFIG = [
     packageName: '@module-federation/nextjs-mf',
     shouldUpdate: true,
     versionToCheck: '9.2.2',
-    targetVersion: 'latest'
+    targetVersion: 'next'
   },
   {
     packageName: '@module-federation/runtime',
     shouldUpdate: true,
     versionToCheck: '9.2.2',
-    targetVersion: 'latest'
+    targetVersion: 'next'
   }
 ];
 
