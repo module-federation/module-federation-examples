@@ -28,6 +28,30 @@ const CONFIG = [
     targetVersion: "latest",
   },
   {
+    packageName: '@rspack/core',
+    shouldUpdate: true, // Assumes no targetVersion needed
+    versionToCheck: "6.0.0",
+    targetVersion: "latest",
+  },
+  {
+    packageName: '@rspack/cli',
+    shouldUpdate: true, // Assumes no targetVersion needed
+    versionToCheck: "6.0.0",
+    targetVersion: "latest",
+  },
+  {
+    packageName: '@rspack/plugin-react-refresh',
+    shouldUpdate: true, // Assumes no targetVersion needed
+    versionToCheck: "6.0.0",
+    targetVersion: "latest",
+  },
+  {
+    packageName: '@rspack/dev-server',
+    shouldUpdate: true, // Assumes no targetVersion needed
+    versionToCheck: "6.0.0",
+    targetVersion: "latest",
+  },
+  {
     packageName: 'mini-css-extract-plugin',
     shouldUpdate: true, // Assumes no targetVersion needed
     versionToCheck: "9.0.0",
