@@ -1,0 +1,7 @@
+{
+  "name": "dashboard-admin-root",
+  "scripts": {
+    "start": "pnpm run --filter @dashboard-admin/* --parallel start",
+    "e2e:ci": "pnpm start & wait-on tcp:3000 tcp:3002 tcp:3003 tcp:3004 && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+  }
+}

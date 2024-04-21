@@ -1,40 +1,36 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const path = require("path");
-const {ModuleFederationPlugin} = require("@module-federation/enhanced");
-const dependencies = require("./package.json").dependencies;
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const {dependencies} = require("./package.json");
+const path = require('path');
 
 module.exports = {
   entry: "./src/index.js",
-  mode: "development",
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "main.js",
-    assetModuleFilename: 'images/[hash].[ext]'
+    path: path.join(__dirname, './dist'),
+    filename: 'bundle.js',
+    publicPath: 'auto',
+    uniqueName: 'dashboard'
   },
+  mode: "development",
   devServer: {
-    port: 3002,
-    hot: true,
+    port: 3001,
+    hot: false,
     historyApiFallback: true,
 
   },
-  name: "nav",
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
         use: [
-            {
+          {
             loader: "babel-loader",
             options: {
-                presets: ["@babel/preset-env", "@babel/preset-react"],
+              presets: ["@babel/preset-env", "@babel/preset-react"],
             },
-            },
+          },
         ],
-      },
-      {
-        test: /\.png/,
-        type: 'asset/resource',
       },
       {
         test: /\.css$/i,
@@ -42,24 +38,17 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-      extensions: ['*', '.js', '.jsx'],
-  },
-
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",
+      favicon: "./public/favicon.ico",
+      excludeChunks: ["Dashboard"]
     }),
     new ModuleFederationPlugin({
-      name: "Nav",
+      name: "Dashboard",
       filename: "remoteEntry.js",
-      remotes: {
-        Dashboard: "Dashboard@http://localhost:3001/remoteEntry.js",
-        FAQ: "FAQ@http://localhost:3003/remoteEntry.js"
-      },
       exposes: {
-        "./Nav": "./src/Sidebar.js"
+        "./Dashboard": "./src/Dashboard",
       },
       shared: {
         ...dependencies,
@@ -87,9 +76,13 @@ module.exports = {
           singleton: true,
           requiredVersion: dependencies["@emotion/react"]
         },
-      }
-    })
-  ],
-  target: "web",
 
+      },
+    }),
+  ],
+  resolve: {
+    // modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    extensions: ['*', '.js', '.jsx'],
+  },
+  target: "web",
 };
