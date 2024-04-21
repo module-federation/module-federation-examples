@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const {ModuleFederationPlugin} = require("@module-federation/enhanced");
 const dependencies = require("./package.json").dependencies;
 var WebpackPwaManifest = require('webpack-pwa-manifest')
 
@@ -13,30 +13,7 @@ module.exports = {
     filename: "main.js",
     publicPath: '/',
   },
-  optimization: {
-    splitChunks: {
-      chunks: 'async',
-      minSize: 20000,
-      minRemainingSize: 0,
-      minChunks: 1,
-      maxAsyncRequests: 30,
-      maxInitialRequests: 30,
-      enforceSizeThreshold: 50000,
-      cacheGroups: {
-        defaultVendors: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10,
-          reuseExistingChunk: true,
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true,
-        },
-      },
-    },
 
-  },
   devServer: {
     port: 3000,
     hot: true,
@@ -62,6 +39,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
       title: 'Progressive Web Application',
+      excludeChunks:['shell']
     }),
     new WebpackPwaManifest({
       name: 'My Progressive Web App',
@@ -74,7 +52,7 @@ module.exports = {
           src: path.resolve('public/apple-touch-icon.png'),
           sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
         },
-        
+
       ]
     }),
     new MiniCssExtractPlugin(),

@@ -16,6 +16,22 @@ const CONFIG = [
     targetVersion: "latest"
   },
   {
+    packageName: '@rspack/core',
+    shouldUpdate: true,
+    versionToCheck: '3.0.13',
+    targetVersion: "latest"
+  }, {
+    packageName: '@rspack/cli',
+    shouldUpdate: true,
+    versionToCheck: '3.0.13',
+    targetVersion: "latest"
+  }, {
+    packageName: '@rspack/plugin-react-refresh',
+    shouldUpdate: true,
+    versionToCheck: '3.0.13',
+    targetVersion: "latest"
+  },
+  {
     packageName: '@module-federation/enhanced',
     shouldUpdate: true, // Assumes no targetVersion needed
     versionToCheck: "2.0.0",

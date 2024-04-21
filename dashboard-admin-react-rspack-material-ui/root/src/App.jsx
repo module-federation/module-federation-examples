@@ -5,12 +5,12 @@ import { Routes, Route } from 'react-router-dom';
 
 const Nav = lazy(() => import("Nav/Nav"));
 const FAQ = lazy(() => import('FAQ/FAQ'));
+console.log(require('Dashboard/Dashboard'))
 const Dashboard = lazy(() => import('Dashboard/Dashboard'));
 const Team = lazy(() => import('Team/team'));
 
-
 export default function () {
-  
+
   return (
       <section>
         <Nav routes={
@@ -18,7 +18,7 @@ export default function () {
             <Route exact index element={
               <React.Suspense fallback={<div>Loading...</div>}>
                 <Dashboard />
-              </React.Suspense> 
+              </React.Suspense>
             } />
               <Route path="faq" element={
               <React.Suspense fallback={<div>Loading...</div>}>
@@ -31,10 +31,10 @@ export default function () {
               </React.Suspense>
                 } />
               <Route path="*" element={<h2>Page Not Found</h2>} />
-          </Routes>          
+          </Routes>
         } />
-            
-          
+
+
       </section>
 
   );

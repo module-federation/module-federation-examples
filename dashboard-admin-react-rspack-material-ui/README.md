@@ -14,9 +14,12 @@ This system seamlessly integrates modular components, allowing for efficient cod
 To run this project use docker-compose to quickstart:
 
 > ```
-> git clone https://github.com/erkylima/react-microapps.git
-> cd react-microapps
 > docker-compose up
+> ```
+> 
+Or run locally:
+> > ```
+> pnpm run start
 > ```
 
 Open [http://localhost:3000](http://localhost:3000) to view Webpack 5 module federated Root App\
