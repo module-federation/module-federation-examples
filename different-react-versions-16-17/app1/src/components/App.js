@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactAdapterConsumer from './ReactAdapterConsumer';
-
+console.log('RESOLVE', import('app2/Button'))
 const RemoteButton = React.lazy(() => import('app2/Button'));
 
 // const ModernComponent = React.lazy(() => import("app2/ModernComponent"));
@@ -26,15 +26,15 @@ class App extends React.Component {
         <h2>App 1, Uses react version not compatible with hooks</h2>
         <input onChange={this.setValue} placeholder="Type something into this input" />
 
-        <div style={{ border: '1px red solid', padding: '10px', margin: '20px 0' }}>
-          <ReactAdapterConsumer
-            // any other props, passed to ModernComponent
-            {...this.state}
-            importer={() => import('app2/ModernComponent')}
-          >
-            <h3>And these are children passed into it from the legacy app</h3>
-          </ReactAdapterConsumer>
-        </div>
+        {/*<div style={{ border: '1px red solid', padding: '10px', margin: '20px 0' }}>*/}
+        {/*  <ReactAdapterConsumer*/}
+        {/*    // any other props, passed to ModernComponent*/}
+        {/*    {...this.state}*/}
+        {/*    importer={() => import('app2/ModernComponent')}*/}
+        {/*  >*/}
+        {/*    <h3>And these are children passed into it from the legacy app</h3>*/}
+        {/*  </ReactAdapterConsumer>*/}
+        {/*</div>*/}
 
         {/*This will Fail*/}
         {/*<HookComponent/>*/}

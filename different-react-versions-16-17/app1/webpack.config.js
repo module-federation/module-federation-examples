@@ -40,10 +40,10 @@ const webpackConfig = {
   plugins: [
     new ModuleFederationPlugin({
       name: 'app1',
-      library: { type: 'var', name: 'app1' },
       remotes: {
-        app2: 'app2',
+        app2: `app2@${getRemoteEntryUrl(3002)}`,
       },
+      runtimePlugins: [require.resolve('./react-adapter-runtime-plugin.ts')],
       shared: {
         ...deps,
         'react-dom': {
@@ -56,7 +56,6 @@ const webpackConfig = {
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      app2RemoteEntry: getRemoteEntryUrl(3002),
     }),
   ],
 };

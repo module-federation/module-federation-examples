@@ -45,6 +45,7 @@ const webpackConfig = {
       remotes: {
         app2: 'app2',
       },
+      runtimePlugins: [require.resolve('./react-adapter-runtime-plugin.ts')],
       shared: {
         ...deps,
         'react-dom': {
@@ -58,6 +59,7 @@ const webpackConfig = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
       app2RemoteEntry: getRemoteEntryUrl(3002),
+      excludeChunks: ['app1']
     }),
   ],
 };

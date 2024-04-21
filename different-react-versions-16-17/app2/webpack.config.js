@@ -41,6 +41,7 @@ const webpackConfig = {
       name: 'app2',
       library: { type: 'var', name: 'app2' },
       filename: 'remoteEntry.js',
+      runtimePlugins: [require.resolve('./react-adapter-runtime-plugin.ts')],
       exposes: {
         './Button': './src/components/Button',
         './ModernComponent': './src/components/ModernReactComponent',
