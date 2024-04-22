@@ -52,7 +52,7 @@ const withVersions = (Original, remoteVersion, hostVersion,remoteReactDOMVersion
 
 
 
-  return (props) => <WrappedComponent {...props}/>
+  return WrappedComponent
 
 };
 

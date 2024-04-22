@@ -70,9 +70,7 @@ const runtimePlugin = function () {
           })
             const res = (await import('./fallback.js')).default
 
-            return ()=>(props)=>{
-                return res(args.exposeModuleFactory().default, remoteVersion, hostVersion,remoteReactDOMVersion,remoteReactVersion)(props)
-            }
+            return ()=> res(args.exposeModuleFactory().default, remoteVersion, hostVersion,remoteReactDOMVersion,remoteReactVersion)
         }
         return args
     },
