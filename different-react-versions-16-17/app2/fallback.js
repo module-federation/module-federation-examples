@@ -3,7 +3,6 @@ import React from 'react';
 class Component extends React.Component {
   render() {
     const { hostV, remoteV, containerRef } = this.props;
-    console.log({ hostV, remoteV });
     return (
       <div>
         <p style={{ color: 'red' }}>
@@ -17,9 +16,9 @@ class Component extends React.Component {
 }
 
 // This is the higher-order component that takes the Original component and additional props
-const withVersions = (Original, hostVersion, remoteVersion,remoteReactVersion) => {
-  const ReactDOM = remoteReactVersion();
-  console.log(ReactDOM)
+const withVersions = (Original, remoteVersion, hostVersion,remoteReactDOMVersion, remoteReactVersion) => {
+  const ReactDOM = remoteReactDOMVersion();
+  const React = remoteReactVersion();
   class WrappedComponent extends React.Component {
     constructor(props) {
       super(props);
@@ -27,7 +26,7 @@ const withVersions = (Original, hostVersion, remoteVersion,remoteReactVersion) =
     }
 
     componentDidMount() {
-      this.mountOriginalComponent();
+      this.mountOriginalComponent(true);
     }
 
     componentDidUpdate() {
@@ -40,18 +39,21 @@ const withVersions = (Original, hostVersion, remoteVersion,remoteReactVersion) =
       }
     }
 
-    mountOriginalComponent() {
-      const element = <Original {...this.props} />;
-      ReactDOM.render(element, this.containerRef.current);
+    mountOriginalComponent(shouldRender) {
+      const element = React.createElement(Original, this.props);
+      const fGunc = shouldRender ? ReactDOM.render : ReactDOM.hydrate
+      fGunc(element, this.containerRef.current);
     }
 
     render() {
-      console.log(Original, hostVersion, remoteVersion, remoteReactVersion);
       return <Component hostV={hostVersion} remoteV={remoteVersion} containerRef={this.containerRef} />;
     }
   }
 
-  return <WrappedComponent/>;
+
+
+  return (props) => <WrappedComponent {...props}/>
+
 };
 
 export default withVersions;
