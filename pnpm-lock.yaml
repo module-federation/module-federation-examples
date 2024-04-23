@@ -12600,11 +12600,22 @@ importers:
         version: 4.18.2(supports-color@6.1.0)
 
   simple-node/node-host:
-    dependencies:
+    devDependencies:
+      '@module-federation/enhanced':
+        specifier: ^0.1.9
+        version: 0.1.9(typescript@5.2.2)(vue-tsc@1.8.27)(webpack@5.89.0)
       '@module-federation/node':
         specifier: ^2.2.0
         version: 2.2.0(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)(vue-tsc@1.8.27)(webpack@5.89.0)
-    devDependencies:
+      '@rspack/cli':
+        specifier: ^0.6.2
+        version: 0.6.2(@rspack/core@0.6.2)(webpack-cli@4.10.0)(webpack@5.89.0)
+      '@rspack/core':
+        specifier: ^0.6.2
+        version: 0.6.2
+      '@rspack/dev-server':
+        specifier: ^0.6.2
+        version: 0.6.2(@rspack/core@0.6.2)(webpack-cli@4.10.0)(webpack@5.89.0)
       webpack:
         specifier: 5.89.0
         version: 5.89.0(webpack-cli@4.10.0)
@@ -12616,11 +12627,22 @@ importers:
         version: 4.15.1(webpack-cli@4.10.0)(webpack@5.89.0)
 
   simple-node/node-local-remote:
-    dependencies:
+    devDependencies:
+      '@module-federation/enhanced':
+        specifier: ^0.1.9
+        version: 0.1.9(typescript@5.2.2)(vue-tsc@1.8.27)(webpack@5.89.0)
       '@module-federation/node':
         specifier: ^2.2.0
         version: 2.2.0(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)(vue-tsc@1.8.27)(webpack@5.89.0)
-    devDependencies:
+      '@rspack/cli':
+        specifier: ^0.6.2
+        version: 0.6.2(@rspack/core@0.6.2)(webpack-cli@4.10.0)(webpack@5.89.0)
+      '@rspack/core':
+        specifier: ^0.6.2
+        version: 0.6.2
+      '@rspack/dev-server':
+        specifier: ^0.6.2
+        version: 0.6.2(@rspack/core@0.6.2)(webpack-cli@4.10.0)(webpack@5.89.0)
       webpack:
         specifier: 5.89.0
         version: 5.89.0(webpack-cli@4.10.0)
@@ -12632,11 +12654,22 @@ importers:
         version: 4.15.1(webpack-cli@4.10.0)(webpack@5.89.0)
 
   simple-node/node-remote:
-    dependencies:
+    devDependencies:
+      '@module-federation/enhanced':
+        specifier: ^0.1.9
+        version: 0.1.9(typescript@5.2.2)(vue-tsc@1.8.27)(webpack@5.89.0)
       '@module-federation/node':
         specifier: ^2.2.0
         version: 2.2.0(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)(vue-tsc@1.8.27)(webpack@5.89.0)
-    devDependencies:
+      '@rspack/cli':
+        specifier: ^0.6.2
+        version: 0.6.2(@rspack/core@0.6.2)(webpack-cli@4.10.0)(webpack@5.89.0)
+      '@rspack/core':
+        specifier: ^0.6.2
+        version: 0.6.2
+      '@rspack/dev-server':
+        specifier: ^0.6.2
+        version: 0.6.2(@rspack/core@0.6.2)(webpack-cli@4.10.0)(webpack@5.89.0)
       webpack:
         specifier: 5.89.0
         version: 5.89.0(webpack-cli@4.10.0)
@@ -34918,7 +34951,6 @@ packages:
       - typescript
       - utf-8-validate
       - vue-tsc
-    dev: false
 
   /@module-federation/node@2.2.0(react-dom@16.14.0)(react@16.14.0)(typescript@5.2.2)(vue-tsc@1.8.27)(webpack@5.89.0):
     resolution: {integrity: sha512-yJlgj/pfxqPK3W5UC8b5b6Pp6OvbuOQ3Qf74yCz9QyK2f6RrUydKrQKmCl2Ke9UGzd/Z1V28fG2JE7nr2ay7zw==}
@@ -35489,7 +35521,6 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       webpack: 5.89.0(webpack-cli@5.1.4)
-    dev: false
 
   /@module-federation/utilities@3.0.14(react-dom@16.14.0)(react@16.14.0)(webpack@5.89.0):
     resolution: {integrity: sha512-qmAgiLF7Yku7+HrvV0fZzyw8SFySLH8ohua7ToimNPIbwjWhVuQWARBgfrW6UfW8DXjDV0HRkUbW1ktzSMG3Wg==}
@@ -36002,7 +36033,6 @@ packages:
 
   /@next/env@14.1.4:
     resolution: {integrity: sha512-e7X7bbn3Z6DWnDi75UWn+REgAbLEqxI8Tq2pkFOFAMpWAWApz/YCUhtWMWn410h8Q2fYiYL7Yg5OlxMOCfFjJQ==}
-    dev: false
 
   /@next/eslint-plugin-next@12.3.4:
     resolution: {integrity: sha512-BFwj8ykJY+zc1/jWANsDprDIu2MgwPOIKxNVnrKvPs+f5TPegrVnem8uScND+1veT4B7F6VeqgaNLFW1Hzl9Og==}
@@ -36096,7 +36126,6 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-darwin-x64@12.3.4:
@@ -36139,7 +36168,6 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-freebsd-x64@12.3.4:
@@ -36216,7 +36244,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-linux-arm64-musl@12.3.4:
@@ -36259,7 +36286,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-linux-x64-gnu@12.3.4:
@@ -36302,7 +36328,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-linux-x64-musl@12.3.4:
@@ -36345,7 +36370,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-win32-arm64-msvc@12.3.4:
@@ -36388,7 +36412,6 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-win32-ia32-msvc@12.3.4:
@@ -36431,7 +36454,6 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-win32-x64-msvc@12.3.4:
@@ -36474,7 +36496,6 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@ngrx/router-store@11.1.1(@angular/common@11.2.14)(@angular/core@11.2.14)(@angular/router@11.2.14)(@ngrx/store@11.1.1)(rxjs@6.6.7):
@@ -69883,7 +69904,6 @@ packages:
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
-    dev: false
 
   /nextjs-cors@2.2.0(next@13.5.6):
     resolution: {integrity: sha512-FZu/A+L59J4POJNqwXYyCPDvsLDeu5HjSBvytzS6lsrJeDz5cmnH45zV+VoNic0hjaeER9xGaiIjZIWzEHnxQg==}
