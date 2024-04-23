@@ -29,7 +29,6 @@ const webpackConfig = {
       },
       {
         test: /\.js$/,
-        include: path.resolve(__dirname, 'src'),
         use: {
           loader: 'builtin:swc-loader',
           options: {
