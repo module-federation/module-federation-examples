@@ -2,13 +2,14 @@ const path = require('path');
 const { merge } = require('webpack-merge');
 const shared = require('./webpack.shared');
 const moduleFederationPlugin = require('./module-federation');
+const { UniversalFederationPlugin } = require('@module-federation/node');
 
 /**
  * @type {import('webpack').Configuration}
  **/
 const webpackConfig = {
   name: 'server',
-  target: false,
+  target: 'async-node',
   entry: ['@babel/polyfill', path.resolve(__dirname, '../src/server/index')],
   output: {
     path: path.resolve(__dirname, '../dist/server'),
@@ -17,7 +18,7 @@ const webpackConfig = {
   },
   externals: ['express'],
   mode: 'production',
-  plugins: [...moduleFederationPlugin.server],
+  plugins: [...moduleFederationPlugin(UniversalFederationPlugin).server],
   stats: {
     colors: true,
   },

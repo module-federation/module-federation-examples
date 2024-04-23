@@ -2,11 +2,14 @@
   "name": "apollo-client_app2",
   "version": "0.0.0",
   "scripts": {
-    "start": "pnpm build && pnpm serve",
+    "legacy:start": "pnpm legacy:build && pnpm serve",
     "serve": "node dist/server/main.js",
+    "legacy:build": "pnpm build:server:legacy && pnpm build:client:legacy",
     "build": "pnpm build:server && pnpm build:client",
-    "build:client": "rimraf dist/client && webpack --mode production --progress --config config/webpack.client.js",
-    "build:server": "rimraf dist/server && webpack --mode production --progress --config config/webpack.server.js"
+    "build:client:legacy": "rimraf dist/client && webpack --mode production --progress --config config/webpack.client.js",
+    "build:client": "rimraf dist/client && rspack --mode production --config config/rspack.client.js",
+    "build:server:legacy": "rimraf dist/server && webpack --mode production --progress --config config/webpack.server.js",
+    "build:server": "rimraf dist/server && rspack --mode production --config config/rspack.server.js"
   },
   "dependencies": {
     "@apollo/client": "^3.7.1",
@@ -37,6 +40,9 @@
     "rimraf": "5.0.5",
     "webpack": "^5.91.0",
     "webpack-cli": "4.9.2",
-    "webpack-merge": "5.10.0"
+    "webpack-merge": "5.10.0",
+    "@rspack/core": "^0.6.2",
+    "@rspack/cli": "^0.6.2",
+    "@rspack/dev-server": "^0.6.2"
   }
 }
