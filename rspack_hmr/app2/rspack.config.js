@@ -13,7 +13,6 @@ const name1 = name + "1";
  * @type {import('@rspack/cli').Configuration}
  */
 module.exports = {
-  //context: __dirname,
   entry: {
     main: "./src/index.tsx",
   },
