@@ -1,18 +1,22 @@
-const {UniversalFederationPlugin} = require('@module-federation/node');
+const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack');
+
 module.exports = {
   entry: './index.js',
   mode: 'development',
-  target: false,
+  target: 'async-node',
   output: {
     library: {type: 'commonjs-module',}
   },
+  optimization: {
+    runtimeChunk: 'single',
+  },
   plugins: [
-    new UniversalFederationPlugin({
+    new ModuleFederationPlugin({
       remoteType: 'script',
       isServer: true,
       name: 'app2',
-      useRuntimePlugin: true,
       library: {type: 'commonjs-module',},
+      runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],
       filename: 'remoteEntry.js',
       exposes: {
         './sample': './expose-sample.js',
