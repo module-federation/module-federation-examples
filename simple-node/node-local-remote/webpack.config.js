@@ -1,5 +1,5 @@
 const path = require('path');
-const { UniversalFederationPlugin } = require('@module-federation/node');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 
 module.exports = {
   mode: 'development',
@@ -19,16 +19,14 @@ module.exports = {
     },
   },
   plugins: [
-    new UniversalFederationPlugin({
-      isServer: true,
+    new ModuleFederationPlugin({
       name: 'node_local_remote',
       library: { type: 'commonjs-module' },
       filename: 'remoteEntry.js',
       exposes: {
         './test': './src/expose.js',
       },
-      experiments: {
-      },
+      runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],
     })
   ]
 };

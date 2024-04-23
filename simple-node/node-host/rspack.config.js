@@ -1,4 +1,4 @@
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { container:{ModuleFederationPlugin} } = require('@rspack/core');
 const path = require('path');
 
 module.exports = {
@@ -6,7 +6,7 @@ module.exports = {
   devtool: false,
   entry: './src/main.js',
   mode:'development',
-  target: 'async-node', // in order to ignore built-in modules like path, fs, etc.
+  target: 'async-node',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'server.js',

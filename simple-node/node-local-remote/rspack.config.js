@@ -1,5 +1,5 @@
 const path = require('path');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { container:{ModuleFederationPlugin} } = require('@rspack/core');
 
 module.exports = {
   mode: 'development',
@@ -7,25 +7,21 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: 'auto',
-    importMetaName: 'remoteContainerRegistry',
+    // publicPath: 'auto',
   },
   target: 'async-node',
   devtool: false,
   cache: false,
-
   devServer: {
-    port: 3002,
-    static: {
-      directory: path.join(__dirname, 'dist'),
-    },
+    port: 3001,
     devMiddleware: {
       writeToDisk: true,
     },
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'node_remote',
+      isServer: true,
+      name: 'node_local_remote',
       library: { type: 'commonjs-module' },
       filename: 'remoteEntry.js',
       exposes: {
