@@ -2,6 +2,8 @@
 
 This example demos the ability to load two separate versions of react (v16.6.3 and v18.2.0).
 
+Read more about TypeScript and Federation: https://module-federation.io/guide/basic/type-prompt.html
+
 > Check the javascript version of this example [here](../different-react-versions/README.md).
 
 Module Federation allows us to create an adapter which attaches a hooks-friendly version to render a section of thr app using modern versions.
@@ -62,8 +64,7 @@ This is a generic component type, so you can pass the generic parameter to the c
 
 ```jsx
 // remeber to add path alias to your tsconfig.base.json at the root of the workspace and the type definition file of the remote component
-// this demo contains an example that reproduce that but you can check in the gist below
-// https://gist.github.com/brunos3d/80235047c74b27573234c774ed474ef8
+// Read more here: https://module-federation.io/guide/basic/type-prompt.html
 import type { ButtonProps } from 'app2/Button';
 
 <ReactAdapterConsumer<ButtonProps>
