@@ -8,6 +8,9 @@
     "build": "pnpm run --filter react-18-code-splitting_* build",
     "serve": "pnpm run --filter react-18-code-splitting_* --parallel serve",
     "clean": "pnpm run --filter react-18-code-splitting_* --parallel clean",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "e2e:ci": "pnpm start & sleep 1 && wait-on http-get://localhost:3000/ && wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+  },
+  "devDependencies": {
+    "wait-on": "^7.2.0"
   }
 }

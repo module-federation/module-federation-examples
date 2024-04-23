@@ -48,6 +48,30 @@ const CONFIG = [
     shouldUpdate: true,
     versionToCheck: '9.2.2',
     targetVersion: "latest"
+  },
+  {
+    packageName: '@rspack/core',
+    shouldUpdate: true,
+    versionToCheck: '9.2.2',
+    targetVersion: "latest"
+  },
+  {
+    packageName: '@rspack/cli',
+    shouldUpdate: true,
+    versionToCheck: '9.2.2',
+    targetVersion: "latest"
+  },
+  {
+    packageName: '@rspack/dev-server',
+    shouldUpdate: true,
+    versionToCheck: '9.2.2',
+    targetVersion: "latest"
+  },
+  {
+    packageName: '@rspack/plugin-react-refresh',
+    shouldUpdate: true,
+    versionToCheck: '9.2.2',
+    targetVersion: "latest"
   }
 ];
 
