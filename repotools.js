@@ -7,19 +7,19 @@ const CONFIG = [
     packageName: '@module-federation/node',
     shouldUpdate: true,
     versionToCheck: '3.0.13',
-    targetVersion: 'next'
+    targetVersion: "latest"
   },
   {
     packageName: '@module-federation/sdk',
     shouldUpdate: true,
     versionToCheck: '3.0.13',
-    targetVersion: 'next'
+    targetVersion: "latest"
   },
   {
     packageName: '@module-federation/enhanced',
     shouldUpdate: true, // Assumes no targetVersion needed
     versionToCheck: "2.0.0",
-    targetVersion: "next",
+    targetVersion: "latest",
   },
   {
     packageName: 'webpack',
@@ -41,13 +41,37 @@ const CONFIG = [
     packageName: '@module-federation/nextjs-mf',
     shouldUpdate: true,
     versionToCheck: '9.2.2',
-    targetVersion: 'next'
+    targetVersion: "latest"
   },
   {
     packageName: '@module-federation/runtime',
     shouldUpdate: true,
     versionToCheck: '9.2.2',
-    targetVersion: 'next'
+    targetVersion: "latest"
+  },
+  {
+    packageName: '@rspack/core',
+    shouldUpdate: true,
+    versionToCheck: '9.2.2',
+    targetVersion: "latest"
+  },
+  {
+    packageName: '@rspack/cli',
+    shouldUpdate: true,
+    versionToCheck: '9.2.2',
+    targetVersion: "latest"
+  },
+  {
+    packageName: '@rspack/dev-server',
+    shouldUpdate: true,
+    versionToCheck: '9.2.2',
+    targetVersion: "latest"
+  },
+  {
+    packageName: '@rspack/plugin-react-refresh',
+    shouldUpdate: true,
+    versionToCheck: '9.2.2',
+    targetVersion: "latest"
   }
 ];
 
@@ -101,7 +125,7 @@ async function checkAndUpdatePackages(nestedDir, packageJson, results) {
       targetVersion = await getLatestVersion(packageName, targetVersion);
       if (!targetVersion) continue; // Skip if failed to fetch latest version
     }
-    if (targetVersion === 'next') {
+    if (targetVersion === "latest") {
       targetVersion = await getLatestVersion(packageName, targetVersion);
       if (!targetVersion) continue; // Skip if failed to fetch latest version
       updateDependencies(packageJson, packageName, targetVersion);
