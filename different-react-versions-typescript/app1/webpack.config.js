@@ -38,8 +38,9 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'app1',
       library: { type: 'var', name: 'app1' },
+      dts:true,
       remotes: {
-        app2: 'app2',
+        app2: 'app2@http://localhost:3002/remoteEntry.js',
       },
       shared: {
         ...deps,
