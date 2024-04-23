@@ -20,9 +20,6 @@ module.exports = {
   resolve: {
     extensions: ["...", ".ts", ".tsx", ".jsx"],
   },
-  optimization: {
-    minimize: false,
-  },
   devServer: {
     port: 3003,
     hot: true,
