@@ -24,7 +24,7 @@ module.exports = {
     minimize: false,
   },
   devServer: {
-    port: 3000,
+    port: 3003,
     hot: true,
     static: {
       directory: path.join(__dirname, "build"),
@@ -42,7 +42,7 @@ module.exports = {
   output: {
     path: __dirname + "/dist",
     uniqueName: name1,
-    publicPath: "http://localhost:3000/",
+    publicPath: "http://localhost:3003/",
     filename: "[name].js",
   },
   watch: true,
