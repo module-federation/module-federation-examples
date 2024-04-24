@@ -12,7 +12,7 @@ pnpm install
 pnpm run start
 ```
 
-Host runs at http://localhost:9000 (live reload only)
-Remote1 runs at http://localhost:9001 (HMR supported)
-Remote2 runs at http://localhost:9002 (HMR supported)
+Host runs at http://localhost:3000 (live reload only)
+Remote1 runs at http://localhost:3001 (HMR supported)
+Remote2 runs at http://localhost:3002 (HMR supported)
 

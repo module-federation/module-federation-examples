@@ -1,1 +1,2 @@
-export default function Button(): import("react/jsx-runtime").JSX.Element;
+/// <reference types="react" />
+export default function Button(): JSX.Element;
