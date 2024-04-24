@@ -4,7 +4,8 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "pnpm run --filter react-manifest-example_* --parallel dev",
+    "preinstall": "find . -name \"noexist\" -type d -prune -exec rm -rf '{}' +; pnpm install --ignore-scripts",
+    "start": "pnpm run --filter react-manifest-example_** --parallel dev",
     "build": "pnpm run --filter react-manifest-example_* build",
     "serve": "pnpm run --filter react-manifest-example_* --parallel serve",
     "clean": "pnpm run --filter react-manifest-example_* --parallel clean"
