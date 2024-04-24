@@ -1,7 +1,7 @@
 const {
-  container: { ModuleFederationPlugin },
   HtmlRspackPlugin,
 } = require('@rspack/core');
+const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
 const { RsdoctorRspackPlugin } = require('@rsdoctor/rspack-plugin');
 const ReactRefreshWebpackPlugin = require('@rspack/plugin-react-refresh');
 
@@ -19,7 +19,7 @@ module.exports = {
     minimize: false,
   },
   output: {
-    publicPath: 'auto',
+    publicPath: 'http://localhost:3001/',
     uniqueName: 'app1'
   },
   experiments: {
@@ -69,10 +69,10 @@ module.exports = {
       name: 'app_01',
       filename: 'remoteEntry.js',
       remotes: {
-        app_02: 'app_02@http://localhost:3002/remoteEntry.js',
-        app_03: 'app_03@http://localhost:3003/remoteEntry.js',
-        app_04: 'app_04@http://localhost:3004/remoteEntry.js',
-        app_05: 'app_05@http://localhost:3005/remoteEntry.js',
+        app_02: 'app_02@http://localhost:3002/mf-manifest.json',
+        app_03: 'app_03@http://localhost:3003/mf-manifest.json',
+        app_04: 'app_04@http://localhost:3004/mf-manifest.json',
+        app_05: 'app_05@http://localhost:3005/mf-manifest.json',
       },
       exposes: {
         './SideNav': './src/SideNav',
@@ -98,6 +98,5 @@ module.exports = {
       template: './public/index.html',
     }),
     isProd ? new ReactRefreshWebpackPlugin() : undefined,
-    // new RsdoctorRspackPlugin()
-  ],
+  ].filter(Boolean),
 };

@@ -4,11 +4,11 @@ import { ModuleFederationPlugin } from '@module-federation/enhanced/rspack';
 
 export default defineConfig({
   server: {
-    port: 9002,
+    port: 3002,
   },
   dev: {
     // It is necessary to configure assetPrefix, and in the production environment, you need to configure output.assetPrefix
-    assetPrefix: 'http://localhost:9002',
+    assetPrefix: 'http://localhost:3002',
   },
   tools: {
     rspack: (config, { appendPlugins }) => {

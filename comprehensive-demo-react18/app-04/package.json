@@ -6,9 +6,9 @@
   "devDependencies": {
     "@module-federation/enhanced": "^0.1.9",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
-    "@rspack/cli": "^0.6.2",
-    "@rspack/core": "^0.6.2",
-    "@rspack/dev-server": "^0.6.2",
+    "@rspack/cli": "^0.6.3",
+    "@rspack/core": "^0.6.3",
+    "@rspack/dev-server": "^0.6.3",
     "cross-env": "7.0.3",
     "css-loader": "6.10.0",
     "html-webpack-plugin": "5.6.0",
@@ -29,7 +29,7 @@
     "legacy:start": "webpack --watch",
     "dev": "rspack serve",
     "legacy:dev": "webpack serve --port=3004",
-    "serve": "serve public -p 3004",
+    "serve": "serve public -p 3004 --cors",
     "clean": "rm -rf dist"
   }
 }

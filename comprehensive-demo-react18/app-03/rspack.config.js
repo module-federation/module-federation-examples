@@ -1,7 +1,7 @@
 const {
-  container: {ModuleFederationPlugin},
   HtmlRspackPlugin,
 } = require('@rspack/core');
+const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
 const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
@@ -25,7 +25,7 @@ module.exports = {
     extensions: ['.jsx', '.js', '.json', '.mjs'],
   },
   output: {
-    publicPath: 'auto',
+    publicPath: 'http://localhost:3003/',
     uniqueName: 'app3'
   },
 
@@ -60,7 +60,7 @@ module.exports = {
       name: 'app_03',
       filename: 'remoteEntry.js',
       remotes: {
-        app_01: 'app_01@http://localhost:3001/remoteEntry.js',
+        app_01: 'app_01@http://localhost:3001/mf-manifest.json',
       },
       exposes: {
         './Button': './src/Button',
