@@ -1,5 +1,5 @@
 import { loadRemote } from '@module-federation/enhanced/runtime';
-import React from 'react';
+import React, {Suspense} from 'react';
 
 const Button = React.lazy(async ()=>{
     const res = await loadRemote('remote2/button');
@@ -7,10 +7,10 @@ const Button = React.lazy(async ()=>{
 })
 
 function Remote2 () {
-    return <div>
+    return <Suspense fallback={'loading'}>
         <h2>Remote1 Router</h2>
         <Button />
-    </div>;
+    </Suspense>;
 }
 
 export default Remote2;
