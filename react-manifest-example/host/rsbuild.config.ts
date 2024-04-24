@@ -4,7 +4,7 @@ import { ModuleFederationPlugin } from '@module-federation/enhanced/rspack';
 
 export default defineConfig({
   server: {
-    port: 9000,
+    port: 3000,
   },
   tools: {
     rspack: (config, { appendPlugins }) => {
@@ -12,8 +12,8 @@ export default defineConfig({
         new ModuleFederationPlugin({
           name: 'host',
           remotes: {
-            remote1: 'remote1@http://localhost:9001/mf-manifest.json',
-            remote2: 'remote2@http://localhost:9002/mf-manifest.json',
+            remote1: 'remote1@http://localhost:3001/mf-manifest.json',
+            remote2: 'remote2@http://localhost:3002/mf-manifest.json',
           },
           shared: ['react', 'react-dom'],
         }),

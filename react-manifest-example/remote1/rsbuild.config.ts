@@ -4,11 +4,11 @@ import { ModuleFederationPlugin } from '@module-federation/enhanced/rspack';
 
 export default defineConfig({
   server: {
-    port: 9001,
+    port: 3001,
   },
   dev: {
     // It is necessary to configure assetPrefix, and in the production environment, you need to configure output.assetPrefix
-    assetPrefix: 'http://localhost:9001',
+    assetPrefix: 'http://localhost:3001',
   },
   tools: {
     rspack: (config, { appendPlugins }) => {
@@ -21,7 +21,7 @@ export default defineConfig({
             './app': './src/app.tsx',
           },
           shared: [
-            'react', 
+            'react',
             'react-dom',
             // 'antd'
           ],
