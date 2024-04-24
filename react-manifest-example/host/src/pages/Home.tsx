@@ -35,7 +35,7 @@ const columns: TableProps<DataType>['columns'] = [
       <>
         {tags.map((tag) => {
           let color = tag.length > 5 ? 'geekblue' : 'green';
-          if (tag === 'loser') {
+          if (tag === 'fail') {
             color = 'volcano';
           }
           return (
@@ -72,7 +72,7 @@ const data: DataType[] = [
     name: 'Jim Green',
     age: 42,
     address: 'London No. 1 Lake Park',
-    tags: ['loser'],
+    tags: ['fail'],
   },
   {
     key: '3',
