@@ -38,6 +38,7 @@ module.exports = {
   createFederatedCatchAll() {
     const FederatedCatchAll = initialProps => {
       const [lazyProps, setProps] = React.useState({});
+      const [mount, setMount] = React.useState(false);
 
       const {FederatedPage, render404, renderError, needsReload, ...props} = {
         ...lazyProps,
@@ -51,6 +52,10 @@ module.exports = {
           };
           runUnderlayingGIP();
         }
+      }, []);
+
+      React.useEffect(() => {
+       setMount(true)
       }, []);
 
       if (render404) {
