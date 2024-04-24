@@ -21,7 +21,7 @@ export default defineConfig({
             './app': './src/app.tsx',
           },
           shared: [
-            'react', 
+            'react',
             'react-dom',
             // 'antd'
           ],
