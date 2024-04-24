@@ -12,13 +12,19 @@ export default defineConfig({
   },
   tools: {
     rspack: (config, { appendPlugins }) => {
+      config.output!.uniqueName = 'app1';
       appendPlugins([
         new ModuleFederationPlugin({
           name: 'remote1',
           exposes: {
             './button': './src/button.tsx',
+            './app': './src/app.tsx',
           },
-          shared: ['react', 'react-dom'],
+          shared: [
+            'react', 
+            'react-dom',
+            // 'antd'
+          ],
         }),
       ]);
     },

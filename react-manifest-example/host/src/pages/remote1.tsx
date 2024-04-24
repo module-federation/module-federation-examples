@@ -1,6 +1,4 @@
 import Button from 'remote1/button';
-import { loadRemote } from '@module-federation/enhanced/runtime';
-
 
 function Remote1 () {
     return <div>

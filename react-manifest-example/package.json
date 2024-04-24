@@ -7,8 +7,7 @@
     "start": "pnpm run --filter react-manifest-example_* --parallel dev",
     "build": "pnpm run --filter react-manifest-example_* build",
     "serve": "pnpm run --filter react-manifest-example_* --parallel serve",
-    "clean": "pnpm run --filter react-manifest-example_* --parallel clean",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3002/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "clean": "pnpm run --filter react-manifest-example_* --parallel clean"
   },
   "devDependencies": {
     "@babel/preset-react": "7.23.3",

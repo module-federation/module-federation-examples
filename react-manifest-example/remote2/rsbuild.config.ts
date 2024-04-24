@@ -12,6 +12,7 @@ export default defineConfig({
   },
   tools: {
     rspack: (config, { appendPlugins }) => {
+      config.output!.uniqueName = 'app2';
       appendPlugins([
         new ModuleFederationPlugin({
           name: 'remote2',
