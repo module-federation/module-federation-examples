@@ -1,0 +1,16 @@
+{
+  "name": "react-manifest-example",
+  "description": "Demo of fetching a React component in a Vue app via Module Federation, showcasing two-way communication and lifecycle management.",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "pnpm run --filter react-manifest-example_* --parallel dev",
+    "build": "pnpm run --filter react-manifest-example_* build",
+    "serve": "pnpm run --filter react-manifest-example_* --parallel serve",
+    "clean": "pnpm run --filter react-manifest-example_* --parallel clean"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "7.23.3",
+    "wait-on": "7.2.0"
+  }
+}
