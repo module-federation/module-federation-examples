@@ -1,6 +1,6 @@
 const {
-  container: {ModuleFederationPlugin},
 } = require('@rspack/core');
+const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
 const path = require('path');
 
 const mode = process.env.NODE_ENV || 'development';
@@ -19,7 +19,7 @@ module.exports = {
     path: path.resolve(__dirname, 'public'),
     filename: '[name].js',
     chunkFilename: '[name].[id].js',
-    publicPath: 'auto',
+    publicPath: 'http://localhost:3004/',
     uniqueName: 'app4'
   },
   devServer: {

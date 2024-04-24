@@ -60,7 +60,7 @@ module.exports = {
       name: 'app_03',
       filename: 'remoteEntry.js',
       remotes: {
-        app_01: 'app_01@http://localhost:3001/remoteEntry.js',
+        app_01: 'app_01@http://localhost:3001/mf-manifest.json',
       },
       exposes: {
         './Button': './src/Button',

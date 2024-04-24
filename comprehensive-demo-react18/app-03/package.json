@@ -26,7 +26,7 @@
     "legacy:start": "webpack --watch",
     "dev": "rspack serve",
     "legacy:dev": "webpack serve --port=3003",
-    "serve": "serve dist -p 3003",
+    "serve": "serve dist -p 3003 --cors",
     "clean": "rm -rf dist"
   },
   "devDependencies": {

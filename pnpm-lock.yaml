@@ -9702,99 +9702,14 @@ importers:
         specifier: 4.15.1
         version: 4.15.1(webpack-cli@4.10.0)(webpack@5.89.0)
 
-  react-livereload:
+  react-manifest-example:
     devDependencies:
-      concurrently:
-        specifier: ^7.6.0
-        version: 7.6.0
+      '@babel/preset-react':
+        specifier: 7.23.3
+        version: 7.23.3(@babel/core@7.24.4)
       wait-on:
         specifier: 7.2.0
         version: 7.2.0
-
-  react-livereload/host:
-    devDependencies:
-      '@babel/core':
-        specifier: 7.24.3
-        version: 7.24.3
-      '@babel/preset-react':
-        specifier: 7.23.3
-        version: 7.23.3(@babel/core@7.24.3)
-      babel-loader:
-        specifier: 8.2.5
-        version: 8.2.5(@babel/core@7.24.3)(webpack@5.89.0)
-      external-remotes-plugin:
-        specifier: 1.0.0
-        version: 1.0.0(webpack@5.89.0)
-      html-webpack-plugin:
-        specifier: 5.6.0
-        version: 5.6.0(@rspack/core@0.6.3)(webpack@5.89.0)
-      webpack:
-        specifier: 5.89.0
-        version: 5.89.0(webpack-cli@4.10.0)
-      webpack-cli:
-        specifier: 4.10.0
-        version: 4.10.0(webpack-bundle-analyzer@4.10.1)(webpack-dev-server@4.15.1)(webpack@5.89.0)
-      webpack-dev-server:
-        specifier: 4.15.1
-        version: 4.15.1(webpack-cli@4.10.0)(webpack@5.89.0)
-      webpack-livereload-plugin:
-        specifier: 3.0.2
-        version: 3.0.2(webpack@5.89.0)
-
-  react-livereload/libs:
-    dependencies:
-      react:
-        specifier: ^17.0.2
-        version: 17.0.2
-      react-dom:
-        specifier: ^17.0.2
-        version: 17.0.2(react@17.0.2)
-      react-router-dom:
-        specifier: ^5.3.0
-        version: 5.3.4(react@17.0.2)
-    devDependencies:
-      webpack:
-        specifier: 5.89.0
-        version: 5.89.0(webpack-cli@4.10.0)
-      webpack-cli:
-        specifier: 4.10.0
-        version: 4.10.0(webpack-bundle-analyzer@4.10.1)(webpack-dev-server@4.15.1)(webpack@5.89.0)
-      webpack-dev-server:
-        specifier: 4.15.1
-        version: 4.15.1(webpack-cli@4.10.0)(webpack@5.89.0)
-
-  react-livereload/remote1:
-    devDependencies:
-      '@babel/core':
-        specifier: 7.24.3
-        version: 7.24.3
-      '@babel/preset-react':
-        specifier: 7.23.3
-        version: 7.23.3(@babel/core@7.24.3)
-      '@pmmmwh/react-refresh-webpack-plugin':
-        specifier: 0.5.11
-        version: 0.5.11(react-refresh@0.14.0)(webpack-dev-server@4.15.1)(webpack@5.89.0)
-      babel-loader:
-        specifier: 8.2.5
-        version: 8.2.5(@babel/core@7.24.3)(webpack@5.89.0)
-      external-remotes-plugin:
-        specifier: 1.0.0
-        version: 1.0.0(webpack@5.89.0)
-      html-webpack-plugin:
-        specifier: 5.6.0
-        version: 5.6.0(@rspack/core@0.6.3)(webpack@5.89.0)
-      react-refresh:
-        specifier: 0.14.0
-        version: 0.14.0
-      webpack:
-        specifier: 5.89.0
-        version: 5.89.0(webpack-cli@4.10.0)
-      webpack-cli:
-        specifier: 4.10.0
-        version: 4.10.0(webpack-bundle-analyzer@4.10.1)(webpack-dev-server@4.15.1)(webpack@5.89.0)
-      webpack-dev-server:
-        specifier: 4.15.1
-        version: 4.15.1(webpack-cli@4.10.0)(webpack@5.89.0)
 
   react-manifest-example/host:
     dependencies:
@@ -20078,15 +19993,6 @@ packages:
       '@babel/helper-plugin-utils': 7.24.0
     dev: true
 
-  /@babel/plugin-syntax-jsx@7.23.3(@babel/core@7.24.0):
-    resolution: {integrity: sha512-EB2MELswq55OHUoRZLGg/zC7QWUKfNLpE57m/S2yr1uEneIgsTgrSzXP3NXEsMkVn76OlaVVnzN+ugObuYGwhg==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.24.0
-      '@babel/helper-plugin-utils': 7.24.0
-
   /@babel/plugin-syntax-jsx@7.23.3(@babel/core@7.24.3):
     resolution: {integrity: sha512-EB2MELswq55OHUoRZLGg/zC7QWUKfNLpE57m/S2yr1uEneIgsTgrSzXP3NXEsMkVn76OlaVVnzN+ugObuYGwhg==}
     engines: {node: '>=6.9.0'}
@@ -20106,6 +20012,15 @@ packages:
       '@babel/core': 7.24.4
       '@babel/helper-plugin-utils': 7.24.0
 
+  /@babel/plugin-syntax-jsx@7.24.1(@babel/core@7.24.0):
+    resolution: {integrity: sha512-2eCtxZXf+kbkMIsXS4poTvT4Yu5rXiRa+9xGVT56raghjmBTKMpFNc9R4IDiB4emao9eO22Ox7CxuJG7BgExqA==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.24.0
+      '@babel/helper-plugin-utils': 7.24.0
+
   /@babel/plugin-syntax-jsx@7.24.1(@babel/core@7.24.4):
     resolution: {integrity: sha512-2eCtxZXf+kbkMIsXS4poTvT4Yu5rXiRa+9xGVT56raghjmBTKMpFNc9R4IDiB4emao9eO22Ox7CxuJG7BgExqA==}
     engines: {node: '>=6.9.0'}
@@ -20114,7 +20029,6 @@ packages:
     dependencies:
       '@babel/core': 7.24.4
       '@babel/helper-plugin-utils': 7.24.0
-    dev: true
 
   /@babel/plugin-syntax-logical-assignment-operators@7.10.4(@babel/core@7.11.1):
     resolution: {integrity: sha512-d8waShlpFDinQ5MtvGU9xDAOzKH47+FFoney2baFIoMr952hKOLp1HR7VszoZvOsV/4+RRszNY7D17ba0te0ig==}
@@ -24008,9 +23922,9 @@ packages:
     dependencies:
       '@babel/core': 7.24.0
       '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-module-imports': 7.22.15
+      '@babel/helper-module-imports': 7.24.3
       '@babel/helper-plugin-utils': 7.24.0
-      '@babel/plugin-syntax-jsx': 7.23.3(@babel/core@7.24.0)
+      '@babel/plugin-syntax-jsx': 7.24.1(@babel/core@7.24.0)
       '@babel/types': 7.24.0
 
   /@babel/plugin-transform-react-jsx@7.23.4(@babel/core@7.24.3):
@@ -24035,9 +23949,9 @@ packages:
     dependencies:
       '@babel/core': 7.24.4
       '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-module-imports': 7.22.15
+      '@babel/helper-module-imports': 7.24.3
       '@babel/helper-plugin-utils': 7.24.0
-      '@babel/plugin-syntax-jsx': 7.23.3(@babel/core@7.24.4)
+      '@babel/plugin-syntax-jsx': 7.24.1(@babel/core@7.24.4)
       '@babel/types': 7.24.0
 
   /@babel/plugin-transform-react-pure-annotations@7.23.3(@babel/core@7.24.0):
@@ -52055,7 +51969,7 @@ packages:
       babel-plugin-syntax-jsx: 6.18.0
       lodash: 4.17.21
       picomatch: 2.3.1
-      styled-components: 5.3.11(react-dom@16.14.0)(react-is@18.2.0)(react@16.14.0)
+      styled-components: 5.3.11(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)
 
   /babel-plugin-styled-components@2.1.1(styled-components@5.3.5):
     resolution: {integrity: sha512-c8lJlszObVQPguHkI+akXv8+Jgb9Ccujx0EetL7oIvwU100LxO6XAGe45qry37wUL40a5U9f23SYrivro2XKhA==}
@@ -84014,6 +83928,7 @@ packages:
       react-is: 18.2.0
       shallowequal: 1.1.0
       supports-color: 5.5.0
+    dev: false
 
   /styled-components@5.3.11(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-uuzIIfnVkagcVHv9nE0VPlHPSCmXIUGKfJ42LNjxCCTDTL5sgnJ8Z7GZBq0EnLYGln77tPpEpExt2+qa+cZqSw==}
@@ -88741,7 +88656,7 @@ packages:
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
-      axios: 1.6.7
+      axios: 1.6.8
       joi: 17.12.2
       lodash: 4.17.21
       minimist: 1.2.8

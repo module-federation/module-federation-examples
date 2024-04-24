@@ -1,7 +1,7 @@
 const {
-  container: { ModuleFederationPlugin },
   HtmlRspackPlugin,
 } = require('@rspack/core');
+const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
 const deps = require('./package.json').dependencies;
 const ReactRefreshWebpackPlugin = require('@rspack/plugin-react-refresh');
 const isProd = process.env.NODE_ENV === 'production'
@@ -27,7 +27,7 @@ module.exports = {
     }
   },
   output: {
-    publicPath: 'auto',
+    publicPath: 'http://localhost:3002/',
     uniqueName: 'app2'
   },
 
@@ -68,8 +68,8 @@ module.exports = {
       name: 'app_02',
       filename: 'remoteEntry.js',
       remotes: {
-        app_01: 'app_01@http://localhost:3001/remoteEntry.js',
-        app_03: 'app_03@http://localhost:3003/remoteEntry.js',
+        app_01: 'app_01@http://localhost:3001/mf-manifest.json',
+        app_03: 'app_03@http://localhost:3003/mf-manifest.json',
       },
       exposes: {
         './Dialog': './src/Dialog',
