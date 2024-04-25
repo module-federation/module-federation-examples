@@ -913,8 +913,8 @@ importers:
         specifier: 11.2.14
         version: 11.2.14(@angular/compiler@11.2.14)(typescript@4.0.2)
       '@ngxs/devtools-plugin':
-        specifier: 3.8.1
-        version: 3.8.1(@angular/core@11.2.14)(@ngxs/store@3.8.2)(rxjs@6.6.7)
+        specifier: 3.8.2
+        version: 3.8.2(@angular/core@11.2.14)(@ngxs/store@3.8.2)(rxjs@6.6.7)
       '@ngxs/logger-plugin':
         specifier: 3.8.2
         version: 3.8.2(@angular/core@11.2.14)(@ngxs/store@3.8.2)(rxjs@6.6.7)
@@ -37011,11 +37011,11 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@ngxs/devtools-plugin@3.8.1(@angular/core@11.2.14)(@ngxs/store@3.8.2)(rxjs@6.6.7):
-    resolution: {integrity: sha512-IRHoHdV/lxNXaisKGdcGvSNbrgjCpM06eiqC93K+tOfwgmDY/hNsDNmKlXn9xmdYxF9U6v/1CXtAr0Q0Ux7dVQ==}
+  /@ngxs/devtools-plugin@3.8.2(@angular/core@11.2.14)(@ngxs/store@3.8.2)(rxjs@6.6.7):
+    resolution: {integrity: sha512-4FWZWJTtgrlTUsiprIBGHaQqvvFKiTesYK9+dg03NGv7z74Z5pNtPVbO1hMeuMmqaJ8r18fDZ3wIfXlXC6noNA==}
     peerDependencies:
-      '@angular/core': '>=12.0.0 <17.0.0'
-      '@ngxs/store': ^3.8.1 || ^3.8.1-dev
+      '@angular/core': '>=12.0.0 <18.0.0'
+      '@ngxs/store': ^3.8.2 || ^3.8.2-dev
       rxjs: '>=6.5.5'
     dependencies:
       '@angular/core': 11.2.14(rxjs@6.6.7)(zone.js@0.11.8)
@@ -38557,7 +38557,7 @@ packages:
     hasBin: true
     dependencies:
       nx: 17.3.2
-      tslib: 2.6.2
+      tslib: 2.5.0
     transitivePeerDependencies:
       - '@swc-node/register'
       - '@swc/core'
@@ -38569,7 +38569,7 @@ packages:
     hasBin: true
     dependencies:
       nx: 17.3.2(@swc-node/register@1.9.0)(@swc/core@1.4.5)
-      tslib: 2.6.2
+      tslib: 2.5.0
     transitivePeerDependencies:
       - '@swc-node/register'
       - '@swc/core'
@@ -38938,7 +38938,7 @@ packages:
       nx: 16.0.0
       semver: 7.3.4
       tmp: 0.2.3
-      tslib: 2.6.2
+      tslib: 2.5.0
     dev: true
 
   /@nx/devkit@16.0.0(nx@17.3.2):
@@ -38952,7 +38952,7 @@ packages:
       nx: 17.3.2
       semver: 7.3.4
       tmp: 0.2.3
-      tslib: 2.6.2
+      tslib: 2.5.0
     dev: true
 
   /@nx/devkit@17.3.2(nx@17.3.2):
@@ -39186,7 +39186,7 @@ packages:
       minimatch: 3.0.5
       source-map-support: 0.5.19
       tree-kill: 1.2.2
-      tslib: 2.6.2
+      tslib: 2.5.0
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -39411,7 +39411,7 @@ packages:
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.4.5)
       eslint: 8.57.0
       tmp: 0.2.3
-      tslib: 2.6.2
+      tslib: 2.5.0
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -39760,7 +39760,7 @@ packages:
       chokidar: 3.6.0
       http-server: 14.1.1
       ignore: 5.3.1
-      tslib: 2.6.2
+      tslib: 2.5.0
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -39905,7 +39905,7 @@ packages:
       open: 8.4.2
       rxjs: 6.6.7
       tmp: 0.2.3
-      tslib: 2.6.2
+      tslib: 2.5.0
       yargs: 17.7.2
       yargs-parser: 21.1.1
     transitivePeerDependencies:
@@ -43449,7 +43449,7 @@ packages:
   /@softarc/native-federation-runtime@2.0.4:
     resolution: {integrity: sha512-TEtOWsDM+C8XhrDGUD51GLC/9O6IN5/8INHk3jfue2cl0UDlTyucDCrlvCtOYj2RpFGH9w7wApdqa5pfWmiZfQ==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.0
     dev: true
 
   /@softarc/native-federation@1.1.2:
@@ -44688,7 +44688,7 @@ packages:
       flat-cache: 3.2.0
       micromatch: 4.0.5
       react-docgen-typescript: 2.2.2(typescript@5.4.5)
-      tslib: 2.6.2
+      tslib: 2.5.0
       typescript: 5.4.5
       webpack: 5.89.0(webpack-cli@5.0.1)
     transitivePeerDependencies:
@@ -45796,19 +45796,19 @@ packages:
   /@swc/helpers@0.4.14:
     resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.0
     dev: false
 
   /@swc/helpers@0.5.0:
     resolution: {integrity: sha512-SjY/p4MmECVVEWspzSRpQEM3sjR17sP8PbGxELWrT+YZMBfiUyt1MRUNjMV23zohwlG2HYtCQOsCwsTHguXkyg==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.0
     dev: true
 
   /@swc/helpers@0.5.1:
     resolution: {integrity: sha512-sJ902EfIzn1Fa+qYmjdQqh8tPsoxyBz+8yBKC2HKUxyezKJFwPGOn7pv4WY6QuQW//ySQi5lJjA/ZT9sNWWNTg==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.0
 
   /@swc/helpers@0.5.2:
     resolution: {integrity: sha512-E4KcWTpoLHqwPHLxidpOqQbcrZVgi0rsmmZXUle1jXmJfuIf/UWpczUJ7MZZ5tlxytgJXyp0w4PGkkeLiuIdZw==}
@@ -49748,7 +49748,7 @@ packages:
       chalk: 4.1.2
       jsdom: 16.7.0
       object-path: 0.11.8
-      tslib: 2.6.2
+      tslib: 2.5.0
       typescript: 4.9.5
     transitivePeerDependencies:
       - bufferutil
@@ -49768,7 +49768,7 @@ packages:
     resolution: {integrity: sha512-jmT7Sb4ZQWI5iyu3lobQxICu2nC/vbUhP0vIdd6tHC9PTfenmRmuIFqktc6GH9cgi+ZHnsLWPvfSvc4DrYmKiQ==}
     engines: {node: '>=8'}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.0
     dev: false
 
   /@wry/equality@0.5.7:
@@ -49782,7 +49782,7 @@ packages:
     resolution: {integrity: sha512-I6bHwH0fSf6RqQcnnXLJKhkSXG45MFral3GxPaY4uAl0LYDZM+YDVDAiU9bYwjTuysy1S0IeecWtmq1SZA3M1w==}
     engines: {node: '>=8'}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.0
     dev: false
 
   /@wry/trie@0.5.0:
@@ -49802,7 +49802,7 @@ packages:
     resolution: {integrity: sha512-Zaw58gQxjQceJqhqybJi1oUDaORT8i2GTgwICPs8v/X/Pkx35FXQba69ldHVg5pQZ6YLKpROXgyHvBaCJOFXiA==}
     dependencies:
       pkg-dir: 5.0.0
-      tslib: 2.6.2
+      tslib: 2.5.0
       upath2: 3.1.19
     dev: true
 
@@ -49815,7 +49815,7 @@ packages:
     engines: {node: '>=18.12.0'}
     dependencies:
       js-yaml: 3.14.1
-      tslib: 2.6.2
+      tslib: 2.5.0
     dev: true
 
   /@yarnpkg/parsers@3.0.0-rc.46:
@@ -49823,7 +49823,7 @@ packages:
     engines: {node: '>=14.15.0'}
     dependencies:
       js-yaml: 3.14.1
-      tslib: 2.6.2
+      tslib: 2.5.0
     dev: true
 
   /@zeit/schemas@2.21.0:
@@ -50841,7 +50841,7 @@ packages:
     resolution: {integrity: sha512-O0yuUDnZeQDL+ncNGlJ78BiO4jnYI3bvMsD5prT0/nsgijG/LpNBIr63gTjVTNsiGkgQhiyCShTgxt8oXOrklA==}
     engines: {node: '>=4'}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.0
     dev: true
 
   /astral-regex@2.0.0:
@@ -53290,7 +53290,7 @@ packages:
     resolution: {integrity: sha512-gxGWBrTT1JuMx6R+o5PTXMmUnhnVzLQ9SNutD4YqKtI6ap897t3tKECYla6gCWEkplXnlNybEkZg9GEGxKFCgw==}
     dependencies:
       pascal-case: 3.1.2
-      tslib: 2.6.2
+      tslib: 2.5.0
 
   /camelcase-css@2.0.1:
     resolution: {integrity: sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==}
@@ -57583,7 +57583,7 @@ packages:
     resolution: {integrity: sha512-Kv5nKlh6yRrdrGvxeJ2e5y2eRUpkUosIW4A2AS38zwSz27zu7ufDwQPi5Jhs3XAlGNetl3bmnGhQsMtkKJnj3w==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.2
+      tslib: 2.5.0
 
   /dot-prop@4.2.1:
     resolution: {integrity: sha512-l0p4+mIuJIua0mhxGoh4a+iNL9bmeK5DvnSVQa6T0OhrVmaEa1XScX5Etc673FePCJOArq/4Pa2cLGODUWTPOQ==}
@@ -63676,7 +63676,7 @@ packages:
   /injection-js@2.4.0:
     resolution: {integrity: sha512-6jiJt0tCAo9zjHbcwLiPL+IuNe9SQ6a9g0PEzafThW3fOQi0mrmiJGBJvDD6tmhPh8cQHIQtCOrJuBfQME4kPA==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.0
     dev: true
 
   /inline-style-parser@0.1.1:
@@ -68572,7 +68572,7 @@ packages:
   /lower-case@2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.0
 
   /lowercase-keys@1.0.0:
     resolution: {integrity: sha512-RPlX0+PHuvxVDZ7xX+EBVAp4RsVxP/TdDSN2mJYdiq1Lc4Hz7EUSjUI7RZrKKlmrIzVhf6Jo2stj7++gVarS0A==}
@@ -69115,7 +69115,7 @@ packages:
     resolution: {integrity: sha512-x9qc6k88J/VVwnfTkJV8pRRswJ2156Rc4w5rciRqKceFDZ0y1MqsNL9pkg5sE0GOcDzZYbonreALhaHzg1siFw==}
     engines: {node: '>= 4.0.0'}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.0
     dev: true
 
   /memoizerific@1.11.3:
@@ -70696,7 +70696,7 @@ packages:
     resolution: {integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==}
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.6.2
+      tslib: 2.5.0
 
   /node-abort-controller@3.1.1:
     resolution: {integrity: sha512-AGK2yQKIjRuqnc6VkX2Xj5d+QW8xZ87pa1UK6yA6ouUyuxfHuMP6umE5QK7UmTeOAymo+Zx1Fxiuw9rVx8taHQ==}
@@ -71521,7 +71521,7 @@ packages:
       tar-stream: 2.2.0
       tmp: 0.2.3
       tsconfig-paths: 3.15.0
-      tslib: 2.6.2
+      tslib: 2.5.0
       v8-compile-cache: 2.3.0
       yargs: 17.7.2
       yargs-parser: 21.0.1
@@ -71698,7 +71698,7 @@ packages:
       tar-stream: 2.2.0
       tmp: 0.2.3
       tsconfig-paths: 4.2.0
-      tslib: 2.6.2
+      tslib: 2.5.0
       v8-compile-cache: 2.3.0
       yargs: 17.7.2
       yargs-parser: 21.1.1
@@ -72629,7 +72629,7 @@ packages:
     resolution: {integrity: sha512-RXlj7zCYokReqWpOPH9oYivUzLYZ5vAPIfEmCTNViosC78F8F0H9y7T7gG2M39ymgutxF5gcFEsyZQSph9Bp3A==}
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.6.2
+      tslib: 2.5.0
 
   /parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
@@ -72835,7 +72835,7 @@ packages:
     resolution: {integrity: sha512-uWlGT3YSnK9x3BQJaOdcZwrnV6hPpd8jFH1/ucpiLRPh/2zCVJKS19E4GvYHvaCcACn3foXZ0cLB9Wrx1KGe5g==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.2
+      tslib: 2.5.0
 
   /pascalcase@0.1.1:
     resolution: {integrity: sha512-XHXfu/yOQRy9vYOtUDVMN60OEJjW013GoObG1o+xwQTpB9eYJX/BjXMsdW13ZDPruFhYYn0AG22w0xgQMwl3Nw==}
@@ -72879,7 +72879,7 @@ packages:
   /path-is-network-drive@1.0.20:
     resolution: {integrity: sha512-p5wCWlRB4+ggzxWshqHH9aF3kAuVu295NaENXmVhThbZPJQBeJdxZTP6CIoUR+kWHDUW56S9YcaO1gXnc/BOxw==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.0
     dev: true
 
   /path-key@2.0.1:
@@ -72908,7 +72908,7 @@ packages:
   /path-strip-sep@1.0.17:
     resolution: {integrity: sha512-+2zIC2fNgdilgV7pTrktY6oOxxZUo9x5zJYfTzxsGze5kSGDDwhA5/0WlBn+sUyv/WuuyYn3OfM+Ue5nhdQUgA==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.0
     dev: true
 
   /path-to-regexp@0.1.7:
@@ -81494,7 +81494,7 @@ packages:
       fs-extra: 10.1.0
       resolve: 1.22.8
       rollup: 2.79.1
-      tslib: 2.6.2
+      tslib: 2.5.0
       typescript: 4.8.4
     dev: true
 
@@ -82795,7 +82795,7 @@ packages:
     resolution: {integrity: sha512-LAOh4z89bGQvl9pFfNF8V146i7o7/CqFPbqzYgP+yYzDIDeS9HaNFtXABamRW+AQzEVODcvE79ljJ+8a9YSdMg==}
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.6.2
+      tslib: 2.5.0
     dev: true
 
   /snapdragon-node@2.1.1:
@@ -87132,7 +87132,7 @@ packages:
       '@types/node': 20.9.0
       path-is-network-drive: 1.0.20
       path-strip-sep: 1.0.17
-      tslib: 2.6.2
+      tslib: 2.5.0
     dev: true
 
   /upath@1.2.0:
