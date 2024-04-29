@@ -7,19 +7,19 @@ const CONFIG = [
     packageName: '@module-federation/node',
     shouldUpdate: true,
     versionToCheck: '3.0.13',
-    targetVersion: "latest"
+    targetVersion: "next"
   },
   {
     packageName: '@module-federation/sdk',
     shouldUpdate: true,
     versionToCheck: '3.0.13',
-    targetVersion: "latest"
+    targetVersion: "next"
   },
   {
     packageName: '@module-federation/enhanced',
     shouldUpdate: true, // Assumes no targetVersion needed
     versionToCheck: "2.0.0",
-    targetVersion: "latest",
+    targetVersion: "next",
   },
   {
     packageName: 'webpack',
@@ -41,13 +41,13 @@ const CONFIG = [
     packageName: '@module-federation/nextjs-mf',
     shouldUpdate: true,
     versionToCheck: '9.2.2',
-    targetVersion: "latest"
+    targetVersion: "next"
   },
   {
     packageName: '@module-federation/runtime',
     shouldUpdate: true,
     versionToCheck: '9.2.2',
-    targetVersion: "latest"
+    targetVersion: "next"
   },
   {
     packageName: '@rspack/core',
@@ -125,7 +125,7 @@ async function checkAndUpdatePackages(nestedDir, packageJson, results) {
       targetVersion = await getLatestVersion(packageName, targetVersion);
       if (!targetVersion) continue; // Skip if failed to fetch latest version
     }
-    if (targetVersion === "latest") {
+    if (targetVersion === "next") {
       targetVersion = await getLatestVersion(packageName, targetVersion);
       if (!targetVersion) continue; // Skip if failed to fetch latest version
       updateDependencies(packageJson, packageName, targetVersion);
