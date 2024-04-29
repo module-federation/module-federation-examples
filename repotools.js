@@ -125,7 +125,7 @@ async function checkAndUpdatePackages(nestedDir, packageJson, results) {
       targetVersion = await getLatestVersion(packageName, targetVersion);
       if (!targetVersion) continue; // Skip if failed to fetch latest version
     }
-    if (targetVersion === "latest") {
+    if (targetVersion === "next") {
       targetVersion = await getLatestVersion(packageName, targetVersion);
       if (!targetVersion) continue; // Skip if failed to fetch latest version
       updateDependencies(packageJson, packageName, targetVersion);
