@@ -43,25 +43,12 @@ const useDynamicScript = url => {
 
     const element = document.createElement('script');
 
-    element.src = url;
-    element.type = 'text/javascript';
-    element.async = true;
 
-    element.onload = () => {
-      urlCache.add(url);
-      setReady(true);
-    };
+    setReady(true);
 
-    element.onerror = () => {
-      setReady(false);
-      setErrorLoading(true);
-    };
-
-    document.head.appendChild(element);
 
     return () => {
       urlCache.delete(url);
-      document.head.removeChild(element);
     };
   }, [url]);
 

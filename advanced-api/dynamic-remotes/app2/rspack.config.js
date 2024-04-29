@@ -51,6 +51,7 @@ module.exports = {
       },
       shared: {
         moment: deps.moment,
+        'react/jsx-dev-runtime': {},
         react: {
           requiredVersion: deps.react,
           import: 'react', // the "react" package will be used a provided and fallback module
