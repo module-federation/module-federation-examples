@@ -8965,6 +8965,15 @@ importers:
       '@module-federation/node':
         specifier: ^2.2.2
         version: 2.2.2(react-dom@16.14.0)(react@16.14.0)(typescript@5.4.5)(vue-tsc@1.8.27)(webpack@5.89.0)
+      '@rspack/cli':
+        specifier: ^0.6.3
+        version: 0.6.3(@rspack/core@0.6.3)(webpack-cli@4.9.2)(webpack@5.89.0)
+      '@rspack/core':
+        specifier: ^0.6.3
+        version: 0.6.3(@swc/helpers@0.5.3)
+      '@rspack/dev-server':
+        specifier: ^0.6.3
+        version: 0.6.3(@rspack/core@0.6.3)(webpack-cli@4.9.2)(webpack@5.89.0)
       '@types/react':
         specifier: 18.0.38
         version: 18.0.38
@@ -9023,6 +9032,15 @@ importers:
       '@module-federation/node':
         specifier: ^2.2.2
         version: 2.2.2(react-dom@17.0.2)(react@17.0.2)(typescript@5.4.5)(vue-tsc@1.8.27)(webpack@5.89.0)
+      '@rspack/cli':
+        specifier: ^0.6.3
+        version: 0.6.3(@rspack/core@0.6.3)(webpack-cli@4.9.2)(webpack@5.89.0)
+      '@rspack/core':
+        specifier: ^0.6.3
+        version: 0.6.3(@swc/helpers@0.5.3)
+      '@rspack/dev-server':
+        specifier: ^0.6.3
+        version: 0.6.3(@rspack/core@0.6.3)(webpack-cli@4.9.2)(webpack@5.89.0)
       '@types/react':
         specifier: 18.0.38
         version: 18.0.38
@@ -9093,6 +9111,15 @@ importers:
       '@module-federation/node':
         specifier: ^2.2.2
         version: 2.2.2(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.5)(vue-tsc@1.8.27)(webpack@5.89.0)
+      '@rspack/cli':
+        specifier: ^0.6.3
+        version: 0.6.3(@rspack/core@0.6.3)(@types/express@4.17.14)(webpack-cli@4.9.2)(webpack@5.89.0)
+      '@rspack/core':
+        specifier: ^0.6.3
+        version: 0.6.3(@swc/helpers@0.5.3)
+      '@rspack/dev-server':
+        specifier: ^0.6.3
+        version: 0.6.3(@rspack/core@0.6.3)(@types/express@4.17.14)(webpack-cli@4.9.2)(webpack@5.89.0)
       '@types/express':
         specifier: 4.17.14
         version: 4.17.14
@@ -33752,7 +33779,7 @@ packages:
       '@modern-js/utils': 2.46.1
       '@swc/helpers': 0.5.3
       acorn: 8.11.3
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001612
       css-minimizer-webpack-plugin: 5.0.1(webpack@5.89.0)
       cssnano: 6.0.1(postcss@8.4.31)
       fork-ts-checker-webpack-plugin: 8.0.0(typescript@4.9.5)(webpack@5.89.0)
@@ -33802,7 +33829,7 @@ packages:
       '@modern-js/utils': 2.46.1
       '@swc/helpers': 0.5.3
       acorn: 8.11.3
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001612
       css-minimizer-webpack-plugin: 5.0.1(webpack@5.89.0)
       cssnano: 6.0.1(postcss@8.4.31)
       fork-ts-checker-webpack-plugin: 8.0.0(typescript@5.4.5)(webpack@5.89.0)
@@ -34418,7 +34445,7 @@ packages:
     resolution: {integrity: sha512-bsPzQ1B46+gqnQjqvo0BXH7RLTFWCTwQAm1G+ALvGIGdmLvgLWEOEiHtvvSLEDiZCfL4I/jHzn2lk96StMJYIA==}
     dependencies:
       '@swc/helpers': 0.5.3
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001612
       lodash: 4.17.21
       rslog: 1.2.1
     dev: false
@@ -34427,7 +34454,7 @@ packages:
     resolution: {integrity: sha512-kV4N3JMfyl4pYJIPhtMTby7EOxid9Adq298Z9b2TbAb1EgzyiuDviOakzcks8jRAiesuI9sh7TFjLPniHdSQUA==}
     dependencies:
       '@swc/helpers': 0.5.3
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001612
       lodash: 4.17.21
       rslog: 1.2.1
     dev: true
@@ -34436,7 +34463,7 @@ packages:
     resolution: {integrity: sha512-ummxga/VKrQjh8TdWtxckx9hefMKfe6cxY1fpDmn5wOkJbNpLS2GIlEFPDhlN451JyeMDD9kbxRedq4ETE+NqQ==}
     dependencies:
       '@swc/helpers': 0.5.3
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001612
       lodash: 4.17.21
       rslog: 1.2.1
     dev: true
@@ -38745,7 +38772,7 @@ packages:
       autoprefixer: 10.4.19(postcss@8.4.38)
       babel-loader: 8.2.5(@babel/core@7.24.3)(webpack@5.89.0)
       browserslist: 4.23.0
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001612
       chalk: 4.1.0
       chokidar: 3.6.0
       copy-webpack-plugin: 10.2.4(webpack@5.89.0)
@@ -42006,7 +42033,7 @@ packages:
     resolution: {integrity: sha512-rvm+B2pGHsRSW3LiqPzOnyg/PQMNZsrX2QvuZLUovuF3DpvzKJoBsrj0ih1c0ymlIEitEcoBqiJbQUVQI3iDUQ==}
     dependencies:
       '@rspack/core': 0.5.0(@swc/helpers@0.5.3)
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001612
       lodash: 4.17.21
       postcss: 8.4.38
     transitivePeerDependencies:
@@ -42017,7 +42044,7 @@ packages:
     resolution: {integrity: sha512-2lPbqcLNjUoHfdQCB6XdoqCqiLwpVeXcydv8cvTeiNCGseLY1WWTSn14b/L6Aj72TJbWWCqAAsm7YVL7Oibqvg==}
     dependencies:
       '@rspack/core': 0.5.6(@swc/helpers@0.5.3)
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001612
       postcss: 8.4.38
     transitivePeerDependencies:
       - '@swc/helpers'
@@ -42027,7 +42054,7 @@ packages:
     resolution: {integrity: sha512-IIECkztXabI+4K1375y5VRHudOujA02MSoKLCUNsMAQDFsoDy2PGIyi0TP6JY8TlqQtQbIjPE4kMgpmPNhUt5w==}
     dependencies:
       '@rspack/core': 0.5.9(@swc/helpers@0.5.3)
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001612
       postcss: 8.4.38
     transitivePeerDependencies:
       - '@swc/helpers'
@@ -42875,6 +42902,32 @@ packages:
       - webpack
       - webpack-cli
 
+  /@rspack/cli@0.6.3(@rspack/core@0.6.3)(webpack-cli@4.9.2)(webpack@5.89.0):
+    resolution: {integrity: sha512-XoptGImYIm0YFIQ5RTwMiw2AFB1DMhmih/SocHXrQhGjNsBybHPLLpG9XKPNw8GLdEIVrSTViGHNRYX+X86nQw==}
+    hasBin: true
+    peerDependencies:
+      '@rspack/core': '>=0.4.0'
+    dependencies:
+      '@discoveryjs/json-ext': 0.5.7
+      '@rspack/core': 0.6.3(@swc/helpers@0.5.3)
+      '@rspack/dev-server': 0.6.3(@rspack/core@0.6.3)(webpack-cli@4.9.2)(webpack@5.89.0)
+      colorette: 2.0.19
+      exit-hook: 3.2.0
+      interpret: 3.1.1
+      rechoir: 0.8.0
+      semver: 6.3.1
+      webpack-bundle-analyzer: 4.6.1
+      yargs: 17.6.2
+    transitivePeerDependencies:
+      - '@types/express'
+      - bufferutil
+      - debug
+      - supports-color
+      - utf-8-validate
+      - webpack
+      - webpack-cli
+    dev: true
+
   /@rspack/cli@0.6.3(@rspack/core@0.6.3)(webpack-cli@5.1.4)(webpack@5.89.0):
     resolution: {integrity: sha512-XoptGImYIm0YFIQ5RTwMiw2AFB1DMhmih/SocHXrQhGjNsBybHPLLpG9XKPNw8GLdEIVrSTViGHNRYX+X86nQw==}
     hasBin: true
@@ -43142,6 +43195,30 @@ packages:
       - utf-8-validate
       - webpack
       - webpack-cli
+
+  /@rspack/dev-server@0.6.3(@rspack/core@0.6.3)(webpack-cli@4.9.2)(webpack@5.89.0):
+    resolution: {integrity: sha512-KxpLbbBFWm5h8qNon+GvZI+67YBJ39DhtRzJJeaxEWGbb8Z4GLCAf4sRH7nrWTS+kpq7QwSztw0fijBtNuu4Ug==}
+    peerDependencies:
+      '@rspack/core': '*'
+    dependencies:
+      '@rspack/core': 0.6.3(@swc/helpers@0.5.3)
+      chokidar: 3.5.3
+      connect-history-api-fallback: 2.0.0
+      express: 4.18.1
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
+      mime-types: 2.1.35
+      webpack-dev-middleware: 6.0.2(webpack@5.89.0)
+      webpack-dev-server: 4.13.1(webpack-cli@4.9.2)(webpack@5.89.0)
+      ws: 8.8.1
+    transitivePeerDependencies:
+      - '@types/express'
+      - bufferutil
+      - debug
+      - supports-color
+      - utf-8-validate
+      - webpack
+      - webpack-cli
+    dev: true
 
   /@rspack/dev-server@0.6.3(@rspack/core@0.6.3)(webpack-cli@5.1.4)(webpack@5.89.0):
     resolution: {integrity: sha512-KxpLbbBFWm5h8qNon+GvZI+67YBJ39DhtRzJJeaxEWGbb8Z4GLCAf4sRH7nrWTS+kpq7QwSztw0fijBtNuu4Ug==}
@@ -50961,7 +51038,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.23.0
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001612
       colorette: 1.4.0
       fraction.js: 4.3.7
       normalize-range: 0.1.2
@@ -50993,7 +51070,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.23.0
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001612
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -51041,7 +51118,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.23.0
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001612
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -51057,7 +51134,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.23.0
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001612
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -51085,7 +51162,7 @@ packages:
     hasBin: true
     dependencies:
       browserslist: 4.23.0
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001612
       colorette: 1.4.0
       normalize-range: 0.1.2
       num2fraction: 1.2.2
@@ -52867,7 +52944,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001612
       electron-to-chromium: 1.4.696
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
@@ -53393,7 +53470,7 @@ packages:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
     dependencies:
       browserslist: 4.23.0
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001612
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
 
@@ -53405,7 +53482,6 @@ packages:
 
   /caniuse-lite@1.0.30001612:
     resolution: {integrity: sha512-lFgnZ07UhaCcsSZgWW0K5j4e69dK1u/ltrL9lTUiFOwNHs12S3UMIEYgBV0Z6C6hRDev7iRnMzzYmKabYdXF9g==}
-    dev: true
 
   /canonical-path@1.0.0:
     resolution: {integrity: sha512-feylzsbDxi1gPZ1IjystzIQZagYYLvfKrSuygUCgf7z6x790VEzze5QEkdSV1U58RA7Hi0+v6fv4K54atOzATg==}
@@ -70424,7 +70500,7 @@ packages:
     dependencies:
       '@next/env': 13.1.2
       '@swc/helpers': 0.4.14
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001612
       postcss: 8.4.14
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -70472,7 +70548,7 @@ packages:
       '@next/env': 13.3.1
       '@swc/helpers': 0.5.0
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001612
       postcss: 8.4.14
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -70510,7 +70586,7 @@ packages:
       '@next/env': 13.5.6
       '@swc/helpers': 0.5.2
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001612
       postcss: 8.4.31
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -70548,7 +70624,7 @@ packages:
       '@next/env': 13.5.6
       '@swc/helpers': 0.5.2
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001612
       postcss: 8.4.31
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
