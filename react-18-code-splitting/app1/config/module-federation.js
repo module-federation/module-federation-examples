@@ -1,6 +1,5 @@
 const deps = require('../package.json').dependencies;
-const {ModuleFederationPlugin} = require('@module-federation/enhanced');
-const {UniversalFederationPlugin} = require('@module-federation/node');
+const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack');
 
 module.exports = {
   client: new ModuleFederationPlugin({
@@ -13,11 +12,10 @@ module.exports = {
     shared: [{react: deps.react, 'react-dom': deps['react-dom']}],
   }),
   server: [
-    new UniversalFederationPlugin(
+    new ModuleFederationPlugin(
       {
-        dts: false,
         remoteType: 'script',
-        isServer: true,
+        runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],
         name: 'app1',
         library: {type: 'commonjs-module'},
         filename: 'remoteEntry.js',
