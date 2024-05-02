@@ -1,6 +1,5 @@
 const deps = require('../package.json').dependencies;
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
-const { UniversalFederationPlugin } = require('@module-federation/node');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 
 module.exports = {
   client: new ModuleFederationPlugin({
@@ -13,8 +12,10 @@ module.exports = {
     shared: [{ react: deps.react, 'react-dom': deps['react-dom'] }],
   }),
   server: [
-    new UniversalFederationPlugin({
-      isServer: true,
+    new ModuleFederationPlugin({
+      runtimePlugins: [
+        require.resolve('@module-federation/node/runtimePlugin')
+      ],
       name: 'app2',
       library: { type: 'commonjs-module' },
       remoteType: 'script',
