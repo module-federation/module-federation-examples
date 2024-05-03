@@ -68,9 +68,31 @@ module.exports = {
     ],
   },
   plugins: [
+    // new ModuleFederationPlugin({
+    //   name: 'app1',
+    //   filename: 'remoteEntry.js',
+    //   remotes: {
+    //     app2: 'app2@http://localhost:3002/remoteEntry.js',
+    //   },
+    //   runtimePlugins: [require.resolve('./single-runtime.js')],
+    //   exposes: {
+    //     './Button': './src/Button',
+    //   },
+    //   shared: {
+    //     ...deps,
+    //     react: {
+    //       singleton: true,
+    //     },
+    //     'react-dom': {
+    //       singleton: true,
+    //     },
+    //     lodash: {},
+    //   },
+    // }),
     new ModuleFederationPlugin({
       name: 'app1',
-      filename: 'remoteEntry.js',
+      runtime: 'runtime',
+      filename: 'app1_partial.js',
       remotes: {
         app2: 'app2@http://localhost:3002/remoteEntry.js',
       },
@@ -91,6 +113,7 @@ module.exports = {
     }),
     new HtmlRspackPlugin({
       template: './public/index.html',
+      excludeChunks: ['app1', 'app1_partial']
     }),
   ],
 };

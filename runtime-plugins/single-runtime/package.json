@@ -8,7 +8,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "pnpm --filter single-runtime_app1 --parallel start",
+    "start": "pnpm --filter single-runtime_app* --parallel start",
     "start:both": "pnpm --filter single-runtime_app* --parallel start",
     "build": "pnpm --filter single-runtime_app* --parallel build",
     "serve": "pnpm --filter single-runtime_app* --parallel serve",
