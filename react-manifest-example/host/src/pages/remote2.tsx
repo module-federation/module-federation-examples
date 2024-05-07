@@ -8,7 +8,7 @@ const Button = React.lazy(async ()=>{
 
 function Remote2 () {
     return <Suspense fallback={'loading'}>
-        <h2>Remote1 Router</h2>
+        <h2>Remote2 Router</h2>
         <Button />
     </Suspense>;
 }
