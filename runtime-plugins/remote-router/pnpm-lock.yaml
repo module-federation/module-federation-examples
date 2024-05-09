@@ -133,8 +133,8 @@ importers:
         specifier: 17.3.2
         version: 17.3.2(@swc-node/register@1.9.0(@swc/core@1.4.5(@swc/helpers@0.5.3))(@swc/types@0.1.5)(typescript@5.2.2))(@swc/core@1.4.5(@swc/helpers@0.5.3))
       '@pmmmwh/react-refresh-webpack-plugin':
-        specifier: 0.5.11
-        version: 0.5.11(react-refresh@0.14.0)(type-fest@0.21.3)(webpack-dev-server@4.15.1(webpack@5.91.0(@swc/core@1.4.5(@swc/helpers@0.5.3))))(webpack@5.91.0(@swc/core@1.4.5(@swc/helpers@0.5.3)))
+        specifier: 0.5.13
+        version: 0.5.13(react-refresh@0.14.0)(type-fest@0.21.3)(webpack-dev-server@4.15.1(webpack@5.91.0(@swc/core@1.4.5(@swc/helpers@0.5.3))))(webpack@5.91.0(@swc/core@1.4.5(@swc/helpers@0.5.3)))
       '@svgr/webpack':
         specifier: 8.1.0
         version: 8.1.0(typescript@5.2.2)
@@ -1219,8 +1219,8 @@ packages:
     peerDependencies:
       typescript: ^3 || ^4 || ^5
 
-  '@pmmmwh/react-refresh-webpack-plugin@0.5.11':
-    resolution: {integrity: sha512-7j/6vdTym0+qZ6u4XbSAxrWBGYSdCfTzySkj7WAFgDLmSyWlOrWvpyzxlFh5jtw9dn0oL/jtW+06XfFiisN3JQ==}
+  '@pmmmwh/react-refresh-webpack-plugin@0.5.13':
+    resolution: {integrity: sha512-odZVYXly+JwzYri9rKqqUAk0cY6zLpv4dxoKinhoJNShV36Gpxf+CyDIILJ4tYsJ1ZxIWs233Y39iVnynvDA/g==}
     engines: {node: '>= 10.13'}
     peerDependencies:
       '@types/webpack': 4.x || 5.x
@@ -1228,7 +1228,7 @@ packages:
       sockjs-client: ^1.4.0
       type-fest: '>=0.17.0 <5.0.0'
       webpack: 5.89.0
-      webpack-dev-server: 3.x || 4.x
+      webpack-dev-server: 3.x || 4.x || 5.x
       webpack-hot-middleware: 2.x
       webpack-plugin-serve: 0.x || 1.x
     peerDependenciesMeta:
@@ -7855,13 +7855,11 @@ snapshots:
       esquery: 1.5.0
       typescript: 5.3.3
 
-  '@pmmmwh/react-refresh-webpack-plugin@0.5.11(react-refresh@0.14.0)(type-fest@0.21.3)(webpack-dev-server@4.15.1(webpack@5.91.0(@swc/core@1.4.5(@swc/helpers@0.5.3))))(webpack@5.91.0(@swc/core@1.4.5(@swc/helpers@0.5.3)))':
+  '@pmmmwh/react-refresh-webpack-plugin@0.5.13(react-refresh@0.14.0)(type-fest@0.21.3)(webpack-dev-server@4.15.1(webpack@5.91.0(@swc/core@1.4.5(@swc/helpers@0.5.3))))(webpack@5.91.0(@swc/core@1.4.5(@swc/helpers@0.5.3)))':
     dependencies:
       ansi-html-community: 0.0.8
-      common-path-prefix: 3.0.0
       core-js-pure: 3.35.1
       error-stack-parser: 2.1.4
-      find-up: 5.0.0
       html-entities: 2.4.0
       loader-utils: 2.0.4
       react-refresh: 0.14.0
