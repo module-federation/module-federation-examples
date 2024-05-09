@@ -12677,8 +12677,8 @@ importers:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.24.3)(webpack@5.89.0(@swc/core@1.4.11)(webpack-cli@4.10.0))
       clsx:
-        specifier: 2.1.0
-        version: 2.1.0
+        specifier: 2.1.1
+        version: 2.1.1
       find-up:
         specifier: 5.0.0
         version: 5.0.0
@@ -26607,6 +26607,10 @@ packages:
 
   clsx@2.1.0:
     resolution: {integrity: sha512-m3iNNWpd9rl3jvvcBnu70ylMdrXt8Vlq4HYadnU5fwcOtvkSQWPmj7amUcDT2qYI7risszBjI5AUIUox9D16pg==}
+    engines: {node: '>=6'}
+
+  clsx@2.1.1:
+    resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
     engines: {node: '>=6'}
 
   cmd-shim@4.1.0:
@@ -55308,7 +55312,7 @@ snapshots:
       babel-plugin-transform-react-remove-prop-types: 0.4.24
       cssnano: 6.0.1(postcss@8.4.38)
       glob: 9.3.5
-      html-webpack-plugin: 5.5.3(webpack@5.89.0(@swc/core@1.4.11))
+      html-webpack-plugin: 5.5.3(webpack@5.89.0(@swc/core@1.4.11)(esbuild@0.17.19))
       lodash: 4.17.21
       postcss: 8.4.38
       postcss-custom-properties: 13.1.5(postcss@8.4.38)
@@ -55324,7 +55328,7 @@ snapshots:
       ts-loader: 9.4.4(typescript@5.4.5)(webpack@5.89.0(@swc/core@1.4.11)(esbuild@0.17.19))
       webpack: 5.89.0(@swc/core@1.4.11)(esbuild@0.17.19)
       webpack-manifest-plugin: 5.0.0(webpack@5.89.0(@swc/core@1.4.11)(esbuild@0.17.19))
-      webpack-subresource-integrity: 5.1.0(html-webpack-plugin@5.5.3(webpack@5.89.0(@swc/core@1.4.11)(esbuild@0.17.19)))(webpack@5.89.0(@swc/core@1.4.11)(esbuild@0.17.19))
+      webpack-subresource-integrity: 5.1.0(html-webpack-plugin@5.5.3(webpack@5.89.0(@swc/core@1.4.11)))(webpack@5.89.0(@swc/core@1.4.11)(esbuild@0.17.19))
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@parcel/css'
@@ -56913,7 +56917,7 @@ snapshots:
       '@mui/types': 7.2.14(@types/react@18.0.38)
       '@mui/utils': 5.15.14(@types/react@18.0.38)(react@18.2.0)
       '@popperjs/core': 2.11.8
-      clsx: 2.1.0
+      clsx: 2.1.1
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -57034,7 +57038,7 @@ snapshots:
       '@mui/styled-engine': 5.15.14(@emotion/react@11.10.0(@babel/core@7.24.3)(@types/react@18.0.38)(react@18.2.0))(@emotion/styled@11.10.0(@babel/core@7.24.3)(@emotion/react@11.10.0(@babel/core@7.24.3)(@types/react@18.0.38)(react@18.2.0))(@types/react@18.0.38)(react@18.2.0))(react@18.2.0)
       '@mui/types': 7.2.14(@types/react@18.0.38)
       '@mui/utils': 5.15.14(@types/react@18.0.38)(react@18.2.0)
-      clsx: 2.1.0
+      clsx: 2.1.1
       csstype: 3.1.3
       prop-types: 15.8.1
       react: 18.2.0
@@ -57050,7 +57054,7 @@ snapshots:
       '@mui/styled-engine': 5.15.14(@emotion/react@11.11.0(@types/react@18.0.38)(react@18.2.0))(@emotion/styled@11.11.0(@emotion/react@11.11.0(@types/react@18.0.38)(react@18.2.0))(@types/react@18.0.38)(react@18.2.0))(react@18.2.0)
       '@mui/types': 7.2.14(@types/react@18.0.38)
       '@mui/utils': 5.15.14(@types/react@18.0.38)(react@18.2.0)
-      clsx: 2.1.0
+      clsx: 2.1.1
       csstype: 3.1.3
       prop-types: 15.8.1
       react: 18.2.0
@@ -60063,7 +60067,7 @@ snapshots:
       source-map: 0.7.4
       webpack: 5.89.0(@swc/core@1.4.11)(webpack-cli@5.1.4)
     optionalDependencies:
-      '@types/webpack': 5.28.0(@swc/core@1.4.11)(webpack-cli@5.1.4(webpack-dev-server@5.0.4)(webpack@5.89.0))
+      '@types/webpack': 5.28.0(@swc/core@1.4.11)(webpack-cli@5.1.4(webpack-dev-server@4.15.1)(webpack@5.89.0))
       sockjs-client: 1.6.1(supports-color@6.1.0)
       type-fest: 2.19.0
       webpack-dev-server: 4.15.1(webpack-cli@5.1.4)(webpack@5.89.0)
@@ -60081,7 +60085,7 @@ snapshots:
       source-map: 0.7.4
       webpack: 5.89.0(@swc/core@1.4.11)(webpack-cli@5.1.4)
     optionalDependencies:
-      '@types/webpack': 5.28.0(@swc/core@1.4.11)(webpack-cli@5.1.4(webpack-dev-server@5.0.4)(webpack@5.89.0))
+      '@types/webpack': 5.28.0(@swc/core@1.4.11)(webpack-cli@5.1.4(webpack-dev-server@4.15.1)(webpack@5.89.0))
       sockjs-client: 1.6.1(supports-color@6.1.0)
       type-fest: 2.19.0
       webpack-dev-server: 5.0.4(webpack-cli@5.1.4)(webpack@5.89.0)
@@ -64548,7 +64552,7 @@ snapshots:
       - webpack-cli
     optional: true
 
-  '@types/webpack@5.28.0(@swc/core@1.4.11)(webpack-cli@5.1.4(webpack-dev-server@5.0.4)(webpack@5.89.0))':
+  '@types/webpack@5.28.0(@swc/core@1.4.11)(webpack-cli@5.1.4(webpack-dev-server@4.15.1)(webpack@5.89.0))':
     dependencies:
       '@types/node': 20.9.0
       tapable: 2.2.1
@@ -69746,6 +69750,8 @@ snapshots:
   clsx@1.2.1: {}
 
   clsx@2.1.0: {}
+
+  clsx@2.1.1: {}
 
   cmd-shim@4.1.0:
     dependencies:
@@ -94965,9 +94971,16 @@ snapshots:
   webpack-subresource-integrity@5.1.0(html-webpack-plugin@5.5.3(webpack@5.89.0(@swc/core@1.4.11)(esbuild@0.17.19)))(webpack@5.89.0(@swc/core@1.4.11)(esbuild@0.17.19)):
     dependencies:
       typed-assert: 1.0.9
+      webpack: 5.89.0(@swc/core@1.4.11)(esbuild@0.17.8)
+    optionalDependencies:
+      html-webpack-plugin: 5.5.3(webpack@5.89.0(@swc/core@1.4.11)(esbuild@0.17.19))
+
+  webpack-subresource-integrity@5.1.0(html-webpack-plugin@5.5.3(webpack@5.89.0(@swc/core@1.4.11)))(webpack@5.89.0(@swc/core@1.4.11)(esbuild@0.17.19)):
+    dependencies:
+      typed-assert: 1.0.9
       webpack: 5.89.0(@swc/core@1.4.11)(esbuild@0.17.19)
     optionalDependencies:
-      html-webpack-plugin: 5.5.3(webpack@5.89.0(@swc/core@1.4.11))
+      html-webpack-plugin: 5.5.3(webpack@5.89.0(@swc/core@1.4.11)(esbuild@0.17.19))
 
   webpack-subresource-integrity@5.1.0(html-webpack-plugin@5.6.0(@rspack/core@0.6.5(@swc/helpers@0.5.6))(webpack@5.89.0(@swc/core@1.4.11(@swc/helpers@0.5.6))(esbuild@0.20.2)))(webpack@5.89.0(@swc/core@1.4.11(@swc/helpers@0.5.6))(esbuild@0.20.2)):
     dependencies:
