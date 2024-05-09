@@ -8,7 +8,7 @@
     "build": "pnpm run --filter redux-reducer-injection_app* build",
     "serve": "pnpm run --filter redux-reducer-injection_app* --parallel serve",
     "clean": "pnpm run --filter redux-reducer-injection_app* --parallel clean",
-    "e2e:ci": "pnpm start & wait-on tcp:3001 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "e2e:ci": "pnpm start & sleep 5 && wait-on tcp:3001 && wait-on tcp:3002 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "concurrently": "7.6.0",
