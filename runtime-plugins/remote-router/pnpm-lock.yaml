@@ -33,8 +33,8 @@ importers:
         specifier: 0.1.12
         version: 0.1.12(typescript@5.3.3)(vue-tsc@1.8.27(typescript@5.3.3))(webpack@5.91.0(webpack-cli@5.1.4))
       autoprefixer:
-        specifier: 10.4.17
-        version: 10.4.17(postcss@8.4.33)
+        specifier: 10.4.19
+        version: 10.4.19(postcss@8.4.33)
       babel-loader:
         specifier: 9.1.3
         version: 9.1.3(@babel/core@7.24.0)(webpack@5.91.0(webpack-cli@5.1.4))
@@ -2048,8 +2048,8 @@ packages:
     resolution: {integrity: sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==}
     engines: {node: '>= 4.0.0'}
 
-  autoprefixer@10.4.17:
-    resolution: {integrity: sha512-/cpVNRLSfhOtcGflT13P2794gVSgmPgTR+erw5ifnMLZb0UnSlkK4tquLmkd3BhA+nLo5tX8Cu0upUsGKvKbmg==}
+  autoprefixer@10.4.19:
+    resolution: {integrity: sha512-BaENR2+zBZ8xXhM4pUaKUxlVdxZ0EZhjvbopwnXmxRUfqDmwSpC2lAi/QXvx7NRdPCo1WKEcEF6mV64si1z4Ew==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
@@ -2218,6 +2218,11 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
 
+  browserslist@4.23.0:
+    resolution: {integrity: sha512-QW8HiM1shhT2GuzkvklfjcKDiWFXHOeFCIA/huJPwHsslwcydgk7X+z2zXpEijP98UCY7HbubZt5J2Zgvf0CaQ==}
+    engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
+    hasBin: true
+
   bs-logger@0.2.6:
     resolution: {integrity: sha512-pd8DCoxmbgc7hyPKOvxtqNcjYoOsABPQdcCUjGp3d42VR2CX1ORhk2A87oqqu5R1kk+76nsxZupkmyd+MVtCog==}
     engines: {node: '>= 6'}
@@ -2281,6 +2286,9 @@ packages:
 
   caniuse-lite@1.0.30001580:
     resolution: {integrity: sha512-mtj5ur2FFPZcCEpXFy8ADXbDACuNFXg6mxVDqp7tqooX6l3zwm+d8EPoeOSIFRDvHs8qu7/SLFOGniULkcH2iA==}
+
+  caniuse-lite@1.0.30001617:
+    resolution: {integrity: sha512-mLyjzNI9I+Pix8zwcrpxEbGlfqOkF9kM3ptzmKNw5tizSyYwMe+nGLTqMK9cO+0E+Bh6TsBxNAaHWEM8xwSsmA==}
 
   chalk@2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
@@ -2863,6 +2871,9 @@ packages:
 
   electron-to-chromium@1.4.646:
     resolution: {integrity: sha512-vThkQ0JuF45qT/20KbRgM56lV7IuGt7SjhawQ719PDHzhP84KAO1WJoaxgCoAffKHK47FmVKP1Fqizx7CwK1SA==}
+
+  electron-to-chromium@1.4.762:
+    resolution: {integrity: sha512-rrFvGweLxPwwSwJOjIopy3Vr+J3cIPtZzuc74bmlvmBIgQO3VYJDvVrlj94iKZ3ukXUH64Ex31hSfRTLqvjYJQ==}
 
   emittery@0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
@@ -7771,7 +7782,7 @@ snapshots:
       '@nrwl/webpack': 17.3.2(@babel/traverse@7.24.0)(@swc-node/register@1.9.0(@swc/core@1.4.5(@swc/helpers@0.5.3))(@swc/types@0.1.5)(typescript@5.2.2))(@swc/core@1.4.5(@swc/helpers@0.5.3))(@types/node@18.19.22)(html-webpack-plugin@5.6.0(webpack@5.91.0(@swc/core@1.4.5(@swc/helpers@0.5.3))))(nx@17.3.2(@swc-node/register@1.9.0(@swc/core@1.4.5(@swc/helpers@0.5.3))(@swc/types@0.1.5)(typescript@5.2.2))(@swc/core@1.4.5(@swc/helpers@0.5.3)))(typescript@5.2.2)(vue-template-compiler@2.7.16)
       '@nx/devkit': 17.3.2(nx@17.3.2(@swc-node/register@1.9.0(@swc/core@1.4.5(@swc/helpers@0.5.3))(@swc/types@0.1.5)(typescript@5.2.2))(@swc/core@1.4.5(@swc/helpers@0.5.3)))
       '@nx/js': 17.3.2(@babel/traverse@7.24.0)(@swc-node/register@1.9.0(@swc/core@1.4.5(@swc/helpers@0.5.3))(@swc/types@0.1.5)(typescript@5.2.2))(@swc/core@1.4.5(@swc/helpers@0.5.3))(@types/node@18.19.22)(nx@17.3.2(@swc-node/register@1.9.0(@swc/core@1.4.5(@swc/helpers@0.5.3))(@swc/types@0.1.5)(typescript@5.2.2))(@swc/core@1.4.5(@swc/helpers@0.5.3)))(typescript@5.2.2)
-      autoprefixer: 10.4.17(postcss@8.4.33)
+      autoprefixer: 10.4.19(postcss@8.4.33)
       babel-loader: 9.1.3(@babel/core@7.24.0)(webpack@5.91.0(@swc/core@1.4.5(@swc/helpers@0.5.3)))
       browserslist: 4.22.2
       chalk: 4.1.2
@@ -8804,10 +8815,10 @@ snapshots:
 
   at-least-node@1.0.0: {}
 
-  autoprefixer@10.4.17(postcss@8.4.33):
+  autoprefixer@10.4.19(postcss@8.4.33):
     dependencies:
-      browserslist: 4.22.2
-      caniuse-lite: 1.0.30001580
+      browserslist: 4.23.0
+      caniuse-lite: 1.0.30001617
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -9095,6 +9106,13 @@ snapshots:
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.22.2)
 
+  browserslist@4.23.0:
+    dependencies:
+      caniuse-lite: 1.0.30001617
+      electron-to-chromium: 1.4.762
+      node-releases: 2.0.14
+      update-browserslist-db: 1.0.13(browserslist@4.23.0)
+
   bs-logger@0.2.6:
     dependencies:
       fast-json-stable-stringify: 2.1.0
@@ -9164,6 +9182,8 @@ snapshots:
       lodash.uniq: 4.5.0
 
   caniuse-lite@1.0.30001580: {}
+
+  caniuse-lite@1.0.30001617: {}
 
   chalk@2.4.2:
     dependencies:
@@ -9781,6 +9801,8 @@ snapshots:
       jake: 10.8.7
 
   electron-to-chromium@1.4.646: {}
+
+  electron-to-chromium@1.4.762: {}
 
   emittery@0.13.1: {}
 
@@ -13370,6 +13392,12 @@ snapshots:
   update-browserslist-db@1.0.13(browserslist@4.22.2):
     dependencies:
       browserslist: 4.22.2
+      escalade: 3.1.1
+      picocolors: 1.0.0
+
+  update-browserslist-db@1.0.13(browserslist@4.23.0):
+    dependencies:
+      browserslist: 4.23.0
       escalade: 3.1.1
       picocolors: 1.0.0
 
