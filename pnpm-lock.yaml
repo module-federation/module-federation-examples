@@ -2881,7 +2881,7 @@ importers:
         version: 5.10.2(@emotion/react@11.11.4(@types/react@18.0.38)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.0.38)(react@18.2.0))(@types/react@18.0.38)(react@18.2.0))(@types/react@18.0.38)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@mui/styled-engine-sc':
         specifier: 5.10.1
-        version: 5.10.1(@types/styled-components@5.1.34)(styled-components@5.3.5(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0))
+        version: 5.10.1(@types/styled-components@5.1.34)(styled-components@5.3.11(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0))
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -2895,8 +2895,8 @@ importers:
         specifier: 6.21.3
         version: 6.21.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       styled-components:
-        specifier: 5.3.5
-        version: 5.3.5(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)
+        specifier: 5.3.11
+        version: 5.3.11(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)
     devDependencies:
       '@babel/core':
         specifier: 7.24.3
@@ -39542,14 +39542,6 @@ packages:
       react-dom: '>= 16.8.0'
       react-is: '>= 16.8.0'
 
-  styled-components@5.3.5:
-    resolution: {integrity: sha512-ndETJ9RKaaL6q41B69WudeqLzOpY1A/ET/glXkNZ2T7dPjPqpPCXXQjDFYZWwNnE5co0wX+gTCqx9mfxTmSIPg==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      react: '>= 16.8.0'
-      react-dom: '>= 16.8.0'
-      react-is: '>= 16.8.0'
-
   styled-jsx@5.0.7:
     resolution: {integrity: sha512-b3sUzamS086YLRuvnaDigdAewz1/EFYlHpYBP5mZovKEdQQOIIYq8lApylub3HHZ6xFjV051kkGU7cudJmrXEA==}
     engines: {node: '>= 12.0.0'}
@@ -50441,12 +50433,12 @@ snapshots:
   '@babel/traverse@7.24.0(supports-color@5.5.0)':
     dependencies:
       '@babel/code-frame': 7.24.2
-      '@babel/generator': 7.24.1
+      '@babel/generator': 7.24.4
       '@babel/helper-environment-visitor': 7.22.20
       '@babel/helper-function-name': 7.23.0
       '@babel/helper-hoist-variables': 7.22.5
       '@babel/helper-split-export-declaration': 7.22.6
-      '@babel/parser': 7.24.1
+      '@babel/parser': 7.24.4
       '@babel/types': 7.24.0
       debug: 4.3.4(supports-color@5.5.0)
       globals: 11.12.0
@@ -50464,6 +50456,21 @@ snapshots:
       '@babel/parser': 7.24.4
       '@babel/types': 7.24.0
       debug: 4.3.4(supports-color@6.1.0)
+      globals: 11.12.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@babel/traverse@7.24.1(supports-color@5.5.0)':
+    dependencies:
+      '@babel/code-frame': 7.24.2
+      '@babel/generator': 7.24.4
+      '@babel/helper-environment-visitor': 7.22.20
+      '@babel/helper-function-name': 7.23.0
+      '@babel/helper-hoist-variables': 7.22.5
+      '@babel/helper-split-export-declaration': 7.22.6
+      '@babel/parser': 7.24.4
+      '@babel/types': 7.24.0
+      debug: 4.3.4(supports-color@5.5.0)
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
@@ -57181,11 +57188,11 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.0.38
 
-  '@mui/styled-engine-sc@5.10.1(@types/styled-components@5.1.34)(styled-components@5.3.5(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0))':
+  '@mui/styled-engine-sc@5.10.1(@types/styled-components@5.1.34)(styled-components@5.3.11(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0))':
     dependencies:
       '@babel/runtime': 7.24.0
       prop-types: 15.8.1
-      styled-components: 5.3.5(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)
+      styled-components: 5.3.11(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)
     optionalDependencies:
       '@types/styled-components': 5.1.34
 
@@ -68638,15 +68645,6 @@ snapshots:
       lodash: 4.17.21
       picomatch: 2.3.1
       styled-components: 5.3.11(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)
-
-  babel-plugin-styled-components@2.1.1(styled-components@5.3.5(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)):
-    dependencies:
-      '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-module-imports': 7.24.3
-      babel-plugin-syntax-jsx: 6.18.0
-      lodash: 4.17.21
-      picomatch: 2.3.1
-      styled-components: 5.3.5(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)
 
   babel-plugin-syntax-jsx@6.18.0: {}
 
@@ -89955,28 +89953,12 @@ snapshots:
 
   styled-components@5.3.11(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0):
     dependencies:
-      '@babel/helper-module-imports': 7.22.15
-      '@babel/traverse': 7.24.0(supports-color@5.5.0)
+      '@babel/helper-module-imports': 7.24.3
+      '@babel/traverse': 7.24.1(supports-color@5.5.0)
       '@emotion/is-prop-valid': 1.2.2
       '@emotion/stylis': 0.8.5
       '@emotion/unitless': 0.7.5
       babel-plugin-styled-components: 2.1.1(styled-components@5.3.11(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0))
-      css-to-react-native: 3.2.0
-      hoist-non-react-statics: 3.3.2
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-is: 18.2.0
-      shallowequal: 1.1.0
-      supports-color: 5.5.0
-
-  styled-components@5.3.5(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0):
-    dependencies:
-      '@babel/helper-module-imports': 7.22.15
-      '@babel/traverse': 7.24.0(supports-color@5.5.0)
-      '@emotion/is-prop-valid': 1.2.2
-      '@emotion/stylis': 0.8.5
-      '@emotion/unitless': 0.7.5
-      babel-plugin-styled-components: 2.1.1(styled-components@5.3.5(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0))
       css-to-react-native: 3.2.0
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
