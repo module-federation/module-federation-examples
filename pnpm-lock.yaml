@@ -10537,7 +10537,7 @@ importers:
     dependencies:
       '@module-federation/node':
         specifier: ^2.2.3
-        version: 2.2.3(next@14.1.4(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.4.5)(vue-tsc@1.8.27(typescript@5.4.5))(webpack@5.89.0(@swc/core@1.4.11))
+        version: 2.2.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.4.5)(vue-tsc@1.8.27(typescript@5.4.5))(webpack@5.89.0(@swc/core@1.4.11))
       '@module-federation/utilities':
         specifier: ^3.0.0
         version: 3.0.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@5.89.0(@swc/core@1.4.11))
@@ -11223,8 +11223,8 @@ importers:
   runtime-plugins/control-sharing/app2:
     dependencies:
       lodash:
-        specifier: ^3.10.1
-        version: 3.10.1
+        specifier: ^4.0.0
+        version: 4.17.21
       react:
         specifier: ^16.13.0
         version: 16.14.0
@@ -11478,8 +11478,8 @@ importers:
   runtime-plugins/offline-remote/app2:
     dependencies:
       lodash:
-        specifier: ^3.10.1
-        version: 3.10.1
+        specifier: ^4.0.0
+        version: 4.17.21
       react:
         specifier: ^16.13.0
         version: 16.14.0
@@ -11588,8 +11588,8 @@ importers:
   runtime-plugins/remote-control/app2:
     dependencies:
       lodash:
-        specifier: ^3.10.1
-        version: 3.10.1
+        specifier: ^4.0.0
+        version: 4.17.21
       react:
         specifier: ^16.13.0
         version: 16.14.0
@@ -11640,8 +11640,8 @@ importers:
   runtime-plugins/remote-control/app3:
     dependencies:
       lodash:
-        specifier: ^3.10.1
-        version: 3.10.1
+        specifier: ^4.0.0
+        version: 4.17.21
       react:
         specifier: ^16.13.0
         version: 16.14.0
@@ -33272,9 +33272,6 @@ packages:
 
   lodash.upperfirst@4.3.1:
     resolution: {integrity: sha512-sReKOYJIJf74dhJONhU4e0/shzi1trVbSWDOhKYE5XV2O+H7Sb2Dihwuc7xWxVl+DgFPyTqIN3zMfT9cq5iWDg==}
-
-  lodash@3.10.1:
-    resolution: {integrity: sha512-9mDDwqVIma6OZX79ZlDACZl8sBm0TEnkf99zV3iMA4GzkIT/9hiqP5mY0HoT1iNLCrKc/R1HByV+yJfRWVJryQ==}
 
   lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
@@ -56558,6 +56555,26 @@ snapshots:
       encoding: 0.1.13
       node-fetch: 2.7.0(encoding@0.1.13)
       webpack: 5.89.0(@swc/core@1.4.11)(webpack-cli@4.9.2)
+    optionalDependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - bufferutil
+      - debug
+      - supports-color
+      - typescript
+      - utf-8-validate
+      - vue-tsc
+
+  '@module-federation/node@2.2.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.4.5)(vue-tsc@1.8.27(typescript@5.4.5))(webpack@5.89.0(@swc/core@1.4.11))':
+    dependencies:
+      '@module-federation/enhanced': 0.1.12(typescript@5.4.5)(vue-tsc@1.8.27(typescript@5.4.5))(webpack@5.89.0(@swc/core@1.4.11))
+      '@module-federation/runtime': 0.1.12
+      '@module-federation/sdk': 0.1.12
+      '@module-federation/utilities': 3.0.17(next@13.5.6(@babel/core@7.24.0)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@5.89.0(@swc/core@1.4.11))
+      encoding: 0.1.13
+      node-fetch: 2.7.0(encoding@0.1.13)
+      webpack: 5.89.0(@swc/core@1.4.11)(esbuild@0.17.8)
     optionalDependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -80185,8 +80202,6 @@ snapshots:
   lodash.uniqby@4.7.0: {}
 
   lodash.upperfirst@4.3.1: {}
-
-  lodash@3.10.1: {}
 
   lodash@4.17.21: {}
 
