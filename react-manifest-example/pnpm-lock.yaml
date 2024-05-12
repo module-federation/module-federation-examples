@@ -40,8 +40,8 @@ importers:
         specifier: 0.6.13
         version: 0.6.13
       '@rsbuild/plugin-react':
-        specifier: 0.6.13
-        version: 0.6.13(@rsbuild/core@0.6.13)(@swc/helpers@0.5.3)
+        specifier: 0.6.14
+        version: 0.6.14(@rsbuild/core@0.6.13)(@swc/helpers@0.5.3)
       '@types/react':
         specifier: ^18.2.79
         version: 18.2.79
@@ -74,8 +74,8 @@ importers:
         specifier: 0.6.13
         version: 0.6.13
       '@rsbuild/plugin-react':
-        specifier: 0.6.13
-        version: 0.6.13(@rsbuild/core@0.6.13)(@swc/helpers@0.5.3)
+        specifier: 0.6.14
+        version: 0.6.14(@rsbuild/core@0.6.13)(@swc/helpers@0.5.3)
       '@types/react':
         specifier: ^18.2.79
         version: 18.2.79
@@ -108,8 +108,8 @@ importers:
         specifier: 0.6.13
         version: 0.6.13
       '@rsbuild/plugin-react':
-        specifier: 0.6.13
-        version: 0.6.13(@rsbuild/core@0.6.13)(@swc/helpers@0.5.3)
+        specifier: 0.6.14
+        version: 0.6.14(@rsbuild/core@0.6.13)(@swc/helpers@0.5.3)
       '@types/react':
         specifier: ^18.2.79
         version: 18.2.79
@@ -425,13 +425,16 @@ packages:
     engines: {node: '>=16.0.0'}
     hasBin: true
 
-  '@rsbuild/plugin-react@0.6.13':
-    resolution: {integrity: sha512-lHU8/Iqj1+J9A2EW9kO/acpKXZKr4le59ernPqPWfqNIRPeMCwmg/DGl/aK3Gf/W2mx9y36EXMvKwHi6KIIyug==}
+  '@rsbuild/plugin-react@0.6.14':
+    resolution: {integrity: sha512-qtTB5ccG1oOAsOqfIV5yi0hNgpjUjBY9f6GhJJs2tim6KCg2lmwbdHJyTVfh4gzJ6wgyYH4P6iuXJhFuiWYeRw==}
     peerDependencies:
-      '@rsbuild/core': ^0.6.13
+      '@rsbuild/core': ^0.6.14
 
   '@rsbuild/shared@0.6.13':
     resolution: {integrity: sha512-zXlqgfpMHJd/OgFQfqPWISYLUDgci95n/QrkgGk3ZwpQp66zlL6/5qHvgjo0dB/tHh1UZayuHYRB6zHeypVmbA==}
+
+  '@rsbuild/shared@0.6.14':
+    resolution: {integrity: sha512-2bbU4/myax29NLCqioQ0degMuXWF4HeAC9y2KEPJqTBmbc64cFFLF3kyMT8QW5ZVksl1dvcPoNIJXvxSi1tx6w==}
 
   '@rspack/binding-darwin-arm64@0.6.5':
     resolution: {integrity: sha512-5Zbs3buzF80MZoWnnpm/ZqQ2ZLKWjmmy94gDMeJhG39lKcpK2J2NyDXVis2ZSg7uUvKyJ662BEgIE1AnTWjnYg==}
@@ -2138,16 +2141,26 @@ snapshots:
       html-webpack-plugin: html-rspack-plugin@5.7.2(@rspack/core@0.6.5(@swc/helpers@0.5.3))
       postcss: 8.4.38
 
-  '@rsbuild/plugin-react@0.6.13(@rsbuild/core@0.6.13)(@swc/helpers@0.5.3)':
+  '@rsbuild/plugin-react@0.6.14(@rsbuild/core@0.6.13)(@swc/helpers@0.5.3)':
     dependencies:
       '@rsbuild/core': 0.6.13
-      '@rsbuild/shared': 0.6.13(@swc/helpers@0.5.3)
+      '@rsbuild/shared': 0.6.14(@swc/helpers@0.5.3)
       '@rspack/plugin-react-refresh': 0.6.5(react-refresh@0.14.2)
       react-refresh: 0.14.2
     transitivePeerDependencies:
       - '@swc/helpers'
 
   '@rsbuild/shared@0.6.13(@swc/helpers@0.5.3)':
+    dependencies:
+      '@rspack/core': 0.6.5(@swc/helpers@0.5.3)
+      caniuse-lite: 1.0.30001617
+      postcss: 8.4.38
+    optionalDependencies:
+      fsevents: 2.3.3
+    transitivePeerDependencies:
+      - '@swc/helpers'
+
+  '@rsbuild/shared@0.6.14(@swc/helpers@0.5.3)':
     dependencies:
       '@rspack/core': 0.6.5(@swc/helpers@0.5.3)
       caniuse-lite: 1.0.30001617
