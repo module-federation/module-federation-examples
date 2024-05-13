@@ -8086,8 +8086,8 @@ importers:
         specifier: 0.4.2
         version: 0.4.2(@swc/core@1.4.11(@swc/helpers@0.5.6))(postcss@8.4.38)(ts-node@10.9.1(@swc/core@1.4.11(@swc/helpers@0.5.6))(@types/node@20.9.0)(typescript@5.3.3))(typescript@5.3.3)
       '@module-federation/native-federation-typescript':
-        specifier: 0.3.0
-        version: 0.3.0(typescript@5.3.3)(vue-tsc@1.8.27(typescript@5.3.3))
+        specifier: 0.4.4
+        version: 0.4.4(typescript@5.3.3)(vue-tsc@1.8.27(typescript@5.3.3))
       '@rspack/cli':
         specifier: 0.6.5
         version: 0.6.5(@rspack/core@0.6.5(@swc/helpers@0.5.6))(@types/express@4.17.21)(webpack-cli@5.1.4(webpack-dev-server@5.0.2)(webpack@5.89.0))(webpack@5.89.0(@swc/core@1.4.11(@swc/helpers@0.5.6))(esbuild@0.18.20)(webpack-cli@5.1.4))
@@ -8174,8 +8174,8 @@ importers:
         specifier: 0.4.2
         version: 0.4.2(@swc/core@1.4.11(@swc/helpers@0.5.6))(postcss@8.4.38)(ts-node@10.9.1(@swc/core@1.4.11(@swc/helpers@0.5.6))(@types/node@20.9.0)(typescript@5.3.3))(typescript@5.3.3)
       '@module-federation/native-federation-typescript':
-        specifier: 0.3.0
-        version: 0.3.0(typescript@5.3.3)(vue-tsc@1.8.27(typescript@5.3.3))
+        specifier: 0.4.4
+        version: 0.4.4(typescript@5.3.3)(vue-tsc@1.8.27(typescript@5.3.3))
       '@rspack/cli':
         specifier: 0.6.5
         version: 0.6.5(@rspack/core@0.6.5(@swc/helpers@0.5.6))(@types/express@4.17.21)(webpack-cli@5.1.4(webpack-dev-server@5.0.2)(webpack@5.89.0))(webpack@5.89.0(@swc/core@1.4.11(@swc/helpers@0.5.6))(esbuild@0.18.20)(webpack-cli@5.1.4))
@@ -20267,8 +20267,8 @@ packages:
   '@module-federation/native-federation-tests@0.4.2':
     resolution: {integrity: sha512-U3NhaURw9N5nO7yaokBlKJjEnqw8arIksYjHcmeYQsbSzNLTFJsiC9xZ6j4Bnlf0tGAFsjgDpIi5O4YERCA7TA==}
 
-  '@module-federation/native-federation-typescript@0.3.0':
-    resolution: {integrity: sha512-PFW+FXZY5N9E96rjIWiQA3CTCmKxq/N8BDGe2kHV7PcVoXPPzOQ4UJssAXRVvmDJqmCoD8NHW+1q0YTQzGpeGw==}
+  '@module-federation/native-federation-typescript@0.4.4':
+    resolution: {integrity: sha512-gmxQ3EHRN/vf2zlX0VHVOm8dtcab7fhsa166q3JohbNVX1IPRBv7NZe5HCCqWNFkD+96uGCzf5TZ4VsxHgkQqA==}
     peerDependencies:
       typescript: ^4.9.0 || ^5.0.0
       vue-tsc: ^1.0.24
@@ -40711,10 +40711,6 @@ packages:
     resolution: {integrity: sha512-d6Mhq8RJeGA8UfKCu54Um4lFA0eSaRa3XxdAJg8tIdxbu1ubW0hBCZUL7yI2uGyYCRndvbK8FLHzqy2XKfeMsg==}
     engines: {node: '>=14.0.0'}
 
-  unplugin@1.8.3:
-    resolution: {integrity: sha512-ZlLteXGDcyJgsbN2g4sZ3Dw6fpX1O5rjgeaA5MmQhhA2YxnTxsh43f8nDQgFOzcir0iv8GYMjtCV8MtyNnrhEg==}
-    engines: {node: '>=14.0.0'}
-
   unquote@1.1.1:
     resolution: {integrity: sha512-vRCqFv6UhXpWxZPyGDh/F3ZpNv8/qo7w6iufLpQg9aKnQ71qM4B5KiI7Mia9COcjEhrO9LueHpMYjYzsWH3OIg==}
 
@@ -56780,14 +56776,14 @@ snapshots:
       - ts-node
       - typescript
 
-  '@module-federation/native-federation-typescript@0.3.0(typescript@5.3.3)(vue-tsc@1.8.27(typescript@5.3.3))':
+  '@module-federation/native-federation-typescript@0.4.4(typescript@5.3.3)(vue-tsc@1.8.27(typescript@5.3.3))':
     dependencies:
       adm-zip: 0.5.10
       ansi-colors: 4.1.3
       axios: 1.6.8
       rambda: 9.1.0
       typescript: 5.3.3
-      unplugin: 1.8.3
+      unplugin: 1.10.1
       vue-tsc: 1.8.27(typescript@5.3.3)
     transitivePeerDependencies:
       - debug
@@ -92411,13 +92407,6 @@ snapshots:
   unpipe@1.0.0: {}
 
   unplugin@1.10.1:
-    dependencies:
-      acorn: 8.11.3
-      chokidar: 3.6.0
-      webpack-sources: 3.2.3
-      webpack-virtual-modules: 0.6.1
-
-  unplugin@1.8.3:
     dependencies:
       acorn: 8.11.3
       chokidar: 3.6.0
