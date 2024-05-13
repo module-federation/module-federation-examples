@@ -37,11 +37,11 @@ importers:
         version: 6.22.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
     devDependencies:
       '@rsbuild/core':
-        specifier: 0.6.14
-        version: 0.6.14
+        specifier: 0.6.15
+        version: 0.6.15
       '@rsbuild/plugin-react':
         specifier: 0.6.14
-        version: 0.6.14(@rsbuild/core@0.6.14)(@swc/helpers@0.5.3)
+        version: 0.6.14(@rsbuild/core@0.6.15)(@swc/helpers@0.5.3)
       '@types/react':
         specifier: ^18.2.79
         version: 18.2.79
@@ -71,11 +71,11 @@ importers:
         version: 6.22.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
     devDependencies:
       '@rsbuild/core':
-        specifier: 0.6.14
-        version: 0.6.14
+        specifier: 0.6.15
+        version: 0.6.15
       '@rsbuild/plugin-react':
         specifier: 0.6.14
-        version: 0.6.14(@rsbuild/core@0.6.14)(@swc/helpers@0.5.3)
+        version: 0.6.14(@rsbuild/core@0.6.15)(@swc/helpers@0.5.3)
       '@types/react':
         specifier: ^18.2.79
         version: 18.2.79
@@ -105,11 +105,11 @@ importers:
         version: 6.22.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
     devDependencies:
       '@rsbuild/core':
-        specifier: 0.6.14
-        version: 0.6.14
+        specifier: 0.6.15
+        version: 0.6.15
       '@rsbuild/plugin-react':
         specifier: 0.6.14
-        version: 0.6.14(@rsbuild/core@0.6.14)(@swc/helpers@0.5.3)
+        version: 0.6.14(@rsbuild/core@0.6.15)(@swc/helpers@0.5.3)
       '@types/react':
         specifier: ^18.2.79
         version: 18.2.79
@@ -420,8 +420,8 @@ packages:
     resolution: {integrity: sha512-Oy8rmScVrVxWZVOpEF57ovlnhpZ8CCPlnIIumVcV9nFdiSIrus99+Lw78ekXyGvVDlIsFJbSfmSovJUhCWYV3w==}
     engines: {node: '>=14.0.0'}
 
-  '@rsbuild/core@0.6.14':
-    resolution: {integrity: sha512-Omnhia4iVHsZ5A+F7yKuRtda6WgAi10tGoOO2aQdn+X8nijLjjW/2TX2asp+7RU2EBnXalV16SjYuA5QSWoDPQ==}
+  '@rsbuild/core@0.6.15':
+    resolution: {integrity: sha512-wT9gyfRHyXJamR6fvlWzOpWGmI+2w+LMNIvAItY6AjCIT1zgfK0OOkChR4KGTTOWj68b/t0BnuBy1b2PV3DLyw==}
     engines: {node: '>=16.0.0'}
     hasBin: true
 
@@ -432,6 +432,9 @@ packages:
 
   '@rsbuild/shared@0.6.14':
     resolution: {integrity: sha512-2bbU4/myax29NLCqioQ0degMuXWF4HeAC9y2KEPJqTBmbc64cFFLF3kyMT8QW5ZVksl1dvcPoNIJXvxSi1tx6w==}
+
+  '@rsbuild/shared@0.6.15':
+    resolution: {integrity: sha512-siBYUQL3qVINLDkIBaxx4caNb+zZ+Jb8WtN2RgRT5buLW+PU5fXUs5vGwjFz6B6wCxO/vLr78X/FjaCmxMv8HA==}
 
   '@rspack/binding-darwin-arm64@0.6.5':
     resolution: {integrity: sha512-5Zbs3buzF80MZoWnnpm/ZqQ2ZLKWjmmy94gDMeJhG39lKcpK2J2NyDXVis2ZSg7uUvKyJ662BEgIE1AnTWjnYg==}
@@ -2129,18 +2132,18 @@ snapshots:
 
   '@remix-run/router@1.15.3': {}
 
-  '@rsbuild/core@0.6.14':
+  '@rsbuild/core@0.6.15':
     dependencies:
-      '@rsbuild/shared': 0.6.14(@swc/helpers@0.5.3)
+      '@rsbuild/shared': 0.6.15(@swc/helpers@0.5.3)
       '@rspack/core': 0.6.5(@swc/helpers@0.5.3)
       '@swc/helpers': 0.5.3
       core-js: 3.36.1
       html-webpack-plugin: html-rspack-plugin@5.7.2(@rspack/core@0.6.5(@swc/helpers@0.5.3))
       postcss: 8.4.38
 
-  '@rsbuild/plugin-react@0.6.14(@rsbuild/core@0.6.14)(@swc/helpers@0.5.3)':
+  '@rsbuild/plugin-react@0.6.14(@rsbuild/core@0.6.15)(@swc/helpers@0.5.3)':
     dependencies:
-      '@rsbuild/core': 0.6.14
+      '@rsbuild/core': 0.6.15
       '@rsbuild/shared': 0.6.14(@swc/helpers@0.5.3)
       '@rspack/plugin-react-refresh': 0.6.5(react-refresh@0.14.2)
       react-refresh: 0.14.2
@@ -2148,6 +2151,16 @@ snapshots:
       - '@swc/helpers'
 
   '@rsbuild/shared@0.6.14(@swc/helpers@0.5.3)':
+    dependencies:
+      '@rspack/core': 0.6.5(@swc/helpers@0.5.3)
+      caniuse-lite: 1.0.30001617
+      postcss: 8.4.38
+    optionalDependencies:
+      fsevents: 2.3.3
+    transitivePeerDependencies:
+      - '@swc/helpers'
+
+  '@rsbuild/shared@0.6.15(@swc/helpers@0.5.3)':
     dependencies:
       '@rspack/core': 0.6.5(@swc/helpers@0.5.3)
       caniuse-lite: 1.0.30001617
