@@ -151,9 +151,9 @@ async function checkAndUpdatePackages(nestedDir, packageJson, results) {
 
 function updateDependencies(packageJson, dependencyKey, newVersion) {
   if (packageJson.dependencies?.[dependencyKey]) {
-    packageJson.dependencies[dependencyKey] = `^${newVersion}`;
+    packageJson.dependencies[dependencyKey] = `${newVersion}`;
   } else if (packageJson.devDependencies?.[dependencyKey]) {
-    packageJson.devDependencies[dependencyKey] = `^${newVersion}`;
+    packageJson.devDependencies[dependencyKey] = `${newVersion}`;
   }
 }
 

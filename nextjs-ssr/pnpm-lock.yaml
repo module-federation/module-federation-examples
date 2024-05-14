@@ -18,7 +18,7 @@ importers:
   checkout:
     dependencies:
       '@module-federation/nextjs-mf':
-        specifier: ^8.3.14
+        specifier: 8.3.14
         version: 8.3.14(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
       lodash:
         specifier: 4.17.21
@@ -33,16 +33,16 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
       webpack:
-        specifier: ^5.91.0
+        specifier: 5.91.0
         version: 5.91.0
 
   home:
     dependencies:
       '@module-federation/enhanced':
-        specifier: ^0.1.13
+        specifier: 0.1.13
         version: 0.1.13(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
       '@module-federation/nextjs-mf':
-        specifier: ^8.3.14
+        specifier: 8.3.14
         version: 8.3.14(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
       lodash:
         specifier: 4.17.21
@@ -57,16 +57,16 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
       webpack:
-        specifier: ^5.91.0
+        specifier: 5.91.0
         version: 5.91.0
 
   shop:
     dependencies:
       '@module-federation/enhanced':
-        specifier: ^0.1.13
+        specifier: 0.1.13
         version: 0.1.13(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
       '@module-federation/nextjs-mf':
-        specifier: ^8.3.14
+        specifier: 8.3.14
         version: 8.3.14(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
       lodash:
         specifier: 4.17.21
@@ -81,7 +81,7 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
       webpack:
-        specifier: ^5.91.0
+        specifier: 5.91.0
         version: 5.91.0
 
 packages:
@@ -287,7 +287,7 @@ packages:
       next: '*'
       react: ^16||^17||^18
       react-dom: ^16||^17||^18
-      webpack: 5.89.0
+      webpack: ^5.40.0
     peerDependenciesMeta:
       next:
         optional: true
@@ -726,18 +726,12 @@ packages:
       negotiator: 0.6.3
     dev: false
 
-  /acorn-import-assertions@1.9.0(acorn@8.11.2):
+  /acorn-import-assertions@1.9.0(acorn@8.11.3):
     resolution: {integrity: sha512-cmMwop9x+8KFhxvKrKfPYmN6/pKTYYHBqLa0DfvVZcKMJWNyWLnaqND7dx/qn66R7ewM1UX5XMaDVP5wlVTaVA==}
     peerDependencies:
       acorn: ^8
     dependencies:
-      acorn: 8.11.2
-    dev: false
-
-  /acorn@8.11.2:
-    resolution: {integrity: sha512-nc0Axzp/0FILLEVsm4fNwLCwMttvhEI263QtVPQcbpfZZ3ts0hLsZGOpE6czNlid7CJ9MlyH8reXkpsf3YUY4w==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
+      acorn: 8.11.3
     dev: false
 
   /acorn@8.11.3:
@@ -840,7 +834,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001563
+      caniuse-lite: 1.0.30001603
       electron-to-chromium: 1.4.588
       node-releases: 2.0.13
       update-browserslist-db: 1.0.13(browserslist@4.22.1)
@@ -863,10 +857,6 @@ packages:
     dependencies:
       mime-types: 2.1.35
       ylru: 1.4.0
-    dev: false
-
-  /caniuse-lite@1.0.30001563:
-    resolution: {integrity: sha512-na2WUmOxnwIZtwnFI2CZ/3er0wdNzU7hN+cPYz/z2ajHThnkWjNBOpEPP4n+4r2WPM847JaMotaJE3bnfzjyKw==}
     dev: false
 
   /caniuse-lite@1.0.30001603:
@@ -2175,8 +2165,8 @@ packages:
       '@webassemblyjs/ast': 1.12.1
       '@webassemblyjs/wasm-edit': 1.12.1
       '@webassemblyjs/wasm-parser': 1.12.1
-      acorn: 8.11.2
-      acorn-import-assertions: 1.9.0(acorn@8.11.2)
+      acorn: 8.11.3
+      acorn-import-assertions: 1.9.0(acorn@8.11.3)
       browserslist: 4.22.1
       chrome-trace-event: 1.0.3
       enhanced-resolve: 5.16.0

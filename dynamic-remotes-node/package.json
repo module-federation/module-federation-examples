@@ -12,15 +12,15 @@
     "start": "pnpm build && concurrently 'pnpm serve' 'sleep 5 && node app1/dist/main.js'"
   },
   "dependencies": {
-    "@module-federation/node": "^2.2.4",
-    "@module-federation/enhanced": "^0.1.13",
-    "@module-federation/runtime": "^0.1.13",
+    "@module-federation/node": "2.2.4",
+    "@module-federation/enhanced": "0.1.13",
+    "@module-federation/runtime": "0.1.13",
     "concurrently": "^8.0.1",
-    "webpack": "^5.91.0",
+    "webpack": "5.91.0",
     "rimraf": "^5.0.5",
     "webpack-cli": "^5.1.4",
-    "@rspack/cli": "^0.6.5",
-    "@rspack/core": "^0.6.5",
-    "@rspack/dev-server": "^0.6.5"
+    "@rspack/cli": "0.6.5",
+    "@rspack/core": "0.6.5",
+    "@rspack/dev-server": "0.6.5"
   }
 }
