@@ -12,7 +12,7 @@
     "legacy:e2e:ci": "kill-port 3001 3000 && pnpm legacy:build && pnpm serve & sleep 5 && wait-on tcp:3000 && wait-on tcp:3001 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "wait-on": "^7.2.0",
-    "kill-port": "^2.0.1"
+    "wait-on": "7.2.0",
+    "kill-port": "2.0.1"
   }
 }

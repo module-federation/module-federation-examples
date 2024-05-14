@@ -13,7 +13,7 @@
     "e2e:ci": "pnpm start & npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome && lsof -ti tcp:3000,3001,3002 | xargs kill"
   },
   "devDependencies": {
-    "wait-on": "^7.1.0",
+    "wait-on": "7.2.0",
     "concurrently": "7.6.0",
     "forever": "4.0.3"
   }
