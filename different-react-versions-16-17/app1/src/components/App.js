@@ -1,19 +1,18 @@
-import React from 'react';
-const ModernComponent = React.lazy(() => import("app2/ModernComponent"));
+import React, { Component, Suspense } from 'react';
 
+const ModernComponent = React.lazy(() => import("app2/ModernComponent"));
 const RemoteButton = React.lazy(() => import('app2/Button'));
 
-// Hooks not suppoorted, uncomment to verify this is a pre-hooks react version being used.
+// Hooks not supported, uncomment to verify this is a pre-hooks react version being used.
 // import HookComponent from './ComponentWithHook'
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = { input: '' };
-    this.setValue = this.setValue.bind(this);
   }
 
-  setValue(e) {
+  setValue = (e) => {
     this.setState({ input: e.target.value });
   }
 
@@ -25,32 +24,22 @@ class App extends React.Component {
         <h2>App 1, Uses react version not compatible with hooks</h2>
         <input onChange={this.setValue} placeholder="Type something into this input" />
 
-        <div style={{border: '1px red solid', padding: '10px', margin: '20px 0'}}>
-          <React.Suspense fallback="Loading Modern Com">
-
-            <ModernComponent
-              // any other props, passed to ModernComponent
-              {...this.state}
-            >
+        <div style={{ border: '1px red solid', padding: '10px', margin: '20px 0' }}>
+          <Suspense fallback="Loading Modern Com">
+            <ModernComponent {...this.state}>
               <h3>And these are children passed into it from the legacy app</h3>
             </ModernComponent>
-          </React.Suspense>
-
+          </Suspense>
         </div>
 
-        {/*This will Fail*/}
-        {/*<HookComponent/>*/}
+        {/* This will Fail */}
+        {/* <HookComponent /> */}
 
         <div style={{ border: '1px red solid', padding: '10px', margin: '20px 0' }}>
-          <React.Suspense fallback="Loading Button">
+          <Suspense fallback="Loading Button">
             <RemoteButton />
-          </React.Suspense>
+          </Suspense>
         </div>
-
-        {/*This will fail without Adapter*/}
-        {/*<React.Suspense fallback="Loading Button">*/}
-        {/*  <ModernComponent />*/}
-        {/*</React.Suspense>*/}
       </div>
     );
   }

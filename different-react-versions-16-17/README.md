@@ -1,19 +1,26 @@
-# Mixed React Versions and Compatibility levels
+# Mixed React Versions and Compatibility with Module Federation
 
-This example demos the ability to load two separate versions of react.
+This example demonstrates how to use Module Federation to load and integrate different versions of React in a single application.
 
-Module Federation allows us to create an adapter which attaches a hooks-friendly version to render a section of thr app using modern versions.
+## Key Aspects
 
-- `app1` uses and older version of react, not compatible with react Hooks
-- `app2` uses a modern react version and its components are hooks based
+1. **Adapter for Hooks Compatibility**: An adapter is created to attach a hooks-friendly version of React to render a section of the app using modern versions. This allows components from different React versions to work together seamlessly.
 
-The adapter consumes both versions of react to "translate" the props into a fresh render. This could be presented as a HOC or federated components could have a legacy export containing the adapter build in.
+2. **Separate React Versions**: 
+   - `app1` uses an older version of React (pre-hooks era)
+   - `app2` uses a modern version of React with hooks-based components
 
-# Running Demo
+3. **Module Federation**: Module Federation is used to federate the components from `app2` into `app1`. This allows the consumption of components across different versions of React.
 
-Run `pnpm run start`. This will build and serve both `app1` and `app2` on ports 3001 and 3002 respectively.
+4. **Adapter Implementation**: The adapter consumes both versions of React to "translate" the props and facilitate the rendering of the federated components. It can be presented as a Higher-Order Component (HOC) or built into the federated components as a legacy export.
 
-- [localhost:3001](http://localhost:3001/) (HOST)
-- [localhost:3002](http://localhost:3002/) (STANDALONE REMOTE)
+## Running the Demo
 
-<img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/DifferentReactVersions">
+To run the demo, follow these steps:
+
+1. Install the dependencies using `pnpm install`
+2. Run `pnpm run start` to build and serve both `app1` and `app2` on ports 3001 and 3002 respectively
+3. Open [localhost:3001](http://localhost:3001/) to view `app1` (HOST)
+4. Open [localhost:3002](http://localhost:3002/) to view `app2` (STANDALONE REMOTE)
+
+This example showcases the power of Module Federation in enabling the integration of different versions of React, allowing for incremental upgrades and the coexistence of legacy and modern components in a single application.
