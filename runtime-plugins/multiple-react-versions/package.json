@@ -1,0 +1,16 @@
+{
+  "name": "multiple-react-versions",
+  "description": "This example demos the ability to load two separate versions of react (16 & 17).",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "pnpm --filter multiple-react-versions_* --parallel start",
+    "legacy:start": "pnpm --filter multiple-react-versions_* --parallel legacy:start",
+    "legacy:build": "pnpm --filter multiple-react-versions_* legacy:build",
+    "build": "pnpm --filter multiple-react-versions_* build",
+    "serve": "pnpm --filter multiple-react-versions_* --parallel serve",
+    "clean": "pnpm --filter multiple-react-versions_* --parallel clean",
+    "legacy:e2e:ci": "pnpm run legacy:build",
+    "e2e:ci": "pnpm run build"
+  },
+  "devDependencies": {}
+}
