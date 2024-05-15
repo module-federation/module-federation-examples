@@ -850,10 +850,10 @@ importers:
     dependencies:
       '@angular/common':
         specifier: ^11.0.0-rc.2
-        version: 11.2.14(@angular/core@11.2.14)(rxjs@6.6.7)
+        version: 11.2.14(@angular/core@11.2.14(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)
       '@angular/core':
         specifier: ^11.0.0-rc.2
-        version: 11.2.14(rxjs@6.6.7)(zone.js@0.11.8)
+        version: 11.2.14(rxjs@7.8.1)(zone.js@0.12.0)
       tslib:
         specifier: ^2.0.0
         version: 2.5.0
@@ -977,10 +977,10 @@ importers:
     dependencies:
       '@angular/common':
         specifier: ^11.0.0-rc.2
-        version: 11.2.14(@angular/core@11.2.14)(rxjs@6.6.7)
+        version: 11.2.14(@angular/core@11.2.14(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)
       '@angular/core':
         specifier: ^11.0.0-rc.2
-        version: 11.2.14(rxjs@6.6.7)(zone.js@0.11.8)
+        version: 11.2.14(rxjs@7.8.1)(zone.js@0.12.0)
       tslib:
         specifier: ^2.0.0
         version: 2.5.0
@@ -1104,13 +1104,13 @@ importers:
     dependencies:
       '@angular/common':
         specifier: 13.3.11
-        version: 13.3.11(@angular/core@13.3.11)(rxjs@7.8.1)
+        version: 13.3.11(@angular/core@13.3.11(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)
       '@angular/core':
         specifier: 13.3.11
-        version: 13.3.11(rxjs@7.8.1)(zone.js@0.11.8)
+        version: 13.3.11(rxjs@7.8.1)(zone.js@0.12.0)
       '@ngxs/store':
         specifier: 3.8.2
-        version: 3.8.2(@angular/core@13.3.11)(rxjs@7.8.1)
+        version: 3.8.2(@angular/core@13.3.11(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)
       tslib:
         specifier: ^2.0.0
         version: 2.5.0
@@ -6458,7 +6458,7 @@ importers:
         version: 18.2.0
       react-i18next:
         specifier: ^11.18.6
-        version: 11.18.6(i18next@21.10.0)(react-dom@18.2.0)(react@18.2.0)
+        version: 11.18.6(i18next@21.10.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
     devDependencies:
       typescript:
         specifier: 4.9.5
@@ -8522,8 +8522,8 @@ importers:
         specifier: 18.0.11
         version: 18.0.11
       '@types/react-is':
-        specifier: 18.2.4
-        version: 18.2.4
+        specifier: 18.3.0
+        version: 18.3.0
       '@types/styled-components':
         specifier: 5.1.34
         version: 5.1.34
@@ -24222,8 +24222,8 @@ packages:
   '@types/react-helmet@6.1.11':
     resolution: {integrity: sha512-0QcdGLddTERotCXo3VFlUSWO3ztraw8nZ6e3zJSgG7apwV5xt+pJUS8ewPBqT4NYB1optGLprNQzFleIY84u/g==}
 
-  '@types/react-is@18.2.4':
-    resolution: {integrity: sha512-wBc7HgmbCcrvw0fZjxbgz/xrrlZKzEqmABBMeSvpTvdm25u6KI6xdIi9pRE2G0C1Lw5ETFdcn4UbYZ4/rpqUYw==}
+  '@types/react-is@18.3.0':
+    resolution: {integrity: sha512-KZJpHUkAdzyKj/kUHJDc6N7KyidftICufJfOFpiG6haL/BDQNQt5i4n1XDUL/nDZAtGLHDSWRYpLzKTAKSvX6w==}
 
   '@types/react-redux@7.1.33':
     resolution: {integrity: sha512-NF8m5AjWCkert+fosDsN3hAlHzpjSiXlVy9EgQEmLoBhaNXbmyeGs/aj5dQzKuF+/q+S7JQagorGDW8pJ28Hmg==}
@@ -43186,15 +43186,15 @@ snapshots:
       rxjs: 6.6.7
       tslib: 2.5.0
 
-  '@angular/common@11.2.14(@angular/core@11.2.14)(rxjs@6.6.7)':
+  '@angular/common@11.2.14(@angular/core@11.2.14(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)':
     dependencies:
-      '@angular/core': 11.2.14(rxjs@6.6.7)(zone.js@0.11.8)
-      rxjs: 6.6.7
+      '@angular/core': 11.2.14(rxjs@7.8.1)(zone.js@0.12.0)
+      rxjs: 7.8.1
       tslib: 2.5.0
 
-  '@angular/common@13.3.11(@angular/core@13.3.11)(rxjs@7.8.1)':
+  '@angular/common@13.3.11(@angular/core@13.3.11(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)':
     dependencies:
-      '@angular/core': 13.3.11(rxjs@7.8.1)(zone.js@0.11.8)
+      '@angular/core': 13.3.11(rxjs@7.8.1)(zone.js@0.12.0)
       rxjs: 7.8.1
       tslib: 2.6.2
 
@@ -43288,11 +43288,17 @@ snapshots:
       tslib: 2.5.0
       zone.js: 0.11.8
 
-  '@angular/core@13.3.11(rxjs@7.8.1)(zone.js@0.11.8)':
+  '@angular/core@11.2.14(rxjs@7.8.1)(zone.js@0.12.0)':
+    dependencies:
+      rxjs: 7.8.1
+      tslib: 2.5.0
+      zone.js: 0.12.0
+
+  '@angular/core@13.3.11(rxjs@7.8.1)(zone.js@0.12.0)':
     dependencies:
       rxjs: 7.8.1
       tslib: 2.6.2
-      zone.js: 0.11.8
+      zone.js: 0.12.0
 
   '@angular/core@15.0.4(rxjs@6.6.7)(zone.js@0.11.8)':
     dependencies:
@@ -55737,7 +55743,7 @@ snapshots:
       cookie: 0.5.0
       etag: 1.8.1
       fresh: 0.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ignore-styles: 5.0.1
       isbot: 3.8.0
       merge-deep: 3.0.3
@@ -58110,7 +58116,7 @@ snapshots:
       browser-sync: 2.29.3
       express: 4.19.2(supports-color@6.1.0)
       guess-parser: 0.4.22(typescript@4.9.5)
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ora: 5.4.1
       piscina: 3.2.0
       rxjs: 6.6.7
@@ -58174,9 +58180,9 @@ snapshots:
       rxjs: 6.6.7
       tslib: 2.6.2
 
-  '@ngxs/store@3.8.2(@angular/core@13.3.11)(rxjs@7.8.1)':
+  '@ngxs/store@3.8.2(@angular/core@13.3.11(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)':
     dependencies:
-      '@angular/core': 13.3.11(rxjs@7.8.1)(zone.js@0.11.8)
+      '@angular/core': 13.3.11(rxjs@7.8.1)(zone.js@0.12.0)
       rxjs: 7.8.1
       tslib: 2.6.2
 
@@ -60446,7 +60452,7 @@ snapshots:
       open: 8.4.2
       rxjs: 6.6.7
       tmp: 0.2.3
-      tslib: 2.6.2
+      tslib: 2.5.0
       yargs: 17.7.2
       yargs-parser: 21.1.1
     transitivePeerDependencies:
@@ -60896,7 +60902,7 @@ snapshots:
       '@types/webpack': 5.28.0(@swc/core@1.5.5)
       sockjs-client: 1.6.1(supports-color@6.1.0)
       type-fest: 2.19.0
-      webpack-dev-server: 4.15.2(debug@4.3.4)(webpack@5.89.0(@swc/core@1.5.5))
+      webpack-dev-server: 4.15.2(webpack@5.89.0(@swc/core@1.5.5))
       webpack-hot-middleware: 2.26.1
 
   '@polka/url@1.0.0-next.24': {}
@@ -62480,7 +62486,7 @@ snapshots:
       chokidar: 3.5.3
       connect-history-api-fallback: 2.0.0
       express: 4.19.2(supports-color@6.1.0)
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       mime-types: 2.1.35
       webpack-dev-middleware: 6.1.2(webpack@5.89.0(@swc/core@1.5.5)(webpack-cli@4.10.0))
       webpack-dev-server: 4.13.1(webpack-cli@4.10.0(webpack-dev-server@4.15.2)(webpack@5.89.0))(webpack@5.89.0(@swc/core@1.5.5)(webpack-cli@4.10.0))
@@ -62500,7 +62506,7 @@ snapshots:
       chokidar: 3.5.3
       connect-history-api-fallback: 2.0.0
       express: 4.19.2(supports-color@6.1.0)
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       mime-types: 2.1.35
       webpack-dev-middleware: 6.1.2(webpack@5.89.0(@swc/core@1.5.5)(webpack-cli@4.10.0))
       webpack-dev-server: 4.13.1(webpack-cli@4.10.0(webpack@5.89.0))(webpack@5.89.0(@swc/core@1.5.5)(webpack-cli@4.10.0))
@@ -62520,7 +62526,7 @@ snapshots:
       chokidar: 3.5.3
       connect-history-api-fallback: 2.0.0
       express: 4.19.2(supports-color@6.1.0)
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       mime-types: 2.1.35
       webpack-dev-middleware: 6.1.2(webpack@5.89.0(@swc/core@1.5.5)(webpack-cli@4.9.2))
       webpack-dev-server: 4.13.1(webpack-cli@4.9.2(webpack@5.89.0))(webpack@5.89.0(@swc/core@1.5.5)(webpack-cli@4.9.2))
@@ -62540,7 +62546,7 @@ snapshots:
       chokidar: 3.5.3
       connect-history-api-fallback: 2.0.0
       express: 4.19.2(supports-color@6.1.0)
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       mime-types: 2.1.35
       webpack-dev-middleware: 6.1.2(webpack@5.89.0(@swc/core@1.5.5)(webpack-cli@5.1.4))
       webpack-dev-server: 4.13.1(webpack-cli@5.1.4(webpack-dev-server@4.15.2)(webpack@5.89.0))(webpack@5.89.0(@swc/core@1.5.5)(webpack-cli@5.1.4))
@@ -62560,7 +62566,7 @@ snapshots:
       chokidar: 3.5.3
       connect-history-api-fallback: 2.0.0
       express: 4.19.2(supports-color@6.1.0)
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       mime-types: 2.1.35
       webpack-dev-middleware: 6.1.2(webpack@5.89.0(@swc/core@1.5.5(@swc/helpers@0.5.6))(esbuild@0.18.20)(webpack-cli@5.1.4))
       webpack-dev-server: 4.13.1(webpack-cli@5.1.4(webpack-dev-server@5.0.2)(webpack@5.89.0))(webpack@5.89.0(@swc/core@1.5.5(@swc/helpers@0.5.6))(esbuild@0.18.20)(webpack-cli@5.1.4))
@@ -62580,7 +62586,7 @@ snapshots:
       chokidar: 3.5.3
       connect-history-api-fallback: 2.0.0
       express: 4.19.2(supports-color@6.1.0)
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       mime-types: 2.1.35
       webpack-dev-middleware: 6.1.2(webpack@5.89.0(@swc/core@1.5.5)(webpack-cli@5.1.4))
       webpack-dev-server: 4.13.1(webpack-cli@5.1.4(webpack-dev-server@5.0.4)(webpack@5.89.0))(webpack@5.89.0(@swc/core@1.5.5)(webpack-cli@5.1.4))
@@ -62600,7 +62606,7 @@ snapshots:
       chokidar: 3.5.3
       connect-history-api-fallback: 2.0.0
       express: 4.19.2(supports-color@6.1.0)
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       mime-types: 2.1.35
       webpack-dev-middleware: 6.1.2(webpack@5.89.0(@swc/core@1.5.5)(webpack-cli@5.1.4))
       webpack-dev-server: 4.13.1(webpack-cli@5.1.4(webpack@5.89.0))(webpack@5.89.0(@swc/core@1.5.5)(webpack-cli@5.1.4))
@@ -62620,7 +62626,7 @@ snapshots:
       chokidar: 3.5.3
       connect-history-api-fallback: 2.0.0
       express: 4.19.2(supports-color@6.1.0)
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       mime-types: 2.1.35
       webpack-dev-middleware: 6.1.2(webpack@5.89.0(@swc/core@1.5.5)(esbuild@0.19.11))
       webpack-dev-server: 4.13.1(webpack@5.89.0(@swc/core@1.5.5)(esbuild@0.19.11))
@@ -62640,7 +62646,7 @@ snapshots:
       chokidar: 3.5.3
       connect-history-api-fallback: 2.0.0
       express: 4.19.2(supports-color@6.1.0)
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       mime-types: 2.1.35
       webpack-dev-middleware: 6.1.2(webpack@5.89.0(@swc/core@1.5.5))
       webpack-dev-server: 4.13.1(webpack@5.89.0(@swc/core@1.5.5))
@@ -63787,7 +63793,7 @@ snapshots:
       flat-cache: 3.2.0
       micromatch: 4.0.5
       react-docgen-typescript: 2.2.2(typescript@5.4.5)
-      tslib: 2.6.2
+      tslib: 2.5.0
       typescript: 5.4.5
       webpack: 5.89.0(@swc/core@1.5.5)(esbuild@0.17.8)
     transitivePeerDependencies:
@@ -64953,7 +64959,7 @@ snapshots:
     dependencies:
       '@types/react': 18.0.38
 
-  '@types/react-is@18.2.4':
+  '@types/react-is@18.3.0':
     dependencies:
       '@types/react': 18.0.38
 
@@ -67585,7 +67591,7 @@ snapshots:
 
   adjust-sourcemap-loader@3.0.0:
     dependencies:
-      loader-utils: 2.0.0
+      loader-utils: 2.0.4
       regex-parser: 2.3.0
 
   adjust-sourcemap-loader@4.0.0:
@@ -68329,13 +68335,13 @@ snapshots:
 
   axios@0.25.0:
     dependencies:
-      follow-redirects: 1.15.6(debug@4.3.4)
+      follow-redirects: 1.15.6(debug@4.3.4(supports-color@6.1.0))
     transitivePeerDependencies:
       - debug
 
   axios@0.27.2:
     dependencies:
-      follow-redirects: 1.15.6(debug@4.3.4)
+      follow-redirects: 1.15.6(debug@4.3.4(supports-color@6.1.0))
       form-data: 4.0.0
     transitivePeerDependencies:
       - debug
@@ -68350,7 +68356,7 @@ snapshots:
 
   axios@1.6.8:
     dependencies:
-      follow-redirects: 1.15.6(debug@4.3.4)
+      follow-redirects: 1.15.6(debug@4.3.4(supports-color@6.1.0))
       form-data: 4.0.0
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -69572,7 +69578,7 @@ snapshots:
       etag: 1.8.1
       fresh: 0.5.2
       fs-extra: 3.0.1
-      http-proxy: 1.18.1(debug@4.3.4)
+      http-proxy: 1.18.1(debug@4.3.4(supports-color@6.1.0))
       immutable: 3.8.2
       localtunnel: 2.0.2
       micromatch: 4.0.5
@@ -76641,6 +76647,18 @@ snapshots:
       - debug
       - supports-color
 
+  http-proxy-middleware@2.0.6(@types/express@4.17.21):
+    dependencies:
+      '@types/http-proxy': 1.17.14
+      http-proxy: 1.18.1(debug@4.3.4(supports-color@6.1.0))
+      is-glob: 4.0.3
+      is-plain-obj: 3.0.0
+      micromatch: 4.0.5
+    optionalDependencies:
+      '@types/express': 4.17.21
+    transitivePeerDependencies:
+      - debug
+
   http-proxy-middleware@2.0.6(@types/express@4.17.21)(debug@4.3.4):
     dependencies:
       '@types/http-proxy': 1.17.14
@@ -76675,7 +76693,7 @@ snapshots:
       colors: 1.4.0
       corser: 2.0.1
       he: 1.2.0
-      http-proxy: 1.18.1(debug@4.3.4)
+      http-proxy: 1.18.1(debug@4.3.4(supports-color@6.1.0))
       mime: 1.6.0
       minimist: 1.2.8
       opener: 1.5.2
@@ -76694,7 +76712,7 @@ snapshots:
       corser: 2.0.1
       he: 1.2.0
       html-encoding-sniffer: 3.0.0
-      http-proxy: 1.18.1(debug@4.3.4)
+      http-proxy: 1.18.1(debug@4.3.4(supports-color@6.1.0))
       mime: 1.6.0
       minimist: 1.2.8
       opener: 1.5.2
@@ -79756,7 +79774,7 @@ snapshots:
       dom-serialize: 2.2.1
       glob: 7.2.3
       graceful-fs: 4.2.11
-      http-proxy: 1.18.1(debug@4.3.4)
+      http-proxy: 1.18.1(debug@4.3.4(supports-color@6.1.0))
       isbinaryfile: 4.0.10
       lodash: 4.17.21
       log4js: 6.9.1
@@ -80607,7 +80625,7 @@ snapshots:
 
   lower-case@2.0.2:
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.0
 
   lowercase-keys@1.0.0: {}
 
@@ -82253,7 +82271,7 @@ snapshots:
   no-case@3.0.4:
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.6.2
+      tslib: 2.5.0
 
   node-abort-controller@3.1.1: {}
 
@@ -82953,7 +82971,7 @@ snapshots:
       tar-stream: 2.2.0
       tmp: 0.2.3
       tsconfig-paths: 4.2.0
-      tslib: 2.6.2
+      tslib: 2.5.0
       v8-compile-cache: 2.3.0
       yargs: 17.7.2
       yargs-parser: 21.1.1
@@ -87522,14 +87540,6 @@ snapshots:
     optionalDependencies:
       react-dom: 18.2.0(react@18.2.0)
 
-  react-i18next@11.18.6(i18next@21.10.0)(react-dom@18.2.0)(react@18.2.0):
-    dependencies:
-      '@babel/runtime': 7.24.0
-      html-parse-stringify: 3.0.1
-      i18next: 21.10.0
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-
   react-inspector@5.1.1(react@17.0.2):
     dependencies:
       '@babel/runtime': 7.24.0
@@ -87815,7 +87825,7 @@ snapshots:
       tailwindcss: 3.4.3(ts-node@10.9.1(@swc/core@1.5.5)(@types/node@20.9.0)(typescript@5.4.5))
       terser-webpack-plugin: 5.3.10(@swc/core@1.5.5)(esbuild@0.17.8)(webpack@5.89.0(@swc/core@1.5.5)(esbuild@0.17.8))
       webpack: 5.89.0(@swc/core@1.5.5)(esbuild@0.17.8)
-      webpack-dev-server: 4.15.2(debug@4.3.4)(webpack@5.89.0(@swc/core@1.5.5))
+      webpack-dev-server: 4.15.2(webpack@5.89.0(@swc/core@1.5.5))
       webpack-manifest-plugin: 4.1.1(webpack@5.89.0(@swc/core@1.5.5))
       workbox-webpack-plugin: 6.6.0(@types/babel__core@7.20.5)(webpack@5.89.0(@swc/core@1.5.5))
     optionalDependencies:
@@ -94217,7 +94227,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       open: 8.4.2
       p-retry: 4.6.2
@@ -94255,7 +94265,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       open: 8.4.2
       p-retry: 4.6.2
@@ -94295,7 +94305,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       open: 8.4.2
       p-retry: 4.6.2
@@ -94333,7 +94343,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       launch-editor: 2.6.1
       open: 8.4.2
@@ -94374,7 +94384,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       launch-editor: 2.6.1
       open: 8.4.2
@@ -94415,7 +94425,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       launch-editor: 2.6.1
       open: 8.4.2
@@ -94456,7 +94466,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       launch-editor: 2.6.1
       open: 8.4.2
@@ -94497,7 +94507,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       launch-editor: 2.6.1
       open: 8.4.2
@@ -94538,7 +94548,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       launch-editor: 2.6.1
       open: 8.4.2
@@ -94579,7 +94589,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       launch-editor: 2.6.1
       open: 8.4.2
@@ -94620,7 +94630,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       launch-editor: 2.6.1
       open: 8.4.2
@@ -94660,7 +94670,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       launch-editor: 2.6.1
       open: 8.4.2
@@ -94740,7 +94750,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       launch-editor: 2.6.1
       open: 8.4.2
@@ -94781,7 +94791,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       launch-editor: 2.6.1
       open: 8.4.2
@@ -94822,7 +94832,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       launch-editor: 2.6.1
       open: 8.4.2
@@ -94863,7 +94873,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       launch-editor: 2.6.1
       open: 8.4.2
@@ -94904,7 +94914,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       launch-editor: 2.6.1
       open: 8.4.2
@@ -94944,7 +94954,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       launch-editor: 2.6.1
       open: 8.4.2
@@ -94984,7 +94994,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       launch-editor: 2.6.1
       open: 8.4.2
@@ -95006,6 +95016,46 @@ snapshots:
       - utf-8-validate
     optional: true
 
+  webpack-dev-server@4.15.2(webpack@5.89.0(@swc/core@1.5.5)):
+    dependencies:
+      '@types/bonjour': 3.5.13
+      '@types/connect-history-api-fallback': 1.5.4
+      '@types/express': 4.17.21
+      '@types/serve-index': 1.9.4
+      '@types/serve-static': 1.15.5
+      '@types/sockjs': 0.3.36
+      '@types/ws': 8.5.10
+      ansi-html-community: 0.0.8
+      bonjour-service: 1.2.1
+      chokidar: 3.6.0
+      colorette: 2.0.20
+      compression: 1.7.4(supports-color@6.1.0)
+      connect-history-api-fallback: 2.0.0
+      default-gateway: 6.0.3
+      express: 4.19.2(supports-color@6.1.0)
+      graceful-fs: 4.2.11
+      html-entities: 2.5.2
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
+      ipaddr.js: 2.1.0
+      launch-editor: 2.6.1
+      open: 8.4.2
+      p-retry: 4.6.2
+      rimraf: 3.0.2
+      schema-utils: 4.2.0
+      selfsigned: 2.4.1
+      serve-index: 1.9.1(supports-color@6.1.0)
+      sockjs: 0.3.24
+      spdy: 4.0.2(supports-color@6.1.0)
+      webpack-dev-middleware: 5.3.4(webpack@5.89.0(@swc/core@1.5.5)(esbuild@0.17.8))
+      ws: 8.16.0
+    optionalDependencies:
+      webpack: 5.89.0(@swc/core@1.5.5)(esbuild@0.17.8)
+    transitivePeerDependencies:
+      - bufferutil
+      - debug
+      - supports-color
+      - utf-8-validate
+
   webpack-dev-server@5.0.2(webpack-cli@5.1.4)(webpack@5.89.0):
     dependencies:
       '@types/bonjour': 3.5.13
@@ -95025,7 +95075,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       launch-editor: 2.6.1
       open: 10.0.4
@@ -95066,7 +95116,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       launch-editor: 2.6.1
       open: 10.0.4
@@ -95107,7 +95157,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       launch-editor: 2.6.1
       open: 10.0.4
@@ -95148,7 +95198,7 @@ snapshots:
       express: 4.19.2(supports-color@6.1.0)
       graceful-fs: 4.2.11
       html-entities: 2.5.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)(debug@4.3.4)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
       ipaddr.js: 2.1.0
       launch-editor: 2.6.1
       open: 10.0.4
