@@ -10,7 +10,9 @@
     "serve": "pnpm --filter multiple-react-versions_* --parallel serve",
     "clean": "pnpm --filter multiple-react-versions_* --parallel clean",
     "legacy:e2e:ci": "pnpm run legacy:build",
-    "e2e:ci": "pnpm run build"
+    "e2e:ci": "pnpm run start & wait-on tcp:3001 && wait-on tcp:3002 && cypress run --config-file e2e/cypress.config.ts"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "wait-on": "7.2.0"
+  }
 }
