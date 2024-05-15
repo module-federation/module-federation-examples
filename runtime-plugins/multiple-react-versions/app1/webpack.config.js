@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 const deps = require('./package.json').dependencies;
 
@@ -40,23 +40,24 @@ const webpackConfig = {
   plugins: [
     new ModuleFederationPlugin({
       name: 'app1',
-      library: { type: 'var', name: 'app1' },
       remotes: {
-        app2: 'app2',
+        app2: `app2@${getRemoteEntryUrl(3002)}`,
       },
+      runtimePlugins: [require.resolve('./react-adapter-runtime-plugin.ts')],
       shared: {
         ...deps,
         'react-dom': {
-          import: 'react-dom', // the "react" package will be used a provided and fallback module
-          shareKey: 'react-dom', // under this name the shared module will be placed in the share scope
-          shareScope: 'legacy', // share scope with this name will be used
-          singleton: true, // only a single version of the shared module is allowed
+          strictVersion: true,
+          // singleton: true, // only a single version of the shared module is allowed
+        },
+        'react': {
+          strictVersion: true,
+          // singleton: true, // only a single version of the shared module is allowed
         },
       },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      app2RemoteEntry: getRemoteEntryUrl(3002),
     }),
   ],
 };

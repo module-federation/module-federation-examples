@@ -16,6 +16,27 @@ const CONFIG = [
     targetVersion: "latest"
   },
   {
+    packageName: '@rspack/core',
+    shouldUpdate: true,
+    versionToCheck: '3.0.13',
+    targetVersion: "latest"
+  }, {
+    packageName: '@rspack/cli',
+    shouldUpdate: true,
+    versionToCheck: '3.0.13',
+    targetVersion: "latest"
+  }, {
+    packageName: '@rspack/plugin-react-refresh',
+    shouldUpdate: true,
+    versionToCheck: '3.0.13',
+    targetVersion: "latest"
+  },{
+    packageName: '@rspack/dev-server',
+    shouldUpdate: true,
+    versionToCheck: '3.0.13',
+    targetVersion: "latest"
+  },
+  {
     packageName: '@module-federation/enhanced',
     shouldUpdate: true, // Assumes no targetVersion needed
     versionToCheck: "2.0.0",
@@ -77,7 +98,7 @@ const CONFIG = [
 
 const versionCache = {};
 
-async function getLatestVersion(packageName,targetVersion) {
+async function getLatestVersion(packageName, targetVersion) {
   if (versionCache[packageName]) {
     return versionCache[packageName];
   }
@@ -117,8 +138,8 @@ async function checkAndUpdatePackages(nestedDir, packageJson, results) {
   let needsUpdate = false;
 
   for (const config of CONFIG) {
-    const { packageName, shouldUpdate, versionToCheck } = config;
-    let { targetVersion } = config;
+    const {packageName, shouldUpdate, versionToCheck} = config;
+    let {targetVersion} = config;
     const currentVersion = packageJson.dependencies?.[packageName] || packageJson.devDependencies?.[packageName];
 
     if (targetVersion === 'latest') {
@@ -136,7 +157,7 @@ async function checkAndUpdatePackages(nestedDir, packageJson, results) {
       if (shouldUpdate && targetVersion) {
         updateDependencies(packageJson, packageName, targetVersion);
       }
-      if(shouldUpdate) {
+      if (shouldUpdate) {
         needsUpdate = true;
       }
       trackPackage(nestedDir, packageName, results);
