@@ -8,7 +8,7 @@
     "start": " pnpm --parallel --filter nextjs-ssr_* dev",
     "build": "pnpm --parallel --filter nextjs-ssr_* build",
     "serve": "pnpm --parallel --filter nextjs-ssr_* start",
-    "e2e:ci": "pnpm run start & wait-on http-get://localhost:3001/ && wait-on http-get://localhost:3002/ && wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "e2e:ci": "pnpm run start & sleep 10 && wait-on http-get://localhost:3001/ && wait-on http-get://localhost:3002/ && wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "dependencies": {
     "concurrently": "^8.2.2",

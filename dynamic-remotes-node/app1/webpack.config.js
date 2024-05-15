@@ -11,6 +11,7 @@ module.exports = {
       remoteType: 'script',
       isServer: true,
       name: 'app1',
+      useRuntimePlugin: true,
       exposes: {
         './noop': './noop.js',
       }

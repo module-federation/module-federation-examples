@@ -5,11 +5,11 @@
     "start": "pnpm build && pnpm serve",
     "serve": "node dist/server/main.js",
     "build": "pnpm build:server && pnpm build:client",
-    "build:client": "rimraf dist/client && webpack --mode production --progress --config config/webpack.client.js",
-    "build:server": "rimraf dist/server && webpack --mode development --progress --config config/webpack.server.js"
+    "build:client": "rimraf dist/client && rspack --mode production --config config/webpack.client.js",
+    "build:server": "rimraf dist/server && rspack --mode development --config config/webpack.server.js"
   },
   "dependencies": {
-    "express": "4.18.2",
+    "express": "4.19.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-helmet": "6.1.0",
@@ -23,16 +23,19 @@
     "@babel/preset-env": "7.23.8",
     "@babel/preset-react": "7.23.3",
     "@babel/preset-typescript": "7.23.3",
-    "@module-federation/node": "^2.1.8",
-    "@module-federation/enhanced": "^0.1.8",
-    "@types/express": "4.17.14",
+    "@module-federation/node": "2.2.4",
+    "@module-federation/enhanced": "0.1.13",
+    "@types/express": "4.17.21",
     "@types/react": "18.2.64",
     "@types/react-dom": "18.2.21",
     "@types/react-helmet": "6.1.11",
     "babel-loader": "8.2.5",
     "rimraf": "3.0.2",
-    "webpack": "^5.91.0",
+    "webpack": "5.91.0",
     "webpack-cli": "4.9.2",
-    "webpack-merge": "5.10.0"
+    "webpack-merge": "5.10.0",
+    "@rspack/cli": "0.6.5",
+    "@rspack/core": "0.6.5",
+    "@rspack/dev-server": "0.6.5"
   }
 }

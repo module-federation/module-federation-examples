@@ -69,6 +69,30 @@ const CONFIG = [
     shouldUpdate: true,
     versionToCheck: '9.2.2',
     targetVersion: "latest"
+  },
+  {
+    packageName: '@rspack/core',
+    shouldUpdate: true,
+    versionToCheck: '9.2.2',
+    targetVersion: "latest"
+  },
+  {
+    packageName: '@rspack/cli',
+    shouldUpdate: true,
+    versionToCheck: '9.2.2',
+    targetVersion: "latest"
+  },
+  {
+    packageName: '@rspack/dev-server',
+    shouldUpdate: true,
+    versionToCheck: '9.2.2',
+    targetVersion: "latest"
+  },
+  {
+    packageName: '@rspack/plugin-react-refresh',
+    shouldUpdate: true,
+    versionToCheck: '9.2.2',
+    targetVersion: "latest"
   }
 ];
 
@@ -122,7 +146,7 @@ async function checkAndUpdatePackages(nestedDir, packageJson, results) {
       targetVersion = await getLatestVersion(packageName, targetVersion);
       if (!targetVersion) continue; // Skip if failed to fetch latest version
     }
-    if (targetVersion === "latest") {
+    if (targetVersion === "next") {
       targetVersion = await getLatestVersion(packageName, targetVersion);
       if (!targetVersion) continue; // Skip if failed to fetch latest version
       updateDependencies(packageJson, packageName, targetVersion);
@@ -148,9 +172,9 @@ async function checkAndUpdatePackages(nestedDir, packageJson, results) {
 
 function updateDependencies(packageJson, dependencyKey, newVersion) {
   if (packageJson.dependencies?.[dependencyKey]) {
-    packageJson.dependencies[dependencyKey] = `^${newVersion}`;
+    packageJson.dependencies[dependencyKey] = `${newVersion}`;
   } else if (packageJson.devDependencies?.[dependencyKey]) {
-    packageJson.devDependencies[dependencyKey] = `^${newVersion}`;
+    packageJson.devDependencies[dependencyKey] = `${newVersion}`;
   }
 }
 

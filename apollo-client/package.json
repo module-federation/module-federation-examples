@@ -3,9 +3,16 @@
   "description": "This example demonstrates using Apollo Client with Module Federation.",
   "version": "0.0.0",
   "scripts": {
+    "legacy:start": "pnpm --filter apollo-client_* --parallel legacy:start",
+    "legacy:build": "pnpm --filter apollo-client_* --parallel legacy:build",
     "start": "pnpm --filter apollo-client_* --parallel start",
     "serve": "pnpm --filter apollo-client_* --parallel serve",
     "build": "pnpm --filter apollo-client_* --parallel build",
-    "e2e:ci": "pnpm run build"
+    "e2e:ci": "kill-port 3001 3000 && pnpm build && pnpm serve & sleep 2 && wait-on tcp:3000 && wait-on tcp:3001 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
+    "legacy:e2e:ci": "kill-port 3001 3000 && pnpm legacy:build && pnpm serve & sleep 5 && wait-on tcp:3000 && wait-on tcp:3001 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+  },
+  "devDependencies": {
+    "wait-on": "7.2.0",
+    "kill-port": "2.0.1"
   }
 }

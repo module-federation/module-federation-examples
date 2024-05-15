@@ -11,6 +11,7 @@ module.exports = {
       remoteType: 'script',
       isServer: true,
       name: 'app2',
+      useRuntimePlugin: true,
       library: {type: 'commonjs-module',},
       filename: 'remoteEntry.js',
       exposes: {
