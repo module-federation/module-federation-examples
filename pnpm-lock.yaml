@@ -850,10 +850,10 @@ importers:
     dependencies:
       '@angular/common':
         specifier: ^11.0.0-rc.2
-        version: 11.2.14(@angular/core@11.2.14)(rxjs@6.6.7)
+        version: 11.2.14(@angular/core@11.2.14(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)
       '@angular/core':
         specifier: ^11.0.0-rc.2
-        version: 11.2.14(rxjs@6.6.7)(zone.js@0.11.8)
+        version: 11.2.14(rxjs@7.8.1)(zone.js@0.12.0)
       tslib:
         specifier: ^2.0.0
         version: 2.5.0
@@ -977,10 +977,10 @@ importers:
     dependencies:
       '@angular/common':
         specifier: ^11.0.0-rc.2
-        version: 11.2.14(@angular/core@11.2.14)(rxjs@6.6.7)
+        version: 11.2.14(@angular/core@11.2.14(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)
       '@angular/core':
         specifier: ^11.0.0-rc.2
-        version: 11.2.14(rxjs@6.6.7)(zone.js@0.11.8)
+        version: 11.2.14(rxjs@7.8.1)(zone.js@0.12.0)
       tslib:
         specifier: ^2.0.0
         version: 2.5.0
@@ -1104,13 +1104,13 @@ importers:
     dependencies:
       '@angular/common':
         specifier: 13.3.11
-        version: 13.3.11(@angular/core@13.3.11)(rxjs@7.8.1)
+        version: 13.3.11(@angular/core@13.3.11(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)
       '@angular/core':
         specifier: 13.3.11
-        version: 13.3.11(rxjs@7.8.1)(zone.js@0.11.8)
+        version: 13.3.11(rxjs@7.8.1)(zone.js@0.12.0)
       '@ngxs/store':
         specifier: 3.8.2
-        version: 3.8.2(@angular/core@13.3.11)(rxjs@7.8.1)
+        version: 3.8.2(@angular/core@13.3.11(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)
       tslib:
         specifier: ^2.0.0
         version: 2.5.0
@@ -6358,7 +6358,7 @@ importers:
         version: 18.2.0
       react-i18next:
         specifier: ^11.18.6
-        version: 11.18.6(i18next@21.10.0)(react-dom@18.2.0)(react@18.2.0)
+        version: 11.18.6(i18next@21.10.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
     devDependencies:
       typescript:
         specifier: 4.9.5
@@ -14345,8 +14345,8 @@ importers:
         specifier: 0.2.8
         version: 0.2.8(@softarc/native-federation@1.1.2)
       '@rushstack/eslint-patch':
-        specifier: 1.7.2
-        version: 1.7.2
+        specifier: 1.10.2
+        version: 1.10.2
       '@softarc/native-federation':
         specifier: 1.1.2
         version: 1.1.2
@@ -14406,8 +14406,8 @@ importers:
         specifier: 0.2.8
         version: 0.2.8(@softarc/native-federation@1.1.2)
       '@rushstack/eslint-patch':
-        specifier: 1.7.2
-        version: 1.7.2
+        specifier: 1.10.2
+        version: 1.10.2
       '@softarc/native-federation':
         specifier: 1.1.2
         version: 1.1.2
@@ -22911,6 +22911,9 @@ packages:
     peerDependenciesMeta:
       react-refresh:
         optional: true
+
+  '@rushstack/eslint-patch@1.10.2':
+    resolution: {integrity: sha512-hw437iINopmQuxWPSUEvqE56NCPsiU8N4AYtfHmJFckclktzK9YQJieD3XkDCDH4OjL+C7zgPUh73R/nrcHrqw==}
 
   '@rushstack/eslint-patch@1.7.2':
     resolution: {integrity: sha512-RbhOOTCNoCrbfkRyoXODZp75MlpiHMgbE5MEBZAnnnLyQNgrigEj4p0lzsMDyc1zVsJDLrivB58tgg3emX0eEA==}
@@ -43166,15 +43169,15 @@ snapshots:
       rxjs: 6.6.7
       tslib: 2.5.0
 
-  '@angular/common@11.2.14(@angular/core@11.2.14)(rxjs@6.6.7)':
+  '@angular/common@11.2.14(@angular/core@11.2.14(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)':
     dependencies:
-      '@angular/core': 11.2.14(rxjs@6.6.7)(zone.js@0.11.8)
-      rxjs: 6.6.7
+      '@angular/core': 11.2.14(rxjs@7.8.1)(zone.js@0.12.0)
+      rxjs: 7.8.1
       tslib: 2.5.0
 
-  '@angular/common@13.3.11(@angular/core@13.3.11)(rxjs@7.8.1)':
+  '@angular/common@13.3.11(@angular/core@13.3.11(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)':
     dependencies:
-      '@angular/core': 13.3.11(rxjs@7.8.1)(zone.js@0.11.8)
+      '@angular/core': 13.3.11(rxjs@7.8.1)(zone.js@0.12.0)
       rxjs: 7.8.1
       tslib: 2.6.2
 
@@ -43268,11 +43271,17 @@ snapshots:
       tslib: 2.5.0
       zone.js: 0.11.8
 
-  '@angular/core@13.3.11(rxjs@7.8.1)(zone.js@0.11.8)':
+  '@angular/core@11.2.14(rxjs@7.8.1)(zone.js@0.12.0)':
+    dependencies:
+      rxjs: 7.8.1
+      tslib: 2.5.0
+      zone.js: 0.12.0
+
+  '@angular/core@13.3.11(rxjs@7.8.1)(zone.js@0.12.0)':
     dependencies:
       rxjs: 7.8.1
       tslib: 2.6.2
-      zone.js: 0.11.8
+      zone.js: 0.12.0
 
   '@angular/core@15.0.4(rxjs@6.6.7)(zone.js@0.11.8)':
     dependencies:
@@ -58026,9 +58035,9 @@ snapshots:
       rxjs: 6.6.7
       tslib: 2.6.2
 
-  '@ngxs/store@3.8.2(@angular/core@13.3.11)(rxjs@7.8.1)':
+  '@ngxs/store@3.8.2(@angular/core@13.3.11(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)':
     dependencies:
-      '@angular/core': 13.3.11(rxjs@7.8.1)(zone.js@0.11.8)
+      '@angular/core': 13.3.11(rxjs@7.8.1)(zone.js@0.12.0)
       rxjs: 7.8.1
       tslib: 2.6.2
 
@@ -60298,7 +60307,7 @@ snapshots:
       open: 8.4.2
       rxjs: 6.6.7
       tmp: 0.2.3
-      tslib: 2.6.2
+      tslib: 2.5.0
       yargs: 17.7.2
       yargs-parser: 21.1.1
     transitivePeerDependencies:
@@ -62531,6 +62540,8 @@ snapshots:
     optionalDependencies:
       react-refresh: 0.14.2
 
+  '@rushstack/eslint-patch@1.10.2': {}
+
   '@rushstack/eslint-patch@1.7.2': {}
 
   '@schematics/angular@11.2.19':
@@ -63639,7 +63650,7 @@ snapshots:
       flat-cache: 3.2.0
       micromatch: 4.0.5
       react-docgen-typescript: 2.2.2(typescript@5.4.5)
-      tslib: 2.6.2
+      tslib: 2.5.0
       typescript: 5.4.5
       webpack: 5.89.0(@swc/core@1.5.5)(esbuild@0.17.8)
     transitivePeerDependencies:
@@ -67437,7 +67448,7 @@ snapshots:
 
   adjust-sourcemap-loader@3.0.0:
     dependencies:
-      loader-utils: 2.0.0
+      loader-utils: 2.0.4
       regex-parser: 2.3.0
 
   adjust-sourcemap-loader@4.0.0:
@@ -73643,7 +73654,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.24.4
       '@babel/eslint-parser': 7.23.10(@babel/core@7.24.4)(eslint@8.57.0)
-      '@rushstack/eslint-patch': 1.7.2
+      '@rushstack/eslint-patch': 1.10.2
       '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5)
       '@typescript-eslint/parser': 5.62.0(eslint@8.57.0)(typescript@5.4.5)
       babel-preset-react-app: 10.0.1
@@ -80459,7 +80470,7 @@ snapshots:
 
   lower-case@2.0.2:
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.0
 
   lowercase-keys@1.0.0: {}
 
@@ -82105,7 +82116,7 @@ snapshots:
   no-case@3.0.4:
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.6.2
+      tslib: 2.5.0
 
   node-abort-controller@3.1.1: {}
 
@@ -82805,7 +82816,7 @@ snapshots:
       tar-stream: 2.2.0
       tmp: 0.2.3
       tsconfig-paths: 4.2.0
-      tslib: 2.6.2
+      tslib: 2.5.0
       v8-compile-cache: 2.3.0
       yargs: 17.7.2
       yargs-parser: 21.1.1
@@ -87372,14 +87383,6 @@ snapshots:
       i18next: 21.10.0
       react: 18.2.0
     optionalDependencies:
-      react-dom: 18.2.0(react@18.2.0)
-
-  react-i18next@11.18.6(i18next@21.10.0)(react-dom@18.2.0)(react@18.2.0):
-    dependencies:
-      '@babel/runtime': 7.24.0
-      html-parse-stringify: 3.0.1
-      i18next: 21.10.0
-      react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
   react-inspector@5.1.1(react@17.0.2):
