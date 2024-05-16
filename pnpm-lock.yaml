@@ -25,8 +25,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0
       allure-commandline:
-        specifier: 2.27.0
-        version: 2.27.0
+        specifier: 2.29.0
+        version: 2.29.0
       asn1:
         specifier: 0.2.6
         version: 0.2.6
@@ -850,10 +850,10 @@ importers:
     dependencies:
       '@angular/common':
         specifier: ^11.0.0-rc.2
-        version: 11.2.14(@angular/core@11.2.14)(rxjs@6.6.7)
+        version: 11.2.14(@angular/core@11.2.14(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)
       '@angular/core':
         specifier: ^11.0.0-rc.2
-        version: 11.2.14(rxjs@6.6.7)(zone.js@0.11.8)
+        version: 11.2.14(rxjs@7.8.1)(zone.js@0.12.0)
       tslib:
         specifier: ^2.0.0
         version: 2.5.0
@@ -977,10 +977,10 @@ importers:
     dependencies:
       '@angular/common':
         specifier: ^11.0.0-rc.2
-        version: 11.2.14(@angular/core@11.2.14)(rxjs@6.6.7)
+        version: 11.2.14(@angular/core@11.2.14(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)
       '@angular/core':
         specifier: ^11.0.0-rc.2
-        version: 11.2.14(rxjs@6.6.7)(zone.js@0.11.8)
+        version: 11.2.14(rxjs@7.8.1)(zone.js@0.12.0)
       tslib:
         specifier: ^2.0.0
         version: 2.5.0
@@ -1104,13 +1104,13 @@ importers:
     dependencies:
       '@angular/common':
         specifier: 13.3.11
-        version: 13.3.11(@angular/core@13.3.11)(rxjs@7.8.1)
+        version: 13.3.11(@angular/core@13.3.11(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)
       '@angular/core':
         specifier: 13.3.11
-        version: 13.3.11(rxjs@7.8.1)(zone.js@0.11.8)
+        version: 13.3.11(rxjs@7.8.1)(zone.js@0.12.0)
       '@ngxs/store':
         specifier: 3.8.2
-        version: 3.8.2(@angular/core@13.3.11)(rxjs@7.8.1)
+        version: 3.8.2(@angular/core@13.3.11(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)
       tslib:
         specifier: ^2.0.0
         version: 2.5.0
@@ -6358,7 +6358,7 @@ importers:
         version: 18.2.0
       react-i18next:
         specifier: ^11.18.6
-        version: 11.18.6(i18next@21.10.0)(react-dom@18.2.0)(react@18.2.0)
+        version: 11.18.6(i18next@21.10.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
     devDependencies:
       typescript:
         specifier: 4.9.5
@@ -25150,8 +25150,8 @@ packages:
   ajv@8.12.0:
     resolution: {integrity: sha512-sRu1kpcO9yLtYxBKvqfTeh9KzZEwO3STyX1HT+4CaDzC6HpTGYhIhPIzj9XuKU7KYDwnaeh5hcOwjy1QuJzBPA==}
 
-  allure-commandline@2.27.0:
-    resolution: {integrity: sha512-KuxKEZ2Joa0LCcM9w8AWgWJgmB5d3VqSgaJhPC6pEsdRwAObT/JE8NY0u4mJ61+c2mhAPGIetGV9jgP3gzxgIg==}
+  allure-commandline@2.29.0:
+    resolution: {integrity: sha512-he/oWJflViIdEmuQ4er5k+xRd//PaVVElHHTx01h6W71KM9qKiLeF5MloV93UBYoJRzjD9fgbZedSMKemCEGkQ==}
     hasBin: true
 
   alphanum-sort@1.0.2:
@@ -43166,15 +43166,15 @@ snapshots:
       rxjs: 6.6.7
       tslib: 2.5.0
 
-  '@angular/common@11.2.14(@angular/core@11.2.14)(rxjs@6.6.7)':
+  '@angular/common@11.2.14(@angular/core@11.2.14(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)':
     dependencies:
-      '@angular/core': 11.2.14(rxjs@6.6.7)(zone.js@0.11.8)
-      rxjs: 6.6.7
+      '@angular/core': 11.2.14(rxjs@7.8.1)(zone.js@0.12.0)
+      rxjs: 7.8.1
       tslib: 2.5.0
 
-  '@angular/common@13.3.11(@angular/core@13.3.11)(rxjs@7.8.1)':
+  '@angular/common@13.3.11(@angular/core@13.3.11(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)':
     dependencies:
-      '@angular/core': 13.3.11(rxjs@7.8.1)(zone.js@0.11.8)
+      '@angular/core': 13.3.11(rxjs@7.8.1)(zone.js@0.12.0)
       rxjs: 7.8.1
       tslib: 2.6.2
 
@@ -43268,11 +43268,17 @@ snapshots:
       tslib: 2.5.0
       zone.js: 0.11.8
 
-  '@angular/core@13.3.11(rxjs@7.8.1)(zone.js@0.11.8)':
+  '@angular/core@11.2.14(rxjs@7.8.1)(zone.js@0.12.0)':
+    dependencies:
+      rxjs: 7.8.1
+      tslib: 2.5.0
+      zone.js: 0.12.0
+
+  '@angular/core@13.3.11(rxjs@7.8.1)(zone.js@0.12.0)':
     dependencies:
       rxjs: 7.8.1
       tslib: 2.6.2
-      zone.js: 0.11.8
+      zone.js: 0.12.0
 
   '@angular/core@15.0.4(rxjs@6.6.7)(zone.js@0.11.8)':
     dependencies:
@@ -58026,9 +58032,9 @@ snapshots:
       rxjs: 6.6.7
       tslib: 2.6.2
 
-  '@ngxs/store@3.8.2(@angular/core@13.3.11)(rxjs@7.8.1)':
+  '@ngxs/store@3.8.2(@angular/core@13.3.11(rxjs@7.8.1)(zone.js@0.12.0))(rxjs@7.8.1)':
     dependencies:
-      '@angular/core': 13.3.11(rxjs@7.8.1)(zone.js@0.11.8)
+      '@angular/core': 13.3.11(rxjs@7.8.1)(zone.js@0.12.0)
       rxjs: 7.8.1
       tslib: 2.6.2
 
@@ -60298,7 +60304,7 @@ snapshots:
       open: 8.4.2
       rxjs: 6.6.7
       tmp: 0.2.3
-      tslib: 2.6.2
+      tslib: 2.5.0
       yargs: 17.7.2
       yargs-parser: 21.1.1
     transitivePeerDependencies:
@@ -63639,7 +63645,7 @@ snapshots:
       flat-cache: 3.2.0
       micromatch: 4.0.5
       react-docgen-typescript: 2.2.2(typescript@5.4.5)
-      tslib: 2.6.2
+      tslib: 2.5.0
       typescript: 5.4.5
       webpack: 5.89.0(@swc/core@1.5.5)(esbuild@0.17.8)
     transitivePeerDependencies:
@@ -67437,7 +67443,7 @@ snapshots:
 
   adjust-sourcemap-loader@3.0.0:
     dependencies:
-      loader-utils: 2.0.0
+      loader-utils: 2.0.4
       regex-parser: 2.3.0
 
   adjust-sourcemap-loader@4.0.0:
@@ -67556,7 +67562,7 @@ snapshots:
       require-from-string: 2.0.2
       uri-js: 4.4.1
 
-  allure-commandline@2.27.0: {}
+  allure-commandline@2.29.0: {}
 
   alphanum-sort@1.0.2: {}
 
@@ -80459,7 +80465,7 @@ snapshots:
 
   lower-case@2.0.2:
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.0
 
   lowercase-keys@1.0.0: {}
 
@@ -82105,7 +82111,7 @@ snapshots:
   no-case@3.0.4:
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.6.2
+      tslib: 2.5.0
 
   node-abort-controller@3.1.1: {}
 
@@ -82805,7 +82811,7 @@ snapshots:
       tar-stream: 2.2.0
       tmp: 0.2.3
       tsconfig-paths: 4.2.0
-      tslib: 2.6.2
+      tslib: 2.5.0
       v8-compile-cache: 2.3.0
       yargs: 17.7.2
       yargs-parser: 21.1.1
@@ -87372,14 +87378,6 @@ snapshots:
       i18next: 21.10.0
       react: 18.2.0
     optionalDependencies:
-      react-dom: 18.2.0(react@18.2.0)
-
-  react-i18next@11.18.6(i18next@21.10.0)(react-dom@18.2.0)(react@18.2.0):
-    dependencies:
-      '@babel/runtime': 7.24.0
-      html-parse-stringify: 3.0.1
-      i18next: 21.10.0
-      react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
   react-inspector@5.1.1(react@17.0.2):
