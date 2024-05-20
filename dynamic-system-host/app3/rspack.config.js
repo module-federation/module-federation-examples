@@ -1,6 +1,4 @@
-const {
-  container: { ModuleFederationPlugin },
-} = require('@rspack/core');
+import { ModuleFederationPlugin } from '@module-federation/enhanced/rspack';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const path = require('path');
