@@ -2746,6 +2746,9 @@ importers:
 
   cypress-e2e:
     dependencies:
+      moment:
+        specifier: ^2.30.1
+        version: 2.30.1
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
@@ -62193,7 +62196,7 @@ packages:
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
-      webpack: 5.91.0(webpack-cli@4.10.0)
+      webpack: 5.91.0(webpack-cli@5.1.4)
 
   /file-system-cache@1.1.0:
     resolution: {integrity: sha512-IzF5MBq+5CR0jXx5RxPe4BICl/oEhBSXKaL9fLhAXrIfIUS77Hr4vzrYyqYMHN6uTt+BOqi3fDCTjjEBCjERKw==}
@@ -83015,7 +83018,7 @@ packages:
       klona: 2.0.6
       neo-async: 2.6.2
       sass: 1.54.5
-      webpack: 5.91.0(webpack-cli@4.10.0)
+      webpack: 5.91.0(webpack-cli@5.1.4)
     dev: true
 
   /sass-loader@13.2.0(sass@1.58.1)(webpack@5.76.1):
