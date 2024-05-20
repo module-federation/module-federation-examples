@@ -2929,8 +2929,8 @@ importers:
         specifier: 1.77.2
         version: 1.77.2
       sass-loader:
-        specifier: 13.0.2
-        version: 13.0.2(sass@1.77.2)(webpack@5.89.0(@swc/core@1.5.7)(webpack-cli@4.10.0))
+        specifier: 13.3.3
+        version: 13.3.3(sass@1.77.2)(webpack@5.89.0(@swc/core@1.5.7)(webpack-cli@4.10.0))
       style-loader:
         specifier: 3.3.4
         version: 3.3.4(webpack@5.89.0(@swc/core@1.5.7)(webpack-cli@4.10.0))
@@ -3008,8 +3008,8 @@ importers:
         specifier: 1.77.2
         version: 1.77.2
       sass-loader:
-        specifier: 13.0.2
-        version: 13.0.2(sass@1.77.2)(webpack@5.89.0(@swc/core@1.5.7)(webpack-cli@5.1.4))
+        specifier: 13.3.3
+        version: 13.3.3(sass@1.77.2)(webpack@5.89.0(@swc/core@1.5.7)(webpack-cli@5.1.4))
       style-loader:
         specifier: 3.3.4
         version: 3.3.4(webpack@5.89.0(@swc/core@1.5.7)(webpack-cli@5.1.4))
@@ -10437,7 +10437,7 @@ importers:
     dependencies:
       '@module-federation/node':
         specifier: 2.2.4
-        version: 2.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.4.5)(vue-tsc@1.8.27(typescript@5.4.5))(webpack@5.89.0(@swc/core@1.5.7))
+        version: 2.2.4(next@14.1.4(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.2))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.4.5)(vue-tsc@1.8.27(typescript@5.4.5))(webpack@5.89.0(@swc/core@1.5.7))
       '@module-federation/utilities':
         specifier: ^3.0.0
         version: 3.0.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@5.89.0(@swc/core@1.5.7))
@@ -57205,26 +57205,6 @@ snapshots:
       - utf-8-validate
       - vue-tsc
 
-  '@module-federation/node@2.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.4.5)(vue-tsc@1.8.27(typescript@5.4.5))(webpack@5.89.0(@swc/core@1.5.7))':
-    dependencies:
-      '@module-federation/enhanced': 0.1.13(typescript@5.4.5)(vue-tsc@1.8.27(typescript@5.4.5))(webpack@5.89.0(@swc/core@1.5.7))
-      '@module-federation/runtime': 0.1.13
-      '@module-federation/sdk': 0.1.13
-      '@module-federation/utilities': 3.0.18(next@13.5.6(@babel/core@7.24.0)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.2))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@5.89.0(@swc/core@1.5.7))
-      encoding: 0.1.13
-      node-fetch: 2.7.0(encoding@0.1.13)
-      webpack: 5.89.0(@swc/core@1.5.7)(esbuild@0.17.8)
-    optionalDependencies:
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    transitivePeerDependencies:
-      - bufferutil
-      - debug
-      - supports-color
-      - typescript
-      - utf-8-validate
-      - vue-tsc
-
   '@module-federation/rollup-federation@0.0.1(rollup@2.79.1)':
     dependencies:
       '@rollup/plugin-virtual': 2.0.3(rollup@2.79.1)
@@ -88799,22 +88779,6 @@ snapshots:
     optionalDependencies:
       sass: 1.54.4
 
-  sass-loader@13.0.2(sass@1.77.2)(webpack@5.89.0(@swc/core@1.5.7)(webpack-cli@4.10.0)):
-    dependencies:
-      klona: 2.0.6
-      neo-async: 2.6.2
-      webpack: 5.89.0(@swc/core@1.5.7)(webpack-cli@4.10.0)
-    optionalDependencies:
-      sass: 1.77.2
-
-  sass-loader@13.0.2(sass@1.77.2)(webpack@5.89.0(@swc/core@1.5.7)(webpack-cli@5.1.4)):
-    dependencies:
-      klona: 2.0.6
-      neo-async: 2.6.2
-      webpack: 5.89.0(@swc/core@1.5.7)(webpack-cli@5.1.4)
-    optionalDependencies:
-      sass: 1.77.2
-
   sass-loader@13.2.0(sass@1.58.1)(webpack@5.89.0(@swc/core@1.5.7)(esbuild@0.17.8)(webpack-cli@5.0.1(webpack-dev-server@4.11.1)(webpack@5.89.0))):
     dependencies:
       klona: 2.0.6
@@ -88859,6 +88823,13 @@ snapshots:
       webpack: 5.89.0(@swc/core@1.5.7)(webpack-cli@4.10.0)
     optionalDependencies:
       sass: 1.71.1
+
+  sass-loader@13.3.3(sass@1.77.2)(webpack@5.89.0(@swc/core@1.5.7)(webpack-cli@4.10.0)):
+    dependencies:
+      neo-async: 2.6.2
+      webpack: 5.89.0(@swc/core@1.5.7)(webpack-cli@4.10.0)
+    optionalDependencies:
+      sass: 1.77.2
 
   sass-loader@13.3.3(sass@1.77.2)(webpack@5.89.0(@swc/core@1.5.7)(webpack-cli@4.9.2)):
     dependencies:
