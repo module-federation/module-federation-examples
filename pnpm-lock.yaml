@@ -2214,8 +2214,8 @@ importers:
         specifier: 3.59.2
         version: 3.59.2
       svelte-loader:
-        specifier: 3.1.9
-        version: 3.1.9(svelte@3.59.2)
+        specifier: 3.2.0
+        version: 3.2.0(svelte@3.59.2)
       webpack:
         specifier: 5.89.0
         version: 5.89.0(@swc/core@1.5.7)(webpack-cli@4.10.0)
@@ -2502,8 +2502,8 @@ importers:
         specifier: 3.59.2
         version: 3.59.2
       svelte-loader:
-        specifier: 3.1.9
-        version: 3.1.9(svelte@3.59.2)
+        specifier: 3.2.0
+        version: 3.2.0(svelte@3.59.2)
       webpack:
         specifier: 5.89.0
         version: 5.89.0(@swc/core@1.5.7)(webpack-cli@5.1.4)
@@ -10746,8 +10746,8 @@ importers:
         specifier: 3.59.2
         version: 3.59.2
       svelte-loader:
-        specifier: 3.1.9
-        version: 3.1.9(svelte@3.59.2)
+        specifier: 3.2.0
+        version: 3.2.0(svelte@3.59.2)
       webpack:
         specifier: 5.89.0
         version: 5.89.0(@swc/core@1.5.7)(webpack-cli@5.1.4)
@@ -39633,10 +39633,10 @@ packages:
     peerDependencies:
       svelte: ^3.19.0 || ^4.0.0
 
-  svelte-loader@3.1.9:
-    resolution: {integrity: sha512-RITPqze3TppOhaZF8SEFTDTwFHov17k3UkOjpxyL/No/YVrvckKmXWOEj7QEpsZZZSNQPb28tMZbHEI2xLhJMQ==}
+  svelte-loader@3.2.0:
+    resolution: {integrity: sha512-pxsNMC/1JHdQ63M0Zw5cS8dN299nvMiU2ze8yWPLlov/xBNXElEEM22so2q/vJDUyP0ZCrCVMV1d/tlWwxMRLA==}
     peerDependencies:
-      svelte: ^3.0.0 || ^4.0.0-next.0
+      svelte: ^3.0.0 || ^4.0.0-next.0 || ^5.0.0-next.1
 
   svelte-preprocess@4.10.7:
     resolution: {integrity: sha512-sNPBnqYD6FnmdBrUmBCaqS00RyCsCpj2BG58A1JBswNF7b0OKviwxqVrOL/CKyJrLSClrSeqQv5BXNg2RUbPOw==}
@@ -60808,7 +60808,7 @@ snapshots:
       source-map: 0.7.4
       webpack: 5.89.0(@swc/core@1.5.7)(webpack-cli@5.1.4)
     optionalDependencies:
-      '@types/webpack': 5.28.0(@swc/core@1.5.7)(webpack-cli@5.1.4(webpack-dev-server@4.15.2)(webpack@5.89.0))
+      '@types/webpack': 5.28.0(@swc/core@1.5.7)(webpack-cli@5.1.4(webpack-dev-server@5.0.4)(webpack@5.89.0))
       sockjs-client: 1.6.1(supports-color@6.1.0)
       type-fest: 2.19.0
       webpack-dev-server: 4.15.2(webpack-cli@5.1.4)(webpack@5.89.0)
@@ -60826,7 +60826,7 @@ snapshots:
       source-map: 0.7.4
       webpack: 5.89.0(@swc/core@1.5.7)(webpack-cli@5.1.4)
     optionalDependencies:
-      '@types/webpack': 5.28.0(@swc/core@1.5.7)(webpack-cli@5.1.4(webpack-dev-server@4.15.2)(webpack@5.89.0))
+      '@types/webpack': 5.28.0(@swc/core@1.5.7)(webpack-cli@5.1.4(webpack-dev-server@5.0.4)(webpack@5.89.0))
       sockjs-client: 1.6.1(supports-color@6.1.0)
       type-fest: 2.19.0
       webpack-dev-server: 5.0.4(webpack-cli@5.1.4)(webpack@5.89.0)
@@ -64972,7 +64972,7 @@ snapshots:
       - webpack-cli
     optional: true
 
-  '@types/webpack@5.28.0(@swc/core@1.5.7)(webpack-cli@5.1.4(webpack-dev-server@4.15.2)(webpack@5.89.0))':
+  '@types/webpack@5.28.0(@swc/core@1.5.7)(webpack-cli@5.1.4(webpack-dev-server@5.0.4)(webpack@5.89.0))':
     dependencies:
       '@types/node': 20.9.0
       tapable: 2.2.1
@@ -90270,7 +90270,7 @@ snapshots:
     dependencies:
       svelte: 3.59.2
 
-  svelte-loader@3.1.9(svelte@3.59.2):
+  svelte-loader@3.2.0(svelte@3.59.2):
     dependencies:
       loader-utils: 2.0.4
       svelte: 3.59.2
