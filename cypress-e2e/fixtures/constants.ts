@@ -579,7 +579,7 @@ export class Constants {
                 hostH3: 'my env is https://host.api.com',
                 button: 'Load Remote Widget'
             },
-            paragraph: 'The Dynamic System will take advantage Module Federation remotes and exposes. It will no load components that have been loaded already.',
+            paragraph: 'The Dynamic System will take advantage Module Federation remotes and exposes. It will not load components that have been loaded already.',
             buttonHeader: 'Remote Widget',
             buttonH2: 'My env is ',
             buttonParagraph: 'Using momentjs for format the date'

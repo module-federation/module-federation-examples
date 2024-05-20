@@ -1595,6 +1595,9 @@ importers:
       '@modern-js/tsconfig':
         specifier: 2.49.4
         version: 2.49.4
+      '@module-federation/enhanced':
+        specifier: 0.1.13
+        version: 0.1.13(typescript@5.4.5)(vue-tsc@1.8.27)(webpack@5.89.0)
       husky:
         specifier: 8.0.3
         version: 8.0.3
@@ -1635,6 +1638,9 @@ importers:
       '@modern-js/tsconfig':
         specifier: 2.49.4
         version: 2.49.4
+      '@module-federation/enhanced':
+        specifier: 0.1.13
+        version: 0.1.13(typescript@5.4.5)(vue-tsc@1.8.27)(webpack@5.89.0)
       husky:
         specifier: 8.0.3
         version: 8.0.3
@@ -2604,6 +2610,9 @@ importers:
         specifier: 17.0.2
         version: 17.0.2(react@17.0.2)
     devDependencies:
+      '@module-federation/enhanced':
+        specifier: 0.1.13
+        version: 0.1.13(typescript@5.4.5)(vue-tsc@1.8.27)(webpack@5.89.0)
       '@rsbuild/core':
         specifier: 0.6.15
         version: 0.6.15
@@ -2623,6 +2632,9 @@ importers:
         specifier: 17.0.2
         version: 17.0.2(react@17.0.2)
     devDependencies:
+      '@module-federation/enhanced':
+        specifier: 0.1.13
+        version: 0.1.13(typescript@5.4.5)(vue-tsc@1.8.27)(webpack@5.89.0)
       '@rsbuild/core':
         specifier: 0.6.15
         version: 0.6.15
@@ -7611,7 +7623,7 @@ importers:
         version: 15.9.7(@swc-node/register@1.9.1)(@swc/core@1.5.7)
       '@swc-node/register':
         specifier: 1.9.1
-        version: 1.9.1(@swc/core@1.5.7)(@swc/types@0.1.5)(typescript@4.8.4)
+        version: 1.9.1(@swc/core@1.5.7)(@swc/types@0.1.7)(typescript@4.8.4)
       '@swc/cli':
         specifier: 0.3.12
         version: 0.3.12(@swc/core@1.5.7)
@@ -11848,7 +11860,7 @@ importers:
         version: 8.1.0(typescript@5.2.2)
       '@swc-node/register':
         specifier: 1.9.1
-        version: 1.9.1(@swc/core@1.5.7)(@swc/types@0.1.5)(typescript@5.2.2)
+        version: 1.9.1(@swc/core@1.5.7)(@swc/types@0.1.7)(typescript@5.2.2)
       '@swc/cli':
         specifier: 0.3.12
         version: 0.3.12(@swc/core@1.5.7)
@@ -46564,7 +46576,7 @@ packages:
       - typescript
     dev: true
 
-  /@swc-node/core@1.13.1(@swc/core@1.5.7)(@swc/types@0.1.5):
+  /@swc-node/core@1.13.1(@swc/core@1.5.7)(@swc/types@0.1.7):
     resolution: {integrity: sha512-emB5l2nZsXjUEAuusqjYvWnQMLWZp6K039Mv8aq5SX1rsNM/N7DNhw1i4/DX7AyzNZ0tT+ASWyTvqEURldp5HA==}
     engines: {node: '>= 10'}
     peerDependencies:
@@ -46572,16 +46584,16 @@ packages:
       '@swc/types': '>= 0.1'
     dependencies:
       '@swc/core': 1.5.7(@swc/helpers@0.5.6)
-      '@swc/types': 0.1.5
+      '@swc/types': 0.1.7
     dev: true
 
-  /@swc-node/register@1.9.1(@swc/core@1.5.7)(@swc/types@0.1.5)(typescript@4.8.4):
+  /@swc-node/register@1.9.1(@swc/core@1.5.7)(@swc/types@0.1.7)(typescript@4.8.4):
     resolution: {integrity: sha512-z//TBXJdRWXoISCXlQmVz+NMm8Qm/UvcfKiGC0tSJdfeVYf5EZkGqvk2OiRH4SIJ6OGFfS9T0YrvA2pDKzWtPA==}
     peerDependencies:
       '@swc/core': '>= 1.4.13'
       typescript: '>= 4.3'
     dependencies:
-      '@swc-node/core': 1.13.1(@swc/core@1.5.7)(@swc/types@0.1.5)
+      '@swc-node/core': 1.13.1(@swc/core@1.5.7)(@swc/types@0.1.7)
       '@swc-node/sourcemap-support': 0.5.0
       '@swc/core': 1.5.7(@swc/helpers@0.5.6)
       colorette: 2.0.20
@@ -46594,13 +46606,13 @@ packages:
       - supports-color
     dev: true
 
-  /@swc-node/register@1.9.1(@swc/core@1.5.7)(@swc/types@0.1.5)(typescript@5.2.2):
+  /@swc-node/register@1.9.1(@swc/core@1.5.7)(@swc/types@0.1.7)(typescript@5.2.2):
     resolution: {integrity: sha512-z//TBXJdRWXoISCXlQmVz+NMm8Qm/UvcfKiGC0tSJdfeVYf5EZkGqvk2OiRH4SIJ6OGFfS9T0YrvA2pDKzWtPA==}
     peerDependencies:
       '@swc/core': '>= 1.4.13'
       typescript: '>= 4.3'
     dependencies:
-      '@swc-node/core': 1.13.1(@swc/core@1.5.7)(@swc/types@0.1.5)
+      '@swc-node/core': 1.13.1(@swc/core@1.5.7)(@swc/types@0.1.7)
       '@swc-node/sourcemap-support': 0.5.0
       '@swc/core': 1.5.7(@swc/helpers@0.5.6)
       colorette: 2.0.20
@@ -46787,10 +46799,6 @@ packages:
     resolution: {integrity: sha512-aYX01Ke9hunpoCexYAgQucEpARGQ5w/cqHFrIR+e9gdKb1QWTsVJuTJ2ozQzIAxLyRQe/m+2RqzkyOOGiMKRQA==}
     dependencies:
       tslib: 2.6.2
-
-  /@swc/types@0.1.5:
-    resolution: {integrity: sha512-myfUej5naTBWnqOCc/MdVOLVjXUXtIA+NpDrDBKJtLLg2shUjBu3cZmB/85RyitKc55+lUUyl7oRfLOvkr2hsw==}
-    dev: true
 
   /@swc/types@0.1.7:
     resolution: {integrity: sha512-scHWahbHF0eyj3JsxG9CFJgFdFNaVQCNAimBlT6PzS3n/HptxqREjsm4OH6AN3lYcffZYSPxXW8ua2BEHp0lJQ==}
@@ -51981,7 +51989,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.23.0
-      caniuse-lite: 1.0.30001618
+      caniuse-lite: 1.0.30001600
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -51997,7 +52005,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.23.0
-      caniuse-lite: 1.0.30001618
+      caniuse-lite: 1.0.30001600
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -72253,7 +72261,7 @@ packages:
       '@nrwl/cli': 14.8.9(@swc-node/register@1.9.1)(@swc/core@1.5.7)
       '@nrwl/tao': 14.8.9(@swc-node/register@1.9.1)(@swc/core@1.5.7)
       '@parcel/watcher': 2.0.4
-      '@swc-node/register': 1.9.1(@swc/core@1.5.7)(@swc/types@0.1.5)(typescript@4.8.4)
+      '@swc-node/register': 1.9.1(@swc/core@1.5.7)(@swc/types@0.1.7)(typescript@4.8.4)
       '@swc/core': 1.5.7(@swc/helpers@0.5.6)
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.0
@@ -72369,7 +72377,7 @@ packages:
       '@nrwl/cli': 15.9.7(@swc-node/register@1.9.1)(@swc/core@1.5.7)
       '@nrwl/tao': 15.9.7(@swc-node/register@1.9.1)(@swc/core@1.5.7)
       '@parcel/watcher': 2.0.4
-      '@swc-node/register': 1.9.1(@swc/core@1.5.7)(@swc/types@0.1.5)(typescript@4.8.4)
+      '@swc-node/register': 1.9.1(@swc/core@1.5.7)(@swc/types@0.1.7)(typescript@4.8.4)
       '@swc/core': 1.5.7(@swc/helpers@0.5.6)
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.0-rc.46
@@ -72554,7 +72562,7 @@ packages:
         optional: true
     dependencies:
       '@nrwl/tao': 17.3.2(@swc-node/register@1.9.1)(@swc/core@1.5.7)
-      '@swc-node/register': 1.9.1(@swc/core@1.5.7)(@swc/types@0.1.5)(typescript@5.2.2)
+      '@swc-node/register': 1.9.1(@swc/core@1.5.7)(@swc/types@0.1.7)(typescript@5.2.2)
       '@swc/core': 1.5.7(@swc/helpers@0.5.6)
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.0-rc.46
@@ -86107,7 +86115,7 @@ packages:
       chalk: 4.1.2
       enhanced-resolve: 5.15.1
       micromatch: 4.0.5
-      semver: 7.6.2
+      semver: 7.6.0
       typescript: 4.9.4
       webpack: 5.89.0(webpack-cli@5.1.4)
     dev: true
