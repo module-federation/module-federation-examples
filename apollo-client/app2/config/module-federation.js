@@ -27,7 +27,6 @@ module.exports = (FederationPlugin) => {
     server: [
       new FederationPlugin({
         remoteType: 'script',
-        isServer: true,
         runtimePlugins:[require.resolve('@module-federation/node/runtimePlugin')],
         name: 'app2',
         library: {type: 'commonjs-module'},

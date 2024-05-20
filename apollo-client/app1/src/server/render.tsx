@@ -2,7 +2,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { ApolloProvider } from '@apollo/client';
 import { renderToStringWithData } from '@apollo/client/react/ssr';
-// import { renderToStaticMarkup } from 'react-dom/server';
 import serialize from 'serialize-javascript';
 import fetch from 'node-fetch';
 
@@ -47,3 +46,4 @@ export default async (req, res, next) => {
   res.write('</body></html>');
   res.send();
 };
+
