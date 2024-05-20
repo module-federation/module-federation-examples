@@ -849,7 +849,7 @@ export class Constants {
             }
         },
         dynamicRemotesApp: {
-            paragraphText: 'The Dynamic System will take advantage Module Federation remotes and exposes. It will no load components that have been loaded already.',
+            paragraphText: 'The Dynamic System will take advantage of Module Federation remotes and exposes. It will not load components that have already been loaded.',
             widgetParagraphText: [
                 'Moment shouldn\'t download twice, the host has no moment.js',
                 'Using momentjs for format the date'
