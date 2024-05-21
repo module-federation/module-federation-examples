@@ -14,9 +14,9 @@
     "e2e:ci:legacy": "pnpm build:legacy && concurrently 'pnpm serve' 'sleep 5 && TEST=true node app1/dist/main.js && sleep 1 && kill-port 3001 3002'"
   },
   "dependencies": {
-    "@module-federation/node": "^2.2.4",
-    "@module-federation/enhanced": "^0.1.13",
-    "@module-federation/runtime": "^0.1.13",
+    "@module-federation/node": "2.2.5",
+    "@module-federation/enhanced": "0.1.14",
+    "@module-federation/runtime": "0.1.13",
     "concurrently": "^8.0.1",
     "webpack": "^5.91.0",
     "rimraf": "^5.0.5",
