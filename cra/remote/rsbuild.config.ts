@@ -10,6 +10,7 @@ export default defineConfig({
   },
   tools: {
     rspack: (config, { appendPlugins }) => {
+      config.output.publicPath = 'auto'
       appendPlugins([
         new ModuleFederationPlugin(mfConfig),
       ]);

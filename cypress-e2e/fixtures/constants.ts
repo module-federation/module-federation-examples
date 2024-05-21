@@ -893,7 +893,7 @@ export class Constants {
             componentState: 'Component in Action..',
         },
         dynamicSystemHostApp: {
-            hostParagraph: 'The Dynamic System will take advantage Module Federation ',
+            hostParagraph: 'The Dynamic System will take advantage of Module Federation ',
             paragraphText: [
                 'App2 Moment Dep',
                 'for format the date'

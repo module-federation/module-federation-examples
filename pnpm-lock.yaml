@@ -3663,14 +3663,14 @@ importers:
         specifier: 0.1.13
         version: 0.1.13
       '@rspack/cli':
-        specifier: ^0.6.5
-        version: 0.6.5(@rspack/core@0.6.5)(webpack-cli@5.1.4)(webpack@5.91.0)
+        specifier: ^0.7.0-beta.0
+        version: 0.7.0-beta.0(@rspack/core@0.7.0-beta.0)(webpack-cli@5.1.4)(webpack@5.91.0)
       '@rspack/core':
-        specifier: ^0.6.5
-        version: 0.6.5(@swc/helpers@0.5.3)
+        specifier: ^0.7.0-beta.0
+        version: 0.7.0-beta.0
       '@rspack/dev-server':
-        specifier: ^0.6.5
-        version: 0.6.5(@rspack/core@0.6.5)(webpack-cli@5.1.4)(webpack@5.91.0)
+        specifier: ^0.7.0-beta.0
+        version: 0.7.0-beta.0(@rspack/core@0.7.0-beta.0)(webpack-cli@5.1.4)(webpack@5.91.0)
       concurrently:
         specifier: ^8.0.1
         version: 8.2.2
@@ -22155,8 +22155,8 @@ packages:
       '@babel/helper-environment-visitor': 7.22.20
       '@babel/helper-function-name': 7.23.0
       '@babel/helper-plugin-utils': 7.24.5
-      '@babel/helper-replace-supers': 7.24.1(@babel/core@7.18.10)
-      '@babel/helper-split-export-declaration': 7.24.5
+      '@babel/helper-replace-supers': 7.22.20(@babel/core@7.18.10)
+      '@babel/helper-split-export-declaration': 7.22.6
       globals: 11.12.0
     dev: true
 
@@ -22172,8 +22172,8 @@ packages:
       '@babel/helper-environment-visitor': 7.22.20
       '@babel/helper-function-name': 7.23.0
       '@babel/helper-plugin-utils': 7.24.5
-      '@babel/helper-replace-supers': 7.24.1(@babel/core@7.24.0)
-      '@babel/helper-split-export-declaration': 7.24.5
+      '@babel/helper-replace-supers': 7.22.20(@babel/core@7.24.0)
+      '@babel/helper-split-export-declaration': 7.22.6
       globals: 11.12.0
     dev: true
 
@@ -22205,8 +22205,8 @@ packages:
       '@babel/helper-environment-visitor': 7.22.20
       '@babel/helper-function-name': 7.23.0
       '@babel/helper-plugin-utils': 7.24.5
-      '@babel/helper-replace-supers': 7.24.1(@babel/core@7.24.4)
-      '@babel/helper-split-export-declaration': 7.24.5
+      '@babel/helper-replace-supers': 7.22.20(@babel/core@7.24.4)
+      '@babel/helper-split-export-declaration': 7.22.6
       globals: 11.12.0
     dev: true
 
@@ -27089,7 +27089,7 @@ packages:
       '@babel/compat-data': 7.23.5
       '@babel/core': 7.18.10
       '@babel/helper-compilation-targets': 7.23.6
-      '@babel/helper-plugin-utils': 7.24.5
+      '@babel/helper-plugin-utils': 7.24.0
       '@babel/helper-validator-option': 7.23.5
       '@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression': 7.23.3(@babel/core@7.18.10)
       '@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining': 7.23.3(@babel/core@7.18.10)
@@ -27156,7 +27156,7 @@ packages:
       '@babel/plugin-transform-unicode-escapes': 7.23.3(@babel/core@7.18.10)
       '@babel/plugin-transform-unicode-regex': 7.23.3(@babel/core@7.18.10)
       '@babel/preset-modules': 0.1.6(@babel/core@7.18.10)
-      '@babel/types': 7.24.5
+      '@babel/types': 7.24.0
       babel-plugin-polyfill-corejs2: 0.3.3(@babel/core@7.18.10)
       babel-plugin-polyfill-corejs3: 0.5.3(@babel/core@7.18.10)
       babel-plugin-polyfill-regenerator: 0.4.1(@babel/core@7.18.10)
@@ -36597,7 +36597,7 @@ packages:
     resolution: {integrity: sha512-bsPzQ1B46+gqnQjqvo0BXH7RLTFWCTwQAm1G+ALvGIGdmLvgLWEOEiHtvvSLEDiZCfL4I/jHzn2lk96StMJYIA==}
     dependencies:
       '@swc/helpers': 0.5.3
-      caniuse-lite: 1.0.30001616
+      caniuse-lite: 1.0.30001618
       lodash: 4.17.21
       rslog: 1.2.1
     dev: false
@@ -44475,7 +44475,6 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rspack/binding-darwin-x64@0.4.5:
@@ -44522,7 +44521,6 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rspack/binding-linux-arm64-gnu@0.4.5:
@@ -44569,7 +44567,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rspack/binding-linux-arm64-musl@0.4.5:
@@ -44616,7 +44613,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rspack/binding-linux-x64-gnu@0.4.5:
@@ -44663,7 +44659,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rspack/binding-linux-x64-musl@0.4.5:
@@ -44710,7 +44705,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rspack/binding-win32-arm64-msvc@0.4.5:
@@ -44757,7 +44751,6 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rspack/binding-win32-ia32-msvc@0.4.5:
@@ -44804,7 +44797,6 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rspack/binding-win32-x64-msvc@0.4.5:
@@ -44851,7 +44843,6 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rspack/binding@0.4.5:
@@ -44935,7 +44926,6 @@ packages:
       '@rspack/binding-win32-arm64-msvc': 0.7.0-beta.0
       '@rspack/binding-win32-ia32-msvc': 0.7.0-beta.0
       '@rspack/binding-win32-x64-msvc': 0.7.0-beta.0
-    dev: true
 
   /@rspack/cli@0.6.5(@rspack/core@0.6.5)(@types/express@4.17.21)(webpack-cli@4.9.2)(webpack@5.91.0):
     resolution: {integrity: sha512-lIby0i6M0FE1V6ldzNXL0ESFJk4tzv1bKgl68cjfn0R2wNUD+uhT64cUJf1cg26xibSykqxuxmKgv4WxqED3lA==}
@@ -45064,6 +45054,32 @@ packages:
       - webpack
       - webpack-cli
     dev: true
+
+  /@rspack/cli@0.7.0-beta.0(@rspack/core@0.7.0-beta.0)(webpack-cli@5.1.4)(webpack@5.91.0):
+    resolution: {integrity: sha512-S04WQzw4ToaMiGQhHqe1ymIGgp3YS8ZOuvMrE/gJbYrYXTJSztKsokIzjnxskNfZsAHuyC4DQlzc6ul4lVhycQ==}
+    hasBin: true
+    peerDependencies:
+      '@rspack/core': '>=0.4.0'
+    dependencies:
+      '@discoveryjs/json-ext': 0.5.7
+      '@rspack/core': 0.7.0-beta.0
+      '@rspack/dev-server': 0.7.0-beta.0(@rspack/core@0.7.0-beta.0)(webpack-cli@5.1.4)(webpack@5.91.0)
+      colorette: 2.0.19
+      exit-hook: 3.2.0
+      interpret: 3.1.1
+      rechoir: 0.8.0
+      semver: 6.3.1
+      webpack-bundle-analyzer: 4.6.1
+      yargs: 17.6.2
+    transitivePeerDependencies:
+      - '@types/express'
+      - bufferutil
+      - debug
+      - supports-color
+      - utf-8-validate
+      - webpack
+      - webpack-cli
+    dev: false
 
   /@rspack/core@0.4.5:
     resolution: {integrity: sha512-X29fvCqTJH9OYN5pqa2lYP9hBLGICGVugtpTIAyLtMxC7gqvjvZkG/qisaVsjPyg4p2eB0NvmosnHkRv0GJ4sg==}
@@ -45194,7 +45210,6 @@ packages:
       enhanced-resolve: 5.12.0
       tapable: 2.2.1
       webpack-sources: 3.2.3
-    dev: true
 
   /@rspack/dev-server@0.6.5(@rspack/core@0.6.5)(@types/express@4.17.21)(webpack-cli@4.9.2)(webpack@5.91.0):
     resolution: {integrity: sha512-NDhDIlwutGX5m0xdPzT3YtdmmjSr0p/9DHoSaxOXErc8Ml0651U4s6wXsw5ZoZhZYfzzpgIieKB8+yclHopNlQ==}
@@ -45313,6 +45328,30 @@ packages:
       - webpack
       - webpack-cli
     dev: true
+
+  /@rspack/dev-server@0.7.0-beta.0(@rspack/core@0.7.0-beta.0)(webpack-cli@5.1.4)(webpack@5.91.0):
+    resolution: {integrity: sha512-k2zqslmjb+Ca2lWOnwetcWGteYj1DghHuVjwOJ+mBW/H1maF6rA6FrxWu9uLrYdL2otzkvQK0AjCknNgEFXDOg==}
+    peerDependencies:
+      '@rspack/core': '*'
+    dependencies:
+      '@rspack/core': 0.7.0-beta.0
+      chokidar: 3.5.3
+      connect-history-api-fallback: 2.0.0
+      express: 4.19.2(supports-color@6.1.0)
+      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
+      mime-types: 2.1.35
+      webpack-dev-middleware: 6.1.2(webpack@5.91.0)
+      webpack-dev-server: 4.13.1(webpack-cli@5.1.4)(webpack@5.91.0)
+      ws: 8.8.1
+    transitivePeerDependencies:
+      - '@types/express'
+      - bufferutil
+      - debug
+      - supports-color
+      - utf-8-validate
+      - webpack
+      - webpack-cli
+    dev: false
 
   /@rspack/plugin-html@0.4.5(@rspack/core@0.4.5):
     resolution: {integrity: sha512-W+m86gTwfY18Zbx/j1SHnF0qQwcvupcxn1UTCrkygVVmJhEtPXIid4DsNLMp9Igs4LBkWBeC9SU+xzF0BUkjGA==}
@@ -53244,7 +53283,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.23.0
-      caniuse-lite: 1.0.30001616
+      caniuse-lite: 1.0.30001618
       colorette: 1.4.0
       fraction.js: 4.3.7
       normalize-range: 0.1.2
@@ -53292,7 +53331,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.23.0
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001618
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -53308,7 +53347,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.23.0
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001618
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -53349,7 +53388,7 @@ packages:
     hasBin: true
     dependencies:
       browserslist: 4.23.0
-      caniuse-lite: 1.0.30001616
+      caniuse-lite: 1.0.30001618
       normalize-range: 0.1.2
       num2fraction: 1.2.2
       picocolors: 0.2.1
@@ -55619,9 +55658,6 @@ packages:
 
   /caniuse-lite@1.0.30001600:
     resolution: {integrity: sha512-+2S9/2JFhYmYaDpZvo0lKkfvuKIglrx68MwOBqMGHhQsNkLjB5xtc/TGoEPs+MxjSyN/72qer2g97nzR641mOQ==}
-
-  /caniuse-lite@1.0.30001616:
-    resolution: {integrity: sha512-RHVYKov7IcdNjVHJFNY/78RdG4oGVjbayxv8u5IO74Wv7Hlq4PnJE6mo/OjFijjVFNy5ijnCt6H3IIo4t+wfEw==}
 
   /caniuse-lite@1.0.30001618:
     resolution: {integrity: sha512-p407+D1tIkDvsEAPS22lJxLQQaG8OTBEqo0KhzfABGk0TU4juBNDSfH0hyAp/HRyx+M8L17z/ltyhxh27FTfQg==}
@@ -87843,9 +87879,9 @@ packages:
       webpack: ^5.0.0
     dependencies:
       chalk: 4.1.2
-      enhanced-resolve: 5.15.1
+      enhanced-resolve: 5.16.1
       micromatch: 4.0.5
-      semver: 7.6.0
+      semver: 7.6.2
       typescript: 4.9.4
       webpack: 5.91.0(webpack-cli@5.1.4)
     dev: true
