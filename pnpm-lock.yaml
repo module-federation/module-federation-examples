@@ -14191,8 +14191,8 @@ importers:
         specifier: 2.9.18
         version: 2.9.18(less@4.2.0)(sass@1.77.2)(stylus@0.62.0)
       vite-plugin-externals:
-        specifier: 0.5.0
-        version: 0.5.0(vite@2.9.18(less@4.2.0)(sass@1.77.2)(stylus@0.62.0))
+        specifier: 0.6.2
+        version: 0.6.2(vite@2.9.18(less@4.2.0)(sass@1.77.2)(stylus@0.62.0))
 
   vite-react-simple/webpack-spa:
     dependencies:
@@ -41039,10 +41039,11 @@ packages:
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
 
-  vite-plugin-externals@0.5.0:
-    resolution: {integrity: sha512-y7SPpHGLSk5ELCbK0SBRJrEr2OuPFxCOKIVkrFECukp9w8hZwh3teCHo2U2UmJ8UHKUP7BoOhTw2DFRbq3GJfQ==}
+  vite-plugin-externals@0.6.2:
+    resolution: {integrity: sha512-R5oVY8xDJjLXLTs2XDYzvYbc/RTZuIwOx2xcFbYf+/VXB6eJuatDgt8jzQ7kZ+IrgwQhe6tU8U2fTyy72C25CQ==}
+    engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
-      vite: ^2.0.0
+      vite: '>=2.0.0'
 
   vite@2.9.18:
     resolution: {integrity: sha512-sAOqI5wNM9QvSEE70W3UGMdT8cyEn0+PmJMTFvTB8wB0YbYUWw3gUbY62AOyrXosGieF2htmeLATvNxpv/zNyQ==}
@@ -92716,7 +92717,7 @@ snapshots:
       - supports-color
       - terser
 
-  vite-plugin-externals@0.5.0(vite@2.9.18(less@4.2.0)(sass@1.77.2)(stylus@0.62.0)):
+  vite-plugin-externals@0.6.2(vite@2.9.18(less@4.2.0)(sass@1.77.2)(stylus@0.62.0)):
     dependencies:
       acorn: 8.11.3
       es-module-lexer: 0.4.1
