@@ -27,7 +27,7 @@ module.exports = (FederationPlugin) => ({
     new FederationPlugin({
       remoteType: 'script',
       name: 'app1',
-      library: { type: 'commonjs-module' },
+      library: { type: 'commonjs-module', name: 'app1' },
       filename: 'remoteEntry.js',
       remotes: {
         app2: 'app2@http://localhost:3001/server/remoteEntry.js',

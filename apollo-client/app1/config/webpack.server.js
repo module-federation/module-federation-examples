@@ -13,12 +13,12 @@ const webpackConfig = {
   entry: ['@babel/polyfill', path.resolve(__dirname, '../src/server/index')],
   output: {
     path: path.resolve(__dirname, '../dist/server'),
-    filename: '[name].js',
+    filename: '[name]-[contenthash].js',
     libraryTarget: 'commonjs-module',
   },
   externals: ['express'],
   mode: 'production',
-  plugins: [...moduleFederationPlugin(UniversalFederationPlugin).server],
+  plugins: [...moduleFederationPlugin(ModuleFederationPlugin).server],
   stats: {
     colors: true,
   },

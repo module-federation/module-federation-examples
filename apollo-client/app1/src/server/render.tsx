@@ -3,12 +3,12 @@ import { Helmet } from 'react-helmet';
 import { ApolloProvider } from '@apollo/client';
 import { renderToStringWithData } from '@apollo/client/react/ssr';
 import serialize from 'serialize-javascript';
-import fetch from 'node-fetch';
 
 import App from '../client/components/App';
 import { createApolloClient } from '../client/apolloClient';
 
 export default async (req, res, next) => {
+  const fetch = (await import('node-fetch')).default
   const helmet = Helmet.renderStatic();
 
   const { apolloClient } = createApolloClient({

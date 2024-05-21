@@ -2,6 +2,7 @@ const path = require('path');
 const { merge } = require('webpack-merge');
 const shared = require('./webpack.shared');
 const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
+const getModuleFederationPlugin = require('./module-federation');
 
 /**
  * @type {import('webpack').Configuration}
@@ -13,11 +14,12 @@ const webpackConfig = {
   output: {
     path: path.resolve(__dirname, '../dist/server'),
     filename: '[name].js',
+    chunkFilename: '[name]-[contenthash].js',
     libraryTarget: 'commonjs-module',
   },
   externals: ['express'],
   mode: 'production',
-  plugins: [...moduleFederationPlugin(ModuleFederationPlugin).server],
+  plugins: [...getModuleFederationPlugin(ModuleFederationPlugin).server],
   stats: {
     colors: true,
   },
