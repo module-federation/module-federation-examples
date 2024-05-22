@@ -8004,8 +8004,8 @@ importers:
         specifier: 18.3.0
         version: 18.3.0
       '@vitejs/plugin-react':
-        specifier: 4.2.1
-        version: 4.2.1(vite@5.1.7(@types/node@20.9.0)(less@4.2.0)(sass@1.77.2)(stylus@0.62.0)(terser@5.31.0))
+        specifier: 4.3.0
+        version: 4.3.0(vite@5.1.7(@types/node@20.9.0)(less@4.2.0)(sass@1.77.2)(stylus@0.62.0)(terser@5.31.0))
       babel-loader:
         specifier: 9.1.3
         version: 9.1.3(@babel/core@7.24.3)(webpack@5.91.0(@swc/core@1.5.7(@swc/helpers@0.5.6))(esbuild@0.18.20)(webpack-cli@5.1.4))
@@ -8089,8 +8089,8 @@ importers:
         specifier: 18.3.0
         version: 18.3.0
       '@vitejs/plugin-react':
-        specifier: 4.2.1
-        version: 4.2.1(vite@5.1.7(@types/node@20.9.0)(less@4.2.0)(sass@1.77.2)(stylus@0.62.0)(terser@5.31.0))
+        specifier: 4.3.0
+        version: 4.3.0(vite@5.1.7(@types/node@20.9.0)(less@4.2.0)(sass@1.77.2)(stylus@0.62.0)(terser@5.31.0))
       babel-loader:
         specifier: 9.1.3
         version: 9.1.3(@babel/core@7.24.3)(webpack@5.91.0(@swc/core@1.5.7(@swc/helpers@0.5.6))(esbuild@0.18.20)(webpack-cli@5.1.4))
@@ -14041,8 +14041,8 @@ importers:
         specifier: 18.0.11
         version: 18.0.11
       '@vitejs/plugin-react':
-        specifier: 4.2.1
-        version: 4.2.1(vite@4.5.3(@types/node@20.9.0)(less@4.2.0)(sass@1.77.2)(stylus@0.62.0)(terser@5.31.0))
+        specifier: 4.3.0
+        version: 4.3.0(vite@4.5.3(@types/node@20.9.0)(less@4.2.0)(sass@1.77.2)(stylus@0.62.0)(terser@5.31.0))
       typescript:
         specifier: 4.9.4
         version: 4.9.4
@@ -14075,8 +14075,8 @@ importers:
         specifier: 18.0.11
         version: 18.0.11
       '@vitejs/plugin-react':
-        specifier: 4.2.1
-        version: 4.2.1(vite@4.5.3(@types/node@20.9.0)(less@4.2.0)(sass@1.77.2)(stylus@0.62.0)(terser@5.31.0))
+        specifier: 4.3.0
+        version: 4.3.0(vite@4.5.3(@types/node@20.9.0)(less@4.2.0)(sass@1.77.2)(stylus@0.62.0)(terser@5.31.0))
       typescript:
         specifier: 4.9.4
         version: 4.9.4
@@ -16833,8 +16833,20 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
+  '@babel/plugin-transform-react-jsx-self@7.24.5':
+    resolution: {integrity: sha512-RtCJoUO2oYrYwFPtR1/jkoBEcFuI1ae9a9IMxeyAVa3a1Ap4AnxmyIKG2b2FaJKqkidw/0cxRbWN+HOs6ZWd1w==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
   '@babel/plugin-transform-react-jsx-source@7.23.3':
     resolution: {integrity: sha512-91RS0MDnAWDNvGC6Wio5XYkyWI39FMFO+JK9+4AlgaTH+yWwVTsw7/sn6LK0lH7c5F+TFkpv/3LfCJ1Ydwof/g==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+
+  '@babel/plugin-transform-react-jsx-source@7.24.1':
+    resolution: {integrity: sha512-1v202n7aUq4uXAieRTKcwPzNyphlCuqHHDcdSNc+vdhoTEZcFMh+L5yZuCmGaIO7bs1nJUNfHB89TZyoL48xNA==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -24486,8 +24498,8 @@ packages:
     engines: {node: '>=12.0.0'}
     deprecated: This package has been deprecated in favor of @vitejs/plugin-react
 
-  '@vitejs/plugin-react@4.2.1':
-    resolution: {integrity: sha512-oojO9IDc4nCUUi8qIR11KoQm0XFFLIwsRBwHRR4d/88IWghn1y6ckz/bJ8GHDCsYEJee8mDzqtJxh15/cisJNQ==}
+  '@vitejs/plugin-react@4.3.0':
+    resolution: {integrity: sha512-KcEbMsn4Dpk+LIbHMj7gDPRKaTMStxxWRkRmxsg/jVdFdJCZWt1SchZcf0M4t8lIKdwwMsEyzhrcOXRrDPtOBw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.2.0 || ^5.0.0
@@ -48663,9 +48675,19 @@ snapshots:
       '@babel/core': 7.24.4
       '@babel/helper-plugin-utils': 7.24.5
 
+  '@babel/plugin-transform-react-jsx-self@7.24.5(@babel/core@7.24.5)':
+    dependencies:
+      '@babel/core': 7.24.5
+      '@babel/helper-plugin-utils': 7.24.5
+
   '@babel/plugin-transform-react-jsx-source@7.23.3(@babel/core@7.24.4)':
     dependencies:
       '@babel/core': 7.24.4
+      '@babel/helper-plugin-utils': 7.24.5
+
+  '@babel/plugin-transform-react-jsx-source@7.24.1(@babel/core@7.24.5)':
+    dependencies:
+      '@babel/core': 7.24.5
       '@babel/helper-plugin-utils': 7.24.5
 
   '@babel/plugin-transform-react-jsx@7.23.4(@babel/core@7.24.0)':
@@ -65608,24 +65630,24 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vitejs/plugin-react@4.2.1(vite@4.5.3(@types/node@20.9.0)(less@4.2.0)(sass@1.77.2)(stylus@0.62.0)(terser@5.31.0))':
+  '@vitejs/plugin-react@4.3.0(vite@4.5.3(@types/node@20.9.0)(less@4.2.0)(sass@1.77.2)(stylus@0.62.0)(terser@5.31.0))':
     dependencies:
-      '@babel/core': 7.24.4
-      '@babel/plugin-transform-react-jsx-self': 7.23.3(@babel/core@7.24.4)
-      '@babel/plugin-transform-react-jsx-source': 7.23.3(@babel/core@7.24.4)
+      '@babel/core': 7.24.5
+      '@babel/plugin-transform-react-jsx-self': 7.24.5(@babel/core@7.24.5)
+      '@babel/plugin-transform-react-jsx-source': 7.24.1(@babel/core@7.24.5)
       '@types/babel__core': 7.20.5
-      react-refresh: 0.14.0
+      react-refresh: 0.14.2
       vite: 4.5.3(@types/node@20.9.0)(less@4.2.0)(sass@1.77.2)(stylus@0.62.0)(terser@5.31.0)
     transitivePeerDependencies:
       - supports-color
 
-  '@vitejs/plugin-react@4.2.1(vite@5.1.7(@types/node@20.9.0)(less@4.2.0)(sass@1.77.2)(stylus@0.62.0)(terser@5.31.0))':
+  '@vitejs/plugin-react@4.3.0(vite@5.1.7(@types/node@20.9.0)(less@4.2.0)(sass@1.77.2)(stylus@0.62.0)(terser@5.31.0))':
     dependencies:
-      '@babel/core': 7.24.4
-      '@babel/plugin-transform-react-jsx-self': 7.23.3(@babel/core@7.24.4)
-      '@babel/plugin-transform-react-jsx-source': 7.23.3(@babel/core@7.24.4)
+      '@babel/core': 7.24.5
+      '@babel/plugin-transform-react-jsx-self': 7.24.5(@babel/core@7.24.5)
+      '@babel/plugin-transform-react-jsx-source': 7.24.1(@babel/core@7.24.5)
       '@types/babel__core': 7.20.5
-      react-refresh: 0.14.0
+      react-refresh: 0.14.2
       vite: 5.1.7(@types/node@20.9.0)(less@4.2.0)(sass@1.77.2)(stylus@0.62.0)(terser@5.31.0)
     transitivePeerDependencies:
       - supports-color
