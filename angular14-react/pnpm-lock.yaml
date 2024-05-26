@@ -91,8 +91,8 @@ importers:
         specifier: 18.2.21
         version: 18.2.21
       jasmine-core:
-        specifier: 4.6.0
-        version: 4.6.0
+        specifier: 4.6.1
+        version: 4.6.1
       karma:
         specifier: 6.4.3
         version: 6.4.3
@@ -107,7 +107,7 @@ importers:
         version: 5.1.0(karma@6.4.3)
       karma-jasmine-html-reporter:
         specifier: 2.1.0
-        version: 2.1.0(jasmine-core@4.6.0)(karma-jasmine@5.1.0(karma@6.4.3))(karma@6.4.3)
+        version: 2.1.0(jasmine-core@4.6.1)(karma-jasmine@5.1.0(karma@6.4.3))(karma@6.4.3)
       typescript:
         specifier: 4.7.4
         version: 4.7.4
@@ -1842,7 +1842,7 @@ packages:
     engines: {node: '>= 8.9'}
     peerDependencies:
       '@babel/core': ^7.0.0
-      webpack: 5.89.0
+      webpack: 5.91.0
 
   babel-plugin-istanbul@6.1.1:
     resolution: {integrity: sha512-Y1IQok9821cC9onCx5otgFfRm7Lm+I+wwxOx738M/WLPZ9Q42m4IG5W0FNX8WLL2gYMZo3JkuXIH2DOpWM+qwA==}
@@ -2982,6 +2982,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.3:
     resolution: {integrity: sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw==}
@@ -3118,8 +3119,8 @@ packages:
     resolution: {integrity: sha512-TLgnMkKg3iTDsQ9PbPTdpfAK2DzjF9mqUG7RMgcQl8oFjad8ob4laGxv5XV5U9MAfx8D6tSJiUyuAwzLicaxlg==}
     engines: {node: '>=8'}
 
-  jasmine-core@4.6.0:
-    resolution: {integrity: sha512-O236+gd0ZXS8YAjFx8xKaJ94/erqUliEkJTDedyE7iHvv4ZVqi+q+8acJxu05/WJDKm512EUNn809In37nWlAQ==}
+  jasmine-core@4.6.1:
+    resolution: {integrity: sha512-VYz/BjjmC3klLJlLwA4Kw8ytk0zDSmbbDLNs794VnWmkcCB7I9aAL/D48VNQtmITyPvea2C3jdUMfc3kAoy0PQ==}
 
   jest-worker@27.5.1:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
@@ -8856,7 +8857,7 @@ snapshots:
       html-escaper: 2.0.2
       istanbul-lib-report: 3.0.1
 
-  jasmine-core@4.6.0: {}
+  jasmine-core@4.6.1: {}
 
   jest-worker@27.5.1:
     dependencies:
@@ -8918,15 +8919,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  karma-jasmine-html-reporter@2.1.0(jasmine-core@4.6.0)(karma-jasmine@5.1.0(karma@6.4.3))(karma@6.4.3):
+  karma-jasmine-html-reporter@2.1.0(jasmine-core@4.6.1)(karma-jasmine@5.1.0(karma@6.4.3))(karma@6.4.3):
     dependencies:
-      jasmine-core: 4.6.0
+      jasmine-core: 4.6.1
       karma: 6.4.3
       karma-jasmine: 5.1.0(karma@6.4.3)
 
   karma-jasmine@5.1.0(karma@6.4.3):
     dependencies:
-      jasmine-core: 4.6.0
+      jasmine-core: 4.6.1
       karma: 6.4.3
 
   karma-source-map-support@1.4.0:
