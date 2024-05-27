@@ -2968,8 +2968,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       react-pro-sidebar:
-        specifier: 1.0.0
-        version: 1.0.0(@types/react@18.0.38)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: 1.1.0
+        version: 1.1.0(@types/react@18.0.38)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-router-dom:
         specifier: 6.21.3
         version: 6.21.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -30024,23 +30024,29 @@ packages:
 
   glob@7.1.4:
     resolution: {integrity: sha512-hkLPepehmnKk41pUGm3sYxoFs/umurYfYJCerbXEyFIWcAzvpipAgVkBqqT9RBKMGjnq6kMuyYwha6csxbiM1A==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   glob@7.1.6:
     resolution: {integrity: sha512-LwaxwyZ72Lk7vZINtNNrywX0ZuLyStrdDtabefZKAY5ZGJhVtgdznluResxNmPitE0SAO+O26sWTHeKSI2wMBA==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   glob@7.1.7:
     resolution: {integrity: sha512-OvD9ENzPLbegENnYP5UUfJIirTg4+XwMWGaQfQTY0JenxNvvIKP3U3/tAQSPIu/lHxXYSZmpXlUHeqAIdKzBLQ==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   glob@8.0.3:
     resolution: {integrity: sha512-ull455NHSHI/Y1FqGaaYFaLGkNMMJbavMrEGFXG/PGrg6y7sutWHUHrz6gy6WEBH6akM1M414dWKCNs+IhKdiQ==}
     engines: {node: '>=12'}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   glob@8.1.0:
     resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
     engines: {node: '>=12'}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   glob@9.3.5:
     resolution: {integrity: sha512-e1LleDykUz2Iu+MTYdkSsuWX8lvAjAcs0Xef0lNIu0S2wOAzuTxCJtcd9S3cijlwYF18EsU3rzb8jPVobxDh9Q==}
@@ -36890,8 +36896,8 @@ packages:
   react-merge-refs@1.1.0:
     resolution: {integrity: sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==}
 
-  react-pro-sidebar@1.0.0:
-    resolution: {integrity: sha512-TAU3vHj0rYHSLWdZksiWte59dwh3rweaFY+dXri+y8mtlbQalxnNTG11k9wRCiaMa0IGPmIIbdY1E1yoHBUd/A==}
+  react-pro-sidebar@1.1.0:
+    resolution: {integrity: sha512-rdRJ4PeMsqWq9n69AmF6et6qCbhCF1KEBgjAH8vIiLxE1k5fMxtRYo0k4asxW8qpIH6sqahiMxrxVVoObv8orQ==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
@@ -37570,10 +37576,12 @@ packages:
 
   rimraf@2.7.1:
     resolution: {integrity: sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rimraf@3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rimraf@4.4.1:
@@ -60046,7 +60054,7 @@ snapshots:
       source-map: 0.7.4
       webpack: 5.91.0(@swc/core@1.5.7)(webpack-cli@5.1.4)
     optionalDependencies:
-      '@types/webpack': 5.28.0(@swc/core@1.5.7)(webpack-cli@5.1.4(webpack-dev-server@5.0.4)(webpack@5.91.0))
+      '@types/webpack': 5.28.0(@swc/core@1.5.7)(webpack-cli@5.1.4(webpack-dev-server@4.15.2)(webpack@5.91.0))
       sockjs-client: 1.6.1(supports-color@6.1.0)
       type-fest: 2.19.0
       webpack-dev-server: 4.15.2(webpack-cli@5.1.4)(webpack@5.91.0)
@@ -60064,7 +60072,7 @@ snapshots:
       source-map: 0.7.4
       webpack: 5.91.0(@swc/core@1.5.7)(webpack-cli@5.1.4)
     optionalDependencies:
-      '@types/webpack': 5.28.0(@swc/core@1.5.7)(webpack-cli@5.1.4(webpack-dev-server@5.0.4)(webpack@5.91.0))
+      '@types/webpack': 5.28.0(@swc/core@1.5.7)(webpack-cli@5.1.4(webpack-dev-server@4.15.2)(webpack@5.91.0))
       sockjs-client: 1.6.1(supports-color@6.1.0)
       type-fest: 2.19.0
       webpack-dev-server: 5.0.4(webpack-cli@5.1.4)(webpack@5.91.0)
@@ -64132,7 +64140,7 @@ snapshots:
       - webpack-cli
     optional: true
 
-  '@types/webpack@5.28.0(@swc/core@1.5.7)(webpack-cli@5.1.4(webpack-dev-server@5.0.4)(webpack@5.91.0))':
+  '@types/webpack@5.28.0(@swc/core@1.5.7)(webpack-cli@5.1.4(webpack-dev-server@4.15.2)(webpack@5.91.0))':
     dependencies:
       '@types/node': 20.9.0
       tapable: 2.2.1
@@ -86193,7 +86201,7 @@ snapshots:
 
   react-merge-refs@1.1.0: {}
 
-  react-pro-sidebar@1.0.0(@types/react@18.0.38)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  react-pro-sidebar@1.1.0(@types/react@18.0.38)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       '@emotion/react': 11.11.4(@types/react@18.0.38)(react@18.2.0)
       '@emotion/styled': 11.11.5(@emotion/react@11.11.4(@types/react@18.0.38)(react@18.2.0))(@types/react@18.0.38)(react@18.2.0)
