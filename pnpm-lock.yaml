@@ -10330,10 +10330,6 @@ importers:
         specifier: 8.2.2
         version: 8.2.2
 
-  remix-rspack/app1/build: {}
-
-  remix-rspack/app2/build: {}
-
   remix/app1/build: {}
 
   remix/app2/build: {}
@@ -18335,7 +18331,7 @@ packages:
       '@babel/core': 7.18.10
       '@babel/helper-plugin-utils': 7.24.5
       '@babel/helper-skip-transparent-expression-wrappers': 7.22.5
-      '@babel/plugin-transform-optional-chaining': 7.24.5(@babel/core@7.18.10)
+      '@babel/plugin-transform-optional-chaining': 7.23.4(@babel/core@7.18.10)
     dev: true
 
   /@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining@7.23.3(@babel/core@7.24.0):
@@ -18347,7 +18343,7 @@ packages:
       '@babel/core': 7.24.0
       '@babel/helper-plugin-utils': 7.24.5
       '@babel/helper-skip-transparent-expression-wrappers': 7.22.5
-      '@babel/plugin-transform-optional-chaining': 7.24.5(@babel/core@7.24.0)
+      '@babel/plugin-transform-optional-chaining': 7.23.4(@babel/core@7.24.0)
     dev: true
 
   /@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining@7.23.3(@babel/core@7.24.3):
@@ -18370,7 +18366,7 @@ packages:
       '@babel/core': 7.24.4
       '@babel/helper-plugin-utils': 7.24.5
       '@babel/helper-skip-transparent-expression-wrappers': 7.22.5
-      '@babel/plugin-transform-optional-chaining': 7.24.5(@babel/core@7.24.4)
+      '@babel/plugin-transform-optional-chaining': 7.23.4(@babel/core@7.24.4)
     dev: true
 
   /@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining@7.24.1(@babel/core@7.20.12):
@@ -24856,6 +24852,18 @@ packages:
       '@babel/plugin-syntax-optional-catch-binding': 7.8.3(@babel/core@7.24.5)
     dev: true
 
+  /@babel/plugin-transform-optional-chaining@7.23.4(@babel/core@7.18.10):
+    resolution: {integrity: sha512-ZU8y5zWOfjM5vZ+asjgAPwDaBjJzgufjES89Rs4Lpq63O300R/kOz30WCLo6BxxX6QVEilwSlpClnG5cZaikTA==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.18.10
+      '@babel/helper-plugin-utils': 7.24.5
+      '@babel/helper-skip-transparent-expression-wrappers': 7.22.5
+      '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.18.10)
+    dev: true
+
   /@babel/plugin-transform-optional-chaining@7.23.4(@babel/core@7.24.0):
     resolution: {integrity: sha512-ZU8y5zWOfjM5vZ+asjgAPwDaBjJzgufjES89Rs4Lpq63O300R/kOz30WCLo6BxxX6QVEilwSlpClnG5cZaikTA==}
     engines: {node: '>=6.9.0'}
@@ -24901,18 +24909,6 @@ packages:
       '@babel/helper-plugin-utils': 7.24.5
       '@babel/helper-skip-transparent-expression-wrappers': 7.22.5
       '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.24.0)
-    dev: true
-
-  /@babel/plugin-transform-optional-chaining@7.24.5(@babel/core@7.18.10):
-    resolution: {integrity: sha512-xWCkmwKT+ihmA6l7SSTpk8e4qQl/274iNbSKRRS8mpqFR32ksy36+a+LWY8OXCCEefF8WFlnOHVsaDI2231wBg==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.18.10
-      '@babel/helper-plugin-utils': 7.24.5
-      '@babel/helper-skip-transparent-expression-wrappers': 7.22.5
-      '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.18.10)
     dev: true
 
   /@babel/plugin-transform-optional-chaining@7.24.5(@babel/core@7.20.12):
@@ -28718,23 +28714,6 @@ packages:
       '@babel/parser': 7.24.5
       '@babel/types': 7.24.5
       debug: 4.3.4(supports-color@8.1.1)
-      globals: 11.12.0
-    transitivePeerDependencies:
-      - supports-color
-
-  /@babel/traverse@7.24.5(supports-color@5.5.0):
-    resolution: {integrity: sha512-7aaBLeDQ4zYcUFDUD41lJc1fG8+5IU9DaNSJAgal866FGvmD5EbWQgnEC6kO1gGLsX0esNkfnJSndbTXA3r7UA==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/code-frame': 7.24.2
-      '@babel/generator': 7.24.5
-      '@babel/helper-environment-visitor': 7.22.20
-      '@babel/helper-function-name': 7.23.0
-      '@babel/helper-hoist-variables': 7.22.5
-      '@babel/helper-split-export-declaration': 7.24.5
-      '@babel/parser': 7.24.5
-      '@babel/types': 7.24.5
-      debug: 4.3.4(supports-color@5.5.0)
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
@@ -85210,7 +85189,7 @@ packages:
     peerDependencies:
       webpack: ^5.0.0
     dependencies:
-      webpack: 5.91.0(webpack-cli@5.1.4)
+      webpack: 5.91.0(@swc/core@1.5.7)(webpack-cli@5.0.2)
 
   /style-resources-loader@1.5.0(webpack@5.88.2):
     resolution: {integrity: sha512-fIfyvQ+uvXaCBGGAgfh+9v46ARQB1AWdaop2RpQw0PBVuROsTBqGvx8dj0kxwjGOAyq3vepe4AOK3M6+Q/q2jw==}
@@ -85267,8 +85246,8 @@ packages:
       react-dom: '>= 16.8.0'
       react-is: '>= 16.8.0'
     dependencies:
-      '@babel/helper-module-imports': 7.24.3
-      '@babel/traverse': 7.24.5(supports-color@5.5.0)
+      '@babel/helper-module-imports': 7.22.15
+      '@babel/traverse': 7.24.0(supports-color@5.5.0)
       '@emotion/is-prop-valid': 1.2.2
       '@emotion/stylis': 0.8.5
       '@emotion/unitless': 0.7.5
@@ -87081,7 +87060,7 @@ packages:
       chalk: 4.1.2
       enhanced-resolve: 5.15.1
       micromatch: 4.0.5
-      semver: 7.6.2
+      semver: 7.6.0
       typescript: 4.9.4
       webpack: 5.91.0(webpack-cli@5.1.4)
     dev: true
@@ -89637,7 +89616,7 @@ packages:
       hash-sum: 2.0.0
       loader-utils: 2.0.4
       vue: 3.3.7(typescript@5.2.2)
-      webpack: 5.91.0(webpack-cli@4.10.0)
+      webpack: 5.91.0(webpack-cli@5.1.4)
     dev: true
 
   /vue-loader@16.8.3(@vue/compiler-sfc@3.4.27)(vue@3.4.27)(webpack@5.91.0):
