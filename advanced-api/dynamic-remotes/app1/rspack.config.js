@@ -52,6 +52,7 @@ module.exports = {
           shareScope: 'default', // share scope with this name will be used
           singleton: true, // only a single version of the shared module is allowed
         },
+        'react/jsx-dev-runtime': {},
         'react-dom': {
           singleton: true, // only a single version of the shared module is allowed
         },
