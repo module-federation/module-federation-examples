@@ -133,8 +133,8 @@ importers:
         specifier: 17.3.2
         version: 17.3.2(@swc-node/register@1.9.1(@swc/core@1.5.7(@swc/helpers@0.5.3))(@swc/types@0.1.7)(typescript@5.2.2))(@swc/core@1.5.7(@swc/helpers@0.5.3))
       '@pmmmwh/react-refresh-webpack-plugin':
-        specifier: 0.5.13
-        version: 0.5.13(react-refresh@0.14.0)(type-fest@0.21.3)(webpack-dev-server@4.15.2(webpack@5.91.0(@swc/core@1.5.7(@swc/helpers@0.5.3))))(webpack@5.91.0(@swc/core@1.5.7(@swc/helpers@0.5.3)))
+        specifier: 0.5.15
+        version: 0.5.15(react-refresh@0.14.0)(type-fest@0.21.3)(webpack-dev-server@4.15.2(webpack@5.91.0(@swc/core@1.5.7(@swc/helpers@0.5.3))))(webpack@5.91.0(@swc/core@1.5.7(@swc/helpers@0.5.3)))
       '@svgr/webpack':
         specifier: 8.1.0
         version: 8.1.0(typescript@5.2.2)
@@ -1376,15 +1376,15 @@ packages:
     peerDependencies:
       typescript: ^3 || ^4 || ^5
 
-  '@pmmmwh/react-refresh-webpack-plugin@0.5.13':
-    resolution: {integrity: sha512-odZVYXly+JwzYri9rKqqUAk0cY6zLpv4dxoKinhoJNShV36Gpxf+CyDIILJ4tYsJ1ZxIWs233Y39iVnynvDA/g==}
+  '@pmmmwh/react-refresh-webpack-plugin@0.5.15':
+    resolution: {integrity: sha512-LFWllMA55pzB9D34w/wXUCf8+c+IYKuJDgxiZ3qMhl64KRMBHYM1I3VdGaD2BV5FNPV2/S2596bppxHbv2ZydQ==}
     engines: {node: '>= 10.13'}
     peerDependencies:
       '@types/webpack': 4.x || 5.x
       react-refresh: '>=0.10.0 <1.0.0'
       sockjs-client: ^1.4.0
       type-fest: '>=0.17.0 <5.0.0'
-      webpack: 5.89.0
+      webpack: '>=4.43.0 <6.0.0'
       webpack-dev-server: 3.x || 4.x || 5.x
       webpack-hot-middleware: 2.x
       webpack-plugin-serve: 0.x || 1.x
@@ -2089,6 +2089,11 @@ packages:
 
   ansi-html-community@0.0.8:
     resolution: {integrity: sha512-1APHAyr3+PCamwNw3bXCPp4HFLONZt/yIH0sZp0/469KWNTEy+qN5jQ3GVX6DMZ1UXAi34yVwtTeaG/HpBuuzw==}
+    engines: {'0': node >= 0.8.0}
+    hasBin: true
+
+  ansi-html@0.0.9:
+    resolution: {integrity: sha512-ozbS3LuenHVxNRh/wdnN16QapUHzauqSomAl1jwwJRRsGwFwtj644lIhxfWu0Fy0acCij2+AEgHvjscq3dlVXg==}
     engines: {'0': node >= 0.8.0}
     hasBin: true
 
@@ -8235,15 +8240,15 @@ snapshots:
       esquery: 1.5.0
       typescript: 5.3.3
 
-  '@pmmmwh/react-refresh-webpack-plugin@0.5.13(react-refresh@0.14.0)(type-fest@0.21.3)(webpack-dev-server@4.15.2(webpack@5.91.0(@swc/core@1.5.7(@swc/helpers@0.5.3))))(webpack@5.91.0(@swc/core@1.5.7(@swc/helpers@0.5.3)))':
+  '@pmmmwh/react-refresh-webpack-plugin@0.5.15(react-refresh@0.14.0)(type-fest@0.21.3)(webpack-dev-server@4.15.2(webpack@5.91.0(@swc/core@1.5.7(@swc/helpers@0.5.3))))(webpack@5.91.0(@swc/core@1.5.7(@swc/helpers@0.5.3)))':
     dependencies:
-      ansi-html-community: 0.0.8
+      ansi-html: 0.0.9
       core-js-pure: 3.35.1
       error-stack-parser: 2.1.4
       html-entities: 2.4.0
       loader-utils: 2.0.4
       react-refresh: 0.14.0
-      schema-utils: 3.3.0
+      schema-utils: 4.2.0
       source-map: 0.7.4
       webpack: 5.91.0(@swc/core@1.5.7(@swc/helpers@0.5.3))
     optionalDependencies:
@@ -8844,7 +8849,7 @@ snapshots:
 
   '@vue/compiler-core@3.4.21':
     dependencies:
-      '@babel/parser': 7.24.0
+      '@babel/parser': 7.24.6
       '@vue/shared': 3.4.21
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -9047,6 +9052,8 @@ snapshots:
       type-fest: 0.21.3
 
   ansi-html-community@0.0.8: {}
+
+  ansi-html@0.0.9: {}
 
   ansi-regex@5.0.1: {}
 
