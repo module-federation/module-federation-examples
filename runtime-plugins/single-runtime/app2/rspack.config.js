@@ -1,7 +1,6 @@
-const {
-  HtmlRspackPlugin,
-  container: { ModuleFederationPlugin },
-} = require('@rspack/core');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
+
 const path = require('path');
 
 const deps = require('./package.json').dependencies;
@@ -84,7 +83,7 @@ module.exports = {
         lodash: {},
       },
     }),
-    new HtmlRspackPlugin({
+    new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
   ],

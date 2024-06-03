@@ -1,7 +1,6 @@
-const {
-  HtmlRspackPlugin,
-  container: { ModuleFederationPlugin },
-} = require('@rspack/core');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
+
 const path = require('path');
 
 const deps = require('./package.json').dependencies;
@@ -92,6 +91,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'app1',
       filename: 'app1_partial.js',
+      runtime: undefined,
       remotes: {
         app2: 'app2@http://localhost:3002/remoteEntry.js',
       },
@@ -110,7 +110,7 @@ module.exports = {
         lodash: {},
       },
     }),
-    new HtmlRspackPlugin({
+    new HtmlWebpackPlugin({
       template: './public/index.html',
       excludeChunks: ['app1', 'app1_partial']
     }),

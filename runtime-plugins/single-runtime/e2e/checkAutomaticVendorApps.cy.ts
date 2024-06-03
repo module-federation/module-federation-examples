@@ -12,7 +12,7 @@ const appsData = [
     headerSelector: baseSelectors.tags.headers.h1,
     subHeaderSelector: baseSelectors.tags.headers.h2,
     buttonSelector: baseSelectors.tags.coreElements.button,
-    headerText: 'Offline Remote',
+    headerText: 'Single Runtime',
     appNameText: Constants.commonConstantsData.commonCountAppNames.app1,
     buttonColor: Constants.color.red,
     host: 3001,
