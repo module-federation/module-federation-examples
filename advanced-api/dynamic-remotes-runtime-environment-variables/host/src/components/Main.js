@@ -29,7 +29,7 @@ const Main = () => {
       <h3>my env is {ENV.API_URL}</h3>
       <p>
         The Dynamic System will take advantage Module Federation <strong>remotes</strong> and{' '}
-        <strong>exposes</strong>. It will no load components that have been loaded already.
+        <strong>exposes</strong>. It will not load components that have been loaded already.
       </p>
       <button onClick={loadRemoteWidget}>Load Remote Widget</button>
       <div style={{ marginTop: '2em' }}>
