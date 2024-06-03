@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "legacy:start": "pnpm legacy:build && pnpm serve",
-    "serve": "node dist/server/main.js",
+    "start": "pnpm build && pnpm serve",
+    "serve": "wait-on tcp:3002 && node dist/server/main.js",
     "legacy:build": "pnpm build:server:legacy && pnpm build:client:legacy",
     "build": "pnpm build:server && pnpm build:client",
     "build:client:legacy": "rimraf dist/client && webpack --mode production --progress --config config/webpack.client.js",
@@ -41,8 +42,8 @@
     "webpack": "5.91.0",
     "webpack-cli": "4.10.0",
     "webpack-merge": "5.10.0",
-    "@rspack/core": "0.6.5",
-    "@rspack/cli": "0.6.5",
-    "@rspack/dev-server": "0.6.5"
+    "@rspack/core": "0.7.0-beta.0",
+    "@rspack/cli": "0.7.0-beta.0",
+    "@rspack/dev-server": "0.7.0-beta.0"
   }
 }
