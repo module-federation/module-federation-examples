@@ -21,6 +21,7 @@ export default defineConfig({
     webpack: (config, { webpack, appendPlugins }) => {
       delete config.optimization.splitChunks;
       config.output.publicPath = 'auto';
+      config.output.uniqueName = 'app2';
 
       appendPlugins([
         new ModuleFederationPlugin({

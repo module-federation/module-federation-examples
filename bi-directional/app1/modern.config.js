@@ -16,6 +16,7 @@ export default defineConfig({
       // Remove splitChunks optimization
       delete config.optimization.splitChunks;
       config.output.publicPath = 'auto';
+      config.output.uniqueName = 'app1';
 
       // Add Module Federation Plugin
       appendPlugins([
