@@ -1,4 +1,5 @@
 import appTools, { defineConfig } from '@modern-js/app-tools';
+import { ModuleFederationPlugin } from '@module-federation/enhanced/webpack';
 
 // https://modernjs.dev/en/configure/app/usage
 export default defineConfig({
@@ -20,14 +21,15 @@ export default defineConfig({
     webpack: (config, { webpack, appendPlugins }) => {
       delete config.optimization.splitChunks;
       config.output.publicPath = 'auto';
+      config.output.uniqueName = 'app2';
 
       appendPlugins([
-        new webpack.container.ModuleFederationPlugin({
+        new ModuleFederationPlugin({
           name: 'app2',
           runtime: false,
           filename: 'static/js/remoteEntry.js',
           remotes: {
-            app1: 'app1@http://localhost:3001/static/js/remoteEntry.js',
+            app1: 'app1@http://localhost:3001/static/js/app1_partial.js',
           },
           exposes: {
             './Button': './src/components/button.js',
