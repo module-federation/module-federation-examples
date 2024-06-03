@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const {ModuleFederationPlugin} = require('@module-federation/enhanced');
 const path = require('path');
-
+const {dependencies} = require('./package.json')
 /**
  * @type {import('webpack').Configuration}
  **/
@@ -39,25 +39,30 @@ const webpackConfig = {
   plugins: [
     new ModuleFederationPlugin({
       name: 'app2',
-      library: { type: 'var', name: 'app2' },
       filename: 'remoteEntry.js',
+      runtimePlugins: [require.resolve('./react-adapter-runtime-plugin.ts')],
       exposes: {
         './Button': './src/components/Button',
         './ModernComponent': './src/components/ModernReactComponent',
-        './newReact': require.resolve('react'),
-        './newReactDOM': require.resolve('react-dom'),
+        // './newReact': require.resolve('react'),
+        // './newReactDOM': require.resolve('react-dom'),
       },
-      shared: [
-        'react-dom',
-        {
-          react: {
-            import: 'react', // the "react" package will be used a provided and fallback module
-            shareKey: 'react', // under this name the shared module will be placed in the share scope
-            shareScope: 'modern', // share scope with this name will be used
-            singleton: true, // only a single version of the shared module is allowed
-          },
+      shared: {
+        'react-dom': {
+          requiredVersion: dependencies['react-dom'],
+          strictVersion: true,
+          shareKey: 'react-dom',
+          shareScope: 'modern', // share scope with this name will be used
+          // singleton: true, // only a single version of the shared module is allowed
         },
-      ],
+        'react': {
+          requiredVersion:dependencies['react'],
+          strictVersion: true,
+          shareScope: 'modern',
+          shareKey: 'react',
+          // singleton: true,
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',

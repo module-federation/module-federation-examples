@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
-import ReactAdapterProvider from './ReactAdapterProvider';
 
 const ModernReactComponent = props => {
   const { children, input } = props;
-
   useEffect(() => {
     console.log('some effect from app2 based component');
   }, []);
@@ -20,9 +18,5 @@ const ModernReactComponent = props => {
     </div>
   );
 };
-
-export const Adapted = React.forwardRef((props, ref) => {
-  return <ReactAdapterProvider {...props} component={ModernReactComponent} ref={ref} />;
-});
 
 export default ModernReactComponent;

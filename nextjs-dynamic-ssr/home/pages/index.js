@@ -22,7 +22,12 @@ init({
   force: true
 })
 
-const RemoteTitle = lazy(() => loadRemote('checkout/title'));
+const RemoteTitle = lazy(() => loadRemote('checkout/title').then((c)=>{
+  if(typeof c ==='function') {
+    return c()
+  }
+  return c
+}));
 
 const Home = ({loaded}) => {
   return (
