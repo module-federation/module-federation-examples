@@ -29,7 +29,7 @@ export default defineConfig({
           runtime: false,
           filename: 'static/js/remoteEntry.js',
           remotes: {
-            app1: 'app1@http://localhost:3001/static/js/remoteEntry.js',
+            app1: 'app1@http://localhost:3001/static/js/app1_partial.js',
           },
           exposes: {
             './Button': './src/components/button.js',
