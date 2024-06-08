@@ -12,7 +12,7 @@
     "start": "pnpm build && concurrently 'TEST=true pnpm serve' 'sleep 5 && node app1/dist/main.js'"
   },
   "dependencies": {
-    "@module-federation/node": "2.2.6",
+    "@module-federation/node": "2.2.9",
     "@module-federation/enhanced": "0.1.15",
     "@module-federation/runtime": "0.1.15",
     "concurrently": "^8.0.1",
