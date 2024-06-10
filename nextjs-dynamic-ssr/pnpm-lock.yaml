@@ -42,8 +42,8 @@ importers:
         specifier: 8.3.16
         version: 8.3.16(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
       '@module-federation/runtime':
-        specifier: 0.1.15
-        version: 0.1.15
+        specifier: 0.1.18
+        version: 0.1.18
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -66,8 +66,8 @@ importers:
         specifier: 8.3.16
         version: 8.3.16(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.3)(vue-tsc@1.8.27)(webpack@5.91.0)
       '@module-federation/runtime':
-        specifier: 0.1.15
-        version: 0.1.15
+        specifier: 0.1.18
+        version: 0.1.18
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -345,8 +345,18 @@ packages:
       '@module-federation/sdk': 0.1.15
     dev: false
 
+  /@module-federation/runtime@0.1.18:
+    resolution: {integrity: sha512-Tbck4+IwFpSPD1f/cLFeuXIHnchFjLf/bZVxnmhfHsa2/NI1sNBTuGAEv8Vd+hL71PylFgLZUS/tl7jYhG747Q==}
+    dependencies:
+      '@module-federation/sdk': 0.1.18
+    dev: false
+
   /@module-federation/sdk@0.1.15:
     resolution: {integrity: sha512-alN2O0+BVmFRpPDQStj1ff4DRlV7H1XTruEh3zmwBbVqWy45lXChC+KmJn1mgAoL4faeaPrlMEjePhbwTPUCjw==}
+    dev: false
+
+  /@module-federation/sdk@0.1.18:
+    resolution: {integrity: sha512-6dT99zirKeX3rH+vzLRzVkVYV83Z3M9sk1WguB14ITM8njF+JjqPBtTt6af5aZcT1W0j9UnpqvHO9cEjazCH8Q==}
     dev: false
 
   /@module-federation/third-party-dts-extractor@0.1.15:
