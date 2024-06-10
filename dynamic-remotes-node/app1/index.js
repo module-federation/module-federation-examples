@@ -14,5 +14,12 @@ init({
 
 
 loadRemote('app2/sample').then((sample) => {
+  if(process.env.TEST) {
+    if(sample === 'dynamically consumed from app2') {
+      process.exit(0)
+    } else {
+      process.exit(1)
+    }
+  }
   console.log(sample)
 });
