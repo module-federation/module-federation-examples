@@ -58,9 +58,6 @@ module.exports = {
   },
   experiments: {
     css: true,
-    rspackFuture: {
-      disableTransformByDefault: true,
-    },
   },
 
   plugins: [
