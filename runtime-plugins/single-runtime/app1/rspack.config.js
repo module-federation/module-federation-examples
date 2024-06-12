@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
+const {ModuleFederationPlugin, ContainerPlugin} = require('@module-federation/enhanced/rspack')
 
 const path = require('path');
 
@@ -67,6 +67,7 @@ module.exports = {
     ],
   },
   plugins: [
+    //TODO: fix rspack federation plugin to create secondary container automatically
     // new ModuleFederationPlugin({
     //   name: 'app1',
     //   filename: 'remoteEntry.js',
