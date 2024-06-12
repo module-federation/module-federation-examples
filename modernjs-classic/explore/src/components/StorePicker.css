@@ -1,0 +1,52 @@
+.e_StorePicker_control {
+  padding: 2rem;
+  margin: 0 0 0 -2rem;
+}
+
+.e_StorePicker_dialog::backdrop {
+  backdrop-filter: blur(2px);
+}
+
+.e_StorePicker_dialog {
+  overflow: visible;
+  border: none;
+  padding: 1rem 2rem;
+  max-height: unset;
+}
+
+.e_StorePicker_list {
+  display: grid;
+  gap: 3rem;
+  list-style-type: none;
+  padding: 0;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.e_StorePicker_image {
+  display: block;
+  max-width: 200px;
+  width: auto;
+  height: auto;
+}
+
+.e_StorePicker_address {
+  width: 200px;
+  margin: 1rem 0;
+}
+
+.e_StorePicker_control {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 500px;
+}
+
+.e_StorePicker_selected {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.e_StorePicker_selected:empty {
+  display: none;
+}

@@ -1,0 +1,28 @@
+.e_Recommendation {
+  margin: 0;
+}
+
+@media (min-width: 500px) and (max-width: 999px) {
+  .e_Recommendation:nth-child(4) {
+    display: none;
+  }
+}
+
+.e_Recommendation_link {
+  text-decoration: none;
+  color: black;
+}
+
+.e_Recommendation_image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  display: block;
+}
+
+.e_Recommendation_name {
+  margin: 1rem 0;
+  color: black;
+  text-align: center;
+  display: block;
+}
