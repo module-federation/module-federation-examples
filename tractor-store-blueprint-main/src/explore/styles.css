@@ -1,0 +1,43 @@
+@import url("./components/Header.css");
+@import url("./components/Navigation.css");
+@import url("./components/Footer.css");
+@import url("./components/StorePicker.css");
+@import url("./components/Product.css");
+@import url("./components/Recommendations.css");
+@import url("./components/Recommendation.css");
+@import url("./components/Button.css");
+@import url("./components/Filter.css");
+@import url("./pages/CategoryPage.css");
+@import url("./pages/StoresPage.css");
+@import url("./pages/HomePage.css");
+
+@font-face {
+  font-family: "Raleway";
+  src: url("https://cdn.the-tractor.store/cdn/font/raleway-regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+p {
+  line-height: 1.5;
+}
+
+:root {
+  --outer-space: 1.5rem;
+}

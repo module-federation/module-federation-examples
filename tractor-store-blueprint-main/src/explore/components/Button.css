@@ -1,0 +1,115 @@
+.e_Button {
+  --button-height: 50px;
+  display: block;
+  height: var(--button-height);
+  width: 100%;
+  border-radius: calc(var(--button-height) / 2);
+  padding: 2px;
+  border: 0;
+  background: linear-gradient(180deg, rgb(168, 168, 168), rgb(255, 255, 255)),
+    var(--accent-color);
+  box-shadow:
+    0 -2px 3px rgb(229, 229, 229),
+    0 2px 3px 2px rgb(255, 255, 255),
+    0 0 25px rgba(0, 0, 0, 0.05),
+    0 -10px 5px rgb(255, 255, 255) inset;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.e_Button--primary {
+  --accent-color: #ff5a55;
+  color: #fff;
+}
+
+.e_Button--secondary {
+  --accent-color: #ffffff;
+  color: #000;
+}
+
+.e_Button--rounded {
+  --button-height: 66px;
+  width: var(--button-height);
+}
+
+.e_Button[disabled] {
+  --accent-color: #d3d3d3;
+  pointer-events: none;
+}
+
+.e_Button::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  left: 0;
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.19),
+      rgba(255, 255, 255, 0.3)
+    ),
+    var(--accent-color);
+  content: "";
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.1);
+  display: block;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s,
+    background 0.1s 0.2s;
+}
+
+.e_Button__inner {
+  position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: var(--accent-color);
+  height: calc(var(--button-height) - 4px);
+  border-radius: inherit;
+  display: grid;
+  place-content: center;
+  transition:
+    transform 0.3s,
+    background 0.3s,
+    box-shadow 0.3s;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none;
+  white-space: nowrap;
+}
+
+.e_Button:hover .e_Button__inner,
+.e_Button:focus .e_Button__inner {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)),
+    var(--accent-color);
+}
+
+.e_Button:focus {
+  /* outline: none; */
+}
+
+.e_Button:active::before {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.09), rgba(0, 0, 0, 0.16)),
+    var(--accent-color);
+  box-shadow:
+    0 0 3px rgba(0, 0, 0, 0.6) inset,
+    0 2px 1px -1px rgba(0, 0, 0, 0.1);
+  transform: scale(0.97);
+  transition:
+    all 0.1s,
+    background 0.05s;
+}
+
+.e_Button:active .e_Button__inner {
+  transform: scale(0.97);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    var(--accent-color);
+  transition: all 0.1s;
+  box-shadow:
+    0 5px 5px rgba(0, 0, 0, 0.2) inset,
+    0 -3px 3px rgba(255, 255, 255, 0.2) inset;
+}

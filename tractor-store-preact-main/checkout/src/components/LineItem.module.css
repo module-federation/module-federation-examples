@@ -1,0 +1,52 @@
+.root {
+  display: flex;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+}
+
+.image {
+  flex-basis: 150px;
+  padding-right: 2rem;
+}
+
+.image img {
+  display: block;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.details {
+  flex-grow: 1;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.name {
+  padding-right: 2rem;
+  flex-grow: 1;
+  color: inherit;
+  text-decoration: none;
+  min-width: 300px;
+}
+
+.quantity {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.price {
+  flex-basis: 100px;
+  text-align: end;
+}
+
+.removeIcon {
+  width: 33px;
+}

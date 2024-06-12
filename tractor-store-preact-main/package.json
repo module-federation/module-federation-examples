@@ -1,0 +1,27 @@
+{
+  "name": "tractor-store-preact",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": ">=21.0.0"
+  },
+  "scripts": {
+    "start:integration": "cd ./integration && npm run start",
+    "start:explore": "cd ./explore && npm run start",
+    "start:decide": "cd ./decide && npm run start",
+    "start:checkout": "cd ./checkout && npm run start",
+    "prod:integration": "cd ./integration && npm run prod",
+    "prod:explore": "cd ./explore && npm run prod",
+    "prod:decide": "cd ./decide && npm run prod",
+    "prod:checkout": "cd ./checkout && npm run prod",
+    "start": "concurrently -c dim,red,green,yellow npm:start:*",
+    "prod": "concurrently -c dim,red,green,yellow npm:prod:*",
+    "install:all": "concurrently -m 1 'npm --prefix explore install' 'npm --prefix decide install' 'npm --prefix checkout install' 'npm --prefix integration install'"
+  },
+  "author": "neuland",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "tractor-store-blueprint",
+  "version": "1.0.0",
+  "description": "## What is The Tractor Store?",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "npm run build && node --watch --es-module-specifier-resolution=node --no-warnings src/server.node.js",
+    "dev:local-images": "USE_LOCAL_IMAGES=true npm run dev",
+    "watch": "node esbuild.js --watch",
+    "build": "node esbuild.js",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "start": "NODE_ENV=production node src/server.node.js",
+    "database": "node src/explore/database/import.js && node src/decide/database/import.js && node src/checkout/database/import.js",
+    "dev:cloudflare": "wrangler dev",
+    "deploy:cloudflare": "npm run build && wrangler deploy"
+  },
+  "type": "module",
+  "author": "neuland",
+  "license": "MIT",
+  "dependencies": {
+    "@hono/node-server": "^1.8.2",
+    "eslint-plugin-jsdoc": "^48.2.1",
+    "hono": "^4.1.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.2.5",
+    "wrangler": "^3.34.0"
+  }
+}

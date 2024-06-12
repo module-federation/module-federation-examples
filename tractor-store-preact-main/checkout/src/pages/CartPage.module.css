@@ -1,0 +1,35 @@
+.root {
+  margin: 0 auto;
+  max-width: calc(1000px + var(--outer-space) * 2);
+  padding: 0 var(--outer-space);
+}
+
+.lineItems {
+  list-style: none;
+  padding: 0;
+}
+
+.root hr {
+  border: 0;
+  height: 2px;
+  background-color: black;
+}
+
+.total {
+  margin: 2rem 0 3rem;
+  text-align: right;
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+  gap: 2rem;
+}
+
+.buttons > * {
+  flex: 0;
+}

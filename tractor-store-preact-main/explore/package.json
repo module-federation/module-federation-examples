@@ -1,0 +1,27 @@
+{
+  "name": "explore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node esbuild.js",
+    "start": "concurrently -n build,serve      'npm:build -- --watch'  'node --watch dist/server.node.js'",
+    "prod": " concurrently -n build,serve -m 1 'npm:build -- --minify' 'node dist/server.node.js'"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hono/node-server": "^1.11.1",
+    "dotenv": "^16.4.5",
+    "hono": "^4.4.0",
+    "preact": "^10.22.0",
+    "preact-custom-element": "^4.3.0",
+    "preact-render-to-string": "^6.5.3",
+    "preact-router": "^4.1.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "esbuild": "^0.21.4",
+    "esbuild-plugin-css-modules": "^0.3.0"
+  }
+}

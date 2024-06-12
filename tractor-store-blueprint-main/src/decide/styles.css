@@ -1,0 +1,32 @@
+@import url("./pages/ProductPage.css");
+@import url("./components/VariantOption.css");
+
+@font-face {
+  font-family: "Raleway";
+  src: url("https://cdn.the-tractor.store/cdn/font/Raleway-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  line-height: 1.5;
+}
+
+:root {
+  --outer-space: 1.5rem;
+}
