@@ -1,11 +1,11 @@
-FROM node:21.5.0-alpine
+FROM node:21.7.3-alpine
 
 WORKDIR '/app'
 
 COPY package.json .
 
-RUN rm -rf node_modules/ && yarn
+RUN rm -rf node_modules/ && pnpm install
 
 COPY . .
 
-CMD ["yarn", "start"]
+CMD ["pnpm","run", "start"]

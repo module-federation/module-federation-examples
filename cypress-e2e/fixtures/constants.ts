@@ -579,7 +579,7 @@ export class Constants {
                 hostH3: 'my env is https://host.api.com',
                 button: 'Load Remote Widget'
             },
-            paragraph: 'The Dynamic System will take advantage Module Federation remotes and exposes. It will no load components that have been loaded already.',
+            paragraph: 'The Dynamic System will take advantage Module Federation remotes and exposes. It will not load components that have been loaded already.',
             buttonHeader: 'Remote Widget',
             buttonH2: 'My env is ',
             buttonParagraph: 'Using momentjs for format the date'
@@ -849,7 +849,7 @@ export class Constants {
             }
         },
         dynamicRemotesApp: {
-            paragraphText: 'The Dynamic System will take advantage Module Federation remotes and exposes. It will no load components that have been loaded already.',
+            paragraphText: 'The Dynamic System will take advantage of Module Federation remotes and exposes. It will not load components that have already been loaded.',
             widgetParagraphText: [
                 'Moment shouldn\'t download twice, the host has no moment.js',
                 'Using momentjs for format the date'
@@ -893,7 +893,7 @@ export class Constants {
             componentState: 'Component in Action..',
         },
         dynamicSystemHostApp: {
-            hostParagraph: 'The Dynamic System will take advantage Module Federation ',
+            hostParagraph: 'The Dynamic System will take advantage of Module Federation ',
             paragraphText: [
                 'App2 Moment Dep',
                 'for format the date'

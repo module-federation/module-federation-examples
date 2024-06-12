@@ -6,21 +6,24 @@
   "license": "MIT",
   "scripts": {
     "serve": "concurrently 'serve -s app1/dist -l 3001' 'serve -s app2/dist -l 3002'",
-    "build:legacy": "rimraf dist/server && concurrently 'cd app1; webpack --config ./webpack.config.js' 'cd runtime-container; webpack --config ./webpack.config.js'  'cd app2; webpack --config ./webpack.config.js'",
-    "build": "rimraf dist/server && concurrently 'cd app1; rspack --config ./rspack.config.js' 'cd runtime-container; rspack --config ./rspack.config.js'  'cd app2; rspack --config ./rspack.config.js'",
+    "build:legacy": "rimraf dist/server && concurrently 'cd app1; webpack --config ./webpack.config.js' 'cd runtime-container; webpack --config ./webpack.config.js' 'cd app2; webpack --config ./webpack.config.js'",
+    "build": "rimraf dist/server && concurrently 'cd app1; rspack --config ./rspack.config.js' 'cd runtime-container; rspack --config ./rspack.config.js' 'cd app2; rspack --config ./rspack.config.js'",
     "start:legacy": "pnpm build:legacy && concurrently 'pnpm serve' 'sleep 5 && node app1/dist/main.js'",
-    "start": "pnpm build && concurrently 'pnpm serve' 'sleep 5 && node app1/dist/main.js'"
+    "start": "pnpm build && concurrently 'TEST=true pnpm serve' 'sleep 5 && node app1/dist/main.js'"
   },
   "dependencies": {
-    "@module-federation/node": "^2.2.3",
-    "@module-federation/enhanced": "^0.1.12",
-    "@module-federation/runtime": "^0.1.12",
+    "@module-federation/node": "2.2.9",
+    "@module-federation/enhanced": "0.1.18",
+    "@module-federation/runtime": "0.1.18",
     "concurrently": "^8.0.1",
     "webpack": "^5.91.0",
     "rimraf": "^5.0.5",
     "webpack-cli": "^5.1.4",
-    "@rspack/cli": "^0.6.5",
-    "@rspack/core": "^0.6.5",
-    "@rspack/dev-server": "^0.6.5"
+    "@rspack/cli": "^0.7.0-beta.0",
+    "@rspack/core": "^0.7.0-beta.0",
+    "@rspack/dev-server": "^0.7.0-beta.0"
+  },
+  "devDependencies": {
+    "kill-port": "^2.0.1"
   }
 }

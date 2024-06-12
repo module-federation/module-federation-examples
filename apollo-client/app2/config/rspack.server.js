@@ -2,7 +2,7 @@ const path = require('path');
 const { merge } = require('webpack-merge');
 const shared = require('./webpack.shared');
 const moduleFederationPlugin = require('./module-federation');
-const rspack = require('@rspack/core');
+const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
 
 /**
  * @type {import('webpack').Configuration}
@@ -18,7 +18,7 @@ const webpackConfig = {
   },
   externals: ['express'],
   mode: 'production',
-  plugins: [...moduleFederationPlugin(rspack.container.ModuleFederationPlugin).server],
+  plugins: [...moduleFederationPlugin(ModuleFederationPlugin).server],
   stats: {
     colors: true,
   },

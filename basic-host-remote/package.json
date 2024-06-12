@@ -15,7 +15,7 @@
     "e2e:ci": "pnpm build && pnpm serve & sleep 60 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
+    "concurrently": "8.2.2",
     "wait-on": "7.2.0"
   }
 }

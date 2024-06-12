@@ -1,14 +1,10 @@
-import appTools, { defineConfig } from '@modern-js/app-tools'
-import {ModuleFederationPlugin} from "@module-federation/enhanced"
+import appTools, { defineConfig } from '@modern-js/app-tools';
+import { ModuleFederationPlugin } from '@module-federation/enhanced';
 
 // https://modernjs.dev/en/configure/app/usage
 export default defineConfig({
   server: {
     port: 3002,
-  },
-  dev: {
-    // set publicPath
-    // assetPrefix: 'auto',
   },
   runtime: {
     router: true,
@@ -18,7 +14,7 @@ export default defineConfig({
     enableAsyncEntry: true,
   },
   tools: {
-    webpack: (config, { webpack, appendPlugins }) => {
+    webpack: (config, { appendPlugins }) => {
       delete config.optimization.splitChunks;
       config.output.publicPath = 'auto';
 
