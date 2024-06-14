@@ -4,12 +4,12 @@ import type { MenuProps } from 'antd';
 import { Menu, Timeline } from 'antd';
 import { GroupOutlined, HomeOutlined, SettingOutlined } from '@ant-design/icons';
 
-
+import {preloadRemote} from '@module-federation/runtime'
 
 function Navgation () {
     let location = useLocation();
     const [current, setCurrent] = useState(location.pathname);
-    
+
     const items: MenuProps['items'] = [
       {
         label: (
@@ -31,7 +31,15 @@ function Navgation () {
       },
       {
         label: (
-          <Link to="/remote2">
+          <Link to="/remote2" onMouseEnter={()=>{
+              preloadRemote([
+                  {
+                      nameOrAlias: 'remote2',
+                      resourceCategory: 'all',
+                      exposes: ['button'],
+                  },
+              ]);
+          }}>
             Remote2
           </Link>
         ),
