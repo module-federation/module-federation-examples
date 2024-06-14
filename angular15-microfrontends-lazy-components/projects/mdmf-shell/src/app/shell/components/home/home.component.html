@@ -1,10 +1,22 @@
 <div class="container">
-  <h2>Microfrontend Shell</h2>
+  <button (click)="someEvent()">Microfrontend Shell</button>
   <p>Welcome to the Angular 15 Microfrontend demo using Webpack 5 Module Federation</p>
   <p>This component is part of the shell application, the Profile component that is linked from the `Profile` link at
     the top is a Microfrontend that is remotely loaded into the application. Check the network settings to see the
     remote being loaded.</p>
     <br />
 
-    <federated-component remoteEntry="http://localhost:4201/remoteEntry.js" remoteName="profile" exposedModule="ProfileModule" componentName="ListUserComponent"></federated-component>
+    Federated Component
+    <federated-component remoteEntry="http://localhost:4201/remoteEntry.js"
+                         remoteName="profile"
+                         exposedModule="ProfileModule"
+                         componentName="ListUserComponent"
+                         [props]="{ label: federatedLabel }"
+    ></federated-component>
+</div>
+
+<div class="container">
+  Regular Component
+  <shell-profile-list-user [label]="'Regular Label 1'" foo="foo"></shell-profile-list-user>
+  <shell-profile-list-user [label]="federatedLabel" foo="foo"></shell-profile-list-user>
 </div>

@@ -6,6 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  federatedLabel = 'Federated Label';
+  counter = 0;
   constructor() {}
   ngOnInit(): void {}
+
+  someEvent() {
+    this.counter += 1;
+    this.federatedLabel = 'Federated Label' + this.counter;
+  }
 }
