@@ -1,0 +1,74 @@
+.d_VariantOption {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.d_VariantOption__color {
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  background-color: var(--variant-color);
+  box-shadow:
+    0 0 2px rgba(0, 0, 0, 0.5) inset,
+    0px 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.d_VariantOption__color::before,
+.d_VariantOption__color::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
+  border-radius: 50%;
+}
+.d_VariantOption__color::before {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.1) 60%
+  );
+}
+.d_VariantOption__color::after {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.9) 10%,
+    rgba(255, 255, 255, 0.8) 30%,
+    transparent 30%
+  );
+  filter: blur(1px);
+}
+
+.d_VariantOption > a {
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+}
+
+.d_VariantOption > strong {
+  font-weight: normal;
+  position: relative;
+}
+
+.d_VariantOption > strong::before,
+.d_VariantOption:hover > a::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  position: absolute;
+}
+
+.d_VariantOption > strong::before {
+  background-color: black;
+}
+.d_VariantOption:hover > a::before {
+  background-color: var(--variant-color);
+}
