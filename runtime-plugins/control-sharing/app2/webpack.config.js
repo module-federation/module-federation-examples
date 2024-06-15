@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 
 // adds all your dependencies as shared modules
@@ -44,7 +44,7 @@ module.exports = {
       name: 'app2',
       filename: 'remoteEntry.js',
       remotes: {
-        app1: 'app1@http://localhost:3001/remoteEntry.js?orgId=blabla',
+        app1: 'app1@http://localhost:3001/remoteEntry.js',
       },
       exposes: {
         './Button': './src/Button',
@@ -54,9 +54,6 @@ module.exports = {
         ...deps,
         react: {
           singleton: true,
-          import: '/Users/bytedance/dev/module-federation-examples/runtime-plugins/control-sharing/app2/node_modules/react/index.js',
-          packageName: 'react',
-          version: dependencies.react
         },
         'react-dom': {
           singleton: true,

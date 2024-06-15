@@ -24,5 +24,10 @@ export default defineConfig({
       ]);
     },
   },
-  plugins: [pluginReact()],
+  plugins: [pluginReact({
+    splitChunks: {
+      react: false,
+      router: false
+    }
+  })],
 });
