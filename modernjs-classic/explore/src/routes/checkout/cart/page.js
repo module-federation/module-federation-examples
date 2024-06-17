@@ -1,2 +1,3 @@
-import CartPage from 'checkout/CartPage'
-export default CartPage
+import CartPage from 'checkout/CartPage';
+
+export default CartPage;

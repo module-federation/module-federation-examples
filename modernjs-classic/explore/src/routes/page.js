@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from '@modern-js/runtime/head';
 import data from '../database/index';
 import Header from '../components/Header';

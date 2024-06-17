@@ -1,4 +1,3 @@
-import React from 'react';
 import Header from 'explore/Header';
 import Footer from 'explore/Footer';
 import Recommendations from 'explore/Recommendations';

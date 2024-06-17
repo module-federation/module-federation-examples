@@ -4,7 +4,6 @@ import {
   Root,
   Head,
   Body,
-  Comment,
   DocumentContext,
 } from '@modern-js/runtime/document';
 

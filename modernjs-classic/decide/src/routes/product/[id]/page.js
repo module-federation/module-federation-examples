@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from '@modern-js/runtime/head';
 import { useParams, useLocation } from '@modern-js/runtime/router';
 import Header from 'explore/Header';
@@ -11,7 +10,6 @@ import data from '../../../database/index';
 import Meta from '../../../components/Meta';
 
 import './ProductPage.css';
-;
 
 /**
  * ProductPage component.

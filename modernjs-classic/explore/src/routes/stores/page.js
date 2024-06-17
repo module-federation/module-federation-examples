@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from '@modern-js/runtime/head';
 import data from '../../database/index';
 import Header from '../../components/Header';
@@ -32,7 +31,7 @@ const StoresPage = ({ c }) => {
           following locations:
         </p>
         <ul className="e_StoresPage_list">
-          {data.stores.map((store, index) => (
+          {data.stores.map(store => (
             <Store key={store.id} {...store} />
           ))}
         </ul>

@@ -1,4 +1,3 @@
-import React from 'react';
 import './Button.css';
 /**
  * Button component.
@@ -38,7 +37,9 @@ const Button = ({
       disabled={disabled}
       data-id={dataId}
       title={title}
-      className={`c_Button c_Button--${variant} ${className} ${rounded ? 'c_Button--rounded' : ''} c_Button--size-${size}`}
+      className={`c_Button c_Button--${variant} ${className} ${
+        rounded ? 'c_Button--rounded' : ''
+      } c_Button--size-${size}`}
       ontouchstart=""
     >
       <div className="c_Button__inner">{children}</div>

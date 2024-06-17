@@ -50,6 +50,9 @@ export function writeToCookie(items, c) {
     document.cookie = `${COOKIE}=${cookieStr}; path=/; SameSite=Lax; Secure`;
   } else if (c && c.headers) {
     // Server-side
-    c.headers.set('Set-Cookie', `${COOKIE}=${cookieStr}; path=/; SameSite=Lax; Secure`);
+    c.headers.set(
+      'Set-Cookie',
+      `${COOKIE}=${cookieStr}; path=/; SameSite=Lax; Secure`,
+    );
   }
 }

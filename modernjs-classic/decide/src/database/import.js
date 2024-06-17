@@ -4,7 +4,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import products from '../../../products.js';
+import products from '../../../products';
 
 /**
  * @type {Database}

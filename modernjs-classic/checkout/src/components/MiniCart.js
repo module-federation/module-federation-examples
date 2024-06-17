@@ -1,4 +1,3 @@
-import React from 'react';
 import { readFromCookie } from '../state';
 import Button from './Button';
 import './MiniCart.css';

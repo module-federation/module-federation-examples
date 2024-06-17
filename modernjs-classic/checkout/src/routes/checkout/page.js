@@ -1,10 +1,9 @@
-import React from 'react';
 import StorePicker from 'explore/StorePicker';
-import Page from '../components/Page';
-import CompactHeader from '../components/CompactHeader';
-import './Checkout.css';
 import Footer from 'explore/Footer';
-import Button from '../components/Button';
+import Page from '../../components/Page';
+import CompactHeader from '../../components/CompactHeader';
+import './Checkout.css';
+import Button from '../../components/Button';
 
 const Checkout = () => {
   return (
@@ -64,17 +63,12 @@ const Checkout = () => {
           </fieldset>
 
           <div className="c_Checkout__buttons">
-            <Button
-              children="place order"
-              type="submit"
-              variant="primary"
-              disabled={true}
-            />
-            <Button
-              href="/checkout/cart"
-              children="back to cart"
-              variant="secondary"
-            />
+            <Button type="submit" variant="primary" disabled={true}>
+              place order
+            </Button>
+            <Button href="/checkout/cart" variant="secondary">
+              back to cart
+            </Button>
           </div>
         </form>
       </main>

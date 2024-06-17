@@ -1,4 +1,3 @@
-import React from 'react';
 import { IMAGE_SERVER } from '../utils';
 import './CompactHeader.css';
 

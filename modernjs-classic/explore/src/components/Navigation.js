@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from '@modern-js/runtime/router';
 import './Navigation.css';
 

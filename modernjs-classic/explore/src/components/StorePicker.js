@@ -1,4 +1,3 @@
-import React from 'react';
 import data from '../database/index';
 import { src, srcset } from '../utils';
 import Button from './Button';

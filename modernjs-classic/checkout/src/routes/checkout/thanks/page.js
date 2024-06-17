@@ -1,11 +1,7 @@
-import React from 'react';
-import Button from '../../../components/Button';
-
 import Header from 'explore/Header';
 import Footer from 'explore/Footer';
+import Button from '../../../components/Button';
 import './Thanks.css';
-
-
 
 /**
  * Thanks component.
@@ -20,7 +16,7 @@ const Thanks = ({ c }) => {
       <main className="c_Thanks">
         <h2 className="c_Thanks__title">Thanks for your order!</h2>
         <p className="c_Thanks__text">
-          We'll notify you, when its ready for pickup.
+          We&apos;ll notify you, when its ready for pickup.
         </p>
         <Button href="/" variant="secondary">
           Continue Shopping

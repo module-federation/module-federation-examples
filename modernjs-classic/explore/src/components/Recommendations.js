@@ -1,4 +1,3 @@
-import React from 'react';
 import data from '../database/index';
 import Recommendation from './Recommendation';
 import './Recommendations.css';

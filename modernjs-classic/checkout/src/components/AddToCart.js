@@ -1,4 +1,3 @@
-import React from 'react';
 import data from '../database/index';
 import Button from './Button';
 import './AddToCart.css';

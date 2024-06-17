@@ -1,4 +1,3 @@
-import React from 'react';
 import MiniCart from 'checkout/MiniCart';
 import { IMAGE_SERVER } from '../utils';
 import Navigation from './Navigation';

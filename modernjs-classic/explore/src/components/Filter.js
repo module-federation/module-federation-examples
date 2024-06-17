@@ -1,4 +1,3 @@
-import React from 'react';
 import './Filter.css';
 
 const Filter = ({ filters }) => {
@@ -23,4 +22,3 @@ const Filter = ({ filters }) => {
 };
 
 export default Filter;
-
