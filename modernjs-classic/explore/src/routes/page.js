@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import Recommendations from '../components/Recommendations';
 import { src, srcset } from '../utils';
 import Meta from '../components/Meta';
+
 import './page.css';
 
 /**
@@ -14,14 +15,11 @@ import './page.css';
  * @param {HonoContext} props.c - The hone context.
  * @returns {JSX.Element} The HomePage component markup.
  */
-const HomePage = ({ c }) => {
+const HomePage = c => {
   return (
     <>
       <Helmet>
         <title>Tractor Store</title>
-        <link rel="stylesheet" href="/explore/static/styles.css" />
-        <link rel="stylesheet" href="/decide/static/styles.css" />
-        <link rel="stylesheet" href="/checkout/static/styles.css" />
         <Meta />
       </Helmet>
       <div data-boundary="explore-page">
@@ -43,10 +41,6 @@ const HomePage = ({ c }) => {
           </div>
         </main>
         <Footer />
-        <script src="/explore/static/scripts.js" type="module"></script>
-        <script src="/decide/static/scripts.js" type="module"></script>
-        <script src="/checkout/static/scripts.js" type="module"></script>
-        <script src="/cdn/js/helper.js" type="module"></script>
       </div>
     </>
   );

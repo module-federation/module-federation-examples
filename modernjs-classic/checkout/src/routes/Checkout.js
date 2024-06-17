@@ -1,78 +1,86 @@
-import Page from "../components/Page.js";
-import CompactHeader from "../components/CompactHeader.js";
-import { html } from "../utils.js";
-import StorePicker from "../../explore/components/StorePicker.js";
+import React from 'react';
+import StorePicker from 'explore/StorePicker';
+import Page from '../components/Page';
+import CompactHeader from '../components/CompactHeader';
+import './Checkout.css';
+import Footer from 'explore/Footer';
+import Button from '../components/Button';
 
-// imports from other teams -> fragments
-import Footer from "../../explore/components/Footer.js";
-import Button from "../components/Button.js";
+const Checkout = () => {
+  return (
+    <Page>
+      <CompactHeader />
+      <main className="c_Checkout">
+        <h2>Checkout</h2>
+        <form
+          action="/checkout/place-order"
+          method="post"
+          className="c_Checkout__form"
+        >
+          <h3>Personal Data</h3>
+          <fieldset className="c_Checkout__name">
+            <div>
+              <label className="c_Checkout__label" htmlFor="c_firstname">
+                First name
+              </label>
+              <input
+                className="c_Checkout__input"
+                type="text"
+                id="c_firstname"
+                name="firstname"
+                required
+              />
+            </div>
+            <div>
+              <label className="c_Checkout__label" htmlFor="c_lastname">
+                Last name
+              </label>
+              <input
+                className="c_Checkout__input"
+                type="text"
+                id="c_lastname"
+                name="lastname"
+                required
+              />
+            </div>
+          </fieldset>
 
-export default () => {
-  const content = html`
-    ${CompactHeader()}
-    <main class="c_Checkout">
-      <h2>Checkout</h2>
-      <form
-        action="/checkout/place-order"
-        method="post"
-        class="c_Checkout__form"
-      >
-        <h3>Personal Data</h3>
-        <fieldset class="c_Checkout__name">
-          <div>
-            <label class="c_Checkout__label" for="c_firstname">
-              First name
+          <h3>Store Pickup</h3>
+          <fieldset>
+            <div className="c_Checkout__store">
+              <StorePicker />
+            </div>
+            <label className="c_Checkout__label" htmlFor="c_storeId">
+              Store ID
             </label>
             <input
-              class="c_Checkout__input"
+              className="c_Checkout__input"
               type="text"
-              id="c_firstname"
-              name="firstname"
+              id="c_storeId"
+              name="storeId"
+              readOnly
               required
             />
-          </div>
-          <div>
-            <label class="c_Checkout__label" for="c_lastname">Last name</label>
-            <input
-              class="c_Checkout__input"
-              type="text"
-              id="c_lastname"
-              name="lastname"
-              required
+          </fieldset>
+
+          <div className="c_Checkout__buttons">
+            <Button
+              children="place order"
+              type="submit"
+              variant="primary"
+              disabled={true}
+            />
+            <Button
+              href="/checkout/cart"
+              children="back to cart"
+              variant="secondary"
             />
           </div>
-        </fieldset>
-
-        <h3>Store Pickup</h3>
-        <fieldset>
-          <div class="c_Checkout__store">${StorePicker()}</div>
-          <label class="c_Checkout__label" for="c_storeId">Store ID</label>
-          <input
-            class="c_Checkout__input"
-            type="text"
-            id="c_storeId"
-            name="storeId"
-            readonly
-            required
-          />
-        </fieldset>
-
-        <div class="c_Checkout__buttons">
-          ${Button({
-            children: "place order",
-            type: "submit",
-            variant: "primary",
-            disabled: true,
-          })}
-          ${Button({
-            href: "/checkout/cart",
-            children: "back to cart",
-            variant: "secondary",
-          })}
-        </div>
-      </form>
-    </main>
-    ${Footer()}
-  `;
-  return Page({ content });
+        </form>
+      </main>
+      <Footer />
+    </Page>
+  );
 };
+
+export default Checkout;

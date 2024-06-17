@@ -1,21 +1,17 @@
 import React from 'react';
+import { Helmet } from '@modern-js/runtime/head';
+import { useParams, useLocation } from '@modern-js/runtime/router';
+import Header from 'explore/Header';
+import Footer from 'explore/Footer';
+import AddToCart from 'checkout/AddToCart';
+import Recommendations from 'explore/Recommendations';
 import VariantOption from '../../../components/VariantOption';
-// import Header from '../../explore/components/Header';
-// import Footer from '../../explore/components/Footer';
-// import AddToCart from '../../checkout/components/AddToCart';
-// import Recommendations from '../../explore/components/Recommendations';
 import { src, srcset } from '../../../utils';
 import data from '../../../database/index';
 import Meta from '../../../components/Meta';
-import { Helmet } from '@modern-js/runtime/head';
-import { useParams } from '@modern-js/runtime/router';
 
 import './ProductPage.css';
-
-const Recommendations = () => 'Recommendations';
-const Header = () => 'Header';
-const Footer = () => 'Footer';
-const AddToCart = () => 'AddToCart';
+;
 
 /**
  * ProductPage component.
@@ -27,8 +23,8 @@ const AddToCart = () => 'AddToCart';
  */
 
 const ProductPage = ({ c }) => {
-  const { id, sku } = useParams();
-  console.log(useParams());
+  const { id } = useParams();
+  const sku = new URLSearchParams(useLocation().search).get('sku');
   const {
     name,
     variants,
@@ -40,9 +36,6 @@ const ProductPage = ({ c }) => {
     <>
       <Helmet>
         <title>Tractor Store</title>
-        <link rel="stylesheet" href="/explore/static/styles.css" />
-        <link rel="stylesheet" href="/decide/static/styles.css" />
-        <link rel="stylesheet" href="/checkout/static/styles.css" />
         <Meta />
       </Helmet>
       <Header c={c} />
@@ -78,10 +71,6 @@ const ProductPage = ({ c }) => {
         <Recommendations skus={[variant.sku]} />
       </main>
       <Footer />
-      <script src="/explore/static/scripts.js" type="module"></script>
-      <script src="/decide/static/scripts.js" type="module"></script>
-      <script src="/checkout/static/scripts.js" type="module"></script>
-      <script src="/cdn/js/helper.js" type="module"></script>
     </>
   );
 };

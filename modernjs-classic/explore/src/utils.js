@@ -4,9 +4,9 @@ export const html = String.raw;
 
 // use the image server if not using local images
 export const IMAGE_SERVER =
-  typeof process === "undefined" || process.env.USE_LOCAL_IMAGES !== "true"
-    ? "https://cdn.the-tractor.store"
-    : "";
+  typeof process === 'undefined' || process.env.USE_LOCAL_IMAGES !== 'true'
+    ? 'https://cdn.the-tractor.store'
+    : '';
 
 /**
  * Replaces the placeholder "[size]" in the image URL with the specified size.
@@ -15,7 +15,7 @@ export const IMAGE_SERVER =
  * @returns {string} - The modified image URL with the size placeholder replaced.
  */
 export function src(image, size) {
-  return IMAGE_SERVER + image.replace("[size]", `${size}`);
+  return IMAGE_SERVER + image.replace('[size]', `${size}`);
 }
 
 /**
@@ -25,7 +25,7 @@ export function src(image, size) {
  * @returns {string} - The srcset attribute value.
  */
 export function srcset(image, sizes = []) {
-  return sizes.map((size) => `${src(image, size)} ${size}w`).join(", ");
+  return sizes.map(size => `${src(image, size)} ${size}w`).join(', ');
 }
 
 /**

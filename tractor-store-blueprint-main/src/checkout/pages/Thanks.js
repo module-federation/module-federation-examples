@@ -1,7 +1,7 @@
 import Page from "../components/Page.js";
-import Header from "../../explore/components/Header.js";
+import Header from "explore/Header";
 import { html } from "../utils.js";
-import Footer from "../../explore/components/Footer.js";
+import Footer from "explore/Footer";
 import Button from "../components/Button.js";
 
 /**

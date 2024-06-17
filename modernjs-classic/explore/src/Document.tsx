@@ -18,7 +18,7 @@ export default function Document(): React.ReactElement {
 
   return (
     <Html>
-      <Head></Head>
+      <Head />
       <Body data-boundary="explore-page">
         <Root rootId="root">
           <h1 style={{ color: 'red' }}>Some Params: </h1>

@@ -21,7 +21,7 @@ const Button = ({
       value={value}
       data-id={dataId}
       className={`e_Button e_Button--${variant} ${className} ${rounded ? 'e_Button--rounded' : ''}`}
-      ontouchstart=""
+      onTouchStart={() => {}}
     >
       <div className="e_Button__inner">{children}</div>
     </Tag>

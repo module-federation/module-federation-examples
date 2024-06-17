@@ -8,12 +8,14 @@ const Filter = ({ filters }) => {
       <ul>
         {filters.map(f =>
           f.active ? (
-            <li key={f.name} className="e_Filter__filter--active">{f.name}</li>
+            <li key={f.name} className="e_Filter__filter--active">
+              {f.name}
+            </li>
           ) : (
             <li key={f.name}>
               <a href={f.url}>{f.name}</a>
             </li>
-          )
+          ),
         )}
       </ul>
     </div>
@@ -21,3 +23,4 @@ const Filter = ({ filters }) => {
 };
 
 export default Filter;
+

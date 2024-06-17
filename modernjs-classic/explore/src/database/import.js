@@ -2,9 +2,9 @@
 // here we are reading from a js file and writing to a json file.
 // in a real world scenario, you would read from a product service and write to a database.
 
-import fs from "fs";
-import path from "path";
-import products from "../../../products.js";
+import fs from 'fs';
+import path from 'path';
+import products from '../../../products.js';
 
 /**
  * Generates the URL for a product.
@@ -13,7 +13,7 @@ import products from "../../../products.js";
  * @returns {string} The URL of the product.
  */
 export function productUrl(id, sku) {
-  const query = sku ? `?sku=${sku}` : "";
+  const query = sku ? `?sku=${sku}` : '';
   return `/product/${id}${query}`;
 }
 
@@ -49,10 +49,10 @@ function toProduct(product) {
  * @returns {number[]} The RGB array.
  **/
 function hexToRgb(hex) {
-  var bigint = parseInt(hex.replace("#", ""), 16);
-  var r = (bigint >> 16) & 255;
-  var g = (bigint >> 8) & 255;
-  var b = bigint & 255;
+  const bigint = parseInt(hex.replace('#', ''), 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
   return [r, g, b];
 }
 
@@ -78,33 +78,33 @@ function toRecoItem(product, variant) {
 const database = {
   teaser: [
     {
-      title: "Classic Tractors",
-      image: "/cdn/img/scene/[size]/classics.webp",
-      url: "/products/classic",
+      title: 'Classic Tractors',
+      image: '/cdn/img/scene/[size]/classics.webp',
+      url: '/products/classic',
     },
     {
-      title: "Autonomous Tractors",
-      image: "/cdn/img/scene/[size]/autonomous.webp",
-      url: "/products/autonomous",
+      title: 'Autonomous Tractors',
+      image: '/cdn/img/scene/[size]/autonomous.webp',
+      url: '/products/autonomous',
     },
   ],
   categories: [
     {
-      key: "classic",
-      name: "Classics",
-      products: products.filter((p) => p.category === "classic").map(toProduct),
+      key: 'classic',
+      name: 'Classics',
+      products: products.filter(p => p.category === 'classic').map(toProduct),
     },
     {
-      key: "autonomous",
-      name: "Autonomous",
+      key: 'autonomous',
+      name: 'Autonomous',
       products: products
-        .filter((p) => p.category === "autonomous")
+        .filter(p => p.category === 'autonomous')
         .map(toProduct),
     },
   ],
   recommendations: products
-    .flatMap((product) =>
-      product.variants.map((variant) => toRecoItem(product, variant)),
+    .flatMap(product =>
+      product.variants.map(variant => toRecoItem(product, variant)),
     )
     .reduce((res, variant) => {
       res[variant.sku] = variant;
@@ -112,37 +112,37 @@ const database = {
     }, {}),
   stores: [
     {
-      id: "store-a",
-      name: "Aurora Flagship Store",
-      street: "Astronaut Way 1",
-      city: "Arlington",
-      image: "/cdn/img/store/[size]/store-1.webp",
+      id: 'store-a',
+      name: 'Aurora Flagship Store',
+      street: 'Astronaut Way 1',
+      city: 'Arlington',
+      image: '/cdn/img/store/[size]/store-1.webp',
     },
     {
-      id: "store-b",
-      name: "Big Micro Machines",
-      street: "Broadway 2",
-      city: "Burlington",
-      image: "/cdn/img/store/[size]/store-2.webp",
+      id: 'store-b',
+      name: 'Big Micro Machines',
+      street: 'Broadway 2',
+      city: 'Burlington',
+      image: '/cdn/img/store/[size]/store-2.webp',
     },
     {
-      id: "store-c",
-      name: "Central Mall",
-      street: "Clown Street 3",
-      city: "Cryo",
-      image: "/cdn/img/store/[size]/store-3.webp",
+      id: 'store-c',
+      name: 'Central Mall',
+      street: 'Clown Street 3',
+      city: 'Cryo',
+      image: '/cdn/img/store/[size]/store-3.webp',
     },
     {
-      id: "store-d",
-      name: "Downtown Model Store",
-      street: "Duck Street 4",
-      city: "Davenport",
-      image: "/cdn/img/store/[size]/store-4.webp",
+      id: 'store-d',
+      name: 'Downtown Model Store',
+      street: 'Duck Street 4',
+      city: 'Davenport',
+      image: '/cdn/img/store/[size]/store-4.webp',
     },
   ],
 };
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
-const databaseFile = path.resolve(__dirname, "./database.json");
-console.log("Writing database to", databaseFile);
+const databaseFile = path.resolve(__dirname, './database.json');
+console.log('Writing database to', databaseFile);
 fs.writeFileSync(databaseFile, JSON.stringify(database, null, 2));

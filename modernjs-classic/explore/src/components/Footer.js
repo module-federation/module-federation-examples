@@ -1,6 +1,6 @@
 import React from 'react';
-import { IMAGE_SERVER } from '../utils';
 import { Link } from '@modern-js/runtime/router';
+import { IMAGE_SERVER } from '../utils';
 import './Footer.css';
 
 const Footer = () => {

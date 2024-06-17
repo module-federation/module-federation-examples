@@ -1,5 +1,5 @@
-import { html } from "../utils.js";
-
+import React from 'react';
+import './Button.css';
 /**
  * Button component.
  * @param {object} props - The properties of the button.
@@ -13,33 +13,37 @@ import { html } from "../utils.js";
  * @param {string} [props.dataId] - The data-id attribute of the button.
  * @param {('primary'|'secondary')} [props.variant] - The variant of the button. Valid options are 'primary' and 'secondary'.
  * @param {string} [props.title] - The title attribute of the button.
- * @param {('small'|'normal')} [props.size] - The size of the button. Valid options are 'small' and 'normalx'.
- * @returns {string} The button markup.
+ * @param {('small'|'normal')} [props.size] - The size of the button. Valid options are 'small' and 'normal'.
+ * @returns {JSX.Element} The button markup.
  */
-export default ({
+const Button = ({
   href,
   type,
   value,
   disabled,
   rounded,
-  className = "",
+  className = '',
   children,
   dataId,
-  size = "normal",
-  variant = "secondary",
+  size = 'normal',
+  variant = 'secondary',
   title,
 }) => {
-  const tag = href ? "a" : "button";
-  return html` <${tag}
-    ${disabled ? "disabled" : ""}
-    ${href ? `href="${href}"` : ""}
-    ${type ? `type="${type}"` : ""}
-    ${value ? `value="${value}"` : ""}
-    ${dataId ? `data-id="${dataId}"` : ""}
-    ${title ? `title="${title}"` : ""}
-    class="c_Button c_Button--${variant} ${className} ${rounded ? "c_Button--rounded" : ""} c_Button--size-${size}"
-    ontouchstart
-  >
-    <div class="c_Button__inner">${children}</div>
-  </${tag}>`;
+  const Tag = href ? 'a' : 'button';
+  return (
+    <Tag
+      href={href}
+      type={type}
+      value={value}
+      disabled={disabled}
+      data-id={dataId}
+      title={title}
+      className={`c_Button c_Button--${variant} ${className} ${rounded ? 'c_Button--rounded' : ''} c_Button--size-${size}`}
+      ontouchstart=""
+    >
+      <div className="c_Button__inner">{children}</div>
+    </Tag>
+  );
 };
+
+export default Button;

@@ -38,10 +38,6 @@ const StoresPage = ({ c }) => {
         </ul>
       </main>
       <Footer />
-      <script src="/explore/static/scripts.js" type="module"></script>
-      <script src="/decide/static/scripts.js" type="module"></script>
-      <script src="/checkout/static/scripts.js" type="module"></script>
-      <script src="/cdn/js/helper.js" type="module"></script>
     </div>
   );
 };

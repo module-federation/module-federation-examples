@@ -1,4 +1,4 @@
-import { readFromCookie, writeToCookie } from "./state.js";
+import { readFromCookie, writeToCookie } from './state';
 
 /**
  * Handles adding an item to the cart.
@@ -6,11 +6,11 @@ import { readFromCookie, writeToCookie } from "./state.js";
  */
 export async function handleAddToCart(c) {
   const body = await c.req.parseBody();
-  const sku = body.sku;
+  const { sku } = body;
 
   const items = readFromCookie(c);
 
-  const lineItem = items.find((i) => i.sku === sku);
+  const lineItem = items.find(i => i.sku === sku);
   if (lineItem) {
     lineItem.quantity++;
   } else {
@@ -25,11 +25,11 @@ export async function handleAddToCart(c) {
  */
 export async function handleRemoveFromCart(c) {
   const body = await c.req.parseBody();
-  const sku = body.sku;
+  const { sku } = body;
 
   const items = readFromCookie(c);
 
-  const lineItem = items.find((i) => i.sku === sku);
+  const lineItem = items.find(i => i.sku === sku);
   if (lineItem) {
     const index = items.indexOf(lineItem);
     items.splice(index, 1);

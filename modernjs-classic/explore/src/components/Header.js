@@ -1,10 +1,8 @@
-// import MiniCartReal from "../../checkout/components/MiniCart.js";
 import React from 'react';
+import MiniCart from 'checkout/MiniCart';
 import { IMAGE_SERVER } from '../utils';
 import Navigation from './Navigation';
 import './Header.css';
-
-const MiniCart = () => 'cart';
 
 /**
  * Header component.
@@ -24,8 +22,12 @@ const Header = ({ c }) => {
               alt="Micro Frontends - Tractor Store"
             />
           </a>
-          <div className="e_Header__navigation">{<Navigation />}</div>
-          <div className="e_Header__cart">{MiniCart({ c })}</div>
+          <div className="e_Header__navigation">
+            <Navigation />
+          </div>
+          <div className="e_Header__cart">
+            <MiniCart c={c} />
+          </div>
         </div>
       </div>
     </header>

@@ -1,4 +1,5 @@
 import { appTools, defineConfig } from '@modern-js/app-tools';
+import { ModuleFederationPlugin } from '@module-federation/enhanced/rspack';
 
 // https://modernjs.dev/en/configure/app/usage
 export default defineConfig({
@@ -19,22 +20,30 @@ export default defineConfig({
   ],
   tools: {
     rspack: (config, { rspack, appendPlugins }) => {
-      // @ts-ignore
+      // @ts-expect-error
       config.output.publicPath = 'auto';
+      // @ts-expect-error
+      config.output.uniqueName = 'explore';
+      delete config.optimization?.splitChunks;
+
       appendPlugins([
-        new rspack.container.ModuleFederationPlugin({
+        new ModuleFederationPlugin({
           name: 'explore',
           filename: 'static/js/remoteEntry.js',
-          // remotes: {
-          //   provider: 'provider@http://localhost:3002/static/js/remoteEntry.js',
-          // },
+          remotes: {
+            decide: 'decide@http://localhost:3002/static/js/remoteEntry.js',
+            checkout: 'checkout@http://localhost:3001/static/js/remoteEntry.js',
+          },
           exposes: {
             './Header': './src/components/Header',
             './Footer': './src/components/Footer',
+            './Recommendations': './src/components/Recommendations',
+            './StorePicker': './src/components/StorePicker',
           },
           shared: {
             react: { singleton: true },
             'react-dom': { singleton: true },
+            '@modern-js/': { singleton: true },
           },
         }),
       ]);

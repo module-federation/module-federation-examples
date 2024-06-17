@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from '@modern-js/runtime/router';
 import { src, srcset, fmtprice } from '../utils';
-import './Product.css'
+import './Product.css';
 /**
  * Product component.
  * @param {Object} props - The properties of the Product component.

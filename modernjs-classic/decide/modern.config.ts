@@ -1,5 +1,5 @@
 import { appTools, defineConfig } from '@modern-js/app-tools';
-
+import { ModuleFederationPlugin } from '@module-federation/enhanced/rspack';
 // https://modernjs.dev/en/configure/app/usage
 export default defineConfig({
   runtime: {
@@ -19,11 +19,15 @@ export default defineConfig({
   ],
   tools: {
     rspack: (config, { rspack, appendPlugins }) => {
-      // @ts-ignore
+      // @ts-expect-error
       config.output.publicPath = 'auto';
+      // @ts-expect-error
+      config.output.uniqueName = 'decide';
+      delete config.optimization?.splitChunks;
       appendPlugins([
-        new rspack.container.ModuleFederationPlugin({
+        new ModuleFederationPlugin({
           name: 'decide',
+          runtime: false,
           filename: 'static/js/remoteEntry.js',
           remotes: {
             explore: 'explore@http://localhost:3000/static/js/remoteEntry.js',
@@ -35,6 +39,7 @@ export default defineConfig({
           shared: {
             react: { singleton: true },
             'react-dom': { singleton: true },
+            '@modern-js/runtime/router': { singleton: true },
           },
         }),
       ]);
