@@ -140,8 +140,8 @@ importers:
         specifier: 0.6.5
         version: 0.6.5
       '@rspack/dev-server':
-        specifier: 0.6.5
-        version: 0.6.5(@rspack/core@0.6.5)(@types/express@4.17.21)(webpack-cli@4.10.0(webpack-dev-server@4.15.2)(webpack@5.91.0))(webpack@5.91.0(webpack-cli@4.10.0))
+        specifier: 0.7.4
+        version: 0.7.4(@rspack/core@0.6.5)(@types/express@4.17.21)(webpack-cli@4.10.0(webpack-dev-server@4.15.2)(webpack@5.91.0))(webpack@5.91.0(webpack-cli@4.10.0))
       '@types/react':
         specifier: 18.2.64
         version: 18.2.64
@@ -1413,11 +1413,6 @@ packages:
     peerDependenciesMeta:
       '@swc/helpers':
         optional: true
-
-  '@rspack/dev-server@0.6.5':
-    resolution: {integrity: sha512-NDhDIlwutGX5m0xdPzT3YtdmmjSr0p/9DHoSaxOXErc8Ml0651U4s6wXsw5ZoZhZYfzzpgIieKB8+yclHopNlQ==}
-    peerDependencies:
-      '@rspack/core': '*'
 
   '@rspack/dev-server@0.7.4':
     resolution: {integrity: sha512-mzc1gqZ0iMmqbsWiVSoRfZQiz2x1wGQc0uibyRzDxZ1Z9IqSjHwoZopVAN9aiR6CNWrSXRHy7KuyhCFfweOh0g==}
@@ -6970,26 +6965,6 @@ snapshots:
       tapable: 2.2.1
       webpack-sources: 3.2.3
 
-  '@rspack/dev-server@0.6.5(@rspack/core@0.6.5)(@types/express@4.17.21)(webpack-cli@4.10.0(webpack-dev-server@4.15.2)(webpack@5.91.0))(webpack@5.91.0(webpack-cli@4.10.0))':
-    dependencies:
-      '@rspack/core': 0.6.5
-      chokidar: 3.5.3
-      connect-history-api-fallback: 2.0.0
-      express: 4.19.2
-      http-proxy-middleware: 2.0.6(@types/express@4.17.21)
-      mime-types: 2.1.35
-      webpack-dev-middleware: 6.1.2(webpack@5.91.0(webpack-cli@4.10.0))
-      webpack-dev-server: 4.13.1(webpack-cli@4.10.0(webpack-dev-server@4.15.2)(webpack@5.91.0))(webpack@5.91.0(webpack-cli@4.10.0))
-      ws: 8.8.1
-    transitivePeerDependencies:
-      - '@types/express'
-      - bufferutil
-      - debug
-      - supports-color
-      - utf-8-validate
-      - webpack
-      - webpack-cli
-
   '@rspack/dev-server@0.7.4(@rspack/core@0.6.5)(@types/express@4.17.21)(webpack-cli@4.10.0(webpack-dev-server@4.15.2)(webpack@5.91.0))(webpack@5.91.0(webpack-cli@4.10.0))':
     dependencies:
       '@rspack/core': 0.6.5
@@ -10676,7 +10651,7 @@ snapshots:
       '@types/ws': 8.5.10
       ansi-html-community: 0.0.8
       bonjour-service: 1.2.1
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       colorette: 2.0.20
       compression: 1.7.4
       connect-history-api-fallback: 2.0.0
