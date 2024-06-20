@@ -83,6 +83,7 @@ Module federation will work with any type of file that you're able to import, th
 - OLX
 - Shopify
 - adidas
+- Zomato
 - and many more I cant remember
 
 # Contribution to this repo
