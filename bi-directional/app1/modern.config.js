@@ -1,5 +1,5 @@
 import appTools, { defineConfig } from '@modern-js/app-tools';
-import {ModuleFederationPlugin} from '@module-federation/enhanced/webpack'
+import { ModuleFederationPlugin } from '@module-federation/enhanced/webpack';
 // https://modernjs.dev/en/configure/app/usage
 export default defineConfig({
   server: {
