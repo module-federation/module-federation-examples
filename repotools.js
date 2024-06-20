@@ -43,6 +43,24 @@ const CONFIG = [
     targetVersion: "latest",
   },
   {
+    packageName: '@rsbuild/core',
+    shouldUpdate: true, // Assumes no targetVersion needed
+    versionToCheck: "2.0.0",
+    targetVersion: "latest",
+  },
+  {
+    packageName: '@rsbuild/plugin-vue',
+    shouldUpdate: true, // Assumes no targetVersion needed
+    versionToCheck: "2.0.0",
+    targetVersion: "latest",
+  },
+  {
+    packageName: '@rsbuild/plugin-react',
+    shouldUpdate: true, // Assumes no targetVersion needed
+    versionToCheck: "2.0.0",
+    targetVersion: "latest",
+  },
+  {
     packageName: 'webpack',
     shouldUpdate: true, // Assumes no targetVersion needed
     versionToCheck: "6.0.0",
@@ -188,7 +206,7 @@ function trackPackage(nestedDir, packageName, results) {
 async function traverseDirectories(dir, results) {
   const directories = getDirectories(dir);
   for (const directory of directories) {
-    if (directory.startsWith('angular') || directory.startsWith('.') || directory === 'node_modules') {
+    if (directory.startsWith('.') || directory === 'node_modules') {
       continue;
     }
     const nestedDir = path.join(dir, directory);
