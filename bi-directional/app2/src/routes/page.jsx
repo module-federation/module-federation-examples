@@ -24,9 +24,7 @@ const Index = () => (
       <p className="description">
         FEDERATED App1: <Button />
       </p>
-      <p className="description">
-        go to http://localhost:3001
-      </p>
+      <p className="description">go to http://localhost:3001</p>
 
       <div className="grid">
         <a

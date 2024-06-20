@@ -1,0 +1,50 @@
+.c_Checkout {
+  margin: 0 auto;
+  max-width: calc(1000px + var(--outer-space) * 2);
+  padding: 0 var(--outer-space);
+}
+
+.c_Checkout fieldset {
+  border: 0;
+  border-bottom: 2px solid black;
+  padding: 0 0 2rem;
+  margin: 0;
+}
+
+.c_Checkout__name {
+  display: flex;
+  gap: 0 4rem;
+  flex-wrap: wrap;
+}
+
+.c_Checkout__buttons {
+  margin: 3rem 0 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+
+.c_Checkout__buttons > * {
+  flex: 0;
+}
+
+.c_Checkout__label {
+  width: 100px;
+  display: inline-block;
+}
+
+.c_Checkout__input {
+  height: 40px;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  margin: 1rem 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) inset;
+}
+
+.c_Checkout__input:read-only {
+  background-color: rgba(0, 0, 0, 0.05);
+}
