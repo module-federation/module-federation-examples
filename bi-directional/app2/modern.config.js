@@ -37,6 +37,7 @@ export default defineConfig({
             react: { singleton: true },
             'react-dom': { singleton: true },
           },
+          runtimePlugins: ['./single-runtime-plugin.js'],
         }),
       ]);
     },

@@ -21,7 +21,6 @@ export default defineConfig({
       appendPlugins([
         new ModuleFederationPlugin({
           name: 'app1',
-          runtime: false,
           filename: 'static/js/remoteEntry.js',
           exposes: {
             './Button': './src/components/button.js',
@@ -33,6 +32,7 @@ export default defineConfig({
             react: { singleton: true },
             'react-dom': { singleton: true },
           },
+          runtimePlugins: ['./single-runtime-plugin.js'],
         }),
       ]);
     },
