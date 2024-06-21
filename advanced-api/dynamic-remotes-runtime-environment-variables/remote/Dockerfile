@@ -8,7 +8,7 @@ COPY . .
 RUN yarn build
 
 # => Run container
-FROM nginx:1.26.0-alpine
+FROM nginx:1.27.0-alpine
 
 # Nginx config
 RUN rm -rf /etc/nginx/conf.d
