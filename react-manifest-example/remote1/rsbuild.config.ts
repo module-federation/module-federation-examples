@@ -20,6 +20,9 @@ export default defineConfig({
             './button': './src/button.tsx',
             './app': './src/app.tsx',
           },
+          manifest: {
+            filePath: 'manifestpath'
+          },
           shared: [
             'react',
             'react-dom',
