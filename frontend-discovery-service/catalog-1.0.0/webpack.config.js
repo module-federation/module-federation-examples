@@ -1,32 +1,29 @@
-const { ModuleFederationPlugin } = require("webpack").container;
-const path = require("path");
-const package = require("./package.json");
+const { ModuleFederationPlugin } = require('webpack').container;
+const path = require('path');
+const package = require('./package.json');
 
-const name = ("my-project/catalog/" + package.version).replace(
-  /[\.\-\/]/gi,
-  "_"
-);
+const name = ('my-project/catalog/' + package.version).replace(/[\.\-\/]/gi, '_');
 
 module.exports = {
-  entry: "./src/Catalog",
-  mode: "development",
+  entry: './src/Catalog',
+  mode: 'development',
   devServer: {
-    static: path.join(__dirname, "dist"),
+    static: path.join(__dirname, 'dist'),
     port: 3003,
-    allowedHosts: "auto",
+    allowedHosts: 'auto',
     https: true,
   },
   output: {
-    publicPath: "auto",
+    publicPath: 'auto',
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          presets: ["@babel/preset-react"],
+          presets: ['@babel/preset-react'],
         },
       },
     ],
@@ -34,12 +31,12 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name,
-      filename: "remoteEntry.js",
+      filename: 'remoteEntry.js',
       exposes: {
-        "./my-project/catalog": "./src/Catalog",
+        './my-project/catalog': './src/Catalog',
       },
       shared: {
-        "react-dom": {
+        'react-dom': {
           singleton: true,
         },
         react: {

@@ -1,9 +1,9 @@
-const {UniversalFederationPlugin} = require('@module-federation/node');
+const { UniversalFederationPlugin } = require('@module-federation/node');
 module.exports = {
   entry: './index.js',
   mode: 'development',
   output: {
-    library: {type: 'commonjs-module',}
+    library: { type: 'commonjs-module' },
   },
   target: false,
   plugins: [
@@ -14,7 +14,7 @@ module.exports = {
       useRuntimePlugin: true,
       exposes: {
         './noop': './noop.js',
-      }
+      },
     }),
-  ]
-}
+  ],
+};

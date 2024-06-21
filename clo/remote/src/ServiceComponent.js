@@ -4,14 +4,17 @@ function fetchData(url) {
   let status = 'pending';
   let result;
   let suspender = fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      status = 'success';
-      result = data;
-    }, (error) => {
-      status = 'error';
-      result = error;
-    });
+    .then(response => response.json())
+    .then(
+      data => {
+        status = 'success';
+        result = data;
+      },
+      error => {
+        status = 'error';
+        result = error;
+      },
+    );
 
   return {
     read() {
@@ -22,7 +25,7 @@ function fetchData(url) {
       } else if (status === 'success') {
         return result;
       }
-    }
+    },
   };
 }
 

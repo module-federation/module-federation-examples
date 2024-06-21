@@ -1,6 +1,6 @@
 import React, { Component, Suspense } from 'react';
 
-const ModernComponent = React.lazy(() => import("app2/ModernComponent"));
+const ModernComponent = React.lazy(() => import('app2/ModernComponent'));
 const RemoteButton = React.lazy(() => import('app2/Button'));
 
 // Hooks not supported, uncomment to verify this is a pre-hooks react version being used.
@@ -12,9 +12,9 @@ class App extends Component {
     this.state = { input: '' };
   }
 
-  setValue = (e) => {
+  setValue = e => {
     this.setState({ input: e.target.value });
-  }
+  };
 
   render() {
     console.log(__webpack_share_scopes__);
@@ -22,7 +22,11 @@ class App extends Component {
       <div>
         <h1>Basic Host-Remote</h1>
         <h2>App 1, Uses react version not compatible with hooks</h2>
-        <input id="rootinputnode" onChange={this.setValue} placeholder="Type something into this input" />
+        <input
+          id="rootinputnode"
+          onChange={this.setValue}
+          placeholder="Type something into this input"
+        />
 
         <div style={{ border: '1px red solid', padding: '10px', margin: '20px 0' }}>
           <Suspense fallback="Loading Modern Com">

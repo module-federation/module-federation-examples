@@ -1,9 +1,9 @@
-const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 module.exports = {
   entry: './index.js',
   mode: 'development',
   output: {
-    library: {type: 'commonjs-module',}
+    library: { type: 'commonjs-module' },
   },
   target: 'async-node',
   plugins: [
@@ -13,7 +13,7 @@ module.exports = {
       runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],
       exposes: {
         './noop': './noop.js',
-      }
+      },
     }),
-  ]
-}
+  ],
+};

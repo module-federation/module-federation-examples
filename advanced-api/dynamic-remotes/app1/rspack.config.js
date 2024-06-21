@@ -1,4 +1,7 @@
-const { HtmlRspackPlugin, container: {ModuleFederationPlugin} } = require('@rspack/core');
+const {
+  HtmlRspackPlugin,
+  container: { ModuleFederationPlugin },
+} = require('@rspack/core');
 const path = require('path');
 
 module.exports = {
@@ -68,9 +71,9 @@ module.exports = {
     }),
   ],
   // it will be fixed soon...
-  resolve:{
-    alias:{
+  resolve: {
+    alias: {
       '@module-federation/runtime$': require.resolve('@module-federation/runtime'),
-    }
-  }
+    },
+  },
 };

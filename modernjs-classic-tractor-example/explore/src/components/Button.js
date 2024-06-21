@@ -19,7 +19,9 @@ const Button = ({
       type={type}
       value={value}
       data-id={dataId}
-      className={`e_Button e_Button--${variant} ${className} ${rounded ? 'e_Button--rounded' : ''}`}
+      className={`e_Button e_Button--${variant} ${className} ${
+        rounded ? 'e_Button--rounded' : ''
+      }`}
     >
       <div className="e_Button__inner">{children}</div>
     </Tag>

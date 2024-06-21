@@ -1,3 +1,3 @@
-import './hostAppChecks.cy'
-import './remoteAppChecks.cy'
-import './commonChecks.cy'
+import './hostAppChecks.cy';
+import './remoteAppChecks.cy';
+import './commonChecks.cy';

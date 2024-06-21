@@ -1,5 +1,4 @@
 export default function () {
-
   const getErrorMessage = (id, error) => `remote ${id} is offline due to error: ${error}`;
 
   const getModule = (pg, from) => {
@@ -17,7 +16,7 @@ export default function () {
 
   return {
     name: 'offline-remote-plugin',
-    errorLoadRemote({id, error, from, origin}) {
+    errorLoadRemote({ id, error, from, origin }) {
       console.error(id, 'offline');
       const pg = function () {
         console.error(id, 'offline', error);

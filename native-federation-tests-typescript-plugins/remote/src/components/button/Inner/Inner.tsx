@@ -1,7 +1,7 @@
 interface InnerButtonProps {
-    onClick: () => void
+  onClick: () => void;
 }
 
-const InnerButton = ({onClick}: InnerButtonProps) => <button onClick={onClick} />
+const InnerButton = ({ onClick }: InnerButtonProps) => <button onClick={onClick} />;
 
-export default InnerButton
+export default InnerButton;

@@ -8,7 +8,7 @@ module.exports = {
   entry: './src/index',
   mode: 'development',
   experiments: {
-    css: true
+    css: true,
   },
   devServer: {
     static: {
@@ -24,7 +24,7 @@ module.exports = {
     publicPath: 'auto',
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
   },
   module: {
     rules: [

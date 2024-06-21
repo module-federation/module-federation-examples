@@ -6,7 +6,8 @@ This example demonstrates how to use Module Federation to load and integrate dif
 
 1. **Adapter for Hooks Compatibility**: An adapter is created to attach a hooks-friendly version of React to render a section of the app using modern versions. This allows components from different React versions to work together seamlessly.
 
-2. **Separate React Versions**: 
+2. **Separate React Versions**:
+
    - `app1` uses an older version of React (pre-hooks era)
    - `app2` uses a modern version of React with hooks-based components
 

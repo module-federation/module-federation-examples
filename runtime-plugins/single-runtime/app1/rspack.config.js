@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {ModuleFederationPlugin, ContainerPlugin} = require('@module-federation/enhanced/rspack')
+const { ModuleFederationPlugin, ContainerPlugin } = require('@module-federation/enhanced/rspack');
 
 const path = require('path');
 
@@ -9,7 +9,7 @@ module.exports = {
   entry: './src/index',
   mode: 'development',
   optimization: {
-    runtimeChunk: 'single'
+    runtimeChunk: 'single',
   },
   devServer: {
     static: {
@@ -21,7 +21,7 @@ module.exports = {
   target: 'web',
   output: {
     publicPath: 'auto',
-    uniqueName: 'jcreo'
+    uniqueName: 'jcreo',
   },
   module: {
     rules: [
@@ -113,7 +113,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      excludeChunks: ['app1', 'app1_partial']
+      excludeChunks: ['app1', 'app1_partial'],
     }),
   ],
 };

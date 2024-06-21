@@ -58,7 +58,7 @@ const webpackConfig = {
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      excludeChunks: ['app1']
+      excludeChunks: ['app1'],
     }),
   ],
 };

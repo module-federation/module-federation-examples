@@ -22,7 +22,7 @@ If it doesn't exist, under the _shell/api_ folder create _local.settings.json_ w
 
 Then run:
 
--   npm run build
--   npm run start
--   visit [http://localhost:7071/api/app](http://localhost:7071/api/app) for the SSR app
--   visit [http://localhost:8080/client](http://localhost:8080/client) for the CSR app
+- npm run build
+- npm run start
+- visit [http://localhost:7071/api/app](http://localhost:7071/api/app) for the SSR app
+- visit [http://localhost:8080/client](http://localhost:8080/client) for the CSR app

@@ -1,8 +1,6 @@
 const path = require('path');
 const deps = require('./package.json').dependencies;
-const {
-  UniversalFederationPlugin
-} = require('@module-federation/node');
+const { UniversalFederationPlugin } = require('@module-federation/node');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {

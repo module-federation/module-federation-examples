@@ -1,8 +1,8 @@
-import { BrowserRouter } from "react-router-dom";
-import { createRoot, hydrateRoot } from "react-dom/client";
-import App from "components/App";
+import { BrowserRouter } from 'react-router-dom';
+import { createRoot, hydrateRoot } from 'react-dom/client';
+import App from 'components/App';
 
-const node = document.getElementById("root");
+const node = document.getElementById('root');
 
 hydrateRoot(node, <App />);
 

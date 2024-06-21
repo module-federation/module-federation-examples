@@ -18,21 +18,20 @@ const path = require('path');
 const dashboardURL = `${process.env.DASHBOARD_BASE_URL}/env/development/get-remote?token=${process.env.DASHBOARD_READ_TOKEN}`;
 
 const remotes = {
-  dsl: "dsl",
-}
+  dsl: 'dsl',
+};
 
 const delegatedRemotesObject = Object.entries(remotes).reduce((acc, [name, url]) => {
   acc[name] = `./medusa-delegate.js?remoteName=${url}`;
   return acc;
-},{})
-
+}, {});
 
 module.exports = {
-  entry: [...Object.values(delegatedRemotesObject),'./src/index'],
+  entry: [...Object.values(delegatedRemotesObject), './src/index'],
   mode: 'development',
   devServer: {
     static: {
-      directory: path.join(__dirname, "dist")
+      directory: path.join(__dirname, 'dist'),
     },
     port: 3001,
   },
@@ -86,7 +85,7 @@ module.exports = {
   },
   plugins: [
     new DefinePlugin({
-      'process.env.dashboardClientUrl': JSON.stringify(dashboardURL)
+      'process.env.dashboardClientUrl': JSON.stringify(dashboardURL),
     }),
     new ModuleFederationPlugin({
       name: 'home',

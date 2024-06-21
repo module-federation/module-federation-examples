@@ -15,7 +15,7 @@ import ProductCarousel from './ProductCarousel';
 const Header = React.lazy(async () => {
   const module = await loadRemoteModule({
     remoteName: 'nav',
-    exposedModule: './Header'
+    exposedModule: './Header',
   });
 
   return module;
@@ -24,7 +24,7 @@ const Header = React.lazy(async () => {
 const Footer = React.lazy(async () => {
   const module = await loadRemoteModule({
     remoteName: 'nav',
-    exposedModule: './Footer'
+    exposedModule: './Footer',
   });
 
   return module;
@@ -33,17 +33,17 @@ const Footer = React.lazy(async () => {
 const SearchList = React.lazy(async () => {
   const module = await loadRemoteModule({
     remoteName: 'search',
-    exposedModule: './SearchList'
+    exposedModule: './SearchList',
   });
 
   return module;
 });
 
 const items = [
-  { label: 'Sally', key:'1', children:<PageSally />},
-  { label: 'Little Guy', key:'2', children:<PageLG />},
-  { label: 'Mimi', key:'3', children:<PageMimi />},
-  { label: 'Sammy', key:'4', children:<PageSammy />}
+  { label: 'Sally', key: '1', children: <PageSally /> },
+  { label: 'Little Guy', key: '2', children: <PageLG /> },
+  { label: 'Mimi', key: '3', children: <PageMimi /> },
+  { label: 'Sammy', key: '4', children: <PageSammy /> },
 ];
 
 const App = () => {

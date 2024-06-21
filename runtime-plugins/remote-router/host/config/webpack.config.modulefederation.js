@@ -14,15 +14,13 @@ module.exports = {
   // or simply
   // import HelloWorld from 'remote-one/HelloWorld
   remotes: {
-    'remoteOne': `remote_one@http://local.remotes-monorepo.com/remote-one/remoteEntry.js`, // http://localhost:4200/remoteEntry.js
-    'remoteTwo': `remote_two@http://local.remotes-monorepo.com/remote-two/remoteEntry.js`, // http://localhost:4201/remoteEntry.js
+    remoteOne: `remote_one@http://local.remotes-monorepo.com/remote-one/remoteEntry.js`, // http://localhost:4200/remoteEntry.js
+    remoteTwo: `remote_two@http://local.remotes-monorepo.com/remote-two/remoteEntry.js`, // http://localhost:4201/remoteEntry.js
   },
-  runtimePlugins: [
-      require.resolve('./runtimePlugin.js')
-  ],
+  runtimePlugins: [require.resolve('./runtimePlugin.js')],
 
   shared: {
-    'react': {
+    react: {
       singleton: true,
       requiredVersion: dependencies['react'],
     },

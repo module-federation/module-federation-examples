@@ -10,7 +10,7 @@ const getRemoteVersions = loadRemoteEntryVersionsMemo('remotes.json');
 
 type HeaderProps = {
   children: ReactNode;
-}
+};
 
 declare module 'react' {
   interface HTMLAttributes<T> extends DOMAttributes<T> {
@@ -27,7 +27,7 @@ let MiniSearch: React.ComponentType<any>;
     const module = await loadRemoteModule({
       remoteName: 'dsl',
       exposedModule: './Button',
-      remoteEntry: remotes['dsl'] || 'http://localhost:3002/remoteEntry.json'
+      remoteEntry: remotes['dsl'] || 'http://localhost:3002/remoteEntry.json',
     });
 
     return module;
@@ -38,7 +38,7 @@ let MiniSearch: React.ComponentType<any>;
     const module = await loadRemoteModule({
       remoteName: 'search',
       exposedModule: './MiniSearch',
-      remoteEntry: remotes['search'] || 'http://localhost:3004/remoteEntry.json'
+      remoteEntry: remotes['search'] || 'http://localhost:3004/remoteEntry.json',
     });
 
     console.log('search: ', module);
@@ -48,29 +48,31 @@ let MiniSearch: React.ComponentType<any>;
   await initFederation();
 })();
 
-const menuItems = [{
-  label: 'Menu',
-  key: 'SubMenu',
-  icon: <SettingOutlined />,
-  children: [
-    {
-      type: 'group',
-      title: 'Item 1',
-      children: [
-        { key: 'setting:1', label: 'Option 1' },
-        { key: 'setting:2', label: 'Option 2' }
-      ]
-    },
-    {
-      type: 'group',
-      title: 'Item 2',
-      children: [
-        { key:'setting:3', label: 'Option 3' },
-        { key:'setting:4', label: 'Option 4' }
-      ]
-    }
-  ]
-}];
+const menuItems = [
+  {
+    label: 'Menu',
+    key: 'SubMenu',
+    icon: <SettingOutlined />,
+    children: [
+      {
+        type: 'group',
+        title: 'Item 1',
+        children: [
+          { key: 'setting:1', label: 'Option 1' },
+          { key: 'setting:2', label: 'Option 2' },
+        ],
+      },
+      {
+        type: 'group',
+        title: 'Item 2',
+        children: [
+          { key: 'setting:3', label: 'Option 3' },
+          { key: 'setting:4', label: 'Option 4' },
+        ],
+      },
+    ],
+  },
+];
 
 const Header = ({ children }: HeaderProps) => (
   <Layout.Header>

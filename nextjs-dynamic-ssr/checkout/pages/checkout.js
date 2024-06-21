@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from 'react';
+import React, { lazy, Suspense } from 'react';
 import Head from 'next/head';
 const CC = lazy(() => import('../components/test'));
 const Checkout = props => (
@@ -11,7 +11,7 @@ const Checkout = props => (
     <div className="hero">
       <h1>checkout page</h1>
       <Suspense fallback={'loading'}>
-      <CC />
+        <CC />
       </Suspense>
       <h3 className="title">This is a federated page owned by localhost:3000</h3>
       <span>
@@ -24,6 +24,6 @@ const Checkout = props => (
   </div>
 );
 Checkout.getInitialProps = async () => {
-  return {test: 123};
+  return { test: 123 };
 };
 export default Checkout;

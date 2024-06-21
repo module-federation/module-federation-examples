@@ -16,7 +16,7 @@ let Carousel: React.ComponentType<any>;
     const module = await loadRemoteModule({
       remoteName: 'dsl',
       exposedModule: './Carousel',
-      remoteEntry: remotes['dsl'] || 'http://localhost:3002/remoteEntry.json'
+      remoteEntry: remotes['dsl'] || 'http://localhost:3002/remoteEntry.json',
     });
 
     return module;

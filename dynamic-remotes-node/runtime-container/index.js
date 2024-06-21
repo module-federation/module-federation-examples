@@ -1,4 +1,3 @@
-import {loadRemote} from '@module-federation/runtime'
+import { loadRemote } from '@module-federation/runtime';
 
-
-export default loadRemote()
+export default loadRemote();

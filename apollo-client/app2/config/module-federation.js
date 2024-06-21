@@ -1,6 +1,6 @@
 const deps = require('../package.json').dependencies;
 
-module.exports = (FederationPlugin) => {
+module.exports = FederationPlugin => {
   return {
     client: new FederationPlugin({
       remoteType: 'script',
@@ -27,9 +27,9 @@ module.exports = (FederationPlugin) => {
     server: [
       new FederationPlugin({
         remoteType: 'script',
-        runtimePlugins:[require.resolve('@module-federation/node/runtimePlugin')],
+        runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],
         name: 'app2',
-        library: {type: 'commonjs-module',name: 'app2'},
+        library: { type: 'commonjs-module', name: 'app2' },
         filename: 'remoteEntry.js',
         exposes: {
           './PokemonList': './src/client/components/PokemonList',
@@ -48,7 +48,7 @@ module.exports = (FederationPlugin) => {
             'serialize-javascript': deps['serialize-javascript'],
           },
         ],
-      })
+      }),
     ],
-  }
+  };
 };

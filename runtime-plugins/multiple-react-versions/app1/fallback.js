@@ -39,7 +39,13 @@ class Component extends React.Component {
   }
 }
 
-const withVersions = (Original, remoteVersion, hostVersion, remoteReactDOMVersion, remoteReactVersion) => {
+const withVersions = (
+  Original,
+  remoteVersion,
+  hostVersion,
+  remoteReactDOMVersion,
+  remoteReactVersion,
+) => {
   const ReactDOM = remoteReactDOMVersion();
   const React = remoteReactVersion();
 
@@ -67,7 +73,9 @@ const withVersions = (Original, remoteVersion, hostVersion, remoteReactDOMVersio
     }
 
     render() {
-      return <Component hostV={hostVersion} remoteV={remoteVersion} containerRef={this.containerRef} />;
+      return (
+        <Component hostV={hostVersion} remoteV={remoteVersion} containerRef={this.containerRef} />
+      );
     }
   }
 

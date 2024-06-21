@@ -1,26 +1,26 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
-import React from "react";
-import { revalidate, FlushedChunks, flushChunks } from "@module-federation/nextjs-mf/utils";
-import {init, loadRemote} from '@module-federation/runtime'
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import React from 'react';
+import { revalidate, FlushedChunks, flushChunks } from '@module-federation/nextjs-mf/utils';
+import { init, loadRemote } from '@module-federation/runtime';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
-    const chunks = await flushChunks()
+    const chunks = await flushChunks();
     const remotes = isServer => {
       const location = isServer ? 'ssr' : 'chunks';
       return [
         {
           name: 'home',
-          entry:`http://localhost:3001/_next/static/${location}/remoteEntry.js`
+          entry: `http://localhost:3001/_next/static/${location}/remoteEntry.js`,
         },
         {
           name: 'shop',
-          entry:`http://localhost:3002/_next/static/${location}/remoteEntry.js`
+          entry: `http://localhost:3002/_next/static/${location}/remoteEntry.js`,
         },
         {
           name: 'checkout',
-          entry:`http://localhost:3000/_next/static/${location}/remoteEntry.js`
+          entry: `http://localhost:3000/_next/static/${location}/remoteEntry.js`,
         },
       ];
     };
@@ -28,18 +28,15 @@ class MyDocument extends Document {
     init({
       name: 'home',
       remotes: remotes(typeof window === 'undefined'),
-      force: true
-    })
+      force: true,
+    });
     return {
       ...initialProps,
-      chunks
+      chunks,
     };
-
-
   }
 
   render() {
-
     return (
       <Html>
         <Head>
@@ -48,8 +45,8 @@ class MyDocument extends Document {
         </Head>
 
         <body className="bg-background-grey">
-        <Main />
-        <NextScript />
+          <Main />
+          <NextScript />
         </body>
       </Html>
     );

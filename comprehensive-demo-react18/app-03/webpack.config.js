@@ -17,7 +17,7 @@ module.exports = {
 
   output: {
     publicPath: 'auto',
-    uniqueName: 'app3'
+    uniqueName: 'app3',
   },
 
   resolve: {
@@ -27,10 +27,10 @@ module.exports = {
     port: 3003,
     hot: !isProd,
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-    }
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
   },
 
   module: {

@@ -1,17 +1,17 @@
-import React, {Fragment, Suspense,lazy} from 'react';
+import React, { Fragment, Suspense, lazy } from 'react';
 import Head from 'next/head';
-import {init, loadRemote} from '@module-federation/runtime'
+import { init, loadRemote } from '@module-federation/runtime';
 
 const remotes = isServer => {
   const location = isServer ? 'ssr' : 'chunks';
   return [
     {
       name: 'shop',
-      entry:`http://localhost:3002/_next/static/${location}/remoteEntry.js`
+      entry: `http://localhost:3002/_next/static/${location}/remoteEntry.js`,
     },
     {
       name: 'checkout',
-      entry:`http://localhost:3000/_next/static/${location}/remoteEntry.js`
+      entry: `http://localhost:3000/_next/static/${location}/remoteEntry.js`,
     },
   ];
 };
@@ -19,30 +19,31 @@ const remotes = isServer => {
 init({
   name: 'home',
   remotes: remotes(typeof window === 'undefined'),
-  force: true
-})
+  force: true,
+});
 
-const RemoteTitle = lazy(() => loadRemote('checkout/title').then((c)=>{
-  if(typeof c ==='function') {
-    return c()
-  }
-  return c
-}));
+const RemoteTitle = lazy(() =>
+  loadRemote('checkout/title').then(c => {
+    if (typeof c === 'function') {
+      return c();
+    }
+    return c;
+  }),
+);
 
-const Home = ({loaded}) => {
+const Home = ({ loaded }) => {
   return (
     <div>
       <Head>
         <title>Home</title>
-        <link rel="icon" href="/nextjs-dynamic-ssr/home/public/favicon.ico"/>
+        <link rel="icon" href="/nextjs-dynamic-ssr/home/public/favicon.ico" />
       </Head>
 
       <div className="hero">
-        <Suspense fallback={"loading remote title"}>
-          <RemoteTitle/>
+        <Suspense fallback={'loading remote title'}>
+          <RemoteTitle />
         </Suspense>
         <h1 className="title">
-
           Welcome to Next.js on Webpack 5! <code>home</code>
         </h1>
         <p className="description">

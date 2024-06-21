@@ -4,9 +4,7 @@
     <p>I am being imported.</p>
     <p>I also has my own behavior like fetching data</p>
     <p>
-      <button @click="fetchData" type="button">
-        Click to fetch from FakeApi
-      </button>
+      <button @click="fetchData" type="button">Click to fetch from FakeApi</button>
     </p>
     <pre><code>{{result}}</code></pre>
   </section>
@@ -14,7 +12,7 @@
 
 <script>
 export default {
-  name: "MainComponent",
+  name: 'MainComponent',
   data() {
     return {
       result: null,
@@ -22,10 +20,10 @@ export default {
   },
   methods: {
     fetchData() {
-      fetch("https://jsonplaceholder.typicode.com/todos/1")
-        .then((response) => response.json())
-        .then((json) => {
-          alert("Data fetched");
+      fetch('https://jsonplaceholder.typicode.com/todos/1')
+        .then(response => response.json())
+        .then(json => {
+          alert('Data fetched');
           this.result = json;
           console.log(json);
         });

@@ -13,7 +13,7 @@ const sharedDependencies = {
   'serialize-javascript': deps['serialize-javascript'],
 };
 
-module.exports = (FederationPlugin) => ({
+module.exports = FederationPlugin => ({
   client: new FederationPlugin({
     remoteType: 'script',
     name: 'app1',

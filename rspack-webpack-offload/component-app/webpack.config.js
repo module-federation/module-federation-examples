@@ -49,15 +49,15 @@ module.exports = {
       shared: {
         react: {
           singleton: true,
-          import: false
+          import: false,
         },
         'react-dom': {
           import: false,
         },
-        "lodash/": {
+        'lodash/': {
           import: false,
         },
-      }
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',

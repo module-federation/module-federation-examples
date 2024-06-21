@@ -7,6 +7,6 @@ export default defineConfig({
   server: {
     port: 3002,
   },
-  moduleFederation: {options:mfConfig},
+  moduleFederation: { options: mfConfig },
   plugins: [pluginReact()],
 });

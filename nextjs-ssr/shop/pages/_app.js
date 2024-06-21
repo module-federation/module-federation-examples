@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy } from 'react';
 import App from 'next/app';
 import dynamic from 'next/dynamic';
 const Nav = lazy(() => import('home/nav'));

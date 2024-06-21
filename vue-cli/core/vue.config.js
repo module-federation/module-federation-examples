@@ -4,7 +4,7 @@ module.exports = {
   publicPath: 'http://localhost:9000/',
   configureWebpack: {
     optimization: {
-      splitChunks: false
+      splitChunks: false,
     },
     plugins: [
       new ModuleFederationPlugin({

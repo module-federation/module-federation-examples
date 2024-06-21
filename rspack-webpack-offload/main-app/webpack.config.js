@@ -43,10 +43,10 @@ module.exports = {
         'react-dom': {
           import: false,
         },
-        "lodash/": {
+        'lodash/': {
           import: false,
         },
-      }
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',

@@ -1,11 +1,13 @@
 ## Getting Started
 
 # Install dependencies
+
 ```bash
 yarn install
 ```
 
 # Start remote
+
 ```
 cd ./remote
 
@@ -14,8 +16,8 @@ yarn build
 yarn serve
 ```
 
+# Start host
 
-# Start host 
 ```
 cd ./host
 

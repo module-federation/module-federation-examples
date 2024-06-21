@@ -8,7 +8,7 @@ import App from '../client/components/App';
 import { createApolloClient } from '../client/apolloClient';
 
 export default async (req, res, next) => {
-  const fetch = (await import('node-fetch')).default
+  const fetch = (await import('node-fetch')).default;
   const helmet = Helmet.renderStatic();
 
   const { apolloClient } = createApolloClient({
@@ -46,4 +46,3 @@ export default async (req, res, next) => {
   res.write('</body></html>');
   res.send();
 };
-

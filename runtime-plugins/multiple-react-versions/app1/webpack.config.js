@@ -50,7 +50,7 @@ const webpackConfig = {
           strictVersion: true,
           // singleton: true, // only a single version of the shared module is allowed
         },
-        'react': {
+        react: {
           strictVersion: true,
           // singleton: true, // only a single version of the shared module is allowed
         },

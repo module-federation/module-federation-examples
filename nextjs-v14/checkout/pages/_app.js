@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-MyApp.getInitialProps = async (ctx) => {
+MyApp.getInitialProps = async ctx => {
   const appProps = await App.getInitialProps(ctx);
   return { ...appProps };
 };

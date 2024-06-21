@@ -41,9 +41,7 @@ module.exports = {
       remotes: {
         app2: app2Module.federationConfig,
       },
-      runtimePlugins: [
-          require.resolve('./runtimePlugin.js')
-      ],
+      runtimePlugins: [require.resolve('./runtimePlugin.js')],
       shared: {
         moment: deps.moment,
         react: {

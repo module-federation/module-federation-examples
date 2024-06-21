@@ -1,3 +1,3 @@
-import("./bootstrap").then(async ({ renderApp }) => {
+import('./bootstrap').then(async ({ renderApp }) => {
   await renderApp();
 });

@@ -1,3 +1,3 @@
-import IsolatePluginFactory from "../plugin/isolatePluginFactory";
+import IsolatePluginFactory from '../plugin/isolatePluginFactory';
 
-export default IsolatePluginFactory(["shared-lib"]);
+export default IsolatePluginFactory(['shared-lib']);

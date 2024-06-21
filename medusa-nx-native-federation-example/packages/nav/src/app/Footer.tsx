@@ -3,7 +3,7 @@ import { Layout } from 'antd';
 
 type FooterProps = {
   children: ReactNode;
-}
+};
 
 const Footer = ({ children }: FooterProps) => (
   <Layout.Footer>

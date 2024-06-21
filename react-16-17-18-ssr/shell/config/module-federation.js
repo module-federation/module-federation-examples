@@ -14,9 +14,7 @@ module.exports = {
     new ModuleFederationPlugin({
       remoteType: 'script',
       name: 'shell',
-      runtimePlugins: [
-        require.resolve('@module-federation/node/runtimePlugin')
-      ],
+      runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],
       library: { type: 'commonjs-module' },
       filename: 'remoteEntry.js',
       remotes: {

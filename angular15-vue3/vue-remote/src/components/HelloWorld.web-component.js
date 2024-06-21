@@ -1,4 +1,4 @@
-import {defineCustomElement} from 'vue';
+import { defineCustomElement } from 'vue';
 import HelloWorldComponent from './HelloWorld.ce.vue';
 
 const component = defineCustomElement(HelloWorldComponent);

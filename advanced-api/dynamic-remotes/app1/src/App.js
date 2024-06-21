@@ -71,9 +71,7 @@ function App() {
       <button onClick={setApp2}>Load App 2 Widget</button>
       <button onClick={setApp3}>Load App 3 Widget</button>
       <div style={{ marginTop: '2em' }}>
-        <Suspense fallback="Loading System">
-          {Component ? <Component /> : null}
-        </Suspense>
+        <Suspense fallback="Loading System">{Component ? <Component /> : null}</Suspense>
       </div>
     </div>
   );

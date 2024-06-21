@@ -4,8 +4,8 @@ This repository is to showcase examples of how Webpack 5's new Module Federation
 
 ## Module Federation Universe
 
-* Module federation enhances collections: [Universe](https://github.com/module-federation/universe)
-* Module Federation Docs: [Module Federation Docs](https://module-federation.io/)
+- Module federation enhances collections: [Universe](https://github.com/module-federation/universe)
+- Module Federation Docs: [Module Federation Docs](https://module-federation.io/)
 
 ## List of Examples
 

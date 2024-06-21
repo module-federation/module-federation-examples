@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {ModuleFederationPlugin} = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const path = require('path');
-const {dependencies} = require('./package.json')
+const { dependencies } = require('./package.json');
 /**
  * @type {import('webpack').Configuration}
  **/
@@ -55,8 +55,8 @@ const webpackConfig = {
           shareScope: 'modern', // share scope with this name will be used
           // singleton: true, // only a single version of the shared module is allowed
         },
-        'react': {
-          requiredVersion:dependencies['react'],
+        react: {
+          requiredVersion: dependencies['react'],
           strictVersion: true,
           shareScope: 'modern',
           shareKey: 'react',

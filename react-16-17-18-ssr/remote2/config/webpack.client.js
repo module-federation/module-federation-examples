@@ -2,7 +2,7 @@ const path = require('path');
 const { merge } = require('webpack-merge');
 const sharedWebpackConfig = require('./webpack.shared');
 const moduleFederationPlugin = require('./module-federation');
-const {HtmlRspackPlugin} = require('@rspack/core')
+const { HtmlRspackPlugin } = require('@rspack/core');
 
 /**
  * @type {import('webpack').Configuration}

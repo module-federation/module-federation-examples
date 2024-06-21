@@ -1,7 +1,6 @@
 import { FederationRuntimePlugin } from '@module-federation/runtime/types';
 
-export default function ():FederationRuntimePlugin {
-
+export default function (): FederationRuntimePlugin {
   const getErrorMessage = (id, error) => `remote ${id} is offline due to error: ${error}`;
 
   const getModule = (pg, from) => {
@@ -19,7 +18,7 @@ export default function ():FederationRuntimePlugin {
 
   return {
     name: 'offline-remote-plugin',
-    errorLoadRemote({id, error, from, origin}) {
+    errorLoadRemote({ id, error, from, origin }) {
       console.error(id, 'offline');
       const pg = function () {
         console.error(id, 'offline', error);

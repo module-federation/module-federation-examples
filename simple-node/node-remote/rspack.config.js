@@ -1,5 +1,7 @@
 const path = require('path');
-const { container:{ModuleFederationPlugin} } = require('@rspack/core');
+const {
+  container: { ModuleFederationPlugin },
+} = require('@rspack/core');
 
 module.exports = {
   mode: 'development',
@@ -32,6 +34,6 @@ module.exports = {
         './test': './src/expose.js',
       },
       runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],
-    })
-  ]
+    }),
+  ],
 };

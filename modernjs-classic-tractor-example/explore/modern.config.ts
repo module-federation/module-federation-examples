@@ -19,10 +19,10 @@ export default defineConfig({
     }),
   ],
   output: {
-    disableTsChecker: true
+    disableTsChecker: true,
   },
   tools: {
-    rspack: (config, { rspack,appendPlugins }) => {
+    rspack: (config, { rspack, appendPlugins }) => {
       // @ts-expect-error
       config.output.publicPath = 'auto';
       // @ts-expect-error

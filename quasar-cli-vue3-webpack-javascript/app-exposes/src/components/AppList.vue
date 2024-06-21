@@ -13,14 +13,15 @@
             </q-item-section>
 
             <q-item-section side>
-              <q-btn data-e2e="CLOSE_BUTTON"
+              <q-btn
+                data-e2e="CLOSE_BUTTON"
                 icon="close"
                 round
                 flat
-                @click="handleRemove(index)"></q-btn>
+                @click="handleRemove(index)"
+              ></q-btn>
             </q-item-section>
           </q-item>
-
         </q-list>
       </q-card-section>
     </q-card>
@@ -30,44 +31,44 @@
 <script>
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
- emits: ['delete-requested'],
- setup(props, {emit}){
-   const list = ref([
-     {
-       label: 'Gualtiero',
-       createdAt: 'Jan 1st, 2019'
-     },
-     {
-       label: 'Riyaz',
-       createdAt: 'Feb 2nd, 2019'
-     },
-     {
-       label: 'Quy',
-       createdAt: 'March 3rd, 2019'
-     },
-     {
-       label: 'Sang',
-       createdAt: 'April 4th, 2019'
-     },
-     {
-       label: 'Loris',
-       createdAt: 'May 5th, 2019'
-     },
-   ]);
+  emits: ['delete-requested'],
+  setup(props, { emit }) {
+    const list = ref([
+      {
+        label: 'Gualtiero',
+        createdAt: 'Jan 1st, 2019',
+      },
+      {
+        label: 'Riyaz',
+        createdAt: 'Feb 2nd, 2019',
+      },
+      {
+        label: 'Quy',
+        createdAt: 'March 3rd, 2019',
+      },
+      {
+        label: 'Sang',
+        createdAt: 'April 4th, 2019',
+      },
+      {
+        label: 'Loris',
+        createdAt: 'May 5th, 2019',
+      },
+    ]);
 
-   const handleRemove = (index) => {
-     emit('delete-requested', {
-       item: list.value[index],
-       index
-     });
-     list.value.splice(index, 1);
-   }
-   return {
-     list,
-     handleRemove,
-   }
- }
-})
+    const handleRemove = index => {
+      emit('delete-requested', {
+        item: list.value[index],
+        index,
+      });
+      list.value.splice(index, 1);
+    };
+    return {
+      list,
+      handleRemove,
+    };
+  },
+});
 </script>
 
 <style lang="scss" scoped>

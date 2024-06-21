@@ -37,6 +37,6 @@ module.exports = {
         './test': './src/expose.js',
       },
       runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],
-    })
-  ]
+    }),
+  ],
 };

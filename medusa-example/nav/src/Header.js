@@ -7,17 +7,30 @@ console.log(import('search/MiniSearch'));
 const MiniSearch = React.lazy(() => import('search/MiniSearch'));
 const Button = React.lazy(() => import('dsl/Button'));
 
-const menuItems =[
-  {label: 'Menu', key: 'SubMenu', icon:<SettingOutlined />, children:[
-      {type:'group', title:'Item 1', children:[
-          {key:'setting:1', label: 'Option 1'},
-          {key:'setting:2', label: 'Option 2'}
-        ]},
-      {type:'group', title:'Item 2', children:[
-          {key:'setting:3', label: 'Option 3'},
-          {key:'setting:4', label: 'Option 4'}
-        ]}
-    ]}
+const menuItems = [
+  {
+    label: 'Menu',
+    key: 'SubMenu',
+    icon: <SettingOutlined />,
+    children: [
+      {
+        type: 'group',
+        title: 'Item 1',
+        children: [
+          { key: 'setting:1', label: 'Option 1' },
+          { key: 'setting:2', label: 'Option 2' },
+        ],
+      },
+      {
+        type: 'group',
+        title: 'Item 2',
+        children: [
+          { key: 'setting:3', label: 'Option 3' },
+          { key: 'setting:4', label: 'Option 4' },
+        ],
+      },
+    ],
+  },
 ];
 
 const Header = ({ children }) => (

@@ -7,111 +7,114 @@ const CONFIG = [
     packageName: '@module-federation/node',
     shouldUpdate: true,
     versionToCheck: '3.0.13',
-    targetVersion: "latest"
+    targetVersion: 'latest',
   },
   {
     packageName: '@module-federation/sdk',
     shouldUpdate: true,
     versionToCheck: '3.0.13',
-    targetVersion: "latest"
+    targetVersion: 'latest',
   },
   {
     packageName: '@rspack/core',
     shouldUpdate: true,
     versionToCheck: '3.0.13',
-    targetVersion: "latest"
-  }, {
+    targetVersion: 'latest',
+  },
+  {
     packageName: '@rspack/cli',
     shouldUpdate: true,
     versionToCheck: '3.0.13',
-    targetVersion: "latest"
-  }, {
+    targetVersion: 'latest',
+  },
+  {
     packageName: '@rspack/plugin-react-refresh',
     shouldUpdate: true,
     versionToCheck: '3.0.13',
-    targetVersion: "latest"
-  },{
+    targetVersion: 'latest',
+  },
+  {
     packageName: '@rspack/dev-server',
     shouldUpdate: true,
     versionToCheck: '3.0.13',
-    targetVersion: "latest"
+    targetVersion: 'latest',
   },
   {
     packageName: '@module-federation/enhanced',
     shouldUpdate: true, // Assumes no targetVersion needed
-    versionToCheck: "2.0.0",
-    targetVersion: "latest",
+    versionToCheck: '2.0.0',
+    targetVersion: 'latest',
   },
   {
     packageName: '@rsbuild/core',
     shouldUpdate: true, // Assumes no targetVersion needed
-    versionToCheck: "2.0.0",
-    targetVersion: "latest",
+    versionToCheck: '2.0.0',
+    targetVersion: 'latest',
   },
   {
     packageName: '@rsbuild/plugin-vue',
     shouldUpdate: true, // Assumes no targetVersion needed
-    versionToCheck: "2.0.0",
-    targetVersion: "latest",
+    versionToCheck: '2.0.0',
+    targetVersion: 'latest',
   },
   {
     packageName: '@rsbuild/plugin-react',
     shouldUpdate: true, // Assumes no targetVersion needed
-    versionToCheck: "2.0.0",
-    targetVersion: "latest",
+    versionToCheck: '2.0.0',
+    targetVersion: 'latest',
   },
   {
     packageName: 'webpack',
     shouldUpdate: true, // Assumes no targetVersion needed
-    versionToCheck: "6.0.0",
-    targetVersion: "latest",
+    versionToCheck: '6.0.0',
+    targetVersion: 'latest',
   },
   {
     packageName: 'mini-css-extract-plugin',
     shouldUpdate: true, // Assumes no targetVersion needed
-    versionToCheck: "9.0.0",
-    targetVersion: "latest",
+    versionToCheck: '9.0.0',
+    targetVersion: 'latest',
   },
   {
     packageName: '@module-federation/utilities',
-    shouldUpdate: false // Assumes no targetVersion needed
+    shouldUpdate: false, // Assumes no targetVersion needed
   },
   {
     packageName: '@module-federation/nextjs-mf',
     shouldUpdate: true,
     versionToCheck: '9.2.2',
-    targetVersion: "latest"
+    targetVersion: 'latest',
   },
   {
     packageName: '@module-federation/runtime',
     shouldUpdate: true,
     versionToCheck: '9.2.2',
-    targetVersion: "latest"
+    targetVersion: 'latest',
   },
   {
     packageName: '@rspack/core',
     shouldUpdate: true,
     versionToCheck: '9.2.2',
-    targetVersion: "latest"
+    targetVersion: 'latest',
   },
   {
     packageName: '@rspack/cli',
     shouldUpdate: true,
     versionToCheck: '9.2.2',
-    targetVersion: "latest"
+    targetVersion: 'latest',
   },
   {
     packageName: '@rspack/dev-server',
     shouldUpdate: true,
     versionToCheck: '9.2.2',
-    targetVersion: "latest"
+    targetVersion: 'latest',
   },
   {
     packageName: '@rspack/plugin-react-refresh',
     shouldUpdate: true,
     versionToCheck: '9.2.2',
-    targetVersion: "latest"
-  }
+    targetVersion: 'latest',
+  },
 ];
 
 const versionCache = {};
@@ -156,19 +159,19 @@ async function checkAndUpdatePackages(nestedDir, packageJson, results) {
   let needsUpdate = false;
 
   for (const config of CONFIG) {
-    const {packageName, shouldUpdate, versionToCheck} = config;
-    let {targetVersion} = config;
-    const currentVersion = packageJson.dependencies?.[packageName] || packageJson.devDependencies?.[packageName];
+    const { packageName, shouldUpdate, versionToCheck } = config;
+    let { targetVersion } = config;
+    const currentVersion =
+      packageJson.dependencies?.[packageName] || packageJson.devDependencies?.[packageName];
 
     if (targetVersion === 'latest') {
       targetVersion = await getLatestVersion(packageName, targetVersion);
       if (!targetVersion) continue; // Skip if failed to fetch latest version
     }
-    if (targetVersion === "next") {
+    if (targetVersion === 'next') {
       targetVersion = await getLatestVersion(packageName, targetVersion);
       if (!targetVersion) continue; // Skip if failed to fetch latest version
       updateDependencies(packageJson, packageName, targetVersion);
-
     }
 
     if (currentVersion && semver.satisfies(semver.coerce(currentVersion), `<${versionToCheck}`)) {
@@ -183,7 +186,11 @@ async function checkAndUpdatePackages(nestedDir, packageJson, results) {
   }
 
   if (needsUpdate) {
-    fs.writeFileSync(path.join(nestedDir, 'package.json'), JSON.stringify(packageJson, null, 2), 'utf8');
+    fs.writeFileSync(
+      path.join(nestedDir, 'package.json'),
+      JSON.stringify(packageJson, null, 2),
+      'utf8',
+    );
     console.log(`Updated dependencies in ${nestedDir}`);
   }
 }
@@ -230,5 +237,5 @@ async function getPackages(dir) {
 // Running the modified function
 (async () => {
   const results = await getPackages('./'); // Start from the current directory
-  console.log("Package Updates:", results);
+  console.log('Package Updates:', results);
 })();

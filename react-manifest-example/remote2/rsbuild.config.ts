@@ -24,10 +24,12 @@ export default defineConfig({
       ]);
     },
   },
-  plugins: [pluginReact({
-    splitChunks: {
-      react: false,
-      router: false
-    }
-  })],
+  plugins: [
+    pluginReact({
+      splitChunks: {
+        react: false,
+        router: false,
+      },
+    }),
+  ],
 });

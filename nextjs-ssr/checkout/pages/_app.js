@@ -1,4 +1,4 @@
-import {Suspense,lazy} from "react";
+import { Suspense, lazy } from 'react';
 import App from 'next/app';
 import dynamic from 'next/dynamic';
 const Nav = lazy(() => {
@@ -6,13 +6,12 @@ const Nav = lazy(() => {
   return import('home/nav');
 });
 
-
 function MyApp({ Component, pageProps }) {
   console.log('in app');
   return (
     <>
       <Suspense fallback={'loading'}>
-      <Nav />
+        <Nav />
       </Suspense>
       <Component {...pageProps} />
       <div className="test">test</div>

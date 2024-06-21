@@ -2,10 +2,10 @@
 
 Speed up webpack by offloading shared modules to rspack which can parse them faster.
 
-In this, we disable module share imports in webpack with 
+In this, we disable module share imports in webpack with
 `import: false` on share scope
 
-In rspack, we ensure these modules are actually used in the build somewhere, so they are not tree shaken out. 
+In rspack, we ensure these modules are actually used in the build somewhere, so they are not tree shaken out.
 Often ill expose a file that imports it all to force the modules to exist, then never load that exposed key.
 
 Now rspack will only provide npm packages, webpack will treat them as externals and expect rspack to provide them over federation.

@@ -3,21 +3,23 @@ import { BrowserRouter, Routes, Route, MemoryRouter, Link } from 'react-router-d
 import './App.css';
 import { Image } from 'antd';
 
-function Home(){
-  return <div>hello sub2 home page</div>
+function Home() {
+  return <div>hello sub2 home page</div>;
 }
 
-function Detail(){
-  return <>
-   <div>hello sub2 detail page</div>
-    <Image
-      width={200}
-      src="https://gw.alipayobjects.com/zos/antfincdn/LlvErxo8H9/photo-1503185912284-5271ff81b9a8.webp"
-    />
-  </>
+function Detail() {
+  return (
+    <>
+      <div>hello sub2 detail page</div>
+      <Image
+        width={200}
+        src="https://gw.alipayobjects.com/zos/antfincdn/LlvErxo8H9/photo-1503185912284-5271ff81b9a8.webp"
+      />
+    </>
+  );
 }
 
-const App = (info: {abc?: number}) => {
+const App = (info: { abc?: number }) => {
   return (
     <>
       <ul>
@@ -29,8 +31,8 @@ const App = (info: {abc?: number}) => {
         </li>
       </ul>
       <Routes>
-        <Route path="/" Component={Home}/>
-        <Route path="/detail" Component={Detail}/>
+        <Route path="/" Component={Home} />
+        <Route path="/detail" Component={Detail} />
       </Routes>
     </>
   );

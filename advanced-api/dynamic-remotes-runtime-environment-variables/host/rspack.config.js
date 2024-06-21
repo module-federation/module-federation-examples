@@ -10,7 +10,7 @@ module.exports = {
   mode: 'development',
   entry: './src/index',
   devtool: 'source-map',
-  devServer:{
+  devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
     },

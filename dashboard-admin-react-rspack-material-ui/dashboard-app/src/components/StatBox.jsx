@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, Typography, useTheme } from "@mui/material";
-import ProgressCircle from "./ProgressCircle";
-import { tokens } from "../theme";
+import { Box, Typography, useTheme } from '@mui/material';
+import ProgressCircle from './ProgressCircle';
+import { tokens } from '../theme';
 
 const StatBox = ({ title, subtitle, progress, increase, icon }) => {
   const theme = useTheme();
@@ -12,11 +12,7 @@ const StatBox = ({ title, subtitle, progress, increase, icon }) => {
       <Box display="flex" justifyContent="space-between">
         <Box>
           {icon}
-          <Typography
-            variant="h4"
-            fontWeight="bold"
-            sx={{ color: colors.grey[100] }}
-          >
+          <Typography variant="h4" fontWeight="bold" sx={{ color: colors.grey[100] }}>
             {title}
           </Typography>
         </Box>
@@ -28,11 +24,7 @@ const StatBox = ({ title, subtitle, progress, increase, icon }) => {
         <Typography variant="h5" sx={{ color: colors.greenAccent[500] }}>
           {subtitle}
         </Typography>
-        <Typography
-          variant="h5"
-          fontStyle="italic"
-          sx={{ color: colors.greenAccent[600] }}
-        >
+        <Typography variant="h5" fontStyle="italic" sx={{ color: colors.greenAccent[600] }}>
           {increase}
         </Typography>
       </Box>

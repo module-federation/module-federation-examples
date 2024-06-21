@@ -1,5 +1,5 @@
-import React, {useEffect, lazy, useState, Suspense} from 'react';
-import {useRouter} from 'next/router';
+import React, { useEffect, lazy, useState, Suspense } from 'react';
+import { useRouter } from 'next/router';
 
 // Define the Home component using lazy loading, only on the client side
 const Home = process.browser ? lazy(() => import('home/home')) : () => <div>Loading...</div>;
@@ -14,7 +14,6 @@ const Page = props => {
     }
 
     setShouldRenderHome(true);
-
   }, [props.needsPush]);
 
   if (!shouldRenderHome) {
@@ -41,10 +40,10 @@ Page.getInitialProps = async ctx => {
     }
 
     // If no additional props need to be fetched, indicate no need to push the route again
-    return {needsPush: false};
+    return { needsPush: false };
   }
   // Default return for server-side to trigger a route push on the client side for proper hydration
-  return {needsPush: true};
+  return { needsPush: true };
 };
 
 export default Page;

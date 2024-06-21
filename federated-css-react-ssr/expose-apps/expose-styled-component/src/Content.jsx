@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 import styled from 'styled-components';
 
 //styled component Li
 const StyledComponent = styled.div`
-  border : 2px solid green;
+  border: 2px solid green;
   width: 50%;
   padding: 12px;
   background-color: purple;
@@ -11,7 +11,9 @@ const StyledComponent = styled.div`
 `;
 
 export default () => (
-    <div>
-        <StyledComponent data-e2e="FEDERATED_CSS_BUTTON">This is exposed Styled Component content</StyledComponent>
-    </div>
+  <div>
+    <StyledComponent data-e2e="FEDERATED_CSS_BUTTON">
+      This is exposed Styled Component content
+    </StyledComponent>
+  </div>
 );

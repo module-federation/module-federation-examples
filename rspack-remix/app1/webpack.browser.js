@@ -37,7 +37,7 @@ const config = {
   module: {
     rules: [
       {
-        include: (input) => routeSet.has(input),
+        include: input => routeSet.has(input),
         use: [
           // {
           //   loader: "babel-loader",
@@ -53,14 +53,14 @@ const config = {
                   syntax: 'ecmascript',
                   jsx: true,
                 },
-              }
+              },
             },
           },
         ],
       },
       {
         test: /\.[jt]sx?$/,
-        exclude: (input) => routeSet.has(input),
+        exclude: input => routeSet.has(input),
         use: [
           {
             loader: 'builtin:swc-loader',
@@ -70,7 +70,7 @@ const config = {
                   syntax: 'ecmascript',
                   jsx: true,
                 },
-              }
+              },
             },
           },
         ],

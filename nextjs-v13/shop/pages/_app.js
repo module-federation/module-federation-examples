@@ -1,6 +1,6 @@
 import { Suspense, lazy, useEffect, useState } from 'react';
 const Nav = lazy(() => {
-  if(process.browser) {
+  if (process.browser) {
     const mod = import('home/nav');
     return mod;
   }
@@ -15,9 +15,7 @@ function MyApp({ Component, pageProps }) {
   }, []);
   return (
     <>
-      <Suspense fallback={'loading'}>
-        {isClient && <Nav />}
-      </Suspense>
+      <Suspense fallback={'loading'}>{isClient && <Nav />}</Suspense>
       <Component {...pageProps} />
     </>
   );

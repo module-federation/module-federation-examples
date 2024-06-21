@@ -90,11 +90,15 @@ const RenderInstances = () => {
                 <h2>{name}</h2>
                 {Object.entries(shared).map(([key, entries]) => {
                   return entries.map((entry, entryIndex) => {
-                    const { version, useIn, shareConfig: { singleton } } = entry;
+                    const {
+                      version,
+                      useIn,
+                      shareConfig: { singleton },
+                    } = entry;
                     const overrideVersion = formData[name]?.[key];
                     // Get all versions specific to the package
-                    const packageVersions = instances.flatMap(instance =>
-                      instance.shared[key]?.map(entry => entry.version) || [],
+                    const packageVersions = instances.flatMap(
+                      instance => instance.shared[key]?.map(entry => entry.version) || [],
                     );
                     const uniquePackageVersions = [...new Set(packageVersions)];
                     return (
@@ -109,7 +113,7 @@ const RenderInstances = () => {
                           borderRadius: '5px',
                         }}
                       >
-                        <h3 style={{margin: '10px 0'}}>{key}</h3>
+                        <h3 style={{ margin: '10px 0' }}>{key}</h3>
                         <div
                           style={{
                             display: 'flex',
@@ -119,14 +123,14 @@ const RenderInstances = () => {
                             color: '#666',
                           }}
                         >
-                          <div style={{marginBottom: '5px'}}>
+                          <div style={{ marginBottom: '5px' }}>
                             <p>Ships With: {version}</p>
                             <p>Singleton: {singleton ? 'Yes' : 'No'}</p>
                             <p>Currently using: {overrideVersion || version}</p>
                             <p>Override using: {overrideVersion || 'not set'}</p>
                           </div>
                           <div>
-                            <label style={{display: 'block', marginBottom: '5px'}}>
+                            <label style={{ display: 'block', marginBottom: '5px' }}>
                               Override:
                               <select
                                 defaultValue={overrideVersion}
@@ -157,7 +161,7 @@ const RenderInstances = () => {
                   });
                 })}
               </form>
-            )
+            );
           })}
       </div>
       <p style={{ marginTop: '0px' }}>

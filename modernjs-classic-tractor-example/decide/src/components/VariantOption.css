@@ -11,14 +11,12 @@
   display: inline-block;
   position: relative;
   background-color: var(--variant-color);
-  box-shadow:
-    0 0 2px rgba(0, 0, 0, 0.5) inset,
-    0px 2px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5) inset, 0px 2px 3px rgba(0, 0, 0, 0.1);
 }
 
 .d_VariantOption__color::before,
 .d_VariantOption__color::after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   top: 1px;
@@ -58,7 +56,7 @@
 
 .d_VariantOption > strong::before,
 .d_VariantOption:hover > a::before {
-  content: "";
+  content: '';
   display: block;
   width: 100%;
   height: 2px;

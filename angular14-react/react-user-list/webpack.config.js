@@ -7,9 +7,9 @@ module.exports = {
   devServer: {
     port: 3002,
     headers: {
-      "Access-Control-Allow-Origin": "*"
+      'Access-Control-Allow-Origin': '*',
     },
-    hot: true
+    hot: true,
   },
   resolve: {
     extensions: ['.js', '.tsx', '.ts'],
@@ -36,8 +36,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ['style-loader',
-              'css-loader'],
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
@@ -48,7 +47,7 @@ module.exports = {
       exposes: {
         './ListUserReactComponent': './src/ListUserReactComponent',
       },
-     shared: {
+      shared: {
         react: {
           singleton: true,
           requiredVersion: deps.react,

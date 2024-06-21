@@ -15,7 +15,7 @@ const columns: TableProps<DataType>['columns'] = [
     title: 'Name',
     dataIndex: 'name',
     key: 'name',
-    render: (text) => <a>{text}</a>,
+    render: text => <a>{text}</a>,
   },
   {
     title: 'Age',
@@ -33,7 +33,7 @@ const columns: TableProps<DataType>['columns'] = [
     dataIndex: 'tags',
     render: (_, { tags }) => (
       <>
-        {tags.map((tag) => {
+        {tags.map(tag => {
           let color = tag.length > 5 ? 'geekblue' : 'green';
           if (tag === 'fail') {
             color = 'volcano';
