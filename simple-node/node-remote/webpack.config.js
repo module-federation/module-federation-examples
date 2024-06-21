@@ -15,6 +15,11 @@ module.exports = {
   cache: false,
 
   devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
     port: 3002,
     static: {
       directory: path.join(__dirname, 'dist'),

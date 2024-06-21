@@ -16,6 +16,11 @@ module.exports = {
         port: 3004,
         hot: true,
         historyApiFallback: true,
+			headers: {
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+				'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+			},
     },
 	module: {
 		rules: [
@@ -28,13 +33,13 @@ module.exports = {
                 exclude: /node_modules/,
                 use: [
                     {
-                    loader: "babel-loader",            
+                    loader: "babel-loader",
                     options: {
                         presets: ["@babel/preset-env", "@babel/preset-react"],
                     },
                     },
                 ],
-              },      
+              },
               {
                 test: /\.css$/i,
                 use: ["style-loader", "css-loader"],
@@ -68,7 +73,7 @@ module.exports = {
 				"react-dom": {
 					singleton: true,
 					requiredVersion: dependencies["react-dom"]
-				},			  
+				},
 				"@mui/material": {
 					singleton: true,
 					requiredVersion: dependencies["@mui/material"]

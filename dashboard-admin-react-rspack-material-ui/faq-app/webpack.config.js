@@ -4,7 +4,7 @@ const { dependencies } = require("./package.json");
 const path = require('path');
 
 module.exports = {
-    entry: "./src/index.js",  
+    entry: "./src/index.js",
     output: {
       path: path.join(__dirname, './dist'),
       filename: 'bundle.js',
@@ -16,9 +16,13 @@ module.exports = {
     mode: "development",
     devServer: {
       port: 3003,
-      historyApiFallback: true, 
+      historyApiFallback: true,
       hot: true,
-
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+        'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+      },
     },
     module: {
       rules: [
@@ -58,7 +62,7 @@ module.exports = {
             ...dependencies,
             "react": {
               singleton: true,
-              
+
               requiredVersion: dependencies.react
             },
             "react-dom": {
@@ -87,7 +91,7 @@ module.exports = {
     resolve: {
         modules: [path.resolve(__dirname, 'src'), 'node_modules'],
         extensions: ['*', '.js', '.jsx'],
-  
+
     },
     target: "web",
 };

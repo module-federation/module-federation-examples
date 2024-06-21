@@ -17,8 +17,12 @@ module.exports = {
     devServer: {
       port: 3001,
       hot: true,
-      historyApiFallback: true, 
-    
+      historyApiFallback: true,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+        'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+      },
     },
     module: {
       rules: [
@@ -78,14 +82,14 @@ module.exports = {
             singleton: true,
             requiredVersion: dependencies["@emotion/react"]
           },
-          
+
         },
       }),
     ],
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
       extensions: ['*', '.js', '.jsx'],
- 
+
     },
     target: "web",
 };
