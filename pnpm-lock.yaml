@@ -7266,11 +7266,11 @@ importers:
         specifier: ^11.10.5
         version: 11.11.4(@types/react@18.0.38)(react@18.2.0)
       '@softarc/native-federation':
-        specifier: ^1.1.1
-        version: 1.1.2
+        specifier: ^2.0.0
+        version: 2.0.9
       '@softarc/native-federation-esbuild':
         specifier: ^1.1.1
-        version: 1.1.2(@softarc/native-federation-runtime@1.1.2)(@softarc/native-federation@1.1.2)
+        version: 1.1.2(@softarc/native-federation-runtime@1.1.2)(@softarc/native-federation@2.0.9)
       '@softarc/native-federation-runtime':
         specifier: ^1.1.1
         version: 1.1.2
@@ -21295,8 +21295,11 @@ packages:
   '@softarc/native-federation-runtime@1.1.2':
     resolution: {integrity: sha512-SluFVf1zDkdL4rxPdynlK+ju0nqbDjl1GYPEH7GFO1yU3gNEpIe4xoB/FcuarIEVru3GWbF1R9hfxjW63Hm3nA==}
 
-  '@softarc/native-federation@1.1.2':
-    resolution: {integrity: sha512-mtEhQ2snieRqWPLTaQTzturz9piNAuzqXM099lX2l4khT2vPVnGOMiN8uq272bjkZ+Zm/YGooH0gSNXYdAQ9oQ==}
+  '@softarc/native-federation-runtime@2.0.9':
+    resolution: {integrity: sha512-HuT8b86Cm9bXprMXIr+YPFJD21gji7BJlQvlicd+tJ75ZEq3F/Fk/BB28qaROAzFqNiMnrfCEn4pZ1D+P945QA==}
+
+  '@softarc/native-federation@2.0.9':
+    resolution: {integrity: sha512-8YSS2L5VKPKuNh45g48+pD2sv1CcpINRTEvR/vhL1D1uLcEcxnOsTX2lT0DyzKAVXv6SDDnTgw9xZcYR7+m9GA==}
 
   '@stitches/react@1.2.8':
     resolution: {integrity: sha512-9g9dWI4gsSVe8bNLlb+lMkBYsnIKCZTmvqvDG+Avnn69XfmHZKiaMrx7cgTaddq7aTPPmXiTsbFcUy0xgI4+wA==}
@@ -49484,7 +49487,7 @@ snapshots:
       babel-plugin-transform-react-remove-prop-types: 0.4.24
       cssnano: 6.0.1(postcss@8.4.38)
       glob: 9.3.5
-      html-webpack-plugin: 5.5.3(webpack@5.92.1(@swc/core@1.6.3)(esbuild@0.17.19))
+      html-webpack-plugin: 5.5.3(webpack@5.89.0(@swc/core@1.6.3)(esbuild@0.17.19))
       lodash: 4.17.21
       postcss: 8.4.38
       postcss-custom-properties: 13.1.5(postcss@8.4.38)
@@ -55900,12 +55903,12 @@ snapshots:
 
   '@soda/get-current-script@1.0.2': {}
 
-  '@softarc/native-federation-esbuild@1.1.2(@softarc/native-federation-runtime@1.1.2)(@softarc/native-federation@1.1.2)':
+  '@softarc/native-federation-esbuild@1.1.2(@softarc/native-federation-runtime@1.1.2)(@softarc/native-federation@2.0.9)':
     dependencies:
       '@rollup/plugin-commonjs': 22.0.2(rollup@2.79.1)
       '@rollup/plugin-node-resolve': 13.3.0(rollup@2.79.1)
       '@rollup/plugin-replace': 4.0.0(rollup@2.79.1)
-      '@softarc/native-federation': 1.1.2
+      '@softarc/native-federation': 2.0.9
       '@softarc/native-federation-runtime': 1.1.2
       acorn: 8.12.0
       esbuild: 0.15.18
@@ -55918,12 +55921,15 @@ snapshots:
     dependencies:
       tslib: 2.6.3
 
-  '@softarc/native-federation@1.1.2':
+  '@softarc/native-federation-runtime@2.0.9':
     dependencies:
-      '@softarc/native-federation-runtime': 1.1.2
+      tslib: 2.6.3
+
+  '@softarc/native-federation@2.0.9':
+    dependencies:
+      '@softarc/native-federation-runtime': 2.0.9
       json5: 2.2.3
       npmlog: 6.0.2
-      process: 0.11.10
 
   '@stitches/react@1.2.8(react@18.2.0)':
     dependencies:
@@ -86135,7 +86141,7 @@ snapshots:
       typed-assert: 1.0.9
       webpack: 5.92.1(@swc/core@1.6.3)(esbuild@0.17.19)
     optionalDependencies:
-      html-webpack-plugin: 5.5.3(webpack@5.92.1(@swc/core@1.6.3)(esbuild@0.17.19))
+      html-webpack-plugin: 5.5.3(webpack@5.89.0(@swc/core@1.6.3)(esbuild@0.17.19))
 
   webpack-subresource-integrity@5.1.0(html-webpack-plugin@5.6.0(@rspack/core@0.7.4(@swc/helpers@0.5.11))(webpack@5.92.1(@swc/core@1.6.3(@swc/helpers@0.5.11))(esbuild@0.21.5)))(webpack@5.92.1(@swc/core@1.6.3(@swc/helpers@0.5.11))(esbuild@0.21.5)):
     dependencies:
