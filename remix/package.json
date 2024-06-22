@@ -2,7 +2,7 @@
   "name": "remix",
   "version": "0.0.0",
   "scripts": {
-    "preinstall": "find . -name \"noexist\" -type d -prune -exec rm -rf '{}' +; pnpm install --ignore-scripts",
+    "preinstall": "pnpm install --ignore-scripts",
     "server": "concurrently 'cd ./app1; sleep 1 && npm run server' 'cd ./app2; npm run server'",
     "start": "pnpm --filter remix-* --parallel start"
   },

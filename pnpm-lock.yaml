@@ -8158,6 +8158,9 @@ importers:
 
   nextjs-dynamic-ssr:
     dependencies:
+      '@module-federation/sdk':
+        specifier: ^0.1.21
+        version: 0.1.21
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -56851,7 +56854,7 @@ snapshots:
       case-sensitive-paths-webpack-plugin: 2.4.0
       core-js: 3.37.1
       css-loader: 3.6.0(webpack@4.47.0)
-      file-loader: 6.2.0(webpack@4.47.0)
+      file-loader: 6.2.0(webpack@5.92.1(@swc/core@1.6.3))
       find-up: 5.0.0
       fork-ts-checker-webpack-plugin: 4.1.6(eslint@8.57.0)(typescript@5.4.3)(vue-template-compiler@2.7.16)(webpack@4.47.0)
       glob: 7.2.3
@@ -57314,7 +57317,7 @@ snapshots:
       core-js: 3.37.1
       css-loader: 3.6.0(webpack@4.47.0)
       express: 4.19.2(supports-color@6.1.0)
-      file-loader: 6.2.0(webpack@5.92.1(@swc/core@1.6.3))
+      file-loader: 6.2.0(webpack@4.47.0)
       find-up: 5.0.0
       fs-extra: 9.1.0
       html-webpack-plugin: 4.5.2(webpack@4.47.0)
