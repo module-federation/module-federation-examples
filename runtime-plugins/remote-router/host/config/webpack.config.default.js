@@ -7,14 +7,14 @@ const isProduction = process.env.NODE_ENV === 'production';
 const stylesHandler = isProduction
   ? MiniCssExtractPlugin.loader
   : {
-    loader: 'style-loader',
-    options: {
-      insert: 'head',
-      injectType: 'singletonStyleTag',
-    }
-  };
+      loader: 'style-loader',
+      options: {
+        insert: 'head',
+        injectType: 'singletonStyleTag',
+      },
+    };
 
-module.exports = function() {
+module.exports = function () {
   return {
     // Entry and Context
     // https://webpack.js.org/configuration/entry-context
@@ -34,10 +34,7 @@ module.exports = function() {
             cacheCompression: false,
             cacheDirectory: true,
           },
-          exclude: [
-            /node_modules/,
-            /dist/,
-          ],
+          exclude: [/node_modules/, /dist/],
         },
         // Assets
         // https://webpack.js.org/guides/asset-modules/
@@ -47,9 +44,7 @@ module.exports = function() {
         {
           test: /\.html$/i,
           type: 'asset/source',
-          exclude: [
-            /index.html/i,
-          ],
+          exclude: [/index.html/i],
         },
         // Font files and images as resource asset
         // https://webpack.js.org/guides/asset-modules/#resource-assets
@@ -59,26 +54,17 @@ module.exports = function() {
         },
         {
           test: /\.css$/,
-          use: [
-            stylesHandler,
-            'css-loader',
-            'postcss-loader',
-          ]
+          use: [stylesHandler, 'css-loader', 'postcss-loader'],
         },
         {
           test: /\.scss$/,
-          use: [
-            stylesHandler,
-            'css-loader',
-            'postcss-loader',
-            'sass-loader',
-          ]
+          use: [stylesHandler, 'css-loader', 'postcss-loader', 'sass-loader'],
         },
         {
           test: /\.json$/,
           type: 'json',
         },
-      ]
+      ],
     },
     // Plugins
     // https://webpack.js.org/configuration/plugins
@@ -91,17 +77,12 @@ module.exports = function() {
         // Minification
         // https://github.com/jantimon/html-webpack-plugin#options
         minify: false,
-        chunks: [
-          'vendor',
-          'vendors',
-          'commons',
-          'app',
-        ],
+        chunks: ['vendor', 'vendors', 'commons', 'app'],
         chunksSortMode: 'manual',
       }),
       // Module Federation
       // https://webpack.js.org/concepts/module-federation
       new ModuleFederationPlugin(moduleFederationConfig),
-    ]
-  }
-}
+    ],
+  };
+};

@@ -11,9 +11,8 @@ let utils: Promise<void>;
   utils = loadRemoteModule({
     remoteName: 'utils',
     exposedModule: './analytics',
-    remoteEntry: remotes['utils'] || 'http://localhost:3005/remoteEntry.json'
-  })
-  .then((module) => {
+    remoteEntry: remotes['utils'] || 'http://localhost:3005/remoteEntry.json',
+  }).then(module => {
     sendAnalyticsMessage = module.sendAnalyticsMessage;
   });
 })();

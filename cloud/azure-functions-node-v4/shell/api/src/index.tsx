@@ -1,82 +1,79 @@
-import {app} from "@azure/functions";
-import {renderToPipeableStream, renderToString} from "react-dom/server";
-import MemoryStream from "memory-stream";
-import fs from "fs";
-import path from "path";
-import {App} from "./client";
-import React from "react";
-import {loadRemote} from "@module-federation/runtime";
+import { app } from '@azure/functions';
+import { renderToPipeableStream, renderToString } from 'react-dom/server';
+import MemoryStream from 'memory-stream';
+import fs from 'fs';
+import path from 'path';
+import { App } from './client';
+import React from 'react';
+import { loadRemote } from '@module-federation/runtime';
 
+app.http('module', {
+  methods: ['GET'],
+  handler: async (request, context) => {
+    const scope = request.query.get('scope');
+    const module = request.query.get('module');
 
-app.http("module", {
-    methods: ["GET"],
-    handler: async (request, context) => {
-        const scope = request.query.get("scope");
-        const module = request.query.get("module");
-
-        let container = await loadRemote(scope + '/' + module)
-        container = container.default || container
-        return {
-            body: renderToString(container()),
-        };
-    },
+    let container = await loadRemote(scope + '/' + module);
+    container = container.default || container;
+    return {
+      body: renderToString(container()),
+    };
+  },
 });
 
-app.http("getChunks", {
-    route: "chunks/{*filePath}",
-    methods: ["GET"],
-    handler: (request, context) => {
-        const {filePath} = request.params;
-        console.log(process.cwd(), __dirname, path.resolve(__dirname));
-        return {
-            body: fs.readFileSync(path.join(__dirname, "../client", filePath)),
-        };
-    },
+app.http('getChunks', {
+  route: 'chunks/{*filePath}',
+  methods: ['GET'],
+  handler: (request, context) => {
+    const { filePath } = request.params;
+    console.log(process.cwd(), __dirname, path.resolve(__dirname));
+    return {
+      body: fs.readFileSync(path.join(__dirname, '../client', filePath)),
+    };
+  },
 });
 
-app.http("app", {
-    methods: ["GET"],
-    handler: async (request, context) => {
-        const responseBody = await createResponseBody(<App/>);
+app.http('app', {
+  methods: ['GET'],
+  handler: async (request, context) => {
+    const responseBody = await createResponseBody(<App />);
 
-        return {
-            body: responseBody,
-            headers: {
-                "content-type": "text/html",
-            },
-        };
-    },
+    return {
+      body: responseBody,
+      headers: {
+        'content-type': 'text/html',
+      },
+    };
+  },
 });
 
 async function createResponseBody(reactElement): Promise<string> {
-    return new Promise((resolve) => {
-        const outputStream = new MemoryStream();
+  return new Promise(resolve => {
+    const outputStream = new MemoryStream();
 
-        const assetMap = {
-            "main.js": "/api/chunks/main.js",
-        };
+    const assetMap = {
+      'main.js': '/api/chunks/main.js',
+    };
 
-        const stream = renderToPipeableStream(reactElement, {
-            onAllReady() {
-                //outputStream.write(`<!DOCTYPE html>`);
-                outputStream.write(`<html>
+    const stream = renderToPipeableStream(reactElement, {
+      onAllReady() {
+        //outputStream.write(`<!DOCTYPE html>`);
+        outputStream.write(`<html>
 				<head>
 				</head>
 				<body>`);
-                outputStream.write(`<div id="root">`);
-                stream.pipe(outputStream);
-                outputStream.write(`</div>`);
-                outputStream.write(
-                    `<script async data-chunk="main" src="${assetMap["main.js"]}"></script>`
-                );
-                outputStream.write(`</body></html>`);
-                //stream.pipe(outputStream);
-                resolve(outputStream);
-            },
-            //bootstrapScripts: [assetMap["main.js"]],
-            bootstrapScriptContent: `window.assetMap = ${JSON.stringify(
-                assetMap
-            )};`,
-        });
+        outputStream.write(`<div id="root">`);
+        stream.pipe(outputStream);
+        outputStream.write(`</div>`);
+        outputStream.write(
+          `<script async data-chunk="main" src="${assetMap['main.js']}"></script>`,
+        );
+        outputStream.write(`</body></html>`);
+        //stream.pipe(outputStream);
+        resolve(outputStream);
+      },
+      //bootstrapScripts: [assetMap["main.js"]],
+      bootstrapScriptContent: `window.assetMap = ${JSON.stringify(assetMap)};`,
     });
+  });
 }

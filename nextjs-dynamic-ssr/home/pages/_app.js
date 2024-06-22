@@ -1,16 +1,16 @@
 import App from 'next/app';
 import Nav from '../components/nav';
-import {init, loadRemote} from '@module-federation/runtime'
+import { init, loadRemote } from '@module-federation/runtime';
 const remotes = isServer => {
   const location = isServer ? 'ssr' : 'chunks';
   return [
     {
       name: 'shop',
-      entry:`http://localhost:3002/_next/static/${location}/remoteEntry.js`
+      entry: `http://localhost:3002/_next/static/${location}/remoteEntry.js`,
     },
     {
       name: 'checkout',
-      entry:`http://localhost:3000/_next/static/${location}/remoteEntry.js`
+      entry: `http://localhost:3000/_next/static/${location}/remoteEntry.js`,
     },
   ];
 };
@@ -18,9 +18,8 @@ const remotes = isServer => {
 init({
   name: 'home',
   remotes: remotes(typeof window === 'undefined'),
-  force: true
-})
-
+  force: true,
+});
 
 function MyApp({ Component, pageProps }) {
   return (

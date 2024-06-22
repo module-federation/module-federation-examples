@@ -21,7 +21,7 @@ export default defineConfig({
             './app': './src/app.tsx',
           },
           manifest: {
-            filePath: 'manifestpath'
+            filePath: 'manifestpath',
           },
           shared: [
             'react',
@@ -32,10 +32,12 @@ export default defineConfig({
       ]);
     },
   },
-  plugins: [pluginReact({
-    splitChunks: {
-      react: false,
-      router: false
-    }
-  })],
+  plugins: [
+    pluginReact({
+      splitChunks: {
+        react: false,
+        router: false,
+      },
+    }),
+  ],
 });

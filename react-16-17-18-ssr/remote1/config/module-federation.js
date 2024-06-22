@@ -47,6 +47,6 @@ module.exports = {
           requiredVersion: deps['react-dom'],
         },
       },
-    })
+    }),
   ],
 };

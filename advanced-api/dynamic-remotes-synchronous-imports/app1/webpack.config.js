@@ -12,6 +12,11 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
     port: app1Module.port,
   },
   output: {
@@ -36,9 +41,7 @@ module.exports = {
       remotes: {
         app2: app2Module.federationConfig,
       },
-      runtimePlugins: [
-          require.resolve('./runtimePlugin.js')
-      ],
+      runtimePlugins: [require.resolve('./runtimePlugin.js')],
       shared: {
         moment: deps.moment,
         react: {

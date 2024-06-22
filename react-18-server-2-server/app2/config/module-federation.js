@@ -25,6 +25,6 @@ module.exports = {
       },
       remotes: {},
       shared: [{ react: deps.react, 'react-dom': deps['react-dom'] }],
-    })
+    }),
   ],
 };

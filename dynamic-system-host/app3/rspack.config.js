@@ -1,4 +1,4 @@
-const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack')
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const path = require('path');

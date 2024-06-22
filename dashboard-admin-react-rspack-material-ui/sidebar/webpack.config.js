@@ -1,35 +1,39 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const path = require("path");
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const dependencies = require("./package.json").dependencies;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const dependencies = require('./package.json').dependencies;
 
 module.exports = {
-  entry: "./src/index.js",
-  mode: "development",
+  entry: './src/index.js',
+  mode: 'development',
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "main.js",
-    assetModuleFilename: 'images/[hash].[ext]'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'main.js',
+    assetModuleFilename: 'images/[hash].[ext]',
   },
   devServer: {
     port: 3002,
     hot: true,
-    historyApiFallback: true, 
-    
+    historyApiFallback: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
   },
-  name: "nav",
+  name: 'nav',
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: [
-            {
-            loader: "babel-loader",            
+          {
+            loader: 'babel-loader',
             options: {
-                presets: ["@babel/preset-env", "@babel/preset-react"],
+              presets: ['@babel/preset-env', '@babel/preset-react'],
             },
-            },
+          },
         ],
       },
       {
@@ -38,58 +42,57 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
   resolve: {
-      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-      extensions: ['*', '.js', '.jsx'],
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    extensions: ['*', '.js', '.jsx'],
   },
-  
+
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
+      template: './public/index.html',
     }),
     new ModuleFederationPlugin({
-      name: "Nav",
-      filename: "remoteEntry.js",
+      name: 'Nav',
+      filename: 'remoteEntry.js',
       remotes: {
-        Dashboard: "Dashboard@http://localhost:3001/remoteEntry.js",
-        FAQ: "FAQ@http://localhost:3003/remoteEntry.js"
+        Dashboard: 'Dashboard@http://localhost:3001/remoteEntry.js',
+        FAQ: 'FAQ@http://localhost:3003/remoteEntry.js',
       },
       exposes: {
-        "./Nav": "./src/Sidebar.js"
+        './Nav': './src/Sidebar.js',
       },
       shared: {
         ...dependencies,
-        "react": {
+        react: {
           singleton: true,
-          requiredVersion: dependencies.react
+          requiredVersion: dependencies.react,
         },
-        "react-dom": {
+        'react-dom': {
           singleton: true,
-          requiredVersion: dependencies["react-dom"]
+          requiredVersion: dependencies['react-dom'],
         },
-        "react-router-dom": {
+        'react-router-dom': {
           singleton: true,
-          requiredVersion: dependencies["react-router-dom"]
+          requiredVersion: dependencies['react-router-dom'],
         },
-        "@mui/material": {
+        '@mui/material': {
           singleton: true,
-          requiredVersion: dependencies["@mui/material"]
+          requiredVersion: dependencies['@mui/material'],
         },
-        "@mui/icons-material": {
+        '@mui/icons-material': {
           singleton: true,
-          requiredVersion: dependencies["@mui/icons-material"]
+          requiredVersion: dependencies['@mui/icons-material'],
         },
-        "@emotion/react": {
+        '@emotion/react': {
           singleton: true,
-          requiredVersion: dependencies["@emotion/react"]
+          requiredVersion: dependencies['@emotion/react'],
         },
-      }
-    })
+      },
+    }),
   ],
-  target: "web",
-
+  target: 'web',
 };

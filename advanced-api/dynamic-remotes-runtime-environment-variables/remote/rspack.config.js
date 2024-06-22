@@ -9,7 +9,7 @@ module.exports = {
   entry: './src/index',
   mode: 'development',
   devtool: 'source-map',
-  devServer:{
+  devServer: {
     port: 3001,
     headers: {
       'Access-Control-Allow-Origin': '*',

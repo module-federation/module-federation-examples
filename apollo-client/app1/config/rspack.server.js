@@ -26,4 +26,3 @@ const webpackConfig = {
 };
 
 module.exports = merge(shared, webpackConfig);
-

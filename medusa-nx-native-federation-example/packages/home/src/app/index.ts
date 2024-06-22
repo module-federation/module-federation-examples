@@ -6,14 +6,14 @@ import { loadRemoteEntryVersions } from 'native-federation-plugin/lib';
 
   try {
     await initFederation({
-      'dsl': remotes['dsl'] || 'http://localhost:3002/remoteEntry.json',
-      'nav': remotes['nav'] || 'http://localhost:3003/remoteEntry.json',
-      'search': remotes['search'] || 'http://localhost:3004/remoteEntry.json',
-      'utils': remotes['utils'] || 'http://localhost:3005/remoteEntry.json',
+      dsl: remotes['dsl'] || 'http://localhost:3002/remoteEntry.json',
+      nav: remotes['nav'] || 'http://localhost:3003/remoteEntry.json',
+      search: remotes['search'] || 'http://localhost:3004/remoteEntry.json',
+      utils: remotes['utils'] || 'http://localhost:3005/remoteEntry.json',
     });
 
     await import('./bootstrap');
-  } catch(e) {
+  } catch (e) {
     throw new Error(`NativeFederationInitError: 'home' app error: ${e}`);
   }
 })();

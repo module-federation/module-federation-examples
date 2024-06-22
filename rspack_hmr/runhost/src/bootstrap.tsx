@@ -1,18 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css";
-import { FederationRuntimePlugin, init, loadRemote } from "@module-federation/enhanced/runtime";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+import './index.css';
+import { FederationRuntimePlugin, init, loadRemote } from '@module-federation/enhanced/runtime';
 
 const runtimePlugin: () => FederationRuntimePlugin = function () {
   return {
-    name: "my-runtime-plugin",
+    name: 'my-runtime-plugin',
     beforeInit(args) {
-      console.log("beforeInit: ", args);
+      console.log('beforeInit: ', args);
       return args;
     },
     beforeRequest(args) {
-      console.log("beforeRequest: ", args);
+      console.log('beforeRequest: ', args);
       return args;
     },
 
@@ -34,19 +34,19 @@ const runtimePlugin: () => FederationRuntimePlugin = function () {
     //},
 
     afterResolve(args) {
-      console.log("afterResolve", args);
+      console.log('afterResolve', args);
       return args;
     },
     onLoad(args) {
-      console.log("onLoad: ", args);
+      console.log('onLoad: ', args);
       return args;
     },
     async loadShare(args) {
-      console.log("loadShare:", args);
+      console.log('loadShare:', args);
       return args;
     },
     async beforeLoadShare(args) {
-      console.log("beforeloadShare:", args);
+      console.log('beforeloadShare:', args);
       return args;
     },
     // async initContainer(args) {
@@ -67,15 +67,15 @@ const runtimePlugin: () => FederationRuntimePlugin = function () {
 
 export async function renderApp() {
   init({
-    name: "runhost",
-    remotes: [{ name: "@app_02", entry: "http://localhost:3001/mf-manifest.json", alias: "a2" }],
+    name: 'runhost',
+    remotes: [{ name: '@app_02', entry: 'http://localhost:3001/mf-manifest.json', alias: 'a2' }],
     plugins: [runtimePlugin()],
   });
 
-  loadRemote("a2/pi").then((module) => {
-    console.log("results from pi in app02: ", (module as any).default());
+  loadRemote('a2/pi').then(module => {
+    console.log('results from pi in app02: ', (module as any).default());
   });
-  ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+  ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
       <App />
     </React.StrictMode>,

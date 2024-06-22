@@ -5,11 +5,11 @@ pnpm start
 ```
 
 ## Webpack host Rspack Remotes
+
 App #1 is webpack
 Apps #2-#5 are Rspack (however the webpack commands still exist side by side)
 
 Open [http://localhost:3001](http://localhost:3001).
-
 
 The demo is annotated so navigate through the demos and apps available.
 

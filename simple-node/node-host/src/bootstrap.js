@@ -7,10 +7,10 @@ import * as path from 'path';
 
 import node_local_remote from 'node_local_remote/test';
 
-import('node_remote/test').then((m) => {
+import('node_remote/test').then(m => {
   console.log('\x1b[32m%s\x1b[0m', m.default || m);
   //eslint-disable-next-line
-  if(process.env.E2E) {
+  if (process.env.E2E) {
     process.exit(0);
   }
 });

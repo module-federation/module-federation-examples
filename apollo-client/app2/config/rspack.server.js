@@ -2,7 +2,7 @@ const path = require('path');
 const { merge } = require('webpack-merge');
 const shared = require('./webpack.shared');
 const moduleFederationPlugin = require('./module-federation');
-const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 
 /**
  * @type {import('webpack').Configuration}

@@ -1,8 +1,8 @@
 const {
-  container: {ModuleFederationPlugin},
+  container: { ModuleFederationPlugin },
   HtmlRspackPlugin,
 } = require('@rspack/core');
-const isProd = process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
   entry: './src/index',
@@ -16,17 +16,17 @@ module.exports = {
     port: 3003,
     hot: true,
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-    }
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
   },
   resolve: {
     extensions: ['.jsx', '.js', '.json', '.mjs'],
   },
   output: {
     publicPath: 'auto',
-    uniqueName: 'app3'
+    uniqueName: 'app3',
   },
 
   module: {

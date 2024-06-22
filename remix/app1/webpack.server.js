@@ -94,7 +94,7 @@ const config = {
     new UniversalFederationPlugin(
       {
         isServer: true,
-        name: 'app1' ,
+        name: 'app1',
         filename: 'remoteEntry.js',
         remoteType: 'script',
         remotes: {

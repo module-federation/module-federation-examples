@@ -1,4 +1,4 @@
-import {Suspense} from 'react';
+import { Suspense } from 'react';
 import LocalButton from './Button';
 import ServiceComponent from './ServiceComponent';
 
@@ -8,7 +8,7 @@ const App = () => (
     <h2>Remote</h2>
     <LocalButton />
     <Suspense fallback={'loading'}>
-      <ServiceComponent/>
+      <ServiceComponent />
     </Suspense>
   </div>
 );

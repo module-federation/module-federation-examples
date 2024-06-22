@@ -1,16 +1,17 @@
 const React = require('react');
 const createMatcher = require('feather-route-matcher');
-const {loadRemote} = require('@module-federation/runtime');
-
+const { loadRemote } = require('@module-federation/runtime');
 
 async function matchFederatedPage(path) {
-  const remotes = new Set(...__FEDERATION__.__INSTANCES__.map((item) => {
-    return item.options.remotes.map((r) => r.alias)
-  }))
+  const remotes = new Set(
+    ...__FEDERATION__.__INSTANCES__.map(item => {
+      return item.options.remotes.map(r => r.alias);
+    }),
+  );
   const maps = await Promise.all(
     Array.from(remotes).map(async remote => {
-      return  loadRemote(remote + '/pages-map')
-        .then(factory => ({remote, config: factory.default}))
+      return loadRemote(remote + '/pages-map')
+        .then(factory => ({ remote, config: factory.default }))
         .catch(() => null);
     }),
   );
@@ -38,7 +39,7 @@ module.exports = {
     const FederatedCatchAll = initialProps => {
       const [lazyProps, setProps] = React.useState({});
 
-      const {FederatedPage, render404, renderError, needsReload, ...props} = {
+      const { FederatedPage, render404, renderError, needsReload, ...props } = {
         ...lazyProps,
         ...initialProps,
       };
@@ -70,13 +71,13 @@ module.exports = {
 
     FederatedCatchAll.getInitialProps = async ctx => {
       // Bot marks "req, res, AppTree" as unused but those are vital to not get circular-dependency error
-      const {err, req, res, AppTree, ...props} = ctx;
+      const { err, req, res, AppTree, ...props } = ctx;
       if (err) {
         // TODO: Run getInitialProps for error page
-        return {renderError: true, ...props};
+        return { renderError: true, ...props };
       }
       if (!process.browser) {
-        return {needsReload: true, ...props};
+        return { needsReload: true, ...props };
       }
 
       console.log('in browser');
@@ -85,11 +86,11 @@ module.exports = {
       try {
         console.log('matchedPage', matchedPage);
         const remote = matchedPage?.value?.remote;
-        const mod = matchedPage?.value?.module.replace('./','/')
+        const mod = matchedPage?.value?.module.replace('./', '/');
 
         if (!remote || !mod) {
           // TODO: Run getInitialProps for 404 page
-          return {render404: true, ...props};
+          return { render404: true, ...props };
         }
 
         console.log('loading exposed module', mod, 'from remote', remote);
@@ -97,7 +98,7 @@ module.exports = {
         console.log('FederatedPage', FederatedPage);
         if (!FederatedPage) {
           // TODO: Run getInitialProps for 404 page
-          return {render404: true, ...props};
+          return { render404: true, ...props };
         }
 
         const modifiedContext = {
@@ -105,11 +106,11 @@ module.exports = {
           query: matchedPage.params,
         };
         const federatedPageProps = (await FederatedPage.getInitialProps?.(modifiedContext)) || {};
-        return {...federatedPageProps, FederatedPage};
+        return { ...federatedPageProps, FederatedPage };
       } catch (err) {
         console.log('err', err);
         // TODO: Run getInitialProps for error page
-        return {renderError: true, ...props};
+        return { renderError: true, ...props };
       }
     };
 

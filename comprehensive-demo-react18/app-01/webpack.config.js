@@ -3,7 +3,7 @@ const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const { RsdoctorWebpackPlugin } = require('@rsdoctor/webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
-const isProd = process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === 'production';
 const isDevelopment = !isProd;
 
 const deps = require('./package.json').dependencies;
@@ -14,10 +14,10 @@ module.exports = {
     port: 3001,
     hot: isDevelopment,
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-    }
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
   },
   mode: 'development',
   devtool: 'source-map',

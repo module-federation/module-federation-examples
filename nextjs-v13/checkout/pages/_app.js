@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-MyApp.getInitialProps = async (ctx) => {
+MyApp.getInitialProps = async ctx => {
   // Ensure you still collect and return the necessary initial props for child components
   const appProps = await App.getInitialProps(ctx);
   return { ...appProps };

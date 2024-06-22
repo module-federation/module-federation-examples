@@ -8,7 +8,6 @@ const override = config => {
 
   config.output.publicPath = 'auto';
 
-
   return config;
 };
 

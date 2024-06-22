@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { useRouter } from 'next/router';
-const Home = typeof window !== 'undefined' ? React.lazy(() => import('home/home')) : null
-const Page = (props) => {
+const Home = typeof window !== 'undefined' ? React.lazy(() => import('home/home')) : null;
+const Page = props => {
   const [isClient, setIsClient] = useState(false);
   const router = useRouter();
   useEffect(() => {

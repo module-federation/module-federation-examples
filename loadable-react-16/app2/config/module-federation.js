@@ -1,6 +1,6 @@
 const deps = require('../package.json').dependencies;
 const { UniversalFederationPlugin } = require('@module-federation/node');
-const {ModuleFederationPlugin} = require('@module-federation/enhanced')
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const FederationStatsPlugin = require('webpack-federation-stats-plugin');
 
 module.exports = {
@@ -21,7 +21,7 @@ module.exports = {
       isServer: true,
       name: 'app2',
       filename: 'remoteEntry.js',
-      library: {type:'commonjs-module'},
+      library: { type: 'commonjs-module' },
       remoteType: 'script',
       exposes: {
         './Content': './src/client/components/Content',

@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {ModuleFederationPlugin} = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const path = require('path');
-const {dependencies} = require('./package.json')
+const { dependencies } = require('./package.json');
 /**
  * @type {import('webpack').Configuration}
  **/
@@ -13,6 +13,11 @@ const webpackConfig = {
       directory: path.join(__dirname, 'dist'),
     },
     port: 3002,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
   },
   output: {
     publicPath: 'auto',
@@ -55,8 +60,8 @@ const webpackConfig = {
           shareScope: 'modern', // share scope with this name will be used
           // singleton: true, // only a single version of the shared module is allowed
         },
-        'react': {
-          requiredVersion:dependencies['react'],
+        react: {
+          requiredVersion: dependencies['react'],
           strictVersion: true,
           shareScope: 'modern',
           shareKey: 'react',

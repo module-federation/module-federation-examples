@@ -3,7 +3,7 @@ export default function () {
     name: 'single-runtime-plugin',
     beforeInit(args) {
       // console.log(args);
-      return args
+      return args;
     },
   };
 }

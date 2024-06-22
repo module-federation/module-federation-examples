@@ -7,10 +7,7 @@ module.exports = {
     alias: {
       features: path.resolve('src/features'),
     },
-    modules: [
-      path.resolve('src'),
-      'node_modules',
-    ],
+    modules: [path.resolve('src'), 'node_modules'],
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
   },
 };

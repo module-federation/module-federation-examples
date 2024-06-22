@@ -5,7 +5,7 @@ import { sendAnalyticsMessage } from './analytics';
   try {
     await initFederation();
     sendAnalyticsMessage('sendAnalytics hello');
-  } catch(e) {
-    throw new Error(`NativeFederationInitError: 'utils' app error: ${e}`); 
+  } catch (e) {
+    throw new Error(`NativeFederationInitError: 'utils' app error: ${e}`);
   }
 })();

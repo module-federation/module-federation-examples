@@ -8,7 +8,7 @@ const packageJson = require('../package.json');
 // Defaults
 const isProduction = process.env.NODE_ENV == 'production';
 
-module.exports = function(options) {
+module.exports = function (options) {
   const DIST_PATH = `${__dirname}/../dist`;
 
   if (isProduction) {
@@ -19,7 +19,7 @@ module.exports = function(options) {
     // Build progress
     // https://webpack.js.org/plugins/progress-plugin
     new webpack.ProgressPlugin({
-      percentBy: 'entries'
+      percentBy: 'entries',
     }),
     // Extract CSS files
     // https://webpack.js.org/plugins/mini-css-extract-plugin
@@ -30,9 +30,7 @@ module.exports = function(options) {
     // Copy files
     // https://webpack.js.org/plugins/copy-webpack-plugin
     new CopyPlugin({
-      patterns: [
-        { from: 'src/assets/images', to: 'images' },
-      ],
+      patterns: [{ from: 'src/assets/images', to: 'images' }],
     }),
   ];
 
@@ -60,9 +58,9 @@ module.exports = function(options) {
           chunks: 'all',
           minChunks: 3, // if 3 chunks import something, put it in common
           priority: 2,
-        }
-      }
-    }
+        },
+      },
+    },
   };
 
   // Remove `console.log` statements in the release version
@@ -73,9 +71,9 @@ module.exports = function(options) {
           sourceMap: true,
           compress: {
             drop_console: true,
-          }
-        }
-      })
+          },
+        },
+      }),
     );
 
     // Minify CSS files
@@ -110,5 +108,5 @@ module.exports = function(options) {
     // https://webpack.js.org/configuration/plugins
     // https://webpack.js.org/plugins
     plugins,
-  }
-}
+  };
+};

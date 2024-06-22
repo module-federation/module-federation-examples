@@ -19,47 +19,47 @@
  * - This plugin provides a flexible way to control the loading of remote microfrontends, optimizing the loading process and handling errors efficiently.
  */
 export default function () {
-    const remoteEntries = {
-        'remote_one': 'http://localhost:4200/remoteEntry.js',
-        'remote_two': 'http://localhost:4201/remoteEntry.js',
-        // Add more remote entries here as needed
-    };
+  const remoteEntries = {
+    remote_one: 'http://localhost:4200/remoteEntry.js',
+    remote_two: 'http://localhost:4201/remoteEntry.js',
+    // Add more remote entries here as needed
+  };
 
-    const getErrorMessage = (id, error) => `remote ${id} is offline due to error: ${error}`;
+  const getErrorMessage = (id, error) => `remote ${id} is offline due to error: ${error}`;
 
-    const getModule = (pg, from) => {
-        if (from === 'build') {
-            return () => ({
-                __esModule: true,
-                default: pg,
-            });
-        } else {
-            return {
-                default: pg,
-            };
+  const getModule = (pg, from) => {
+    if (from === 'build') {
+      return () => ({
+        __esModule: true,
+        default: pg,
+      });
+    } else {
+      return {
+        default: pg,
+      };
+    }
+  };
+
+  return {
+    name: 'remote-router',
+    errorLoadRemote({ id, error, from, origin }) {
+      console.error(id, 'offline');
+      const pg = function () {
+        console.error(id, 'offline', error);
+        return getErrorMessage(id, error);
+      };
+
+      return getModule(pg, from);
+    },
+    beforeRequest(args) {
+      console.log('before request', args);
+      args.options.remotes.forEach(r => {
+        const name = r.name;
+        if (remoteEntries[name]) {
+          r.entry = remoteEntries[name];
         }
-    };
-
-    return {
-        name: 'remote-router',
-        errorLoadRemote({id, error, from, origin}) {
-            console.error(id, 'offline');
-            const pg = function () {
-                console.error(id, 'offline', error);
-                return getErrorMessage(id, error);
-            };
-
-            return getModule(pg, from);
-        },
-        beforeRequest(args) {
-            console.log('before request', args);
-            args.options.remotes.forEach((r) => {
-                const name = r.name;
-                if (remoteEntries[name]) {
-                    r.entry = remoteEntries[name];
-                }
-            });
-            return args;
-        },
-    };
+      });
+      return args;
+    },
+  };
 }

@@ -8,21 +8,20 @@ export default {
   component: Test,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    number: 'string'
-  }
+    number: 'string',
+  },
 };
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template = (args) => <Test {...args} />;
+const Template = args => <Test {...args} />;
 
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 export const TestWithNumber1 = Template.bind();
 TestWithNumber1.args = {
-  number: '1'
+  number: '1',
 };
-
 
 export const TestWithNumber2 = Template.bind({});
 TestWithNumber2.args = {
-  number: '2'
+  number: '2',
 };

@@ -1,13 +1,7 @@
-import {
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "@remix-run/react";
+import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 
 export function loader() {
-  return "Hello, World!";
+  return 'Hello, World!';
 }
 //dynamic import data uri, force chunk handlers to be registered in webpack (since theres no import(), in this example)
 import("data:text/javascript,console.log('hello from app1')");

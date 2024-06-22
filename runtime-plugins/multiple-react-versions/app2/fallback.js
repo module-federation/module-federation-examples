@@ -9,14 +9,20 @@ class Component extends React.Component {
           In RUNTIME PLUGIN WRAPPER <br />
           Host React: {hostV} Remote React: {remoteV}
         </p>
-        <div ref={containerRef}/>
+        <div ref={containerRef} />
       </div>
     );
   }
 }
 
 // This is the higher-order component that takes the Original component and additional props
-const withVersions = (Original, remoteVersion, hostVersion,remoteReactDOMVersion, remoteReactVersion) => {
+const withVersions = (
+  Original,
+  remoteVersion,
+  hostVersion,
+  remoteReactDOMVersion,
+  remoteReactVersion,
+) => {
   const ReactDOM = remoteReactDOMVersion();
   const React = remoteReactVersion();
   class WrappedComponent extends React.Component {
@@ -41,19 +47,18 @@ const withVersions = (Original, remoteVersion, hostVersion,remoteReactDOMVersion
 
     mountOriginalComponent(shouldRender) {
       const element = React.createElement(Original, this.props);
-      const fGunc = shouldRender ? ReactDOM.render : ReactDOM.hydrate
+      const fGunc = shouldRender ? ReactDOM.render : ReactDOM.hydrate;
       fGunc(element, this.containerRef.current);
     }
 
     render() {
-      return <Component hostV={hostVersion} remoteV={remoteVersion} containerRef={this.containerRef} />;
+      return (
+        <Component hostV={hostVersion} remoteV={remoteVersion} containerRef={this.containerRef} />
+      );
     }
   }
 
-
-
-  return WrappedComponent
-
+  return WrappedComponent;
 };
 
 export default withVersions;

@@ -1,7 +1,7 @@
 describe('multiple-react-versions', () => {
-  beforeEach(()=>{
+  beforeEach(() => {
     cy.visit('http://localhost:3001');
-  })
+  });
   it('should load the app', () => {
     cy.get('h1').should('contain', 'Basic Host-Remote');
     cy.get('h2').should('contain', 'App 1, Uses react version not compatible with hooks');
@@ -12,7 +12,9 @@ describe('multiple-react-versions', () => {
   });
 
   it('should have hooks component', () => {
-    cy.get('strong').contains('This Component uses hooks, if loaded on localhost:3001, it should work, even though that host does not support React Hooks')
+    cy.get('strong').contains(
+      'This Component uses hooks, if loaded on localhost:3001, it should work, even though that host does not support React Hooks',
+    );
   });
 
   it('should load the remote button', () => {
@@ -24,7 +26,6 @@ describe('multiple-react-versions', () => {
     cy.get('h1').should('have.text', 'Basic Host-Remote');
   });
 
-
   it('should render the input placeholder', () => {
     cy.get('input').should('have.attr', 'placeholder', 'Type something into this input');
   });
@@ -35,7 +36,11 @@ describe('multiple-react-versions', () => {
   });
 
   it('should render the modern component text', () => {
-    cy.get('div').contains('This Component uses hooks, if loaded on localhost:3001, it should work, even though that host does not support React Hooks').should('exist');
+    cy.get('div')
+      .contains(
+        'This Component uses hooks, if loaded on localhost:3001, it should work, even though that host does not support React Hooks',
+      )
+      .should('exist');
   });
 
   it('should render the App2 component wrapper', () => {
@@ -44,7 +49,9 @@ describe('multiple-react-versions', () => {
   });
 
   it('should render the App2 component text', () => {
-    cy.get('p').contains('More react components from App2 using non-legacy React to render').should('exist');
+    cy.get('p')
+      .contains('More react components from App2 using non-legacy React to render')
+      .should('exist');
   });
 
   it('should render the App2 button', () => {

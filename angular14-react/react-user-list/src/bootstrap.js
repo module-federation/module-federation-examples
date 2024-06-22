@@ -1,2 +1,0 @@
-import { ListUserReactComponent } from './ListUserReactComponent';
-

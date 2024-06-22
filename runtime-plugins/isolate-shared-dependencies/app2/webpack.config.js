@@ -59,7 +59,7 @@ const configuration = {
   devtool: false,
   devServer: {
     hot: false,
-  }
+  },
 };
 
 module.exports = configuration;

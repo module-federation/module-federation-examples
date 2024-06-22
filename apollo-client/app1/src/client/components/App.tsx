@@ -2,7 +2,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import type { PokemonListProps } from 'app2/PokemonList';
 
-
 console.log(import('app2/PokemonList'));
 const PokemonList = React.lazy(
   () => import('app2/PokemonList') as Promise<{ default: React.FC<PokemonListProps> }>,

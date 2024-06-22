@@ -1,7 +1,4 @@
-const {
-  withNativeFederation,
-  shareAll
-} = require('@softarc/native-federation/build');
+const { withNativeFederation, shareAll } = require('@softarc/native-federation/build');
 
 module.exports = withNativeFederation({
   name: 'nav',
@@ -17,7 +14,7 @@ module.exports = withNativeFederation({
       strictVersion: true,
       requiredVersion: 'auto',
       includeSecondaries: true,
-    })
+    }),
   },
 
   skip: [
@@ -33,6 +30,6 @@ module.exports = withNativeFederation({
     'react-dom/server',
     'react-dom/server.node',
     'tslib/',
-    'tslib'
+    'tslib',
   ],
 });

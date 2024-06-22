@@ -8,6 +8,11 @@ module.exports = {
   entry: './src/index',
   mode: 'development',
   devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
     static: {
       directory: path.join(__dirname, 'dist'),
     },
@@ -39,19 +44,21 @@ module.exports = {
         exposes: {
           './Button': './src/Button',
         },
-        shared: [{
-          react: {
-            singleton: true,
-            requiredVersion: pkg.dependencies.react,
-          }},
+        shared: [
+          {
+            react: {
+              singleton: true,
+              requiredVersion: pkg.dependencies.react,
+            },
+          },
           {
             'react-dom': {
               singleton: true,
               requiredVersion: pkg.dependencies['react-dom'],
             },
-          }
+          },
         ],
-      }
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',

@@ -14,6 +14,11 @@ const webpackConfig = {
       directory: path.join(__dirname, 'dist'),
     },
     port: 3001,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
   },
   output: {
     publicPath: 'auto',
@@ -50,7 +55,7 @@ const webpackConfig = {
           strictVersion: true,
           // singleton: true, // only a single version of the shared module is allowed
         },
-        'react': {
+        react: {
           strictVersion: true,
           // singleton: true, // only a single version of the shared module is allowed
         },

@@ -47,20 +47,20 @@ module.exports = {
       name: 'lib_app',
       filename: 'remoteEntry.js',
       shared: {
-        "react": {
+        react: {
           singleton: true,
         },
-        "react-dom": {
+        'react-dom': {
           singleton: true,
         },
-        "react/": {
+        'react/': {
           singleton: true,
         },
         'react-dom/': {
           singleton: true,
         },
-        "lodash/":{},
-        "lodash":{},
+        'lodash/': {},
+        lodash: {},
       },
       exposes: {
         './ensureUsed': './index',

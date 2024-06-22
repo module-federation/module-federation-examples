@@ -6,9 +6,9 @@ const config = {
     'Remote/Button': '<rootDir>/../remote/src/components/Button',
   },
   transform: {
-    "^.+\\.tsx?$": "ts-jest"
+    '^.+\\.tsx?$': 'ts-jest',
   },
-  testMatch: ['**/__tests__/**/*.[jt]s?(x)', '!**/__tests__/**/*.cy.[jt]s?(x)']
+  testMatch: ['**/__tests__/**/*.[jt]s?(x)', '!**/__tests__/**/*.cy.[jt]s?(x)'],
 };
 
 module.exports = config;

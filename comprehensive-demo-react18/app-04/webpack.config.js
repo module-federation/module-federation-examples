@@ -19,7 +19,7 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: '[name].[id].js',
     publicPath: 'auto',
-    uniqueName: 'app4'
+    uniqueName: 'app4',
   },
   module: {
     rules: [

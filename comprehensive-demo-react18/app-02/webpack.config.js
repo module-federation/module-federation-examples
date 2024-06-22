@@ -21,14 +21,14 @@ module.exports = {
     port: 3002,
     hot: !isProd,
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-    }
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
   },
   output: {
     publicPath: 'auto',
-    uniqueName: 'app2'
+    uniqueName: 'app2',
   },
 
   resolve: {
@@ -95,4 +95,3 @@ module.exports = {
     }),
   ].filter(Boolean),
 };
-

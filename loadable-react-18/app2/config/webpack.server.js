@@ -12,7 +12,7 @@ module.exports = merge(shared, {
     serverAppEntrypoint: path.resolve(__dirname, '../src/server/serverAppEntrypoint'),
   },
   optimization: {
-    emitOnErrors: true
+    emitOnErrors: true,
   },
   externals: ['express'],
   output: {

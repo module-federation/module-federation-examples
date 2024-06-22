@@ -8,7 +8,7 @@ module.exports = {
   cache: false,
   mode: 'development',
   optimization: {
-    runtimeChunk: 'single'
+    runtimeChunk: 'single',
   },
   devServer: {
     static: {
@@ -55,7 +55,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      excludeChunks: ['app1', 'app1_partial']
+      excludeChunks: ['app1', 'app1_partial'],
     }),
   ],
 };

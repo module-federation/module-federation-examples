@@ -1,4 +1,7 @@
-const { HtmlRspackPlugin, container: {ModuleFederationPlugin} } = require('@rspack/core');
+const {
+  HtmlRspackPlugin,
+  container: { ModuleFederationPlugin },
+} = require('@rspack/core');
 
 const path = require('path');
 const deps = require('./package.json').dependencies;
@@ -8,6 +11,11 @@ module.exports = {
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
+    },
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
     },
     port: 3003,
   },

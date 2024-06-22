@@ -24,9 +24,7 @@ module.exports = {
   server: [
     new ModuleFederationPlugin({
       remoteType: 'script',
-      runtimePlugins: [
-        require.resolve('@module-federation/node/runtimePlugin')
-      ],
+      runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],
       name: 'remote2',
       filename: 'remoteEntry.js',
       library: { type: 'commonjs-module' },

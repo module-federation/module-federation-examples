@@ -31,7 +31,6 @@ services:
       context: root/
       dockerfile: Dockerfile.dev
     ports:
-      - '3000:3000' 
+      - '3000:3000'
     depends_on:
       - sidebar
-

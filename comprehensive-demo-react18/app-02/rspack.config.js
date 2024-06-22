@@ -4,7 +4,7 @@ const {
 } = require('@rspack/core');
 const deps = require('./package.json').dependencies;
 const ReactRefreshWebpackPlugin = require('@rspack/plugin-react-refresh');
-const isProd = process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
   entry: './src/index',
@@ -21,14 +21,14 @@ module.exports = {
     port: 3002,
     hot: true,
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-    }
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
   },
   output: {
     publicPath: 'auto',
-    uniqueName: 'app2'
+    uniqueName: 'app2',
   },
 
   module: {
@@ -92,6 +92,6 @@ module.exports = {
       template: './public/index.html',
       chunks: ['main'],
     }),
-    new ReactRefreshWebpackPlugin()
+    new ReactRefreshWebpackPlugin(),
   ],
 };

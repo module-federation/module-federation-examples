@@ -23,13 +23,10 @@ const Shop = props => (
       <ul>
         {productLinks.map(({ key, href, label }) => (
           <li key={key}>
-            <Link href={href}>
-              {label}
-            </Link>
+            <Link href={href}>{label}</Link>
           </li>
         ))}
       </ul>
-
     </div>
     <style jsx>{`
       .hero {
@@ -51,6 +48,6 @@ const Shop = props => (
   </div>
 );
 export const getServerSideProps = async () => {
-  return {props: {test: 1234}};
+  return { props: { test: 1234 } };
 };
 export default Shop;

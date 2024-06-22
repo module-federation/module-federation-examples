@@ -1,4 +1,7 @@
-const { HtmlRspackPlugin, container: {ModuleFederationPlugin} } = require('@rspack/core');
+const {
+  HtmlRspackPlugin,
+  container: { ModuleFederationPlugin },
+} = require('@rspack/core');
 const path = require('path');
 
 module.exports = {
@@ -8,6 +11,11 @@ module.exports = {
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
+    },
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
     },
     port: 3001,
   },
@@ -63,9 +71,9 @@ module.exports = {
     }),
   ],
   // it will be fixed soon...
-  resolve:{
-    alias:{
+  resolve: {
+    alias: {
       '@module-federation/runtime$': require.resolve('@module-federation/runtime'),
-    }
-  }
+    },
+  },
 };

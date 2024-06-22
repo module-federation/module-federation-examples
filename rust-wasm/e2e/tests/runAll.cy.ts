@@ -1,2 +1,2 @@
-import './commonChecks.cy'
-import './hostAppChecks.cy'
+import './commonChecks.cy';
+import './hostAppChecks.cy';

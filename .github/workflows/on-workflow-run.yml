@@ -1,7 +1,7 @@
 name: on workflow run
 on:
   workflow_run:
-    workflows: ["on pull request"]
+    workflows: ['on pull request']
     types:
       - completed
 
@@ -9,7 +9,6 @@ env:
   RUN_NUMBER: ${{ github.run_number }}
 
 jobs:
-
   # Stop previous runs
   stop-previous-run:
     runs-on: ubuntu-22.04
@@ -69,7 +68,6 @@ jobs:
             const fs = require('fs');
             fs.writeFileSync('${{github.workspace}}/allure-results.zip', Buffer.from(download.data));
       - run: unzip allure-results.zip
-
       - name: Get Allure history
         uses: actions/checkout@v3
         if: always()

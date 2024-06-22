@@ -7,7 +7,7 @@ const config: ModuleFederationConfig = {
   },
   library: {
     name: 'remote_one',
-    type: 'var'
+    type: 'var',
   },
 };
 

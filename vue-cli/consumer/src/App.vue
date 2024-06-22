@@ -7,8 +7,7 @@
     <Section>
       <Button>Button imported from /core</Button>
       <br />
-      I'm inside the Section component loaded from /core, but my text is defined
-      in /consumer
+      I'm inside the Section component loaded from /core, but my text is defined in /consumer
     </Section>
 
     <hr />
@@ -20,11 +19,11 @@
 
 <script>
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    Button: () => import("core/Button"),
-    Section: () => import("core/Section"),
-    MainComponent: () => import("other/MainComponent"),
+    Button: () => import('core/Button'),
+    Section: () => import('core/Section'),
+    MainComponent: () => import('other/MainComponent'),
   },
 };
 </script>

@@ -1,4 +1,4 @@
-import { getLib2InstanceId } from "shared-lib-2";
+import { getLib2InstanceId } from 'shared-lib-2';
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));

@@ -6,7 +6,7 @@ const { RsdoctorRspackPlugin } = require('@rsdoctor/rspack-plugin');
 const ReactRefreshWebpackPlugin = require('@rspack/plugin-react-refresh');
 
 const deps = require('./package.json').dependencies;
-const isProd = process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === 'production';
 module.exports = {
   entry: './src/index',
 
@@ -20,10 +20,10 @@ module.exports = {
   },
   output: {
     publicPath: 'auto',
-    uniqueName: 'app1'
+    uniqueName: 'app1',
   },
   experiments: {
-    css: true
+    css: true,
   },
 
   module: {
@@ -59,10 +59,10 @@ module.exports = {
     port: 3001,
     hot: true,
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-    }
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
   },
   plugins: [
     new ModuleFederationPlugin({

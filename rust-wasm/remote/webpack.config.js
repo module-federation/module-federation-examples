@@ -3,7 +3,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 
 // @TODO: uncomment this if you want to dev on the Rust src code.
-const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
+const WasmPackPlugin = require('@wasm-tool/wasm-pack-plugin');
 
 const dist = path.resolve(__dirname, 'dist');
 
@@ -21,14 +21,14 @@ module.exports = {
       directory: path.join(__dirname, 'dist'),
     },
     headers: {
-      'Access-Control-Allow-Origin': 'http://localhost:8080',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
     },
   },
   experiments: { asyncWebAssembly: true },
   plugins: [
-    new CopyPlugin({patterns: [
-      {from: path.resolve(__dirname, "")}
-    ]}),
+    new CopyPlugin({ patterns: [{ from: path.resolve(__dirname, '') }] }),
 
     // @TODO: uncomment this if you want to dev on the Rust src code.
     // Webpack will load the Rust code and compile it to Wasm using Wasm-Pack.
