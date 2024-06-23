@@ -14075,8 +14075,8 @@ importers:
         specifier: 8.6.0
         version: 8.6.0(eslint@8.57.0)
       eslint-plugin-vuejs-accessibility:
-        specifier: 1.2.0
-        version: 1.2.0(eslint@8.57.0)
+        specifier: 2.3.1
+        version: 2.3.1(eslint@8.57.0)
       typescript:
         specifier: 4.5.5
         version: 4.5.5
@@ -14139,8 +14139,8 @@ importers:
         specifier: 8.6.0
         version: 8.6.0(eslint@8.57.0)
       eslint-plugin-vuejs-accessibility:
-        specifier: 1.2.0
-        version: 1.2.0(eslint@8.57.0)
+        specifier: 2.3.1
+        version: 2.3.1(eslint@8.57.0)
       typescript:
         specifier: 4.5.5
         version: 4.5.5
@@ -27338,11 +27338,6 @@ packages:
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
-
-  eslint-plugin-vuejs-accessibility@1.2.0:
-    resolution: {integrity: sha512-wF7kT22lS2VOmIpDeI65bnFFKFgESEEpI+CWKr43mdfDRywA4sCk7cKhtZsvfbPOtKO0GDlnpFxZbOIGsFn7IQ==}
-    peerDependencies:
-      eslint: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
 
   eslint-plugin-vuejs-accessibility@2.3.1:
     resolution: {integrity: sha512-tXwjHTl2lpn2Rec0ieeIlXBiJirtKYB1galOf/EpyuLhs3ajl9eYS01vY5BKaoZRC+GJj2DWcu/ZjNqTtUqoMw==}
@@ -53693,7 +53688,7 @@ snapshots:
       source-map: 0.7.4
       webpack: 5.92.1(@swc/core@1.6.5)(webpack-cli@5.1.4)
     optionalDependencies:
-      '@types/webpack': 5.28.0(@swc/core@1.6.5)(webpack-cli@5.1.4(webpack-dev-server@4.15.2)(webpack@5.92.1))
+      '@types/webpack': 5.28.0(@swc/core@1.6.5)(webpack-cli@5.1.4(webpack-dev-server@5.0.4)(webpack@5.92.1))
       sockjs-client: 1.6.1(supports-color@6.1.0)
       type-fest: 2.19.0
       webpack-dev-server: 4.15.2(webpack-cli@5.1.4)(webpack@5.92.1)
@@ -53711,7 +53706,7 @@ snapshots:
       source-map: 0.7.4
       webpack: 5.92.1(@swc/core@1.6.5)(webpack-cli@5.1.4)
     optionalDependencies:
-      '@types/webpack': 5.28.0(@swc/core@1.6.5)(webpack-cli@5.1.4(webpack-dev-server@4.15.2)(webpack@5.92.1))
+      '@types/webpack': 5.28.0(@swc/core@1.6.5)(webpack-cli@5.1.4(webpack-dev-server@5.0.4)(webpack@5.92.1))
       sockjs-client: 1.6.1(supports-color@6.1.0)
       type-fest: 2.19.0
       webpack-dev-server: 5.0.4(webpack-cli@5.1.4)(webpack@5.92.1)
@@ -57796,7 +57791,7 @@ snapshots:
       - webpack-cli
     optional: true
 
-  '@types/webpack@5.28.0(@swc/core@1.6.5)(webpack-cli@5.1.4(webpack-dev-server@4.15.2)(webpack@5.92.1))':
+  '@types/webpack@5.28.0(@swc/core@1.6.5)(webpack-cli@5.1.4(webpack-dev-server@5.0.4)(webpack@5.92.1))':
     dependencies:
       '@types/node': 20.9.0
       tapable: 2.2.1
@@ -66226,15 +66221,6 @@ snapshots:
       semver: 7.6.2
       vue-eslint-parser: 9.4.3(eslint@8.57.0)
       xml-name-validator: 4.0.0
-    transitivePeerDependencies:
-      - supports-color
-
-  eslint-plugin-vuejs-accessibility@1.2.0(eslint@8.57.0):
-    dependencies:
-      aria-query: 5.3.0
-      emoji-regex: 10.3.0
-      eslint: 8.57.0
-      vue-eslint-parser: 9.4.3(eslint@8.57.0)
     transitivePeerDependencies:
       - supports-color
 
