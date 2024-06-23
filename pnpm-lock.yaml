@@ -12255,8 +12255,8 @@ importers:
         specifier: 9.1.3
         version: 9.1.3(@babel/core@7.24.7)(webpack@5.92.1(@swc/core@1.6.5)(webpack-cli@4.10.0))
       find-up:
-        specifier: 5.0.0
-        version: 5.0.0
+        specifier: 7.0.0
+        version: 7.0.0
       html-webpack-plugin:
         specifier: 5.6.0
         version: 5.6.0(@rspack/core@0.7.4)(webpack@5.92.1(@swc/core@1.6.5)(webpack-cli@4.10.0))
@@ -12365,8 +12365,8 @@ importers:
         specifier: 6.2.0
         version: 6.2.0(webpack@5.92.1(@swc/core@1.6.5)(webpack-cli@4.10.0))
       find-up:
-        specifier: 5.0.0
-        version: 5.0.0
+        specifier: 7.0.0
+        version: 7.0.0
       html-webpack-plugin:
         specifier: 5.6.0
         version: 5.6.0(@rspack/core@0.7.4)(webpack@5.92.1(@swc/core@1.6.5)(webpack-cli@4.10.0))
@@ -12426,8 +12426,8 @@ importers:
         specifier: 9.1.3
         version: 9.1.3(@babel/core@7.24.7)(webpack@5.92.1(@swc/core@1.6.5)(webpack-cli@4.10.0))
       find-up:
-        specifier: 5.0.0
-        version: 5.0.0
+        specifier: 7.0.0
+        version: 7.0.0
       html-webpack-plugin:
         specifier: 5.6.0
         version: 5.6.0(@rspack/core@0.7.4)(webpack@5.92.1(@swc/core@1.6.5)(webpack-cli@4.10.0))
@@ -12484,8 +12484,8 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
       find-up:
-        specifier: 5.0.0
-        version: 5.0.0
+        specifier: 7.0.0
+        version: 7.0.0
       html-webpack-plugin:
         specifier: 5.6.0
         version: 5.6.0(@rspack/core@0.7.4)(webpack@5.92.1(@swc/core@1.6.5)(webpack-cli@4.10.0))
@@ -27900,6 +27900,10 @@ packages:
   find-up@6.3.0:
     resolution: {integrity: sha512-v2ZsoEuVHYy8ZIlYqwPe/39Cy+cFDzp4dXPaxNvkEuouymu+2Jbz0PxpKarJHYJTmv2HWT3O382qY8l4jMWthw==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+
+  find-up@7.0.0:
+    resolution: {integrity: sha512-YyZM99iHrqLKjmt4LJDj58KI+fYyufRLBSYcqycxf//KpBk9FoewoGX0450m9nB44qrZnovzC2oeP5hUibxc/g==}
+    engines: {node: '>=18'}
 
   find-versions@5.1.0:
     resolution: {integrity: sha512-+iwzCJ7C5v5KgcBuueqVoNiHVoQpwiUK5XFLjf0affFTep+Wcw93tPvmb8tqujDNmzhBDPddnWV/qgWSXgq+Hg==}
@@ -67045,6 +67049,12 @@ snapshots:
     dependencies:
       locate-path: 7.2.0
       path-exists: 5.0.0
+
+  find-up@7.0.0:
+    dependencies:
+      locate-path: 7.2.0
+      path-exists: 5.0.0
+      unicorn-magic: 0.1.0
 
   find-versions@5.1.0:
     dependencies:
