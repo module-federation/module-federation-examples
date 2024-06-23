@@ -817,8 +817,8 @@ importers:
         specifier: 11.0.3
         version: 11.0.3(@angular/compiler-cli@11.2.14(@angular/compiler@11.2.14)(typescript@4.0.2))(@angular/compiler@11.2.14)(@types/node@12.20.55)(tslib@2.6.2)(typescript@4.0.2)
       ngx-build-plus:
-        specifier: 10.1.1
-        version: 10.1.1(@angular-devkit/build-angular@0.1102.19(@angular/compiler-cli@11.2.14(@angular/compiler@11.2.14)(typescript@4.0.2))(html-webpack-plugin@4.5.2(webpack@4.44.2))(karma@6.4.3)(ng-packagr@11.0.3(@angular/compiler-cli@11.2.14(@angular/compiler@11.2.14)(typescript@4.0.2))(@angular/compiler@11.2.14)(@types/node@12.20.55)(tslib@2.6.2)(typescript@4.0.2))(protractor@7.0.0)(rework-visit@1.0.0)(rework@1.0.1)(tslint@6.1.3(typescript@4.0.2))(typescript@4.0.2))(rxjs@6.6.7)(webpack@4.44.2)
+        specifier: 18.0.0
+        version: 18.0.0(@angular-devkit/build-angular@0.1102.19(@angular/compiler-cli@11.2.14(@angular/compiler@11.2.14)(typescript@4.0.2))(html-webpack-plugin@4.5.2(webpack@4.44.2))(karma@6.4.3)(ng-packagr@11.0.3(@angular/compiler-cli@11.2.14(@angular/compiler@11.2.14)(typescript@4.0.2))(@angular/compiler@11.2.14)(@types/node@12.20.55)(tslib@2.6.2)(typescript@4.0.2))(protractor@7.0.0)(rework-visit@1.0.0)(rework@1.0.1)(tslint@6.1.3(typescript@4.0.2))(typescript@4.0.2))(chokidar@3.6.0)(rxjs@6.6.7)
       protractor:
         specifier: 7.0.0
         version: 7.0.0
@@ -944,8 +944,8 @@ importers:
         specifier: 11.0.3
         version: 11.0.3(@angular/compiler-cli@11.2.14(@angular/compiler@11.2.14)(typescript@4.0.2))(@angular/compiler@11.2.14)(@types/node@12.20.55)(tslib@2.6.2)(typescript@4.0.2)
       ngx-build-plus:
-        specifier: 10.1.1
-        version: 10.1.1(@angular-devkit/build-angular@0.1102.19(@angular/compiler-cli@11.2.14(@angular/compiler@11.2.14)(typescript@4.0.2))(html-webpack-plugin@4.5.2(webpack@4.44.2))(karma@6.4.3)(ng-packagr@11.0.3(@angular/compiler-cli@11.2.14(@angular/compiler@11.2.14)(typescript@4.0.2))(@angular/compiler@11.2.14)(@types/node@12.20.55)(tslib@2.6.2)(typescript@4.0.2))(protractor@7.0.0)(rework-visit@1.0.0)(rework@1.0.1)(tslint@6.1.3(typescript@4.0.2))(typescript@4.0.2))(rxjs@6.6.7)(webpack@4.44.2)
+        specifier: 18.0.0
+        version: 18.0.0(@angular-devkit/build-angular@0.1102.19(@angular/compiler-cli@11.2.14(@angular/compiler@11.2.14)(typescript@4.0.2))(html-webpack-plugin@4.5.2(webpack@4.44.2))(karma@6.4.3)(ng-packagr@11.0.3(@angular/compiler-cli@11.2.14(@angular/compiler@11.2.14)(typescript@4.0.2))(@angular/compiler@11.2.14)(@types/node@12.20.55)(tslib@2.6.2)(typescript@4.0.2))(protractor@7.0.0)(rework-visit@1.0.0)(rework@1.0.1)(tslint@6.1.3(typescript@4.0.2))(typescript@4.0.2))(chokidar@3.6.0)(rxjs@6.6.7)
       protractor:
         specifier: 7.0.0
         version: 7.0.0
@@ -14419,9 +14419,14 @@ packages:
       chokidar:
         optional: true
 
-  '@angular-devkit/core@8.0.0':
-    resolution: {integrity: sha512-wYf4zzpYj5Y673DG8iteK0GsDDuXBKN/TOXm4lUwmXcz8QHTD+BfR6qA5TBDqlMGpU7CP1/0vgbv2px17CDETQ==}
-    engines: {node: '>= 10.9.0', npm: '>= 6.2.0'}
+  '@angular-devkit/core@18.0.5':
+    resolution: {integrity: sha512-sGtrS0SqkcBvyuv0QkIfyadwPgDhMroz1r51lMh1hwzJaJ0LNuVMLviEeYIybeBnvAdp9YvYC8I1WgB/FUEFBw==}
+    engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
+    peerDependencies:
+      chokidar: ^3.5.2
+    peerDependenciesMeta:
+      chokidar:
+        optional: true
 
   '@angular-devkit/schematics@11.2.19':
     resolution: {integrity: sha512-jefsjIlaznKxn5+dHSMwvXTO+QKCKtahu/iZoRcdb25JWGXrkj8/quCuj4VeMFY48g/EPjX+9WhDtRl8TjYBiA==}
@@ -14431,9 +14436,9 @@ packages:
     resolution: {integrity: sha512-EeoDs4oKFpLZNa21G/8dqBdclEc4U2piI9EeXCVTaN6z5DYXIZ0G1WtCXU8nhD+GckS47rmfZ4/3lMaXAvED+g==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
 
-  '@angular-devkit/schematics@8.0.0':
-    resolution: {integrity: sha512-IXJOs/DkDqNbfG76sNNY5ePZ37rjkMUopmtvhN6/U1hQFwTpGa9N0bCHFphcKraXeS6Jfox5XwFEStc/1xyhfw==}
-    engines: {node: '>= 10.9.0', npm: '>= 6.2.0'}
+  '@angular-devkit/schematics@18.0.5':
+    resolution: {integrity: sha512-hZwAq3hwuJzCuh7uqO/7T9IMERhYVxz+ganJlEykpyr58o0IjUM1Q4ZSH5UOYlGRPdBCZJbfiafZ0Sg5w5xBww==}
+    engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
 
   '@angular/animations@11.2.14':
     resolution: {integrity: sha512-Heq/nNrCmb3jbkusu+BQszOecfFI/31Oxxj+CDQkqqYpBcswk6bOJLoEE472o+vmgxaXbgeflU9qbIiCQhpMFA==}
@@ -20218,9 +20223,9 @@ packages:
     resolution: {integrity: sha512-eLdyP+T1TueNQ8FCP7sP+tt8z+YQ1BINsJsyAyoJT/XZjcCV7LUxgDIU94/kuvIotmJ2xTuFWHFPfAY+CN3duQ==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
 
-  '@schematics/angular@8.0.0':
-    resolution: {integrity: sha512-c/cFpe+u7Xh4xX3/kn9BSRY4YhdO0OsDbRK0pGLDJFFs5JGvwoURtNXn4/4dVlsj3PWyNhxK0Ljl3dyw3NQBHA==}
-    engines: {node: '>= 10.9.0', npm: '>= 6.2.0'}
+  '@schematics/angular@18.0.5':
+    resolution: {integrity: sha512-dV50GIEGl6S5wE6xtAhmHWdLhsOlnNUpAx/v3BPR2AOr90zJvIM03TqAQTzAlnPatxK2WLelRgqVMbPfAVvLAg==}
+    engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
 
   '@schematics/update@0.1102.19':
     resolution: {integrity: sha512-NdWzL6n/ZEgnposWdAPo8PTOn+8Baf/J9isjF+QOUUMbpZY/+QfLpej7eDAlcQ2Begiz/selMsnod70r9PYZUg==}
@@ -22525,6 +22530,14 @@ packages:
       ajv:
         optional: true
 
+  ajv-formats@3.0.1:
+    resolution: {integrity: sha512-8iUql50EUR+uUcdRQ3HDqa6EVyo3docL8g5WJ3FNcWmu62IbkGUue/pEyLBW8VGKKucTPgqeks4fIU1DA4yowQ==}
+    peerDependencies:
+      ajv: ^8.0.0
+    peerDependenciesMeta:
+      ajv:
+        optional: true
+
   ajv-keywords@3.5.2:
     resolution: {integrity: sha512-5p6WTN0DdTGVQk6VjcEju19IgaHudalcfabD7yhDGeA6bcQnmL+CpveLJq/3hvfwd1aof6L386Ougkx6RfyMIQ==}
     peerDependencies:
@@ -22534,9 +22547,6 @@ packages:
     resolution: {integrity: sha512-YCS/JNFAUyr5vAuhk1DWm1CBxRHW9LbJ2ozWeemrIqpbsqKjHVxYPyi5GC0rjZIT5JxJ3virVTS8wk4i/Z+krw==}
     peerDependencies:
       ajv: ^8.8.2
-
-  ajv@6.10.0:
-    resolution: {integrity: sha512-nffhOpkymDECQyR0mnsUtoCE8RlX38G0rYP+wgLWFyZuUyuuojSSvi/+euOiQBIn63whYwYVIIH1TvE3tu4OEg==}
 
   ajv@6.12.4:
     resolution: {integrity: sha512-eienB2c9qVQs2KWexhkrdMLVDoIQCz5KSeLxwg9Lzk4DOfBtIK9PQwwufcsn1jjGuf9WZmqPMbGxOzfcuphJCQ==}
@@ -22549,6 +22559,9 @@ packages:
 
   ajv@8.12.0:
     resolution: {integrity: sha512-sRu1kpcO9yLtYxBKvqfTeh9KzZEwO3STyX1HT+4CaDzC6HpTGYhIhPIzj9XuKU7KYDwnaeh5hcOwjy1QuJzBPA==}
+
+  ajv@8.13.0:
+    resolution: {integrity: sha512-PRA911Blj99jR5RMeTunVbNXMF6Lp4vZXnk5GQjcnUWUTsrXtekg/pnmFFI2u/I36Y/2bITGS30GZCXei6uNkA==}
 
   ajv@8.16.0:
     resolution: {integrity: sha512-F0twR8U1ZU67JIEtekUcLkXkoO5mMMmgGD8sK/xUFzJ805jxHQl92hImFAqqXMyMYjSPOyUPAwHYhB72g5sTXw==}
@@ -26754,9 +26767,6 @@ packages:
     resolution: {integrity: sha512-GipyPsXO1anza0AOZdy69Im7hGFCNB7Y/NGjDlZGJ3GJJLtwNSb2vrzYrTYJRrRloVx7pl+bhUaTB8yiccPvFQ==}
     engines: {node: '> 0.1.90'}
 
-  fast-deep-equal@2.0.1:
-    resolution: {integrity: sha512-bCK/2Z4zLidyB4ReuIsvALH6w31YfAQDmXMqMx6FyfHqvBxtjC0eRumeSu4Bs3XtXwpyIywtSTrVT99BxY1f9w==}
-
   fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
 
@@ -26777,9 +26787,6 @@ packages:
 
   fast-json-parse@1.0.3:
     resolution: {integrity: sha512-FRWsaZRWEJ1ESVNbDWmsAlqDk96gPQezzLghafp5J4GUKjbCz3OkAHuZs5TuPEtkbVQERysLp9xv6c24fBm8Aw==}
-
-  fast-json-stable-stringify@2.0.0:
-    resolution: {integrity: sha512-eIgZvM9C3P05kg0qxfqaVU6Tma4QedCPIByQOcemV0vju8ot3cS2DpHi4m2G2JvbSMI152rjfLX0p1pkSdyPlQ==}
 
   fast-json-stable-stringify@2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
@@ -30145,9 +30152,6 @@ packages:
     resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
     hasBin: true
 
-  magic-string@0.25.2:
-    resolution: {integrity: sha512-iLs9mPjh9IuTtRsqqhNGYcZXGei0Nh/A4xirrsqW7c+QhKVFL2vm7U09ru6cHRD22azaP/wMDgI+HCqbETMTtg==}
-
   magic-string@0.25.7:
     resolution: {integrity: sha512-4CrMT5DOHTDk4HYDlzmwu4FVCcIYI8gauveasrdCu2IKIFOJ3f0v/8MDGJCDL9oD2ppz/Av1b0Nj345H9M+XIA==}
 
@@ -30955,10 +30959,10 @@ packages:
       tailwindcss:
         optional: true
 
-  ngx-build-plus@10.1.1:
-    resolution: {integrity: sha512-l3uj/LpQfX9BTQLdpSN3Um5xBaXBgrx8hcbwnzKS2P1nKjgUJd/V85pkt5tGYBlAwE1/waLBNT1a7WEraXWnrg==}
+  ngx-build-plus@18.0.0:
+    resolution: {integrity: sha512-dmnD5CpwopUPoN51ysoTLkS7Csqkgbs2dNLL5QI5pIhV4MxDXNE8+75QTwy8EPvK37t8RjGCTBdOqmAp8Rpa/g==}
     peerDependencies:
-      '@angular-devkit/build-angular': '>=0.900.0'
+      '@angular-devkit/build-angular': ^18.0.0
       rxjs: '>= 6.0.0'
 
   nice-napi@1.0.2:
@@ -31908,6 +31912,10 @@ packages:
   picomatch@3.0.1:
     resolution: {integrity: sha512-I3EurrIQMlRc9IaAZnqRR044Phh2DXY+55o7uJ0V+hYZAcQYSuFWsc9q5PvyDHUSCe1Qxn/iBz+78s86zWnGag==}
     engines: {node: '>=10'}
+
+  picomatch@4.0.2:
+    resolution: {integrity: sha512-M7BAV6Rlcy5u+m6oPhAPFgJTzAioX/6B0DxyvDlo9l8+T3nLKbrczg2WLUyzd45L8RqfUMyGPzekbMvX2Ldkwg==}
+    engines: {node: '>=12'}
 
   pidtree@0.3.1:
     resolution: {integrity: sha512-qQbW94hLHEqCg7nhby4yRC7G2+jYHY4Rguc2bjw7Uug4GIJuu1tvf2uHaZv5Q8zdt+WKJ6qK1FOI6amaWUo5FA==}
@@ -34682,10 +34690,6 @@ packages:
 
   rx@4.1.0:
     resolution: {integrity: sha512-CiaiuN6gapkdl+cZUr67W6I8jquN4lkak3vtIsIWCl4XIPP8ffsoyN6/+PuGXnQy8Cu8W2y9Xxh31Rq4M6wUug==}
-
-  rxjs@6.4.0:
-    resolution: {integrity: sha512-Z9Yfa11F6B9Sg/BK9MnqnQ+aQYicPLtilXBp2yUtDt2JRCE0h26d33EnfO3ZxoNxG0T92OUucP3Ct7cpfkdFfw==}
-    engines: {npm: '>=2.0.0'}
 
   rxjs@6.6.2:
     resolution: {integrity: sha512-BHdBMVoWC2sL26w//BCu3YzKT4s2jip/WhwsGEDmeKYBhKDZeYezVUnHatYB7L85v5xs0BAQmg6BEYJEKxBabg==}
@@ -38968,13 +38972,16 @@ snapshots:
     optionalDependencies:
       chokidar: 3.5.3
 
-  '@angular-devkit/core@8.0.0':
+  '@angular-devkit/core@18.0.5(chokidar@3.6.0)':
     dependencies:
-      ajv: 6.10.0
-      fast-json-stable-stringify: 2.0.0
-      magic-string: 0.25.2
-      rxjs: 6.4.0
-      source-map: 0.7.3
+      ajv: 8.13.0
+      ajv-formats: 3.0.1(ajv@8.13.0)
+      jsonc-parser: 3.2.1
+      picomatch: 4.0.2
+      rxjs: 7.8.1
+      source-map: 0.7.4
+    optionalDependencies:
+      chokidar: 3.6.0
 
   '@angular-devkit/schematics@11.2.19':
     dependencies:
@@ -38992,10 +38999,15 @@ snapshots:
     transitivePeerDependencies:
       - chokidar
 
-  '@angular-devkit/schematics@8.0.0':
+  '@angular-devkit/schematics@18.0.5(chokidar@3.6.0)':
     dependencies:
-      '@angular-devkit/core': 8.0.0
-      rxjs: 6.4.0
+      '@angular-devkit/core': 18.0.5(chokidar@3.6.0)
+      jsonc-parser: 3.2.1
+      magic-string: 0.30.10
+      ora: 5.4.1
+      rxjs: 7.8.1
+    transitivePeerDependencies:
+      - chokidar
 
   '@angular/animations@11.2.14(@angular/core@11.2.14(rxjs@6.6.7)(zone.js@0.14.7))':
     dependencies:
@@ -53491,10 +53503,13 @@ snapshots:
     transitivePeerDependencies:
       - chokidar
 
-  '@schematics/angular@8.0.0':
+  '@schematics/angular@18.0.5(chokidar@3.6.0)':
     dependencies:
-      '@angular-devkit/core': 8.0.0
-      '@angular-devkit/schematics': 8.0.0
+      '@angular-devkit/core': 18.0.5(chokidar@3.6.0)
+      '@angular-devkit/schematics': 18.0.5(chokidar@3.6.0)
+      jsonc-parser: 3.2.1
+    transitivePeerDependencies:
+      - chokidar
 
   '@schematics/update@0.1102.19':
     dependencies:
@@ -58479,6 +58494,10 @@ snapshots:
     optionalDependencies:
       ajv: 8.16.0
 
+  ajv-formats@3.0.1(ajv@8.13.0):
+    optionalDependencies:
+      ajv: 8.13.0
+
   ajv-keywords@3.5.2(ajv@6.12.6):
     dependencies:
       ajv: 6.12.6
@@ -58487,13 +58506,6 @@ snapshots:
     dependencies:
       ajv: 8.16.0
       fast-deep-equal: 3.1.3
-
-  ajv@6.10.0:
-    dependencies:
-      fast-deep-equal: 2.0.1
-      fast-json-stable-stringify: 2.1.0
-      json-schema-traverse: 0.4.1
-      uri-js: 4.4.1
 
   ajv@6.12.4:
     dependencies:
@@ -58517,6 +58529,13 @@ snapshots:
       uri-js: 4.4.1
 
   ajv@8.12.0:
+    dependencies:
+      fast-deep-equal: 3.1.3
+      json-schema-traverse: 1.0.0
+      require-from-string: 2.0.2
+      uri-js: 4.4.1
+
+  ajv@8.13.0:
     dependencies:
       fast-deep-equal: 3.1.3
       json-schema-traverse: 1.0.0
@@ -64809,8 +64828,6 @@ snapshots:
 
   eyes@0.1.8: {}
 
-  fast-deep-equal@2.0.1: {}
-
   fast-deep-equal@3.1.3: {}
 
   fast-diff@1.3.0: {}
@@ -64843,8 +64860,6 @@ snapshots:
       micromatch: 4.0.7
 
   fast-json-parse@1.0.3: {}
-
-  fast-json-stable-stringify@2.0.0: {}
 
   fast-json-stable-stringify@2.1.0: {}
 
@@ -69423,8 +69438,7 @@ snapshots:
 
   jsonc-parser@3.2.0: {}
 
-  jsonc-parser@3.2.1:
-    optional: true
+  jsonc-parser@3.2.1: {}
 
   jsonfile@3.0.1:
     optionalDependencies:
@@ -70441,10 +70455,6 @@ snapshots:
   luxon@3.4.4: {}
 
   lz-string@1.5.0: {}
-
-  magic-string@0.25.2:
-    dependencies:
-      sourcemap-codec: 1.4.8
 
   magic-string@0.25.7:
     dependencies:
@@ -71850,19 +71860,14 @@ snapshots:
       tailwindcss: 3.4.4(ts-node@10.9.1(@swc/core@1.6.5)(@types/node@20.9.0)(typescript@4.9.5))
     optional: true
 
-  ngx-build-plus@10.1.1(@angular-devkit/build-angular@0.1102.19(@angular/compiler-cli@11.2.14(@angular/compiler@11.2.14)(typescript@4.0.2))(html-webpack-plugin@4.5.2(webpack@4.44.2))(karma@6.4.3)(ng-packagr@11.0.3(@angular/compiler-cli@11.2.14(@angular/compiler@11.2.14)(typescript@4.0.2))(@angular/compiler@11.2.14)(@types/node@12.20.55)(tslib@2.6.2)(typescript@4.0.2))(protractor@7.0.0)(rework-visit@1.0.0)(rework@1.0.1)(tslint@6.1.3(typescript@4.0.2))(typescript@4.0.2))(rxjs@6.6.7)(webpack@4.44.2):
+  ngx-build-plus@18.0.0(@angular-devkit/build-angular@0.1102.19(@angular/compiler-cli@11.2.14(@angular/compiler@11.2.14)(typescript@4.0.2))(html-webpack-plugin@4.5.2(webpack@4.44.2))(karma@6.4.3)(ng-packagr@11.0.3(@angular/compiler-cli@11.2.14(@angular/compiler@11.2.14)(typescript@4.0.2))(@angular/compiler@11.2.14)(@types/node@12.20.55)(tslib@2.6.2)(typescript@4.0.2))(protractor@7.0.0)(rework-visit@1.0.0)(rework@1.0.1)(tslint@6.1.3(typescript@4.0.2))(typescript@4.0.2))(chokidar@3.6.0)(rxjs@6.6.7):
     dependencies:
       '@angular-devkit/build-angular': 0.1102.19(@angular/compiler-cli@11.2.14(@angular/compiler@11.2.14)(typescript@4.0.2))(html-webpack-plugin@4.5.2(webpack@4.44.2))(karma@6.4.3)(ng-packagr@11.0.3(@angular/compiler-cli@11.2.14(@angular/compiler@11.2.14)(typescript@4.0.2))(@angular/compiler@11.2.14)(@types/node@12.20.55)(tslib@2.6.2)(typescript@4.0.2))(protractor@7.0.0)(rework-visit@1.0.0)(rework@1.0.1)(tslint@6.1.3(typescript@4.0.2))(typescript@4.0.2)
-      '@schematics/angular': 8.0.0
-      cross-spawn: 6.0.5
+      '@schematics/angular': 18.0.5(chokidar@3.6.0)
       rxjs: 6.6.7
-      webpack-dev-server: 3.11.3(webpack@4.44.2)
-      webpack-merge: 4.2.2
+      webpack-merge: 5.10.0
     transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-      - webpack
-      - webpack-cli
+      - chokidar
 
   nice-napi@1.0.2:
     dependencies:
@@ -73335,6 +73340,8 @@ snapshots:
   picomatch@2.3.1: {}
 
   picomatch@3.0.1: {}
+
+  picomatch@4.0.2: {}
 
   pidtree@0.3.1: {}
 
@@ -77624,10 +77631,6 @@ snapshots:
       aproba: 1.2.0
 
   rx@4.1.0: {}
-
-  rxjs@6.4.0:
-    dependencies:
-      tslib: 1.14.1
 
   rxjs@6.6.2:
     dependencies:
