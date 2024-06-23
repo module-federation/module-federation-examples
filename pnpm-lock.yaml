@@ -14060,8 +14060,8 @@ importers:
         specifier: 5.0.8
         version: 5.0.8(@rspack/core@0.7.4)(@swc/core@1.6.3)(@vue/compiler-sfc@3.4.30)(ejs@3.1.10)(encoding@0.1.13)(handlebars@4.7.8)(lodash@4.17.21)(prettier@2.8.8)(pug@3.0.3)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(underscore@1.12.1)(vue-template-compiler@2.7.16)(vue@3.4.27(typescript@4.5.5))(webpack-sources@3.2.3)
       '@vue/eslint-config-airbnb':
-        specifier: 6.0.0
-        version: 6.0.0(@vue/cli-service@5.0.8(@rspack/core@0.7.4)(@swc/core@1.6.3)(@vue/compiler-sfc@3.4.30)(ejs@3.1.10)(encoding@0.1.13)(handlebars@4.7.8)(lodash@4.17.21)(prettier@2.8.8)(pug@3.0.3)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(underscore@1.12.1)(vue-template-compiler@2.7.16)(vue@3.4.27(typescript@4.5.5))(webpack-sources@3.2.3))(eslint-plugin-import@2.29.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@4.5.5))(eslint@8.57.0))(eslint-plugin-vuejs-accessibility@1.2.0(eslint@8.57.0))(eslint@8.57.0)(webpack@5.92.1(@swc/core@1.6.3))
+        specifier: 8.0.0
+        version: 8.0.0(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@4.5.5))(eslint-plugin-vue@8.6.0(eslint@8.57.0))(eslint@8.57.0)
       '@vue/eslint-config-typescript':
         specifier: 13.0.0
         version: 13.0.0(eslint-plugin-vue@8.6.0(eslint@8.57.0))(eslint@8.57.0)(typescript@4.5.5)
@@ -14124,8 +14124,8 @@ importers:
         specifier: 5.0.8
         version: 5.0.8(@rspack/core@0.7.4)(@swc/core@1.6.3)(@vue/compiler-sfc@3.4.30)(ejs@3.1.10)(encoding@0.1.13)(handlebars@4.7.8)(lodash@4.17.21)(prettier@2.8.8)(pug@3.0.3)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(underscore@1.12.1)(vue-template-compiler@2.7.16)(vue@3.4.27(typescript@4.5.5))(webpack-sources@3.2.3)
       '@vue/eslint-config-airbnb':
-        specifier: 6.0.0
-        version: 6.0.0(@vue/cli-service@5.0.8(@rspack/core@0.7.4)(@swc/core@1.6.3)(@vue/compiler-sfc@3.4.30)(ejs@3.1.10)(encoding@0.1.13)(handlebars@4.7.8)(lodash@4.17.21)(prettier@2.8.8)(pug@3.0.3)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(underscore@1.12.1)(vue-template-compiler@2.7.16)(vue@3.4.27(typescript@4.5.5))(webpack-sources@3.2.3))(eslint-plugin-import@2.29.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@4.5.5))(eslint@8.57.0))(eslint-plugin-vuejs-accessibility@1.2.0(eslint@8.57.0))(eslint@8.57.0)(webpack@5.92.1(@swc/core@1.6.3))
+        specifier: 8.0.0
+        version: 8.0.0(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@4.5.5))(eslint-plugin-vue@8.6.0(eslint@8.57.0))(eslint@8.57.0)
       '@vue/eslint-config-typescript':
         specifier: 13.0.0
         version: 13.0.0(eslint-plugin-vue@8.6.0(eslint@8.57.0))(eslint@8.57.0)(typescript@4.5.5)
@@ -22949,16 +22949,11 @@ packages:
   '@vue/devtools-api@6.6.3':
     resolution: {integrity: sha512-0MiMsFma/HqA6g3KLKn+AGpL1kgKhFWszC9U29NfpWK5LE7bjeXxySWJrOJ77hBz+TBrBQ7o4QJqbPbqbs8rJw==}
 
-  '@vue/eslint-config-airbnb@6.0.0':
-    resolution: {integrity: sha512-zoOad6NKIEh8nDOC6fcWMp3i1nYlNF1au80cvTXIEV2w7iRLVo8C10rHAhjCnmgA0Sr+ec1KQxpl7o838DMKOg==}
+  '@vue/eslint-config-airbnb@8.0.0':
+    resolution: {integrity: sha512-0PGJubVK8+arJC+07xeL7gFLLfr5hxub7UCl+x+bxgvE2qtJodbOXZ27mdt1tAYsgUuhmp3ymn9mNbAIvNGahA==}
     peerDependencies:
-      '@vue/cli-service': ^4.0.0-0 || ^5.0.0-0
-      eslint: ^7.32.0 || ^8.2.0
-      eslint-plugin-import: ^2.25.3
-      eslint-plugin-vuejs-accessibility: ^1.1.0
-    peerDependenciesMeta:
-      '@vue/cli-service':
-        optional: true
+      eslint: ^8.2.0
+      eslint-plugin-vue: ^9.2.0
 
   '@vue/eslint-config-typescript@13.0.0':
     resolution: {integrity: sha512-MHh9SncG/sfqjVqjcuFLOLD6Ed4dRAis4HNt0dXASeAuLqIAx4YMB1/m2o4pUKK1vCt8fUvYG8KKX2Ot3BVZTg==}
@@ -23713,10 +23708,6 @@ packages:
   array-unique@0.3.2:
     resolution: {integrity: sha512-SleRWjh9JUud2wH1hPs9rZBZ33H6T9HOiL0uwGnGx9FpE6wKGyfWugmbkEOIs6qWrZhg0LWeLziLrEwQJhs5mQ==}
     engines: {node: '>=0.10.0'}
-
-  array.prototype.find@2.2.3:
-    resolution: {integrity: sha512-fO/ORdOELvjbbeIfZfzrXFMhYHGofRGqd+am9zm3tZ4GlJINj/pA2eITyfd65Vg6+ZbHd/Cys7stpoRSWtQFdA==}
-    engines: {node: '>= 0.4'}
 
   array.prototype.findlast@1.2.5:
     resolution: {integrity: sha512-CVvd6FHg1Z3POpBLxO6E6zr+rSKEQ9L6rZHAaY7lLfhKsWYUBBOuMs0e9o24oopj6H+geRCX0YJ+TJLBK2eHyQ==}
@@ -26834,10 +26825,6 @@ packages:
     resolution: {integrity: sha512-C5Pn8Wk+1vKBoHghJODM63yk8MvrO9EWZUfkAt5HAqIgPE4/8FF0PEGHXtEd40l223+cE5ABWuPzm38PHFXfMA==}
     engines: {node: '>=10.2.0'}
 
-  enhanced-resolve@0.9.1:
-    resolution: {integrity: sha512-kxpoMgrdtkXZ5h0SeraBS1iRntpTpQ3R8ussdb38+UAFnMGX5DDyJXePm+OCHOcoXvHDw7mc2erbJBpDnl7TPw==}
-    engines: {node: '>=0.6'}
-
   enhanced-resolve@4.3.0:
     resolution: {integrity: sha512-3e87LvavsdxyoCfGusJnrZ5G8SLPOFeHSNpZI/ATL9a5leXo2k0w6MKnbqhdBad9qTobSfB20Ld7UmgoNbAZkQ==}
     engines: {node: '>=6.9.0'}
@@ -27264,6 +27251,11 @@ packages:
       typescript:
         optional: true
 
+  eslint-import-resolver-custom-alias@1.3.2:
+    resolution: {integrity: sha512-wBPcZA2k6/IXaT8FsLMyiyVSG6WVEuaYIAbeKLXeGwr523BmeB9lKAAoLJWSqp3txsnU4gpkgD2x1q6K8k0uDQ==}
+    peerDependencies:
+      eslint-plugin-import: '>=2.2.0'
+
   eslint-import-resolver-node@0.3.9:
     resolution: {integrity: sha512-WFj2isz22JahUv+B788TlO3N6zL3nNJGU8CcZbPZvVEkBPaJdCV4vy5wyghty5ROFbCRnm132v8BScu5/1BQ8g==}
 
@@ -27280,13 +27272,6 @@ packages:
     peerDependencies:
       eslint: '*'
       eslint-plugin-import: '*'
-
-  eslint-import-resolver-webpack@0.13.8:
-    resolution: {integrity: sha512-Y7WIaXWV+Q21Rz/PJgUxiW/FTBOWmU8NTLdz+nz9mMoiz5vAev/fOaQxwD7qRzTfE3HSm1qsxZ5uRd7eX+VEtA==}
-    engines: {node: '>= 6'}
-    peerDependencies:
-      eslint-plugin-import: '>=1.4.0'
-      webpack: '>=1.11.0'
 
   eslint-module-utils@2.8.1:
     resolution: {integrity: sha512-rXDXR3h7cs7dy9RNpUlQf80nX31XWJEyGq1tRMo+6GsO5VmTe4UTwtmonAD4ZkAsrfMVDA2wlGJ3790Ys+D49Q==}
@@ -27437,6 +27422,12 @@ packages:
     resolution: {integrity: sha512-wF7kT22lS2VOmIpDeI65bnFFKFgESEEpI+CWKr43mdfDRywA4sCk7cKhtZsvfbPOtKO0GDlnpFxZbOIGsFn7IQ==}
     peerDependencies:
       eslint: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
+
+  eslint-plugin-vuejs-accessibility@2.3.1:
+    resolution: {integrity: sha512-tXwjHTl2lpn2Rec0ieeIlXBiJirtKYB1galOf/EpyuLhs3ajl9eYS01vY5BKaoZRC+GJj2DWcu/ZjNqTtUqoMw==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      eslint: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
 
   eslint-rule-composer@0.3.0:
     resolution: {integrity: sha512-bt+Sh8CtDmn2OajxvNO+BX7Wn4CIWMpTRm3MaiKPCQcnnlm0CS2mhui6QaoeQugs+3Kj2ESKEEGJUdVafwhiCg==}
@@ -29219,10 +29210,6 @@ packages:
 
   internmap@1.0.1:
     resolution: {integrity: sha512-lDB5YccMydFBtasVtxnZ3MRBHuaoE8GKsppq+EchKL2U4nK/DmEpPHNH8MZe5HkMtpSiTSOZwfN0tzYjO/lJEw==}
-
-  interpret@1.4.0:
-    resolution: {integrity: sha512-agE4QfB2Lkp9uICn7BAqoscw4SZP9kTE2hxiFI3jBPmXJfdqiahTbUuKGsMoN2GtqL9AxhYioAcVvgsb1HvRbA==}
-    engines: {node: '>= 0.10'}
 
   interpret@2.2.0:
     resolution: {integrity: sha512-Ju0Bz/cEia55xDwUWEa8+olFpCiQoypjnQySseKtmjNrnps3P+xfpUmGr90T7yjlVJmOtybRvPXhKMbHr+fWnw==}
@@ -31435,9 +31422,6 @@ packages:
 
   memoizerific@1.11.3:
     resolution: {integrity: sha512-/EuHYwAPdLtXwAwSZkh/Gutery6pD2KYd44oQLhAvQp/50mpyduZh8Q7PYHXTCJ+wuXxt7oij2LXyIJOOYFPog==}
-
-  memory-fs@0.2.0:
-    resolution: {integrity: sha512-+y4mDxU4rvXXu5UDSGCGNiesFmwCHuefGMoPCO1WYucNYj7DsLqrFaa2fXVI0H+NNiPTwwzKwspn9yTZqUGqng==}
 
   memory-fs@0.4.1:
     resolution: {integrity: sha512-cda4JKCxReDXFXRqOHPQscuIYg1PvxbE2S2GP45rnwfEK+vZaXC8C1OFvdHIbgw0DLzowXGVoxLaAmlgRy14GQ==}
@@ -37235,10 +37219,6 @@ packages:
     resolution: {integrity: sha512-ZoyXOdJjISB7/BcLTR6SEsLgKtDStYyYZVLsUtWChO4Ps20CBad7lfJKVDiejocV4ME1hLmyY0WJE3hSDcmQ2A==}
     engines: {node: '>=14.0.0'}
     hasBin: true
-
-  tapable@0.1.10:
-    resolution: {integrity: sha512-jX8Et4hHg57mug1/079yitEKWGB3LCwoxByLsNim89LABq8NqgiX+6iYVOsq0vX8uJHkU+DZ5fnq95f800bEsQ==}
-    engines: {node: '>=0.6'}
 
   tapable@1.1.3:
     resolution: {integrity: sha512-4WK/bYZmj8xLr+HUCODHGF1ZFzsYffasLUgEiMBY4fgtltdO6B4WJtlSbPaDTLpYTcGVwM2qLnFTICEcNxs3kA==}
@@ -50638,7 +50618,7 @@ snapshots:
 
   '@module-federation/typescript@2.4.2(encoding@0.1.13)(next@13.5.6(@babel/core@7.24.7)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@4.9.5)(vue-tsc@1.8.27(typescript@4.9.5))(webpack@5.92.1(@swc/core@1.6.3)(webpack-cli@5.0.1))':
     dependencies:
-      '@module-federation/utilities': 2.0.4(next@13.5.6(@babel/core@7.24.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@5.92.1(@swc/core@1.6.3)(webpack-cli@5.0.1))
+      '@module-federation/utilities': 2.0.4(next@13.5.6(@babel/core@7.24.7)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@5.92.1(@swc/core@1.6.3)(webpack-cli@5.0.1))
       axios: 1.7.2
       lodash.get: 4.4.2
       node-fetch: 2.6.9(encoding@0.1.13)
@@ -50657,7 +50637,7 @@ snapshots:
 
   '@module-federation/typescript@2.4.2(encoding@0.1.13)(next@13.5.6(@babel/core@7.24.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@4.9.4)(vue-tsc@1.8.27(typescript@4.9.4))(webpack@5.92.1(@swc/core@1.6.3)(webpack-cli@5.0.1))':
     dependencies:
-      '@module-federation/utilities': 2.0.4(next@13.5.6(@babel/core@7.24.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@5.92.1(@swc/core@1.6.3)(webpack-cli@5.0.1))
+      '@module-federation/utilities': 2.0.4(next@13.5.6(@babel/core@7.24.7)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@5.92.1(@swc/core@1.6.3)(webpack-cli@5.0.1))
       axios: 1.7.2
       lodash.get: 4.4.2
       node-fetch: 2.6.9(encoding@0.1.13)
@@ -50717,7 +50697,7 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  '@module-federation/utilities@2.0.4(next@13.5.6(@babel/core@7.24.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@5.92.1(@swc/core@1.6.3)(webpack-cli@5.0.1))':
+  '@module-federation/utilities@2.0.4(next@13.5.6(@babel/core@7.24.7)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@5.92.1(@swc/core@1.6.3)(webpack-cli@5.0.1))':
     dependencies:
       webpack: 5.92.1(@swc/core@1.6.3)(webpack-cli@5.0.1)
       webpack-sources: 3.2.3
@@ -59701,19 +59681,23 @@ snapshots:
 
   '@vue/devtools-api@6.6.3': {}
 
-  '@vue/eslint-config-airbnb@6.0.0(@vue/cli-service@5.0.8(@rspack/core@0.7.4)(@swc/core@1.6.3)(@vue/compiler-sfc@3.4.30)(ejs@3.1.10)(encoding@0.1.13)(handlebars@4.7.8)(lodash@4.17.21)(prettier@2.8.8)(pug@3.0.3)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(underscore@1.12.1)(vue-template-compiler@2.7.16)(vue@3.4.27(typescript@4.5.5))(webpack-sources@3.2.3))(eslint-plugin-import@2.29.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@4.5.5))(eslint@8.57.0))(eslint-plugin-vuejs-accessibility@1.2.0(eslint@8.57.0))(eslint@8.57.0)(webpack@5.92.1(@swc/core@1.6.3))':
+  '@vue/eslint-config-airbnb@8.0.0(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@4.5.5))(eslint-plugin-vue@8.6.0(eslint@8.57.0))(eslint@8.57.0)':
     dependencies:
       eslint: 8.57.0
       eslint-config-airbnb-base: 15.0.0(eslint-plugin-import@2.29.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@4.5.5))(eslint@8.57.0))(eslint@8.57.0)
+      eslint-import-resolver-custom-alias: 1.3.2(eslint-plugin-import@2.29.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@4.5.5))(eslint@8.57.0))
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-webpack: 0.13.8(eslint-plugin-import@2.29.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@4.5.5))(eslint@8.57.0))(webpack@5.92.1(@swc/core@1.6.3))
       eslint-plugin-import: 2.29.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@4.5.5))(eslint@8.57.0)
-      eslint-plugin-vuejs-accessibility: 1.2.0(eslint@8.57.0)
-    optionalDependencies:
-      '@vue/cli-service': 5.0.8(@rspack/core@0.7.4)(@swc/core@1.6.3)(@vue/compiler-sfc@3.4.30)(ejs@3.1.10)(encoding@0.1.13)(handlebars@4.7.8)(lodash@4.17.21)(prettier@2.8.8)(pug@3.0.3)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(underscore@1.12.1)(vue-template-compiler@2.7.16)(vue@3.4.27(typescript@4.5.5))(webpack-sources@3.2.3)
+      eslint-plugin-jsx-a11y: 6.9.0(eslint@8.57.0)
+      eslint-plugin-react: 7.34.3(eslint@8.57.0)
+      eslint-plugin-vue: 8.6.0(eslint@8.57.0)
+      eslint-plugin-vuejs-accessibility: 2.3.1(eslint@8.57.0)
+      vue-eslint-parser: 9.4.3(eslint@8.57.0)
     transitivePeerDependencies:
+      - '@typescript-eslint/parser'
+      - eslint-import-resolver-typescript
+      - eslint-import-resolver-webpack
       - supports-color
-      - webpack
 
   '@vue/eslint-config-typescript@13.0.0(eslint-plugin-vue@8.6.0(eslint@8.57.0))(eslint@8.57.0)(typescript@4.5.5)':
     dependencies:
@@ -60901,14 +60885,6 @@ snapshots:
   array-uniq@1.0.3: {}
 
   array-unique@0.3.2: {}
-
-  array.prototype.find@2.2.3:
-    dependencies:
-      call-bind: 1.0.7
-      define-properties: 1.2.1
-      es-abstract: 1.23.3
-      es-object-atoms: 1.0.0
-      es-shim-unscopables: 1.0.2
 
   array.prototype.findlast@1.2.5:
     dependencies:
@@ -65248,12 +65224,6 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  enhanced-resolve@0.9.1:
-    dependencies:
-      graceful-fs: 4.2.11
-      memory-fs: 0.2.0
-      tapable: 0.1.10
-
   enhanced-resolve@4.3.0:
     dependencies:
       graceful-fs: 4.2.11
@@ -65949,6 +65919,12 @@ snapshots:
       - jest
       - supports-color
 
+  eslint-import-resolver-custom-alias@1.3.2(eslint-plugin-import@2.29.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@4.5.5))(eslint@8.57.0)):
+    dependencies:
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@4.5.5))(eslint@8.57.0)
+      glob-parent: 6.0.2
+      resolve: 1.22.8
+
   eslint-import-resolver-node@0.3.9:
     dependencies:
       debug: 3.2.7(supports-color@6.1.0)
@@ -66018,24 +65994,6 @@ snapshots:
       - '@typescript-eslint/parser'
       - eslint-import-resolver-node
       - eslint-import-resolver-webpack
-      - supports-color
-
-  eslint-import-resolver-webpack@0.13.8(eslint-plugin-import@2.29.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@4.5.5))(eslint@8.57.0))(webpack@5.92.1(@swc/core@1.6.3)):
-    dependencies:
-      array.prototype.find: 2.2.3
-      debug: 3.2.7(supports-color@6.1.0)
-      enhanced-resolve: 0.9.1
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@4.5.5))(eslint@8.57.0)
-      find-root: 1.1.0
-      hasown: 2.0.2
-      interpret: 1.4.0
-      is-core-module: 2.13.1
-      is-regex: 1.1.4
-      lodash: 4.17.21
-      resolve: 2.0.0-next.5
-      semver: 5.7.2
-      webpack: 5.92.1(@swc/core@1.6.3)
-    transitivePeerDependencies:
       - supports-color
 
   eslint-module-utils@2.8.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@4.5.5))(eslint-import-resolver-node@0.3.9)(eslint@8.57.0):
@@ -66571,6 +66529,15 @@ snapshots:
       - supports-color
 
   eslint-plugin-vuejs-accessibility@1.2.0(eslint@8.57.0):
+    dependencies:
+      aria-query: 5.3.0
+      emoji-regex: 10.3.0
+      eslint: 8.57.0
+      vue-eslint-parser: 9.4.3(eslint@8.57.0)
+    transitivePeerDependencies:
+      - supports-color
+
+  eslint-plugin-vuejs-accessibility@2.3.1(eslint@8.57.0):
     dependencies:
       aria-query: 5.3.0
       emoji-regex: 10.3.0
@@ -69237,8 +69204,6 @@ snapshots:
       side-channel: 1.0.6
 
   internmap@1.0.1: {}
-
-  interpret@1.4.0: {}
 
   interpret@2.2.0: {}
 
@@ -73129,8 +73094,6 @@ snapshots:
   memoizerific@1.11.3:
     dependencies:
       map-or-similar: 1.5.0
-
-  memory-fs@0.2.0: {}
 
   memory-fs@0.4.1:
     dependencies:
@@ -81752,8 +81715,6 @@ snapshots:
     transitivePeerDependencies:
       - ts-node
 
-  tapable@0.1.10: {}
-
   tapable@1.1.3: {}
 
   tapable@2.2.1: {}
@@ -85074,7 +85035,7 @@ snapshots:
       '@types/ws': 8.5.10
       ansi-html-community: 0.0.8
       bonjour-service: 1.2.1
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       colorette: 2.0.19
       compression: 1.7.4(supports-color@6.1.0)
       connect-history-api-fallback: 2.0.0
@@ -85115,7 +85076,7 @@ snapshots:
       '@types/ws': 8.5.10
       ansi-html-community: 0.0.8
       bonjour-service: 1.2.1
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       colorette: 2.0.19
       compression: 1.7.4(supports-color@6.1.0)
       connect-history-api-fallback: 2.0.0
@@ -85156,7 +85117,7 @@ snapshots:
       '@types/ws': 8.5.10
       ansi-html-community: 0.0.8
       bonjour-service: 1.2.1
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       colorette: 2.0.19
       compression: 1.7.4(supports-color@6.1.0)
       connect-history-api-fallback: 2.0.0
@@ -85197,7 +85158,7 @@ snapshots:
       '@types/ws': 8.5.10
       ansi-html-community: 0.0.8
       bonjour-service: 1.2.1
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       colorette: 2.0.19
       compression: 1.7.4(supports-color@6.1.0)
       connect-history-api-fallback: 2.0.0
@@ -85238,7 +85199,7 @@ snapshots:
       '@types/ws': 8.5.10
       ansi-html-community: 0.0.8
       bonjour-service: 1.2.1
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       colorette: 2.0.19
       compression: 1.7.4(supports-color@6.1.0)
       connect-history-api-fallback: 2.0.0
@@ -85279,7 +85240,7 @@ snapshots:
       '@types/ws': 8.5.10
       ansi-html-community: 0.0.8
       bonjour-service: 1.2.1
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       colorette: 2.0.19
       compression: 1.7.4(supports-color@6.1.0)
       connect-history-api-fallback: 2.0.0
@@ -85320,7 +85281,7 @@ snapshots:
       '@types/ws': 8.5.10
       ansi-html-community: 0.0.8
       bonjour-service: 1.2.1
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       colorette: 2.0.19
       compression: 1.7.4(supports-color@6.1.0)
       connect-history-api-fallback: 2.0.0
@@ -85360,7 +85321,7 @@ snapshots:
       '@types/ws': 8.5.10
       ansi-html-community: 0.0.8
       bonjour-service: 1.2.1
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       colorette: 2.0.19
       compression: 1.7.4(supports-color@6.1.0)
       connect-history-api-fallback: 2.0.0
