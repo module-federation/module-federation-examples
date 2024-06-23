@@ -9,6 +9,7 @@ const deps = require('./package.json').dependencies;
 const webpackConfig = {
   entry: './src/index',
   mode: 'development',
+  target: 'web',
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),

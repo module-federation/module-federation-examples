@@ -8,6 +8,7 @@ const { dependencies } = require('./package.json');
 const webpackConfig = {
   entry: './src/index',
   mode: 'development',
+  target: 'web',
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
