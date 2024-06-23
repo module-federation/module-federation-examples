@@ -7378,8 +7378,8 @@ importers:
         specifier: 8.10.0
         version: 8.10.0(eslint@8.57.0)
       eslint-plugin-cypress:
-        specifier: 2.15.2
-        version: 2.15.2(eslint@8.57.0)
+        specifier: 3.3.0
+        version: 3.3.0(eslint@8.57.0)
       eslint-plugin-import:
         specifier: 2.29.1
         version: 2.29.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@4.8.4))(eslint@8.57.0)
@@ -8360,8 +8360,8 @@ importers:
         specifier: 9.1.0
         version: 9.1.0(eslint@8.57.0)
       eslint-plugin-cypress:
-        specifier: 2.15.2
-        version: 2.15.2(eslint@8.57.0)
+        specifier: 3.3.0
+        version: 3.3.0(eslint@8.57.0)
       eslint-plugin-import:
         specifier: 2.29.1
         version: 2.29.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@5.1.6))(eslint@8.57.0)
@@ -10123,10 +10123,10 @@ importers:
     dependencies:
       '@module-federation/node':
         specifier: 2.2.12
-        version: 2.2.12(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.4.3)(vue-tsc@1.8.27(typescript@5.4.3))(webpack@5.92.1(@swc/core@1.6.5))
+        version: 2.2.12(next@14.2.4(@babel/core@7.24.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.6))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.4.3)(vue-tsc@1.8.27(typescript@5.4.3))(webpack@5.92.1(@swc/core@1.6.5))
       '@module-federation/utilities':
         specifier: ^3.0.0
-        version: 3.0.26(next@14.2.4(@babel/core@7.24.7)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.6))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@5.92.1(@swc/core@1.6.5))
+        version: 3.0.26(next@14.2.4(@babel/core@7.24.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.6))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@5.92.1(@swc/core@1.6.5))
     devDependencies:
       concurrently:
         specifier: 8.2.2
@@ -27215,10 +27215,10 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
 
-  eslint-plugin-cypress@2.15.2:
-    resolution: {integrity: sha512-CtcFEQTDKyftpI22FVGpx8bkpKyYXBlNge6zSo0pl5/qJvBAnzaD76Vu2AsP16d6mTj478Ldn2mhgrWV+Xr0vQ==}
+  eslint-plugin-cypress@3.3.0:
+    resolution: {integrity: sha512-HPHMPzYBIshzJM8wqgKSKHG2p/8R0Gbg4Pb3tcdC9WrmkuqxiKxSKbjunUrajhV5l7gCIFrh1P7C7GuBqH6YuQ==}
     peerDependencies:
-      eslint: '>= 3.2.1'
+      eslint: '>=7'
 
   eslint-plugin-es@3.0.1:
     resolution: {integrity: sha512-GUmAsJaN4Fc7Gbtl8uOBlayo2DqhwWvEzykMHSCZHU3XdJ+NSzzZcVhXh3VxX5icqQ+oQdIEawXX8xkR3mIFmQ==}
@@ -50263,26 +50263,6 @@ snapshots:
       - utf-8-validate
       - vue-tsc
 
-  '@module-federation/node@2.2.12(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.4.3)(vue-tsc@1.8.27(typescript@5.4.3))(webpack@5.92.1(@swc/core@1.6.5))':
-    dependencies:
-      '@module-federation/enhanced': 0.1.21(typescript@5.4.3)(vue-tsc@1.8.27(typescript@5.4.3))(webpack@5.92.1(@swc/core@1.6.5))
-      '@module-federation/runtime': 0.1.21
-      '@module-federation/sdk': 0.1.21
-      '@module-federation/utilities': 3.0.26(next@14.2.4(@babel/core@7.24.7)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.6))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@5.92.1(@swc/core@1.6.5))
-      encoding: 0.1.13
-      node-fetch: 2.7.0(encoding@0.1.13)
-      webpack: 5.92.1(@swc/core@1.6.5)
-    optionalDependencies:
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    transitivePeerDependencies:
-      - bufferutil
-      - debug
-      - supports-color
-      - typescript
-      - utf-8-validate
-      - vue-tsc
-
   '@module-federation/rspack@0.1.21(typescript@4.3.5)(vue-tsc@1.8.27(typescript@4.3.5))':
     dependencies:
       '@module-federation/dts-plugin': 0.1.21(typescript@4.3.5)(vue-tsc@1.8.27(typescript@4.3.5))
@@ -65801,7 +65781,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-cypress@2.15.2(eslint@8.57.0):
+  eslint-plugin-cypress@3.3.0(eslint@8.57.0):
     dependencies:
       eslint: 8.57.0
       globals: 13.24.0
