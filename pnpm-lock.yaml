@@ -8677,8 +8677,8 @@ importers:
         specifier: 9.6.0
         version: 9.6.0(eslint@8.57.0)
       eslint-webpack-plugin:
-        specifier: 3.2.0
-        version: 3.2.0(eslint@8.57.0)(webpack@5.89.0(@swc/core@1.6.5))
+        specifier: 4.2.0
+        version: 4.2.0(eslint@8.57.0)(webpack@5.89.0(@swc/core@1.6.5))
       prettier:
         specifier: 2.8.8
         version: 2.8.8
@@ -8717,8 +8717,8 @@ importers:
         specifier: 9.6.0
         version: 9.6.0(eslint@8.57.0)
       eslint-webpack-plugin:
-        specifier: 3.2.0
-        version: 3.2.0(eslint@8.57.0)(webpack@5.89.0(@swc/core@1.6.5))
+        specifier: 4.2.0
+        version: 4.2.0(eslint@8.57.0)(webpack@5.89.0(@swc/core@1.6.5))
       prettier:
         specifier: 2.8.8
         version: 2.8.8
@@ -27403,6 +27403,13 @@ packages:
     engines: {node: '>= 12.13.0'}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0
+      webpack: ^5.0.0
+
+  eslint-webpack-plugin@4.2.0:
+    resolution: {integrity: sha512-rsfpFQ01AWQbqtjgPRr2usVRxhWDuG0YDYcG8DJOteD3EFnpeuYuOwk0PQiN7PRBTqS6ElNdtPZPggj8If9WnA==}
+    engines: {node: '>= 14.15.0'}
+    peerDependencies:
+      eslint: ^8.0.0 || ^9.0.0
       webpack: ^5.0.0
 
   eslint@8.57.0:
@@ -66321,6 +66328,16 @@ snapshots:
       schema-utils: 4.2.0
       webpack: 5.92.1(@swc/core@1.6.5)
 
+  eslint-webpack-plugin@4.2.0(eslint@8.57.0)(webpack@5.89.0(@swc/core@1.6.5)):
+    dependencies:
+      '@types/eslint': 8.56.10
+      eslint: 8.57.0
+      jest-worker: 29.7.0
+      micromatch: 4.0.7
+      normalize-path: 3.0.0
+      schema-utils: 4.2.0
+      webpack: 5.89.0(@swc/core@1.6.5)
+
   eslint@8.57.0:
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@8.57.0)
@@ -81599,7 +81616,7 @@ snapshots:
     dependencies:
       cacache: 15.0.5
       find-cache-dir: 3.3.2
-      jest-worker: 26.3.0
+      jest-worker: 26.6.2
       p-limit: 3.1.0
       schema-utils: 2.7.1
       serialize-javascript: 4.0.0
