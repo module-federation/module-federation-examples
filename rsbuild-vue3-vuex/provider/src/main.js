@@ -1,1 +1,1 @@
-// import("./bootstrap").then(({ bootstrap }) => bootstrap());
+import("./bootstrap").then(({ bootstrap }) => bootstrap());
