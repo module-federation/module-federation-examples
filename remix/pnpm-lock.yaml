@@ -49,8 +49,8 @@ importers:
         specifier: 2.2.12
         version: 2.2.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.2)(webpack@5.92.1(esbuild@0.21.5)(webpack-cli@5.1.4))
       '@remix-run/dev':
-        specifier: 2.8.1
-        version: 2.8.1(@types/node@20.14.6)(terser@5.31.1)(typescript@5.5.2)(vite@5.3.1(@types/node@20.14.6)(terser@5.31.1))
+        specifier: 2.9.2
+        version: 2.9.2(@remix-run/react@2.9.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.2))(@types/node@20.14.6)(terser@5.31.1)(typescript@5.5.2)(vite@5.3.1(@types/node@20.14.6)(terser@5.31.1))
       '@types/express':
         specifier: 4.17.21
         version: 4.17.21
@@ -119,8 +119,8 @@ importers:
         specifier: 2.2.12
         version: 2.2.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.2)(webpack@5.92.1(esbuild@0.21.5)(webpack-cli@5.1.4))
       '@remix-run/dev':
-        specifier: 2.8.1
-        version: 2.8.1(@types/node@20.14.6)(terser@5.31.1)(typescript@5.5.2)(vite@5.3.1(@types/node@20.14.6)(terser@5.31.1))
+        specifier: 2.9.2
+        version: 2.9.2(@remix-run/react@2.9.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.2))(@types/node@20.14.6)(terser@5.31.1)(typescript@5.5.2)(vite@5.3.1(@types/node@20.14.6)(terser@5.31.1))
       '@types/express':
         specifier: 4.17.21
         version: 4.17.21
@@ -722,12 +722,13 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@remix-run/dev@2.8.1':
-    resolution: {integrity: sha512-qFt4jAsAJeIOyg6ngeSnTG/9Z5N9QJfeThP/8wRHc1crqYgTiEtcI3DZ8WlAXjVSF5emgn/ZZKqzLAI02OgMfQ==}
+  '@remix-run/dev@2.9.2':
+    resolution: {integrity: sha512-70dr9HH/mCHP5+uPoQXyS9+r73IL//IDPaFruIhK8kmmLPGAg5bGyFRz/xX6LTa98gPdAwZXxBy7frudeh2Z0Q==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     peerDependencies:
-      '@remix-run/serve': ^2.8.1
+      '@remix-run/react': ^2.9.2
+      '@remix-run/serve': ^2.9.2
       typescript: ^5.1.0
       vite: ^5.1.0
       wrangler: ^3.28.2
@@ -746,15 +747,6 @@ packages:
     engines: {node: '>=18.0.0'}
     peerDependencies:
       express: ^4.17.1
-      typescript: ^5.1.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-
-  '@remix-run/node@2.8.1':
-    resolution: {integrity: sha512-ddCwBVlfLvRxTQJHPcaM1lhfMjsFYG3EGmYpWJIWnnzDX5EbX9pUNHBWisMuH1eA0c7pbw0PbW0UtCttKYx2qg==}
-    engines: {node: '>=18.0.0'}
-    peerDependencies:
       typescript: ^5.1.0
     peerDependenciesMeta:
       typescript:
@@ -780,26 +772,9 @@ packages:
       typescript:
         optional: true
 
-  '@remix-run/router@1.15.3':
-    resolution: {integrity: sha512-Oy8rmScVrVxWZVOpEF57ovlnhpZ8CCPlnIIumVcV9nFdiSIrus99+Lw78ekXyGvVDlIsFJbSfmSovJUhCWYV3w==}
-    engines: {node: '>=14.0.0'}
-
-  '@remix-run/router@1.15.3-pre.0':
-    resolution: {integrity: sha512-JUQb6sztqJpRbsdKpx3D4+6eaGmHU4Yb/QeKrES/ZbLuijlZMOmZ+gV0ohX5vrRDnJHJmcQPq3Tpk0GGPNM9gg==}
-    engines: {node: '>=14.0.0'}
-
   '@remix-run/router@1.16.1':
     resolution: {integrity: sha512-es2g3dq6Nb07iFxGk5GuHN20RwBZOsuDQN7izWIisUcv9r+d2C5jQxqmgkdebXgReWfiyUabcki6Fg77mSNrig==}
     engines: {node: '>=14.0.0'}
-
-  '@remix-run/server-runtime@2.8.1':
-    resolution: {integrity: sha512-fh4SOEoONrN73Kvzc0gMDCmYpVRVbvoj9j3BUXHAcn0An8iX+HD/22gU7nTkIBzExM/F9xgEcwTewOnWqLw0Bg==}
-    engines: {node: '>=18.0.0'}
-    peerDependencies:
-      typescript: ^5.1.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
 
   '@remix-run/server-runtime@2.9.2':
     resolution: {integrity: sha512-dX37FEeMVVg7KUbpRhX4hD0nUY0Sscz/qAjU4lYCdd6IzwJGariTmz+bQTXKCjploZuXj09OQZHSOS/ydkUVDA==}
@@ -4080,7 +4055,7 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@remix-run/dev@2.8.1(@types/node@20.14.6)(terser@5.31.1)(typescript@5.5.2)(vite@5.3.1(@types/node@20.14.6)(terser@5.31.1))':
+  '@remix-run/dev@2.9.2(@remix-run/react@2.9.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.2))(@types/node@20.14.6)(terser@5.31.1)(typescript@5.5.2)(vite@5.3.1(@types/node@20.14.6)(terser@5.31.1))':
     dependencies:
       '@babel/core': 7.24.7
       '@babel/generator': 7.24.7
@@ -4092,9 +4067,10 @@ snapshots:
       '@babel/types': 7.24.7
       '@mdx-js/mdx': 2.3.0
       '@npmcli/package-json': 4.0.1
-      '@remix-run/node': 2.8.1(typescript@5.5.2)
-      '@remix-run/router': 1.15.3-pre.0
-      '@remix-run/server-runtime': 2.8.1(typescript@5.5.2)
+      '@remix-run/node': 2.9.2(typescript@5.5.2)
+      '@remix-run/react': 2.9.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.2)
+      '@remix-run/router': 1.16.1
+      '@remix-run/server-runtime': 2.9.2(typescript@5.5.2)
       '@types/mdx': 2.0.13
       '@vanilla-extract/integration': 6.5.0(@types/node@20.14.6)(terser@5.31.1)
       arg: 5.0.2
@@ -4160,19 +4136,6 @@ snapshots:
     optionalDependencies:
       typescript: 5.5.2
 
-  '@remix-run/node@2.8.1(typescript@5.5.2)':
-    dependencies:
-      '@remix-run/server-runtime': 2.8.1(typescript@5.5.2)
-      '@remix-run/web-fetch': 4.4.2
-      '@remix-run/web-file': 3.1.0
-      '@remix-run/web-stream': 1.1.0
-      '@web3-storage/multipart-parser': 1.0.0
-      cookie-signature: 1.2.1
-      source-map-support: 0.5.21
-      stream-slice: 0.1.2
-    optionalDependencies:
-      typescript: 5.5.2
-
   '@remix-run/node@2.9.2(typescript@5.5.2)':
     dependencies:
       '@remix-run/server-runtime': 2.9.2(typescript@5.5.2)
@@ -4197,22 +4160,7 @@ snapshots:
     optionalDependencies:
       typescript: 5.5.2
 
-  '@remix-run/router@1.15.3': {}
-
-  '@remix-run/router@1.15.3-pre.0': {}
-
   '@remix-run/router@1.16.1': {}
-
-  '@remix-run/server-runtime@2.8.1(typescript@5.5.2)':
-    dependencies:
-      '@remix-run/router': 1.15.3
-      '@types/cookie': 0.6.0
-      '@web3-storage/multipart-parser': 1.0.0
-      cookie: 0.6.0
-      set-cookie-parser: 2.6.0
-      source-map: 0.7.4
-    optionalDependencies:
-      typescript: 5.5.2
 
   '@remix-run/server-runtime@2.9.2(typescript@5.5.2)':
     dependencies:
