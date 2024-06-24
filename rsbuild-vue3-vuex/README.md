@@ -3,39 +3,22 @@
 
 ## Setup Instructions
 
-### 1. Clone the Repository
 
-```bash
-git clone <repository-url>
-cd <repository-folder>
-```
-
-### 2. Install Dependencies
+### 1. Install Dependencies
 
 You need to install dependencies for both the Provider and consumer folders.
 
 #### In the Provider Folder
 
 ```bash
-cd provider
-yarn install
+pnpm install
 ```
 
-#### In the Consumer Folder
 
-Open a new terminal or navigate back to the root folder and then:
-
-```bash
-cd consumer
-yarn install
-```
-
-### 3. Run the Application
-
-#### In the Consumer Folder
+### 2. Run the Application
 
 ```bash
-yarn dev
+pnpm run dev
 ```
 
 ## Additional Notes
