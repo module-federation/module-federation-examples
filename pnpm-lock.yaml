@@ -71,8 +71,8 @@ importers:
         specifier: 2.8.8
         version: 2.8.8
       pretty-quick:
-        specifier: 3.3.1
-        version: 3.3.1(prettier@2.8.8)
+        specifier: 4.0.0
+        version: 4.0.0(prettier@2.8.8)
       semver:
         specifier: 7.6.2
         version: 7.6.2
@@ -6093,7 +6093,7 @@ importers:
         version: 18.2.0
       react-i18next:
         specifier: ^11.18.6
-        version: 11.18.6(i18next@21.10.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 11.18.6(i18next@21.10.0)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)
     devDependencies:
       typescript:
         specifier: 4.9.5
@@ -33312,12 +33312,12 @@ packages:
     resolution: {integrity: sha512-973driJZvxiGOQ5ONsFhOF/DtzPMOMtgC11kCpUrPGMTgqp2q/1gwzCquocrN33is0VZ5GFHXZYMM9l6h67v2Q==}
     engines: {node: '>=10'}
 
-  pretty-quick@3.3.1:
-    resolution: {integrity: sha512-3b36UXfYQ+IXXqex6mCca89jC8u0mYLqFAN5eTQKoXO6oCQYcIVYZEB/5AlBHI7JPYygReM2Vv6Vom/Gln7fBg==}
-    engines: {node: '>=10.13'}
+  pretty-quick@4.0.0:
+    resolution: {integrity: sha512-M+2MmeufXb/M7Xw3Afh1gxcYpj+sK0AxEfnfF958ktFeAyi5MsKY5brymVURQLgPLV1QaF5P4pb2oFJ54H3yzQ==}
+    engines: {node: '>=14'}
     hasBin: true
     peerDependencies:
-      prettier: ^2.0.0
+      prettier: ^3.0.0
 
   pretty-time@1.1.0:
     resolution: {integrity: sha512-28iF6xPQrP8Oa6uxE6a1biz+lWeTOAPKggvjB8HAs6nVMKZwf5bG++632Dx614hIWgUPkgivRfG+a8uAXGTIbA==}
@@ -75790,10 +75790,10 @@ snapshots:
     dependencies:
       parse-ms: 2.1.0
 
-  pretty-quick@3.3.1(prettier@2.8.8):
+  pretty-quick@4.0.0(prettier@2.8.8):
     dependencies:
-      execa: 4.1.0
-      find-up: 4.1.0
+      execa: 5.1.1
+      find-up: 5.0.0
       ignore: 5.3.1
       mri: 1.2.0
       picocolors: 1.0.1
