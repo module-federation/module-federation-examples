@@ -1,4 +1,4 @@
-# Project Setup and Error Replication Guide
+# Project Setup and rsbuild vue 3 vuex tailwindcss postcss example:
 
 
 ## Setup Instructions
@@ -36,19 +36,6 @@ yarn install
 
 ```bash
 yarn dev
-```
-
-## Replicate the Error
-
-1. **Change Any Component**: Open any component file in your preferred code editor, make any change (even adding a comment will suffice), and save the file.
-2. **Refresh the Browser**: Go to the browser where the app is running and refresh the page.
-
-## Expected Error
-
-After performing the above steps, you should see the following error in the browser console:
-
-```
-Uncaught (in promise) TypeError: Cannot read properties of null (reading 'isCE')
 ```
 
 ## Additional Notes
