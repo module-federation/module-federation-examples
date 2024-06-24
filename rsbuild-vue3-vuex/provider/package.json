@@ -1,0 +1,22 @@
+{
+  "name": "rsbuild",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "rsbuild dev --open",
+    "build": "rsbuild build",
+    "preview": "rsbuild preview"
+  },
+  "dependencies": {
+    "typescript": "^5.4.5",
+    "vue-router": "^4.0.13",
+    "vue": "3.2.31",
+    "vuex": "^4.1.0"
+  },
+  "devDependencies": {
+    "@module-federation/enhanced": "^0.1.18",
+    "@rsbuild/core": "^0.7.7",
+    "@rsbuild/plugin-vue": "^0.7.7",
+    "tailwindcss": "^3.4.3"
+  }
+}
