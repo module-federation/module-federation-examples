@@ -10163,8 +10163,8 @@ importers:
         specifier: 7.24.7
         version: 7.24.7
       '@remix-run/dev':
-        specifier: 2.8.1
-        version: 2.8.1(@types/node@20.9.0)(babel-plugin-macros@3.1.0)(less@4.2.0)(sass@1.77.6)(stylus@0.62.0)(terser@5.31.1)(ts-node@10.9.1(@swc/core@1.6.5)(@types/node@20.9.0)(typescript@5.4.3))(typescript@5.4.3)(vite@5.3.1(@types/node@20.9.0)(less@4.2.0)(sass@1.77.6)(stylus@0.62.0)(terser@5.31.1))
+        specifier: 2.9.2
+        version: 2.9.2(@remix-run/react@2.9.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.4.3))(@types/node@20.9.0)(babel-plugin-macros@3.1.0)(less@4.2.0)(sass@1.77.6)(stylus@0.62.0)(terser@5.31.1)(ts-node@10.9.1(@swc/core@1.6.5)(@types/node@20.9.0)(typescript@5.4.3))(typescript@5.4.3)(vite@5.3.1(@types/node@20.9.0)(less@4.2.0)(sass@1.77.6)(stylus@0.62.0)(terser@5.31.1))
       '@rspack/cli':
         specifier: 0.7.4
         version: 0.7.4(@rspack/core@0.7.4(@swc/helpers@0.5.11))(@types/express@4.17.21)(webpack@5.92.1(@swc/core@1.6.5)(esbuild@0.21.5))
@@ -10227,8 +10227,8 @@ importers:
         specifier: 7.24.7
         version: 7.24.7
       '@remix-run/dev':
-        specifier: 2.8.1
-        version: 2.8.1(@types/node@20.9.0)(babel-plugin-macros@3.1.0)(less@4.2.0)(sass@1.77.6)(stylus@0.62.0)(terser@5.31.1)(ts-node@10.9.1(@swc/core@1.6.5)(@types/node@20.9.0)(typescript@5.4.3))(typescript@5.4.3)(vite@5.3.1(@types/node@20.9.0)(less@4.2.0)(sass@1.77.6)(stylus@0.62.0)(terser@5.31.1))
+        specifier: 2.9.2
+        version: 2.9.2(@remix-run/react@2.9.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.4.3))(@types/node@20.9.0)(babel-plugin-macros@3.1.0)(less@4.2.0)(sass@1.77.6)(stylus@0.62.0)(terser@5.31.1)(ts-node@10.9.1(@swc/core@1.6.5)(@types/node@20.9.0)(typescript@5.4.3))(typescript@5.4.3)(vite@5.3.1(@types/node@20.9.0)(less@4.2.0)(sass@1.77.6)(stylus@0.62.0)(terser@5.31.1))
       '@rspack/cli':
         specifier: 0.7.4
         version: 0.7.4(@rspack/core@0.7.4(@swc/helpers@0.5.11))(@types/express@4.17.21)(webpack@5.92.1(@swc/core@1.6.5)(esbuild@0.21.5))
@@ -19587,12 +19587,13 @@ packages:
     peerDependencies:
       redux: ^3.1.0 || ^4.0.0 || ^5.0.0
 
-  '@remix-run/dev@2.8.1':
-    resolution: {integrity: sha512-qFt4jAsAJeIOyg6ngeSnTG/9Z5N9QJfeThP/8wRHc1crqYgTiEtcI3DZ8WlAXjVSF5emgn/ZZKqzLAI02OgMfQ==}
+  '@remix-run/dev@2.9.2':
+    resolution: {integrity: sha512-70dr9HH/mCHP5+uPoQXyS9+r73IL//IDPaFruIhK8kmmLPGAg5bGyFRz/xX6LTa98gPdAwZXxBy7frudeh2Z0Q==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     peerDependencies:
-      '@remix-run/serve': ^2.8.1
+      '@remix-run/react': ^2.9.2
+      '@remix-run/serve': ^2.9.2
       typescript: ^5.1.0
       vite: ^5.1.0
       wrangler: ^3.28.2
@@ -19611,15 +19612,6 @@ packages:
     engines: {node: '>=18.0.0'}
     peerDependencies:
       express: ^4.17.1
-      typescript: ^5.1.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-
-  '@remix-run/node@2.8.1':
-    resolution: {integrity: sha512-ddCwBVlfLvRxTQJHPcaM1lhfMjsFYG3EGmYpWJIWnnzDX5EbX9pUNHBWisMuH1eA0c7pbw0PbW0UtCttKYx2qg==}
-    engines: {node: '>=18.0.0'}
-    peerDependencies:
       typescript: ^5.1.0
     peerDependenciesMeta:
       typescript:
@@ -19657,26 +19649,9 @@ packages:
     resolution: {integrity: sha512-HOil5aFtme37dVQTB6M34G95kPM3MMuqSmIRVCC52eKV+Y/tGSqw9P3rWhlAx6A+mz+MoX+XxsGsNJbaI5qCgQ==}
     engines: {node: '>=14.0.0'}
 
-  '@remix-run/router@1.15.3':
-    resolution: {integrity: sha512-Oy8rmScVrVxWZVOpEF57ovlnhpZ8CCPlnIIumVcV9nFdiSIrus99+Lw78ekXyGvVDlIsFJbSfmSovJUhCWYV3w==}
-    engines: {node: '>=14.0.0'}
-
-  '@remix-run/router@1.15.3-pre.0':
-    resolution: {integrity: sha512-JUQb6sztqJpRbsdKpx3D4+6eaGmHU4Yb/QeKrES/ZbLuijlZMOmZ+gV0ohX5vrRDnJHJmcQPq3Tpk0GGPNM9gg==}
-    engines: {node: '>=14.0.0'}
-
   '@remix-run/router@1.16.1':
     resolution: {integrity: sha512-es2g3dq6Nb07iFxGk5GuHN20RwBZOsuDQN7izWIisUcv9r+d2C5jQxqmgkdebXgReWfiyUabcki6Fg77mSNrig==}
     engines: {node: '>=14.0.0'}
-
-  '@remix-run/server-runtime@2.8.1':
-    resolution: {integrity: sha512-fh4SOEoONrN73Kvzc0gMDCmYpVRVbvoj9j3BUXHAcn0An8iX+HD/22gU7nTkIBzExM/F9xgEcwTewOnWqLw0Bg==}
-    engines: {node: '>=18.0.0'}
-    peerDependencies:
-      typescript: ^5.1.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
 
   '@remix-run/server-runtime@2.9.2':
     resolution: {integrity: sha512-dX37FEeMVVg7KUbpRhX4hD0nUY0Sscz/qAjU4lYCdd6IzwJGariTmz+bQTXKCjploZuXj09OQZHSOS/ydkUVDA==}
@@ -39375,7 +39350,7 @@ snapshots:
   '@babel/core@7.11.1':
     dependencies:
       '@babel/code-frame': 7.24.7
-      '@babel/generator': 7.11.0
+      '@babel/generator': 7.24.7
       '@babel/helper-module-transforms': 7.24.7(@babel/core@7.11.1)
       '@babel/helpers': 7.24.7
       '@babel/parser': 7.24.7
@@ -39396,7 +39371,7 @@ snapshots:
   '@babel/core@7.12.10':
     dependencies:
       '@babel/code-frame': 7.24.7
-      '@babel/generator': 7.12.11
+      '@babel/generator': 7.24.7
       '@babel/helper-module-transforms': 7.24.7(@babel/core@7.12.10)
       '@babel/helpers': 7.24.7
       '@babel/parser': 7.24.7
@@ -51962,7 +51937,7 @@ snapshots:
       source-map: 0.7.4
       webpack: 5.92.1(@swc/core@1.6.5)(webpack-cli@5.1.4)
     optionalDependencies:
-      '@types/webpack': 5.28.0(@swc/core@1.6.5)(webpack-cli@5.1.4(webpack-dev-server@4.15.2)(webpack@5.92.1))
+      '@types/webpack': 5.28.0(@swc/core@1.6.5)(webpack-cli@5.1.4(webpack-dev-server@5.0.4)(webpack@5.92.1))
       sockjs-client: 1.6.1(supports-color@6.1.0)
       type-fest: 2.19.0
       webpack-dev-server: 4.15.2(webpack-cli@5.1.4)(webpack@5.92.1)
@@ -51980,7 +51955,7 @@ snapshots:
       source-map: 0.7.4
       webpack: 5.92.1(@swc/core@1.6.5)(webpack-cli@5.1.4)
     optionalDependencies:
-      '@types/webpack': 5.28.0(@swc/core@1.6.5)(webpack-cli@5.1.4(webpack-dev-server@4.15.2)(webpack@5.92.1))
+      '@types/webpack': 5.28.0(@swc/core@1.6.5)(webpack-cli@5.1.4(webpack-dev-server@5.0.4)(webpack@5.92.1))
       sockjs-client: 1.6.1(supports-color@6.1.0)
       type-fest: 2.19.0
       webpack-dev-server: 5.0.4(webpack-cli@5.1.4)(webpack@5.92.1)
@@ -52201,7 +52176,7 @@ snapshots:
       immutable: 4.3.6
       redux: 4.2.1
 
-  '@remix-run/dev@2.8.1(@types/node@20.9.0)(babel-plugin-macros@3.1.0)(less@4.2.0)(sass@1.77.6)(stylus@0.62.0)(terser@5.31.1)(ts-node@10.9.1(@swc/core@1.6.5)(@types/node@20.9.0)(typescript@5.4.3))(typescript@5.4.3)(vite@5.3.1(@types/node@20.9.0)(less@4.2.0)(sass@1.77.6)(stylus@0.62.0)(terser@5.31.1))':
+  '@remix-run/dev@2.9.2(@remix-run/react@2.9.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.4.3))(@types/node@20.9.0)(babel-plugin-macros@3.1.0)(less@4.2.0)(sass@1.77.6)(stylus@0.62.0)(terser@5.31.1)(ts-node@10.9.1(@swc/core@1.6.5)(@types/node@20.9.0)(typescript@5.4.3))(typescript@5.4.3)(vite@5.3.1(@types/node@20.9.0)(less@4.2.0)(sass@1.77.6)(stylus@0.62.0)(terser@5.31.1))':
     dependencies:
       '@babel/core': 7.24.7
       '@babel/generator': 7.24.7
@@ -52213,9 +52188,10 @@ snapshots:
       '@babel/types': 7.24.7
       '@mdx-js/mdx': 2.3.0
       '@npmcli/package-json': 4.0.1
-      '@remix-run/node': 2.8.1(typescript@5.4.3)
-      '@remix-run/router': 1.15.3-pre.0
-      '@remix-run/server-runtime': 2.8.1(typescript@5.4.3)
+      '@remix-run/node': 2.9.2(typescript@5.4.3)
+      '@remix-run/react': 2.9.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.4.3)
+      '@remix-run/router': 1.16.1
+      '@remix-run/server-runtime': 2.9.2(typescript@5.4.3)
       '@types/mdx': 2.0.13
       '@vanilla-extract/integration': 6.5.0(@types/node@20.9.0)(babel-plugin-macros@3.1.0)(less@4.2.0)(sass@1.77.6)(stylus@0.62.0)(terser@5.31.1)
       arg: 5.0.2
@@ -52281,19 +52257,6 @@ snapshots:
     optionalDependencies:
       typescript: 5.4.3
 
-  '@remix-run/node@2.8.1(typescript@5.4.3)':
-    dependencies:
-      '@remix-run/server-runtime': 2.8.1(typescript@5.4.3)
-      '@remix-run/web-fetch': 4.4.2
-      '@remix-run/web-file': 3.1.0
-      '@remix-run/web-stream': 1.1.0
-      '@web3-storage/multipart-parser': 1.0.0
-      cookie-signature: 1.2.1
-      source-map-support: 0.5.21
-      stream-slice: 0.1.2
-    optionalDependencies:
-      typescript: 5.4.3
-
   '@remix-run/node@2.9.2(typescript@5.4.3)':
     dependencies:
       '@remix-run/server-runtime': 2.9.2(typescript@5.4.3)
@@ -52324,22 +52287,7 @@ snapshots:
 
   '@remix-run/router@1.15.0': {}
 
-  '@remix-run/router@1.15.3': {}
-
-  '@remix-run/router@1.15.3-pre.0': {}
-
   '@remix-run/router@1.16.1': {}
-
-  '@remix-run/server-runtime@2.8.1(typescript@5.4.3)':
-    dependencies:
-      '@remix-run/router': 1.15.3
-      '@types/cookie': 0.6.0
-      '@web3-storage/multipart-parser': 1.0.0
-      cookie: 0.6.0
-      set-cookie-parser: 2.6.0
-      source-map: 0.7.4
-    optionalDependencies:
-      typescript: 5.4.3
 
   '@remix-run/server-runtime@2.9.2(typescript@5.4.3)':
     dependencies:
@@ -56116,7 +56064,7 @@ snapshots:
       - webpack-cli
     optional: true
 
-  '@types/webpack@5.28.0(@swc/core@1.6.5)(webpack-cli@5.1.4(webpack-dev-server@4.15.2)(webpack@5.92.1))':
+  '@types/webpack@5.28.0(@swc/core@1.6.5)(webpack-cli@5.1.4(webpack-dev-server@5.0.4)(webpack@5.92.1))':
     dependencies:
       '@types/node': 20.9.0
       tapable: 2.2.1
@@ -61326,7 +61274,7 @@ snapshots:
 
   copy-webpack-plugin@6.0.3(webpack@4.44.1):
     dependencies:
-      cacache: 15.0.5
+      cacache: 15.3.0
       fast-glob: 3.3.2
       find-cache-dir: 3.3.2
       glob-parent: 5.1.2
@@ -61343,7 +61291,7 @@ snapshots:
 
   copy-webpack-plugin@6.3.2(webpack@4.44.2):
     dependencies:
-      cacache: 15.0.5
+      cacache: 15.3.0
       fast-glob: 3.3.2
       find-cache-dir: 3.3.2
       glob-parent: 5.1.2
@@ -68813,7 +68761,7 @@ snapshots:
       jest-util: 28.1.3
       jest-validate: 28.1.3
       resolve: 1.22.8
-      resolve.exports: 1.1.0
+      resolve.exports: 1.1.1
       slash: 3.0.0
 
   jest-resolve@28.1.3:
@@ -79949,7 +79897,7 @@ snapshots:
 
   terser-webpack-plugin@4.1.0(webpack@4.44.1):
     dependencies:
-      cacache: 15.0.5
+      cacache: 15.3.0
       find-cache-dir: 3.3.2
       jest-worker: 26.6.2
       p-limit: 3.1.0
@@ -79964,7 +79912,7 @@ snapshots:
 
   terser-webpack-plugin@4.2.3(webpack@4.44.2):
     dependencies:
-      cacache: 15.0.5
+      cacache: 15.3.0
       find-cache-dir: 3.3.2
       jest-worker: 26.6.2
       p-limit: 3.1.0
@@ -79979,7 +79927,7 @@ snapshots:
 
   terser-webpack-plugin@4.2.3(webpack@4.47.0):
     dependencies:
-      cacache: 15.0.5
+      cacache: 15.3.0
       find-cache-dir: 3.3.2
       jest-worker: 26.6.2
       p-limit: 3.1.0
