@@ -10,7 +10,7 @@
     "e2e:ci": "pnpm start & wait-on http-get://localhost:8080/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "lerna": "8.1.3",
+    "lerna": "8.1.5",
     "wait-on": "7.2.0"
   }
 }
