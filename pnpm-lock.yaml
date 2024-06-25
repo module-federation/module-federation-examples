@@ -5839,7 +5839,7 @@ importers:
         version: 18.2.0
       react-i18next:
         specifier: ^11.18.6
-        version: 11.18.6(i18next@21.10.0)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)
+        version: 11.18.6(i18next@21.10.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
     devDependencies:
       typescript:
         specifier: 4.9.5
@@ -9865,10 +9865,6 @@ importers:
         specifier: 8.2.2
         version: 8.2.2
 
-  remix/app1/build: {}
-
-  remix/app2/build: {}
-
   rsbuild-vue3-vuex: {}
 
   rsbuild-vue3-vuex/consumer:
@@ -9921,8 +9917,8 @@ importers:
         specifier: 0.7.7
         version: 0.7.7
       '@rsbuild/plugin-vue':
-        specifier: 0.7.7
-        version: 0.7.7(@rsbuild/core@0.7.7)(@swc/core@1.6.5)(@swc/helpers@0.5.3)(vue@3.2.31)
+        specifier: 0.7.9
+        version: 0.7.9(@rsbuild/core@0.7.7)(@swc/core@1.6.5)(@swc/helpers@0.5.3)(vue@3.2.31)
       tailwindcss:
         specifier: 3.4.4
         version: 3.4.4(ts-node@10.9.1(@swc/core@1.6.5)(@types/node@20.9.0)(typescript@5.4.5))
@@ -17664,9 +17660,6 @@ packages:
       tsconfig-paths:
         optional: true
 
-  '@modern-js/tsconfig@2.54.1':
-    resolution: {integrity: sha512-ENpH6A0AvqEiU/cVwrBtJJGWj40y7MjN4xOUrFCGdX+RsnVqhSr5tkWBxXu6EZ/3SkYwFaqpqhLvJyIqMgJ9sQ==}
-
   '@modern-js/tsconfig@2.54.2':
     resolution: {integrity: sha512-lFPGyyFsOcucDCO5zNQq+1M9I/vuv4LznXin9QIaPbSmGfzF+COvidSFBqPfMd+ID9bXpZzz5yd3uz9RLCHsYg==}
 
@@ -19527,11 +19520,6 @@ packages:
     resolution: {integrity: sha512-UXw5FUP5rThhW11Av6452hElGRTWOUrv7rkZHF7nGa2UmD7lZ0nIJ99e64rj0K02d3Zc6t2visRF29LYECEHvQ==}
     peerDependencies:
       '@rsbuild/core': ^0.7.9
-
-  '@rsbuild/plugin-vue@0.7.7':
-    resolution: {integrity: sha512-pQahrEmuseMEsKxPiuwsDZkq5bKmPWkIJwgn806GPH8y2YqrVqIL4rGauRVGwtCx69N0z7Q0cZBj0XPeoxU8kA==}
-    peerDependencies:
-      '@rsbuild/core': ^0.7.7
 
   '@rsbuild/plugin-vue@0.7.9':
     resolution: {integrity: sha512-cvoLn8GGb9pjsYTgPsSxKZkxpFrF/dwZVZKGa8TFipCO130NJI4Z/qhcktUveYnqUZU+Ckz4a7V/vWiDF/d97w==}
@@ -32319,6 +32307,10 @@ packages:
   q@1.4.1:
     resolution: {integrity: sha512-/CdEdaw49VZVmyIDGUQKDDT53c7qBkO6g5CefWz91Ae+l4+cRtcDYwMTXh6me4O8TMldeGHG3N2Bl84V78Ywbg==}
     engines: {node: '>=0.6.0', teleport: '>=0.2.0'}
+    deprecated: |-
+      You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+
+      (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
 
   q@1.5.1:
     resolution: {integrity: sha512-kV/CThkXo6xyFEZUugw/+pIOywXcDbFYgSct5cT3gqlbkBE1SJdwy6UQoZvodiWF/ckQLZyDE/Bu1M6gVu5lVw==}
@@ -44400,8 +44392,6 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@modern-js/tsconfig@2.54.1': {}
-
   '@modern-js/tsconfig@2.54.2': {}
 
   '@modern-js/types@2.46.1': {}
@@ -49973,10 +49963,10 @@ snapshots:
     transitivePeerDependencies:
       - '@swc/helpers'
 
-  '@rsbuild/plugin-vue@0.7.7(@rsbuild/core@0.7.7)(@swc/core@1.6.5)(@swc/helpers@0.5.3)(vue@3.2.31)':
+  '@rsbuild/plugin-vue@0.7.9(@rsbuild/core@0.7.7)(@swc/core@1.6.5)(@swc/helpers@0.5.3)(vue@3.2.31)':
     dependencies:
       '@rsbuild/core': 0.7.7
-      '@rsbuild/shared': 0.7.7(@swc/helpers@0.5.3)
+      '@rsbuild/shared': 0.7.9(@swc/helpers@0.5.3)
       vue-loader: 17.4.2(vue@3.2.31)(webpack@5.92.1(@swc/core@1.6.5))
       webpack: 5.92.1(@swc/core@1.6.5)
     transitivePeerDependencies:
