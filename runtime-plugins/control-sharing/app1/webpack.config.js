@@ -22,6 +22,11 @@ module.exports = {
       directory: path.join(__dirname, 'dist'),
     },
     port: 3001,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
   },
   target: 'web',
   output: {
@@ -62,6 +67,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
+      excludeChunks: ['app1'],
     }),
   ],
 };

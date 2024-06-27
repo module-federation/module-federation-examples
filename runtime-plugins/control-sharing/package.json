@@ -18,6 +18,7 @@
     "legacy:e2e:ci": "pnpm legacy:start & wait-on tcp:3001 && wait-on tcp:3002 && sleep 5  && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
-    "wait-on": "7.2.0"
+    "wait-on": "7.2.0",
+    "@module-federation/runtime": "^0.2.3"
   }
 }

@@ -8402,17 +8402,17 @@ importers:
         version: 2.16.4
       vue:
         specifier: ^3.0.0
-        version: 3.4.30(typescript@5.4.5)
+        version: 3.4.30(typescript@4.9.4)
       vue-router:
         specifier: ^4.0.0
-        version: 4.4.0(vue@3.4.30(typescript@5.4.5))
+        version: 4.4.0(vue@3.4.30(typescript@4.9.4))
     devDependencies:
       '@babel/eslint-parser':
         specifier: 7.24.7
         version: 7.24.7(@babel/core@7.24.7)(eslint@9.5.0)
       '@quasar/app-webpack':
         specifier: 3.13.2
-        version: 3.13.2(@rspack/core@0.7.4)(@swc/core@1.6.5)(eslint@9.5.0)(quasar@2.16.4)(sass-embedded@1.77.5)(vue-router@4.4.0(vue@3.4.30(typescript@5.4.5)))(vue-template-compiler@2.7.16)(vue@3.4.30(typescript@5.4.5))(vuex@4.1.0(vue@3.4.30(typescript@5.4.5)))(workbox-webpack-plugin@6.6.0(webpack@5.92.1(@swc/core@1.6.5)))
+        version: 3.13.2(@rspack/core@0.7.4)(@swc/core@1.6.5)(eslint@9.5.0)(quasar@2.16.4)(sass-embedded@1.77.5)(vue-router@4.4.0(vue@3.4.30(typescript@4.9.4)))(vue-template-compiler@2.7.16)(vue@3.4.30(typescript@4.9.4))(vuex@4.1.0(vue@3.4.30(typescript@4.9.4)))(workbox-webpack-plugin@6.6.0(webpack@5.92.1(@swc/core@1.6.5)))
       eslint:
         specifier: 9.5.0
         version: 9.5.0
@@ -8442,17 +8442,17 @@ importers:
         version: 2.16.4
       vue:
         specifier: ^3.0.0
-        version: 3.4.30(typescript@4.9.4)
+        version: 3.4.30(typescript@5.4.5)
       vue-router:
         specifier: ^4.0.0
-        version: 4.4.0(vue@3.4.30(typescript@4.9.4))
+        version: 4.4.0(vue@3.4.30(typescript@5.4.5))
     devDependencies:
       '@babel/eslint-parser':
         specifier: 7.24.7
         version: 7.24.7(@babel/core@7.24.7)(eslint@9.5.0)
       '@quasar/app-webpack':
         specifier: 3.13.2
-        version: 3.13.2(@rspack/core@0.7.4)(@swc/core@1.6.5)(eslint@9.5.0)(quasar@2.16.4)(sass-embedded@1.77.5)(vue-router@4.4.0(vue@3.4.30(typescript@4.9.4)))(vue-template-compiler@2.7.16)(vue@3.4.30(typescript@4.9.4))(vuex@4.1.0(vue@3.4.30(typescript@4.9.4)))(workbox-webpack-plugin@6.6.0(webpack@5.92.1(@swc/core@1.6.5)))
+        version: 3.13.2(@rspack/core@0.7.4)(@swc/core@1.6.5)(eslint@9.5.0)(quasar@2.16.4)(sass-embedded@1.77.5)(vue-router@4.4.0(vue@3.4.30(typescript@5.4.5)))(vue-template-compiler@2.7.16)(vue@3.4.30(typescript@5.4.5))(vuex@4.1.0(vue@3.4.30(typescript@5.4.5)))(workbox-webpack-plugin@6.6.0(webpack@5.92.1(@swc/core@1.6.5)))
       eslint:
         specifier: 9.5.0
         version: 9.5.0
@@ -10558,6 +10558,9 @@ importers:
 
   runtime-plugins/control-sharing:
     devDependencies:
+      '@module-federation/runtime':
+        specifier: ^0.2.3
+        version: 0.2.3
       wait-on:
         specifier: 7.2.0
         version: 7.2.0
@@ -10584,6 +10587,9 @@ importers:
         specifier: 0.2.1
         version: 0.2.1(typescript@5.4.5)(vue-tsc@1.8.27(typescript@5.4.5))(webpack@5.92.1(@swc/core@1.6.5)(webpack-cli@5.1.4))
       '@module-federation/runtime':
+        specifier: 0.2.1
+        version: 0.2.1
+      '@module-federation/sdk':
         specifier: 0.2.1
         version: 0.2.1
       '@rspack/cli':
@@ -17641,6 +17647,9 @@ packages:
   '@module-federation/runtime@0.2.1':
     resolution: {integrity: sha512-uzp2Smg2yhJYnfYAlleFrDkVXi8b5MaEd9ve8YjrulCnhN3dAq4tQkwXOiryVtpGT5qVUBdfVoTW+HozYibEOw==}
 
+  '@module-federation/runtime@0.2.3':
+    resolution: {integrity: sha512-N+ZxBUb1mkmfO9XT1BwgYQgShtUTlijHbukqQ4afFka5lRAT+ayC7RKfHJLz0HbuexKPCmPBDfdmCnErR5WyTQ==}
+
   '@module-federation/sdk@0.0.0-next-20231225095220':
     resolution: {integrity: sha512-0vS5UXCkbKyotZIXAsF+mrL8PQ+xKmKfaDYHdBxXR4kyGSRjSRRokSKkXZNVfPEhy1f1z/oAgUo5AZoOisrrQA==}
 
@@ -17655,6 +17664,9 @@ packages:
 
   '@module-federation/sdk@0.2.1':
     resolution: {integrity: sha512-t3136yds14EBb+BAvp3LJg8E8W+07tNweXUOt5NQfn4TROml6wF4TFyrLsaXi5F8c1C95IGYRxUNKjQ/ImLK6w==}
+
+  '@module-federation/sdk@0.2.3':
+    resolution: {integrity: sha512-W9zrPchLocyCBc/B8CW21akcfJXLl++9xBe1L1EtgxZGfj/xwHt0GcBWE/y+QGvYTL2a1iZjwscbftbUhxgxXg==}
 
   '@module-federation/storybook-addon@0.2.0':
     resolution: {integrity: sha512-K+AgmzDfukKYiebzvNt9V6U73Y12nEBF7uk2bvwF0oKeIDStNE0sAbeHFlQKxwOLfvYHIzn6pW6WgwBuOmWiSA==}
@@ -44835,6 +44847,10 @@ snapshots:
     dependencies:
       '@module-federation/sdk': 0.2.1
 
+  '@module-federation/runtime@0.2.3':
+    dependencies:
+      '@module-federation/sdk': 0.2.3
+
   '@module-federation/sdk@0.0.0-next-20231225095220': {}
 
   '@module-federation/sdk@0.0.8': {}
@@ -44844,6 +44860,8 @@ snapshots:
   '@module-federation/sdk@0.2.0': {}
 
   '@module-federation/sdk@0.2.1': {}
+
+  '@module-federation/sdk@0.2.3': {}
 
   '@module-federation/storybook-addon@0.2.0(@babel/core@7.24.7)(@babel/traverse@7.24.7)(@module-federation/utilities@1.9.1(next@13.3.1(@babel/core@7.24.7)(babel-plugin-macros@3.1.0)(react-dom@17.0.2(react@17.0.2))(react@17.0.2)(sass@1.77.6))(react-dom@17.0.2(react@17.0.2))(react@17.0.2)(webpack@5.92.1(@swc/core@1.6.5)))(@storybook/core-common@6.5.16(eslint@9.5.0)(react-dom@17.0.2(react@17.0.2))(react@17.0.2)(typescript@5.4.5)(vue-template-compiler@2.7.16))(@storybook/node-logger@6.5.16)(@swc-node/register@1.9.2(@swc/core@1.6.5)(typescript@5.4.5))(@swc/core@1.6.5)(babel-plugin-macros@3.1.0)(eslint@9.5.0)(nx@16.0.0(@swc-node/register@1.9.2(@swc/core@1.6.5)(typescript@5.4.5))(@swc/core@1.6.5))(sass@1.77.6)(typescript@5.4.5)(webpack-virtual-modules@0.6.2)(webpack@5.92.1(@swc/core@1.6.5))':
     dependencies:
@@ -63428,7 +63446,7 @@ snapshots:
       jest-environment-jsdom: 26.6.2
       jest-environment-node: 26.6.2
       jest-get-type: 26.3.0
-      jest-jasmine2: 26.6.3(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@20.9.0)(typescript@5.2.2))
+      jest-jasmine2: 26.6.3
       jest-regex-util: 26.0.0
       jest-resolve: 26.6.2
       jest-util: 26.6.2
@@ -64033,7 +64051,7 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  jest-jasmine2@26.6.3(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@20.9.0)(typescript@5.2.2)):
+  jest-jasmine2@26.6.3:
     dependencies:
       '@babel/traverse': 7.24.7
       '@jest/environment': 26.6.2
@@ -64054,11 +64072,7 @@ snapshots:
       pretty-format: 26.6.2
       throat: 5.0.0
     transitivePeerDependencies:
-      - bufferutil
-      - canvas
       - supports-color
-      - ts-node
-      - utf-8-validate
 
   jest-jasmine2@27.5.1:
     dependencies:

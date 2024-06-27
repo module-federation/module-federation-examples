@@ -14,6 +14,10 @@ const ControlScopeResolvePlugin = (): FederationRuntimePlugin => {
       console.log('beforeRequest: ', args);
       return args;
     },
+    createScript(args) {
+      console.log('CREATE SCRIPT',args)
+      return {timeout: 10000}
+    },
     afterResolve: args => args,
     onLoad: args => args,
     resolveShare: args => {
