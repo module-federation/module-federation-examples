@@ -7632,8 +7632,8 @@ importers:
         specifier: 0.6.0
         version: 0.6.0(typescript@5.3.3)
       '@module-federation/native-federation-typescript':
-        specifier: 0.4.4
-        version: 0.4.4(typescript@5.3.3)
+        specifier: 0.6.0
+        version: 0.6.0(typescript@5.3.3)
       '@rspack/cli':
         specifier: 0.7.5
         version: 0.7.5(webpack-cli@5.1.4)(webpack@5.92.1)
@@ -7720,8 +7720,8 @@ importers:
         specifier: 0.6.0
         version: 0.6.0(typescript@5.3.3)
       '@module-federation/native-federation-typescript':
-        specifier: 0.4.4
-        version: 0.4.4(typescript@5.3.3)
+        specifier: 0.6.0
+        version: 0.6.0(typescript@5.3.3)
       '@rspack/cli':
         specifier: 0.7.5
         version: 0.7.5(webpack-cli@5.1.4)(webpack@5.92.1)
@@ -26028,7 +26028,7 @@ packages:
       btoa: 1.2.1
       typescript: 4.3.5
       upath: 2.0.1
-      webpack: 5.92.1(webpack-cli@4.10.0)
+      webpack: 5.92.1(webpack-cli@5.1.4)
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -26428,11 +26428,14 @@ packages:
       - typescript
     dev: true
 
-  /@module-federation/native-federation-typescript@0.4.4(typescript@5.3.3):
-    resolution: {integrity: sha512-gmxQ3EHRN/vf2zlX0VHVOm8dtcab7fhsa166q3JohbNVX1IPRBv7NZe5HCCqWNFkD+96uGCzf5TZ4VsxHgkQqA==}
+  /@module-federation/native-federation-typescript@0.6.0(typescript@5.3.3):
+    resolution: {integrity: sha512-9X9Tgqt0jk92jP0/8ZrUJs3JigArXF2/Mup7hVjz+duqv85kue+96Z7MBJ2JOw6d0VbJKYZnDDahl9+527Y7DQ==}
     peerDependencies:
       typescript: ^4.9.0 || ^5.0.0
       vue-tsc: ^1.0.24
+    peerDependenciesMeta:
+      vue-tsc:
+        optional: true
     dependencies:
       adm-zip: 0.5.14
       ansi-colors: 4.1.3
