@@ -1128,8 +1128,8 @@ importers:
         specifier: 0.7.10
         version: 0.7.10
       '@rsbuild/plugin-react':
-        specifier: 0.7.9
-        version: 0.7.9(@rsbuild/core@0.7.10)
+        specifier: 0.7.10
+        version: 0.7.10(@rsbuild/core@0.7.10)
       '@rspack/core':
         specifier: 0.7.5
         version: 0.7.5
@@ -1147,8 +1147,8 @@ importers:
         specifier: 0.7.10
         version: 0.7.10
       '@rsbuild/plugin-react':
-        specifier: 0.7.9
-        version: 0.7.9(@rsbuild/core@0.7.10)
+        specifier: 0.7.10
+        version: 0.7.10(@rsbuild/core@0.7.10)
       '@rspack/core':
         specifier: 0.7.5
         version: 0.7.5
@@ -2060,8 +2060,8 @@ importers:
         specifier: 0.7.10
         version: 0.7.10
       '@rsbuild/plugin-react':
-        specifier: 0.7.9
-        version: 0.7.9(@rsbuild/core@0.7.10)
+        specifier: 0.7.10
+        version: 0.7.10(@rsbuild/core@0.7.10)
       '@rspack/core':
         specifier: 0.7.5
         version: 0.7.5
@@ -2082,8 +2082,8 @@ importers:
         specifier: 0.7.10
         version: 0.7.10
       '@rsbuild/plugin-react':
-        specifier: 0.7.9
-        version: 0.7.9(@rsbuild/core@0.7.10)
+        specifier: 0.7.10
+        version: 0.7.10(@rsbuild/core@0.7.10)
       '@rspack/core':
         specifier: 0.7.5
         version: 0.7.5
@@ -32707,14 +32707,14 @@ packages:
       - '@swc/helpers'
     dev: true
 
-  /@rsbuild/plugin-react@0.7.9(@rsbuild/core@0.7.10):
-    resolution: {integrity: sha512-mGwZP3urvMlwwjlopIMfig5ER0huIRCAq8ZujHeCE9xp8ZZOQt7rAkNUwEsOrcvuL/1tbpgoxkGWBioiis7g9A==}
+  /@rsbuild/plugin-react@0.7.10(@rsbuild/core@0.7.10):
+    resolution: {integrity: sha512-OyfTrNVRt7Rj5e4PR4VQHnKKpw7YkcG7xvprJbDU/LDtG0aucwCARO1h+YtuZhcUpoG9k4zWLmoRkEXLVnKbdQ==}
     peerDependencies:
-      '@rsbuild/core': ^0.7.9
+      '@rsbuild/core': ^0.7.10
     dependencies:
       '@rsbuild/core': 0.7.10
-      '@rsbuild/shared': 0.7.9
-      '@rspack/plugin-react-refresh': 0.7.4(react-refresh@0.14.2)
+      '@rsbuild/shared': 0.7.10
+      '@rspack/plugin-react-refresh': 0.7.5(react-refresh@0.14.2)
       react-refresh: 0.14.2
     transitivePeerDependencies:
       - '@swc/helpers'
@@ -33976,6 +33976,17 @@ packages:
 
   /@rspack/plugin-react-refresh@0.7.4(react-refresh@0.14.2):
     resolution: {integrity: sha512-9tAJdG/xZ6hUtD5K5OVpwAl2yV2HFnNl5fU5aOR5VJ5Pk0rCsYwbEZRbRnmSZwzMWIKDnowhoTi+4Ha3JV3aeQ==}
+    peerDependencies:
+      react-refresh: '>=0.10.0 <1.0.0'
+    peerDependenciesMeta:
+      react-refresh:
+        optional: true
+    dependencies:
+      react-refresh: 0.14.2
+    dev: true
+
+  /@rspack/plugin-react-refresh@0.7.5(react-refresh@0.14.2):
+    resolution: {integrity: sha512-ROI9lrmfIH+Z9lbBaP3YMhbD2R3rlm9SSzi/9WzzkQU6KK911S1D+sL2ByeJ7ipZafbHvMPWTmC2aQEvjhwQig==}
     peerDependencies:
       react-refresh: '>=0.10.0 <1.0.0'
     peerDependenciesMeta:
