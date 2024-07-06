@@ -13132,8 +13132,8 @@ importers:
         specifier: 7.24.7
         version: 7.24.7(@babel/core@7.24.7)
       '@testing-library/cypress':
-        specifier: 9.0.0
-        version: 9.0.0(cypress@13.12.0)
+        specifier: 10.0.2
+        version: 10.0.2(cypress@13.12.0)
       '@testing-library/jest-dom':
         specifier: 5.17.0
         version: 5.17.0
@@ -36649,15 +36649,29 @@ packages:
   /@tanstack/virtual-core@3.8.1:
     resolution: {integrity: sha512-uNtAwenT276M9QYCjTBoHZ8X3MUeCRoGK59zPi92hMIxdfS9AyHjkDWJ94WroDxnv48UE+hIeo21BU84jKc8aQ==}
 
-  /@testing-library/cypress@9.0.0(cypress@13.12.0):
-    resolution: {integrity: sha512-c1XiCGeHGGTWn0LAU12sFUfoX3qfId5gcSE2yHode+vsyHDWraxDPALjVnHd4/Fa3j4KBcc5k++Ccy6A9qnkMA==}
+  /@testing-library/cypress@10.0.2(cypress@13.12.0):
+    resolution: {integrity: sha512-dKv95Bre5fDmNb9tOIuWedhGUryxGu1GWYWtXDqUsDPcr9Ekld0fiTb+pcBvSsFpYXAZSpmyEjhoXzLbhh06yQ==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
-      cypress: ^12.0.0
+      cypress: ^12.0.0 || ^13.0.0
     dependencies:
       '@babel/runtime': 7.24.7
-      '@testing-library/dom': 8.20.1
+      '@testing-library/dom': 10.3.1
       cypress: 13.12.0
+    dev: true
+
+  /@testing-library/dom@10.3.1:
+    resolution: {integrity: sha512-q/WL+vlXMpC0uXDyfsMtc1rmotzLV8Y0gq6q1gfrrDjQeHoeLrqHbxdPvPNAh1i+xuJl7+BezywcXArz7vLqKQ==}
+    engines: {node: '>=18'}
+    dependencies:
+      '@babel/code-frame': 7.24.7
+      '@babel/runtime': 7.24.7
+      '@types/aria-query': 5.0.4
+      aria-query: 5.3.0
+      chalk: 4.1.2
+      dom-accessibility-api: 0.5.16
+      lz-string: 1.5.0
+      pretty-format: 27.5.1
     dev: true
 
   /@testing-library/dom@8.20.1:
