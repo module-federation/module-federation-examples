@@ -5824,6 +5824,18 @@ importers:
 
   i18next-nextjs-react/i18next-shared-lib:
     devDependencies:
+      i18next:
+        specifier: ^21.10.0
+        version: 21.10.0
+      i18next-browser-languagedetector:
+        specifier: ^6.1.8
+        version: 6.1.8
+      react:
+        specifier: ^18.2.0
+        version: 18.3.1
+      react-i18next:
+        specifier: ^11.18.6
+        version: 11.18.6(i18next@21.10.0)(react@18.3.1)
       typescript:
         specifier: 4.9.5
         version: 4.9.5
@@ -5837,7 +5849,7 @@ importers:
         specifier: ^6.1.8
         version: 6.1.8
       i18next-shared-lib:
-        specifier: ../i18next-shared-lib
+        specifier: workspace:*
         version: link:../i18next-shared-lib
       next:
         specifier: 12.3.4
@@ -5883,7 +5895,7 @@ importers:
         specifier: ^6.1.8
         version: 6.1.8
       i18next-shared-lib:
-        specifier: ../i18next-shared-lib
+        specifier: workspace:*
         version: link:../i18next-shared-lib
       react:
         specifier: ^18.2.0
@@ -5959,7 +5971,7 @@ importers:
         specifier: ^6.1.8
         version: 6.1.8
       i18next-shared-lib:
-        specifier: ../i18next-shared-lib
+        specifier: workspace:*
         version: link:../i18next-shared-lib
       react:
         specifier: ^18.2.0
@@ -49243,7 +49255,7 @@ packages:
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
-      webpack: 5.92.1(webpack-cli@5.1.4)
+      webpack: 5.92.1(webpack-cli@4.10.0)
 
   /file-system-cache@1.1.0:
     resolution: {integrity: sha512-IzF5MBq+5CR0jXx5RxPe4BICl/oEhBSXKaL9fLhAXrIfIUS77Hr4vzrYyqYMHN6uTt+BOqi3fDCTjjEBCjERKw==}
@@ -51129,7 +51141,6 @@ packages:
     resolution: {integrity: sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==}
     dependencies:
       void-elements: 3.1.0
-    dev: false
 
   /html-rspack-plugin@5.7.2(@rspack/core@0.7.4):
     resolution: {integrity: sha512-uVXGYq19bcsX7Q/53VqXQjCKXw0eUMHlFGDLTaqzgj/ckverfhZQvXyA6ecFBaF9XUH16jfCTCyALYi0lJcagg==}
@@ -51560,13 +51571,11 @@ packages:
     resolution: {integrity: sha512-Svm+MduCElO0Meqpj1kJAriTC6OhI41VhlT/A0UPjGoPZBhAHIaGE5EfsHlTpgdH09UVX7rcc72pSDDBeKSQQA==}
     dependencies:
       '@babel/runtime': 7.24.7
-    dev: false
 
   /i18next@21.10.0:
     resolution: {integrity: sha512-YeuIBmFsGjUfO3qBmMOc0rQaun4mIpGKET5WDwvu8lU7gvwpcariZLNtL0Fzj+zazcHUrlXHiptcFhBMFaxzfg==}
     dependencies:
       '@babel/runtime': 7.24.7
-    dev: false
 
   /i@0.3.7:
     resolution: {integrity: sha512-FYz4wlXgkQwIPqhzC5TdNMLSE5+GS1IIDJZY/1ZiEPCT2S3COUVZeT5OW4BmW4r5LHLQuOosSwsvnroG9GR59Q==}
@@ -64558,6 +64567,25 @@ packages:
       react-dom: 18.3.1(react@18.3.1)
     dev: false
 
+  /react-i18next@11.18.6(i18next@21.10.0)(react@18.3.1):
+    resolution: {integrity: sha512-yHb2F9BiT0lqoQDt8loZ5gWP331GwctHz9tYQ8A2EIEUu+CcEdjBLQWli1USG3RdWQt3W+jqQLg/d4rrQR96LA==}
+    peerDependencies:
+      i18next: '>= 19.0.0'
+      react: '>= 16.8.0'
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.24.7
+      html-parse-stringify: 3.0.1
+      i18next: 21.10.0
+      react: 18.3.1
+    dev: true
+
   /react-inspector@5.1.1(react@17.0.2):
     resolution: {integrity: sha512-GURDaYzoLbW8pMGXwYPDBIv6nqei4kK7LPRZ9q9HCZF54wqXz/dnylBp/kfE9XmekBhHvLDdcYeyIwSrvtOiWg==}
     peerDependencies:
@@ -66544,7 +66572,7 @@ packages:
     dependencies:
       neo-async: 2.6.2
       sass: 1.77.6
-      webpack: 5.92.1(webpack-cli@5.1.4)
+      webpack: 5.92.1(webpack-cli@4.10.0)
     dev: true
 
   /sass-loader@14.2.1(webpack@5.92.1):
