@@ -17,8 +17,8 @@ importers:
         specifier: ^5.3.6
         version: 5.3.6(react-dom@18.2.0)(react@18.2.0)
       '@module-federation/enhanced':
-        specifier: 0.2.4
-        version: 0.2.4(typescript@5.4.5)
+        specifier: 0.2.5
+        version: 0.2.5(typescript@5.4.5)
       antd:
         specifier: ^5.16.2
         version: 5.16.4(react-dom@18.2.0)(react@18.2.0)
@@ -51,8 +51,8 @@ importers:
   remote1:
     dependencies:
       '@module-federation/enhanced':
-        specifier: 0.2.4
-        version: 0.2.4(typescript@5.4.5)
+        specifier: 0.2.5
+        version: 0.2.5(typescript@5.4.5)
       antd:
         specifier: ^5.16.2
         version: 5.16.4(react-dom@18.2.0)(react@18.2.0)
@@ -85,8 +85,8 @@ importers:
   remote2:
     dependencies:
       '@module-federation/enhanced':
-        specifier: 0.2.4
-        version: 0.2.4(typescript@5.4.5)
+        specifier: 0.2.5
+        version: 0.2.5(typescript@5.4.5)
       antd:
         specifier: ^5.16.2
         version: 5.16.4(react-dom@18.2.0)(react@18.2.0)
@@ -119,8 +119,8 @@ importers:
   remote2_alternative:
     dependencies:
       '@module-federation/enhanced':
-        specifier: 0.2.4
-        version: 0.2.4(typescript@5.4.5)
+        specifier: 0.2.5
+        version: 0.2.5(typescript@5.4.5)
       antd:
         specifier: ^5.16.2
         version: 5.16.4(react-dom@18.2.0)(react@18.2.0)
@@ -476,14 +476,14 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@module-federation/bridge-react-webpack-plugin@0.2.4:
-    resolution: {integrity: sha512-tgrAadf1HvppPlAqclx0FvMw+yXO+IQHw7f9m2+8mLIdqz7HnB8vfnL8wROzKs9539jvJ03YQkM9Ht7Xscutpw==}
+  /@module-federation/bridge-react-webpack-plugin@0.2.5:
+    resolution: {integrity: sha512-m+v2LQMtN2ieYCbOLXCVEQE8CCWFSFRK/88Y/E4z8HbkKaGJr+w/8iOkhmjqq2TeyT67jhWWPCwszqqqUJpV2A==}
     dependencies:
-      '@module-federation/sdk': 0.2.4
+      '@module-federation/sdk': 0.2.5
     dev: false
 
-  /@module-federation/dts-plugin@0.2.4(typescript@5.4.5):
-    resolution: {integrity: sha512-PS3coEN7SEU1vsl3wI5x44vkFP9biejnpRky+0XJRCeRYhdO0X83UN3NnAfBXvvujuwFxlB3H+0WOZKAf6HyWw==}
+  /@module-federation/dts-plugin@0.2.5(typescript@5.4.5):
+    resolution: {integrity: sha512-LdlxCQq4CNwTgshbH8me7r+rRJ2lvqObPBIgS0N2xm2Ulx7puTMdv1GbfcDZUiqzL89uO9coy2AyNeE2GbU/Kg==}
     peerDependencies:
       typescript: ^4.9.0 || ^5.0.0
       vue-tsc: ^1.0.24
@@ -491,9 +491,9 @@ packages:
       vue-tsc:
         optional: true
     dependencies:
-      '@module-federation/managers': 0.2.4
-      '@module-federation/sdk': 0.2.4
-      '@module-federation/third-party-dts-extractor': 0.2.4
+      '@module-federation/managers': 0.2.5
+      '@module-federation/sdk': 0.2.5
+      '@module-federation/third-party-dts-extractor': 0.2.5
       adm-zip: 0.5.12
       ansi-colors: 4.1.3
       axios: 1.6.8
@@ -514,8 +514,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@module-federation/enhanced@0.2.4(typescript@5.4.5):
-    resolution: {integrity: sha512-sApwVRmlTn5QiuDv0sLZD8cnXdc1wBzYaYUomZ0o/w36YobVQTaWN4gau0Y5VIhJLau0zI2K9pINjCufDck6BQ==}
+  /@module-federation/enhanced@0.2.5(typescript@5.4.5):
+    resolution: {integrity: sha512-Hfzpvqj0zwDv1z7KmTdQdOwDZ+jiAscxnLHhbMS5UMMue85jJvsSGD3YcP8p6Zy2O9aMrdWKZldLPo00gk5P/A==}
     peerDependencies:
       typescript: ^4.9.0 || ^5.0.0
       vue-tsc: ^1.0.24
@@ -528,13 +528,13 @@ packages:
       webpack:
         optional: true
     dependencies:
-      '@module-federation/bridge-react-webpack-plugin': 0.2.4
-      '@module-federation/dts-plugin': 0.2.4(typescript@5.4.5)
-      '@module-federation/managers': 0.2.4
-      '@module-federation/manifest': 0.2.4(typescript@5.4.5)
-      '@module-federation/rspack': 0.2.4(typescript@5.4.5)
-      '@module-federation/runtime-tools': 0.2.4
-      '@module-federation/sdk': 0.2.4
+      '@module-federation/bridge-react-webpack-plugin': 0.2.5
+      '@module-federation/dts-plugin': 0.2.5(typescript@5.4.5)
+      '@module-federation/managers': 0.2.5
+      '@module-federation/manifest': 0.2.5(typescript@5.4.5)
+      '@module-federation/rspack': 0.2.5(typescript@5.4.5)
+      '@module-federation/runtime-tools': 0.2.5
+      '@module-federation/sdk': 0.2.5
       btoa: 1.2.1
       typescript: 5.4.5
       upath: 2.0.1
@@ -545,20 +545,20 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@module-federation/managers@0.2.4:
-    resolution: {integrity: sha512-6gVq8q81sch5y8NSAThLNzpSqADb7G5egdO/1yT8ggpxYVnTyLFVXrV4HaHJZqTHOegrfAszviZVWPh+I8yKFw==}
+  /@module-federation/managers@0.2.5:
+    resolution: {integrity: sha512-bGCJlWZUp4U0YTdFqJA4ePbjzJADgr9t+ZEoqeDuKVzYtJwnMfOJBMHEYhaH3SYE5czEzm2fXcvssLYWe0FWOg==}
     dependencies:
-      '@module-federation/sdk': 0.2.4
+      '@module-federation/sdk': 0.2.5
       find-pkg: 2.0.0
       fs-extra: 9.1.0
     dev: false
 
-  /@module-federation/manifest@0.2.4(typescript@5.4.5):
-    resolution: {integrity: sha512-2tsfw7YifLYBj79N+sALWDKIYfV5SntryieWrynK6/forAEY//2DeTKH4XJ+QL5jW5u287hY+ZV7GIRk5KV5FA==}
+  /@module-federation/manifest@0.2.5(typescript@5.4.5):
+    resolution: {integrity: sha512-WCJs7tUqfj1NIa6XXD3wB8FdwQXTLyYWDKGgQtc6Z9wsFcpwADnrd2QHR4yZvjQyRAMQnaugLpK01lefP+0l+g==}
     dependencies:
-      '@module-federation/dts-plugin': 0.2.4(typescript@5.4.5)
-      '@module-federation/managers': 0.2.4
-      '@module-federation/sdk': 0.2.4
+      '@module-federation/dts-plugin': 0.2.5(typescript@5.4.5)
+      '@module-federation/managers': 0.2.5
+      '@module-federation/sdk': 0.2.5
       chalk: 3.0.0
       find-pkg: 2.0.0
     transitivePeerDependencies:
@@ -570,15 +570,15 @@ packages:
       - vue-tsc
     dev: false
 
-  /@module-federation/rspack@0.2.4(typescript@5.4.5):
-    resolution: {integrity: sha512-4ZrNoBkTdJGVghaKKRs8HpViFnXk4KpRA6PIUT0xQXVscHvUeimp6iMXFWgNQa74XM2FTfPaiM9VPer+FkiZ5Q==}
+  /@module-federation/rspack@0.2.5(typescript@5.4.5):
+    resolution: {integrity: sha512-Rvk4KTPn9KqM84ub3N8Ze1uC7oSJejlC4SG9JxUrr1yvkJh1Ej3SGWpeHyS7trBVWeJItCFqXAlAD2RnFIcjXQ==}
     dependencies:
-      '@module-federation/bridge-react-webpack-plugin': 0.2.4
-      '@module-federation/dts-plugin': 0.2.4(typescript@5.4.5)
-      '@module-federation/managers': 0.2.4
-      '@module-federation/manifest': 0.2.4(typescript@5.4.5)
-      '@module-federation/runtime-tools': 0.2.4
-      '@module-federation/sdk': 0.2.4
+      '@module-federation/bridge-react-webpack-plugin': 0.2.5
+      '@module-federation/dts-plugin': 0.2.5(typescript@5.4.5)
+      '@module-federation/managers': 0.2.5
+      '@module-federation/manifest': 0.2.5(typescript@5.4.5)
+      '@module-federation/runtime-tools': 0.2.5
+      '@module-federation/sdk': 0.2.5
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -595,11 +595,11 @@ packages:
       '@module-federation/webpack-bundler-runtime': 0.1.6
     dev: true
 
-  /@module-federation/runtime-tools@0.2.4:
-    resolution: {integrity: sha512-6BxhPOl83pcLXJO6AYOAij+iV9ksjtWmpzr9gunVcWZ0JvPmrdkOBQkcsoF6Etgcd11khHx54hQ1qYZ8qKapiA==}
+  /@module-federation/runtime-tools@0.2.5:
+    resolution: {integrity: sha512-ok+aaw3tB7QfHeZU4FjtdeLsfFmS0EVkcOdNXPU7ecfIVO6piz8+zFjrxJyp1DSqTDpTEOi+wm/TF2xeWI3gwA==}
     dependencies:
-      '@module-federation/runtime': 0.2.4
-      '@module-federation/webpack-bundler-runtime': 0.2.4
+      '@module-federation/runtime': 0.2.5
+      '@module-federation/webpack-bundler-runtime': 0.2.5
     dev: false
 
   /@module-federation/runtime@0.1.6:
@@ -608,22 +608,22 @@ packages:
       '@module-federation/sdk': 0.1.6
     dev: true
 
-  /@module-federation/runtime@0.2.4:
-    resolution: {integrity: sha512-4SSdqGhUm9XmSVmKMjSU+1CtyY+czr8mgOipEHxWa7mdtNzDEHhfpUQfFd1U9kaxqKdmLbOtGAr1KvqwJUEGLQ==}
+  /@module-federation/runtime@0.2.5:
+    resolution: {integrity: sha512-LGpGQTRDzYtfkw2eDeYN8TUsjdFbk5Xj7HLCnwTboKbPv3KR4+fP5FF5bXh/jGqxXfewk4bBZbn0QeD/fu8GPw==}
     dependencies:
-      '@module-federation/sdk': 0.2.4
+      '@module-federation/sdk': 0.2.5
     dev: false
 
   /@module-federation/sdk@0.1.6:
     resolution: {integrity: sha512-qifXpyYLM7abUeEOIfv0oTkguZgRZuwh89YOAYIZJlkP6QbRG7DJMQvtM8X2yHXm9PTk0IYNnOJH0vNQCo6auQ==}
     dev: true
 
-  /@module-federation/sdk@0.2.4:
-    resolution: {integrity: sha512-7hGovQSWs0HUCePC0LrGqQw2TjzA8otLz16VPWTJPO0z+MnWo/IxKv8+Hsp8ipJ/9XHlm1a2THKQCepypq8vfw==}
+  /@module-federation/sdk@0.2.5:
+    resolution: {integrity: sha512-2EtsNi+RUFaN/ipDaIxnOG/fo+XHCGqsAC7oT4vgnw0VzvupQRdIIwJWNwdQVvRWvyVdoknxs0gpfHMwwPKxTw==}
     dev: false
 
-  /@module-federation/third-party-dts-extractor@0.2.4:
-    resolution: {integrity: sha512-O5GBM4Z3pkkaIdH/Durwc8A7I6mDNfqmyA+/raWl2aG4rgaXiGhr2/F6T7KknrbsYDcrjH1ZQM9HvRJmF3LDwA==}
+  /@module-federation/third-party-dts-extractor@0.2.5:
+    resolution: {integrity: sha512-DsbdGttJaidkmBCSfnRSDXy1EbUnnLKl9JnLJiPfCMoaUrsfLKMrBuzkxXlYNLuOzZDvRP/kzDSKmduKfqA4Ew==}
     dependencies:
       find-pkg: 2.0.0
       fs-extra: 9.1.0
@@ -637,11 +637,11 @@ packages:
       '@module-federation/sdk': 0.1.6
     dev: true
 
-  /@module-federation/webpack-bundler-runtime@0.2.4:
-    resolution: {integrity: sha512-cn0fycSJhiFeFuhqAYoT2NWG6PU2V2tVUY4W54J09N9vuX7Hix5mz9UsBg0EXeJEFl/V/8pJGFtPbknXuFiyPQ==}
+  /@module-federation/webpack-bundler-runtime@0.2.5:
+    resolution: {integrity: sha512-Bg3T5ckd6IU2Qduaq7L3ECDZqmfZv0K1tg8wdysNeL8m7VXGXqCn703cbCWjPCwZYhOnUnvGjTbnaPmzQ9b/Tg==}
     dependencies:
-      '@module-federation/runtime': 0.2.4
-      '@module-federation/sdk': 0.2.4
+      '@module-federation/runtime': 0.2.5
+      '@module-federation/sdk': 0.2.5
     dev: false
 
   /@rc-component/color-picker@1.5.3(react-dom@18.2.0)(react@18.2.0):
