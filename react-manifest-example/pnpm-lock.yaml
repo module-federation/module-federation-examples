@@ -18,7 +18,7 @@ importers:
         version: 5.3.6(react-dom@18.2.0)(react@18.2.0)
       '@module-federation/enhanced':
         specifier: 0.2.5
-        version: 0.2.5(typescript@5.4.5)
+        version: 0.2.5(typescript@5.5.3)
       antd:
         specifier: ^5.16.2
         version: 5.16.4(react-dom@18.2.0)(react@18.2.0)
@@ -45,14 +45,14 @@ importers:
         specifier: 18.3.0
         version: 18.3.0
       typescript:
-        specifier: 5.4.5
-        version: 5.4.5
+        specifier: 5.5.3
+        version: 5.5.3
 
   remote1:
     dependencies:
       '@module-federation/enhanced':
         specifier: 0.2.5
-        version: 0.2.5(typescript@5.4.5)
+        version: 0.2.5(typescript@5.5.3)
       antd:
         specifier: ^5.16.2
         version: 5.16.4(react-dom@18.2.0)(react@18.2.0)
@@ -79,14 +79,14 @@ importers:
         specifier: 18.3.0
         version: 18.3.0
       typescript:
-        specifier: 5.4.5
-        version: 5.4.5
+        specifier: 5.5.3
+        version: 5.5.3
 
   remote2:
     dependencies:
       '@module-federation/enhanced':
         specifier: 0.2.5
-        version: 0.2.5(typescript@5.4.5)
+        version: 0.2.5(typescript@5.5.3)
       antd:
         specifier: ^5.16.2
         version: 5.16.4(react-dom@18.2.0)(react@18.2.0)
@@ -113,14 +113,14 @@ importers:
         specifier: 18.3.0
         version: 18.3.0
       typescript:
-        specifier: 5.4.5
-        version: 5.4.5
+        specifier: 5.5.3
+        version: 5.5.3
 
   remote2_alternative:
     dependencies:
       '@module-federation/enhanced':
         specifier: 0.2.5
-        version: 0.2.5(typescript@5.4.5)
+        version: 0.2.5(typescript@5.5.3)
       antd:
         specifier: ^5.16.2
         version: 5.16.4(react-dom@18.2.0)(react@18.2.0)
@@ -147,8 +147,8 @@ importers:
         specifier: 18.3.0
         version: 18.3.0
       typescript:
-        specifier: 5.4.5
-        version: 5.4.5
+        specifier: 5.5.3
+        version: 5.5.3
 
 packages:
 
@@ -482,7 +482,7 @@ packages:
       '@module-federation/sdk': 0.2.5
     dev: false
 
-  /@module-federation/dts-plugin@0.2.5(typescript@5.4.5):
+  /@module-federation/dts-plugin@0.2.5(typescript@5.5.3):
     resolution: {integrity: sha512-LdlxCQq4CNwTgshbH8me7r+rRJ2lvqObPBIgS0N2xm2Ulx7puTMdv1GbfcDZUiqzL89uO9coy2AyNeE2GbU/Kg==}
     peerDependencies:
       typescript: ^4.9.0 || ^5.0.0
@@ -505,7 +505,7 @@ packages:
       log4js: 6.9.1
       node-schedule: 2.1.1
       rambda: 9.2.0
-      typescript: 5.4.5
+      typescript: 5.5.3
       ws: 8.17.1
     transitivePeerDependencies:
       - bufferutil
@@ -514,7 +514,7 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@module-federation/enhanced@0.2.5(typescript@5.4.5):
+  /@module-federation/enhanced@0.2.5(typescript@5.5.3):
     resolution: {integrity: sha512-Hfzpvqj0zwDv1z7KmTdQdOwDZ+jiAscxnLHhbMS5UMMue85jJvsSGD3YcP8p6Zy2O9aMrdWKZldLPo00gk5P/A==}
     peerDependencies:
       typescript: ^4.9.0 || ^5.0.0
@@ -529,14 +529,14 @@ packages:
         optional: true
     dependencies:
       '@module-federation/bridge-react-webpack-plugin': 0.2.5
-      '@module-federation/dts-plugin': 0.2.5(typescript@5.4.5)
+      '@module-federation/dts-plugin': 0.2.5(typescript@5.5.3)
       '@module-federation/managers': 0.2.5
-      '@module-federation/manifest': 0.2.5(typescript@5.4.5)
-      '@module-federation/rspack': 0.2.5(typescript@5.4.5)
+      '@module-federation/manifest': 0.2.5(typescript@5.5.3)
+      '@module-federation/rspack': 0.2.5(typescript@5.5.3)
       '@module-federation/runtime-tools': 0.2.5
       '@module-federation/sdk': 0.2.5
       btoa: 1.2.1
-      typescript: 5.4.5
+      typescript: 5.5.3
       upath: 2.0.1
     transitivePeerDependencies:
       - bufferutil
@@ -553,10 +553,10 @@ packages:
       fs-extra: 9.1.0
     dev: false
 
-  /@module-federation/manifest@0.2.5(typescript@5.4.5):
+  /@module-federation/manifest@0.2.5(typescript@5.5.3):
     resolution: {integrity: sha512-WCJs7tUqfj1NIa6XXD3wB8FdwQXTLyYWDKGgQtc6Z9wsFcpwADnrd2QHR4yZvjQyRAMQnaugLpK01lefP+0l+g==}
     dependencies:
-      '@module-federation/dts-plugin': 0.2.5(typescript@5.4.5)
+      '@module-federation/dts-plugin': 0.2.5(typescript@5.5.3)
       '@module-federation/managers': 0.2.5
       '@module-federation/sdk': 0.2.5
       chalk: 3.0.0
@@ -570,13 +570,13 @@ packages:
       - vue-tsc
     dev: false
 
-  /@module-federation/rspack@0.2.5(typescript@5.4.5):
+  /@module-federation/rspack@0.2.5(typescript@5.5.3):
     resolution: {integrity: sha512-Rvk4KTPn9KqM84ub3N8Ze1uC7oSJejlC4SG9JxUrr1yvkJh1Ej3SGWpeHyS7trBVWeJItCFqXAlAD2RnFIcjXQ==}
     dependencies:
       '@module-federation/bridge-react-webpack-plugin': 0.2.5
-      '@module-federation/dts-plugin': 0.2.5(typescript@5.4.5)
+      '@module-federation/dts-plugin': 0.2.5(typescript@5.5.3)
       '@module-federation/managers': 0.2.5
-      '@module-federation/manifest': 0.2.5(typescript@5.4.5)
+      '@module-federation/manifest': 0.2.5(typescript@5.5.3)
       '@module-federation/runtime-tools': 0.2.5
       '@module-federation/sdk': 0.2.5
     transitivePeerDependencies:
@@ -2434,8 +2434,8 @@ packages:
       mime-types: 2.1.35
     dev: false
 
-  /typescript@5.4.5:
-    resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}
+  /typescript@5.5.3:
+    resolution: {integrity: sha512-/hreyEujaB0w76zKo6717l3L0o/qEUtRgdvUBvlkhoWeOVMjMuHNHk0BRBzikzuGDqNmPQbg5ifMEqsHLiIUcQ==}
     engines: {node: '>=14.17'}
     hasBin: true
 
