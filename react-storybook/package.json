@@ -13,7 +13,9 @@
     "start": "concurrently 'cd ./host && pnpm start' 'cd ./remote && pnpm start'",
     "build": "concurrently 'cd ./host && pnpm build' 'cd ./remote && pnpm build'",
     "serve": "concurrently 'cd ./host && pnpm serve' 'cd ./remote && pnpm serve'",
-    "clean": "concurrently 'cd ./host && pnpm clean' 'cd ./remote && pnpm clean'"
+    "clean": "concurrently 'cd ./host && pnpm clean' 'cd ./remote && pnpm clean'",
+    "e2e:ci": "pnpm start & sleep 90 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+
   },
   "devDependencies": {
     "concurrently": "8.2.2"
