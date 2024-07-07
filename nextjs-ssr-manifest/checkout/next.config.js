@@ -9,6 +9,19 @@ const remotes = isServer => {
   };
 };
 module.exports = {
+  headers() {
+    return [
+      {
+        source: '/_next/static/chunks/mf-manifest.json',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+        ],
+      }
+    ]
+  },
   webpack(config, options) {
     config.plugins.push(
       new NextFederationPlugin({
