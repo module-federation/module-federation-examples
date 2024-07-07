@@ -5788,8 +5788,8 @@ importers:
         specifier: 2.4.0
         version: 2.4.0
       vue-router:
-        specifier: 3.6.5
-        version: 3.6.5(vue@2.7.16)
+        specifier: 4.4.0
+        version: 4.4.0(vue@2.7.16)
 
   genesis/ssr-mf-home:
     dependencies:
@@ -5813,8 +5813,8 @@ importers:
         specifier: 2.4.0
         version: 2.4.0
       vue-router:
-        specifier: 3.6.5
-        version: 3.6.5(vue@2.7.16)
+        specifier: 4.4.0
+        version: 4.4.0(vue@2.7.16)
 
   i18next-nextjs-react:
     devDependencies:
@@ -48141,7 +48141,7 @@ packages:
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
-      webpack: 5.92.1(webpack-cli@5.1.4)
+      webpack: 5.92.1(webpack-cli@4.10.0)
 
   /file-system-cache@1.1.0:
     resolution: {integrity: sha512-IzF5MBq+5CR0jXx5RxPe4BICl/oEhBSXKaL9fLhAXrIfIUS77Hr4vzrYyqYMHN6uTt+BOqi3fDCTjjEBCjERKw==}
@@ -65504,7 +65504,7 @@ packages:
     dependencies:
       neo-async: 2.6.2
       sass: 1.77.6
-      webpack: 5.92.1(webpack-cli@5.1.4)
+      webpack: 5.92.1(webpack-cli@4.10.0)
     dev: true
 
   /sass-loader@14.2.1(webpack@5.92.1):
@@ -70648,11 +70648,12 @@ packages:
       deepmerge: 4.3.1
     dev: true
 
-  /vue-router@3.6.5(vue@2.7.16):
-    resolution: {integrity: sha512-VYXZQLtjuvKxxcshuRAwjHnciqZVoXAjTjcqBTz4rKc8qih9g9pI3hbDjmqXaHdgL3v8pV6P8Z335XvHzESxLQ==}
+  /vue-router@4.4.0(vue@2.7.16):
+    resolution: {integrity: sha512-HB+t2p611aIZraV2aPSRNXf0Z/oLZFrlygJm+sZbdJaW6lcFqEDQwnzUBXn+DApw+/QzDU/I9TeWx9izEjTmsA==}
     peerDependencies:
-      vue: ^2
+      vue: ^3.2.0
     dependencies:
+      '@vue/devtools-api': 6.6.3
       vue: 2.7.16
     dev: true
 
