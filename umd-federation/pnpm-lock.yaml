@@ -19,7 +19,7 @@ importers:
       react: ^18.2.0
       react-dom: ^18.2.0
       semverhook: 1.2.0
-      universal-module-federation-plugin: 1.0.9
+      universal-module-federation-plugin: 2.0.0
       webpack: 5.92.1
       webpack-cli: 4.10.0
       webpack-dev-server: 4.15.2
@@ -32,7 +32,7 @@ importers:
       babel-loader: 9.1.3_z5hqyrl7ys5omqq6tawbtvekhm
       html-webpack-plugin: 5.6.0_webpack@5.92.1
       semverhook: 1.2.0
-      universal-module-federation-plugin: 1.0.9
+      universal-module-federation-plugin: 2.0.0
       webpack: 5.92.1_webpack-cli@4.10.0
       webpack-cli: 4.10.0_uozmlkrmkra66u7uu4lvqfpvxu
       webpack-dev-server: 4.15.2_pxtyhad64fzsb5lrmxwhxp4lga
@@ -45,7 +45,7 @@ importers:
       html-webpack-plugin: 5.6.0
       react: ^18.2.0
       react-dom: ^18.2.0
-      universal-module-federation-plugin: 1.0.9
+      universal-module-federation-plugin: 2.0.0
       webpack: 5.92.1
       webpack-cli: 4.10.0
       webpack-dev-server: 4.15.2
@@ -57,7 +57,7 @@ importers:
       '@babel/preset-react': 7.24.7_@babel+core@7.24.7
       babel-loader: 9.1.3_z5hqyrl7ys5omqq6tawbtvekhm
       html-webpack-plugin: 5.6.0_webpack@5.92.1
-      universal-module-federation-plugin: 1.0.9
+      universal-module-federation-plugin: 2.0.0
       webpack: 5.92.1_webpack-cli@4.10.0
       webpack-cli: 4.10.0_uozmlkrmkra66u7uu4lvqfpvxu
       webpack-dev-server: 4.15.2_pxtyhad64fzsb5lrmxwhxp4lga
@@ -2708,6 +2708,12 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
+  /systemjs-intercept/1.0.14:
+    resolution: {integrity: sha512-x+gidxzucZe4KKptEPzNKcdI7L+Qwrm6kerpnjuXB90l4K94SLCpkTPWoofJkJcFtBfDe1mgz4e5+9062+pLhQ==}
+    dependencies:
+      systemjs: 6.15.1
+    dev: true
+
   /systemjs/6.15.1:
     resolution: {integrity: sha512-Nk8c4lXvMB98MtbmjX7JwJRgJOL8fluecYCfCeYBznwmpOs8Bf15hLM6z4z71EDAhQVrQrI+wt1aLWSXZq+hXA==}
     dev: true
@@ -2796,14 +2802,14 @@ packages:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
     dev: true
 
-  /universal-module-federation-plugin/1.0.9:
-    resolution: {integrity: sha512-UKnhi1tl2g/VM2uNwzAoopD6G34F5MM70z9f63bmLIQ/69RXiZkb1FpYsft2Yamwg8cB7ydKj4BmA98u1Z4J6g==}
+  /universal-module-federation-plugin/2.0.0:
+    resolution: {integrity: sha512-uhcyjIjIGfZ2fcZB9h6sPtTrGl6lCisCAjpCoE6cMU5DKCwWYbEXJqOKGDcWzRP5GKxDvn/YCcLF3qXzmz6rtQ==}
     dependencies:
+      global: 4.4.0
       inject-webpack: 0.4.4
       module-federation-runtime: 1.2.4
-      semverhook: 1.2.0
       stringify-has-fn: 1.0.3
-      umfjs: 0.3.7
+      systemjs-intercept: 1.0.14
       webpack-virtual-modules: 0.4.6
     dev: true
 
