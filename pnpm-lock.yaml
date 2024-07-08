@@ -9703,10 +9703,10 @@ importers:
     devDependencies:
       '@module-federation/storybook-addon':
         specifier: 0.2.0
-        version: 0.2.0(@module-federation/utilities@1.9.1)(@storybook/node-logger@6.5.16)(webpack-virtual-modules@0.6.2)(webpack@5.92.1)
+        version: 0.2.0(@module-federation/utilities@3.0.32)(@storybook/node-logger@6.5.16)(webpack-virtual-modules@0.6.2)(webpack@5.92.1)
       '@module-federation/utilities':
-        specifier: 1.9.1
-        version: 1.9.1(react-dom@17.0.2)(react@17.0.2)(webpack@5.92.1)
+        specifier: 3.0.32
+        version: 3.0.32(react-dom@17.0.2)(react@17.0.2)(webpack@5.92.1)
       '@storybook/addon-actions':
         specifier: 6.5.16
         version: 6.5.16(react-dom@17.0.2)(react@17.0.2)
@@ -12988,8 +12988,8 @@ importers:
   typescript-react-fallback/app1:
     dependencies:
       '@module-federation/utilities':
-        specifier: 1.9.1
-        version: 1.9.1(react-dom@16.14.0)(react@16.14.0)(webpack@5.92.1)
+        specifier: 3.0.32
+        version: 3.0.32(react-dom@16.14.0)(react@16.14.0)(webpack@5.92.1)
       react:
         specifier: ^16.13.0
         version: 16.14.0
@@ -26604,7 +26604,7 @@ packages:
   /@module-federation/sdk@0.2.5:
     resolution: {integrity: sha512-2EtsNi+RUFaN/ipDaIxnOG/fo+XHCGqsAC7oT4vgnw0VzvupQRdIIwJWNwdQVvRWvyVdoknxs0gpfHMwwPKxTw==}
 
-  /@module-federation/storybook-addon@0.2.0(@module-federation/utilities@1.9.1)(@storybook/node-logger@6.5.16)(webpack-virtual-modules@0.6.2)(webpack@5.92.1):
+  /@module-federation/storybook-addon@0.2.0(@module-federation/utilities@3.0.32)(@storybook/node-logger@6.5.16)(webpack-virtual-modules@0.6.2)(webpack@5.92.1):
     resolution: {integrity: sha512-K+AgmzDfukKYiebzvNt9V6U73Y12nEBF7uk2bvwF0oKeIDStNE0sAbeHFlQKxwOLfvYHIzn6pW6WgwBuOmWiSA==}
     peerDependencies:
       '@module-federation/utilities': 1.7.0
@@ -26613,7 +26613,7 @@ packages:
       webpack: ^5.75.0
       webpack-virtual-modules: ^0.5.0
     dependencies:
-      '@module-federation/utilities': 1.9.1(react-dom@17.0.2)(react@17.0.2)(webpack@5.92.1)
+      '@module-federation/utilities': 3.0.32(react-dom@17.0.2)(react@17.0.2)(webpack@5.92.1)
       '@nrwl/devkit': 16.0.0
       '@nx/react': 16.0.0(webpack@5.92.1)
       '@storybook/node-logger': 6.5.16
@@ -26678,46 +26678,6 @@ packages:
     transitivePeerDependencies:
       - debug
       - encoding
-
-  /@module-federation/utilities@1.9.1(react-dom@16.14.0)(react@16.14.0)(webpack@5.92.1):
-    resolution: {integrity: sha512-EVPV90TSK+tSG6R7Kw65w7pRuI2phff8YFIazzGWNViZPRlTYS3c9pZWVPYGiwIz1+96P+yeNp/WQZrkyS8kpA==}
-    peerDependencies:
-      next: ^12 || ^13
-      react: ^16 || ^17 || ^18
-      react-dom: ^16 || ^17 || ^18
-      webpack: ^5.40.0
-    peerDependenciesMeta:
-      next:
-        optional: true
-      react:
-        optional: true
-      react-dom:
-        optional: true
-    dependencies:
-      react: 16.14.0
-      react-dom: 16.14.0(react@16.14.0)
-      webpack: 5.92.1(webpack-cli@5.1.4)
-    dev: false
-
-  /@module-federation/utilities@1.9.1(react-dom@17.0.2)(react@17.0.2)(webpack@5.92.1):
-    resolution: {integrity: sha512-EVPV90TSK+tSG6R7Kw65w7pRuI2phff8YFIazzGWNViZPRlTYS3c9pZWVPYGiwIz1+96P+yeNp/WQZrkyS8kpA==}
-    peerDependencies:
-      next: ^12 || ^13
-      react: ^16 || ^17 || ^18
-      react-dom: ^16 || ^17 || ^18
-      webpack: ^5.40.0
-    peerDependenciesMeta:
-      next:
-        optional: true
-      react:
-        optional: true
-      react-dom:
-        optional: true
-    dependencies:
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      webpack: 5.92.1
-    dev: true
 
   /@module-federation/utilities@1.9.1(react-dom@18.3.1)(react@18.3.1)(webpack@5.92.1):
     resolution: {integrity: sha512-EVPV90TSK+tSG6R7Kw65w7pRuI2phff8YFIazzGWNViZPRlTYS3c9pZWVPYGiwIz1+96P+yeNp/WQZrkyS8kpA==}
@@ -26899,7 +26859,6 @@ packages:
       react: 16.14.0
       react-dom: 16.14.0(react@16.14.0)
       webpack: 5.92.1(webpack-cli@5.1.4)
-    dev: true
 
   /@module-federation/utilities@3.0.32(react-dom@17.0.2)(react@17.0.2)(webpack@5.92.1):
     resolution: {integrity: sha512-+CvWRLUFPrO1iY9CjnqgQlsEcotXsc8SQZbFx8Tf29VRp4Fjq3UdGCwY8OmyNOHLXZOzYTX287ztWIo9hWlbPw==}
@@ -26919,7 +26878,7 @@ packages:
       '@module-federation/sdk': 0.2.5
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
-      webpack: 5.92.1(webpack-cli@5.1.4)
+      webpack: 5.92.1
     dev: true
 
   /@module-federation/utilities@3.0.32(react-dom@18.3.1)(react@18.3.1)(webpack@5.92.1):
