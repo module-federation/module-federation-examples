@@ -1,2 +1,2 @@
-export * from './compiled-types/Image';
-export { default } from './compiled-types/Image';
+export * from './compiled-types/src/components/Image';
+export { default } from './compiled-types/src/components/Image';

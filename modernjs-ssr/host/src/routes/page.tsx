@@ -1,6 +1,6 @@
 import { createRemoteSSRComponent, loadRemote, registerRemotes } from '@modern-js/runtime/mf';
 import type { DataLoaderRes } from './page.data'
-import { useLoaderData } from '@modern-js/runtime/router';
+import { useRouteLoaderData } from '@modern-js/runtime/router';
 
 import './index.css';
 
@@ -17,7 +17,7 @@ const RemoteSSRComponent = createRemoteSSRComponent({
 });
 
 const Index = () => {
-  const dataLoader = useLoaderData() as DataLoaderRes;
+  const dataLoader = useRouteLoaderData('page') as DataLoaderRes;
   registerRemotes(dataLoader.providerList);
 
   const DynamicRemoteSSRComponents = dataLoader.providerList.map(item => {
