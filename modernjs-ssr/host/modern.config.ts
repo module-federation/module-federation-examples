@@ -17,7 +17,6 @@ export default defineConfig({
     port: 3007,
   },
   plugins: [
-    // not support data loader in rspack mode yet
     appTools({ bundler: 'experimental-rspack' }),
     moduleFederationPlugin()
   ],
