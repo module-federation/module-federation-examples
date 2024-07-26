@@ -1,7 +1,5 @@
 import { createRemoteSSRComponent, loadRemote, registerRemotes } from '@modern-js/runtime/mf';
-import type { DataLoaderRes } from './page.data'
-import { useRouteLoaderData } from '@modern-js/runtime/router';
-
+import {DynamicRemoteSSRComponents} from '../components/dynamic-remote'
 import './index.css';
 
 const RemoteSSRComponent = createRemoteSSRComponent({
@@ -16,28 +14,13 @@ const RemoteSSRComponent = createRemoteSSRComponent({
   },
 });
 
-const Index = () => {
-  const dataLoader = useRouteLoaderData('page') as DataLoaderRes;
-  registerRemotes(dataLoader.providerList);
 
-  const DynamicRemoteSSRComponents = dataLoader.providerList.map(item => {
-    const { id } = item;
-    const Com = createRemoteSSRComponent({
-      loader: () => loadRemote(id),
-      loading: 'loading...',
-      fallback: ({ error }) => {
-        if (error instanceof Error && error.message.includes('not exist')) {
-          return <div>fallback - not existed id</div>;
-        }
-        return <div>fallback</div>;
-      },
-    });
-    return <Com />
-  })
+
+const Index = () => {
   return (
     <div className="container-box">
       <RemoteSSRComponent />
-      {DynamicRemoteSSRComponents}
+      <DynamicRemoteSSRComponents />
     </div>
   );
 }

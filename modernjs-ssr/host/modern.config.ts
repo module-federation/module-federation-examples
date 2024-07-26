@@ -3,7 +3,7 @@ import { moduleFederationPlugin } from '@module-federation/modern-js';
 
 // https://modernjs.dev/en/configure/app/usage
 export default defineConfig({
-  dev:{
+  dev: {
     // FIXME: it should be removed , related issue: https://github.com/web-infra-dev/modern.js/issues/5999
     host: '0.0.0.0',
   },
@@ -18,7 +18,7 @@ export default defineConfig({
   },
   plugins: [
     // not support data loader in rspack mode yet
-    appTools(),
+    appTools({ bundler: 'experimental-rspack' }),
     moduleFederationPlugin()
   ],
 });
