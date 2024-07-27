@@ -1,23 +1,35 @@
-const moduleFederationConfig = require('../modulefederation.config.js');
+import { dirname, join } from 'path';
+import moduleFederationConfig from '../modulefederation.config';
 
-const storybookConfig = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+/**
+ * This function is used to resolve the absolute path of a package.
+ * It is needed in projects that use Yarn PnP or are set up within a monorepo.
+ */
+function getAbsolutePath(value) {
+  return dirname(require.resolve(join(value, 'package.json')));
+}
+
+/** @type { import('@storybook/react-webpack5').StorybookConfig } */
+const config = {
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    '@storybook/preset-create-react-app',
+    getAbsolutePath('@storybook/preset-create-react-app'),
+    getAbsolutePath('@storybook/addon-onboarding'),
+    getAbsolutePath('@storybook/addon-links'),
+    getAbsolutePath('@storybook/addon-essentials'),
+    getAbsolutePath('@chromatic-com/storybook'),
+    getAbsolutePath('@storybook/addon-interactions'),
     {
       name: '@module-federation/storybook-addon',
       options: {
         moduleFederationConfig,
       },
-    },
+    }
   ],
-  framework: '@storybook/react',
-  core: {
-    builder: '@storybook/builder-webpack5',
+  framework: {
+    name: getAbsolutePath('@storybook/react-webpack5'),
+    options: {},
   },
+  staticDirs: ['../public'],
 };
-
-module.exports = storybookConfig;
+export default config;
