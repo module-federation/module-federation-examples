@@ -1,5 +1,5 @@
-import { createRemoteSSRComponent, loadRemote, registerRemotes } from '@modern-js/runtime/mf';
-import {DynamicRemoteSSRComponents} from '../components/dynamic-remote'
+import { createRemoteSSRComponent } from '@modern-js/runtime/mf';
+import {DynamicRemoteSSRComponents } from '../components/dynamic-remote'
 import './index.css';
 
 const RemoteSSRComponent = createRemoteSSRComponent({
