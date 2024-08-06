@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const StartupChunkDependenciesPlugin = require("webpack/lib/runtime/MfStartupChunkDependenciesPlugin");
 const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const { RsdoctorWebpackPlugin } = require('@rsdoctor/webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
@@ -94,6 +95,9 @@ module.exports = {
           singleton: true,
         },
       },
+    }),
+    new StartupChunkDependenciesPlugin({
+      asyncChunkLoading: true
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
