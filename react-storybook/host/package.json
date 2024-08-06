@@ -12,12 +12,13 @@
     "build": "node ./scripts/build.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "eslintConfig": {
     "extends": [
-      "react-app"
+      "react-app",
+      "plugin:storybook/recommended"
     ],
     "overrides": [
       {
@@ -43,21 +44,23 @@
     ]
   },
   "devDependencies": {
-    "@module-federation/storybook-addon": "0.2.0",
+    "@chromatic-com/storybook": "^1.6.1",
+    "@module-federation/storybook-addon": "2.0.1",
     "@module-federation/utilities": "3.0.32",
-    "webpack-virtual-modules": "0.6.2",
-    "@storybook/addon-actions": "6.5.16",
-    "@storybook/addon-essentials": "6.5.16",
-    "@storybook/addon-interactions": "6.5.16",
-    "@storybook/addon-links": "6.5.16",
-    "@storybook/builder-webpack5": "6.5.16",
-    "@storybook/manager-webpack5": "6.5.16",
-    "@storybook/node-logger": "6.5.16",
-    "@storybook/preset-create-react-app": "4.1.2",
-    "@storybook/react": "6.5.16",
-    "@storybook/testing-library": "0.2.2",
+    "@storybook/addon-essentials": "^8.2.6",
+    "@storybook/addon-interactions": "^8.2.6",
+    "@storybook/addon-links": "^8.2.6",
+    "@storybook/addon-onboarding": "^8.2.6",
+    "@storybook/blocks": "^8.2.6",
+    "@storybook/preset-create-react-app": "^8.2.6",
+    "@storybook/react": "^8.2.6",
+    "@storybook/react-webpack5": "^8.2.6",
+    "@storybook/test": "^8.2.6",
     "babel-plugin-named-exports-order": "0.0.2",
+    "eslint-plugin-storybook": "^0.8.0",
     "prop-types": "15.8.1",
-    "webpack": "5.92.1"
+    "storybook": "^8.2.6",
+    "webpack": "5.92.1",
+    "webpack-virtual-modules": "0.6.2"
   }
 }
