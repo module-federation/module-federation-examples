@@ -14,5 +14,10 @@ export default defineConfig({
       appendPlugins([new ModuleFederationPlugin(mfConfig)]);
     },
   },
-  plugins: [pluginReact()],
+  plugins: [pluginReact({
+    splitChunks: {
+      router: false,
+      react: false
+    }
+  })],
 });
