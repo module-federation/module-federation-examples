@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-
 import { useFederatedComponent } from '../hooks/useFederatedComponent';
 import { EnvContext } from './App';
 
