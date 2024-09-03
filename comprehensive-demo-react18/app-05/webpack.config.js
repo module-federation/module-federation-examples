@@ -47,6 +47,7 @@ module.exports = {
         './AlertBox': './src/components/alert-box.ts',
         './components': './src/index.ts',
       },
+      embedRuntime: true,
       shared: [],
     }),
     new HtmlWebpackPlugin({

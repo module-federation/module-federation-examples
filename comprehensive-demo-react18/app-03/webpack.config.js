@@ -62,6 +62,7 @@ module.exports = {
       remotes: {
         app_01: 'app_01@http://localhost:3001/remoteEntry.js',
       },
+      embedRuntime: true,
       exposes: {
         './Button': './src/Button',
       },

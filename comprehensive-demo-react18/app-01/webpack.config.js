@@ -79,6 +79,7 @@ module.exports = {
         './SideNav': './src/SideNav',
         './Page': './src/Page',
       },
+      embedRuntime: true,
       shared: {
         ...deps,
         '@material-ui/core': {
