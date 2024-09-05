@@ -62,7 +62,7 @@ module.exports = {
       remotes: {
         app_01: 'app_01@http://localhost:3001/remoteEntry.js',
       },
-      embedRuntime: true,
+      experiments: {federationRuntime: 'hoisted'},
       exposes: {
         './Button': './src/Button',
       },

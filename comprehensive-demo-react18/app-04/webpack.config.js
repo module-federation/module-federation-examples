@@ -62,7 +62,7 @@ module.exports = {
         './App': './src/main.js',
         './loadApp': './src/loadApp.js',
       },
-      embedRuntime: true,
+      experiments: {federationRuntime: 'hoisted'},
       shared: [],
     }),
     new MiniCssExtractPlugin({
