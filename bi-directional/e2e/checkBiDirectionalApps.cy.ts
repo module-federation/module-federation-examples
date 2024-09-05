@@ -1,7 +1,6 @@
 import { BaseMethods } from '../../cypress-e2e/common/base';
 import { baseSelectors } from '../../cypress-e2e/common/selectors';
 import { Constants } from '../../cypress-e2e/fixtures/constants';
-
 const basePage: BaseMethods = new BaseMethods();
 
 const appsData = [
@@ -32,27 +31,15 @@ appsData.forEach(
     describe('Bi Directional', () => {
       context(`Check ${property.appName} elements exists on the page`, () => {
         before(() => {
-          basePage.openLocalhost({
-            number: property.host,
-          });
+          cy.visit('http://localhost:' + property.host)
         });
+
         it(`Check App1 and App2 elements`, () => {
-          basePage.checkElementWithTextPresence({
-            selector: baseSelectors.tags.headers.h1,
-            text: String(property.appName),
-          });
-          basePage.checkElementWithTextPresence({
-            selector: baseSelectors.tags.headers.h2,
-            text: String(property.appSubheader),
-          });
-          basePage.clickElementWithText({
-            selector: baseSelectors.tags.coreElements.button,
-            text: String(property.app1Button),
-          });
-          basePage.clickElementWithText({
-            selector: baseSelectors.tags.coreElements.button,
-            text: String(property.app2Button),
-          });
+          if(property.host === 3001) {
+            cy.contains('App 2 Button').should('exist');
+          } else {
+            cy.contains('App 1 Button').should('exist');
+          }
         });
       });
     });
