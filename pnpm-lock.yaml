@@ -989,7 +989,7 @@ importers:
         version: 2.54.6(@swc/helpers@0.5.3)(typescript@5.5.3)
       '@modern-js/app-tools':
         specifier: 2.54.6
-        version: 2.54.6(@rspack/core@1.0.3)(@swc/core@1.6.13)(@types/webpack@5.28.0(@swc/core@1.6.13))(encoding@0.1.13)(eslint@8.57.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@5.3.11(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(ts-node@10.9.2(@swc/core@1.6.13)(@types/node@20.9.0)(typescript@5.5.3))(tsconfig-paths@4.2.0)(type-fest@2.19.0)(typescript@5.5.3)(webpack-dev-server@4.15.2(webpack@5.94.0(@swc/core@1.6.13)))(webpack-hot-middleware@2.25.4)
+        version: 2.54.6(@rspack/core@0.4.5)(@swc/core@1.6.13)(@types/webpack@5.28.0(@swc/core@1.6.13))(encoding@0.1.13)(eslint@8.57.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@5.3.11(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(ts-node@10.9.2(@swc/core@1.6.13)(@types/node@20.9.0)(typescript@5.5.3))(tsconfig-paths@4.2.0)(type-fest@2.19.0)(typescript@5.5.3)(webpack-dev-server@4.15.2(webpack@5.94.0(@swc/core@1.6.13)))(webpack-hot-middleware@2.25.4)
       '@modern-js/builder-rspack-provider':
         specifier: 2.46.1
         version: 2.46.1(@babel/traverse@7.24.8)(@rsbuild/core@1.0.1-rc.4)(@swc/core@1.6.13)(@types/express@4.17.21)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(ts-node@10.9.2(@swc/core@1.6.13)(@types/node@20.9.0)(typescript@5.5.3))(tsconfig-paths@4.2.0)(typescript@5.5.3)
@@ -1041,7 +1041,7 @@ importers:
         version: 2.54.6(@swc/helpers@0.5.3)(typescript@5.5.3)
       '@modern-js/app-tools':
         specifier: 2.54.6
-        version: 2.54.6(@rspack/core@0.4.5)(@swc/core@1.6.13)(@types/webpack@5.28.0(@swc/core@1.6.13))(encoding@0.1.13)(eslint@8.57.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@5.3.11(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(ts-node@10.9.2(@swc/core@1.6.13)(@types/node@20.9.0)(typescript@5.5.3))(tsconfig-paths@4.2.0)(type-fest@2.19.0)(typescript@5.5.3)(webpack-dev-server@4.15.2(webpack@5.94.0(@swc/core@1.6.13)))(webpack-hot-middleware@2.25.4)
+        version: 2.54.6(@rspack/core@1.0.3)(@swc/core@1.6.13)(@types/webpack@5.28.0(@swc/core@1.6.13))(encoding@0.1.13)(eslint@8.57.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@5.3.11(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(ts-node@10.9.2(@swc/core@1.6.13)(@types/node@20.9.0)(typescript@5.5.3))(tsconfig-paths@4.2.0)(type-fest@2.19.0)(typescript@5.5.3)(webpack-dev-server@4.15.2(webpack@5.94.0(@swc/core@1.6.13)))(webpack-hot-middleware@2.25.4)
       '@modern-js/builder-rspack-provider':
         specifier: 2.46.1
         version: 2.46.1(@babel/traverse@7.24.8)(@rsbuild/core@1.0.1-rc.4)(@swc/core@1.6.13)(@types/express@4.17.21)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(ts-node@10.9.2(@swc/core@1.6.13)(@types/node@20.9.0)(typescript@5.5.3))(tsconfig-paths@4.2.0)(typescript@5.5.3)
@@ -1109,56 +1109,6 @@ importers:
       rimraf:
         specifier: 5.0.8
         version: 5.0.8
-
-  clo:
-    devDependencies:
-      concurrently:
-        specifier: 8.2.2
-        version: 8.2.2
-      forever:
-        specifier: 4.0.3
-        version: 4.0.3
-      wait-on:
-        specifier: 7.2.0
-        version: 7.2.0
-
-  clo/host:
-    dependencies:
-      react:
-        specifier: 17.0.2
-        version: 17.0.2
-      react-dom:
-        specifier: 17.0.2
-        version: 17.0.2(react@17.0.2)
-    devDependencies:
-      '@rsbuild/core':
-        specifier: 1.0.1-rc.4
-        version: 1.0.1-rc.4
-      '@rsbuild/plugin-react':
-        specifier: 1.0.1-rc.4
-        version: 1.0.1-rc.4(@rsbuild/core@1.0.1-rc.4)
-      '@rspack/core':
-        specifier: 1.0.3
-        version: 1.0.3(@swc/helpers@0.5.13)
-
-  clo/remote:
-    dependencies:
-      react:
-        specifier: 17.0.2
-        version: 17.0.2
-      react-dom:
-        specifier: 17.0.2
-        version: 17.0.2(react@17.0.2)
-    devDependencies:
-      '@rsbuild/core':
-        specifier: 1.0.1-rc.4
-        version: 1.0.1-rc.4
-      '@rsbuild/plugin-react':
-        specifier: 1.0.1-rc.4
-        version: 1.0.1-rc.4(@rsbuild/core@1.0.1-rc.4)
-      '@rspack/core':
-        specifier: 1.0.3
-        version: 1.0.3(@swc/helpers@0.5.13)
 
   cloud: {}
 
@@ -1500,6 +1450,56 @@ importers:
       webpack-cli:
         specifier: 5.1.4
         version: 5.1.4(webpack@5.94.0)
+
+  component-level-data-fetching:
+    devDependencies:
+      concurrently:
+        specifier: 8.2.2
+        version: 8.2.2
+      forever:
+        specifier: 4.0.3
+        version: 4.0.3
+      wait-on:
+        specifier: 7.2.0
+        version: 7.2.0
+
+  component-level-data-fetching/host:
+    dependencies:
+      react:
+        specifier: 17.0.2
+        version: 17.0.2
+      react-dom:
+        specifier: 17.0.2
+        version: 17.0.2(react@17.0.2)
+    devDependencies:
+      '@rsbuild/core':
+        specifier: 1.0.1-rc.4
+        version: 1.0.1-rc.4
+      '@rsbuild/plugin-react':
+        specifier: 1.0.1-rc.4
+        version: 1.0.1-rc.4(@rsbuild/core@1.0.1-rc.4)
+      '@rspack/core':
+        specifier: 1.0.3
+        version: 1.0.3(@swc/helpers@0.5.13)
+
+  component-level-data-fetching/remote:
+    dependencies:
+      react:
+        specifier: 17.0.2
+        version: 17.0.2
+      react-dom:
+        specifier: 17.0.2
+        version: 17.0.2(react@17.0.2)
+    devDependencies:
+      '@rsbuild/core':
+        specifier: 1.0.1-rc.4
+        version: 1.0.1-rc.4
+      '@rsbuild/plugin-react':
+        specifier: 1.0.1-rc.4
+        version: 1.0.1-rc.4(@rsbuild/core@1.0.1-rc.4)
+      '@rspack/core':
+        specifier: 1.0.3
+        version: 1.0.3(@swc/helpers@0.5.13)
 
   comprehensive-demo-react16:
     devDependencies:
@@ -51490,7 +51490,7 @@ snapshots:
   '@rsbuild/shared@0.3.4(@swc/helpers@0.5.3)':
     dependencies:
       '@rspack/core': 0.5.0(@swc/helpers@0.5.3)
-      caniuse-lite: 1.0.30001643
+      caniuse-lite: 1.0.30001657
       lodash: 4.17.21
       postcss: 8.4.39
     transitivePeerDependencies:
@@ -52056,7 +52056,7 @@ snapshots:
     dependencies:
       '@module-federation/runtime-tools': 0.1.6
       '@rspack/binding': 0.7.5
-      caniuse-lite: 1.0.30001643
+      caniuse-lite: 1.0.30001657
       tapable: 2.2.1
       webpack-sources: 3.2.3
     optionalDependencies:
@@ -52067,7 +52067,7 @@ snapshots:
       '@module-federation/runtime-tools': 0.2.3
       '@rspack/binding': 1.0.0-alpha.5
       '@rspack/lite-tapable': 1.0.0-alpha.5
-      caniuse-lite: 1.0.30001643
+      caniuse-lite: 1.0.30001657
     optionalDependencies:
       '@swc/helpers': 0.5.11
 
@@ -52076,7 +52076,7 @@ snapshots:
       '@module-federation/runtime-tools': 0.5.1
       '@rspack/binding': 1.0.3
       '@rspack/lite-tapable': 1.0.0
-      caniuse-lite: 1.0.30001643
+      caniuse-lite: 1.0.30001657
     optionalDependencies:
       '@swc/helpers': 0.5.11
     optional: true
@@ -52086,7 +52086,7 @@ snapshots:
       '@module-federation/runtime-tools': 0.5.1
       '@rspack/binding': 1.0.3
       '@rspack/lite-tapable': 1.0.0
-      caniuse-lite: 1.0.30001643
+      caniuse-lite: 1.0.30001657
     optionalDependencies:
       '@swc/helpers': 0.5.13
 
@@ -52095,7 +52095,7 @@ snapshots:
       '@module-federation/runtime-tools': 0.5.1
       '@rspack/binding': 1.0.3
       '@rspack/lite-tapable': 1.0.0
-      caniuse-lite: 1.0.30001643
+      caniuse-lite: 1.0.30001657
     optionalDependencies:
       '@swc/helpers': 0.5.6
     optional: true
@@ -57571,7 +57571,7 @@ snapshots:
   caniuse-api@3.0.0:
     dependencies:
       browserslist: 4.23.1
-      caniuse-lite: 1.0.30001643
+      caniuse-lite: 1.0.30001657
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
 
@@ -63196,7 +63196,7 @@ snapshots:
 
   ignore-walk@6.0.4:
     dependencies:
-      minimatch: 9.0.3
+      minimatch: 9.0.5
 
   ignore@5.3.1: {}
 
@@ -75988,7 +75988,7 @@ snapshots:
 
   wait-on@7.2.0:
     dependencies:
-      axios: 1.6.7
+      axios: 1.7.2
       joi: 17.12.2
       lodash: 4.17.21
       minimist: 1.2.8
@@ -77314,7 +77314,7 @@ snapshots:
       watchpack: 2.4.1
       webpack-sources: 3.2.3
     optionalDependencies:
-      webpack-cli: 5.1.4(webpack@5.94.0)
+      webpack-cli: 5.1.4(webpack-dev-server@5.0.4)(webpack@5.94.0)
     transitivePeerDependencies:
       - '@swc/core'
       - esbuild
