@@ -7,6 +7,8 @@ const ReactRefreshWebpackPlugin = require('@rspack/plugin-react-refresh');
 
 const deps = require('./package.json').dependencies;
 const isProd = process.env.NODE_ENV === 'production';
+
+
 module.exports = {
   entry: './src/index',
 
