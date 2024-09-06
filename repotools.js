@@ -10,7 +10,7 @@ const CONFIG = [
     targetVersion: 'next',
   },
   {
-    packageName: '@module-federation/modernjs',
+    packageName: '@module-federation/modern-js',
     shouldUpdate: true,
     versionToCheck: '3.0.13',
     targetVersion: 'next',
