@@ -12,7 +12,7 @@
     "build": "pnpm --filter bi-directional_* run build",
     "serve": "pnpm --filter bi-directional_* run serve",
     "clean": "pnpm --filter bi-directional_* run reset",
-    "e2e:ci": "pnpm build && pnpm serve & sleep 15 && wait-on tcp:3001 && sleep 10 && wait-on tcp:3002 && sleep 8 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome --headed --runner-ui"
+    "e2e:ci": "pnpm build && pnpm serve & sleep 10 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "devDependencies": {
     "concurrently": "8.2.2",
