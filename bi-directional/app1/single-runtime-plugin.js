@@ -14,10 +14,10 @@ export default function () {
           return args;
         }
 
-        hostsRemote.entry = hostsRemote.entry.replace(
-          'remoteEntry',
-          `${hostName}_partial`,
-        );
+        // hostsRemote.entry = hostsRemote.entry.replace(
+        //   'remoteEntry',
+        //   `${hostName}_partial`,
+        // );
 
         console.log('hostsRemote', hostsRemote);
       }
