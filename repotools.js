@@ -7,13 +7,31 @@ const CONFIG = [
     packageName: '@module-federation/node',
     shouldUpdate: true,
     versionToCheck: '3.0.13',
-    targetVersion: 'latest',
+    targetVersion: 'next',
   },
   {
     packageName: '@module-federation/sdk',
     shouldUpdate: true,
     versionToCheck: '3.0.13',
-    targetVersion: 'latest',
+    targetVersion: 'next',
+  },
+  {
+    packageName: '@module-federation/enhanced',
+    shouldUpdate: true,
+    versionToCheck: '2.0.0',
+    targetVersion: 'next',
+  },
+  {
+    packageName: '@module-federation/nextjs-mf',
+    shouldUpdate: true,
+    versionToCheck: '9.2.2',
+    targetVersion: 'next',
+  },
+  {
+    packageName: '@module-federation/runtime',
+    shouldUpdate: true,
+    versionToCheck: '9.2.2',
+    targetVersion: 'next',
   },
   {
     packageName: '@rspack/core',
@@ -37,12 +55,6 @@ const CONFIG = [
     packageName: '@rspack/dev-server',
     shouldUpdate: true,
     versionToCheck: '3.0.13',
-    targetVersion: 'latest',
-  },
-  {
-    packageName: '@module-federation/enhanced',
-    shouldUpdate: true, // Assumes no targetVersion needed
-    versionToCheck: '2.0.0',
     targetVersion: 'latest',
   },
   {
@@ -78,18 +90,6 @@ const CONFIG = [
   {
     packageName: '@module-federation/utilities',
     shouldUpdate: false, // Assumes no targetVersion needed
-  },
-  {
-    packageName: '@module-federation/nextjs-mf',
-    shouldUpdate: true,
-    versionToCheck: '9.2.2',
-    targetVersion: 'latest',
-  },
-  {
-    packageName: '@module-federation/runtime',
-    shouldUpdate: true,
-    versionToCheck: '9.2.2',
-    targetVersion: 'latest',
   },
   {
     packageName: '@rspack/core',
