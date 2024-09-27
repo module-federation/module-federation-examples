@@ -1,0 +1,21 @@
+{
+  "name": "bi-directional",
+  "description": "Basic Bi-directional Federation application",
+  "private": true,
+  "workspaces": [
+    "./app1",
+    "./app2"
+  ],
+  "version": "0.0.0",
+  "scripts": {
+    "start": "pnpm --filter bi-directional_* run dev",
+    "build": "pnpm --filter bi-directional_* run build",
+    "serve": "pnpm --filter bi-directional_* run serve",
+    "clean": "pnpm --filter bi-directional_* run reset",
+    "e2e:ci": "pnpm build && pnpm serve & sleep 5 && wait-on tcp:3001 && wait-on tcp:3002 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+  },
+  "devDependencies": {
+    "concurrently": "8.2.2",
+    "wait-on": "7.2.0"
+  }
+}

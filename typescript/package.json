@@ -1,0 +1,16 @@
+{
+  "name": "typescript-repo",
+  "private": true,
+  "version": "0.0.0",
+  "description": "This example demos a basic host/remote application with TypeScript and also streams types.",
+  "scripts": {
+    "start": "pnpm --filter typescript_* --parallel start",
+    "build": "pnpm --filter typescript_* build",
+    "serve": "pnpm --filter typescript_* --parallel serve",
+    "clean": "pnpm --filter typescript_* --parallel clean",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/*.cy.ts\" --browser=chrome"
+  },
+  "dependencies": {
+    "wait-on": "^7.1.0"
+  }
+}
