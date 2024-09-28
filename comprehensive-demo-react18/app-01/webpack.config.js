@@ -79,6 +79,7 @@ module.exports = {
         './SideNav': './src/SideNav',
         './Page': './src/Page',
       },
+      experiments: {federationRuntime: 'hoisted'},
       shared: {
         ...deps,
         '@material-ui/core': {
