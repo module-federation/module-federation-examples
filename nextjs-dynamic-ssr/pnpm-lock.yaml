@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@module-federation/sdk':
-        specifier: 0.0.0-next-20240927195332
-        version: 0.0.0-next-20240927195332
+        specifier: 0.6.7
+        version: 0.6.7
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -45,8 +45,8 @@ importers:
         specifier: 0.0.0-next-20240927195332
         version: 0.0.0-next-20240927195332(next@14.0.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-jsx@5.1.1(react@18.2.0))(typescript@5.4.3)(webpack@5.95.0)
       '@module-federation/runtime':
-        specifier: 0.0.0-next-20240927195332
-        version: 0.0.0-next-20240927195332
+        specifier: 0.6.7
+        version: 0.6.7
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -69,8 +69,8 @@ importers:
         specifier: 0.0.0-next-20240927195332
         version: 0.0.0-next-20240927195332(next@14.0.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-jsx@5.1.1(react@18.2.0))(typescript@5.4.3)(webpack@5.95.0)
       '@module-federation/runtime':
-        specifier: 0.0.0-next-20240927195332
-        version: 0.0.0-next-20240927195332
+        specifier: 0.6.7
+        version: 0.6.7
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -202,8 +202,14 @@ packages:
   '@module-federation/runtime@0.0.0-next-20240927195332':
     resolution: {integrity: sha512-S9oYGskCpUshn8mfPN9Tm+lrJu6VELaL9NQ2Pu7OLoGvXmXrllXEh6ljWEkFJUf+TIDzZ0ppGEv0TADjW8gAsg==}
 
+  '@module-federation/runtime@0.6.7':
+    resolution: {integrity: sha512-tPf6Ng7IEGVsjfv+iD0gD0vrrHvUEAz197/KB0gr24ryYtxRHx8TQsszcJQi9eI0jtMm84o3cXf7e9gDqkrwjQ==}
+
   '@module-federation/sdk@0.0.0-next-20240927195332':
     resolution: {integrity: sha512-s+Oy88E6KnFXdoYIzFFY2m/08zCBsydf7l3TptS+YrH8pFWqmE2QiBqyzfK/SAvHp7F79QSWLuQrX/rU93VAJA==}
+
+  '@module-federation/sdk@0.6.7':
+    resolution: {integrity: sha512-UxqtPADLv2fwSh7BqZv/JCWh+n29LaaRAgMGXw5rREvByv2CoaCEbWf/8tCW+cA4WGwavz1myMoaPIl1FMh9rw==}
 
   '@module-federation/third-party-dts-extractor@0.0.0-next-20240927195332':
     resolution: {integrity: sha512-lK48lr/4sgkBHNx12w9nbyVJKiv8jYIFbWapwYQSC26pKnu4R63XmAjYSmLS/X97N0PA9VJpw/0hPIuwsatLhA==}
@@ -1404,7 +1410,13 @@ snapshots:
     dependencies:
       '@module-federation/sdk': 0.0.0-next-20240927195332
 
+  '@module-federation/runtime@0.6.7':
+    dependencies:
+      '@module-federation/sdk': 0.6.7
+
   '@module-federation/sdk@0.0.0-next-20240927195332': {}
+
+  '@module-federation/sdk@0.6.7': {}
 
   '@module-federation/third-party-dts-extractor@0.0.0-next-20240927195332':
     dependencies:
