@@ -11,6 +11,9 @@ module.exports = {
     publicPath: 'http://localhost:3001/',
     clean: true,
   },
+  resolve: {
+    extensions: [".jsx", ".js", ".json", ".wasm"]
+  },
   experiments: {
     css: true,
   },
