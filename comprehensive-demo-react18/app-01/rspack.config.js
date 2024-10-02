@@ -1,7 +1,8 @@
 const {
-  container: { ModuleFederationPlugin },
   HtmlRspackPlugin,
 } = require('@rspack/core');
+const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
+
 const { RsdoctorRspackPlugin } = require('@rsdoctor/rspack-plugin');
 const ReactRefreshWebpackPlugin = require('@rspack/plugin-react-refresh');
 

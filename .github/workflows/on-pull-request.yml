@@ -133,7 +133,7 @@ jobs:
 
       - name: Install PNPM
         id: check-disk-space-before-install-e2e
-        run: npm i pnpm -g
+        run: corepack enable
 
       - name: Set up node
         id: setup-node
