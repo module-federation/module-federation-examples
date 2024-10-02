@@ -1,7 +1,8 @@
 const {
-  container: { ModuleFederationPlugin },
   HtmlRspackPlugin,
 } = require('@rspack/core');
+const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
+
 const deps = require('./package.json').dependencies;
 const ReactRefreshWebpackPlugin = require('@rspack/plugin-react-refresh');
 const isProd = process.env.NODE_ENV === 'production';

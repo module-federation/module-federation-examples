@@ -1,7 +1,8 @@
 const {
   CopyRspackPlugin,
-  container: { ModuleFederationPlugin },
 } = require('@rspack/core');
+const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
+
 const deps = require('./package.json').dependencies;
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');

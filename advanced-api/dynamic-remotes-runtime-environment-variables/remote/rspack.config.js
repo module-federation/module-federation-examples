@@ -1,7 +1,7 @@
 const {
-  container: { ModuleFederationPlugin },
 } = require('@rspack/core');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
 
 const deps = require('./package.json').dependencies;
 
