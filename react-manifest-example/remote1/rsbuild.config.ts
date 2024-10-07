@@ -18,10 +18,7 @@ export default defineConfig({
           name: 'remote1',
           exposes: {
             './button': './src/button.tsx',
-            './app': './src/app.tsx',
-          },
-          manifest: {
-            filePath: 'manifestpath',
+            './app': './src/App.tsx',
           },
           shared: [
             'react',

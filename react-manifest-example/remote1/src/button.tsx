@@ -1,3 +1,3 @@
 export default function Button() {
-  return <div>remote2</div>;
+  return <div>remote1</div>;
 }
