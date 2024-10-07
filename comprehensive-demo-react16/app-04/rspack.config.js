@@ -1,7 +1,8 @@
 const {
   HtmlRspackPlugin,
-  container: { ModuleFederationPlugin },
 } = require('@rspack/core');
+const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const mode = process.env.NODE_ENV || 'development';
 
