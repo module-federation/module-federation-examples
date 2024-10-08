@@ -1,3 +1,8 @@
+# EXAMPLE IS OUTDATED
+
+REFER TO THE DOCS FOR BRIDGES INSTEAD: https://module-federation.io/practice/bridge/index.html
+
+
 # Mixed React Versions and Compatibility with Module Federation
 
 This example demonstrates how to use Module Federation to load and integrate different versions of React in a single application.
