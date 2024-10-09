@@ -1,15 +1,13 @@
 {
-  "name": "vue-vite-microfrontend",
+  "name": "module-federation-vite-vue3",
   "version": "1.0.0",
-  "description": "Vite + Module Federation is now possible",
-  "main": "index.js",
+  "description": "Module Federation Vite + Vue3 is now possible",
   "scripts": {
-    "install:deps": "pnpm --filter module-federation-vite-vue3* install",
-    "postinstall:deps": "pnpm --filter module-federation-vite-vue3* run build",
-    "dev": "pnpm --filter module-federation-vite-vue3* dev",
-    "build": "pnpm --filter module-federation-vite-vue3* build",
-    "preview": "pnpm --filter module-federation-vite-vue3* preview",
-    "prepare": "husky install"
+    "install:deps": "pnpm --filter module-federation-vite-vue3-* install",
+    "postinstall:deps": "pnpm --filter module-federation-vite-vue3-* run build",
+    "dev": "pnpm --filter module-federation-vite-vue3-* dev",
+    "build": "pnpm --filter module-federation-vite-vue3-* build",
+    "preview": "pnpm --filter module-federation-vite-vue3-* preview"
   },
   "author": {
     "name": "Giorgio Boa",
