@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@module-federation/sdk':
-        specifier: 0.6.8
-        version: 0.6.8
+        specifier: 0.6.10
+        version: 0.6.10
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -45,8 +45,8 @@ importers:
         specifier: 0.0.0-next-20240927195332
         version: 0.0.0-next-20240927195332(next@14.0.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-jsx@5.1.1(react@18.2.0))(typescript@5.4.3)(webpack@5.95.0)
       '@module-federation/runtime':
-        specifier: 0.6.8
-        version: 0.6.8
+        specifier: 0.6.10
+        version: 0.6.10
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -69,8 +69,8 @@ importers:
         specifier: 0.0.0-next-20240927195332
         version: 0.0.0-next-20240927195332(next@14.0.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-jsx@5.1.1(react@18.2.0))(typescript@5.4.3)(webpack@5.95.0)
       '@module-federation/runtime':
-        specifier: 0.6.8
-        version: 0.6.8
+        specifier: 0.6.10
+        version: 0.6.10
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -202,14 +202,14 @@ packages:
   '@module-federation/runtime@0.0.0-next-20240927195332':
     resolution: {integrity: sha512-S9oYGskCpUshn8mfPN9Tm+lrJu6VELaL9NQ2Pu7OLoGvXmXrllXEh6ljWEkFJUf+TIDzZ0ppGEv0TADjW8gAsg==}
 
-  '@module-federation/runtime@0.6.8':
-    resolution: {integrity: sha512-mKKRr+ttGpW3ZFp/eKR6tzQ73gO3NMb/KtnDtEFKWlYwYcCUphupXUqOtYhGFMQjALYwtyo2OhvJHcLqpdy9Hw==}
+  '@module-federation/runtime@0.6.10':
+    resolution: {integrity: sha512-mm/iUn5TdOHM1Zq0iB87fGx8cRp+j7g0/ndgokjbDaEbsYcS3pmQpZ5V+wiqB1fxuBtc+7NgNFWhp3Gwgaxoeg==}
 
   '@module-federation/sdk@0.0.0-next-20240927195332':
     resolution: {integrity: sha512-s+Oy88E6KnFXdoYIzFFY2m/08zCBsydf7l3TptS+YrH8pFWqmE2QiBqyzfK/SAvHp7F79QSWLuQrX/rU93VAJA==}
 
-  '@module-federation/sdk@0.6.8':
-    resolution: {integrity: sha512-TgmyueXEeEwalXmjsWbGZQE4Lt+XfQctDOeSiTbKxIMIFl+ffP9kRJ+6i7HiRoHMbXMy9x9V1HdigJGcntvT3g==}
+  '@module-federation/sdk@0.6.10':
+    resolution: {integrity: sha512-i6ofHnImB4zCn/bt7Ft0zh9o/PxvsJj8Wc88EAeJg4IrY6+bzwwo1G2h44w1Yt3go4skZZFQCK0UxoaV6l/t/A==}
 
   '@module-federation/third-party-dts-extractor@0.0.0-next-20240927195332':
     resolution: {integrity: sha512-lK48lr/4sgkBHNx12w9nbyVJKiv8jYIFbWapwYQSC26pKnu4R63XmAjYSmLS/X97N0PA9VJpw/0hPIuwsatLhA==}
@@ -252,24 +252,28 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@next/swc-linux-arm64-musl@14.0.3':
     resolution: {integrity: sha512-v0v8Kb8j8T23jvVUWZeA2D8+izWspeyeDGNaT2/mTHWp7+37fiNfL8bmBWiOmeumXkacM/AB0XOUQvEbncSnHA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@next/swc-linux-x64-gnu@14.0.3':
     resolution: {integrity: sha512-VM1aE1tJKLBwMGtyBR21yy+STfl0MapMQnNrXkxeyLs0GFv/kZqXS5Jw/TQ3TSUnbv0QPDf/X8sDXuMtSgG6eg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@next/swc-linux-x64-musl@14.0.3':
     resolution: {integrity: sha512-64EnmKy18MYFL5CzLaSuUn561hbO1Gk16jM/KHznYP3iCIfF9e3yULtHaMy0D8zbHfxset9LTOv6cuYKJgcOxg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@next/swc-win32-arm64-msvc@14.0.3':
     resolution: {integrity: sha512-WRDp8QrmsL1bbGtsh5GqQ/KWulmrnMBgbnb+59qNTW1kVi1nG/2ndZLkcbs2GX7NpFLlToLRMWSQXmPzQm4tog==}
@@ -1410,13 +1414,13 @@ snapshots:
     dependencies:
       '@module-federation/sdk': 0.0.0-next-20240927195332
 
-  '@module-federation/runtime@0.6.8':
+  '@module-federation/runtime@0.6.10':
     dependencies:
-      '@module-federation/sdk': 0.6.8
+      '@module-federation/sdk': 0.6.10
 
   '@module-federation/sdk@0.0.0-next-20240927195332': {}
 
-  '@module-federation/sdk@0.6.8': {}
+  '@module-federation/sdk@0.6.10': {}
 
   '@module-federation/third-party-dts-extractor@0.0.0-next-20240927195332':
     dependencies:
