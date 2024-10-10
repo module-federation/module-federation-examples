@@ -1,0 +1,18 @@
+{
+  "name": "module-federation-vite-react",
+  "version": "1.0.0",
+  "description": "Module Federation Vite + React is now possible",
+  "scripts": {
+    "install:deps": "pnpm --filter module-federation-vite-react-* install",
+    "postinstall:deps": "pnpm --filter module-federation-vite-react-* run build",
+    "dev": "pnpm --filter module-federation-vite-react-* dev",
+    "build": "pnpm --filter module-federation-vite-react-* build",
+    "preview": "pnpm --filter module-federation-vite-react-* preview"
+  },
+  "author": {
+    "name": "Giorgio Boa",
+    "email": "giorgiob.boa@gmail.com",
+    "url": "https://github.com/gioboa"
+  },
+  "license": "ISC"
+}
