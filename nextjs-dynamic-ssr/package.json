@@ -11,7 +11,7 @@
     "e2e:ci": "pnpm start & sleep 2 && wait-on tcp:3001 && wait-on tcp:3002 && wait-on tcp:3000 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
   },
   "dependencies": {
-    "@module-federation/sdk": "0.6.8",
+    "@module-federation/sdk": "0.6.10",
     "concurrently": "^8.2.2",
     "wait-on": "7.2.0"
   }
