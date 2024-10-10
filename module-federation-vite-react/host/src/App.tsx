@@ -3,12 +3,12 @@ import { of, tap } from 'rxjs';
 import './App.css';
 import Counter from './components/Counter';
 
-export default () => {
-	const Remote = lazy(
-		// @ts-ignore
-		async () => import('remote/remote-app'),
-	);
+const Remote = lazy(
+	// @ts-ignore
+	async () => import('remote/remote-app'),
+);
 
+export default () => {
 	useEffect(() => {
 		of('emit')
 			.pipe(tap(() => console.log("I'm RxJs from host")))
