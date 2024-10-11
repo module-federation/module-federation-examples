@@ -1,4 +1,4 @@
-# React host and remote
+# Angular host and remote
 
 ## Getting started
 
