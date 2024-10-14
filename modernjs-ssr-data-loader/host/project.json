@@ -1,0 +1,77 @@
+{
+  "name": "modernjs-ssr-data-loader-host",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/modernjs-ssr-data-loader/modernjs-ssr-data-loader-host/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "dependsOn": [
+          {
+            "target": "build",
+            "dependencies": true
+          }
+        ],
+        "commands": [
+          {
+            "command": "cd apps/modernjs-ssr-data-loader/host; pnpm run build",
+            "forwardAllArgs": true
+          }
+        ]
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "dependsOn": [
+          {
+            "target": "build",
+            "dependencies": true
+          }
+        ],
+        "commands": [
+          {
+            "command": "cd apps/modernjs-ssr-data-loader/host; pnpm run dev",
+            "forwardAllArgs": false
+          }
+        ]
+      }
+    },
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/modernjs-ssr-data-loader/host/cypress.config.ts",
+        "testingType": "e2e",
+        "baseUrl": "http://localhost:4001",
+        "browser": "chrome"
+      },
+      "configurations": {
+        "development": {
+          "runnerUi": true,
+          "browser": "electron",
+          "exit": false,
+          "watch": true
+        }
+      }
+    },
+    "test:e2e": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": true,
+        "commands": [
+          {
+            "command": "lsof -i :8080 || nx run modernjs-ssr-data-loader-host:serve & echo 'done'",
+            "forwardAllArgs": false
+          },
+          {
+            "command": "sleep 20 && nx run modernjs-ssr-data-loader-host:e2e",
+            "forwardAllArgs": true
+          }
+        ]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["typescript"]
+}
