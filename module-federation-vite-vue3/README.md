@@ -1,4 +1,4 @@
-# Svelte host and remote
+# Vue3 host and remote
 
 ## Getting started
 
