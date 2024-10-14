@@ -16,13 +16,19 @@ const CONFIG = [
     targetVersion: 'latest',
   },
   {
+    packageName: '@module-federation/vite',
+    shouldUpdate: true,
+    versionToCheck: '2.0.0',
+    targetVersion: 'latest',
+  },
+  {
     packageName: '@module-federation/enhanced',
     shouldUpdate: true,
     versionToCheck: '2.0.0',
     targetVersion: 'latest',
   },
   {
-    packageName: '@module-federation/latestjs-mf',
+    packageName: '@module-federation/nextjs-mf',
     shouldUpdate: true,
     versionToCheck: '9.2.2',
     targetVersion: 'latest',
