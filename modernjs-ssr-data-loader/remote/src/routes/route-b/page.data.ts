@@ -4,7 +4,7 @@ export type ProfileData = {
 const loader = async (): Promise<ProfileData> => {
   const msg = await new Promise<string>((resolve) => {
     setTimeout(() => {
-      resolve('page/a');
+      resolve('route-b');
     }, 0);
   });
   console.log('msg', msg);
