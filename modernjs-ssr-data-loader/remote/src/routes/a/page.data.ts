@@ -5,7 +5,7 @@ const loader = async (): Promise<ProfileData> => {
   const msg = await new Promise<string>((resolve) => {
     setTimeout(() => {
       resolve('page/a');
-    }, 1000);
+    }, 0);
   });
   console.log('msg', msg);
   return {
