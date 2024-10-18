@@ -1,0 +1,49 @@
+{
+  "name": "modernjs-ssr-data-loader-remote",
+  "private": true,
+  "version": "0.1.15",
+  "scripts": {
+    "reset": "npx rimraf ./**/node_modules",
+    "dev": "modern dev",
+    "build": "modern build",
+    "start": "modern start",
+    "serve": "modern serve",
+    "new": "modern new",
+    "lint": "biome check",
+    "prepare": "simple-git-hooks",
+    "upgrade": "modern upgrade"
+  },
+  "engines": {
+    "node": ">=16.18.1"
+  },
+  "lint-staged": {
+    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
+      "biome check --files-ignore-unknown=true"
+    ]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "dependencies": {
+    "@modern-js/runtime": "2.60.2",
+    "react": "~18.3.1",
+    "react-dom": "~18.3.1",
+    "@module-federation/modern-js": "0.0.0-next-20241018073518",
+    "@babel/runtime": "7.24.4",
+    "antd": "4.24.15"
+  },
+  "devDependencies": {
+    "@modern-js/app-tools": "2.60.2",
+    "@modern-js/tsconfig": "2.60.2",
+    "typescript": "~5.0.4",
+    "@types/jest": "~29.5.0",
+    "@types/node": "~16.11.7",
+    "@types/react": "~18.3.1",
+    "@types/react-dom": "~18.3.1",
+    "lint-staged": "~13.1.0",
+    "prettier": "~2.8.1",
+    "rimraf": "~3.0.2",
+    "simple-git-hooks": "^2.11.1",
+    "@biomejs/biome": "1.8.3"
+  }
+}
