@@ -12,7 +12,7 @@ export default defineConfig({
       bundler: 'webpack',
     }),
     moduleFederationPlugin({
-      dataLoader: true,
+      exportRoutes: true,
     }),
   ],
   server: {

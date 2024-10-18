@@ -18,7 +18,7 @@ export default defineConfig({
       bundler: 'webpack',
     }),
     moduleFederationPlugin({
-      dataLoader: true,
+      importRoutes: true,
     }),
   ],
 });
