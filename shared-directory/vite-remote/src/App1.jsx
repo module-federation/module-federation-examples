@@ -1,5 +1,4 @@
 import React from 'react';
-import vueImg from "./assets/vue.svg";
 import file1Default from "shared/dir1/file1";
 import {A} from "shared/file2";
 
