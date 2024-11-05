@@ -1,3 +1,7 @@
+# Support For Next.js is ending
+
+https://github.com/module-federation/core/issues/3153
+
 # Next.js with Module Federation
 
 ## Getting Started

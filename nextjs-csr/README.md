@@ -1,3 +1,7 @@
+# Support For Next.js is ending
+
+https://github.com/module-federation/core/issues/3153
+
 # Next.js 14 with Module Federation
 
 Module Federation in Next.js depends on <a href="https://www.npmjs.com/package/@module-federation/nextjs-mf">@module-federation/nextjs-mf</a>
