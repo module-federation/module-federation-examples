@@ -1,3 +1,7 @@
+# Support For Next.js is ending
+
+https://github.com/module-federation/core/issues/3153
+
 # Module Federation with NextJS and Client Side React.
 
 Module federation in NextJS depends on [@module-federation/nextjs-mf](https://www.npmjs.com/package/@module-federation/nextjs-mf).
