@@ -60,7 +60,7 @@ const CONFIG = [
   {
     packageName: '@rspack/dev-server',
     shouldUpdate: true,
-    versionToCheck: '3.0.13',
+    versionToCheck: '13.0.13',
     targetVersion: 'latest',
   },
   {
@@ -72,13 +72,13 @@ const CONFIG = [
   {
     packageName: '@rsbuild/plugin-vue',
     shouldUpdate: true, // Assumes no targetVersion needed
-    versionToCheck: '2.0.0',
+    versionToCheck: '100.0.0',
     targetVersion: 'latest',
   },
   {
     packageName: '@rsbuild/plugin-react',
     shouldUpdate: true, // Assumes no targetVersion needed
-    versionToCheck: '2.0.0',
+    versionToCheck: '100.0.0',
     targetVersion: 'latest',
   },
   {
