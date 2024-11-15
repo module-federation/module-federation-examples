@@ -1,0 +1,36 @@
+{
+  "name": "dynamic-remotes-node-typescript",
+  "description": "Dynamic Remotes on server side with Node Federation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rimraf host/dist && rimraf remote/dist",
+    "host": "cd host && webpack build --config webpack.config.js && node dist/main.js",
+    "remote": "cd remote && webpack serve --config webpack.config.js",
+    "host:ts": "cd host && webpack build --config webpack.config.typescript.js && node dist/main.js",
+    "remote:ts": "cd remote && webpack serve --config webpack.config.typescript.js",
+    "start": "concurrently 'pnpm run remote' 'sleep 5 && pnpm run host'",
+    "start:ts": "concurrently 'pnpm run remote:ts' 'sleep 5 && pnpm run host:ts'"
+  },
+  "dependencies": {
+    "@module-federation/enhanced": "0.7.1",
+    "@module-federation/node": "^2.6.6",
+    "@module-federation/runtime": "0.7.1",
+    "@module-federation/dts-plugin": "^0.7.1"
+  },
+  "devDependencies": {
+    "kill-port": "2.0.1",
+    "@types/node": "20.16.5",
+    "@rspack/cli": "1.0.14",
+    "@rspack/core": "1.0.14",
+    "@rspack/dev-server": "1.0.9",
+    "concurrently": "^8.0.1",
+    "rimraf": "^5.0.5",
+    "ts-loader": "^9.5.1",
+    "typescript": "5.6.2",
+    "webpack": "5.95.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-node-externals": "^3.0.0"
+  }
+}
