@@ -1,10 +1,28 @@
 import { Link } from '@modern-js/runtime/router';
 
-const Index = () => (
-  <div className="container-box">
-      <a href='http://localhost:3062/entry-one/nested-routes/pathname'> click to jump remote page</a>
-    <h1>nested-routes page</h1>
-  </div>
-);
+const NestedRoute = () => {
+  return (
+    <div className="nested-container">
+      <h2>Nested Routes Example</h2>
 
-export default Index;
+      <div className="demo-box">
+        <h3>Navigation Demo</h3>
+        <p>
+          This page demonstrates nested routing capabilities in Modern.js. Try
+          navigating to different sections using the links below:
+        </p>
+
+        <div className="button-group">
+          <Link to="/nested-routes/pathname" className="demo-button">
+            Module Federation Demo
+          </Link>
+          <Link to="/" className="demo-button secondary">
+            Back to Home
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default NestedRoute;

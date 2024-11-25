@@ -1,8 +1,6 @@
 import { createRemoteSSRComponent } from '@modern-js/runtime/mf';
-
-import Content from '../components/Content';
 import './index.css';
-
+import Content from '../components/Content';
 const RemoteSSRComponent = createRemoteSSRComponent({
   loader: () => import('remote/Button'),
   loading: 'loading...',
@@ -17,9 +15,21 @@ const RemoteSSRComponent = createRemoteSSRComponent({
 
 const Index = () => (
   <div className="container-box">
-    <h1>entry one page</h1>
-    <Content />
-    <RemoteSSRComponent />
+    <main>
+      <div className="title">
+        <span className="name">Entry One Page</span>
+      </div>
+
+      <div className="description">
+        A demonstration of Modern.js Module Federation
+      </div>
+
+      <Content />
+
+      <div className="remote-component-wrapper">
+        <RemoteSSRComponent />
+      </div>
+    </main>
   </div>
 );
 

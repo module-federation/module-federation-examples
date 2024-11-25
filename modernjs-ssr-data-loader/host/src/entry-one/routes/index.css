@@ -41,9 +41,9 @@ main {
 
 .title {
   display: flex;
-  margin: 4rem 0 4rem;
+  margin: 2rem 0;
   align-items: center;
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: 600;
 }
 
@@ -54,6 +54,7 @@ main {
 
 .name {
   color: #4ecaff;
+  text-shadow: 0 2px 4px rgba(78, 202, 255, 0.2);
 }
 
 .description {
@@ -61,7 +62,8 @@ main {
   line-height: 1.5;
   font-size: 1.3rem;
   color: #1b3a42;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
+  max-width: 600px;
 }
 
 .code {
@@ -124,4 +126,71 @@ main {
   width: 1.3rem;
   margin-left: 0.5rem;
   margin-top: 3px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+}
+
+.feature-list li {
+  margin: 1rem 0;
+}
+
+.nav-link {
+  display: block;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  color: #0066cc;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  background: #e9ecef;
+  transform: translateX(5px);
+}
+
+.info-section {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.info-section h3 {
+  color: #2c3e50;
+  margin-top: 0;
+}
+
+.remote-component-wrapper {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 800px;
 }

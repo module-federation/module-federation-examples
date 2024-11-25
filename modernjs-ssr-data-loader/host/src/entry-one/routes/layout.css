@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  background-color: #f0f2f5;
+}
+
+.layout-container {
+  min-height: 100vh;
+}
+
+.nested-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.demo-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.demo-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.demo-button:not(.secondary) {
+  background: #0066cc;
+  color: white;
+}
+
+.demo-button.secondary {
+  background: #e9ecef;
+  color: #2c3e50;
+}
+
+.demo-button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-bar {
+  background: #fff;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #4ecaff;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #1b3a42;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: #4ecaff;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+} 

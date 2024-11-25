@@ -1,3 +1,0 @@
-
-    export type RemoteKeys = 'host/Content' | 'host/mf-full-routes' | 'host/mf-slim-routes' | 'host/mf-routes-meta' | 'host/mf-routes';
-    type PackageType<T> = T extends 'host/mf-routes' ? typeof import('host/mf-routes') :T extends 'host/mf-routes-meta' ? typeof import('host/mf-routes-meta') :T extends 'host/mf-slim-routes' ? typeof import('host/mf-slim-routes') :T extends 'host/mf-full-routes' ? typeof import('host/mf-full-routes') :T extends 'host/Content' ? typeof import('host/Content') :any;
