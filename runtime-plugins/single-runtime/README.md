@@ -45,4 +45,4 @@ Both apps share:
 - ReactDOM (singleton)
 - Lodash (version matching)
 
-The single runtime plugin ensures these shared dependencies maintain their singleton status by preventing duplicate runtime loading from the same build.
+The single runtime plugin ensures these shared dependencies maintain their singleton status by preventing duplicate runtime loading from the same build. Also prevents collisions caused by loading 2 runtimes from the same build at once
