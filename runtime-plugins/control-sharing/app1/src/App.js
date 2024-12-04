@@ -86,16 +86,13 @@ const App = () => {
       </header>
 
       <div style={styles.versionInfo}>
-        <h4 style={styles.versionText}>
-          <span style={{ ...styles.dot, backgroundColor: reactColor }} />
+        <h4 style={{ ...styles.versionText, color: reactColor }}>
           Host Used React: {React.version}
         </h4>
-        <h4 style={styles.versionText}>
-          <span style={{ ...styles.dot, backgroundColor: reactDomColor }} />
+        <h4 style={{ ...styles.versionText, color: reactDomColor }}>
           Host Used ReactDOM: {ReactDOM.version}
         </h4>
-        <h4 style={styles.versionText}>
-          <span style={{ ...styles.dot, backgroundColor: lodashColor }} />
+        <h4 style={{ ...styles.versionText, color: lodashColor }}>
           Host Used Lodash: {lodash.VERSION}
         </h4>
       </div>
