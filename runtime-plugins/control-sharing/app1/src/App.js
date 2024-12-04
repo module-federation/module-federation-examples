@@ -60,17 +60,28 @@ const styles = {
 };
 
 const getColorFromString = str => {
-  let primes = [1, 2, 3, 5, 7, 11, 13, 17, 19, 23];
+  const colors = [
+    '#F44336', // red
+    '#2196F3', // blue
+    '#4CAF50', // green
+    '#9C27B0', // purple
+    '#E91E63', // pink
+    '#FF9800', // orange
+    '#03A9F4', // light blue
+    '#009688', // teal
+    '#8BC34A', // light green
+    '#AB47BC'  // medium purple
+  ];
+
   let hash = 0;
   for (let i = 0; i < str.length; i++) {
-    hash += str.charCodeAt(i) * primes[i % primes.length];
+    hash = ((hash << 5) - hash) + str.charCodeAt(i);
+    hash = hash & hash; // Convert to 32-bit integer
   }
-  let color = '#';
-  for (let i = 0; i < 3; i++) {
-    const value = (hash >> (i * 8)) & 0xff;
-    color += ('00' + value.toString(16)).substr(-2);
-  }
-  return color;
+
+  hash = Math.abs(hash);
+  
+  return colors[hash % colors.length];
 };
 
 const App = () => {
