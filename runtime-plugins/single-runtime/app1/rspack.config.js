@@ -67,32 +67,23 @@ module.exports = {
     ],
   },
   plugins: [
-    //TODO: fix rspack federation plugin to create secondary container automatically
-    // new ModuleFederationPlugin({
-    //   name: 'app1',
-    //   filename: 'remoteEntry.js',
-    //   remotes: {
-    //     app2: 'app2@http://localhost:3002/remoteEntry.js',
-    //   },
-    //   runtimePlugins: [require.resolve('./single-runtime.js')],
-    //   exposes: {
-    //     './Button': './src/Button',
-    //   },
-    //   shared: {
-    //     ...deps,
-    //     react: {
-    //       singleton: true,
-    //     },
-    //     'react-dom': {
-    //       singleton: true,
-    //     },
-    //     lodash: {},
-    //   },
-    // }),
+    new ContainerPlugin({
+      name: 'app1_partial',
+      filename: 'app1_partial.js',
+      library:{
+        type: 'var',
+        name: 'app1'
+      },
+      runtime: undefined,
+      runtimePlugins: [require.resolve('./single-runtime.js')],
+      exposes: {
+        './Button': './src/Button',
+      },
+    }),
     new ModuleFederationPlugin({
       name: 'app1',
-      filename: 'app1_partial.js',
-      runtime: undefined,
+      runtime: false,
+      filename: 'remoteEntry.js',
       remotes: {
         app2: 'app2@http://localhost:3002/remoteEntry.js',
       },
