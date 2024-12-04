@@ -1,4 +1,4 @@
-# Dynamic Remotes on Node w/ Javascript
+# Dynamic Remotes on Node w/ TypeScript
 
 Similar to browser side dynamic remotes.
 

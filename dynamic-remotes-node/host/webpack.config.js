@@ -1,24 +1,24 @@
 const { UniversalFederationPlugin } = require('@module-federation/node');
+const webpack = require('webpack');
+
 module.exports = {
-  entry: './index.js',
+  entry: './src/index.js',
   mode: 'development',
-  target: false,
+  target: 'async-node',
+  externals: [],
   output: {
+    publicPath: 'http://localhost:3001/',
     library: { type: 'commonjs-module' },
   },
-  optimization: {
-    runtimeChunk: 'single',
-  },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new UniversalFederationPlugin({
       remoteType: 'script',
       isServer: true,
-      name: 'app2',
+      name: 'host',
       useRuntimePlugin: true,
-      library: { type: 'commonjs-module' },
-      filename: 'remoteEntry.js',
       exposes: {
-        './sample': './expose-sample.js',
+        './noop': './src/noop.js',
       },
     }),
   ],

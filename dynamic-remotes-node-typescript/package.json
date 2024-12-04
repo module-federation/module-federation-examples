@@ -1,5 +1,5 @@
 {
-  "name": "dynamic-remotes-node-javascript",
+  "name": "dynamic-remotes-node-typescript",
   "description": "Dynamic Remotes on server side with Node Federation",
   "version": "1.0.0",
   "main": "index.js",
@@ -8,7 +8,10 @@
     "clean": "rimraf host/dist && rimraf remote/dist",
     "host": "cd host && webpack build --config webpack.config.js && node dist/main.js",
     "remote": "cd remote && webpack serve --config webpack.config.js",
-    "start": "concurrently 'pnpm run remote' 'sleep 5 && pnpm run host'"
+    "host:ts": "cd host && webpack build --config webpack.config.typescript.js && node dist/main.js",
+    "remote:ts": "cd remote && webpack serve --config webpack.config.typescript.js",
+    "start": "concurrently 'pnpm run remote' 'sleep 5 && pnpm run host'",
+    "start:ts": "concurrently 'pnpm run remote:ts' 'sleep 5 && pnpm run host:ts'"
   },
   "dependencies": {
     "@module-federation/enhanced": "0.7.1",
