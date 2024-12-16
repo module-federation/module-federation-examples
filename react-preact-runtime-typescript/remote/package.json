@@ -1,0 +1,19 @@
+{
+  "name": "react-preact-runtime-typescript-remote",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "rsbuild dev",
+    "build": "rsbuild build",
+    "preview": "rsbuild preview"
+  },
+  "dependencies": {
+    "preact": "^10.25.1"
+  },
+  "devDependencies": {
+    "@module-federation/rsbuild-plugin": "^0.8.4",
+    "@rsbuild/core": "^1.1.8",
+    "@rsbuild/plugin-preact": "^1.2.0",
+    "typescript": "^5.7.2"
+  }
+}
