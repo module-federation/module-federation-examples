@@ -39,6 +39,9 @@ module.exports = {
       name: 'app1',
       library: { type: 'var', name: 'app1' },
       filename: 'remoteEntry.js',
+      remotes: {
+        app2: 'app2@http://localhost:3002/remoteEntry.js', // Added App2 remote
+      },
       shared: {
         ...deps,
         react: {
