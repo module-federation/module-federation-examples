@@ -1,5 +1,5 @@
 import appTools, { defineConfig } from '@modern-js/app-tools';
-import { ModuleFederationPlugin } from '@module-federation/enhanced/webpack';
+import { ModuleFederationPlugin, ContainerPlugin } from '@module-federation/enhanced';
 
 // https://modernjs.dev/en/configure/app/usage
 export default defineConfig({
@@ -36,6 +36,14 @@ export default defineConfig({
           shared: {
             react: { singleton: true },
             'react-dom': { singleton: true },
+          },
+          runtimePlugins: ['./single-runtime-plugin.js'],
+        }),
+        new ContainerPlugin({
+          name: 'app2_partial',
+          filename: 'static/js/app2_partial.js',
+          exposes: {
+            './Button': './src/components/button.js',
           },
           runtimePlugins: ['./single-runtime-plugin.js'],
         }),

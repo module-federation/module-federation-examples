@@ -22,6 +22,8 @@ module.exports = {
   output: {
     publicPath: 'auto',
     uniqueName: 'jcreo',
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].js',
   },
   module: {
     rules: [

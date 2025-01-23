@@ -1,5 +1,5 @@
 import appTools, { defineConfig } from '@modern-js/app-tools';
-import { ModuleFederationPlugin } from '@module-federation/enhanced/webpack';
+import { ModuleFederationPlugin, ContainerPlugin } from '@module-federation/enhanced';
 // https://modernjs.dev/en/configure/app/usage
 export default defineConfig({
   server: {
@@ -19,8 +19,17 @@ export default defineConfig({
 
       // Add Module Federation Plugin
       appendPlugins([
+        new ContainerPlugin({
+          name: 'app1_partial',
+          filename: 'static/js/app1_partial.js',
+          exposes: {
+            './Button': './src/components/button.js',
+          },
+          runtimePlugins: ['./single-runtime-plugin.js'],
+        }),
         new ModuleFederationPlugin({
           name: 'app1',
+          runtime: false,
           filename: 'static/js/remoteEntry.js',
           exposes: {
             './Button': './src/components/button.js',
