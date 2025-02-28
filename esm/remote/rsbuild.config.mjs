@@ -29,26 +29,27 @@ export default defineConfig({
         module: true,
         asyncChunks: true
       },
-      // optimization: {
-      //   runtimeChunk: 'single',
-      // },
+      optimization: {
+        runtimeChunk: 'single',
+      },
     },
   },
   plugins: [
     pluginReact({ splitChunks: { react: false, router: false } }),
-    // pluginModuleFederation({
-    //   name: 'remote',
-    //   filename: 'static/remoteEntry.js',
-    //   library: {
-    //     type: 'module',
-    //   },
-    //   exposes: {
-    //     './App': './src/App.jsx',
-    //   },
-    //   shared: {
-    //     react: { singleton: true },
-    //     'react-dom': { singleton: true },
-    //   },
-    // }),
+    pluginModuleFederation({
+      name: 'remote',
+      runtime: false,
+      filename: 'static/remoteEntry.js',
+      library: {
+        type: 'module',
+      },
+      exposes: {
+        './App': './src/App.jsx',
+      },
+      shared: {
+        react: { singleton: true },
+        'react-dom': { singleton: true },
+      },
+    }),
   ],
 });
