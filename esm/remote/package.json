@@ -1,0 +1,20 @@
+{
+  "name": "remote",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "rsbuild build",
+    "dev": "rsbuild dev --open",
+    "preview": "rsbuild preview"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@module-federation/rsbuild-plugin": "^0.9.1",
+    "@rsbuild/core": "^1.2.8",
+    "@rsbuild/plugin-react": "^1.1.0"
+  }
+}
