@@ -1,0 +1,24 @@
+{
+  "name": "rspack",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development rspack serve",
+    "build": "cross-env NODE_ENV=production rspack build"
+  },
+  "dependencies": {
+    "@module-federation/enhanced": "^0.9.1",
+    "@module-federation/rspack": "^0.9.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@rspack/cli": "^1.2.6",
+    "@rspack/core": "^1.2.6",
+    "@rspack/plugin-react-refresh": "^1.0.1",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "cross-env": "^7.0.3",
+    "react-refresh": "^0.16.0"
+  }
+}
