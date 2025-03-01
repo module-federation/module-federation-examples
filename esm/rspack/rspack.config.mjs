@@ -14,7 +14,8 @@ const targets = ['chrome >= 87', 'edge >= 88', 'firefox >= 78', 'safari >= 14'];
 export default defineConfig({
   context: __dirname,
   entry: {
-    main: './src/main.jsx',
+    main: './src/main.js',
+    app: './src/other.jsx',
   },
   resolve: {
     extensions: ['...', '.ts', '.tsx', '.jsx'],
@@ -44,8 +45,8 @@ export default defineConfig({
                 transform: {
                   react: {
                     runtime: 'automatic',
-                    development: isDev,
-                    refresh: isDev,
+                    development: true,
+                    refresh: true,
                   },
                 },
               },
@@ -59,6 +60,7 @@ export default defineConfig({
   plugins: [
     new ModuleFederationPlugin({
       name: 'rspack',
+      runtime: false,
       filename: 'remoteEntry.js',
       exposes: {
         './tjing': './src/App.jsx'
@@ -67,15 +69,26 @@ export default defineConfig({
         react: {
           singleton: true,
         },
+        "react/jsx-dev-runtime": {
+          singleton: true,
+        },
+        "react/jsx-runtime": {
+          singleton: true,
+        },
+        "react-dom": {
+          singleton: true,
+        }
       },
     }),
     new rspack.HtmlRspackPlugin({
       template: './index.html',
       scriptLoading: 'module',
+      excludeChunks: ['rspack','app']
     }),
     isDev ? new RefreshPlugin() : null,
   ].filter(Boolean),
   optimization: {
+    runtimeChunk: 'single',
     minimizer: [
       new rspack.SwcJsMinimizerRspackPlugin(),
       new rspack.LightningCssMinimizerRspackPlugin({

@@ -6,6 +6,17 @@ export default defineConfig({
   html: {
     scriptLoading: 'module',
   },
+  source: {
+
+
+    entry: {
+      main: './src/index.js',
+      other: {
+        import: './src/other.jsx'
+      },
+      bs: './src/bootstrap.jsx',
+    },
+  },
   server: {
     port: 3001,
   },
