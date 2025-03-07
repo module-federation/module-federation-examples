@@ -17,6 +17,8 @@ module.exports = {
   target: 'web',
   output: {
     publicPath: 'auto',
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].js',
   },
   module: {
     rules: [
