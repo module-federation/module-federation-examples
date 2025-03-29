@@ -84,6 +84,7 @@ Module federation will work with any type of file that you're able to import, th
 - Shopify
 - adidas
 - Zomato
+- SHIELD
 - PayNet (Payments Network Malaysia)
 - and many more I cant remember
 
