@@ -1,0 +1,23 @@
+{
+  "name": "host",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "webpack serve --mode development --open",
+    "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "@module-federation/enhanced": "^0.17.0"
+  },
+  "devDependencies": {
+    "webpack": "^5",
+    "webpack-cli": "^5",
+    "webpack-dev-server": "^4",
+    "html-webpack-plugin": "^5",
+    "babel-loader": "^9",
+    "@babel/core": "^7",
+    "@babel/preset-react": "^7",
+    "@babel/preset-env": "^7"
+  }
+}
