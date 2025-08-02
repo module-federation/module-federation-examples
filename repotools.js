@@ -19,6 +19,18 @@ const CONFIG = [
     targetVersion: 'latest',
   },
   {
+    packageName: '@module-federation/modern-js',
+    shouldUpdate: true,
+    versionToCheck: '3.0.13',
+    targetVersion: 'latest',
+  },
+  {
+    packageName: '@module-federation/dts-plugin',
+    shouldUpdate: true,
+    versionToCheck: '3.0.13',
+    targetVersion: 'latest',
+  },
+  {
     packageName: '@module-federation/vite',
     shouldUpdate: true,
     versionToCheck: '2.0.0',

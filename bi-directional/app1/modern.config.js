@@ -1,41 +1,32 @@
-import appTools, { defineConfig } from '@modern-js/app-tools';
-import { ModuleFederationPlugin } from '@module-federation/enhanced/webpack';
+import { appTools, defineConfig } from '@modern-js/app-tools';
+import { moduleFederationPlugin } from '@module-federation/modern-js';
+
 // https://modernjs.dev/en/configure/app/usage
 export default defineConfig({
+  dev: { 
+    port: 3001,
+  },
   server: {
     port: 3001,
+    ssr: false, // Disable SSR completely for client-side rendering
   },
   runtime: {
     router: true,
   },
   source: {
-    enableAsyncEntry: true, // Enable async entry for module federation
+    enableAsyncEntry: true, // Ensure async entry for module federation
   },
   tools: {
-    webpack: (config, { webpack, appendPlugins }) => {
-      // Remove splitChunks optimization
-      delete config.optimization.splitChunks;
-      config.output.publicPath = 'auto';
-
-      // Add Module Federation Plugin
-      appendPlugins([
-        new ModuleFederationPlugin({
-          name: 'app1',
-          filename: 'static/js/remoteEntry.js',
-          exposes: {
-            './Button': './src/components/button.js',
-          },
-          remotes: {
-            app2: 'app2@http://localhost:3002/static/js/remoteEntry.js',
-          },
-          shared: {
-            react: { singleton: true },
-            'react-dom': { singleton: true },
-          },
-          runtimePlugins: ['./single-runtime-plugin.js'],
-        }),
-      ]);
+    devServer: {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      },
     },
   },
-  plugins: [appTools()],
+  plugins: [
+    appTools(), 
+    moduleFederationPlugin()
+  ],
 });

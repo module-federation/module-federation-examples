@@ -72,3 +72,4 @@ jobs:
         run: |
           echo "Yarn changed - install deps ... "
           pnpm install
+          npx playwright install --with-deps chromium

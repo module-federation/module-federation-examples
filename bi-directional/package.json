@@ -12,10 +12,16 @@
     "build": "pnpm --filter bi-directional_* run build",
     "serve": "pnpm --filter bi-directional_* run serve",
     "clean": "pnpm --filter bi-directional_* run reset",
-    "e2e:ci": "pnpm build && pnpm serve & sleep 5 && wait-on tcp:3001 && wait-on tcp:3002 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:debug": "playwright test --debug",
+    "e2e:ci": "pnpm build && playwright test --reporter=list",
+    "legacy:e2e:ci": "echo 'No legacy e2e tests for this example'"
   },
   "devDependencies": {
+    "@playwright/test": "^1.54.2",
     "concurrently": "8.2.2",
+    "playwright": "^1.54.2",
     "wait-on": "7.2.0"
   }
 }

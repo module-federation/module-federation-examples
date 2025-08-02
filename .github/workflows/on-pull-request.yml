@@ -153,6 +153,7 @@ jobs:
           pnpm i --frozen-lockfile
           npx cypress install
           npx cypress verify
+          npx playwright install --with-deps chromium
 
       - name: Run sample webpack e2e tests
         timeout-minutes: 30
