@@ -1,6 +1,10 @@
 name: on pull request
 on: pull_request
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   CACHE_PATH: |
     **/node_modules
@@ -131,26 +135,44 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 1
 
-      - name: Install PNPM
-        id: check-disk-space-before-install-e2e
-        run: corepack enable
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
 
-      - name: Set up node
+      - name: Setup Node.js with caching
         id: setup-node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
+
+      - name: Enhanced dependency caching
+        uses: actions/cache@v4
+        id: deps-cache
+        with:
+          path: |
+            ~/.pnpm-store
+            **/node_modules
+            ~/.cache/Cypress
+            ~/.cache/ms-playwright
+          key: deps-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            deps-${{ runner.os }}-
+            deps-
 
       - name: Install deps
         id: install-deps-e2e
-        if: steps.restore-yarn-global-cache-e2e.outputs.cache-hit != 'true'
+        if: steps.deps-cache.outputs.cache-hit != 'true'
         env:
-          NODE_OPTIONS: '--max_old_space_size=4096'
+          NODE_OPTIONS: '--max_old_space_size=6144'
+          FORCE_COLOR: 3
         run: |
-          echo "PNPM changed - install deps ... "
-          npm i pnpm -g
-          pnpm i --frozen-lockfile
+          echo "Installing dependencies with enhanced caching..."
+          pnpm config set store-dir ~/.pnpm-store
+          pnpm install --frozen-lockfile --prefer-offline
           npx cypress install
           npx cypress verify
           npx playwright install --with-deps chromium

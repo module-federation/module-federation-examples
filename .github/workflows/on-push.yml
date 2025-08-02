@@ -4,6 +4,10 @@ on:
     branches:
       - master
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   CACHE_PATH: |
     **/node_modules
@@ -58,18 +62,40 @@ jobs:
           yarnHash="$(npx hash-files -f '["**/pnpm-lock.yaml"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
-      - name: Cache Yarn and Cypress
-        uses: actions/cache@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+
+      - name: Setup Node.js with caching
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
+
+      - name: Enhanced caching with fallbacks
+        uses: actions/cache@v4
         id: yarn-cache
         with:
-          path: ${{ env.CACHE_PATH }}
-          key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
+          path: |
+            ~/.pnpm-store
+            **/node_modules
+            ~/.cache/Cypress
+            ~/.cache/ms-playwright
+          key: e2e-cache-${{ runner.os }}-${{ steps.yarn-hash.outputs.yarnHash }}
+          restore-keys: |
+            e2e-cache-${{ runner.os }}-
+            e2e-cache-
 
       - name: Install deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
-          NODE_OPTIONS: '--max_old_space_size=4096'
+          NODE_OPTIONS: '--max_old_space_size=6144'
+          FORCE_COLOR: 3
         run: |
-          echo "Yarn changed - install deps ... "
-          pnpm install
+          echo "PNPM lockfile changed - installing dependencies..."
+          pnpm config set store-dir ~/.pnpm-store
+          pnpm install --frozen-lockfile --prefer-offline
           npx playwright install --with-deps chromium

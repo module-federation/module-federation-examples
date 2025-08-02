@@ -26,7 +26,7 @@ jobs:
     steps:
       - name: Check if allure artifacts exist
         id: check-artifacts-exist
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
@@ -47,7 +47,7 @@ jobs:
     if: ${{ needs.check-if-allure-artifacts-exist.outputs.artifacts-exist != 'false' }}
     steps:
       - name: Dowload artifacts
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
@@ -86,11 +86,11 @@ jobs:
 
       - name: Deploy report to Github Pages
         if: always()
-        uses: peaceiris/actions-gh-pages@v2
-        env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
 
   # Comment to PR, Add labels to PR, Remove unnecessary labels
   actions-with-pr:
@@ -99,7 +99,7 @@ jobs:
     if: always() && github.event.workflow_run.event == 'pull_request'
     steps:
       - name: 'Download artifact'
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
@@ -125,7 +125,7 @@ jobs:
 
       - name: 'Comment to PR -- if report generated'
         if: needs.generate-allure-report.result == 'success'
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         env:
           WORKFLOW_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
         with:
@@ -148,7 +148,7 @@ jobs:
 
       - name: 'Comment to PR -- if report wasnt generated'
         if: needs.generate-allure-report.result == 'skipped'
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         env:
           WORKFLOW_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
         with:
@@ -171,7 +171,7 @@ jobs:
 
       - name: Remove old lables
         if: always()
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         env:
           WORKFLOW_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
           GENERAT_ALLURE_REPORT_STATUS: ${{ needs.generate-allure-report.result }}
@@ -207,7 +207,7 @@ jobs:
 
       - name: 'Add e2e label to PR -- if report generated'
         if: needs.generate-allure-report.result == 'success'
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         env:
           WORKFLOW_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
         with:
@@ -225,7 +225,7 @@ jobs:
 
       - name: 'Add workflow label to PR'
         if: always()
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         env:
           WORKFLOW_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
         with:
