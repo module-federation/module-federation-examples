@@ -140,21 +140,34 @@ jobs:
 
       - name: Cache Playwright browsers
         uses: actions/cache@v4
+        id: playwright-cache
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('**/package.json') }}
+          key: playwright-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             playwright-${{ runner.os }}-
+            
+      - name: Set Playwright cache status
+        run: echo "PLAYWRIGHT_CACHE_HIT=${{ steps.playwright-cache.outputs.cache-hit }}" >> $GITHUB_ENV
 
       - name: Install dependencies
         run: |
           echo "Installing all dependencies to populate cache..."
           pnpm install --frozen-lockfile --prefer-offline
-          npx cypress install
           
-          # Install Playwright globally for future migration
-          npm install -g playwright@1.54.2
-          npx playwright install --with-deps chromium
+      - name: Install Cypress
+        run: npx cypress install
+          
+      - name: Install Playwright browsers
+        run: |
+          # Install Playwright browsers for projects that have it as a dependency
+          # This prepares the cache for future migration
+          if command -v playwright &> /dev/null || [ -f "$(npm root -g)/playwright/cli.js" ]; then
+            echo "Installing Playwright browsers..."
+            npx playwright install --with-deps chromium
+          else
+            echo "Playwright not found in dependencies, skipping browser installation"
+          fi
 
       - name: Create matrix
         id: set-matrix
@@ -257,13 +270,13 @@ jobs:
             echo "Setting up Playwright for bi-directional example..."
             cd ${{ matrix.container }}
             
-            # Check if Playwright browsers are already cached
-            if [ "${{ steps.playwright-cache.outputs.cache-hit }}" = "true" ] && [ -d "$HOME/.cache/ms-playwright" ]; then
-              echo "Playwright browsers already cached, installing system dependencies only..."
-              npx playwright install-deps chromium
-            else
+            # Check if we need to install Playwright browsers
+            if [ ! -d "$HOME/.cache/ms-playwright" ] || [ -z "$(ls -A $HOME/.cache/ms-playwright 2>/dev/null)" ]; then
               echo "Installing Playwright browsers and dependencies..."
               npx playwright install --with-deps chromium
+            else
+              echo "Playwright browsers already cached, installing system dependencies only..."
+              npx playwright install-deps chromium
             fi
             
             cd ..

@@ -96,11 +96,15 @@ jobs:
 
       - name: Cache Playwright browsers
         uses: actions/cache@v4
+        id: playwright-cache
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('**/package.json') }}
+          key: playwright-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             playwright-${{ runner.os }}-
+            
+      - name: Set Playwright cache status
+        run: echo "PLAYWRIGHT_CACHE_HIT=${{ steps.playwright-cache.outputs.cache-hit }}" >> $GITHUB_ENV
 
       - name: Install deps
         env:
@@ -110,12 +114,22 @@ jobs:
           echo "Installing dependencies from pnpm store..."
           pnpm install --frozen-lockfile --prefer-offline
           
+      - name: Install Cypress
+        run: |
           # Install Cypress binary if not cached
           if [ -z "$(ls -A ~/.cache/Cypress 2>/dev/null)" ]; then
             echo "Installing Cypress binary..."
             npx cypress install
+          else
+            echo "Cypress binary already cached"
           fi
           
-          # Install Playwright globally for future migration
-          npm install -g playwright@1.54.2
-          npx playwright install --with-deps chromium
+      - name: Install Playwright browsers
+        run: |
+          # Install Playwright browsers for projects that have it as a dependency
+          if command -v playwright &> /dev/null || [ -f "$(npm root -g)/playwright/cli.js" ]; then
+            echo "Installing Playwright browsers..."
+            npx playwright install --with-deps chromium
+          else
+            echo "Playwright not found in dependencies, skipping browser installation"
+          fi
