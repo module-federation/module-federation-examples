@@ -9,10 +9,6 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  CACHE_PATH: |
-    **/node_modules
-    ~/.cache/Cypress
-    ~/.pnpm-store
   FILES_TO_DELETE: |
     sudo rm -rf "/usr/share/dotnet"
     sudo rm -rf "/usr/share/swift"
@@ -75,26 +71,47 @@ jobs:
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
 
-      - name: Enhanced caching with fallbacks
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup pnpm cache
         uses: actions/cache@v4
-        id: yarn-cache
+        id: pnpm-store-cache
         with:
-          path: |
-            ~/.pnpm-store
-            **/node_modules
-            ~/.cache/Cypress
-            ~/.cache/ms-playwright
-          key: e2e-cache-${{ runner.os }}-${{ steps.yarn-hash.outputs.yarnHash }}
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: pnpm-store-${{ runner.os }}-${{ steps.yarn-hash.outputs.yarnHash }}
           restore-keys: |
-            e2e-cache-${{ runner.os }}-
-            e2e-cache-
+            pnpm-store-${{ runner.os }}-
+
+      - name: Cache Cypress binary
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-cypress-13.12.0
+          restore-keys: |
+            cypress-${{ runner.os }}-
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-1.54.2
+          restore-keys: |
+            playwright-${{ runner.os }}-
 
       - name: Install deps
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
           NODE_OPTIONS: '--max_old_space_size=6144'
           FORCE_COLOR: 3
         run: |
-          echo "PNPM lockfile changed - installing dependencies..."
-          pnpm config set store-dir ~/.pnpm-store
+          echo "Installing dependencies from pnpm store..."
           pnpm install --frozen-lockfile --prefer-offline
+          
+          # Install Cypress binary if not cached
+          if [ -z "$(ls -A ~/.cache/Cypress 2>/dev/null)" ]; then
+            echo "Installing Cypress binary..."
+            npx cypress install
+          fi
