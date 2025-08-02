@@ -1,0 +1,8 @@
+{
+  "name": "esm-sample",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "cd host; pnpm run dev",
+    "dev": "pnpm --filter \"./host\" dev & pnpm --filter \"./remote\" dev"
+  }
+}
