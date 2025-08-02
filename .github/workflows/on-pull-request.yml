@@ -138,12 +138,23 @@ jobs:
           restore-keys: |
             cypress-${{ runner.os }}-
 
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('**/package.json') }}
+          restore-keys: |
+            playwright-${{ runner.os }}-
 
       - name: Install dependencies
         run: |
           echo "Installing all dependencies to populate cache..."
           pnpm install --frozen-lockfile --prefer-offline
           npx cypress install
+          
+          # Install Playwright globally for future migration
+          npm install -g playwright@1.54.2
+          npx playwright install --with-deps chromium
 
       - name: Create matrix
         id: set-matrix
