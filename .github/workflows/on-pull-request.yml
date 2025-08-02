@@ -108,10 +108,47 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+          run_install: false
+
+      - name: Setup Node.js with caching
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+            **/node_modules
+            ~/.cache/Cypress
+            ~/.cache/ms-playwright
+          key: deps-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            deps-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: |
+          echo "Installing all dependencies to populate cache..."
+          pnpm install --frozen-lockfile --prefer-offline
+          npx cypress install
+          npx playwright install --with-deps chromium
+
       - name: Create matrix
         id: set-matrix
         run: |
-          npm i pnpm -g
           all="$(pnpm list --filter '*' --only-projects --depth -1 --json)"
           diff="$(pnpm list --filter '...[origin/master]' --only-projects --depth -1 --json)"
           matrix="$(node checkChangedWorkspaces.js "$all" "$diff")"
@@ -149,31 +186,35 @@ jobs:
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
 
-      - name: Enhanced dependency caching
-        uses: actions/cache@v4
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Restore dependency cache
+        uses: actions/cache/restore@v4
         id: deps-cache
         with:
           path: |
-            ~/.pnpm-store
+            ${{ steps.pnpm-cache.outputs.STORE_PATH }}
             **/node_modules
             ~/.cache/Cypress
             ~/.cache/ms-playwright
           key: deps-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             deps-${{ runner.os }}-
-            deps-
+          fail-on-cache-miss: false
 
-      - name: Install deps
+      - name: Install deps if cache miss
         id: install-deps-e2e
         if: steps.deps-cache.outputs.cache-hit != 'true'
         env:
           NODE_OPTIONS: '--max_old_space_size=6144'
           FORCE_COLOR: 3
         run: |
-          echo "Installing dependencies with enhanced caching..."
-          pnpm config set store-dir ~/.pnpm-store
+          echo "Cache miss - this should not happen as deps were installed in setup-matrix job"
           pnpm install --frozen-lockfile --prefer-offline
-          npx cypress install
           npx cypress verify
           npx playwright install --with-deps chromium
 
