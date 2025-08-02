@@ -1,0 +1,19 @@
+{
+  "name": "remote",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "vite build --base=http://localhost:3001",
+    "preview": "vite preview --port 3001"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "@module-federation/vite": "1.7.1",
+    "typescript": "^5.4.0"
+  }
+}

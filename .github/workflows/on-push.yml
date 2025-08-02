@@ -4,11 +4,11 @@ on:
     branches:
       - master
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
-  CACHE_PATH: |
-    **/node_modules
-    ~/.cache/Cypress
-    ~/.pnpm-store
   FILES_TO_DELETE: |
     sudo rm -rf "/usr/share/dotnet"
     sudo rm -rf "/usr/share/swift"
@@ -42,7 +42,7 @@ jobs:
       yarnHash: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
@@ -58,17 +58,78 @@ jobs:
           yarnHash="$(npx hash-files -f '["**/pnpm-lock.yaml"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
-      - name: Cache Yarn and Cypress
-        uses: actions/cache@v3
-        id: yarn-cache
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          path: ${{ env.CACHE_PATH }}
-          key: e2e-cache-${{ steps.yarn-hash.outputs.yarnHash }}
+          version: 10
+          run_install: false
+
+      - name: Setup Node.js with caching
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        id: pnpm-store-cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: pnpm-store-${{ runner.os }}-${{ steps.yarn-hash.outputs.yarnHash }}
+          restore-keys: |
+            pnpm-store-${{ runner.os }}-
+
+      - name: Cache Cypress binary
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-cypress-13.12.0
+          restore-keys: |
+            cypress-${{ runner.os }}-
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            playwright-${{ runner.os }}-
+            
+      - name: Set Playwright cache status
+        run: echo "PLAYWRIGHT_CACHE_HIT=${{ steps.playwright-cache.outputs.cache-hit }}" >> $GITHUB_ENV
 
       - name: Install deps
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
-          NODE_OPTIONS: '--max_old_space_size=4096'
+          NODE_OPTIONS: '--max_old_space_size=6144'
+          FORCE_COLOR: 3
         run: |
-          echo "Yarn changed - install deps ... "
-          pnpm install
+          echo "Installing dependencies from pnpm store..."
+          pnpm install --frozen-lockfile --prefer-offline
+          
+      - name: Install Cypress
+        run: |
+          # Install Cypress binary if not cached
+          if [ -z "$(ls -A ~/.cache/Cypress 2>/dev/null)" ]; then
+            echo "Installing Cypress binary..."
+            npx cypress install
+          else
+            echo "Cypress binary already cached"
+          fi
+          
+      - name: Install Playwright browsers
+        run: |
+          # Install Playwright browsers for projects that have it as a dependency
+          if command -v playwright &> /dev/null || [ -f "$(npm root -g)/playwright/cli.js" ]; then
+            echo "Installing Playwright browsers..."
+            npx playwright install --with-deps chromium
+          else
+            echo "Playwright not found in dependencies, skipping browser installation"
+          fi

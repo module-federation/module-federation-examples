@@ -2,6 +2,7 @@ export default function () {
   return {
     name: 'single-runtime-plugin',
     init(args) {
+      if(!__FEDERATION__.__INSTANCES__[0]) return args;
       const hostName = __FEDERATION__.__INSTANCES__[0].name;
       if (args.options.name !== hostName) {
         const hostsRemote = args.options.remotes.find(remote => {

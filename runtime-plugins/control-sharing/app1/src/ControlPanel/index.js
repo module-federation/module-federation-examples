@@ -1,17 +1,109 @@
 import React, { useEffect, useState, useCallback } from 'react';
 
-const singletons = new Set(['react', 'react-dom']);
-const buttonStyle = {
-  backgroundColor: '#4CAF50' /* Green */,
-  border: 'none',
-  color: 'white',
-  padding: '15px 32px',
-  textAlign: 'center',
-  textDecoration: 'none',
-  display: 'inline-block',
-  fontSize: '16px',
-  margin: '4px 2px',
-  cursor: 'pointer',
+const styles = {
+  container: {
+    backgroundColor: '#fff',
+    borderRadius: '12px',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
+    padding: '2rem',
+  },
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gap: '2rem',
+    marginBottom: '2rem',
+  },
+  card: {
+    backgroundColor: '#fff',
+    borderRadius: '8px',
+    border: '1px solid #e9ecef',
+    padding: '1.5rem',
+  },
+  cardTitle: {
+    fontSize: '1.25rem',
+    color: '#2c3e50',
+    margin: '0 0 1.5rem 0',
+    paddingBottom: '0.75rem',
+    borderBottom: '1px solid #e9ecef',
+  },
+  packageItem: {
+    backgroundColor: '#f8f9fa',
+    borderRadius: '6px',
+    padding: '1rem',
+    marginBottom: '1rem',
+  },
+  packageTitle: {
+    fontSize: '1rem',
+    color: '#3498db',
+    margin: '0 0 1rem 0',
+    fontWeight: '500',
+  },
+  infoGrid: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '1rem',
+  },
+  infoSection: {
+    fontSize: '0.875rem',
+    color: '#666',
+  },
+  infoText: {
+    margin: '0.5rem 0',
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  label: {
+    display: 'block',
+    color: '#34495e',
+    marginBottom: '0.5rem',
+    fontSize: '0.875rem',
+    fontWeight: '500',
+  },
+  select: {
+    width: '100%',
+    padding: '0.5rem',
+    borderRadius: '4px',
+    border: '1px solid #e9ecef',
+    backgroundColor: '#fff',
+    fontSize: '0.875rem',
+    color: '#2c3e50',
+    cursor: 'pointer',
+    transition: 'border-color 0.2s ease',
+    '&:hover': {
+      borderColor: '#3498db',
+    },
+    '&:focus': {
+      outline: 'none',
+      borderColor: '#3498db',
+      boxShadow: '0 0 0 2px rgba(52, 152, 219, 0.2)',
+    },
+  },
+  buttonContainer: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    gap: '1rem',
+  },
+  button: {
+    padding: '0.75rem 1.5rem',
+    borderRadius: '6px',
+    border: 'none',
+    fontSize: '0.875rem',
+    fontWeight: '500',
+    cursor: 'pointer',
+    transition: 'transform 0.1s ease, box-shadow 0.2s ease',
+    '&:hover': {
+      transform: 'translateY(-1px)',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    },
+  },
+  clearButton: {
+    backgroundColor: '#e74c3c',
+    color: '#fff',
+  },
+  saveButton: {
+    backgroundColor: '#3498db',
+    color: '#fff',
+  },
 };
 
 const RenderInstances = () => {
@@ -71,111 +163,91 @@ const RenderInstances = () => {
   }, []);
 
   const { instances, allVersions } = instancesData;
+
   return (
-    <>
-      <div style={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'space-between' }}>
+    <div style={styles.container}>
+      <div style={styles.grid}>
         {instances &&
-          instances.map(({ name, shared }, index) => {
-            return (
-              <form
-                key={index}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  flex: '1 0 25%',
-                  boxSizing: 'border-box',
-                  padding: '10px',
-                }}
-              >
-                <h2>{name}</h2>
-                {Object.entries(shared).map(([key, entries]) => {
-                  return entries.map((entry, entryIndex) => {
-                    const {
-                      version,
-                      useIn,
-                      shareConfig: { singleton },
-                    } = entry;
-                    const overrideVersion = formData[name]?.[key];
-                    // Get all versions specific to the package
-                    const packageVersions = instances.flatMap(
-                      instance => instance.shared[key]?.map(entry => entry.version) || [],
-                    );
-                    const uniquePackageVersions = [...new Set(packageVersions)];
-                    return (
-                      <div
-                        key={`${key}-${entryIndex}`}
-                        style={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          marginBottom: '10px',
-                          padding: '5px',
-                          border: '1px solid #ddd',
-                          borderRadius: '5px',
-                        }}
-                      >
-                        <h3 style={{ margin: '10px 0' }}>{key}</h3>
-                        <div
-                          style={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'space-between',
-                            fontSize: '0.9em',
-                            color: '#666',
-                          }}
-                        >
-                          <div style={{ marginBottom: '5px' }}>
-                            <p>Ships With: {version}</p>
-                            <p>Singleton: {singleton ? 'Yes' : 'No'}</p>
-                            <p>Currently using: {overrideVersion || version}</p>
-                            <p>Override using: {overrideVersion || 'not set'}</p>
-                          </div>
-                          <div>
-                            <label style={{ display: 'block', marginBottom: '5px' }}>
-                              Override:
-                              <select
-                                defaultValue={overrideVersion}
-                                value={overrideVersion}
-                                onChange={e => handleFormChange(name, key, e, singleton)}
-                                style={{
-                                  width: '100%',
-                                  border: 'none',
-                                  backgroundColor: '#f4f4f4',
-                                  padding: '5px 10px',
-                                  fontSize: '0.9em',
-                                  margin: '5px 0 10px',
-                                  borderRadius: '5px',
-                                }}
-                              >
-                                {uniquePackageVersions.map((ver, index) => (
-                                  <option key={index} value={ver}>
-                                    {ver}
-                                  </option>
-                                ))}
-                              </select>
-                            </label>
-                            <p>Use in: {Array.from(useIn).join(', ')}</p>
-                          </div>
+          instances.map(({ name, shared }, index) => (
+            <div key={index} style={styles.card}>
+              <h3 style={styles.cardTitle}>{name}</h3>
+              {Object.entries(shared).map(([key, entries]) => {
+                return entries.map((entry, entryIndex) => {
+                  const {
+                    version,
+                    useIn,
+                    shareConfig: { singleton },
+                  } = entry;
+                  const overrideVersion = formData[name]?.[key];
+                  const packageVersions = instances.flatMap(
+                    instance => instance.shared[key]?.map(entry => entry.version) || [],
+                  );
+                  const uniquePackageVersions = [...new Set(packageVersions)];
+                  
+                  return (
+                    <div key={`${key}-${entryIndex}`} style={styles.packageItem}>
+                      <h4 style={styles.packageTitle}>{key}</h4>
+                      <div style={styles.infoGrid}>
+                        <div style={styles.infoSection}>
+                          <p style={styles.infoText}>
+                            <span>Ships With:</span>
+                            <span>{version}</span>
+                          </p>
+                          <p style={styles.infoText}>
+                            <span>Singleton:</span>
+                            <span>{singleton ? 'Yes' : 'No'}</span>
+                          </p>
+                          <p style={styles.infoText}>
+                            <span>Currently using:</span>
+                            <span>{overrideVersion || version}</span>
+                          </p>
+                        </div>
+                        <div style={styles.infoSection}>
+                          <label style={styles.label}>
+                            Override Version
+                            <select
+                              value={overrideVersion || version}
+                              onChange={e => handleFormChange(name, key, e, singleton)}
+                              style={styles.select}
+                              data-testid={`${name}-${key}-version-select`}
+                            >
+                              {uniquePackageVersions.map((ver, index) => (
+                                <option key={index} value={ver}>
+                                  {ver}
+                                </option>
+                              ))}
+                            </select>
+                          </label>
+                          <p style={styles.infoText}>
+                            <span>Use in:</span>
+                            <span>{Array.from(useIn).join(', ')}</span>
+                          </p>
                         </div>
                       </div>
-                    );
-                  });
-                })}
-              </form>
-            );
-          })}
+                    </div>
+                  );
+                });
+              })}
+            </div>
+          ))}
       </div>
-      <p style={{ marginTop: '0px' }}>
-        <button onClick={clearLocalStorage} style={buttonStyle}>
-          Clear
+      <div style={styles.buttonContainer}>
+        <button
+          onClick={clearLocalStorage}
+          style={{ ...styles.button, ...styles.clearButton }}
+          data-testid="clear-settings-button"
+        >
+          Clear Settings
         </button>
         <button
           onClick={handleReload}
-          style={{ ...buttonStyle, marginLeft: '10px', backgroundColor: '#008CBA' }}
+          style={{ ...styles.button, ...styles.saveButton }}
+          data-testid="save-reload-button"
         >
           Save and Reload
         </button>
-      </p>
-    </>
+      </div>
+    </div>
   );
 };
 

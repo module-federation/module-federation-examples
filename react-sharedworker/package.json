@@ -1,0 +1,26 @@
+{
+  "name": "react-sharedworker",
+  "private": true,
+  "scripts": {
+    "build:host": "webpack --node-env=production --progress --config ./host/webpack.host-config.js",
+    "build:module": "webpack --node-env=production --progress --config ./module/webpack.module-config.js",
+    "serve:host": "npx http-server ./host/build -p 3000",
+    "serve:module": "npx http-server ./module/build -p 3001",
+    "start:host": "npm run build:host && npm run serve:host",
+    "start:module": "npm run build:module && npm run serve:module",
+    "clean": "rimraf ./host/build ./module/build",
+    "dev:host": "webpack serve --config ./host/webpack.host-config.js",
+    "dev:module": "node ./module/dev.js",
+    "dev": "yarn dev:host & yarn dev:module"
+  },
+  "devDependencies": {
+    "express": "^4.18.2",
+    "html-webpack-plugin": "5.6.0",
+    "rimraf": "^5.0.5",
+    "webpack": "5.101.0",
+    "webpack-cli": "5.1.4",
+    "webpack-dev-middleware": "^7.4.2",
+    "webpack-dev-server": "5.0.4"
+  },
+  "license": "MIT"
+}

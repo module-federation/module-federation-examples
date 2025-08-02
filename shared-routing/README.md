@@ -10,13 +10,7 @@ This example demos a basic host application loading remote component.
 
 # Running Demo
 
-Run the following commands:
-
-1. `nvm use`
-2. `yarn lerna bootstrap --npm-client yarn`
-3. `yarn build`
-
-To run the applicatio, run `pnpm run start`. This will build all the apps `shell`, `dashboard`, `order`, `profile`, `sales` on different ports as shown below
+To run the application, run `pnpm run start`. This will build all the apps `shell`, `dashboard`, `order`, `profile`, `sales` on different ports as shown below
 
 - [localhost:3000](http://localhost:3000/) (HOST) - `shell`
 - [localhost:3001](http://localhost:3001/) (STANDALONE REMOTE) - `dashboard`
@@ -30,8 +24,8 @@ You will notice that each of the above URLs will look exactly same. For more det
 
 # Running Cypress E2E Tests
 
-To run tests in interactive mode, run `npm run cypress:debug` from the root directory of the project. It will open Cypress Test Runner and allow to run tests in interactive mode. [More info about "How to run tests"](../../cypress/README.md#how-to-run-tests)
+To run tests in interactive mode, run `npm run cypress:debug` from the root directory of the project. It will open Cypress Test Runner and allow to run tests in interactive mode. [More info about "How to run tests"](../../cypress-e2e/README.md#how-to-run-tests)
 
 To build app and run test in headless mode, run `yarn e2e:ci`. It will build app and run tests for this workspace in headless mode. If tets failed cypress will create `cypress` directory in sample root folder with screenshots and videos.
 
-["Best Practices, Rules amd more interesting information here](../../cypress/README.md)
+["Best Practices, Rules amd more interesting information here](../../cypress-e2e/README.md)

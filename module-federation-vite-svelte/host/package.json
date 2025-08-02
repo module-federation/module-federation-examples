@@ -1,0 +1,25 @@
+{
+  "name": "module-federation-vite-svelte-host",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 4173",
+    "build": "vite build",
+    "preview": "vite preview --port 4173",
+    "check": "svelte-check --tsconfig ./tsconfig.json"
+  },
+  "devDependencies": {
+    "@module-federation/vite": "1.7.1",
+    "@sveltejs/vite-plugin-svelte": "^3.1.2",
+    "@tsconfig/svelte": "^5.0.4",
+    "svelte": "^4.2.19",
+    "svelte-check": "^4.0.4",
+    "tslib": "^2.7.0",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.8"
+  },
+  "dependencies": {
+    "rxjs": "^7.6.0"
+  }
+}

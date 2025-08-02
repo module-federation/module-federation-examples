@@ -1,0 +1,23 @@
+{
+  "name": "module-federation-vite-react-host",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 4173",
+    "build": "tsc && vite build",
+    "preview": "npm run build && vite preview --port 4173"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@module-federation/vite": "1.7.1",
+    "@types/react": "18.2.79",
+    "@types/react-dom": "18.2.25",
+    "@vitejs/plugin-react": "4.2.1",
+    "typescript": "5.4.5",
+    "vite": "5.2.10"
+  }
+}

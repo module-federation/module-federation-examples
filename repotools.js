@@ -2,6 +2,9 @@ const fs = require('fs');
 const path = require('path');
 const semver = require('semver');
 
+// Packages that should always be updated to latest regardless of scope
+const ALWAYS_UPDATE_SCOPES = ['@rspack/', '@rsbuild/'];
+
 const CONFIG = [
   {
     packageName: '@module-federation/node',
@@ -16,13 +19,31 @@ const CONFIG = [
     targetVersion: 'latest',
   },
   {
+    packageName: '@module-federation/modern-js',
+    shouldUpdate: true,
+    versionToCheck: '3.0.13',
+    targetVersion: 'latest',
+  },
+  {
+    packageName: '@module-federation/dts-plugin',
+    shouldUpdate: true,
+    versionToCheck: '3.0.13',
+    targetVersion: 'latest',
+  },
+  {
+    packageName: '@module-federation/vite',
+    shouldUpdate: true,
+    versionToCheck: '2.0.0',
+    targetVersion: 'latest',
+  },
+  {
     packageName: '@module-federation/enhanced',
     shouldUpdate: true,
     versionToCheck: '2.0.0',
     targetVersion: 'latest',
   },
   {
-    packageName: '@module-federation/latestjs-mf',
+    packageName: '@module-federation/nextjs-mf',
     shouldUpdate: true,
     versionToCheck: '9.2.2',
     targetVersion: 'latest',
@@ -31,48 +52,6 @@ const CONFIG = [
     packageName: '@module-federation/runtime',
     shouldUpdate: true,
     versionToCheck: '9.2.2',
-    targetVersion: 'latest',
-  },
-  {
-    packageName: '@rspack/core',
-    shouldUpdate: true,
-    versionToCheck: '3.0.13',
-    targetVersion: 'latest',
-  },
-  {
-    packageName: '@rspack/cli',
-    shouldUpdate: true,
-    versionToCheck: '3.0.13',
-    targetVersion: 'latest',
-  },
-  {
-    packageName: '@rspack/plugin-react-refresh',
-    shouldUpdate: true,
-    versionToCheck: '3.0.13',
-    targetVersion: 'latest',
-  },
-  {
-    packageName: '@rspack/dev-server',
-    shouldUpdate: true,
-    versionToCheck: '3.0.13',
-    targetVersion: 'latest',
-  },
-  {
-    packageName: '@rsbuild/core',
-    shouldUpdate: true, // Assumes no targetVersion needed
-    versionToCheck: '2.0.0',
-    targetVersion: 'latest',
-  },
-  {
-    packageName: '@rsbuild/plugin-vue',
-    shouldUpdate: true, // Assumes no targetVersion needed
-    versionToCheck: '2.0.0',
-    targetVersion: 'latest',
-  },
-  {
-    packageName: '@rsbuild/plugin-react',
-    shouldUpdate: true, // Assumes no targetVersion needed
-    versionToCheck: '2.0.0',
     targetVersion: 'latest',
   },
   {
@@ -90,30 +69,6 @@ const CONFIG = [
   {
     packageName: '@module-federation/utilities',
     shouldUpdate: false, // Assumes no targetVersion needed
-  },
-  {
-    packageName: '@rspack/core',
-    shouldUpdate: true,
-    versionToCheck: '9.2.2',
-    targetVersion: 'latest',
-  },
-  {
-    packageName: '@rspack/cli',
-    shouldUpdate: true,
-    versionToCheck: '9.2.2',
-    targetVersion: 'latest',
-  },
-  {
-    packageName: '@rspack/dev-server',
-    shouldUpdate: true,
-    versionToCheck: '9.2.2',
-    targetVersion: 'latest',
-  },
-  {
-    packageName: '@rspack/plugin-react-refresh',
-    shouldUpdate: true,
-    versionToCheck: '9.2.2',
-    targetVersion: 'latest',
   },
 ];
 
@@ -158,6 +113,7 @@ function readPackageJson(packageJsonPath) {
 async function checkAndUpdatePackages(nestedDir, packageJson, results) {
   let needsUpdate = false;
 
+  // Check packages from CONFIG
   for (const config of CONFIG) {
     const { packageName, shouldUpdate, versionToCheck } = config;
     let { targetVersion } = config;
@@ -182,6 +138,24 @@ async function checkAndUpdatePackages(nestedDir, packageJson, results) {
         needsUpdate = true;
       }
       trackPackage(nestedDir, packageName, results);
+    }
+  }
+
+  // Check packages from ALWAYS_UPDATE_SCOPES
+  const allDependencies = {
+    ...packageJson.dependencies,
+    ...packageJson.devDependencies,
+  };
+
+  for (const [packageName, currentVersion] of Object.entries(allDependencies)) {
+    if (ALWAYS_UPDATE_SCOPES.some(scope => packageName.startsWith(scope))) {
+      const latestVersion = await getLatestVersion(packageName, 'latest');
+      if (latestVersion && currentVersion !== latestVersion) {
+        updateDependencies(packageJson, packageName, latestVersion);
+        needsUpdate = true;
+        trackPackage(nestedDir, packageName, results);
+        console.log(`Updating ${packageName} from ${currentVersion} to ${latestVersion}`);
+      }
     }
   }
 
