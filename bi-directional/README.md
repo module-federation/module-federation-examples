@@ -1,24 +1,81 @@
 # Bi-Directional Hosts Example
 
-This example demos bi-directional hosts each with their own remote `Button` components.
+This example demonstrates bi-directional module federation using Modern.js, where each application can both expose and consume federated modules from each other.
 
-- `app1` exposes a red `<button>App 1 Button</button>` component.
-- `app2` exposes a blue `<button>App 2 Button</button>` component.
+- `app1` exposes a red `<button>App 1 Button</button>` component and consumes `app2`'s button.
+- `app2` exposes a blue `<button>App 2 Button</button>` component and consumes `app1`'s button.
 
-# Running Demo
+## Technology Stack
 
-Run `pnpm run start`. This will build and serve both `app1` and `app2` on ports 3001 and 3002 respectively.
+- **Framework**: Modern.js v2.68.6
+- **Module Federation**: @module-federation/modern-js v0.17.1
+- **Testing**: Playwright for end-to-end testing
+- **Build Tool**: Rspack (via Modern.js)
 
-- [localhost:3001](http://localhost:3001/)
-- [localhost:3002](http://localhost:3002/)
+## Running Demo
 
-Notice that `app1` will asynchronously load `app2`'s button and vice versa.
-<img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/BiDirectional">
+Run `pnpm run start`. This will start both `app1` and `app2` in development mode on ports 3001 and 3002 respectively.
 
-# Running Cypress E2E Tests
+- [localhost:3001](http://localhost:3001/) - App1 hosting App2's button
+- [localhost:3002](http://localhost:3002/) - App2 hosting App1's button
 
-To run tests in interactive mode, run `npm run cypress:debug` from the root directory of the project. It will open Cypress Test Runner and allow to run tests in interactive mode. [More info about "How to run tests"](../../cypress-e2e/README.md#how-to-run-tests)
+Notice that each app will asynchronously load the other app's federated button component using React Suspense.
 
-To build app and run test in headless mode, run `yarn e2e:ci`. It will build app and run tests for this workspace in headless mode. If tets failed cypress will create `cypress` directory in sample root folder with screenshots and videos.
+## Available Scripts
 
-["Best Practices, Rules amd more interesting information here](../../cypress-e2e/README.md)
+- `pnpm start` - Start both apps in development mode
+- `pnpm build` - Build both apps for production
+- `pnpm serve` - Serve built apps in production mode
+- `pnpm test:e2e` - Run Playwright tests in headless mode
+- `pnpm test:e2e:ui` - Run Playwright tests with UI mode
+- `pnpm test:e2e:debug` - Run Playwright tests in debug mode
+- `pnpm e2e:ci` - Build and run tests for CI
+
+## Module Federation Configuration
+
+Each app uses a `module-federation.config.ts` file to configure:
+- **Exposed modules**: Components shared with other apps
+- **Remote modules**: Components consumed from other apps  
+- **Shared dependencies**: React and React-DOM with singleton strategy
+
+## End-to-End Testing with Playwright
+
+This example includes comprehensive Playwright tests that verify:
+
+- ✅ Both applications load correctly
+- ✅ Federated components render properly
+- ✅ Bi-directional communication works
+- ✅ Error handling for module loading failures
+- ✅ Cross-app interaction and state management
+
+### Running Tests
+
+```bash
+# Run tests in headless mode
+pnpm test:e2e
+
+# Run tests with interactive UI
+pnpm test:e2e:ui
+
+# Run tests in debug mode
+pnpm test:e2e:debug
+
+# Run tests for CI (build first)
+pnpm e2e:ci
+```
+
+### Test Architecture
+
+The test suite includes:
+- **Page Objects**: Reusable test utilities in `e2e/utils/`
+- **Test Fixtures**: Shared setup and teardown logic
+- **Comprehensive Coverage**: All module federation scenarios
+- **Error Scenarios**: Graceful handling of federation failures
+
+## Key Features Demonstrated
+
+1. **Bi-directional Federation**: Apps both expose and consume modules
+2. **React Suspense Integration**: Lazy loading with fallback UI
+3. **Modern.js Framework**: Latest patterns and best practices
+4. **Production-Ready Testing**: Comprehensive Playwright test suite
+5. **TypeScript Support**: Full type safety across federated modules
