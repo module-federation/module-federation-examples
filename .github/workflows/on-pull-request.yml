@@ -48,7 +48,7 @@ jobs:
           echo "${{ github.repository_owner }}" > ./workflow/ownerName
       - name: Upload artifact
         id: upload-artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: env_for_comment
           path: workflow/
@@ -60,7 +60,7 @@ jobs:
     steps:
       - name: Checkout
         id: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
@@ -98,7 +98,7 @@ jobs:
     steps:
       - name: Checkout
         id: checkout-matrix
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
@@ -125,7 +125,7 @@ jobs:
     steps:
       - name: Checkout
         id: checkout-e2e
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
@@ -137,7 +137,7 @@ jobs:
 
       - name: Set up node
         id: setup-node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: 'pnpm'
@@ -172,7 +172,7 @@ jobs:
 
       - name: Create artifacts for Allure report
         id: create-artifacts-allure-report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: allure-results
