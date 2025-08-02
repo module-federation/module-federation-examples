@@ -144,7 +144,6 @@ jobs:
           echo "Installing all dependencies to populate cache..."
           pnpm install --frozen-lockfile --prefer-offline
           npx cypress install
-          npx playwright install --with-deps chromium
 
       - name: Create matrix
         id: set-matrix
@@ -216,7 +215,15 @@ jobs:
           echo "Cache miss - this should not happen as deps were installed in setup-matrix job"
           pnpm install --frozen-lockfile --prefer-offline
           npx cypress verify
-          npx playwright install --with-deps chromium
+          
+      - name: Install Playwright for projects that need it
+        run: |
+          if [ "${{ matrix.container }}" = "bi-directional" ]; then
+            echo "Installing Playwright for bi-directional example..."
+            cd ${{ matrix.container }}
+            npx playwright install --with-deps chromium
+            cd ..
+          fi
 
       - name: Run sample webpack e2e tests
         timeout-minutes: 30

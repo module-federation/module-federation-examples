@@ -98,4 +98,3 @@ jobs:
           echo "PNPM lockfile changed - installing dependencies..."
           pnpm config set store-dir ~/.pnpm-store
           pnpm install --frozen-lockfile --prefer-offline
-          npx playwright install --with-deps chromium
