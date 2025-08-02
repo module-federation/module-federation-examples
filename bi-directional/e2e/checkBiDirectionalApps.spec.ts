@@ -1,4 +1,4 @@
-import { test, expect, BasePage } from './utils/base-test';
+import { test, expect } from './utils/base-test';
 import { selectors } from './utils/selectors';
 import { Constants } from './utils/constants';
 
