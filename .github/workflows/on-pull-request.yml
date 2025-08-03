@@ -264,9 +264,15 @@ jobs:
             npx cypress verify || true
           fi
           
-      - name: Install Playwright browsers for all projects
+      - name: Install Playwright browsers for projects that use it
         run: |
-          echo "Installing Playwright browsers for all projects..."
+          echo "Installing Playwright browsers for projects that use it..."
+          
+          # Install Playwright package first if not already available
+          if ! command -v playwright &> /dev/null; then
+            echo "Installing Playwright package..."
+            npm install -g playwright@^1.54.2
+          fi
           
           # Check if we need to install Playwright browsers
           if [ ! -d "$HOME/.cache/ms-playwright" ] || [ -z "$(ls -A $HOME/.cache/ms-playwright 2>/dev/null)" ]; then
