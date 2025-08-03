@@ -31,19 +31,19 @@ export default defineConfig({
 
   webServer: [
     {
-      command: 'cd app1 && pnpm start',
+      command: `cd app1 && pnpm ${process.env.LEGACY_MODE ? 'legacy:start' : 'start'}`,
       port: 3001,
       timeout: 120000,
       reuseExistingServer: !process.env.CI,
     },
     {
-      command: 'cd app2 && pnpm start',
+      command: `cd app2 && pnpm ${process.env.LEGACY_MODE ? 'legacy:start' : 'start'}`,
       port: 3002,
       timeout: 120000,
       reuseExistingServer: !process.env.CI,
     },
     {
-      command: 'cd app3 && pnpm start',
+      command: `cd app3 && pnpm ${process.env.LEGACY_MODE ? 'legacy:start' : 'start'}`,
       port: 3003,
       timeout: 120000,
       reuseExistingServer: !process.env.CI,
