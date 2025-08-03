@@ -1,16 +1,18 @@
 const {
   CopyRspackPlugin,
 } = require('@rspack/core');
-const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 
 const deps = require('./package.json').dependencies;
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 module.exports = {
-  mode: 'development',
+  mode: isProduction ? 'production' : 'development',
   entry: './src/index',
-  devtool: 'source-map',
+  devtool: isProduction ? 'source-map' : 'eval-cheap-module-source-map',
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
@@ -21,9 +23,15 @@ module.exports = {
       'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
     },
     port: 3000,
+    hot: true,
+    compress: true,
+    historyApiFallback: true,
   },
   output: {
     publicPath: 'auto',
+    clean: true,
+    filename: isProduction ? '[name].[contenthash].js' : '[name].js',
+    chunkFilename: isProduction ? '[name].[contenthash].js' : '[name].js',
   },
   module: {
     rules: [
@@ -41,6 +49,7 @@ module.exports = {
               transform: {
                 react: {
                   runtime: 'automatic',
+                  development: !isProduction,
                 },
               },
             },
@@ -51,22 +60,69 @@ module.exports = {
   },
   plugins: [
     new CopyRspackPlugin({
-      patterns: [{ from: 'public/env-config.json', to: 'env-config.json' }],
+      patterns: [
+        { 
+          from: 'public/env-config.json', 
+          to: 'env-config.json',
+          noErrorOnMissing: true
+        }
+      ],
     }),
     new ModuleFederationPlugin({
       name: 'host',
+      runtimePlugins: isProduction ? ['@module-federation/retry-plugin'] : [],
       shared: {
-        ...deps,
         react: {
           singleton: true,
+          requiredVersion: '^18.0.0',
+          eager: false,
         },
         'react-dom': {
           singleton: true,
+          requiredVersion: '^18.0.0',
+          eager: false,
+        },
+        moment: {
+          singleton: false,
         },
       },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
+      inject: true,
+      minify: isProduction && {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
     }),
   ],
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+  optimization: isProduction ? {
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          test: /[\/\\]node_modules[\/\\]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
+    minimize: true,
+  } : {},
+  performance: isProduction ? {
+    hints: 'warning',
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
+  } : false,
 };

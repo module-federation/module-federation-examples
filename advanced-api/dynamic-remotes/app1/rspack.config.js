@@ -2,47 +2,45 @@ const {
   HtmlRspackPlugin,
 } = require('@rspack/core');
 const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
-
 const path = require('path');
+const { createSharedConfig, createDevServerConfig, swcConfig } = require('../shared-config');
 
 module.exports = {
   entry: './src/index',
   mode: 'development',
   target: 'web',
-  devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist'),
-    },
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
-    },
-    port: 3001,
-  },
+  devServer: createDevServerConfig(3001),
   output: {
     publicPath: 'auto',
   },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.jsx', '.js'],
+  },
   module: {
     rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        include: path.resolve(__dirname, 'src'),
+        use: {
+          loader: 'builtin:swc-loader',
+          options: {
+            ...swcConfig,
+            jsc: {
+              ...swcConfig.jsc,
+              parser: {
+                syntax: 'typescript',
+                tsx: true,
+              },
+            },
+          },
+        },
+      },
       {
         test: /\.(js|jsx)$/,
         include: path.resolve(__dirname, 'src'),
         use: {
           loader: 'builtin:swc-loader',
-          options: {
-            jsc: {
-              parser: {
-                syntax: 'ecmascript',
-                jsx: true,
-              },
-              transform: {
-                react: {
-                  runtime: 'automatic',
-                },
-              },
-            },
-          },
+          options: swcConfig,
         },
       },
     ],
@@ -54,26 +52,14 @@ module.exports = {
       // version is inferred from package.json
       // there is no version check for the required version
       // so it will always use the higher version found
-      shared: {
-        react: {
-          import: 'react',
-          shareKey: 'react',
-          shareScope: 'default',
-          singleton: true,
-          requiredVersion: '^18.3.1',
-          strictVersion: true,
-        },
-        'react/jsx-runtime': {
-          singleton: true,
-        },
-        'react/jsx-dev-runtime': {
-          singleton: true,
-        },
-        'react-dom': {
-          singleton: true,
-          requiredVersion: '^18.3.1',
-          strictVersion: true,
-        },
+      shared: createSharedConfig(),
+      dts: {
+        generateTypes: true,
+        generateAPITypes: true,
+      },
+      manifest: {
+        fileName: 'mf-manifest.json',
+        getPublicPath: () => 'auto',
       },
     }),
     new HtmlRspackPlugin({

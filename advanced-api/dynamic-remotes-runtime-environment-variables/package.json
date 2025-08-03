@@ -15,10 +15,11 @@
     "docker:build": "pnpm --filter dynamic-remotes-runtime-environment-variables_* --parallel docker:build",
     "docker:run": "pnpm --filter dynamic-remotes-runtime-environment-variables_* --parallel docker:run",
     "docker:rm": "pnpm --filter dynamic-remotes-runtime-environment-variables_* --parallel docker:rm",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
-    "legacy:e2e:ci": "pnpm legacy:start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3000/ http-get://localhost:3001/ && npx playwright test",
+    "legacy:e2e:ci": "pnpm legacy:start & wait-on http-get://localhost:3000/ http-get://localhost:3001/ && npx playwright test"
   },
   "devDependencies": {
+    "@playwright/test": "^1.54.2",
     "wait-on": "7.2.0"
   }
 }
