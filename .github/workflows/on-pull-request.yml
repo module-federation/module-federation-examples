@@ -264,22 +264,17 @@ jobs:
             npx cypress verify || true
           fi
           
-      - name: Install Playwright for projects that need it
+      - name: Install Playwright browsers for all projects
         run: |
-          if [ "${{ matrix.container }}" = "bi-directional" ]; then
-            echo "Setting up Playwright for bi-directional example..."
-            cd ${{ matrix.container }}
-            
-            # Check if we need to install Playwright browsers
-            if [ ! -d "$HOME/.cache/ms-playwright" ] || [ -z "$(ls -A $HOME/.cache/ms-playwright 2>/dev/null)" ]; then
-              echo "Installing Playwright browsers and dependencies..."
-              npx playwright install --with-deps chromium
-            else
-              echo "Playwright browsers already cached, installing system dependencies only..."
-              npx playwright install-deps chromium
-            fi
-            
-            cd ..
+          echo "Installing Playwright browsers for all projects..."
+          
+          # Check if we need to install Playwright browsers
+          if [ ! -d "$HOME/.cache/ms-playwright" ] || [ -z "$(ls -A $HOME/.cache/ms-playwright 2>/dev/null)" ]; then
+            echo "Installing Playwright browsers and dependencies..."
+            npx playwright install --with-deps chromium
+          else
+            echo "Playwright browsers already cached, installing system dependencies only..."
+            npx playwright install-deps chromium
           fi
 
       - name: Run sample webpack e2e tests
@@ -298,11 +293,14 @@ jobs:
           pnpm --filter "${{ matrix.container }}" e2e:ci
           (lsof -i tcp:3000-3999 -i tcp:4000-4999 -i tcp:8080-8100 | awk 'NR!=1 {print $2}' | xargs -r kill) 2> /dev/null
 
-      - name: Create artifacts for Allure report
-        id: create-artifacts-allure-report
+      - name: Create artifacts for test reports
+        id: create-artifacts-test-reports
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: allure-results
-          path: 'cypress/results/allure-results'
+          name: test-results-${{ matrix.container }}
+          path: |
+            ${{ matrix.container }}/cypress/results/allure-results
+            ${{ matrix.container }}/playwright-report
+            ${{ matrix.container }}/test-results
           retention-days: 7
