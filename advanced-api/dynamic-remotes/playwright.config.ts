@@ -29,24 +29,6 @@ export default defineConfig({
     },
   ],
 
-  webServer: [
-    {
-      command: `pnpm --filter dynamic-remotes_app1 ${process.env.LEGACY_MODE ? 'legacy:start' : 'start'}`,
-      port: 3001,
-      timeout: 120000,
-      reuseExistingServer: !process.env.CI,
-    },
-    {
-      command: `pnpm --filter dynamic-remotes_app2 ${process.env.LEGACY_MODE ? 'legacy:start' : 'start'}`,
-      port: 3002,
-      timeout: 120000,
-      reuseExistingServer: !process.env.CI,
-    },
-    {
-      command: `pnpm --filter dynamic-remotes_app3 ${process.env.LEGACY_MODE ? 'legacy:start' : 'start'}`,
-      port: 3003,
-      timeout: 120000,
-      reuseExistingServer: !process.env.CI,
-    },
-  ],
+  // webServer configuration removed - servers are started manually in package.json scripts
+  // This ensures better compatibility with CI environments and matches the original Cypress approach
 });

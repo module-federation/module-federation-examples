@@ -17,8 +17,8 @@
     "test:e2e": "npx playwright test",
     "test:e2e:ui": "npx playwright test --ui",
     "test:e2e:debug": "npx playwright test --debug",
-    "e2e:ci": "npx playwright test --reporter=list",
-    "legacy:e2e:ci": "LEGACY_MODE=true npx playwright test --reporter=list"
+    "e2e:ci": "pnpm start & sleep 5 && wait-on tcp:3001 tcp:3002 tcp:3003 && npx playwright test --reporter=list; kill $(jobs -p) 2>/dev/null || true",
+    "legacy:e2e:ci": "pnpm legacy:start & sleep 5 && wait-on tcp:3001 tcp:3002 tcp:3003 && LEGACY_MODE=true npx playwright test --reporter=list; kill $(jobs -p) 2>/dev/null || true"
   },
   "devDependencies": {
     "@playwright/test": "^1.54.2",
