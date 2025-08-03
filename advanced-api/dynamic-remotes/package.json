@@ -17,10 +17,12 @@
     "test:e2e": "npx playwright test",
     "test:e2e:ui": "npx playwright test --ui",
     "test:e2e:debug": "npx playwright test --debug",
-    "e2e:ci": "npx playwright test --reporter=list",
-    "legacy:e2e:ci": "npx playwright test --reporter=list",
+    "e2e:ci": "pnpm start & sleep 1 && wait-on tcp:3001 && wait-on tcp:3002 && wait-on tcp:3003 && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
+    "legacy:e2e:ci": "pnpm legacy:start & sleep 1 && wait-on tcp:3001 && wait-on tcp:3002 && wait-on tcp:3003  && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
     "e2e:ci:cypress": "pnpm start & sleep 1 && wait-on tcp:3001 && wait-on tcp:3002 && wait-on tcp:3003 && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
-    "legacy:e2e:ci:cypress": "pnpm legacy:start & sleep 1 && wait-on tcp:3001 && wait-on tcp:3002 && wait-on tcp:3003  && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "legacy:e2e:ci:cypress": "pnpm legacy:start & sleep 1 && wait-on tcp:3001 && wait-on tcp:3002 && wait-on tcp:3003  && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
+    "e2e:ci:playwright": "npx playwright test --reporter=list",
+    "legacy:e2e:ci:playwright": "npx playwright test --reporter=list"
   },
   "devDependencies": {
     "@playwright/test": "^1.54.2",
