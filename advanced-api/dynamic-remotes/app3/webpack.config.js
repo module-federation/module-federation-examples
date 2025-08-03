@@ -41,7 +41,7 @@ module.exports = {
       },
       shared: {
         react: {
-          requiredVersion: '^18.3.1',
+          requiredVersion: deps.react,
           import: 'react',
           shareKey: 'react',
           shareScope: 'default',
