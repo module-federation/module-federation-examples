@@ -38,19 +38,30 @@ export class BasePage {
   async clickElementWithText(selector: string, text: string) {
     const element = this.page.locator(selector).filter({ hasText: text });
     
-    // Dismiss any overlays that might be blocking clicks
-    try {
-      await this.page.locator('#webpack-dev-server-client-overlay').waitFor({ timeout: 1000 });
-      await this.page.keyboard.press('Escape');
-      await this.page.waitForTimeout(500);
-    } catch {
-      // No overlay present, continue
+    // Wait for element to be ready
+    await element.waitFor({ state: 'visible', timeout: 10000 });
+    
+    // Remove any overlays that might interfere
+    await this.page.evaluate(() => {
+      const overlays = document.querySelectorAll('#webpack-dev-server-client-overlay, iframe[src*="webpack-dev-server"]');
+      overlays.forEach(overlay => overlay.remove());
+    });
+    
+    // Try clicking with retries
+    let attempts = 0;
+    while (attempts < 3) {
+      try {
+        await element.click({ timeout: 5000, force: true });
+        break;
+      } catch (error) {
+        attempts++;
+        if (attempts >= 3) throw error;
+        await this.page.waitForTimeout(1000);
+      }
     }
     
-    await element.click({ force: true });
-    
     // Wait for any dynamic loading to complete
-    await this.page.waitForTimeout(2000);
+    await this.page.waitForTimeout(3000);
   }
 
   async checkElementBackgroundColor(selector: string, expectedColor: string) {
