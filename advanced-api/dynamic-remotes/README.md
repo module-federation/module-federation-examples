@@ -2,6 +2,13 @@
 
 This example demonstrates advanced Module Federation capabilities for **dynamic remote loading** and **vendor code sharing** between unknown remotes at runtime. It showcases how a host application can load remote components on-demand without compile-time knowledge of their locations, while efficiently sharing dependencies.
 
+> **⚠️ Important Note**: True dynamic remotes (where you don't know what you're importing at build time) are **very rare** in practice. For most use cases where you need dynamic remote URLs but know the component interfaces, consider using **runtime plugins** instead:
+> 
+> - **[Remote Control Example](../../runtime-plugins/remote-control)** - Dynamic remote URL configuration with runtime plugins
+> - **[Remote Router Example](../../runtime-plugins/remote-router)** - Dynamic routing with runtime remote management
+> 
+> These approaches provide better type safety, performance, and maintainability while still allowing runtime URL configuration.
+
 ## Project Overview
 
 This example illustrates the power of Module Federation's runtime API for creating truly dynamic micro-frontend architectures. The host application (`app1`) can dynamically load and render components from remote applications (`app2` and `app3`) at runtime, demonstrating vendor sharing optimization where dependencies like React and Moment.js are shared efficiently between applications.
