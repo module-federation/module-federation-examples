@@ -256,7 +256,6 @@ test.describe('Dynamic Remotes E2E Tests', () => {
       await page.waitForTimeout(2000);
 
       // Check for React error boundaries working
-      const errorBoundaryMessages = await page.locator('text="⚠️ Component Failed to Load"').count();
       
       // Should handle any errors gracefully (either no errors or proper error boundaries)
       const criticalErrors = consoleErrors.filter(error => 
