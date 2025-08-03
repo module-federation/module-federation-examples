@@ -31,19 +31,19 @@ export default defineConfig({
 
   webServer: [
     {
-      command: `cd app1 && pnpm ${process.env.LEGACY_MODE ? 'legacy:start' : 'start'}`,
+      command: `pnpm --filter dynamic-remotes_app1 ${process.env.LEGACY_MODE ? 'legacy:start' : 'start'}`,
       port: 3001,
       timeout: 120000,
       reuseExistingServer: !process.env.CI,
     },
     {
-      command: `cd app2 && pnpm ${process.env.LEGACY_MODE ? 'legacy:start' : 'start'}`,
+      command: `pnpm --filter dynamic-remotes_app2 ${process.env.LEGACY_MODE ? 'legacy:start' : 'start'}`,
       port: 3002,
       timeout: 120000,
       reuseExistingServer: !process.env.CI,
     },
     {
-      command: `cd app3 && pnpm ${process.env.LEGACY_MODE ? 'legacy:start' : 'start'}`,
+      command: `pnpm --filter dynamic-remotes_app3 ${process.env.LEGACY_MODE ? 'legacy:start' : 'start'}`,
       port: 3003,
       timeout: 120000,
       reuseExistingServer: !process.env.CI,
