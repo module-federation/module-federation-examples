@@ -368,7 +368,9 @@ const loadWithRetry = async (remoteName, retries = 3) => {
 
 **4. Development Server Port Conflicts**
 ```bash
-# Check and kill processes using ports
+# Check and gracefully terminate processes using ports
+lsof -ti:3001,3002,3003 | xargs kill -15
+# If any processes remain, force kill as a last resort:
 lsof -ti:3001,3002,3003 | xargs kill -9
 ```
 
