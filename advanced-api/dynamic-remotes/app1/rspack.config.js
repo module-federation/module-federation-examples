@@ -56,14 +56,23 @@ module.exports = {
       // so it will always use the higher version found
       shared: {
         react: {
-          import: 'react', // the "react" package will be used a provided and fallback module
-          shareKey: 'react', // under this name the shared module will be placed in the share scope
-          shareScope: 'default', // share scope with this name will be used
-          singleton: true, // only a single version of the shared module is allowed
+          import: 'react',
+          shareKey: 'react',
+          shareScope: 'default',
+          singleton: true,
+          requiredVersion: '^18.3.1',
+          strictVersion: true,
         },
-        'react/jsx-dev-runtime': {},
+        'react/jsx-runtime': {
+          singleton: true,
+        },
+        'react/jsx-dev-runtime': {
+          singleton: true,
+        },
         'react-dom': {
-          singleton: true, // only a single version of the shared module is allowed
+          singleton: true,
+          requiredVersion: '^18.3.1',
+          strictVersion: true,
         },
       },
     }),
