@@ -1,4 +1,5 @@
-import { test, expect } from './utils/base-test';
+import { test, expect } from '@playwright/test';
+import { BasePage } from './utils/base-test';
 import { selectors } from './utils/selectors';
 import { Constants } from './utils/constants';
 
@@ -32,7 +33,8 @@ test.describe('Dynamic Remotes Runtime Environment Variables E2E Tests', () => {
     const { host, subheader, header, hostH3, paragraph, button, loading, buttonHeader, buttonH2, buttonParagraph } = appData;
     
     test.describe(`Check ${subheader} app`, () => {
-      test(`should display ${subheader} app widget functionality and application elements`, async ({ basePage }) => {
+      test(`should display ${subheader} app widget functionality and application elements`, async ({ page }) => {
+        const basePage = new BasePage(page);
         await basePage.openLocalhost(host);
 
         // Check main header
@@ -99,7 +101,8 @@ test.describe('Dynamic Remotes Runtime Environment Variables E2E Tests', () => {
       expect(envConfigRequests.length).toBeGreaterThan(0);
     });
 
-    test('should demonstrate dynamic remote loading with environment config', async ({ basePage }) => {
+    test('should demonstrate dynamic remote loading with environment config', async ({ page }) => {
+      const basePage = new BasePage(page);
       await basePage.openLocalhost(3000);
 
       // Click to load remote component
