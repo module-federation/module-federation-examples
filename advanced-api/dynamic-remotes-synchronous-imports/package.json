@@ -11,9 +11,10 @@
     "build": "pnpm --filter dynamic-remotes-synchronous-imports_app* --parallel build",
     "serve": "pnpm --filter dynamic-remotes-synchronous-imports_app* --parallel serve",
     "clean": "pnpm --filter dynamic-remotes-synchronous-imports_app* --parallel clean",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ http-get://localhost:3002/ && npx playwright test"
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ http-get://localhost:3002/ && pnpm exec playwright test"
   },
   "devDependencies": {
+    "@playwright/test": "^1.54.2",
     "wait-on": "7.2.0"
   }
 }

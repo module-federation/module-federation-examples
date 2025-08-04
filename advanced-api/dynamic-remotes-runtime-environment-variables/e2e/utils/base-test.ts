@@ -1,4 +1,4 @@
-import { test as base, Page } from '@playwright/test';
+import { test as base, expect, Page } from '@playwright/test';
 
 class BasePage {
   constructor(public page: Page) {}
@@ -49,3 +49,5 @@ export const test = base.extend<{ basePage: BasePage }>({
     await use(new BasePage(page));
   },
 });
+
+export { expect };

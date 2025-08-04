@@ -2,14 +2,14 @@ export const Constants = {
   elementsText: {
     dynamicSystemRemotesRuntimeApp: {
       host: {
-        header: 'Dynamic System Host',
-        hostH3: 'This is the Host App',
-        button: 'Load Remote Component',
+        header: 'Dynamic Remotes with Runtime Environment Variables',
+        hostH3: 'Environment Configuration:',
+        button: 'Load Remote Widget',
       },
-      paragraph: 'This is a demo of runtime environment variables for Module Federation',
-      buttonHeader: 'Remote Widget',
-      buttonH2: 'Remote Component',
-      buttonParagraph: 'This widget was loaded from a remote application using runtime environment variables',
+      paragraph: 'This example demonstrates how Module Federation can load remote components dynamically',
+      buttonHeader: 'Remote Component:',
+      buttonH2: 'Remote Widget',
+      buttonParagraph: 'Using momentjs for format the date',
     },
   },
   commonConstantsData: {
