@@ -1,4 +1,5 @@
-import { test, expect } from './utils/base-test';
+import { test, expect } from '@playwright/test';
+import { BasePage } from './utils/base-test';
 import { selectors } from './utils/selectors';
 import { Constants } from './utils/constants';
 
@@ -35,7 +36,8 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
     const { host, appNameText, headerText, widgetName, widgetParagraph, widgetColor, widgetIndexNumber, isTwoWidgets } = appData;
     
     test.describe(`Check ${appNameText}`, () => {
-      test(`should display ${appNameText} elements correctly`, async ({ basePage }) => {
+      test(`should display ${appNameText} elements correctly`, async ({ page }) => {
+        const basePage = new BasePage(page);
         const consoleErrors: string[] = [];
         basePage.page.on('console', (msg) => {
           if (msg.type() === 'error') {
@@ -65,7 +67,8 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
         expect(criticalErrors).toHaveLength(0);
       });
 
-      test(`should display widgets correctly in ${appNameText}`, async ({ basePage }) => {
+      test(`should display widgets correctly in ${appNameText}`, async ({ page }) => {
+        const basePage = new BasePage(page);
         await basePage.openLocalhost(host);
 
         if (isTwoWidgets) {
@@ -230,7 +233,8 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
       expect(corsErrors).toHaveLength(0);
     });
 
-    test('should demonstrate moment.js sharing', async ({ basePage }) => {
+    test('should demonstrate moment.js sharing', async ({ page }) => {
+      const basePage = new BasePage(page);
       await basePage.openLocalhost(3001);
 
       // Check that moment.js date is formatted correctly in both widgets

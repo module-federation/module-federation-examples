@@ -1,4 +1,5 @@
-import { test, expect } from './utils/base-test';
+import { test, expect } from '@playwright/test';
+import { BasePage } from './utils/base-test';
 import { selectors } from './utils/selectors';
 import { Constants } from './utils/constants';
 
@@ -29,7 +30,8 @@ test.describe('Automatic Vendor Sharing E2E Tests', () => {
     const { host, appNameText, headerText, buttonColor } = appData;
     
     test.describe(`Check ${appNameText}`, () => {
-      test(`should display ${appNameText} header and subheader correctly`, async ({ basePage }) => {
+      test(`should display ${appNameText} header and subheader correctly`, async ({ page }) => {
+        const basePage = new BasePage(page);
         const consoleErrors: string[] = [];
         basePage.page.on('console', (msg) => {
           if (msg.type() === 'error') {
@@ -59,7 +61,8 @@ test.describe('Automatic Vendor Sharing E2E Tests', () => {
         expect(criticalErrors).toHaveLength(0);
       });
 
-      test(`should display ${appNameText} button correctly`, async ({ basePage }) => {
+      test(`should display ${appNameText} button correctly`, async ({ page }) => {
+        const basePage = new BasePage(page);
         await basePage.openLocalhost(host);
 
         const buttonText = `${appNameText} ${Constants.commonConstantsData.button}`;
@@ -71,7 +74,8 @@ test.describe('Automatic Vendor Sharing E2E Tests', () => {
         );
       });
 
-      test(`should have correct button styling in ${appNameText}`, async ({ basePage }) => {
+      test(`should have correct button styling in ${appNameText}`, async ({ page }) => {
+        const basePage = new BasePage(page);
         await basePage.openLocalhost(host);
 
         const buttonText = `${appNameText} ${Constants.commonConstantsData.button}`;
@@ -82,7 +86,8 @@ test.describe('Automatic Vendor Sharing E2E Tests', () => {
         await basePage.checkElementBackgroundColor(buttonSelector, buttonColor);
       });
 
-      test(`should handle ${appNameText} button interactions`, async ({ basePage }) => {
+      test(`should handle ${appNameText} button interactions`, async ({ page }) => {
+        const basePage = new BasePage(page);
         await basePage.openLocalhost(host);
 
         const buttonText = `${appNameText} ${Constants.commonConstantsData.button}`;

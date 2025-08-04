@@ -1,11 +1,13 @@
-import { test, expect } from './utils/base-test';
+import { test, expect } from '@playwright/test';
+import { BasePage } from './utils/base-test';
 import { selectors } from './utils/selectors';
 import { Constants } from './utils/constants';
 
 test.describe('Dynamic Remotes E2E Tests', () => {
   
   test.describe('Host Application (App 1)', () => {
-    test('should display host application elements correctly', async ({ basePage }) => {
+    test('should display host application elements correctly', async ({ page }) => {
+      const basePage = new BasePage(page);
       const consoleErrors: string[] = [];
       basePage.page.on('console', (msg) => {
         if (msg.type() === 'error') {
@@ -33,7 +35,8 @@ test.describe('Dynamic Remotes E2E Tests', () => {
       expect(criticalErrors).toHaveLength(0);
     });
 
-    test('should dynamically load App 2 widget successfully', async ({ basePage }) => {
+    test('should dynamically load App 2 widget successfully', async ({ page }) => {
+      const basePage = new BasePage(page);
       const consoleErrors: string[] = [];
       basePage.page.on('console', (msg) => {
         if (msg.type() === 'error') {
@@ -63,7 +66,8 @@ test.describe('Dynamic Remotes E2E Tests', () => {
       expect(moduleErrors).toHaveLength(0);
     });
 
-    test('should dynamically load App 3 widget successfully', async ({ basePage }) => {
+    test('should dynamically load App 3 widget successfully', async ({ page }) => {
+      const basePage = new BasePage(page);
       const consoleErrors: string[] = [];
       basePage.page.on('console', (msg) => {
         if (msg.type() === 'error') {
@@ -93,7 +97,8 @@ test.describe('Dynamic Remotes E2E Tests', () => {
       expect(moduleErrors).toHaveLength(0);
     });
 
-    test('should handle sequential loading of both widgets', async ({ basePage }) => {
+    test('should handle sequential loading of both widgets', async ({ page }) => {
+      const basePage = new BasePage(page);
       await basePage.openLocalhost(3001);
 
       // Load App 2 widget first
@@ -116,7 +121,8 @@ test.describe('Dynamic Remotes E2E Tests', () => {
       // rather than accumulating, so we verify the latest widget is visible
     });
 
-    test('should show loading states and handle errors gracefully', async ({ basePage }) => {
+    test('should show loading states and handle errors gracefully', async ({ page }) => {
+      const basePage = new BasePage(page);
       await basePage.openLocalhost(3001);
 
       // Check that buttons are initially enabled
@@ -130,7 +136,8 @@ test.describe('Dynamic Remotes E2E Tests', () => {
   });
 
   test.describe('Remote Application - App 2', () => {
-    test('should display App 2 standalone correctly', async ({ basePage }) => {
+    test('should display App 2 standalone correctly', async ({ page }) => {
+      const basePage = new BasePage(page);
       const consoleErrors: string[] = [];
       basePage.page.on('console', (msg) => {
         if (msg.type() === 'error') {
@@ -161,7 +168,8 @@ test.describe('Dynamic Remotes E2E Tests', () => {
   });
 
   test.describe('Remote Application - App 3', () => {
-    test('should display App 3 standalone correctly', async ({ basePage }) => {
+    test('should display App 3 standalone correctly', async ({ page }) => {
+      const basePage = new BasePage(page);
       const consoleErrors: string[] = [];
       basePage.page.on('console', (msg) => {
         if (msg.type() === 'error') {

@@ -1,6 +1,6 @@
 import { test as base, Page } from '@playwright/test';
 
-class BasePage {
+export class BasePage {
   constructor(public page: Page) {}
 
   async openLocalhost(port: number) {
