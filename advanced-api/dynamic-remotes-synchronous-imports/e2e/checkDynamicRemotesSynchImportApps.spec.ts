@@ -1,29 +1,67 @@
-import { test, expect } from '@playwright/test';
-import { BasePage } from './utils/base-test';
-import { selectors } from './utils/selectors';
-import { Constants } from './utils/constants';
+import { test, expect, Page } from '@playwright/test';
+
+// Helper functions
+async function openLocalhost(page: Page, port: number) {
+  await page.goto(`http://localhost:${port}`);
+  await page.waitForLoadState('networkidle');
+}
+
+async function checkElementWithTextPresence(page: Page, selector: string, text: string, timeout: number = 10000) {
+  await page.locator(selector).filter({ hasText: text }).waitFor({ timeout });
+}
+
+async function checkElementVisibility(page: Page, selector: string, timeout: number = 10000) {
+  await page.locator(selector).waitFor({ state: 'visible', timeout });
+}
+
+async function checkElementBackgroundColor(page: Page, selector: string, expectedColor: string) {
+  const element = page.locator(selector);
+  await element.waitFor({ state: 'visible' });
+  const backgroundColor = await element.evaluate((el) => {
+    return window.getComputedStyle(el).backgroundColor;
+  });
+  if (backgroundColor !== expectedColor) {
+    throw new Error(`Expected background color ${expectedColor}, but got ${backgroundColor}`);
+  }
+}
+
+async function clickElementWithText(page: Page, selector: string, text: string) {
+  await page.locator(selector).filter({ hasText: text }).click();
+}
+
+async function waitForDynamicImport(page: Page, timeout: number = 5000) {
+  // Wait for any dynamic imports to complete
+  await page.waitForTimeout(1000);
+  await page.waitForLoadState('networkidle', { timeout });
+}
+
+async function checkDateFormat(page: Page) {
+  // Check for moment.js formatted date (MMMM Do YYYY, h:mm format)
+  const dateElement = page.locator('text=/[A-Z][a-z]+ \\\\d{1,2}[a-z]{2} \\\\d{4}, \\\\d{1,2}:\\\\d{2}/');
+  await dateElement.waitFor({ timeout: 5000 });
+}
 
 const appsData = [
   {
-    headerSelector: selectors.tags.headers.h1,
-    subHeaderSelector: selectors.tags.headers.h2,
-    headerText: Constants.elementsText.dynamicRemotesApp.header,
-    appNameText: Constants.commonConstantsData.commonCountAppNames.app1,
-    widgetName: Constants.elementsText.dynamicRemotesApp.synchronousImportWidgetsNames,
-    widgetParagraph: Constants.commonPhrases.dynamicRemotesApp.widgetParagraphText,
-    widgetColor: Constants.color.dynamicRemotesWidgetColor,
+    headerSelector: 'h1',
+    subHeaderSelector: 'h2',
+    headerText: '🌐 Dynamic System Host',
+    appNameText: 'App 1 - Demonstrating Synchronous Imports with Dynamic Remotes',
+    widgetName: ['App 1 Widget', 'App 2 Widget'],
+    widgetParagraph: ["Moment shouldn't download twice", "Moment shouldn't download twice"],
+    widgetColor: ['rgb(255, 0, 0)', 'rgb(0, 0, 255)'],
     widgetIndexNumber: 1,
     isTwoWidgets: true,
     host: 3001,
   },
   {
-    headerSelector: selectors.tags.headers.h1,
-    subHeaderSelector: selectors.tags.headers.h2,
-    headerText: Constants.elementsText.dynamicRemotesApp.header,
-    appNameText: Constants.commonConstantsData.commonCountAppNames.app2,
-    widgetName: Constants.elementsText.dynamicRemotesApp.synchronousImportWidgetsNames,
-    widgetParagraph: Constants.commonPhrases.dynamicRemotesApp.widgetParagraphText,
-    widgetColor: Constants.color.dynamicRemotesWidgetColor,
+    headerSelector: 'h1',
+    subHeaderSelector: 'h2',
+    headerText: '🌐 Dynamic System Host',
+    appNameText: 'App 2',
+    widgetName: ['App 1 Widget', 'App 2 Widget'],
+    widgetParagraph: ["Moment shouldn't download twice", "Moment shouldn't download twice"],
+    widgetColor: ['rgb(255, 0, 0)', 'rgb(0, 0, 255)'],
     widgetIndexNumber: 2,
     isTwoWidgets: false,
     host: 3002,
@@ -37,22 +75,23 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
     
     test.describe(`Check ${appNameText}`, () => {
       test(`should display ${appNameText} elements correctly`, async ({ page }) => {
-        const basePage = new BasePage(page);
         const consoleErrors: string[] = [];
-        basePage.page.on('console', (msg) => {
+        page.on('console', (msg) => {
           if (msg.type() === 'error') {
             consoleErrors.push(msg.text());
           }
         });
 
-        await basePage.openLocalhost(host);
+        await openLocalhost(page, host);
 
         // Check header and subheader exist
-        await basePage.checkElementWithTextPresence(
+        await checkElementWithTextPresence(
+          page,
           appData.headerSelector,
           headerText
         );
-        await basePage.checkElementWithTextPresence(
+        await checkElementWithTextPresence(
+          page,
           appData.subHeaderSelector,
           appNameText
         );
@@ -68,59 +107,62 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
       });
 
       test(`should display widgets correctly in ${appNameText}`, async ({ page }) => {
-        const basePage = new BasePage(page);
-        await basePage.openLocalhost(host);
+        await openLocalhost(page, host);
 
         if (isTwoWidgets) {
           // App 1 has two widgets (local + remote)
           for (let i = 0; i < widgetName.length; i++) {
-            const widgetSelector = i === 0 ? selectors.dataTestIds.app1Widget : selectors.dataTestIds.app2Widget;
+            const widgetSelector = i === 0 ? '[data-e2e="WIDGET__1"]' : '[data-e2e="WIDGET__2"]';
             
             // Check widget visibility
-            await basePage.checkElementVisibility(widgetSelector);
+            await checkElementVisibility(page, widgetSelector);
             
             // Check widget title
-            await basePage.checkElementWithTextPresence(
+            await checkElementWithTextPresence(
+              page,
               appData.subHeaderSelector,
               widgetName[i]
             );
             
             // Check widget paragraph text
-            await basePage.checkElementWithTextPresence(
-              selectors.tags.paragraph,
+            await checkElementWithTextPresence(
+              page,
+              'p',
               widgetParagraph[i]
             );
             
             // Check moment.js date formatting
-            await basePage.checkDateFormat();
+            await checkDateFormat(page);
             
             // Check widget background color
-            await basePage.checkElementBackgroundColor(widgetSelector, widgetColor[i]);
+            await checkElementBackgroundColor(page, widgetSelector, widgetColor[i]);
           }
         } else {
           // App 2 has one widget
-          const widgetSelector = selectors.dataTestIds.app2Widget;
+          const widgetSelector = '[data-e2e="WIDGET__2"]';
           
           // Check widget visibility
-          await basePage.checkElementVisibility(widgetSelector);
+          await checkElementVisibility(page, widgetSelector);
           
           // Check widget title
-          await basePage.checkElementWithTextPresence(
+          await checkElementWithTextPresence(
+            page,
             appData.subHeaderSelector,
             widgetName[widgetIndexNumber - 1]
           );
           
           // Check widget paragraph text
-          await basePage.checkElementWithTextPresence(
-            selectors.tags.paragraph,
+          await checkElementWithTextPresence(
+            page,
+            'p',
             widgetParagraph[widgetIndexNumber - 1]
           );
           
           // Check moment.js date formatting
-          await basePage.checkDateFormat();
+          await checkDateFormat(page);
           
           // Check widget background color
-          await basePage.checkElementBackgroundColor(widgetSelector, widgetColor[1]);
+          await checkElementBackgroundColor(page, widgetSelector, widgetColor[1]);
         }
       });
     });
@@ -158,7 +200,7 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
       await page.waitForLoadState('networkidle');
 
       // Check that App 2 widget is loaded synchronously (no dynamic import button clicks)
-      await page.waitForSelector(selectors.dataTestIds.app2Widget, { timeout: 10000 });
+      await page.waitForSelector('[data-e2e="WIDGET__2"]', { timeout: 10000 });
 
       // Verify the remote entry was loaded
       const remoteEntryRequests = networkRequests.filter(url => 
@@ -179,8 +221,8 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
       await page.waitForLoadState('networkidle');
 
       // Verify both widgets are present (demonstrating successful remote loading)
-      await page.waitForSelector(selectors.dataTestIds.app1Widget);
-      await page.waitForSelector(selectors.dataTestIds.app2Widget);
+      await page.waitForSelector('[data-e2e="WIDGET__1"]');
+      await page.waitForSelector('[data-e2e="WIDGET__2"]');
 
       // Check that runtime plugin logged URL processing
       const urlResolutionLogs = consoleMessages.filter(msg => 
@@ -234,11 +276,10 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
     });
 
     test('should demonstrate moment.js sharing', async ({ page }) => {
-      const basePage = new BasePage(page);
-      await basePage.openLocalhost(3001);
+      await openLocalhost(page, 3001);
 
       // Check that moment.js date is formatted correctly in both widgets
-      const dateElements = basePage.page.locator('text=/[A-Z][a-z]+ \\d{1,2}[a-z]{2} \\d{4}, \\d{1,2}:\\d{2}/');
+      const dateElements = page.locator('text=/[A-Z][a-z]+ \\d{1,2}[a-z]{2} \\d{4}, \\d{1,2}:\\d{2}/');
       
       // Should have date formatting in both local and remote widgets
       await expect(dateElements).toHaveCount(2);
@@ -276,8 +317,8 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
       await page.waitForSelector('h2:has-text("App 1")');
       
       // Verify both widgets loaded successfully
-      await page.waitForSelector(selectors.dataTestIds.app1Widget);
-      await page.waitForSelector(selectors.dataTestIds.app2Widget);
+      await page.waitForSelector('[data-e2e="WIDGET__1"]');
+      await page.waitForSelector('[data-e2e="WIDGET__2"]');
     });
   });
 });
