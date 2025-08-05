@@ -1,4 +1,4 @@
-import { test as base, Page } from '@playwright/test';
+import { Page } from '@playwright/test';
 
 export class BasePage {
   constructor(public page: Page) {}
@@ -44,8 +44,3 @@ export class BasePage {
   }
 }
 
-export const test = base.extend<{ basePage: BasePage }>({
-  basePage: async ({ page }, use) => {
-    await use(new BasePage(page));
-  },
-});
