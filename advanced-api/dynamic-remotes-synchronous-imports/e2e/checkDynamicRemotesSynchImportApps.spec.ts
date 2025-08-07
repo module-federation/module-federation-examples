@@ -7,7 +7,8 @@ async function openLocalhost(page: Page, port: number) {
 }
 
 async function checkElementWithTextPresence(page: Page, selector: string, text: string, timeout: number = 10000) {
-  await page.locator(selector).filter({ hasText: text }).waitFor({ timeout });
+  // Use getByText for exact text matching to avoid conflicts with partial matches
+  await page.locator(selector).filter({ hasText: new RegExp(`^${text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`) }).first().waitFor({ timeout });
 }
 
 async function checkElementVisibility(page: Page, selector: string, timeout: number = 10000) {

@@ -104,4 +104,128 @@ export class ErrorBoundary extends Component<Props, State> {
 
   private handleAutoRetry = () => {
     this.resetTimeoutId = window.setTimeout(() => {
-      console.log('[ErrorBoundary] Auto-retrying after error...');\n      this.handleRetry();\n    }, 5000);\n  };\n\n  private renderDefaultFallback() {\n    const { error, errorInfo } = this.state;\n    const isModuleFederationError = error?.message?.includes('Loading') || \n                                   error?.message?.includes('remote') ||\n                                   error?.name === 'ChunkLoadError';\n\n    return (\n      <div style={{\n        padding: '20px',\n        margin: '20px',\n        border: '2px solid #ff6b6b',\n        borderRadius: '8px',\n        backgroundColor: '#ffe0e0',\n        color: '#d63031'\n      }}>\n        <h2 style={{ margin: '0 0 16px 0', fontSize: '18px' }}>\n          {isModuleFederationError ? \n            '🔌 Remote Module Loading Error' : \n            '⚠️ Something went wrong'\n          }\n        </h2>\n        \n        <p style={{ margin: '0 0 16px 0', fontSize: '14px' }}>\n          {isModuleFederationError ? (\n            <>This usually happens when a remote module is unavailable or the URL is incorrect.</>\n          ) : (\n            <>An unexpected error occurred while rendering this component.</>\n          )}\n        </p>\n        \n        <div style={{ marginBottom: '16px' }}>\n          <button \n            onClick={this.handleRetry}\n            style={{\n              padding: '8px 16px',\n              marginRight: '8px',\n              backgroundColor: '#0984e3',\n              color: 'white',\n              border: 'none',\n              borderRadius: '4px',\n              cursor: 'pointer'\n            }}\n          >\n            🔄 Retry\n          </button>\n          \n          {isModuleFederationError && (\n            <button \n              onClick={this.handleAutoRetry}\n              style={{\n                padding: '8px 16px',\n                backgroundColor: '#fdcb6e',\n                color: '#2d3436',\n                border: 'none',\n                borderRadius: '4px',\n                cursor: 'pointer'\n              }}\n            >\n              ⏰ Auto-retry in 5s\n            </button>\n          )}\n        </div>\n        \n        {process.env.NODE_ENV === 'development' && (\n          <details style={{ fontSize: '12px', marginTop: '16px' }}>\n            <summary style={{ cursor: 'pointer', fontWeight: 'bold' }}>\n              🐛 Debug Information\n            </summary>\n            <pre style={{\n              marginTop: '8px',\n              padding: '8px',\n              backgroundColor: '#f8f9fa',\n              border: '1px solid #dee2e6',\n              borderRadius: '4px',\n              overflow: 'auto',\n              fontSize: '11px'\n            }}>\n              <strong>Error:</strong> {error?.toString()}\n              {errorInfo?.componentStack && (\n                <>\n                  {'\n\n'}<strong>Component Stack:</strong>{errorInfo.componentStack}\n                </>\n              )}\n            </pre>\n          </details>\n        )}\n      </div>\n    );\n  }\n\n  render() {\n    if (this.state.hasError) {\n      // Render custom fallback UI or default\n      return this.props.fallback || this.renderDefaultFallback();\n    }\n\n    return this.props.children;\n  }\n}\n\n/**\n * Hook version of Error Boundary for functional components\n * Note: This is a wrapper that uses the class-based ErrorBoundary\n */\nexport function withErrorBoundary<P extends object>(\n  Component: React.ComponentType<P>,\n  errorBoundaryProps?: Omit<Props, 'children'>\n) {\n  const WrappedComponent = (props: P) => (\n    <ErrorBoundary {...errorBoundaryProps}>\n      <Component {...props} />\n    </ErrorBoundary>\n  );\n  \n  WrappedComponent.displayName = `withErrorBoundary(${Component.displayName || Component.name})`;\n  \n  return WrappedComponent;\n}\n\nexport default ErrorBoundary;
+      console.log('[ErrorBoundary] Auto-retrying after error...');
+      this.handleRetry();
+    }, 5000);
+  };
+
+  private renderDefaultFallback() {
+    const { error, errorInfo } = this.state;
+    const isModuleFederationError = error?.message?.includes('Loading') || 
+                                   error?.message?.includes('remote') ||
+                                   error?.name === 'ChunkLoadError';
+
+    return (
+      <div style={{
+        padding: '20px',
+        margin: '20px',
+        border: '2px solid #ff6b6b',
+        borderRadius: '8px',
+        backgroundColor: '#ffe0e0',
+        color: '#d63031'
+      }}>
+        <h2 style={{ margin: '0 0 16px 0', fontSize: '18px' }}>
+          {isModuleFederationError ? 
+            '🔌 Remote Module Loading Error' : 
+            '⚠️ Something went wrong'
+          }
+        </h2>
+        
+        <p style={{ margin: '0 0 16px 0', fontSize: '14px' }}>
+          {isModuleFederationError ? (
+            <>This usually happens when a remote module is unavailable or the URL is incorrect.</>
+          ) : (
+            <>An unexpected error occurred while rendering this component.</>
+          )}
+        </p>
+        
+        <div style={{ marginBottom: '16px' }}>
+          <button 
+            onClick={this.handleRetry}
+            style={{
+              padding: '8px 16px',
+              marginRight: '8px',
+              backgroundColor: '#0984e3',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer'
+            }}
+          >
+            🔄 Retry
+          </button>
+          
+          {isModuleFederationError && (
+            <button 
+              onClick={this.handleAutoRetry}
+              style={{
+                padding: '8px 16px',
+                backgroundColor: '#fdcb6e',
+                color: '#2d3436',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer'
+              }}
+            >
+              ⏰ Auto-retry in 5s
+            </button>
+          )}
+        </div>
+        
+        {process.env.NODE_ENV === 'development' && (
+          <details style={{ fontSize: '12px', marginTop: '16px' }}>
+            <summary style={{ cursor: 'pointer', fontWeight: 'bold' }}>
+              🐛 Debug Information
+            </summary>
+            <pre style={{
+              marginTop: '8px',
+              padding: '8px',
+              backgroundColor: '#f8f9fa',
+              border: '1px solid #dee2e6',
+              borderRadius: '4px',
+              overflow: 'auto',
+              fontSize: '11px'
+            }}>
+              <strong>Error:</strong> {error?.toString()}
+              {errorInfo?.componentStack && (
+                <>
+                  {'\n\n'}<strong>Component Stack:</strong>{errorInfo.componentStack}
+                </>
+              )}
+            </pre>
+          </details>
+        )}
+      </div>
+    );
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // Render custom fallback UI or default
+      return this.props.fallback || this.renderDefaultFallback();
+    }
+
+    return this.props.children;
+  }
+}
+
+/**
+ * Hook version of Error Boundary for functional components
+ * Note: This is a wrapper that uses the class-based ErrorBoundary
+ */
+export function withErrorBoundary<P extends object>(
+  Component: React.ComponentType<P>,
+  errorBoundaryProps?: Omit<Props, 'children'>
+) {
+  const WrappedComponent = (props: P) => (
+    <ErrorBoundary {...errorBoundaryProps}>
+      <Component {...props} />
+    </ErrorBoundary>
+  );
+  
+  WrappedComponent.displayName = `withErrorBoundary(${Component.displayName || Component.name})`;
+  
+  return WrappedComponent;
+}
+
+export default ErrorBoundary;

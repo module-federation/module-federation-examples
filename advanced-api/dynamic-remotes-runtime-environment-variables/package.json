@@ -16,7 +16,7 @@
     "docker:run": "pnpm --filter dynamic-remotes-runtime-environment-variables_* --parallel docker:run",
     "docker:rm": "pnpm --filter dynamic-remotes-runtime-environment-variables_* --parallel docker:rm",
     "e2e:ci": "npx playwright test",
-    "legacy:e2e:ci": "npx playwright test"
+    "legacy:e2e:ci": "USE_LEGACY=1 npx playwright test"
   },
   "devDependencies": {
     "@playwright/test": "^1.54.2",

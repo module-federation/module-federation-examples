@@ -14,14 +14,17 @@ module.exports = {
       'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
     },
   },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+  },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          presets: ['@babel/preset-react'],
+          presets: ['@babel/preset-react', '@babel/preset-typescript'],
         },
       },
     ],
@@ -31,7 +34,7 @@ module.exports = {
       name: app1Module.name,
       filename: app1Module.fileName,
       remotes: {
-        app2: app2Module.federationConfig,
+        app2: 'app2@//localhost:3002/remoteEntry.js',
       },
       runtimePlugins: [require.resolve('./runtimePlugin.js')],
       shared: {

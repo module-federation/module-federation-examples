@@ -31,13 +31,17 @@ export default defineConfig({
 
   webServer: [
     {
-      command: 'pnpm --filter dynamic-remotes-runtime-environment-variables_host start',
+      command: process.env.CI && process.env.USE_LEGACY
+        ? 'pnpm --filter dynamic-remotes-runtime-environment-variables_host legacy:start'
+        : 'pnpm --filter dynamic-remotes-runtime-environment-variables_host start',
       port: 3000,
       reuseExistingServer: !process.env.CI,
       timeout: 120000,
     },
     {
-      command: 'pnpm --filter dynamic-remotes-runtime-environment-variables_remote start',
+      command: process.env.CI && process.env.USE_LEGACY
+        ? 'pnpm --filter dynamic-remotes-runtime-environment-variables_remote legacy:start'
+        : 'pnpm --filter dynamic-remotes-runtime-environment-variables_remote start',
       port: 3001,
       reuseExistingServer: !process.env.CI,
       timeout: 120000,

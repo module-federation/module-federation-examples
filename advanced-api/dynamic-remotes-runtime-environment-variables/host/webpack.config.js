@@ -1,11 +1,15 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const CopyPlugin = require('copy-webpack-plugin');
+const path = require('path');
 
 module.exports = {
   entry: './src/index',
   mode: 'development',
   devServer: {
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
     port: 3000,
     headers: {
       'Access-Control-Allow-Origin': '*',
