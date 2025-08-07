@@ -9,6 +9,9 @@ const deps = require('./package.json').dependencies;
 module.exports = {
   entry: './src/index',
   mode: 'development',
+  resolve: {
+    extensions: ['.tsx', '.ts', '.jsx', '.js'],
+  },
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
@@ -28,15 +31,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         include: path.resolve(__dirname, 'src'),
         use: {
           loader: 'builtin:swc-loader',
           options: {
             jsc: {
               parser: {
-                syntax: 'ecmascript',
-                jsx: true,
+                syntax: 'typescript',
+                tsx: true,
               },
               transform: {
                 react: {

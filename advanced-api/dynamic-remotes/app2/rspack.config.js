@@ -43,8 +43,8 @@ module.exports = {
         },
       }),
       dts: {
-        generateTypes: true,
-        generateAPITypes: true,
+        generateTypes: false,
+        generateAPITypes: false,
       },
       manifest: {
         fileName: 'mf-manifest.json',

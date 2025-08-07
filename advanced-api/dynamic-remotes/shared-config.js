@@ -127,9 +127,6 @@ const swcConfig = {
     },
     target: 'es2020',
   },
-  env: {
-    targets: 'defaults',
-  },
 };
 
 /**
@@ -147,9 +144,6 @@ const swcConfigTS = {
       },
     },
     target: 'es2020',
-  },
-  env: {
-    targets: 'defaults',
   },
 };
 

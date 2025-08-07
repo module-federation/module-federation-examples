@@ -6,7 +6,7 @@ export const EnvContext = createContext();
 
 const App = () => {
   const { data, loading, error, retry } = useFetchJson(
-    `${__webpack_public_path__}env-config.json`,
+    '/env-config.json',
     {
       maxRetries: 3,
       retryDelay: 1000,

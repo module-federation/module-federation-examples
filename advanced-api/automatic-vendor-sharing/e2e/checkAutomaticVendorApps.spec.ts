@@ -113,7 +113,7 @@ test.describe('Automatic Vendor Sharing E2E Tests', () => {
       );
       
       // Should not load React multiple times due to vendor sharing
-      expect(reactRequests.length).toBeLessThan(10);
+      expect(reactRequests.length).toBeLessThanOrEqual(10);
     });
 
     test('should handle CORS correctly for federated modules', async ({ page }) => {

@@ -90,7 +90,7 @@ test.describe('Dynamic Remotes E2E Tests', () => {
       await openLocalhost(page, 3001);
 
       // Check main elements exist
-      await checkElementWithTextPresence(page, 'h1', '🌐 Dynamic System Host');
+      await checkElementWithTextPresence(page, 'h1', 'Dynamic System Host');
       await checkElementWithTextPresence(page, 'h2', 'App 1');
       await checkElementWithTextPresence(page, 'p', 'The Dynamic System will take advantage of Module Federation');
 

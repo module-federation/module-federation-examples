@@ -28,7 +28,7 @@ module.exports = {
     historyApiFallback: true,
   },
   output: {
-    publicPath: 'auto',
+    publicPath: '/',
     clean: true,
     filename: isProduction ? '[name].[contenthash].js' : '[name].js',
     chunkFilename: isProduction ? '[name].[contenthash].js' : '[name].js',

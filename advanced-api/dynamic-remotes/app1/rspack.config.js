@@ -15,6 +15,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
+    alias: {
+      '@module-federation/runtime$': require.resolve('@module-federation/runtime'),
+    },
   },
   module: {
     rules: [
@@ -66,10 +69,4 @@ module.exports = {
       template: './public/index.html',
     }),
   ],
-  // it will be fixed soon...
-  resolve: {
-    alias: {
-      '@module-federation/runtime$': require.resolve('@module-federation/runtime'),
-    },
-  },
 };
