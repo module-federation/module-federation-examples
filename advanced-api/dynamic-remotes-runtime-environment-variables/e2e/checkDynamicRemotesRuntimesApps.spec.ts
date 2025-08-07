@@ -1,28 +1,41 @@
-import { test, expect } from '@playwright/test';
-import { BasePage } from './utils/base-test';
-import { selectors } from './utils/selectors';
-import { Constants } from './utils/constants';
+import { test, expect, Page } from '@playwright/test';
+
+// Helper functions
+async function openLocalhost(page: Page, port: number) {
+  await page.goto(`http://localhost:${port}`);
+  await page.waitForLoadState('networkidle');
+}
+
+async function checkElementWithTextPresence(page: Page, selector: string, text: string) {
+  const element = page.locator(`${selector}:has-text("${text}")`);
+  await expect(element).toBeVisible();
+}
+
+async function clickElementWithText(page: Page, selector: string, text: string) {
+  await page.click(`${selector}:has-text("${text}")`);
+}
+
+async function checkDateFormat(page: Page) {
+  const dateElement = page.locator('text=/[A-Z][a-z]+ \\d{1,2}[a-z]{2} \\d{4}, \\d{1,2}:\\d{2}/').first();
+  await expect(dateElement).toBeVisible();
+}
 
 const appsData = [
   {
-    header: Constants.elementsText.dynamicSystemRemotesRuntimeApp.host.header,
-    subheader: Constants.commonConstantsData.basicComponents.host,
-    hostH3: Constants.elementsText.dynamicSystemRemotesRuntimeApp.host.hostH3,
-    paragraph: Constants.elementsText.dynamicSystemRemotesRuntimeApp.paragraph,
-    button: Constants.elementsText.dynamicSystemRemotesRuntimeApp.host.button,
-    loading: Constants.commonConstantsData.loading,
-    buttonHeader: Constants.elementsText.dynamicSystemRemotesRuntimeApp.buttonHeader,
-    buttonH2: Constants.elementsText.dynamicSystemRemotesRuntimeApp.buttonH2,
-    buttonParagraph: Constants.elementsText.dynamicSystemRemotesRuntimeApp.buttonParagraph,
+    header: 'Dynamic Remotes with Runtime Environment Variables',
+    subheader: 'Host',
+    hostH3: 'Environment Configuration:',
+    paragraph: 'This example demonstrates how Module Federation can load remote components dynamically',
+    button: 'Load Remote Widget',
+    buttonH2: 'Remote Widget',
+    buttonParagraph: 'Using momentjs for format the date',
     host: 3000,
   },
   {
-    header: Constants.elementsText.dynamicSystemRemotesRuntimeApp.host.header,
-    subheader: Constants.commonConstantsData.basicComponents.remote,
-    loading: Constants.commonConstantsData.loading,
-    buttonHeader: Constants.elementsText.dynamicSystemRemotesRuntimeApp.buttonHeader,
-    buttonH2: Constants.elementsText.dynamicSystemRemotesRuntimeApp.buttonH2,
-    buttonParagraph: Constants.elementsText.dynamicSystemRemotesRuntimeApp.buttonParagraph,
+    header: 'Dynamic Remotes with Runtime Environment Variables',
+    subheader: 'Remote',
+    buttonH2: 'Remote Widget',
+    buttonParagraph: 'Using momentjs for format the date',
     host: 3001,
   },
 ];
@@ -30,54 +43,33 @@ const appsData = [
 test.describe('Dynamic Remotes Runtime Environment Variables E2E Tests', () => {
   
   appsData.forEach((appData) => {
-    const { host, subheader, header, hostH3, paragraph, button, loading, buttonHeader, buttonH2, buttonParagraph } = appData;
+    const { host, subheader, header, hostH3, paragraph, button, buttonH2, buttonParagraph } = appData;
     
     test.describe(`Check ${subheader} app`, () => {
       test(`should display ${subheader} app widget functionality and application elements`, async ({ page }) => {
-        const basePage = new BasePage(page);
-        await basePage.openLocalhost(host);
+        await openLocalhost(page, host);
 
         // Check main header
-        await basePage.checkElementWithTextPresence(
-          selectors.tags.headers.h1,
-          header
-        );
+        await checkElementWithTextPresence(page, 'h1', header);
 
         if (host === 3000) {
           // Host app specific elements
-          await basePage.checkElementWithTextPresence(
-            selectors.tags.headers.h3,
-            hostH3!
-          );
-          
-          await basePage.checkElementWithTextPresence(
-            selectors.tags.paragraph,
-            paragraph!
-          );
+          await checkElementWithTextPresence(page, 'h3', hostH3!);
+          await checkElementWithTextPresence(page, 'p', paragraph!);
 
           // Click the load remote component button
-          await basePage.clickElementWithText(
-            selectors.tags.coreElements.button,
-            button!
-          );
+          await clickElementWithText(page, 'button', button!);
 
           // Wait for loading to complete
-          await basePage.page.waitForTimeout(3000);
+          await page.waitForTimeout(3000);
         }
 
         // Check that the remote component loaded successfully
-        await basePage.checkElementWithTextPresence(
-          selectors.tags.headers.h2,
-          buttonH2
-        );
-
-        await basePage.checkElementWithTextPresence(
-          selectors.tags.paragraph,
-          buttonParagraph
-        );
+        await checkElementWithTextPresence(page, 'h2', buttonH2);
+        await checkElementWithTextPresence(page, 'p', buttonParagraph);
 
         // Check moment.js date formatting
-        await basePage.checkDateFormat();
+        await checkDateFormat(page);
       });
     });
   });
@@ -102,18 +94,17 @@ test.describe('Dynamic Remotes Runtime Environment Variables E2E Tests', () => {
     });
 
     test('should demonstrate dynamic remote loading with environment config', async ({ page }) => {
-      const basePage = new BasePage(page);
-      await basePage.openLocalhost(3000);
+      await openLocalhost(page, 3000);
 
       // Click to load remote component
-      await basePage.clickElementWithText('button', 'Load Remote Widget');
+      await clickElementWithText(page, 'button', 'Load Remote Widget');
 
       // Wait for loading to complete
-      await basePage.page.waitForTimeout(3000);
+      await page.waitForTimeout(3000);
 
       // Verify remote component is now loaded
-      await basePage.checkElementWithTextPresence('h2', 'Remote Widget');
-      await basePage.checkElementWithTextPresence('p', 'Using momentjs for format the date');
+      await checkElementWithTextPresence(page, 'h2', 'Remote Widget');
+      await checkElementWithTextPresence(page, 'p', 'Using momentjs for format the date');
     });
   });
 
