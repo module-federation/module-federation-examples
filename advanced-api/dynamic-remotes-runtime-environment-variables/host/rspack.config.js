@@ -70,7 +70,7 @@ module.exports = {
     }),
     new ModuleFederationPlugin({
       name: 'host',
-      runtimePlugins: isProduction ? ['@module-federation/retry-plugin'] : [],
+      runtimePlugins: [],
       shared: {
         react: {
           singleton: true,

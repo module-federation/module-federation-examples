@@ -8,9 +8,9 @@ const App = () => {
   const { data, loading, error, retry } = useFetchJson(
     '/env-config.json',
     {
-      maxRetries: 3,
-      retryDelay: 1000,
-      timeout: 5000,
+      maxRetries: 2,
+      retryDelay: 500,
+      timeout: 3000,
       validateData: (data) => data && typeof data === 'object',
       fallbackData: {
         API_URL: 'https://fallback.api.com',

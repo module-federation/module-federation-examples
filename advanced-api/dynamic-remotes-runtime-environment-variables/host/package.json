@@ -22,7 +22,7 @@
   "scripts": {
     "start": "chmod +x ./env.sh && cp env-config.json ./public/ && NODE_ENV=development rspack serve",
     "build": "NODE_ENV=production rspack build --mode production",
-    "serve": "serve dist -p 3001",
+    "serve": "serve dist -p 3000",
     "clean": "rm -rf dist",
     "docker:build": "docker build . -t csr-env/host:0.0.0",
     "docker:run": "docker run -it --name csr-env-host -p 3000:80 -d -e API_URL=https://host.com/api csr-env/host:0.0.0",
