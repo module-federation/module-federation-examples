@@ -74,7 +74,7 @@ module.exports = {
       exposes: {
         './Widget': './src/components/WidgetWrapper',
       },
-      runtimePlugins: isProduction ? ['@module-federation/retry-plugin'] : [],
+      runtimePlugins: [],
       shared: {
         react: {
           singleton: true,
