@@ -1,21 +1,25 @@
-import React, { createContext } from 'react';
+import React, { createContext, useCallback, useMemo } from 'react';
 import Main from './Main';
 import useFetchJson from '../hooks/useFetchJson';
 
 export const EnvContext = createContext();
 
 const App = () => {
+  const validateData = useCallback((data) => data && typeof data === 'object', []);
+  
+  const fallbackData = useMemo(() => ({
+    API_URL: 'https://fallback.api.com',
+    REMOTE_URL: 'http://localhost:3001/remoteEntry.js'
+  }), []);
+
   const { data, loading, error, retry } = useFetchJson(
     '/env-config.json',
     {
       maxRetries: 2,
       retryDelay: 500,
       timeout: 3000,
-      validateData: (data) => data && typeof data === 'object',
-      fallbackData: {
-        API_URL: 'https://fallback.api.com',
-        REMOTE_URL: 'http://localhost:3001/remoteEntry.js'
-      }
+      validateData,
+      fallbackData
     }
   );
 

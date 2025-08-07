@@ -15,6 +15,7 @@ const useFetchJson = (path, options = {}) => {
   const [retryCount, setRetryCount] = useState(0);
   const abortControllerRef = useRef(null);
   const isMountedRef = useRef(true);
+  const fetchStartedRef = useRef(false);
 
   const fetchData = useCallback(async () => {
     if (!path) {
@@ -22,6 +23,14 @@ const useFetchJson = (path, options = {}) => {
       setIsLoading(false);
       return;
     }
+
+    // Skip if fetch is already in progress
+    if (fetchStartedRef.current) {
+      return;
+    }
+
+    // Mark fetch as started
+    fetchStartedRef.current = true;
 
     // Cancel previous request
     if (abortControllerRef.current) {
@@ -84,6 +93,7 @@ const useFetchJson = (path, options = {}) => {
         setData(json);
         setRetryCount(0);
         setIsLoading(false);
+        fetchStartedRef.current = false; // Reset for potential retries
         return;
         
       } catch (err) {
@@ -114,12 +124,14 @@ const useFetchJson = (path, options = {}) => {
       }
       
       setIsLoading(false);
+      fetchStartedRef.current = false; // Reset for potential retries
     }
   }, [path, maxRetries, retryDelay, timeout, validateData, fallbackData]);
 
   const retry = useCallback(() => {
     setError(null);
     setRetryCount(0);
+    fetchStartedRef.current = false; // Allow refetch on retry
     fetchData();
   }, [fetchData]);
 
@@ -129,13 +141,15 @@ const useFetchJson = (path, options = {}) => {
 
   // Cleanup on unmount
   useEffect(() => {
+    isMountedRef.current = true;
     return () => {
       isMountedRef.current = false;
+      fetchStartedRef.current = false; // Reset fetch flag on unmount
       if (abortControllerRef.current) {
         abortControllerRef.current.abort();
       }
     };
-  }, []);
+  }, [path]);
 
   return { 
     data, 
