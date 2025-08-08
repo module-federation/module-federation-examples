@@ -57,6 +57,7 @@ const useFetchJson = (path, options = {}) => {
         const response = await Promise.race([fetchPromise, timeoutPromise]);
         
         if (signal.aborted || !isMountedRef.current) {
+          setIsLoading(false);
           return;
         }
 

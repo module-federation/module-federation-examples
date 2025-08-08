@@ -1,4 +1,4 @@
-import React, { lazy, useEffect, useState, useCallback, useRef } from 'react';
+import { lazy, useEffect, useState, useCallback, useRef } from 'react';
 import { registerRemotes, loadRemote } from '@module-federation/runtime';
 
 // Enhanced loading function with retry logic

@@ -104,8 +104,11 @@ export class ErrorBoundary extends Component<Props, State> {
 
   private handleAutoRetry = () => {
     this.resetTimeoutId = window.setTimeout(() => {
-      console.log('[ErrorBoundary] Auto-retrying after error...');
-      this.handleRetry();
+      // Check if component is still mounted before retrying
+      if (this.state.hasError) {
+        console.log('[ErrorBoundary] Auto-retrying after error...');
+        this.handleRetry();
+      }
     }, 5000);
   };
 

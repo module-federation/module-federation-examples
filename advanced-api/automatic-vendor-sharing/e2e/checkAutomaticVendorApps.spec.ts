@@ -15,14 +15,7 @@ async function clickElementWithText(page: Page, selector: string, text: string) 
   await page.click(`${selector}:has-text("${text}")`);
 }
 
-async function checkElementBackgroundColor(page: Page, selector: string, expectedColor: string) {
-  const element = page.locator(selector);
-  await element.waitFor({ state: 'visible' });
-  const backgroundColor = await element.evaluate((el) => {
-    return window.getComputedStyle(el).backgroundColor;
-  });
-  expect(backgroundColor).toBe(expectedColor);
-}
+
 
 const appsData = [
   {
@@ -42,7 +35,7 @@ const appsData = [
 test.describe('Automatic Vendor Sharing E2E Tests', () => {
   
   appsData.forEach((appData) => {
-    const { host, appNameText, headerText, buttonColor } = appData;
+    const { host, appNameText, headerText } = appData;
     
     test.describe(`Check ${appNameText}`, () => {
       test(`should display ${appNameText} header and subheader correctly`, async ({ page }) => {
