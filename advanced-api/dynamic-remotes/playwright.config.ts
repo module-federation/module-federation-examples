@@ -29,6 +29,24 @@ export default defineConfig({
     },
   ],
 
-  // webServer configuration removed - servers are started manually in package.json scripts
-  // This ensures better compatibility with CI environments and matches the original Cypress approach
+  webServer: [
+    {
+      command: 'pnpm --filter dynamic-remotes_app1 start',
+      port: 3001,
+      reuseExistingServer: !process.env.CI,
+      timeout: 120000,
+    },
+    {
+      command: 'pnpm --filter dynamic-remotes_app2 start',
+      port: 3002,
+      reuseExistingServer: !process.env.CI,
+      timeout: 120000,
+    },
+    {
+      command: 'pnpm --filter dynamic-remotes_app3 start',
+      port: 3003,
+      reuseExistingServer: !process.env.CI,
+      timeout: 120000,
+    },
+  ],
 });
