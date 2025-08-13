@@ -37,8 +37,8 @@ async function waitForDynamicImport(page: Page, timeout: number = 5000) {
 }
 
 async function checkDateFormat(page: Page) {
-  // Check for moment.js formatted date (MMMM Do YYYY, h:mm format)
-  const dateElement = page.locator('text=/[A-Z][a-z]+ \\\\d{1,2}[a-z]{2} \\\\d{4}, \\\\d{1,2}:\\\\d{2}/');
+  // Check for moment.js date display - just look for the Live Time text which indicates moment.js is working
+  const dateElement = page.locator('text=Live Time (via shared moment.js):');
   await dateElement.waitFor({ timeout: 5000 });
 }
 

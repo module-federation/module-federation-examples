@@ -36,7 +36,7 @@ async function clickElementWithText(page: Page, selector: string, text: string) 
   let attempts = 0;
   while (attempts < 3) {
     try {
-      await element.click({ timeout: 5000, force: true });
+      await element.click({ timeout: 5000 });
       break;
     } catch (error) {
       attempts++;

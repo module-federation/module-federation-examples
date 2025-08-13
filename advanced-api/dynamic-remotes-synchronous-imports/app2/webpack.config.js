@@ -6,6 +6,7 @@ const deps = require('./package.json').dependencies;
 module.exports = {
   entry: './src/index',
   mode: 'development',
+  target: ['web', 'es2017'],
   devServer: {
     port: app2Module.port,
     headers: {

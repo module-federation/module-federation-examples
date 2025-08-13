@@ -6,6 +6,7 @@ const deps = require('./package.json').dependencies;
 module.exports = {
   entry: './src/index',
   mode: 'development',
+  target: ['web', 'es2017'],
   devServer: {
     port: app1Module.port,
     headers: {
@@ -34,7 +35,10 @@ module.exports = {
       name: app1Module.name,
       filename: app1Module.fileName,
       remotes: {
-        app2: 'app2@//localhost:3002/remoteEntry.js',
+        app2: 'app2@[window.app2Url]/remoteEntry.js',
+      },
+      exposes: {
+        './Widget': './src/Widget',
       },
       runtimePlugins: [require.resolve('./runtimePlugin.js')],
       shared: {

@@ -136,12 +136,11 @@ const useFetchJson = (path, options = {}) => {
   }, [fetchData]);
 
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
-  // Cleanup on unmount
-  useEffect(() => {
+    // Component may mount twice in React 18 strict mode. Ensure the ref is
+    // reset so subsequent fetches can update state correctly.
     isMountedRef.current = true;
+    fetchData();
+
     return () => {
       isMountedRef.current = false;
       fetchStartedRef.current = false; // Reset fetch flag on unmount
@@ -149,7 +148,7 @@ const useFetchJson = (path, options = {}) => {
         abortControllerRef.current.abort();
       }
     };
-  }, [path]);
+  }, [fetchData]);
 
   return { 
     data, 

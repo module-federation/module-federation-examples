@@ -64,7 +64,7 @@ export default function Widget() {
       style={{
         borderRadius: '8px',
         padding: '24px',
-        background: 'linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%)',
+        background: 'rgb(0, 0, 255)',
         color: 'white',
         boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
         transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(10px) scale(0.95)',
@@ -75,7 +75,7 @@ export default function Widget() {
         position: 'relative',
         overflow: 'hidden'
       }}
-      data-e2e="APP_2__WIDGET"
+      data-e2e="WIDGET__2"
       onClick={handleInteraction}
       onKeyPress={(e) => e.key === 'Enter' && handleInteraction()}
       tabIndex={0}
@@ -106,7 +106,7 @@ export default function Widget() {
             fontSize: '20px',
             fontWeight: '600'
           }}>
-            🔌 App 2 Remote Widget
+            App 2 Widget
           </h2>
           
           <div style={{
@@ -126,8 +126,7 @@ export default function Widget() {
           lineHeight: '1.5',
           opacity: 0.9
         }}>
-          This is a <strong>remote component</strong> from App 2, federated via Module Federation.
-          It demonstrates dynamic loading with synchronous import syntax.
+          Moment shouldn't download twice
         </p>
         
         <div style={{

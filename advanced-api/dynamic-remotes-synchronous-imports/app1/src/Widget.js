@@ -42,7 +42,7 @@ export default function Widget() {
       style={{
         borderRadius: '8px',
         padding: '24px',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        background: 'rgb(255, 0, 0)',
         color: 'white',
         boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
         transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(10px) scale(0.95)',
@@ -51,7 +51,7 @@ export default function Widget() {
         cursor: 'pointer',
         userSelect: 'none'
       }}
-      data-e2e="APP_1__WIDGET"
+      data-e2e="WIDGET__1"
       onClick={handleInteraction}
       onKeyPress={(e) => e.key === 'Enter' && handleInteraction()}
       tabIndex={0}
@@ -69,7 +69,7 @@ export default function Widget() {
           fontSize: '20px',
           fontWeight: '600'
         }}>
-          🏠 App 1 Local Widget
+          App 1 Widget
         </h2>
         
         <div style={{
@@ -89,8 +89,7 @@ export default function Widget() {
         lineHeight: '1.5',
         opacity: 0.9
       }}>
-        This is a <strong>local component</strong> that demonstrates shared dependency usage.
-        Moment.js is shared between the host and remote applications.
+        Moment shouldn't download twice
       </p>
       
       <div style={{

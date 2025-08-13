@@ -57,6 +57,7 @@ const useFetchJson = (path, options = {}) => {
         const response = await Promise.race([fetchPromise, timeoutPromise]);
         
         if (signal.aborted || !isMountedRef.current) {
+          setIsLoading(false);
           return;
         }
 
@@ -124,18 +125,19 @@ const useFetchJson = (path, options = {}) => {
   }, [fetchData]);
 
   useEffect(() => {
+    // Reset mount flag on each mount. React 18 strict mode mounts components
+    // twice in development, so without resetting this flag the fetch results
+    // would be ignored on the second mount.
+    isMountedRef.current = true;
     fetchData();
-  }, [fetchData]);
 
-  // Cleanup on unmount
-  useEffect(() => {
     return () => {
       isMountedRef.current = false;
       if (abortControllerRef.current) {
         abortControllerRef.current.abort();
       }
     };
-  }, []);
+  }, [fetchData]);
 
   return { 
     data, 

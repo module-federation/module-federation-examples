@@ -51,6 +51,7 @@ const getDynamicRemotePlugin = () => {
             source: 'primary',
             url: resolvedUrl
           });
+          console.log(`[get-remote-from-window-plugin] app2Url resolved: ${resolvedUrl}`);
         }
       }
     }
