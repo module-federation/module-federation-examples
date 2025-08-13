@@ -19,8 +19,10 @@ async function openLocalhost(page: Page, port: number) {
   // Wait for the page to load but don't wait for networkidle since env loading might be polling
   await page.waitForLoadState('load');
   
-  // Wait for React to render - either the loading screen or the main content
-  await page.waitForSelector('body > div', { timeout: 10000 });
+  // Wait for the root element to be attached. It may not be visible immediately
+  // (for example, the remote app shows an empty #root while it loads env config),
+  // so we only wait for the element to exist in the DOM.
+  await page.waitForSelector('#root', { state: 'attached', timeout: 10000 });
   
   // Log any errors found
   if (pageErrors.length > 0) {

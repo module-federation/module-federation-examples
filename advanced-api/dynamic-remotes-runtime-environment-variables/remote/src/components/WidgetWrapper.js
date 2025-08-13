@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useMemo } from 'react';
 import Widget from './Widget';
 import useFetchJson from '../hooks/useFetchJson';
 
@@ -6,17 +6,20 @@ export const EnvContext = createContext();
 
 // Wraps the Widget component with the EnvContext
 const WidgetWrapper = () => {
+  // Memoize fetch options to prevent repeated fetching in React strict mode
+  const fetchOptions = useMemo(() => ({
+    maxRetries: 3,
+    retryDelay: 1000,
+    timeout: 5000,
+    validateData: (data) => data && typeof data === 'object',
+    fallbackData: {
+      API_URL: 'https://remote.fallback.api.com'
+    }
+  }), []);
+
   const { data, loading, error, retry } = useFetchJson(
     `${__webpack_public_path__}env-config.json`,
-    {
-      maxRetries: 3,
-      retryDelay: 1000,
-      timeout: 5000,
-      validateData: (data) => data && typeof data === 'object',
-      fallbackData: {
-        API_URL: 'https://remote.fallback.api.com'
-      }
-    }
+    fetchOptions
   );
 
   if (loading) {
