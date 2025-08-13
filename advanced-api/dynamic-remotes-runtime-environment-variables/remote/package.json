@@ -5,6 +5,7 @@
     "@babel/core": "7.24.7",
     "@babel/preset-react": "7.24.7",
     "@module-federation/enhanced": "0.17.1",
+    "@module-federation/retry-plugin": "0.17.1",
     "@rspack/cli": "1.4.11",
     "@rspack/core": "1.4.11",
     "@rspack/dev-server": "1.1.3",
@@ -12,24 +13,25 @@
     "html-webpack-plugin": "5.6.0",
     "serve": "14.2.3",
     "webpack": "5.101.0",
+    "webpack-merge": "6.0.1",
     "webpack-cli": "5.1.4",
     "webpack-dev-server": "5.0.4"
   },
   "scripts": {
-    "start": "chmod +x ./env.sh && cp env-config.json ./public/ && rspack serve",
-    "build": "rspack build --mode production",
+    "start": "chmod +x ./env.sh && cp env-config.json ./public/ && NODE_ENV=development rspack serve",
+    "build": "NODE_ENV=production rspack build --mode production",
     "serve": "serve dist -p 3001",
     "clean": "rm -rf dist",
     "docker:build": "docker build . -t csr-env/remote:0.0.0",
     "docker:run": "docker run -it --name csr-env-remote -p 3001:80 -d -e API_URL=https://remote.com/api csr-env/remote:0.0.0",
     "docker:rm": "docker rm -f csr-env-remote",
-    "legacy:start": "chmod +x ./env.sh && cp env-config.json ./public/ && webpack-cli serve",
-    "legacy:build": "webpack --mode production"
+    "legacy:start": "chmod +x ./env.sh && cp env-config.json ./public/ && NODE_ENV=development webpack-cli serve",
+    "legacy:build": "NODE_ENV=production webpack --mode production"
   },
   "dependencies": {
     "copy-webpack-plugin": "12.0.2",
-    "moment": "^2.29.4",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "moment": "^2.30.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }

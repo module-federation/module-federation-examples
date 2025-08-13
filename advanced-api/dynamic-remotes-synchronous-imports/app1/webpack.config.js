@@ -1,35 +1,31 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('@module-federation/enhanced');
-const path = require('path');
-const deps = require('./package.json').dependencies;
 const { app2Module, app1Module } = require('../moduleConfig');
+const deps = require('./package.json').dependencies;
 
 module.exports = {
-  entry: ['./src/index'],
+  entry: './src/index',
   mode: 'development',
-  target: 'web',
+  target: ['web', 'es2017'],
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist'),
-    },
+    port: app1Module.port,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
       'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
     },
-    port: app1Module.port,
   },
-  output: {
-    publicPath: 'auto',
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          presets: ['@babel/preset-react'],
+          presets: ['@babel/preset-react', '@babel/preset-typescript'],
         },
       },
     ],
@@ -39,7 +35,10 @@ module.exports = {
       name: app1Module.name,
       filename: app1Module.fileName,
       remotes: {
-        app2: app2Module.federationConfig,
+        app2: 'app2@[window.app2Url]/remoteEntry.js',
+      },
+      exposes: {
+        './Widget': './src/Widget',
       },
       runtimePlugins: [require.resolve('./runtimePlugin.js')],
       shared: {

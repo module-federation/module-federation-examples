@@ -3,7 +3,7 @@
 import { dirname } from 'path';
 import { readFileSync, writeFileSync } from 'fs';
 import * as esbuild from 'esbuild';
-import { parseCjsExports } from 'esm-node-services';
+import { parseFile } from 'cjs-exports-parser';
 import { getPackageInfo } from './utils/package-info';
 
 const esmImportName = name => `__esm_${name}`;
@@ -25,14 +25,14 @@ var require = (function(){
 `.trim();
 
 export async function build(moduleName, outFile, workspaceRoot, external) {
-  const { esm, packageName } = getPackageInfo(moduleName, workspaceRoot);
+  const packageInfo = getPackageInfo(moduleName, workspaceRoot);
+  const { esm, packageName, entryPoint } = packageInfo;
   const outDir = dirname(outFile);
 
   if (esm === false) {
-    const { exportDefault: hasDefaultExport, exports } = await parseCjsExports({
-      buildDir: outDir,
-      importPath: packageName,
-    });
+    const { exports } = await parseFile(entryPoint);
+    // If no named exports are found, assume it's a default export (module.exports = something)
+    const hasDefaultExport = exports.length === 0;
 
     await esbuild.build({
       stdin: {

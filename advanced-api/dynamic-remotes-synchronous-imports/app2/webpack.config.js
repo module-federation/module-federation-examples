@@ -1,26 +1,19 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
-const path = require('path');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const { app2Module } = require('../moduleConfig');
 const deps = require('./package.json').dependencies;
 
 module.exports = {
   entry: './src/index',
   mode: 'development',
+  target: ['web', 'es2017'],
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist'),
-    },
+    port: app2Module.port,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
       'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
     },
-    port: app2Module.port,
-  },
-  target: 'web',
-  output: {
-    publicPath: 'auto',
   },
   module: {
     rules: [
@@ -42,10 +35,6 @@ module.exports = {
       exposes: {
         './Widget': './src/Widget',
       },
-      // adds react as shared module
-      // version is inferred from package.json
-      // there is no version check for the required version
-      // so it will always use the higher version found
       shared: {
         react: {
           requiredVersion: deps.react,

@@ -1,28 +1,102 @@
-import { test, expect } from './utils/base-test';
-import { selectors } from './utils/selectors';
-import { Constants } from './utils/constants';
+import { test, expect, Page } from '@playwright/test';
+
+// Helper functions
+async function openLocalhost(page: Page, port: number) {
+  await page.goto(`http://localhost:${port}`);
+  await page.waitForLoadState('networkidle');
+  
+  // Wait for module federation to load (give it extra time for federated components)
+  await page.waitForTimeout(2000);
+  
+  // Wait for React to render
+  await page.waitForFunction(() => {
+    const elements = document.querySelectorAll('h1, h2, button, p');
+    return elements.length > 0;
+  }, { timeout: 30000 });
+}
+
+async function checkElementWithTextPresence(page: Page, selector: string, text: string) {
+  const element = page.locator(`${selector}:has-text("${text}")`);
+  await expect(element).toBeVisible();
+}
+
+async function clickElementWithText(page: Page, selector: string, text: string) {
+  const element = page.locator(`${selector}:has-text("${text}")`);
+  
+  // Wait for element to be ready
+  await element.waitFor({ state: 'visible', timeout: 10000 });
+  
+  // Remove any overlays that might interfere
+  await page.evaluate(() => {
+    const overlays = document.querySelectorAll('#webpack-dev-server-client-overlay, iframe[src*="webpack-dev-server"]');
+    overlays.forEach(overlay => overlay.remove());
+  });
+  
+  // Try clicking with retries
+  let attempts = 0;
+  while (attempts < 3) {
+    try {
+      await element.click({ timeout: 5000 });
+      break;
+    } catch (error) {
+      attempts++;
+      if (attempts >= 3) throw error;
+      await page.waitForTimeout(1000);
+    }
+  }
+  
+  // Wait for any dynamic loading to complete
+  await page.waitForTimeout(3000);
+}
+
+async function checkElementVisibility(page: Page, selector: string) {
+  const element = page.locator(selector);
+  await expect(element).toBeVisible();
+}
+
+async function checkElementBackgroundColor(page: Page, selector: string, expectedColor: string) {
+  const element = page.locator(selector);
+  await expect(element).toHaveCSS('background-color', expectedColor);
+}
+
+async function waitForDynamicImport(page: Page) {
+  // Wait for dynamic import to complete - looking for loading states to disappear
+  await page.waitForTimeout(3000); // Give time for dynamic loading
+  
+  // Wait for any network activity to settle
+  await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {
+    // Ignore timeout - loading might already be complete
+  });
+}
+
+async function checkDateFormat(page: Page) {
+  // Check for moment.js formatted date (format: "Month Day Year, time")
+  const dateRegex = /\w+ \d+\w+ \d{4}, \d+:\d+/;
+  const textContent = await page.textContent('body');
+  expect(textContent).toMatch(dateRegex);
+}
 
 test.describe('Dynamic Remotes E2E Tests', () => {
   
   test.describe('Host Application (App 1)', () => {
-    test('should display host application elements correctly', async ({ basePage }) => {
+    test('should display host application elements correctly', async ({ page }) => {
       const consoleErrors: string[] = [];
-      basePage.page.on('console', (msg) => {
+      page.on('console', (msg) => {
         if (msg.type() === 'error') {
           consoleErrors.push(msg.text());
         }
       });
 
-      await basePage.openLocalhost(3001);
+      await openLocalhost(page, 3001);
 
       // Check main elements exist
-      await basePage.checkElementWithTextPresence('h1', 'Dynamic System Host');
-      await basePage.checkElementWithTextPresence('h2', 'App 1');
-      await basePage.checkElementWithTextPresence('p', 'The Dynamic System will take advantage of Module Federation');
+      await checkElementWithTextPresence(page, 'h1', 'Dynamic System Host');
+      await checkElementWithTextPresence(page, 'h2', 'App 1');
+      await checkElementWithTextPresence(page, 'p', 'The Dynamic System will take advantage of Module Federation');
 
       // Check both buttons exist
-      await basePage.checkElementWithTextPresence('button', 'Load App 2 Widget');
-      await basePage.checkElementWithTextPresence('button', 'Load App 3 Widget');
+      await checkElementWithTextPresence(page, 'button', 'Load App 2 Widget');
+      await checkElementWithTextPresence(page, 'button', 'Load App 3 Widget');
 
       // Verify no critical console errors
       const criticalErrors = consoleErrors.filter(error => 
@@ -33,27 +107,27 @@ test.describe('Dynamic Remotes E2E Tests', () => {
       expect(criticalErrors).toHaveLength(0);
     });
 
-    test('should dynamically load App 2 widget successfully', async ({ basePage }) => {
+    test('should dynamically load App 2 widget successfully', async ({ page }) => {
       const consoleErrors: string[] = [];
-      basePage.page.on('console', (msg) => {
+      page.on('console', (msg) => {
         if (msg.type() === 'error') {
           consoleErrors.push(msg.text());
         }
       });
 
-      await basePage.openLocalhost(3001);
+      await openLocalhost(page, 3001);
 
       // Click to load App 2 widget
-      await basePage.clickElementWithText('button', 'Load App 2 Widget');
-      await basePage.waitForDynamicImport();
+      await clickElementWithText(page, 'button', 'Load App 2 Widget');
+      await waitForDynamicImport(page);
 
       // Verify App 2 widget loaded
-      await basePage.checkElementVisibility(selectors.dataTestIds.app2Widget);
-      await basePage.checkElementWithTextPresence('h2', 'App 2 Widget');
-      await basePage.checkElementBackgroundColor(selectors.dataTestIds.app2Widget, 'rgb(255, 0, 0)');
+      await checkElementVisibility(page, '[data-e2e="APP_2__WIDGET"]');
+      await checkElementWithTextPresence(page, 'h2', 'App 2 Widget');
+      await checkElementBackgroundColor(page, '[data-e2e="APP_2__WIDGET"]', 'rgb(255, 0, 0)');
 
       // Check for moment.js date formatting
-      await basePage.checkDateFormat();
+      await checkDateFormat(page);
 
       // Verify no module federation errors
       const moduleErrors = consoleErrors.filter(error => 
@@ -63,27 +137,27 @@ test.describe('Dynamic Remotes E2E Tests', () => {
       expect(moduleErrors).toHaveLength(0);
     });
 
-    test('should dynamically load App 3 widget successfully', async ({ basePage }) => {
+    test('should dynamically load App 3 widget successfully', async ({ page }) => {
       const consoleErrors: string[] = [];
-      basePage.page.on('console', (msg) => {
+      page.on('console', (msg) => {
         if (msg.type() === 'error') {
           consoleErrors.push(msg.text());
         }
       });
 
-      await basePage.openLocalhost(3001);
+      await openLocalhost(page, 3001);
 
       // Click to load App 3 widget
-      await basePage.clickElementWithText('button', 'Load App 3 Widget');
-      await basePage.waitForDynamicImport();
+      await clickElementWithText(page, 'button', 'Load App 3 Widget');
+      await waitForDynamicImport(page);
 
       // Verify App 3 widget loaded
-      await basePage.checkElementVisibility(selectors.dataTestIds.app3Widget);
-      await basePage.checkElementWithTextPresence('h2', 'App 3 Widget');
-      await basePage.checkElementBackgroundColor(selectors.dataTestIds.app3Widget, 'rgb(128, 0, 128)');
+      await checkElementVisibility(page, '[data-e2e="APP_3__WIDGET"]');
+      await checkElementWithTextPresence(page, 'h2', 'App 3 Widget');
+      await checkElementBackgroundColor(page, '[data-e2e="APP_3__WIDGET"]', 'rgb(128, 0, 128)');
 
       // Check for moment.js date formatting
-      await basePage.checkDateFormat();
+      await checkDateFormat(page);
 
       // Verify no module federation errors
       const moduleErrors = consoleErrors.filter(error => 
@@ -93,61 +167,61 @@ test.describe('Dynamic Remotes E2E Tests', () => {
       expect(moduleErrors).toHaveLength(0);
     });
 
-    test('should handle sequential loading of both widgets', async ({ basePage }) => {
-      await basePage.openLocalhost(3001);
+    test('should handle sequential loading of both widgets', async ({ page }) => {
+      await openLocalhost(page, 3001);
 
       // Load App 2 widget first
-      await basePage.clickElementWithText('button', 'Load App 2 Widget');
-      await basePage.waitForDynamicImport();
+      await clickElementWithText(page, 'button', 'Load App 2 Widget');
+      await waitForDynamicImport(page);
       
       // Verify App 2 widget is loaded and get its content
-      await basePage.checkElementVisibility(selectors.dataTestIds.app2Widget);
-      await basePage.checkElementWithTextPresence('h2', 'App 2 Widget');
+      await checkElementVisibility(page, '[data-e2e="APP_2__WIDGET"]');
+      await checkElementWithTextPresence(page, 'h2', 'App 2 Widget');
 
       // Then load App 3 widget (this replaces the previous widget in this implementation)
-      await basePage.clickElementWithText('button', 'Load App 3 Widget');
-      await basePage.waitForDynamicImport();
+      await clickElementWithText(page, 'button', 'Load App 3 Widget');
+      await waitForDynamicImport(page);
       
       // Verify App 3 widget is loaded
-      await basePage.checkElementVisibility(selectors.dataTestIds.app3Widget);
-      await basePage.checkElementWithTextPresence('h2', 'App 3 Widget');
+      await checkElementVisibility(page, '[data-e2e="APP_3__WIDGET"]');
+      await checkElementWithTextPresence(page, 'h2', 'App 3 Widget');
 
       // Note: In this dynamic remotes implementation, widgets replace each other
       // rather than accumulating, so we verify the latest widget is visible
     });
 
-    test('should show loading states and handle errors gracefully', async ({ basePage }) => {
-      await basePage.openLocalhost(3001);
+    test('should show loading states and handle errors gracefully', async ({ page }) => {
+      await openLocalhost(page, 3001);
 
       // Check that buttons are initially enabled
-      const app2Button = basePage.page.locator('button').filter({ hasText: 'Load App 2 Widget' });
+      const app2Button = page.locator('button').filter({ hasText: 'Load App 2 Widget' });
       await expect(app2Button).toBeEnabled();
 
       // Monitor for any error boundaries or error states
-      const errorMessages = basePage.page.locator('text="⚠️"');
+      const errorMessages = page.locator('text="⚠️"');
       await expect(errorMessages).toHaveCount(0);
     });
   });
 
   test.describe('Remote Application - App 2', () => {
-    test('should display App 2 standalone correctly', async ({ basePage }) => {
+    test('should display App 2 standalone correctly', async ({ page }) => {
       const consoleErrors: string[] = [];
-      basePage.page.on('console', (msg) => {
+      page.on('console', (msg) => {
         if (msg.type() === 'error') {
           consoleErrors.push(msg.text());
         }
       });
 
-      await basePage.openLocalhost(3002);
+      await openLocalhost(page, 3002);
 
       // Check App 2 widget displays correctly when accessed directly
-      await basePage.checkElementVisibility(selectors.dataTestIds.app2Widget);
-      await basePage.checkElementWithTextPresence('h2', 'App 2 Widget');
-      await basePage.checkElementBackgroundColor(selectors.dataTestIds.app2Widget, 'rgb(255, 0, 0)');
+      await checkElementVisibility(page, '[data-e2e="APP_2__WIDGET"]');
+      await checkElementWithTextPresence(page, 'h2', 'App 2 Widget');
+      await checkElementBackgroundColor(page, '[data-e2e="APP_2__WIDGET"]', 'rgb(255, 0, 0)');
 
       // Check moment.js functionality
-      await basePage.checkElementWithTextPresence('p', "Moment shouldn't download twice");
-      await basePage.checkDateFormat();
+      await checkElementWithTextPresence(page, 'p', "Moment shouldn't download twice");
+      await checkDateFormat(page);
 
       // Verify no critical console errors (filter out expected warnings)
       const criticalErrors = consoleErrors.filter(e => 
@@ -161,23 +235,23 @@ test.describe('Dynamic Remotes E2E Tests', () => {
   });
 
   test.describe('Remote Application - App 3', () => {
-    test('should display App 3 standalone correctly', async ({ basePage }) => {
+    test('should display App 3 standalone correctly', async ({ page }) => {
       const consoleErrors: string[] = [];
-      basePage.page.on('console', (msg) => {
+      page.on('console', (msg) => {
         if (msg.type() === 'error') {
           consoleErrors.push(msg.text());
         }
       });
 
-      await basePage.openLocalhost(3003);
+      await openLocalhost(page, 3003);
 
       // Check App 3 widget displays correctly when accessed directly
-      await basePage.checkElementVisibility(selectors.dataTestIds.app3Widget);
-      await basePage.checkElementWithTextPresence('h2', 'App 3 Widget');
-      await basePage.checkElementBackgroundColor(selectors.dataTestIds.app3Widget, 'rgb(128, 0, 128)');
+      await checkElementVisibility(page, '[data-e2e="APP_3__WIDGET"]');
+      await checkElementWithTextPresence(page, 'h2', 'App 3 Widget');
+      await checkElementBackgroundColor(page, '[data-e2e="APP_3__WIDGET"]', 'rgb(128, 0, 128)');
 
       // Check for moment.js date formatting
-      await basePage.checkDateFormat();
+      await checkDateFormat(page);
 
       // Verify no critical console errors (filter out expected warnings)
       const criticalErrors = consoleErrors.filter(e => 
