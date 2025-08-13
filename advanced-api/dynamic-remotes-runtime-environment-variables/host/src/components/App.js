@@ -1,23 +1,23 @@
-import React, { createContext } from 'react';
+import React, { createContext, useMemo } from 'react';
 import Main from './Main';
 import useFetchJson from '../hooks/useFetchJson';
 
 export const EnvContext = createContext();
 
 const App = () => {
-  const { data, loading, error, retry } = useFetchJson(
-    '/env-config.json',
-    {
-      maxRetries: 2,
-      retryDelay: 500,
-      timeout: 3000,
-      validateData: (data) => data && typeof data === 'object',
-      fallbackData: {
-        API_URL: 'https://fallback.api.com',
-        REMOTE_URL: 'http://localhost:3001/remoteEntry.js'
-      }
+  // Memoize options to avoid re-triggering fetch on each render in development
+  const fetchOptions = useMemo(() => ({
+    maxRetries: 2,
+    retryDelay: 500,
+    timeout: 3000,
+    validateData: (data) => data && typeof data === 'object',
+    fallbackData: {
+      API_URL: 'https://fallback.api.com',
+      REMOTE_URL: 'http://localhost:3001/remoteEntry.js'
     }
-  );
+  }), []);
+
+  const { data, loading, error, retry } = useFetchJson('/env-config.json', fetchOptions);
 
   if (loading) {
     return (
