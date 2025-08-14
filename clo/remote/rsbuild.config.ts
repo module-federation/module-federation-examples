@@ -9,4 +9,11 @@ export default defineConfig({
   },
   moduleFederation: { options: mfConfig },
   plugins: [pluginReact()],
+  tools: {
+    rspack: {
+      output: {
+        publicPath: 'auto',
+      },
+    },
+  },
 });
