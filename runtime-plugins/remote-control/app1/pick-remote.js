@@ -8,7 +8,7 @@ const map = {
   app2: 'http://localhost:3003/remoteEntry.js',
 };
 
-const CustomPlugin = (): FederationRuntimePlugin => ({
+const CustomPlugin = () => ({
   name: 'backend-remote-control',
   beforeInit: args => {
     store.name = args.options.name;
