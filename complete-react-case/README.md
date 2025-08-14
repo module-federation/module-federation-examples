@@ -10,7 +10,7 @@ A complete Webpack Module Federation Case with React.
 
 It is a low-level or basic app, which exposes libraries like `react`, `react-dom`.
 
-It is a pure `remote`
+It is a pure `remote`.
 
 ## component-app
 
@@ -20,7 +20,7 @@ It is both host and remote.
 
 ## main-app
 
-the top-level app, which depends on `lib-app` and `component-app`.
+The top-level app, which depends on `lib-app` and `component-app`.
 
 It is a pure host.
 
@@ -29,12 +29,12 @@ It is a pure host.
 - `pnpm install`
 - `pnpm run start`
 
-after all the commands done, open your browser at `http://localhost:3002`, open the dev-tool's network tab to see resources loading details
+After running these commands, open your browser at `http://localhost:3002` and open the DevTools network tab to see resource loading details.
 
 # Running Cypress E2E Tests
 
-To run tests in interactive mode, run `npm run cypress:debug` from the root directory of the project. It will open Cypress Test Runner and allow to run tests in interactive mode. [More info about "How to run tests"](../../cypress-e2e/README.md#how-to-run-tests)
+To run tests in interactive mode, run `pnpm run cypress:debug` from the root directory of the project. It will open Cypress Test Runner and allow tests to run in interactive mode. [More info about "How to run tests"](../../cypress-e2e/README.md#how-to-run-tests)
 
-To build app and run test in headless mode, run `yarn e2e:ci`. It will build app and run tests for this workspace in headless mode. If tets failed cypress will create `cypress` directory in sample root folder with screenshots and videos.
+To build the app and run tests in headless mode, run `pnpm run e2e:ci`. It will build the app and run tests for this workspace in headless mode. If tests fail, Cypress will create a `cypress` directory in the sample root folder with screenshots and videos.
 
-["Best Practices, Rules amd more interesting information here](../../cypress-e2e/README.md)
+[Best practices, rules and more interesting information here](../../cypress-e2e/README.md)
