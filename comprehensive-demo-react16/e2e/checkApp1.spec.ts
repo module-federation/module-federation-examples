@@ -9,7 +9,7 @@ test.describe('Comprehensive Demo App1', () => {
 
     const demoLinks = ['Main', 'UI Library', 'Dialog', 'Svelte Page', 'Routing'];
     for (const name of demoLinks) {
-      await expect(page.getByRole('link', { name })).toBeVisible();
+      await expect(page.getByRole('button', { name })).toBeVisible();
     }
 
     const appLinks = [
@@ -20,7 +20,7 @@ test.describe('Comprehensive Demo App1', () => {
       { name: 'App #5', href: 'http://localhost:3005' },
     ];
     for (const { name, href } of appLinks) {
-      await expect(page.getByRole('link', { name })).toHaveAttribute('href', href);
+      await expect(page.locator('a', { hasText: name })).toHaveAttribute('href', href);
     }
 
     await expect(page.getByRole('heading', { name: 'Module Federation Demo' })).toBeVisible();

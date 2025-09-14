@@ -12,7 +12,7 @@ apps.forEach(({ port, name, selector, text }) => {
   test.describe(name, () => {
     test(`build and run ${name}`, async ({ page }) => {
       await page.goto(`http://localhost:${port}`);
-      await expect(page.locator(selector)).toContainText(text);
+      await expect(page.locator(selector, { hasText: text })).toBeVisible();
     });
   });
 });

@@ -5,7 +5,7 @@ const base = 'http://localhost:3002';
 test.describe('Comprehensive Demo App2', () => {
   test('renders blocks, dialog and tabs', async ({ page }) => {
     await page.goto(base);
-    await expect(page.locator('header')).toHaveCSS('background-color', 'rgb(63, 81, 181)');
+    await expect(page.locator('header').first()).toHaveCSS('background-color', 'rgb(63, 81, 181)');
     await expect(page.locator('.jss2')).toHaveCSS('background-color', 'rgb(250, 250, 250)');
     await expect(page.locator('.jss3')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
 
