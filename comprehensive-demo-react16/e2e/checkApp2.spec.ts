@@ -5,13 +5,17 @@ const base = 'http://localhost:3002';
 test.describe('Comprehensive Demo App2', () => {
   test('renders blocks, dialog and tabs', async ({ page }) => {
     await page.goto(base);
-    await expect(page.locator('header').first()).toHaveCSS('background-color', 'rgb(63, 81, 181)');
+    await expect(page.locator('.jss1')).toBeVisible();
+    const appBar = page.locator('header').first();
+    await expect(appBar).toHaveCSS('background-color', 'rgb(63, 81, 181)');
     await expect(page.locator('.jss2')).toHaveCSS('background-color', 'rgb(250, 250, 250)');
     await expect(page.locator('.jss3')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
 
     await expect(page.getByRole('heading', { name: 'Material UI App' })).toBeVisible();
-    await expect(page.getByText('Dialog Component')).toBeVisible();
-    await page.getByRole('button', { name: 'Open Dialog' }).click();
+    await expect(page.getByRole('heading', { name: 'Dialog Component' })).toBeVisible();
+    const openDialogButton = page.getByRole('button', { name: 'Open Dialog' });
+    await expect(openDialogButton).toBeVisible();
+    await openDialogButton.click();
     const dialog = page.locator('[role="dialog"]');
     await expect(dialog.getByRole('heading', { name: 'Dialog Example' })).toBeVisible();
     await expect(
@@ -20,9 +24,13 @@ test.describe('Comprehensive Demo App2', () => {
     await dialog.getByRole('button', { name: 'Nice' }).click();
     await expect(dialog).not.toBeVisible();
 
-    await expect(page.getByText('Tabs Component')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Tabs Component' })).toBeVisible();
+    const fooTab = page.getByRole('tab', { name: 'Foo' });
+    const barTab = page.getByRole('tab', { name: 'Bar' });
+    await expect(fooTab).toBeVisible();
+    await expect(barTab).toBeVisible();
     await expect(page.getByText('Foo Content')).toBeVisible();
-    await page.getByRole('tab', { name: 'Bar' }).click();
+    await barTab.click();
     await expect(page.getByText('Bar Content')).toBeVisible();
     await expect(page.getByRole('button', { name: 'Bar Button' })).toHaveCSS(
       'background-color',
