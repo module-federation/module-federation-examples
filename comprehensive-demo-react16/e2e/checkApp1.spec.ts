@@ -38,7 +38,8 @@ const routingParagraphs = [
   'The "Bar" tab also lazily renders the styled-component Button from the UI Library demo only when rendered.',
 ];
 
-const escapeRegExp = (value: string) => value.replace(/[-/\^$*+?.()|[\]{}]/g, '\$&');
+const escapeRegExp = (value: string) =>
+  value.replace(/[-/\^$*+?.()|[\]{}]/g, match => `\\${match}`);
 
 const expectAppBar = async (page: Page, title: string) => {
   const appBar = page.locator('header').first();
