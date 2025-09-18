@@ -5,19 +5,24 @@
   "scripts": {
     "start": "pnpm build && pnpm serve",
     "legacy:start": "pnpm legacy:build && pnpm serve",
-    "build": "time pnpm --filter comprehensive-demo-react18_app* --parallel build",
-    "legacy:build": "time pnpm --filter comprehensive-demo-react18_app* legacy:build",
+    "build": "pnpm --filter comprehensive-demo-react18_app* --parallel build",
+    "legacy:build": "pnpm --filter comprehensive-demo-react18_app* legacy:build",
     "serve": "pnpm --filter comprehensive-demo-react18_app* --parallel serve",
     "dev": "pnpm --filter comprehensive-demo-react18_app* --parallel dev",
     "legacy:dev": "pnpm --filter comprehensive-demo-react18_app* --parallel legacy:dev",
     "clean": "pnpm --filter comprehensive-demo-react18_app* --parallel clean",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
-    "legacy:e2e:ci": "pnpm legacy:start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "test:e2e": "npx playwright test",
+    "test:e2e:ui": "npx playwright test --ui",
+    "test:e2e:debug": "npx playwright test --debug",
+    "e2e:ci": "pnpm build && npx playwright install --with-deps && npx playwright test --reporter=list",
+    "legacy:e2e:ci": "pnpm legacy:build && npx playwright install --with-deps && LEGACY_START=true npx playwright test --reporter=list"
   },
   "devDependencies": {
+    "@playwright/test": "^1.54.2",
     "@rsdoctor/rspack-plugin": "0.3.7",
     "@rsdoctor/webpack-plugin": "0.3.7",
     "concurrently": "8.2.2",
+    "playwright": "^1.54.2",
     "wait-on": "7.2.0"
   }
 }
