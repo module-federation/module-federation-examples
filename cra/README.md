@@ -7,15 +7,18 @@ This example demos a basic host application loading remote component.
 
 # Running Demo
 
-Run `pnpm run start`. This will build and serve both `host` and `remote` on ports 3001 and 3002 respectively.
+Run `pnpm run start`. This will build and serve both `host` and `remote` on ports 3000 and 3002 respectively.
 
-- [localhost:3001](http://localhost:3000/) (HOST)
+- [localhost:3000](http://localhost:3000/) (HOST)
 - [localhost:3002](http://localhost:3002/) (STANDALONE REMOTE)
 
-# Running Cypress E2E Tests
+# Running Playwright E2E Tests
 
-To run tests in interactive mode, run `npm run cypress:debug` from the root directory of the project. It will open Cypress Test Runner and allow to run tests in interactive mode. [More info about "How to run tests"](../../cypress-e2e/README.md#how-to-run-tests)
+Run the following commands from this directory:
 
-To build app and run test in headless mode, run `yarn e2e:ci`. It will build app and run tests for this workspace in headless mode. If tets failed cypress will create `cypress` directory in sample root folder with screenshots and videos.
+- `pnpm test:e2e`: launches the host and remote servers and runs the Playwright suite headlessly.
+- `pnpm test:e2e:ui`: opens the Playwright test runner UI for local development.
+- `pnpm test:e2e:debug`: starts the suite in headed mode with Playwright's inspector attached.
+- `pnpm e2e:ci`: installs the required browsers (when needed) and executes the suite with a list reporter while collecting failure artifacts (traces, screenshots, videos).
 
-["Best Practices, Rules amd more interesting information here](../../cypress-e2e/README.md)
+> **Note:** The first Playwright run may require downloading browser binaries. If they are not already installed you can run `pnpm exec playwright install` once to prepare the environment.
