@@ -18,10 +18,10 @@ Included apps:
 - App #5 (LitElement): [http://localhost:3005](http://localhost:3005)
   <img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/ComprehensiveDemo">
 
-# Running Cypress E2E Tests
+# Running Playwright E2E Tests
 
-To run tests in interactive mode, run `npm run cypress:debug` from the root directory of the project. It will open Cypress Test Runner and allow to run tests in interactive mode. [More info about "How to run tests"](../../cypress-e2e/README.md#how-to-run-tests)
+To run the Playwright test suite locally in headless mode, execute `pnpm test:e2e` from this workspace. The tests automatically start the demo and verify each application.
 
-To build app and run test in headless mode, run `yarn e2e:ci`. It will build app and run tests for this workspace in headless mode. If tets failed cypress will create `cypress` directory in sample root folder with screenshots and videos.
+For an interactive UI to debug or explore tests, run `pnpm test:e2e:ui`.
 
-["Best Practices, Rules amd more interesting information here](../../cypress-e2e/README.md)
+In CI scenarios run `pnpm e2e:ci`. This command builds the applications, installs the required Playwright browsers and runs the tests with a concise reporter.
