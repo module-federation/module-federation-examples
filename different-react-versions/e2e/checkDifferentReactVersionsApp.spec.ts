@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { test } from '@playwright/test';
 
 import { BaseMethods } from '../../playwright-e2e/common/base';
 import { baseSelectors } from '../../cypress-e2e/common/selectors';

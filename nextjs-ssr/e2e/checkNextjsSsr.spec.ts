@@ -82,9 +82,7 @@ const tileLinks: TileLink[] = [
   },
 ];
 
-const escapeRegExp = (value: string): string => {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-};
+const escapeRegExp = (value: string): string => value.replace(/[|\\{}()[\]^$+*?.-]/g, '\\$&');
 
 const createFlexibleRegExp = (value: string): RegExp =>
   new RegExp(escapeRegExp(value.trim()).replace(/\s+/g, '\\s+'));
@@ -104,8 +102,8 @@ const buildPathRegex = (port: number, path: string): RegExp => {
     return new RegExp(`^http://localhost:${port}\\/?$`);
   }
 
-  const escaped = normalized.replace(/\//g, '\\/');
-  return new RegExp(`^http://localhost:${port}${escaped}(?:\\/)?$`);
+  const escapedPath = escapeRegExp(normalized);
+  return new RegExp(`^http://localhost:${port}${escapedPath}(?:\\/)?$`);
 };
 
 const expectSharedNavigation = async (page: Page): Promise<void> => {
