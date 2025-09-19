@@ -94,10 +94,10 @@ export class BaseMethods {
 
   async checkElementVisibility({ selector, isVisible = true, text, parentSelector }: VisibilityOptions): Promise<void> {
     const locator = this.resolveLocator(selector, { parentSelector, text });
-    const count = await locator.count();
 
     if (isVisible) {
-      expect(count).toBeGreaterThan(0);
+      await expect(locator.first()).toBeVisible();
+      const count = await locator.count();
       for (let index = 0; index < count; index++) {
         await expect(locator.nth(index)).toBeVisible();
       }
@@ -105,12 +105,14 @@ export class BaseMethods {
       return;
     }
 
-    if (count === 0) {
+    try {
+      await expect(locator).toHaveCount(0);
       return;
-    }
-
-    for (let index = 0; index < count; index++) {
-      await expect(locator.nth(index)).not.toBeVisible();
+    } catch (error) {
+      const count = await locator.count();
+      for (let index = 0; index < count; index++) {
+        await expect(locator.nth(index)).not.toBeVisible();
+      }
     }
   }
 
@@ -127,29 +129,54 @@ export class BaseMethods {
     if (isMultiple) {
       const baseLocator = this.resolveLocator(selector, { parentSelector });
       const filtered = baseLocator.filter({ hasText: text });
-      const count = await filtered.count();
-      expect(count).toBeGreaterThan(0);
-      for (let i = 0; i < count; i++) {
-        if (visibilityState === 'be.visible') {
-          await expect(filtered.nth(i)).toBeVisible();
-        } else {
-          await expect(filtered.nth(i)).toContainText(text);
+
+      if (!isVisible) {
+        if (notVisibleState === 'not.exist') {
+          await expect(filtered).toHaveCount(0);
+          return;
         }
+
+        const count = await filtered.count();
+
+        if (count === 0) {
+          await expect(filtered).toHaveCount(0);
+          return;
+        }
+
+        for (let i = 0; i < count; i++) {
+          await expect(filtered.nth(i)).not.toBeVisible();
+        }
+
+        return;
       }
+
+      if (visibilityState === 'be.visible') {
+        await expect(filtered.first()).toBeVisible();
+        const count = await filtered.count();
+        for (let i = 0; i < count; i++) {
+          await expect(filtered.nth(i)).toBeVisible();
+        }
+
+        return;
+      }
+
+      await expect(filtered).not.toHaveCount(0);
 
       return;
     }
 
     const locator = this.resolveLocator(selector, { parentSelector, text, index });
-    const count = await locator.count();
 
     if (!isVisible) {
-      if (count === 0) {
+      if (notVisibleState === 'not.exist') {
+        await expect(locator).toHaveCount(0);
         return;
       }
 
-      if (notVisibleState === 'not.exist') {
-        expect(count).toBe(0);
+      const count = await locator.count();
+
+      if (count === 0) {
+        await expect(locator).toHaveCount(0);
         return;
       }
 
@@ -161,7 +188,8 @@ export class BaseMethods {
     }
 
     if (visibilityState === 'be.visible') {
-      expect(count).toBeGreaterThan(0);
+      await expect(locator.first()).toBeVisible();
+      const count = await locator.count();
       for (let i = 0; i < count; i++) {
         await expect(locator.nth(i)).toBeVisible();
       }
@@ -169,7 +197,7 @@ export class BaseMethods {
       return;
     }
 
-    expect(count).toBeGreaterThan(0);
+    await expect(locator).not.toHaveCount(0);
   }
 
   async clickElementWithText({ selector, text, parentSelector, isTargetChanged = false, index }: ClickWithTextOptions): Promise<void> {
@@ -300,15 +328,15 @@ export class BaseMethods {
   }
 
   async checkUrlText(urlPart: string, isInclude: boolean = false): Promise<void> {
-    const currentUrl = this.page.url();
+    const poller = expect.poll(() => this.page.url());
 
     if (isInclude) {
-      expect(currentUrl).toContain(urlPart);
+      await poller.toContain(urlPart);
 
       return;
     }
 
-    expect(currentUrl).not.toContain(urlPart);
+    await poller.not.toContain(urlPart);
   }
 
   async compareInfoBetweenHosts(
