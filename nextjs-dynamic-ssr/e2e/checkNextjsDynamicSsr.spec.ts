@@ -82,7 +82,8 @@ const tileLinks: TileLink[] = [
   },
 ];
 
-const escapeRegExp = (value: string): string => value.replace(/[|\\{}()[\]^$+*?.-]/g, '\\$&');
+const escapeRegExp = (value: string): string =>
+  value.replace(/\\/g, '\\\\').replace(/[|{}\[\]()^$+*?.-]/g, '\\$&');
 
 const createFlexibleRegExp = (value: string): RegExp =>
   new RegExp(escapeRegExp(value.trim()).replace(/\s+/g, '\\s+'));
