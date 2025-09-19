@@ -191,7 +191,7 @@ test.describe('Rust Wasm - Host app checks', () => {
     await basePage.checkElementVisibility({
       selector: selectors.rustWasmApp.gameBoard,
       isVisible: false,
-      notVisibleState: 'not.exist',
+      notVisibleState: 'not.be.visible',
     });
 
     await resetConsoleLogs(page);

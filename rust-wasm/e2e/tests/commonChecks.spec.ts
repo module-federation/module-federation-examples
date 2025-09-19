@@ -188,7 +188,7 @@ test.describe('Rust Wasm - Buttons behaviour', () => {
         await basePage.checkElementVisibility({
           selector: selectors.rustWasmApp.gameBoard,
           isVisible: false,
-          notVisibleState: 'not.exist',
+          notVisibleState: 'not.be.visible',
         });
 
         await basePage.clickElementWithText({
@@ -212,7 +212,7 @@ test.describe('Rust Wasm - Buttons behaviour', () => {
         await basePage.checkElementVisibility({
           selector: selectors.rustWasmApp.gameBoard,
           isVisible: false,
-          notVisibleState: 'not.exist',
+          notVisibleState: 'not.be.visible',
         });
 
         await basePage.clickElementWithText({
