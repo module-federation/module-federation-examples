@@ -7,10 +7,14 @@
   "license": "MIT",
   "scripts": {
     "start": "pnpm --parallel --filter rust-wasm_* --stream start",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:8080/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/runAll.cy.ts\" --browser=chrome"
+    "test:e2e": "pnpm exec playwright test",
+    "test:e2e:ui": "pnpm exec playwright test --ui",
+    "test:e2e:debug": "pnpm exec playwright test --debug",
+    "e2e:ci": "pnpm exec playwright install --with-deps && pnpm exec playwright test --reporter=list"
   },
   "devDependencies": {
+    "@playwright/test": "^1.54.2",
     "lerna": "8.1.6",
-    "wait-on": "7.2.0"
+    "playwright": "^1.54.2"
   }
 }

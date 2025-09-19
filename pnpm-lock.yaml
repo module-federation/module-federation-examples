@@ -896,49 +896,6 @@ importers:
     dependencies:
       '@modern-js/runtime':
         specifier: 2.54.6
-        version: 2.54.6(@types/react-dom@18.3.0)(@types/react@18.3.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(webpack@5.101.0(@swc/core@1.11.31(@swc/helpers@0.5.3))(esbuild@0.17.19))
-      react:
-        specifier: ~18.3.0
-        version: 18.3.1
-      react-dom:
-        specifier: ~18.3.0
-        version: 18.3.1(react@18.3.1)
-    devDependencies:
-      '@modern-js-app/eslint-config':
-        specifier: 2.54.6
-        version: 2.54.6(@swc/helpers@0.5.3)(typescript@5.6.2)
-      '@modern-js/app-tools':
-        specifier: 2.54.6
-        version: 2.54.6(@rspack/core@0.7.5(@swc/helpers@0.5.3))(@swc/core@1.11.31(@swc/helpers@0.5.3))(@types/webpack@5.28.0(@swc/core@1.11.31(@swc/helpers@0.5.3))(esbuild@0.17.19))(encoding@0.1.13)(eslint@8.57.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@5.3.11(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(ts-node@10.9.2(@swc/core@1.11.31(@swc/helpers@0.5.3))(@types/node@20.16.5)(typescript@5.6.2))(tsconfig-paths@4.2.0)(type-fest@2.19.0)(typescript@5.6.2)(webpack-dev-server@4.15.2(webpack@5.101.0(@swc/core@1.11.31(@swc/helpers@0.5.3))(esbuild@0.17.19)))(webpack-hot-middleware@2.26.1)
-      '@modern-js/builder-rspack-provider':
-        specifier: 2.46.1
-        version: 2.46.1(@babel/traverse@7.28.3)(@rsbuild/core@0.7.10)(@swc/core@1.11.31(@swc/helpers@0.5.3))(@types/express@4.17.21)(esbuild@0.17.19)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(ts-node@10.9.2(@swc/core@1.11.31(@swc/helpers@0.5.3))(@types/node@20.16.5)(typescript@5.6.2))(tsconfig-paths@4.2.0)(typescript@5.6.2)
-      '@modern-js/eslint-config':
-        specifier: 2.54.6
-        version: 2.54.6(@swc/helpers@0.5.3)(typescript@5.6.2)
-      '@modern-js/tsconfig':
-        specifier: 2.54.6
-        version: 2.54.6
-      '@module-federation/enhanced':
-        specifier: 0.17.1
-        version: 0.17.1(@rspack/core@0.7.5(@swc/helpers@0.5.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.2)(webpack@5.101.0(@swc/core@1.11.31(@swc/helpers@0.5.3))(esbuild@0.17.19))
-      husky:
-        specifier: 9.0.11
-        version: 9.0.11
-      lint-staged:
-        specifier: 15.2.10
-        version: 15.2.10
-      prettier:
-        specifier: 3.3.2
-        version: 3.3.2
-      rimraf:
-        specifier: 5.0.8
-        version: 5.0.8
-
-  basic-host-remote/app2:
-    dependencies:
-      '@modern-js/runtime':
-        specifier: 2.54.6
         version: 2.54.6(@types/react-dom@18.3.0)(@types/react@18.3.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(webpack@5.101.0(@swc/core@1.11.31(@swc/helpers@0.5.17)))
       react:
         specifier: ~18.3.0
@@ -965,6 +922,49 @@ importers:
       '@module-federation/enhanced':
         specifier: 0.17.1
         version: 0.17.1(@rspack/core@1.4.11(@swc/helpers@0.5.17))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.2)(webpack@5.101.0(@swc/core@1.11.31(@swc/helpers@0.5.17)))
+      husky:
+        specifier: 9.0.11
+        version: 9.0.11
+      lint-staged:
+        specifier: 15.2.10
+        version: 15.2.10
+      prettier:
+        specifier: 3.3.2
+        version: 3.3.2
+      rimraf:
+        specifier: 5.0.8
+        version: 5.0.8
+
+  basic-host-remote/app2:
+    dependencies:
+      '@modern-js/runtime':
+        specifier: 2.54.6
+        version: 2.54.6(@types/react-dom@18.3.0)(@types/react@18.3.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(webpack@5.101.0(@swc/core@1.11.31(@swc/helpers@0.5.3))(esbuild@0.17.19))
+      react:
+        specifier: ~18.3.0
+        version: 18.3.1
+      react-dom:
+        specifier: ~18.3.0
+        version: 18.3.1(react@18.3.1)
+    devDependencies:
+      '@modern-js-app/eslint-config':
+        specifier: 2.54.6
+        version: 2.54.6(@swc/helpers@0.5.3)(typescript@5.6.2)
+      '@modern-js/app-tools':
+        specifier: 2.54.6
+        version: 2.54.6(@rspack/core@0.7.5(@swc/helpers@0.5.3))(@swc/core@1.11.31(@swc/helpers@0.5.3))(@types/webpack@5.28.0(@swc/core@1.11.31(@swc/helpers@0.5.3))(esbuild@0.17.19))(encoding@0.1.13)(eslint@8.57.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@5.3.11(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(ts-node@10.9.2(@swc/core@1.11.31(@swc/helpers@0.5.3))(@types/node@20.16.5)(typescript@5.6.2))(tsconfig-paths@4.2.0)(type-fest@2.19.0)(typescript@5.6.2)(webpack-dev-server@4.15.2(webpack@5.101.0(@swc/core@1.11.31(@swc/helpers@0.5.3))(esbuild@0.17.19)))(webpack-hot-middleware@2.26.1)
+      '@modern-js/builder-rspack-provider':
+        specifier: 2.46.1
+        version: 2.46.1(@babel/traverse@7.28.3)(@rsbuild/core@0.7.10)(@swc/core@1.11.31(@swc/helpers@0.5.3))(@types/express@4.17.21)(esbuild@0.17.19)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(ts-node@10.9.2(@swc/core@1.11.31(@swc/helpers@0.5.3))(@types/node@20.16.5)(typescript@5.6.2))(tsconfig-paths@4.2.0)(typescript@5.6.2)
+      '@modern-js/eslint-config':
+        specifier: 2.54.6
+        version: 2.54.6(@swc/helpers@0.5.3)(typescript@5.6.2)
+      '@modern-js/tsconfig':
+        specifier: 2.54.6
+        version: 2.54.6
+      '@module-federation/enhanced':
+        specifier: 0.17.1
+        version: 0.17.1(@rspack/core@0.7.5(@swc/helpers@0.5.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.2)(webpack@5.101.0(@swc/core@1.11.31(@swc/helpers@0.5.3))(esbuild@0.17.19))
       husky:
         specifier: 9.0.11
         version: 9.0.11
@@ -5993,7 +5993,7 @@ importers:
         version: 2.57.0(@types/react-dom@18.3.0)(@types/react@18.3.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@module-federation/modern-js':
         specifier: 0.17.1
-        version: 0.17.1(@rsbuild/core@1.4.12)(@rspack/core@1.4.11(@swc/helpers@0.5.17))(react-dom@18.3.1(react@18.3.1))(react-router-dom@6.30.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(typescript@4.9.5)(webpack@5.101.0(@swc/core@1.11.31(@swc/helpers@0.5.17)))
+        version: 0.17.1(@rsbuild/core@1.0.1-beta.3)(@rspack/core@1.4.11(@swc/helpers@0.5.11))(react-dom@18.3.1(react@18.3.1))(react-router-dom@6.30.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(typescript@4.9.5)(webpack@5.101.0(@swc/core@1.11.31(@swc/helpers@0.5.11))(esbuild@0.17.19))
       react:
         specifier: ~18.3.0
         version: 18.3.1
@@ -6006,7 +6006,7 @@ importers:
         version: 2.57.0(typescript@4.9.5)
       '@modern-js/app-tools':
         specifier: 2.57.0
-        version: 2.57.0(@rspack/core@1.4.11(@swc/helpers@0.5.17))(@swc/core@1.11.31(@swc/helpers@0.5.17))(@types/webpack@5.28.0(@swc/core@1.11.31(@swc/helpers@0.5.17)))(encoding@0.1.13)(eslint@9.6.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@5.3.11(@babel/core@7.28.3)(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(ts-node@10.9.2(@swc/core@1.11.31(@swc/helpers@0.5.17))(@types/node@16.18.101)(typescript@4.9.5))(tsconfig-paths@4.2.0)(type-fest@2.19.0)(typescript@4.9.5)(webpack-dev-server@4.15.2(webpack@5.101.0(@swc/core@1.11.31(@swc/helpers@0.5.17))))(webpack-hot-middleware@2.26.1)
+        version: 2.57.0(@rspack/core@1.4.11(@swc/helpers@0.5.11))(@swc/core@1.11.31(@swc/helpers@0.5.11))(@types/webpack@5.28.0(@swc/core@1.11.31(@swc/helpers@0.5.11))(esbuild@0.17.19))(encoding@0.1.13)(eslint@8.57.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@5.3.11(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(ts-node@10.9.2(@swc/core@1.11.31(@swc/helpers@0.5.11))(@types/node@16.18.101)(typescript@4.9.5))(tsconfig-paths@4.2.0)(type-fest@2.19.0)(typescript@4.9.5)(webpack-dev-server@4.15.2(webpack@5.101.0(@swc/core@1.11.31(@swc/helpers@0.5.11))(esbuild@0.17.19)))(webpack-hot-middleware@2.26.1)
       '@modern-js/eslint-config':
         specifier: 2.57.0
         version: 2.57.0(typescript@4.9.5)
@@ -6048,7 +6048,7 @@ importers:
         version: 2.57.0(@types/react-dom@18.3.0)(@types/react@18.3.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@module-federation/modern-js':
         specifier: 0.17.1
-        version: 0.17.1(@rsbuild/core@1.0.1-beta.3)(@rspack/core@1.4.11(@swc/helpers@0.5.11))(react-dom@18.3.1(react@18.3.1))(react-router-dom@6.30.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(typescript@4.9.5)(webpack@5.101.0(@swc/core@1.11.31(@swc/helpers@0.5.11))(esbuild@0.17.19))
+        version: 0.17.1(@rsbuild/core@1.4.12)(@rspack/core@1.4.11(@swc/helpers@0.5.17))(react-dom@18.3.1(react@18.3.1))(react-router-dom@6.30.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(typescript@4.9.5)(webpack@5.101.0(@swc/core@1.11.31(@swc/helpers@0.5.17)))
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -6061,7 +6061,7 @@ importers:
         version: 2.57.0(typescript@4.9.5)
       '@modern-js/app-tools':
         specifier: 2.57.0
-        version: 2.57.0(@rspack/core@1.4.11(@swc/helpers@0.5.11))(@swc/core@1.11.31(@swc/helpers@0.5.11))(@types/webpack@5.28.0(@swc/core@1.11.31(@swc/helpers@0.5.11))(esbuild@0.17.19))(encoding@0.1.13)(eslint@8.57.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@5.3.11(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(ts-node@10.9.2(@swc/core@1.11.31(@swc/helpers@0.5.11))(@types/node@16.18.101)(typescript@4.9.5))(tsconfig-paths@4.2.0)(type-fest@2.19.0)(typescript@4.9.5)(webpack-dev-server@4.15.2(webpack@5.101.0(@swc/core@1.11.31(@swc/helpers@0.5.11))(esbuild@0.17.19)))(webpack-hot-middleware@2.26.1)
+        version: 2.57.0(@rspack/core@1.4.11(@swc/helpers@0.5.17))(@swc/core@1.11.31(@swc/helpers@0.5.17))(@types/webpack@5.28.0(@swc/core@1.11.31(@swc/helpers@0.5.17)))(encoding@0.1.13)(eslint@9.6.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@5.3.11(@babel/core@7.28.3)(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1))(ts-node@10.9.2(@swc/core@1.11.31(@swc/helpers@0.5.17))(@types/node@16.18.101)(typescript@4.9.5))(tsconfig-paths@4.2.0)(type-fest@2.19.0)(typescript@4.9.5)(webpack-dev-server@4.15.2(webpack@5.101.0(@swc/core@1.11.31(@swc/helpers@0.5.17))))(webpack-hot-middleware@2.26.1)
       '@modern-js/eslint-config':
         specifier: 2.57.0
         version: 2.57.0(typescript@4.9.5)
@@ -7022,12 +7022,15 @@ importers:
 
   rust-wasm:
     devDependencies:
+      '@playwright/test':
+        specifier: ^1.54.2
+        version: 1.54.2
       lerna:
         specifier: 8.1.6
         version: 8.1.6(@swc/core@1.11.31(@swc/helpers@0.5.17))(@types/node@20.16.5)(babel-plugin-macros@3.1.0)(encoding@0.1.13)
-      wait-on:
-        specifier: 7.2.0
-        version: 7.2.0
+      playwright:
+        specifier: ^1.54.2
+        version: 1.54.2
 
   rust-wasm/host:
     dependencies:
@@ -7077,9 +7080,12 @@ importers:
 
   self-healing:
     devDependencies:
-      wait-on:
-        specifier: 7.2.0
-        version: 7.2.0
+      '@playwright/test':
+        specifier: ^1.54.2
+        version: 1.54.2
+      playwright:
+        specifier: ^1.54.2
+        version: 1.54.2
 
   self-healing/app1:
     dependencies:
@@ -8045,7 +8051,14 @@ importers:
         specifier: 6.0.1
         version: 6.0.1
 
-  third-party-scripts: {}
+  third-party-scripts:
+    devDependencies:
+      '@playwright/test':
+        specifier: ^1.54.2
+        version: 1.54.2
+      playwright:
+        specifier: ^1.54.2
+        version: 1.54.2
 
   third-party-scripts/app1:
     dependencies:
