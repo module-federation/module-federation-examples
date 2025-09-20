@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { baseSelectors, updatedSelectors } from '../../cypress-e2e/common/selectors';
-import { Constants } from '../../cypress-e2e/fixtures/constants';
+import { baseSelectors, updatedSelectors } from '../../playwright-e2e/common/selectors';
+import { Constants } from '../../playwright-e2e/fixtures/constants';
 import { CommonTestData } from '../../cypress-e2e/fixtures/commonTestData';
 
 type TypeScriptAppConfig = (typeof CommonTestData.commonTypeScriptAppsData)[number];

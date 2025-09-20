@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { selectors } from '../../cypress-e2e/common/selectors';
+import { selectors } from '../../playwright-e2e/common/selectors';
 import { CssAttr } from '../../cypress-e2e/types/cssAttr';
-import { Constants } from '../../cypress-e2e/fixtures/constants';
+import { Constants } from '../../playwright-e2e/fixtures/constants';
 
 type ButtonConfig = {
   path: string;
@@ -137,6 +137,9 @@ test.describe('Federated CSS registry', () => {
           waitUntil: 'domcontentloaded',
         });
 
+        // Be tolerant to slower remote/style loading in CI
+        await page.waitForSelector(selectors.federatedCssButton, { timeout: 30_000 });
+
         const buttons = page.locator(selectors.federatedCssButton);
         const primaryButton = buttons.first();
         await expect(primaryButton).toBeVisible();
@@ -150,6 +153,8 @@ test.describe('Federated CSS registry', () => {
           waitUntil: 'domcontentloaded',
         });
 
+        // Be tolerant to slower remote/style loading in CI
+        await page.waitForSelector(selectors.federatedCssButton, { timeout: 30_000 });
         const buttons = page.locator(selectors.federatedCssButton);
         await expect(buttons).toHaveCount(app.buttons.length);
 

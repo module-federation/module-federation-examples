@@ -36,7 +36,8 @@ export default defineConfig({
   ],
   webServer: [
     {
-      command: 'pnpm start',
+      // Build once and serve static to improve stability in CI
+      command: 'pnpm build && pnpm serve',
       cwd: __dirname,
       port: 3001,
       reuseExistingServer: !isCI,

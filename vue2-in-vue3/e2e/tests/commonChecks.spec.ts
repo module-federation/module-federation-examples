@@ -31,7 +31,7 @@ test.describe('Vue 2 in Vue 3', () => {
         });
       });
 
-      test('Check that both apps shares the button with same text', async ({ page }) => {
+      test(`Check that both apps shares the button with same text (${property.headerName})`, async ({ page }) => {
         const basePage = new BaseMethods(page);
         await basePage.openLocalhost({ number: property.host });
         await basePage.checkElementWithTextPresence({
@@ -69,7 +69,7 @@ test.describe('Vue 2 in Vue 3', () => {
         });
       });
 
-      test(`Checks that only 'vue3' app recognises button as remote component`, async ({ page }) => {
+      test(`Checks that only 'vue3' app recognises button as remote component (${property.headerName})`, async ({ page }) => {
         const basePage = new BaseMethods(page);
         await basePage.openLocalhost({ number: property.host });
         if (property.headerName === Constants.commonPhrases.vue2InVue3App.appsNames.vue3) {
@@ -131,7 +131,7 @@ test.describe('Vue 2 in Vue 3', () => {
         });
       });
 
-      test('Checks that clicks counter is not shared between apps', async ({ page }) => {
+      test(`Checks that clicks counter is not shared between apps (${property.headerName})`, async ({ page }) => {
         const basePage = new BaseMethods(page);
         const host = property.host === 3001 ? appsData[1].host : appsData[0].host;
         const defaultCounterText = Constants.commonPhrases.vue2InVue3App.defaultCounterText;
