@@ -1,6 +1,7 @@
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
 
 module.exports = {
+  lintOnSave: false,
   publicPath: 'http://localhost:8080/',
   configureWebpack: {
     optimization: {

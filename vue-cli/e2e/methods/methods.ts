@@ -41,15 +41,18 @@ export class VueCliMethods extends BaseMethods {
       isContain: false,
     });
 
-    await this.clickElementWithText({
-      selector: baseSelectors.tags.coreElements.button,
-      text: Constants.elementsText.vueCliApp.buttonsText.otherSectionButton,
-    });
+    const buttonLocator = this.page
+      .locator(baseSelectors.tags.section)
+      .locator(baseSelectors.tags.coreElements.button)
+      .filter({ hasText: Constants.elementsText.vueCliApp.buttonsText.otherSectionButton })
+      .first();
 
-    await this.checkElementVisibility({
-      parentSelector: baseSelectors.tags.section,
-      selector: baseSelectors.tags.code,
-    });
+    const [dialog] = await Promise.all([
+      this.page.waitForEvent('dialog', { timeout: 5_000 }),
+      buttonLocator.click(),
+    ]);
+
+    await dialog.accept();
 
     await this.checkElementWithTextPresence({
       parentSelector: baseSelectors.tags.section,

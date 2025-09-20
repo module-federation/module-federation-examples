@@ -88,10 +88,11 @@ test.describe('Vue CLI', () => {
         isContain: false,
       });
 
-      await basePage.clickElementWithText({
+      await basePage.checkBrowserAlertByText({
+        parentSelector: baseSelectors.tags.section,
         selector: baseSelectors.tags.coreElements.button,
-        text: Constants.elementsText.vueCliApp.buttonsText.otherSectionButton,
-        wait: 1500,
+        alertMessage: Constants.commonPhrases.vueCliApp.otherAppAlertMessage,
+        index: 1,
       });
 
       await basePage.compareInfoBetweenHosts({

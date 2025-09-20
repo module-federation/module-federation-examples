@@ -7,7 +7,7 @@ const App = () => (
     <h1>Basic Host-Remote</h1>
     <h2>Host Application</h2>
     <React.Suspense fallback="Loading Button">
-      <RemoteButton variant="secondary">Click here</RemoteButton>
+      <RemoteButton variant="secondary">Hello from remote</RemoteButton>
     </React.Suspense>
   </div>
 );
