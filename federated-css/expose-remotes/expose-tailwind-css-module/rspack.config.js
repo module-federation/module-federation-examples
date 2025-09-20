@@ -7,7 +7,7 @@ const {
 } = require('../remotes.config');
 
 module.exports = {
-  entry: './src/index',
+  entry: ['./src/ensureNmdPolyfill', './src/index'],
   mode: 'development',
   devServer: {
     static: {
@@ -45,7 +45,17 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              esModule: true,
+            },
+          },
+          'postcss-loader',
+        ],
       },
     ],
   },
