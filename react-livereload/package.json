@@ -9,9 +9,11 @@
   "license": "MIT",
   "scripts": {
     "start": "pnpm --filter react-hmr* --parallel run start",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/runAll.cy.ts\" --browser=chrome"
+    "e2e": "playwright test",
+    "e2e:ci": "playwright test --reporter=list"
   },
   "devDependencies": {
+    "@playwright/test": "^1.54.2",
     "concurrently": "8.2.2",
     "wait-on": "7.2.0"
   }

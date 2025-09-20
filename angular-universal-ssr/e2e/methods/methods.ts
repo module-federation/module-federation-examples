@@ -1,95 +1,113 @@
-import { BaseMethods } from '../../../cypress-e2e/common/base';
+import { expect, Page } from '@playwright/test';
+
+import { BaseMethods } from '../../../playwright-e2e/common/base';
 import { baseSelectors, selectors, updatedSelectors } from '../../../cypress-e2e/common/selectors';
 import { Constants } from '../../../cypress-e2e/fixtures/constants';
 
 export class AngularUniversalSsrMethods extends BaseMethods {
-  public checkActiveTabNameConnection(activeTabName: string, componentName: string): void {
-    cy.get(selectors.angularUniversalSsrApp.activeTab)
-      .invoke('text')
-      .then((text: string) => {
-        if (text === activeTabName) {
-          this.checkElementWithTextPresence({
-            selector: baseSelectors.tags.appRoot,
-            text: componentName,
-            visibilityState: 'be.visible',
-          });
-        }
-      });
+  constructor(protected readonly page: Page) {
+    super(page);
   }
 
-  public checkAddedCitiesBlockFunctionalityForMultipleHosts(
+  async checkActiveTabNameConnection(activeTabName: string, componentName: string): Promise<void> {
+    const text = (await this.page.locator(selectors.angularUniversalSsrApp.activeTab).innerText()).trim();
+
+    if (text === activeTabName) {
+      await this.checkElementWithTextPresence({
+        selector: baseSelectors.tags.appRoot,
+        text: componentName,
+        visibilityState: 'be.visible',
+      });
+    }
+  }
+
+  async checkAddedCitiesBlockFunctionalityForMultipleHosts(
     extraHost: number,
     addedCities: string[],
     addedCitySelector: string,
     selectedCityInfo: string[],
     selectedCityInfoSelector: string,
-  ): void {
-    this.clickElementWithText({
+  ): Promise<void> {
+    await this.clickElementWithText({
       selector: updatedSelectors.angularUniversalSsrApp.tab,
       text: Constants.elementsText.angularUniversalSsrApp.tabsNames[2],
     });
-    this.checkCitiesBlockFunctionality();
-    cy.origin(
-      Cypress.env(`localhost${extraHost}`),
-      { args: { addedCities, addedCitySelector, selectedCityInfoSelector, selectedCityInfo } },
-      ({ addedCities, addedCitySelector, selectedCityInfoSelector, selectedCityInfo }) => {
-        cy.visit('/');
-        addedCities.forEach((city: string, counter: number) => {
-          cy.get(addedCitySelector).contains(city).click();
-          cy.get(selectedCityInfoSelector).contains(selectedCityInfo[counter]).should('be.visible');
-          cy.reload(true);
-          cy.get(selectedCityInfoSelector).should('not.exist');
-        });
-      },
-    );
+
+    await this.checkCitiesBlockFunctionality();
+
+    const remotePage = await this.page.context().newPage();
+
+    try {
+      await remotePage.goto(`http://localhost:${extraHost}/`, { waitUntil: 'networkidle' });
+
+      for (let index = 0; index < addedCities.length; index++) {
+        const city = addedCities[index];
+        const expectedInfo = selectedCityInfo[index];
+
+        await remotePage.locator(addedCitySelector).filter({ hasText: city }).first().click();
+        await expect(remotePage.locator(selectedCityInfoSelector).filter({ hasText: expectedInfo })).toBeVisible();
+
+        await remotePage.reload({ waitUntil: 'networkidle' });
+        await expect(remotePage.locator(selectedCityInfoSelector).filter({ hasText: expectedInfo })).toHaveCount(0);
+      }
+    } finally {
+      await remotePage.close();
+    }
   }
 
-  public checkCitiesBlockFunctionality(): void {
-    Constants.elementsText.angularUniversalSsrApp.addedCities.forEach(
-      (city: string, counter: number) => {
-        this.clickElementWithText({
-          selector: updatedSelectors.angularUniversalSsrApp.addedCity,
-          text: city,
-        });
-        this.checkElementWithTextPresence({
-          selector: selectors.angularUniversalSsrApp.selectedCityInfo,
-          text: Constants.commonPhrases.angularUniversalSsrApp.selectedCityInfo[counter],
-          visibilityState: 'be.visible',
-        });
-        this.reloadWindow();
-        this.checkElementVisibility({
-          selector: selectors.angularUniversalSsrApp.selectedCityInfo,
-          isVisible: false,
-        });
-      },
-    );
+  async checkCitiesBlockFunctionality(): Promise<void> {
+    for (let index = 0; index < Constants.elementsText.angularUniversalSsrApp.addedCities.length; index++) {
+      const city = Constants.elementsText.angularUniversalSsrApp.addedCities[index];
+      const expectedInfo = Constants.commonPhrases.angularUniversalSsrApp.selectedCityInfo[index];
+
+      await this.clickElementWithText({
+        selector: updatedSelectors.angularUniversalSsrApp.addedCity,
+        text: city,
+      });
+
+      await this.checkElementWithTextPresence({
+        selector: selectors.angularUniversalSsrApp.selectedCityInfo,
+        text: expectedInfo,
+        visibilityState: 'be.visible',
+      });
+
+      await this.reloadWindow();
+      await this.checkElementVisibility({
+        selector: selectors.angularUniversalSsrApp.selectedCityInfo,
+        isVisible: false,
+      });
+    }
   }
 
-  public checkTextedElementsVisibility(elementsArray: string[], elementSelector: string): void {
-    elementsArray.forEach((element: string) => {
-      this.checkElementWithTextPresence({
+  async checkTextedElementsVisibility(elementsArray: string[], elementSelector: string): Promise<void> {
+    for (const element of elementsArray) {
+      await this.checkElementWithTextPresence({
         selector: elementSelector,
         text: element,
         visibilityState: 'be.visible',
       });
-    });
+    }
   }
 
-  public addNewListValue(): void {
-    this.checkElementQuantity({
+  async addNewListValue(): Promise<void> {
+    await this.checkElementQuantity({
       selector: baseSelectors.tags.coreElements.list,
       quantity: 3,
     });
-    this.fillField({
+
+    await this.fillField({
       selector: baseSelectors.tags.inputs.input,
       text: Constants.commonConstantsData.standardPhrase,
     });
-    this.checkInputValue(Constants.commonConstantsData.standardPhrase);
-    this.clickElementWithText({
+
+    await this.checkInputValue(Constants.commonConstantsData.standardPhrase);
+
+    await this.clickElementWithText({
       selector: baseSelectors.tags.coreElements.button,
       text: Constants.elementsText.angularUniversalSsrApp.inputButtonText,
     });
-    this.checkElementQuantity({
+
+    await this.checkElementQuantity({
       selector: baseSelectors.tags.coreElements.list,
       quantity: 4,
     });

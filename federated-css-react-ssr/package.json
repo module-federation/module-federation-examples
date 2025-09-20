@@ -6,6 +6,12 @@
   "private": true,
   "scripts": {
     "build": "pnpm --parallel --filter federated-css-react-ssr_* build",
-    "start": "pnpm --parallel --filter federated-css-react-ssr_* start"
+    "start": "pnpm --parallel --filter federated-css-react-ssr_* start",
+    "e2e": "playwright test",
+    "e2e:ci": "playwright test --reporter=list",
+    "e2e:headed": "playwright test --headed"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.2"
   }
 }

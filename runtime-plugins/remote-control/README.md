@@ -22,10 +22,11 @@ To give the application a spin, run `pnpm start`. This command will build and se
 - [localhost:3002](http://localhost:3002/)
 - [localhost:3003](http://localhost:3003/)
 
-# Running Cypress E2E Tests
+# Running Playwright E2E Tests
 
-For running tests in interactive mode, execute `npm run cypress:debug` from the root directory of the project. This will open the Cypress Test Runner and allow you to run tests interactively. [More info about "How to run tests"](../../cypress-e2e/README.md#how-to-run-tests)
+- `pnpm test:e2e` runs the Playwright suite locally (headed by default).
+- `pnpm test:e2e:ui` opens the Playwright Test Runner UI for interactive debugging.
+- `pnpm test:e2e:debug` starts Playwright in debug mode.
+- `pnpm e2e:ci` builds the applications and executes the suite in headless mode, the same flow used in CI.
 
-To build the app and run tests in headless mode, run `yarn e2e:ci`. This command will build the app and run tests for this workspace in headless mode. If tests fail, Cypress will create a `cypress` directory in the sample root folder with screenshots and videos.
-
-["Best Practices, Rules and more interesting information here](../../cypress-e2e/README.md)
+Playwright stores traces, screenshots, and videos for failing specs inside `playwright-report` when run in CI mode.

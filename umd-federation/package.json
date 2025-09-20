@@ -8,13 +8,17 @@
     "preinstall": "pnpm install --ignore-scripts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "pnpm --filter umd-federation_app* --parallel start",
-    "e2e:ci": "pnpm start & wait-on tcp:9001 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "test:e2e": "pnpm exec playwright test",
+    "test:e2e:ui": "pnpm exec playwright test --ui",
+    "test:e2e:debug": "pnpm exec playwright test --debug",
+    "e2e:ci": "pnpm exec playwright install --with-deps && pnpm exec playwright test --reporter=list"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "wait-on": "7.2.0",
+    "@playwright/test": "^1.54.2",
+    "playwright": "^1.54.2",
     "umfjs": "0.3.7"
   }
 }

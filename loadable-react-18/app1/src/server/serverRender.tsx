@@ -43,7 +43,7 @@ export default async function serverRender(req, res, next) {
     console.error('[renderAndExtractContext serverRender]', error);
   }
 
-  const { markup, linkTags, scriptTags } = result as RenderAndExtractContextResult;
+  const { markup = '', linkTags = '', scriptTags = '' } = (result || {}) as Partial<RenderAndExtractContextResult>;
 
   res.write(`<head>${linkTags}</head><body>`);
   res.write(`<div id="root">${markup}</div>`);

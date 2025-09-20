@@ -8,9 +8,13 @@
     "build": "pnpm run --filter self-healing_app* build",
     "serve": "pnpm run --filter self-healing_app* --parallel serve",
     "clean": "pnpm run --filter self-healing_app* --parallel clean",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/*.cy.ts\" --browser=chrome"
+    "test:e2e": "pnpm exec playwright test",
+    "test:e2e:ui": "pnpm exec playwright test --ui",
+    "test:e2e:debug": "pnpm exec playwright test --debug",
+    "e2e:ci": "pnpm exec playwright install --with-deps && pnpm exec playwright test --reporter=list"
   },
   "devDependencies": {
-    "wait-on": "7.2.0"
+    "@playwright/test": "^1.54.2",
+    "playwright": "^1.54.2"
   }
 }

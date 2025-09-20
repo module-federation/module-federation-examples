@@ -1,4 +1,18 @@
 {
-  "name": "quasar",
-  "description": "Quasar Framework Example"
+  "name": "quasar-cli-vue3-webpack-javascript",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Quasar Framework Example",
+  "scripts": {
+    "start": "concurrently --kill-others-on-fail \"pnpm --dir app-exposes exec -- env BROWSER=none quasar dev\" \"pnpm --dir app-general exec -- env BROWSER=none quasar dev\"",
+    "test:e2e": "pnpm exec playwright test",
+    "test:e2e:ui": "pnpm exec playwright test --ui",
+    "test:e2e:debug": "pnpm exec playwright test --debug",
+    "e2e:ci": "pnpm exec playwright install --with-deps && pnpm exec playwright test --reporter=list"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.2",
+    "concurrently": "8.2.2",
+    "playwright": "^1.54.2"
+  }
 }

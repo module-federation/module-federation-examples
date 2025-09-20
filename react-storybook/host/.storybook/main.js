@@ -1,4 +1,5 @@
 import { dirname, join } from 'path';
+import { webpack as withModuleFederation } from '@module-federation/storybook-addon';
 import moduleFederationConfig from '../modulefederation.config';
 
 /**
@@ -19,17 +20,16 @@ const config = {
     getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('@chromatic-com/storybook'),
     getAbsolutePath('@storybook/addon-interactions'),
-    {
-      name: '@module-federation/storybook-addon',
-      options: {
-        moduleFederationConfig,
-      },
-    }
   ],
   framework: {
     name: getAbsolutePath('@storybook/react-webpack5'),
     options: {},
   },
   staticDirs: ['../public'],
+  webpackFinal: async (baseConfig, options) =>
+    withModuleFederation(baseConfig, {
+      ...options,
+      moduleFederationConfig,
+    }),
 };
 export default config;

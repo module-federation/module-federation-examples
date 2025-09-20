@@ -4,7 +4,7 @@ const path = require('path');
 const mfConfig = require('./mf-plugin.config');
 
 module.exports = {
-  entry: './src/index',
+  entry: ['./src/ensureNmdPolyfill', './src/index'],
   mode: 'development',
   devServer: {
     static: {

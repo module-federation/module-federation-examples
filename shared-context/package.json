@@ -8,11 +8,12 @@
     "build": "pnpm --filter shared-context_* build",
     "serve": "pnpm --filter shared-context_* --parallel serve",
     "clean": "pnpm --filter shared-context_* --parallel clean",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "e2e": "pnpm exec playwright test",
+    "e2e:ci": "pnpm exec playwright test --reporter=list"
   },
   "devDependencies": {
+    "@playwright/test": "^1.54.2",
     "lerna": "8.1.6",
-    "wait-on": "7.2.0",
     "webpack-cli": "5.1.4"
   }
 }

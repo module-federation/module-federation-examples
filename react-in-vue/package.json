@@ -8,10 +8,12 @@
     "build": "pnpm run --filter react-in-vue_* build",
     "serve": "pnpm run --filter react-in-vue_* --parallel serve",
     "clean": "pnpm run --filter react-in-vue_* --parallel clean",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3002/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "e2e:ci": "playwright test --reporter=list",
+    "e2e": "playwright test"
   },
   "devDependencies": {
     "@babel/preset-react": "7.24.7",
-    "wait-on": "7.2.0"
+    "wait-on": "7.2.0",
+    "@playwright/test": "^1.54.2"
   }
 }

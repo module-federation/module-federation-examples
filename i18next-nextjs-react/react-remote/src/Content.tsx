@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type MouseEvent } from 'react';
 import useReactRemoteTranslation from './i18n/useReactRemoteTranslation';
 import i18nService from 'i18next-shared-lib/lib/i18nService';
 
@@ -9,6 +9,11 @@ export const Content = () => {
     i18nService.switchLanguage();
   };
 
+  const handleButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    switchLanguage();
+  };
+
   return (
     <div
       style={{
@@ -17,7 +22,7 @@ export const Content = () => {
     >
       <header>{t('remoteTitle')}</header>
       <aside>
-        <button onClick={() => switchLanguage()}>{t('changeLanguageButtonLabel')}</button>
+        <button onClick={handleButtonClick}>{t('changeLanguageButtonLabel')}</button>
       </aside>
       <main>{t('remoteContent')}</main>
     </div>

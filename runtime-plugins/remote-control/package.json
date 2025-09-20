@@ -14,10 +14,16 @@
     "clean": "pnpm --filter backend-control_app* --parallel clean",
     "legacy:start": "pnpm --filter backend-control_app* --parallel legacy:start",
     "legacy:build": "pnpm --filter backend-control_app* --parallel legacy:build",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
-    "disabled:legacy:e2e:ci": "pnpm legacy:start & wait-on http-get://localhost:3001/ && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "e2e:ci": "pnpm build && pnpm exec playwright install --with-deps && CI=1 pnpm exec playwright test --reporter=list",
+    "legacy:e2e:ci": "pnpm legacy:build && pnpm exec playwright install --with-deps && USE_LEGACY=true CI=1 pnpm exec playwright test --reporter=list",
+    "test:e2e": "pnpm exec playwright test",
+    "test:e2e:ui": "pnpm exec playwright test --ui",
+    "test:e2e:debug": "pnpm exec playwright test --debug"
   },
   "devDependencies": {
-    "wait-on": "7.2.0"
+    "wait-on": "7.2.0",
+    "@module-federation/runtime": "0.17.1",
+    "@playwright/test": "^1.54.2",
+    "playwright": "^1.54.2"
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
-import classes from './tailwind.module.css';
+import * as moduleStyles from './tailwind.module.css';
+const classes = moduleStyles.default || moduleStyles;
 
 const style = {
   padding: 12,

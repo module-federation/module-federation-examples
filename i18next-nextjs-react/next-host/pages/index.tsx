@@ -1,16 +1,31 @@
 import type { NextPage } from 'next';
-import useNextHostTranslation from '../i18n/useNextHostTranslation';
 import dynamic from 'next/dynamic';
-const ReactRemoteContent = dynamic(() => import('reactRemote/Content'), { ssr: false });
+import { useEffect, useState, type MouseEvent } from 'react';
 import i18nService from 'i18next-shared-lib/lib/i18nService';
 
-console.log(__webpack_share_scopes__);
-setTimeout(() => console.log(__webpack_share_scopes__), 1000);
+import useNextHostTranslation from '../i18n/useNextHostTranslation';
+
+const ReactRemoteContent = dynamic(() => import('../components/ReactRemoteContent'), { ssr: false });
 
 const Home: NextPage = () => {
   const { t } = useNextHostTranslation('next-main');
+  const [isRemoteVisible, setIsRemoteVisible] = useState(false);
+
+  useEffect(() => {
+    setIsRemoteVisible(true);
+  }, []);
+
   const switchLanguage = () => {
     i18nService.switchLanguage();
+  };
+
+  const handleSectionClick = () => {
+    switchLanguage();
+  };
+
+  const handleButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    switchLanguage();
   };
   return (
     <main
@@ -27,16 +42,24 @@ const Home: NextPage = () => {
         <h1>Next Host</h1>
       </header>
       <section
+        onClick={handleSectionClick}
         style={{
           marginBottom: 10,
+          cursor: 'pointer',
         }}
       >
         <p>{t('mainText')}</p>
-        <button onClick={switchLanguage}>{t('changeLanguageButtonLabel')}</button>
-      </section>
-      <section>
-        <h2>{`${t('remoteChildTitle')} :`}</h2>
-        <ReactRemoteContent />
+        <button onClick={handleButtonClick}>{t('changeLanguageButtonLabel')}</button>
+        {isRemoteVisible && (
+          <div
+            style={{
+              marginTop: 10,
+            }}
+          >
+            <h2>{`${t('remoteChildTitle')} :`}</h2>
+            <ReactRemoteContent />
+          </div>
+        )}
       </section>
     </main>
   );

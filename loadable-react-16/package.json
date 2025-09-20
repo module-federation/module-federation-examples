@@ -3,13 +3,14 @@
   "ignored": true,
   "version": "0.0.1",
   "scripts": {
-    "start": "pnpm --filter loadable-react-16_* --parallel start",
+    "start": "node scripts/run-servers.cjs",
     "build": "pnpm --filter loadable-react-16_* build",
-    "serve": "pnpm --filter loadable-react-16_* --parallel serve",
+    "serve": "node scripts/run-servers.cjs --skip-build",
     "clean": "pnpm --filter loadable-react-16_* --parallel clean",
-    "e2e:ci": "pnpm start & sleep 2 && wait-on tcp:3000 && wait-on tcp:3001 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome && lsof -ti tcp:3000,3001,3002 | xargs kill"
+    "e2e:ci": "pnpm exec playwright test"
   },
   "devDependencies": {
+    "@playwright/test": "^1.54.2",
     "wait-on": "7.2.0"
   }
 }

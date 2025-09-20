@@ -10,10 +10,15 @@
     "legacy:build": "pnpm --filter dynamic-system-host_app* legacy:build",
     "serve": "pnpm --filter dynamic-system-host_app* --parallel serve",
     "clean": "pnpm --filter dynamic-system-host_app* --parallel clean",
-    "e2e:ci": "pnpm start & sleep 1 &&  wait-on tcp:3001 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
-    "legacy:e2e:ci": "pnpm legacy:start & sleep 1 && wait-on tcp:3001 tcp:3002 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "test:e2e": "npx playwright test",
+    "test:e2e:ui": "npx playwright test --ui",
+    "test:e2e:debug": "npx playwright test --debug",
+    "e2e:ci": "pnpm build && npx playwright install --with-deps && npx playwright test --reporter=list",
+    "legacy:e2e:ci": "pnpm legacy:build && npx playwright install --with-deps && npx playwright test --reporter=list"
   },
   "devDependencies": {
-    "wait-on": "7.2.0"
+    "wait-on": "7.2.0",
+    "@playwright/test": "^1.54.2",
+    "playwright": "^1.54.2"
   }
 }

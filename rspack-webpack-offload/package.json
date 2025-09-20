@@ -8,7 +8,10 @@
     "build": "pnpm --filter rspack_offload_* --parallel build",
     "legacy:build": "pnpm --filter rspack_offload_* --parallel legacy:build",
     "legacy:start": "pnpm --filter rspack_offload_* --parallel legacy:start",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3002/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "test:e2e": "pnpm exec playwright test",
+    "test:e2e:ui": "pnpm exec playwright test --ui",
+    "test:e2e:debug": "pnpm exec playwright test --debug",
+    "e2e:ci": "pnpm build && pnpm exec playwright install --with-deps && pnpm exec playwright test --reporter=list"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +21,7 @@
   },
   "homepage": "https://github.com/anderlaw/react-webpack-MF#readme",
   "devDependencies": {
-    "wait-on": "7.2.0"
+    "@playwright/test": "^1.54.2",
+    "playwright": "^1.54.2"
   }
 }
