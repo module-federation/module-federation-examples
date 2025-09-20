@@ -1,6 +1,5 @@
-import { test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
-import { BaseMethods } from '../../playwright-e2e/common/base';
 import { baseSelectors } from '../../cypress-e2e/common/selectors';
 import { Constants } from '../../cypress-e2e/fixtures/constants';
 
@@ -19,32 +18,26 @@ const appsData = [
 test.describe('UMD Federation', () => {
   appsData.forEach(({ header1, header2, header3, host }) => {
     test.describe(`Check application on localhost:${host}`, () => {
-      let basePage: BaseMethods;
+      const baseUrl = `http://localhost:${host}/`;
 
       test.beforeEach(async ({ page }) => {
-        basePage = new BaseMethods(page);
-        await basePage.openLocalhost({ number: host });
+        await page.goto(baseUrl, { waitUntil: 'networkidle' });
       });
 
-      test('Check App elements', async () => {
-        test.skip(!header1, 'App 2 renders external remote content without headers.');
+      test('Check App elements', async ({ page }) => {
+        if (!header1 || !header2 || !header3) {
+          test.skip('App 2 renders external remote content without headers.');
+        } else {
+          const headerLocator = page.locator(baseSelectors.tags.headers.h1);
 
-        await basePage.checkElementWithTextPresence({
-          selector: baseSelectors.tags.headers.h1,
-          text: header1!,
-        });
-        await basePage.checkElementWithTextPresence({
-          selector: baseSelectors.tags.headers.h1,
-          text: header2!,
-        });
-        await basePage.checkElementWithTextPresence({
-          selector: baseSelectors.tags.headers.h1,
-          text: header3!,
-        });
+          for (const text of [header1, header2, header3]) {
+            await expect(headerLocator.filter({ hasText: text })).toBeVisible();
+          }
+        }
       });
 
-      test('Check App URL', async () => {
-        await basePage.checkUrlText(`http://localhost:${host}/`, true);
+      test('Check App URL', async ({ page }) => {
+        await expect.poll(() => page.url()).toContain(baseUrl);
       });
     });
   });
