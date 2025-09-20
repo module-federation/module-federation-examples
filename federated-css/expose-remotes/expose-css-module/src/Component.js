@@ -1,5 +1,7 @@
 import React from 'react';
-import classes from './Button.styles.module.css';
+import * as moduleStyles from './Button.styles.module.css';
+
+const classes = moduleStyles.default || moduleStyles;
 
 const style = {
   padding: 12,
