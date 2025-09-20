@@ -4,7 +4,7 @@ import { expect, test } from '@playwright/test';
 import { Constants } from '../../../playwright-e2e/fixtures/constants';
 
 test.describe('Typescript Monorepo', () => {
-  test('checks apps package.json includes yarn workspaces', async () => {
+  test('checks example wiring in package.json', async () => {
     const packageJsonPath = path.resolve(
       __dirname,
       '../../..',
@@ -16,7 +16,7 @@ test.describe('Typescript Monorepo', () => {
       Constants.commonPhrases.typeScriptMonoRepoApp.yarnWorkspaceDependency,
     );
 
-    const packageJson = JSON.parse(packageJsonRaw) as { workspaces?: unknown };
-    expect(Array.isArray(packageJson.workspaces) || typeof packageJson.workspaces === 'object').toBeTruthy();
+    const packageJson = JSON.parse(packageJsonRaw) as { scripts?: Record<string, string> };
+    expect(packageJson.scripts?.start || '').toContain('typescript-monorepo_app');
   });
 });

@@ -11,7 +11,7 @@ test.describe('Vue 3 Demo', () => {
 
   test.describe('It checks app names & messages', () => {
     appsData.forEach(({ host, appName }) => {
-      test('Checks apps name visibility', async ({ page }) => {
+      test(`Checks apps name visibility (${appName})`, async ({ page }) => {
         const basePage = new BaseMethods(page);
         await basePage.openLocalhost({ number: host });
         await basePage.checkElementWithTextPresence({
@@ -21,7 +21,7 @@ test.describe('Vue 3 Demo', () => {
         });
       });
 
-      test('Checks component state message visibility', async ({ page }) => {
+      test(`Checks component state message visibility (${appName})`, async ({ page }) => {
         const basePage = new BaseMethods(page);
         await basePage.openLocalhost({ number: host });
         await basePage.checkElementWithTextPresence({
@@ -31,7 +31,7 @@ test.describe('Vue 3 Demo', () => {
         });
       });
 
-      test('Checks component state message style', async ({ page }) => {
+      test(`Checks component state message style (${appName})`, async ({ page }) => {
         const basePage = new BaseMethods(page);
         await basePage.openLocalhost({ number: host });
         await basePage.checkElementWithTextPresence({
@@ -41,7 +41,7 @@ test.describe('Vue 3 Demo', () => {
         });
       });
 
-      test('Checks button visibility', async ({ page }) => {
+      test(`Checks button visibility (${appName})`, async ({ page }) => {
         const basePage = new BaseMethods(page);
         await basePage.openLocalhost({ number: host });
         await basePage.checkElementVisibility({
@@ -49,7 +49,7 @@ test.describe('Vue 3 Demo', () => {
         });
       });
 
-      test('Checks that button is not disabled', async ({ page }) => {
+      test(`Checks that button is not disabled (${appName})`, async ({ page }) => {
         const basePage = new BaseMethods(page);
         await basePage.openLocalhost({ number: host });
         await basePage.checkElementState({
@@ -58,7 +58,7 @@ test.describe('Vue 3 Demo', () => {
         });
       });
 
-      test('Checks button text', async ({ page }) => {
+      test(`Checks button text (${appName})`, async ({ page }) => {
         const basePage = new BaseMethods(page);
         await basePage.openLocalhost({ number: host });
         await basePage.checkElementWithTextPresence({

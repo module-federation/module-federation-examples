@@ -621,4 +621,36 @@ export class BaseMethods {
 
     return message;
   }
+
+  async checkCounterFunctionality(options: {
+    button: string;
+    counterElement: string;
+    counterText: string; // e.g. "Times button clicked: 0"
+    isButtonTexted?: boolean; // unused in Playwright port, kept for parity
+    isReloaded?: boolean;
+    isValueCompared?: boolean;
+  }): Promise<void> {
+    const { button, counterElement, counterText, isReloaded = false, isValueCompared = false } = options;
+
+    const btn = this.resolveLocator(button);
+    await expect(btn.first()).toBeVisible();
+    await btn.first().click();
+
+    const counter = this.resolveLocator(counterElement).filter({ hasText: counterText.replace(/\d+$/, '') });
+    await expect(counter.first()).toBeVisible();
+
+    // Extract numeric value that follows the counterText prefix
+    const text = (await counter.first().innerText()).trim();
+    const match = text.match(/(\d+)/);
+    const value = match ? Number(match[1]) : NaN;
+
+    if (isValueCompared) {
+      expect(value).toBeGreaterThanOrEqual(1);
+    }
+
+    if (isReloaded) {
+      await this.reloadWindow();
+      await this.checkElementWithTextPresence({ selector: counterElement, text: counterText, visibilityState: 'be.visible' });
+    }
+  }
 }

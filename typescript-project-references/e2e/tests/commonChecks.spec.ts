@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { baseSelectors, updatedSelectors } from '../../playwright-e2e/common/selectors';
-import { Constants } from '../../playwright-e2e/fixtures/constants';
+import { baseSelectors, updatedSelectors } from '../../../playwright-e2e/common/selectors';
+import { Constants } from '../../../playwright-e2e/fixtures/constants';
 // Inline app config to remove Cypress-specific imports
 type TypeScriptAppConfig = { host: number; header: string; appName: string };
 

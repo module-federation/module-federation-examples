@@ -36,8 +36,9 @@ export default defineConfig({
   ],
   webServer: [
     {
-      // Build once and serve static to improve stability in CI
-      command: 'pnpm build && pnpm serve',
+      // Build once for both apps, then start both servers and wait
+      command:
+        "bash -lc 'pnpm --filter typescript_app1 build && pnpm --filter typescript_app2 build && pnpm --filter typescript_app1 serve & pnpm --filter typescript_app2 serve & wait'",
       cwd: __dirname,
       port: 3001,
       reuseExistingServer: !isCI,

@@ -31,16 +31,18 @@ export default defineConfig({
   ],
   webServer: [
     {
-      command: 'pnpm --filter "federated-css-mono_expose-*" --parallel start',
+      // Exposes must serve static bundles on fixed 400x ports to match remotes in consumers
+      command: 'pnpm --filter "federated-css-mono_expose-*" --parallel serve',
       cwd: __dirname,
       port: 4000,
       reuseExistingServer: reuseExisting,
       timeout: 240_000,
     },
     {
+      // Next.js consumers listen on 8081-8084; wait for the first to be ready
       command: 'pnpm --filter "@federated-css/*" --parallel start',
       cwd: __dirname,
-      port: 3001,
+      port: 8081,
       reuseExistingServer: reuseExisting,
       timeout: 240_000,
     },
