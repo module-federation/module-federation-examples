@@ -33,6 +33,9 @@ export default defineConfig({
     {
       command: 'pnpm start',
       cwd: 'remote',
+      env: {
+        BROWSER: 'none',
+      },
       port: 3002,
       reuseExistingServer,
       timeout: 120_000,
@@ -48,7 +51,7 @@ export default defineConfig({
       timeout: 120_000,
     },
     {
-      command: 'pnpm storybook',
+      command: 'pnpm storybook --ci --no-open',
       cwd: 'host',
       port: 6006,
       reuseExistingServer,
