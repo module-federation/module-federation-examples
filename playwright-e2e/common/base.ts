@@ -302,29 +302,54 @@ export class BaseMethods {
     isMultiple = false,
     isInclude = true,
   }: ElementPropertyOptions): Promise<void> {
-    let locator = this.resolveLocator(selector, { parentSelector, text, index });
+    const locator = this.resolveLocator(selector, { parentSelector, text, index });
+    const expectationMessage =
+      attr === 'attribute'
+        ? `Expected attribute "${prop}" on selector "${selector}" to ${isInclude ? '' : 'not '}include "${value}".`
+        : `Expected CSS property "${prop}" on selector "${selector}" to ${isInclude ? '' : 'not '}include "${value}".`;
 
-    if (isMultiple) {
-      const handles = await locator.elementHandles();
-      for (const handle of handles) {
-        const actual = await this.getProperty(handle, prop, attr);
-        if (isInclude) {
-          expect(actual).toContain(value);
-        } else {
-          expect(actual).not.toContain(value);
+    const doesMatch = (actual: string): boolean => (isInclude ? actual.includes(value) : !actual.includes(value));
+
+    await expect
+      .poll(async () => {
+        if (isMultiple) {
+          const handles = await locator.elementHandles();
+          if (handles.length === 0) {
+            return false;
+          }
+
+          try {
+            const results = await Promise.all(
+              handles.map(async handle => {
+                try {
+                  return await this.getProperty(handle, prop, attr);
+                } finally {
+                  await handle.dispose();
+                }
+              }),
+            );
+
+            return results.every(doesMatch);
+          } catch {
+            return false;
+          }
         }
-      }
 
-      return;
-    }
+        const handle = await locator.elementHandle({ timeout: 0 });
+        if (!handle) {
+          return false;
+        }
 
-    const actual = await this.getProperty(await locator.elementHandle(), prop, attr);
-
-    if (isInclude) {
-      expect(actual).toContain(value);
-    } else {
-      expect(actual).not.toContain(value);
-    }
+        try {
+          const actual = await this.getProperty(handle, prop, attr);
+          return doesMatch(actual);
+        } catch {
+          return false;
+        } finally {
+          await handle.dispose();
+        }
+      }, { message: expectationMessage })
+      .toBeTruthy();
   }
 
   async checkUrlText(urlPart: string, isInclude: boolean = false): Promise<void> {
