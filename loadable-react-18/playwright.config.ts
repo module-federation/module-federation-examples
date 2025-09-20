@@ -14,7 +14,8 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   webServer: {
-    command: 'pnpm run start',
+    // Use prebuilt bundles and only start servers for e2e reliability
+    command: 'pnpm run serve',
     url: 'http://localhost:3000',
     timeout: 180_000,
     reuseExistingServer: !process.env.CI,
