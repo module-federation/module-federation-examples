@@ -1,13 +1,23 @@
 import { test, expect } from '@playwright/test';
 import { baseSelectors, updatedSelectors } from '../../playwright-e2e/common/selectors';
 import { Constants } from '../../playwright-e2e/fixtures/constants';
-import { CommonTestData } from '../../cypress-e2e/fixtures/commonTestData';
-
-type TypeScriptAppConfig = (typeof CommonTestData.commonTypeScriptAppsData)[number];
+// Inline app config to remove Cypress-specific imports
+type TypeScriptAppConfig = { host: number; header: string; appName: string };
 
 const buildUrl = (port: number): string => `http://localhost:${port}/`;
 
-const typeScriptApps: TypeScriptAppConfig[] = CommonTestData.commonTypeScriptAppsData;
+const typeScriptApps: TypeScriptAppConfig[] = [
+  {
+    host: 3001,
+    header: Constants.commonConstantsData.typeScript.charAt(0).toUpperCase(),
+    appName: Constants.commonConstantsData.commonCountAppNames.app1,
+  },
+  {
+    host: 3002,
+    header: Constants.commonConstantsData.typeScript.charAt(0).toUpperCase(),
+    appName: Constants.commonConstantsData.commonCountAppNames.app2,
+  },
+];
 
 const sharedButtonText = Constants.updatedConstantsData.commonAppWithButton.app2;
 

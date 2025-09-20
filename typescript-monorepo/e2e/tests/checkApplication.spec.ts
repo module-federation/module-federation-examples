@@ -1,7 +1,7 @@
 import path from 'node:path';
 import { readFile } from 'node:fs/promises';
 import { expect, test } from '@playwright/test';
-import { Constants } from '../../../cypress-e2e/fixtures/constants';
+import { Constants } from '../../../playwright-e2e/fixtures/constants';
 
 test.describe('Typescript Monorepo', () => {
   test('checks apps package.json includes yarn workspaces', async () => {

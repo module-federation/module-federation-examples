@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import type { Page } from '@playwright/test';
 import { selectors } from '../../playwright-e2e/common/selectors';
-import { CssAttr } from '../../cypress-e2e/types/cssAttr';
+import { CssAttr } from '../../playwright-e2e/types/cssAttr';
 import { Constants } from '../../playwright-e2e/fixtures/constants';
 
 const {

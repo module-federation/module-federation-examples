@@ -1,10 +1,20 @@
 import { test } from '@playwright/test';
 import { BaseMethods } from '../../../playwright-e2e/common/base';
 import { baseSelectors, updatedSelectors } from '../../../playwright-e2e/common/selectors';
-import { Constants } from '../../../cypress-e2e/fixtures/constants';
-import { CommonTestData } from '../../../cypress-e2e/fixtures/commonTestData';
+import { Constants } from '../../../playwright-e2e/fixtures/constants';
 
-const appsUnderTest = CommonTestData.commonTypeScriptAppsData;
+const appsUnderTest = [
+  {
+    host: 3001,
+    header: Constants.commonConstantsData.typeScript.charAt(0).toUpperCase(),
+    appName: Constants.commonConstantsData.commonCountAppNames.app1,
+  },
+  {
+    host: 3002,
+    header: Constants.commonConstantsData.typeScript.charAt(0).toUpperCase(),
+    appName: Constants.commonConstantsData.commonCountAppNames.app2,
+  },
+];
 const sharedButtonText = Constants.updatedConstantsData.commonAppWithButton.app2;
 const sharedHeader = `${appsUnderTest[0].header}${Constants.commonConstantsData.typeScript.slice(1)}`;
 
