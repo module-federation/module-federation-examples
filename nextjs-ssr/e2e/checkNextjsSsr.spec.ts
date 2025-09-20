@@ -1,6 +1,5 @@
-import type { Page } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
 import { Constants } from '../../cypress-e2e/fixtures/constants';
-import { test, expect } from '../../playwright-e2e/common/testFixtures';
 
 interface AppConfig {
   name: string;
@@ -107,6 +106,12 @@ const buildPathRegex = (port: number, path: string): RegExp => {
   return new RegExp(`^http://localhost:${port}${escapedPath}(?:\\/)?$`);
 };
 
+async function openLocalhost(page: Page, { port, path }: { port: number; path?: string }): Promise<void> {
+  const normalizedPath = path ? (path.startsWith('/') ? path : `/${path}`) : '';
+  const url = `http://localhost:${port}${normalizedPath}`;
+  await page.goto(url, { waitUntil: 'networkidle' });
+}
+
 const expectSharedNavigation = async (page: Page): Promise<void> => {
   const nav = page.locator('nav');
   await expect(nav).toBeVisible();
@@ -189,49 +194,49 @@ const expectNavigationFlow = async (page: Page, port: number): Promise<void> => 
 test.describe('NextJS SSR', () => {
   for (const { name, port } of appsUnderTest) {
     test.describe(`${name} host`, () => {
-      test(`Home page renders shared navigation in ${name}`, async ({ basePage, page }) => {
-        await basePage.openLocalhost({ port });
+      test(`Home page renders shared navigation in ${name}`, async ({ page }) => {
+        await openLocalhost(page, { port });
         await expectSharedNavigation(page);
       });
 
-      test(`Home page renders federated content in ${name}`, async ({ basePage, page }) => {
-        await basePage.openLocalhost({ port });
+      test(`Home page renders federated content in ${name}`, async ({ page }) => {
+        await openLocalhost(page, { port });
         await expectHomePageContent(page);
         await expectHomeTiles(page);
       });
 
-      test(`Home page navigation works in ${name}`, async ({ basePage, page }) => {
-        await basePage.openLocalhost({ port });
+      test(`Home page navigation works in ${name}`, async ({ page }) => {
+        await openLocalhost(page, { port });
         await expectNavigationFlow(page, port);
       });
 
-      test(`Shop page renders shared navigation in ${name}`, async ({ basePage, page }) => {
-        await basePage.openLocalhost({ port, path: Constants.hrefs.nextJsSsrApp.shop });
+      test(`Shop page renders shared navigation in ${name}`, async ({ page }) => {
+        await openLocalhost(page, { port, path: Constants.hrefs.nextJsSsrApp.shop });
         await expectSharedNavigation(page);
       });
 
-      test(`Shop page renders federated content in ${name}`, async ({ basePage, page }) => {
-        await basePage.openLocalhost({ port, path: Constants.hrefs.nextJsSsrApp.shop });
+      test(`Shop page renders federated content in ${name}`, async ({ page }) => {
+        await openLocalhost(page, { port, path: Constants.hrefs.nextJsSsrApp.shop });
         await expectShopContent(page);
       });
 
-      test(`Shop page navigation works in ${name}`, async ({ basePage, page }) => {
-        await basePage.openLocalhost({ port, path: Constants.hrefs.nextJsSsrApp.shop });
+      test(`Shop page navigation works in ${name}`, async ({ page }) => {
+        await openLocalhost(page, { port, path: Constants.hrefs.nextJsSsrApp.shop });
         await expectNavigationFlow(page, port);
       });
 
-      test(`Checkout page renders shared navigation in ${name}`, async ({ basePage, page }) => {
-        await basePage.openLocalhost({ port, path: Constants.hrefs.nextJsSsrApp.checkout });
+      test(`Checkout page renders shared navigation in ${name}`, async ({ page }) => {
+        await openLocalhost(page, { port, path: Constants.hrefs.nextJsSsrApp.checkout });
         await expectSharedNavigation(page);
       });
 
-      test(`Checkout page renders federated content in ${name}`, async ({ basePage, page }) => {
-        await basePage.openLocalhost({ port, path: Constants.hrefs.nextJsSsrApp.checkout });
+      test(`Checkout page renders federated content in ${name}`, async ({ page }) => {
+        await openLocalhost(page, { port, path: Constants.hrefs.nextJsSsrApp.checkout });
         await expectCheckoutContent(page);
       });
 
-      test(`Checkout page navigation works in ${name}`, async ({ basePage, page }) => {
-        await basePage.openLocalhost({ port, path: Constants.hrefs.nextJsSsrApp.checkout });
+      test(`Checkout page navigation works in ${name}`, async ({ page }) => {
+        await openLocalhost(page, { port, path: Constants.hrefs.nextJsSsrApp.checkout });
         await expectNavigationFlow(page, port);
       });
     });

@@ -1,8 +1,8 @@
 import { expect, test } from '@playwright/test';
 import type { Page } from '@playwright/test';
-import { selectors } from '../../cypress-e2e/common/selectors';
+import { selectors } from '../../playwright-e2e/common/selectors';
 import { CssAttr } from '../../cypress-e2e/types/cssAttr';
-import { Constants } from '../../cypress-e2e/fixtures/constants';
+import { Constants } from '../../playwright-e2e/fixtures/constants';
 
 const {
   css,
@@ -66,6 +66,7 @@ const buildUrl = (port: number, path?: string): string => {
 };
 
 const expectButtonsInOrder = async (page: Page, buttons: ButtonConfig[]) => {
+  await page.waitForSelector(selectors.federatedCssButton, { timeout: 30_000 });
   const buttonLocator = page.locator(selectors.federatedCssButton);
   await expect(buttonLocator).toHaveCount(buttons.length);
 
@@ -76,6 +77,7 @@ const expectButtonsInOrder = async (page: Page, buttons: ButtonConfig[]) => {
 };
 
 const expectAllButtonsMatch = async (page: Page, expected: ButtonConfig) => {
+  await page.waitForSelector(selectors.federatedCssButton, { timeout: 30_000 });
   const buttonLocator = page.locator(selectors.federatedCssButton);
   await expect(buttonLocator).not.toHaveCount(0);
 
