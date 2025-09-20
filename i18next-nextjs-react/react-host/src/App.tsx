@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type MouseEvent } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import './index.css';
@@ -11,6 +11,15 @@ const App = () => {
   const { t } = useReactHostTranslation('react-main');
   const switchLanguage = () => {
     i18nService.switchLanguage();
+  };
+
+  const handleSectionClick = () => {
+    switchLanguage();
+  };
+
+  const handleButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    switchLanguage();
   };
   return (
     <main
@@ -27,16 +36,22 @@ const App = () => {
         <h1>React Host</h1>
       </header>
       <section
+        onClick={handleSectionClick}
         style={{
           marginBottom: 10,
+          cursor: 'pointer',
         }}
       >
         <p>{t('mainText')}</p>
-        <button onClick={switchLanguage}>{t('changeLanguageButtonLabel')}</button>
-      </section>
-      <section>
-        <h2>{`${t('remoteChildTitle')} :`}</h2>
-        <ReactRemoteContent />
+        <button onClick={handleButtonClick}>{t('changeLanguageButtonLabel')}</button>
+        <div
+          style={{
+            marginTop: 10,
+          }}
+        >
+          <h2>{`${t('remoteChildTitle')} :`}</h2>
+          <ReactRemoteContent />
+        </div>
       </section>
     </main>
   );

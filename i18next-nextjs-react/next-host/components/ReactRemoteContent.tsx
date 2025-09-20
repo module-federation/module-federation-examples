@@ -1,8 +1,9 @@
 import React, { type MouseEvent } from 'react';
-import useReactRemoteTranslation from './i18n/useReactRemoteTranslation';
 import i18nService from 'i18next-shared-lib/lib/i18nService';
 
-export const Content = () => {
+import useReactRemoteTranslation from '../i18n/useReactRemoteTranslation';
+
+const ReactRemoteContent = () => {
   const { t } = useReactRemoteTranslation('react-remote-main');
 
   const switchLanguage = () => {
@@ -28,4 +29,5 @@ export const Content = () => {
     </div>
   );
 };
-export default Content;
+
+export default ReactRemoteContent;
