@@ -20,6 +20,7 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     viewport: { width: 1920, height: 1080 },
+    ignoreHTTPSErrors: true,
   },
   projects: [
     {
