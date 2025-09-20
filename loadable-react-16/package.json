@@ -3,9 +3,9 @@
   "ignored": true,
   "version": "0.0.1",
   "scripts": {
-    "start": "pnpm --filter loadable-react-16_* --parallel start",
+    "start": "node scripts/run-servers.cjs",
     "build": "pnpm --filter loadable-react-16_* build",
-    "serve": "pnpm --filter loadable-react-16_* --parallel serve",
+    "serve": "node scripts/run-servers.cjs --skip-build",
     "clean": "pnpm --filter loadable-react-16_* --parallel clean",
     "e2e:ci": "pnpm exec playwright test"
   },
