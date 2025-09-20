@@ -27,26 +27,46 @@ export async function renderAndExtractContext({
   // @loadable chunk extractor
   chunkExtractor,
 }: RenderAndExtractContextOptions) {
-  const { default: App } = await import('../client/components/App');
+  let markup = '';
 
-  // This not work, The ChunkExtractorManager context provider
-  // do not pass the chunkExtractor to the context consumer (ChunkExtractorManager)
-  // const markup = await renderToString(chunkExtractor.collectChunks(<App />));
+  try {
+    const { default: App } = await import('../client/components/App');
 
-  const markup = await renderToStaticMarkup(
-    <ChunkExtractorManager {...{ extractor: chunkExtractor }}>
-      <App />
-    </ChunkExtractorManager>,
-  );
+    // This not work, The ChunkExtractorManager context provider
+    // do not pass the chunkExtractor to the context consumer (ChunkExtractorManager)
+    // const markup = await renderToString(chunkExtractor.collectChunks(<App />));
 
-  const linkTags = chunkExtractor.getLinkTags();
-  const scriptTags = chunkExtractor.getScriptTags();
+    markup = await renderToStaticMarkup(
+      <ChunkExtractorManager {...{ extractor: chunkExtractor }}>
+        <App />
+      </ChunkExtractorManager>,
+    );
+  } catch (error) {
+    console.error('[renderAndExtractContext] Failed to render App component', error);
+  }
+
+  let linkTags = '';
+  let scriptTags = '';
+
+  try {
+    linkTags = chunkExtractor.getLinkTags();
+    scriptTags = chunkExtractor.getScriptTags();
+  } catch (error) {
+    console.error('[renderAndExtractContext] Failed to collect chunk tags', error);
+  }
 
   // ================ WORKAROUND ================
-  const [mfRequiredScripts, mfRequiredStyles] = await getMfChunks(chunkExtractor);
+  let mfScriptTags = '';
+  let mfStyleTags = '';
 
-  const mfScriptTags = mfRequiredScripts.map(createScriptTag).join('');
-  const mfStyleTags = mfRequiredStyles.map(createStyleTag).join('');
+  try {
+    const [mfRequiredScripts, mfRequiredStyles] = await getMfChunks(chunkExtractor);
+
+    mfScriptTags = mfRequiredScripts.map(createScriptTag).join('');
+    mfStyleTags = mfRequiredStyles.map(createStyleTag).join('');
+  } catch (error) {
+    console.error('[renderAndExtractContext] Failed to collect module federation chunks', error);
+  }
   // ================ WORKAROUND ================
 
   console.log('mfScriptTags', mfScriptTags);
