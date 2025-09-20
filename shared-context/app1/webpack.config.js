@@ -2,6 +2,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
 const path = require('path');
 
+const deps = require('./package.json').dependencies;
+
 module.exports = {
   entry: './src/index',
   mode: 'development',
@@ -42,16 +44,21 @@ module.exports = {
       remotes: {
         app2: 'app2@http://localhost:3002/remoteEntry.js',
       },
-      shared: [
-        'react',
-        'react-dom',
-        {
-          'shared-context_shared-library': {
-            import: 'shared-context_shared-library',
-            requiredVersion: require('../shared-library/package.json').version,
-          },
+      shared: {
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
         },
-      ],
+        'react-dom': {
+          singleton: true,
+          requiredVersion: deps['react-dom'],
+        },
+        'shared-context_shared-library': {
+          import: 'shared-context_shared-library',
+          requiredVersion: require('../shared-library/package.json').version,
+          singleton: true,
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
