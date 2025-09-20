@@ -714,7 +714,7 @@ export class Constants {
         consumerCoreSectionButton: 'Button imported from /core',
       },
       otherSectionCodeBlock:
-        '{ "userId": 1, "id": 1, "title": "delectus aut autem", "completed": false }',
+        '{\n  "userId": 1,\n  "id": 1,\n  "title": "delectus aut autem",\n  "completed": false\n}',
       consumerSection: {
         header: 'This is /consumer.',
         importMessages: {

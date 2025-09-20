@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from '@playwright/test';
+import { expect, Locator, Page, test } from '@playwright/test';
 import type { ElementHandle } from 'playwright';
 
 interface VisibilityOptions {
@@ -25,6 +25,29 @@ interface ClickWithTextOptions {
   parentSelector?: string;
   isTargetChanged?: boolean;
   index?: number;
+  wait?: number;
+}
+
+interface BrowserAlertOptions {
+  selector: string;
+  alertMessage?: string;
+  isEqual?: boolean;
+  index?: number;
+  parentSelector?: string;
+  wait?: number;
+}
+
+interface BrowserAlertForMultipleHostsOptions extends BrowserAlertOptions {
+  host: number;
+}
+
+interface CompareHostsOptions {
+  selector: string;
+  extraHost: number;
+  isEqual?: boolean;
+  index?: number;
+  clickSelector?: string;
+  wait?: number;
 }
 
 interface ElementContainTextOptions {
@@ -68,8 +91,16 @@ export class BaseMethods {
   constructor(protected readonly page: Page) {}
 
   private resolveLocator(selector: string, options: { parentSelector?: string; text?: string; index?: number } = {}): Locator {
+    return this.resolveLocatorForPage(this.page, selector, options);
+  }
+
+  private resolveLocatorForPage(
+    page: Page,
+    selector: string,
+    options: { parentSelector?: string; text?: string; index?: number } = {},
+  ): Locator {
     const { parentSelector, text, index } = options;
-    let locator = parentSelector ? this.page.locator(parentSelector).locator(selector) : this.page.locator(selector);
+    let locator = parentSelector ? page.locator(parentSelector).locator(selector) : page.locator(selector);
 
     if (text) {
       locator = locator.filter({ hasText: text });
@@ -200,7 +231,7 @@ export class BaseMethods {
     await expect(locator).not.toHaveCount(0);
   }
 
-  async clickElementWithText({ selector, text, parentSelector, isTargetChanged = false, index }: ClickWithTextOptions): Promise<void> {
+  async clickElementWithText({ selector, text, parentSelector, isTargetChanged = false, index, wait }: ClickWithTextOptions): Promise<void> {
     const locator = this.resolveLocator(selector, { parentSelector, text, index });
     const element = locator.first();
 
@@ -209,6 +240,10 @@ export class BaseMethods {
     }
 
     await element.click();
+
+    if (wait && wait > 0) {
+      await this.page.waitForTimeout(wait);
+    }
   }
 
   async checkElementContainText({ selector, text, isContain = true, index, parentSelector }: ElementContainTextOptions): Promise<void> {
@@ -364,16 +399,149 @@ export class BaseMethods {
     await poller.not.toContain(urlPart);
   }
 
+  skipTestByCondition(condition: unknown, reason: string = 'Skipped by condition'): void {
+    if (condition) {
+      test.info().skip(reason);
+    }
+  }
+
+  async checkBrowserAlertByText({
+    selector,
+    alertMessage,
+    isEqual = true,
+    index = 0,
+    parentSelector,
+    wait = 0,
+  }: BrowserAlertOptions): Promise<void> {
+    const locator = this.resolveLocator(selector, { parentSelector, index });
+
+    if (wait > 0) {
+      await this.page.waitForTimeout(wait);
+    }
+
+    const message = await this.captureDialogMessage(this.page, locator.first());
+
+    if (alertMessage !== undefined) {
+      if (isEqual) {
+        expect(message).toBe(alertMessage);
+      } else {
+        expect(message).not.toBe(alertMessage);
+      }
+    }
+  }
+
+  async checkBrowserAlertForMultipleHosts({
+    selector,
+    alertMessage,
+    isEqual = true,
+    index = 0,
+    parentSelector,
+    host,
+    wait = 0,
+  }: BrowserAlertForMultipleHostsOptions): Promise<void> {
+    const baseGroup = this.resolveLocator(selector, { parentSelector });
+    const baseCount = await baseGroup.count();
+
+    if (baseCount === 0) {
+      throw new Error(`No elements found for selector "${selector}" on the base page.`);
+    }
+
+    const targetIndex = Math.min(index, baseCount - 1);
+
+    if (wait > 0) {
+      await this.page.waitForTimeout(wait);
+    }
+
+    const baseMessage = await this.captureDialogMessage(this.page, baseGroup.nth(targetIndex));
+
+    if (alertMessage !== undefined) {
+      if (isEqual) {
+        expect(baseMessage).toBe(alertMessage);
+      } else {
+        expect(baseMessage).not.toBe(alertMessage);
+      }
+    }
+
+    const remotePage = await this.page.context().newPage();
+
+    try {
+      await remotePage.goto(`http://localhost:${host}/`, { waitUntil: 'networkidle' });
+
+      const remoteGroup = this.resolveLocatorForPage(remotePage, selector, { parentSelector });
+      const remoteCount = await remoteGroup.count();
+
+      if (remoteCount === 0) {
+        throw new Error(`No elements found for selector "${selector}" on host ${host}.`);
+      }
+
+      const remoteIndex = Math.min(targetIndex, remoteCount - 1);
+      const remoteMessage = await this.captureDialogMessage(remotePage, remoteGroup.nth(remoteIndex));
+
+      if (wait > 0) {
+        await remotePage.waitForTimeout(wait);
+      }
+
+      if (isEqual) {
+        if (alertMessage !== undefined) {
+          expect(remoteMessage).toBe(alertMessage);
+        }
+
+        expect(remoteMessage).toBe(baseMessage);
+      } else {
+        if (alertMessage !== undefined) {
+          expect(remoteMessage).not.toBe(alertMessage);
+        }
+
+        expect(remoteMessage).not.toBe(baseMessage);
+      }
+    } finally {
+      await remotePage.close();
+    }
+  }
+
   async compareInfoBetweenHosts(
-    selector: string,
-    extraHost: number,
-    isEqual: boolean = true,
-    index: number = 0,
-    clickSelector?: string,
-    wait: number = 0,
+    selectorOrOptions: string | CompareHostsOptions,
+    extraHostArg?: number,
+    isEqualArg: boolean = true,
+    indexArg: number = 0,
+    clickSelectorArg?: string,
+    waitArg: number = 0,
   ): Promise<void> {
-    const baseLocator = this.page.locator(selector).nth(index);
-    const baseText = (await baseLocator.innerText()).trim();
+    let selector: string;
+    let extraHost: number;
+    let isEqual: boolean;
+    let index: number;
+    let clickSelector: string | undefined;
+    let wait: number;
+
+    if (typeof selectorOrOptions === 'string') {
+      selector = selectorOrOptions;
+      if (typeof extraHostArg !== 'number') {
+        throw new Error('The "extraHost" parameter must be provided when using the positional signature.');
+      }
+      extraHost = extraHostArg;
+      isEqual = isEqualArg;
+      index = indexArg;
+      clickSelector = clickSelectorArg;
+      wait = waitArg;
+    } else {
+      ({ selector, extraHost, isEqual = true, index = 0, clickSelector, wait = 0 } = selectorOrOptions);
+    }
+
+    const baseGroup = this.page.locator(selector);
+    const baseCount = await baseGroup.count();
+
+    if (baseCount === 0) {
+      throw new Error(`No elements found for selector "${selector}" on the base page.`);
+    }
+
+    const targetIndex = Math.min(index, baseCount - 1);
+
+    if (wait > 0) {
+      await this.page.waitForTimeout(wait);
+    }
+
+    const baseText = (await baseGroup.nth(targetIndex).innerText()).trim();
 
     const remotePage = await this.page.context().newPage();
 
@@ -381,13 +549,40 @@ export class BaseMethods {
       await remotePage.goto(`http://localhost:${extraHost}/`, { waitUntil: 'networkidle' });
 
       if (clickSelector) {
-        await remotePage.locator(clickSelector).click();
+        const remoteClickGroup = remotePage.locator(clickSelector);
+        const remoteClickCount = await remoteClickGroup.count();
+
+        if (remoteClickCount === 0) {
+          throw new Error(`No elements found for selector "${clickSelector}" on host ${extraHost}.`);
+        }
+
+        const clickIndex = Math.min(targetIndex, remoteClickCount - 1);
+
+        try {
+          await this.captureDialogMessage(remotePage, remoteClickGroup.nth(clickIndex));
+        } catch (error) {
+          const isTimeoutError = error instanceof Error && /Timeout/.test(error.message);
+          if (isTimeoutError) {
+            await remoteClickGroup.nth(clickIndex).click();
+          } else {
+            throw error;
+          }
+        }
+
         if (wait > 0) {
           await remotePage.waitForTimeout(wait);
         }
       }
 
-      const remoteText = (await remotePage.locator(selector).nth(index).innerText()).trim();
+      const remoteGroup = remotePage.locator(selector);
+      const remoteCount = await remoteGroup.count();
+
+      if (remoteCount === 0) {
+        throw new Error(`No elements found for selector "${selector}" on host ${extraHost}.`);
+      }
+
+      const remoteIndex = Math.min(targetIndex, remoteCount - 1);
+      const remoteText = (await remoteGroup.nth(remoteIndex).innerText()).trim();
 
       if (isEqual) {
         expect(remoteText).toBe(baseText);
@@ -413,5 +608,17 @@ export class BaseMethods {
       const style = window.getComputedStyle(element as Element);
       return style.getPropertyValue(property as string);
     }, prop);
+  }
+
+  private async captureDialogMessage(page: Page, locator: Locator): Promise<string> {
+    const [dialog] = await Promise.all([
+      page.waitForEvent('dialog', { timeout: 5_000 }),
+      locator.click(),
+    ]);
+
+    const message = dialog.message();
+    await dialog.accept();
+
+    return message;
   }
 }
