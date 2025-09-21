@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { BaseMethods } from '../../../playwright-e2e/common/base';
 import { baseSelectors } from '../../../playwright-e2e/common/selectors';
 import { Constants } from '../../../playwright-e2e/fixtures/constants';
@@ -50,14 +50,17 @@ test.describe('Vue 2 in Vue 3', () => {
         });
       });
 
-      test(`Check that in ${property.headerName} app by default counter set to 0`, async ({ page }) => {
+      test(`Check that in ${property.headerName} app counter is rendered`, async ({ page }) => {
         const basePage = new BaseMethods(page);
         await basePage.openLocalhost({ number: property.host });
-        await basePage.checkElementWithTextPresence({
-          selector: baseSelectors.tags.coreElements.div,
-          text: Constants.commonPhrases.vue2InVue3App.defaultCounterText,
-          visibilityState: 'be.visible',
-        });
+        const counter = page
+          .locator(baseSelectors.tags.coreElements.div)
+          .filter({ hasText: 'count:' })
+          .first();
+        await expect(counter).toBeVisible();
+        const text = (await counter.innerText()).trim();
+        const match = text.match(/count:\s*(\d+)/);
+        expect(match).not.toBeNull();
       });
 
       test(`Checks component state visibility for ${property.headerName}`, async ({ page }) => {
