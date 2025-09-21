@@ -38,9 +38,10 @@ export default defineConfig({
       timeout: 300_000,
     },
     {
-      command: 'pnpm --filter "federated-css-react-ssr_shell*" --parallel start:prod',
+      // Start all shells and wait until all ports 4000-4005 respond
+      command: `bash -lc 'pnpm --filter "federated-css-react-ssr_shell*" -r run start:prod & pnpm exec wait-on -t 300000 http://localhost:4000 http://localhost:4001 http://localhost:4002 http://localhost:4003 http://localhost:4004 http://localhost:4005'`,
       cwd: __dirname,
-      port: 4000,
+      port: 4005,
       reuseExistingServer: reuseExisting,
       timeout: 300_000,
     },
