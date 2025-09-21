@@ -9,38 +9,90 @@ function run(cmd, args) {
 }
 
 async function main() {
-  // Start consumers-react in dev (avoid heavy prod builds), build+serve exposes, and start Next dev servers
-  console.log('[federated-css] starting consumers-react (dev servers)...');
-  const pReact = run('pnpm', ['--filter', '"@federated-css/*"', '-r', 'run', 'start']);
+  const reactConsumers = [
+    { dir: 'combination-of-4', port: 3001 },
+    { dir: 'combination-of-5', port: 3002 },
+    { dir: 'css-and-styled-component', port: 3003 },
+    { dir: 'css-module-and-jss', port: 3004 },
+    { dir: 'less-and-scss', port: 3005 },
+    { dir: 'tailwind-global-and-less', port: 3006 },
+    { dir: 'tailwind-module-and-jss', port: 3007 },
+  ];
 
-  console.log('[federated-css] building expose apps...');
-  await new Promise((res, rej) => {
-    const p = run('pnpm', ['--filter', '"federated-css-mono_expose-*"', '-r', 'run', 'build']);
-    p.on('exit', c => (c === 0 ? res() : rej(new Error('build exposes failed'))));
-  });
-  console.log('[federated-css] serving expose apps...');
-  const pExposes = run('pnpm', ['--filter', '"federated-css-mono_expose-*"', '-r', 'run', 'serve']);
+  const exposes = [4000, 4001, 4002, 4003, 4004, 4005, 4006, 4007];
 
-  console.log('[federated-css] starting Next consumers (dev servers)...');
-  const pNext = run('pnpm', ['--filter', '"@federated-css/next-*"', '-r', 'run', 'start']);
+  const nextConsumers = [
+    { dir: 'combination-of-4', port: 8081 },
+    { dir: 'jss-and-tailwind-global', port: 8082 },
+    { dir: 'jss-css-and-tailwind-module', port: 8083 },
+    { dir: 'less-and-styled-component', port: 8084 },
+  ];
 
-  await waitOn({
-    resources: [
-      // consumers-react ports
-      'http://localhost:3001', 'http://localhost:3002', 'http://localhost:3003',
-      'http://localhost:3004', 'http://localhost:3005', 'http://localhost:3006', 'http://localhost:3007',
-      // exposes ports
-      'http://localhost:4000', 'http://localhost:4001', 'http://localhost:4002', 'http://localhost:4003',
-      'http://localhost:4004', 'http://localhost:4005', 'http://localhost:4006', 'http://localhost:4007',
-      // next consumers
-      'http://localhost:8081', 'http://localhost:8082', 'http://localhost:8083', 'http://localhost:8084'
-    ],
-    timeout: 480000,
-    validateStatus: s => s >= 200 && s < 500,
-  });
+  const procs = [];
+
+  console.log('[federated-css] starting consumers-react (sequential dev servers)...');
+  for (const { dir, port } of reactConsumers) {
+    const cwd = path.join('consumers-react', dir);
+    const p = run('pnpm', ['-C', cwd, 'run', 'start']);
+    procs.push(p);
+    await waitOn({ resources: [`http://localhost:${port}`], timeout: 480000, validateStatus: s => s >= 200 && s < 500 });
+    console.log(`[federated-css] consumers-react ${dir} up at ${port}`);
+  }
+
+  console.log('[federated-css] building expose apps (sequential)...');
+  for (const port of exposes) {
+    const dirMap = {
+      4000: 'expose-css',
+      4001: 'expose-css-module',
+      4002: 'expose-jss',
+      4003: 'expose-less',
+      4004: 'expose-scss',
+      4005: 'expose-styled-component',
+      4006: 'expose-tailwind-css-global',
+      4007: 'expose-tailwind-css-module',
+    };
+    const dir = dirMap[port];
+    if (!dir) continue;
+    const cwd = path.join('expose-remotes', dir);
+    await new Promise((res, rej) => {
+      const p = run('pnpm', ['-C', cwd, 'run', 'build']);
+      p.on('exit', c => (c === 0 ? res() : rej(new Error(`build ${dir} failed`))));
+    });
+  }
+
+  console.log('[federated-css] serving expose apps (sequential)...');
+  for (const port of exposes) {
+    const dirMap = {
+      4000: 'expose-css',
+      4001: 'expose-css-module',
+      4002: 'expose-jss',
+      4003: 'expose-less',
+      4004: 'expose-scss',
+      4005: 'expose-styled-component',
+      4006: 'expose-tailwind-css-global',
+      4007: 'expose-tailwind-css-module',
+    };
+    const dir = dirMap[port];
+    if (!dir) continue;
+    const cwd = path.join('expose-remotes', dir);
+    const p = run('pnpm', ['-C', cwd, 'run', 'serve']);
+    procs.push(p);
+    await waitOn({ resources: [`http://localhost:${port}`], timeout: 480000, validateStatus: s => s >= 200 && s < 500 });
+    console.log(`[federated-css] expose ${dir} up at ${port}`);
+  }
+
+  console.log('[federated-css] starting Next consumers (sequential dev servers)...');
+  for (const { dir, port } of nextConsumers) {
+    const cwd = path.join('consumers-nextjs', dir);
+    const p = run('pnpm', ['-C', cwd, 'run', 'start']);
+    procs.push(p);
+    await waitOn({ resources: [`http://localhost:${port}`], timeout: 480000, validateStatus: s => s >= 200 && s < 500 });
+    console.log(`[federated-css] next ${dir} up at ${port}`);
+  }
+
   console.log('[federated-css] all ports are up.');
 
-  const killAll = sig => { pReact.kill(sig); pExposes.kill(sig); pNext.kill(sig); };
+  const killAll = sig => { procs.forEach(pr => pr.kill(sig)); };
   process.on('SIGINT', () => killAll('SIGINT'));
   process.on('SIGTERM', () => killAll('SIGTERM'));
 

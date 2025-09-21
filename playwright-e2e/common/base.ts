@@ -94,6 +94,26 @@ export class BaseMethods {
     return this.resolveLocatorForPage(this.page, selector, options);
   }
 
+  async checkInfoOnNonDefaultHost(opts: {
+    host: number;
+    element: string;
+    existedText: string;
+    notExistedText?: string;
+  }): Promise<void> {
+    const { host, element, existedText, notExistedText } = opts;
+    const remote = await this.page.context().newPage();
+    try {
+      await remote.goto(`http://localhost:${host}/`, { waitUntil: 'domcontentloaded' });
+      const locator = remote.locator(element);
+      await expect(locator.filter({ hasText: existedText }).first()).toBeVisible();
+      if (notExistedText) {
+        await expect(locator.filter({ hasText: notExistedText })).toHaveCount(0);
+      }
+    } finally {
+      await remote.close();
+    }
+  }
+
   private resolveLocatorForPage(
     page: Page,
     selector: string,
