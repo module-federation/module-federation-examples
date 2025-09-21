@@ -8,29 +8,46 @@ function run(cmd, args, opts = {}) {
   return spawn(cmd, args, { stdio: 'inherit', cwd: root, shell: true, ...opts });
 }
 
+async function exec(cmd, args, opts = {}) {
+  return new Promise((resolve, reject) => {
+    const p = run(cmd, args, opts);
+    p.on('exit', code => (code === 0 ? resolve() : reject(new Error(`${cmd} ${args.join(' ')} failed with code ${code}`))));
+  });
+}
+
 async function main() {
-  // build all shells, then serve all, and wait for ports
-  await new Promise((resolve, reject) => {
-    const p = run('pnpm', ['--filter', '"federated-css-react-ssr_shell*"', '-r', 'run', 'build']);
-    p.on('exit', code => (code === 0 ? resolve() : reject(new Error('build shells failed'))));
-  });
-  const pServe = run('pnpm', ['--filter', '"federated-css-react-ssr_shell*"', '-r', 'run', 'serve']);
+  // Build and start each shell sequentially to reduce CI CPU pressure.
+  const shells = [
+    { dir: 'css-jss', port: 4000 },
+    { dir: 'css-scss', port: 4001 },
+    { dir: 'jss-styled-components', port: 4002 },
+    { dir: 'jss-styled-components-css-module', port: 4003 },
+    { dir: 'less-scss', port: 4004 },
+    { dir: 'scss-tailwind-css', port: 4005 },
+  ];
 
-  await waitOn({
-    resources: [
-      'http://localhost:4000',
-      'http://localhost:4001',
-      'http://localhost:4002',
-      'http://localhost:4003',
-      'http://localhost:4004',
-      'http://localhost:4005',
-    ],
-    timeout: 300000,
-    validateStatus: s => s >= 200 && s < 500,
-  });
+  const procs = [];
+  for (const { dir, port } of shells) {
+    const cwd = path.join('shell-apps', dir);
+    console.log(`[shells] building ${dir}...`);
+    await exec('pnpm', ['-C', cwd, 'run', 'build']);
 
-  process.on('SIGINT', () => pServe.kill('SIGINT'));
-  process.on('SIGTERM', () => pServe.kill('SIGTERM'));
+    console.log(`[shells] starting ${dir} on port ${port}...`);
+    const p = run('pnpm', ['-C', cwd, 'run', 'serve']);
+    procs.push(p);
+
+    await waitOn({
+      resources: [`http://localhost:${port}`],
+      timeout: 480000,
+      validateStatus: s => s >= 200 && s < 500,
+    });
+    console.log(`[shells] ${dir} is up on ${port}.`);
+  }
+
+  const killAll = sig => procs.forEach(pr => pr.kill(sig));
+  process.on('SIGINT', () => killAll('SIGINT'));
+  process.on('SIGTERM', () => killAll('SIGTERM'));
+
   // keep process alive
   await new Promise(() => {});
 }

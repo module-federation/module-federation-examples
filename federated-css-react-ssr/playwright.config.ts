@@ -35,7 +35,7 @@ export default defineConfig({
       cwd: __dirname,
       port: 3001,
       reuseExistingServer: reuseExisting,
-      timeout: 300_000,
+      timeout: 480_000,
     },
     {
       // Start all shells and wait until all ports 4000-4005 respond
@@ -43,7 +43,7 @@ export default defineConfig({
       cwd: __dirname,
       port: 4005,
       reuseExistingServer: reuseExisting,
-      timeout: 300_000,
+      timeout: 480_000,
     },
   ],
 });
