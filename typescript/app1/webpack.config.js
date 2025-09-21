@@ -62,6 +62,7 @@ module.exports = {
       ],
     }),
     new FederatedTypesPlugin({
+      disableDownloadingRemoteTypes: true,
       federationConfig: {
         name: 'app1',
         filename: 'remoteEntry.js',

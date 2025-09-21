@@ -42,7 +42,7 @@ test.describe('Vue 3 Demo', () => {
     test('Checks remote component includes remote header', async () => {
       await basePage.checkElementContainText({
         parentSelector: selectors.vue3DemoApp.components.remote,
-        selector: baseSelectors.tags.coreElements.div,
+        selector: '.app-label',
         text: Constants.commonPhrases.vue3DemoApp.appsHeaders.remote,
       });
     });

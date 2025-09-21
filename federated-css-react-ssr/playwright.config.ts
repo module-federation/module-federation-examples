@@ -31,8 +31,7 @@ export default defineConfig({
   ],
   webServer: [
     {
-      command:
-        "bash -lc 'pnpm --filter "federated-css-react-ssr_expose-*" -r run build && pnpm --filter "federated-css-react-ssr_expose-*" -r run serve'",
+      command: 'node scripts/start-exposes.cjs',
       cwd: __dirname,
       port: 3001,
       reuseExistingServer: reuseExisting,
@@ -40,8 +39,7 @@ export default defineConfig({
     },
     {
       // Start all shells and wait until all ports 4000-4005 respond
-      command:
-        "bash -lc 'pnpm --filter "federated-css-react-ssr_shell*" -r run build && pnpm --filter "federated-css-react-ssr_shell*" -r run serve & pnpm exec wait-on -t 300000 http://localhost:4000 http://localhost:4001 http://localhost:4002 http://localhost:4003 http://localhost:4004 http://localhost:4005'",
+      command: 'node scripts/start-shells.cjs',
       cwd: __dirname,
       port: 4005,
       reuseExistingServer: reuseExisting,
