@@ -54,7 +54,7 @@ test.describe('Typescript', () => {
       await expect(page.locator(baseSelectors.tags.headers.h2)).toHaveText(app.appName);
     });
 
-    test(`checks both apps share ${primaryAppButtons.small}`, async ({ page }) => {
+    test(`checks both apps share ${primaryAppButtons.small} (port: ${app.host})`, async ({ page }) => {
       await navigateToApp(page, app.host);
 
       await expect(page.getByRole('button', { name: primaryAppButtons.small })).toBeVisible();
