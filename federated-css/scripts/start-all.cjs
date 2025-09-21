@@ -1,0 +1,49 @@
+const { spawn } = require('node:child_process');
+const waitOn = require('wait-on');
+const path = require('node:path');
+
+const root = path.resolve(__dirname, '..');
+
+function run(cmd, args) {
+  return spawn(cmd, args, { stdio: 'inherit', cwd: root, shell: true });
+}
+
+async function main() {
+  // Build consumers-react and exposes, then serve both groups; start Next consumers (dev)
+  await new Promise((res, rej) => {
+    const p = run('pnpm', ['--filter', '"@federated-css/*"', '-r', 'run', 'build']);
+    p.on('exit', c => (c === 0 ? res() : rej(new Error('build consumers failed'))));
+  });
+  await new Promise((res, rej) => {
+    const p = run('pnpm', ['--filter', '"federated-css-mono_expose-*"', '-r', 'run', 'build']);
+    p.on('exit', c => (c === 0 ? res() : rej(new Error('build exposes failed'))));
+  });
+
+  const pReact = run('pnpm', ['--filter', '"@federated-css/*"', '-r', 'run', 'serve']);
+  const pExposes = run('pnpm', ['--filter', '"federated-css-mono_expose-*"', '-r', 'run', 'serve']);
+  const pNext = run('pnpm', ['--filter', '"@federated-css/next-*"', '-r', 'run', 'start']);
+
+  await waitOn({
+    resources: [
+      // consumers-react ports
+      'http://localhost:3001', 'http://localhost:3002', 'http://localhost:3003',
+      'http://localhost:3004', 'http://localhost:3005', 'http://localhost:3006', 'http://localhost:3007',
+      // exposes ports
+      'http://localhost:4000', 'http://localhost:4001', 'http://localhost:4002', 'http://localhost:4003',
+      'http://localhost:4004', 'http://localhost:4005', 'http://localhost:4006', 'http://localhost:4007',
+      // next consumers
+      'http://localhost:8081', 'http://localhost:8082', 'http://localhost:8083', 'http://localhost:8084'
+    ],
+    timeout: 300000,
+    validateStatus: s => s >= 200 && s < 500,
+  });
+
+  const killAll = sig => { pReact.kill(sig); pExposes.kill(sig); pNext.kill(sig); };
+  process.on('SIGINT', () => killAll('SIGINT'));
+  process.on('SIGTERM', () => killAll('SIGTERM'));
+
+  await new Promise(() => {});
+}
+
+main().catch(err => { console.error(err); process.exit(1); });
+

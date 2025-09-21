@@ -16,10 +16,11 @@ async function main() {
   const pServe = run('pnpm', ['--filter', '"federated-css-react-ssr_expose-*"', '-r', 'run', 'serve']);
   process.on('SIGINT', () => pServe.kill('SIGINT'));
   process.on('SIGTERM', () => pServe.kill('SIGTERM'));
+  // keep process alive
+  await new Promise(() => {});
 }
 
 main().catch(err => {
   console.error(err);
   process.exit(1);
 });
-

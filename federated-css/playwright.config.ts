@@ -8,6 +8,7 @@ export default defineConfig({
   expect: {
     timeout: 15_000,
   },
+  workers: process.env.CI ? 1 : undefined,
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
@@ -31,20 +32,12 @@ export default defineConfig({
   ],
   webServer: [
     {
-      // Exposes must serve static bundles on fixed 400x ports to match remotes in consumers
-      command: 'pnpm --filter "federated-css-mono_expose-*" --parallel serve',
-      cwd: __dirname,
-      port: 4000,
-      reuseExistingServer: reuseExisting,
-      timeout: 240_000,
-    },
-    {
-      // Next.js consumers listen on 8081-8084; wait for the first to be ready
-      command: 'pnpm --filter "@federated-css/*" --parallel start',
+      // Build/serve exposes and consumers-react; start next consumers; wait for all ports
+      command: 'node scripts/start-all.cjs',
       cwd: __dirname,
       port: 8081,
       reuseExistingServer: reuseExisting,
-      timeout: 240_000,
+      timeout: 300_000,
     },
   ],
 });

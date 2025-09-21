@@ -12,11 +12,11 @@ export default defineConfig({
     video: 'retain-on-failure',
   },
   webServer: {
-    command: 'pnpm start',
+    command: 'node scripts/start-all.cjs',
     cwd: __dirname,
     port: 3001,
     reuseExistingServer: !process.env.CI,
-    timeout: 240_000,
+    timeout: 300_000,
   },
   projects: [
     {

@@ -31,10 +31,11 @@ async function main() {
 
   process.on('SIGINT', () => pServe.kill('SIGINT'));
   process.on('SIGTERM', () => pServe.kill('SIGTERM'));
+  // keep process alive
+  await new Promise(() => {});
 }
 
 main().catch(err => {
   console.error(err);
   process.exit(1);
 });
-
