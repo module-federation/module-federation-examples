@@ -1,10 +1,34 @@
 const express = require('express');
 const initMiddleware = require('./middleware');
+const fetch = require('node-fetch');
 
 const app = express();
 const PORT = 4000;
 
-const done = () => {
+async function waitUrl(url, timeout = 120000) {
+  const start = Date.now();
+  // Retry until the remoteEntry.js is available over HTTP
+  /* eslint-disable no-await-in-loop */
+  while (true) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) return;
+    } catch (_) {}
+
+    if (Date.now() - start > timeout) {
+      throw new Error(`prewarm timeout for ${url}`);
+    }
+    await new Promise(r => setTimeout(r, 1000));
+  }
+}
+
+const done = async () => {
+  // Ensure remotes are reachable before the first SSR render
+  await Promise.all([
+    waitUrl('http://localhost:3001/server/remoteEntry.js'),
+    waitUrl('http://localhost:3002/server/remoteEntry.js'),
+  ]);
+
   app.listen(PORT, () => {
     console.info(
       `[${new Date().toISOString()}]`,
