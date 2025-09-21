@@ -18,21 +18,21 @@ async function main() {
   console.log('[exposes] starting static servers for exposes...');
   const pServe = run('pnpm', ['--filter', '"federated-css-react-ssr_expose-*"', '-r', 'run', 'serve']);
 
-  // Wait for all expose ports to be reachable before proceeding
+  // Wait for remoteEntry.js endpoints (server side) to be reachable before proceeding
   await waitOn({
     resources: [
-      'http://localhost:3001',
-      'http://localhost:3002',
-      'http://localhost:3003',
-      'http://localhost:3004',
-      'http://localhost:3005',
-      'http://localhost:3006',
-      'http://localhost:3007',
+      'http://localhost:3001/server/remoteEntry.js',
+      'http://localhost:3002/server/remoteEntry.js',
+      'http://localhost:3003/server/remoteEntry.js',
+      'http://localhost:3004/server/remoteEntry.js',
+      'http://localhost:3005/server/remoteEntry.js',
+      'http://localhost:3006/server/remoteEntry.js',
+      'http://localhost:3007/server/remoteEntry.js',
     ],
     timeout: 480000,
     validateStatus: s => s >= 200 && s < 500,
   });
-  console.log('[exposes] all expose ports are up.');
+  console.log('[exposes] all server remoteEntry.js endpoints are up.');
   process.on('SIGINT', () => pServe.kill('SIGINT'));
   process.on('SIGTERM', () => pServe.kill('SIGTERM'));
   // keep process alive
