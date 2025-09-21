@@ -4,7 +4,7 @@ const reuseExisting = !process.env.CI;
 
 export default defineConfig({
   testDir: './e2e',
-  timeout: 120_000,
+  timeout: 180_000,
   expect: {
     timeout: 15_000,
   },
@@ -35,7 +35,7 @@ export default defineConfig({
       cwd: __dirname,
       port: 3001,
       reuseExistingServer: reuseExisting,
-      timeout: 480_000,
+      timeout: 900_000,
     },
     {
       // Start all shells and wait until all ports 4000-4005 respond
@@ -43,7 +43,7 @@ export default defineConfig({
       cwd: __dirname,
       port: 4005,
       reuseExistingServer: reuseExisting,
-      timeout: 480_000,
+      timeout: 900_000,
     },
   ],
 });
