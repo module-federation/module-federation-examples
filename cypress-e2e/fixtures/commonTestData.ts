@@ -2,6 +2,10 @@ import { getRandomTextString } from '../helpers/base-helper';
 import { Constants } from './constants';
 import { baseSelectors, selectors } from '../common/selectors';
 
+const typescriptHeader =
+  Constants.commonConstantsData.typeScript.charAt(0).toUpperCase() +
+  Constants.commonConstantsData.typeScript.slice(1);
+
 export class CommonTestData {
   public static readonly multipleSizeStringsArray = [
     getRandomTextString(10),
@@ -44,12 +48,12 @@ export class CommonTestData {
   public static readonly commonTypeScriptAppsData = [
     {
       host: 3001,
-      header: Constants.commonConstantsData.typeScript.charAt(0).toUpperCase(),
+      header: typescriptHeader,
       appName: Constants.commonConstantsData.commonCountAppNames.app1,
     },
     {
       host: 3002,
-      header: Constants.commonConstantsData.typeScript.charAt(0).toUpperCase(),
+      header: typescriptHeader,
       appName: Constants.commonConstantsData.commonCountAppNames.app2,
     },
   ];
