@@ -10,6 +10,12 @@ test.describe('Vue 3 Demo', () => {
     test.beforeEach(async ({ page }) => {
       basePage = new BaseMethods(page);
       await basePage.openLocalhost({ number: 3001 });
+      // Wait for layout to mount and remote component to render
+      await basePage.checkElementVisibility({ selector: selectors.vue3DemoApp.components.layout });
+      await basePage.checkElementVisibility({
+        parentSelector: selectors.vue3DemoApp.components.layout,
+        selector: selectors.vue3DemoApp.components.remote,
+      });
     });
 
     test('Checks page header with text visibility', async () => {
