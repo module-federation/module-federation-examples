@@ -12,7 +12,7 @@ module.exports = merge(sharedWebpackConfig, {
   optimization: {
     minimize: false,
   },
-  target: false,
+  target: 'async-node',
   name: 'server',
   plugins: [...moduleFederationPlugin.server],
 });
