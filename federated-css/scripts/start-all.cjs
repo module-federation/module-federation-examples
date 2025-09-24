@@ -120,7 +120,7 @@ async function main() {
   console.log('[federated-css] starting Next consumers (sequential dev servers)...');
   for (const { dir, port } of nextConsumers) {
     // Extra cleanup for each Next.js port in case previous one didn't clean up properly
-    killPort(port);
+    await killPort(port);
     await new Promise(resolve => setTimeout(resolve, 500)); // Small delay to ensure port is released
     const cwd = path.join('consumers-nextjs', dir);
     const p = run('pnpm', ['-C', cwd, 'run', 'start']);
