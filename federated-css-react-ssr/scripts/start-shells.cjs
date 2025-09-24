@@ -1,6 +1,7 @@
-const { spawn, execSync } = require('node:child_process');
+const { spawn } = require('node:child_process');
 const path = require('node:path');
 const waitOn = require('wait-on');
+const kill = require('kill-port');
 
 const root = path.resolve(__dirname, '..');
 
@@ -8,20 +9,11 @@ function run(cmd, args, opts = {}) {
   return spawn(cmd, args, { stdio: 'inherit', cwd: root, shell: true, ...opts });
 }
 
-function killPort(port) {
+async function killPort(port) {
   try {
-    // Try fuser first (more reliable in CI)
-    execSync(`fuser -k ${port}/tcp 2>/dev/null || true`, { stdio: 'ignore' });
+    await kill(port, 'tcp');
   } catch (e) {
-    // Fallback to lsof for macOS/local development
-    try {
-      const pids = execSync(`lsof -ti tcp:${port} 2>/dev/null || true`, { encoding: 'utf8' }).trim();
-      if (pids) {
-        execSync(`kill -9 ${pids} 2>/dev/null || true`, { stdio: 'ignore' });
-      }
-    } catch (e2) {
-      // Ignore errors, port might not be in use
-    }
+    // Port might not be in use, ignore
   }
 }
 
@@ -45,7 +37,7 @@ async function main() {
 
   // Clean up all ports first
   console.log('[shells] cleaning up ports...');
-  shells.forEach(({ port }) => killPort(port));
+  await Promise.all(shells.map(({ port }) => killPort(port)));
   await new Promise(resolve => setTimeout(resolve, 1000));
 
   const procs = [];
