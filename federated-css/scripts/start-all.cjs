@@ -1,8 +1,15 @@
 const { spawn } = require('node:child_process');
 const waitOn = require('wait-on');
 const path = require('node:path');
+const fs = require('node:fs');
 
 const root = path.resolve(__dirname, '..');
+
+// Ensure v8 compile cache writes go to a local ignored folder instead of polluting
+// sibling workspaces (corepack/pnpm relies on this cache under the hood).
+const v8CacheDir = path.join(root, '.cache', 'v8-compile-cache');
+fs.mkdirSync(v8CacheDir, { recursive: true });
+process.env.V8_COMPILE_CACHE_CACHE_DIR = v8CacheDir;
 
 function run(cmd, args) {
   return spawn(cmd, args, { stdio: 'inherit', cwd: root, shell: true });
