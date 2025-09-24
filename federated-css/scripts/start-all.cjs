@@ -10,8 +10,8 @@ function run(cmd, args) {
 
 async function main() {
   const reactConsumers = [
-    { dir: 'combination-of-4', port: 3001 },
-    { dir: 'combination-of-5', port: 3002 },
+    { dir: 'combination-of-4', port: 3001, serve: true },
+    { dir: 'combination-of-5', port: 3002, serve: true },
     { dir: 'css-and-styled-component', port: 3003 },
     { dir: 'css-module-and-jss', port: 3004 },
     { dir: 'less-and-scss', port: 3005 },
@@ -22,19 +22,31 @@ async function main() {
   const exposes = [4000, 4001, 4002, 4003, 4004, 4005, 4006, 4007];
 
   const nextConsumers = [
-    { dir: 'combination-of-4', port: 8081 },
-    { dir: 'jss-and-tailwind-global', port: 8082 },
     { dir: 'jss-css-and-tailwind-module', port: 8083 },
+    { dir: 'jss-and-tailwind-global', port: 8082 },
     { dir: 'less-and-styled-component', port: 8084 },
+    { dir: 'combination-of-4', port: 8081 },
   ];
 
   const procs = [];
 
-  console.log('[federated-css] starting consumers-react (sequential dev servers)...');
-  for (const { dir, port } of reactConsumers) {
+  console.log('[federated-css] starting consumers-react (sequential servers)...');
+  for (const { dir, port, serve } of reactConsumers) {
     const cwd = path.join('consumers-react', dir);
-    const p = run('pnpm', ['-C', cwd, 'run', 'start']);
-    procs.push(p);
+
+    if (serve) {
+      console.log(`[federated-css] building consumers-react ${dir} for static serve...`);
+      await new Promise((res, rej) => {
+        const buildProc = run('pnpm', ['-C', cwd, 'run', 'build']);
+        buildProc.on('exit', code => (code === 0 ? res() : rej(new Error(`build ${dir} failed`))));
+      });
+      const serveProc = run('pnpm', ['-C', cwd, 'run', 'serve']);
+      procs.push(serveProc);
+    } else {
+      const devProc = run('pnpm', ['-C', cwd, 'run', 'start']);
+      procs.push(devProc);
+    }
+
     await waitOn({ resources: [`http://localhost:${port}`], timeout: 480000, validateStatus: s => s >= 200 && s < 500 });
     console.log(`[federated-css] consumers-react ${dir} up at ${port}`);
   }
