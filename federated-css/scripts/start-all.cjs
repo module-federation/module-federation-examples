@@ -1,4 +1,4 @@
-const { spawn } = require('node:child_process');
+const { spawn, execSync } = require('node:child_process');
 const waitOn = require('wait-on');
 const path = require('node:path');
 const fs = require('node:fs');
@@ -13,6 +13,18 @@ process.env.V8_COMPILE_CACHE_CACHE_DIR = v8CacheDir;
 
 function run(cmd, args) {
   return spawn(cmd, args, { stdio: 'inherit', cwd: root, shell: true });
+}
+
+function killPort(port) {
+  try {
+    // Kill any process on the port (macOS/Linux compatible)
+    const pids = execSync(`lsof -ti tcp:${port} 2>/dev/null || true`, { encoding: 'utf8' }).trim();
+    if (pids) {
+      execSync(`kill -9 ${pids} 2>/dev/null || true`, { stdio: 'ignore' });
+    }
+  } catch (e) {
+    // Ignore errors, port might not be in use
+  }
 }
 
 async function main() {
@@ -36,6 +48,10 @@ async function main() {
   ];
 
   const procs = [];
+
+  // Kill all potentially conflicting ports first
+  console.log('[federated-css] cleaning up ports...');
+  [...reactConsumers.map(c => c.port), ...exposes, ...nextConsumers.map(c => c.port)].forEach(killPort);
 
   console.log('[federated-css] starting consumers-react (sequential servers)...');
   for (const { dir, port, serve } of reactConsumers) {
@@ -102,6 +118,8 @@ async function main() {
 
   console.log('[federated-css] starting Next consumers (sequential dev servers)...');
   for (const { dir, port } of nextConsumers) {
+    // Extra cleanup for each Next.js port in case previous one didn't clean up properly
+    killPort(port);
     const cwd = path.join('consumers-nextjs', dir);
     const p = run('pnpm', ['-C', cwd, 'run', 'start']);
     procs.push(p);
