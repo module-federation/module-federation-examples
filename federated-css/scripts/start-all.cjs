@@ -17,13 +17,18 @@ function run(cmd, args) {
 
 function killPort(port) {
   try {
-    // Kill any process on the port (macOS/Linux compatible)
-    const pids = execSync(`lsof -ti tcp:${port} 2>/dev/null || true`, { encoding: 'utf8' }).trim();
-    if (pids) {
-      execSync(`kill -9 ${pids} 2>/dev/null || true`, { stdio: 'ignore' });
-    }
+    // Try fuser first (more reliable in CI)
+    execSync(`fuser -k ${port}/tcp 2>/dev/null || true`, { stdio: 'ignore' });
   } catch (e) {
-    // Ignore errors, port might not be in use
+    // Fallback to lsof for macOS/local development
+    try {
+      const pids = execSync(`lsof -ti tcp:${port} 2>/dev/null || true`, { encoding: 'utf8' }).trim();
+      if (pids) {
+        execSync(`kill -9 ${pids} 2>/dev/null || true`, { stdio: 'ignore' });
+      }
+    } catch (e2) {
+      // Ignore errors, port might not be in use
+    }
   }
 }
 
@@ -52,6 +57,9 @@ async function main() {
   // Kill all potentially conflicting ports first
   console.log('[federated-css] cleaning up ports...');
   [...reactConsumers.map(c => c.port), ...exposes, ...nextConsumers.map(c => c.port)].forEach(killPort);
+  
+  // Give OS time to fully release ports
+  await new Promise(resolve => setTimeout(resolve, 1000));
 
   console.log('[federated-css] starting consumers-react (sequential servers)...');
   for (const { dir, port, serve } of reactConsumers) {
@@ -120,6 +128,7 @@ async function main() {
   for (const { dir, port } of nextConsumers) {
     // Extra cleanup for each Next.js port in case previous one didn't clean up properly
     killPort(port);
+    await new Promise(resolve => setTimeout(resolve, 500)); // Small delay to ensure port is released
     const cwd = path.join('consumers-nextjs', dir);
     const p = run('pnpm', ['-C', cwd, 'run', 'start']);
     procs.push(p);
