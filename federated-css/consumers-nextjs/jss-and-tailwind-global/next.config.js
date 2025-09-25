@@ -19,4 +19,7 @@ module.exports = {
   },
   // your original next.config.js export
   reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };

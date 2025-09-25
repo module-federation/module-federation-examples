@@ -61,7 +61,7 @@ async function main() {
     await waitOn({
       resources: [`http://localhost:${port}`],
       timeout: 480000,
-      validateStatus: s => s >= 200 && s < 500,
+      validateStatus: s => s >= 200 && s < 400,
     });
     console.log(`[shells] ${dir} is up on ${port}.`);
   }

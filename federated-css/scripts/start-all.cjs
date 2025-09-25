@@ -2,8 +2,11 @@ const { spawn } = require('node:child_process');
 const waitOn = require('wait-on');
 const path = require('node:path');
 const fs = require('node:fs');
-const kill = require('kill-port');
-const { aggressiveKillPort } = require('./aggressive-port-cleanup.cjs');
+const { aggressiveKillPort, aggressiveKillPorts } = require('./aggressive-port-cleanup.cjs');
+
+const WAIT_TIMEOUT = 480000;
+const isReadyStatus = status => status >= 200 && status < 400;
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const root = path.resolve(__dirname, '..');
 
@@ -17,12 +20,39 @@ function run(cmd, args) {
   return spawn(cmd, args, { stdio: 'inherit', cwd: root, shell: true });
 }
 
-async function killPort(port) {
+async function waitForReady(proc, resources, label, timeout = WAIT_TIMEOUT) {
+  let ready = false;
+  let exitHandler;
+  const waitPromise = waitOn({ resources, timeout, validateStatus: isReadyStatus }).then(() => {
+    ready = true;
+  });
+
+  const exitPromise = new Promise((_, reject) => {
+    exitHandler = code => {
+      if (!ready) {
+        const message = `${label} exited before becoming ready (code ${code ?? 'unknown'})`;
+        reject(new Error(message));
+      }
+    };
+    proc.once('exit', exitHandler);
+  });
+
   try {
-    await kill(port, 'tcp');
-  } catch (e) {
-    // Port might not be in use, ignore
+    await Promise.race([waitPromise, exitPromise]);
+    if (!ready) {
+      await waitPromise.catch(() => {});
+      throw new Error(`${label} did not report ready`);
+    }
+  } finally {
+    if (exitHandler) {
+      proc.removeListener('exit', exitHandler);
+    }
   }
+}
+
+async function ensureExit(proc) {
+  if (proc.exitCode != null || proc.signalCode != null) return;
+  await new Promise(resolve => proc.once('exit', resolve));
 }
 
 async function main() {
@@ -38,53 +68,46 @@ async function main() {
 
   const exposes = [4000, 4001, 4002, 4003, 4004, 4005, 4006, 4007];
 
-  // Temporarily skip less-and-styled-component in CI due to persistent port conflicts
-  const nextConsumers = process.env.CI 
-    ? [
-        { dir: 'jss-css-and-tailwind-module', port: 8083 },
-        { dir: 'jss-and-tailwind-global', port: 8082 },
-        // { dir: 'less-and-styled-component', port: 8084 }, // Skip in CI
-        { dir: 'combination-of-4', port: 8081 },
-      ]
-    : [
-        { dir: 'jss-css-and-tailwind-module', port: 8083 },
-        { dir: 'jss-and-tailwind-global', port: 8082 },
-        { dir: 'less-and-styled-component', port: 8084 },
-        { dir: 'combination-of-4', port: 8081 },
-      ];
+  const nextConsumers = [
+    { dir: 'jss-css-and-tailwind-module', port: 8083 },
+    { dir: 'jss-and-tailwind-global', port: 8082 },
+    { dir: 'less-and-styled-component', port: 8084 },
+    { dir: 'combination-of-4', port: 8081 },
+  ];
 
   const procs = [];
+
+  const removeProc = proc => {
+    const index = procs.indexOf(proc);
+    if (index !== -1) {
+      procs.splice(index, 1);
+    }
+  };
 
   // Kill all potentially conflicting ports first using aggressive cleanup
   console.log('[federated-css] cleaning up ports aggressively...');
   const allPorts = [...reactConsumers.map(c => c.port), ...exposes, ...nextConsumers.map(c => c.port)];
   
   // Use aggressive cleanup for all ports
-  for (const port of allPorts) {
-    await aggressiveKillPort(port);
-  }
+  await aggressiveKillPorts(allPorts);
   
   // Give OS time to fully release ports
-  await new Promise(resolve => setTimeout(resolve, 3000));
+  await delay(3000);
 
   console.log('[federated-css] starting consumers-react (sequential servers)...');
   for (const { dir, port, serve } of reactConsumers) {
     const cwd = path.join('consumers-react', dir);
 
-    if (serve) {
-      console.log(`[federated-css] building consumers-react ${dir} for static serve...`);
-      await new Promise((res, rej) => {
-        const buildProc = run('pnpm', ['-C', cwd, 'run', 'build']);
-        buildProc.on('exit', code => (code === 0 ? res() : rej(new Error(`build ${dir} failed`))));
-      });
-      const serveProc = run('pnpm', ['-C', cwd, 'run', 'serve']);
-      procs.push(serveProc);
-    } else {
-      const devProc = run('pnpm', ['-C', cwd, 'run', 'start']);
-      procs.push(devProc);
-    }
+    // Build and serve static for ALL react consumers to avoid multiple dev servers
+    console.log(`[federated-css] building consumers-react ${dir} for static serve...`);
+    await new Promise((res, rej) => {
+      const buildProc = run('pnpm', ['-C', cwd, 'run', 'build']);
+      buildProc.on('exit', code => (code === 0 ? res() : rej(new Error(`build ${dir} failed`))));
+    });
+    const serveProc = run('pnpm', ['-C', cwd, 'run', 'serve']);
+    procs.push(serveProc);
 
-    await waitOn({ resources: [`http://localhost:${port}`], timeout: 480000, validateStatus: s => s >= 200 && s < 500 });
+    await waitForReady(procs[procs.length - 1], [`http://localhost:${port}`], `consumers-react ${dir}`);
     console.log(`[federated-css] consumers-react ${dir} up at ${port}`);
   }
 
@@ -126,22 +149,61 @@ async function main() {
     const cwd = path.join('expose-remotes', dir);
     const p = run('pnpm', ['-C', cwd, 'run', 'serve']);
     procs.push(p);
-    await waitOn({ resources: [`http://localhost:${port}`], timeout: 480000, validateStatus: s => s >= 200 && s < 500 });
+    const exposeResources = [
+      `http://localhost:${port}`,
+      `http://localhost:${port}/remoteEntry.js`,
+    ];
+    await waitForReady(procs[procs.length - 1], exposeResources, `expose ${dir}`);
     console.log(`[federated-css] expose ${dir} up at ${port}`);
   }
 
-  console.log('[federated-css] starting Next consumers (sequential dev servers)...');
+  console.log('[federated-css] starting Next consumers (sequential production servers)...');
   for (const { dir, port } of nextConsumers) {
-    // Extra aggressive cleanup for each Next.js port
-    console.log(`[federated-css] aggressively cleaning up port ${port} before starting ${dir}...`);
-    await aggressiveKillPort(port);
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
     const cwd = path.join('consumers-nextjs', dir);
-    const p = run('pnpm', ['-C', cwd, 'run', 'start']);
-    procs.push(p);
-    await waitOn({ resources: [`http://localhost:${port}`], timeout: 480000, validateStatus: s => s >= 200 && s < 500 });
-    console.log(`[federated-css] next ${dir} up at ${port}`);
+    const label = `next ${dir}`;
+    let lastError;
+    const maxAttempts = 3;
+
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      console.log(`[federated-css] preparing ${label} on port ${port} (attempt ${attempt}/${maxAttempts})...`);
+      await aggressiveKillPort(port);
+      await delay(1500 * attempt);
+
+      if (attempt === 1) {
+        console.log(`[federated-css] building ${label} for production...`);
+        await new Promise((resolve, reject) => {
+          const buildProc = run('pnpm', ['-C', cwd, 'run', 'build']);
+          buildProc.on('exit', code => (code === 0 ? resolve() : reject(new Error(`${label} build failed (code ${code})`))));
+        });
+      }
+
+      console.log(`[federated-css] starting ${label} with next start...`);
+      const proc = run('pnpm', ['-C', cwd, 'exec', 'next', 'start', '-p', String(port)]);
+      procs.push(proc);
+
+      try {
+        await waitForReady(proc, [`http://localhost:${port}`], `${label} (port ${port})`);
+        console.log(`[federated-css] ${label} up at ${port}`);
+        break;
+      } catch (error) {
+        lastError = error;
+        console.warn(`[federated-css] ${label} failed to start: ${error.message}`);
+        removeProc(proc);
+        try {
+          proc.kill('SIGTERM');
+        } catch (killError) {
+          if (killError && killError.code !== 'ESRCH') {
+            console.warn(`[federated-css] failed to kill ${label}: ${killError.message}`);
+          }
+        }
+        await ensureExit(proc);
+        await delay(1500 * attempt);
+
+        if (attempt === maxAttempts) {
+          throw lastError;
+        }
+      }
+    }
   }
 
   console.log('[federated-css] all ports are up.');

@@ -63,7 +63,7 @@ async function main() {
         `http://localhost:${port}/client/remoteEntry.js`,
       ],
       timeout: 480000,
-      validateStatus: s => s >= 200 && s < 500,
+      validateStatus: s => s >= 200 && s < 400,
     });
     console.log(`[exposes] ${dir} ready on ${port}.`);
   }
