@@ -36,10 +36,18 @@ async function main() {
     { dir: 'expose-less', port: 3007 },
   ];
 
-  // Clean up all ports first
+  // Clean up all ports first with more aggressive approach
   console.log('[exposes] cleaning up ports...');
-  await Promise.all(exposes.map(({ port }) => killPort(port)));
-  await new Promise(resolve => setTimeout(resolve, 1000));
+  for (const { port } of exposes) {
+    await killPort(port);
+    // Additional cleanup attempt
+    try {
+      await killPort(port);
+    } catch (e) {
+      // Ignore
+    }
+  }
+  await new Promise(resolve => setTimeout(resolve, 3000));
 
   const procs = [];
   for (const { dir, port } of exposes) {

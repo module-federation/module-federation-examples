@@ -3,6 +3,7 @@ const waitOn = require('wait-on');
 const path = require('node:path');
 const fs = require('node:fs');
 const kill = require('kill-port');
+const { aggressiveKillPort } = require('./aggressive-port-cleanup.cjs');
 
 const root = path.resolve(__dirname, '..');
 
@@ -46,13 +47,17 @@ async function main() {
 
   const procs = [];
 
-  // Kill all potentially conflicting ports first
-  console.log('[federated-css] cleaning up ports...');
+  // Kill all potentially conflicting ports first using aggressive cleanup
+  console.log('[federated-css] cleaning up ports aggressively...');
   const allPorts = [...reactConsumers.map(c => c.port), ...exposes, ...nextConsumers.map(c => c.port)];
-  await Promise.all(allPorts.map(port => killPort(port)));
+  
+  // Use aggressive cleanup for all ports
+  for (const port of allPorts) {
+    await aggressiveKillPort(port);
+  }
   
   // Give OS time to fully release ports
-  await new Promise(resolve => setTimeout(resolve, 1000));
+  await new Promise(resolve => setTimeout(resolve, 3000));
 
   console.log('[federated-css] starting consumers-react (sequential servers)...');
   for (const { dir, port, serve } of reactConsumers) {
@@ -119,18 +124,11 @@ async function main() {
 
   console.log('[federated-css] starting Next consumers (sequential dev servers)...');
   for (const { dir, port } of nextConsumers) {
-    // Extra cleanup for each Next.js port in case previous one didn't clean up properly
-    console.log(`[federated-css] cleaning up port ${port} before starting ${dir}...`);
-    await killPort(port);
-    // Try multiple times to ensure port is really free
-    for (let i = 0; i < 3; i++) {
-      try {
-        await killPort(port);
-      } catch (e) {
-        // Ignore, port might already be free
-      }
-      await new Promise(resolve => setTimeout(resolve, 1000));
-    }
+    // Extra aggressive cleanup for each Next.js port
+    console.log(`[federated-css] aggressively cleaning up port ${port} before starting ${dir}...`);
+    await aggressiveKillPort(port);
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
     const cwd = path.join('consumers-nextjs', dir);
     const p = run('pnpm', ['-C', cwd, 'run', 'start']);
     procs.push(p);

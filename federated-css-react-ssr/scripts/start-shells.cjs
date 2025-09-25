@@ -35,10 +35,18 @@ async function main() {
     { dir: 'scss-tailwind-css', port: 4005 },
   ];
 
-  // Clean up all ports first
+  // Clean up all ports first with more aggressive approach
   console.log('[shells] cleaning up ports...');
-  await Promise.all(shells.map(({ port }) => killPort(port)));
-  await new Promise(resolve => setTimeout(resolve, 1000));
+  for (const { port } of shells) {
+    await killPort(port);
+    // Additional cleanup attempt
+    try {
+      await killPort(port);
+    } catch (e) {
+      // Ignore
+    }
+  }
+  await new Promise(resolve => setTimeout(resolve, 3000));
 
   const procs = [];
   for (const { dir, port } of shells) {
