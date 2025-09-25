@@ -7,6 +7,31 @@ const { aggressiveKillPort, aggressiveKillPorts } = require('./aggressive-port-c
 const WAIT_TIMEOUT = 480000;
 const isReadyStatus = status => status >= 200 && status < 400;
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+const { execSync } = require('node:child_process');
+
+function isPortInUse(port) {
+  try {
+    const out = execSync(`lsof -nPiTCP -sTCP:LISTEN | grep :${port}\\>`, { stdio: ['ignore', 'pipe', 'ignore'] }).toString();
+    return out.trim().length > 0;
+  } catch {
+    // grep exits non-zero if not found
+    return false;
+  }
+}
+
+function forceKillPort(port) {
+  try { execSync(`lsof -ti:${port} | xargs kill -9`, { stdio: 'ignore' }); } catch {}
+  try { execSync(`fuser -k ${port}/tcp`, { stdio: 'ignore' }); } catch {}
+}
+
+async function ensurePortFree(port, timeoutMs = 15000) {
+  const start = Date.now();
+  while (Date.now() - start < timeoutMs) {
+    if (!isPortInUse(port)) return;
+    forceKillPort(port);
+    await delay(500);
+  }
+}
 
 const root = path.resolve(__dirname, '..');
 
@@ -177,6 +202,8 @@ async function main() {
         });
       }
 
+      console.log(`[federated-css] ensuring port ${port} is free for ${label}...`);
+      await ensurePortFree(port, 20000);
       console.log(`[federated-css] starting ${label} with next start...`);
       const proc = run('pnpm', ['-C', cwd, 'exec', 'next', 'start', '-p', String(port)]);
       procs.push(proc);
