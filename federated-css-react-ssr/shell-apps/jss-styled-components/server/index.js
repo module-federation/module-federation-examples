@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 const app = express();
 const PORT = 4002;
 
-async function waitUrl(url, timeout = 120000) {
+async function waitUrl(url, timeout = 300000) {
   const start = Date.now();
   while (true) {
     try {

@@ -122,7 +122,15 @@ async function main() {
     // Extra cleanup for each Next.js port in case previous one didn't clean up properly
     console.log(`[federated-css] cleaning up port ${port} before starting ${dir}...`);
     await killPort(port);
-    await new Promise(resolve => setTimeout(resolve, 2000)); // Longer delay to ensure port is released
+    // Try multiple times to ensure port is really free
+    for (let i = 0; i < 3; i++) {
+      try {
+        await killPort(port);
+      } catch (e) {
+        // Ignore, port might already be free
+      }
+      await new Promise(resolve => setTimeout(resolve, 1000));
+    }
     const cwd = path.join('consumers-nextjs', dir);
     const p = run('pnpm', ['-C', cwd, 'run', 'start']);
     procs.push(p);
