@@ -13,7 +13,7 @@ async function waitUrl(url, timeout = 300000) {
       if (res.ok) return;
     } catch (_) {}
     if (Date.now() - start > timeout) throw new Error(`prewarm timeout for ${url}`);
-    await new Promise(r => setTimeout(r, 1000));
+    await new Promise(r => setTimeout(r, 5000));
   }
 }
 
