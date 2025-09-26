@@ -81,6 +81,16 @@ async function main() {
     const cwd = path.join('expose-apps', dir);
     console.log(`[exposes] building ${dir}...`);
     await exec('pnpm', ['-C', cwd, 'run', 'build']);
+    // Sanity check: ensure remote entries exist
+    const fs = require('node:fs');
+    const serverRemote = path.join(cwd, 'dist', 'server', 'remoteEntry.js');
+    const clientRemote = path.join(cwd, 'dist', 'client', 'remoteEntry.js');
+    if (!fs.existsSync(serverRemote)) {
+      console.warn(`[exposes] WARN: missing ${serverRemote}`);
+    }
+    if (!fs.existsSync(clientRemote)) {
+      console.warn(`[exposes] WARN: missing ${clientRemote}`);
+    }
     console.log(`[exposes] ensuring port ${port} is free for ${dir}...`);
     await ensurePortFree(port, 20000);
     console.log(`[exposes] serving ${dir} on ${port}...`);
