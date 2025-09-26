@@ -234,6 +234,9 @@ async function main() {
           }
         }
         await ensureExit(proc);
+        // Make absolutely sure the port is free before retrying
+        console.log(`[federated-css] clearing port ${port} before retrying ${label}...`);
+        await ensurePortFree(port, 20000);
         await delay(1500 * attempt);
 
         if (attempt === maxAttempts) {
