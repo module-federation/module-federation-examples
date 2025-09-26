@@ -1,6 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const reuseExisting = !process.env.CI;
+// Always reuse existing servers to avoid repeated start/stop cycles during runs
+const reuseExisting = true;
 
 export default defineConfig({
   testDir: './e2e',
