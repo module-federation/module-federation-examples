@@ -35,7 +35,8 @@ export default defineConfig({
     {
       command: 'node scripts/start-exposes.cjs',
       cwd: __dirname,
-      port: 3001,
+      // Wait for the last expose to be up to avoid racing shells against early ports
+      port: 3007,
       reuseExistingServer: reuseExisting,
       timeout: 900_000,
     },
