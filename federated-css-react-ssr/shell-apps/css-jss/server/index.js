@@ -16,6 +16,12 @@ async function waitUrl(url, timeout = 300000) {
     } catch (_) {}
 
     if (Date.now() - start > timeout) {
+      // extra diagnostics in CI: try to print which ports are listening
+      try {
+        const { execSync } = require('node:child_process');
+        const ss = execSync(`ss -ltnp | grep :${new URL(url).port} || true`, { stdio: ['ignore','pipe','ignore'] }).toString().trim();
+        if (ss) console.log(`[prewarm] port diag ${new URL(url).port}: ${ss}`);
+      } catch (e) {}
       throw new Error(`prewarm timeout for ${url}`);
     }
     await new Promise(r => setTimeout(r, 5000));

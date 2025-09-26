@@ -24,6 +24,17 @@ function forceKillPort(port) {
   try { execSync(`fuser -k ${port}/tcp`, { stdio: 'ignore' }); } catch {}
 }
 
+function diagnosePort(port, label) {
+  try {
+    const ssout = execSync(`ss -ltnp | grep :${port} || true`, { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+    if (ssout) console.log(`[federated-css] diag ${label} port ${port}: ${ssout}`);
+  } catch {}
+  try {
+    const lsofout = execSync(`lsof -nPiTCP -sTCP:LISTEN | grep :${port} || true`, { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+    if (lsofout) console.log(`[federated-css] diag ${label} port ${port} (lsof): ${lsofout}`);
+  } catch {}
+}
+
 async function ensurePortFree(port, timeoutMs = 15000) {
   const start = Date.now();
   while (Date.now() - start < timeoutMs) {
@@ -225,6 +236,7 @@ async function main() {
       } catch (error) {
         lastError = error;
         console.warn(`[federated-css] ${label} failed to start: ${error.message}`);
+        diagnosePort(port, label);
         removeProc(proc);
         try {
           proc.kill('SIGTERM');
