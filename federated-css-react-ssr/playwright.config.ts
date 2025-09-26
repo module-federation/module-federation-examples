@@ -30,7 +30,6 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
   ],
-  globalSetup: './e2e/global-setup.ts',
   globalTeardown: './e2e/global-teardown.ts',
   webServer: [
     {
