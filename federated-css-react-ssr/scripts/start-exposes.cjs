@@ -2,6 +2,7 @@ const { spawn } = require('node:child_process');
 const path = require('node:path');
 const waitOn = require('wait-on');
 const kill = require('kill-port');
+const { execSync } = require('node:child_process');
 
 const root = path.resolve(__dirname, '..');
 
@@ -14,6 +15,28 @@ async function killPort(port) {
     await kill(port, 'tcp');
   } catch (e) {
     // Port might not be in use, ignore
+  }
+}
+
+const delay = ms => new Promise(r => setTimeout(r, ms));
+function isPortInUse(port) {
+  try {
+    const out = execSync(`lsof -nPiTCP -sTCP:LISTEN | grep :${port}\\>`, { stdio: ['ignore', 'pipe', 'ignore'] }).toString();
+    return out.trim().length > 0;
+  } catch {
+    return false;
+  }
+}
+function forceKillPort(port) {
+  try { execSync(`lsof -ti:${port} | xargs kill -9`, { stdio: 'ignore' }); } catch {}
+  try { execSync(`fuser -k ${port}/tcp`, { stdio: 'ignore' }); } catch {}
+}
+async function ensurePortFree(port, timeoutMs = 15000) {
+  const start = Date.now();
+  while (Date.now() - start < timeoutMs) {
+    if (!isPortInUse(port)) return;
+    forceKillPort(port);
+    await delay(500);
   }
 }
 
@@ -54,6 +77,8 @@ async function main() {
     const cwd = path.join('expose-apps', dir);
     console.log(`[exposes] building ${dir}...`);
     await exec('pnpm', ['-C', cwd, 'run', 'build']);
+    console.log(`[exposes] ensuring port ${port} is free for ${dir}...`);
+    await ensurePortFree(port, 20000);
     console.log(`[exposes] serving ${dir} on ${port}...`);
     const p = run('pnpm', ['-C', cwd, 'run', 'serve']);
     procs.push(p);

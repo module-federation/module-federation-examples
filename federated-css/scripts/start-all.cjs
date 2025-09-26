@@ -129,6 +129,8 @@ async function main() {
       const buildProc = run('pnpm', ['-C', cwd, 'run', 'build']);
       buildProc.on('exit', code => (code === 0 ? res() : rej(new Error(`build ${dir} failed`))));
     });
+    console.log(`[federated-css] ensuring port ${port} is free for consumers-react ${dir}...`);
+    await ensurePortFree(port, 20000);
     const serveProc = run('pnpm', ['-C', cwd, 'run', 'serve']);
     procs.push(serveProc);
 
@@ -172,6 +174,8 @@ async function main() {
     const dir = dirMap[port];
     if (!dir) continue;
     const cwd = path.join('expose-remotes', dir);
+    console.log(`[federated-css] ensuring port ${port} is free for expose ${dir}...`);
+    await ensurePortFree(port, 20000);
     const p = run('pnpm', ['-C', cwd, 'run', 'serve']);
     procs.push(p);
     const exposeResources = [
@@ -205,7 +209,7 @@ async function main() {
       console.log(`[federated-css] ensuring port ${port} is free for ${label}...`);
       await ensurePortFree(port, 20000);
       console.log(`[federated-css] starting ${label} with next start...`);
-      const proc = run('pnpm', ['-C', cwd, 'exec', 'next', 'start', '-p', String(port)]);
+      const proc = run('pnpm', ['-C', cwd, 'exec', 'next', 'start', '-H', '127.0.0.1', '-p', String(port)]);
       procs.push(proc);
 
       try {
