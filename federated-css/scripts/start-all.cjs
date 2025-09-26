@@ -29,6 +29,12 @@ async function ensurePortFree(port, timeoutMs = 15000) {
   while (Date.now() - start < timeoutMs) {
     if (!isPortInUse(port)) return;
     forceKillPort(port);
+    try {
+      const diag = execSync(`ss -ltnp | grep :${port} || true`, { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+      if (diag) {
+        console.log(`[federated-css] port ${port} still in use -> ${diag}`);
+      }
+    } catch {}
     await delay(500);
   }
 }
