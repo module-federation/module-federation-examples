@@ -113,7 +113,7 @@ async function main() {
   const nextConsumers = [
     { dir: 'jss-css-and-tailwind-module', port: 8083 },
     { dir: 'jss-and-tailwind-global', port: 8082 },
-    { dir: 'less-and-styled-component', port: 8084 },
+    { dir: 'less-and-styled-component', port: 8184 },
     { dir: 'combination-of-4', port: 8081 },
   ];
 

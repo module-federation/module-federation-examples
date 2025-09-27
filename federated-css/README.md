@@ -58,7 +58,7 @@ Note. you don't need to start required remotes separately for this command.
 
 # Running Demo NextJs
 
-Commands will run host NextJs App on `http://localhost:8081-8084/`.
+Commands will run host NextJs App on `http://localhost:8081-8184/` (ports 8081, 8082, 8083, 8184).
 
 -`start:nextjs:combination-of-4` -`start:nextjs:jss-tailwind-global` -`start:nextjs:jss-css-and-tailwind-module` -`start:nextjs:less-and-styled-component`
 

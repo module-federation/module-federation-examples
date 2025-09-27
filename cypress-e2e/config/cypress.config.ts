@@ -120,7 +120,7 @@ export default defineConfig({
       localhost8081: 'http://localhost:8081',
       localhost8082: 'http://localhost:8082',
       localhost8083: 'http://localhost:8083',
-      localhost8084: 'http://localhost:8084',
+      localhost8184: 'http://localhost:8184',
       localhost9000: 'http://localhost:9000',
       localhost9001: 'http://localhost:9001',
       localhost9002: 'http://localhost:9002',

@@ -1,17 +1,19 @@
 const express = require('express');
 const initMiddleware = require('./middleware');
 const fetch = require('node-fetch');
+const { sanitizeLoopbackHttpUrl } = require('../../../server-utils/loopback');
 
 const app = express();
 const PORT = 4000;
 
 async function waitUrl(url, timeout = 300000) {
+  const target = sanitizeLoopbackHttpUrl(url);
   const start = Date.now();
   // Retry until the remoteEntry.js is available over HTTP
   /* eslint-disable no-await-in-loop */
   while (true) {
     try {
-      const res = await fetch(url);
+      const res = await fetch(target.href);
       if (res.ok) return;
     } catch (_) {}
 
@@ -19,10 +21,10 @@ async function waitUrl(url, timeout = 300000) {
       // extra diagnostics in CI: try to print which ports are listening
       try {
         const { execSync } = require('node:child_process');
-        const ss = execSync(`ss -ltnp | grep :${new URL(url).port} || true`, { stdio: ['ignore','pipe','ignore'] }).toString().trim();
-        if (ss) console.log(`[prewarm] port diag ${new URL(url).port}: ${ss}`);
+        const ss = execSync(`ss -ltnp | grep :${target.port} || true`, { stdio: ['ignore','pipe','ignore'] }).toString().trim();
+        if (ss) console.log(`[prewarm] port diag ${target.port}: ${ss}`);
       } catch (e) {}
-      throw new Error(`prewarm timeout for ${url}`);
+      throw new Error(`prewarm timeout for ${target.href}`);
     }
     await new Promise(r => setTimeout(r, 5000));
   }

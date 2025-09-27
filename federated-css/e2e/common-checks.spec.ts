@@ -42,7 +42,7 @@ const appsUnderTest: AppConfig[] = [
     isNextJs: true,
   },
   {
-    port: 8084,
+    port: 8184,
     buttons: [styledComponent, less],
     isNextJs: true,
   },

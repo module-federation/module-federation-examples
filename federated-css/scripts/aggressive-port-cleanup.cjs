@@ -70,7 +70,7 @@ async function aggressiveKillPort(port) {
 async function cleanupAllPorts() {
   const reactConsumerPorts = [3001, 3002, 3003, 3004, 3005, 3006, 3007];
   const exposePorts = [4000, 4001, 4002, 4003, 4004, 4005, 4006, 4007];
-  const nextConsumerPorts = [8081, 8082, 8083, 8084];
+  const nextConsumerPorts = [8081, 8082, 8083, 8184];
 
   const allPorts = [...reactConsumerPorts, ...exposePorts, ...nextConsumerPorts];
 
