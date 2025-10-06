@@ -14,7 +14,21 @@
       "cypress": "13.12.0",
       "@types/react": "18.3.10",
       "@types/react-dom": "18.3.0"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "@module-federation/nextjs-mf",
+      "@parcel/watcher",
+      "@swc/core",
+      "core-js",
+      "core-js-pure",
+      "cypress",
+      "esbuild",
+      "fsevents",
+      "nice-napi",
+      "nx",
+      "unrs-resolver",
+      "yorkie"
+    ]
   },
   "devDependencies": {
     "@playwright/test": "^1.54.2",
@@ -34,6 +48,7 @@
     "husky": "9.0.11",
     "jest": "29.7.0",
     "js-yaml": "4.1.0",
+    "kill-port": "2.0.1",
     "lerna": "8.1.8",
     "lint-staged": "^15.2.10",
     "mocha": "10.6.0",

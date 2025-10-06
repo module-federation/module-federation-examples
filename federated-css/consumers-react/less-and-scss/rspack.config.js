@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@rspack/core').container;
 const path = require('path');
 const mfConfig = require('./mf-plugin.config');
 

@@ -1,4 +1,4 @@
-const NextFederationPlugin = require('@module-federation/nextjs-mf/lib/NextFederationPlugin');
+const { NextFederationPlugin } = require('@module-federation/nextjs-mf');
 const mfConfig = require('./mf-plugin.config');
 
 module.exports = {
@@ -8,10 +8,18 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       });
+
       config.plugins.push(new NextFederationPlugin(mfConfig));
+    } else {
+      config.externals = config.externals || [];
+      config.externals.push(/^expose_/);
     }
+
     return config;
   },
   // your original next.config.js export
   reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };

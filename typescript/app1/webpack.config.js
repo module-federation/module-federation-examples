@@ -1,5 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { FederatedTypesPlugin } = require('@module-federation/typescript');
+const { container } = require('webpack');
+const { ModuleFederationPlugin } = container;
 const path = require('path');
 
 const pkg = require('./package.json');
@@ -37,7 +39,30 @@ module.exports = {
     ],
   },
   plugins: [
+    // Define federation config once and use for both plugins
+    new ModuleFederationPlugin({
+      name: 'app1',
+      filename: 'remoteEntry.js',
+      remotes: {
+        app2: 'app2@http://localhost:3002/remoteEntry.js',
+      },
+      shared: [
+        {
+          react: {
+            singleton: true,
+            requiredVersion: pkg.dependencies.react,
+          },
+        },
+        {
+          'react-dom': {
+            singleton: true,
+            requiredVersion: pkg.dependencies['react-dom'],
+          },
+        },
+      ],
+    }),
     new FederatedTypesPlugin({
+      disableDownloadingRemoteTypes: true,
       federationConfig: {
         name: 'app1',
         filename: 'remoteEntry.js',

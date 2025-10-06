@@ -6,6 +6,16 @@
   "private": true,
   "scripts": {
     "build": "pnpm --parallel --filter federated-css-react-ssr_* build",
-    "start": "pnpm --parallel --filter federated-css-react-ssr_* start"
+    "start": "pnpm --parallel --filter federated-css-react-ssr_* start",
+    "e2e": "pnpm exec playwright install --with-deps && playwright test",
+    "e2e:ci": "pnpm exec playwright install --with-deps && node scripts/kill-all-ports.cjs && playwright test --reporter=list",
+    "legacy:e2e:ci": "pnpm exec playwright install --with-deps && node scripts/kill-all-ports.cjs && playwright test --reporter=list",
+    "e2e:headed": "playwright test --headed"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.2",
+    "kill-port": "2.0.1",
+    "react-jss": "10.10.0",
+    "wait-on": "7.2.0"
   }
 }

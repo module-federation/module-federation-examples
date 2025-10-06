@@ -5,7 +5,7 @@
     "build": "pnpm build:client && pnpm build:server",
     "build:client": "webpack --mode development --config config/webpack.client.js",
     "build:server": "webpack --mode development --config config/webpack.server.js",
-    "serve": "npx serve dist/ -p 3001",
+    "serve": "pnpm dlx serve dist -l 3001",
     "start": "pnpm build && pnpm serve"
   },
   "license": "MIT",
@@ -24,7 +24,8 @@
     "webpack": "5.101.0",
     "webpack-cli": "5.1.4",
     "webpack-dev-server": "5.0.4",
-    "webpack-merge": "6.0.1"
+    "webpack-merge": "6.0.1",
+    "@module-federation/enhanced": "0.17.1"
   },
   "dependencies": {
     "@babel/runtime": "^7.13.10",

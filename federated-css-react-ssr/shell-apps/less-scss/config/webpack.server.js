@@ -5,7 +5,7 @@ const moduleFederationPlugin = require('./module-federation');
 
 module.exports = merge(shared, {
   name: 'server',
-  target: false,
+  target: 'async-node',
   optimization: {
     minimize: false,
   },

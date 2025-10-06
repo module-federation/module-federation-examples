@@ -2,8 +2,8 @@
   "name": "@federated-css/next-less-and-styled-component",
   "version": "0.1.0",
   "scripts": {
-    "build": "next build",
-    "start": "next dev -p 8084",
+    "build": "cross-env NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
+    "start": "cross-env NEXT_PRIVATE_LOCAL_WEBPACK=true next dev -p 8184",
     "lint": "next lint"
   },
   "dependencies": {
@@ -17,6 +17,7 @@
   "devDependencies": {
     "@types/react": "18.3.3",
     "eslint": "9.6.0",
-    "eslint-config-next": "14.2.4"
+    "eslint-config-next": "14.2.4",
+    "cross-env": "7.0.3"
   }
 }

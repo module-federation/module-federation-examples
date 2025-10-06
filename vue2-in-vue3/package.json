@@ -8,9 +8,12 @@
     "build": "pnpm --filter vue2-in-vue3_vue* build",
     "serve": "pnpm --filter vue2-in-vue3_vue* --parallel serve",
     "clean": "pnpm --filter vue2-in-vue3_vue* --parallel clean",
-    "e2e:ci": "pnpm start & wait-on http-get://localhost:3002/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/tests/*.cy.ts\" --browser=chrome"
+    "test:e2e": "node scripts/run-playwright.cjs test",
+    "test:e2e:ui": "node scripts/run-playwright.cjs test --ui",
+    "e2e:ci": "node scripts/run-playwright.cjs test --reporter=line"
   },
   "devDependencies": {
+    "@playwright/test": "^1.54.2",
     "wait-on": "7.2.0"
   }
 }
