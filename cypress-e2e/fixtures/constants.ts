@@ -589,18 +589,6 @@ export class Constants {
           'Principal Engineer at lululemon Distributed JavaScript Orchestration at scale. Maintainer of Webpack, inventor of Module Federation.',
       },
     },
-    dynamicSystemRemotesRuntimeApp: {
-      host: {
-        header: 'Dynamic System Host',
-        hostH3: 'my env is https://host.api.com',
-        button: 'Load Remote Widget',
-      },
-      paragraph:
-        'The Dynamic System will take advantage Module Federation remotes and exposes. It will not load components that have been loaded already.',
-      buttonHeader: 'Remote Widget',
-      buttonH2: 'My env is ',
-      buttonParagraph: 'Using momentjs for format the date',
-    },
     sharedContextApp: {
       app1: {
         paragraph: 'Welcome, Billy',
