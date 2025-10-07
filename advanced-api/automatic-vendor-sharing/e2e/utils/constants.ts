@@ -1,14 +1,17 @@
 export const Constants = {
   commonConstantsData: {
-    biDirectional: 'Module Federation with Automatic Vendor Sharing',
-    button: 'Button',
-    commonCountAppNames: {
+    headerText: 'Module Federation with Automatic Vendor Sharing',
+    appDisplayNames: {
       app1: 'App 1 (Host & Remote)',
       app2: 'App 2 (Host & Remote)',
     },
+    buttonLabels: {
+      app1: 'App 1 Button',
+      app2: 'App 2 Button',
+    },
   },
   color: {
-    red: 'rgb(255, 0, 0)',
-    deepBlue: 'rgb(0, 0, 139)',
+    app1Button: 'rgb(136, 0, 0)',
+    app2Button: 'rgb(0, 0, 204)',
   },
 };
