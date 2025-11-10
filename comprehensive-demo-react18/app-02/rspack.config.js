@@ -18,6 +18,10 @@ module.exports = {
   optimization: {
     minimize: false,
   },
+  experiments: {
+    css: true,
+    mfAsyncStartup: true,
+  },
   devServer: {
     port: 3002,
     hot: true,

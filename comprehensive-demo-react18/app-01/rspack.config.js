@@ -25,6 +25,7 @@ module.exports = {
   },
   experiments: {
     css: true,
+    mfAsyncStartup: true,
   },
 
   module: {

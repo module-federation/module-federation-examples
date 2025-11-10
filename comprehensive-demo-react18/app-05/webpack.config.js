@@ -42,6 +42,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'app_05',
       filename: 'remoteEntry.js',
+      experiments: { asyncStartup: true },
       exposes: {
         './ActionButton': './src/components/action-button.ts',
         './AlertBox': './src/components/alert-box.ts',

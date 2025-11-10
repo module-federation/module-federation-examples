@@ -29,6 +29,10 @@ module.exports = {
     publicPath: 'auto',
     uniqueName: 'app3',
   },
+  experiments: {
+    css: true,
+    mfAsyncStartup: true,
+  },
 
   module: {
     rules: [

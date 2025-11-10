@@ -76,6 +76,9 @@ module.exports = {
     uniqueName: 'app5',
   },
   mode,
+  experiments: {
+    mfAsyncStartup: true,
+  },
   plugins: [
     new ModuleFederationPlugin({
       name: 'app_05',
