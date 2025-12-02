@@ -1,176 +1,127 @@
-import { test, expect, Page } from '@playwright/test';
+import { test, expect } from '@playwright/test';
+import { BasePage } from './utils/base-test';
+import { Constants } from './utils/constants';
+import { selectors } from './utils/selectors';
 
-// Helper functions
-async function openLocalhost(page: Page, port: number) {
-  await page.goto(`http://localhost:${port}`);
-  await page.waitForLoadState('networkidle');
-}
+type AppInfo = {
+  host: number;
+  appDisplayName: string;
+  localButtonText: string;
+  localButtonColor: string;
+  remoteButtonText: string;
+  remoteButtonColor: string;
+  localSectionHeading: string;
+  localSectionDescription: string;
+  remoteSectionHeading: string;
+  remoteSectionDescription: string;
+};
 
-async function checkElementWithTextPresence(page: Page, selector: string, text: string) {
-  const element = page.locator(`${selector}:has-text("${text}")`);
-  await expect(element).toBeVisible();
-}
+const headerText = Constants.commonConstantsData.headerText;
+const localSectionHeading = Constants.sections.localHeading;
+const infoSection = Constants.infoSection;
 
-async function clickElementWithText(page: Page, selector: string, text: string) {
-  await page.click(`${selector}:has-text("${text}")`);
-}
-
-
-
-const appsData = [
+const apps: AppInfo[] = [
   {
-    headerText: 'Module Federation with Automatic Vendor Sharing',
-    appNameText: 'App 1 (Host & Remote)',
-    buttonColor: 'rgb(255, 0, 0)',
     host: 3001,
+    appDisplayName: Constants.commonConstantsData.appDisplayNames.app1,
+    localButtonText: Constants.commonConstantsData.buttonLabels.app1,
+    localButtonColor: Constants.color.app1Button,
+    remoteButtonText: Constants.commonConstantsData.buttonLabels.app2,
+    remoteButtonColor: Constants.color.app2Button,
+    localSectionHeading,
+    localSectionDescription: Constants.sections.descriptions.app1Local,
+    remoteSectionHeading: Constants.sections.remoteHeadings.app1,
+    remoteSectionDescription: Constants.sections.descriptions.app1Remote,
   },
   {
-    headerText: 'Module Federation with Automatic Vendor Sharing',
-    appNameText: 'App 2 (Host & Remote)',
-    buttonColor: 'rgb(0, 0, 139)',
     host: 3002,
+    appDisplayName: Constants.commonConstantsData.appDisplayNames.app2,
+    localButtonText: Constants.commonConstantsData.buttonLabels.app2,
+    localButtonColor: Constants.color.app2Button,
+    remoteButtonText: Constants.commonConstantsData.buttonLabels.app1,
+    remoteButtonColor: Constants.color.app1Button,
+    localSectionHeading,
+    localSectionDescription: Constants.sections.descriptions.app2Local,
+    remoteSectionHeading: Constants.sections.remoteHeadings.app2,
+    remoteSectionDescription: Constants.sections.descriptions.app2Remote,
   },
 ];
 
-test.describe('Automatic Vendor Sharing E2E Tests', () => {
-  
-  appsData.forEach((appData) => {
-    const { host, appNameText, headerText } = appData;
-    
-    test.describe(`Check ${appNameText}`, () => {
-      test(`should display ${appNameText} header and subheader correctly`, async ({ page }) => {
+test.describe('Automatic Vendor Sharing example', () => {
+  for (const app of apps) {
+    test.describe(app.appDisplayName, () => {
+      test(`renders the shell for ${app.appDisplayName}`, async ({ page }) => {
+        const basePage = new BasePage(page);
         const consoleErrors: string[] = [];
+
         page.on('console', (msg) => {
           if (msg.type() === 'error') {
             consoleErrors.push(msg.text());
           }
         });
 
-        await openLocalhost(page, host);
+        await basePage.openLocalhost(app.host);
 
-        // Check header and subheader exist
-        await checkElementWithTextPresence(page, 'h1', headerText);
-        await checkElementWithTextPresence(page, 'h2', appNameText);
+        await expect(page.locator(selectors.tags.headers.h1)).toContainText(headerText);
+        await expect(page.locator(selectors.tags.headers.h2)).toContainText(app.appDisplayName);
 
-        // Verify no critical console errors
-        const criticalErrors = consoleErrors.filter(error => 
-          error.includes('Failed to fetch') || 
-          error.includes('ChunkLoadError') ||
-          error.includes('Module not found') ||
-          error.includes('TypeError')
-        );
-        expect(criticalErrors).toHaveLength(0);
+        await expect(page.getByRole('heading', { level: 3, name: app.localSectionHeading })).toBeVisible();
+        await expect(page.getByText(app.localSectionDescription)).toBeVisible();
+
+        await expect(page.getByRole('heading', { level: 3, name: app.remoteSectionHeading })).toBeVisible();
+        await expect(page.getByText(app.remoteSectionDescription, { exact: false })).toBeVisible();
+
+        await expect(page.getByRole('heading', { level: 3, name: infoSection.heading })).toBeVisible();
+        await expect(page.getByText(infoSection.summary)).toBeVisible();
+        await expect(page.getByText(infoSection.sharedDependencies)).toBeVisible();
+        await expect(page.getByText(infoSection.loadStrategy)).toBeVisible();
+        await expect(page.getByText(infoSection.benefits)).toBeVisible();
+
+        const relevantErrors = consoleErrors.filter((error) => {
+          if (error.includes('WebSocket connection to') && error.includes('WEB_SOCKET_CONNECT_MAGIC_ID')) {
+            return false;
+          }
+
+          if (error.includes('dynamic-remote-type-hints-plugin')) {
+            return false;
+          }
+
+          return true;
+        });
+
+        expect(relevantErrors, 'Unexpected console errors detected in the browser console').toHaveLength(0);
       });
 
-      test(`should display ${appNameText} button correctly`, async ({ page }) => {
-        await openLocalhost(page, host);
+      test(`exposes the styled local button for ${app.appDisplayName}`, async ({ page }) => {
+        const basePage = new BasePage(page);
 
-        const buttonText = `${appNameText.split(' ')[0]} ${appNameText.split(' ')[1]} Button`;
-        
-        // Check button exists with correct text
-        await checkElementWithTextPresence(page, 'button', buttonText);
+        await basePage.openLocalhost(app.host);
+
+        const localButton = page.getByRole('button', { name: app.localButtonText });
+        await expect(localButton).toBeVisible();
+        await expect(localButton.locator('span')).toHaveCount(1);
+        await expect(localButton).toHaveCSS('background-color', app.localButtonColor);
+
+        await localButton.click();
+        await expect(localButton.locator('span')).toHaveCount(2);
+        await expect(localButton.locator('span').nth(1)).toHaveText('1');
       });
 
-      test(`should handle ${appNameText} button interactions`, async ({ page }) => {
-        await openLocalhost(page, host);
+      test(`loads the remote button for ${app.appDisplayName}`, async ({ page }) => {
+        const basePage = new BasePage(page);
 
-        const buttonText = `${appNameText.split(' ')[0]} ${appNameText.split(' ')[1]} Button`;
-        
-        // Click the button and verify it responds
-        await clickElementWithText(page, 'button', buttonText);
-        
-        // Verify button is still visible and functional after click
-        await checkElementWithTextPresence(page, 'button', buttonText);
+        await basePage.openLocalhost(app.host);
+        await basePage.waitForDynamicImport();
+
+        const remoteButton = page.getByRole('button', { name: app.remoteButtonText });
+        await expect(remoteButton).toBeVisible();
+        await expect(page.getByText(app.remoteSectionDescription, { exact: false })).toBeVisible();
+        await expect(remoteButton).toHaveCSS('background-color', app.remoteButtonColor);
+
+        await remoteButton.click();
+        await expect(remoteButton.locator('span')).toHaveCount(2);
+        await expect(remoteButton.locator('span').nth(1)).toHaveText('1');
       });
     });
-  });
-
-  test.describe('Cross-App Integration Tests', () => {
-    test('should demonstrate automatic vendor sharing between apps', async ({ page }) => {
-      const networkRequests: string[] = [];
-      
-      page.on('request', (request) => {
-        networkRequests.push(request.url());
-      });
-
-      // Visit both apps to trigger vendor sharing
-      await page.goto('http://localhost:3001');
-      await page.waitForLoadState('networkidle');
-      
-      await page.goto('http://localhost:3002');
-      await page.waitForLoadState('networkidle');
-
-      // Verify shared dependencies are loaded efficiently
-      const reactRequests = networkRequests.filter(url => 
-        url.includes('react') && !url.includes('react-dom')
-      );
-      
-      // Should not load React multiple times due to vendor sharing
-      expect(reactRequests.length).toBeLessThanOrEqual(10);
-    });
-
-    test('should handle CORS correctly for federated modules', async ({ page }) => {
-      const corsErrors: string[] = [];
-      page.on('response', (response) => {
-        if (response.status() >= 400 && response.url().includes('localhost:300')) {
-          corsErrors.push(`${response.status()} - ${response.url()}`);
-        }
-      });
-
-      // Test cross-origin requests work properly
-      await page.goto('http://localhost:3001');
-      await page.waitForLoadState('networkidle');
-
-      // Should have no CORS errors
-      expect(corsErrors).toHaveLength(0);
-    });
-
-    test('should load applications within reasonable time', async ({ page }) => {
-      const startTime = Date.now();
-      
-      await page.goto('http://localhost:3001');
-      await page.waitForLoadState('networkidle');
-      
-      const loadTime = Date.now() - startTime;
-      expect(loadTime).toBeLessThan(10000); // Should load within 10 seconds
-    });
-  });
-
-  test.describe('AutomaticVendorFederation Features', () => {
-    test('should demonstrate shared vendor optimization', async ({ page }) => {
-      await page.goto('http://localhost:3001');
-      await page.waitForLoadState('networkidle');
-
-      // Check that the main elements are present
-      await checkElementWithTextPresence(page, 'h1', 'Module Federation with Automatic Vendor Sharing');
-      await checkElementWithTextPresence(page, 'h2', 'App 1 (Host & Remote)');
-    });
-
-    test('should handle error boundaries correctly', async ({ page }) => {
-      const consoleErrors: string[] = [];
-      page.on('console', (msg) => {
-        if (msg.type() === 'error') {
-          consoleErrors.push(msg.text());
-        }
-      });
-
-      await page.goto('http://localhost:3001');
-      await page.waitForLoadState('networkidle');
-
-      // Click button to test functionality
-      const buttonExists = await page.locator('button').first().isVisible();
-      if (buttonExists) {
-        await page.locator('button').first().click();
-        await page.waitForTimeout(1000);
-      }
-
-      // Should handle any errors gracefully
-      const criticalErrors = consoleErrors.filter(error => 
-        error.includes('Uncaught') && 
-        !error.includes('webpack-dev-server') &&
-        !error.includes('DevTools')
-      );
-      expect(criticalErrors).toHaveLength(0);
-    });
-  });
+  }
 });

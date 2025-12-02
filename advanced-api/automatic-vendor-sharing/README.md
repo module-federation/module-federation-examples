@@ -449,10 +449,10 @@ jest.mock('app2/Button', () => {
 
 ```bash
 # Interactive mode
-npm run cypress:debug
+pnpm exec playwright test --ui
 
 # Headless mode
-npm run e2e:ci
+pnpm run e2e:ci
 ```
 
 ### Unit Tests
@@ -470,7 +470,7 @@ npm test
 - [Module Federation Documentation](https://module-federation.io/)
 - [Webpack Module Federation](https://webpack.js.org/concepts/module-federation/)
 - [Module Federation Enhanced](https://github.com/module-federation/enhanced)
-- [Best Practices Guide](../../cypress-e2e/README.md)
+- [Playwright Testing Guide](https://playwright.dev/docs/test-intro)
 
 ## Contributing
 

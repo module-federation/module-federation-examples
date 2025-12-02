@@ -1,187 +1,67 @@
-import { test, expect, Page } from '@playwright/test';
+import { test, expect } from '@playwright/test';
+import { BasePage } from './utils/base-test';
+import { selectors } from './utils/selectors';
+import { Constants } from './utils/constants';
 
-// Helper functions
-async function openLocalhost(page: Page, port: number) {
-  // Set up console and error logging
-  const consoleMessages: string[] = [];
-  const pageErrors: string[] = [];
-  
-  page.on('console', (msg) => {
-    consoleMessages.push(`[${msg.type()}] ${msg.text()}`);
-  });
-  
-  page.on('pageerror', (err) => {
-    pageErrors.push(`Page error: ${err.message}\nStack: ${err.stack || 'No stack trace'}`);
-  });
+const {
+  host,
+  remoteApp,
+  widget,
+} = Constants.elementsText.dynamicSystemRemotesRuntimeApp;
 
-  await page.goto(`http://localhost:${port}`);
-  
-  // Wait for the page to load but don't wait for networkidle since env loading might be polling
-  await page.waitForLoadState('load');
-  
-  // Wait for the root element to be attached. It may not be visible immediately
-  // (for example, the remote app shows an empty #root while it loads env config),
-  // so we only wait for the element to exist in the DOM.
-  await page.waitForSelector('#root', { state: 'attached', timeout: 10000 });
-  
-  // Log any errors found
-  if (pageErrors.length > 0) {
-    console.log('=== PAGE ERRORS ===');
-    pageErrors.forEach(error => console.log(error));
-    console.log('==================');
-  }
-  
-  if (consoleMessages.length > 0) {
-    console.log('=== CONSOLE MESSAGES ===');
-    consoleMessages.forEach(msg => console.log(msg));
-    console.log('========================');
-  }
-}
+const { envLoader, remoteConfigLoader } = Constants.commonConstantsData;
 
-async function waitForEnvironmentLoading(page: Page) {
-  // Wait for either the loading screen to disappear or main content to appear
-  // The loading screen shows "Loading environment configuration..."
-  const loadingText = page.locator('text=Loading environment configuration...');
-  const mainContent = page.locator('h1');
-  
-  try {
-    // Wait up to 15 seconds for either loading to finish or main content to appear
-    await Promise.race([
-      loadingText.waitFor({ state: 'hidden', timeout: 15000 }),
-      mainContent.waitFor({ state: 'visible', timeout: 15000 })
-    ]);
-  } catch (error) {
-    console.log('Environment loading timeout - checking current page state');
-    const pageContent = await page.content();
-    console.log('Current page content length:', pageContent.length);
-    
-    // If still loading, wait a bit more and proceed
-    if (await loadingText.isVisible()) {
-      console.log('Still showing loading screen, waiting 10 more seconds...');
-      await page.waitForTimeout(10000);
-    }
-  }
-}
+test.describe('Dynamic Remotes with runtime environment variables', () => {
+  test('host application loads the remote widget on demand', async ({ page }) => {
+    const basePage = new BasePage(page);
 
-async function checkElementWithTextPresence(page: Page, selector: string, text: string) {
-  const element = page.locator(`${selector}:has-text("${text}")`);
-  await expect(element).toBeVisible();
-}
+    await basePage.openLocalhost(3000);
 
-async function clickElementWithText(page: Page, selector: string, text: string) {
-  await page.click(`${selector}:has-text("${text}")`);
-}
+    await basePage.waitForTextToDisappear(selectors.tags.coreElements.div, envLoader, 15000);
 
-async function checkDateFormat(page: Page) {
-  const dateElement = page.locator('text=/[A-Z][a-z]+ \\d{1,2}[a-z]{2} \\d{4}, \\d{1,2}:\\d{2}/').first();
-  await expect(dateElement).toBeVisible();
-}
+    await basePage.checkElementWithTextPresence(selectors.tags.headers.h1, host.header);
+    await basePage.checkElementWithTextPresence(selectors.tags.headers.h3, host.envSectionTitle);
+    await basePage.checkElementWithTextPresence(selectors.tags.paragraph, host.paragraph);
 
-const appsData = [
-  {
-    header: 'Dynamic Remotes with Runtime Environment Variables',
-    subheader: 'Host',
-    hostH3: 'Environment Configuration:',
-    paragraph: 'This example demonstrates how Module Federation can load remote components dynamically',
-    button: 'Load Remote Widget',
-    buttonH2: 'Remote Widget',
-    buttonParagraph: 'Using momentjs for format the date',
-    host: 3000,
-  },
-  {
-    header: 'Dynamic System Host',
-    subheader: 'Remote',
-    buttonH2: 'Remote Widget',
-    buttonParagraph: 'Using momentjs for format the date',
-    host: 3001,
-  },
-];
+    await basePage.clickElementWithText(selectors.tags.coreElements.button, host.button);
 
-test.describe('Dynamic Remotes Runtime Environment Variables E2E Tests', () => {
-  
-  appsData.forEach((appData) => {
-    const { host, subheader, header, hostH3, paragraph, button, buttonH2, buttonParagraph } = appData;
-    
-    test.describe(`Check ${subheader} app`, () => {
-      test(`should display ${subheader} app widget functionality and application elements`, async ({ page }) => {
-        await openLocalhost(page, host);
+    await basePage.waitForTextToDisappear(selectors.tags.coreElements.div, host.remoteLoading, 15000);
+    await basePage.waitForTextToDisappear(selectors.tags.coreElements.div, remoteConfigLoader, 15000);
 
-        // Wait for environment loading to complete for host app
-        if (host === 3000) {
-          await waitForEnvironmentLoading(page);
-        }
+    await basePage.checkElementWithTextPresence(selectors.tags.headers.h3, host.remoteSectionTitle);
+    await basePage.checkElementWithTextPresence(selectors.tags.headers.h2, widget.title);
 
-        // Check main header
-        await checkElementWithTextPresence(page, 'h1', header);
-
-        if (host === 3000) {
-          // Host app specific elements
-          await checkElementWithTextPresence(page, 'h3', hostH3!);
-          await checkElementWithTextPresence(page, 'p', paragraph!);
-
-          // Click the load remote component button
-          await clickElementWithText(page, 'button', button!);
-
-          // Wait for loading to complete
-          await page.waitForTimeout(3000);
-        }
-
-        // Check that the remote component loaded successfully
-        await checkElementWithTextPresence(page, 'h2', buttonH2);
-        await checkElementWithTextPresence(page, 'p', buttonParagraph);
-
-        // Check moment.js date formatting
-        await checkDateFormat(page);
-      });
+    const envHeading = page.getByRole('heading', {
+      level: 2,
+      name: new RegExp(`^${widget.envPrefix} `),
     });
+    await expect(envHeading).toHaveText(new RegExp(`^${widget.envPrefix} https?://`));
+
+    await basePage.checkElementWithTextPresence(selectors.tags.paragraph, widget.paragraph);
+    await basePage.checkDateFormat();
   });
 
-  test.describe('Runtime Environment Variable Tests', () => {
-    test('should load environment configuration successfully', async ({ page }) => {
-      const networkRequests: string[] = [];
-      
-      page.on('request', (request) => {
-        networkRequests.push(request.url());
-      });
+  test('remote application exposes the widget with runtime configuration', async ({ page }) => {
+    const basePage = new BasePage(page);
 
-      await page.goto('http://localhost:3000');
-      await page.waitForLoadState('load');
-      await waitForEnvironmentLoading(page);
+    await basePage.openLocalhost(3001);
 
-      // Check that env-config.json was loaded
-      const envConfigRequests = networkRequests.filter(url => 
-        url.includes('env-config.json')
-      );
-      
-      expect(envConfigRequests.length).toBeGreaterThan(0);
+    await basePage.checkElementWithTextPresence(selectors.tags.headers.h1, remoteApp.header);
+    await expect(
+      page.getByRole('heading', { level: 2, name: new RegExp(`^${remoteApp.subheader}$`) }),
+    ).toBeVisible();
+
+    await basePage.waitForTextToDisappear(selectors.tags.coreElements.div, remoteConfigLoader, 15000);
+
+    await basePage.checkElementWithTextPresence(selectors.tags.headers.h2, widget.title);
+
+    const remoteEnvHeading = page.getByRole('heading', {
+      level: 2,
+      name: new RegExp(`^${widget.envPrefix}`),
     });
+    await expect(remoteEnvHeading).toHaveText(new RegExp(`^${widget.envPrefix} https?://`));
 
-    test('should demonstrate dynamic remote loading with environment config', async ({ page }) => {
-      await openLocalhost(page, 3000);
-      await waitForEnvironmentLoading(page);
-
-      // Click to load remote component
-      await clickElementWithText(page, 'button', 'Load Remote Widget');
-
-      // Wait for loading to complete
-      await page.waitForTimeout(3000);
-
-      // Verify remote component is now loaded
-      await checkElementWithTextPresence(page, 'h2', 'Remote Widget');
-      await checkElementWithTextPresence(page, 'p', 'Using momentjs for format the date');
-    });
-  });
-
-  test.describe('Performance and Loading', () => {
-    test('should load applications within reasonable time', async ({ page }) => {
-      const startTime = Date.now();
-      
-      await page.goto('http://localhost:3000');
-      await page.waitForLoadState('load');
-      await waitForEnvironmentLoading(page);
-      
-      const loadTime = Date.now() - startTime;
-      expect(loadTime).toBeLessThan(10000); // Should load within 10 seconds
-    });
+    await basePage.checkElementWithTextPresence(selectors.tags.paragraph, widget.paragraph);
+    await basePage.checkDateFormat();
   });
 });
