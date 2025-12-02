@@ -53,6 +53,9 @@ module.exports = {
         './Dialog': './src/Dialog',
         './Tabs': './src/Tabs',
       },
+      experiments: {
+        asyncStartup: true,
+      },
       shared: {
         ...deps,
         '@material-ui/core': {

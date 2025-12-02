@@ -58,6 +58,9 @@ module.exports = {
         './SideNav': './src/SideNav',
         './Page': './src/Page',
       },
+      experiments: {
+        asyncStartup: true,
+      },
       shared: {
         ...deps,
         '@material-ui/core': {
