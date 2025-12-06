@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "description": "Webpack Host with [Rspack](https://rspack.dev) Remotes: App #1 as Webpack, Apps #2-#5 as [Rspack](https://rspack.dev), with coexisting webpack commands.",
   "scripts": {
-    "start": "pnpm build && pnpm serve",
-    "legacy:start": "pnpm legacy:build && pnpm serve",
+    "start": "pnpm --filter rspack_webpack_app* build && pnpm --filter rspack_webpack_app* --parallel serve",
+    "legacy:start": "pnpm --filter rspack_webpack_app* legacy:build && pnpm --filter rspack_webpack_app* --parallel serve",
     "build": "pnpm --filter rspack_webpack_app* build",
     "legacy:build": "pnpm --filter rspack_webpack_app* legacy:build",
     "serve": "pnpm --filter rspack_webpack_app* --parallel serve",
