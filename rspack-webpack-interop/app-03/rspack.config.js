@@ -49,6 +49,9 @@ module.exports = {
       exposes: {
         './Button': './src/Button',
       },
+      experiments: {
+        asyncStartup: true,
+      },
       shared: {
         'react-dom': {
           singleton: true,
