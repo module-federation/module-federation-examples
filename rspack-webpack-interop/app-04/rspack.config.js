@@ -44,6 +44,9 @@ module.exports = {
         './App': './src/main.js',
         './loadApp': './src/loadApp.js',
       },
+      experiments: {
+        asyncStartup: true,
+      },
       shared: [],
     }),
   ],

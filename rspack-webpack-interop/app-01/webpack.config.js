@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
-const deps = require('./package.json').dependencies;
 module.exports = {
   entry: './src/index',
   cache: false,
@@ -62,7 +61,6 @@ module.exports = {
         asyncStartup: true,
       },
       shared: {
-        ...deps,
         '@material-ui/core': {
           singleton: true,
         },

@@ -3,8 +3,6 @@ const {
 } = require('@rspack/core');
 const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
 
-const deps = require('./package.json').dependencies;
-
 module.exports = {
   entry: './src/index',
 
@@ -57,7 +55,6 @@ module.exports = {
         asyncStartup: true,
       },
       shared: {
-        ...deps,
         '@material-ui/core': {
           singleton: true,
         },

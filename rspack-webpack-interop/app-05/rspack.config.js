@@ -72,6 +72,9 @@ module.exports = {
         './AlertBox': './src/components/alert-box.ts',
         './components': './src/index.ts',
       },
+      experiments: {
+        asyncStartup: true,
+      },
       shared: [],
     }),
     new HtmlRspackPlugin({

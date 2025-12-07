@@ -160,11 +160,11 @@ test.describe('Comprehensive Demo App1', () => {
   test('svelte page updates greeting', async ({ page }) => {
     await page.goto(`${base}/#/svelte`);
 
-    await expectAppBar(page, 'Svelte Page');
+    await expectAppBar(page, 'Svelte Demo');
 
     await expect(page.locator('input[type="text"]').first()).toBeVisible();
     await page.fill('input[type="text"]', 'Module Federation rocks!');
-    await expect(page.getByRole('heading', { name: 'Hello Module Federation rocks!' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Hello From Svelte Module Federation rocks!!' })).toBeVisible();
   });
 
   test('routing page renders federated tabs', async ({ page }) => {
@@ -182,10 +182,12 @@ test.describe('Comprehensive Demo App1', () => {
     await expect(barTab).toBeVisible();
 
     await fooTab.click();
-    await expect(page.locator('div', { hasText: 'Foo Content' })).toBeVisible();
+    await expect(page.getByText('Foo Content', { exact: true })).toBeVisible();
 
     await barTab.click();
-    await expect(page.locator('div', { hasText: 'Bar Content' })).toBeVisible();
+    await page.waitForURL(`${base}/#/routing/bar`);
+    await expect(page.getByText('Bar Content')).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Bar Button' })).toBeVisible();
     await expect(page.getByRole('button', { name: 'Bar Button' })).toHaveCSS(
       'background-color',
       'rgb(219, 112, 147)',
