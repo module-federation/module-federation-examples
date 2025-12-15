@@ -1,5 +1,4 @@
-const {
-} = require('@rspack/core');
+const { HtmlRspackPlugin } = require('@rspack/core');
 const path = require('path');
 const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
 
@@ -7,9 +6,7 @@ const mode = process.env.NODE_ENV || 'development';
 const prod = mode === 'production';
 
 module.exports = {
-  entry: {
-    bundle: ['./src/main.js'],
-  },
+  entry: './src/main.js',
   resolve: {
     extensions: ['.mjs', '.js', '.svelte'],
     mainFields: ['svelte', 'browser', 'module', 'main'],
@@ -33,6 +30,10 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.css$/,
+        type: 'css',
+      },
     ],
   },
   mode,
@@ -48,6 +49,10 @@ module.exports = {
         asyncStartup: true,
       },
       shared: [],
+    }),
+    new HtmlRspackPlugin({
+      template: './src/index.html',
+      chunks: ['main'],
     }),
   ],
   devtool: prod ? false : 'source-map',
