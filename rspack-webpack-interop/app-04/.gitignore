@@ -1,8 +1,6 @@
 .DS_Store
 node_modules
-public/bundle.*
-public/src_*
-public/remoteEntry*
-public/vendors*
+# Treat `public/` as build output (rspack/webpack emit assets + index.html here).
+public/
 package-lock.json
 yarn.lock

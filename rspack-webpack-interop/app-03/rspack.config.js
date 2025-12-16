@@ -55,9 +55,11 @@ module.exports = {
       shared: {
         'react-dom': {
           singleton: true,
+          eager: true,
         },
         react: {
           singleton: true,
+          eager: true,
         },
       },
     }),
