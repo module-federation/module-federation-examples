@@ -30,8 +30,7 @@ export default defineConfig({
       delete config.optimization?.splitChunks;
 
       appendPlugins([
-        new ModuleFederationPlugin({
-          experiments: { asyncStartup: true },
+        new rspack.container.ModuleFederationPlugin({
           name: 'explore',
           filename: 'static/js/remoteEntry.js',
           remotes: {

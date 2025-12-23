@@ -10,8 +10,7 @@ export default defineConfig({
     rspack: (config, { appendPlugins }) => {
       appendPlugins([
         new ModuleFederationPlugin({
-          experiments: { asyncStartup: true },
-      name: 'host',
+          name: 'host',
           remotes: {
             remote1: 'remote1@http://localhost:3001/mf-manifest.json',
             remote2: 'remote2@http://localhost:3002/mf-manifest.json',

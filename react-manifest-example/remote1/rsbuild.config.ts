@@ -18,8 +18,7 @@ export default defineConfig({
       config.output!.uniqueName = 'app1';
       appendPlugins([
         new ModuleFederationPlugin({
-          experiments: { asyncStartup: true },
-      name: 'remote1',
+          name: 'remote1',
           exposes: {
             './button': './src/button.tsx',
             './app': './src/App.tsx',

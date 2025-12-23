@@ -20,7 +20,6 @@ export default defineConfig({
 
       appendPlugins([
         new ModuleFederationPlugin({
-          experiments: { asyncStartup: true },
           name: 'app1',
           remotes: {
             app2: 'app2@http://localhost:3002/static/js/remoteEntry.js',

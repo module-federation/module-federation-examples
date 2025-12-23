@@ -26,19 +26,10 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
   ],
-  webServer: [
-    {
-      // `rsbuild preview` serves build output; ensure `dist` exists first in CI.
-      command: 'pnpm --filter clo_host build && pnpm --filter clo_host preview',
-      port: 3000,
-      reuseExistingServer: !process.env.CI,
-      timeout: 120000,
-    },
-    {
-      command: 'pnpm --filter clo_remote build && pnpm --filter clo_remote preview',
-      port: 3002,
-      reuseExistingServer: !process.env.CI,
-      timeout: 120000,
-    },
-  ],
+  webServer: {
+    command: 'pnpm preview',
+    port: 3000,
+    reuseExistingServer: !process.env.CI,
+    timeout: 120000,
+  },
 });

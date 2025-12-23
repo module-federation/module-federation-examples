@@ -1,22 +1,14 @@
 import { defineConfig } from '@rsbuild/core';
 import { pluginReact } from '@rsbuild/plugin-react';
-import { pluginModuleFederation } from '@module-federation/rsbuild-plugin';
 //@ts-ignore
 import mfConfig from './modulefederation.config';
+import rspack from '@rspack/core';
 export default defineConfig({
   server: {
     port: 3000,
-    strictPort: true,
   },
-  plugins: [
-    pluginReact(),
-    pluginModuleFederation({
-      ...mfConfig,
-      experiments: {
-        asyncStartup: true,
-      },
-    }),
-  ],
+  moduleFederation: { options: mfConfig },
+  plugins: [pluginReact()],
   tools: {
     rspack: {
       output: {
