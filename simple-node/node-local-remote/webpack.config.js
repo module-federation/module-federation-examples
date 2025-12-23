@@ -1,5 +1,5 @@
 const path = require('path');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 module.exports = {
   mode: 'development',
@@ -25,6 +25,7 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'node_local_remote',
       library: { type: 'commonjs-module' },
       filename: 'remoteEntry.js',

@@ -26,6 +26,7 @@ export default defineConfig({
       delete config.optimization?.splitChunks;
       appendPlugins([
         new ModuleFederationPlugin({
+          experiments: { asyncStartup: true },
           name: 'decide',
           runtime: false,
           filename: 'static/js/remoteEntry.js',

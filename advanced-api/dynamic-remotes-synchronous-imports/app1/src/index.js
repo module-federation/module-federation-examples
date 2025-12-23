@@ -20,19 +20,8 @@ console.log(`[Dynamic Remote Init] Setting ${app2Module.urlGlobalVariable} to:`,
 // window.app3Url = '//different-host:4001';
 // window.app4Url = '//cdn.example.com/remotes';
 
-// Bootstrap the application after setting up dynamic configurations
-import('./bootstrap').catch(error => {
-  console.error('[Dynamic Remote Init] Failed to bootstrap application:', error);
-  
-  // Optionally show user-friendly error message
-  document.body.innerHTML = `
-    <div style="padding: 20px; color: red; font-family: Arial, sans-serif;">
-      <h2>Application Failed to Load</h2>
-      <p>Unable to initialize the application. Please check the console for details.</p>
-      <details>
-        <summary>Error Details</summary>
-        <pre>${error.message}</pre>
-      </details>
-    </div>
-  `;
-});
+// Bootstrap the application after setting up dynamic configurations.
+//
+// With MF asyncStartup enabled in the config, we no longer need the dynamic
+// bootstrap import workaround.
+import './bootstrap';

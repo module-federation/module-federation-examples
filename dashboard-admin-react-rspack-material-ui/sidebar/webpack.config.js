@@ -56,6 +56,7 @@ module.exports = {
       template: './public/index.html',
     }),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'Nav',
       filename: 'remoteEntry.js',
       remotes: {

@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const { app2Module } = require('../moduleConfig');
 const deps = require('./package.json').dependencies;
 
@@ -29,6 +29,7 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: app2Module.name,
       library: { type: 'var', name: app2Module.name },
       filename: app2Module.fileName,

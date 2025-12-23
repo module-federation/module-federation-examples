@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const ExternalTemplateRemotesPlugin = require('external-remotes-plugin');
 const path = require('path');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
@@ -37,6 +37,7 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'host',
       remotes: {
         remote1: 'remote1@[remote1Url]/remoteEntry.js',

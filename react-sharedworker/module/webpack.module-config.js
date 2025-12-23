@@ -1,5 +1,5 @@
 const path = require("path");
-const { container } = require("webpack");
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 module.exports = [
   {
@@ -13,7 +13,8 @@ module.exports = [
       publicPath: "http://localhost:3001/",
     },
     plugins: [
-      new container.ModuleFederationPlugin({
+      new ModuleFederationPlugin({
+        experiments: { asyncStartup: true },
         name: "myModule",
         filename: "remoteEntry.js",
         exposes: {
@@ -32,7 +33,8 @@ module.exports = [
       publicPath: "http://localhost:3001/",
     },
     plugins: [
-      new container.ModuleFederationPlugin({
+      new ModuleFederationPlugin({
+        experiments: { asyncStartup: true },
         name: "myModule",
         filename: "remoteEntry.js",
         exposes: {

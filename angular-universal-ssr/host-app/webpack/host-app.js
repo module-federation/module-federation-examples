@@ -2,7 +2,7 @@ const { resolve } = require('path');
 const { AngularWebpackPlugin } = require('@ngtools/webpack');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 module.exports = (env = {}) => {
   const buildFolder = resolve('./dist');
@@ -29,7 +29,8 @@ module.exports = (env = {}) => {
       // }),
 
       new ModuleFederationPlugin({
-        library: { type: 'var' },
+        experiments: { asyncStartup: true },
+library: { type: 'var' },
         remotes: {
           clientApp: 'clientApp',
         },

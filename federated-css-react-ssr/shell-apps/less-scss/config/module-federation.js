@@ -1,10 +1,11 @@
 const deps = require('../package.json').dependencies;
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const { UniversalFederationPlugin } = require('@module-federation/node');
 
 module.exports = {
   client: new ModuleFederationPlugin({
-    name: 'shell',
+    experiments: { asyncStartup: true },
+      name: 'shell',
     filename: 'container.js',
     remotes: {
       expose_less: 'expose_less@http://localhost:3007/client/remoteEntry.js',

@@ -1,3 +1,3 @@
-import('./bootstrap').then(async ({ renderApp }) => {
-  await renderApp();
-});
+import { renderApp } from './bootstrap';
+
+void renderApp();

@@ -7,9 +7,9 @@ import nodeExternals from 'webpack-node-externals';
 import { createServerBuildEntry } from './utils/server-build-entry.js';
 
 import { getManifest } from './utils/manifest.js';
-import { default as Enhanced } from '@module-federation/enhanced';
+import { default as Enhanced } from '@module-federation/enhanced/webpack';
 import { default as NFP } from '@module-federation/node';
-const { AsyncBoundaryPlugin, ModuleFederationPlugin } = Enhanced;
+
 const { UniversalFederationPlugin } = NFP;
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 const remixConfig = await readConfig();

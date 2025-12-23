@@ -1,5 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 

@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -57,6 +57,7 @@ module.exports = {
   plugins: [
     !isProd && new ReactRefreshWebpackPlugin(),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app_03',
       filename: 'remoteEntry.js',
       remotes: {

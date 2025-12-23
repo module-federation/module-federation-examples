@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 
 module.exports = {
@@ -38,6 +38,7 @@ module.exports = {
   //http://localhost:3002/remoteEntry.js
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app1',
       remotes: {
         app2: `app2@${getRemoteEntryUrl(3002)}`,

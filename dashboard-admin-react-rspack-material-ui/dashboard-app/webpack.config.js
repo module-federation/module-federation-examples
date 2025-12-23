@@ -50,6 +50,7 @@ module.exports = {
       favicon: './public/favicon.ico',
     }),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'Dashboard',
       filename: 'remoteEntry.js',
       exposes: {

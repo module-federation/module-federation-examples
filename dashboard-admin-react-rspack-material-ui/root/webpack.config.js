@@ -82,6 +82,7 @@ module.exports = {
     }),
     new MiniCssExtractPlugin(),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'shell',
       filename: 'remoteEntry.js',
       remotes: {

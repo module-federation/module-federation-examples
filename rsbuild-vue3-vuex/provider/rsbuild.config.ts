@@ -29,7 +29,8 @@ export default defineConfig({
       config.resolve.alias['@'] = path.resolve(__dirname, "src");
       appendPlugins([
         new ModuleFederationPlugin({
-          name: `ASSET_REMOTE`,
+          experiments: { asyncStartup: true },
+      name: `ASSET_REMOTE`,
           filename: `remoteEntry.js`,
           exposes: {
             "./AppIndex": "./src/views/AppIndex",

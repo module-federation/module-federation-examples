@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const {
   remotes: { jss },
   mfeBaseConfig,
@@ -37,7 +37,8 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      ...mfeBaseConfig,
+      experiments: { asyncStartup: true },
+...mfeBaseConfig,
       name: jss.name,
       exposes: {
         './JssStyles': './src/react-jss.styles.js',

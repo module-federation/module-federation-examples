@@ -96,6 +96,7 @@ module.exports = {
       publicPath: '/',
     }),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: name,
       filename: 'remoteEntry.js',
       exposes: {

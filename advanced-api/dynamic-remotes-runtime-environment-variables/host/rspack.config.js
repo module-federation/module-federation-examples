@@ -69,6 +69,7 @@ module.exports = {
       ],
     }),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'host',
       runtimePlugins: [],
       shared: {

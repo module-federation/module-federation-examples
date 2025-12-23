@@ -45,6 +45,7 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'reactRemote',
       filename: 'remoteEntry.js',
       remotes: {},

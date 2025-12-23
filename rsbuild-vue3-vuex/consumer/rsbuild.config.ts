@@ -28,7 +28,8 @@ export default defineConfig({
       config.resolve.alias["@"] = path.resolve(__dirname, "src");
       appendPlugins([
         new ModuleFederationPlugin({
-          name: `ASSET_HOST`,
+          experiments: { asyncStartup: true },
+      name: `ASSET_HOST`,
           filename: `ASSET_HOST__remoteEntry.js`,
           remotes: {
             "@remote": "ASSET_REMOTE@http://localhost:3001/remoteEntry.js",

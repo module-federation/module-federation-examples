@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 const {
   remotes: { tailwindCssModule },
@@ -41,7 +41,8 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      ...mfeBaseConfig,
+      experiments: { asyncStartup: true },
+...mfeBaseConfig,
       name: tailwindCssModule.name,
       exposes: {
         './TailwindCssModule': './src/tailwind.module.css',

@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin, AutomaticVendorFederation } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin, AutomaticVendorFederation } = require('@module-federation/enhanced/webpack');
 
 // Production configuration for optimized builds
 const deps = require('./package.json').dependencies;

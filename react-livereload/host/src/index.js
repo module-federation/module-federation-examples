@@ -2,4 +2,4 @@
 window.remote1Url = 'http://localhost:3001';
 window.libsUrl = 'http://localhost:3002';
 
-import('./bootstrap');
+import './bootstrap';

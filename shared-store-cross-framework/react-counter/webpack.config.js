@@ -1,4 +1,4 @@
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 module.exports = {
   entry: './src/index',
@@ -30,6 +30,7 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'react_counter',
       filename: 'remoteEntry.js',
       remotes: {

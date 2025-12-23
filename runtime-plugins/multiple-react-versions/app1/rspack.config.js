@@ -46,6 +46,7 @@ const webpackConfig = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app1',
       remotes: {
         app2: 'app2@' + getRemoteEntryUrl(3002),

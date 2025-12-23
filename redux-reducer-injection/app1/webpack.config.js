@@ -36,6 +36,7 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app1',
       library: { type: 'var', name: 'app1' },
       filename: 'remoteEntry.js',

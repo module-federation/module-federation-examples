@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('@module-federation/enhanced').ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 const deps = require('./package.json').dependencies;
 const { createSharedConfig, createDevServerConfig, babelConfig } = require('../shared-config');
@@ -24,6 +24,7 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app2',
       filename: 'remoteEntry.js',
       exposes: {

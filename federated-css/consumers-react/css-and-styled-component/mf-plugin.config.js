@@ -1,6 +1,7 @@
 const { getRemoteEntry, remotes } = require('../../expose-remotes/remotes.config');
 
 module.exports = {
+  experiments: { asyncStartup: true },
   name: 'jss_tailwind',
   remotes: {
     expose_css: getRemoteEntry(remotes.css),

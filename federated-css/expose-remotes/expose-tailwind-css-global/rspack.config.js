@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@rspack/core').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 const path = require('path');
 const {
   remotes: { tailwindCssGlobal },
@@ -51,7 +51,8 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      ...mfeBaseConfig,
+      experiments: { asyncStartup: true },
+...mfeBaseConfig,
       name: tailwindCssGlobal.name,
       exposes: {
         './TailwindCssGlobal': './src/tailwind.global.css',

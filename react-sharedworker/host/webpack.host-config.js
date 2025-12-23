@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { container } = require('webpack');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 module.exports = {
   mode: 'development',
@@ -11,7 +11,8 @@ module.exports = {
     chunkFilename: 'host-chunk-[name].js',
   },
   plugins: [
-    new container.ModuleFederationPlugin({
+    new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       remotes: {
         myModule: `promise new Promise(resolve => {
       // This part depends on how you plan on hosting and versioning your federated modules

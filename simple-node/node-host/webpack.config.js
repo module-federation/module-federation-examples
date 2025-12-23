@@ -1,4 +1,4 @@
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 
 module.exports = {
@@ -32,7 +32,8 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      remoteType: 'script',
+      experiments: { asyncStartup: true },
+remoteType: 'script',
       name: 'node_host',
       runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],
       remotes: {

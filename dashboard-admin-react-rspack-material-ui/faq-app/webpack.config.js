@@ -49,6 +49,7 @@ module.exports = {
       template: './public/index.html',
     }),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'FAQ',
       filename: 'remoteEntry.js',
       exposes: {

@@ -1,5 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 
 const mode = process.env.NODE_ENV || 'development';
@@ -56,6 +56,7 @@ module.exports = {
   mode,
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app_04',
       filename: 'remoteEntry.js',
       exposes: {

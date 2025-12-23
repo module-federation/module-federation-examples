@@ -1,7 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { FederatedTypesPlugin } = require('@module-federation/typescript');
-const { container } = require('webpack');
-const { ModuleFederationPlugin } = container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 
 const pkg = require('./package.json');
@@ -40,6 +39,7 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app2',
       filename: 'remoteEntry.js',
       exposes: {

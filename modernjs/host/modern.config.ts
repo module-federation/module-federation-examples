@@ -1,4 +1,5 @@
 import appTools, { defineConfig } from '@modern-js/app-tools';
+import { ModuleFederationPlugin } from '@module-federation/enhanced/rspack';
 
 // https://modernjs.dev/en/configure/app/usage
 export default defineConfig({
@@ -37,7 +38,8 @@ export default defineConfig({
       //@ts-ignore
       config.output.publicPath = 'auto';
       appendPlugins([
-        new rspack.container.ModuleFederationPlugin({
+        new ModuleFederationPlugin({
+          experiments: { asyncStartup: true },
           name: 'host',
           remotes: {
             provider: 'provider@http://localhost:3002/static/js/remoteEntry.js',

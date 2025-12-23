@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 const { UmdPlugin } = require('universal-module-federation-plugin');
 
@@ -32,6 +32,7 @@ module.exports = {
   plugins: [
     // To learn more about the usage of this plugin, please visit https://webpack.js.org/plugins/module-federation-plugin/
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app1',
       filename: 'remoteEntry.js',
       remotes: {

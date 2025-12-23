@@ -2,7 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 module.exports = (env = {}) => ({
   mode: 'development',
   cache: false,
@@ -44,6 +44,7 @@ module.exports = (env = {}) => ({
       filename: '[name].css',
     }),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'vue2App',
       filename: 'remoteEntry.js',
       library: { type: 'var', name: 'vue2App' },

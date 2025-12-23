@@ -28,7 +28,8 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      remoteType: 'script',
+      experiments: { asyncStartup: true },
+remoteType: 'script',
       name: 'node_host',
       runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],
       remotes: {

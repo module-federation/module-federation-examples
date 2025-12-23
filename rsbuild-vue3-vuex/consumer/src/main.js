@@ -1,1 +1,3 @@
-import("./bootstrap").then(({ bootstrap }) => bootstrap());
+import { bootstrap } from './bootstrap';
+
+void bootstrap();
