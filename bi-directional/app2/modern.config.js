@@ -26,7 +26,24 @@ export default defineConfig({
     },
   },
   plugins: [
-    appTools(), 
-    moduleFederationPlugin()
+    // Use rspack to avoid webpack schema incompatibilities during package refreshes.
+    appTools({ bundler: 'experimental-rspack' }),
+    // Pass MF config directly to avoid relying on external module-federation config files.
+    moduleFederationPlugin({
+      config: {
+        name: 'app2',
+        remotes: {
+          app1: 'app1@http://localhost:3001/mf-manifest.json',
+        },
+        exposes: {
+          './Button': './src/components/button.js',
+        },
+        shared: {
+          react: { singleton: true },
+          'react-dom': { singleton: true },
+        },
+        dts: false,
+      },
+    })
   ],
 });

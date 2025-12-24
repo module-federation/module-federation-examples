@@ -1,5 +1,5 @@
-import { BaseMethods } from '../../../cypress-e2e/common/base';
-import { baseSelectors, selectors } from '../../../cypress-e2e/common/selectors';
+import { BaseMethods } from '../../../playwright-e2e/common/base';
+import { baseSelectors, selectors } from '../../../playwright-e2e/common/selectors';
 
 export class RustWasmMethods extends BaseMethods {
   public checkGameBoardAppearsByClick(buttonName: string): void {

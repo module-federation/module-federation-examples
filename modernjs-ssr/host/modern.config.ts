@@ -14,6 +14,17 @@ export default defineConfig({
   },
   plugins: [
     appTools({ bundler: 'experimental-rspack' }),
-    moduleFederationPlugin()
+    moduleFederationPlugin({
+      config: {
+        name: 'consumer',
+        remotes: {
+          remote: 'provider@http://localhost:3006/mf-manifest.json',
+        },
+        shared: {
+          react: { singleton: true },
+          'react-dom': { singleton: true },
+        },
+      },
+    }),
   ],
 });

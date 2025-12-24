@@ -14,10 +14,9 @@
     "serve": "pnpm --filter @vue-cli/* --parallel serve",
     "clean": "pnpm --filter @vue-cli/* --parallel clean",
     "test:e2e": "pnpm exec playwright test",
-    "test:e2e:ui": "pnpm exec playwright test --ui",
     "e2e:ci": "pnpm exec playwright test --reporter=line"
   },
   "devDependencies": {
-    "@playwright/test": "^1.54.2"
+    "@playwright/test": "1.57.0"
   }
 }

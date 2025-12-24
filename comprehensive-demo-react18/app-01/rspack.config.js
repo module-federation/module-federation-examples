@@ -23,9 +23,6 @@ module.exports = {
     publicPath: 'auto',
     uniqueName: 'app1',
   },
-  experiments: {
-    css: true,
-  },
 
   module: {
     rules: [
@@ -90,16 +87,20 @@ module.exports = {
         },
         'react-dom': {
           singleton: true,
+          requiredVersion: false,
+          eager: true,
         },
         react: {
           singleton: true,
+          requiredVersion: false,
+          eager: true,
         },
       },
     }),
     new HtmlRspackPlugin({
       template: './public/index.html',
     }),
-    isProd ? new ReactRefreshWebpackPlugin() : undefined,
+    !isProd && new ReactRefreshWebpackPlugin(),
     // new RsdoctorRspackPlugin()
-  ],
+  ].filter(Boolean),
 };

@@ -9,14 +9,12 @@
     "serve": "pnpm run --filter redux-reducer-injection_app* --parallel serve",
     "clean": "pnpm run --filter redux-reducer-injection_app* --parallel clean",
     "test:e2e": "pnpm exec playwright test",
-    "test:e2e:ui": "pnpm exec playwright test --ui",
-    "test:e2e:debug": "pnpm exec playwright test --debug",
-    "e2e:ci": "pnpm exec playwright install --with-deps && pnpm exec playwright test --reporter=list"
+    "e2e:ci": "pnpm exec playwright test --reporter=list"
   },
   "devDependencies": {
-    "@playwright/test": "^1.54.2",
+    "@playwright/test": "1.57.0",
     "concurrently": "8.2.2",
-    "playwright": "^1.54.2",
+    "playwright": "1.57.0",
     "wait-on": "7.2.0"
   }
 }

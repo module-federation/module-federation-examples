@@ -17,7 +17,7 @@ export default defineConfig({
     [isCI ? 'dot' : 'list'],
     [
       'allure-playwright',
-      { outputFolder: path.resolve(__dirname, '../cypress-e2e/results/allure-results') },
+      { outputFolder: path.resolve(__dirname, '../playwright-e2e/results/allure-results') },
     ],
   ],
   use: {

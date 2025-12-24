@@ -299,7 +299,6 @@ window.__MF_DEBUG__.getDynamicRemotePluginState();
 
 ### End-to-End Tests
 ```bash
-# Run Cypress tests
 pnpm e2e:ci
 ```
 

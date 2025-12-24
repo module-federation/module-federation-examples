@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { baseSelectors, commonSelectors } from '../../../../cypress-e2e/common/selectors';
-import { Constants } from '../../../../cypress-e2e/fixtures/constants';
-import { CommonTestData } from '../../../../cypress-e2e/fixtures/commonTestData';
+import { baseSelectors, commonSelectors } from '../../../../playwright-e2e/common/selectors';
+import { Constants } from '../../../../playwright-e2e/fixtures/constants';
+import { CommonTestData } from '../../../../playwright-e2e/fixtures/commonTestData';
 
 const HOST_BASE_URL = 'http://localhost:8080/';
 const ROOT_FILE_PATH = path.resolve(__dirname, '../../host/pages/index.js');

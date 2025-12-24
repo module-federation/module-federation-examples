@@ -1,12 +1,16 @@
-import { createRemoteSSRComponent } from '@modern-js/runtime/mf';
-import {DynamicRemoteSSRComponents } from '../components/dynamic-remote'
+import { getInstance } from '@module-federation/modern-js/runtime';
+import { createLazyComponent } from '@module-federation/modern-js/react';
+import { DynamicRemoteSSRComponents } from '../components/dynamic-remote';
 import './index.css';
 
-const RemoteSSRComponent = createRemoteSSRComponent({
+const instance = getInstance();
+
+const RemoteSSRComponent = createLazyComponent({
   loader: () => import('remote/Image'),
-  loading: 'loading...',
+  loading: <div>loading...</div>,
   export: 'default',
-  fallback: ({ error }) => {
+  instance: instance!,
+  fallback: ({ error }: { error: Error }) => {
     if (error instanceof Error && error.message.includes('not exist')) {
       return <div>fallback - not existed id</div>;
     }

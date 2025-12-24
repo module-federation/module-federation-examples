@@ -42,24 +42,7 @@ pnpm serve
 
 ## Module Federation Configuration
 
-The module federation setup is configured in `module-federation.config.ts`:
-
-```typescript
-export default createModuleFederationConfig({
-  name: 'app2',
-  remotes: {
-    app1: 'app1@http://localhost:3001/mf-manifest.json',
-  },
-  exposes: {
-    './Button': './src/components/button.js',
-  },
-  shared: {
-    react: { singleton: true },
-    'react-dom': { singleton: true },
-  },
-  dts: false,
-});
-```
+The module federation setup is configured inline in `modern.config.js` via `moduleFederationPlugin({ config: ... })`.
 
 ## Key Features
 
