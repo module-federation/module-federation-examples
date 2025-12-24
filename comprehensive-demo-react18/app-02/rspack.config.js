@@ -93,6 +93,6 @@ module.exports = {
       template: './public/index.html',
       chunks: ['main'],
     }),
-    new ReactRefreshWebpackPlugin(),
-  ],
+    !isProd && new ReactRefreshWebpackPlugin(),
+  ].filter(Boolean),
 };
