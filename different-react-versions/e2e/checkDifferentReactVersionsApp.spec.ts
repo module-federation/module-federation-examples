@@ -1,8 +1,8 @@
 import { test } from '../../playwright-e2e/common/testFixtures';
 
 import { BaseMethods } from '../../playwright-e2e/common/base';
-import { baseSelectors } from '../../cypress-e2e/common/selectors';
-import { Constants } from '../../cypress-e2e/fixtures/constants';
+import { baseSelectors } from '../../playwright-e2e/common/selectors';
+import { Constants } from '../../playwright-e2e/fixtures/constants';
 import { DifferentReactVersionsMethods } from './methods/methods';
 
 test.describe('Different React Versions - App1', () => {

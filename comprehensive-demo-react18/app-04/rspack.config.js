@@ -1,6 +1,4 @@
-const {
-  CssExtractRspackPlugin,
-} = require('@rspack/core');
+const { CssExtractRspackPlugin } = require('@rspack/core');
 const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
 const path = require('path');
 
@@ -50,6 +48,7 @@ module.exports = {
           prod ? CssExtractRspackPlugin.loader : 'style-loader',
           'css-loader',
         ],
+        type: 'javascript/auto',
       },
     ],
   },

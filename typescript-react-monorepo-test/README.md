@@ -21,9 +21,7 @@ Run `REMOTE_URL=http://localhost:4000 pnpm run start` in root folder. This will 
 Go to host service folder and run `yarn test`
 This is achieved using jest's moduleNameMapper by telling it how to resolve remote imports.
 
-# Running Host Cypress Component test
 
-Go to host service folder and run `yarn cypress`
 This is achieved using webpack's `resolve.alias` by telling it how to resolve remote imports.
 
 # FederationConfig

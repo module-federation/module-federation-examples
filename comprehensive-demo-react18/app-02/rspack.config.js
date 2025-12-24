@@ -80,9 +80,13 @@ module.exports = {
         },
         'react-dom': {
           singleton: true,
+          requiredVersion: false,
+          eager: true,
         },
         react: {
           singleton: true,
+          requiredVersion: false,
+          eager: true,
         },
       },
     }),
@@ -90,6 +94,6 @@ module.exports = {
       template: './public/index.html',
       chunks: ['main'],
     }),
-    new ReactRefreshWebpackPlugin(),
-  ],
+    !isProd && new ReactRefreshWebpackPlugin(),
+  ].filter(Boolean),
 };

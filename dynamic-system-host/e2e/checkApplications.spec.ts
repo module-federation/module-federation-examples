@@ -3,9 +3,9 @@ import { test } from '@playwright/test';
 import { BaseMethods } from '../../playwright-e2e/common/base';
 import { baseSelectors, commonSelectors } from '../../playwright-e2e/common/selectors';
 import { Constants } from '../../playwright-e2e/fixtures/constants';
-import { getDateWithFormat } from '../../cypress-e2e/helpers/base-helper';
-import { CssAttr } from '../../cypress-e2e/types/cssAttr';
-import { returnCommonDynamicAppsData } from '../../cypress-e2e/fixtures/commonTestData';
+import { getDateWithFormat } from '../../playwright-e2e/helpers/base-helper';
+import { CssAttr } from '../../playwright-e2e/types/cssAttr';
+import { returnCommonDynamicAppsData } from '../../playwright-e2e/fixtures/commonTestData';
 
 const appsData = returnCommonDynamicAppsData(
   Constants.commonPhrases.dynamicSystemHostApp.paragraphText,

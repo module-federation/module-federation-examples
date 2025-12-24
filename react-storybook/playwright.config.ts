@@ -1,6 +1,38 @@
 import { defineConfig, devices } from '@playwright/test';
 
 const reuseExistingServer = !process.env.CI;
+const webServers = [
+  {
+    command: 'pnpm start',
+    cwd: 'remote',
+    env: {
+      BROWSER: 'none',
+    },
+    port: 3002,
+    reuseExistingServer,
+    timeout: 120_000,
+  },
+  {
+    command: 'pnpm start',
+    cwd: 'host',
+    env: {
+      BROWSER: 'none',
+    },
+    port: 3000,
+    reuseExistingServer,
+    timeout: 120_000,
+  },
+];
+
+if (!process.env.CI) {
+  webServers.push({
+    command: 'pnpm storybook --ci --no-open',
+    cwd: 'host',
+    port: 6006,
+    reuseExistingServer,
+    timeout: 120_000,
+  });
+}
 
 export default defineConfig({
   testDir: './e2e',
@@ -29,33 +61,5 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
   ],
-  webServer: [
-    {
-      command: 'pnpm start',
-      cwd: 'remote',
-      env: {
-        BROWSER: 'none',
-      },
-      port: 3002,
-      reuseExistingServer,
-      timeout: 120_000,
-    },
-    {
-      command: 'pnpm start',
-      cwd: 'host',
-      env: {
-        BROWSER: 'none',
-      },
-      port: 3000,
-      reuseExistingServer,
-      timeout: 120_000,
-    },
-    {
-      command: 'pnpm storybook --ci --no-open',
-      cwd: 'host',
-      port: 6006,
-      reuseExistingServer,
-      timeout: 120_000,
-    },
-  ],
+  webServer: webServers,
 });

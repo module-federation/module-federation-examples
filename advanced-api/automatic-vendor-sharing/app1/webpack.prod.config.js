@@ -62,6 +62,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'app1',
       filename: 'remoteEntry.js',
+      dts: false,
       remotes: {
         app2: 'app2@/remoteEntry.js', // Use relative URL for production
       },

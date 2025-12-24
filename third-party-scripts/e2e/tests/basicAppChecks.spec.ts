@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
-import { baseSelectors } from '../../../cypress-e2e/common/selectors';
-import { Constants } from '../../../cypress-e2e/fixtures/constants';
+import { baseSelectors } from '../../../playwright-e2e/common/selectors';
+import { Constants } from '../../../playwright-e2e/fixtures/constants';
 
 const analyticsEndpoint = 'https://www.google-analytics.com/j/collect';
 

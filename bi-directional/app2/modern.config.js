@@ -3,7 +3,7 @@ import { moduleFederationPlugin } from '@module-federation/modern-js';
 
 // https://modernjs.dev/en/configure/app/usage
 export default defineConfig({
-  dev: { 
+  dev: {
     port: 3002,
   },
   server: {

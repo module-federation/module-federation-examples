@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { baseSelectors } from '../../../../cypress-e2e/common/selectors';
-import { CommonTestData } from '../../../../cypress-e2e/fixtures/commonTestData';
+import { baseSelectors } from '../../../../playwright-e2e/common/selectors';
+import { CommonTestData } from '../../../../playwright-e2e/fixtures/commonTestData';
 
 const HOST_BASE_URL = 'http://localhost:8080/';
 

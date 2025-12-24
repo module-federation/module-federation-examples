@@ -390,7 +390,6 @@ resolve: {
 
 **Interactive Mode:**
 ```bash
-npm run cypress:debug
 ```
 
 **Headless CI Mode:**
@@ -416,7 +415,6 @@ The E2E tests verify:
 - Vendor sharing optimization validation
 - Cross-browser compatibility checks
 
-For comprehensive testing guidelines, see [Cypress E2E Documentation](../../cypress-e2e/README.md).
 
 ## Next Steps
 

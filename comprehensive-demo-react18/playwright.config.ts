@@ -35,6 +35,6 @@ export default defineConfig({
     command: useLegacyStart ? 'pnpm legacy:start' : 'pnpm start',
     port: 3001,
     reuseExistingServer: !process.env.CI,
-    timeout: 120000,
+    timeout: 180000,
   },
 });

@@ -70,6 +70,18 @@ const CONFIG = [
     packageName: '@module-federation/utilities',
     shouldUpdate: false, // Assumes no targetVersion needed
   },
+  {
+    packageName: '@playwright/test',
+    shouldUpdate: true,
+    versionToCheck: '999.0.0',
+    targetVersion: 'latest',
+  },
+  {
+    packageName: 'playwright',
+    shouldUpdate: true,
+    versionToCheck: '999.0.0',
+    targetVersion: 'latest',
+  },
 ];
 
 const versionCache = {};

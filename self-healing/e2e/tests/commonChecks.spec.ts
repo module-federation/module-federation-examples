@@ -3,8 +3,8 @@ import path from 'path';
 import { readFileSync } from 'fs';
 
 import { BaseMethods } from '../../../playwright-e2e/common/base';
-import { baseSelectors, updatedSelectors } from '../../../cypress-e2e/common/selectors';
-import { Constants } from '../../../cypress-e2e/fixtures/constants';
+import { baseSelectors, updatedSelectors } from '../../../playwright-e2e/common/selectors';
+import { Constants } from '../../../playwright-e2e/fixtures/constants';
 
 const appsData = [
   {
