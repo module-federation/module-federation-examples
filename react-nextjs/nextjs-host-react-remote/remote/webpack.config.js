@@ -1,8 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
-const deps = require('./package.json').dependencies;
 module.exports = {
-  entry: './src/index',
   entry: {
     app: {
       import: './src/index',
