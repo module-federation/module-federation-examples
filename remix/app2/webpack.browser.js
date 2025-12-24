@@ -139,11 +139,6 @@ const config = {
     //     },
     //   },
     // }),
-    new AsyncBoundaryPlugin({
-      excludeChunk: chunk => {
-        return chunk.name === 'app2';
-      },
-    }),
     new RemixAssetsManifestPlugin(remixConfig),
   ],
 };

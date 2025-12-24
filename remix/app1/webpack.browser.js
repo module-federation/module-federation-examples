@@ -95,12 +95,8 @@ const config = {
   },
   plugins: [
     new HoistContainerReferences(),
-    new AsyncBoundaryPlugin({
-      excludeChunk: chunk => {
-        return chunk.name === 'app1';
-      },
-    }),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       runtime: false,
       name: 'app1',
       filename: 'remoteEntry.js',

@@ -86,13 +86,9 @@ const config = {
     ],
   },
   plugins: [
-    new AsyncBoundaryPlugin({
-      excludeChunk: chunk => {
-        return chunk.name === 'app1';
-      },
-    }),
     new UniversalFederationPlugin(
       {
+        experiments: { asyncStartup: true },
         isServer: true,
         name: 'app1',
         filename: 'remoteEntry.js',
