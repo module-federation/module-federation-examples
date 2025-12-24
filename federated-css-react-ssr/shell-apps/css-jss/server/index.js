@@ -6,7 +6,7 @@ const { sanitizeLoopbackHttpUrl } = require('../../../server-utils/loopback');
 const app = express();
 const PORT = 4000;
 
-async function waitUrl(url, timeout = 300000) {
+async function waitUrl(url, timeout = 600000) {
   const target = sanitizeLoopbackHttpUrl(url);
   const start = Date.now();
   // Retry until the remoteEntry.js is available over HTTP

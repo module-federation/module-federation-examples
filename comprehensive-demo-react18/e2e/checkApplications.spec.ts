@@ -12,6 +12,7 @@ apps.forEach(({ port, name, selector, text }) => {
   test.describe(name, () => {
     test(`build and run ${name}`, async ({ page }) => {
       await page.goto(`http://localhost:${port}`);
+      await page.waitForLoadState('networkidle');
       await expect(page.locator(selector, { hasText: text })).toBeVisible();
     });
   });
