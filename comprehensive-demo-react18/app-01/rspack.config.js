@@ -23,9 +23,6 @@ module.exports = {
     publicPath: 'auto',
     uniqueName: 'app1',
   },
-  experiments: {
-    css: true,
-  },
 
   module: {
     rules: [

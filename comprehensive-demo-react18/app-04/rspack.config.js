@@ -58,7 +58,4 @@ module.exports = {
     }),
   ],
   devtool: prod ? false : 'source-map',
-  experiments: {
-    css: true,
-  },
 };
