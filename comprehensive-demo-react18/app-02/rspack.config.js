@@ -57,10 +57,6 @@ module.exports = {
       },
     ],
   },
-  experiments: {
-    css: true,
-  },
-
   plugins: [
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },

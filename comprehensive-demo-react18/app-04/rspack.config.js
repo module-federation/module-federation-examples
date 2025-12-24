@@ -1,4 +1,5 @@
 const {
+  CssExtractRspackPlugin,
 } = require('@rspack/core');
 const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
 const path = require('path');
@@ -43,6 +44,13 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.css$/,
+        use: [
+          prod ? CssExtractRspackPlugin.loader : 'style-loader',
+          'css-loader',
+        ],
+      },
     ],
   },
   mode,
@@ -57,9 +65,9 @@ module.exports = {
       },
       shared: [],
     }),
+    new CssExtractRspackPlugin({
+      filename: '[name].css',
+    }),
   ],
   devtool: prod ? false : 'source-map',
-  experiments: {
-    css: true,
-  },
 };
