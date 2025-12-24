@@ -13,9 +13,19 @@ export default defineConfig({
     port: 3008,
   },
   plugins: [
-    appTools({bundler:'experimental-rspack'}),
+    appTools({ bundler: 'experimental-rspack' }),
     moduleFederationPlugin({
-      name: 'dynamic_provider',
-    })
+      config: {
+        name: 'dynamic_provider',
+        filename: 'remoteEntry.js',
+        exposes: {
+          './Image': './src/components/Image.tsx',
+        },
+        shared: {
+          react: { singleton: true },
+          'react-dom': { singleton: true },
+        },
+      },
+    }),
   ],
 });

@@ -3,7 +3,7 @@ import { moduleFederationPlugin } from '@module-federation/modern-js';
 
 // https://modernjs.dev/en/configure/app/usage
 export default defineConfig({
-  dev: {
+  dev: { 
     port: 3001,
   },
   server: {
@@ -26,9 +26,24 @@ export default defineConfig({
     },
   },
   plugins: [
-    appTools(),
+    // Use rspack to avoid webpack schema incompatibilities during package refreshes.
+    appTools({ bundler: 'experimental-rspack' }),
+    // Pass MF config directly to avoid relying on external module-federation config files.
     moduleFederationPlugin({
-      name: 'app1',
+      config: {
+        name: 'app1',
+        remotes: {
+          app2: 'app2@http://localhost:3002/mf-manifest.json',
+        },
+        exposes: {
+          './Button': './src/components/button.js',
+        },
+        shared: {
+          react: { singleton: true },
+          'react-dom': { singleton: true },
+        },
+        dts: false,
+      },
     })
   ],
 });
