@@ -121,6 +121,7 @@ test.describe('Comprehensive Demo App1', () => {
       await dialog.accept();
     });
 
+    await expect(page.locator('action-button button')).toBeVisible();
     await page.locator('action-button button').click();
     await page.locator('.closebtn').click();
     await expect(page.locator('.alert')).toBeHidden();
