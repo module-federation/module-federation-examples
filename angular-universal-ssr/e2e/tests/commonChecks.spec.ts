@@ -1,8 +1,8 @@
 import { test } from '@playwright/test';
 
 import { BaseMethods } from '../../../playwright-e2e/common/base';
-import { Constants } from '../../../cypress-e2e/fixtures/constants';
-import { baseSelectors, updatedSelectors } from '../../../cypress-e2e/common/selectors';
+import { Constants } from '../../../playwright-e2e/fixtures/constants';
+import { baseSelectors, updatedSelectors } from '../../../playwright-e2e/common/selectors';
 import { AngularUniversalSsrMethods } from '../methods/methods';
 
 type AppData = {

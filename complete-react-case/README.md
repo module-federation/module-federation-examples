@@ -31,10 +31,7 @@ It is a pure host.
 
 After running these commands, open your browser at `http://localhost:3002` and open the DevTools network tab to see resource loading details.
 
-# Running Cypress E2E Tests
 
-To run tests in interactive mode, run `pnpm run cypress:debug` from the root directory of the project. It will open Cypress Test Runner and allow tests to run in interactive mode. [More info about "How to run tests"](../../cypress-e2e/README.md#how-to-run-tests)
 
-To build the app and run tests in headless mode, run `pnpm run e2e:ci`. It will build the app and run tests for this workspace in headless mode. If tests fail, Cypress will create a `cypress` directory in the sample root folder with screenshots and videos.
 
-[Best practices, rules and more interesting information here](../../cypress-e2e/README.md)
+[Best practices, rules and more interesting information here](../../playwright-e2e/README.md)

@@ -5,8 +5,9 @@ const { sanitizeLoopbackHttpUrl } = require('../../../server-utils/loopback');
 
 const app = express();
 const PORT = 4002;
+const shouldPrewarm = !(process.env.CI || process.env.MF_SKIP_PREWARM);
 
-async function waitUrl(url, timeout = 300000) {
+async function waitUrl(url, timeout = 600000) {
   const target = sanitizeLoopbackHttpUrl(url);
   const start = Date.now();
   while (true) {
@@ -20,17 +21,32 @@ async function waitUrl(url, timeout = 300000) {
         const ss = execSync(`ss -ltnp | grep :${target.port} || true`, { stdio: ['ignore','pipe','ignore'] }).toString().trim();
         if (ss) console.log(`[prewarm] port diag ${target.port}: ${ss}`);
       } catch {}
-      throw new Error(`prewarm timeout for ${target.href}`);
+      const message = `prewarm timeout for ${target.href}`;
+      if (process.env.CI || process.env.MF_SKIP_PREWARM) {
+        console.warn(`[prewarm] ${message}`);
+        return;
+      }
+      throw new Error(message);
     }
     await new Promise(r => setTimeout(r, 5000));
   }
 }
 
 const done = async () => {
-  await Promise.all([
+  const prewarm = Promise.all([
     waitUrl('http://localhost:3005/server/remoteEntry.js'),
     waitUrl('http://localhost:3002/server/remoteEntry.js'),
   ]);
+
+  if (shouldPrewarm) {
+    await prewarm;
+  } else {
+    prewarm.catch(err => {
+      const message = err && err.message ? err.message : String(err);
+      console.warn(`[prewarm] ${message}`);
+    });
+  }
+
   app.listen(PORT, () => {
     console.info(
       `[${new Date().toISOString()}]`,

@@ -48,6 +48,13 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
+      - name: Get Playwright version
+        id: playwright-version
+        shell: bash
+        run: |
+          version="$(node -p "String(require('./package.json').devDependencies['@playwright/test']||'').replace(/^[^0-9]*/, '')")"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
       - name: Free up some space
         run: ${{ env.FILES_TO_DELETE }}
 
@@ -86,20 +93,12 @@ jobs:
           restore-keys: |
             pnpm-store-${{ runner.os }}-
 
-      - name: Cache Cypress binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-cypress-13.12.0
-          restore-keys: |
-            cypress-${{ runner.os }}-
-
       - name: Cache Playwright browsers
         uses: actions/cache@v4
         id: playwright-cache
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}
           restore-keys: |
             playwright-${{ runner.os }}-
             
@@ -112,24 +111,9 @@ jobs:
           FORCE_COLOR: 3
         run: |
           echo "Installing dependencies from pnpm store..."
-          pnpm install --frozen-lockfile --prefer-offline
-          
-      - name: Install Cypress
-        run: |
-          # Install Cypress binary if not cached
-          if [ -z "$(ls -A ~/.cache/Cypress 2>/dev/null)" ]; then
-            echo "Installing Cypress binary..."
-            npx cypress install
-          else
-            echo "Cypress binary already cached"
-          fi
-          
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 pnpm install --frozen-lockfile --prefer-offline
+
       - name: Install Playwright browsers
         run: |
-          # Install Playwright browsers for projects that have it as a dependency
-          if command -v playwright &> /dev/null || [ -f "$(npm root -g)/playwright/cli.js" ]; then
-            echo "Installing Playwright browsers..."
-            npx playwright install --with-deps chromium
-          else
-            echo "Playwright not found in dependencies, skipping browser installation"
-          fi
+          # Populate the shared browser cache (no system deps here).
+          pnpm exec playwright install chromium

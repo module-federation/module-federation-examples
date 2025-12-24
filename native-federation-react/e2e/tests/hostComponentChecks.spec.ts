@@ -2,8 +2,8 @@ import { expect, test } from '@playwright/test';
 import type { Page } from '@playwright/test';
 
 import { BaseMethods } from '../../../playwright-e2e/common/base';
-import { Constants } from '../../../cypress-e2e/fixtures/constants';
-import { baseSelectors, selectors } from '../../../cypress-e2e/common/selectors';
+import { Constants } from '../../../playwright-e2e/fixtures/constants';
+import { baseSelectors, selectors } from '../../../playwright-e2e/common/selectors';
 
 const elementsQuantity = 2;
 

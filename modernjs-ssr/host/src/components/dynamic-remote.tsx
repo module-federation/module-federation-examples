@@ -1,16 +1,20 @@
-import { createRemoteSSRComponent, loadRemote, registerRemotes } from '@modern-js/runtime/mf';
+import { getInstance, loadRemote, registerRemotes } from '@module-federation/modern-js/runtime';
+import { createLazyComponent } from '@module-federation/modern-js/react';
 
 registerRemotes([
     {
         name: 'dynamic_provider',
         entry: 'http://localhost:3008/mf-manifest.json',
     }
-])
+]);
 
-export const DynamicRemoteSSRComponents = createRemoteSSRComponent({
+const instance = getInstance();
+
+export const DynamicRemoteSSRComponents = createLazyComponent({
     loader: () => loadRemote('dynamic_provider/Image'),
-    loading: 'loading...',
-    fallback: ({ error }) => {
+    loading: <div>loading...</div>,
+    instance: instance!,
+    fallback: ({ error }: { error: Error }) => {
         if (error instanceof Error && error.message.includes('not exist')) {
             return <div>fallback - not existed id</div>;
         }

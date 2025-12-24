@@ -8,7 +8,7 @@ const config = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
-  testMatch: ['**/__tests__/**/*.[jt]s?(x)', '!**/__tests__/**/*.cy.[jt]s?(x)'],
+  testMatch: ['**/__tests__/**/*.[jt]s?(x)'],
 };
 
 module.exports = config;

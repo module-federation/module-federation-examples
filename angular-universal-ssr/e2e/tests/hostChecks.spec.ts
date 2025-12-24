@@ -1,9 +1,9 @@
 import { expect, test } from '@playwright/test';
 
 import { BaseMethods } from '../../../playwright-e2e/common/base';
-import { baseSelectors, selectors, updatedSelectors } from '../../../cypress-e2e/common/selectors';
-import { Constants } from '../../../cypress-e2e/fixtures/constants';
-import { CommonTestData } from '../../../cypress-e2e/fixtures/commonTestData';
+import { baseSelectors, selectors, updatedSelectors } from '../../../playwright-e2e/common/selectors';
+import { Constants } from '../../../playwright-e2e/fixtures/constants';
+import { CommonTestData } from '../../../playwright-e2e/fixtures/commonTestData';
 import { AngularUniversalSsrMethods } from '../methods/methods';
 
 const baseElementsQuantity = 3;
