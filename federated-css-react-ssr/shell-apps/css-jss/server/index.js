@@ -5,6 +5,7 @@ const { sanitizeLoopbackHttpUrl } = require('../../../server-utils/loopback');
 
 const app = express();
 const PORT = 4000;
+const shouldPrewarm = !(process.env.CI || process.env.MF_SKIP_PREWARM);
 
 async function waitUrl(url, timeout = 600000) {
   const target = sanitizeLoopbackHttpUrl(url);
@@ -37,10 +38,19 @@ async function waitUrl(url, timeout = 600000) {
 
 const done = async () => {
   // Ensure remotes are reachable before the first SSR render
-  await Promise.all([
+  const prewarm = Promise.all([
     waitUrl('http://localhost:3001/server/remoteEntry.js'),
     waitUrl('http://localhost:3002/server/remoteEntry.js'),
   ]);
+
+  if (shouldPrewarm) {
+    await prewarm;
+  } else {
+    prewarm.catch(err => {
+      const message = err && err.message ? err.message : String(err);
+      console.warn(`[prewarm] ${message}`);
+    });
+  }
 
   app.listen(PORT, () => {
     console.info(

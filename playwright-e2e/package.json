@@ -5,6 +5,10 @@
   "license": "MIT",
   "private": true,
   "ignored": true,
+  "scripts": {
+    "e2e:ci": "node -e \"console.log('No e2e tests for playwright-e2e')\"",
+    "legacy:e2e:ci": "node -e \"console.log('No legacy e2e tests for playwright-e2e')\""
+  },
   "dependencies": {
     "typescript": "^5.2.2",
     "moment": "^2.30.1"

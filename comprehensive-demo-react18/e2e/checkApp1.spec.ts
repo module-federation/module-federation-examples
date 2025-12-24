@@ -2,6 +2,8 @@ import { test, expect } from '@playwright/test';
 import type { Page } from '@playwright/test';
 
 const base = 'http://localhost:3001';
+const app04RemoteEntry = 'http://localhost:3004/remoteEntry.js';
+const app05RemoteEntry = 'http://localhost:3005/remoteEntry.js';
 
 const demoPages = [
   { name: 'Main', hash: '#/' },
@@ -45,8 +47,29 @@ const expectAppBar = async (page: Page, title: string) => {
   await expect(page.getByRole('heading', { name: title })).toBeVisible();
 };
 
+const waitForRemoteEntries = async (page: Page, urls: string[]) => {
+  await Promise.all(
+    urls.map(url =>
+      expect
+        .poll(
+          async () => {
+            try {
+              const response = await page.request.get(url);
+              return response.ok();
+            } catch {
+              return false;
+            }
+          },
+          { timeout: 60000 },
+        )
+        .toBeTruthy(),
+    ),
+  );
+};
+
 test.describe('Comprehensive Demo App1', () => {
   test('main page displays sidebar links and elements', async ({ page }) => {
+    await waitForRemoteEntries(page, [app05RemoteEntry]);
     await page.goto(base);
     await page.waitForLoadState('networkidle');
 
@@ -89,6 +112,7 @@ test.describe('Comprehensive Demo App1', () => {
   });
 
   test('main tab functionality', async ({ page }) => {
+    await waitForRemoteEntries(page, [app05RemoteEntry]);
     await page.goto(base);
     await page.waitForLoadState('networkidle');
 
@@ -162,6 +186,7 @@ test.describe('Comprehensive Demo App1', () => {
   });
 
   test('svelte page updates greeting', async ({ page }) => {
+    await waitForRemoteEntries(page, [app04RemoteEntry]);
     await page.goto(`${base}/#/svelte`);
     await page.waitForLoadState('networkidle');
 
