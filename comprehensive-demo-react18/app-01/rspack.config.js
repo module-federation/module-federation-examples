@@ -98,7 +98,7 @@ module.exports = {
     new HtmlRspackPlugin({
       template: './public/index.html',
     }),
-    isProd ? new ReactRefreshWebpackPlugin() : undefined,
+    !isProd ? new ReactRefreshWebpackPlugin() : undefined,
     // new RsdoctorRspackPlugin()
   ],
 };
