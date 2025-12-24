@@ -1,6 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('@module-federation/enhanced').ModuleFederationPlugin;
 
+const deps = require('./package.json').dependencies;
+
 module.exports = {
   entry: './src/index',
   cache: false,
@@ -49,9 +51,11 @@ module.exports = {
       shared: {
         'react-dom': {
           singleton: true,
+          requiredVersion: deps['react-dom'],
         },
         react: {
           singleton: true,
+          requiredVersion: deps.react,
         },
       },
     }),
