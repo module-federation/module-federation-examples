@@ -14,6 +14,8 @@ export default defineConfig({
   },
   plugins: [
     appTools({bundler:'experimental-rspack'}),
-    moduleFederationPlugin()
+    moduleFederationPlugin({
+      name: 'dynamic_provider',
+    })
   ],
 });

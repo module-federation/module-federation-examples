@@ -29,8 +29,9 @@ module.exports = (env = {}) => {
       // }),
 
       new ModuleFederationPlugin({
+        name: 'hostApp',
         experiments: { asyncStartup: true },
-library: { type: 'var' },
+        library: { type: 'var' },
         remotes: {
           clientApp: 'clientApp',
         },

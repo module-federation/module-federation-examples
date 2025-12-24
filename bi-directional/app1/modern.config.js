@@ -26,7 +26,9 @@ export default defineConfig({
     },
   },
   plugins: [
-    appTools(), 
-    moduleFederationPlugin()
+    appTools(),
+    moduleFederationPlugin({
+      name: 'app1',
+    })
   ],
 });

@@ -51,7 +51,6 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      experiments: { asyncStartup: true },
       name: 'dashboard',
       filename: 'remoteEntry.js',
       remotes: {
