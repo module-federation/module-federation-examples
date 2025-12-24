@@ -1,8 +1,6 @@
-import * as path from 'node:path';
-
 import { readConfig } from '@remix-run/dev/dist/config.js';
 import { EsbuildPlugin } from 'esbuild-loader';
-import { default as Enhanced } from '@module-federation/enhanced/webpack';
+import { ModuleFederationPlugin } from '@module-federation/enhanced/webpack';
 import { getRoutes, routeSet } from './utils/get-routes.js';
 import { RemixAssetsManifestPlugin } from './utils/RemixAssetsManifestPlugin.js';
 import { HoistContainerReferences } from './utils/HoistContainerReferencesPlugin.js';

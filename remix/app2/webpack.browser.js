@@ -1,9 +1,6 @@
-import * as path from 'node:path';
-
 import { readConfig } from '@remix-run/dev/dist/config.js';
 import { EsbuildPlugin } from 'esbuild-loader';
 import { RemixAssetsManifestPlugin } from './utils/RemixAssetsManifestPlugin.js';
-import { default as Enhanced } from '@module-federation/enhanced/webpack';
 import { getRoutes, routeSet } from './utils/get-routes.js';
 
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
