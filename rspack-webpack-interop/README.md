@@ -212,3 +212,5 @@ curl http://localhost:3005/remoteEntry.js
 - [Rspack Documentation](https://rspack.dev)
 - [@module-federation/enhanced Plugin](https://module-federation.io/guide/basic/enhanced.html)
 - [Webpack Module Federation](https://webpack.js.org/concepts/module-federation/)
+
+[Best Practices, Rules and more interesting information here](../../playwright-e2e/README.md)

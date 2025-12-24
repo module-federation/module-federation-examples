@@ -27,9 +27,6 @@
 
 执行完上述命令，打开浏览器，输入 `http://localhost:3002` 查看页面结果。
 
-# 运行 Cypress E2E 测试
 
-- 在仓库根目录运行 `pnpm run cypress:debug` 可以以交互模式运行测试。想了解更多内容，可参阅[《如何运行测试》](../../cypress-e2e/README.md#how-to-run-tests)。
-- 构建应用并在无界面模式下运行测试，可执行 `pnpm run e2e:ci`。如果测试失败，Cypress 会在示例根目录下创建 `cypress` 目录，包含截图和视频。
 
-[最佳实践、规则和更多信息请参阅](../../cypress-e2e/README.md)
+[最佳实践、规则和更多信息请参阅](../../playwright-e2e/README.md)

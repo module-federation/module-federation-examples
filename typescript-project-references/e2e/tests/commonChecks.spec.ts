@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { baseSelectors, updatedSelectors } from '../../../playwright-e2e/common/selectors';
 import { Constants } from '../../../playwright-e2e/fixtures/constants';
-// Inline app config to remove Cypress-specific imports
+// Inline app config to avoid legacy test imports
 type TypeScriptAppConfig = { host: number; header: string; appName: string };
 
 const buildUrl = (port: number): string => `http://localhost:${port}/`;

@@ -2,6 +2,8 @@ import { test, expect } from '@playwright/test';
 import type { Page } from '@playwright/test';
 
 const base = 'http://localhost:3001';
+const app04RemoteEntry = 'http://localhost:3004/remoteEntry.js';
+const app05RemoteEntry = 'http://localhost:3005/remoteEntry.js';
 
 const demoPages = [
   { name: 'Main', hash: '#/' },
@@ -45,9 +47,31 @@ const expectAppBar = async (page: Page, title: string) => {
   await expect(page.getByRole('heading', { name: title })).toBeVisible();
 };
 
+const waitForRemoteEntries = async (page: Page, urls: string[]) => {
+  await Promise.all(
+    urls.map(url =>
+      expect
+        .poll(
+          async () => {
+            try {
+              const response = await page.request.get(url);
+              return response.ok();
+            } catch {
+              return false;
+            }
+          },
+          { timeout: 60000 },
+        )
+        .toBeTruthy(),
+    ),
+  );
+};
+
 test.describe('Comprehensive Demo App1', () => {
   test('main page displays sidebar links and elements', async ({ page }) => {
+    await waitForRemoteEntries(page, [app05RemoteEntry]);
     await page.goto(base);
+    await page.waitForLoadState('networkidle');
 
     await expect(page.getByRole('heading', { name: 'SideNav' })).toBeVisible();
     await expect(page.getByText('Demo Pages')).toBeVisible();
@@ -88,13 +112,16 @@ test.describe('Comprehensive Demo App1', () => {
   });
 
   test('main tab functionality', async ({ page }) => {
+    await waitForRemoteEntries(page, [app05RemoteEntry]);
     await page.goto(base);
+    await page.waitForLoadState('networkidle');
 
     page.once('dialog', async dialog => {
       expect(dialog.message()).toBe('You have pressed a button.');
       await dialog.accept();
     });
 
+    await expect(page.locator('action-button button')).toBeVisible();
     await page.locator('action-button button').click();
     await page.locator('.closebtn').click();
     await expect(page.locator('.alert')).toBeHidden();
@@ -115,6 +142,7 @@ test.describe('Comprehensive Demo App1', () => {
 
   test('UI library page renders remote button', async ({ page }) => {
     await page.goto(`${base}/#/ui-library`);
+    await page.waitForLoadState('networkidle');
 
     await expectAppBar(page, 'UI Library Demo');
 
@@ -138,6 +166,7 @@ test.describe('Comprehensive Demo App1', () => {
 
   test('dialog page loads and dialog opens', async ({ page }) => {
     await page.goto(`${base}/#/dialog`);
+    await page.waitForLoadState('networkidle');
 
     await expectAppBar(page, 'Dialog Demo');
     await expect(
@@ -158,7 +187,9 @@ test.describe('Comprehensive Demo App1', () => {
   });
 
   test('svelte page updates greeting', async ({ page }) => {
+    await waitForRemoteEntries(page, [app04RemoteEntry]);
     await page.goto(`${base}/#/svelte`);
+    await page.waitForLoadState('networkidle');
 
     await expectAppBar(page, 'Svelte Demo');
 
@@ -170,6 +201,7 @@ test.describe('Comprehensive Demo App1', () => {
 
   test('routing page renders tabs', async ({ page }) => {
     await page.goto(`${base}/#/routing/foo`);
+    await page.waitForLoadState('networkidle');
 
     await expectAppBar(page, 'Routing Demo');
 

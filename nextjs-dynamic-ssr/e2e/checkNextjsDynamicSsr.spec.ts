@@ -1,5 +1,5 @@
 import type { Page } from '@playwright/test';
-import { Constants } from '../../cypress-e2e/fixtures/constants';
+import { Constants } from '../../playwright-e2e/fixtures/constants';
 import { test, expect } from '../../playwright-e2e/common/testFixtures';
 
 interface AppConfig {

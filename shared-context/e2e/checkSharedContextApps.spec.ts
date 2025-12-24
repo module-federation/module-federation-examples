@@ -1,4 +1,4 @@
-import { Constants } from '../../cypress-e2e/fixtures/constants';
+import { Constants } from '../../playwright-e2e/fixtures/constants';
 import { test } from '../../playwright-e2e/common/testFixtures';
 import { SharedContextPage } from './page-objects/sharedContextPage';
 

@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { Constants } from '../../cypress-e2e/fixtures/constants';
-import { baseSelectors, selectors } from '../../cypress-e2e/common/selectors';
+import { Constants } from '../../playwright-e2e/fixtures/constants';
+import { baseSelectors, selectors } from '../../playwright-e2e/common/selectors';
 
 const APP1_PORT = 3000;
 const APP2_PORT = 3001;

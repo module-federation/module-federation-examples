@@ -7,8 +7,8 @@
     "build": "pnpm --filter federated-css-mono_* --parallel build",
     "clean": "pnpm --filter federated-css-mono_* --parallel clean",
     "start:all": "pnpm --filter federated-css-mono_* --parallel start",
-    "e2e:ci": "pnpm exec playwright install --with-deps && node scripts/kill-all-ports.cjs && playwright test --reporter=list",
-    "legacy:e2e:ci": "pnpm exec playwright install --with-deps && node scripts/kill-all-ports.cjs && playwright test --reporter=list",
+    "e2e:ci": "node scripts/kill-all-ports.cjs && pnpm exec playwright test --reporter=list",
+    "legacy:e2e:ci": "node scripts/kill-all-ports.cjs && pnpm exec playwright test --reporter=list",
     "start:expose-all": "pnpm --filter federated-css-mono_expose-* --parallel start",
     "start:react:css-styled-component": "pnpm --filter federated-css-mono_expose-* --filter @federated-css/css-and-styled-component --parallel start",
     "start:react:less-scss": "pnpm --filter federated-css-mono_expose-* --filter @federated-css/less-and-scss --parallel start",
@@ -27,7 +27,7 @@
     "e2e:headed": "playwright test --headed"
   },
   "devDependencies": {
-    "@playwright/test": "^1.54.2",
+    "@playwright/test": "1.57.0",
     "kill-port": "2.0.1",
     "wait-on": "7.2.0"
   }

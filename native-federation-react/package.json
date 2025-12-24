@@ -17,16 +17,14 @@
     "start:host": "pnpx serve dist/host -l 3000",
     "start": "concurrently \"npm run start:remote\" \"npm run start:host\"",
     "test:e2e": "pnpm exec playwright test",
-    "test:e2e:ui": "pnpm exec playwright test --ui",
-    "test:e2e:debug": "pnpm exec playwright test --debug",
-    "e2e:ci": "pnpm run build && pnpm exec playwright install --with-deps && pnpm exec playwright test --reporter=list"
+    "e2e:ci": "pnpm run build && pnpm exec playwright test --reporter=list"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@hyrious/esbuild-plugin-commonjs": "0.2.6",
-    "@playwright/test": "^1.54.2",
+    "@playwright/test": "1.57.0",
     "@softarc/native-federation": "3.3.1",
     "@softarc/native-federation-runtime": "3.3.1",
     "@types/node": "24.2.1",
@@ -36,7 +34,7 @@
     "concurrently": "9.2.0",
     "esbuild": "0.25.9",
     "json5": "2.2.3",
-    "playwright": "^1.54.2",
+    "playwright": "1.57.0",
     "serve": "14.2.4",
     "wait-on": "8.0.4"
   },

@@ -35,6 +35,7 @@ module.exports = {
       experiments: { asyncStartup: true },
       name: app1Module.name,
       filename: app1Module.fileName,
+      dts: false,
       remotes: {
         app2: 'app2@[window.app2Url]/remoteEntry.js',
       },

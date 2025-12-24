@@ -33,7 +33,7 @@ Notice that each app will asynchronously load the other app's federated button c
 
 ## Module Federation Configuration
 
-Each app uses a `module-federation.config.ts` file to configure:
+Each app uses inline Module Federation config passed to `moduleFederationPlugin()` in `modern.config.js`:
 - **Exposed modules**: Components shared with other apps
 - **Remote modules**: Components consumed from other apps  
 - **Shared dependencies**: React and React-DOM with singleton strategy
