@@ -3,7 +3,7 @@ const path = require('path');
 const semver = require('semver');
 
 // Packages that should always be updated to latest regardless of scope
-const ALWAYS_UPDATE_SCOPES = ['@rspack/', '@rsbuild/'];
+const ALWAYS_UPDATE_SCOPES = ['@rspack/', '@rsbuild/', '@playwright/', 'playwright'];
 
 const CONFIG = [
   {
@@ -73,13 +73,13 @@ const CONFIG = [
   {
     packageName: '@playwright/test',
     shouldUpdate: true,
-    versionToCheck: '1.50.0',
+    versionToCheck: '1.99.0',
     targetVersion: 'latest',
   },
   {
     packageName: 'playwright',
     shouldUpdate: true,
-    versionToCheck: '1.50.0',
+    versionToCheck: '1.99.0',
     targetVersion: 'latest',
   },
 ];
