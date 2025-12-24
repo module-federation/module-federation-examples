@@ -9,8 +9,8 @@
     "build": "pnpm --filter multiple-react-versions_* build",
     "serve": "pnpm --filter multiple-react-versions_* --parallel serve",
     "clean": "pnpm --filter multiple-react-versions_* --parallel clean",
-    "legacy:e2e:ci": "pnpm legacy:build && pnpm exec playwright install --with-deps && USE_LEGACY=true CI=1 pnpm exec playwright test --reporter=list",
-    "e2e:ci": "pnpm build && pnpm exec playwright install --with-deps && CI=1 pnpm exec playwright test --reporter=list",
+    "legacy:e2e:ci": "pnpm legacy:build && USE_LEGACY=true CI=1 pnpm exec playwright test --reporter=list",
+    "e2e:ci": "pnpm build && CI=1 pnpm exec playwright test --reporter=list",
     "test:e2e": "pnpm exec playwright test",
     "test:e2e:ui": "pnpm exec playwright test --ui",
     "test:e2e:debug": "pnpm exec playwright test --debug"

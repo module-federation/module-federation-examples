@@ -12,7 +12,7 @@
     "test:e2e": "pnpm exec playwright test",
     "test:e2e:ui": "pnpm exec playwright test --ui",
     "test:e2e:debug": "pnpm exec playwright test --debug",
-    "e2e:ci": "pnpm exec playwright install --with-deps && pnpm exec playwright test --reporter=list"
+    "e2e:ci": "pnpm exec playwright test --reporter=list"
   },
   "devDependencies": {
     "@playwright/test": "^1.54.2",

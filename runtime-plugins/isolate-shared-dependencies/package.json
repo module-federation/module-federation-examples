@@ -11,8 +11,8 @@
   ],
   "scripts": {
     "start": "pnpm --filter isolate-shared-dependencies_app* --parallel start",
-    "e2e:ci": "pnpm exec playwright install --with-deps && CI=1 pnpm exec playwright test --reporter=list",
-    "legacy:e2e:ci": "pnpm exec playwright install --with-deps && CI=1 pnpm exec playwright test --reporter=list",
+    "e2e:ci": "CI=1 pnpm exec playwright test --reporter=list",
+    "legacy:e2e:ci": "CI=1 pnpm exec playwright test --reporter=list",
     "test:e2e": "pnpm exec playwright test",
     "test:e2e:ui": "pnpm exec playwright test --ui",
     "test:e2e:debug": "pnpm exec playwright test --debug"

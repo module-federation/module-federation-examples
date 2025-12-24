@@ -61,6 +61,8 @@
     "list:all": "pnpm list --filter \"*\" --only-projects --depth -1 --json",
     "list:changed": "pnpm list --filter \"...[origin/master]\" --only-projects --depth -1 --json",
     "build": "pnpm --filter --parallel build",
+    "ci:playwright:install": "playwright install chromium",
+    "ci:playwright:install-deps": "playwright install-deps chromium",
     "submodules": "git pull --recurse-submodules",
     "prettier": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\"",
     "prettier:check": "prettier --list-different \"**/*.{js,jsx,json,md,ts,tsx}\"",

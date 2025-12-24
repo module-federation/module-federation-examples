@@ -48,6 +48,13 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
+      - name: Get Playwright version
+        id: playwright-version
+        shell: bash
+        run: |
+          version="$(node -p "String(require('./package.json').devDependencies['@playwright/test']||'').replace(/^[^0-9]*/, '')")"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
       - name: Free up some space
         run: ${{ env.FILES_TO_DELETE }}
 
@@ -99,7 +106,7 @@ jobs:
         id: playwright-cache
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}
           restore-keys: |
             playwright-${{ runner.os }}-
             
@@ -112,7 +119,7 @@ jobs:
           FORCE_COLOR: 3
         run: |
           echo "Installing dependencies from pnpm store..."
-          pnpm install --frozen-lockfile --prefer-offline
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 pnpm install --frozen-lockfile --prefer-offline
           
       - name: Install Cypress
         run: |
@@ -126,10 +133,5 @@ jobs:
           
       - name: Install Playwright browsers
         run: |
-          # Install Playwright browsers for projects that have it as a dependency
-          if command -v playwright &> /dev/null || [ -f "$(npm root -g)/playwright/cli.js" ]; then
-            echo "Installing Playwright browsers..."
-            npx playwright install --with-deps chromium
-          else
-            echo "Playwright not found in dependencies, skipping browser installation"
-          fi
+          # Populate the shared browser cache (no system deps here).
+          pnpm exec playwright install chromium

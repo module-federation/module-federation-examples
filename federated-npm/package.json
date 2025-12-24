@@ -18,8 +18,8 @@
     "test:e2e": "npx playwright test",
     "test:e2e:ui": "npx playwright test --ui",
     "test:e2e:debug": "npx playwright test --debug",
-    "e2e:ci": "pnpm build && npx playwright install --with-deps && npx playwright test --reporter=list",
-    "legacy:e2e:ci": "pnpm legacy:build && npx playwright install --with-deps && npx playwright test --reporter=list"
+    "e2e:ci": "pnpm build && pnpm exec playwright test --reporter=list",
+    "legacy:e2e:ci": "pnpm legacy:build && pnpm exec playwright test --reporter=list"
   },
   "devDependencies": {
     "wait-on": "7.2.0",
