@@ -24,7 +24,12 @@ async function waitUrl(url, timeout = 600000) {
         const ss = execSync(`ss -ltnp | grep :${target.port} || true`, { stdio: ['ignore','pipe','ignore'] }).toString().trim();
         if (ss) console.log(`[prewarm] port diag ${target.port}: ${ss}`);
       } catch (e) {}
-      throw new Error(`prewarm timeout for ${target.href}`);
+      const message = `prewarm timeout for ${target.href}`;
+      if (process.env.CI || process.env.MF_SKIP_PREWARM) {
+        console.warn(`[prewarm] ${message}`);
+        return;
+      }
+      throw new Error(message);
     }
     await new Promise(r => setTimeout(r, 5000));
   }

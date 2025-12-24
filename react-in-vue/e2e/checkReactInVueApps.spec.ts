@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { Constants } from '../../cypress-e2e/fixtures/constants';
+import { Constants } from '../../playwright-e2e/fixtures/constants';
 import { baseSelectors, commonSelectors } from '../../playwright-e2e/common/selectors';
 import { BasePage } from '../../playwright-e2e/common/basePage';
 

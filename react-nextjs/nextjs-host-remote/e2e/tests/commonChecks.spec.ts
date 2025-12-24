@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { baseSelectors } from '../../../../cypress-e2e/common/selectors';
-import { CommonTestData } from '../../../../cypress-e2e/fixtures/commonTestData';
+import { baseSelectors } from '../../../../playwright-e2e/common/selectors';
+import { CommonTestData } from '../../../../playwright-e2e/fixtures/commonTestData';
 
 const HOSTS = [8080, 8081] as const;
 const FOOTER_MESSAGE = CommonTestData.commonNextJsAppsData[3].message;

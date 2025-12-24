@@ -93,14 +93,6 @@ jobs:
           restore-keys: |
             pnpm-store-${{ runner.os }}-
 
-      - name: Cache Cypress binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-cypress-13.12.0
-          restore-keys: |
-            cypress-${{ runner.os }}-
-
       - name: Cache Playwright browsers
         uses: actions/cache@v4
         id: playwright-cache
@@ -120,17 +112,7 @@ jobs:
         run: |
           echo "Installing dependencies from pnpm store..."
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 pnpm install --frozen-lockfile --prefer-offline
-          
-      - name: Install Cypress
-        run: |
-          # Install Cypress binary if not cached
-          if [ -z "$(ls -A ~/.cache/Cypress 2>/dev/null)" ]; then
-            echo "Installing Cypress binary..."
-            npx cypress install
-          else
-            echo "Cypress binary already cached"
-          fi
-          
+
       - name: Install Playwright browsers
         run: |
           # Populate the shared browser cache (no system deps here).

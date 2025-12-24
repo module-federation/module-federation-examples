@@ -20,7 +20,7 @@ A runtime plugin that implements version control for Module Federation. Key feat
 - Handles version resolution and module sharing between applications
 - Manages share scope mapping and instance tracking
 
-### E2E Tests (`checkAutomaticVendorApps.cy.ts`)
+### E2E Tests
 
 Comprehensive E2E tests that verify:
 - Initial shared module versions
@@ -35,11 +35,9 @@ Run `pnpm run start`. This will build and serve both `app1` and `app2` on ports 
 - [localhost:3001](http://localhost:3001/) - Host application with control panel
 - [localhost:3002](http://localhost:3002/) - Remote application
 
-## Running Cypress E2E Tests
 
 To run tests in interactive mode:
 ```bash
-npm run cypress:debug
 ```
 
 To run tests in headless mode:
@@ -47,7 +45,6 @@ To run tests in headless mode:
 yarn e2e:ci
 ```
 
-For failed tests, screenshots and videos will be saved in the `cypress` directory.
 
 ## Implementation Details
 

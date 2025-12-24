@@ -56,6 +56,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'app2',
       filename: 'remoteEntry.js',
+      dts: false,
       remotes: {
         app1: 'app1@http://localhost:3001/remoteEntry.js',
       },

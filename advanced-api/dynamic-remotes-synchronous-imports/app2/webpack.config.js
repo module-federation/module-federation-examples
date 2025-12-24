@@ -32,6 +32,7 @@ module.exports = {
       name: app2Module.name,
       library: { type: 'var', name: app2Module.name },
       filename: app2Module.fileName,
+      dts: false,
       exposes: {
         './Widget': './src/Widget',
       },

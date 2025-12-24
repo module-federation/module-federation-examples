@@ -138,14 +138,6 @@ jobs:
           restore-keys: |
             pnpm-store-${{ runner.os }}-
 
-      - name: Cache Cypress binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-cypress-13.12.0
-          restore-keys: |
-            cypress-${{ runner.os }}-
-
       - name: Cache Playwright browsers
         uses: actions/cache@v4
         id: playwright-cache
@@ -163,9 +155,6 @@ jobs:
           echo "Installing all dependencies to populate cache..."
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 pnpm install --frozen-lockfile --prefer-offline
           
-      - name: Install Cypress
-        run: npx cypress install
-          
       - name: Install Playwright browsers
         run: |
           # Populate the shared browser cache once per workflow run (no system deps here).
@@ -180,7 +169,7 @@ jobs:
           echo $matrix
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
-  # Run Cypress e2e tests for changed samples (additionally install deps for all changed samples if there is no any created cache in master branch) + Create artifacts for Cypress screenshots and videos
+  # Run e2e tests for changed samples (additionally install deps for all changed samples if there is no any created cache in master branch)
   run-e2e-test:
     needs: [setup-matrix]
     if: ${{ needs.setup-matrix.outputs.matrix != '{"container":[]}' }}
@@ -234,16 +223,6 @@ jobs:
             pnpm-store-${{ runner.os }}-
           fail-on-cache-miss: false
 
-      - name: Restore Cypress cache
-        uses: actions/cache/restore@v4
-        id: cypress-cache
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-cypress-13.12.0
-          restore-keys: |
-            cypress-${{ runner.os }}-
-          fail-on-cache-miss: false
-
       - name: Restore Playwright cache
         uses: actions/cache/restore@v4
         id: playwright-cache
@@ -262,16 +241,7 @@ jobs:
         run: |
           echo "Installing dependencies from cached pnpm store..."
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 pnpm install --frozen-lockfile --prefer-offline
-          
-          # Verify Cypress if needed
-          if [ "${{ steps.cypress-cache.outputs.cache-hit }}" != "true" ]; then
-            echo "Installing Cypress binary..."
-            npx cypress install
-          else
-            echo "Cypress binary already cached"
-            npx cypress verify || true
-          fi
-          
+
       - name: Install Playwright browsers for projects that use it
         run: |
           # Ensure system deps are present on the runner, then ensure the browser is installed.
@@ -301,7 +271,7 @@ jobs:
         with:
           name: test-results-${{ matrix.container }}
           path: |
-            ${{ matrix.container }}/cypress/results/allure-results
+            playwright-e2e/results/allure-results
             ${{ matrix.container }}/playwright-report
             ${{ matrix.container }}/test-results
           retention-days: 7
