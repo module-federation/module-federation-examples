@@ -6,7 +6,6 @@ const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const mode = process.env.NODE_ENV || 'development';
-const deps = require('./package.json').dependencies;
 
 module.exports = {
   entry: './src/index',
