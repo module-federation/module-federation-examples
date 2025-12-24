@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
+const deps = require('./package.json').dependencies;
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
@@ -68,9 +69,11 @@ module.exports = {
       shared: {
         'react-dom': {
           singleton: true,
+          requiredVersion: deps['react-dom'],
         },
         react: {
           singleton: true,
+          requiredVersion: deps.react,
         },
       },
     }),

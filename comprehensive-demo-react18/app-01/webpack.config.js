@@ -89,9 +89,11 @@ module.exports = {
         },
         'react-dom': {
           singleton: true,
+          requiredVersion: deps['react-dom'],
         },
         react: {
           singleton: true,
+          requiredVersion: deps.react,
         },
       },
     }),
