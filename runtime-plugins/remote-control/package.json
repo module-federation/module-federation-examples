@@ -16,9 +16,7 @@
     "legacy:build": "pnpm --filter backend-control_app* --parallel legacy:build",
     "e2e:ci": "pnpm build && CI=1 pnpm exec playwright test --reporter=list",
     "legacy:e2e:ci": "pnpm legacy:build && USE_LEGACY=true CI=1 pnpm exec playwright test --reporter=list",
-    "test:e2e": "pnpm exec playwright test",
-    "test:e2e:ui": "pnpm exec playwright test --ui",
-    "test:e2e:debug": "pnpm exec playwright test --debug"
+    "test:e2e": "pnpm exec playwright test"
   },
   "devDependencies": {
     "wait-on": "7.2.0",

@@ -9,8 +9,6 @@
     "clean": "pnpm --filter loadable-react-18_* --parallel clean",
     "pretest:e2e": "pnpm build",
     "test:e2e": "pnpm exec playwright test",
-    "test:e2e:ui": "pnpm exec playwright test --ui",
-    "test:e2e:debug": "pnpm exec playwright test --debug",
     "e2e:ci": "pnpm build && pnpm exec playwright test --reporter=list"
   },
   "devDependencies": {

@@ -10,8 +10,7 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"cd host; npm run dev\" \"cd remote; npm run dev\"",
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui"
+    "test:e2e": "playwright test"
   },
   "author": "Omher",
   "license": "ISC",

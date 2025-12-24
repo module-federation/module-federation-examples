@@ -6,8 +6,6 @@
   "scripts": {
     "start": "concurrently --kill-others-on-fail \"pnpm --dir app-exposes exec -- env BROWSER=none quasar dev\" \"pnpm --dir app-general exec -- env BROWSER=none quasar dev\"",
     "test:e2e": "pnpm exec playwright test",
-    "test:e2e:ui": "pnpm exec playwright test --ui",
-    "test:e2e:debug": "pnpm exec playwright test --debug",
     "e2e:ci": "pnpm exec playwright test --reporter=list"
   },
   "devDependencies": {

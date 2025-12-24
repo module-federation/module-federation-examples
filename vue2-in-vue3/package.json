@@ -9,7 +9,6 @@
     "serve": "pnpm --filter vue2-in-vue3_vue* --parallel serve",
     "clean": "pnpm --filter vue2-in-vue3_vue* --parallel clean",
     "test:e2e": "node scripts/run-playwright.cjs test",
-    "test:e2e:ui": "node scripts/run-playwright.cjs test --ui",
     "e2e:ci": "node scripts/run-playwright.cjs test --reporter=line"
   },
   "devDependencies": {

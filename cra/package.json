@@ -11,8 +11,6 @@
     "build": "pnpm --filter cra_* build",
     "preview": "pnpm run build && pnpm --filter cra_* preview",
     "test:e2e": "pnpm exec playwright test",
-    "test:e2e:ui": "pnpm exec playwright test --ui",
-    "test:e2e:debug": "pnpm exec playwright test --debug",
     "e2e:ci": "pnpm exec playwright test --reporter=list"
   },
   "devDependencies": {

@@ -17,8 +17,6 @@
     "start:host": "pnpx serve dist/host -l 3000",
     "start": "concurrently \"npm run start:remote\" \"npm run start:host\"",
     "test:e2e": "pnpm exec playwright test",
-    "test:e2e:ui": "pnpm exec playwright test --ui",
-    "test:e2e:debug": "pnpm exec playwright test --debug",
     "e2e:ci": "pnpm run build && pnpm exec playwright test --reporter=list"
   },
   "keywords": [],
