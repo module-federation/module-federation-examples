@@ -154,11 +154,12 @@ jobs:
         run: |
           echo "Installing all dependencies to populate cache..."
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 pnpm install --frozen-lockfile --prefer-offline
-          
-      - name: Install Playwright browsers
+
+      - name: Install Playwright with deps
         run: |
-          # Populate the shared browser cache once per workflow run (no system deps here).
-          pnpm exec playwright install chromium
+          # Install both system deps and browser in setup-matrix.
+          # The browser cache will be shared with e2e jobs.
+          pnpm exec playwright install --with-deps chromium
 
       - name: Create matrix
         id: set-matrix
@@ -242,11 +243,16 @@ jobs:
           echo "Installing dependencies from cached pnpm store..."
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 pnpm install --frozen-lockfile --prefer-offline
 
-      - name: Install Playwright browsers for projects that use it
+      - name: Install Playwright browsers and deps
         run: |
-          # Ensure system deps are present on the runner, then ensure the browser is installed.
-          pnpm exec playwright install-deps chromium
-          pnpm exec playwright install chromium
+          # Install both browser and system deps.
+          # Use --with-deps to install system dependencies alongside browser.
+          # Retry up to 3 times to handle apt lock contention from parallel jobs.
+          for i in 1 2 3; do
+            pnpm exec playwright install --with-deps chromium && break
+            echo "Attempt $i failed, retrying in 10 seconds..."
+            sleep 10
+          done
 
       - name: Run sample webpack e2e tests
         timeout-minutes: 30
