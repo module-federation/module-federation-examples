@@ -1,7 +1,7 @@
 const { AngularWebpackPlugin } = require('@ngtools/webpack');
 const { resolve } = require('path');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
+const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
 
 module.exports = (env = {}) => {
   const buildFolder = resolve('./dist/server');
@@ -23,8 +23,7 @@ module.exports = (env = {}) => {
     plugins: [
       new ProgressPlugin(),
       new ModuleFederationPlugin({
-        experiments: { asyncStartup: true },
-      name: 'clientApp',
+        name: 'clientApp',
         filename: 'remoteEntry.js',
         library: { type: 'commonjs2' },
         exposes: {
