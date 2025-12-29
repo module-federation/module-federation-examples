@@ -19,9 +19,7 @@ module.exports = {
   },
 
   devtool: 'source-map',
-  optimization: {
-    minimize: false,
-  },
+  optimization: { minimize: false },
   devServer: {
     port: 3001,
     hot: true,
@@ -35,7 +33,6 @@ module.exports = {
       'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
     },
   },
-  optimization: { minimize: false },
   output: {
     path: __dirname + '/dist',
     uniqueName: name1,
