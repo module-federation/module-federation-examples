@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const { dependencies } = require('./package.json');
 const path = require('path');
 
@@ -85,9 +85,5 @@ module.exports = {
       },
     }),
   ],
-  resolve: {
-    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-    extensions: ['*', '.js', '.jsx'],
-  },
   target: 'web',
 };
