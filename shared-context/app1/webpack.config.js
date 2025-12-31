@@ -7,7 +7,9 @@ const deps = require('./package.json').dependencies;
 module.exports = {
   entry: './src/index',
   mode: 'development',
+  target: 'web',
   devServer: {
+    client: { overlay: false },
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
@@ -20,10 +22,16 @@ module.exports = {
   },
   output: {
     publicPath: 'auto',
+    // Avoid webpack-dev-server warning overlay from MF "external script" loader code.
+    environment: { asyncFunction: true },
   },
   resolve: {
     alias: {
       'shared-context_shared-library': path.resolve(__dirname, '../shared-library'),
+      // Ensure the shared library resolves the same React instance as the host app.
+      // With a hoisted workspace install, it can otherwise pick up the repo-root React.
+      react: path.resolve(__dirname, 'node_modules/react'),
+      'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
     },
   },
   module: {
@@ -63,6 +71,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
+      chunks: ['main'],
     }),
   ],
 };
