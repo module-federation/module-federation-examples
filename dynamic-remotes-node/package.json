@@ -11,20 +11,20 @@
     "start": "concurrently 'pnpm run remote' 'sleep 5 && pnpm run host'"
   },
   "dependencies": {
+    "@module-federation/dts-plugin": "0.22.0",
     "@module-federation/enhanced": "0.22.0",
     "@module-federation/node": "2.7.26",
-    "@module-federation/runtime": "0.22.0",
-    "@module-federation/dts-plugin": "0.22.0"
+    "@module-federation/runtime": "0.22.0"
   },
   "devDependencies": {
-    "kill-port": "2.0.1",
-    "@types/node": "20.16.5",
     "@rspack/cli": "1.6.8",
     "@rspack/core": "1.6.8",
     "@rspack/dev-server": "1.1.4",
-    "concurrently": "^8.0.1",
-    "rimraf": "^5.0.5",
-    "ts-loader": "^9.5.1",
+    "@types/node": "20.16.5",
+    "concurrently": "^8.2.2",
+    "kill-port": "2.0.1",
+    "rimraf": "^5.0.10",
+    "ts-loader": "^9.5.4",
     "typescript": "5.6.2",
     "webpack": "5.104.1",
     "webpack-cli": "^5.1.4",
