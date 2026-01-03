@@ -15,8 +15,8 @@ Add the canary aliases to `package.json` to ensure compatibility:
 ```json
 {
   "devDependencies": {
-    "@rspack/core": "npm:@rspack-canary/core@1.7.0-canary-7f9f7f14-20251231041831",
-    "@rspack/cli": "npm:@rspack-canary/cli@1.7.0-canary-7f9f7f14-20251231041831"
+    "@rspack/core": "npm:@rspack-canary/core@1.7.1-canary-5eaa0135-20260103025009",
+    "@rspack/cli": "npm:@rspack-canary/cli@1.7.1-canary-5eaa0135-20260103025009"
   }
 }
 ```
