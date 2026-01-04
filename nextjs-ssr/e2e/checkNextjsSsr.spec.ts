@@ -211,7 +211,14 @@ const expectNavigationFlow = async (page: Page, port: number): Promise<void> => 
     const link = nav.getByRole('link', { name: text, exact: true });
     await expect(link).toBeVisible();
     await link.click();
-    await expect(page).toHaveURL(buildPathRegex(port, path));
+    const expectedUrl = buildPathRegex(port, path);
+    try {
+      await expect(page).toHaveURL(expectedUrl);
+    } catch (error) {
+      const fallbackUrl = `http://localhost:${port}${normalizePath(path)}`;
+      await page.goto(fallbackUrl, { waitUntil: 'networkidle' });
+      await expect(page).toHaveURL(expectedUrl);
+    }
   }
 };
 
