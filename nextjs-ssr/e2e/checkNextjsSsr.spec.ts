@@ -109,7 +109,26 @@ const buildPathRegex = (port: number, path: string): RegExp => {
 async function openLocalhost(page: Page, { port, path }: { port: number; path?: string }): Promise<void> {
   const normalizedPath = path ? (path.startsWith('/') ? path : `/${path}`) : '';
   const url = `http://localhost:${port}${normalizedPath}`;
-  await page.goto(url, { waitUntil: 'networkidle' });
+  const deadline = Date.now() + 60_000;
+  let lastError: unknown;
+
+  while (Date.now() < deadline) {
+    try {
+      await page.goto(url, { waitUntil: 'networkidle' });
+      return;
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+
+      if (!message.includes('ERR_CONNECTION_REFUSED') && !message.includes('ECONNREFUSED')) {
+        throw error;
+      }
+
+      lastError = error;
+      await page.waitForTimeout(1000);
+    }
+  }
+
+  throw lastError ?? new Error(`Timed out waiting for ${url}`);
 }
 
 const expectSharedNavigation = async (page: Page): Promise<void> => {
@@ -185,8 +204,13 @@ const expectCheckoutContent = async (page: Page): Promise<void> => {
 };
 
 const expectNavigationFlow = async (page: Page, port: number): Promise<void> => {
+  const nav = page.getByRole('navigation');
+  await expect(nav).toBeVisible();
+
   for (const { text, path } of navigationLinks) {
-    await page.getByRole('link', { name: text }).click();
+    const link = nav.getByRole('link', { name: text, exact: true });
+    await expect(link).toBeVisible();
+    await link.click();
     await expect(page).toHaveURL(buildPathRegex(port, path));
   }
 };

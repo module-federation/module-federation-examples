@@ -136,7 +136,26 @@ export class BaseMethods {
   async openLocalhost({ number, path }: { number: number; path?: string }): Promise<void> {
     const normalizedPath = path ? path.replace(/^\//, '') : '';
     const url = `http://localhost:${number}${normalizedPath ? `/${normalizedPath}` : ''}`;
-    await this.page.goto(url, { waitUntil: 'networkidle' });
+    const deadline = Date.now() + 60_000;
+    let lastError: unknown;
+
+    while (Date.now() < deadline) {
+      try {
+        await this.page.goto(url, { waitUntil: 'networkidle' });
+        return;
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+
+        if (!message.includes('ERR_CONNECTION_REFUSED') && !message.includes('ECONNREFUSED')) {
+          throw error;
+        }
+
+        lastError = error;
+        await this.page.waitForTimeout(1000);
+      }
+    }
+
+    throw lastError ?? new Error(`Timed out waiting for ${url}`);
   }
 
   async reloadWindow(_withoutCache: boolean = false): Promise<void> {

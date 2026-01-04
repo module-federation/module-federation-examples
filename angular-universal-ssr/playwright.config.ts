@@ -14,7 +14,7 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   webServer: {
-    command: 'pnpm run build && pnpm run serve',
+    command: 'pnpm run serve',
     url: 'http://localhost:4000',
     timeout: 300_000,
     reuseExistingServer: !process.env.CI,

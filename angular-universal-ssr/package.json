@@ -17,7 +17,7 @@
     "build": "pnpm --filter angular-universal-ssr_* build:federation",
     "serve": "pnpm --filter angular-universal-ssr_* --parallel serve:federation",
     "clean": "pnpm --filter angular-universal-ssr_* --parallel clean",
-    "e2e:ci": "pnpm exec playwright test"
+    "e2e:ci": "pnpm run build && pnpm exec playwright test"
   },
   "devDependencies": {
     "@playwright/test": "1.57.0",
