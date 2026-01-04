@@ -103,6 +103,17 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
+      - name: Free disk space
+        shell: bash
+        run: |
+          echo "Freeing disk space on runner..."
+          while IFS= read -r cmd; do
+            [ -z "$cmd" ] && continue
+            echo ">> $cmd"
+            bash -lc "$cmd" || true
+          done <<< "$FILES_TO_DELETE"
+          df -h
+
       - name: Get Playwright version
         id: playwright-version
         shell: bash
@@ -186,6 +197,17 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 1
+
+      - name: Free disk space
+        shell: bash
+        run: |
+          echo "Freeing disk space on runner..."
+          while IFS= read -r cmd; do
+            [ -z "$cmd" ] && continue
+            echo ">> $cmd"
+            bash -lc "$cmd" || true
+          done <<< "$FILES_TO_DELETE"
+          df -h
 
       - name: Get Playwright version
         id: playwright-version
