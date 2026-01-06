@@ -1,0 +1,26 @@
+{
+  "name": "rstest_example",
+  "description": "A complete Module Federation Case with React.",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "pnpm --filter rstest_example_* --parallel start",
+    "build": "pnpm --filter rstest_example_* --parallel build",
+    "legacy:build": "pnpm --filter rstest_example_* --parallel legacy:build",
+    "legacy:start": "pnpm --filter rstest_example_* --parallel legacy:start",
+    "test:e2e": "npx playwright test",
+    "e2e:ci": "pnpm build && pnpm exec playwright test --reporter=list",
+    "legacy:e2e:ci": "pnpm legacy:build && pnpm exec playwright test --reporter=list"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anderlaw/react-webpack-MF/issues"
+  },
+  "homepage": "https://github.com/anderlaw/react-webpack-MF#readme",
+  "devDependencies": {
+    "@playwright/test": "1.57.0",
+    "playwright": "1.57.0"
+  }
+}
