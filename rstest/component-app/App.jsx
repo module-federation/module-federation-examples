@@ -1,4 +1,4 @@
-import React from 'lib-app/react';
+import React from 'react';
 import Logo from './src/Logo';
 import Dialog from './src/Dialog';
 import Button from './src/Button';

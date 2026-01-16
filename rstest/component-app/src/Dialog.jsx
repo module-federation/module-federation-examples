@@ -1,4 +1,4 @@
-import React from 'lib-app/react';
+import React from 'react';
 const wrapperStyle = {
   position: 'fixed',
   top: 0,

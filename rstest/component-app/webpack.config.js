@@ -42,8 +42,9 @@ module.exports = {
         './Logo': './src/Logo.jsx',
         './ToolTip': './src/ToolTip.jsx',
       },
-      remotes: {
-        'lib-app': 'lib_app@http://localhost:3000/remoteEntry.js',
+      shared: {
+        react: { singleton: true, requiredVersion: '17.0.2' },
+        'react-dom': { singleton: true, requiredVersion: '17.0.2' },
       },
     }),
     new HtmlWebpackPlugin({

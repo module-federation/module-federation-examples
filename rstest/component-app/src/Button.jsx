@@ -1,4 +1,4 @@
-import React from 'lib-app/react';
+import React from 'react';
 const styleMapping = {
   primary: {
     marginLeft: '10px',

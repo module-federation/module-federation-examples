@@ -43,8 +43,11 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'main_app',
       remotes: {
-        'lib-app': 'lib_app@http://localhost:3000/remoteEntry.js',
         'component-app': 'component_app@http://localhost:3001/remoteEntry.js',
+      },
+      shared: {
+        react: { singleton: true, requiredVersion: '17.0.2' },
+        'react-dom': { singleton: true, requiredVersion: '17.0.2' },
       },
     }),
     new HtmlRspackPlugin({

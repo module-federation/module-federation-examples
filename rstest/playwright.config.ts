@@ -31,12 +31,6 @@ export default defineConfig({
 
   webServer: [
     {
-      command: 'cd lib-app && pnpm serve',
-      port: 3000,
-      reuseExistingServer: !process.env.CI,
-      timeout: 120000,
-    },
-    {
       command: 'cd component-app && pnpm serve',
       port: 3001,
       reuseExistingServer: !process.env.CI,
@@ -50,4 +44,3 @@ export default defineConfig({
     },
   ],
 });
-
