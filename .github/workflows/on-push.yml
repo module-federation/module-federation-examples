@@ -98,9 +98,7 @@ jobs:
         id: playwright-cache
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}
-          restore-keys: |
-            playwright-${{ runner.os }}-
+          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}-headless-shell
             
       - name: Set Playwright cache status
         run: echo "PLAYWRIGHT_CACHE_HIT=${{ steps.playwright-cache.outputs.cache-hit }}" >> $GITHUB_ENV
@@ -116,4 +114,4 @@ jobs:
       - name: Install Playwright browsers
         run: |
           # Populate the shared browser cache (no system deps here).
-          pnpm exec playwright install chromium
+          pnpm exec playwright install chromium chromium-headless-shell
