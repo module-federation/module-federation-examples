@@ -170,7 +170,7 @@ jobs:
         run: |
           # Install both system deps and browser in setup-matrix.
           # The browser cache will be shared with e2e jobs.
-          pnpm exec playwright install --with-deps chromium
+          pnpm exec playwright install --with-deps chromium chromium-headless-shell
 
       - name: Create matrix
         id: set-matrix
@@ -271,7 +271,7 @@ jobs:
           # Use --with-deps to install system dependencies alongside browser.
           # Retry up to 3 times to handle apt lock contention from parallel jobs.
           for i in 1 2 3; do
-            pnpm exec playwright install --with-deps chromium && break
+            pnpm exec playwright install --with-deps chromium chromium-headless-shell && break
             echo "Attempt $i failed, retrying in 10 seconds..."
             sleep 10
           done

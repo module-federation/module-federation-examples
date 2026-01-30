@@ -15,7 +15,8 @@
     "serve": "concurrently 'cd ./host && pnpm serve' 'cd ./remote && pnpm serve'",
     "clean": "concurrently 'cd ./host && pnpm clean' 'cd ./remote && pnpm clean'",
     "test:e2e": "npx playwright test",
-    "e2e:ci": "pnpm build && pnpm exec playwright test --reporter=list"
+    "e2e:ci": "pnpm build && pnpm exec playwright test --reporter=list",
+    "legacy:e2e:ci": "pnpm run e2e:ci"
   },
   "devDependencies": {
     "concurrently": "8.2.2",
