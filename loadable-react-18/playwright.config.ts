@@ -14,8 +14,8 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   webServer: {
-    // Use prebuilt bundles and only start servers for e2e reliability
-    command: 'pnpm run serve',
+    // Use workspace-root pnpm to avoid missing node_modules in CI
+    command: 'pnpm -w --filter loadable-react-18_* --parallel serve',
     url: 'http://localhost:3000',
     timeout: 180_000,
     reuseExistingServer: !process.env.CI,

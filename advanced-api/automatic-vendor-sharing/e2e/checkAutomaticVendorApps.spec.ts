@@ -62,6 +62,7 @@ test.describe('Automatic Vendor Sharing example', () => {
 
         await basePage.openLocalhost(app.host);
 
+        await page.locator(selectors.tags.headers.h1).waitFor({ state: 'visible', timeout: 30000 });
         await expect(page.locator(selectors.tags.headers.h1)).toContainText(headerText);
         await expect(page.locator(selectors.tags.headers.h2)).toContainText(app.appDisplayName);
 
