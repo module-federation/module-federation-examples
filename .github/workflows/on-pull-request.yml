@@ -277,7 +277,7 @@ jobs:
         id: run-webpack-e2e-tests
         run: |
           node -v
-          pnpm --filter "${{ matrix.container }}" run legacy:e2e:ci --if-present
+          pnpm --filter "${{ matrix.container }}" run --if-present legacy:e2e:ci
           (lsof -i tcp:3000-3999 -i tcp:4000-4999 -i tcp:8080-8100 | awk 'NR!=1 {print $2}' | xargs -r kill) 2> /dev/null
 
       - name: Run sample rspack e2e tests
@@ -285,7 +285,7 @@ jobs:
         id: run-rspack-e2e-tests
         run: |
           node -v
-          pnpm --filter "${{ matrix.container }}" run e2e:ci --if-present
+          pnpm --filter "${{ matrix.container }}" run --if-present e2e:ci
           (lsof -i tcp:3000-3999 -i tcp:4000-4999 -i tcp:8080-8100 | awk 'NR!=1 {print $2}' | xargs -r kill) 2> /dev/null
 
       - name: Create artifacts for test reports

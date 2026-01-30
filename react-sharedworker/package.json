@@ -11,7 +11,8 @@
     "clean": "rimraf ./host/build ./module/build",
     "dev:host": "webpack serve --config ./host/webpack.host-config.js",
     "dev:module": "node ./module/dev.js",
-    "dev": "yarn dev:host & yarn dev:module"
+    "dev": "yarn dev:host & yarn dev:module",
+    "legacy:e2e:ci": "echo \"No legacy e2e tests\""
   },
   "devDependencies": {
     "express": "^4.22.1",

@@ -8,7 +8,8 @@
     "build": "pnpm --filter shared-routing_* build",
     "serve": "pnpm --filter shared-routing_* --parallel serve",
     "clean": "pnpm --filter shared-routing_* --parallel clean",
-    "e2e:ci": "echo 'No Playwright tests for this example'"
+    "e2e:ci": "echo 'No Playwright tests for this example'",
+    "legacy:e2e:ci": "echo \"No legacy e2e tests\""
   },
   "devDependencies": {
     "wait-on": "7.2.0"

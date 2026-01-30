@@ -62,6 +62,7 @@
     "prettier": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\"",
     "prettier:check": "prettier --list-different \"**/*.{js,jsx,json,md,ts,tsx}\"",
     "test": "jest --config=jest.config.cjs --maxWorkers=2",
+    "legacy:e2e:ci": "echo \"No legacy e2e tests\"",
     "preinstall": "npx only-allow pnpm"
   }
 }
