@@ -14,17 +14,17 @@
     "start:ts": "concurrently 'pnpm run remote:ts' 'sleep 5 && pnpm run host:ts'"
   },
   "dependencies": {
-    "@module-federation/enhanced": "0.22.0",
-    "@module-federation/node": "2.7.26",
-    "@module-federation/runtime": "0.22.0",
-    "@module-federation/dts-plugin": "0.22.0"
+    "@module-federation/enhanced": "0.23.0",
+    "@module-federation/node": "2.7.28",
+    "@module-federation/runtime": "0.23.0",
+    "@module-federation/dts-plugin": "0.23.0"
   },
   "devDependencies": {
     "kill-port": "2.0.1",
     "@types/node": "20.16.5",
-    "@rspack/cli": "1.6.8",
-    "@rspack/core": "1.6.8",
-    "@rspack/dev-server": "1.1.4",
+    "@rspack/cli": "1.7.4",
+    "@rspack/core": "1.7.4",
+    "@rspack/dev-server": "1.2.1",
     "concurrently": "^8.0.1",
     "rimraf": "^5.0.5",
     "ts-loader": "^9.5.1",
