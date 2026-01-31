@@ -8,7 +8,7 @@ module.exports = merge(shared, {
   name: 'server',
   target: 'node',
   entry: {
-    main: ['@babel/polyfill', path.resolve(__dirname, '../src/server/index')],
+    main: [path.resolve(__dirname, '../src/server/index')],
     serverAppEntrypoint: path.resolve(__dirname, '../src/server/serverAppEntrypoint'),
   },
   optimization: {
