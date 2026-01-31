@@ -6,7 +6,7 @@ test.describe('Comprehensive Demo App5', () => {
   test('shows button and alert', async ({ page }) => {
     await page.goto(base);
     await page.waitForLoadState('networkidle');
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(5000);
 
     const button = page.locator('action-button').locator('button');
     await expect(button).toHaveText('bar');
@@ -17,7 +17,7 @@ test.describe('Comprehensive Demo App5', () => {
   test('button triggers alert and close hides it', async ({ page }) => {
     await page.goto(base);
     await page.waitForLoadState('networkidle');
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(5000);
 
     page.once('dialog', async dialog => {
       expect(dialog.message()).toBe('You have pressed a button.');

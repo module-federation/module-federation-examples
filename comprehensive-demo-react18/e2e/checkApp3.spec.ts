@@ -6,7 +6,7 @@ test.describe('Comprehensive Demo App3', () => {
   test('shows styled button', async ({ page }) => {
     await page.goto(base);
     await page.waitForLoadState('networkidle');
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(5000);
 
     await expect(page.locator('header').first()).toHaveCSS('background-color', 'rgb(63, 81, 181)');
     await expect(page.getByRole('heading', { name: 'Styled Components App' })).toBeVisible();

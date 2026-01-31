@@ -63,7 +63,7 @@ function shutdown(code = 0) {
 });
 
 console.log('Starting App2...');
-spawnProcess('pnpm', ['-w', '--filter', 'loadable-react-18_app2', 'start'], 'App2');
+spawnProcess('pnpm', ['--filter', 'loadable-react-18_app2', 'start'], 'App2');
 
 waitOn({
   resources: ['http://localhost:3001/server/remoteEntry.js'],
@@ -75,7 +75,7 @@ waitOn({
     }
 
     console.log('App2 is ready. Starting App1...');
-    spawnProcess('pnpm', ['-w', '--filter', 'loadable-react-18_app1', 'start'], 'App1');
+    spawnProcess('pnpm', ['--filter', 'loadable-react-18_app1', 'start'], 'App1');
   })
   .catch(error => {
     console.error('Failed to detect App2 readiness', error);

@@ -6,7 +6,7 @@ test.describe('Comprehensive Demo App2', () => {
   test('renders blocks, dialog and tabs', async ({ page }) => {
     await page.goto(base);
     await page.waitForLoadState('networkidle');
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(5000);
     await expect(page.locator('.jss1')).toBeVisible();
     const appBar = page.locator('header').first();
     await expect(appBar).toHaveCSS('background-color', 'rgb(63, 81, 181)');

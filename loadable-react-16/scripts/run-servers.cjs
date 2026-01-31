@@ -11,7 +11,7 @@ process.on('SIGINT', () => shutdown(0));
 process.on('SIGTERM', () => shutdown(0));
 
 function spawnPnpmProcess(args) {
-  return spawn('pnpm', ['-w', ...args], {
+  return spawn('pnpm', args, {
     stdio: 'inherit',
     shell: isWindows,
   });

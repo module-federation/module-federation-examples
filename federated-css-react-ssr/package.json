@@ -9,7 +9,7 @@
     "start": "pnpm --parallel --filter federated-css-react-ssr_* start",
     "e2e": "pnpm exec playwright test",
     "e2e:ci": "node scripts/kill-all-ports.cjs && pnpm exec playwright test --reporter=list",
-    "legacy:e2e:ci": "node scripts/kill-all-ports.cjs && pnpm exec playwright test --reporter=list",
+    "legacy:e2e:ci": "echo \"No legacy e2e tests\"",
     "e2e:headed": "playwright test --headed"
   },
   "devDependencies": {

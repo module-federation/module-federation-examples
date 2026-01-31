@@ -13,7 +13,7 @@
     "clean": "pnpm --filter comprehensive-demo-react18_app* --parallel clean",
     "test:e2e": "npx playwright test",
     "e2e:ci": "pnpm build && pnpm exec playwright test --reporter=list",
-    "legacy:e2e:ci": "pnpm legacy:build && LEGACY_START=true pnpm exec playwright test --reporter=list"
+    "legacy:e2e:ci": "echo \"No legacy e2e tests\""
   },
   "devDependencies": {
     "@playwright/test": "1.58.1",

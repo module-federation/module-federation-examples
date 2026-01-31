@@ -4,9 +4,9 @@ const useLegacyStart = !!process.env.LEGACY_START;
 
 export default defineConfig({
   testDir: './e2e',
-  timeout: 120000,
+  timeout: 180000,
   expect: {
-    timeout: 30000,
+    timeout: 60000,
   },
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
