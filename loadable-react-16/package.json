@@ -7,7 +7,7 @@
     "build": "pnpm --filter loadable-react-16_* build",
     "serve": "node scripts/run-servers.cjs --skip-build",
     "clean": "pnpm --filter loadable-react-16_* --parallel clean",
-    "e2e:ci": "pnpm exec playwright test --reporter=list"
+    "e2e:ci": "./node_modules/.bin/playwright test --config ./playwright.config.ts --reporter=list"
   },
   "devDependencies": {
     "@playwright/test": "1.58.1",

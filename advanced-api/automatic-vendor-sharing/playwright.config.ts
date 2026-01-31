@@ -1,5 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const useLegacyStart = !!process.env.LEGACY_START;
+
 export default defineConfig({
   testDir: './e2e',
   timeout: 180000,
@@ -31,13 +33,17 @@ export default defineConfig({
 
   webServer: [
     {
-      command: 'pnpm --filter automatic-vendor-sharing_app1 start',
+      command: useLegacyStart
+        ? 'pnpm --filter automatic-vendor-sharing_app1 legacy:start'
+        : 'pnpm --filter automatic-vendor-sharing_app1 start',
       port: 3001,
       reuseExistingServer: !process.env.CI,
       timeout: 120000,
     },
     {
-      command: 'pnpm --filter automatic-vendor-sharing_app2 start',
+      command: useLegacyStart
+        ? 'pnpm --filter automatic-vendor-sharing_app2 legacy:start'
+        : 'pnpm --filter automatic-vendor-sharing_app2 start',
       port: 3002,
       reuseExistingServer: !process.env.CI,
       timeout: 120000,
