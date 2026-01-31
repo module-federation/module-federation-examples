@@ -34,7 +34,7 @@ export default defineConfig({
   webServer: [
     {
       command: useLegacyStart
-        ? 'pnpm --filter automatic-vendor-sharing_app1 legacy:start'
+        ? 'pnpm --filter automatic-vendor-sharing_app1 serve'
         : 'pnpm --filter automatic-vendor-sharing_app1 start',
       port: 3001,
       reuseExistingServer: !process.env.CI,
@@ -42,7 +42,7 @@ export default defineConfig({
     },
     {
       command: useLegacyStart
-        ? 'pnpm --filter automatic-vendor-sharing_app2 legacy:start'
+        ? 'pnpm --filter automatic-vendor-sharing_app2 serve'
         : 'pnpm --filter automatic-vendor-sharing_app2 start',
       port: 3002,
       reuseExistingServer: !process.env.CI,
