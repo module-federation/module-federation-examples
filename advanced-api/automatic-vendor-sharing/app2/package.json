@@ -25,7 +25,7 @@
     "build:prod": "webpack --config webpack.prod.config.js",
     "legacy:start": "webpack serve --config webpack.config.js",
     "legacy:build": "webpack --config webpack.config.js  --mode production",
-    "serve": "serve dist -p 3002",
+    "serve": "serve dist -p 3002 --cors",
     "clean": "rm -rf dist",
     "type-check": "tsc --noEmit",
     "analyze": "webpack-bundle-analyzer dist/static/js/*.js"

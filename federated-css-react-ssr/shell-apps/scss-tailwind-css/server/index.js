@@ -1,6 +1,7 @@
 const express = require('express');
 const initMiddleware = require('./middleware');
-const fetch = require('node-fetch');
+const _nodeFetch = require('node-fetch');
+const fetch = _nodeFetch.default || _nodeFetch;
 const { sanitizeLoopbackHttpUrl } = require('../../../server-utils/loopback');
 
 const app = express();
