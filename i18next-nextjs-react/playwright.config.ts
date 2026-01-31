@@ -13,10 +13,24 @@ export default defineConfig({
     baseURL: 'http://localhost:3000',
     trace: 'on-first-retry',
   },
-  webServer: {
-    command: 'pnpm -w --filter i18next-nextjs-react start',
-    url: 'http://localhost:3002',
-    timeout: 360_000,
-    reuseExistingServer: !process.env.CI,
-  },
+  webServer: [
+    {
+      command: 'pnpm --filter i18next-nextjs-react_next-host dev',
+      url: 'http://localhost:3000',
+      timeout: 360_000,
+      reuseExistingServer: !process.env.CI,
+    },
+    {
+      command: 'pnpm --filter i18next-nextjs-react_react-host start:live',
+      url: 'http://localhost:3001',
+      timeout: 360_000,
+      reuseExistingServer: !process.env.CI,
+    },
+    {
+      command: 'pnpm --filter i18next-nextjs-react_react-remote start:live',
+      url: 'http://localhost:3002',
+      timeout: 360_000,
+      reuseExistingServer: !process.env.CI,
+    },
+  ],
 });

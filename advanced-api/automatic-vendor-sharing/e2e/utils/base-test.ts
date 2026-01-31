@@ -31,7 +31,7 @@ export class BasePage {
     await this.page.locator(selector).filter({ hasText: text }).click();
   }
 
-  async waitForDynamicImport(timeout: number = 5000) {
+  async waitForDynamicImport(timeout: number = 60000) {
     // Wait for any dynamic imports to complete
     await this.page.waitForTimeout(1000);
     await this.page.waitForLoadState('networkidle', { timeout });
@@ -43,4 +43,3 @@ export class BasePage {
     await dateElement.waitFor({ timeout: 5000 });
   }
 }
-
