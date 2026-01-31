@@ -1,18 +1,40 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import App from '../src/components/App';
 import Compose from '../src/ComposeProviders';
-import providers from '../src/StyleProviders';
+import { Helmet } from 'react-helmet';
 
 export default async function (req, res) {
+  const [
+    { default: Content1 },
+    { default: Content2 },
+    { default: LoaderContext1 },
+    { default: LoaderContext2 },
+  ] = await Promise.all([
+    import('expose_css/Content'),
+    import('expose_scss/Content'),
+    import('expose_css/LoaderContext'),
+    import('expose_scss/LoaderContext'),
+  ]);
+
   const css = new Set();
   const insertCss = (...styles) => {
     styles.forEach(style => css.add(style._getCss()));
   };
 
   const component = renderToString(
-    <Compose providers={providers.map(p => [p, { value: { insertCss } }])}>
-      <App />
+    <Compose
+      providers={[LoaderContext1.StyleContext.Provider, LoaderContext2.StyleContext.Provider].map(p => [
+        p,
+        { value: { insertCss } },
+      ])}
+    >
+      <div>
+        <Helmet>
+          <title>SSR MF Example</title>
+        </Helmet>
+        <Content1 />
+        <Content2 />
+      </div>
     </Compose>,
   );
 

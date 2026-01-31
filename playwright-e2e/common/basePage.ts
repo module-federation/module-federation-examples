@@ -1,4 +1,5 @@
-import { expect, Locator, Page } from '@playwright/test';
+import type { Locator, Page } from '@playwright/test';
+import { expect } from './playwright';
 
 export interface OpenLocalhostOptions {
   port: number;

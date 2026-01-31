@@ -1,11 +1,16 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import App from '../src/components/App';
 import Compose from '../src/ComposeProviders';
-import providers from '../src/StyleProviders';
 import { JssProvider, SheetsRegistry } from 'react-jss';
+import { Helmet } from 'react-helmet';
 
 export default async function (req, res) {
+  const [{ default: Content1 }, { default: Content2 }, { default: LoaderContext1 }] = await Promise.all([
+    import('expose_css/Content'),
+    import('expose_jss/Content'),
+    import('expose_css/LoaderContext'),
+  ]);
+
   const css = new Set();
   const insertCss = (...styles) => {
     styles.forEach(style => css.add(style._getCss()));
@@ -14,12 +19,18 @@ export default async function (req, res) {
   const sheets = new SheetsRegistry();
 
   const combinedProviders = [[JssProvider, { registry: sheets }]].concat(
-    providers.map(p => [p, { value: { insertCss } }]),
+    [LoaderContext1.StyleContext.Provider].map(p => [p, { value: { insertCss } }]),
   );
 
   const component = renderToString(
     <Compose providers={combinedProviders}>
-      <App />
+      <div>
+        <Helmet>
+          <title>SSR MF Example</title>
+        </Helmet>
+        <Content1 />
+        <Content2 />
+      </div>
     </Compose>,
   );
 

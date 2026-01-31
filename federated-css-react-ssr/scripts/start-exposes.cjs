@@ -5,6 +5,7 @@ const kill = require('kill-port');
 const { execSync } = require('node:child_process');
 
 const root = path.resolve(__dirname, '..');
+const staticServer = path.join(root, 'scripts', 'serve-static.cjs');
 
 function run(cmd, args, opts = {}) {
   return spawn(cmd, args, { stdio: 'inherit', cwd: root, shell: true, ...opts });
@@ -94,7 +95,7 @@ async function main() {
     console.log(`[exposes] ensuring port ${port} is free for ${dir}...`);
     await ensurePortFree(port, 20000);
     console.log(`[exposes] serving ${dir} on ${port}...`);
-    const p = run('pnpm', ['-C', cwd, 'run', 'serve']);
+    const p = run('node', [staticServer, '--dir', path.join(root, cwd, 'dist'), '--port', String(port)]);
     procs.push(p);
     await waitOn({
       resources: [

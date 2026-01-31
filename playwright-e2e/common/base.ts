@@ -1,5 +1,6 @@
-import { expect, Locator, Page, test } from '@playwright/test';
+import type { Locator, Page } from '@playwright/test';
 import type { ElementHandle } from 'playwright';
+import { expect, test } from './playwright';
 
 interface VisibilityOptions {
   selector: string;
