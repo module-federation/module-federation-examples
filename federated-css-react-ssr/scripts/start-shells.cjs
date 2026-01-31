@@ -1,7 +1,6 @@
 const { spawn } = require('node:child_process');
 const path = require('node:path');
 const waitOn = require('wait-on');
-const kill = require('kill-port');
 const { execSync } = require('node:child_process');
 
 const root = path.resolve(__dirname, '..');
@@ -11,11 +10,8 @@ function run(cmd, args, opts = {}) {
 }
 
 async function killPort(port) {
-  try {
-    await kill(port, 'tcp');
-  } catch (e) {
-    // Port might not be in use, ignore
-  }
+  // Avoid `kill-port` here: it can hang on some environments (notably macOS).
+  forceKillPort(port);
 }
 
 const delay = ms => new Promise(r => setTimeout(r, ms));
