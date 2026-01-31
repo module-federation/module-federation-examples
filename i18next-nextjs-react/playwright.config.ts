@@ -14,8 +14,8 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   webServer: {
-    command: 'pnpm run start',
-    url: 'http://localhost:3000',
+    command: 'pnpm -w --filter i18next-nextjs-react start',
+    url: 'http://localhost:3002',
     timeout: 240_000,
     reuseExistingServer: !process.env.CI,
   },

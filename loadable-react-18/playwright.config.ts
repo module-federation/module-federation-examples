@@ -14,8 +14,8 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   webServer: {
-    // Use workspace-root pnpm to avoid missing node_modules in CI
-    command: 'pnpm -w --filter loadable-react-18_* --parallel serve',
+    // Use the start script to build and serve reliably in CI
+    command: 'pnpm -w --filter loadable-react-18 start',
     url: 'http://localhost:3000',
     timeout: 180_000,
     reuseExistingServer: !process.env.CI,

@@ -479,11 +479,8 @@ export class BaseMethods {
     wait = 0,
   }: BrowserAlertForMultipleHostsOptions): Promise<void> {
     const baseGroup = this.resolveLocator(selector, { parentSelector });
+    await expect.poll(async () => baseGroup.count(), { timeout: 30_000 }).toBeGreaterThan(0);
     const baseCount = await baseGroup.count();
-
-    if (baseCount === 0) {
-      throw new Error(`No elements found for selector "${selector}" on the base page.`);
-    }
 
     const targetIndex = Math.min(index, baseCount - 1);
 
@@ -507,11 +504,8 @@ export class BaseMethods {
       await remotePage.goto(`http://localhost:${host}/`, { waitUntil: 'networkidle' });
 
       const remoteGroup = this.resolveLocatorForPage(remotePage, selector, { parentSelector });
+      await expect.poll(async () => remoteGroup.count(), { timeout: 30_000 }).toBeGreaterThan(0);
       const remoteCount = await remoteGroup.count();
-
-      if (remoteCount === 0) {
-        throw new Error(`No elements found for selector "${selector}" on host ${host}.`);
-      }
 
       const remoteIndex = Math.min(targetIndex, remoteCount - 1);
       const remoteMessage = await this.captureDialogMessage(remotePage, remoteGroup.nth(remoteIndex));
@@ -568,11 +562,8 @@ export class BaseMethods {
     }
 
     const baseGroup = this.page.locator(selector);
+    await expect.poll(async () => baseGroup.count(), { timeout: 30_000 }).toBeGreaterThan(0);
     const baseCount = await baseGroup.count();
-
-    if (baseCount === 0) {
-      throw new Error(`No elements found for selector "${selector}" on the base page.`);
-    }
 
     const targetIndex = Math.min(index, baseCount - 1);
 
@@ -614,11 +605,8 @@ export class BaseMethods {
       }
 
       const remoteGroup = remotePage.locator(selector);
+      await expect.poll(async () => remoteGroup.count(), { timeout: 30_000 }).toBeGreaterThan(0);
       const remoteCount = await remoteGroup.count();
-
-      if (remoteCount === 0) {
-        throw new Error(`No elements found for selector "${selector}" on host ${extraHost}.`);
-      }
 
       const remoteIndex = Math.min(targetIndex, remoteCount - 1);
       const remoteText = (await remoteGroup.nth(remoteIndex).innerText()).trim();

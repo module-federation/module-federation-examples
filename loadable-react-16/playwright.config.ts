@@ -14,7 +14,7 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   webServer: {
-    command: 'pnpm run start',
+    command: 'pnpm -w --filter loadable-react-16 start',
     url: 'http://localhost:3000',
     timeout: 180_000,
     reuseExistingServer: !process.env.CI,
