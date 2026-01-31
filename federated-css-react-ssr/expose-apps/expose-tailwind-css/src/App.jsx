@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Content from './Content';
 import LoaderContext from './LoaderContext';
 const insertCss = (...styles) => {
@@ -12,4 +12,4 @@ const App = () => (
   </LoaderContext.StyleContext.Provider>
 );
 
-ReactDOM.render(<App />, document.getElementById('app'));
+createRoot(document.getElementById('app')).render(<App />);

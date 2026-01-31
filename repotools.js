@@ -174,7 +174,7 @@ async function checkAndUpdatePackages(nestedDir, packageJson, results) {
   if (needsUpdate) {
     fs.writeFileSync(
       path.join(nestedDir, 'package.json'),
-      JSON.stringify(packageJson, null, 2),
+      `${JSON.stringify(packageJson, null, 2)}\n`,
       'utf8',
     );
     console.log(`Updated dependencies in ${nestedDir}`);
