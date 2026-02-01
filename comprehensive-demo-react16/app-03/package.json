@@ -24,7 +24,7 @@
     "build": "rspack --mode production",
     "legacy:start": "webpack --watch",
     "legacy:build": "webpack --mode production",
-    "serve": "serve dist -p 3003",
+    "serve": "serve dist -p 3003 --cors",
     "clean": "rm -rf dist"
   }
 }

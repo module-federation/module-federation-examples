@@ -1,6 +1,6 @@
 const deps = require('../package.json').dependencies;
 const { UniversalFederationPlugin } = require('@module-federation/node');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 
 const FederationStatsPlugin = require('webpack-federation-stats-plugin');
 
@@ -9,6 +9,7 @@ module.exports = {
     new FederationStatsPlugin(),
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
+      dts: false,
       name: 'app2',
       filename: 'remoteEntry.js',
       exposes: {

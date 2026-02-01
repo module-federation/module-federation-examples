@@ -58,6 +58,7 @@ module.exports = {
     !isProd && new ReactRefreshWebpackPlugin(),
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
+      dts: false,
       name: 'app_03',
       filename: 'remoteEntry.js',
       remotes: {

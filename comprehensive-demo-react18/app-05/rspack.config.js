@@ -79,6 +79,7 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
+      dts: false,
       name: 'app_05',
       filename: 'remoteEntry.js',
       exposes: {

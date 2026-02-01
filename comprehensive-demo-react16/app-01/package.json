@@ -26,7 +26,7 @@
     "start": "rspack serve",
     "legacy:build": "webpack --mode production",
     "build": "rspack --mode production",
-    "serve": "serve dist -p 3001",
+    "serve": "serve dist -p 3001 --cors",
     "clean": "rm -rf dist"
   },
   "devDependencies": {

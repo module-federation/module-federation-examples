@@ -19,6 +19,7 @@ const webpackConfig = {
     path: path.resolve(__dirname, '../dist/server'),
     filename: '[name].js',
     libraryTarget: 'commonjs-module',
+    publicPath: 'auto',
   },
   mode: 'production',
   plugins: [

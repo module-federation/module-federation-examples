@@ -14,9 +14,8 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   webServer: {
-    // `e2e:ci` already runs `pnpm build` before starting Playwright. Avoid rebuilding during
-    // the webServer startup to reduce flakiness and CI cold-start overhead.
-    command: 'SKIP_BUILD=1 pnpm run start',
+    // Use prebuilt bundles and only start servers for e2e reliability
+    command: 'pnpm run serve',
     url: 'http://localhost:3000',
     timeout: 180_000,
     reuseExistingServer: !process.env.CI,
