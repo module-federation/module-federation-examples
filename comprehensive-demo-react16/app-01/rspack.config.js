@@ -75,12 +75,12 @@ module.exports = {
         'react-dom': {
           singleton: true,
           requiredVersion: false,
-          eager: true,
+          eager: false,
         },
         react: {
           singleton: true,
           requiredVersion: false,
-          eager: true,
+          eager: false,
         },
       },
     }),
