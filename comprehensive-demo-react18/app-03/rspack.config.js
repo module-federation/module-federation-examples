@@ -2,8 +2,11 @@ const {
   HtmlRspackPlugin,
 } = require('@rspack/core');
 const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
+const path = require('path');
 
 const isProd = process.env.NODE_ENV === 'production';
+const reactPath = path.dirname(require.resolve('react/package.json'));
+const reactDomPath = path.dirname(require.resolve('react-dom/package.json'));
 
 module.exports = {
   entry: './src/index',
@@ -24,6 +27,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.jsx', '.js', '.json', '.mjs'],
+    alias: {
+      react: reactPath,
+      'react-dom': reactDomPath,
+    },
   },
   output: {
     publicPath: 'auto',
@@ -73,12 +80,12 @@ module.exports = {
         'react-dom': {
           singleton: true,
           requiredVersion: false,
-          eager: true,
+          eager: false,
         },
         react: {
           singleton: true,
           requiredVersion: false,
-          eager: true,
+          eager: false,
         },
       },
     }),
