@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "pnpm --filter loadable-react-18_* build",
-    "serve": "pnpm --filter loadable-react-18_* --parallel serve",
+    "serve": "node scripts/serve.js",
     "clean": "pnpm --filter loadable-react-18_* --parallel clean",
     "pretest:e2e": "pnpm build",
     "test:e2e": "pnpm exec playwright test",
