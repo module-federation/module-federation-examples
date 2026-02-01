@@ -31,6 +31,8 @@ export default defineConfig({
     // Pass MF config directly to avoid relying on external module-federation config files.
     moduleFederationPlugin({
       config: {
+        experiments: { asyncStartup: true },
+        shareStrategy: 'loaded-first',
         name: 'app2',
         remotes: {
           app1: 'app1@http://localhost:3001/mf-manifest.json',

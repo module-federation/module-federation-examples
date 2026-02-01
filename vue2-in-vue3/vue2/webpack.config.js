@@ -49,7 +49,7 @@ module.exports = (env = {}) => ({
       filename: 'remoteEntry.js',
       library: { type: 'var', name: 'vue2App' },
       exposes: {
-        './vue2': './node_modules/vue/dist/vue',
+        './vue2': require.resolve('vue/dist/vue.common.js'),
         './Button': './src/components/Button',
       },
       shareStrategy: 'loaded-first',
