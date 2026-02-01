@@ -1,9 +1,33 @@
 const { spawn } = require('node:child_process');
+const { spawnSync } = require('node:child_process');
+const fs = require('node:fs');
+const path = require('node:path');
 const process = require('node:process');
 const waitOn = require('wait-on');
 
 const processes = new Set();
 let shuttingDown = false;
+
+function ensureServerBundle(appDirName) {
+  const serverEntry = path.join(__dirname, '..', appDirName, 'dist', 'server', 'main.js');
+  if (fs.existsSync(serverEntry)) {
+    return;
+  }
+
+  console.warn(`[serve] Missing ${appDirName}/dist/server/main.js; rebuilding server bundle...`);
+  const res = spawnSync('pnpm', ['--filter', `loadable-react-18_${appDirName}`, 'build:server'], {
+    stdio: 'inherit',
+  });
+  if (res.status !== 0) {
+    console.error(`[serve] Failed to rebuild ${appDirName} server bundle (exit ${res.status ?? 'unknown'})`);
+    shutdown(res.status || 1);
+  }
+
+  if (!fs.existsSync(serverEntry)) {
+    console.error(`[serve] Still missing server entry after rebuild: ${serverEntry}`);
+    shutdown(1);
+  }
+}
 
 function spawnProcess(command, args, name) {
   const child = spawn(command, args, {
@@ -57,6 +81,7 @@ function shutdown(code = 0) {
 });
 
 console.log('Starting App2 (serve)...');
+ensureServerBundle('app2');
 spawnProcess('pnpm', ['--filter', 'loadable-react-18_app2', 'serve'], 'App2');
 
 waitOn({
@@ -69,6 +94,7 @@ waitOn({
     }
 
     console.log('App2 is ready. Starting App1 (serve)...');
+    ensureServerBundle('app1');
     spawnProcess('pnpm', ['--filter', 'loadable-react-18_app1', 'serve'], 'App1');
   })
   .catch(error => {
