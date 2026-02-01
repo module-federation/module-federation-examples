@@ -67,6 +67,7 @@ module.exports = {
       exposes: {
         './Button': './src/Button',
       },
+      shareStrategy: 'loaded-first',
       shared: {
         'react-dom': {
           singleton: true,

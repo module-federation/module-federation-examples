@@ -15,6 +15,11 @@ module.exports = {
       directory: path.join(__dirname, 'dist'),
     },
     port: 3001,
+    client: {
+      overlay: {
+        warnings: false,
+      },
+    },
   },
   output: {
     publicPath: 'auto',
@@ -39,6 +44,7 @@ module.exports = {
       remotes: {
         app2: 'app2@http://localhost:3002/remoteEntry.js',
       },
+      shareStrategy: 'loaded-first',
       // app2 is expecting "styled-components" shared dependency
       shared: [{ react: { singleton: true }, 'react-dom': { singleton: true } }],
     }),

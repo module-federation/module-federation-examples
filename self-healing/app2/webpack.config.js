@@ -15,6 +15,11 @@ module.exports = {
       directory: path.join(__dirname, 'dist'),
     },
     port: 3002,
+    client: {
+      overlay: {
+        warnings: false,
+      },
+    },
   },
   output: {
     publicPath: 'auto',
@@ -42,6 +47,7 @@ module.exports = {
       exposes: {
         './Button': './src/Button',
       },
+      shareStrategy: 'loaded-first',
       // app2 is expecting "styled-components" as a shared dependency
       shared: [
         'styled-components',

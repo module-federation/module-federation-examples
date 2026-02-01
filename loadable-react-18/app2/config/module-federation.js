@@ -15,6 +15,7 @@ module.exports = {
         './Content': './src/client/components/Content',
       },
       remotes: {},
+      shareStrategy: 'loaded-first',
       shared: [{ react: deps.react, 'react-dom': deps['react-dom'] }],
     }),
   ],

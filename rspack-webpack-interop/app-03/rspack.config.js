@@ -52,6 +52,7 @@ module.exports = {
       experiments: {
         asyncStartup: true,
       },
+      shareStrategy: 'loaded-first',
       shared: {
         'react-dom': {
           singleton: true,

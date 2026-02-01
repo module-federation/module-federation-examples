@@ -60,6 +60,7 @@ module.exports = {
       experiments: {
         asyncStartup: true,
       },
+      shareStrategy: 'loaded-first',
       shared: {
         '@material-ui/core': {
           singleton: true,

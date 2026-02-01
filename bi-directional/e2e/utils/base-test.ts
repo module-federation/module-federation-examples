@@ -14,7 +14,7 @@ export class BasePage {
     await this.page.waitForFunction(() => {
       const elements = document.querySelectorAll('.title, .name, button');
       return elements.length > 0;
-    }, { timeout: 180000 });
+    }, { timeout: 30000 });
   }
 
   async checkElementWithTextPresence(selector: string, text: string) {

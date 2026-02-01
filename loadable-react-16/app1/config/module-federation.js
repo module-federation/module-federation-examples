@@ -13,6 +13,7 @@ module.exports = {
       remotes: {
         app2: 'app2@http://localhost:3001/static/remoteEntry.js',
       },
+      shareStrategy: 'loaded-first',
       shared: [{ react: deps.react, 'react-dom': deps['react-dom'] }],
     }),
   ],

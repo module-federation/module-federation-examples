@@ -62,6 +62,7 @@ module.exports = {
         './SideNav': './src/SideNav',
         './Page': './src/Page',
       },
+      shareStrategy: 'loaded-first',
       shared: {
         ...deps,
         '@material-ui/core': {

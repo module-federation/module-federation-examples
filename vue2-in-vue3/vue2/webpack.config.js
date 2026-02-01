@@ -52,6 +52,7 @@ module.exports = (env = {}) => ({
         './vue2': './node_modules/vue/dist/vue',
         './Button': './src/components/Button',
       },
+      shareStrategy: 'loaded-first',
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './index.html'),

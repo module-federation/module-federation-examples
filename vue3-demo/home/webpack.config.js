@@ -62,6 +62,7 @@ module.exports = (env = {}) => ({
         './Content': './src/components/Content',
         './Button': './src/components/Button',
       },
+      shareStrategy: 'loaded-first',
       shared: {
         vue: {
           singleton: true,
@@ -84,6 +85,11 @@ module.exports = (env = {}) => ({
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
       'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
+    client: {
+      overlay: {
+        warnings: false,
+      },
     },
   },
 });

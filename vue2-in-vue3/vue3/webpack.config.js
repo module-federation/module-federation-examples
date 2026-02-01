@@ -54,6 +54,7 @@ module.exports = (env = {}) => ({
       remotes: {
         vue2App: 'vue2App@http://localhost:3001/remoteEntry.js',
       },
+      shareStrategy: 'loaded-first',
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './index.html'),
@@ -70,6 +71,11 @@ module.exports = (env = {}) => ({
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
       'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
+    client: {
+      overlay: {
+        warnings: false,
+      },
     },
   },
 });

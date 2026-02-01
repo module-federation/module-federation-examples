@@ -55,6 +55,7 @@ module.exports = (env = {}) => ({
         home: 'home@http://localhost:3002/remoteEntry.js',
       },
       exposes: {},
+      shareStrategy: 'loaded-first',
       shared: {
         vue: {
           singleton: true,
@@ -78,6 +79,11 @@ module.exports = (env = {}) => ({
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
       'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
+    client: {
+      overlay: {
+        warnings: false,
+      },
     },
   },
 });
