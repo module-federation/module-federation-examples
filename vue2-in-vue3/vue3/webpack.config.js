@@ -2,7 +2,7 @@ const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 module.exports = (env = {}) => ({
   mode: 'development',
   cache: false,
@@ -48,11 +48,13 @@ module.exports = (env = {}) => ({
       filename: '[name].css',
     }),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'vue3',
       filename: 'remoteEntry.js',
       remotes: {
         vue2App: 'vue2App@http://localhost:3001/remoteEntry.js',
       },
+      shareStrategy: 'loaded-first',
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './index.html'),
@@ -69,6 +71,11 @@ module.exports = (env = {}) => ({
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
       'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
+    client: {
+      overlay: {
+        warnings: false,
+      },
     },
   },
 });

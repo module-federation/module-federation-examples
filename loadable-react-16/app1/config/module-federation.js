@@ -7,11 +7,14 @@ module.exports = {
   client: [
     new FederationStatsPlugin(),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      dts: false,
       name: 'app1',
       filename: 'remoteEntry.js',
       remotes: {
         app2: 'app2@http://localhost:3001/static/remoteEntry.js',
       },
+      shareStrategy: 'loaded-first',
       shared: [{ react: deps.react, 'react-dom': deps['react-dom'] }],
     }),
   ],

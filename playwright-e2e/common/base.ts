@@ -1,5 +1,6 @@
-import { expect, Locator, Page, test } from '@playwright/test';
+import type { Locator, Page } from '@playwright/test';
 import type { ElementHandle } from 'playwright';
+import { expect, test } from './playwright';
 
 interface VisibilityOptions {
   selector: string;
@@ -136,7 +137,26 @@ export class BaseMethods {
   async openLocalhost({ number, path }: { number: number; path?: string }): Promise<void> {
     const normalizedPath = path ? path.replace(/^\//, '') : '';
     const url = `http://localhost:${number}${normalizedPath ? `/${normalizedPath}` : ''}`;
-    await this.page.goto(url, { waitUntil: 'networkidle' });
+    const deadline = Date.now() + 60_000;
+    let lastError: unknown;
+
+    while (Date.now() < deadline) {
+      try {
+        await this.page.goto(url, { waitUntil: 'networkidle' });
+        return;
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+
+        if (!message.includes('ERR_CONNECTION_REFUSED') && !message.includes('ECONNREFUSED')) {
+          throw error;
+        }
+
+        lastError = error;
+        await this.page.waitForTimeout(1000);
+      }
+    }
+
+    throw lastError ?? new Error(`Timed out waiting for ${url}`);
   }
 
   async reloadWindow(_withoutCache: boolean = false): Promise<void> {
@@ -460,11 +480,8 @@ export class BaseMethods {
     wait = 0,
   }: BrowserAlertForMultipleHostsOptions): Promise<void> {
     const baseGroup = this.resolveLocator(selector, { parentSelector });
+    await expect.poll(async () => baseGroup.count(), { timeout: 60_000 }).toBeGreaterThan(0);
     const baseCount = await baseGroup.count();
-
-    if (baseCount === 0) {
-      throw new Error(`No elements found for selector "${selector}" on the base page.`);
-    }
 
     const targetIndex = Math.min(index, baseCount - 1);
 
@@ -488,11 +505,8 @@ export class BaseMethods {
       await remotePage.goto(`http://localhost:${host}/`, { waitUntil: 'networkidle' });
 
       const remoteGroup = this.resolveLocatorForPage(remotePage, selector, { parentSelector });
+      await expect.poll(async () => remoteGroup.count(), { timeout: 60_000 }).toBeGreaterThan(0);
       const remoteCount = await remoteGroup.count();
-
-      if (remoteCount === 0) {
-        throw new Error(`No elements found for selector "${selector}" on host ${host}.`);
-      }
 
       const remoteIndex = Math.min(targetIndex, remoteCount - 1);
       const remoteMessage = await this.captureDialogMessage(remotePage, remoteGroup.nth(remoteIndex));
@@ -549,11 +563,8 @@ export class BaseMethods {
     }
 
     const baseGroup = this.page.locator(selector);
+    await expect.poll(async () => baseGroup.count(), { timeout: 60_000 }).toBeGreaterThan(0);
     const baseCount = await baseGroup.count();
-
-    if (baseCount === 0) {
-      throw new Error(`No elements found for selector "${selector}" on the base page.`);
-    }
 
     const targetIndex = Math.min(index, baseCount - 1);
 
@@ -595,11 +606,8 @@ export class BaseMethods {
       }
 
       const remoteGroup = remotePage.locator(selector);
+      await expect.poll(async () => remoteGroup.count(), { timeout: 60_000 }).toBeGreaterThan(0);
       const remoteCount = await remoteGroup.count();
-
-      if (remoteCount === 0) {
-        throw new Error(`No elements found for selector "${selector}" on host ${extraHost}.`);
-      }
 
       const remoteIndex = Math.min(targetIndex, remoteCount - 1);
       const remoteText = (await remoteGroup.nth(remoteIndex).innerText()).trim();

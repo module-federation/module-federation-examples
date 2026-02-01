@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin, AutomaticVendorFederation } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin, AutomaticVendorFederation } = require('@module-federation/enhanced/webpack');
 
 // Production configuration for optimized builds
 const deps = require('./package.json').dependencies;
@@ -63,6 +63,7 @@ module.exports = {
       name: 'app2',
       filename: 'remoteEntry.js',
       dts: false,
+      shareStrategy: 'loaded-first',
       remotes: {
         app1: 'app1@/remoteEntry.js', // Use relative URL for production
       },
@@ -82,16 +83,18 @@ module.exports = {
           singleton: true,
           requiredVersion: deps.react,
           eager: false,
+          import: 'react',
+          shareScope: 'default',
         },
         'react-dom': {
           singleton: true,
           requiredVersion: deps['react-dom'],
           eager: false,
+          import: 'react-dom',
+          shareScope: 'default',
         },
       },
-      experiments: {
-        federationRuntime: 'hoisted',
-      },
+      experiments: { asyncStartup: true },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',

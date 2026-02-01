@@ -1,4 +1,4 @@
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 module.exports = {
   entry: './src/index',
@@ -13,6 +13,7 @@ module.exports = {
   module: {},
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'libs',
       filename: 'remoteEntry.js',
       exposes: {

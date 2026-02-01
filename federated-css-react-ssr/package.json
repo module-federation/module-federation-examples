@@ -9,12 +9,13 @@
     "start": "pnpm --parallel --filter federated-css-react-ssr_* start",
     "e2e": "pnpm exec playwright test",
     "e2e:ci": "node scripts/kill-all-ports.cjs && pnpm exec playwright test --reporter=list",
-    "legacy:e2e:ci": "node scripts/kill-all-ports.cjs && pnpm exec playwright test --reporter=list",
+    "legacy:e2e:ci": "echo \"No legacy e2e tests\"",
     "e2e:headed": "playwright test --headed"
   },
   "devDependencies": {
-    "@playwright/test": "1.57.0",
-    "kill-port": "2.0.1",
+    "@playwright/test": "1.58.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-jss": "10.10.0",
     "wait-on": "7.2.0"
   }

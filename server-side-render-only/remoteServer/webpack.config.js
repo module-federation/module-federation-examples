@@ -1,6 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 var serverConfig = {
   entry: path.resolve(__dirname, 'server.js'),
@@ -34,6 +34,7 @@ var serverConfig = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'website2',
       library: { type: 'commonjs-module' },
       filename: 'container.js',

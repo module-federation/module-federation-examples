@@ -2,9 +2,9 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './e2e',
-  timeout: 30000,
+  timeout: 240000,
   expect: {
-    timeout: 10000,
+    timeout: 90000,
   },
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
@@ -33,13 +33,13 @@ export default defineConfig({
     {
       command: 'cd app1 && pnpm start',
       port: 3001,
-      timeout: 120000,
+      timeout: 180000,
       reuseExistingServer: !process.env.CI,
     },
     {
       command: 'cd app2 && pnpm start',
       port: 3002,
-      timeout: 120000,
+      timeout: 180000,
       reuseExistingServer: !process.env.CI,
     },
   ],

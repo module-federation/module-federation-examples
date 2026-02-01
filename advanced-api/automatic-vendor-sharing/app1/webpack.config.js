@@ -1,11 +1,15 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 const deps = require('./package.json').dependencies;
 
 module.exports = {
   entry: './src/index',
   mode: 'development',
+  output: {
+    publicPath: 'auto',
+    uniqueName: 'automatic_vendor_sharing_app1',
+  },
   devServer: {
     port: 3001,
     headers: {
@@ -28,9 +32,11 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app1',
       filename: 'remoteEntry.js',
       dts: false,
+      shareStrategy: 'loaded-first',
       remotes: {
         app2: 'app2@http://localhost:3002/remoteEntry.js',
       },
@@ -41,10 +47,14 @@ module.exports = {
         react: {
           singleton: true,
           requiredVersion: deps.react,
+          import: 'react',
+          shareScope: 'default',
         },
         'react-dom': {
           singleton: true,
           requiredVersion: deps['react-dom'],
+          import: 'react-dom',
+          shareScope: 'default',
         },
       },
     }),

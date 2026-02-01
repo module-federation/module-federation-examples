@@ -55,12 +55,15 @@ module.exports = {
   mode,
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      dts: false,
       name: 'app_04',
       filename: 'remoteEntry.js',
       exposes: {
         './App': './src/main.js',
         './loadApp': './src/loadApp.js',
       },
+      shareStrategy: 'loaded-first',
       shared: [],
     }),
     new CssExtractRspackPlugin({

@@ -4,7 +4,7 @@
   "devDependencies": {
     "cross-env": "7.0.3",
     "css-loader": "7.1.2",
-    "mini-css-extract-plugin": "2.9.4",
+    "mini-css-extract-plugin": "2.10.0",
     "style-loader": "4.0.0",
     "svelte": "4.2.18",
     "svelte-loader": "3.2.3",
@@ -13,9 +13,10 @@
     "webpack-cli": "5.1.4",
     "webpack-dev-server": "5.0.4",
     "serve": "14.2.3",
-    "@rspack/core": "1.6.8",
-    "@rspack/cli": "1.6.8",
-    "@rspack/dev-server": "1.1.4"
+    "@module-federation/enhanced": "0.23.0",
+    "@rspack/core": "1.7.4",
+    "@rspack/cli": "1.7.4",
+    "@rspack/dev-server": "1.2.1"
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production rspack build --mode production",

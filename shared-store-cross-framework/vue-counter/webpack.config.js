@@ -1,7 +1,7 @@
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 module.exports = () => ({
   mode: 'development',
@@ -62,6 +62,7 @@ module.exports = () => ({
       filename: '[name].css',
     }),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'vue_counter',
       filename: 'remoteEntry.js',
       remotes: {

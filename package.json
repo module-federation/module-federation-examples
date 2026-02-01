@@ -12,7 +12,8 @@
   "pnpm": {
     "overrides": {
       "@types/react": "18.3.10",
-      "@types/react-dom": "18.3.0"
+      "@types/react-dom": "18.3.0",
+      "@types/glob>@types/minimatch": "3.0.5"
     },
     "onlyBuiltDependencies": [
       "@module-federation/nextjs-mf",
@@ -22,14 +23,17 @@
       "core-js-pure",
       "esbuild",
       "fsevents",
+      "less",
       "nice-napi",
       "nx",
+      "sharp",
       "unrs-resolver",
       "yorkie"
     ]
   },
   "devDependencies": {
-    "@playwright/test": "1.57.0",
+    "@playwright/test": "1.58.1",
+    "@swc/plugin-styled-components": "12.1.0",
     "@types/node": "20.9.0",
     "abbrev": "2.0.0",
     "allure-commandline": "2.29.0",
@@ -43,7 +47,7 @@
     "js-yaml": "4.1.0",
     "kill-port": "2.0.1",
     "lerna": "8.1.8",
-    "lint-staged": "^15.2.10",
+    "lint-staged": "^15.5.2",
     "mocha": "10.6.0",
     "prettier": "3.3.3",
     "pretty-quick": "4.0.0",
@@ -60,6 +64,7 @@
     "prettier": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\"",
     "prettier:check": "prettier --list-different \"**/*.{js,jsx,json,md,ts,tsx}\"",
     "test": "jest --config=jest.config.cjs --maxWorkers=2",
+    "legacy:e2e:ci": "echo \"No legacy e2e tests\"",
     "preinstall": "npx only-allow pnpm"
   }
 }

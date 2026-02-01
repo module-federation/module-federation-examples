@@ -49,6 +49,8 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      dts: false,
       name: 'app_01',
       filename: 'remoteEntry.js',
       remotes: {
@@ -61,6 +63,7 @@ module.exports = {
         './SideNav': './src/SideNav',
         './Page': './src/Page',
       },
+      shareStrategy: 'loaded-first',
       shared: {
         ...deps,
         '@material-ui/core': {
@@ -72,12 +75,12 @@ module.exports = {
         'react-dom': {
           singleton: true,
           requiredVersion: false,
-          eager: true,
+          eager: false,
         },
         react: {
           singleton: true,
           requiredVersion: false,
-          eager: true,
+          eager: false,
         },
       },
     }),

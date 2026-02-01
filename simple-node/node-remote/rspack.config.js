@@ -25,6 +25,7 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'node_remote',
       library: { type: 'commonjs-module' },
       filename: 'remoteEntry.js',

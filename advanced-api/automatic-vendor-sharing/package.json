@@ -14,11 +14,11 @@
     "clean": "pnpm --filter automatic-vendor-sharing_app* --parallel clean",
     "legacy:start": "pnpm --filter automatic-vendor-sharing_app* --parallel legacy:start",
     "legacy:build": "pnpm --filter automatic-vendor-sharing_app* --parallel legacy:build",
-    "e2e:ci": "npx playwright test",
-    "legacy:e2e:ci": "npx playwright test"
+    "e2e:ci": "pnpm exec playwright test --config ./playwright.config.ts --reporter=list",
+    "legacy:e2e:ci": "pnpm legacy:build && LEGACY_START=true pnpm exec playwright test --config ./playwright.config.ts --reporter=list"
   },
   "devDependencies": {
-    "@playwright/test": "1.57.0",
+    "@playwright/test": "1.58.1",
     "wait-on": "7.2.0"
   }
 }

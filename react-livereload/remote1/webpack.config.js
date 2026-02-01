@@ -1,4 +1,4 @@
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExternalTemplateRemotesPlugin = require('external-remotes-plugin');
 const path = require('path');
@@ -36,6 +36,7 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'remote1',
       filename: 'remoteEntry.js',
       exposes: {

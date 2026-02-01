@@ -39,6 +39,7 @@ apps.forEach(({ port, name, selector, text, remotes = [] }) => {
       }
       await page.goto(`http://localhost:${port}`);
       await page.waitForLoadState('networkidle');
+      await page.waitForTimeout(5000);
       await expect(page.locator(selector, { hasText: text })).toBeVisible();
     });
   });

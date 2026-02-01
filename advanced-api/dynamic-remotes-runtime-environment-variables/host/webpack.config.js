@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
@@ -42,6 +42,7 @@ module.exports = {
       ],
     }),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'host',
       shared: {
         react: {

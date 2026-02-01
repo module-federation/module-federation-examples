@@ -1,7 +1,7 @@
 const rspack = require('@rspack/core');
 const isDev = process.env.NODE_ENV === 'development';
 const dependencies = require('./package.json').dependencies;
-const { ModuleFederationPlugin } = require('@rspack/core').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 
 const path = require('path');
 /**
@@ -47,7 +47,6 @@ module.exports = {
     ],
   },
   resolve: {
-    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     extensions: ['*', '.js', '.jsx'],
   },
   plugins: [
@@ -59,6 +58,7 @@ module.exports = {
       template: './public/index.html',
     }),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'team',
       filename: 'remoteEntry.js',
       exposes: {

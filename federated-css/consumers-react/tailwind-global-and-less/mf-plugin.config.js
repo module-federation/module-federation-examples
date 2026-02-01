@@ -1,6 +1,7 @@
 const { getRemoteEntry, remotes } = require('../../expose-remotes/remotes.config');
 
 module.exports = {
+  experiments: { asyncStartup: true },
   name: 'tailwind-global-and-less',
   remotes: {
     expose_less: getRemoteEntry(remotes.less),

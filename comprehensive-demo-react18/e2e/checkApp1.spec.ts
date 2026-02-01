@@ -72,6 +72,7 @@ test.describe('Comprehensive Demo App1', () => {
     await waitForRemoteEntries(page, [app05RemoteEntry]);
     await page.goto(base);
     await page.waitForLoadState('networkidle');
+    await page.waitForTimeout(5000);
 
     await expect(page.getByRole('heading', { name: 'SideNav' })).toBeVisible();
     await expect(page.getByText('Demo Pages')).toBeVisible();
@@ -115,6 +116,7 @@ test.describe('Comprehensive Demo App1', () => {
     await waitForRemoteEntries(page, [app05RemoteEntry]);
     await page.goto(base);
     await page.waitForLoadState('networkidle');
+    await page.waitForTimeout(5000);
 
     page.once('dialog', async dialog => {
       expect(dialog.message()).toBe('You have pressed a button.');
@@ -143,6 +145,7 @@ test.describe('Comprehensive Demo App1', () => {
   test('UI library page renders remote button', async ({ page }) => {
     await page.goto(`${base}/#/ui-library`);
     await page.waitForLoadState('networkidle');
+    await page.waitForTimeout(5000);
 
     await expectAppBar(page, 'UI Library Demo');
 
@@ -167,6 +170,7 @@ test.describe('Comprehensive Demo App1', () => {
   test('dialog page loads and dialog opens', async ({ page }) => {
     await page.goto(`${base}/#/dialog`);
     await page.waitForLoadState('networkidle');
+    await page.waitForTimeout(5000);
 
     await expectAppBar(page, 'Dialog Demo');
     await expect(
@@ -190,6 +194,7 @@ test.describe('Comprehensive Demo App1', () => {
     await waitForRemoteEntries(page, [app04RemoteEntry]);
     await page.goto(`${base}/#/svelte`);
     await page.waitForLoadState('networkidle');
+    await page.waitForTimeout(5000);
 
     await expectAppBar(page, 'Svelte Demo');
 
@@ -202,6 +207,7 @@ test.describe('Comprehensive Demo App1', () => {
   test('routing page renders tabs', async ({ page }) => {
     await page.goto(`${base}/#/routing/foo`);
     await page.waitForLoadState('networkidle');
+    await page.waitForTimeout(5000);
 
     await expectAppBar(page, 'Routing Demo');
 

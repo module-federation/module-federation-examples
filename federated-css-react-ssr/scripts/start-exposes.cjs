@@ -1,21 +1,18 @@
 const { spawn } = require('node:child_process');
 const path = require('node:path');
 const waitOn = require('wait-on');
-const kill = require('kill-port');
 const { execSync } = require('node:child_process');
 
 const root = path.resolve(__dirname, '..');
+const staticServer = path.join(root, 'scripts', 'serve-static.cjs');
 
 function run(cmd, args, opts = {}) {
   return spawn(cmd, args, { stdio: 'inherit', cwd: root, shell: true, ...opts });
 }
 
 async function killPort(port) {
-  try {
-    await kill(port, 'tcp');
-  } catch (e) {
-    // Port might not be in use, ignore
-  }
+  // Avoid `kill-port` here: it can hang on some environments (notably macOS).
+  forceKillPort(port);
 }
 
 const delay = ms => new Promise(r => setTimeout(r, ms));
@@ -94,7 +91,7 @@ async function main() {
     console.log(`[exposes] ensuring port ${port} is free for ${dir}...`);
     await ensurePortFree(port, 20000);
     console.log(`[exposes] serving ${dir} on ${port}...`);
-    const p = run('pnpm', ['-C', cwd, 'run', 'serve']);
+    const p = run('node', [staticServer, '--dir', path.join(root, cwd, 'dist'), '--port', String(port)]);
     procs.push(p);
     await waitOn({
       resources: [

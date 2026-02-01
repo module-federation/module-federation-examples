@@ -3,19 +3,20 @@
   "version": "0.0.0",
   "description": "Webpack Host with [Rspack](https://rspack.dev) Remotes: App #1 as Webpack, Apps #2-#5 as [Rspack](https://rspack.dev), with coexisting webpack commands.",
   "scripts": {
-    "start": "pnpm build && pnpm serve",
-    "legacy:start": "pnpm legacy:build && pnpm serve",
+    "start": "pnpm --filter rspack_webpack_app* build && pnpm --filter rspack_webpack_app* --parallel serve",
+    "legacy:start": "pnpm --filter rspack_webpack_app* legacy:build && pnpm --filter rspack_webpack_app* --parallel serve",
     "build": "pnpm --filter rspack_webpack_app* build",
     "legacy:build": "pnpm --filter rspack_webpack_app* legacy:build",
     "serve": "pnpm --filter rspack_webpack_app* --parallel serve",
     "clean": "pnpm --filter rspack_webpack_app* --parallel clean",
     "test:e2e": "pnpm exec playwright test",
-    "e2e:ci": "pnpm exec playwright test --reporter=list"
+    "e2e:ci": "pnpm exec playwright test --reporter=list",
+    "legacy:e2e:ci": "echo \"No legacy e2e tests\""
   },
   "devDependencies": {
-    "@playwright/test": "1.57.0",
+    "@playwright/test": "1.58.1",
     "concurrently": "8.2.2",
-    "playwright": "1.57.0",
+    "playwright": "1.58.1",
     "wait-on": "7.2.0"
   }
 }

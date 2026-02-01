@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { DefinePlugin } = require('webpack');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const ExternalTemplateRemotesPlugin = require('external-remotes-plugin');
 const path = require('path');
 
@@ -33,6 +33,7 @@ module.exports = {
       'process.env.DISCOVERY_ENDPOINT': JSON.stringify(process.env.DISCOVERY_ENDPOINT),
     }),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'AppShell',
       shared: {
         react: {

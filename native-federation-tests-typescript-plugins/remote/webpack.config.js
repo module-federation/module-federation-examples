@@ -1,5 +1,5 @@
 const path = require('path');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const {
   NativeFederationTypeScriptRemote,
 } = require('@module-federation/native-federation-typescript/webpack');
@@ -10,6 +10,7 @@ const {
 const deps = require('./package.json').dependencies;
 
 const moduleFederationConfig = {
+  experiments: { asyncStartup: true },
   name: 'moduleFederationTypescript',
   filename: 'remoteEntry.js',
   exposes: {

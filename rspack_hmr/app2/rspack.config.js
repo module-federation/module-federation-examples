@@ -3,8 +3,6 @@ const refreshPlugin = require('@rspack/plugin-react-refresh');
 const isDev = process.env.NODE_ENV === 'development';
 
 const path = require('path');
-const deps = require('./package.json').dependencies;
-console.log({ deps });
 const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 
 const name = 'app_02';
@@ -21,9 +19,7 @@ module.exports = {
   },
 
   devtool: 'source-map',
-  optimization: {
-    minimize: false,
-  },
+  optimization: { minimize: false },
   devServer: {
     port: 3001,
     hot: true,
@@ -37,7 +33,6 @@ module.exports = {
       'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
     },
   },
-  optimization: { minimize: false },
   output: {
     path: __dirname + '/dist',
     uniqueName: name1,
@@ -96,6 +91,7 @@ module.exports = {
       publicPath: '/',
     }),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: name,
       filename: 'remoteEntry.js',
       exposes: {

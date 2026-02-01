@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('@module-federation/enhanced').ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const deps = require('./package.json').dependencies;
 module.exports = {
   entry: './src/index',
@@ -37,6 +37,8 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      dts: false,
       name: 'app_02',
       filename: 'remoteEntry.js',
       remotes: {
@@ -47,6 +49,7 @@ module.exports = {
         './Dialog': './src/Dialog',
         './Tabs': './src/Tabs',
       },
+      shareStrategy: 'loaded-first',
       shared: {
         ...deps,
         '@material-ui/core': {
@@ -58,12 +61,12 @@ module.exports = {
         'react-dom': {
           singleton: true,
           requiredVersion: false,
-          eager: true,
+          eager: false,
         },
         react: {
           singleton: true,
           requiredVersion: false,
-          eager: true,
+          eager: false,
         },
       },
     }),

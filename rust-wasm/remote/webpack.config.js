@@ -1,6 +1,6 @@
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 // @TODO: uncomment this if you want to dev on the Rust src code.
 const WasmPackPlugin = require('@wasm-tool/wasm-pack-plugin');
@@ -40,6 +40,7 @@ module.exports = {
     // }),
 
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'GameOfLifeModule',
       filename: 'remoteEntry.js',
       exposes: {

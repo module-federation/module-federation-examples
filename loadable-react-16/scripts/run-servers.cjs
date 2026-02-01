@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 const { spawn } = require('child_process');
+const fs = require('fs');
+const path = require('path');
 const waitOn = require('wait-on');
 
 const skipBuild = process.argv.includes('--skip-build');
@@ -113,15 +115,30 @@ function shutdown(code = 0) {
   });
 }
 
+async function ensureServerBundle(appDirName) {
+  const serverEntry = path.join(__dirname, '..', appDirName, 'dist', 'server', 'main.js');
+  if (fs.existsSync(serverEntry)) {
+    return;
+  }
+
+  console.warn(`[serve] Missing ${appDirName}/dist/server/main.js; rebuilding server bundle...`);
+  await runCommand(['--filter', `loadable-react-16_${appDirName}`, 'build:server'], `Rebuild ${appDirName} server`);
+
+  if (!fs.existsSync(serverEntry)) {
+    throw new Error(`[serve] Still missing server entry after rebuild: ${serverEntry}`);
+  }
+}
+
 async function main() {
   try {
     if (!skipBuild) {
       console.log('Building loadable-react-16 applications...');
-      await runCommand(['--filter', 'loadable-react-16_*', 'build'], 'Build command');
+      await runCommand(['--filter', 'loadable-react-16_*', '--workspace-concurrency=1', 'build'], 'Build command');
       console.log('Build completed successfully.');
     }
 
     console.log('Starting loadable-react-16_app2 server...');
+    await ensureServerBundle('app2');
     spawnServer(['--filter', 'loadable-react-16_app2', 'serve'], 'loadable-react-16_app2 serve');
 
     console.log('Waiting for app2 remote assets to become available...');
@@ -131,6 +148,7 @@ async function main() {
     ]);
     console.log('App2 remote assets are available. Starting loadable-react-16_app1 server...');
 
+    await ensureServerBundle('app1');
     spawnServer(['--filter', 'loadable-react-16_app1', 'serve'], 'loadable-react-16_app1 serve');
   } catch (error) {
     console.error(error && error.message ? error.message : error);

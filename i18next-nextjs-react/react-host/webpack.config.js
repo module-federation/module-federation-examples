@@ -1,5 +1,5 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 const deps = require('./package.json').dependencies;
 module.exports = {
@@ -45,6 +45,7 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'react_host',
       filename: 'remoteEntry.js',
       remotes: {

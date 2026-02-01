@@ -9,11 +9,11 @@
     "legacy:build": "pnpm --filter different-react-versions-isolated_app* --parallel legacy:build",
     "serve": "pnpm --filter different-react-versions-isolated_app* --parallel serve",
     "clean": "pnpm --filter different-react-versions-isolated_app* --parallel clean",
-    "e2e:ci": "pnpm exec playwright test",
-    "legacy:e2e:ci": "pnpm exec playwright test"
+    "e2e:ci": "pnpm exec playwright test --config ./playwright.config.ts --reporter=list",
+    "legacy:e2e:ci": "LEGACY_START=true pnpm exec playwright test --config ./playwright.config.ts --reporter=list"
   },
   "devDependencies": {
-    "@playwright/test": "1.57.0",
+    "@playwright/test": "1.58.1",
     "wait-on": "7.2.0"
   }
 }

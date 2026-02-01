@@ -2,11 +2,12 @@
   "name": "vue3-cli-demo",
   "description": "Vue 3 using vue-cli OR rsbuild",
   "private": true,
+  "version": "0.0.0",
   "scripts": {
     "test:e2e": "pnpm exec playwright test",
     "e2e:ci": "pnpm exec playwright test --reporter=line"
   },
   "devDependencies": {
-    "@playwright/test": "1.57.0"
+    "@playwright/test": "1.58.1"
   }
 }

@@ -41,6 +41,7 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'main_app',
       remotes: {
         'lib-app': 'lib_app@http://localhost:3000/remoteEntry.js',

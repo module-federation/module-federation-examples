@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 
 const deps = require('./package.json').dependencies;
@@ -7,7 +7,14 @@ const deps = require('./package.json').dependencies;
 module.exports = {
   entry: './src/index',
   mode: 'development',
+  target: 'web',
   devServer: {
+    // App2 is loaded as a remote into App1 (different origin). The injected
+    // webpack-dev-server client/overlay can crash the host page when executed
+    // cross-origin, which breaks the Playwright E2E. Disable it for stability.
+    client: false,
+    hot: false,
+    liveReload: false,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
@@ -20,10 +27,15 @@ module.exports = {
   },
   output: {
     publicPath: 'auto',
+    // Avoid webpack-dev-server warning overlay from MF "external script" loader code.
+    environment: { asyncFunction: true },
   },
   resolve: {
     alias: {
       'shared-context_shared-library': path.resolve(__dirname, '../shared-library'),
+      // Ensure the shared library resolves the same React instance as this app.
+      react: path.resolve(__dirname, 'node_modules/react'),
+      'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
     },
   },
   module: {
@@ -40,6 +52,7 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app2',
       filename: 'remoteEntry.js',
       exposes: {

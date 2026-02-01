@@ -53,6 +53,8 @@ module.exports = {
   mode,
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      dts: false,
       name: 'app_03',
       filename: 'remoteEntry.js',
       remotes: {
@@ -61,16 +63,17 @@ module.exports = {
       exposes: {
         './Button': './src/Button',
       },
+      shareStrategy: 'loaded-first',
       shared: {
         'react-dom': {
           singleton: true,
           requiredVersion: false,
-          eager: true,
+          eager: false,
         },
         react: {
           singleton: true,
           requiredVersion: false,
-          eager: true,
+          eager: false,
         },
       },
     }),

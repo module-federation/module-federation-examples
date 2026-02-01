@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const { RsdoctorWebpackPlugin } = require('@rsdoctor/webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
@@ -67,6 +67,8 @@ module.exports = {
   plugins: [
     isDevelopment && new ReactRefreshWebpackPlugin(),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      dts: false,
       name: 'app_01',
       filename: 'remoteEntry.js',
       remotes: {
@@ -79,6 +81,7 @@ module.exports = {
         './SideNav': './src/SideNav',
         './Page': './src/Page',
       },
+      shareStrategy: 'loaded-first',
       shared: {
         ...deps,
         '@material-ui/core': {

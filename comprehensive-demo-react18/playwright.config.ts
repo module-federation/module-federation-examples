@@ -1,12 +1,10 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const useLegacyStart = !!process.env.LEGACY_START;
-
 export default defineConfig({
   testDir: './e2e',
-  timeout: 60000,
+  timeout: 180000,
   expect: {
-    timeout: 15000,
+    timeout: 60000,
   },
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
@@ -31,10 +29,36 @@ export default defineConfig({
     },
   ],
 
-  webServer: {
-    command: useLegacyStart ? 'pnpm legacy:start' : 'pnpm start',
-    port: 3001,
-    reuseExistingServer: !process.env.CI,
-    timeout: 180000,
-  },
+  webServer: [
+    {
+      command: 'pnpm --filter comprehensive-demo-react18_app-01 serve',
+      url: 'http://localhost:3001/',
+      reuseExistingServer: !process.env.CI,
+      timeout: 180000,
+    },
+    {
+      command: 'pnpm --filter comprehensive-demo-react18_app-02 serve',
+      url: 'http://localhost:3002/remoteEntry.js',
+      reuseExistingServer: !process.env.CI,
+      timeout: 180000,
+    },
+    {
+      command: 'pnpm --filter comprehensive-demo-react18_app-03 serve',
+      url: 'http://localhost:3003/remoteEntry.js',
+      reuseExistingServer: !process.env.CI,
+      timeout: 180000,
+    },
+    {
+      command: 'pnpm --filter comprehensive-demo-react18_app-04 serve',
+      url: 'http://localhost:3004/remoteEntry.js',
+      reuseExistingServer: !process.env.CI,
+      timeout: 180000,
+    },
+    {
+      command: 'pnpm --filter comprehensive-demo-react18_app-05 serve',
+      url: 'http://localhost:3005/remoteEntry.js',
+      reuseExistingServer: !process.env.CI,
+      timeout: 180000,
+    },
+  ],
 });

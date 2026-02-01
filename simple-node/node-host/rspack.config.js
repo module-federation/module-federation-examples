@@ -1,5 +1,4 @@
-const { HtmlRspackPlugin} = require('@rspack/core')
-const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 const path = require('path');
 
 module.exports = {
@@ -22,12 +21,14 @@ module.exports = {
     },
     onAfterSetupMiddleware: function () {
       setTimeout(() => {
-        const app = require('./dist/server.js');
+        // Require the built server file to boot the Node host after dev middleware emits it.
+        require('./dist/server.js');
       }, 3000);
     },
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       remoteType: 'script',
       name: 'node_host',
       runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],

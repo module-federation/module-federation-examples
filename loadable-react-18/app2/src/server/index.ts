@@ -12,7 +12,7 @@ app.use('/static', express.static(path.join(process.cwd(), 'dist/client')));
 // =================== WARNING ===================
 app.use('/server', express.static(path.join(process.cwd(), 'dist/server')));
 
-app.get('/*', async (req, res, next) => (await import('./serverRender')).default(req, res, next));
+app.get(/.*/, async (req, res, next) => (await import('./serverRender')).default(req, res, next));
 
 app.listen(PORT, () => {
   console.info(`[${new Date().toISOString()}]`, `App2 is running: 🌎 http://localhost:${PORT}`);

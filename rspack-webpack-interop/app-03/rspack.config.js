@@ -49,12 +49,18 @@ module.exports = {
       exposes: {
         './Button': './src/Button',
       },
+      experiments: {
+        asyncStartup: true,
+      },
+      shareStrategy: 'loaded-first',
       shared: {
         'react-dom': {
           singleton: true,
+          eager: true,
         },
         react: {
           singleton: true,
+          eager: true,
         },
       },
     }),

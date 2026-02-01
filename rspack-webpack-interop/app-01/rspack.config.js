@@ -57,19 +57,27 @@ module.exports = {
         './SideNav': './src/SideNav',
         './Page': './src/Page',
       },
+      experiments: {
+        asyncStartup: true,
+      },
+      shareStrategy: 'loaded-first',
       shared: {
         ...deps,
         '@material-ui/core': {
           singleton: true,
+          eager: true,
         },
         'react-router-dom': {
           singleton: true,
+          eager: true,
         },
         'react-dom': {
           singleton: true,
+          eager: true,
         },
         react: {
           singleton: true,
+          eager: true,
         },
       },
     }),

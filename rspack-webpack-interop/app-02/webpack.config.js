@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const deps = require('./package.json').dependencies;
 module.exports = {
   entry: './src/index',
@@ -52,6 +52,10 @@ module.exports = {
         './Dialog': './src/Dialog',
         './Tabs': './src/Tabs',
       },
+      experiments: {
+        asyncStartup: true,
+      },
+      shareStrategy: 'loaded-first',
       shared: {
         ...deps,
         '@material-ui/core': {

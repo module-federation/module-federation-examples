@@ -103,6 +103,17 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
+      - name: Free disk space
+        shell: bash
+        run: |
+          echo "Freeing disk space on runner..."
+          while IFS= read -r cmd; do
+            [ -z "$cmd" ] && continue
+            echo ">> $cmd"
+            bash -lc "$cmd" || true
+          done <<< "$FILES_TO_DELETE"
+          df -h
+
       - name: Get Playwright version
         id: playwright-version
         shell: bash
@@ -143,10 +154,8 @@ jobs:
         id: playwright-cache
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}
-          restore-keys: |
-            playwright-${{ runner.os }}-
-            
+          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}-headless-shell
+
       - name: Set Playwright cache status
         run: echo "PLAYWRIGHT_CACHE_HIT=${{ steps.playwright-cache.outputs.cache-hit }}" >> $GITHUB_ENV
 
@@ -154,11 +163,12 @@ jobs:
         run: |
           echo "Installing all dependencies to populate cache..."
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 pnpm install --frozen-lockfile --prefer-offline
-          
-      - name: Install Playwright browsers
+
+      - name: Install Playwright with deps
         run: |
-          # Populate the shared browser cache once per workflow run (no system deps here).
-          pnpm exec playwright install chromium
+          # Install both system deps and browser in setup-matrix.
+          # The browser cache will be shared with e2e jobs.
+          pnpm exec playwright install --with-deps chromium chromium-headless-shell
 
       - name: Create matrix
         id: set-matrix
@@ -185,6 +195,17 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 1
+
+      - name: Free disk space
+        shell: bash
+        run: |
+          echo "Freeing disk space on runner..."
+          while IFS= read -r cmd; do
+            [ -z "$cmd" ] && continue
+            echo ">> $cmd"
+            bash -lc "$cmd" || true
+          done <<< "$FILES_TO_DELETE"
+          df -h
 
       - name: Get Playwright version
         id: playwright-version
@@ -228,9 +249,7 @@ jobs:
         id: playwright-cache
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}
-          restore-keys: |
-            playwright-${{ runner.os }}-
+          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}-headless-shell
           fail-on-cache-miss: false
 
       - name: Install dependencies
@@ -242,18 +261,23 @@ jobs:
           echo "Installing dependencies from cached pnpm store..."
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 pnpm install --frozen-lockfile --prefer-offline
 
-      - name: Install Playwright browsers for projects that use it
+      - name: Install Playwright browsers and deps
         run: |
-          # Ensure system deps are present on the runner, then ensure the browser is installed.
-          pnpm exec playwright install-deps chromium
-          pnpm exec playwright install chromium
+          # Install both browser and system deps.
+          # Use --with-deps to install system dependencies alongside browser.
+          # Retry up to 3 times to handle apt lock contention from parallel jobs.
+          for i in 1 2 3; do
+            pnpm exec playwright install --with-deps chromium chromium-headless-shell && break
+            echo "Attempt $i failed, retrying in 10 seconds..."
+            sleep 10
+          done
 
       - name: Run sample webpack e2e tests
         timeout-minutes: 30
         id: run-webpack-e2e-tests
         run: |
           node -v
-          pnpm --filter "${{ matrix.container }}" legacy:e2e:ci
+          pnpm --filter "${{ matrix.container }}" run --if-present legacy:e2e:ci
           (lsof -i tcp:3000-3999 -i tcp:4000-4999 -i tcp:8080-8100 | awk 'NR!=1 {print $2}' | xargs -r kill) 2> /dev/null
 
       - name: Run sample rspack e2e tests
@@ -261,7 +285,7 @@ jobs:
         id: run-rspack-e2e-tests
         run: |
           node -v
-          pnpm --filter "${{ matrix.container }}" e2e:ci
+          pnpm --filter "${{ matrix.container }}" run --if-present e2e:ci
           (lsof -i tcp:3000-3999 -i tcp:4000-4999 -i tcp:8080-8100 | awk 'NR!=1 {print $2}' | xargs -r kill) 2> /dev/null
 
       - name: Create artifacts for test reports

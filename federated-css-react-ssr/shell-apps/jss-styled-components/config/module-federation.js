@@ -1,10 +1,11 @@
 const deps = require('../package.json').dependencies;
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const { UniversalFederationPlugin } = require('@module-federation/node');
 
 module.exports = {
   client: new ModuleFederationPlugin({
-    name: 'shell',
+    experiments: { asyncStartup: true },
+      name: 'shell',
     filename: 'container.js',
     remotes: {
       expose_styled_component:
@@ -32,6 +33,7 @@ module.exports = {
     new UniversalFederationPlugin({
       isServer: true,
       useRuntimePlugin: true,
+      remoteType: 'script',
       name: 'shell',
       library: { type: 'commonjs-module' },
       filename: 'remoteEntry.js',

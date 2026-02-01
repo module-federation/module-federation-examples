@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -13,6 +13,7 @@ module.exports = {
   resolve: { extensions: ['.js', '.jsx'] },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'host',
       remotes: {
         'remotevite': `promise import('http://127.0.0.1:3001/remoteEntry.js')

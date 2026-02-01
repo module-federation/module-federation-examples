@@ -55,6 +55,7 @@ const webpackConfig = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app2',
       library: { type: 'var', name: 'app2' },
       filename: 'remoteEntry.js',

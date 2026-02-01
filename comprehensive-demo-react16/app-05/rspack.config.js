@@ -68,6 +68,8 @@ module.exports = {
   mode,
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      dts: false,
       name: 'app_05',
       filename: 'remoteEntry.js',
       exposes: {
@@ -75,6 +77,7 @@ module.exports = {
         './AlertBox': './src/components/alert-box.ts',
         './components': './src/index.ts',
       },
+      shareStrategy: 'loaded-first',
       shared: [],
     }),
     new HtmlRspackPlugin({

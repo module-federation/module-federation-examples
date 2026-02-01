@@ -4,16 +4,16 @@
   "version": "0.0.1",
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "pnpm --filter loadable-react-18_* build",
-    "serve": "pnpm --filter loadable-react-18_* --parallel serve",
+    "build": "pnpm --filter loadable-react-18_* --workspace-concurrency=1 build",
+    "serve": "node scripts/serve.js",
     "clean": "pnpm --filter loadable-react-18_* --parallel clean",
     "pretest:e2e": "pnpm build",
     "test:e2e": "pnpm exec playwright test",
     "e2e:ci": "pnpm build && pnpm exec playwright test --reporter=list"
   },
   "devDependencies": {
-    "@playwright/test": "1.57.0",
-    "playwright": "1.57.0",
+    "@playwright/test": "1.58.1",
+    "playwright": "1.58.1",
     "wait-on": "7.2.0"
   }
 }

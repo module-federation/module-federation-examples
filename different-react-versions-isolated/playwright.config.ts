@@ -1,5 +1,7 @@
 import { defineConfig } from '@playwright/test';
 
+const useLegacyStart = !!process.env.LEGACY_START;
+
 export default defineConfig({
   testDir: './e2e',
   timeout: 120_000,
@@ -14,7 +16,7 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   webServer: {
-    command: 'pnpm run start',
+    command: useLegacyStart ? 'pnpm run legacy:start' : 'pnpm run start',
     url: 'http://localhost:3001',
     timeout: 180_000,
     reuseExistingServer: !process.env.CI,
