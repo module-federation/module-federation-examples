@@ -72,6 +72,7 @@ test.describe('React in Vue', () => {
           await basePage.expectElementWithTextPresence({
             selector: baseSelectors.tags.coreElements.spans.span,
             text: app.checkboxLabel!,
+            nth: 0,
           });
 
           const checkbox = page.locator(checkboxSelector);
@@ -81,11 +82,13 @@ test.describe('React in Vue', () => {
           await basePage.expectElementWithTextPresence({
             selector: baseSelectors.tags.coreElements.spans.span,
             text: app.buttonTextLabel!,
+            nth: 1,
           });
 
           await basePage.expectElementWithTextPresence({
             selector: baseSelectors.tags.coreElements.spans.span,
             text: app.counterLabel!,
+            nth: 2,
           });
 
           await basePage.expectElementWithTextPresence({

@@ -31,19 +31,19 @@ export default defineConfig({
   ],
   webServer: [
     {
-      command: `pnpm run --filter nextjs-dynamic-ssr_checkout ${isCI ? 'start' : 'dev'}`,
+      command: 'pnpm run --filter nextjs-dynamic-ssr_checkout dev',
       port: 3000,
       reuseExistingServer: !isCI,
       timeout: 180_000,
     },
     {
-      command: `pnpm run --filter nextjs-dynamic-ssr_home ${isCI ? 'start' : 'dev'}`,
+      command: 'pnpm run --filter nextjs-dynamic-ssr_home dev',
       port: 3001,
       reuseExistingServer: !isCI,
       timeout: 180_000,
     },
     {
-      command: `pnpm run --filter nextjs-dynamic-ssr_shop ${isCI ? 'start' : 'dev'}`,
+      command: 'pnpm run --filter nextjs-dynamic-ssr_shop dev',
       port: 3002,
       reuseExistingServer: !isCI,
       timeout: 180_000,
