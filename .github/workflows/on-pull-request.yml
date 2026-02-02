@@ -151,6 +151,7 @@ jobs:
     needs: [setup-matrix]
     if: ${{ needs.setup-matrix.outputs.matrix != '{"container":[]}' }}
     runs-on: ubuntu-22.04
+    timeout-minutes: 45
     strategy:
       fail-fast: false
       matrix: ${{fromJson(needs.setup-matrix.outputs.matrix)}}
