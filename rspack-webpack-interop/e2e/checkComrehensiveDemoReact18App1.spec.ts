@@ -132,10 +132,9 @@ test.describe('Comprehensive Demo App1', () => {
       'href',
       'http://localhost:3003/',
     );
-    await expect(page.locator('a[href="http://localhost:3001/#/routing/foo"]').first()).toHaveAttribute(
-      'href',
-      'http://localhost:3001/#/routing/foo',
-    );
+    await expect(
+      page.locator('a[href="http://localhost:3001/#/routing/foo"]').first(),
+    ).toHaveAttribute('href', 'http://localhost:3001/#/routing/foo');
 
     const styledButton = page.getByRole('button', { name: '💅 Button' });
     await expect(styledButton).toBeVisible();
@@ -174,7 +173,9 @@ test.describe('Comprehensive Demo App1', () => {
 
     await expect(page.locator('input[type="text"]').first()).toBeVisible();
     await page.fill('input[type="text"]', 'Module Federation rocks!');
-    await expect(page.getByRole('heading', { name: 'Hello From Svelte Module Federation rocks!!' })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: 'Hello From Svelte Module Federation rocks!!' }),
+    ).toBeVisible();
   });
 
   test('routing page renders federated tabs', async ({ page }) => {

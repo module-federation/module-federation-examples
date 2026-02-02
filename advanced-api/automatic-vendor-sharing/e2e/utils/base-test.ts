@@ -19,7 +19,7 @@ export class BasePage {
   async checkElementBackgroundColor(selector: string, expectedColor: string) {
     const element = this.page.locator(selector);
     await element.waitFor({ state: 'visible' });
-    const backgroundColor = await element.evaluate((el) => {
+    const backgroundColor = await element.evaluate(el => {
       return window.getComputedStyle(el).backgroundColor;
     });
     if (backgroundColor !== expectedColor) {

@@ -19,7 +19,11 @@ async function waitUrl(url, timeout = 600000) {
     if (Date.now() - start > timeout) {
       try {
         const { execSync } = require('node:child_process');
-        const ss = execSync(`ss -ltnp | grep :${target.port} || true`, { stdio: ['ignore','pipe','ignore'] }).toString().trim();
+        const ss = execSync(`ss -ltnp | grep :${target.port} || true`, {
+          stdio: ['ignore', 'pipe', 'ignore'],
+        })
+          .toString()
+          .trim();
         if (ss) console.log(`[prewarm] port diag ${target.port}: ${ss}`);
       } catch {}
       const message = `prewarm timeout for ${target.href}`;

@@ -26,7 +26,9 @@ test.describe('Complete React case', () => {
       completeReactCaseApp.paragraphs.secondParagraph,
     );
     await expect(
-      page.locator(selectors.sectionTitle).filter({ hasText: completeReactCaseApp.buttons.h4Buttons }),
+      page
+        .locator(selectors.sectionTitle)
+        .filter({ hasText: completeReactCaseApp.buttons.h4Buttons }),
     ).toBeVisible();
     await expect(
       page.locator(selectors.sectionTitle).filter({ hasText: completeReactCaseApp.h4Dialog }),

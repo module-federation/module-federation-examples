@@ -1,5 +1,5 @@
 const path = require('path');
-const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 
 module.exports = {
   mode: 'development',

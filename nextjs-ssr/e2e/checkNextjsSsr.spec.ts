@@ -106,7 +106,10 @@ const buildPathRegex = (port: number, path: string): RegExp => {
   return new RegExp(`^http://localhost:${port}${escapedPath}(?:\\/)?$`);
 };
 
-async function openLocalhost(page: Page, { port, path }: { port: number; path?: string }): Promise<void> {
+async function openLocalhost(
+  page: Page,
+  { port, path }: { port: number; path?: string },
+): Promise<void> {
   const normalizedPath = path ? (path.startsWith('/') ? path : `/${path}`) : '';
   const url = `http://localhost:${port}${normalizedPath}`;
   const deadline = Date.now() + 60_000;
@@ -151,10 +154,15 @@ const expectSharedNavigation = async (page: Page): Promise<void> => {
 
 const expectHomePageContent = async (page: Page): Promise<void> => {
   await expect(
-    page.getByRole('heading', { level: 1, name: createFlexibleRegExp(Constants.elementsText.nextJsSsrApp.texts.text3) }),
+    page.getByRole('heading', {
+      level: 1,
+      name: createFlexibleRegExp(Constants.elementsText.nextJsSsrApp.texts.text3),
+    }),
   ).toBeVisible();
 
-  await expect(page.getByText(Constants.elementsText.nextJsSsrApp.texts.text4, { exact: false })).toBeVisible();
+  await expect(
+    page.getByText(Constants.elementsText.nextJsSsrApp.texts.text4, { exact: false }),
+  ).toBeVisible();
 
   await expect(
     page.getByRole('heading', {
@@ -163,7 +171,9 @@ const expectHomePageContent = async (page: Page): Promise<void> => {
     }),
   ).toBeVisible();
 
-  await expect(page.getByText(Constants.elementsText.nextJsSsrApp.texts.text5, { exact: false })).toBeVisible();
+  await expect(
+    page.getByText(Constants.elementsText.nextJsSsrApp.texts.text5, { exact: false }),
+  ).toBeVisible();
 };
 
 const expectHomeTiles = async (page: Page): Promise<void> => {
@@ -176,7 +186,10 @@ const expectHomeTiles = async (page: Page): Promise<void> => {
 
 const expectShopContent = async (page: Page): Promise<void> => {
   await expect(
-    page.getByRole('heading', { level: 1, name: createFlexibleRegExp(Constants.elementsText.nextJsSsrApp.pages.shopPage) }),
+    page.getByRole('heading', {
+      level: 1,
+      name: createFlexibleRegExp(Constants.elementsText.nextJsSsrApp.pages.shopPage),
+    }),
   ).toBeVisible();
 
   await expect(
@@ -200,7 +213,9 @@ const expectCheckoutContent = async (page: Page): Promise<void> => {
     page.getByText(Constants.elementsText.nextJsSsrApp.texts.text1.trim(), { exact: false }),
   ).toBeVisible();
 
-  await expect(page.getByText(Constants.elementsText.nextJsSsrApp.texts.text2, { exact: false })).toBeVisible();
+  await expect(
+    page.getByText(Constants.elementsText.nextJsSsrApp.texts.text2, { exact: false }),
+  ).toBeVisible();
 };
 
 const expectNavigationFlow = async (page: Page, port: number): Promise<void> => {

@@ -42,7 +42,7 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
-...mfeBaseConfig,
+      ...mfeBaseConfig,
       name: cssModule.name,
       exposes: {
         // './CssModule': './src/Button.styles.module.css',

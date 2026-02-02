@@ -36,7 +36,11 @@ async function getConsoleLogCount(page: Page, message: string): Promise<number> 
   }, message);
 }
 
-async function waitForConsoleLog(page: Page, message: string, timeout: number = 5_000): Promise<void> {
+async function waitForConsoleLog(
+  page: Page,
+  message: string,
+  timeout: number = 5_000,
+): Promise<void> {
   const start = Date.now();
   while (Date.now() - start < timeout) {
     if ((await getConsoleLogCount(page, message)) > 0) {

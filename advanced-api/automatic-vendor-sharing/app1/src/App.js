@@ -6,25 +6,29 @@ const RemoteButton = React.lazy(() => import('app2/Button'));
 
 // Enhanced loading component with visual feedback
 const LoadingFallback = ({ message = 'Loading remote module...' }) => (
-  <div style={{
-    padding: '16px',
-    backgroundColor: '#f0f8ff',
-    border: '1px solid #b3d9ff',
-    borderRadius: '4px',
-    textAlign: 'center',
-    margin: '10px 0',
-    animation: 'pulse 1.5s ease-in-out infinite'
-  }}>
-    <div style={{
-      display: 'inline-block',
-      width: '16px',
-      height: '16px',
-      border: '2px solid #0066cc',
-      borderTop: '2px solid transparent',
-      borderRadius: '50%',
-      animation: 'spin 1s linear infinite',
-      marginRight: '8px'
-    }} />
+  <div
+    style={{
+      padding: '16px',
+      backgroundColor: '#f0f8ff',
+      border: '1px solid #b3d9ff',
+      borderRadius: '4px',
+      textAlign: 'center',
+      margin: '10px 0',
+      animation: 'pulse 1.5s ease-in-out infinite',
+    }}
+  >
+    <div
+      style={{
+        display: 'inline-block',
+        width: '16px',
+        height: '16px',
+        border: '2px solid #0066cc',
+        borderTop: '2px solid transparent',
+        borderRadius: '50%',
+        animation: 'spin 1s linear infinite',
+        marginRight: '8px',
+      }}
+    />
     {message}
     <style>{`
       @keyframes spin {
@@ -46,19 +50,30 @@ const App = () => {
   useEffect(() => {
     // Monitor shared dependencies for educational purposes
     const startTime = Date.now();
-    import('app2/Button').then(() => {
-      const loadTime = Date.now() - startTime;
-      setRemoteLoadTime(loadTime);
-    }).catch(console.error);
+    import('app2/Button')
+      .then(() => {
+        const loadTime = Date.now() - startTime;
+        setRemoteLoadTime(loadTime);
+      })
+      .catch(console.error);
 
     // Simulate checking shared dependencies (in real app, this would come from Module Federation runtime)
     setSharedDependencies(['react', 'react-dom']);
   }, []);
 
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', padding: '20px', maxWidth: '800px', margin: '0 auto' }}>
+    <div
+      style={{
+        fontFamily: 'Arial, sans-serif',
+        padding: '20px',
+        maxWidth: '800px',
+        margin: '0 auto',
+      }}
+    >
       <header style={{ marginBottom: '30px', textAlign: 'center' }}>
-        <h1 style={{ color: '#333', marginBottom: '10px' }}>Module Federation with Automatic Vendor Sharing</h1>
+        <h1 style={{ color: '#333', marginBottom: '10px' }}>
+          Module Federation with Automatic Vendor Sharing
+        </h1>
         <h2 style={{ color: '#800', fontWeight: 'normal' }}>App 1 (Host & Remote)</h2>
         <p style={{ color: '#666', fontSize: '14px' }}>
           Demonstrating intelligent dependency sharing across microfrontends
@@ -88,18 +103,26 @@ const App = () => {
         </section>
       </div>
 
-      <section style={{ marginTop: '30px', padding: '20px', backgroundColor: '#e8f5e8', borderRadius: '8px' }}>
+      <section
+        style={{
+          marginTop: '30px',
+          padding: '20px',
+          backgroundColor: '#e8f5e8',
+          borderRadius: '8px',
+        }}
+      >
         <h3 style={{ marginTop: 0, color: '#2d5016' }}>Automatic Vendor Sharing Info</h3>
         <p style={{ fontSize: '14px', lineHeight: '1.5', marginBottom: '10px' }}>
-          This example demonstrates AutomaticVendorFederation, which intelligently shares dependencies
-          between microfrontends to optimize bundle sizes and prevent duplicate code.
+          This example demonstrates AutomaticVendorFederation, which intelligently shares
+          dependencies between microfrontends to optimize bundle sizes and prevent duplicate code.
         </p>
         <div style={{ fontSize: '12px', color: '#2d5016' }}>
           <strong>Shared Dependencies:</strong> {sharedDependencies.join(', ')}
           <br />
           <strong>Load Strategy:</strong> loaded-first (uses the first loaded version)
           <br />
-          <strong>Benefits:</strong> Reduced bundle size, faster loading, consistent dependency versions
+          <strong>Benefits:</strong> Reduced bundle size, faster loading, consistent dependency
+          versions
         </div>
       </section>
     </div>

@@ -157,10 +157,9 @@ test.describe('Comprehensive Demo App1', () => {
       'href',
       'http://localhost:3003/',
     );
-    await expect(page.locator('a[href="http://localhost:3001/#/routing/foo"]').first()).toHaveAttribute(
-      'href',
-      'http://localhost:3001/#/routing/foo',
-    );
+    await expect(
+      page.locator('a[href="http://localhost:3001/#/routing/foo"]').first(),
+    ).toHaveAttribute('href', 'http://localhost:3001/#/routing/foo');
 
     const styledButton = page.getByRole('button', { name: '💅 Button' });
     await expect(styledButton).toBeVisible();

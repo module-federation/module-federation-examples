@@ -13,10 +13,7 @@ export const Constants = {
   },
   commonPhrases: {
     dynamicRemotesApp: {
-      widgetParagraphText: [
-        "Moment shouldn't download twice",
-        "Moment shouldn't download twice"
-      ],
+      widgetParagraphText: ["Moment shouldn't download twice", "Moment shouldn't download twice"],
     },
   },
   color: {

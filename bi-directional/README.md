@@ -34,8 +34,9 @@ Notice that each app will asynchronously load the other app's federated button c
 ## Module Federation Configuration
 
 Each app uses inline Module Federation config passed to `moduleFederationPlugin()` in `modern.config.js`:
+
 - **Exposed modules**: Components shared with other apps
-- **Remote modules**: Components consumed from other apps  
+- **Remote modules**: Components consumed from other apps
 - **Shared dependencies**: React and React-DOM with singleton strategy
 
 ## End-to-End Testing with Playwright
@@ -67,6 +68,7 @@ pnpm e2e:ci
 ### Test Architecture
 
 The test suite includes:
+
 - **Page Objects**: Reusable test utilities in `e2e/utils/`
 - **Test Fixtures**: Shared setup and teardown logic
 - **Comprehensive Coverage**: All module federation scenarios

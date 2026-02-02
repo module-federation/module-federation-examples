@@ -39,17 +39,21 @@ const App = () => (
 
     <div style={buttonContainerStyle}>
       <LocalButton />
-      <React.Suspense fallback={
-        <div style={{ 
-          padding: '12px 24px',
-          background: '#f0f0f0',
-          borderRadius: '6px',
-          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
-          color: '#666'
-        }}>
-          Loading Button...
-        </div>
-      }>
+      <React.Suspense
+        fallback={
+          <div
+            style={{
+              padding: '12px 24px',
+              background: '#f0f0f0',
+              borderRadius: '6px',
+              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
+              color: '#666',
+            }}
+          >
+            Loading Button...
+          </div>
+        }
+      >
         <RemoteButton />
       </React.Suspense>
     </div>

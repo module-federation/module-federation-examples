@@ -37,7 +37,4 @@ Within this application, we've configured the `remotes` object inside of the `Ne
 - `remote-app` on `localhost:3001`
 - Navigate to `localhost:3000` - Two Button Component should be visible, one from remote and another from host app.
 
-
-
-
 ["Best Practices, Rules amd more interesting information here](../../playwright-e2e/README.md)

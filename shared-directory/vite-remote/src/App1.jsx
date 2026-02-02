@@ -1,6 +1,6 @@
 import React from 'react';
-import file1Default from "shared/dir1/file1";
-import {A} from "shared/file2";
+import file1Default from 'shared/dir1/file1';
+import { A } from 'shared/file2';
 
 export default function () {
   return (

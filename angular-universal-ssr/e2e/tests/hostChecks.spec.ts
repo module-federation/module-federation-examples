@@ -1,7 +1,11 @@
 import { expect, test } from '@playwright/test';
 
 import { BaseMethods } from '../../../playwright-e2e/common/base';
-import { baseSelectors, selectors, updatedSelectors } from '../../../playwright-e2e/common/selectors';
+import {
+  baseSelectors,
+  selectors,
+  updatedSelectors,
+} from '../../../playwright-e2e/common/selectors';
 import { Constants } from '../../../playwright-e2e/fixtures/constants';
 import { CommonTestData } from '../../../playwright-e2e/fixtures/commonTestData';
 import { AngularUniversalSsrMethods } from '../methods/methods';
@@ -69,7 +73,9 @@ test.describe('Angular Universal SSR - Host App', () => {
       .filter({ hasText: Constants.elementsText.angularUniversalSsrApp.inputButtonText })
       .first();
 
-    const background = await button.evaluate(element => window.getComputedStyle(element).getPropertyValue('background-color'));
+    const background = await button.evaluate(element =>
+      window.getComputedStyle(element).getPropertyValue('background-color'),
+    );
     expect(background).toContain(Constants.color.lightGrey);
   });
 

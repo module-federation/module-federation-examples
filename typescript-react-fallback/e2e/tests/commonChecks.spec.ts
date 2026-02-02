@@ -66,7 +66,9 @@ test.describe('TypeScript React fallback apps', () => {
         const alternatePort = getAlternatePort(app.host);
         await page.goto(buildUrl(alternatePort), { waitUntil: 'domcontentloaded' });
 
-        const alternateAppName = await getTrimmedText(page.locator(updatedSelectors.common.appName));
+        const alternateAppName = await getTrimmedText(
+          page.locator(updatedSelectors.common.appName),
+        );
 
         expect(currentAppName).not.toEqual(alternateAppName);
       });

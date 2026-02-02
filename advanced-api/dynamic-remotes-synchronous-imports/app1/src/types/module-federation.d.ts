@@ -16,13 +16,13 @@ declare global {
      * Set this before the application loads to dynamically configure the remote URL
      */
     app2Url?: string;
-    
+
     /**
      * Fallback URL for app2 remote
      * Used when the primary URL fails to load
      */
     app2FallbackUrl?: string;
-    
+
     /**
      * Module Federation debugging utilities
      */
@@ -33,7 +33,7 @@ declare global {
         retryAttempts: Record<string, number>;
       } | null;
     };
-    
+
     /**
      * Internal Module Federation plugin state (for debugging)
      */

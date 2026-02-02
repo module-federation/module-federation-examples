@@ -23,10 +23,9 @@ export default async function (req, res) {
 
   const component = renderToString(
     <Compose
-      providers={[LoaderContext1.StyleContext.Provider, LoaderContext2.StyleContext.Provider].map(p => [
-        p,
-        { value: { insertCss } },
-      ])}
+      providers={[LoaderContext1.StyleContext.Provider, LoaderContext2.StyleContext.Provider].map(
+        p => [p, { value: { insertCss } }],
+      )}
     >
       <div>
         <Helmet>

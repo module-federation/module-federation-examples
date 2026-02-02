@@ -29,12 +29,14 @@ Automatic Vendor Sharing is a Module Federation feature that intelligently analy
 ## Why is it Important?
 
 ### Traditional Problems
+
 - **Bundle Duplication**: Each microfrontend bundles its own copy of shared libraries (React, Lodash, etc.)
 - **Version Conflicts**: Different apps using different versions of the same library
 - **Network Overhead**: Multiple downloads of the same dependencies
 - **Cache Inefficiency**: Browser can't cache shared dependencies effectively
 
 ### Automatic Vendor Sharing Solutions
+
 - **Intelligent Sharing**: Automatically shares compatible dependencies
 - **Reduced Bundle Sizes**: Up to 70% reduction in total JavaScript payload
 - **Faster Loading**: Shared dependencies cached across microfrontends
@@ -74,7 +76,8 @@ This example features two React applications (`app1` and `app2`) that:
 ## Quick Start
 
 ### Prerequisites
-- Node.js 16+ 
+
+- Node.js 16+
 - pnpm (recommended) or npm/yarn
 
 ### Installation & Running
@@ -92,6 +95,7 @@ pnpm --filter automatic-vendor-sharing_app2 start
 ```
 
 ### Available URLs
+
 - **App 1**: [http://localhost:3001](http://localhost:3001)
 - **App 2**: [http://localhost:3002](http://localhost:3002)
 
@@ -112,6 +116,7 @@ pnpm serve
 ## Architecture Overview
 
 ### File Structure
+
 ```
 automatice-vendor-sharing/
 ├── app1/
@@ -133,6 +138,7 @@ automatice-vendor-sharing/
 ```
 
 ### Technology Stack
+
 - **React 18**: Latest React with concurrent features
 - **Module Federation Enhanced**: Latest MF with AutomaticVendorFederation
 - **TypeScript**: Type safety for federated modules
@@ -189,12 +195,12 @@ shared: {
 
 ### AutomaticVendorFederation Options
 
-| Option | Description | Example |
-|--------|-------------|----------|
-| `exclude` | Dependencies to never share automatically | `['@module-federation/enhanced']` |
-| `ignoreVersion` | Dependencies where version mismatches are acceptable | `['react', 'react-dom']` |
-| `shareStrategy` | How to resolve version conflicts | `'loaded-first'`, `'version-first'` |
-| `eager` | Load dependencies immediately vs on-demand | `false` (recommended for production) |
+| Option          | Description                                          | Example                              |
+| --------------- | ---------------------------------------------------- | ------------------------------------ |
+| `exclude`       | Dependencies to never share automatically            | `['@module-federation/enhanced']`    |
+| `ignoreVersion` | Dependencies where version mismatches are acceptable | `['react', 'react-dom']`             |
+| `shareStrategy` | How to resolve version conflicts                     | `'loaded-first'`, `'version-first'`  |
+| `eager`         | Load dependencies immediately vs on-demand           | `false` (recommended for production) |
 
 ### Share Strategies
 
@@ -228,33 +234,37 @@ shared: {
 
 ### AutomaticVendorFederation Benefits
 
-| Aspect | Manual Sharing | Automatic Sharing |
-|--------|---------------|------------------|
-| **Setup Time** | Hours of configuration | Minutes |
-| **Maintenance** | Update for every new dependency | Zero maintenance |
-| **Error Rate** | High (manual version management) | Low (automatic detection) |
-| **Bundle Optimization** | Inconsistent | Consistently optimized |
-| **Version Conflicts** | Manual resolution required | Automatic resolution |
-| **New Dependencies** | Must manually configure | Automatically included |
+| Aspect                  | Manual Sharing                   | Automatic Sharing         |
+| ----------------------- | -------------------------------- | ------------------------- |
+| **Setup Time**          | Hours of configuration           | Minutes                   |
+| **Maintenance**         | Update for every new dependency  | Zero maintenance          |
+| **Error Rate**          | High (manual version management) | Low (automatic detection) |
+| **Bundle Optimization** | Inconsistent                     | Consistently optimized    |
+| **Version Conflicts**   | Manual resolution required       | Automatic resolution      |
+| **New Dependencies**    | Must manually configure          | Automatically included    |
 
 ## Common Use Cases
 
 ### 1. Microfrontend Architecture
+
 - **Multiple Teams**: Each team owns independent applications
 - **Shared Libraries**: Common design system, utilities, or frameworks
 - **Independent Deployment**: Teams deploy without coordinating dependencies
 
 ### 2. Plugin Systems
+
 - **Core Application**: Main app with plugin architecture
 - **Third-party Plugins**: External modules that extend functionality
 - **Dependency Sharing**: Plugins share core app dependencies
 
 ### 3. Multi-Brand Applications
+
 - **Shared Components**: Common UI components across brands
 - **Brand-specific Features**: Unique functionality per brand
 - **Optimized Loading**: Shared dependencies reduce load times
 
 ### 4. Progressive Migration
+
 - **Legacy Integration**: Gradually modernize legacy applications
 - **Technology Mixing**: Combine different frontend frameworks
 - **Risk Mitigation**: Incremental migration with shared dependencies
@@ -320,6 +330,7 @@ shared: {
 **Symptom**: React hooks errors or "Multiple versions of React" warnings
 
 **Solution**:
+
 ```javascript
 // Ensure singleton configuration
 react: {
@@ -333,11 +344,13 @@ react: {
 **Symptom**: "Loading chunk failed" or network errors
 
 **Diagnosis**:
+
 - Check if remote application is running
 - Verify CORS headers are configured
 - Ensure remote URL is accessible
 
 **Solution**:
+
 ```javascript
 // Add proper error boundaries
 <ErrorBoundary fallback={CustomErrorComponent}>
@@ -350,6 +363,7 @@ react: {
 **Symptom**: TypeScript errors about missing modules
 
 **Solution**:
+
 ```typescript
 // Add proper type declarations
 declare module 'app2/Button' {
@@ -363,6 +377,7 @@ declare module 'app2/Button' {
 **Symptom**: Works in development but fails in production
 
 **Diagnosis**:
+
 - Check `publicPath` configuration
 - Verify production URLs are correct
 - Ensure proper CORS configuration
@@ -370,6 +385,7 @@ declare module 'app2/Button' {
 ### Debug Tools
 
 #### 1. Runtime Plugin Logging
+
 ```javascript
 // Enable detailed logging in development
 if (process.env.NODE_ENV === 'development') {
@@ -378,6 +394,7 @@ if (process.env.NODE_ENV === 'development') {
 ```
 
 #### 2. Bundle Analysis
+
 ```bash
 # Analyze bundle composition
 npm run analyze
@@ -387,6 +404,7 @@ npx webpack-bundle-analyzer dist/static/js/*.js
 ```
 
 #### 3. Network Monitoring
+
 - Use browser DevTools Network tab
 - Monitor for failed chunk loads
 - Check timing of shared dependency loads
@@ -408,7 +426,7 @@ const customShareStrategy = (localVersion, remoteVersion) => {
 ```javascript
 // Runtime remote URL resolution
 const getRemoteUrl = () => {
-  return process.env.NODE_ENV === 'production' 
+  return process.env.NODE_ENV === 'production'
     ? 'https://app2.production.com/remoteEntry.js'
     : 'http://localhost:3002/remoteEntry.js';
 };
@@ -425,8 +443,8 @@ module.exports = {
     new ModuleFederationPlugin({
       library: { type: isServer ? 'commonjs-module' : 'var' },
       // ... other MF config
-    })
-  ]
+    }),
+  ],
 };
 ```
 

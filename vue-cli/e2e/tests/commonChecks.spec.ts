@@ -5,15 +5,13 @@ import { baseSelectors } from '../../../playwright-e2e/common/selectors';
 import { Constants } from '../../../playwright-e2e/fixtures/constants';
 
 test.describe('Vue CLI', () => {
-  const appsData = [
-    { host: 8080 },
-    { host: 9000 },
-    { host: 9001 },
-  ];
+  const appsData = [{ host: 8080 }, { host: 9000 }, { host: 9001 }];
 
   test.describe('It checks elements appearing and accessibility', () => {
     appsData.forEach(({ host }) => {
-      test(`Checks that fetched code appears on click and disappears after reload on ${host}`, async ({ page }) => {
+      test(`Checks that fetched code appears on click and disappears after reload on ${host}`, async ({
+        page,
+      }) => {
         const basePage = new BaseMethods(page);
         const methodsPage = new VueCliMethods(page);
         basePage.skipTestByCondition(host === 9000);
@@ -77,7 +75,9 @@ test.describe('Vue CLI', () => {
         });
       });
 
-      test(`Checks that other section does not contain name header on ${host}`, async ({ page }) => {
+      test(`Checks that other section does not contain name header on ${host}`, async ({
+        page,
+      }) => {
         const basePage = new BaseMethods(page);
         basePage.skipTestByCondition(host === 9000);
 

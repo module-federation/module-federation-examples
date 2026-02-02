@@ -16,4 +16,3 @@ for (const { name, port } of apps) {
     });
   });
 }
-

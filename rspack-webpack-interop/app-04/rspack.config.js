@@ -1,6 +1,6 @@
 const { HtmlRspackPlugin } = require('@rspack/core');
 const path = require('path');
-const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 
 const mode = process.env.NODE_ENV || 'development';
 const prod = mode === 'production';

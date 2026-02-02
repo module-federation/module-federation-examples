@@ -6,7 +6,6 @@ import nodeExternals from 'webpack-node-externals';
 import { ModuleFederationPlugin } from '@module-federation/enhanced/webpack';
 import { default as NFP } from '@module-federation/node';
 
-
 const { UniversalFederationPlugin } = NFP;
 import { getManifest } from './utils/manifest.js';
 import { createServerBuildEntry } from './utils/server-build-entry.js';

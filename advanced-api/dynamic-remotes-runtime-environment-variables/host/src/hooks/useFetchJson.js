@@ -6,7 +6,7 @@ const useFetchJson = (path, options = {}) => {
     retryDelay = 1000,
     timeout = 5000,
     validateData = null,
-    fallbackData = null
+    fallbackData = null,
   } = options;
 
   const [loading, setIsLoading] = useState(true);
@@ -47,10 +47,10 @@ const useFetchJson = (path, options = {}) => {
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       try {
         console.log(`Fetching JSON from ${path} (attempt ${attempt}/${maxRetries})`);
-        
+
         // Create timeout promise
         const timeoutPromise = new Promise((_, reject) =>
-          setTimeout(() => reject(new Error(`Request timeout after ${timeout}ms`)), timeout)
+          setTimeout(() => reject(new Error(`Request timeout after ${timeout}ms`)), timeout),
         );
 
         // Create fetch promise
@@ -58,13 +58,13 @@ const useFetchJson = (path, options = {}) => {
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
-            'Cache-Control': 'no-cache'
+            'Cache-Control': 'no-cache',
           },
-          signal
+          signal,
         });
 
         const response = await Promise.race([fetchPromise, timeoutPromise]);
-        
+
         if (signal.aborted || !isMountedRef.current) {
           return;
         }
@@ -79,7 +79,7 @@ const useFetchJson = (path, options = {}) => {
         }
 
         const json = await response.json();
-        
+
         // Validate data if validator provided
         if (validateData && !validateData(json)) {
           throw new Error('Data validation failed');
@@ -95,16 +95,15 @@ const useFetchJson = (path, options = {}) => {
         setIsLoading(false);
         fetchStartedRef.current = false; // Reset for potential retries
         return;
-        
       } catch (err) {
         lastError = err;
-        
+
         if (signal.aborted || !isMountedRef.current) {
           return;
         }
-        
+
         console.warn(`Failed to fetch JSON (attempt ${attempt}/${maxRetries}):`, err.message);
-        
+
         if (attempt < maxRetries) {
           await new Promise(resolve => setTimeout(resolve, retryDelay * attempt));
         }
@@ -116,13 +115,13 @@ const useFetchJson = (path, options = {}) => {
       console.error(`Failed to fetch JSON from ${path} after ${maxRetries} attempts:`, lastError);
       setError(lastError);
       setRetryCount(maxRetries);
-      
+
       // Use fallback data if provided
       if (fallbackData !== null) {
         console.log('Using fallback data');
         setData(fallbackData);
       }
-      
+
       setIsLoading(false);
       fetchStartedRef.current = false; // Reset for potential retries
     }
@@ -150,12 +149,12 @@ const useFetchJson = (path, options = {}) => {
     };
   }, [fetchData]);
 
-  return { 
-    data, 
-    loading, 
-    error, 
-    retry, 
-    retryCount 
+  return {
+    data,
+    loading,
+    error,
+    retry,
+    retryCount,
   };
 };
 

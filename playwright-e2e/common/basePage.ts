@@ -31,7 +31,9 @@ export class BasePage {
   }
 
   protected getLocator(selector: string, nth?: number): Locator {
-    return typeof nth === 'number' ? this.page.locator(selector).nth(nth) : this.page.locator(selector);
+    return typeof nth === 'number'
+      ? this.page.locator(selector).nth(nth)
+      : this.page.locator(selector);
   }
 
   async expectElementWithTextPresence({

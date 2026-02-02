@@ -54,7 +54,4 @@ It is a middle-level app, which depends on modules exposed from remote app, for 
 - Module federation that has a host app with NextJS and a remote app with React
 - This type of module federated at folder: `nextjs-host-react-remote`
 
-
-
-
 ["Best Practices, Rules amd more interesting information here](../../playwright-e2e/README.md)

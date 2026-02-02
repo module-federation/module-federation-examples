@@ -5,7 +5,7 @@ const { UniversalFederationPlugin } = require('@module-federation/node');
 module.exports = {
   client: new ModuleFederationPlugin({
     experiments: { asyncStartup: true },
-      name: 'shell',
+    name: 'shell',
     filename: 'container.js',
     remotes: {
       expose_tailwind_css: 'expose_tailwind_css@http://localhost:3003/client/remoteEntry.js',

@@ -10,7 +10,8 @@ const esmImportName = name => `__esm_${name}`;
 /**
  * A bit naive approach to tap into require calls.
  */
-const requireSnippet = external => `
+const requireSnippet = external =>
+  `
 ${external.map(ext => `import ${esmImportName(ext)} from '${ext}';`).join('\n')}
 var require = (function(){
   var ext = {${external.map(name => `${name}: ${esmImportName(name)}`).join(',')}};
@@ -38,7 +39,7 @@ export async function build(moduleName, outFile, workspaceRoot, external) {
       stdin: {
         contents: getModuleContent(moduleName, exports, hasDefaultExport),
         sourcefile: moduleName,
-        resolveDir: outDir
+        resolveDir: outDir,
       },
       // external,
       bundle: true,
@@ -47,7 +48,7 @@ export async function build(moduleName, outFile, workspaceRoot, external) {
       format: 'esm',
       outfile: outFile,
       plugins: [cjsRequirePlugin(external)],
-    })
+    });
   }
 }
 
@@ -59,14 +60,14 @@ function cjsRequirePlugin(externals) {
     setup(build) {
       const { outfile } = build.initialOptions;
 
-      build.onResolve({ filter: /.*/ }, (args) => {
+      build.onResolve({ filter: /.*/ }, args => {
         if (externals.includes(args.path) && args.kind === 'require-call') {
           usedExternals.push(args.path);
 
           return {
             path: args.path,
-            external: true
-          }
+            external: true,
+          };
         }
 
         return null;
@@ -78,20 +79,17 @@ function cjsRequirePlugin(externals) {
         }
 
         const content = readFileSync(outfile, 'utf-8');
-        const finalContent = [
-          requireSnippet(usedExternals),
-          content
-        ].join('\n')
+        const finalContent = [requireSnippet(usedExternals), content].join('\n');
 
         writeFileSync(outfile, finalContent, 'utf-8');
-      })
-    }
-  }
+      });
+    },
+  };
 }
 
 function getModuleContent(moduleName, exports, hasDefaultExport) {
   if (hasDefaultExport) {
-    return `export { ${exports.join(', ')} } from '${moduleName}';`
+    return `export { ${exports.join(', ')} } from '${moduleName}';`;
   }
 
   return `

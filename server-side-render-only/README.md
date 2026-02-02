@@ -13,7 +13,4 @@ http://localhost:3000/ - Host Server
 
 http://localhost:3001/ - Remote Server
 
-
-
-
 ["Best Practices, Rules amd more interesting information here](../../playwright-e2e/README.md)

@@ -4,15 +4,18 @@ import { test, expect, Page } from '@playwright/test';
 async function openLocalhost(page: Page, port: number) {
   await page.goto(`http://localhost:${port}`);
   await page.waitForLoadState('networkidle');
-  
+
   // Wait for module federation to load (give it extra time for federated components)
   await page.waitForTimeout(2000);
-  
+
   // Wait for React to render
-  await page.waitForFunction(() => {
-    const elements = document.querySelectorAll('h1, h2, button, p');
-    return elements.length > 0;
-  }, { timeout: 30000 });
+  await page.waitForFunction(
+    () => {
+      const elements = document.querySelectorAll('h1, h2, button, p');
+      return elements.length > 0;
+    },
+    { timeout: 30000 },
+  );
 }
 
 async function checkElementWithTextPresence(page: Page, selector: string, text: string) {
@@ -22,16 +25,18 @@ async function checkElementWithTextPresence(page: Page, selector: string, text: 
 
 async function clickElementWithText(page: Page, selector: string, text: string) {
   const element = page.locator(`${selector}:has-text("${text}")`);
-  
+
   // Wait for element to be ready
   await element.waitFor({ state: 'visible', timeout: 10000 });
-  
+
   // Remove any overlays that might interfere
   await page.evaluate(() => {
-    const overlays = document.querySelectorAll('#webpack-dev-server-client-overlay, iframe[src*="webpack-dev-server"]');
+    const overlays = document.querySelectorAll(
+      '#webpack-dev-server-client-overlay, iframe[src*="webpack-dev-server"]',
+    );
     overlays.forEach(overlay => overlay.remove());
   });
-  
+
   // Try clicking with retries
   let attempts = 0;
   while (attempts < 3) {
@@ -44,7 +49,7 @@ async function clickElementWithText(page: Page, selector: string, text: string) 
       await page.waitForTimeout(1000);
     }
   }
-  
+
   // Wait for any dynamic loading to complete
   await page.waitForTimeout(3000);
 }
@@ -62,7 +67,7 @@ async function checkElementBackgroundColor(page: Page, selector: string, expecte
 async function waitForDynamicImport(page: Page) {
   // Wait for dynamic import to complete - looking for loading states to disappear
   await page.waitForTimeout(3000); // Give time for dynamic loading
-  
+
   // Wait for any network activity to settle
   await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {
     // Ignore timeout - loading might already be complete
@@ -77,11 +82,10 @@ async function checkDateFormat(page: Page) {
 }
 
 test.describe('Dynamic Remotes E2E Tests', () => {
-  
   test.describe('Host Application (App 1)', () => {
     test('should display host application elements correctly', async ({ page }) => {
       const consoleErrors: string[] = [];
-      page.on('console', (msg) => {
+      page.on('console', msg => {
         if (msg.type() === 'error') {
           consoleErrors.push(msg.text());
         }
@@ -92,24 +96,29 @@ test.describe('Dynamic Remotes E2E Tests', () => {
       // Check main elements exist
       await checkElementWithTextPresence(page, 'h1', 'Dynamic System Host');
       await checkElementWithTextPresence(page, 'h2', 'App 1');
-      await checkElementWithTextPresence(page, 'p', 'The Dynamic System will take advantage of Module Federation');
+      await checkElementWithTextPresence(
+        page,
+        'p',
+        'The Dynamic System will take advantage of Module Federation',
+      );
 
       // Check both buttons exist
       await checkElementWithTextPresence(page, 'button', 'Load App 2 Widget');
       await checkElementWithTextPresence(page, 'button', 'Load App 3 Widget');
 
       // Verify no critical console errors
-      const criticalErrors = consoleErrors.filter(error => 
-        error.includes('Failed to fetch') || 
-        error.includes('ChunkLoadError') ||
-        error.includes('Module not found')
+      const criticalErrors = consoleErrors.filter(
+        error =>
+          error.includes('Failed to fetch') ||
+          error.includes('ChunkLoadError') ||
+          error.includes('Module not found'),
       );
       expect(criticalErrors).toHaveLength(0);
     });
 
     test('should dynamically load App 2 widget successfully', async ({ page }) => {
       const consoleErrors: string[] = [];
-      page.on('console', (msg) => {
+      page.on('console', msg => {
         if (msg.type() === 'error') {
           consoleErrors.push(msg.text());
         }
@@ -130,16 +139,15 @@ test.describe('Dynamic Remotes E2E Tests', () => {
       await checkDateFormat(page);
 
       // Verify no module federation errors
-      const moduleErrors = consoleErrors.filter(error => 
-        error.includes('Loading remote module') || 
-        error.includes('Module Federation')
+      const moduleErrors = consoleErrors.filter(
+        error => error.includes('Loading remote module') || error.includes('Module Federation'),
       );
       expect(moduleErrors).toHaveLength(0);
     });
 
     test('should dynamically load App 3 widget successfully', async ({ page }) => {
       const consoleErrors: string[] = [];
-      page.on('console', (msg) => {
+      page.on('console', msg => {
         if (msg.type() === 'error') {
           consoleErrors.push(msg.text());
         }
@@ -160,9 +168,8 @@ test.describe('Dynamic Remotes E2E Tests', () => {
       await checkDateFormat(page);
 
       // Verify no module federation errors
-      const moduleErrors = consoleErrors.filter(error => 
-        error.includes('Loading remote module') || 
-        error.includes('Module Federation')
+      const moduleErrors = consoleErrors.filter(
+        error => error.includes('Loading remote module') || error.includes('Module Federation'),
       );
       expect(moduleErrors).toHaveLength(0);
     });
@@ -173,7 +180,7 @@ test.describe('Dynamic Remotes E2E Tests', () => {
       // Load App 2 widget first
       await clickElementWithText(page, 'button', 'Load App 2 Widget');
       await waitForDynamicImport(page);
-      
+
       // Verify App 2 widget is loaded and get its content
       await checkElementVisibility(page, '[data-e2e="APP_2__WIDGET"]');
       await checkElementWithTextPresence(page, 'h2', 'App 2 Widget');
@@ -181,7 +188,7 @@ test.describe('Dynamic Remotes E2E Tests', () => {
       // Then load App 3 widget (this replaces the previous widget in this implementation)
       await clickElementWithText(page, 'button', 'Load App 3 Widget');
       await waitForDynamicImport(page);
-      
+
       // Verify App 3 widget is loaded
       await checkElementVisibility(page, '[data-e2e="APP_3__WIDGET"]');
       await checkElementWithTextPresence(page, 'h2', 'App 3 Widget');
@@ -206,7 +213,7 @@ test.describe('Dynamic Remotes E2E Tests', () => {
   test.describe('Remote Application - App 2', () => {
     test('should display App 2 standalone correctly', async ({ page }) => {
       const consoleErrors: string[] = [];
-      page.on('console', (msg) => {
+      page.on('console', msg => {
         if (msg.type() === 'error') {
           consoleErrors.push(msg.text());
         }
@@ -224,11 +231,12 @@ test.describe('Dynamic Remotes E2E Tests', () => {
       await checkDateFormat(page);
 
       // Verify no critical console errors (filter out expected warnings)
-      const criticalErrors = consoleErrors.filter(e => 
-        !e.includes('webpack-dev-server') && 
-        !e.includes('ReactDOM.render is no longer supported') &&
-        !e.includes('DevTools') &&
-        !e.includes('Warning:')
+      const criticalErrors = consoleErrors.filter(
+        e =>
+          !e.includes('webpack-dev-server') &&
+          !e.includes('ReactDOM.render is no longer supported') &&
+          !e.includes('DevTools') &&
+          !e.includes('Warning:'),
       );
       expect(criticalErrors).toHaveLength(0);
     });
@@ -237,7 +245,7 @@ test.describe('Dynamic Remotes E2E Tests', () => {
   test.describe('Remote Application - App 3', () => {
     test('should display App 3 standalone correctly', async ({ page }) => {
       const consoleErrors: string[] = [];
-      page.on('console', (msg) => {
+      page.on('console', msg => {
         if (msg.type() === 'error') {
           consoleErrors.push(msg.text());
         }
@@ -254,11 +262,12 @@ test.describe('Dynamic Remotes E2E Tests', () => {
       await checkDateFormat(page);
 
       // Verify no critical console errors (filter out expected warnings)
-      const criticalErrors = consoleErrors.filter(e => 
-        !e.includes('webpack-dev-server') && 
-        !e.includes('ReactDOM.render is no longer supported') &&
-        !e.includes('DevTools') &&
-        !e.includes('Warning:')
+      const criticalErrors = consoleErrors.filter(
+        e =>
+          !e.includes('webpack-dev-server') &&
+          !e.includes('ReactDOM.render is no longer supported') &&
+          !e.includes('DevTools') &&
+          !e.includes('Warning:'),
       );
       expect(criticalErrors).toHaveLength(0);
     });
@@ -267,8 +276,8 @@ test.describe('Dynamic Remotes E2E Tests', () => {
   test.describe('Module Federation Features', () => {
     test('should efficiently share dependencies between applications', async ({ page }) => {
       const networkRequests: string[] = [];
-      
-      page.on('request', (request) => {
+
+      page.on('request', request => {
         networkRequests.push(request.url());
       });
 
@@ -279,13 +288,13 @@ test.describe('Dynamic Remotes E2E Tests', () => {
       // Load both remotes
       await page.click('button:has-text("Load App 2 Widget")');
       await page.waitForTimeout(3000);
-      
+
       await page.click('button:has-text("Load App 3 Widget")');
       await page.waitForTimeout(3000);
 
       // Verify React is shared efficiently (should not be loaded multiple times)
-      const reactRequests = networkRequests.filter(url => 
-        url.includes('react') && !url.includes('react-dom') && !url.includes('react-redux')
+      const reactRequests = networkRequests.filter(
+        url => url.includes('react') && !url.includes('react-dom') && !url.includes('react-redux'),
       );
       expect(reactRequests.length).toBeLessThan(5);
 
@@ -297,7 +306,7 @@ test.describe('Dynamic Remotes E2E Tests', () => {
     test('should handle cross-origin requests correctly', async ({ page }) => {
       // Monitor for CORS errors
       const corsErrors: string[] = [];
-      page.on('response', (response) => {
+      page.on('response', response => {
         if (response.status() >= 400 && response.url().includes('localhost:300')) {
           corsErrors.push(`${response.status()} - ${response.url()}`);
         }
@@ -316,7 +325,7 @@ test.describe('Dynamic Remotes E2E Tests', () => {
 
     test('should maintain proper error boundaries during failures', async ({ page }) => {
       const consoleErrors: string[] = [];
-      page.on('console', (msg) => {
+      page.on('console', msg => {
         if (msg.type() === 'error') {
           consoleErrors.push(msg.text());
         }
@@ -330,12 +339,13 @@ test.describe('Dynamic Remotes E2E Tests', () => {
       await page.waitForTimeout(2000);
 
       // Check for React error boundaries working
-      
+
       // Should handle any errors gracefully (either no errors or proper error boundaries)
-      const criticalErrors = consoleErrors.filter(error => 
-        error.includes('Uncaught') && 
-        !error.includes('webpack-dev-server') &&
-        !error.includes('DevTools')
+      const criticalErrors = consoleErrors.filter(
+        error =>
+          error.includes('Uncaught') &&
+          !error.includes('webpack-dev-server') &&
+          !error.includes('DevTools'),
       );
       expect(criticalErrors).toHaveLength(0);
     });
@@ -344,8 +354,8 @@ test.describe('Dynamic Remotes E2E Tests', () => {
   test.describe('Environment Configuration', () => {
     test('should use environment-based remote URLs', async ({ page }) => {
       const networkRequests: string[] = [];
-      
-      page.on('request', (request) => {
+
+      page.on('request', request => {
         networkRequests.push(request.url());
       });
 
@@ -357,10 +367,10 @@ test.describe('Dynamic Remotes E2E Tests', () => {
       await page.waitForTimeout(2000);
 
       // Verify requests are going to the correct localhost ports
-      const remoteRequests = networkRequests.filter(url => 
-        url.includes('localhost:3002') || url.includes('localhost:3003')
+      const remoteRequests = networkRequests.filter(
+        url => url.includes('localhost:3002') || url.includes('localhost:3003'),
       );
-      
+
       expect(remoteRequests.length).toBeGreaterThan(0);
     });
   });
@@ -368,10 +378,10 @@ test.describe('Dynamic Remotes E2E Tests', () => {
   test.describe('Performance and Loading', () => {
     test('should load all applications within reasonable time', async ({ page }) => {
       const startTime = Date.now();
-      
+
       await page.goto('http://localhost:3001');
       await page.waitForLoadState('networkidle');
-      
+
       const loadTime = Date.now() - startTime;
       expect(loadTime).toBeLessThan(10000); // Should load within 10 seconds
     });
@@ -381,10 +391,10 @@ test.describe('Dynamic Remotes E2E Tests', () => {
       await page.waitForLoadState('networkidle');
 
       const startTime = Date.now();
-      
+
       await page.click('button:has-text("Load App 2 Widget")');
       await page.waitForSelector('[data-e2e="APP_2__WIDGET"]', { timeout: 10000 });
-      
+
       const dynamicLoadTime = Date.now() - startTime;
       expect(dynamicLoadTime).toBeLessThan(8000); // Dynamic loading should be fast
     });

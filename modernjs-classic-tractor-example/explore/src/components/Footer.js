@@ -23,11 +23,7 @@ const Footer = () => {
                 the tractor store 2.0
               </Link>
               <br />
-              <Link
-                to="https://neuland-bfi.de"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link to="https://neuland-bfi.de" target="_blank" rel="noopener noreferrer">
                 neuland
               </Link>{' '}
               project
@@ -37,21 +33,14 @@ const Footer = () => {
           <div className="e_Footer__credits">
             {/* replace this details about your implementation and organization */}
             <h4>techstack</h4>
-            <p>
-              ssr-only, modular monolith, template strings, esbuild, hono,
-              cloudflare workers
-            </p>
+            <p>ssr-only, modular monolith, template strings, esbuild, hono, cloudflare workers</p>
             <p>
               build by
               <img
                 src={`${IMAGE_SERVER}/cdn/img/neulandlogo.svg`}
                 alt="neuland - Büro für Informatik"
               />
-              <Link
-                to="https://neuland-bfi.de"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link to="https://neuland-bfi.de" target="_blank" rel="noopener noreferrer">
                 neuland
               </Link>
               /

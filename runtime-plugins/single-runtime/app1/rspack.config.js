@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
-const {container} = require('@rspack/core')
+const { container } = require('@rspack/core');
 const path = require('path');
 
 const deps = require('./package.json').dependencies;
@@ -70,9 +70,9 @@ module.exports = {
     new container.ContainerPlugin({
       name: 'app1_partial',
       filename: 'app1_partial.js',
-      library:{
+      library: {
         type: 'var',
-        name: 'app1'
+        name: 'app1',
       },
       runtime: undefined,
       runtimePlugins: [require.resolve('./single-runtime.js')],

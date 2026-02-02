@@ -15,9 +15,9 @@ let appPrefetch =
   typeof App.preFetch === 'function'
     ? App.preFetch
     : // Class components return the component options (and the preFetch hook) inside __c property
-    App.__c !== void 0 && typeof App.__c.preFetch === 'function'
-    ? App.__c.preFetch
-    : false;
+      App.__c !== void 0 && typeof App.__c.preFetch === 'function'
+      ? App.__c.preFetch
+      : false;
 
 function getMatchedComponents(to, router) {
   const route = to ? (to.matched ? to : router.resolve(to).route) : router.currentRoute.value;
@@ -61,8 +61,7 @@ export function addPreFetchHooks({ router, publicPath }) {
       .filter((m, i) => {
         return (
           diffed ||
-          (diffed =
-            !prevMatched[i] || prevMatched[i].c !== m.c || m.path.indexOf('/:') > -1) // does it has params?
+          (diffed = !prevMatched[i] || prevMatched[i].c !== m.c || m.path.indexOf('/:') > -1) // does it has params?
         );
       })
       .filter(

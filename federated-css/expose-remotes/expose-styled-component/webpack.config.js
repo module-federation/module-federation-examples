@@ -38,7 +38,7 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
-...mfeBaseConfig,
+      ...mfeBaseConfig,
       name: styledComponent.name,
       exposes: {
         './Component': './src/StyledComponent.js',

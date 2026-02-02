@@ -54,19 +54,25 @@ test.describe('Typescript', () => {
       await expect(page.locator(baseSelectors.tags.headers.h2)).toHaveText(app.appName);
     });
 
-    test(`checks both apps share ${primaryAppButtons.small} (port: ${app.host})`, async ({ page }) => {
+    test(`checks both apps share ${primaryAppButtons.small} (port: ${app.host})`, async ({
+      page,
+    }) => {
       await navigateToApp(page, app.host);
 
       await expect(page.getByRole('button', { name: primaryAppButtons.small })).toBeVisible();
     });
 
-    test(`checks ${primaryAppButtons.small} is not disabled (port: ${app.host})`, async ({ page }) => {
+    test(`checks ${primaryAppButtons.small} is not disabled (port: ${app.host})`, async ({
+      page,
+    }) => {
       await navigateToApp(page, app.host);
 
       await expect(page.getByRole('button', { name: primaryAppButtons.small })).toBeEnabled();
     });
 
-    test(`checks only ${primaryApp.appName} includes ${primaryAppButtons.large} (port: ${app.host})`, async ({ page }) => {
+    test(`checks only ${primaryApp.appName} includes ${primaryAppButtons.large} (port: ${app.host})`, async ({
+      page,
+    }) => {
       await navigateToApp(page, app.host);
 
       const largeButton = page.getByRole('button', { name: primaryAppButtons.large });

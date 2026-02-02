@@ -9,7 +9,9 @@ export class BasePage {
   }
 
   async checkElementWithTextPresence(selector: string, text: string, timeout: number = 10000) {
-    await expect(this.page.locator(selector).filter({ hasText: text }).first()).toBeVisible({ timeout });
+    await expect(this.page.locator(selector).filter({ hasText: text }).first()).toBeVisible({
+      timeout,
+    });
   }
 
   async checkElementVisibility(selector: string, timeout: number = 10000) {
@@ -17,9 +19,9 @@ export class BasePage {
   }
 
   async checkElementHidden(selector: string, text: string, timeout: number = 10000) {
-    await expect(
-      this.page.locator(selector).filter({ hasText: text }).first(),
-    ).toBeHidden({ timeout });
+    await expect(this.page.locator(selector).filter({ hasText: text }).first()).toBeHidden({
+      timeout,
+    });
   }
 
   async clickElementWithText(selector: string, text: string) {
@@ -60,4 +62,3 @@ export class BasePage {
     await locator.waitFor({ state: 'hidden', timeout }).catch(() => undefined);
   }
 }
-

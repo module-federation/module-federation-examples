@@ -12,9 +12,6 @@ Run `npm run start`. This will build and serve both `app1` and `app2` on ports 9
 - REMOTE (app2): [localhost:9002](http://localhost:9002/main.js)
 - REMOTE (mf-app-01): [https://cdn.jsdelivr.net/npm/mf-app-01/dist/remoteEntry.js](https://cdn.jsdelivr.net/npm/mf-app-01/dist/remoteEntry.js)
 
-
-
-
 ["Best Practices, Rules amd more interesting information here](../../playwright-e2e/README.md)
 
 ## try online

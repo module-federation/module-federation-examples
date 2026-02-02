@@ -18,8 +18,6 @@ const RemoteSSRComponent = createLazyComponent({
   },
 });
 
-
-
 const Index = () => {
   return (
     <div className="container-box">
@@ -27,6 +25,6 @@ const Index = () => {
       <DynamicRemoteSSRComponents />
     </div>
   );
-}
+};
 
 export default Index;

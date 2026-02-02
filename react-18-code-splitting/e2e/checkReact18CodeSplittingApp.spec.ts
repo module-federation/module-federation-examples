@@ -38,7 +38,9 @@ for (const { appName, appHeader2, host } of appsData) {
 
       const input = page.locator(baseSelectors.tags.inputs.input).first();
       await input.fill(Constants.commonConstantsData.standardPhrase);
-      await page.getByRole('button', { name: Constants.elementsText.react18CodeSplittingApp.button }).click();
+      await page
+        .getByRole('button', { name: Constants.elementsText.react18CodeSplittingApp.button })
+        .click();
 
       const contentBlock = page.locator(selectors.reactApp.app2ContentBlock);
       await expect(contentBlock.locator(baseSelectors.tags.headers.h2)).toHaveText(

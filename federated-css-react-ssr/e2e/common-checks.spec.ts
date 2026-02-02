@@ -4,15 +4,8 @@ import { selectors } from '../../playwright-e2e/common/selectors';
 import { CssAttr } from '../../playwright-e2e/types/cssAttr';
 import { Constants } from '../../playwright-e2e/fixtures/constants';
 
-const {
-  css,
-  cssModule,
-  jss,
-  less,
-  scss,
-  styledComponent,
-  tailwindModule,
-} = Constants.fullTestData.federatedCssTestData;
+const { css, cssModule, jss, less, scss, styledComponent, tailwindModule } =
+  Constants.fullTestData.federatedCssTestData;
 
 type ButtonConfig = {
   path: string;
@@ -99,7 +92,9 @@ test.describe('Federated CSS SSR shells', () => {
       await expectButtonsInOrder(page, app.buttons);
     });
 
-    test(`shell port ${app.port} renders federated styles without JavaScript`, async ({ browser }) => {
+    test(`shell port ${app.port} renders federated styles without JavaScript`, async ({
+      browser,
+    }) => {
       const context = await browser.newContext({ javaScriptEnabled: false });
       const page = await context.newPage();
 

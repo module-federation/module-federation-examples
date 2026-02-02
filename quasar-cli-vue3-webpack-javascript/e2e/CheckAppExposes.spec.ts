@@ -185,7 +185,10 @@ appsData.forEach(property => {
           selector: selectors.quasarCliVue3WebPackJavaScriptApp.apps.exposes.names,
           quantity: element.index,
         });
-        await page.locator(selectors.quasarCliVue3WebPackJavaScriptApp.apps.exposes.closeButton).first().click();
+        await page
+          .locator(selectors.quasarCliVue3WebPackJavaScriptApp.apps.exposes.closeButton)
+          .first()
+          .click();
       }
 
       if (property.host === 3002) {

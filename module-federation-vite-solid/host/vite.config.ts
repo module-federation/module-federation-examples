@@ -7,25 +7,25 @@ import { dependencies } from './package.json';
 export default defineConfig({
   plugins: [
     federation({
-			name: 'host',
-			remotes: {
-				remote: {
-					type: 'module',
-					name: 'remote',
-					entry: 'http://localhost:4174/remoteEntry.js',
-					entryGlobalName: 'remote',
-					shareScope: 'default',
-				},
-			},
-			exposes: {},
-			filename: 'remoteEntry.js',
-			shared: {
-				'solid-js': {
-					requiredVersion: dependencies['solid-js'],
-					singleton: true,
-				},
-			},
-		}),
+      name: 'host',
+      remotes: {
+        remote: {
+          type: 'module',
+          name: 'remote',
+          entry: 'http://localhost:4174/remoteEntry.js',
+          entryGlobalName: 'remote',
+          shareScope: 'default',
+        },
+      },
+      exposes: {},
+      filename: 'remoteEntry.js',
+      shared: {
+        'solid-js': {
+          requiredVersion: dependencies['solid-js'],
+          singleton: true,
+        },
+      },
+    }),
     /* 
     Uncomment the following line to enable solid-devtools.
     For more info see https://github.com/thetarnav/solid-devtools/tree/main/packages/extension#readme

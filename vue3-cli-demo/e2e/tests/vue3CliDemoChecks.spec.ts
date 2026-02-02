@@ -1,27 +1,58 @@
 import { test } from '@playwright/test';
 import { BaseMethods } from '../../../playwright-e2e/common/base';
-import { baseSelectors, selectors, updatedSelectors } from '../../../playwright-e2e/common/selectors';
+import {
+  baseSelectors,
+  selectors,
+  updatedSelectors,
+} from '../../../playwright-e2e/common/selectors';
 import { Constants } from '../../../playwright-e2e/fixtures/constants';
 
 test.describe('Vue 3 CLI Demo', () => {
   test.describe('It checks certain texted button contains link and not disabled', () => {
     const textedLinks = [
-      { text: Constants.hrefs.vueCliApp.documentation.name, link: Constants.hrefs.vueCliApp.documentation.link },
+      {
+        text: Constants.hrefs.vueCliApp.documentation.name,
+        link: Constants.hrefs.vueCliApp.documentation.link,
+      },
       { text: Constants.hrefs.vueCliApp.babel.name, link: Constants.hrefs.vueCliApp.babel.link },
       { text: Constants.hrefs.vueCliApp.router.name, link: Constants.hrefs.vueCliApp.router.link },
       { text: Constants.hrefs.vueCliApp.vuex.name, link: Constants.hrefs.vueCliApp.vuex.link },
       { text: Constants.hrefs.vueCliApp.esLint.name, link: Constants.hrefs.vueCliApp.esLint.link },
-      { text: Constants.commonConstantsData.typeScript, link: Constants.hrefs.vueCliApp.typeScript },
-      { text: Constants.hrefs.vueCliApp.coreDocs.name, link: Constants.hrefs.vueCliApp.coreDocs.link },
+      {
+        text: Constants.commonConstantsData.typeScript,
+        link: Constants.hrefs.vueCliApp.typeScript,
+      },
+      {
+        text: Constants.hrefs.vueCliApp.coreDocs.name,
+        link: Constants.hrefs.vueCliApp.coreDocs.link,
+      },
       { text: Constants.hrefs.vueCliApp.forum.name, link: Constants.hrefs.vueCliApp.forum.link },
-      { text: Constants.hrefs.vueCliApp.communityChat.name, link: Constants.hrefs.vueCliApp.communityChat.link },
-      { text: Constants.hrefs.vueCliApp.twitter.name, link: Constants.hrefs.vueCliApp.twitter.link },
+      {
+        text: Constants.hrefs.vueCliApp.communityChat.name,
+        link: Constants.hrefs.vueCliApp.communityChat.link,
+      },
+      {
+        text: Constants.hrefs.vueCliApp.twitter.name,
+        link: Constants.hrefs.vueCliApp.twitter.link,
+      },
       { text: Constants.hrefs.vueCliApp.news.name, link: Constants.hrefs.vueCliApp.news.link },
-      { text: Constants.hrefs.vueCliApp.vueRouter.name, link: Constants.hrefs.vueCliApp.vueRouter.link },
+      {
+        text: Constants.hrefs.vueCliApp.vueRouter.name,
+        link: Constants.hrefs.vueCliApp.vueRouter.link,
+      },
       { text: Constants.hrefs.vueCliApp.vuex.name, link: Constants.hrefs.vueCliApp.ecosystemVuex },
-      { text: Constants.hrefs.vueCliApp.vueDevTools.name, link: Constants.hrefs.vueCliApp.vueDevTools.link },
-      { text: Constants.hrefs.vueCliApp.vueLoader.name, link: Constants.hrefs.vueCliApp.vueLoader.link },
-      { text: Constants.hrefs.vueCliApp.awesomeVue.name, link: Constants.hrefs.vueCliApp.awesomeVue.link },
+      {
+        text: Constants.hrefs.vueCliApp.vueDevTools.name,
+        link: Constants.hrefs.vueCliApp.vueDevTools.link,
+      },
+      {
+        text: Constants.hrefs.vueCliApp.vueLoader.name,
+        link: Constants.hrefs.vueCliApp.vueLoader.link,
+      },
+      {
+        text: Constants.hrefs.vueCliApp.awesomeVue.name,
+        link: Constants.hrefs.vueCliApp.awesomeVue.link,
+      },
     ];
 
     textedLinks.forEach(({ text, link }) => {

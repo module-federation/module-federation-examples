@@ -60,7 +60,11 @@ async function getConsoleLogCount(page: Page, message: string): Promise<number> 
   }, message);
 }
 
-async function waitForConsoleLog(page: Page, message: string, timeout: number = 5_000): Promise<void> {
+async function waitForConsoleLog(
+  page: Page,
+  message: string,
+  timeout: number = 5_000,
+): Promise<void> {
   const start = Date.now();
   while (Date.now() - start < timeout) {
     if ((await getConsoleLogCount(page, message)) > 0) {
@@ -103,7 +107,9 @@ test.describe('Rust Wasm - Buttons behaviour', () => {
       await waitForConsoleLog(page, consoleMessage);
     });
 
-    test(`Checks that game board triggered by ${buttonName} disappears after reload`, async ({ page }) => {
+    test(`Checks that game board triggered by ${buttonName} disappears after reload`, async ({
+      page,
+    }) => {
       await basePage.checkElementVisibility({
         selector: selectors.rustWasmApp.gameBoard,
         isVisible: false,
@@ -184,10 +190,13 @@ test.describe('Rust Wasm - Buttons behaviour', () => {
     .filter(({ buttonName }) => buttonName !== buttonLabels[0])
     .forEach(({ buttonName, index = 0 }) => {
       const alternateIndex = index === 1 ? 2 : 1;
-      const alternateMessage = alternateIndex === 2 ? consoleMessages.resetLoopMessage : consoleMessages.tickLoopMessage;
+      const alternateMessage =
+        alternateIndex === 2 ? consoleMessages.resetLoopMessage : consoleMessages.tickLoopMessage;
       const alternateButton = buttonLabels[alternateIndex];
 
-      test(`Checks game board triggered by ${buttonName} can be updated by ${alternateButton}`, async ({ page }) => {
+      test(`Checks game board triggered by ${buttonName} can be updated by ${alternateButton}`, async ({
+        page,
+      }) => {
         await basePage.checkElementVisibility({
           selector: selectors.rustWasmApp.gameBoard,
           isVisible: false,
@@ -211,7 +220,9 @@ test.describe('Rust Wasm - Buttons behaviour', () => {
         await waitForConsoleLog(page, alternateMessage);
       });
 
-      test(`Checks game triggered by ${buttonName} can be started and stopped by ${buttonLabels[0]}`, async ({ page }) => {
+      test(`Checks game triggered by ${buttonName} can be started and stopped by ${buttonLabels[0]}`, async ({
+        page,
+      }) => {
         await basePage.checkElementVisibility({
           selector: selectors.rustWasmApp.gameBoard,
           isVisible: false,
@@ -225,8 +236,12 @@ test.describe('Rust Wasm - Buttons behaviour', () => {
         await basePage.checkElementVisibility({ selector: selectors.rustWasmApp.gameBoard });
 
         await resetConsoleLogs(page);
-        expect(await getConsoleLogCount(page, consoleMessages.startLoopMessage)).toBeLessThanOrEqual(1);
-        expect(await getConsoleLogCount(page, consoleMessages.stopLoopMessage)).toBeLessThanOrEqual(1);
+        expect(
+          await getConsoleLogCount(page, consoleMessages.startLoopMessage),
+        ).toBeLessThanOrEqual(1);
+        expect(await getConsoleLogCount(page, consoleMessages.stopLoopMessage)).toBeLessThanOrEqual(
+          1,
+        );
 
         await basePage.clickElementWithText({
           selector: baseSelectors.tags.coreElements.button,

@@ -6,15 +6,18 @@ export class BasePage {
   async openLocalhost(port: number) {
     await this.page.goto(`http://localhost:${port}`);
     await this.page.waitForLoadState('networkidle');
-    
+
     // Wait for module federation to load (give it extra time for federated components)
     await this.page.waitForTimeout(2000);
-    
+
     // Wait for React to render
-    await this.page.waitForFunction(() => {
-      const elements = document.querySelectorAll('h1, h2, button, p');
-      return elements.length > 0;
-    }, { timeout: 30000 });
+    await this.page.waitForFunction(
+      () => {
+        const elements = document.querySelectorAll('h1, h2, button, p');
+        return elements.length > 0;
+      },
+      { timeout: 30000 },
+    );
   }
 
   async checkElementWithTextPresence(selector: string, text: string, shouldBeVisible = true) {
@@ -37,16 +40,18 @@ export class BasePage {
 
   async clickElementWithText(selector: string, text: string) {
     const element = this.page.locator(selector).filter({ hasText: text });
-    
+
     // Wait for element to be ready
     await element.waitFor({ state: 'visible', timeout: 10000 });
-    
+
     // Remove any overlays that might interfere
     await this.page.evaluate(() => {
-      const overlays = document.querySelectorAll('#webpack-dev-server-client-overlay, iframe[src*="webpack-dev-server"]');
+      const overlays = document.querySelectorAll(
+        '#webpack-dev-server-client-overlay, iframe[src*="webpack-dev-server"]',
+      );
       overlays.forEach(overlay => overlay.remove());
     });
-    
+
     // Try clicking with retries
     let attempts = 0;
     while (attempts < 3) {
@@ -59,7 +64,7 @@ export class BasePage {
         await this.page.waitForTimeout(1000);
       }
     }
-    
+
     // Wait for any dynamic loading to complete
     await this.page.waitForTimeout(3000);
   }
@@ -72,7 +77,7 @@ export class BasePage {
   async waitForDynamicImport() {
     // Wait for dynamic import to complete - looking for loading states to disappear
     await this.page.waitForTimeout(3000); // Give time for dynamic loading
-    
+
     // Wait for any network activity to settle
     await this.page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {
       // Ignore timeout - loading might already be complete
@@ -86,6 +91,5 @@ export class BasePage {
     expect(textContent).toMatch(dateRegex);
   }
 }
-
 
 export { expect } from '@playwright/test';

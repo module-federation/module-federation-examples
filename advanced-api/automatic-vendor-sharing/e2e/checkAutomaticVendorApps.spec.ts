@@ -54,7 +54,7 @@ test.describe('Automatic Vendor Sharing example', () => {
         const basePage = new BasePage(page);
         const consoleErrors: string[] = [];
 
-        page.on('console', (msg) => {
+        page.on('console', msg => {
           if (msg.type() === 'error') {
             consoleErrors.push(msg.text());
           }
@@ -66,20 +66,29 @@ test.describe('Automatic Vendor Sharing example', () => {
         await expect(page.locator(selectors.tags.headers.h1)).toContainText(headerText);
         await expect(page.locator(selectors.tags.headers.h2)).toContainText(app.appDisplayName);
 
-        await expect(page.getByRole('heading', { level: 3, name: app.localSectionHeading })).toBeVisible();
+        await expect(
+          page.getByRole('heading', { level: 3, name: app.localSectionHeading }),
+        ).toBeVisible();
         await expect(page.getByText(app.localSectionDescription)).toBeVisible();
 
-        await expect(page.getByRole('heading', { level: 3, name: app.remoteSectionHeading })).toBeVisible();
+        await expect(
+          page.getByRole('heading', { level: 3, name: app.remoteSectionHeading }),
+        ).toBeVisible();
         await expect(page.getByText(app.remoteSectionDescription, { exact: false })).toBeVisible();
 
-        await expect(page.getByRole('heading', { level: 3, name: infoSection.heading })).toBeVisible();
+        await expect(
+          page.getByRole('heading', { level: 3, name: infoSection.heading }),
+        ).toBeVisible();
         await expect(page.getByText(infoSection.summary)).toBeVisible();
         await expect(page.getByText(infoSection.sharedDependencies)).toBeVisible();
         await expect(page.getByText(infoSection.loadStrategy)).toBeVisible();
         await expect(page.getByText(infoSection.benefits)).toBeVisible();
 
-        const relevantErrors = consoleErrors.filter((error) => {
-          if (error.includes('WebSocket connection to') && error.includes('WEB_SOCKET_CONNECT_MAGIC_ID')) {
+        const relevantErrors = consoleErrors.filter(error => {
+          if (
+            error.includes('WebSocket connection to') &&
+            error.includes('WEB_SOCKET_CONNECT_MAGIC_ID')
+          ) {
             return false;
           }
 
@@ -90,7 +99,10 @@ test.describe('Automatic Vendor Sharing example', () => {
           return true;
         });
 
-        expect(relevantErrors, 'Unexpected console errors detected in the browser console').toHaveLength(0);
+        expect(
+          relevantErrors,
+          'Unexpected console errors detected in the browser console',
+        ).toHaveLength(0);
       });
 
       test(`exposes the styled local button for ${app.appDisplayName}`, async ({ page }) => {

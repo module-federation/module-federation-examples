@@ -4,7 +4,13 @@ import type { Page } from '@playwright/test';
 const app05RemoteEntry = 'http://localhost:3005/remoteEntry.js';
 
 const apps = [
-  { port: 3001, name: 'App 1', selector: 'h6', text: 'Module Federation Demo', remotes: [app05RemoteEntry] },
+  {
+    port: 3001,
+    name: 'App 1',
+    selector: 'h6',
+    text: 'Module Federation Demo',
+    remotes: [app05RemoteEntry],
+  },
   { port: 3002, name: 'App 2', selector: 'h6', text: 'Material UI App' },
   { port: 3003, name: 'App 3', selector: 'h6', text: 'Styled Components App' },
   { port: 3004, name: 'App 4', selector: 'h1', text: 'Hello From Svelte world!' },

@@ -10,10 +10,7 @@ const r = data.recommendations;
  * @returns {number[]} The average rgb.
  */
 function averageColor(colors) {
-  const total = colors.reduce(
-    (acc, [r, g, b]) => [acc[0] + r, acc[1] + g, acc[2] + b],
-    [0, 0, 0],
-  );
+  const total = colors.reduce((acc, [r, g, b]) => [acc[0] + r, acc[1] + g, acc[2] + b], [0, 0, 0]);
   return total.map(c => Math.round(c / colors.length));
 }
 
@@ -35,9 +32,7 @@ function skusToColors(skus) {
 function colorDistance(rgb1, rgb2) {
   const [r1, g1, b1] = rgb1;
   const [r2, g2, b2] = rgb2;
-  return Math.sqrt(
-    Math.pow(r1 - r2, 2) + Math.pow(g1 - g2, 2) + Math.pow(b1 - b2, 2),
-  );
+  return Math.sqrt(Math.pow(r1 - r2, 2) + Math.pow(g1 - g2, 2) + Math.pow(b1 - b2, 2));
 }
 
 /**

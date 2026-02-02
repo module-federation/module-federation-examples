@@ -23,7 +23,11 @@ async function waitUrl(url, timeout = 600000) {
       // extra diagnostics in CI: try to print which ports are listening
       try {
         const { execSync } = require('node:child_process');
-        const ss = execSync(`ss -ltnp | grep :${target.port} || true`, { stdio: ['ignore','pipe','ignore'] }).toString().trim();
+        const ss = execSync(`ss -ltnp | grep :${target.port} || true`, {
+          stdio: ['ignore', 'pipe', 'ignore'],
+        })
+          .toString()
+          .trim();
         if (ss) console.log(`[prewarm] port diag ${target.port}: ${ss}`);
       } catch (e) {}
       const message = `prewarm timeout for ${target.href}`;

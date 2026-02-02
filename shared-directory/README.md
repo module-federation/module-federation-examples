@@ -9,9 +9,11 @@ From this directory execute:
 - npm run preview
 
 ### host
+
 http://localhost:5172/
 
 ### remote
+
 http://localhost:5176/
 
 Open your browser at http://localhost:5172/ to see the amazing result

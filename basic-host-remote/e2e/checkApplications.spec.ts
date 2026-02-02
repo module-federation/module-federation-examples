@@ -19,4 +19,3 @@ apps.forEach(({ port, name }) => {
     });
   });
 });
-

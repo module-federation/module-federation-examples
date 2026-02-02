@@ -1,6 +1,6 @@
 /**
  * Module Federation Type Definitions
- * 
+ *
  * Provides type safety for remote modules and federation APIs
  */
 

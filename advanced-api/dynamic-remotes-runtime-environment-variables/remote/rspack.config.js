@@ -1,6 +1,4 @@
-const {
-  CopyRspackPlugin,
-} = require('@rspack/core');
+const { CopyRspackPlugin } = require('@rspack/core');
 const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 
 const deps = require('./package.json').dependencies;
@@ -61,11 +59,11 @@ module.exports = {
   plugins: [
     new CopyRspackPlugin({
       patterns: [
-        { 
-          from: 'public/env-config.json', 
+        {
+          from: 'public/env-config.json',
           to: 'env-config.json',
-          noErrorOnMissing: true
-        }
+          noErrorOnMissing: true,
+        },
       ],
     }),
     new ModuleFederationPlugin({
@@ -113,27 +111,31 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  optimization: isProduction ? {
-    splitChunks: {
-      chunks: 'all',
-      cacheGroups: {
-        vendor: {
-          test: /[\/\\]node_modules[\/\\]/,
-          name: 'vendors',
+  optimization: isProduction
+    ? {
+        splitChunks: {
           chunks: 'all',
+          cacheGroups: {
+            vendor: {
+              test: /[\/\\]node_modules[\/\\]/,
+              name: 'vendors',
+              chunks: 'all',
+            },
+            shared: {
+              test: /[\/\\]shared[\/\\]/,
+              name: 'shared',
+              chunks: 'all',
+            },
+          },
         },
-        shared: {
-          test: /[\/\\]shared[\/\\]/,
-          name: 'shared',
-          chunks: 'all',
-        },
-      },
-    },
-    minimize: true,
-  } : {},
-  performance: isProduction ? {
-    hints: 'warning',
-    maxEntrypointSize: 512000,
-    maxAssetSize: 512000,
-  } : false,
+        minimize: true,
+      }
+    : {},
+  performance: isProduction
+    ? {
+        hints: 'warning',
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000,
+      }
+    : false,
 };

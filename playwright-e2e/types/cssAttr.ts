@@ -5,4 +5,3 @@ export const enum CssAttr {
   css = 'css',
   transform = 'transform',
 }
-

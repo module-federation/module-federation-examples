@@ -1,8 +1,6 @@
 # Project Setup and rsbuild vue 3 vuex tailwindcss postcss example:
 
-
 ## Setup Instructions
-
 
 ### 1. Install Dependencies
 
@@ -13,7 +11,6 @@ You need to install dependencies for both the Provider and consumer folders.
 ```bash
 pnpm install
 ```
-
 
 ### 2. Run the Application
 

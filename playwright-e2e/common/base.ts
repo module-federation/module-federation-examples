@@ -91,7 +91,10 @@ interface ElementPropertyOptions {
 export class BaseMethods {
   constructor(protected readonly page: Page) {}
 
-  private resolveLocator(selector: string, options: { parentSelector?: string; text?: string; index?: number } = {}): Locator {
+  private resolveLocator(
+    selector: string,
+    options: { parentSelector?: string; text?: string; index?: number } = {},
+  ): Locator {
     return this.resolveLocatorForPage(this.page, selector, options);
   }
 
@@ -121,7 +124,9 @@ export class BaseMethods {
     options: { parentSelector?: string; text?: string; index?: number } = {},
   ): Locator {
     const { parentSelector, text, index } = options;
-    let locator = parentSelector ? page.locator(parentSelector).locator(selector) : page.locator(selector);
+    let locator = parentSelector
+      ? page.locator(parentSelector).locator(selector)
+      : page.locator(selector);
 
     if (text) {
       locator = locator.filter({ hasText: text });
@@ -163,7 +168,12 @@ export class BaseMethods {
     await this.page.reload({ waitUntil: 'networkidle' });
   }
 
-  async checkElementVisibility({ selector, isVisible = true, text, parentSelector }: VisibilityOptions): Promise<void> {
+  async checkElementVisibility({
+    selector,
+    isVisible = true,
+    text,
+    parentSelector,
+  }: VisibilityOptions): Promise<void> {
     const locator = this.resolveLocator(selector, { parentSelector, text });
 
     if (isVisible) {
@@ -271,7 +281,14 @@ export class BaseMethods {
     await expect(locator).not.toHaveCount(0);
   }
 
-  async clickElementWithText({ selector, text, parentSelector, isTargetChanged = false, index, wait }: ClickWithTextOptions): Promise<void> {
+  async clickElementWithText({
+    selector,
+    text,
+    parentSelector,
+    isTargetChanged = false,
+    index,
+    wait,
+  }: ClickWithTextOptions): Promise<void> {
     const locator = this.resolveLocator(selector, { parentSelector, text, index });
     const element = locator.first();
 
@@ -286,7 +303,13 @@ export class BaseMethods {
     }
   }
 
-  async checkElementContainText({ selector, text, isContain = true, index, parentSelector }: ElementContainTextOptions): Promise<void> {
+  async checkElementContainText({
+    selector,
+    text,
+    isContain = true,
+    index,
+    parentSelector,
+  }: ElementContainTextOptions): Promise<void> {
     const locator = this.resolveLocator(selector, { parentSelector, index });
     const value = String(text);
 
@@ -299,13 +322,25 @@ export class BaseMethods {
     await expect(locator).not.toContainText(value);
   }
 
-  async fillField({ selector, text, parentSelector }: { selector: string; text: string; parentSelector?: string }): Promise<void> {
+  async fillField({
+    selector,
+    text,
+    parentSelector,
+  }: {
+    selector: string;
+    text: string;
+    parentSelector?: string;
+  }): Promise<void> {
     const locator = this.resolveLocator(selector, { parentSelector });
     await locator.fill('');
     await locator.fill(text);
   }
 
-  async checkInputValue(value: string, parentElement?: string, isLengthChecked: boolean = false): Promise<void> {
+  async checkInputValue(
+    value: string,
+    parentElement?: string,
+    isLengthChecked: boolean = false,
+  ): Promise<void> {
     const locator = parentElement
       ? this.resolveLocator('input, textarea', { parentSelector: parentElement })
       : this.page.locator('input');
@@ -321,7 +356,13 @@ export class BaseMethods {
     expect(currentValue).toBe(value);
   }
 
-  async checkElementQuantity({ selector, quantity, parentSelector, text, jqueryValue = false }: ElementQuantityOptions): Promise<void> {
+  async checkElementQuantity({
+    selector,
+    quantity,
+    parentSelector,
+    text,
+    jqueryValue = false,
+  }: ElementQuantityOptions): Promise<void> {
     let locator = this.resolveLocator(selector, { parentSelector });
 
     if (text) {
@@ -338,7 +379,14 @@ export class BaseMethods {
     await expect(locator).toHaveCount(quantity);
   }
 
-  async checkElementState({ selector, state = 'be.disabled', parentSelector, text, isMultiple = false, jqueryValue }: ElementStateOptions): Promise<void> {
+  async checkElementState({
+    selector,
+    state = 'be.disabled',
+    parentSelector,
+    text,
+    isMultiple = false,
+    jqueryValue,
+  }: ElementStateOptions): Promise<void> {
     let locator = this.resolveLocator(selector, { parentSelector, text });
 
     if (isMultiple && state === ':disabled') {
@@ -383,47 +431,51 @@ export class BaseMethods {
         ? `Expected attribute "${prop}" on selector "${selector}" to ${isInclude ? '' : 'not '}include "${value}".`
         : `Expected CSS property "${prop}" on selector "${selector}" to ${isInclude ? '' : 'not '}include "${value}".`;
 
-    const doesMatch = (actual: string): boolean => (isInclude ? actual.includes(value) : !actual.includes(value));
+    const doesMatch = (actual: string): boolean =>
+      isInclude ? actual.includes(value) : !actual.includes(value);
 
     await expect
-      .poll(async () => {
-        if (isMultiple) {
-          const handles = await locator.elementHandles();
-          if (handles.length === 0) {
+      .poll(
+        async () => {
+          if (isMultiple) {
+            const handles = await locator.elementHandles();
+            if (handles.length === 0) {
+              return false;
+            }
+
+            try {
+              const results = await Promise.all(
+                handles.map(async handle => {
+                  try {
+                    return await this.getProperty(handle, prop, attr);
+                  } finally {
+                    await handle.dispose();
+                  }
+                }),
+              );
+
+              return results.every(doesMatch);
+            } catch {
+              return false;
+            }
+          }
+
+          const handle = await locator.elementHandle({ timeout: 0 });
+          if (!handle) {
             return false;
           }
 
           try {
-            const results = await Promise.all(
-              handles.map(async handle => {
-                try {
-                  return await this.getProperty(handle, prop, attr);
-                } finally {
-                  await handle.dispose();
-                }
-              }),
-            );
-
-            return results.every(doesMatch);
+            const actual = await this.getProperty(handle, prop, attr);
+            return doesMatch(actual);
           } catch {
             return false;
+          } finally {
+            await handle.dispose();
           }
-        }
-
-        const handle = await locator.elementHandle({ timeout: 0 });
-        if (!handle) {
-          return false;
-        }
-
-        try {
-          const actual = await this.getProperty(handle, prop, attr);
-          return doesMatch(actual);
-        } catch {
-          return false;
-        } finally {
-          await handle.dispose();
-        }
-      }, { message: expectationMessage })
+        },
+        { message: expectationMessage },
+      )
       .toBeTruthy();
   }
 
@@ -509,7 +561,10 @@ export class BaseMethods {
       const remoteCount = await remoteGroup.count();
 
       const remoteIndex = Math.min(targetIndex, remoteCount - 1);
-      const remoteMessage = await this.captureDialogMessage(remotePage, remoteGroup.nth(remoteIndex));
+      const remoteMessage = await this.captureDialogMessage(
+        remotePage,
+        remoteGroup.nth(remoteIndex),
+      );
 
       if (wait > 0) {
         await remotePage.waitForTimeout(wait);
@@ -551,7 +606,9 @@ export class BaseMethods {
     if (typeof selectorOrOptions === 'string') {
       selector = selectorOrOptions;
       if (typeof extraHostArg !== 'number') {
-        throw new Error('The "extraHost" parameter must be provided when using the positional signature.');
+        throw new Error(
+          'The "extraHost" parameter must be provided when using the positional signature.',
+        );
       }
       extraHost = extraHostArg;
       isEqual = isEqualArg;
@@ -559,7 +616,14 @@ export class BaseMethods {
       clickSelector = clickSelectorArg;
       wait = waitArg;
     } else {
-      ({ selector, extraHost, isEqual = true, index = 0, clickSelector, wait = 0 } = selectorOrOptions);
+      ({
+        selector,
+        extraHost,
+        isEqual = true,
+        index = 0,
+        clickSelector,
+        wait = 0,
+      } = selectorOrOptions);
     }
 
     const baseGroup = this.page.locator(selector);
@@ -584,7 +648,9 @@ export class BaseMethods {
         const remoteClickCount = await remoteClickGroup.count();
 
         if (remoteClickCount === 0) {
-          throw new Error(`No elements found for selector "${clickSelector}" on host ${extraHost}.`);
+          throw new Error(
+            `No elements found for selector "${clickSelector}" on host ${extraHost}.`,
+          );
         }
 
         const clickIndex = Math.min(targetIndex, remoteClickCount - 1);
@@ -622,7 +688,11 @@ export class BaseMethods {
     }
   }
 
-  private async getProperty(handle: ElementHandle<Node> | null, prop: string, attr: 'css' | 'attribute'): Promise<string> {
+  private async getProperty(
+    handle: ElementHandle<Node> | null,
+    prop: string,
+    attr: 'css' | 'attribute',
+  ): Promise<string> {
     if (!handle) {
       throw new Error('Element handle is not available for property check.');
     }
@@ -658,13 +728,21 @@ export class BaseMethods {
     isReloaded?: boolean;
     isValueCompared?: boolean;
   }): Promise<void> {
-    const { button, counterElement, counterText, isReloaded = false, isValueCompared = false } = options;
+    const {
+      button,
+      counterElement,
+      counterText,
+      isReloaded = false,
+      isValueCompared = false,
+    } = options;
 
     const btn = this.resolveLocator(button);
     await expect(btn.first()).toBeVisible();
     await btn.first().click();
 
-    const counter = this.resolveLocator(counterElement).filter({ hasText: counterText.replace(/\d+$/, '') });
+    const counter = this.resolveLocator(counterElement).filter({
+      hasText: counterText.replace(/\d+$/, ''),
+    });
     await expect(counter.first()).toBeVisible();
 
     // Extract numeric value that follows the counterText prefix
@@ -678,7 +756,11 @@ export class BaseMethods {
 
     if (isReloaded) {
       await this.reloadWindow();
-      await this.checkElementWithTextPresence({ selector: counterElement, text: counterText, visibilityState: 'be.visible' });
+      await this.checkElementWithTextPresence({
+        selector: counterElement,
+        text: counterText,
+        visibilityState: 'be.visible',
+      });
     }
   }
 }

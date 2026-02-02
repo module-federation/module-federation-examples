@@ -1,7 +1,5 @@
-const {
-  HtmlRspackPlugin,
-} = require('@rspack/core');
-const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
+const { HtmlRspackPlugin } = require('@rspack/core');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 
 const path = require('path');
 module.exports = {
@@ -13,7 +11,7 @@ module.exports = {
     clean: true,
   },
   resolve: {
-    extensions: [".jsx", ".js", ".json", ".wasm"]
+    extensions: ['.jsx', '.js', '.json', '.wasm'],
   },
   experiments: {
     css: true,

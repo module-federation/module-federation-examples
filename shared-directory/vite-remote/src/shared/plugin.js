@@ -10,7 +10,7 @@ export default function () {
             const result = await import(`./${path}`);
             return () => ({
               ...result,
-              __esModule: true
+              __esModule: true,
             });
           },
         };

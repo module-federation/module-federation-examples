@@ -45,7 +45,9 @@ test.describe('Backend Controlled Configs', () => {
 
     test('renders correct headings', async ({ page }) => {
       await expect(page.getByRole('heading', { level: 1 })).toHaveText(remoteApp.header);
-      await expect(page.getByRole('heading', { level: 2, name: remoteApp.subheader })).toBeVisible();
+      await expect(
+        page.getByRole('heading', { level: 2, name: remoteApp.subheader }),
+      ).toBeVisible();
     });
 
     test('shows the local button with expected styling', async ({ page }) => {

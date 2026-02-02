@@ -1,5 +1,5 @@
 const { CssExtractRspackPlugin } = require('@rspack/core');
-const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 const path = require('path');
 
 const mode = process.env.NODE_ENV || 'development';
@@ -44,10 +44,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          prod ? CssExtractRspackPlugin.loader : 'style-loader',
-          'css-loader',
-        ],
+        use: [prod ? CssExtractRspackPlugin.loader : 'style-loader', 'css-loader'],
         type: 'javascript/auto',
       },
     ],

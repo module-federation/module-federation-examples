@@ -15,9 +15,7 @@ const isMfComponent = component => mfAppNamesRegex.test(component);
 export const getLoadableRequiredComponents = extractor => {
   const scriptElements = extractor?.getScriptElements?.() ?? [];
 
-  const loadableElement = scriptElements.find(
-    el => el?.key === '__LOADABLE_REQUIRED_CHUNKS___ext',
-  );
+  const loadableElement = scriptElements.find(el => el?.key === '__LOADABLE_REQUIRED_CHUNKS___ext');
 
   if (!loadableElement) {
     return [];

@@ -10,8 +10,8 @@ export default defineConfig({
     // It is necessary to configure assetPrefix, and in the production environment, you need to configure output.assetPrefix
     assetPrefix: true,
     client: {
-      port: 3002
-    }
+      port: 3002,
+    },
   },
   tools: {
     rspack: (config, { appendPlugins }) => {

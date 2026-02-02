@@ -10,7 +10,7 @@ module.exports = {
     plugins: [
       new ModuleFederationPlugin({
         experiments: { asyncStartup: true },
-      name: 'consumer',
+        name: 'consumer',
         filename: 'remoteEntry.js',
         remotes: {
           core: 'core@http://localhost:9000/remoteEntry.js',

@@ -56,9 +56,13 @@ test.describe('Single Runtime Plugin Example', () => {
     });
 
     test('should have working counter', async ({ page }) => {
-      await expect(page.getByRole('heading', { level: 3, name: /Shared State Counter: 0/ })).toBeVisible();
+      await expect(
+        page.getByRole('heading', { level: 3, name: /Shared State Counter: 0/ }),
+      ).toBeVisible();
       await page.getByRole('button', { name: 'Increment Counter' }).click();
-      await expect(page.getByRole('heading', { level: 3, name: /Shared State Counter: 1/ })).toBeVisible();
+      await expect(
+        page.getByRole('heading', { level: 3, name: /Shared State Counter: 1/ }),
+      ).toBeVisible();
     });
 
     test('should have local and remote buttons with correct styling', async ({ page }) => {
@@ -84,7 +88,9 @@ test.describe('Single Runtime Plugin Example', () => {
     });
 
     test('should show correct runtime information', async ({ page }) => {
-      await expect(page.getByRole('heading', { level: 3, name: 'Runtime Information:' })).toBeVisible();
+      await expect(
+        page.getByRole('heading', { level: 3, name: 'Runtime Information:' }),
+      ).toBeVisible();
 
       await expect(page.getByText('Module: app1')).toBeVisible();
       await expect(page.getByText('Module: app2')).toBeVisible();
@@ -120,9 +126,13 @@ test.describe('Single Runtime Plugin Example', () => {
     });
 
     test('should have working counter', async ({ page }) => {
-      await expect(page.getByRole('heading', { level: 3, name: /Shared State Counter: 0/ })).toBeVisible();
+      await expect(
+        page.getByRole('heading', { level: 3, name: /Shared State Counter: 0/ }),
+      ).toBeVisible();
       await page.getByRole('button', { name: 'Increment Counter' }).click();
-      await expect(page.getByRole('heading', { level: 3, name: /Shared State Counter: 1/ })).toBeVisible();
+      await expect(
+        page.getByRole('heading', { level: 3, name: /Shared State Counter: 1/ }),
+      ).toBeVisible();
     });
 
     test('should have local and remote buttons with correct styling', async ({ page }) => {
@@ -148,7 +158,9 @@ test.describe('Single Runtime Plugin Example', () => {
     });
 
     test('should show correct runtime information', async ({ page }) => {
-      await expect(page.getByRole('heading', { level: 3, name: 'Runtime Information:' })).toBeVisible();
+      await expect(
+        page.getByRole('heading', { level: 3, name: 'Runtime Information:' }),
+      ).toBeVisible();
 
       await expect(page.getByText('Module: app1')).toBeVisible();
       await expect(page.getByText('Module: app2')).toBeVisible();

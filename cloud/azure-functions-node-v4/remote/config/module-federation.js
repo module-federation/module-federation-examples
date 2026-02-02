@@ -5,7 +5,7 @@ const { UniversalFederationPlugin } = require('@module-federation/node');
 module.exports = {
   client: new ModuleFederationPlugin({
     experiments: { asyncStartup: true },
-      name: 'remote',
+    name: 'remote',
     filename: 'remote.js',
     remotes: {
       shell: 'shell@http://localhost:7071/api/chunks/remote.js',

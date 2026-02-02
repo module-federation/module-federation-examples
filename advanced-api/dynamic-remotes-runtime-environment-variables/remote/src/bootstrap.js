@@ -9,7 +9,7 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 // Performance monitoring for remote
@@ -19,8 +19,10 @@ if (typeof window !== 'undefined' && window.performance) {
       const perfData = performance.getEntriesByType('navigation')[0];
       console.log('Remote App Performance:', {
         loadTime: Math.round(perfData.loadEventEnd - perfData.loadEventStart),
-        domContentLoaded: Math.round(perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart),
-        totalTime: Math.round(perfData.loadEventEnd - perfData.fetchStart)
+        domContentLoaded: Math.round(
+          perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart,
+        ),
+        totalTime: Math.round(perfData.loadEventEnd - perfData.fetchStart),
       });
     }, 0);
   });

@@ -6,8 +6,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const selectors = ['style[data-next-hide-fouc="true"]', 'noscript[data-next-hide-fouc="true"]'];
 
-    selectors.forEach((selector) => {
-      document.querySelectorAll(selector).forEach((element) => element.remove());
+    selectors.forEach(selector => {
+      document.querySelectorAll(selector).forEach(element => element.remove());
     });
 
     if (document.body.style.display === 'none') {

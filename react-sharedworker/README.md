@@ -1,4 +1,5 @@
 # react-sharedworker
+
 Using Webpack Module Federation in SharedWorker
 
 Federated module (defined under `module` folder), can be consumed by main thread in host application (defined under `host` folder), and it also can be consumed by worker thread.

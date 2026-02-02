@@ -31,19 +31,21 @@ class ErrorBoundary extends Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       const FallbackComponent = this.props.fallback;
-      
+
       if (FallbackComponent) {
         return <FallbackComponent error={this.state.error!} retry={this.retry} />;
       }
 
       return (
-        <div style={{ 
-          padding: '20px', 
-          border: '1px solid #ff6b6b', 
-          borderRadius: '4px', 
-          backgroundColor: '#ffe0e0',
-          margin: '10px 0'
-        }}>
+        <div
+          style={{
+            padding: '20px',
+            border: '1px solid #ff6b6b',
+            borderRadius: '4px',
+            backgroundColor: '#ffe0e0',
+            margin: '10px 0',
+          }}
+        >
           <h3>Module Loading Error</h3>
           <p>Failed to load remote module. This might be due to:</p>
           <ul>
@@ -51,7 +53,7 @@ class ErrorBoundary extends Component<Props, State> {
             <li>Remote application is not running</li>
             <li>Version compatibility problems</li>
           </ul>
-          <button 
+          <button
             onClick={this.retry}
             style={{
               padding: '8px 16px',
@@ -59,20 +61,22 @@ class ErrorBoundary extends Component<Props, State> {
               color: 'white',
               border: 'none',
               borderRadius: '4px',
-              cursor: 'pointer'
+              cursor: 'pointer',
             }}
           >
             Retry
           </button>
           <details style={{ marginTop: '10px' }}>
             <summary>Error Details</summary>
-            <pre style={{ 
-              backgroundColor: '#f5f5f5', 
-              padding: '10px', 
-              borderRadius: '4px',
-              overflow: 'auto',
-              fontSize: '12px'
-            }}>
+            <pre
+              style={{
+                backgroundColor: '#f5f5f5',
+                padding: '10px',
+                borderRadius: '4px',
+                overflow: 'auto',
+                fontSize: '12px',
+              }}
+            >
               {this.state.error?.message}
               {this.state.error?.stack}
             </pre>

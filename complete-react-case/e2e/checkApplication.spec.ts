@@ -41,4 +41,3 @@ test.describe('Complete React case', () => {
     await page.getByRole('button', { name: buttons.closeButton }).click();
   });
 });
-

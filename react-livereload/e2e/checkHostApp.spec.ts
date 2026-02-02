@@ -31,10 +31,16 @@ test.describe('React HMR - Host App', () => {
 
   test('renders the home page structure', async ({ page }) => {
     await expect(
-      page.getByRole('heading', { level: 1, name: Constants.elementsText.reactHmrApp.host.headerText1 }),
+      page.getByRole('heading', {
+        level: 1,
+        name: Constants.elementsText.reactHmrApp.host.headerText1,
+      }),
     ).toBeVisible();
 
-    const heading = page.getByRole('heading', { level: 1, name: Constants.elementsText.reactHmrApp.host.headerText1 });
+    const heading = page.getByRole('heading', {
+      level: 1,
+      name: Constants.elementsText.reactHmrApp.host.headerText1,
+    });
     const banner = page.locator('div').filter({ has: heading }).locator('div[style]').first();
 
     await expect(banner).toContainText(Constants.elementsText.reactHmrApp.host.headerText2);
@@ -54,9 +60,14 @@ test.describe('React HMR - Host App', () => {
       await expect(page).toHaveURL(`http://localhost:${HOST_PORT}${path}`);
 
       await expect(
-        page.getByRole('heading', { level: 1, name: Constants.elementsText.reactHmrApp.host.headerText1 }),
+        page.getByRole('heading', {
+          level: 1,
+          name: Constants.elementsText.reactHmrApp.host.headerText1,
+        }),
       ).toBeVisible();
-      await expect(page.getByText(Constants.elementsText.reactHmrApp.host.headerText2)).toBeVisible();
+      await expect(
+        page.getByText(Constants.elementsText.reactHmrApp.host.headerText2),
+      ).toBeVisible();
 
       for (const target of navigationTargets) {
         await expect(page.getByRole('link', { name: target.name })).toBeVisible();
@@ -68,4 +79,3 @@ test.describe('React HMR - Host App', () => {
     });
   }
 });
-

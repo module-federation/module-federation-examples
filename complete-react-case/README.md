@@ -31,7 +31,4 @@ It is a pure host.
 
 After running these commands, open your browser at `http://localhost:3002` and open the DevTools network tab to see resource loading details.
 
-
-
-
 [Best practices, rules and more interesting information here](../../playwright-e2e/README.md)

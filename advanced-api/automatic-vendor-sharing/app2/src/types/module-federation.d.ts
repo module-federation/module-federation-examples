@@ -6,6 +6,9 @@ declare module 'app1/Button' {
 
 declare module 'app1/ErrorBoundary' {
   import { ComponentType } from 'react';
-  const ErrorBoundary: ComponentType<{ children: React.ReactNode; fallback?: React.ComponentType<any> }>;
+  const ErrorBoundary: ComponentType<{
+    children: React.ReactNode;
+    fallback?: React.ComponentType<any>;
+  }>;
   export default ErrorBoundary;
 }

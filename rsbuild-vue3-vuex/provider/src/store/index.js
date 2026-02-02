@@ -1,17 +1,17 @@
-import { createStore } from "vuex";
+import { createStore } from 'vuex';
 
 export const remoteStore = {
   state: {
     userData: null,
   },
   mutations: {
-    ["setUserData"](state, payload) {
+    ['setUserData'](state, payload) {
       state.userData = payload;
     },
   },
   actions: {
-    ["getUserData"]({ commit }) {
-      commit("setUserData", "emad");
+    ['getUserData']({ commit }) {
+      commit('setUserData', 'emad');
     },
   },
 };
