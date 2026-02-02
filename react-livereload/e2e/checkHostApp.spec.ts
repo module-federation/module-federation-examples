@@ -34,12 +34,8 @@ test.describe('React HMR - Host App', () => {
       page.getByRole('heading', { level: 1, name: Constants.elementsText.reactHmrApp.host.headerText1 }),
     ).toBeVisible();
 
-    const banner = page
-      .locator('div')
-      .filter({
-        has: page.getByRole('heading', { level: 1, name: Constants.elementsText.reactHmrApp.host.headerText1 }),
-      })
-      .first();
+    const heading = page.getByRole('heading', { level: 1, name: Constants.elementsText.reactHmrApp.host.headerText1 });
+    const banner = page.locator('div').filter({ has: heading }).locator('div[style]').first();
 
     await expect(banner).toContainText(Constants.elementsText.reactHmrApp.host.headerText2);
     await expect(banner).toHaveCSS('background-color', 'rgb(173, 255, 47)');
