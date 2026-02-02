@@ -1,4 +1,3 @@
-const { HtmlRspackPlugin } = require('@rspack/core');
 const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
