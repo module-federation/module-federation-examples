@@ -1,13 +1,13 @@
 import { defineConfig } from '@rsbuild/core';
 import { pluginVue } from '@rsbuild/plugin-vue';
 import path from 'node:path';
-import { ModuleFederationPlugin } from "@module-federation/enhanced/rspack";
-import { dependencies } from "./package.json";
+import { ModuleFederationPlugin } from '@module-federation/enhanced/rspack';
+import { dependencies } from './package.json';
 
 export default defineConfig({
   source: {
     entry: {
-      index: "./src/main.js",
+      index: './src/main.js',
     },
   },
   server: {
@@ -26,14 +26,14 @@ export default defineConfig({
       config.resolve ||= {};
       config.resolve.alias ||= {};
       config.output ||= {};
-      config.resolve.alias['@'] = path.resolve(__dirname, "src");
+      config.resolve.alias['@'] = path.resolve(__dirname, 'src');
       appendPlugins([
         new ModuleFederationPlugin({
           name: `ASSET_REMOTE`,
           filename: `remoteEntry.js`,
           exposes: {
-            "./AppIndex": "./src/views/AppIndex",
-            "./store": "./src/store/index",
+            './AppIndex': './src/views/AppIndex',
+            './store': './src/store/index',
           },
           shared: {
             vue: {
@@ -49,10 +49,12 @@ export default defineConfig({
       ]);
     },
   },
-  plugins: [pluginVue({
-    splitChunks: {
-      vue: false,
-      router: false
-    }
-  })],
+  plugins: [
+    pluginVue({
+      splitChunks: {
+        vue: false,
+        router: false,
+      },
+    }),
+  ],
 });

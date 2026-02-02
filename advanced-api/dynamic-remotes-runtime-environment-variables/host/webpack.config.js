@@ -34,11 +34,11 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { 
-          from: 'public/env-config.json', 
+        {
+          from: 'public/env-config.json',
           to: 'env-config.json',
-          noErrorOnMissing: true
-        }
+          noErrorOnMissing: true,
+        },
       ],
     }),
     new ModuleFederationPlugin({

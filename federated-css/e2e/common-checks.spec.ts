@@ -14,16 +14,8 @@ type AppConfig = {
   isNextJs?: boolean;
 };
 
-const {
-  css,
-  cssModule,
-  jss,
-  less,
-  scss,
-  styledComponent,
-  tailwindGlobal,
-  tailwindModule,
-} = Constants.fullTestData.federatedCssTestData;
+const { css, cssModule, jss, less, scss, styledComponent, tailwindGlobal, tailwindModule } =
+  Constants.fullTestData.federatedCssTestData;
 
 const appsUnderTest: AppConfig[] = [
   {

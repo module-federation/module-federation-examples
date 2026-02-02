@@ -3,11 +3,7 @@ import { BasePage } from './utils/base-test';
 import { selectors } from './utils/selectors';
 import { Constants } from './utils/constants';
 
-const {
-  host,
-  remoteApp,
-  widget,
-} = Constants.elementsText.dynamicSystemRemotesRuntimeApp;
+const { host, remoteApp, widget } = Constants.elementsText.dynamicSystemRemotesRuntimeApp;
 
 const { envLoader, remoteConfigLoader } = Constants.commonConstantsData;
 
@@ -25,8 +21,16 @@ test.describe('Dynamic Remotes with runtime environment variables', () => {
 
     await basePage.clickElementWithText(selectors.tags.coreElements.button, host.button);
 
-    await basePage.waitForTextToDisappear(selectors.tags.coreElements.div, host.remoteLoading, 15000);
-    await basePage.waitForTextToDisappear(selectors.tags.coreElements.div, remoteConfigLoader, 15000);
+    await basePage.waitForTextToDisappear(
+      selectors.tags.coreElements.div,
+      host.remoteLoading,
+      15000,
+    );
+    await basePage.waitForTextToDisappear(
+      selectors.tags.coreElements.div,
+      remoteConfigLoader,
+      15000,
+    );
 
     await basePage.checkElementWithTextPresence(selectors.tags.headers.h3, host.remoteSectionTitle);
     await basePage.checkElementWithTextPresence(selectors.tags.headers.h2, widget.title);
@@ -51,7 +55,11 @@ test.describe('Dynamic Remotes with runtime environment variables', () => {
       page.getByRole('heading', { level: 2, name: new RegExp(`^${remoteApp.subheader}$`) }),
     ).toBeVisible();
 
-    await basePage.waitForTextToDisappear(selectors.tags.coreElements.div, remoteConfigLoader, 15000);
+    await basePage.waitForTextToDisappear(
+      selectors.tags.coreElements.div,
+      remoteConfigLoader,
+      15000,
+    );
 
     await basePage.checkElementWithTextPresence(selectors.tags.headers.h2, widget.title);
 

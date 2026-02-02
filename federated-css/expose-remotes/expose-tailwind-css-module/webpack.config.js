@@ -42,7 +42,7 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
-...mfeBaseConfig,
+      ...mfeBaseConfig,
       name: tailwindCssModule.name,
       exposes: {
         './TailwindCssModule': './src/tailwind.module.css',

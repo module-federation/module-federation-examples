@@ -15,6 +15,7 @@ This example demonstrates a runtime plugin implementation for Module Federation 
 ### `control-share.ts`
 
 A runtime plugin that implements version control for Module Federation. Key features:
+
 - Implements the `FederationRuntimePlugin` interface
 - Uses localStorage to persist version preferences
 - Handles version resolution and module sharing between applications
@@ -23,6 +24,7 @@ A runtime plugin that implements version control for Module Federation. Key feat
 ### E2E Tests
 
 Comprehensive E2E tests that verify:
+
 - Initial shared module versions
 - Version override functionality through localStorage
 - UI updates reflecting version changes
@@ -35,26 +37,29 @@ Run `pnpm run start`. This will build and serve both `app1` and `app2` on ports 
 - [localhost:3001](http://localhost:3001/) - Host application with control panel
 - [localhost:3002](http://localhost:3002/) - Remote application
 
-
 To run tests in interactive mode:
+
 ```bash
+
 ```
 
 To run tests in headless mode:
+
 ```bash
 yarn e2e:ci
 ```
 
-
 ## Implementation Details
 
 The control panel allows you to:
+
 - View current versions of shared modules (react, react-dom, lodash)
 - Override versions for specific applications
 - Save settings to localStorage
 - Clear settings and reload to default versions
 
 The runtime plugin (`control-share.ts`) handles:
+
 - Version resolution based on localStorage settings
 - Share scope management
 - Instance tracking and updates

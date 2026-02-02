@@ -7,5 +7,5 @@ if (rootElement) {
   const root = createRoot(rootElement);
   root.render(<App />);
 } else {
-  console.error("Elemento #root não encontrado.");
+  console.error('Elemento #root não encontrado.');
 }

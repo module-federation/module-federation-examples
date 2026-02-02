@@ -11,7 +11,9 @@ test.describe('Offline Remote', () => {
 
   test('renders the host header and description', async ({ page }) => {
     await expect(page.getByRole('heading', { level: 1, name: 'Offline Remote' })).toBeVisible();
-    await expect(page.getByRole('heading', { level: 2, name: 'Remotes currently in use' })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { level: 2, name: 'Remotes currently in use' }),
+    ).toBeVisible();
     await expect(page.getByText(/Click The second button/i)).toBeVisible();
   });
 

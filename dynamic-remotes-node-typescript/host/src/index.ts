@@ -1,15 +1,15 @@
 import { loadRemote, init } from '@module-federation/runtime';
-import {performReload, revalidate } from '@module-federation/node/utils';
+import { performReload, revalidate } from '@module-federation/node/utils';
 
 console.log('hello from host host');
 
 let instance;
 let loadedString;
-let loadedClass: (new() => any) | null;
+let loadedClass: (new () => any) | null;
 let loadedClassInstance;
 
 async function initAndLoad() {
-  await performReload(true)
+  await performReload(true);
 
   // here we assign the return value of the init() function, which can be used to do some more complex
   // things with the module federation runtime
@@ -31,10 +31,10 @@ async function initAndLoad() {
   // - using named exports would require the specific export name on the remotely loaded object
   //   (e.g. export class TestClass {} would require loadedObject.TestClass)
 
-  loadedString = (await loadRemote('remote/string') as any).default;
+  loadedString = ((await loadRemote('remote/string')) as any).default;
   console.log('loaded string', loadedString);
 
-  loadedClass = (await loadRemote('remote/class') as any).default;
+  loadedClass = ((await loadRemote('remote/class')) as any).default;
   loadedClassInstance = loadedClass ? new loadedClass() : null;
 
   console.log('current loaded class', loadedClass);

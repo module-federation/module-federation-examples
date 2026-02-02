@@ -19,7 +19,9 @@ function ensureServerBundle(appDirName) {
     stdio: 'inherit',
   });
   if (res.status !== 0) {
-    console.error(`[serve] Failed to rebuild ${appDirName} server bundle (exit ${res.status ?? 'unknown'})`);
+    console.error(
+      `[serve] Failed to rebuild ${appDirName} server bundle (exit ${res.status ?? 'unknown'})`,
+    );
     shutdown(res.status || 1);
   }
 

@@ -17,9 +17,7 @@ if ($picker) {
   [...selectButtons].forEach(button => {
     button.addEventListener('click', e => {
       const detail = e.currentTarget.getAttribute('data-id');
-      $picker.dispatchEvent(
-        new CustomEvent('explore:store-selected', { bubbles: true, detail }),
-      );
+      $picker.dispatchEvent(new CustomEvent('explore:store-selected', { bubbles: true, detail }));
       dialog.close();
       // copy selected store content to top level
       selected.innerHTML = e.currentTarget.previousElementSibling.innerHTML;

@@ -7,10 +7,7 @@ import { CommonTestData } from '../../../../playwright-e2e/fixtures/commonTestDa
 
 const REMOTE_BASE_URL = 'http://localhost:8081/';
 const REMOTE_ROOT_FILE_PATH = path.resolve(__dirname, '../../remote/pages/index.js');
-const REMOTE_CHANGED_CONTENT_PATH = path.resolve(
-  __dirname,
-  '../fixtures/remote/changedContent.js',
-);
+const REMOTE_CHANGED_CONTENT_PATH = path.resolve(__dirname, '../fixtures/remote/changedContent.js');
 const START_MESSAGE = Constants.commonConstantsData.nextJsAppsCommonPhrases.messages.start;
 const CHANGED_MESSAGE = START_MESSAGE.replace('started', 'TESTED');
 

@@ -1,7 +1,5 @@
-const {
-  HtmlRspackPlugin,
-} = require('@rspack/core');
-const {ModuleFederationPlugin}  = require('@module-federation/enhanced/rspack')
+const { HtmlRspackPlugin } = require('@rspack/core');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 const path = require('path');
 
 // adds all your dependencies as shared modules

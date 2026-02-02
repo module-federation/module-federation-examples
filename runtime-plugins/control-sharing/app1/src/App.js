@@ -10,7 +10,8 @@ const styles = {
     padding: '2rem',
     maxWidth: '1200px',
     margin: '0 auto',
-    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+    fontFamily:
+      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
   },
   header: {
     borderBottom: '2px solid #e9ecef',
@@ -70,17 +71,17 @@ const getColorFromString = str => {
     '#03A9F4', // light blue
     '#009688', // teal
     '#8BC34A', // light green
-    '#AB47BC'  // medium purple
+    '#AB47BC', // medium purple
   ];
 
   let hash = 0;
   for (let i = 0; i < str.length; i++) {
-    hash = ((hash << 5) - hash) + str.charCodeAt(i);
+    hash = (hash << 5) - hash + str.charCodeAt(i);
     hash = hash & hash; // Convert to 32-bit integer
   }
 
   hash = Math.abs(hash);
-  
+
   return colors[hash % colors.length];
 };
 
@@ -110,16 +111,20 @@ const App = () => {
 
       <div style={styles.buttonContainer}>
         <LocalButton />
-        <React.Suspense fallback={
-          <div style={{ 
-            padding: '0.5rem 1rem',
-            backgroundColor: '#f8f9fa',
-            borderRadius: '4px',
-            color: '#666'
-          }}>
-            Loading Button...
-          </div>
-        }>
+        <React.Suspense
+          fallback={
+            <div
+              style={{
+                padding: '0.5rem 1rem',
+                backgroundColor: '#f8f9fa',
+                borderRadius: '4px',
+                color: '#666',
+              }}
+            >
+              Loading Button...
+            </div>
+          }
+        >
           <RemoteButton />
         </React.Suspense>
       </div>

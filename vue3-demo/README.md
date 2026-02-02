@@ -11,7 +11,4 @@ Run `pnpm run start` . This will build and serve both `home` and `layout` on por
 - HOST (layout): [localhost:3001](http://localhost:3001/)
 - REMOTE (home): [localhost:3002](http://localhost:3002/)
 
-
-
-
 ["Best Practices, Rules amd more interesting information here](../../playwright-e2e/README.md)

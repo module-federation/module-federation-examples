@@ -5,7 +5,7 @@ const { UniversalFederationPlugin } = require('@module-federation/node');
 module.exports = {
   client: new ModuleFederationPlugin({
     experiments: { asyncStartup: true },
-      name: 'shell',
+    name: 'shell',
     filename: 'container.js',
     remotes: {
       expose_less: 'expose_less@http://localhost:3007/client/remoteEntry.js',

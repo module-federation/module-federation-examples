@@ -23,11 +23,7 @@ import './ProductPage.css';
 const ProductPage = ({ c }) => {
   const { id } = useParams();
   const sku = new URLSearchParams(useLocation().search).get('sku');
-  const {
-    name,
-    variants,
-    highlights = [],
-  } = data.products.find(p => p.id === id);
+  const { name, variants, highlights = [] } = data.products.find(p => p.id === id);
   const variant = variants.find(v => v.sku === sku) || variants[0];
 
   return (
@@ -56,11 +52,7 @@ const ProductPage = ({ c }) => {
             </ul>
             <ul className="d_ProductPage__variants">
               {variants.map(v => (
-                <VariantOption
-                  key={v.sku}
-                  {...v}
-                  selected={v.sku === variant.sku}
-                />
+                <VariantOption key={v.sku} {...v} selected={v.sku === variant.sku} />
               ))}
             </ul>
             <AddToCart sku={variant.sku} />

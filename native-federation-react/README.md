@@ -8,9 +8,6 @@
 
 Apps will be running on http://localhost:3000, http://localhost:3001
 
-
-
-
 ["Best Practices, Rules amd more interesting information here](../../playwright-e2e/README.md)
 
 ## Help Wanted

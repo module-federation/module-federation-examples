@@ -1,7 +1,4 @@
-const {
-  HtmlRspackPlugin,
-} = require('@rspack/core');
-const {ModuleFederationPlugin} = require('@module-federation/enhanced/rspack')
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 
 const path = require('path');
 module.exports = {

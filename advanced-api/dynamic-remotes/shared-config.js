@@ -1,6 +1,6 @@
 /**
  * Shared Module Federation Configuration
- * 
+ *
  * This file provides standardized shared dependency configurations
  * across all applications in the dynamic remotes example.
  */
@@ -59,10 +59,10 @@ function createSharedConfig(additionalShared = {}) {
  */
 function getRemoteEntry(port, appName = '') {
   const isDevelopment = process.env.NODE_ENV !== 'production';
-  const baseUrl = isDevelopment 
-    ? (process.env.REMOTE_BASE_URL || 'http://localhost')
-    : (process.env.REMOTE_BASE_URL || window?.location?.origin || 'http://localhost');
-  
+  const baseUrl = isDevelopment
+    ? process.env.REMOTE_BASE_URL || 'http://localhost'
+    : process.env.REMOTE_BASE_URL || window?.location?.origin || 'http://localhost';
+
   return `${baseUrl}:${port}/remoteEntry.js`;
 }
 
@@ -101,14 +101,15 @@ const babelConfig = {
   presets: [
     ['@babel/preset-env', { targets: 'defaults' }],
     ['@babel/preset-react', { runtime: 'automatic' }],
-    ['@babel/preset-typescript', { 
-      allowDeclareFields: true,
-      allowNamespaces: true 
-    }],
+    [
+      '@babel/preset-typescript',
+      {
+        allowDeclareFields: true,
+        allowNamespaces: true,
+      },
+    ],
   ],
-  plugins: [
-    ['@babel/plugin-proposal-class-properties'],
-  ],
+  plugins: [['@babel/plugin-proposal-class-properties']],
 };
 
 /**

@@ -5,9 +5,11 @@ This is the first application in the bi-directional module federation example. I
 ## Module Federation Setup
 
 **Exposes:**
+
 - `./Button` - Red button component (`src/components/button.js`)
 
 **Consumes:**
+
 - `app2/Button` - Blue button component from App2
 
 **Port:** 3001

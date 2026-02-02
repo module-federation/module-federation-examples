@@ -44,4 +44,3 @@ Open `http://localhost:3000` after both services are running to see the host con
 ## License
 
 This project is licensed under the terms of the Apache 2.0 license. See the [LICENSE](LICENSE) file for details.
-

@@ -13,11 +13,10 @@ export default defineConfig({
   preview: {
     port: 5176,
   },
-  resolve: {
-  },
+  resolve: {},
   base: 'http://localhost:5176',
   plugins: [
-    react({ }),
+    react({}),
     federation({
       name: '@namespace/viteViteRemote',
       exposes: {

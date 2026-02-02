@@ -32,7 +32,9 @@ const otherHost = (currentHost: number) => {
 
 test.describe('Typescript Monorepo', () => {
   for (const app of appsUnderTest) {
-    test(`checks both apps share the ${sharedHeader} header (port: ${app.host})`, async ({ page }) => {
+    test(`checks both apps share the ${sharedHeader} header (port: ${app.host})`, async ({
+      page,
+    }) => {
       const basePage = new BaseMethods(page);
       await basePage.openLocalhost({ number: app.host });
       await basePage.checkElementWithTextPresence({
@@ -79,7 +81,9 @@ test.describe('Typescript Monorepo', () => {
       });
     });
 
-    test(`confirms app names differ across hosts when visiting ${app.appName}`, async ({ page }) => {
+    test(`confirms app names differ across hosts when visiting ${app.appName}`, async ({
+      page,
+    }) => {
       const basePage = new BaseMethods(page);
       await basePage.openLocalhost({ number: app.host });
       await basePage.compareInfoBetweenHosts({

@@ -3,7 +3,7 @@ import moment from 'moment';
 
 /**
  * Enhanced local Widget component for App 1
- * 
+ *
  * Demonstrates:
  * - Modern React functional component with hooks
  * - Shared dependency usage (moment.js)
@@ -29,7 +29,7 @@ export default function Widget() {
     const interval = setInterval(() => {
       setCurrentTime(moment());
     }, 1000);
-    
+
     return () => clearInterval(interval);
   }, []);
 
@@ -49,55 +49,65 @@ export default function Widget() {
         opacity: isVisible ? 1 : 0,
         transition: 'all 0.3s ease-out',
         cursor: 'pointer',
-        userSelect: 'none'
+        userSelect: 'none',
       }}
       data-e2e="WIDGET__1"
       onClick={handleInteraction}
-      onKeyPress={(e) => e.key === 'Enter' && handleInteraction()}
+      onKeyPress={e => e.key === 'Enter' && handleInteraction()}
       tabIndex={0}
       role="button"
       aria-label="Local widget from App 1"
     >
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        marginBottom: '12px'
-      }}>
-        <h2 style={{
-          margin: 0,
-          fontSize: '20px',
-          fontWeight: '600'
-        }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          marginBottom: '12px',
+        }}
+      >
+        <h2
+          style={{
+            margin: 0,
+            fontSize: '20px',
+            fontWeight: '600',
+          }}
+        >
           App 1 Widget
         </h2>
-        
-        <div style={{
-          fontSize: '12px',
-          opacity: 0.8,
-          backgroundColor: 'rgba(255, 255, 255, 0.2)',
-          padding: '4px 8px',
-          borderRadius: '4px'
-        }}>
+
+        <div
+          style={{
+            fontSize: '12px',
+            opacity: 0.8,
+            backgroundColor: 'rgba(255, 255, 255, 0.2)',
+            padding: '4px 8px',
+            borderRadius: '4px',
+          }}
+        >
           Loaded: {loadTime}
         </div>
       </div>
-      
-      <p style={{
-        margin: '0 0 12px 0',
-        fontSize: '14px',
-        lineHeight: '1.5',
-        opacity: 0.9
-      }}>
+
+      <p
+        style={{
+          margin: '0 0 12px 0',
+          fontSize: '14px',
+          lineHeight: '1.5',
+          opacity: 0.9,
+        }}
+      >
         Moment shouldn't download twice
       </p>
-      
-      <div style={{
-        backgroundColor: 'rgba(255, 255, 255, 0.1)',
-        padding: '12px',
-        borderRadius: '6px',
-        marginBottom: '12px'
-      }}>
+
+      <div
+        style={{
+          backgroundColor: 'rgba(255, 255, 255, 0.1)',
+          padding: '12px',
+          borderRadius: '6px',
+          marginBottom: '12px',
+        }}
+      >
         <div style={{ fontSize: '12px', opacity: 0.8, marginBottom: '4px' }}>
           📅 Live Time (via shared moment.js):
         </div>
@@ -105,36 +115,42 @@ export default function Widget() {
           {currentTime.format('MMMM Do YYYY, h:mm:ss a')}
         </div>
       </div>
-      
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        fontSize: '12px',
-        opacity: 0.8
-      }}>
+
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          fontSize: '12px',
+          opacity: 0.8,
+        }}
+      >
         <span>
           🖱️ Interactions: <strong>{clickCount}</strong>
         </span>
-        
-        <span style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.2)',
-          padding: '2px 6px',
-          borderRadius: '4px'
-        }}>
+
+        <span
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.2)',
+            padding: '2px 6px',
+            borderRadius: '4px',
+          }}
+        >
           LOCAL
         </span>
       </div>
-      
+
       {clickCount > 0 && (
-        <div style={{
-          marginTop: '12px',
-          padding: '8px',
-          backgroundColor: 'rgba(255, 255, 255, 0.1)',
-          borderRadius: '4px',
-          fontSize: '12px',
-          textAlign: 'center'
-        }}>
+        <div
+          style={{
+            marginTop: '12px',
+            padding: '8px',
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            borderRadius: '4px',
+            fontSize: '12px',
+            textAlign: 'center',
+          }}
+        >
           🎉 Thank you for interacting! This demonstrates stateful local components.
         </div>
       )}

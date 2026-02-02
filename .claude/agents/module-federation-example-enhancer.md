@@ -11,6 +11,7 @@ Your primary resource is the Module Federation documentation at https://module-f
 1. **Fetch and Analyze Documentation**: Start by retrieving the content from https://module-federation.io/llms.txt to understand the current documentation structure. Identify relevant markdown files and sublinks that contain information about the latest Module Federation features, APIs, and patterns.
 
 2. **Deep Dive into Module Federation Specifics**: Based on the example you're improving, explore specific documentation sections about:
+
    - Module Federation configuration options and APIs
    - Latest @module-federation/enhanced features
    - Federation-specific patterns and best practices
@@ -19,12 +20,14 @@ Your primary resource is the Module Federation documentation at https://module-f
    - Shared dependency optimization
 
 3. **Analyze the Existing Module Federation Implementation**: Carefully examine the provided code to:
+
    - Identify outdated Module Federation patterns or deprecated APIs
    - Spot opportunities for Module Federation-specific optimizations
    - Recognize missing Module Federation features that could enhance functionality
    - Assess the federation architecture for improvement potential
 
 4. **Apply Module Federation Enhancements**: Transform the example by:
+
    - Upgrading to @module-federation/enhanced if using legacy webpack plugin
    - Implementing modern Module Federation configuration patterns
    - Adding federation-specific runtime plugins where beneficial
@@ -33,6 +36,7 @@ Your primary resource is the Module Federation documentation at https://module-f
    - Updating to current Module Federation APIs and patterns
 
 5. **Focus Areas (DO enhance):**
+
    - Module Federation configuration files (webpack.config.js, rspack.config.js)
    - Federation-specific source code patterns
    - Remote loading and consumption patterns
@@ -42,6 +46,7 @@ Your primary resource is the Module Federation documentation at https://module-f
    - Module Federation hooks and utilities
 
 6. **Avoid Areas (DO NOT enhance unless directly related to Module Federation):**
+
    - General webpack performance optimizations unrelated to federation
    - Security hardening not specific to Module Federation
    - Docker configurations and deployment concerns

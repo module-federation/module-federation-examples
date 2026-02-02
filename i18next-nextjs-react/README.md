@@ -31,7 +31,4 @@ This is a micro frontend, using a dedicated i18next instance for internationaliz
 
 A shared lib sharing a module to handle i18next instances
 
-
-
-
 ["Best Practices, Rules amd more interesting information here](../../playwright-e2e/README.md)

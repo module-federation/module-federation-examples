@@ -2,11 +2,11 @@ version: '3.8'
 
 services:
   host:
-    build: 
+    build:
       context: ./host
       dockerfile: Dockerfile
     ports:
-      - "3000:80"
+      - '3000:80'
     environment:
       - API_URL=https://host.api.com
       - REMOTE_URL=http://remote/remoteEntry.js
@@ -15,7 +15,7 @@ services:
     depends_on:
       - remote
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      test: ['CMD', 'curl', '-f', 'http://localhost/health']
       interval: 30s
       timeout: 10s
       retries: 3
@@ -25,17 +25,17 @@ services:
       - mf-network
 
   remote:
-    build: 
+    build:
       context: ./remote
       dockerfile: Dockerfile
     ports:
-      - "3001:80"
+      - '3001:80'
     environment:
       - API_URL=https://remote.api.com
       - NODE_ENV=production
       - VERSION=2.0.0
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      test: ['CMD', 'curl', '-f', 'http://localhost/health']
       interval: 30s
       timeout: 10s
       retries: 3
@@ -47,10 +47,9 @@ services:
 networks:
   mf-network:
     driver: bridge
-
 # For development with custom environment variables
 # Copy this file to docker-compose.override.yml and modify as needed
-# 
+#
 # Example docker-compose.override.yml:
 # version: '3.8'
 # services:

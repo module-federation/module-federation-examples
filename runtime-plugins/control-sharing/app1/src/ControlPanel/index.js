@@ -183,7 +183,7 @@ const RenderInstances = () => {
                     instance => instance.shared[key]?.map(entry => entry.version) || [],
                   );
                   const uniquePackageVersions = [...new Set(packageVersions)];
-                  
+
                   return (
                     <div key={`${key}-${entryIndex}`} style={styles.packageItem}>
                       <h4 style={styles.packageTitle}>{key}</h4>

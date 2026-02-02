@@ -14,12 +14,14 @@ type AppData = {
 
 const appsData: AppData[] = [
   {
-    componentName: Constants.commonPhrases.angularUniversalSsrApp.components.homeComponent.split(' ')[0],
+    componentName:
+      Constants.commonPhrases.angularUniversalSsrApp.components.homeComponent.split(' ')[0],
     tabName: Constants.elementsText.angularUniversalSsrApp.tabsNames[0],
     componentText: Constants.commonPhrases.angularUniversalSsrApp.components.homeComponent,
   },
   {
-    componentName: Constants.commonPhrases.angularUniversalSsrApp.components.angularLazyComponent.split(' ')[0],
+    componentName:
+      Constants.commonPhrases.angularUniversalSsrApp.components.angularLazyComponent.split(' ')[0],
     tabName: Constants.elementsText.angularUniversalSsrApp.tabsNames[1],
     componentText: Constants.commonPhrases.angularUniversalSsrApp.components.angularLazyComponent,
     link: Constants.hrefs.angularUniversalSsrLinks.angularLink,

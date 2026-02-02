@@ -1,5 +1,5 @@
 const { loadRemote, init } = require('@module-federation/runtime');
-const {performReload, revalidate} = require('@module-federation/node/utils');
+const { performReload, revalidate } = require('@module-federation/node/utils');
 
 console.log('hello from host');
 
@@ -9,7 +9,7 @@ let loadedClass;
 let loadedClassInstance;
 
 async function initAndLoad() {
-  await performReload(true)
+  await performReload(true);
 
   instance = init({
     name: 'host',
@@ -20,7 +20,6 @@ async function initAndLoad() {
       },
     ],
   });
-
 
   loadRemote('remote/string').then(value => {
     loadedString = value;

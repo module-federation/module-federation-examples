@@ -71,7 +71,8 @@ appsData.forEach(({ host, appName, webpackConfigPath }) => {
   test(`Checks webpack config for ${appName}`, async () => {
     const filePath = path.resolve(repoRoot, webpackConfigPath);
     const content = readFileSync(filePath, 'utf-8');
-    const section = content.split(Constants.commonPhrases.selfHealingApp.configs.separator)[1] ?? '';
+    const section =
+      content.split(Constants.commonPhrases.selfHealingApp.configs.separator)[1] ?? '';
     const shouldContain = !webpackConfigPath.includes('app1');
 
     if (shouldContain) {

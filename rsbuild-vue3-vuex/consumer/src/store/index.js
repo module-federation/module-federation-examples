@@ -1,5 +1,5 @@
-import { createStore } from "vuex";
-import { remoteStore } from "@remote/store";
+import { createStore } from 'vuex';
+import { remoteStore } from '@remote/store';
 
 const searchInput = {
   state: {
@@ -8,7 +8,7 @@ const searchInput = {
   mutations: {},
 };
 
-export default (app) =>
+export default app =>
   createStore({
     ...remoteStore,
   });

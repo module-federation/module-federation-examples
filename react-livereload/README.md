@@ -12,9 +12,6 @@ pnpm run start
 Host runs at http://localhost:3000 (live reload only)
 Remote1 runs at http://localhost:3001 (HMR supported)
 
-
-
-
 ["Best Practices, Rules amd more interesting information here](../../playwright-e2e/README.md)
 
 ## How it works

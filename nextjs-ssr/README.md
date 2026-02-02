@@ -56,7 +56,4 @@ The sharing limit is due to next not having any async boundary, theres no way to
 
 I am investigating new methods that may solve the module sharing problem in next.js, however this is a complex problem to solve and requires enormus amounts of knowladge around how webpack and federation work inside the module graph.
 
-
-
-
 ["Best Practices, Rules amd more interesting information here](../playwright-e2e/README.md)

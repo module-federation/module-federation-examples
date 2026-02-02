@@ -12,7 +12,11 @@ export class SharedContextPage extends BasePage {
     await this.openLocalhost({ port });
   }
 
-  async expectSharedContextContent({ header, subheader, paragraph }: SharedContextAppExpectations): Promise<void> {
+  async expectSharedContextContent({
+    header,
+    subheader,
+    paragraph,
+  }: SharedContextAppExpectations): Promise<void> {
     await this.expectElementWithTextPresence({
       selector: baseSelectors.tags.headers.h1,
       text: header,

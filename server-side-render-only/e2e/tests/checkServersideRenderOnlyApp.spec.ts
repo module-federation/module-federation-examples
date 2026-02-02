@@ -74,7 +74,9 @@ test.describe('Server Side Render Only', () => {
           visibilityState: 'be.visible',
         });
 
-        writeSharedComponent(Constants.elementsText.serverSideRenderOnlyApp.contents.changedContent);
+        writeSharedComponent(
+          Constants.elementsText.serverSideRenderOnlyApp.contents.changedContent,
+        );
 
         await basePage.reloadWindow();
         await basePage.checkElementWithTextPresence({
@@ -85,7 +87,9 @@ test.describe('Server Side Render Only', () => {
       });
 
       test('Check Shared component visibility in both apps after updating', async () => {
-        writeSharedComponent(Constants.elementsText.serverSideRenderOnlyApp.contents.changedContent);
+        writeSharedComponent(
+          Constants.elementsText.serverSideRenderOnlyApp.contents.changedContent,
+        );
 
         const otherHost = host === 3000 ? 3001 : 3000;
         await basePage.openLocalhost({ number: otherHost });
@@ -101,7 +105,9 @@ test.describe('Server Side Render Only', () => {
           visibilityState: 'be.visible',
         });
 
-        writeSharedComponent(Constants.elementsText.serverSideRenderOnlyApp.contents.originalContent);
+        writeSharedComponent(
+          Constants.elementsText.serverSideRenderOnlyApp.contents.originalContent,
+        );
       });
 
       test('Check app build and running & shared component visibility after reset', async () => {

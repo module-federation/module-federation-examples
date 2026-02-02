@@ -14,8 +14,13 @@ test.describe('Vue 3 Demo', () => {
       test(`Checks apps name visibility (${appName})`, async ({ page }) => {
         const basePage = new BaseMethods(page);
         await basePage.openLocalhost({ number: host });
-        const nameSelector = host === 3001 ? baseSelectors.tags.headers.h1 : baseSelectors.tags.headers.h3;
-        await basePage.checkElementWithTextPresence({ selector: nameSelector, text: appName, visibilityState: 'be.visible' });
+        const nameSelector =
+          host === 3001 ? baseSelectors.tags.headers.h1 : baseSelectors.tags.headers.h3;
+        await basePage.checkElementWithTextPresence({
+          selector: nameSelector,
+          text: appName,
+          visibilityState: 'be.visible',
+        });
       });
 
       test(`Checks component state message visibility (${appName})`, async ({ page }) => {

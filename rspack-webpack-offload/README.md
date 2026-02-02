@@ -41,7 +41,4 @@ It is a pure host, uses webpack
 
 after all the commands done, open your browser at `http://localhost:3002`, open the dev-tool's network tab to see resources loading details
 
-
-
-
 ["Best Practices, Rules amd more interesting information here](../../playwright-e2e/README.md)

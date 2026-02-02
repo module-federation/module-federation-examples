@@ -31,6 +31,7 @@ This example demonstrates the power of **runtime environment variables** in micr
 ### What are Runtime Environment Variables?
 
 Runtime environment variables are configuration values that are:
+
 - **Injected at container startup** rather than build time
 - **Environment-specific** without requiring separate builds
 - **Dynamically loaded** by the client application
@@ -57,8 +58,9 @@ Runtime environment variables are configuration values that are:
 - **Remote Application**: Standalone micro-frontend exposing a Widget component
 
 Both applications support:
+
 - ✅ React 18 with concurrent features
-- ✅ Enhanced error boundaries and retry mechanisms  
+- ✅ Enhanced error boundaries and retry mechanisms
 - ✅ Runtime environment configuration
 - ✅ Docker containerization with multi-stage builds
 - ✅ Health checks and monitoring
@@ -67,6 +69,7 @@ Both applications support:
 ## ✨ Key Features
 
 ### 🚀 Modern Module Federation
+
 - **@module-federation/enhanced** with latest patterns
 - **Dynamic remote loading** with runtime URLs
 - **Advanced error handling** with retry mechanisms
@@ -74,18 +77,21 @@ Both applications support:
 - **Preloading capabilities** for performance optimization
 
 ### 🔧 Environment Management
+
 - **Runtime configuration** via `env-config.json`
 - **Environment variable validation** with fallbacks
 - **Multi-environment support** (dev, staging, prod)
 - **Hot configuration reloading** (development)
 
 ### 🐳 Production-Ready Containers
+
 - **Multi-stage Docker builds** for optimization
 - **Security hardening** with non-root users
 - **Health checks** for container orchestration
 - **Nginx optimizations** with caching and compression
 
 ### 🛡️ Security & Performance
+
 - **Content Security Policy** headers
 - **CORS configuration** for cross-origin requests
 - **Gzip compression** for static assets
@@ -118,6 +124,7 @@ pnpm start
 ## 💻 Development Setup
 
 ### 1. Install Dependencies
+
 ```bash
 # Install root dependencies
 pnpm install
@@ -127,9 +134,11 @@ pnpm --filter dynamic-remotes-runtime-environment-variables_* install
 ```
 
 ### 2. Environment Configuration
+
 Create `.env` files in both `host/` and `remote/` directories:
 
 **host/.env**
+
 ```bash
 API_URL=https://host.api.com
 REMOTE_URL=http://localhost:3001/remoteEntry.js
@@ -137,6 +146,7 @@ NODE_ENV=development
 ```
 
 **remote/.env**
+
 ```bash
 API_URL=https://remote.api.com
 NODE_ENV=development
@@ -200,14 +210,14 @@ services:
   host:
     build: ./host
     ports:
-      - "3000:80"
+      - '3000:80'
     environment:
       - API_URL=https://host.api.com
       - REMOTE_URL=http://remote/remoteEntry.js
     depends_on:
       - remote
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      test: ['CMD', 'curl', '-f', 'http://localhost/health']
       interval: 30s
       timeout: 10s
       retries: 3
@@ -215,11 +225,11 @@ services:
   remote:
     build: ./remote
     ports:
-      - "3001:80"
+      - '3001:80'
     environment:
       - API_URL=https://remote.api.com
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      test: ['CMD', 'curl', '-f', 'http://localhost/health']
       interval: 30s
       timeout: 10s
       retries: 3
@@ -236,27 +246,27 @@ services:
 
 ### Environment Variables
 
-| Variable | Description | Default | Required |
-|----------|-------------|---------|----------|
-| `API_URL` | Backend API endpoint | `https://host.api.com` | Yes |
+| Variable     | Description            | Default                                | Required  |
+| ------------ | ---------------------- | -------------------------------------- | --------- |
+| `API_URL`    | Backend API endpoint   | `https://host.api.com`                 | Yes       |
 | `REMOTE_URL` | Remote entry point URL | `http://localhost:3001/remoteEntry.js` | Host only |
-| `NODE_ENV` | Environment mode | `development` | No |
-| `VERSION` | Application version | `1.0.0` | No |
+| `NODE_ENV`   | Environment mode       | `development`                          | No        |
+| `VERSION`    | Application version    | `1.0.0`                                | No        |
 
 ### Advanced Configuration
 
 ```javascript
 // Custom validation in useFetchJson
 const { data, loading, error } = useFetchJson('/env-config.json', {
-  validateData: (config) => {
+  validateData: config => {
     return config.API_URL && config.API_URL.startsWith('https://');
   },
   fallbackData: {
     API_URL: 'https://fallback.api.com',
-    REMOTE_URL: 'http://localhost:3001/remoteEntry.js'
+    REMOTE_URL: 'http://localhost:3001/remoteEntry.js',
   },
   maxRetries: 3,
-  timeout: 5000
+  timeout: 5000,
 });
 ```
 
@@ -280,34 +290,34 @@ spec:
         app: mf-host
     spec:
       containers:
-      - name: mf-host
-        image: mf-host:latest
-        ports:
-        - containerPort: 80
-        env:
-        - name: API_URL
-          value: "https://prod-api.example.com"
-        - name: REMOTE_URL
-          value: "https://remote.example.com/remoteEntry.js"
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 80
-          initialDelaySeconds: 30
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 5
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "50m"
-          limits:
-            memory: "128Mi"
-            cpu: "100m"
+        - name: mf-host
+          image: mf-host:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: API_URL
+              value: 'https://prod-api.example.com'
+            - name: REMOTE_URL
+              value: 'https://remote.example.com/remoteEntry.js'
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          resources:
+            requests:
+              memory: '64Mi'
+              cpu: '50m'
+            limits:
+              memory: '128Mi'
+              cpu: '100m'
 ```
 
 ### CDN and Load Balancer Configuration
@@ -352,8 +362,10 @@ The applications log performance metrics and errors:
 // Performance monitoring
 console.log('Host App Performance:', {
   loadTime: Math.round(perfData.loadEventEnd - perfData.loadEventStart),
-  domContentLoaded: Math.round(perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart),
-  totalTime: Math.round(perfData.loadEventEnd - perfData.fetchStart)
+  domContentLoaded: Math.round(
+    perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart,
+  ),
+  totalTime: Math.round(perfData.loadEventEnd - perfData.fetchStart),
 });
 ```
 
@@ -396,6 +408,7 @@ add_header 'Access-Control-Allow-Origin' 'https://trusted-domain.com' always;
 **Symptoms**: "Failed to load remote" errors in console
 
 **Solutions**:
+
 ```javascript
 // Check remote URL accessibility
 curl http://localhost:3001/remoteEntry.js
@@ -410,6 +423,7 @@ curl http://localhost:3001/remoteEntry.js
 **Symptoms**: Application shows fallback values
 
 **Solutions**:
+
 ```bash
 # Verify env-config.json is accessible
 curl http://localhost:3000/env-config.json
@@ -426,6 +440,7 @@ cat env-config.json | jq .
 **Symptoms**: Docker build or npm build errors
 
 **Solutions**:
+
 ```bash
 # Clear node modules and reinstall
 rm -rf node_modules package-lock.json
@@ -465,30 +480,35 @@ curl -w "@curl-format.txt" -o /dev/null -s http://localhost:3000/
 ## 📚 Best Practices
 
 ### 1. Environment Configuration
+
 - ✅ Use runtime configuration for multi-environment deployments
 - ✅ Implement proper fallback values
 - ✅ Validate configuration at startup
 - ✅ Never cache configuration responses
 
 ### 2. Error Handling
+
 - ✅ Implement retry mechanisms for remote loading
 - ✅ Use error boundaries for graceful degradation
 - ✅ Provide meaningful error messages to users
 - ✅ Log errors for monitoring and debugging
 
 ### 3. Performance Optimization
+
 - ✅ Implement component caching with appropriate TTL
 - ✅ Use preloading for critical remotes
 - ✅ Optimize bundle splitting and chunk loading
 - ✅ Implement proper asset caching strategies
 
 ### 4. Security
+
 - ✅ Use HTTPS in production
 - ✅ Implement proper CORS policies
 - ✅ Apply security headers
 - ✅ Run containers as non-root users
 
 ### 5. Monitoring
+
 - ✅ Implement health checks
 - ✅ Monitor remote loading success rates
 - ✅ Track performance metrics
@@ -499,23 +519,23 @@ curl -w "@curl-format.txt" -o /dev/null -s http://localhost:3000/
 ### useFederatedComponent Hook
 
 ```typescript
-const {
-  Component,
-  loading,
-  error,
-  retry,
-  retryCount,
-  clearCache
-} = useFederatedComponent(remoteUrl, scope, module, options);
+const { Component, loading, error, retry, retryCount, clearCache } = useFederatedComponent(
+  remoteUrl,
+  scope,
+  module,
+  options,
+);
 ```
 
 **Parameters**:
+
 - `remoteUrl`: URL to remote entry point
 - `scope`: Remote application scope name
 - `module`: Exposed module path
 - `options`: Configuration object
 
 **Options**:
+
 ```typescript
 {
   maxRetries?: number;     // Default: 3
@@ -528,20 +548,16 @@ const {
 ### useFetchJson Hook
 
 ```typescript
-const {
-  data,
-  loading,
-  error,
-  retry,
-  retryCount
-} = useFetchJson(path, options);
+const { data, loading, error, retry, retryCount } = useFetchJson(path, options);
 ```
 
 **Parameters**:
+
 - `path`: URL to JSON resource
 - `options`: Configuration object
 
 **Options**:
+
 ```typescript
 {
   maxRetries?: number;                    // Default: 3
@@ -563,6 +579,7 @@ Preloads a remote component for improved performance.
 ## 📝 Changelog
 
 ### v2.0.0 (Enhanced)
+
 - ✅ Upgraded to React 18 with concurrent features
 - ✅ Enhanced error handling and retry mechanisms
 - ✅ Improved Docker configurations with security hardening
@@ -571,6 +588,7 @@ Preloads a remote component for improved performance.
 - ✅ Added comprehensive documentation
 
 ### v1.0.0 (Original)
+
 - ✅ Basic Module Federation setup
 - ✅ Runtime environment variables
 - ✅ Docker containerization

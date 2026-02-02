@@ -1,4 +1,4 @@
-const runtimeNmd = (module) => {
+const runtimeNmd = module => {
   module.paths = module.paths || [];
   if (!module.children) {
     module.children = [];
@@ -13,10 +13,7 @@ export const ensureNmdPolyfill = () => {
     runtimes.push(__webpack_require__);
   }
 
-  if (
-    typeof globalThis !== 'undefined' &&
-    typeof globalThis.__webpack_require__ === 'function'
-  ) {
+  if (typeof globalThis !== 'undefined' && typeof globalThis.__webpack_require__ === 'function') {
     runtimes.push(globalThis.__webpack_require__);
   }
 

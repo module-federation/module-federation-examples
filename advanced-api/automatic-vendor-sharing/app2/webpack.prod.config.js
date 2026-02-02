@@ -1,5 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin, AutomaticVendorFederation } = require('@module-federation/enhanced/webpack');
+const {
+  ModuleFederationPlugin,
+  AutomaticVendorFederation,
+} = require('@module-federation/enhanced/webpack');
 
 // Production configuration for optimized builds
 const deps = require('./package.json').dependencies;
@@ -46,13 +49,16 @@ module.exports = {
         options: {
           presets: [
             ['@babel/preset-react', { runtime: 'automatic' }],
-            ['@babel/preset-env', {
-              targets: {
-                browsers: ['> 1%', 'last 2 versions']
+            [
+              '@babel/preset-env',
+              {
+                targets: {
+                  browsers: ['> 1%', 'last 2 versions'],
+                },
+                modules: false,
               },
-              modules: false
-            }],
-            '@babel/preset-typescript'
+            ],
+            '@babel/preset-typescript',
           ],
         },
       },

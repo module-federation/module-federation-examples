@@ -1,7 +1,7 @@
 import { createPinia } from "pinia";
 import { state } from "shared";
 import { createApp } from "vue";
-// window.useStore 
+// window.useStore
 import "./stores/counter";
 import App from "./App.vue";
 

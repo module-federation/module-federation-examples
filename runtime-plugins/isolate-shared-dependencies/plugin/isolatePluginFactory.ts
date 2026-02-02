@@ -6,10 +6,9 @@ type WebpackRequire = {
   c: Record<string, any>;
 };
 
-type ExtendedFederationHost =
-  | FederationHost & {
-      __webpack_require__: WebpackRequire;
-    };
+type ExtendedFederationHost = FederationHost & {
+  __webpack_require__: WebpackRequire;
+};
 
 declare global {
   const __webpack_runtime_id__: string;

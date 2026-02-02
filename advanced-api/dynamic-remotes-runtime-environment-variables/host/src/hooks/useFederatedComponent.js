@@ -12,9 +12,11 @@ function loadComponent(scope, module, maxRetries = 3, retryDelay = 1000) {
     let lastError;
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       try {
-        console.log(`Loading remote: ${scope}${module.replace('.', '')} (attempt ${attempt}/${maxRetries})`);
+        console.log(
+          `Loading remote: ${scope}${module.replace('.', '')} (attempt ${attempt}/${maxRetries})`,
+        );
         const result = await loadRemote(scope + module.replace('.', ''));
-        
+
         if (result) {
           console.log(`Successfully loaded remote: ${scope}${module.replace('.', '')}`);
           return result;
@@ -23,14 +25,16 @@ function loadComponent(scope, module, maxRetries = 3, retryDelay = 1000) {
       } catch (error) {
         lastError = error;
         console.warn(`Failed to load remote (attempt ${attempt}/${maxRetries}):`, error.message);
-        
+
         if (attempt < maxRetries) {
           await new Promise(resolve => setTimeout(resolve, retryDelay * attempt));
         }
       }
     }
-    
-    throw new Error(`Failed to load remote ${scope}${module.replace('.', '')} after ${maxRetries} attempts: ${lastError.message}`);
+
+    throw new Error(
+      `Failed to load remote ${scope}${module.replace('.', '')} after ${maxRetries} attempts: ${lastError.message}`,
+    );
   };
 }
 
@@ -69,18 +73,8 @@ class ComponentCache {
 
 const componentCache = new ComponentCache();
 
-export const useFederatedComponent = (
-  remoteUrl, 
-  scope, 
-  module, 
-  options = {}
-) => {
-  const {
-    maxRetries = 3,
-    retryDelay = 1000,
-    enableCache = true,
-    timeout = 10000
-  } = options;
+export const useFederatedComponent = (remoteUrl, scope, module, options = {}) => {
+  const { maxRetries = 3, retryDelay = 1000, enableCache = true, timeout = 10000 } = options;
 
   const [Component, setComponent] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -140,7 +134,7 @@ export const useFederatedComponent = (
 
       // Create timeout promise
       const timeoutPromise = new Promise((_, reject) =>
-        setTimeout(() => reject(new Error(`Timeout after ${timeout}ms`)), timeout)
+        setTimeout(() => reject(new Error(`Timeout after ${timeout}ms`)), timeout),
       );
 
       // Create abort promise
@@ -155,24 +149,24 @@ export const useFederatedComponent = (
       const loadPromise = componentLoader();
 
       const result = await Promise.race([loadPromise, timeoutPromise, abortPromise]);
-      
+
       if (signal.aborted) {
         return;
       }
 
       const LazyComponent = lazy(() => Promise.resolve(result));
-      
+
       if (enableCache) {
         componentCache.set(key, LazyComponent);
       }
-      
+
       setComponent(LazyComponent);
       setRetryCount(0);
     } catch (err) {
       if (signal.aborted) {
         return;
       }
-      
+
       console.error(`Error loading federated component:`, err);
       setError(err);
       setRetryCount(prev => prev + 1);
@@ -226,14 +220,14 @@ export const useFederatedComponent = (
     retryCount,
     clearCache,
     // Legacy compatibility
-    errorLoading: error
+    errorLoading: error,
   };
 };
 
 // Utility function to preload a remote
 export const preloadRemote = async (remoteUrl, scope, module, options = {}) => {
   const { maxRetries = 3, retryDelay = 1000 } = options;
-  
+
   try {
     if (scope && remoteUrl) {
       registerRemotes([
@@ -243,7 +237,7 @@ export const preloadRemote = async (remoteUrl, scope, module, options = {}) => {
         },
       ]);
     }
-    
+
     const componentLoader = loadComponent(scope, module, maxRetries, retryDelay);
     await componentLoader();
     console.log(`Preloaded remote: ${scope}${module.replace('.', '')}`);

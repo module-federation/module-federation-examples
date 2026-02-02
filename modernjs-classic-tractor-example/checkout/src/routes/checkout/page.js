@@ -11,11 +11,7 @@ const Checkout = () => {
       <CompactHeader />
       <main className="c_Checkout">
         <h2>Checkout</h2>
-        <form
-          action="/checkout/place-order"
-          method="post"
-          className="c_Checkout__form"
-        >
+        <form action="/checkout/place-order" method="post" className="c_Checkout__form">
           <h3>Personal Data</h3>
           <fieldset className="c_Checkout__name">
             <div>

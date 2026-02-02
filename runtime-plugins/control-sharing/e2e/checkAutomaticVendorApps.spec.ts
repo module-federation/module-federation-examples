@@ -16,9 +16,15 @@ test.describe('Control Sharing', () => {
     });
 
     test('shows host version information', async ({ page }) => {
-      await expect(page.getByRole('heading', { level: 4, name: 'Host Used React: 17.0.2' })).toBeVisible();
-      await expect(page.getByRole('heading', { level: 4, name: 'Host Used ReactDOM: 17.0.2' })).toBeVisible();
-      await expect(page.getByRole('heading', { level: 4, name: 'Host Used Lodash: 4.17.21' })).toBeVisible();
+      await expect(
+        page.getByRole('heading', { level: 4, name: 'Host Used React: 17.0.2' }),
+      ).toBeVisible();
+      await expect(
+        page.getByRole('heading', { level: 4, name: 'Host Used ReactDOM: 17.0.2' }),
+      ).toBeVisible();
+      await expect(
+        page.getByRole('heading', { level: 4, name: 'Host Used Lodash: 4.17.21' }),
+      ).toBeVisible();
     });
 
     test('renders app cards with package information', async ({ page }) => {
@@ -46,7 +52,9 @@ test.describe('Control Sharing', () => {
     });
 
     test('applies version overrides from localStorage', async ({ page }) => {
-      await expect(page.getByRole('button', { name: 'App 2 Button - lodash 3.10.1' })).toBeVisible();
+      await expect(
+        page.getByRole('button', { name: 'App 2 Button - lodash 3.10.1' }),
+      ).toBeVisible();
 
       await page.evaluate(() => {
         localStorage.setItem('formDataVMSC', JSON.stringify({ app2: { lodash: '4.17.21' } }));
@@ -54,7 +62,9 @@ test.describe('Control Sharing', () => {
 
       await page.reload();
 
-      await expect(page.getByRole('button', { name: 'App 2 Button - lodash 4.17.21' })).toBeVisible();
+      await expect(
+        page.getByRole('button', { name: 'App 2 Button - lodash 4.17.21' }),
+      ).toBeVisible();
 
       await page.evaluate(() => {
         localStorage.removeItem('formDataVMSC');

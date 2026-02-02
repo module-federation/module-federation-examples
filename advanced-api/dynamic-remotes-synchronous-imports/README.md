@@ -5,6 +5,7 @@
 ## 🎯 Core Concept
 
 This example showcases an advanced Module Federation pattern that combines:
+
 - **Dynamic remote URL resolution** - Change remote URLs at runtime
 - **Synchronous import syntax** - Use static imports that feel like local modules
 - **Runtime plugins** - Modify remote configurations before module loading
@@ -32,7 +33,8 @@ This example showcases an advanced Module Federation pattern that combines:
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 16+ 
+
+- Node.js 16+
 - pnpm (recommended) or npm/yarn
 
 ### Installation & Running
@@ -50,6 +52,7 @@ pnpm --filter dynamic-remotes-synchronous-imports_app2 start
 ```
 
 ### Access the Applications
+
 - **Host Application (App 1)**: [http://localhost:3001](http://localhost:3001)
 - **Remote Application (App 2)**: [http://localhost:3002](http://localhost:3002)
 
@@ -64,12 +67,14 @@ pnpm --filter dynamic-remotes-synchronous-imports_app2 start
 ## 💡 Why Synchronous Imports with Dynamic Remotes?
 
 ### Traditional Dynamic Imports
+
 ```javascript
 // ❌ Traditional approach - requires dynamic import syntax
 const RemoteComponent = React.lazy(() => import('app2/Widget'));
 ```
 
 ### This Example's Approach
+
 ```javascript
 // ✅ Our approach - looks and feels like a local import
 import WidgetRemote from 'app2/Widget';
@@ -77,22 +82,25 @@ import WidgetRemote from 'app2/Widget';
 
 ### Key Benefits
 
-1. **Developer Experience**: 
+1. **Developer Experience**:
+
    - Familiar import syntax
    - Better IDE support and autocomplete
    - Easier to refactor and maintain
 
-2. **Type Safety**: 
+2. **Type Safety**:
+
    - Static analysis works correctly
    - TypeScript integration is seamless
    - Compile-time checks for remote modules
 
-3. **Performance**: 
+3. **Performance**:
+
    - No additional lazy loading overhead
    - Better tree shaking
    - Optimized bundling
 
-4. **Runtime Flexibility**: 
+4. **Runtime Flexibility**:
    - URL resolution happens at runtime
    - Easy environment switching
    - Dynamic configuration without code changes
@@ -105,7 +113,7 @@ import WidgetRemote from 'app2/Widget';
 // moduleConfig.js
 const app2Module = {
   name: 'app2',
-  federationConfig: 'app2@[window.app2Url]/remoteEntry.js'
+  federationConfig: 'app2@[window.app2Url]/remoteEntry.js',
   //                      ^^^^^^^^^^^^^
   //                 Placeholder for runtime resolution
 };
@@ -117,12 +125,12 @@ const app2Module = {
 // runtimePlugin.js
 const getDynamicRemotePlugin = () => ({
   name: 'dynamic-remote-url-plugin',
-  beforeRequest: (args) => {
+  beforeRequest: args => {
     // Look for window.app2Url and replace placeholder
     if (window.app2Url) {
       remote.entry = window.app2Url + '/remoteEntry.js';
     }
-  }
+  },
 });
 ```
 
@@ -173,6 +181,7 @@ dynamic-remotes-synchronous-imports/
 ## 🎨 Modern Features Demonstrated
 
 ### Module Federation 2.0 Enhancements
+
 - ✅ Enhanced runtime plugins with comprehensive error handling
 - ✅ Improved shared dependency management
 - ✅ Manifest generation for debugging
@@ -180,18 +189,21 @@ dynamic-remotes-synchronous-imports/
 - ✅ Better fallback mechanisms
 
 ### React 18 Features
+
 - ✅ `createRoot` API for better performance
 - ✅ Concurrent features support
 - ✅ Modern hooks patterns
 - ✅ Comprehensive error boundaries
 
 ### TypeScript Integration
+
 - ✅ Type definitions for federated modules
 - ✅ Runtime plugin type safety
 - ✅ Development-time type checking
 - ✅ Autocomplete for remote modules
 
 ### Developer Experience
+
 - ✅ Hot module replacement
 - ✅ Debug utilities and logging
 - ✅ Configuration validation
@@ -202,31 +214,32 @@ dynamic-remotes-synchronous-imports/
 This pattern is perfect when you need:
 
 ### 1. **Multi-Environment Deployments**
+
 ```javascript
 // Dynamically point to different environments
-window.app2Url = process.env.NODE_ENV === 'production' 
-  ? '//cdn.company.com/app2'
-  : '//staging.company.com/app2';
+window.app2Url =
+  process.env.NODE_ENV === 'production' ? '//cdn.company.com/app2' : '//staging.company.com/app2';
 ```
 
 ### 2. **A/B Testing**
+
 ```javascript
 // Route users to different remote versions
-window.app2Url = userInTestGroup 
+window.app2Url = userInTestGroup
   ? '//test-remotes.company.com/app2'
   : '//stable-remotes.company.com/app2';
 ```
 
 ### 3. **Gradual Rollouts**
+
 ```javascript
 // Progressive deployment
 const rolloutPercentage = getUserRolloutPercentage();
-window.app2Url = rolloutPercentage < 50
-  ? '//v1.company.com/app2'
-  : '//v2.company.com/app2';
+window.app2Url = rolloutPercentage < 50 ? '//v1.company.com/app2' : '//v2.company.com/app2';
 ```
 
 ### 4. **Tenant-Specific Modules**
+
 ```javascript
 // Multi-tenant applications
 window.app2Url = `//tenant-${tenantId}.company.com/app2`;
@@ -235,12 +248,14 @@ window.app2Url = `//tenant-${tenantId}.company.com/app2`;
 ## 🔧 Configuration Options
 
 ### Basic Setup
+
 ```javascript
 // Set primary URL
 window.app2Url = '//your-remote-server.com';
 ```
 
 ### With Fallback
+
 ```javascript
 // Set primary and fallback URLs
 window.app2Url = '//primary-server.com';
@@ -248,25 +263,27 @@ window.app2FallbackUrl = '//fallback-server.com';
 ```
 
 ### Programmatic Configuration
+
 ```javascript
 import { configUtils } from './moduleConfig';
 
 // Setup multiple remotes at once
 configUtils.setupDynamicUrls({
   app2: '//server1.com',
-  app3: '//server2.com'
+  app3: '//server2.com',
 });
 
 // Setup fallbacks
 configUtils.setupFallbackUrls({
   app2: '//fallback1.com',
-  app3: '//fallback2.com'
+  app3: '//fallback2.com',
 });
 ```
 
 ## 🛠️ Development
 
 ### Building for Production
+
 ```bash
 # Build all applications
 pnpm build
@@ -278,6 +295,7 @@ pnpm serve
 ### Debugging
 
 #### Browser Console
+
 ```javascript
 // Check current configuration
 window.__MF_CONFIG__.getCurrentConfig();
@@ -290,6 +308,7 @@ window.__MF_DEBUG__.getDynamicRemotePluginState();
 ```
 
 #### Development Tools
+
 - Open browser DevTools
 - Check the "Dynamic Remote Plugin" logs
 - Monitor network requests for remote modules
@@ -298,6 +317,7 @@ window.__MF_DEBUG__.getDynamicRemotePluginState();
 ## 🧪 Testing
 
 ### End-to-End Tests
+
 ```bash
 pnpm e2e:ci
 ```
@@ -314,32 +334,38 @@ pnpm e2e:ci
 ### Common Issues
 
 #### Remote Module Fails to Load
+
 ```
 ❌ Error: Loading script failed
 ```
 
 **Solutions:**
+
 1. Verify remote application is running
 2. Check `window.app2Url` is set correctly
 3. Ensure CORS headers are configured
 4. Verify network connectivity
 
 #### TypeScript Errors
+
 ```
 ❌ Cannot find module 'app2/Widget'
 ```
 
 **Solutions:**
+
 1. Ensure type definitions are in place
 2. Check `tsconfig.json` includes paths
 3. Restart TypeScript server
 
 #### Shared Dependencies Issues
+
 ```
 ❌ Multiple React instances detected
 ```
 
 **Solutions:**
+
 1. Verify `singleton: true` in shared config
 2. Check version compatibility
 3. Ensure both apps use same React version
@@ -356,14 +382,17 @@ pnpm e2e:ci
 ## 📚 Additional Resources
 
 ### Official Documentation
+
 - [Module Federation Documentation](https://module-federation.io/)
 - [Webpack Module Federation](https://webpack.js.org/concepts/module-federation/)
 
 ### Related Examples
+
 - [Basic Module Federation](../../basic/host-remote/)
 - [Advanced Routing](../../advanced-api/automatic-vendor-sharing/)
 
 ### Community
+
 - [Module Federation GitHub](https://github.com/module-federation/core)
 - [Discord Community](https://discord.gg/module-federation)
 

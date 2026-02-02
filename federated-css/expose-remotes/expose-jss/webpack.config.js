@@ -38,7 +38,7 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
-...mfeBaseConfig,
+      ...mfeBaseConfig,
       name: jss.name,
       exposes: {
         './JssStyles': './src/react-jss.styles.js',

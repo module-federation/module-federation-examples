@@ -8,7 +8,7 @@ export default async function globalTeardown() {
   } catch (e) {
     // ignore
   }
-  await new Promise((r) => setTimeout(r, 200));
+  await new Promise(r => setTimeout(r, 200));
   const code = typeof process.exitCode === 'number' ? process.exitCode : 0;
   // eslint-disable-next-line no-process-exit
   process.exit(code);

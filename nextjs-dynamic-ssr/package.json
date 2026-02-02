@@ -4,12 +4,10 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "preinstall": "pnpm install --ignore-scripts",
     "start": "pnpm --parallel --filter nextjs-dynamic-ssr_* dev",
     "build": "pnpm --parallel --filter nextjs-dynamic-ssr_* build",
     "serve": "pnpm --parallel --filter nextjs-dynamic-ssr_* start",
-    "test:e2e": "npx playwright test",
-    "e2e:ci": "pnpm build && pnpm exec playwright test --reporter=list"
+    "test:e2e": "npx playwright test"
   },
   "dependencies": {
     "@module-federation/sdk": "0.23.0",

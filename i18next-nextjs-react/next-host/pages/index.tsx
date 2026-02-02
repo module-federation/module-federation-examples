@@ -5,7 +5,9 @@ import i18nService from 'i18next-shared-lib/lib/i18nService';
 
 import useNextHostTranslation from '../i18n/useNextHostTranslation';
 
-const ReactRemoteContent = dynamic(() => import('../components/ReactRemoteContent'), { ssr: false });
+const ReactRemoteContent = dynamic(() => import('../components/ReactRemoteContent'), {
+  ssr: false,
+});
 
 const Home: NextPage = () => {
   const { t } = useNextHostTranslation('next-main');

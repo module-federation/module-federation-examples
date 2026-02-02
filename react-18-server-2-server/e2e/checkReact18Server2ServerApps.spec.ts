@@ -19,7 +19,10 @@ test.describe('React 18 Server 2 Server - App1', () => {
     ).toBeVisible();
 
     await expect(
-      page.getByRole('heading', { level: 2, name: Constants.elementsText.reactApps.app1.subHeader }),
+      page.getByRole('heading', {
+        level: 2,
+        name: Constants.elementsText.reactApps.app1.subHeader,
+      }),
     ).toBeVisible();
 
     await expect(
@@ -71,7 +74,10 @@ test.describe('React 18 Server 2 Server - App2', () => {
     ).toBeVisible();
 
     await expect(
-      page.getByRole('heading', { level: 2, name: Constants.elementsText.reactApps.app2.subHeader }),
+      page.getByRole('heading', {
+        level: 2,
+        name: Constants.elementsText.reactApps.app2.subHeader,
+      }),
     ).toBeVisible();
 
     await expect(

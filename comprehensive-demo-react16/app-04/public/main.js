@@ -292,8 +292,8 @@
                       2 & h[0]
                         ? u.return
                         : h[0]
-                        ? u.throw || ((l = u.return) && l.call(u), 0)
-                        : u.next) &&
+                          ? u.throw || ((l = u.return) && l.call(u), 0)
+                          : u.next) &&
                     !(l = l.call(u, h[1])).done)
                 )
                   return l;
@@ -476,66 +476,69 @@
               (h = ee.getRemoteEntryExports(c, s).entryExports))
                 ? [2, h]
                 : 'undefined' == typeof document
-                ? [
-                    2,
-                    et
-                      .loadScriptNode(u, { attrs: { name: c, globalName: s }, createScriptHook: l })
-                      .then(function () {
+                  ? [
+                      2,
+                      et
+                        .loadScriptNode(u, {
+                          attrs: { name: c, globalName: s },
+                          createScriptHook: l,
+                        })
+                        .then(function () {
+                          var r = ee.getRemoteEntryExports(c, s),
+                            l = r.remoteEntryKey,
+                            h = r.entryExports;
+                          return (
+                            ee.assert(
+                              h,
+                              '\n        Unable to use the '
+                                .concat(c, "'s '")
+                                .concat(u, "' URL with ")
+                                .concat(
+                                  l,
+                                  "'s globalName to get remoteEntry exports.\n        Possible reasons could be:\n\n        1. '",
+                                )
+                                .concat(
+                                  u,
+                                  "' is not the correct URL, or the remoteEntry resource or name is incorrect.\n\n        2. ",
+                                )
+                                .concat(
+                                  l,
+                                  ' cannot be used to get remoteEntry exports in the window object.\n      ',
+                                ),
+                            ),
+                            h
+                          );
+                        }),
+                    ]
+                  : [
+                      2,
+                      et.loadScript(u, { attrs: {}, createScriptHook: l }).then(function () {
                         var r = ee.getRemoteEntryExports(c, s),
                           l = r.remoteEntryKey,
                           h = r.entryExports;
                         return (
                           ee.assert(
                             h,
-                            '\n        Unable to use the '
+                            '\n      Unable to use the '
                               .concat(c, "'s '")
                               .concat(u, "' URL with ")
                               .concat(
                                 l,
-                                "'s globalName to get remoteEntry exports.\n        Possible reasons could be:\n\n        1. '",
+                                "'s globalName to get remoteEntry exports.\n      Possible reasons could be:\n\n      1. '",
                               )
                               .concat(
                                 u,
-                                "' is not the correct URL, or the remoteEntry resource or name is incorrect.\n\n        2. ",
+                                "' is not the correct URL, or the remoteEntry resource or name is incorrect.\n\n      2. ",
                               )
                               .concat(
                                 l,
-                                ' cannot be used to get remoteEntry exports in the window object.\n      ',
+                                ' cannot be used to get remoteEntry exports in the window object.\n    ',
                               ),
                           ),
                           h
                         );
                       }),
-                  ]
-                : [
-                    2,
-                    et.loadScript(u, { attrs: {}, createScriptHook: l }).then(function () {
-                      var r = ee.getRemoteEntryExports(c, s),
-                        l = r.remoteEntryKey,
-                        h = r.entryExports;
-                      return (
-                        ee.assert(
-                          h,
-                          '\n      Unable to use the '
-                            .concat(c, "'s '")
-                            .concat(u, "' URL with ")
-                            .concat(
-                              l,
-                              "'s globalName to get remoteEntry exports.\n      Possible reasons could be:\n\n      1. '",
-                            )
-                            .concat(
-                              u,
-                              "' is not the correct URL, or the remoteEntry resource or name is incorrect.\n\n      2. ",
-                            )
-                            .concat(
-                              l,
-                              ' cannot be used to get remoteEntry exports in the window object.\n    ',
-                            ),
-                        ),
-                        h
-                      );
-                    }),
-                  ];
+                    ];
             });
           })).apply(this, arguments);
         }
@@ -1150,8 +1153,8 @@
           return 1 === c.length
             ? { name: c[0], version: void 0 }
             : 2 === c.length
-            ? { name: c[0], version: c[1] }
-            : { name: c[1], version: c[2] };
+              ? { name: c[0], version: c[1] }
+              : { name: c[1], version: c[2] };
         }
         function eP(r, c, s, u) {
           var l = arguments.length > 4 && void 0 !== arguments[4] ? arguments[4] : {},
@@ -1239,12 +1242,12 @@
                     null == c
                       ? void 0
                       : null == (M = c.modules)
-                      ? void 0
-                      : M.reduce(function (r, c) {
-                          return (
-                            (null == w ? void 0 : w.indexOf(c.moduleName)) !== -1 && r.push(c), r
-                          );
-                        }, [])),
+                        ? void 0
+                        : M.reduce(function (r, c) {
+                            return (
+                              (null == w ? void 0 : w.indexOf(c.moduleName)) !== -1 && r.push(c), r
+                            );
+                          }, [])),
                 I)
               ) {
                 for (var N = I.length, T = 0; T < N; T++) {
@@ -2645,8 +2648,8 @@
           return 'version' in r && r.version
             ? ''.concat(r.name, ':').concat(r.version)
             : 'entry' in r && r.entry
-            ? ''.concat(r.name, ':').concat(r.entry)
-            : ''.concat(r.name);
+              ? ''.concat(r.name, ':').concat(r.entry)
+              : ''.concat(r.name);
         }
         function Z(r) {
           return void 0 !== r.entry;
@@ -2886,19 +2889,19 @@
               (c = e4(s)
                 ? ''
                 : e4(u)
-                ? '>='.concat(s, '.0.0')
-                : e4(l)
-                ? '>='.concat(s, '.').concat(u, '.0')
-                : '>='.concat(c)),
+                  ? '>='.concat(s, '.0.0')
+                  : e4(l)
+                    ? '>='.concat(s, '.').concat(u, '.0')
+                    : '>='.concat(c)),
               (S = e4(E)
                 ? ''
                 : e4(O)
-                ? '<'.concat(Number(E) + 1, '.0.0-0')
-                : e4(I)
-                ? '<'.concat(E, '.').concat(Number(O) + 1, '.0-0')
-                : A
-                ? '<='.concat(E, '.').concat(O, '.').concat(I, '-').concat(A)
-                : '<='.concat(S)),
+                  ? '<'.concat(Number(E) + 1, '.0.0-0')
+                  : e4(I)
+                    ? '<'.concat(E, '.').concat(Number(O) + 1, '.0-0')
+                    : A
+                      ? '<='.concat(E, '.').concat(O, '.').concat(I, '-').concat(A)
+                      : '<='.concat(S)),
               ''.concat(c, ' ').concat(S).trim()
             );
           });
@@ -2941,21 +2944,21 @@
                           .concat(l, ' <')
                           .concat(Number(c) + 1, '.0.0-0')
                       : '0' === s
-                      ? '>='
-                          .concat(c, '.')
-                          .concat(s, '.')
-                          .concat(u, '-')
-                          .concat(l, ' <')
-                          .concat(c, '.')
-                          .concat(s, '.')
-                          .concat(Number(u) + 1, '-0')
-                      : '>='
-                          .concat(c, '.')
-                          .concat(s, '.')
-                          .concat(u, '-')
-                          .concat(l, ' <')
-                          .concat(c, '.')
-                          .concat(Number(s) + 1, '.0-0');
+                        ? '>='
+                            .concat(c, '.')
+                            .concat(s, '.')
+                            .concat(u, '-')
+                            .concat(l, ' <')
+                            .concat(c, '.')
+                            .concat(s, '.')
+                            .concat(Number(u) + 1, '-0')
+                        : '>='
+                            .concat(c, '.')
+                            .concat(s, '.')
+                            .concat(u, '-')
+                            .concat(l, ' <')
+                            .concat(c, '.')
+                            .concat(Number(s) + 1, '.0-0');
                   if ('0' === c)
                     return '0' === s
                       ? '>='
@@ -3991,8 +3994,8 @@
                       2 & h[0]
                         ? u.return
                         : h[0]
-                        ? u.throw || ((l = u.return) && l.call(u), 0)
-                        : u.next) &&
+                          ? u.throw || ((l = u.return) && l.call(u), 0)
+                          : u.next) &&
                     !(l = l.call(u, h[1])).done)
                 )
                   return l;
@@ -4247,8 +4250,8 @@
                       2 & h[0]
                         ? u.return
                         : h[0]
-                        ? u.throw || ((l = u.return) && l.call(u), 0)
-                        : u.next) &&
+                          ? u.throw || ((l = u.return) && l.call(u), 0)
+                          : u.next) &&
                     !(l = l.call(u, h[1])).done)
                 )
                   return l;
@@ -4436,14 +4439,14 @@
                       (null == c
                         ? void 0
                         : null === (h = c.attrs) || void 0 === h
-                        ? void 0
-                        : h.globalName) ||
+                          ? void 0
+                          : h.globalName) ||
                       '__FEDERATION_'.concat(
                         null == c
                           ? void 0
                           : null === (m = c.attrs) || void 0 === m
-                          ? void 0
-                          : m.name,
+                            ? void 0
+                            : m.name,
                         ':custom__',
                       );
                   s((globalThis[S] = l));

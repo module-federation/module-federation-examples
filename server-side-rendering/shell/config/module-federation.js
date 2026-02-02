@@ -5,7 +5,7 @@ const { NodeFederationPlugin, StreamingTargetPlugin } = require('@module-federat
 module.exports = {
   client: new ModuleFederationPlugin({
     experiments: { asyncStartup: true },
-      name: 'shell',
+    name: 'shell',
     filename: 'container.js',
     remotes: {
       remote1: 'remote1@http://localhost:3001/client/remoteEntry.js',

@@ -1,12 +1,12 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
-const ExternalTemplateRemotesPlugin = require('external-remotes-plugin');
 const path = require('path');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
 
 module.exports = {
   entry: './src/index',
   mode: 'development',
+  target: 'web',
   devtool: 'source-map',
   optimization: {
     minimize: false,
@@ -17,6 +17,9 @@ module.exports = {
     port: 3000,
     historyApiFallback: {
       index: 'index.html',
+    },
+    client: {
+      overlay: false,
     },
   },
   output: {
@@ -40,11 +43,10 @@ module.exports = {
       experiments: { asyncStartup: true },
       name: 'host',
       remotes: {
-        remote1: 'remote1@[remote1Url]/remoteEntry.js',
-        libs: 'libs@[libsUrl]/remoteEntry.js',
+        remote1: 'remote1@http://localhost:3001/remoteEntry.js',
+        libs: 'libs@http://localhost:3002/remoteEntry.js',
       },
     }),
-    new ExternalTemplateRemotesPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),

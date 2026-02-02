@@ -24,7 +24,8 @@ const Index = () => (
         <p className="name">Modern.js Bidirectional Host Example</p>
       </div>
       <p className="description">
-        FEDERATED: <Suspense fallback={<div>Loading Button...</div>}>
+        FEDERATED:{' '}
+        <Suspense fallback={<div>Loading Button...</div>}>
           <Button />
         </Suspense>
       </p>

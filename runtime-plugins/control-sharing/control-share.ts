@@ -1,4 +1,11 @@
-import type { FederationRuntimePlugin, Shared, ShareArgs, ShareInfos, ShareScopeMap, SharedGetter } from '@module-federation/runtime/types';
+import type {
+  FederationRuntimePlugin,
+  Shared,
+  ShareArgs,
+  ShareInfos,
+  ShareScopeMap,
+  SharedGetter,
+} from '@module-federation/runtime/types';
 
 // Store interface for runtime data
 interface RuntimeStore {
@@ -20,7 +27,7 @@ interface FormDataOverrides {
 }
 
 const runtimeStore: RuntimeStore = {
-  name: ''
+  name: '',
 };
 
 const LOCAL_STORAGE_KEY = 'formDataVMSC';
@@ -32,9 +39,9 @@ const ControlScopeResolvePlugin = (): FederationRuntimePlugin => {
       runtimeStore.name = args.options.name;
       return args;
     },
-    resolveShare: (args) => {
+    resolveShare: args => {
       let overrides: FormDataOverrides;
-      
+
       try {
         const formData = localStorage.getItem(LOCAL_STORAGE_KEY);
         if (!formData) return args;
@@ -54,41 +61,43 @@ const ControlScopeResolvePlugin = (): FederationRuntimePlugin => {
         }
 
         const overrideVersion = overrides[runtimeStore.name][pkgName];
-        const matchingInstance = GlobalFederation.__INSTANCES__.find(instance => 
-          instance.options.shared[pkgName]?.[0]?.version === overrideVersion
+        const matchingInstance = GlobalFederation.__INSTANCES__.find(
+          instance => instance.options.shared[pkgName]?.[0]?.version === overrideVersion,
         );
 
         if (matchingInstance) {
           const current = shareScopeMap[scope][pkgName][version];
           const override = matchingInstance.options.shared[pkgName][0];
-          
+
           // Return current if override is from same source
           if (current.from === override.from) return current;
 
           // Find and update original instance
-          const originInstance = GlobalFederation.__INSTANCES__.find(instance => 
-            instance.options.name === current.from
+          const originInstance = GlobalFederation.__INSTANCES__.find(
+            instance => instance.options.name === current.from,
           );
 
           if (originInstance) {
             const sharedPkg = originInstance.options.shared[pkgName][0];
             sharedPkg.useIn = sharedPkg.useIn.filter((i: string) => i !== runtimeStore.name);
           }
-          
+
           // Update share scope map with new instance
           shareScopeMap[scope][pkgName][version] = override;
           if (!shareScopeMap[scope][pkgName][version].useIn.includes(runtimeStore.name)) {
             shareScopeMap[scope][pkgName][version].useIn.push(runtimeStore.name);
           }
-          
+
           return override;
         } else {
-          console.warn(`No matching instance found for package ${pkgName} with version ${overrideVersion}`);
+          console.warn(
+            `No matching instance found for package ${pkgName} with version ${overrideVersion}`,
+          );
         }
 
         return originalResolver();
       };
-      
+
       return args;
     },
   };

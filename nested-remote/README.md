@@ -15,7 +15,4 @@ Run `pnpm run start`. This will build and serve both `app1`, `app2`, and `app3` 
 - [localhost:3003](http://localhost:3003/) (STANDALONE REMOTE)
   <img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/Nested">
 
-
-
-
 ["Best Practices, Rules amd more interesting information here](../../playwright-e2e/README.md)

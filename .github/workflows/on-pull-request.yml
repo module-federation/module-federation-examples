@@ -5,22 +5,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
-env:
-  FILES_TO_DELETE: |
-    sudo rm -rf "/usr/share/dotnet"
-    sudo rm -rf "/usr/share/swift"
-    sudo rm -rf "/usr/local/share/boost"
-    sudo rm -rf /opt/ghc
-    sudo rm -rf "/usr/local/share/boost"
-    sudo rm -rf "/usr/local/lib/android/sdk"
-    sudo rm -rf "/opt/hostedtoolcache/Python"
-    sudo rm -rf "/opt/hostedtoolcache/go"
-    sudo rm -rf "/opt/hostedtoolcache/CodeQL"
-    sudo rm -rf "/var/lib/gems"
-    sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-    sudo apt-get clean -y
-    sudo apt-get autoremove -y
-
 jobs:
   # Stop previous runs
   stop-previous-run:
@@ -57,32 +41,23 @@ jobs:
     runs-on: ubuntu-22.04
     needs: stop-previous-run
     steps:
-      - name: Checkout
-        id: checkout
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
-
       - name: Check if forked master is up to date
-        id: check-forked-master
         if: github.repository_owner == 'module-federation'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "${{ github.repository_owner }}"
-          git remote add base https://github.com/${{github.repository}}
-          git remote -v
-          git fetch --all
-          export FORKED_MASTER_SHA=$(git log -n 1 --pretty=format:"%H" origin/${{ github.event.pull_request.base.ref}})
-          export BASE_MASTER_SHA=$(git log -n 1 --pretty=format:"%H" base/${{ github.event.pull_request.base.ref }})
-          echo "$FORKED_MASTER_SHA"
-          echo "$BASE_MASTER_SHA"
+          BASE_REF="${{ github.event.pull_request.base.ref }}"
+          FORK_REPO="${{ github.event.pull_request.head.repo.full_name }}"
+          BASE_REPO="${{ github.repository }}"
 
-          if [ "$FORKED_MASTER_SHA" == "$BASE_MASTER_SHA" ];
-          then
+          FORKED_SHA=$(gh api "repos/${FORK_REPO}/commits/${BASE_REF}" --jq '.sha')
+          BASE_SHA=$(gh api "repos/${BASE_REPO}/commits/${BASE_REF}" --jq '.sha')
+
+          echo "Fork SHA:  $FORKED_SHA"
+          echo "Base SHA:  $BASE_SHA"
+
+          if [ "$FORKED_SHA" == "$BASE_SHA" ]; then
             echo "The forked master is up to date with the base master branch"
-            exit 0
           else
             echo "The forked master branch is not up to date with the base master branch, Please update your fork!"
             exit 1
@@ -101,18 +76,10 @@ jobs:
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
+          fetch-depth: 1
 
-      - name: Free disk space
-        shell: bash
-        run: |
-          echo "Freeing disk space on runner..."
-          while IFS= read -r cmd; do
-            [ -z "$cmd" ] && continue
-            echo ">> $cmd"
-            bash -lc "$cmd" || true
-          done <<< "$FILES_TO_DELETE"
-          df -h
+      - name: Fetch origin/master for diff
+        run: git fetch origin master --depth=1
 
       - name: Get Playwright version
         id: playwright-version
@@ -122,11 +89,8 @@ jobs:
           version="$(node -p "String(require('./package.json').devDependencies['@playwright/test']||'').replace(/^[^0-9]*/, '')")"
           echo "version=$version" >> "$GITHUB_OUTPUT"
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
-          run_install: false
+      - name: Enable corepack
+        run: corepack enable
 
       - name: Setup Node.js with caching
         uses: actions/setup-node@v4
@@ -134,6 +98,9 @@ jobs:
           node-version: 20
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
+
+      - name: Re-enable corepack after setup-node
+        run: corepack enable
 
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -184,6 +151,7 @@ jobs:
     needs: [setup-matrix]
     if: ${{ needs.setup-matrix.outputs.matrix != '{"container":[]}' }}
     runs-on: ubuntu-22.04
+    timeout-minutes: 45
     strategy:
       fail-fast: false
       matrix: ${{fromJson(needs.setup-matrix.outputs.matrix)}}
@@ -196,17 +164,6 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 1
 
-      - name: Free disk space
-        shell: bash
-        run: |
-          echo "Freeing disk space on runner..."
-          while IFS= read -r cmd; do
-            [ -z "$cmd" ] && continue
-            echo ">> $cmd"
-            bash -lc "$cmd" || true
-          done <<< "$FILES_TO_DELETE"
-          df -h
-
       - name: Get Playwright version
         id: playwright-version
         shell: bash
@@ -214,11 +171,8 @@ jobs:
           version="$(node -p "String(require('./package.json').devDependencies['@playwright/test']||'').replace(/^[^0-9]*/, '')")"
           echo "version=$version" >> "$GITHUB_OUTPUT"
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
-          run_install: false
+      - name: Enable corepack
+        run: corepack enable
 
       - name: Setup Node.js with caching
         id: setup-node
@@ -227,6 +181,9 @@ jobs:
           node-version: 20
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
+
+      - name: Re-enable corepack after setup-node
+        run: corepack enable
 
       - name: Get pnpm store directory
         id: pnpm-cache

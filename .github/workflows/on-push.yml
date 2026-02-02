@@ -8,22 +8,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  FILES_TO_DELETE: |
-    sudo rm -rf "/usr/share/dotnet"
-    sudo rm -rf "/usr/share/swift"
-    sudo rm -rf "/usr/local/share/boost"
-    sudo rm -rf /opt/ghc
-    sudo rm -rf "/usr/local/share/boost"
-    sudo rm -rf "/usr/local/lib/android/sdk"
-    sudo rm -rf "/opt/hostedtoolcache/Python"
-    sudo rm -rf "/opt/hostedtoolcache/go"
-    sudo rm -rf "/opt/hostedtoolcache/CodeQL"
-    sudo rm -rf "/var/lib/gems"
-    sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-    sudo apt-get clean -y
-    sudo apt-get autoremove -y
-
 jobs:
   # Stop previous runs
   stop-previous-run:
@@ -44,9 +28,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Get Playwright version
         id: playwright-version
@@ -55,9 +37,6 @@ jobs:
           version="$(node -p "String(require('./package.json').devDependencies['@playwright/test']||'').replace(/^[^0-9]*/, '')")"
           echo "version=$version" >> "$GITHUB_OUTPUT"
 
-      - name: Free up some space
-        run: ${{ env.FILES_TO_DELETE }}
-
         # Hash pnpm-lock.yaml files to use it as a cache key, if pnpm-lock.yaml files are changed, the cache will be invalidated
       - name: Check pnpm hash
         id: yarn-hash
@@ -65,11 +44,8 @@ jobs:
           yarnHash="$(npx hash-files -f '["**/pnpm-lock.yaml"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
-          run_install: false
+      - name: Enable corepack
+        run: corepack enable
 
       - name: Setup Node.js with caching
         uses: actions/setup-node@v4
@@ -77,6 +53,9 @@ jobs:
           node-version: 20
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
+
+      - name: Re-enable corepack after setup-node
+        run: corepack enable
 
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -99,7 +78,7 @@ jobs:
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}-headless-shell
-            
+
       - name: Set Playwright cache status
         run: echo "PLAYWRIGHT_CACHE_HIT=${{ steps.playwright-cache.outputs.cache-hit }}" >> $GITHUB_ENV
 

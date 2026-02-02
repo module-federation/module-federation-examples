@@ -1,7 +1,11 @@
 import { expect, Page } from '@playwright/test';
 
 import { BaseMethods } from '../../../playwright-e2e/common/base';
-import { baseSelectors, selectors, updatedSelectors } from '../../../playwright-e2e/common/selectors';
+import {
+  baseSelectors,
+  selectors,
+  updatedSelectors,
+} from '../../../playwright-e2e/common/selectors';
 import { Constants } from '../../../playwright-e2e/fixtures/constants';
 
 export class AngularUniversalSsrMethods extends BaseMethods {
@@ -10,7 +14,9 @@ export class AngularUniversalSsrMethods extends BaseMethods {
   }
 
   async checkActiveTabNameConnection(activeTabName: string, componentName: string): Promise<void> {
-    const text = (await this.page.locator(selectors.angularUniversalSsrApp.activeTab).innerText()).trim();
+    const text = (
+      await this.page.locator(selectors.angularUniversalSsrApp.activeTab).innerText()
+    ).trim();
 
     if (text === activeTabName) {
       await this.checkElementWithTextPresence({
@@ -45,10 +51,14 @@ export class AngularUniversalSsrMethods extends BaseMethods {
         const expectedInfo = selectedCityInfo[index];
 
         await remotePage.locator(addedCitySelector).filter({ hasText: city }).first().click();
-        await expect(remotePage.locator(selectedCityInfoSelector).filter({ hasText: expectedInfo })).toBeVisible();
+        await expect(
+          remotePage.locator(selectedCityInfoSelector).filter({ hasText: expectedInfo }),
+        ).toBeVisible();
 
         await remotePage.reload({ waitUntil: 'networkidle' });
-        await expect(remotePage.locator(selectedCityInfoSelector).filter({ hasText: expectedInfo })).toHaveCount(0);
+        await expect(
+          remotePage.locator(selectedCityInfoSelector).filter({ hasText: expectedInfo }),
+        ).toHaveCount(0);
       }
     } finally {
       await remotePage.close();
@@ -56,7 +66,11 @@ export class AngularUniversalSsrMethods extends BaseMethods {
   }
 
   async checkCitiesBlockFunctionality(): Promise<void> {
-    for (let index = 0; index < Constants.elementsText.angularUniversalSsrApp.addedCities.length; index++) {
+    for (
+      let index = 0;
+      index < Constants.elementsText.angularUniversalSsrApp.addedCities.length;
+      index++
+    ) {
       const city = Constants.elementsText.angularUniversalSsrApp.addedCities[index];
       const expectedInfo = Constants.commonPhrases.angularUniversalSsrApp.selectedCityInfo[index];
 
@@ -79,7 +93,10 @@ export class AngularUniversalSsrMethods extends BaseMethods {
     }
   }
 
-  async checkTextedElementsVisibility(elementsArray: string[], elementSelector: string): Promise<void> {
+  async checkTextedElementsVisibility(
+    elementsArray: string[],
+    elementSelector: string,
+  ): Promise<void> {
     for (const element of elementsArray) {
       await this.checkElementWithTextPresence({
         selector: elementSelector,

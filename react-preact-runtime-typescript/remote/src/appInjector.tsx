@@ -19,8 +19,6 @@ export const unmount = () => {
     render(null, root);
     root = null;
   } else {
-    console.warn(
-      'Root is not defined. Ensure inject() is called before unmount().',
-    );
+    console.warn('Root is not defined. Ensure inject() is called before unmount().');
   }
 };

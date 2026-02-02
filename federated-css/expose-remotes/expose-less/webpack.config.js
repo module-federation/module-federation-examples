@@ -49,7 +49,7 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
-...mfeBaseConfig,
+      ...mfeBaseConfig,
       name: less.name,
       exposes: {
         // './StyleLess': './src/Button.styles.less',

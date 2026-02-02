@@ -1,6 +1,6 @@
 /**
  * Dynamic Remote URL Initialization
- * 
+ *
  * This file demonstrates how to set up global variables that the runtime plugin
  * will use to dynamically resolve remote URLs while maintaining synchronous imports.
  */

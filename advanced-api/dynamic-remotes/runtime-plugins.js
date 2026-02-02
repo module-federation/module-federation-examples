@@ -1,6 +1,6 @@
 /**
  * Module Federation Runtime Plugins
- * 
+ *
  * These plugins provide enhanced error handling, retry mechanisms,
  * and performance monitoring for dynamic remote loading.
  */
@@ -22,31 +22,31 @@ class RetryPlugin {
 
   async loadRemote(args, next) {
     let lastError;
-    
+
     for (let attempt = 0; attempt < this.maxRetries; attempt++) {
       try {
         return await next(args);
       } catch (error) {
         lastError = error;
-        
+
         if (attempt === this.maxRetries - 1) {
           console.error(`Failed to load remote after ${this.maxRetries} attempts:`, error);
           this.onFailure(error, args);
           throw error;
         }
 
-        const delay = Math.min(
-          this.baseDelay * Math.pow(2, attempt),
-          this.maxDelay
+        const delay = Math.min(this.baseDelay * Math.pow(2, attempt), this.maxDelay);
+
+        console.warn(
+          `Retry attempt ${attempt + 1}/${this.maxRetries} for remote ${args.id} in ${delay}ms`,
+          error,
         );
-        
-        console.warn(`Retry attempt ${attempt + 1}/${this.maxRetries} for remote ${args.id} in ${delay}ms`, error);
         this.onRetry(attempt + 1, error, args);
-        
+
         await new Promise(resolve => setTimeout(resolve, delay));
       }
     }
-    
+
     throw lastError;
   }
 }
@@ -67,19 +67,19 @@ class PerformancePlugin {
 
   async loadRemote(args, next) {
     const startTime = performance.now();
-    
+
     try {
       const result = await next(args);
       const loadTime = performance.now() - startTime;
-      
+
       if (this.enableLogging) {
         console.log(`Successfully loaded remote ${args.id} in ${loadTime.toFixed(2)}ms`);
       }
-      
+
       if (loadTime > this.slowThreshold) {
         this.onSlowLoad(loadTime, args);
       }
-      
+
       this.onLoadSuccess(loadTime, args);
       return result;
     } catch (error) {
@@ -112,24 +112,24 @@ class HealthCheckPlugin {
       // Basic health check by trying to fetch the remote entry
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), this.timeout);
-      
+
       const response = await fetch(args.url, {
         method: 'HEAD',
         signal: controller.signal,
         cache: 'no-cache',
       });
-      
+
       clearTimeout(timeoutId);
-      
+
       if (!response.ok) {
         throw new Error(`Health check failed: ${response.status} ${response.statusText}`);
       }
-      
+
       return await next(args);
     } catch (error) {
       console.warn(`Health check failed for remote ${args.id}:`, error.message);
       this.onHealthCheckFail(error, args);
-      
+
       // Still attempt to load, as the health check might fail due to CORS
       // but the actual module loading might work
       return await next(args);
@@ -158,7 +158,7 @@ class ErrorBoundaryPlugin {
       const errorKey = `${args.id}-${error.name}`;
       const errorCount = (this.errorCounts.get(errorKey) || 0) + 1;
       this.errorCounts.set(errorKey, errorCount);
-      
+
       const errorInfo = {
         remoteId: args.id,
         url: args.url,
@@ -168,12 +168,12 @@ class ErrorBoundaryPlugin {
         count: errorCount,
         userAgent: navigator.userAgent,
       };
-      
+
       if (this.errorReporting && errorCount <= this.maxErrorReports) {
         console.error('Module Federation Error:', errorInfo);
         this.onError(errorInfo);
       }
-      
+
       throw error;
     }
   }
@@ -196,7 +196,7 @@ class CachePlugin {
   async loadRemote(args, next) {
     const cacheKey = `${args.id}-${args.url}`;
     const now = Date.now();
-    
+
     // Check if we have a valid cached version
     if (this.cache.has(cacheKey)) {
       const cacheTime = this.cacheTimestamps.get(cacheKey);
@@ -209,20 +209,20 @@ class CachePlugin {
         this.cacheTimestamps.delete(cacheKey);
       }
     }
-    
+
     // Load fresh and cache
     const result = await next(args);
-    
+
     // Implement LRU cache size limit
     if (this.cache.size >= this.maxCacheSize) {
       const oldestKey = this.cache.keys().next().value;
       this.cache.delete(oldestKey);
       this.cacheTimestamps.delete(oldestKey);
     }
-    
+
     this.cache.set(cacheKey, result);
     this.cacheTimestamps.set(cacheKey, now);
-    
+
     return result;
   }
 }

@@ -6,9 +6,18 @@ async function openLocalhost(page: Page, port: number) {
   await page.waitForLoadState('networkidle');
 }
 
-async function checkElementWithTextPresence(page: Page, selector: string, text: string, timeout: number = 10000) {
+async function checkElementWithTextPresence(
+  page: Page,
+  selector: string,
+  text: string,
+  timeout: number = 10000,
+) {
   // Use getByText for exact text matching to avoid conflicts with partial matches
-  await page.locator(selector).filter({ hasText: new RegExp(`^${text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`) }).first().waitFor({ timeout });
+  await page
+    .locator(selector)
+    .filter({ hasText: new RegExp(`^${text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`) })
+    .first()
+    .waitFor({ timeout });
 }
 
 async function checkElementVisibility(page: Page, selector: string, timeout: number = 10000) {
@@ -18,7 +27,7 @@ async function checkElementVisibility(page: Page, selector: string, timeout: num
 async function checkElementBackgroundColor(page: Page, selector: string, expectedColor: string) {
   const element = page.locator(selector);
   await element.waitFor({ state: 'visible' });
-  const backgroundColor = await element.evaluate((el) => {
+  const backgroundColor = await element.evaluate(el => {
     return window.getComputedStyle(el).backgroundColor;
   });
   if (backgroundColor !== expectedColor) {
@@ -70,14 +79,22 @@ const appsData = [
 ];
 
 test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
-  
-  appsData.forEach((appData) => {
-    const { host, appNameText, headerText, widgetName, widgetParagraph, widgetColor, widgetIndexNumber, isTwoWidgets } = appData;
-    
+  appsData.forEach(appData => {
+    const {
+      host,
+      appNameText,
+      headerText,
+      widgetName,
+      widgetParagraph,
+      widgetColor,
+      widgetIndexNumber,
+      isTwoWidgets,
+    } = appData;
+
     test.describe(`Check ${appNameText}`, () => {
       test(`should display ${appNameText} elements correctly`, async ({ page }) => {
         const consoleErrors: string[] = [];
-        page.on('console', (msg) => {
+        page.on('console', msg => {
           if (msg.type() === 'error') {
             consoleErrors.push(msg.text());
           }
@@ -86,23 +103,16 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
         await openLocalhost(page, host);
 
         // Check header and subheader exist
-        await checkElementWithTextPresence(
-          page,
-          appData.headerSelector,
-          headerText
-        );
-        await checkElementWithTextPresence(
-          page,
-          appData.subHeaderSelector,
-          appNameText
-        );
+        await checkElementWithTextPresence(page, appData.headerSelector, headerText);
+        await checkElementWithTextPresence(page, appData.subHeaderSelector, appNameText);
 
         // Verify no critical console errors
-        const criticalErrors = consoleErrors.filter(error => 
-          error.includes('Failed to fetch') || 
-          error.includes('ChunkLoadError') ||
-          error.includes('Module not found') ||
-          (error.includes('TypeError') && !error.includes('DevTools'))
+        const criticalErrors = consoleErrors.filter(
+          error =>
+            error.includes('Failed to fetch') ||
+            error.includes('ChunkLoadError') ||
+            error.includes('Module not found') ||
+            (error.includes('TypeError') && !error.includes('DevTools')),
         );
         expect(criticalErrors).toHaveLength(0);
       });
@@ -114,54 +124,42 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
           // App 1 has two widgets (local + remote)
           for (let i = 0; i < widgetName.length; i++) {
             const widgetSelector = i === 0 ? '[data-e2e="WIDGET__1"]' : '[data-e2e="WIDGET__2"]';
-            
+
             // Check widget visibility
             await checkElementVisibility(page, widgetSelector);
-            
+
             // Check widget title
-            await checkElementWithTextPresence(
-              page,
-              appData.subHeaderSelector,
-              widgetName[i]
-            );
-            
+            await checkElementWithTextPresence(page, appData.subHeaderSelector, widgetName[i]);
+
             // Check widget paragraph text
-            await checkElementWithTextPresence(
-              page,
-              'p',
-              widgetParagraph[i]
-            );
-            
+            await checkElementWithTextPresence(page, 'p', widgetParagraph[i]);
+
             // Check moment.js date formatting
             await checkDateFormat(page);
-            
+
             // Check widget background color
             await checkElementBackgroundColor(page, widgetSelector, widgetColor[i]);
           }
         } else {
           // App 2 has one widget
           const widgetSelector = '[data-e2e="WIDGET__2"]';
-          
+
           // Check widget visibility
           await checkElementVisibility(page, widgetSelector);
-          
+
           // Check widget title
           await checkElementWithTextPresence(
             page,
             appData.subHeaderSelector,
-            widgetName[widgetIndexNumber - 1]
+            widgetName[widgetIndexNumber - 1],
           );
-          
+
           // Check widget paragraph text
-          await checkElementWithTextPresence(
-            page,
-            'p',
-            widgetParagraph[widgetIndexNumber - 1]
-          );
-          
+          await checkElementWithTextPresence(page, 'p', widgetParagraph[widgetIndexNumber - 1]);
+
           // Check moment.js date formatting
           await checkDateFormat(page);
-          
+
           // Check widget background color
           await checkElementBackgroundColor(page, widgetSelector, widgetColor[1]);
         }
@@ -172,7 +170,7 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
   test.describe('Synchronous Import Pattern Tests', () => {
     test('should demonstrate synchronous imports with dynamic URL resolution', async ({ page }) => {
       const consoleMessages: string[] = [];
-      page.on('console', (msg) => {
+      page.on('console', msg => {
         if (msg.type() === 'log' && msg.text().includes('get-remote-from-window-plugin')) {
           consoleMessages.push(msg.text());
         }
@@ -182,18 +180,18 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
       await page.waitForLoadState('networkidle');
 
       // Should have runtime plugin logs indicating dynamic URL resolution
-      const runtimePluginLogs = consoleMessages.filter(msg => 
-        msg.includes('app2Url') || msg.includes('get-remote-from-window-plugin')
+      const runtimePluginLogs = consoleMessages.filter(
+        msg => msg.includes('app2Url') || msg.includes('get-remote-from-window-plugin'),
       );
-      
+
       // Verify runtime plugin is working for dynamic URL resolution
       expect(runtimePluginLogs.length).toBeGreaterThan(0);
     });
 
     test('should load remote modules synchronously', async ({ page }) => {
       const networkRequests: string[] = [];
-      
-      page.on('request', (request) => {
+
+      page.on('request', request => {
         networkRequests.push(request.url());
       });
 
@@ -204,17 +202,17 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
       await page.waitForSelector('[data-e2e="WIDGET__2"]', { timeout: 10000 });
 
       // Verify the remote entry was loaded
-      const remoteEntryRequests = networkRequests.filter(url => 
-        url.includes('localhost:3002') && url.includes('remoteEntry.js')
+      const remoteEntryRequests = networkRequests.filter(
+        url => url.includes('localhost:3002') && url.includes('remoteEntry.js'),
       );
-      
+
       expect(remoteEntryRequests.length).toBeGreaterThan(0);
     });
 
     test('should handle runtime URL modification correctly', async ({ page }) => {
       // Monitor for URL resolution in runtime plugin
       const consoleMessages: string[] = [];
-      page.on('console', (msg) => {
+      page.on('console', msg => {
         consoleMessages.push(msg.text());
       });
 
@@ -226,10 +224,10 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
       await page.waitForSelector('[data-e2e="WIDGET__2"]');
 
       // Check that runtime plugin logged URL processing
-      const urlResolutionLogs = consoleMessages.filter(msg => 
-        msg.includes('app2Url') || msg.includes('beforeRequest')
+      const urlResolutionLogs = consoleMessages.filter(
+        msg => msg.includes('app2Url') || msg.includes('beforeRequest'),
       );
-      
+
       expect(urlResolutionLogs.length).toBeGreaterThan(0);
     });
   });
@@ -237,8 +235,8 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
   test.describe('Module Federation Features', () => {
     test('should efficiently share dependencies between applications', async ({ page }) => {
       const networkRequests: string[] = [];
-      
-      page.on('request', (request) => {
+
+      page.on('request', request => {
         networkRequests.push(request.url());
       });
 
@@ -251,8 +249,8 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
       await page.waitForLoadState('networkidle');
 
       // Verify React is shared efficiently
-      const reactRequests = networkRequests.filter(url => 
-        url.includes('react') && !url.includes('react-dom')
+      const reactRequests = networkRequests.filter(
+        url => url.includes('react') && !url.includes('react-dom'),
       );
       expect(reactRequests.length).toBeLessThan(8);
 
@@ -263,7 +261,7 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
 
     test('should handle CORS correctly for federated modules', async ({ page }) => {
       const corsErrors: string[] = [];
-      page.on('response', (response) => {
+      page.on('response', response => {
         if (response.status() >= 400 && response.url().includes('localhost:300')) {
           corsErrors.push(`${response.status()} - ${response.url()}`);
         }
@@ -280,8 +278,10 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
       await openLocalhost(page, 3001);
 
       // Check that moment.js date is formatted correctly in both widgets
-      const dateElements = page.locator('text=/[A-Z][a-z]+ \\d{1,2}[a-z]{2} \\d{4}, \\d{1,2}:\\d{2}/');
-      
+      const dateElements = page.locator(
+        'text=/[A-Z][a-z]+ \\d{1,2}[a-z]{2} \\d{4}, \\d{1,2}:\\d{2}/',
+      );
+
       // Should have date formatting in both local and remote widgets
       await expect(dateElements).toHaveCount(2);
     });
@@ -290,7 +290,7 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
   test.describe('Error Handling and Resilience', () => {
     test('should handle missing window variables gracefully', async ({ page }) => {
       const consoleErrors: string[] = [];
-      page.on('console', (msg) => {
+      page.on('console', msg => {
         if (msg.type() === 'error') {
           consoleErrors.push(msg.text());
         }
@@ -300,11 +300,12 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
       await page.waitForLoadState('networkidle');
 
       // Should handle any missing window variables gracefully
-      const criticalErrors = consoleErrors.filter(error => 
-        error.includes('Uncaught') && 
-        !error.includes('webpack-dev-server') &&
-        !error.includes('DevTools') &&
-        !error.includes('Warning:')
+      const criticalErrors = consoleErrors.filter(
+        error =>
+          error.includes('Uncaught') &&
+          !error.includes('webpack-dev-server') &&
+          !error.includes('DevTools') &&
+          !error.includes('Warning:'),
       );
       expect(criticalErrors).toHaveLength(0);
     });
@@ -316,7 +317,7 @@ test.describe('Dynamic Remotes Synchronous Imports E2E Tests', () => {
       // Verify main application elements remain stable
       await page.waitForSelector('h1:has-text("Dynamic System Host")');
       await page.waitForSelector('h2:has-text("App 1")');
-      
+
       // Verify both widgets loaded successfully
       await page.waitForSelector('[data-e2e="WIDGET__1"]');
       await page.waitForSelector('[data-e2e="WIDGET__2"]');

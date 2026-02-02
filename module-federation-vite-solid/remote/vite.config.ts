@@ -14,7 +14,7 @@ export default defineConfig({
       },
       remotes: {},
       shared: {
-        "solid-js": {
+        'solid-js': {
           requiredVersion: dependencies['solid-js'],
           singleton: true,
         },

@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import file1Default from "shared/dir1/file1";
-import {A} from "shared/file2";
-import ViteApp from "viteRemote/App1"
+import file1Default from 'shared/dir1/file1';
+import { A } from 'shared/file2';
+import ViteApp from 'viteRemote/App1';
 
 //@ts-ignore
 const root = ReactDOM.createRoot(document.getElementById('root')!);
@@ -17,5 +17,5 @@ root.render(
     </div>
     <hr />
     <ViteApp />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
