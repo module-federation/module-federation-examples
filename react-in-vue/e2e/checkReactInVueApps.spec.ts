@@ -50,6 +50,7 @@ const assertAppHeadings = async (page: BasePage, config: ReactInVueAppConfig): P
   await page.expectElementWithTextPresence({
     selector: baseSelectors.tags.headers.h2,
     text: config.subHeader,
+    nth: 0,
   });
 };
 
@@ -90,6 +91,7 @@ test.describe('React in Vue', () => {
           await basePage.expectElementWithTextPresence({
             selector: baseSelectors.tags.headers.h2,
             text: app.buttonHeader!,
+            nth: 1,
           });
         }
 
