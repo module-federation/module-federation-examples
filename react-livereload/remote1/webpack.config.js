@@ -41,6 +41,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'remote1',
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       exposes: {
         './Button': './src/Button',

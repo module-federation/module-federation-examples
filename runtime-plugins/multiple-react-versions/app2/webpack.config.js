@@ -45,6 +45,7 @@ const webpackConfig = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'app2',
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       runtimePlugins: [require.resolve('./react-adapter-runtime-plugin.ts')],
       exposes: {

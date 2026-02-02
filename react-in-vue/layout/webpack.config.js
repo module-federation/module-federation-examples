@@ -13,7 +13,7 @@ module.exports = (env = {}) => ({
     minimize: false,
   },
   target: 'web',
-  entry: path.resolve(__dirname, './src/bootstrap.js'),
+  entry: path.resolve(__dirname, './src/main.js'),
   output: {
     publicPath: 'auto',
   },
@@ -66,6 +66,7 @@ module.exports = (env = {}) => ({
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'layout',
+      shareStrategy: 'loaded-first',
       remotes: {
         home: 'home@http://localhost:3002/remoteEntry.js',
       },

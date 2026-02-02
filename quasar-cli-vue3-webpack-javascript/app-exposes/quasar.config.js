@@ -54,6 +54,7 @@ module.exports = configure(function (ctx) {
         cfg.plugins.push(
           new ModuleFederationPlugin({
             name: 'app_exposes',
+            shareStrategy: 'loaded-first',
             filename: 'remoteEntry.js',
             exposes: {
               './HomePage.vue': './src/pages/IndexPage.vue',

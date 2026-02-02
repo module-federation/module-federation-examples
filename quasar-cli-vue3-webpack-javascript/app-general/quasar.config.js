@@ -54,6 +54,7 @@ module.exports = configure(function (ctx) {
         cfg.plugins.push(
           new ModuleFederationPlugin({
             name: 'app_general',
+            shareStrategy: 'loaded-first',
             filename: 'remoteEntry.js',
             exposes: {},
             remotes: {

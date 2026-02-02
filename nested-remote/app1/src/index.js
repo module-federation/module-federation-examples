@@ -1,2 +1,5 @@
-// theres a better way to do this. Im just lazy right now
-import './bootstrap';
+import App from './App';
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+ReactDOM.render(<App />, document.getElementById('root'));

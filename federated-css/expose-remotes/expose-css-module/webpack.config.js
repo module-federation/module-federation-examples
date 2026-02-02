@@ -44,6 +44,7 @@ module.exports = {
       experiments: { asyncStartup: true },
       ...mfeBaseConfig,
       name: cssModule.name,
+      shareStrategy: 'loaded-first',
       exposes: {
         // './CssModule': './src/Button.styles.module.css',
         './Component': './src/Component.js',

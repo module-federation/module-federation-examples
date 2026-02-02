@@ -33,6 +33,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: '@typescript-monorepo/app1',
+      shareStrategy: 'loaded-first',
       remotes: {
         '@typescript-monorepo/app2': `promise new Promise(resolve => {
           const remoteUrlWithVersion = 'http://localhost:3002/remoteEntry.js'

@@ -51,6 +51,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'app1',
+      shareStrategy: 'loaded-first',
       remotes: {
         app2: `app2@${getRemoteEntryUrl(3002)}`,
       },

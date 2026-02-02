@@ -21,6 +21,7 @@ export default defineConfig({
       appendPlugins([
         new ModuleFederationPlugin({
           name: 'app2',
+          shareStrategy: 'loaded-first',
           library: { type: 'window', name: 'app2' },
           runtime: false,
           filename: 'static/js/remoteEntry.js',

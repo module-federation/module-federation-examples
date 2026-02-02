@@ -42,6 +42,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'GameOfLifeModule',
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       exposes: {
         './GameOfLifeModule': './pkg/',

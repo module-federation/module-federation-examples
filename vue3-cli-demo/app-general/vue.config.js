@@ -12,6 +12,7 @@ module.exports = defineConfig({
       new ModuleFederationPlugin({
         experiments: { asyncStartup: true },
         name: 'app_general',
+        shareStrategy: 'loaded-first',
         filename: 'remoteEntry.js',
         remotes: {
           app_exposes: 'app_exposes@http://localhost:8082/remoteEntry.js',

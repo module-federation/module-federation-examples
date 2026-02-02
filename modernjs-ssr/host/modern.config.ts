@@ -17,6 +17,7 @@ export default defineConfig({
     moduleFederationPlugin({
       config: {
         name: 'consumer',
+        shareStrategy: 'loaded-first',
         remotes: {
           remote: 'provider@http://localhost:3006/mf-manifest.json',
         },

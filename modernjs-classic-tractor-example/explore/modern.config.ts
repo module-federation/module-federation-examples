@@ -32,6 +32,7 @@ export default defineConfig({
       appendPlugins([
         new rspack.container.ModuleFederationPlugin({
           name: 'explore',
+          shareStrategy: 'loaded-first',
           filename: 'static/js/remoteEntry.js',
           remotes: {
             decide: 'decide@http://localhost:3002/static/js/remoteEntry.js',

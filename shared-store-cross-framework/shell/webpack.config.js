@@ -43,6 +43,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'app1',
+      shareStrategy: 'loaded-first',
       remotes: {
         react_counter: `react_counter@${getRemoteEntryUrl(3002)}`,
         store: `store@${getRemoteEntryUrl(3003)}`,

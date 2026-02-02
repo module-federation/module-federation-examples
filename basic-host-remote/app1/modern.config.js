@@ -21,6 +21,7 @@ export default defineConfig({
       appendPlugins([
         new ModuleFederationPlugin({
           name: 'app1',
+          shareStrategy: 'loaded-first',
           remotes: {
             app2: 'app2@http://localhost:3002/static/js/remoteEntry.js',
           },

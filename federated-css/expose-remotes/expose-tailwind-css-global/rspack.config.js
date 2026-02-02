@@ -54,6 +54,7 @@ module.exports = {
       experiments: { asyncStartup: true },
       ...mfeBaseConfig,
       name: tailwindCssGlobal.name,
+      shareStrategy: 'loaded-first',
       exposes: {
         './TailwindCssGlobal': './src/tailwind.global.css',
         './Component': './src/Component.js',

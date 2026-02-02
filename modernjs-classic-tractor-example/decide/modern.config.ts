@@ -27,6 +27,7 @@ export default defineConfig({
       appendPlugins([
         new ModuleFederationPlugin({
           name: 'decide',
+          shareStrategy: 'loaded-first',
           runtime: false,
           filename: 'static/js/remoteEntry.js',
           remotes: {

@@ -42,6 +42,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'Host',
+      shareStrategy: 'loaded-first',
       remotes: {
         GameOfLifeModule: `GameOfLifeModule@http://localhost:8081/remoteEntry.js`,
       },

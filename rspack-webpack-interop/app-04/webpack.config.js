@@ -56,6 +56,7 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: 'app_04',
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       exposes: {
         './App': './src/main.js',

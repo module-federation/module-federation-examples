@@ -26,6 +26,7 @@ export default defineConfig({
       appendPlugins([
         new ModuleFederationPlugin({
           name: 'checkout',
+          shareStrategy: 'loaded-first',
           runtime: false,
           filename: 'static/js/remoteEntry.js',
           remotes: {

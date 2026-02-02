@@ -39,6 +39,7 @@ export default defineConfig({
       appendPlugins([
         new rspack.container.ModuleFederationPlugin({
           name: 'host',
+          shareStrategy: 'loaded-first',
           remotes: {
             provider: 'provider@http://localhost:3002/static/js/remoteEntry.js',
           },

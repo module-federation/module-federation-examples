@@ -17,6 +17,8 @@ export default defineConfig({
       appendPlugins([
         new ModuleFederationPlugin({
           name: 'examples_rust',
+          shareStrategy: 'loaded-first',
+          experiments: { asyncStartup: true },
           remotes: {
             viteRemote: 'viteRemote@http://localhost:5176/mf-manifest.json',
             shared: 'shared@https://shared.js',
