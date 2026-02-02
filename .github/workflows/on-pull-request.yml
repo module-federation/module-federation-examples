@@ -122,11 +122,8 @@ jobs:
           version="$(node -p "String(require('./package.json').devDependencies['@playwright/test']||'').replace(/^[^0-9]*/, '')")"
           echo "version=$version" >> "$GITHUB_OUTPUT"
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
-          run_install: false
+      - name: Enable corepack
+        run: corepack enable
 
       - name: Setup Node.js with caching
         uses: actions/setup-node@v4
@@ -214,11 +211,8 @@ jobs:
           version="$(node -p "String(require('./package.json').devDependencies['@playwright/test']||'').replace(/^[^0-9]*/, '')")"
           echo "version=$version" >> "$GITHUB_OUTPUT"
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
-          run_install: false
+      - name: Enable corepack
+        run: corepack enable
 
       - name: Setup Node.js with caching
         id: setup-node

@@ -5,7 +5,6 @@
   "description": "UMD output target for Module Federation",
   "main": "index.js",
   "scripts": {
-    "preinstall": "pnpm install --ignore-scripts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "pnpm --filter umd-federation_app* --parallel start",
     "test:e2e": "pnpm exec playwright test",

@@ -65,11 +65,8 @@ jobs:
           yarnHash="$(npx hash-files -f '["**/pnpm-lock.yaml"]' -a sha256)"
           echo "yarnHash=$yarnHash" >> $GITHUB_OUTPUT
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
-          run_install: false
+      - name: Enable corepack
+        run: corepack enable
 
       - name: Setup Node.js with caching
         uses: actions/setup-node@v4
