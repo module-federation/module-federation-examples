@@ -8,22 +8,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  FILES_TO_DELETE: |
-    sudo rm -rf "/usr/share/dotnet"
-    sudo rm -rf "/usr/share/swift"
-    sudo rm -rf "/usr/local/share/boost"
-    sudo rm -rf /opt/ghc
-    sudo rm -rf "/usr/local/share/boost"
-    sudo rm -rf "/usr/local/lib/android/sdk"
-    sudo rm -rf "/opt/hostedtoolcache/Python"
-    sudo rm -rf "/opt/hostedtoolcache/go"
-    sudo rm -rf "/opt/hostedtoolcache/CodeQL"
-    sudo rm -rf "/var/lib/gems"
-    sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-    sudo apt-get clean -y
-    sudo apt-get autoremove -y
-
 jobs:
   # Stop previous runs
   stop-previous-run:
@@ -54,9 +38,6 @@ jobs:
         run: |
           version="$(node -p "String(require('./package.json').devDependencies['@playwright/test']||'').replace(/^[^0-9]*/, '')")"
           echo "version=$version" >> "$GITHUB_OUTPUT"
-
-      - name: Free up some space
-        run: ${{ env.FILES_TO_DELETE }}
 
         # Hash pnpm-lock.yaml files to use it as a cache key, if pnpm-lock.yaml files are changed, the cache will be invalidated
       - name: Check pnpm hash

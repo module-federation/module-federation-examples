@@ -5,22 +5,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
-env:
-  FILES_TO_DELETE: |
-    sudo rm -rf "/usr/share/dotnet"
-    sudo rm -rf "/usr/share/swift"
-    sudo rm -rf "/usr/local/share/boost"
-    sudo rm -rf /opt/ghc
-    sudo rm -rf "/usr/local/share/boost"
-    sudo rm -rf "/usr/local/lib/android/sdk"
-    sudo rm -rf "/opt/hostedtoolcache/Python"
-    sudo rm -rf "/opt/hostedtoolcache/go"
-    sudo rm -rf "/opt/hostedtoolcache/CodeQL"
-    sudo rm -rf "/var/lib/gems"
-    sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-    sudo apt-get clean -y
-    sudo apt-get autoremove -y
-
 jobs:
   # Stop previous runs
   stop-previous-run:
@@ -93,17 +77,6 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
-
-      - name: Free disk space
-        shell: bash
-        run: |
-          echo "Freeing disk space on runner..."
-          while IFS= read -r cmd; do
-            [ -z "$cmd" ] && continue
-            echo ">> $cmd"
-            bash -lc "$cmd" || true
-          done <<< "$FILES_TO_DELETE"
-          df -h
 
       - name: Get Playwright version
         id: playwright-version
@@ -186,17 +159,6 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 1
-
-      - name: Free disk space
-        shell: bash
-        run: |
-          echo "Freeing disk space on runner..."
-          while IFS= read -r cmd; do
-            [ -z "$cmd" ] && continue
-            echo ">> $cmd"
-            bash -lc "$cmd" || true
-          done <<< "$FILES_TO_DELETE"
-          df -h
 
       - name: Get Playwright version
         id: playwright-version
