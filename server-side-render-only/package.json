@@ -10,7 +10,7 @@
     "buildRemote": "webpack --config=remoteServer/webpack.config.js -w",
     "startRemote": "nodemon remoteServer/public/server/server.js",
     "test:e2e": "pnpm exec playwright test",
-    "e2e:ci": "pnpm exec playwright test --reporter=list"
+    "e2e:ci": "concurrently --kill-others --success first --raw \"pnpm start\" \"sleep 30 && pnpm exec playwright test --reporter=list\""
   },
   "license": "MIT",
   "author": {
