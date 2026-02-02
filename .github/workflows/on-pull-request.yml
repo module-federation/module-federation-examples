@@ -132,6 +132,9 @@ jobs:
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
 
+      - name: Re-enable corepack after setup-node
+        run: corepack enable
+
       - name: Get pnpm store directory
         id: pnpm-cache
         shell: bash
