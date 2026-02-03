@@ -55,7 +55,11 @@ module.exports = configure(function (ctx) {
       scssLoaderOptions: { implementation: sassEmbedded },
 
       extendWebpack(cfg) {
-        cfg.entry = path.resolve(__dirname, './.quasar/main.js');
+        // Quasar's default entry is generated under `./.quasar/client-entry.js`.
+        // For Module Federation (esp. async startup), we want an explicit async bootstrap.
+        // Keep the bootstrap file in `src/` so it is stable + committed, while still
+        // delegating to Quasar's generated client entry at runtime.
+        cfg.entry = path.resolve(__dirname, './src/mf-bootstrap.js');
         cfg.plugins.push(
           new ModuleFederationPlugin({
             name: 'app_general',
