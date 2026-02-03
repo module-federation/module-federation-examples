@@ -24,6 +24,7 @@ test.describe('Offline Remote', () => {
   });
 
   test('displays an offline warning for the remote module', async ({ page }) => {
-    await expect(page.getByText(/remote app2 is offline/i)).toBeVisible();
+    // With async startup the runtime error hook may report the full module id (e.g. "app2/Button").
+    await expect(page.getByText(/remote app2(\/Button)? is offline/i)).toBeVisible();
   });
 });

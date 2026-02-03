@@ -5,7 +5,7 @@ const lsmap = {
 };
 
 const map = {
-  app2: 'http://localhost:3003/remoteEntry.js',
+  app2: 'http://localhost:3002/remoteEntry.js',
 };
 
 const CustomPlugin = () => ({

@@ -21,6 +21,7 @@ const webpackConfig = {
   },
   output: {
     publicPath: 'auto',
+    uniqueName: 'multiple_react_versions_app2',
   },
   module: {
     rules: [
@@ -45,6 +46,8 @@ const webpackConfig = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'app2',
+      remoteType: 'script',
+      library: { type: 'var', name: 'app2' },
       shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       runtimePlugins: [require.resolve('./react-adapter-runtime-plugin.ts')],

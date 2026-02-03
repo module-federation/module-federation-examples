@@ -460,7 +460,9 @@ export class BaseMethods {
             }
           }
 
-          const handle = await locator.elementHandle({ timeout: 0 });
+          // Many helpers rely on broad selectors + `hasText`, which can match both a leaf element
+          // and its ancestors. Use the first match to avoid Playwright strict-mode violations.
+          const handle = await locator.first().elementHandle({ timeout: 0 });
           if (!handle) {
             return false;
           }

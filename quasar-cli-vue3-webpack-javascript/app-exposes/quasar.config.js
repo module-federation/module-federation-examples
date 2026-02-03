@@ -11,6 +11,7 @@
 const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const dependencies = require('./package.json').dependencies;
+const sassEmbedded = require('sass-embedded');
 
 const { configure } = require('quasar/wrappers');
 const path = require('path');
@@ -48,6 +49,10 @@ module.exports = configure(function (ctx) {
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-build
     build: {
       vueRouterMode: 'hash', // available values: 'hash', 'history'
+      // Quasar's distributed `.sass` now contains modern selectors (e.g. `:has()`),
+      // which require the embedded compiler to parse correctly in webpack.
+      sassLoaderOptions: { implementation: sassEmbedded },
+      scssLoaderOptions: { implementation: sassEmbedded },
 
       extendWebpack(cfg) {
         cfg.entry = path.resolve(__dirname, './.quasar/main.js');

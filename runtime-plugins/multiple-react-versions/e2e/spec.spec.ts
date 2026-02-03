@@ -22,7 +22,7 @@ test.describe('multiple-react-versions', () => {
   });
 
   test('shows the runtime plugin wrapper content', async ({ page }) => {
-    await expect(page.getByText(runtimeWrapperText)).toBeVisible();
+    await expect(page.getByText(runtimeWrapperText).first()).toBeVisible();
     await expect(page.locator('strong', { hasText: hooksComponentText })).toBeVisible();
   });
 
@@ -36,11 +36,12 @@ test.describe('multiple-react-versions', () => {
   });
 
   test('shows version information for host and remote React', async ({ page }) => {
-    await expect(page.getByText(versionInfoText)).toBeVisible();
+    // Host react version comes from app1's package.json and can change over time; keep assertion flexible.
+    await expect(page.getByText(/Host React: .* Remote React: 17\.0\.2/).first()).toBeVisible();
   });
 
   test('renders additional App 2 content', async ({ page }) => {
-    await expect(page.locator('div', { hasText: runtimeWrapperText })).toBeVisible();
+    await expect(page.locator('div', { hasText: runtimeWrapperText }).first()).toBeVisible();
     await expect(page.locator('p', { hasText: app2ContentText })).toBeVisible();
   });
 });
