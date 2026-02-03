@@ -106,9 +106,8 @@ module.exports = configure(function (ctx) {
         type: 'http',
       },
       port: 3001,
-      // CI runners may not have a functional browser opener (xdg-open) / display.
-      // Playwright starts the browser itself, so auto-open is unnecessary here.
-      open: !process.env.CI,
+      // Never auto-open a browser. E2E runs (Playwright) manage browsers themselves.
+      open: false,
     },
 
     // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-framework
