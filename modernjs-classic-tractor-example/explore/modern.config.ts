@@ -22,7 +22,7 @@ export default defineConfig({
     disableTsChecker: true,
   },
   tools: {
-    rspack: (config, { rspack, appendPlugins }) => {
+    rspack: (config, { appendPlugins }) => {
       // @ts-expect-error
       config.output.publicPath = 'auto';
       // @ts-expect-error
@@ -30,9 +30,10 @@ export default defineConfig({
       delete config.optimization?.splitChunks;
 
       appendPlugins([
-        new rspack.container.ModuleFederationPlugin({
+        new ModuleFederationPlugin({
           name: 'explore',
           shareStrategy: 'loaded-first',
+          experiments: { asyncStartup: true },
           filename: 'static/js/remoteEntry.js',
           remotes: {
             decide: 'decide@http://localhost:3002/static/js/remoteEntry.js',

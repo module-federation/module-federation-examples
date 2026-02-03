@@ -1,4 +1,5 @@
 import appTools, { defineConfig } from '@modern-js/app-tools';
+import { ModuleFederationPlugin } from '@module-federation/enhanced/rspack';
 import ChunkPatchPlugin from './ChunkPatchPlugin';
 
 // https://modernjs.dev/en/configure/app/usage
@@ -41,13 +42,14 @@ export default defineConfig({
     //   // modern.js set runtimeChunk true by default
     //   delete config.optimization?.runtimeChunk;
     // },
-    rspack: (config, { rspack, appendPlugins }) => {
+    rspack: (config, { appendPlugins }) => {
       //@ts-ignore
       config.output.publicPath = 'auto';
       appendPlugins([
-        new rspack.container.ModuleFederationPlugin({
+        new ModuleFederationPlugin({
           name: 'provider',
           shareStrategy: 'loaded-first',
+          experiments: { asyncStartup: true },
           library: { type: 'var', name: 'provider' },
           filename: 'static/js/remoteEntry.js',
           exposes: {

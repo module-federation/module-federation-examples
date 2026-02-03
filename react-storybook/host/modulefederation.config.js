@@ -2,6 +2,8 @@ const { dependencies } = require('./package.json');
 
 module.exports = {
   name: 'host',
+  shareStrategy: 'loaded-first',
+  experiments: { asyncStartup: true },
   remotes: {
     remote: 'remote@http://localhost:3002/remoteEntry.js',
   },

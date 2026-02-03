@@ -8,7 +8,7 @@
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js
 
-const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const dependencies = require('./package.json').dependencies;
 
@@ -55,6 +55,7 @@ module.exports = configure(function (ctx) {
           new ModuleFederationPlugin({
             name: 'app_general',
             shareStrategy: 'loaded-first',
+            experiments: { asyncStartup: true },
             filename: 'remoteEntry.js',
             exposes: {},
             remotes: {
