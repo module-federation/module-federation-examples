@@ -9,15 +9,7 @@
 // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js
 
 const path = require('path');
-// Resolve ModuleFederationPlugin from @quasar/app-webpack's dependency tree
-// to avoid class identity mismatches (pnpm can hoist a different webpack instance).
-let ModuleFederationPlugin;
-try {
-  const quasarAppWebpackDir = path.dirname(require.resolve('@quasar/app-webpack/package.json', { paths: [__dirname] }));
-  ModuleFederationPlugin = require(require.resolve('webpack/lib/container/ModuleFederationPlugin', { paths: [quasarAppWebpackDir] }));
-} catch (e) {
-  ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
-}
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const dependencies = require('./package.json').dependencies;
 // Prefer `sass-embedded` when available (better compatibility with some modern
@@ -71,22 +63,25 @@ module.exports = configure(function (ctx) {
       scssLoaderOptions: { implementation: sassImpl },
 
       extendWebpack(cfg) {
-        // Use native webpack ModuleFederationPlugin here. The Enhanced MFP's
-        // ContainerEntryModule has a fatal BUILD-001 check (process.exit(1)) that
-        // fails under @quasar/app-webpack's compilation environment in CI.
-        // Use eager sharing so no async boundary is needed.
+        // Use Enhanced MFP without asyncStartup. The asyncStartup experiment
+        // triggers a BUILD-001 fatal error under @quasar/app-webpack's compilation
+        // environment in CI. A bootstrap entry provides the async boundary instead.
+        cfg.entry = path.resolve(__dirname, './src/mf-bootstrap.js');
+
         cfg.plugins.push(
           new ModuleFederationPlugin({
             name: 'app_exposes',
+            manifest: false,
+            shareStrategy: 'loaded-first',
             filename: 'remoteEntry.js',
             exposes: {
               './HomePage.vue': path.resolve(__dirname, 'src/exposes/HomePage.js'),
               './AppButton.vue': path.resolve(__dirname, 'src/exposes/AppButton.js'),
               './AppList.vue': path.resolve(__dirname, 'src/exposes/AppList.js'),
             },
-            shared: Object.fromEntries(
-              Object.entries(dependencies).map(([k, v]) => [k, { eager: true }]),
-            ),
+            shared: {
+              ...dependencies,
+            },
           }),
         );
       },
