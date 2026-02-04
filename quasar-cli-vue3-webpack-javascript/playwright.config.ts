@@ -10,12 +10,13 @@ export default defineConfig({
   workers: 1,
   reporter: 'list',
   use: {
-    baseURL: 'http://localhost:3001',
+    baseURL: 'http://127.0.0.1:3001',
     trace: 'on-first-retry',
   },
   webServer: {
     command: 'pnpm run start',
-    url: 'http://localhost:3001',
+    // Avoid IPv6 `localhost` resolution issues in CI where Quasar dev binds to IPv4.
+    url: 'http://127.0.0.1:3001',
     timeout: 300_000,
     reuseExistingServer: !process.env.CI,
   },
