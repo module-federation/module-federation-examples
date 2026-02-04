@@ -8,12 +8,23 @@
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js
 
-const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const path = require('path');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const dependencies = require('./package.json').dependencies;
+// Prefer `sass-embedded` when available (better compatibility with some modern
+// selector syntax), but fall back to `sass` so CI doesn't fail if the optional
+// dependency isn't present.
+let sassImpl;
+try {
+  // eslint-disable-next-line import/no-extraneous-dependencies
+  sassImpl = require('sass-embedded');
+} catch (e) {
+  // eslint-disable-next-line import/no-extraneous-dependencies
+  sassImpl = require('sass');
+}
 
 const { configure } = require('quasar/wrappers');
-const path = require('path');
 
 module.exports = configure(function (ctx) {
   return {
@@ -48,12 +59,19 @@ module.exports = configure(function (ctx) {
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-build
     build: {
       vueRouterMode: 'hash', // available values: 'hash', 'history'
+      sassLoaderOptions: { implementation: sassImpl },
+      scssLoaderOptions: { implementation: sassImpl },
 
       extendWebpack(cfg) {
-        cfg.entry = path.resolve(__dirname, './.quasar/main.js');
+        // Use Enhanced MFP without asyncStartup (see app-exposes for rationale).
+        // A bootstrap entry provides the async boundary instead.
+        cfg.entry = path.resolve(__dirname, './src/mf-bootstrap.js');
+
         cfg.plugins.push(
           new ModuleFederationPlugin({
             name: 'app_general',
+            manifest: false,
+            shareStrategy: 'loaded-first',
             filename: 'remoteEntry.js',
             exposes: {},
             remotes: {
@@ -98,7 +116,8 @@ module.exports = configure(function (ctx) {
         type: 'http',
       },
       port: 3002,
-      open: true, // opens browser window automatically
+      // Never auto-open a browser. E2E runs (Playwright) manage browsers themselves.
+      open: false,
     },
 
     // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-framework

@@ -1,7 +1,18 @@
 import { loadRemoteModule } from '@softarc/native-federation';
 import { format, parseISO } from 'date-fns';
 import { RemoteType } from './remote-type';
-import './bootstrap';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { App } from './react-app';
+
+// import "./index.css";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root'),
+);
 
 const isoDate = '2023-01-01';
 const date = parseISO(isoDate);

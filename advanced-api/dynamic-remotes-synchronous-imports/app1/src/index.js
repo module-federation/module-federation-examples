@@ -20,8 +20,11 @@ console.log(`[Dynamic Remote Init] Setting ${app2Module.urlGlobalVariable} to:`,
 // window.app3Url = '//different-host:4001';
 // window.app4Url = '//cdn.example.com/remotes';
 
-// Bootstrap the application after setting up dynamic configurations.
-//
-// With MF asyncStartup enabled in the config, we no longer need the dynamic
-// bootstrap import workaround.
-import './bootstrap';
+import App from './App.tsx';
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+
+// Using React 18 createRoot API for better performance and concurrent features
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(<App />);

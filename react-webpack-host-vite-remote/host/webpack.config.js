@@ -15,6 +15,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'host',
+      shareStrategy: 'loaded-first',
       remotes: {
         remotevite: `promise import('http://127.0.0.1:3001/remoteEntry.js')
                          .then(module => ({

@@ -1,4 +1,4 @@
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 const webpackConfigPath = 'react-scripts/config/webpack.config';
 const webpackConfig = require(webpackConfigPath);

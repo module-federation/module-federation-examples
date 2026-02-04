@@ -26,6 +26,7 @@ module.exports = {
   target: 'web',
   output: {
     publicPath: 'auto',
+    uniqueName: 'backend_control_app2',
   },
   module: {
     rules: [
@@ -43,6 +44,9 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'app2',
+      remoteType: 'script',
+      library: { type: 'var', name: 'app2' },
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       remotes: {
         app1: 'app1@http://localhost:3001/remoteEntry.js',

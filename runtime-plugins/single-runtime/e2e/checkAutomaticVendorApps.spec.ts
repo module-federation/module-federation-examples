@@ -29,7 +29,11 @@ const expectRemoteEntry = async (
   const moduleContainer = page.getByText(`Module: ${moduleName}`).locator('..');
   await expect(moduleContainer).toBeVisible();
 
-  const remoteRow = moduleContainer.locator('div', { hasText: `${remoteAlias}:` });
+  // The UI renders a parent row and a child row that both contain `${remoteAlias}:`,
+  // so avoid strict mode violations by selecting the leaf row containing the <code> value.
+  const remoteRow = moduleContainer
+    .locator('div', { hasText: `• ${remoteAlias}:` })
+    .first();
   await expect(remoteRow).toBeVisible();
   await expect(remoteRow.locator('code')).toHaveText(expectedEntry);
 };

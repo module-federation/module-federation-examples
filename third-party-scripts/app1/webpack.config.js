@@ -31,6 +31,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'app1',
+      shareStrategy: 'loaded-first',
       remotes: {
         '@module-federation/common-3rd-libs': `moduleFederationCommon_3rdLibs@https://unpkg.com/@module-federation/common-3rd-libs@1.0.4/dist/browser/remote-entry.js`,
       },

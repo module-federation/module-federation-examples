@@ -33,6 +33,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'main_app',
+      shareStrategy: 'loaded-first',
       remotes: {
         'lib-app': 'lib_app@http://localhost:3000/remoteEntry.js',
         'component-app': 'component_app@http://localhost:3001/remoteEntry.js',

@@ -7,7 +7,7 @@ const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack'
  */
 const configuration = {
   mode: 'development',
-  entry: './src/bootstrap.ts',
+  entry: './src/index.ts',
   output: {
     clean: true,
     path: __dirname + '/dist',
@@ -42,6 +42,7 @@ const configuration = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'app3',
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       manifest: false,
       shared: ['vue', 'shared-lib', 'shared-lib-2'],

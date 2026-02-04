@@ -47,6 +47,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'host',
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       remotes: {
         remote: 'remote@http://localhost:8081/remoteEntry.js',

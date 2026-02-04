@@ -46,7 +46,8 @@ for (const { appName, appHeader2, host } of appsData) {
       await expect(contentBlock.locator(baseSelectors.tags.headers.h2)).toHaveText(
         Constants.elementsText.reactApps.splitedApp.header,
       );
-      await expect(contentBlock.locator(baseSelectors.tags.paragraph)).toHaveText(
+      // The content block can contain multiple <p> nodes; assert against the first one.
+      await expect(contentBlock.locator(baseSelectors.tags.paragraph).first()).toHaveText(
         Constants.elementsText.reactApps.splitedApp.subHeader,
       );
       await expect(page.locator(baseSelectors.tags.strong)).toHaveText(

@@ -28,7 +28,8 @@ test.describe('Nested - App 2', () => {
 
   test('Check colors', async () => {
     await basePage.checkElementHaveProperty({
-      selector: baseSelectors.tags.coreElements.div,
+      // The "App 2 Container" background is applied on the inner container div via inline style.
+      selector: 'div[style*="background-color"]',
       text: Constants.elementsText.nestedApp.app2Container,
       prop: CssAttr.backgroundColor,
       value: Constants.color.chineseSilver,

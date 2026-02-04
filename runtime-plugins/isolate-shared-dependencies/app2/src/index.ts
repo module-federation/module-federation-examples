@@ -11,3 +11,7 @@ async function mount({ parentContainer }: { parentContainer: HTMLElement }) {
 }
 
 export { mount };
+
+const container = document.createElement('div');
+document.body.appendChild(container);
+mount({ parentContainer: container });

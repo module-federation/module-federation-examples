@@ -83,6 +83,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'app1',
+      shareStrategy: 'loaded-first',
       runtime: false,
       filename: 'remoteEntry.js',
       remotes: {
