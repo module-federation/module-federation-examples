@@ -1,4 +1,5 @@
-// A stable async bootstrap entry for Quasar + Module Federation.
-// This keeps MF sharing safe without committing Quasar-generated `.quasar/*`.
-import('../.quasar/client-entry');
+// Quasar + Module Federation entry point.
+// With asyncStartup enabled, static imports are safe — the MF runtime
+// handles the async boundary for shared module negotiation.
+import '../.quasar/client-entry';
 
