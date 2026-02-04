@@ -9,18 +9,15 @@
 // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js
 
 const path = require('path');
-// Resolve webpack from @quasar/app-webpack's dependency tree to avoid
-// class identity mismatches (pnpm can hoist a different webpack instance).
-let webpack;
+// Resolve ModuleFederationPlugin from @quasar/app-webpack's dependency tree
+// to avoid class identity mismatches (pnpm can hoist a different webpack instance).
+let ModuleFederationPlugin;
 try {
-  const quasarAppWebpackReal = require('fs').realpathSync(
-    path.resolve(__dirname, 'node_modules/@quasar/app-webpack'),
-  );
-  webpack = require(require.resolve('webpack', { paths: [quasarAppWebpackReal] }));
+  const quasarAppWebpackDir = path.dirname(require.resolve('@quasar/app-webpack/package.json', { paths: [__dirname] }));
+  ModuleFederationPlugin = require(require.resolve('webpack/lib/container/ModuleFederationPlugin', { paths: [quasarAppWebpackDir] }));
 } catch (e) {
-  webpack = require('webpack');
+  ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 }
-const { container } = webpack;
 const ESLintPlugin = require('eslint-webpack-plugin');
 const dependencies = require('./package.json').dependencies;
 // Prefer `sass-embedded` when available (better compatibility with some modern
@@ -75,20 +72,18 @@ module.exports = configure(function (ctx) {
 
       extendWebpack(cfg) {
         // Use native webpack ModuleFederationPlugin (see app-exposes for rationale).
-        // A bootstrap entry provides the async boundary for shared module negotiation.
-        cfg.entry = path.resolve(__dirname, './src/mf-bootstrap.js');
-
+        // Use eager sharing so no async boundary is needed.
         cfg.plugins.push(
-          new container.ModuleFederationPlugin({
+          new ModuleFederationPlugin({
             name: 'app_general',
             filename: 'remoteEntry.js',
             exposes: {},
             remotes: {
               app_exposes: 'app_exposes@http://localhost:3001/remoteEntry.js',
             },
-            shared: {
-              ...dependencies,
-            },
+            shared: Object.fromEntries(
+              Object.entries(dependencies).map(([k, v]) => [k, { eager: true }]),
+            ),
           }),
         );
       },

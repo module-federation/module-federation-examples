@@ -9,18 +9,15 @@
 // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js
 
 const path = require('path');
-// Resolve webpack from @quasar/app-webpack's dependency tree to avoid
-// class identity mismatches (pnpm can hoist a different webpack instance).
-let webpack;
+// Resolve ModuleFederationPlugin from @quasar/app-webpack's dependency tree
+// to avoid class identity mismatches (pnpm can hoist a different webpack instance).
+let ModuleFederationPlugin;
 try {
-  const quasarAppWebpackReal = require('fs').realpathSync(
-    path.resolve(__dirname, 'node_modules/@quasar/app-webpack'),
-  );
-  webpack = require(require.resolve('webpack', { paths: [quasarAppWebpackReal] }));
+  const quasarAppWebpackDir = path.dirname(require.resolve('@quasar/app-webpack/package.json', { paths: [__dirname] }));
+  ModuleFederationPlugin = require(require.resolve('webpack/lib/container/ModuleFederationPlugin', { paths: [quasarAppWebpackDir] }));
 } catch (e) {
-  webpack = require('webpack');
+  ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 }
-const { container } = webpack;
 const ESLintPlugin = require('eslint-webpack-plugin');
 const dependencies = require('./package.json').dependencies;
 // Prefer `sass-embedded` when available (better compatibility with some modern
@@ -76,13 +73,10 @@ module.exports = configure(function (ctx) {
       extendWebpack(cfg) {
         // Use native webpack ModuleFederationPlugin here. The Enhanced MFP's
         // ContainerEntryModule has a fatal BUILD-001 check (process.exit(1)) that
-        // fails under @quasar/app-webpack's compilation environment in CI, where
-        // expose module resolution timing differs from standard webpack setups.
-        // A bootstrap entry provides the async boundary for shared module negotiation.
-        cfg.entry = path.resolve(__dirname, './src/mf-bootstrap.js');
-
+        // fails under @quasar/app-webpack's compilation environment in CI.
+        // Use eager sharing so no async boundary is needed.
         cfg.plugins.push(
-          new container.ModuleFederationPlugin({
+          new ModuleFederationPlugin({
             name: 'app_exposes',
             filename: 'remoteEntry.js',
             exposes: {
@@ -90,9 +84,9 @@ module.exports = configure(function (ctx) {
               './AppButton.vue': path.resolve(__dirname, 'src/exposes/AppButton.js'),
               './AppList.vue': path.resolve(__dirname, 'src/exposes/AppList.js'),
             },
-            shared: {
-              ...dependencies,
-            },
+            shared: Object.fromEntries(
+              Object.entries(dependencies).map(([k, v]) => [k, { eager: true }]),
+            ),
           }),
         );
       },
