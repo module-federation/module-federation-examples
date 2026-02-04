@@ -67,6 +67,28 @@ module.exports = configure(function (ctx) {
         // With MF sharing, we still want a stable explicit async boundary to avoid
         // eager consumption issues and to keep `.quasar` untracked.
         cfg.entry = path.resolve(__dirname, './src/mf-bootstrap.js');
+        // Ensure webpack context matches the app directory so MFP can resolve exposes.
+        if (!cfg.context) {
+          cfg.context = __dirname;
+        }
+
+        // Debug: log context information for CI troubleshooting
+        const fs = require('fs');
+        const exposesDir = path.resolve(__dirname, 'src/exposes');
+        console.error('[MF-DEBUG] CWD:', process.cwd());
+        console.error('[MF-DEBUG] __dirname:', __dirname);
+        console.error('[MF-DEBUG] cfg.context:', cfg.context);
+        console.error('[MF-DEBUG] exposesDir:', exposesDir);
+        console.error(
+          '[MF-DEBUG] files exist:',
+          JSON.stringify({
+            'HomePage.js': fs.existsSync(path.join(exposesDir, 'HomePage.js')),
+            'AppButton.js': fs.existsSync(path.join(exposesDir, 'AppButton.js')),
+            'AppList.js': fs.existsSync(path.join(exposesDir, 'AppList.js')),
+          }),
+        );
+
+        // Use absolute paths to avoid any context-based resolution issues.
         cfg.plugins.push(
           new ModuleFederationPlugin({
             name: 'app_exposes',
@@ -75,9 +97,9 @@ module.exports = configure(function (ctx) {
             experiments: { asyncStartup: true },
             filename: 'remoteEntry.js',
             exposes: {
-              './HomePage.vue': './src/exposes/HomePage.js',
-              './AppButton.vue': './src/exposes/AppButton.js',
-              './AppList.vue': './src/exposes/AppList.js',
+              './HomePage.vue': path.resolve(__dirname, 'src/exposes/HomePage.js'),
+              './AppButton.vue': path.resolve(__dirname, 'src/exposes/AppButton.js'),
+              './AppList.vue': path.resolve(__dirname, 'src/exposes/AppList.js'),
             },
             shared: {
               ...dependencies,
