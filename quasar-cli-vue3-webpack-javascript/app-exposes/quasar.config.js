@@ -93,14 +93,38 @@ module.exports = configure(function (ctx) {
             experiments: { asyncStartup: true },
             filename: 'remoteEntry.js',
             exposes: {
-              './HomePage.vue': path.resolve(__dirname, 'src/exposes/HomePage.js'),
+              // Swapped order: AppButton first to test if BUILD-001 follows position or module
               './AppButton.vue': path.resolve(__dirname, 'src/exposes/AppButton.js'),
+              './HomePage.vue': path.resolve(__dirname, 'src/exposes/HomePage.js'),
               './AppList.vue': path.resolve(__dirname, 'src/exposes/AppList.js'),
             },
             shared: {
               ...dependencies,
             },
           }),
+          // Diagnostic plugin: log compilation events for MFP debugging
+          {
+            apply(compiler) {
+              compiler.hooks.thisCompilation.tap('MFDiag', (compilation) => {
+                compilation.hooks.failedModule.tap('MFDiag', (mod, err) => {
+                  if (mod.resource && mod.resource.includes('exposes/')) {
+                    console.error('[MF-DIAG] Module FAILED:', mod.resource, err && err.message);
+                  }
+                });
+                compilation.hooks.succeedModule.tap('MFDiag', (mod) => {
+                  if (mod.resource && mod.resource.includes('exposes/')) {
+                    console.error('[MF-DIAG] Module OK:', mod.resource);
+                  }
+                });
+                compilation.hooks.succeedEntry.tap('MFDiag', (dep, name) => {
+                  console.error('[MF-DIAG] Entry OK:', name);
+                });
+                compilation.hooks.failedEntry.tap('MFDiag', (dep, name, err) => {
+                  console.error('[MF-DIAG] Entry FAILED:', name, err && err.message);
+                });
+              });
+            },
+          },
         );
       },
       // transpile: false,
