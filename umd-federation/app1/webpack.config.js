@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 const { UmdPlugin } = require('universal-module-federation-plugin');
 
@@ -41,6 +41,9 @@ module.exports = {
         './App': './src/App.js',
       },
       shared: { react: { singleton: true }, 'react-dom': { singleton: true } },
+      manifest: false,
+      shareStrategy: 'loaded-first',
+      experiments: { asyncStartup: true },
     }),
     new UmdPlugin({
       remotes: {
