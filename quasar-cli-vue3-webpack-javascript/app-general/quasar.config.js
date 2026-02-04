@@ -9,7 +9,18 @@
 // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js
 
 const path = require('path');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
+// Resolve webpack from @quasar/app-webpack's dependency tree to avoid
+// class identity mismatches (pnpm can hoist a different webpack instance).
+let webpack;
+try {
+  const quasarAppWebpackReal = require('fs').realpathSync(
+    path.resolve(__dirname, 'node_modules/@quasar/app-webpack'),
+  );
+  webpack = require(require.resolve('webpack', { paths: [quasarAppWebpackReal] }));
+} catch (e) {
+  webpack = require('webpack');
+}
+const { container } = webpack;
 const ESLintPlugin = require('eslint-webpack-plugin');
 const dependencies = require('./package.json').dependencies;
 // Prefer `sass-embedded` when available (better compatibility with some modern
@@ -63,20 +74,13 @@ module.exports = configure(function (ctx) {
       scssLoaderOptions: { implementation: sassImpl },
 
       extendWebpack(cfg) {
-        // Quasar doesn't set cfg.context, so webpack falls back to process.cwd().
-        // The Enhanced MFP's ContainerPlugin uses compilation.options.context for
-        // resolving expose entries. Without it, pnpm's strict resolution in CI
-        // prevents ContainerExposedDependencies from being resolved.
-        if (!cfg.context) {
-          cfg.context = __dirname;
-        }
+        // Use native webpack ModuleFederationPlugin (see app-exposes for rationale).
+        // A bootstrap entry provides the async boundary for shared module negotiation.
+        cfg.entry = path.resolve(__dirname, './src/mf-bootstrap.js');
 
         cfg.plugins.push(
-          new ModuleFederationPlugin({
+          new container.ModuleFederationPlugin({
             name: 'app_general',
-            manifest: false,
-            shareStrategy: 'loaded-first',
-            experiments: { asyncStartup: true },
             filename: 'remoteEntry.js',
             exposes: {},
             remotes: {

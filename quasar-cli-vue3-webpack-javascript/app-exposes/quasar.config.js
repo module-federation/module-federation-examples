@@ -9,7 +9,18 @@
 // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js
 
 const path = require('path');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
+// Resolve webpack from @quasar/app-webpack's dependency tree to avoid
+// class identity mismatches (pnpm can hoist a different webpack instance).
+let webpack;
+try {
+  const quasarAppWebpackReal = require('fs').realpathSync(
+    path.resolve(__dirname, 'node_modules/@quasar/app-webpack'),
+  );
+  webpack = require(require.resolve('webpack', { paths: [quasarAppWebpackReal] }));
+} catch (e) {
+  webpack = require('webpack');
+}
+const { container } = webpack;
 const ESLintPlugin = require('eslint-webpack-plugin');
 const dependencies = require('./package.json').dependencies;
 // Prefer `sass-embedded` when available (better compatibility with some modern
@@ -63,47 +74,16 @@ module.exports = configure(function (ctx) {
       scssLoaderOptions: { implementation: sassImpl },
 
       extendWebpack(cfg) {
-        // Quasar doesn't set cfg.context, so webpack falls back to process.cwd().
-        // The Enhanced MFP's ContainerPlugin uses compilation.options.context for
-        // resolving expose entries. Without it, pnpm's strict resolution in CI
-        // prevents ContainerExposedDependencies from being resolved.
-        if (!cfg.context) {
-          cfg.context = __dirname;
-        }
-
-        // CI-only: verify context reaches the compiler and intercept module build failures
-        if (process.env.CI) {
-          cfg.plugins.push({
-            apply(compiler) {
-              console.error('[CTX] compiler.context:', compiler.context);
-              console.error('[CTX] compiler.options.context:', compiler.options.context);
-              compiler.hooks.compilation.tap('MFCtxCheck', (compilation, { normalModuleFactory }) => {
-                console.error('[CTX] compilation.options.context:', compilation.options.context);
-                // Intercept module factory failures
-                normalModuleFactory.hooks.resolve.tap('MFResolveCheck', (resolveData) => {
-                  if (resolveData.request && resolveData.request.includes('exposes')) {
-                    console.error('[RESOLVE] request:', resolveData.request, 'context:', resolveData.context);
-                  }
-                });
-                compilation.hooks.failedModule.tap('MFFailCheck', (module, error) => {
-                  console.error('[FAIL] Module failed:', module.identifier?.() || module, 'Error:', error.message);
-                });
-                compilation.hooks.succeedModule.tap('MFSuccessCheck', (module) => {
-                  if (module.identifier && module.identifier().includes('exposes')) {
-                    console.error('[SUCCESS] Module built:', module.identifier());
-                  }
-                });
-              });
-            },
-          });
-        }
+        // Use native webpack ModuleFederationPlugin here. The Enhanced MFP's
+        // ContainerEntryModule has a fatal BUILD-001 check (process.exit(1)) that
+        // fails under @quasar/app-webpack's compilation environment in CI, where
+        // expose module resolution timing differs from standard webpack setups.
+        // A bootstrap entry provides the async boundary for shared module negotiation.
+        cfg.entry = path.resolve(__dirname, './src/mf-bootstrap.js');
 
         cfg.plugins.push(
-          new ModuleFederationPlugin({
+          new container.ModuleFederationPlugin({
             name: 'app_exposes',
-            manifest: false,
-            shareStrategy: 'loaded-first',
-            experiments: { asyncStartup: true },
             filename: 'remoteEntry.js',
             exposes: {
               './HomePage.vue': path.resolve(__dirname, 'src/exposes/HomePage.js'),
