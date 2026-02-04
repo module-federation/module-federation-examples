@@ -93,34 +93,82 @@ module.exports = configure(function (ctx) {
             experiments: { asyncStartup: true },
             filename: 'remoteEntry.js',
             exposes: {
-              // Swapped order: AppButton first to test if BUILD-001 follows position or module
-              './AppButton.vue': path.resolve(__dirname, 'src/exposes/AppButton.js'),
               './HomePage.vue': path.resolve(__dirname, 'src/exposes/HomePage.js'),
+              './AppButton.vue': path.resolve(__dirname, 'src/exposes/AppButton.js'),
               './AppList.vue': path.resolve(__dirname, 'src/exposes/AppList.js'),
             },
             shared: {
               ...dependencies,
             },
           }),
-          // Diagnostic plugin: log compilation events for MFP debugging
+          // Diagnostic plugin: deep compilation analysis
           {
             apply(compiler) {
               compiler.hooks.thisCompilation.tap('MFDiag', (compilation) => {
-                compilation.hooks.failedModule.tap('MFDiag', (mod, err) => {
-                  if (mod.resource && mod.resource.includes('exposes/')) {
-                    console.error('[MF-DIAG] Module FAILED:', mod.resource, err && err.message);
+                // Check dependency factories after all plugins register
+                compilation.hooks.finishModules.tapAsync('MFDiag', (modules, callback) => {
+                  console.error('[MF-DIAG] === finishModules ===');
+                  // List all registered dependency factories
+                  const factories = [];
+                  for (const [key] of compilation.dependencyFactories) {
+                    factories.push(key.name || '(anonymous)');
                   }
-                });
-                compilation.hooks.succeedModule.tap('MFDiag', (mod) => {
-                  if (mod.resource && mod.resource.includes('exposes/')) {
-                    console.error('[MF-DIAG] Module OK:', mod.resource);
+                  console.error('[MF-DIAG] Registered factories:', JSON.stringify(factories));
+
+                  // Check if ContainerExposedDependency factory is registered
+                  try {
+                    const enhancedPkg = path.dirname(
+                      require.resolve('@module-federation/enhanced/webpack'),
+                    );
+                    const cedPath = path.resolve(
+                      enhancedPkg,
+                      'lib/container/ContainerExposedDependency.js',
+                    );
+                    const CED = require(cedPath).default;
+                    const factory = compilation.dependencyFactories.get(CED);
+                    console.error('[MF-DIAG] CED factory registered?', !!factory);
+                    // Check class identity
+                    for (const [key] of compilation.dependencyFactories) {
+                      if (key.name === 'ContainerExposedDependency') {
+                        console.error('[MF-DIAG] CED class match?', key === CED);
+                        console.error('[MF-DIAG] CED from factory key file:', key._resolvedModulePath || 'N/A');
+                      }
+                    }
+                  } catch (e) {
+                    console.error('[MF-DIAG] CED require error:', e.message);
                   }
-                });
-                compilation.hooks.succeedEntry.tap('MFDiag', (dep, name) => {
-                  console.error('[MF-DIAG] Entry OK:', name);
-                });
-                compilation.hooks.failedEntry.tap('MFDiag', (dep, name, err) => {
-                  console.error('[MF-DIAG] Entry FAILED:', name, err && err.message);
+
+                  // List modules with 'exposes' in path
+                  let exposeCount = 0;
+                  for (const mod of modules) {
+                    if (mod.resource && mod.resource.includes('exposes/')) {
+                      console.error('[MF-DIAG] Module in graph:', mod.resource);
+                      exposeCount++;
+                    }
+                  }
+                  console.error('[MF-DIAG] Expose modules in graph:', exposeCount);
+
+                  // Check the ContainerEntryModule blocks
+                  for (const mod of modules) {
+                    if (mod.constructor.name === 'ContainerEntryModule') {
+                      console.error('[MF-DIAG] ContainerEntryModule blocks:', mod.blocks.length);
+                      for (const block of mod.blocks) {
+                        for (const dep of block.dependencies) {
+                          const resolved = compilation.moduleGraph.getModule(dep);
+                          console.error(
+                            '[MF-DIAG] Block dep:',
+                            dep.exposedName,
+                            'request:',
+                            dep.userRequest,
+                            'resolved:',
+                            !!resolved,
+                          );
+                        }
+                      }
+                    }
+                  }
+
+                  callback();
                 });
               });
             },
