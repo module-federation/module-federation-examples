@@ -8,6 +8,24 @@
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js
 
+const path = require('path');
+
+// Pre-set FEDERATION_WEBPACK_PATH before loading Enhanced MFP.
+// Enhanced MFP's ContainerExposedDependency eagerly loads webpack's ModuleDependency
+// at module scope via normalizeWebpackPath(). Without the env var set, pnpm resolves
+// to the hoisted node_modules/webpack, while Quasar's compiler uses a different
+// webpack instance from @quasar/app-webpack's dependency tree. This mismatch causes
+// BUILD-001 errors in pnpm-managed monorepos.
+try {
+  const quasarAppWebpackPkg = path.resolve(__dirname, 'node_modules/@quasar/app-webpack');
+  const quasarAppWebpackReal = require('fs').realpathSync(quasarAppWebpackPkg);
+  process.env.FEDERATION_WEBPACK_PATH = require.resolve('webpack', {
+    paths: [quasarAppWebpackReal],
+  });
+} catch (e) {
+  // Fallback: resolve from cwd (works in flat node_modules layouts)
+}
+
 const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const dependencies = require('./package.json').dependencies;
@@ -24,7 +42,6 @@ try {
 }
 
 const { configure } = require('quasar/wrappers');
-const path = require('path');
 
 module.exports = configure(function (ctx) {
   return {
@@ -67,28 +84,7 @@ module.exports = configure(function (ctx) {
         // With MF sharing, we still want a stable explicit async boundary to avoid
         // eager consumption issues and to keep `.quasar` untracked.
         cfg.entry = path.resolve(__dirname, './src/mf-bootstrap.js');
-        // Ensure webpack context matches the app directory so MFP can resolve exposes.
-        if (!cfg.context) {
-          cfg.context = __dirname;
-        }
 
-        // Debug: log context information for CI troubleshooting
-        const fs = require('fs');
-        const exposesDir = path.resolve(__dirname, 'src/exposes');
-        console.error('[MF-DEBUG] CWD:', process.cwd());
-        console.error('[MF-DEBUG] __dirname:', __dirname);
-        console.error('[MF-DEBUG] cfg.context:', cfg.context);
-        console.error('[MF-DEBUG] exposesDir:', exposesDir);
-        console.error(
-          '[MF-DEBUG] files exist:',
-          JSON.stringify({
-            'HomePage.js': fs.existsSync(path.join(exposesDir, 'HomePage.js')),
-            'AppButton.js': fs.existsSync(path.join(exposesDir, 'AppButton.js')),
-            'AppList.js': fs.existsSync(path.join(exposesDir, 'AppList.js')),
-          }),
-        );
-
-        // Use absolute paths to avoid any context-based resolution issues.
         cfg.plugins.push(
           new ModuleFederationPlugin({
             name: 'app_exposes',
