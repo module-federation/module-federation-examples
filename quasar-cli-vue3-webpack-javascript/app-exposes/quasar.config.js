@@ -84,6 +84,27 @@ module.exports = configure(function (ctx) {
         // for shared module negotiation automatically. No custom entry needed —
         // Quasar's generated .quasar/client-entry.js works as-is.
 
+        // Debug: log webpack context and instance info in CI
+        if (process.env.CI) {
+          const fs = require('fs');
+          console.error('[MF-DEBUG] __dirname:', __dirname);
+          console.error('[MF-DEBUG] cfg.context:', cfg.context);
+          console.error('[MF-DEBUG] cfg.entry:', JSON.stringify(cfg.entry));
+          const hp = path.resolve(__dirname, 'src/exposes/HomePage.js');
+          console.error('[MF-DEBUG] HomePage.js exists:', fs.existsSync(hp), hp);
+          console.error('[MF-DEBUG] FEDERATION_WEBPACK_PATH:', process.env.FEDERATION_WEBPACK_PATH);
+          // Check webpack identity
+          try {
+            const wpFromEnv = require(process.env.FEDERATION_WEBPACK_PATH || 'webpack');
+            const wpFromCfg = require('webpack');
+            console.error('[MF-DEBUG] webpack identity match:', wpFromEnv === wpFromCfg);
+            console.error('[MF-DEBUG] webpack from env path:', require.resolve(process.env.FEDERATION_WEBPACK_PATH || 'webpack'));
+            console.error('[MF-DEBUG] webpack from bare require:', require.resolve('webpack'));
+          } catch (e) {
+            console.error('[MF-DEBUG] webpack identity check error:', e.message);
+          }
+        }
+
         cfg.plugins.push(
           new ModuleFederationPlugin({
             name: 'app_exposes',
