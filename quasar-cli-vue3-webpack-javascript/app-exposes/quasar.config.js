@@ -75,9 +75,9 @@ module.exports = configure(function (ctx) {
             experiments: { asyncStartup: true },
             filename: 'remoteEntry.js',
             exposes: {
-              './HomePage.vue': './src/pages/IndexPage.vue',
-              './AppButton.vue': './src/components/AppButton.vue',
-              './AppList.vue': './src/components/AppList.vue',
+              './HomePage.vue': './src/exposes/HomePage.js',
+              './AppButton.vue': './src/exposes/AppButton.js',
+              './AppList.vue': './src/exposes/AppList.js',
             },
             shared: {
               ...dependencies,
