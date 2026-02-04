@@ -13,11 +13,18 @@ export default defineConfig({
     baseURL: 'http://127.0.0.1:3001',
     trace: 'on-first-retry',
   },
-  webServer: {
-    command: 'pnpm run start',
-    // Avoid IPv6 `localhost` resolution issues in CI where Quasar dev binds to IPv4.
-    url: 'http://127.0.0.1:3001',
-    timeout: 300_000,
-    reuseExistingServer: !process.env.CI,
-  },
+  webServer: [
+    {
+      command: 'pnpm --dir app-exposes exec -- env BROWSER=none quasar dev',
+      url: 'http://localhost:3001',
+      timeout: 300_000,
+      reuseExistingServer: !process.env.CI,
+    },
+    {
+      command: 'pnpm --dir app-general exec -- env BROWSER=none quasar dev',
+      url: 'http://localhost:3002',
+      timeout: 300_000,
+      reuseExistingServer: !process.env.CI,
+    },
+  ],
 });
