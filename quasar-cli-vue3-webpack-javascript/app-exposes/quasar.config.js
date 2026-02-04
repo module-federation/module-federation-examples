@@ -71,6 +71,33 @@ module.exports = configure(function (ctx) {
           cfg.context = __dirname;
         }
 
+        // CI-only: verify context reaches the compiler and intercept module build failures
+        if (process.env.CI) {
+          cfg.plugins.push({
+            apply(compiler) {
+              console.error('[CTX] compiler.context:', compiler.context);
+              console.error('[CTX] compiler.options.context:', compiler.options.context);
+              compiler.hooks.compilation.tap('MFCtxCheck', (compilation, { normalModuleFactory }) => {
+                console.error('[CTX] compilation.options.context:', compilation.options.context);
+                // Intercept module factory failures
+                normalModuleFactory.hooks.resolve.tap('MFResolveCheck', (resolveData) => {
+                  if (resolveData.request && resolveData.request.includes('exposes')) {
+                    console.error('[RESOLVE] request:', resolveData.request, 'context:', resolveData.context);
+                  }
+                });
+                compilation.hooks.failedModule.tap('MFFailCheck', (module, error) => {
+                  console.error('[FAIL] Module failed:', module.identifier?.() || module, 'Error:', error.message);
+                });
+                compilation.hooks.succeedModule.tap('MFSuccessCheck', (module) => {
+                  if (module.identifier && module.identifier().includes('exposes')) {
+                    console.error('[SUCCESS] Module built:', module.identifier());
+                  }
+                });
+              });
+            },
+          });
+        }
+
         cfg.plugins.push(
           new ModuleFederationPlugin({
             name: 'app_exposes',
