@@ -80,10 +80,9 @@ module.exports = configure(function (ctx) {
       scssLoaderOptions: { implementation: sassImpl },
 
       extendWebpack(cfg) {
-        // Quasar's default entry is generated under `./.quasar/client-entry.js`.
-        // With MF sharing, we still want a stable explicit async boundary to avoid
-        // eager consumption issues and to keep `.quasar` untracked.
-        cfg.entry = path.resolve(__dirname, './src/mf-bootstrap.js');
+        // With asyncStartup enabled, the MF runtime handles the async boundary
+        // for shared module negotiation automatically. No custom entry needed —
+        // Quasar's generated .quasar/client-entry.js works as-is.
 
         cfg.plugins.push(
           new ModuleFederationPlugin({
