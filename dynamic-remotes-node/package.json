@@ -11,10 +11,10 @@
     "start": "concurrently 'pnpm run remote' 'sleep 5 && pnpm run host'"
   },
   "dependencies": {
-    "@module-federation/dts-plugin": "2.0.1",
-    "@module-federation/enhanced": "2.0.1",
+    "@module-federation/dts-plugin": "https://pkg.pr.new/module-federation/core/@module-federation/dts-plugin@d8962b5",
+    "@module-federation/enhanced": "https://pkg.pr.new/module-federation/core/@module-federation/enhanced@d8962b5",
     "@module-federation/node": "2.7.32",
-    "@module-federation/runtime": "2.0.1"
+    "@module-federation/runtime": "https://pkg.pr.new/module-federation/core/@module-federation/runtime@d8962b5"
   },
   "devDependencies": {
     "@rspack/cli": "1.7.6",
