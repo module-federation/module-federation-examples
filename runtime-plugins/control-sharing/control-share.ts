@@ -1,10 +1,6 @@
 import type {
-  FederationRuntimePlugin,
+  ModuleFederationRuntimePlugin,
   Shared,
-  ShareArgs,
-  ShareInfos,
-  ShareScopeMap,
-  SharedGetter,
 } from '@module-federation/runtime/types';
 
 // Store interface for runtime data
@@ -32,7 +28,7 @@ const runtimeStore: RuntimeStore = {
 
 const LOCAL_STORAGE_KEY = 'formDataVMSC';
 
-const ControlScopeResolvePlugin = (): FederationRuntimePlugin => {
+const ControlScopeResolvePlugin = (): ModuleFederationRuntimePlugin => {
   return {
     name: 'control-scope-resolve-plugin',
     beforeInit: args => {

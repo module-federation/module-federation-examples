@@ -16,7 +16,7 @@ This example demonstrates a runtime plugin implementation for Module Federation 
 
 A runtime plugin that implements version control for Module Federation. Key features:
 
-- Implements the `FederationRuntimePlugin` interface
+- Implements the `ModuleFederationRuntimePlugin` interface
 - Uses localStorage to persist version preferences
 - Handles version resolution and module sharing between applications
 - Manages share scope mapping and instance tracking

@@ -55,7 +55,7 @@ module.exports = {
       exposes: {
         './Button': './src/Button',
       },
-      runtimePlugins: [require.resolve('../control-share.js')],
+      runtimePlugins: [require.resolve('../control-share.ts')],
       shared: {
         ...deps,
         react: {
