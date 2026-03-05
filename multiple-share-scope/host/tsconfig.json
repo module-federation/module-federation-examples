@@ -1,0 +1,16 @@
+{
+  "extends": "@modern-js/tsconfig/base",
+  "compilerOptions": {
+    "declaration": false,
+    "jsx": "preserve",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@shared/*": ["./shared/*"],
+      "*": ["./@mf-types/*"]
+    },
+    "types": ["react", "react-dom"]
+  },
+  "include": ["src", "shared", "config", "modern.config.ts", "module-federation.config.ts"],
+  "exclude": ["**/node_modules"]
+}
