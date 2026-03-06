@@ -22,6 +22,7 @@ export default createModuleFederationConfig({
     },
     react17: {
       shareKey: 'react',
+      // @ts-ignore wait fix types
       request: 'react17',
       shareScope: 'default',
       singleton: true,

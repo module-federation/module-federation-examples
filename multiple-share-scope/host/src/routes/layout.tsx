@@ -1,7 +1,8 @@
 import React17 from 'react17';
 import React from 'react';
-console.log(React17, React);
 import { Outlet } from '@modern-js/runtime/router';
+
+console.log(React17, React);
 
 const Layout = (): JSX.Element => (
   <div>

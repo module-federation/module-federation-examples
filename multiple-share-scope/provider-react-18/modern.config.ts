@@ -5,7 +5,6 @@ export default defineConfig({
   runtime: {
     router: true,
   },
-  devtools: false,
   server: {
     port: 8082,
   },
