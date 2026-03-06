@@ -1,0 +1,16 @@
+{
+  "name": "multiple-share-scope",
+  "description": "Module Federation example demonstrating multiple share scopes to run React 17 and React 18 simultaneously.",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"cd ./host && pnpm dev\" \"cd ./provider-react-17 && pnpm dev\" \"cd ./provider-react-18 && pnpm dev\"",
+    "build": "concurrently \"cd ./host && pnpm build\" \"cd ./provider-react-17 && pnpm build\" \"cd ./provider-react-18 && pnpm build\"",
+    "serve": "concurrently \"cd ./host && pnpm serve\" \"cd ./provider-react-17 && pnpm serve\" \"cd ./provider-react-18 && pnpm serve\"",
+    "clean": "concurrently \"cd ./host && pnpm clean\" \"cd ./provider-react-17 && pnpm clean\" \"cd ./provider-react-18 && pnpm clean\"",
+    "e2e:ci": "pnpm run build && echo \"No e2e tests yet\""
+  },
+  "devDependencies": {
+    "concurrently": "8.2.2"
+  }
+}
