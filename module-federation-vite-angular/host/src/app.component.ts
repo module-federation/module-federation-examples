@@ -1,5 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, viewChild, ViewContainerRef } from '@angular/core';
+import {
+  Component,
+  EnvironmentInjector,
+  effect,
+  inject,
+  runInInjectionContext,
+  viewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { CounterComponent } from './counter.component';
 
 @Component({
@@ -31,12 +39,27 @@ import { CounterComponent } from './counter.component';
   imports: [CommonModule, CounterComponent],
 })
 export class AppComponent {
+  private readonly environmentInjector = inject(EnvironmentInjector);
+  private remoteLoadStarted = false;
+
   viewContainer = viewChild('remote_app', { read: ViewContainerRef });
 
   constructor() {
-    effect(async () => {
-      const m = await import('remote/remote-app');
-      this.viewContainer()?.createComponent(m.AppComponent);
+    effect(() => {
+      const vc = this.viewContainer();
+      if (!vc || this.remoteLoadStarted) {
+        return;
+      }
+      this.remoteLoadStarted = true;
+
+      void import('remote/remote-app').then(m => {
+        runInInjectionContext(this.environmentInjector, () => {
+          vc.createComponent(m.AppComponent, {
+            environmentInjector: this.environmentInjector,
+            injector: vc.injector,
+          });
+        });
+      });
     });
   }
 }
