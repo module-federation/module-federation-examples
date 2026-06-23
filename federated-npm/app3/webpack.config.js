@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 
 module.exports = {
@@ -8,6 +8,11 @@ module.exports = {
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
+    },
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
     },
     port: 3003,
   },
@@ -29,15 +34,13 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app3',
       library: { type: 'var', name: 'app3' },
       filename: 'remoteEntry.js',
       exposes: {
-        '.': 'data:text/javascript,export default "nothing here"',
+        '.': './empty.js',
       },
-      runtimePlugins: [
-        // uses global plugin injected by app1
-      ],
       shared: {
         qs: {
           import: 'qs',

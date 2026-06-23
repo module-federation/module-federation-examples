@@ -1,10 +1,62 @@
 const express = require('express');
 const initMiddleware = require('./middleware');
+const _nodeFetch = require('node-fetch');
+const fetch = _nodeFetch.default || _nodeFetch;
+const { sanitizeLoopbackHttpUrl } = require('../../../server-utils/loopback');
 
 const app = express();
 const PORT = 4000;
+const shouldPrewarm = !(process.env.CI || process.env.MF_SKIP_PREWARM);
 
-const done = () => {
+async function waitUrl(url, timeout = 600000) {
+  const target = sanitizeLoopbackHttpUrl(url);
+  const start = Date.now();
+  // Retry until the remoteEntry.js is available over HTTP
+  /* eslint-disable no-await-in-loop */
+  while (true) {
+    try {
+      const res = await fetch(target.href);
+      if (res.ok) return;
+    } catch (_) {}
+
+    if (Date.now() - start > timeout) {
+      // extra diagnostics in CI: try to print which ports are listening
+      try {
+        const { execSync } = require('node:child_process');
+        const ss = execSync(`ss -ltnp | grep :${target.port} || true`, {
+          stdio: ['ignore', 'pipe', 'ignore'],
+        })
+          .toString()
+          .trim();
+        if (ss) console.log(`[prewarm] port diag ${target.port}: ${ss}`);
+      } catch (e) {}
+      const message = `prewarm timeout for ${target.href}`;
+      if (process.env.CI || process.env.MF_SKIP_PREWARM) {
+        console.warn(`[prewarm] ${message}`);
+        return;
+      }
+      throw new Error(message);
+    }
+    await new Promise(r => setTimeout(r, 5000));
+  }
+}
+
+const done = async () => {
+  // Ensure remotes are reachable before the first SSR render
+  const prewarm = Promise.all([
+    waitUrl('http://localhost:3001/server/remoteEntry.js'),
+    waitUrl('http://localhost:3002/server/remoteEntry.js'),
+  ]);
+
+  if (shouldPrewarm) {
+    await prewarm;
+  } else {
+    prewarm.catch(err => {
+      const message = err && err.message ? err.message : String(err);
+      console.warn(`[prewarm] ${message}`);
+    });
+  }
+
   app.listen(PORT, () => {
     console.info(
       `[${new Date().toISOString()}]`,

@@ -1,0 +1,35 @@
+.c_CartPage {
+  margin: 0 auto;
+  max-width: calc(1000px + var(--outer-space) * 2);
+  padding: 0 var(--outer-space);
+}
+
+.c_CartPage__lineItems {
+  list-style: none;
+  padding: 0;
+}
+
+.c_CartPage hr {
+  border: 0;
+  height: 2px;
+  background-color: black;
+}
+
+.c_CartPage__total {
+  margin: 2rem 0 3rem;
+  text-align: right;
+  font-weight: bold;
+}
+
+.c_CartPage__buttons {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+  gap: 2rem;
+}
+
+.c_CartPage__buttons > * {
+  flex: 0;
+}

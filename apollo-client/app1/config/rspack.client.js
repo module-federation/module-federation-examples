@@ -1,8 +1,8 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
-const shared = require('./webpack.shared');
-const rspack = require('@rspack/core')
-const moduleFederationPlugin = require('./module-federation');
+const sharedConfig = require('./webpack.shared');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
+const getModuleFederationPlugin = require('./module-federation');
 
 /**
  * @type {import('webpack').Configuration}
@@ -19,7 +19,7 @@ const webpackConfig = {
     chunkFilename: '[name].js',
     publicPath: 'http://localhost:3000/static/',
   },
-  plugins: [moduleFederationPlugin(rspack.container.ModuleFederationPlugin).client],
+  plugins: [getModuleFederationPlugin(ModuleFederationPlugin).client],
 };
 
-module.exports = merge(shared, webpackConfig);
+module.exports = merge(sharedConfig, webpackConfig);

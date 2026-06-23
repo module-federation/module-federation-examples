@@ -1,6 +1,8 @@
 import { Helmet } from '@modern-js/runtime/head';
+import { Suspense, lazy } from 'react';
 import './index.css';
-import Button from 'app1/Button';
+
+const Button = lazy(() => import('app1/Button'));
 
 const Index = () => (
   <div className="container-box">
@@ -22,11 +24,12 @@ const Index = () => (
         <p className="name">Modern.js Bidirectional Host Example 2</p>
       </div>
       <p className="description">
-        FEDERATED App1: <Button />
+        FEDERATED App1:{' '}
+        <Suspense fallback={<div>Loading Button...</div>}>
+          <Button />
+        </Suspense>
       </p>
-      <p className="description">
-        go to http://localhost:3001
-      </p>
+      <p className="description">go to http://localhost:3001</p>
 
       <div className="grid">
         <a

@@ -1,5 +1,5 @@
 <template>
-  <div style="color: red;">
+  <div style="color: red">
     {{ title }}
     <div>count: {{ count }}</div>
   </div>
@@ -10,7 +10,7 @@ export default {
   props: ['count'],
   data() {
     return {
-      title: "Remote Component in Action..",
+      title: 'Remote Component in Action..',
     };
   },
 };

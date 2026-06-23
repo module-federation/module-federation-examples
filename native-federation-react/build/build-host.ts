@@ -1,4 +1,4 @@
 //@ts-nocheck
 
-import { buildProject } from "./build-common";
+import { buildProject } from './build-common';
 buildProject('host');

@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 
 module.exports = {
@@ -31,6 +31,7 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: '@typescript_monorepo/app2',
       filename: 'remoteEntry.js',
       exposes: {
@@ -38,7 +39,7 @@ module.exports = {
       },
       library: {
         type: 'global',
-        name: '_typescript_monorepo_app2'
+        name: '_typescript_monorepo_app2',
       },
       shared: ['react', 'react-dom'],
     }),

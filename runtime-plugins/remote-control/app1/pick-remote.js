@@ -1,4 +1,3 @@
-const store = {};
 const lsmap = {
   green: 'http://localhost:3003/remoteEntry.js',
   blue: 'http://localhost:3002/remoteEntry.js',
@@ -8,12 +7,8 @@ const map = {
   app2: 'http://localhost:3003/remoteEntry.js',
 };
 
-const CustomPlugin = (): FederationRuntimePlugin => ({
+const CustomPlugin = () => ({
   name: 'backend-remote-control',
-  beforeInit: args => {
-    store.name = args.options.name;
-    return args;
-  },
   init: async args => {
     const override = window.localStorage.getItem('button');
 
@@ -33,9 +28,7 @@ const CustomPlugin = (): FederationRuntimePlugin => ({
     return args;
   },
   beforeLoadShare: async args => {
-    //@ts-ignore
-    while (__FEDERATION__.__INSTANCES__.length <= 1) {
-      // workaround to bug thatll be fixed in next release
+    while ((globalThis.__FEDERATION__?.__INSTANCES__?.length ?? 0) <= 1) {
       await new Promise(r => setTimeout(r, 150));
     }
 

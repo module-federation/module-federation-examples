@@ -5,20 +5,22 @@ This example demonstrates how to run Micro Frontends with Webpack Module Federat
 ## 1. Pre-requirements
 
 To run this demo, ensure you have:
+
 - Node.js >= 16
 - cURL
 
 ## 2. Deploy Service Discovery on AWS
 
-Follow the [Deployment instructions](https://github.com/module-federation/module-federation-examples/blob/master/frontend-discovery-service/USER_GUIDE.md#deploying-the-solution) to deploy Frontend Service Discovery on AWS. 
+Follow the [Deployment instructions](https://github.com/module-federation/module-federation-examples/blob/master/frontend-discovery-service/USER_GUIDE.md#deploying-the-solution) to deploy Frontend Service Discovery on AWS.
 
 Ensure these settings:
+
 - `AccessControlAllowOrigin`: https://localhost:3001
 - `CookieSettings`: Secure; SameSite=None
 
 Upon successful completion of the deployment, please record the URLs for both the `ConsumerApi` and `AdminApi` as they will be displayed in the deployment output.
 
-In the subsequent session, you will be required to make authenticated calls to the Admin API. To acquire the necessary API Token for authentication, kindly refer to the [Making Authenticated API Requests guide](https://github.com/module-federation/module-federation-examples/blob/master/frontend-discovery-service/docs/USER_GUIDE.md#making-authenticated-api-requests).    
+In the subsequent session, you will be required to make authenticated calls to the Admin API. To acquire the necessary API Token for authentication, kindly refer to the [Making Authenticated API Requests guide](https://github.com/module-federation/module-federation-examples/blob/master/frontend-discovery-service/docs/USER_GUIDE.md#making-authenticated-api-requests).
 
 ## 3. Deploy Micro Frontends
 
@@ -89,27 +91,27 @@ The response should resemble:
 
 ```json
 {
-    "schema":"<SCHEMA_URL>",
-    "microFrontends":{
-        "my-project/product": [
-            {
-                "url":"https://localhost:3002/remoteEntry.js",
-                "metadata": {
-                    "version":"1.0.0",
-                    "integrity":"e0d123e5f316bef78bfdf5a008837578"
-                }
-            }
-        ],
-        "my-project/catalog": [
-            {
-                "url":"https://localhost:3003/remoteEntry.js",
-                "metadata": {
-                    "version":"1.0.0",
-                    "integrity":"e0d123e5f316bef78bfdf5a008837577"
-                }
-            }
-        ]
-    }
+  "schema": "<SCHEMA_URL>",
+  "microFrontends": {
+    "my-project/product": [
+      {
+        "url": "https://localhost:3002/remoteEntry.js",
+        "metadata": {
+          "version": "1.0.0",
+          "integrity": "e0d123e5f316bef78bfdf5a008837578"
+        }
+      }
+    ],
+    "my-project/catalog": [
+      {
+        "url": "https://localhost:3003/remoteEntry.js",
+        "metadata": {
+          "version": "1.0.0",
+          "integrity": "e0d123e5f316bef78bfdf5a008837577"
+        }
+      }
+    ]
+  }
 }
 ```
 
@@ -156,7 +158,7 @@ Then return to [https://localhost:3001](https://localhost:3001) and try again.
 
 Feel free to explore the source code for the [app shell](https://github.com/module-federation/module-federation-examples/blob/master/frontend-discovery-service/app-shell), [catalog Micro Frontend](https://github.com/module-federation/module-federation-examples/blob/master/frontend-discovery-service/catalog-1.0.0), and [product Micro Frontend](https://github.com/module-federation/module-federation-examples/blob/master/frontend-discovery-service/product-1.0.0). While the apps are relatively basic, you can examine the `webpack.config.js` of each project to observe how Webpack Module Federation orchestrates the discovery and fetching of remote URLs.
 
-## 5. Deploying a New Version of the Catalog Micro Frontend 
+## 5. Deploying a New Version of the Catalog Micro Frontend
 
 This section outlines the process of deploying a new version (V2) of the Catalog Micro Frontend, utilizing a gradual roll-out strategy.
 

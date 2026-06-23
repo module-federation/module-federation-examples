@@ -23,13 +23,10 @@ const Shop = props => (
       <ul>
         {productLinks.map(({ key, href, label }) => (
           <li key={key}>
-            <Link href={href}>
-              {label}
-            </Link>
+            <Link href={href}>{label}</Link>
           </li>
         ))}
       </ul>
-
     </div>
     <style jsx>{`
       .hero {
@@ -51,8 +48,8 @@ const Shop = props => (
   </div>
 );
 Shop.getInitialProps = async () => {
-  console.log('loading slow api')
+  console.log('loading slow api');
 
-  return {testing: 1234}
+  return { testing: 1234 };
 };
 export default Shop;

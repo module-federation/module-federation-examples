@@ -1,0 +1,23 @@
+{
+  "name": "rsbuild-vue_consumer",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "rsbuild dev --open",
+    "build": "rsbuild build",
+    "preview": "rsbuild preview"
+  },
+  "dependencies": {
+    "vue": "3.4.31",
+    "vue-router": "^4.0.13",
+    "vuex": "^4.1.0"
+  },
+  "devDependencies": {
+    "@module-federation/enhanced": "2.0.1",
+    "@rsbuild/core": "1.7.3",
+    "@rsbuild/plugin-vue": "1.2.6",
+    "tailwindcss": "3.4.4",
+    "typescript": "5.5.3"
+  },
+  "license": "MIT"
+}

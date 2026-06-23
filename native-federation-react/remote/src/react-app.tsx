@@ -1,6 +1,4 @@
-
-import React, { useState } from "react";
-
+import React, { useState } from 'react';
 
 export function App() {
   const [count, setCount] = useState(0);
@@ -8,11 +6,12 @@ export function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          I'm the remote's React Component!
-        </p>
+        <p>I'm the remote's React Component!</p>
         <div>
-          Remote button: <button data-e2e="REMOTE_BUTTON" onClick={() => setCount(count => count + 1)}>click me {count}</button>
+          Remote button:{' '}
+          <button data-e2e="REMOTE_BUTTON" onClick={() => setCount(count => count + 1)}>
+            click me {count}
+          </button>
         </div>
 
         <a

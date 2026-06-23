@@ -1,6 +1,5 @@
-const {
-  container: {ModuleFederationPlugin},
-} = require('@rspack/core');
+const { CssExtractRspackPlugin } = require('@rspack/core');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 const path = require('path');
 
 const mode = process.env.NODE_ENV || 'development';
@@ -20,16 +19,16 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: '[name].[id].js',
     publicPath: 'auto',
-    uniqueName: 'app4'
+    uniqueName: 'app4',
   },
   devServer: {
     port: 3004,
     hot: true,
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-    }
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
   },
   module: {
     rules: [
@@ -43,22 +42,30 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.css$/,
+        use: [prod ? CssExtractRspackPlugin.loader : 'style-loader', 'css-loader'],
+        type: 'javascript/auto',
+      },
     ],
   },
   mode,
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      dts: false,
       name: 'app_04',
       filename: 'remoteEntry.js',
       exposes: {
         './App': './src/main.js',
         './loadApp': './src/loadApp.js',
       },
+      shareStrategy: 'loaded-first',
       shared: [],
+    }),
+    new CssExtractRspackPlugin({
+      filename: '[name].css',
     }),
   ],
   devtool: prod ? false : 'source-map',
-  experiments: {
-    css: true
-  },
 };

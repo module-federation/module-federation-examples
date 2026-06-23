@@ -2,16 +2,20 @@
   "name": "nextjs-ssr",
   "description": "Server Side Rendering with Next.js",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
-    "preinstall": "find . -name \"noexist\" -type d -prune -exec rm -rf '{}' +; pnpm install --ignore-scripts",
     "start": " pnpm --parallel --filter nextjs-ssr_* dev",
     "build": "pnpm --parallel --filter nextjs-ssr_* build",
     "serve": "pnpm --parallel --filter nextjs-ssr_* start",
-    "e2e:ci": "pnpm run start & sleep 10 && wait-on http-get://localhost:3001/ && wait-on http-get://localhost:3002/ && wait-on http-get://localhost:3000/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "test:e2e": "npx playwright test",
+    "e2e:ci": "pnpm build && pnpm exec playwright test --reporter=list"
   },
   "dependencies": {
     "concurrently": "^8.2.2",
     "wait-on": "7.2.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.58.2",
+    "playwright": "1.58.2"
   }
 }

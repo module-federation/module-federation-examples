@@ -1,20 +1,15 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { loadRemote } from '@module-federation/enhanced/runtime';
 
 import { store } from './store';
 
-const dynamicFederation = async (scope, module) => {
-  const container = window[scope]; // or get the container somewhere else
-  // Initialize the container, it may provide shared modules
-  await container.init(__webpack_share_scopes__.default);
-  return container.get(module).then(factory => {
-    const Module = factory();
-    return Module;
-  });
-};
-
-const RemoteApp = React.lazy(() => dynamicFederation('app2', './RemoteApp'));
+// This example intentionally demonstrates *dynamic* loading (previously done via
+// manual container.init/get). With Enhanced, prefer the runtime API.
+const RemoteApp = React.lazy(() =>
+  loadRemote('app2/RemoteApp').then(mod => ({ default: mod?.default ?? mod })),
+);
 
 const App = () => {
   return (

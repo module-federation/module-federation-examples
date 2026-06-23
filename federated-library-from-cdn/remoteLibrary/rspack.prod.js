@@ -1,12 +1,13 @@
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
-const { ModuleFederationPlugin } = require('@rspack/core').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 delete common.plugins;
 module.exports = merge(common, {
   mode: 'production',
   entry: './src/button.jsx',
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'remoteLibrary',
       filename: 'remoteEntry.js',
       exposes: {

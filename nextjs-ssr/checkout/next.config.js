@@ -14,7 +14,7 @@ module.exports = {
       new NextFederationPlugin({
         name: 'checkout',
         filename: 'static/chunks/remoteEntry.js',
-        dts:false,
+        dts: false,
         exposes: {
           './title': './components/exposedTitle.js',
           './checkout': './pages/checkout.js',
@@ -22,9 +22,9 @@ module.exports = {
         },
         remotes: remotes(options.isServer),
         shared: {},
-        extraOptions:{
-          exposePages: true
-        }
+        extraOptions: {
+          exposePages: true,
+        },
       }),
     );
 

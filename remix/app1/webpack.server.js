@@ -3,10 +3,9 @@ import * as path from 'node:path';
 
 import { readConfig } from '@remix-run/dev/dist/config.js';
 import nodeExternals from 'webpack-node-externals';
-import { default as Enhanced } from '@module-federation/enhanced';
+import { ModuleFederationPlugin } from '@module-federation/enhanced/webpack';
 import { default as NFP } from '@module-federation/node';
 
-const { AsyncBoundaryPlugin, ModuleFederationPlugin } = Enhanced;
 const { UniversalFederationPlugin } = NFP;
 import { getManifest } from './utils/manifest.js';
 import { createServerBuildEntry } from './utils/server-build-entry.js';
@@ -86,15 +85,11 @@ const config = {
     ],
   },
   plugins: [
-    new AsyncBoundaryPlugin({
-      excludeChunk: chunk => {
-        return chunk.name === 'app1';
-      },
-    }),
     new UniversalFederationPlugin(
       {
+        experiments: { asyncStartup: true },
         isServer: true,
-        name: 'app1' ,
+        name: 'app1',
         filename: 'remoteEntry.js',
         remoteType: 'script',
         remotes: {

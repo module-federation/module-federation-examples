@@ -3,15 +3,13 @@
 </template>
 
 <script>
-
 export default {
   methods: {
     click() {
-      this.$emit("btnClick");
+      this.$emit('btnClick');
       // vue3 events needs the Camel-Case start with "on"
-      this.$emit("onBtnClick");
-    }
-  }
-}
+      this.$emit('onBtnClick');
+    },
+  },
+};
 </script>
-

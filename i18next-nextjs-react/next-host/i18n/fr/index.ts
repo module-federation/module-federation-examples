@@ -1,6 +1,6 @@
 import nextMain from './next-main.json';
 const TranslationsFR = {
-    "next-main": nextMain
+  'next-main': nextMain,
 };
 
 export default TranslationsFR;

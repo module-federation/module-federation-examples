@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { loadRemote, init } from '@module-federation/runtime';
 import ReactDOM from 'react-dom';
 
@@ -27,7 +27,6 @@ init({
       },
       beforeLoadShare(args) {
         console.log('beforeLoadShare: ', args);
-
         return args;
       },
     },
@@ -53,32 +52,26 @@ init({
     },
   },
 });
-function System(props) {
-  const { request } = props;
 
+const System = ({ request }) => {
   if (!request) {
     return <h2>No system specified</h2>;
   }
 
-  const Component = React.lazy(() => loadRemote(request));
+  const Component = lazy(() => loadRemote(request));
 
   return (
-    <React.Suspense fallback="Loading System">
+    <Suspense fallback="Loading System">
       <Component />
-    </React.Suspense>
+    </Suspense>
   );
-}
+};
 
-function App() {
-  const [system, setSystem] = React.useState(false);
+const App = () => {
+  const [system, setSystem] = useState(null);
 
-  function setApp2() {
-    setSystem('app2/Widget');
-  }
-
-  function setApp3() {
-    setSystem('app3/Widget');
-  }
+  const setApp2 = () => setSystem('app2/Widget');
+  const setApp3 = () => setSystem('app3/Widget');
 
   return (
     <div
@@ -90,7 +83,7 @@ function App() {
       <h1>Dynamic System Host</h1>
       <h2>App 1</h2>
       <p>
-        The Dynamic System will take advantage Module Federation <strong>remotes</strong> and{' '}
+        The Dynamic System will take advantage of Module Federation <strong>remotes</strong> and{' '}
         <strong>exposes</strong>. It will not load any components or modules that have been loaded
         already.
       </p>
@@ -101,6 +94,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

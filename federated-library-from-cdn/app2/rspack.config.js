@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@rspack/core').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 require('dotenv').config({ path: './.env' });
 
 const remoteUrl = 'https://federated-library.pages.dev/remoteEntry.js';
@@ -40,6 +40,7 @@ module.exports = {
       template: './public/index.html',
     }),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app2',
       remotes: {
         remoteLibrary: `remoteLibrary@${remoteUrl}`,

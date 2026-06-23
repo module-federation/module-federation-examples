@@ -1,7 +1,5 @@
-const {
-  container: { ModuleFederationPlugin },
-  HtmlRspackPlugin,
-} = require('@rspack/core');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
+
 const path = require('path');
 module.exports = {
   entry: './index.js',
@@ -44,6 +42,7 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'lib_app',
       filename: 'remoteEntry.js',
       exposes: {

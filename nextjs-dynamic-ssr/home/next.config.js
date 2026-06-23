@@ -21,9 +21,9 @@ module.exports = {
           './pages-map': './pages-map.js',
         },
         shared: {},
-        extraOptions:{
-          exposePages: true
-        }
+        extraOptions: {
+          exposePages: true,
+        },
       }),
     );
 

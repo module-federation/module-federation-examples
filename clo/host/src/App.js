@@ -9,7 +9,7 @@ const App = () => (
     <h2>Host</h2>
     <React.Suspense fallback="Loading Button">
       <RemoteButton />
-      <ServiceComponent/>
+      <ServiceComponent />
     </React.Suspense>
   </div>
 );

@@ -1,20 +1,20 @@
-import {lazy, Suspense} from 'react'
-import {loadRemote} from '@module-federation/runtime'
+import { lazy, Suspense } from 'react';
+import { loadRemote } from '@module-federation/runtime';
 
 const PdpPage = lazy(() => loadRemote('shop/pdp'));
 
-const Pdp = (props) => {
+const Pdp = props => {
   return (
     <Suspense fallback={'loading'}>
-      <PdpPage {...props}/>
+      <PdpPage {...props} />
     </Suspense>
-  )
-}
+  );
+};
 
-Pdp.getInitialProps = async (ctx) => {
-  const res = await loadRemote('shop/pdp')
+Pdp.getInitialProps = async ctx => {
+  const res = await loadRemote('shop/pdp');
 
-  return res.default.getInitialProps(ctx)
-}
+  return res.default.getInitialProps(ctx);
+};
 
 export default Pdp;

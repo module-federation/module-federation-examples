@@ -1,6 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
-const path = require('path');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const mode = process.env.NODE_ENV || 'development';
 const prod = mode === 'production';
@@ -61,7 +61,13 @@ module.exports = {
         './App': './src/main.js',
         './loadApp': './src/loadApp.js',
       },
+      experiments: {
+        asyncStartup: true,
+      },
       shared: [],
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',

@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 
 module.exports = {
@@ -31,9 +31,10 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: '@typescript-monorepo/app1',
       remotes: {
-        "@typescript-monorepo/app2": `promise new Promise(resolve => {
+        '@typescript-monorepo/app2': `promise new Promise(resolve => {
           const remoteUrlWithVersion = 'http://localhost:3002/remoteEntry.js'
           const script = document.createElement('script')
           script.src = remoteUrlWithVersion
@@ -55,11 +56,11 @@ module.exports = {
           // inject this script with the src set to the versioned remoteEntry.js
           document.head.appendChild(script);
         })
-        `
+        `,
       },
       library: {
         type: 'global',
-        name: '_typescript_monorepo_app1'
+        name: '_typescript_monorepo_app1',
       },
       shared: ['react', 'react-dom'],
     }),

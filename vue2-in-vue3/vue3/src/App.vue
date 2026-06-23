@@ -1,17 +1,16 @@
 <template>
   <div>
     <h3>Vue3 App</h3>
-    <Content :count="count"/>
-    
+    <Content :count="count" />
+
     <div id="vue2Button"></div>
-    <vue2-button @btnClick="inc"/>
-    
+    <vue2-button @btnClick="inc" />
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
-import Content from "./components/Content";
+import { ref } from 'vue';
+import Content from './components/Content';
 import { vue2ToVue3 } from './utils';
 import Button from 'vue2App/Button';
 
@@ -30,7 +29,7 @@ export default {
       count,
       inc,
     };
-  }
+  },
 };
 </script>
 

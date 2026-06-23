@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 
 const ENDPOINT = process.env.DISCOVERY_ENDPOINT;
-const LINKS = ["my-project/catalog", "my-project/product"];
+const LINKS = ['my-project/catalog', 'my-project/product'];
 
 let MFEs;
 
-const discover = async (config) => {
+const discover = async config => {
   if (!config.endpoint) {
-    throw new Error("No endpoint provided");
+    throw new Error('No endpoint provided');
   }
 
-  const req = { credentials: "include" };
+  const req = { credentials: 'include' };
 
   if (config.headers) {
     req.headers = config.headers;
@@ -24,7 +24,7 @@ const discover = async (config) => {
 function loadComponent(scope, module) {
   return async () => {
     // Initializes the share scope. This fills it with known provided modules from this build and all remotes
-    await __webpack_init_sharing__("default");
+    await __webpack_init_sharing__('default');
 
     const container = window[scope]; // or get the container somewhere else
     // Initialize the container, it may provide shared modules
@@ -37,7 +37,7 @@ function loadComponent(scope, module) {
   };
 }
 
-const useDynamicScript = (url) => {
+const useDynamicScript = url => {
   const [ready, setReady] = React.useState(false);
   const [failed, setFailed] = React.useState(false);
 
@@ -46,9 +46,9 @@ const useDynamicScript = (url) => {
       return;
     }
 
-    const element = document.createElement("script");
+    const element = document.createElement('script');
     element.src = url;
-    element.type = "text/javascript";
+    element.type = 'text/javascript';
     element.async = true;
 
     setReady(false);
@@ -94,9 +94,7 @@ function System(props) {
     return <h2>Failed to load dynamic script: {props.system.url}</h2>;
   }
 
-  const MFE = React.lazy(
-    loadComponent(props.system.scope, props.system.module)
-  );
+  const MFE = React.lazy(loadComponent(props.system.scope, props.system.module));
 
   return (
     <React.Suspense fallback="Loading System">
@@ -118,7 +116,7 @@ function App() {
     const mfe = MFEs.microFrontends[id][0];
     setSystem({
       url: mfe.url,
-      scope: `${(id + "/" + mfe.metadata.version).replace(/[\.\-\/]/gi, "_")}`,
+      scope: `${(id + '/' + mfe.metadata.version).replace(/[\.\-\/]/gi, '_')}`,
       module: id,
     });
   }
@@ -126,13 +124,13 @@ function App() {
   return (
     <div>
       <div>
-        {LINKS.map((link) => (
+        {LINKS.map(link => (
           <button onClick={() => loadMFE(link)} key={link}>
             Load {link}
           </button>
         ))}
       </div>
-      <div style={{ marginTop: "2em" }}>
+      <div style={{ marginTop: '2em' }}>
         <System system={system} />
       </div>
     </div>

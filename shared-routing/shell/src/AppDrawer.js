@@ -89,7 +89,7 @@ export default function AppDrawer(props) {
     >
       <div className={classes.toolbarIcon}>
         <IconButton data-e2e="CLOSE_SIDE_MENU__BUTTON" onClick={props.drawer.closeDrawer}>
-          <ChevronLeftIcon/>
+          <ChevronLeftIcon />
         </IconButton>
       </div>
       <Divider />

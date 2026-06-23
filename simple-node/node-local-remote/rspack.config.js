@@ -1,5 +1,5 @@
 const path = require('path');
-const { container:{ModuleFederationPlugin} } = require('@rspack/core');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 
 module.exports = {
   mode: 'development',
@@ -20,6 +20,7 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       isServer: true,
       name: 'node_local_remote',
       library: { type: 'commonjs-module' },
@@ -28,6 +29,6 @@ module.exports = {
         './test': './src/expose.js',
       },
       runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],
-    })
-  ]
+    }),
+  ],
 };

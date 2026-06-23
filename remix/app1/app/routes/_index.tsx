@@ -1,8 +1,8 @@
-import { useLoaderData } from "@remix-run/react";
-import {lazy,Suspense}  from "react";
-import Button from 'app2/button'
+import { useLoaderData } from '@remix-run/react';
+import { lazy, Suspense } from 'react';
+import Button from 'app2/button';
 export function loader() {
-  return { message: "Hello, World!" };
+  return { message: 'Hello, World!' };
 }
 // const Button = lazy(() => import('app2/button'));
 export default function Home() {
@@ -11,9 +11,9 @@ export default function Home() {
     <div>
       <h1>Home</h1>
       <p>{message}</p>
-        <Suspense fallback={"loading remote"}>
-            <Button/>
-        </Suspense>
+      <Suspense fallback={'loading remote'}>
+        <Button />
+      </Suspense>
     </div>
   );
 }

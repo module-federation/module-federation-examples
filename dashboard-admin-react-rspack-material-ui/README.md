@@ -1,7 +1,6 @@
 # React + Admin Dashboard + Material UI and Webpack 5 Module Federation
 
-Welcome to our web application, featuring a dashboard that seamlessly integrates various technologies. This showcase highlights the synergy of React, Webpack, Rspack, Module Federation, and Material UI working harmoniously to deliver a powerful and visually appealing user experience. Through this innovative amalgamation, we aim to demonstrate the seamless collaboration of these technologies, showcasing their collective potential in crafting dynamic and responsive web interfaces. This project was based on a [Dashboard](https://codesandbox.io/p/sandbox/react-dashboard-pnm6fh) implementation 
-
+Welcome to our web application, featuring a dashboard that seamlessly integrates various technologies. This showcase highlights the synergy of React, Webpack, Rspack, Module Federation, and Material UI working harmoniously to deliver a powerful and visually appealing user experience. Through this innovative amalgamation, we aim to demonstrate the seamless collaboration of these technologies, showcasing their collective potential in crafting dynamic and responsive web interfaces. This project was based on a [Dashboard](https://codesandbox.io/p/sandbox/react-dashboard-pnm6fh) implementation
 
 <img src="https://raw.githubusercontent.com/erkylima/react-microapps/main/imgs/img1.jpg" width="500" />
 

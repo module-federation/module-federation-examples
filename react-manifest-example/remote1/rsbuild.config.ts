@@ -8,7 +8,10 @@ export default defineConfig({
   },
   dev: {
     // It is necessary to configure assetPrefix, and in the production environment, you need to configure output.assetPrefix
-    assetPrefix: 'http://localhost:3001',
+    assetPrefix: true,
+    client: {
+      port: 3001,
+    },
   },
   tools: {
     rspack: (config, { appendPlugins }) => {
@@ -18,7 +21,7 @@ export default defineConfig({
           name: 'remote1',
           exposes: {
             './button': './src/button.tsx',
-            './app': './src/app.tsx',
+            './app': './src/App.tsx',
           },
           shared: [
             'react',
@@ -29,5 +32,12 @@ export default defineConfig({
       ]);
     },
   },
-  plugins: [pluginReact()],
+  plugins: [
+    pluginReact({
+      splitChunks: {
+        react: false,
+        router: false,
+      },
+    }),
+  ],
 });
