@@ -49,7 +49,7 @@ const configuration = {
       exposes: {
         '.': './src/index.ts',
       },
-      runtimePlugins: [require.resolve('./isolatePlugin.ts')],
+      runtimePlugins: [[require.resolve('../plugin/isolatePluginFactory.ts'), { dependencies: ['shared-lib'] }]],
     }),
   ],
   optimization: {

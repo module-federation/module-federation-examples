@@ -1,6 +1,6 @@
 import React from 'react'; // Must be imported for webpack to work
 
-import { ReactDOM, createRoot } from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 
 import './index.css';
 

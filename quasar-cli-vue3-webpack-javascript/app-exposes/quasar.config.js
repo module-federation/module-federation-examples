@@ -9,7 +9,7 @@
 // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js
 
 const path = require('path');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const dependencies = require('./package.json').dependencies;
 // Prefer `sass-embedded` when available (better compatibility with some modern
@@ -71,13 +71,11 @@ module.exports = configure(function (ctx) {
         cfg.plugins.push(
           new ModuleFederationPlugin({
             name: 'app_exposes',
-            manifest: false,
-            shareStrategy: 'loaded-first',
             filename: 'remoteEntry.js',
             exposes: {
-              './HomePage.vue': path.resolve(__dirname, 'src/exposes/HomePage.js'),
-              './AppButton.vue': path.resolve(__dirname, 'src/exposes/AppButton.js'),
-              './AppList.vue': path.resolve(__dirname, 'src/exposes/AppList.js'),
+              './HomePage.vue': './src/pages/IndexPage.vue',
+              './AppButton.vue': './src/components/AppButton.vue',
+              './AppList.vue': './src/components/AppList.vue',
             },
             shared: {
               ...dependencies,

@@ -14,7 +14,17 @@
     "overrides": {
       "@types/react": "18.3.10",
       "@types/react-dom": "18.3.0",
-      "@types/glob>@types/minimatch": "3.0.5"
+      "@types/glob>@types/minimatch": "3.0.5",
+      "@playwright/test": "1.58.2",
+      "playwright": "1.58.2"
+    },
+    "packageExtensions": {
+      "@analogjs/vite-plugin-angular": {
+        "peerDependencies": {
+          "@angular/compiler-cli": "^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0 || ^21.0.0",
+          "typescript": ">=5.8 <6.0"
+        }
+      }
     },
     "onlyBuiltDependencies": [
       "@module-federation/nextjs-mf",
@@ -33,7 +43,7 @@
     ]
   },
   "devDependencies": {
-    "@playwright/test": "1.58.1",
+    "@playwright/test": "1.58.2",
     "@swc/plugin-styled-components": "12.1.0",
     "@types/node": "20.9.0",
     "abbrev": "2.0.0",
@@ -52,8 +62,7 @@
     "mocha": "10.6.0",
     "prettier": "3.3.3",
     "pretty-quick": "4.0.0",
-    "semver": "7.6.3",
-    "typescript": "5.5.3"
+    "semver": "7.6.3"
   },
   "scripts": {
     "list:all": "pnpm list --filter \"*\" --only-projects --depth -1 --json",

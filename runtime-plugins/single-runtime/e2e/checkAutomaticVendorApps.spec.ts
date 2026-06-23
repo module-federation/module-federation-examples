@@ -26,14 +26,10 @@ const expectRemoteEntry = async (
   remoteAlias: string,
   expectedEntry: string,
 ) => {
-  const moduleContainer = page.getByText(`Module: ${moduleName}`).locator('..');
+  const moduleContainer = page.getByTestId(`runtime-module-${moduleName}`);
   await expect(moduleContainer).toBeVisible();
 
-  // The UI renders a parent row and a child row that both contain `${remoteAlias}:`,
-  // so avoid strict mode violations by selecting the leaf row containing the <code> value.
-  const remoteRow = moduleContainer
-    .locator('div', { hasText: `• ${remoteAlias}:` })
-    .first();
+  const remoteRow = page.getByTestId(`runtime-remote-${moduleName}-${remoteAlias}`);
   await expect(remoteRow).toBeVisible();
   await expect(remoteRow.locator('code')).toHaveText(expectedEntry);
 };

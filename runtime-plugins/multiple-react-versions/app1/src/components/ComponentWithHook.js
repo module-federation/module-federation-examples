@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const ComponentWithHook = () => {
-  React.useEffect(() => {
-    console.log('some effect from app1');
-  }, []);
+  const [message] = React.useState('This should break, no hooks supported in this app.');
 
-  return <span>This should break, no hooks supported in this app.</span>;
+  return <span>{message}</span>;
 };
 
 export default ComponentWithHook;

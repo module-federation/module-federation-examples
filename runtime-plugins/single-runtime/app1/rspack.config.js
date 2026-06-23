@@ -106,7 +106,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      excludeChunks: ['app1', 'app1_partial'],
+      excludeChunks: ['app1'],
     }),
   ],
 };
