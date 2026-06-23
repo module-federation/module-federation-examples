@@ -5,7 +5,7 @@ module.exports = {
   library: {type: 'commonjs-module', name: 'host'},
   remoteType: 'script',
   remotes: {
-    remote: 'remote@http://localhost:3002/remoteEntry.js',
+    remote: 'remote@http://localhost:3002/server/remoteEntry.js',
   },
   shared: {
     ...dependencies,

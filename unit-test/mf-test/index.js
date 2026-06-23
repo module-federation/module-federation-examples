@@ -1,7 +1,119 @@
 const fs = require('fs');
 const path = require('path');
-const fetch = require('node-fetch');
-const { init, loadRemote } = require('@module-federation/runtime');
+
+const nodeModulesPath = path.resolve(process.cwd(), 'node_modules');
+const harnessPath = path.join(nodeModulesPath, 'federation-test');
+const safePackageNamePattern = /^(?:@[A-Za-z0-9._-]+\/)?[A-Za-z0-9._-]+$/;
+const safeExportPathPattern = /^\.\/[A-Za-z0-9._/-]+$/;
+const safeAssetPathPattern = /^[A-Za-z0-9._/-]+$/;
+
+const safeResolve = (basePath, ...segments) => {
+  const resolvedBase = path.resolve(basePath);
+  const targetPath = path.resolve(resolvedBase, ...segments);
+  const relativePath = path.relative(resolvedBase, targetPath);
+
+  if (relativePath.startsWith('..') || path.isAbsolute(relativePath)) {
+    throw new Error(`Refusing to write outside ${resolvedBase}`);
+  }
+
+  return targetPath;
+};
+
+const assertSafePackageName = (packageName) => {
+  if (typeof packageName !== 'string' || !safePackageNamePattern.test(packageName)) {
+    throw new Error(`Invalid remote package name: ${packageName}`);
+  }
+
+  return packageName;
+};
+
+const assertSafeExposePath = (exposePath) => {
+  if (
+    typeof exposePath !== 'string' ||
+    exposePath.includes('..') ||
+    !safeExportPathPattern.test(exposePath)
+  ) {
+    throw new Error(`Invalid exposed module path: ${exposePath}`);
+  }
+
+  return exposePath;
+};
+
+const assertSafeRemoteEntry = (remoteEntry) => {
+  if (!remoteEntry || typeof remoteEntry.name !== 'string' || !remoteEntry.name.endsWith('.js')) {
+    throw new Error('Invalid remote entry metadata');
+  }
+
+  if (
+    typeof remoteEntry.path === 'string' &&
+    remoteEntry.path !== '' &&
+    (remoteEntry.path.includes('..') || !safeAssetPathPattern.test(remoteEntry.path))
+  ) {
+    throw new Error(`Invalid remote entry path: ${remoteEntry.path}`);
+  }
+};
+
+const normalizeAssetList = (assets = {}) => {
+  const assetNames = [...(assets.sync || []), ...(assets.async || [])];
+
+  return assetNames.map((assetName) => {
+    if (
+      typeof assetName !== 'string' ||
+      assetName.includes('..') ||
+      !safeAssetPathPattern.test(assetName)
+    ) {
+      throw new Error(`Invalid remote asset path: ${assetName}`);
+    }
+
+    return assetName;
+  });
+};
+
+const toVirtualFileName = (exposePath) => {
+  const fileName = assertSafeExposePath(exposePath)
+    .slice(2)
+    .replace(/[\\/]/g, '_');
+
+  return `virtual-${fileName.endsWith('.js') ? fileName : `${fileName}.js`}`;
+};
+
+const getRemoteUrl = (entry) => {
+  const separatorIndex = entry.indexOf('@');
+  return separatorIndex === -1 ? entry : entry.slice(separatorIndex + 1);
+};
+
+const getRemoteName = (remoteAlias, entry) => {
+  const separatorIndex = entry.indexOf('@');
+  const remoteName = separatorIndex === -1 ? remoteAlias : entry.slice(0, separatorIndex);
+
+  return assertSafePackageName(remoteName);
+};
+
+const getFakePackagePath = (packageName) => {
+  return safeResolve(nodeModulesPath, ...assertSafePackageName(packageName).split('/'));
+};
+
+const getSafeAssetFilePath = (packagePath, fileUrl) => {
+  const fileName = path.basename(new URL(fileUrl).pathname);
+
+  if (!fileName || fileName === '.' || fileName === '..') {
+    throw new Error(`Invalid remote asset URL: ${fileUrl}`);
+  }
+
+  return safeResolve(packagePath, fileName);
+};
+
+const fetchRemote = (...args) => {
+  if (globalThis.fetch) {
+    return globalThis.fetch(...args);
+  }
+
+  const fetchPath = require.resolve('node-fetch', {
+    paths: [process.cwd(), __dirname],
+  });
+
+  return require(fetchPath)(...args);
+};
 
 const generateSharedConfig = (mfConfig) => {
   const sharedConfig = {};
@@ -28,64 +140,83 @@ const generateSharedConfig = (mfConfig) => {
   return sharedConfig;
 };
 
-const setupFederationTest = async (mfConfig) => {
-  const sharedConfig = generateSharedConfig(mfConfig);
-  let remotes = [];
-
-  const harnessPath = path.resolve(__dirname, 'node_modules', 'federation-test');
+const setupFederationTest = async (mfConfig, testExposes = {}) => {
   let harnessData = [];
 
-  for (const [remote, entry] of Object.entries(mfConfig.remotes)) {
-    const [name, url] = entry.split('@');
+  for (const [remoteAlias, entry] of Object.entries(mfConfig.remotes)) {
+    const remoteName = getRemoteName(remoteAlias, entry);
+    const exposedModules = testExposes[remoteName];
+
+    if (!exposedModules || exposedModules.length === 0) {
+      throw new Error(`Missing test exposes for remote: ${remoteName}`);
+    }
+
+    const url = getRemoteUrl(entry);
     const manifest = url.replace('remoteEntry.js', 'mf-manifest.json');
-    const response = await fetch(manifest);
+    const response = await fetchRemote(manifest);
     const data = await response.json();
 
-    const parsedPath = new URL(url).origin;
-    const subPath = data.metaData.remoteEntry.path;
+    const remoteEntryUrl = new URL(url);
+    const remoteEntryBaseUrl = new URL('.', remoteEntryUrl).toString().replace(/\/$/, '');
+    assertSafePackageName(data.id);
+    assertSafeRemoteEntry(data.metaData.remoteEntry);
 
-    const buildUrl = (parsedPath, subPath, file) => {
-      return subPath ? `${parsedPath}/${subPath}/${file}` : `${parsedPath}/${file}`;
+    const subPath = data.metaData.remoteEntry.path;
+    const assetBaseUrl = subPath ? `${remoteEntryUrl.origin}/${subPath}` : remoteEntryBaseUrl;
+
+    const buildUrl = (baseUrl, file) => {
+      return `${baseUrl}/${file}`;
     };
 
-    remotes.push(buildUrl(parsedPath, subPath, data.metaData.remoteEntry.name));
+    const remotes = [buildUrl(assetBaseUrl, data.metaData.remoteEntry.name)];
+    const exposeManifests = exposedModules.map((exposePath) => {
+      const safeExposePath = assertSafeExposePath(exposePath);
+      const manifestExpose = data.exposes.find(expose => expose.path === safeExposePath);
+
+      if (!manifestExpose) {
+        throw new Error(`Missing manifest expose for ${remoteName}${safeExposePath}`);
+      }
+
+      return {
+        path: safeExposePath,
+        assets: manifestExpose.assets,
+      };
+    });
 
     const jsFiles = [
-      ...data.shared.flatMap(shared => [...shared.assets.js.sync, ...shared.assets.js.async].map(file => buildUrl(parsedPath, subPath, file))),
-      ...data.exposes.flatMap(expose => [...expose.assets.js.sync, ...expose.assets.js.async].map(file => buildUrl(parsedPath, subPath, file)))
+      ...data.shared.flatMap(shared => normalizeAssetList(shared.assets.js).map(file => buildUrl(assetBaseUrl, file))),
+      ...exposeManifests.flatMap(expose => normalizeAssetList(expose.assets.js).map(file => buildUrl(assetBaseUrl, file)))
     ];
 
     const cssFiles = [
-      ...data.shared.flatMap(shared => [...shared.assets.css.sync, ...shared.assets.css.async].map(file => buildUrl(parsedPath, subPath, file))),
-      ...data.exposes.flatMap(expose => [...expose.assets.css.sync, ...expose.assets.css.async].map(file => buildUrl(parsedPath, subPath, file)))
+      ...data.shared.flatMap(shared => normalizeAssetList(shared.assets.css).map(file => buildUrl(assetBaseUrl, file))),
+      ...exposeManifests.flatMap(expose => normalizeAssetList(expose.assets.css).map(file => buildUrl(assetBaseUrl, file)))
     ];
 
     remotes.push(...jsFiles, ...cssFiles);
 
-    const fakePackagePath = path.resolve(__dirname, 'node_modules', data.id);
-    const fakePackageJsonPath = path.join(fakePackagePath, 'package.json');
-    const fakePackageIndexPath = path.join(fakePackagePath, 'index.js');
+    const fakePackagePath = getFakePackagePath(remoteName);
+    const fakePackageJsonPath = safeResolve(fakePackagePath, 'package.json');
+    const fakePackageIndexPath = safeResolve(fakePackagePath, 'index.js');
 
     if (!fs.existsSync(fakePackagePath)) {
       fs.mkdirSync(fakePackagePath, { recursive: true });
     }
 
-    const exportsContent = data.exposes.reduce((exportsObj, expose) => {
-      let exposeName = expose.name;
-      if (!exposeName.endsWith('.js')) {
-        exposeName += '.js';
-      }
-      exportsObj[expose.path] = './virtual' + exposeName;
-      const resolvePath = path.join(fakePackagePath, './virtual' + exposeName);
+    const exportsContent = exposedModules.reduce((exportsObj, exposePath) => {
+      assertSafeExposePath(exposePath);
+      const virtualFileName = toVirtualFileName(exposePath);
+      exportsObj[exposePath] = `./${virtualFileName}`;
+      const resolvePath = safeResolve(fakePackagePath, virtualFileName);
 
       harnessData.push(resolvePath);
 
       fs.writeFileSync(resolvePath, `    
-       const container = require('./remoteEntry.js')[${JSON.stringify(data.id)}];
+       const container = require('./remoteEntry.js')[${JSON.stringify(remoteName)}];
        const target = {};
 
        let e;
-       const cx = container.get(${JSON.stringify(expose.path)}).then((m) => {
+       const cx = container.get(${JSON.stringify(exposePath)}).then((m) => {
          e = m();
         Object.assign(target, e);
        });
@@ -108,7 +239,7 @@ const setupFederationTest = async (mfConfig) => {
     }, {});
 
     const packageJsonContent = {
-      name: data.id,
+      name: remoteName,
       version: '1.0.0',
       exports: exportsContent
     };
@@ -120,10 +251,9 @@ const setupFederationTest = async (mfConfig) => {
     fs.writeFileSync(fakePackageIndexPath, indexJsContent);
 
     for (const fileUrl of remotes) {
-      const fileName = path.basename(fileUrl);
-      const filePath = path.join(fakePackagePath, fileName);
-      const fileResponse = await fetch(fileUrl);
-      const fileData = await fileResponse.buffer();
+      const filePath = getSafeAssetFilePath(fakePackagePath, fileUrl);
+      const fileResponse = await fetchRemote(fileUrl);
+      const fileData = Buffer.from(await fileResponse.arrayBuffer());
       fs.writeFileSync(filePath, fileData);
     }
   }
@@ -132,8 +262,8 @@ const setupFederationTest = async (mfConfig) => {
     fs.mkdirSync(harnessPath, { recursive: true });
   }
 
-  fs.writeFileSync('node_modules/federation-test/index.js', `module.exports = Promise.all(${JSON.stringify(harnessData)}.map((p) => require(p).setupTest))`, 'utf-8');
-  fs.writeFileSync('node_modules/federation-test/package.json', '{"name": "federation-test", "main": "./index.js"}', 'utf-8');
+  fs.writeFileSync(safeResolve(harnessPath, 'index.js'), `module.exports = Promise.all(${JSON.stringify(harnessData)}.map((p) => require(p).setupTest))`, 'utf-8');
+  fs.writeFileSync(safeResolve(harnessPath, 'package.json'), '{"name": "federation-test", "main": "./index.js"}', 'utf-8');
 };
 
 module.exports = {

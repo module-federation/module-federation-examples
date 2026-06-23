@@ -1,5 +1,7 @@
 const { setupFederationTest } = require('../mf-test');
 
 module.exports = async () => {
-  await setupFederationTest(require('./modulefederation.config'));
+  await setupFederationTest(require('./modulefederation.config'), {
+    remote: ['./Button'],
+  });
 };
