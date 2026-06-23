@@ -29,6 +29,8 @@ export default defineConfig({
       appendPlugins([
         new ModuleFederationPlugin({
           name: `ASSET_HOST`,
+          shareStrategy: 'loaded-first',
+          experiments: { asyncStartup: true },
           filename: `ASSET_HOST__remoteEntry.js`,
           remotes: {
             '@remote': 'ASSET_REMOTE@http://localhost:3001/remoteEntry.js',

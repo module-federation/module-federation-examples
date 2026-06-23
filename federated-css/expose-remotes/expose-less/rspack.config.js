@@ -61,6 +61,7 @@ module.exports = {
       experiments: { asyncStartup: true },
       ...mfeBaseConfig,
       name: less.name,
+      shareStrategy: 'loaded-first',
       exposes: {
         // './StyleLess': './src/Button.styles.less',
         './Component': './src/Component.js',

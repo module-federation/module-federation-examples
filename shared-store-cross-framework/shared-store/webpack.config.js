@@ -22,6 +22,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'store',
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       library: { type: 'global', name: 'store' },
       exposes: {

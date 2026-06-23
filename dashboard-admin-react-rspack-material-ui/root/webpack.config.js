@@ -84,6 +84,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'shell',
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       remotes: {
         Nav: 'Nav@http://localhost:3002/remoteEntry.js',

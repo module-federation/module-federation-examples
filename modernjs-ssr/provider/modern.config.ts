@@ -17,6 +17,7 @@ export default defineConfig({
     moduleFederationPlugin({
       config: {
         name: 'provider',
+        shareStrategy: 'loaded-first',
         filename: 'remoteEntry.js',
         exposes: {
           './Image': './src/components/Image.tsx',

@@ -56,6 +56,8 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: 'profile',
+      shareStrategy: 'loaded-first',
+      experiments: { asyncStartup: true },
       filename: 'remoteEntry.js',
       remotes: {
         shell: 'shell@http://localhost:3000/remoteEntry.js',

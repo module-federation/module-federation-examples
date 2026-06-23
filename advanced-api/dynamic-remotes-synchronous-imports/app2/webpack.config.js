@@ -31,6 +31,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: app2Module.name,
+      shareStrategy: 'loaded-first',
       library: { type: 'var', name: app2Module.name },
       filename: app2Module.fileName,
       dts: false,

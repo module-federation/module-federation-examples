@@ -35,6 +35,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'AppShell',
+      shareStrategy: 'loaded-first',
       shared: {
         react: {
           singleton: true,

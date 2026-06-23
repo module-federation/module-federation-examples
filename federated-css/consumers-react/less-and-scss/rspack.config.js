@@ -43,7 +43,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new ModuleFederationPlugin(mfConfig),
+    new ModuleFederationPlugin({ ...mfConfig, shareStrategy: 'loaded-first' }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),

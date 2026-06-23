@@ -44,6 +44,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'host',
+      shareStrategy: 'loaded-first',
       shared: {
         react: {
           singleton: true,

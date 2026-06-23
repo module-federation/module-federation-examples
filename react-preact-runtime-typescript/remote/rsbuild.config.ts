@@ -7,6 +7,8 @@ export default defineConfig({
     pluginPreact(),
     pluginModuleFederation({
       name: 'remote',
+      shareStrategy: 'loaded-first',
+      experiments: { asyncStartup: true },
       exposes: {
         './appInjector': './src/appInjector',
       },

@@ -19,6 +19,8 @@ export default defineConfig({
       appendPlugins([
         new ModuleFederationPlugin({
           name: 'remote1',
+          shareStrategy: 'loaded-first',
+          experiments: { asyncStartup: true },
           exposes: {
             './button': './src/button.tsx',
             './app': './src/App.tsx',

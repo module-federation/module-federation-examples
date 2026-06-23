@@ -95,6 +95,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: name,
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       remotes: {
         app_02: 'app_02@http://localhost:3001/mf-manifest.json',

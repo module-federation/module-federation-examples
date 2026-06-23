@@ -7,7 +7,7 @@ const federationConfig = require('./federationConfig');
 
 module.exports = {
   entry: {
-    main: path.join(__dirname, '../src/index.ts'),
+    main: path.join(__dirname, '../src/index.tsx'),
   },
   module: {
     rules: [

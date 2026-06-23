@@ -4,7 +4,13 @@ import type { Locator, Page } from '@playwright/test';
 const appUrl = '/';
 
 const getAppSection = (page: Page, appNumber: number): Locator =>
-  page.getByText(`App ${appNumber} loaded`).locator('..');
+  page.getByText(`App ${appNumber} loaded`).first().locator('..');
+
+const getAppLoadedText = (page: Page, appNumber: number): Locator =>
+  page.getByText(`App ${appNumber} loaded`);
+
+const getFirstAppLoadedText = (page: Page, appNumber: number): Locator =>
+  getAppLoadedText(page, appNumber).first();
 
 const getInstanceLabel = (section: Locator, label: string): Locator =>
   section.locator(':scope > span').filter({ hasText: new RegExp(`${label}: \\d+`) });
@@ -27,16 +33,16 @@ test.describe('Isolated Shared Dependencies', () => {
     await page.goto(appUrl);
 
     await Promise.all([
-      expect(page.getByText('App 1 loaded')).toBeVisible({ timeout: 10_000 }),
-      expect(page.getByText('App 2 loaded')).toBeVisible({ timeout: 10_000 }),
-      expect(page.getByText('App 3 loaded')).toBeVisible({ timeout: 10_000 }),
+      expect(getFirstAppLoadedText(page, 1)).toBeVisible({ timeout: 10_000 }),
+      expect(getFirstAppLoadedText(page, 2)).toBeVisible({ timeout: 10_000 }),
+      expect(getFirstAppLoadedText(page, 3)).toBeVisible({ timeout: 10_000 }),
     ]);
   });
 
   test('should load all three apps', async ({ page }) => {
-    await expect(page.getByText('App 1 loaded')).toBeVisible();
-    await expect(page.getByText('App 2 loaded')).toBeVisible();
-    await expect(page.getByText('App 3 loaded')).toBeVisible();
+    await expect(getFirstAppLoadedText(page, 1)).toBeVisible();
+    await expect(getFirstAppLoadedText(page, 2)).toBeVisible();
+    await expect(getFirstAppLoadedText(page, 3)).toBeVisible();
   });
 
   test('should display instance IDs for all apps', async ({ page }) => {

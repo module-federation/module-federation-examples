@@ -43,6 +43,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'app1',
+      shareStrategy: 'loaded-first',
       shared: {
         react: { singleton: true },
         'react-dom': { singleton: true },

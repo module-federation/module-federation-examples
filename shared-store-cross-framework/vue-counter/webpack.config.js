@@ -64,6 +64,7 @@ module.exports = () => ({
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'vue_counter',
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       remotes: {
         store: `store@http://localhost:3003/remoteEntry.js`,

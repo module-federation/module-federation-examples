@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
-const { container } = require('webpack');
 const path = require('path');
 const deps = require('./package.json').dependencies;
 
@@ -8,9 +7,6 @@ module.exports = {
   entry: './src/index',
   cache: false,
   mode: 'development',
-  optimization: {
-    runtimeChunk: 'single',
-  },
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
@@ -19,6 +15,8 @@ module.exports = {
   },
   target: 'web',
   output: {
+    // Ensure this build doesn't collide with App2's webpack chunk globals when both are on the same page.
+    uniqueName: 'single_runtime_app1',
     publicPath: 'auto',
   },
   module: {
@@ -34,22 +32,16 @@ module.exports = {
     ],
   },
   plugins: [
-    new container.ContainerPlugin({
-      name: 'app1_partial',
-      filename: 'app1_partial.js',
-      library: {
-        type: 'var',
-        name: 'app1',
-      },
-      runtime: undefined,
-      exposes: {
-        './Button': './src/Button',
-      },
-    }),
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'app1',
-      runtime: false,
+      // Keep MF runtime from colliding with other instances.
+      // Also used as the key for the remote entry global.
+      library: { type: 'var', name: 'app1' },
+      // With enhanced federation + asyncStartup we must keep remotes loaded via script tags.
+      // Otherwise webpack treats `app2@http://.../remoteEntry.js` as a `var` external and emits invalid JS.
+      remoteType: 'script',
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       remotes: {
         app2: 'app2@http://localhost:3002/remoteEntry.js',

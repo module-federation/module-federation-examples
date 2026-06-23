@@ -27,6 +27,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'node_local_remote',
+      shareStrategy: 'loaded-first',
       library: { type: 'commonjs-module' },
       filename: 'remoteEntry.js',
       exposes: {

@@ -50,6 +50,7 @@ module.exports = {
       experiments: { asyncStartup: true },
       ...mfeBaseConfig,
       name: jss.name,
+      shareStrategy: 'loaded-first',
       exposes: {
         './JssStyles': './src/react-jss.styles.js',
         './Component': './src/Component.js',

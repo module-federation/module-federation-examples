@@ -11,11 +11,17 @@ module.exports = {
   entry: {
     index: './public/index.js',
   },
+  // This example is only exercised in modern browsers (Playwright Chromium).
+  // Allow async/await in output to prevent overlay warnings that can block e2e clicks.
+  target: ['web', 'es2017'],
   output: {
     path: dist,
     filename: '[name].js',
   },
   devServer: {
+    client: {
+      overlay: false,
+    },
     port: 8081,
     static: {
       directory: path.join(__dirname, 'dist'),
@@ -42,6 +48,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'GameOfLifeModule',
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       exposes: {
         './GameOfLifeModule': './pkg/',

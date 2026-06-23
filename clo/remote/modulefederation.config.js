@@ -2,6 +2,8 @@ const { dependencies } = require('./package.json');
 
 module.exports = {
   name: 'remote',
+  shareStrategy: 'loaded-first',
+  experiments: { asyncStartup: true },
   exposes: {
     './Button': './src/Button',
     './ServiceComponent': './src/ServiceComponent',

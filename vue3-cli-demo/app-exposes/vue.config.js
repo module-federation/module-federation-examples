@@ -33,6 +33,7 @@ module.exports = defineConfig({
       new ModuleFederationPlugin({
         experiments: { asyncStartup: true },
         name: 'app_exposes',
+        shareStrategy: 'loaded-first',
         filename: 'remoteEntry.js',
         exposes: {
           './HelloWorld.vue': './src/components/HelloWorld.vue',

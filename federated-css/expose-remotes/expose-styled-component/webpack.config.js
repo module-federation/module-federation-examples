@@ -40,6 +40,7 @@ module.exports = {
       experiments: { asyncStartup: true },
       ...mfeBaseConfig,
       name: styledComponent.name,
+      shareStrategy: 'loaded-first',
       exposes: {
         './Component': './src/StyledComponent.js',
       },

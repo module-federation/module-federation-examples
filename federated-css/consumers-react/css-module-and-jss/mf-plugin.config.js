@@ -3,6 +3,7 @@ const { getRemoteEntry, remotes } = require('../../expose-remotes/remotes.config
 module.exports = {
   experiments: { asyncStartup: true },
   name: 'less_and_scss',
+  shareStrategy: 'loaded-first',
   remotes: {
     expose_css_module: getRemoteEntry(remotes.cssModule),
     expose_jss: getRemoteEntry(remotes.jss),

@@ -30,6 +30,8 @@ export default defineConfig({
       appendPlugins([
         new ModuleFederationPlugin({
           name: `ASSET_REMOTE`,
+          shareStrategy: 'loaded-first',
+          experiments: { asyncStartup: true },
           filename: `remoteEntry.js`,
           exposes: {
             './AppIndex': './src/views/AppIndex',

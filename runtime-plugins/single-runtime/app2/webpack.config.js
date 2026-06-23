@@ -13,10 +13,12 @@ module.exports = {
     },
     port: 3002,
   },
-  target: 'web',
   output: {
+    // Ensure this build doesn't collide with App1's webpack chunk globals when both are on the same page.
+    uniqueName: 'single_runtime_app2',
     publicPath: 'auto',
   },
+  target: 'web',
   module: {
     rules: [
       {
@@ -33,6 +35,13 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'app2',
+      // Keep MF runtime from colliding with other instances.
+      // Also used as the key for the remote entry global.
+      library: { type: 'var', name: 'app2' },
+      // With enhanced federation + asyncStartup we must keep remotes loaded via script tags.
+      // Otherwise webpack treats `app1@http://.../remoteEntry.js` as a `var` external and emits invalid JS.
+      remoteType: 'script',
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       remotes: {
         app1: 'app1@http://localhost:3001/remoteEntry.js',

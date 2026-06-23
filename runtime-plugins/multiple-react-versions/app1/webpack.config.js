@@ -22,6 +22,7 @@ const webpackConfig = {
   },
   output: {
     publicPath: 'auto',
+    uniqueName: 'multiple_react_versions_app1',
   },
   module: {
     rules: [
@@ -46,6 +47,9 @@ const webpackConfig = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'app1',
+      remoteType: 'script',
+      library: { type: 'var', name: 'app1' },
+      shareStrategy: 'loaded-first',
       remotes: {
         app2: `app2@${getRemoteEntryUrl(3002)}`,
       },

@@ -23,6 +23,7 @@ module.exports = {
       experiments: { asyncStartup: true },
       isServer: true,
       name: 'node_local_remote',
+      shareStrategy: 'loaded-first',
       library: { type: 'commonjs-module' },
       filename: 'remoteEntry.js',
       exposes: {

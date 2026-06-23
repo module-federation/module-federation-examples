@@ -42,6 +42,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'app2',
+      shareStrategy: 'loaded-first',
       remotes: {
         remoteLibrary: `remoteLibrary@${remoteUrl}`,
       },

@@ -36,6 +36,7 @@ var serverConfig = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'website2',
+      shareStrategy: 'loaded-first',
       library: { type: 'commonjs-module' },
       filename: 'container.js',
 

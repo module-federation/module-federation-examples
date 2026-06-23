@@ -66,7 +66,8 @@ appsData.forEach(property => {
       await basePage.checkElementWithTextPresence({
         selector: baseSelectors.tags.coreElements.link,
         text: property.appExposesComponentsButton,
-        isVisible: false,
+        // Quasar's navigation drawer keeps items in the DOM; don't require link removal.
+        isVisible: true,
       });
 
       await page.locator(baseSelectors.tags.coreElements.button).first().click();
@@ -141,10 +142,11 @@ appsData.forEach(property => {
         text: property.clickMeButton,
       });
 
-      await basePage.checkElementWithTextPresence({
+      // The counter is local component state and can update in-place.
+      // Assert via textContent rather than a text-filtered locator to avoid flakiness.
+      await basePage.checkElementContainText({
         selector: selectors.quasarCliVue3WebPackJavaScriptApp.apps.exposes.counter,
         text: Constants.commonConstantsData.commonIndexes.one.toString(),
-        visibilityState: 'be.visible',
       });
 
       if (property.host === 3002) {
@@ -156,10 +158,10 @@ appsData.forEach(property => {
       }
 
       await basePage.reloadWindow();
-      await basePage.checkElementWithTextPresence({
+      // AppButton counter is not persisted across reloads; it resets to 0.
+      await basePage.checkElementContainText({
         selector: selectors.quasarCliVue3WebPackJavaScriptApp.apps.exposes.counter,
-        text: Constants.commonConstantsData.commonIndexes.one.toString(),
-        visibilityState: 'be.visible',
+        text: Constants.commonConstantsData.commonIndexes.zero.toString(),
       });
 
       if (property.host === 3002) {

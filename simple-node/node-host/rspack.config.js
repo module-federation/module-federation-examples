@@ -31,6 +31,7 @@ module.exports = {
       experiments: { asyncStartup: true },
       remoteType: 'script',
       name: 'node_host',
+      shareStrategy: 'loaded-first',
       runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],
       remotes: {
         node_local_remote: 'commonjs ../../node-local-remote/dist/remoteEntry.js',
