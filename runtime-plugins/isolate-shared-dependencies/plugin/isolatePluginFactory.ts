@@ -2,8 +2,8 @@ import { FederationHost } from '@module-federation/runtime';
 import { FederationRuntimePlugin } from '@module-federation/runtime/types';
 
 type WebpackRequire = {
-  m: Record<string, any>;
-  c: Record<string, any>;
+  m: Record<string, unknown>;
+  c: Record<string, unknown>;
 };
 
 type ExtendedFederationHost = FederationHost & {
@@ -32,12 +32,8 @@ export default function IsolateSharedDependenciesPluginFactory(
       name: 'isolate-shared-dependencies-plugin',
       version: '1.0.0',
       beforeInit: args => {
-        // Save the origin ID
         originId = args.origin.name;
-        // We need to expose the __webpack_require__ to the other instances
-        // so they can steal the dependencies too
-        // @ts-ignore
-        args.origin.__webpack_require__ = __webpack_require__;
+        (args.origin as ExtendedFederationHost).__webpack_require__ = __webpack_require__;
         return args;
       },
       resolveShare: args => {
@@ -72,18 +68,14 @@ export default function IsolateSharedDependenciesPluginFactory(
                 if (originInstance && originInstance.__webpack_require__) {
                   const originCache = originInstance.__webpack_require__.c;
 
-                  // Let's save the origin cache first
                   const savedOriginCache = { ...originCache };
 
-                  // Clear it
                   Object.keys(originCache).forEach(key => {
                     delete originCache[key];
                   });
 
-                  // Ceate a new instance of the dependency.
                   patchedInstances[args.pkgName] = originalFactory();
 
-                  // Clear it again and restore the saved cache
                   Object.keys(originCache).forEach(key => {
                     delete originCache[key];
                   });
