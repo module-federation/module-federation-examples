@@ -7,7 +7,7 @@ const repoRoot = path.resolve(__dirname, '..');
 const readRuntimePlugin = relativePath =>
   fs.readFileSync(path.join(repoRoot, relativePath), 'utf8');
 
-const loadEsmDefaultFunction = relativePath => {
+const loadEsmDefaultFunction = (relativePath, sandbox = {}) => {
   const source = readRuntimePlugin(relativePath).replace(
     'export default function',
     'module.exports = function',
@@ -18,6 +18,7 @@ const loadEsmDefaultFunction = relativePath => {
     globalThis,
     module,
     exports: module.exports,
+    ...sandbox,
   });
   return module.exports;
 };
@@ -34,17 +35,33 @@ describe('runtime plugin examples', () => {
       'runtime-plugins/isolate-shared-dependencies/app3/webpack.config.js',
     );
 
-    expect(app1Config).toContain("runtimePlugins: [[require.resolve('../plugin/isolatePluginFactory.ts'), { dependencies: [] }]]");
+    expect(app1Config).toContain(
+      "runtimePlugins: [[require.resolve('../plugin/isolatePluginFactory.ts'), { dependencies: [] }]]",
+    );
     expect(app2Config).toContain(
       "runtimePlugins: [[require.resolve('../plugin/isolatePluginFactory.ts'), { dependencies: ['shared-lib'] }]]",
     );
-    expect(app3Config).toContain("runtimePlugins: [[require.resolve('../plugin/isolatePluginFactory.ts'), { dependencies: [] }]]");
+    expect(app3Config).toContain(
+      "runtimePlugins: [[require.resolve('../plugin/isolatePluginFactory.ts'), { dependencies: [] }]]",
+    );
   });
 
   test('remote-router demonstrates policy, observability, loader, and preload runtime hooks', async () => {
     globalThis.__REMOTE_ROUTER_EVENTS__ = [];
+    const consoleError = jest.fn();
+    const document = {
+      createElement: tagName => ({
+        async: false,
+        dataset: {},
+        tagName,
+      }),
+    };
     const createRemoteRouterPlugin = loadEsmDefaultFunction(
       'runtime-plugins/remote-router/host/config/runtimePlugin.js',
+      {
+        console: { ...console, error: consoleError },
+        document,
+      },
     );
 
     const plugin = createRemoteRouterPlugin();
@@ -68,6 +85,15 @@ describe('runtime plugin examples', () => {
       },
     };
     plugin.beforeRequest(beforeRequestArgs);
+    const scriptResult = plugin.createScript({
+      url: 'http://localhost:4200/remoteEntry.js',
+      remoteInfo: { name: 'remote_one' },
+    });
+    const fallback = plugin.errorLoadRemote({
+      id: 'remote_two/Button',
+      error: new Error('offline'),
+      from: 'runtime',
+    });
     await plugin.afterLoadRemote({ id: 'remote_one/HelloWorld', recovered: false });
     await plugin.afterLoadEntry({ remoteInfo: { name: 'remote_one' }, recovered: false });
     await plugin.beforePreloadRemote({ preloadOps: [{ nameOrAlias: 'remote_one' }] });
@@ -76,9 +102,22 @@ describe('runtime plugin examples', () => {
     expect(beforeRequestArgs.options.remotes[0].entry).toBe(
       'http://localhost:4200/remoteEntry.js',
     );
+    expect(scriptResult).toMatchObject({
+      timeout: 8000,
+      script: {
+        async: true,
+        dataset: { remoteRouter: 'remote_one' },
+        src: 'http://localhost:4200/remoteEntry.js',
+        tagName: 'script',
+      },
+    });
+    expect(fallback).toEqual({ default: expect.any(Function) });
+    expect(consoleError).toHaveBeenCalledWith('remote_two/Button', 'offline');
     expect(globalThis.__REMOTE_ROUTER_EVENTS__.map(event => event.type)).toEqual([
       'apply',
       'beforeRequest',
+      'createScript',
+      'errorLoadRemote',
       'afterLoadRemote',
       'afterLoadEntry',
       'beforePreloadRemote',
