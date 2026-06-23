@@ -23,6 +23,12 @@ const loadEsmDefaultFunction = (relativePath, sandbox = {}) => {
   return module.exports;
 };
 
+const expectRuntimePluginParams = (config, dependencies) => {
+  expect(config).toContain(
+    `runtimePlugins: [[require.resolve('../plugin/isolatePluginFactory.ts'), { dependencies: ${dependencies} }]]`,
+  );
+};
+
 describe('runtime plugin examples', () => {
   test('isolate-shared-dependencies configures runtime plugin params through Module Federation tuples', () => {
     const app1Config = readRuntimePlugin(
@@ -35,15 +41,9 @@ describe('runtime plugin examples', () => {
       'runtime-plugins/isolate-shared-dependencies/app3/webpack.config.js',
     );
 
-    expect(app1Config).toContain(
-      "runtimePlugins: [[require.resolve('../plugin/isolatePluginFactory.ts'), { dependencies: [] }]]",
-    );
-    expect(app2Config).toContain(
-      "runtimePlugins: [[require.resolve('../plugin/isolatePluginFactory.ts'), { dependencies: ['shared-lib'] }]]",
-    );
-    expect(app3Config).toContain(
-      "runtimePlugins: [[require.resolve('../plugin/isolatePluginFactory.ts'), { dependencies: [] }]]",
-    );
+    expectRuntimePluginParams(app1Config, '[]');
+    expectRuntimePluginParams(app2Config, "['shared-lib']");
+    expectRuntimePluginParams(app3Config, '[]');
   });
 
   test('remote-router demonstrates policy, observability, loader, and preload runtime hooks', async () => {

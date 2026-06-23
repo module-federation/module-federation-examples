@@ -61,42 +61,37 @@ export default function IsolateSharedDependenciesPluginFactory(
         loading: new Promise(async resolve => {
           const originalFactory = await resolvedDependency.get();
 
-          // Mark the original factory as loaded
           resolvedDependency.lib = originalFactory;
           resolvedDependency.loaded = true;
 
           resolve(() => {
             if (!patchedInstances[args.pkgName]) {
-              // Get the federation instance that the dependency comes from
               const originInstance = args.GlobalFederation.__INSTANCES__.find(
                 instance => instance.name === resolvedDependency.from,
               ) as ExtendedFederationHost;
 
-              if (originInstance && originInstance.__webpack_require__) {
-                const originCache = originInstance.__webpack_require__.c;
-
-                const savedOriginCache = { ...originCache };
-
-                Object.keys(originCache).forEach(key => {
-                  delete originCache[key];
-                });
-
-                patchedInstances[args.pkgName] = originalFactory();
-
-                Object.keys(originCache).forEach(key => {
-                  delete originCache[key];
-                });
-                Object.keys(savedOriginCache).forEach(key => {
-                  originCache[key] = savedOriginCache[key];
-                });
-
-                return patchedInstances[args.pkgName];
-              } else {
+              if (!originInstance?.__webpack_require__) {
                 console.warn(
                   `[IsolateSharedDependenciesPlugin] ${resolvedDependency.from} is not using IsolateSharedDependenciesPlugin, can't isolate ${args.pkgName} in ${originId}`,
                 );
                 return originalFactory();
               }
+
+              const originCache = originInstance.__webpack_require__.c;
+              const savedOriginCache = { ...originCache };
+
+              Object.keys(originCache).forEach(key => {
+                delete originCache[key];
+              });
+
+              patchedInstances[args.pkgName] = originalFactory();
+
+              Object.keys(originCache).forEach(key => {
+                delete originCache[key];
+              });
+              Object.keys(savedOriginCache).forEach(key => {
+                originCache[key] = savedOriginCache[key];
+              });
             }
 
             return patchedInstances[args.pkgName];
