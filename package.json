@@ -18,6 +18,13 @@
       "@playwright/test": "1.58.2",
       "playwright": "1.58.2"
     },
+    "packageExtensions": {
+      "@analogjs/vite-plugin-angular": {
+        "peerDependencies": {
+          "typescript": ">=5.8 <6.0"
+        }
+      }
+    },
     "onlyBuiltDependencies": [
       "@module-federation/nextjs-mf",
       "@parcel/watcher",
