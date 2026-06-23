@@ -12,10 +12,14 @@
     "build": "pnpm --filter basic-host-remote_* run build",
     "serve": "pnpm --filter basic-host-remote_* run serve",
     "clean": "pnpm --filter basic-host-remote_* run reset",
-    "e2e:ci": "pnpm build && pnpm serve & sleep 60 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "test:e2e": "npx playwright test",
+    "e2e:ci": "pnpm build && pnpm exec playwright test --reporter=list",
+    "legacy:e2e:ci": "echo \"No legacy e2e tests\""
   },
   "devDependencies": {
     "concurrently": "8.2.2",
-    "wait-on": "7.2.0"
+    "wait-on": "7.2.0",
+    "@playwright/test": "1.58.2",
+    "playwright": "1.58.2"
   }
 }

@@ -29,4 +29,4 @@ class HoistContainerReferences {
   }
 }
 
-export {HoistContainerReferences}
+export { HoistContainerReferences };

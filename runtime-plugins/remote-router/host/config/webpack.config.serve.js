@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
-module.exports = function(options) {
+module.exports = function (options) {
   // Set development server port
   const devServerPort = options.devServerPort || 3200;
 
@@ -48,21 +48,24 @@ module.exports = function(options) {
     plugins: [
       // Browser Sync
       // https://github.com/Va1/browser-sync-webpack-plugin
-      new BrowserSyncPlugin({
-        // browse to http://localhost:4000/ during development
-        host: 'localhost',
-        port: 3000,
-        // Proxy the Webpack Dev Server endpoint through BrowserSync
-        // (which should be serving on http://localhost:3100/)
-        proxy: `http://localhost:${devServerPort}`,
-      },{
-        // Prevent BrowserSync from reloading the page
-        // and let Webpack Dev Server take care of this
-        reload: false
-      }),
+      new BrowserSyncPlugin(
+        {
+          // browse to http://localhost:4000/ during development
+          host: 'localhost',
+          port: 3000,
+          // Proxy the Webpack Dev Server endpoint through BrowserSync
+          // (which should be serving on http://localhost:3100/)
+          proxy: `http://localhost:${devServerPort}`,
+        },
+        {
+          // Prevent BrowserSync from reloading the page
+          // and let Webpack Dev Server take care of this
+          reload: false,
+        },
+      ),
       // Hot reload
       // https://webpack.js.org/plugins/hot-module-replacement-plugin/
       new webpack.HotModuleReplacementPlugin(),
     ],
-  }
-}
+  };
+};

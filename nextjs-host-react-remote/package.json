@@ -1,0 +1,26 @@
+{
+  "name": "nextjs-host-react-remote",
+  "version": "1.0.0",
+  "description": "Module Federation with NextJS and Client-Side React Remotes",
+  "private": true,
+  "workspaces": [
+    "host-app",
+    "remote-app"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "start": "pnpm --parallel --filter nextjs-react_* run dev",
+    "e2e:ci": "pnpm exec playwright test",
+    "e2e": "pnpm exec playwright test"
+  },
+  "keywords": [],
+  "author": "rahulteja-dev",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "wait-on": "7.2.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.58.2"
+  }
+}

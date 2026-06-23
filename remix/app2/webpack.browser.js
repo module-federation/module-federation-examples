@@ -1,11 +1,8 @@
-import * as path from 'node:path';
-
 import { readConfig } from '@remix-run/dev/dist/config.js';
 import { EsbuildPlugin } from 'esbuild-loader';
 import { RemixAssetsManifestPlugin } from './utils/RemixAssetsManifestPlugin.js';
-import { default as Enhanced } from '@module-federation/enhanced';
 import { getRoutes, routeSet } from './utils/get-routes.js';
-const { ModuleFederationPlugin, AsyncBoundaryPlugin } = Enhanced;
+
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 const remixConfig = await readConfig();
 
@@ -139,11 +136,6 @@ const config = {
     //     },
     //   },
     // }),
-    new AsyncBoundaryPlugin({
-      excludeChunk: chunk => {
-        return chunk.name === 'app2';
-      },
-    }),
     new RemixAssetsManifestPlugin(remixConfig),
   ],
 };

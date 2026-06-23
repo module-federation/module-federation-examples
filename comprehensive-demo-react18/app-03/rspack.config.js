@@ -1,8 +1,10 @@
-const {
-  container: {ModuleFederationPlugin},
-  HtmlRspackPlugin,
-} = require('@rspack/core');
-const isProd = process.env.NODE_ENV === 'production'
+const { HtmlRspackPlugin } = require('@rspack/core');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
+const path = require('path');
+
+const isProd = process.env.NODE_ENV === 'production';
+const reactPath = path.dirname(require.resolve('react/package.json'));
+const reactDomPath = path.dirname(require.resolve('react-dom/package.json'));
 
 module.exports = {
   entry: './src/index',
@@ -16,17 +18,21 @@ module.exports = {
     port: 3003,
     hot: true,
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-    }
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
   },
   resolve: {
     extensions: ['.jsx', '.js', '.json', '.mjs'],
+    alias: {
+      react: reactPath,
+      'react-dom': reactDomPath,
+    },
   },
   output: {
     publicPath: 'auto',
-    uniqueName: 'app3'
+    uniqueName: 'app3',
   },
 
   module: {
@@ -57,6 +63,8 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      dts: false,
       name: 'app_03',
       filename: 'remoteEntry.js',
       remotes: {
@@ -65,12 +73,17 @@ module.exports = {
       exposes: {
         './Button': './src/Button',
       },
+      shareStrategy: 'loaded-first',
       shared: {
         'react-dom': {
           singleton: true,
+          requiredVersion: false,
+          eager: false,
         },
         react: {
           singleton: true,
+          requiredVersion: false,
+          eager: false,
         },
       },
     }),

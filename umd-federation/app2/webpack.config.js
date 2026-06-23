@@ -14,14 +14,14 @@ module.exports = {
   output: {
     publicPath: 'http://localhost:9002/',
     library: {
-      type: "umd",
-      name: "app2"
-    }
+      type: 'umd',
+      name: 'app2',
+    },
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json', '.wasm']
+    extensions: ['.js', '.jsx', '.json', '.wasm'],
   },
-  externals: {react: "react"},
+  externals: { react: 'react' },
   module: {
     rules: [
       {

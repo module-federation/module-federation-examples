@@ -1,0 +1,22 @@
+.c_CompactHeader {
+  height: 135px;
+  display: flex;
+  margin: 0 0 2rem;
+  border-bottom: 1px solid #eeebe2;
+  box-shadow: 0 0 20px 10px #eb5b5920;
+  align-items: center;
+}
+
+.c_CompactHeader__inner {
+  display: flex;
+  max-width: calc(1000px + (2 * var(--outer-space)));
+  padding: 0 var(--outer-space);
+  margin: 0 auto;
+  align-items: center;
+  flex: 1;
+}
+
+.c_CompactHeader__logo {
+  display: block;
+  width: 270px;
+}

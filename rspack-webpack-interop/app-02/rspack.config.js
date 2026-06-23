@@ -1,8 +1,5 @@
-const {
-  container: { ModuleFederationPlugin },
-  HtmlRspackPlugin,
-} = require('@rspack/core');
-const deps = require('./package.json').dependencies;
+const { HtmlRspackPlugin } = require('@rspack/core');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 
 module.exports = {
   entry: './src/index',
@@ -52,19 +49,26 @@ module.exports = {
         './Dialog': './src/Dialog',
         './Tabs': './src/Tabs',
       },
+      experiments: {
+        asyncStartup: true,
+      },
+      shareStrategy: 'loaded-first',
       shared: {
-        ...deps,
         '@material-ui/core': {
           singleton: true,
+          eager: true,
         },
         'react-router-dom': {
           singleton: true,
+          eager: true,
         },
         'react-dom': {
           singleton: true,
+          eager: true,
         },
         react: {
           singleton: true,
+          eager: true,
         },
       },
     }),

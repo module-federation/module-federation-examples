@@ -1,13 +1,15 @@
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 module.exports = {
+  lintOnSave: false,
   publicPath: 'http://localhost:8080/',
   configureWebpack: {
     optimization: {
-      splitChunks: false
+      splitChunks: false,
     },
     plugins: [
       new ModuleFederationPlugin({
+        experiments: { asyncStartup: true },
         name: 'consumer',
         filename: 'remoteEntry.js',
         remotes: {

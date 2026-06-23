@@ -4,21 +4,21 @@
   "ignored": true,
   "version": "1.0.0",
   "devDependencies": {
+    "@module-federation/enhanced": "2.0.1",
+    "@rspack/cli": "1.7.6",
+    "@rspack/core": "1.7.6",
+    "@rspack/dev-server": "1.2.1",
     "cross-env": "7.0.3",
-    "css-loader": "6.10.0",
-    "mini-css-extract-plugin": "2.9.0",
-    "style-loader": "3.3.4",
-    "svelte": "3.59.2",
-    "svelte-loader": "3.1.9",
+    "css-loader": "7.1.2",
     "html-webpack-plugin": "5.6.0",
-    "webpack": "5.91.0",
-    "webpack-cli": "4.10.0",
-    "webpack-dev-server": "4.15.2",
-    "serve": "14.2.1",
-    "@rspack/core": "0.6.5",
-    "@module-federation/enhanced": "0.1.13",
-    "@rspack/cli": "0.6.5",
-    "@rspack/dev-server": "0.6.5"
+    "mini-css-extract-plugin": "2.10.0",
+    "serve": "14.2.3",
+    "style-loader": "4.0.0",
+    "svelte": "4.2.19",
+    "svelte-loader": "3.2.3",
+    "webpack": "5.105.3",
+    "webpack-cli": "5.1.4",
+    "webpack-dev-server": "5.0.4"
   },
   "scripts": {
     "legacy:build": "cross-env NODE_ENV=production webpack",
@@ -27,7 +27,7 @@
     "legacy:start": "webpack --watch",
     "dev": "rspack serve",
     "legacy:dev": "webpack-dev-server --content-base public",
-    "serve": "serve public -p 3004",
+    "serve": "serve public -p 3004 --cors",
     "clean": "rm -rf dist"
   }
 }

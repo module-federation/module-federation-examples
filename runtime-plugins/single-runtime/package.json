@@ -1,0 +1,27 @@
+{
+  "name": "single-runtime",
+  "workspaces": [
+    "./app1",
+    "./app2"
+  ],
+  "description": "Control Sharing Panel. Lets you change share resolver in the app via GUI",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "pnpm --filter single-runtime_app* --parallel start",
+    "build": "pnpm --filter single-runtime_app* --parallel build",
+    "serve": "pnpm --filter single-runtime_app* --parallel serve",
+    "clean": "pnpm --filter single-runtime_app* --parallel clean",
+    "legacy:start": "pnpm --filter single-runtime_app* --parallel legacy:start",
+    "legacy:build": "pnpm --filter single-runtime_app* --parallel legacy:build",
+    "e2e:ci": "pnpm build && CI=1 pnpm exec playwright test --reporter=list",
+    "legacy:e2e:ci": "pnpm legacy:build && USE_LEGACY=true CI=1 pnpm exec playwright test --reporter=list",
+    "test:e2e": "pnpm exec playwright test"
+  },
+  "devDependencies": {
+    "wait-on": "7.2.0",
+    "@module-federation/runtime": "2.5.1",
+    "@playwright/test": "1.58.2",
+    "playwright": "1.58.2"
+  }
+}

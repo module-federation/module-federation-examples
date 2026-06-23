@@ -1,8 +1,6 @@
 <template>
   <section class="section">
-    <h1>
-      This is a section from /code.
-    </h1>
+    <h1>This is a section from /code.</h1>
 
     <slot />
   </section>
@@ -11,7 +9,7 @@
 <script>
 export default {
   name: 'Section',
-}
+};
 </script>
 
 <style>

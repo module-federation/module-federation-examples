@@ -4,25 +4,28 @@ function fetchData(url) {
   let status = 'pending';
   let result;
   let suspender = fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      status = 'success';
-      result = data;
-    }, (error) => {
-      status = 'error';
-      result = error;
-    });
+    .then(response => response.json())
+    .then(
+      data => {
+        status = 'success';
+        result = data;
+      },
+      error => {
+        status = 'error';
+        result = error;
+      },
+    );
 
   return {
     read() {
       if (status === 'pending') {
         throw suspender;
       } else if (status === 'error') {
-        throw result;
+        return { error: result };
       } else if (status === 'success') {
         return result;
       }
-    }
+    },
   };
 }
 
@@ -30,6 +33,9 @@ const resource = fetchData('https://jsonplaceholder.typicode.com/todos/1');
 
 function HelloWorld() {
   const data = resource.read(); // This will suspend if the data isn't ready
+  if (data?.error) {
+    return <pre>Error loading data</pre>;
+  }
   return <pre>{JSON.stringify(data)}</pre>;
 }
 

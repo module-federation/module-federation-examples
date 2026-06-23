@@ -1,5 +1,5 @@
-import React from "react";
+import React from 'react';
 
 export default function Provider() {
-	return <div>Shell Provider!</div>;
+  return <div>Shell Provider!</div>;
 }

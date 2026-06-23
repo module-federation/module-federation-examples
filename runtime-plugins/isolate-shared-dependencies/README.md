@@ -14,7 +14,11 @@ In scenarios where multiple containers are loaded but minimal or no interaction 
 
 ### `./plugin/isolatePluginFactory.ts`
 
-This is the runtime plugin that implements the isolation feature for Module Federation. Since it's not possible to pass parameters to plugins yet (see https://github.com/module-federation/universe/issues/1980), it exposes a factory that allows to pass a list of dependencies to isolate and returns a custom instance of the plugin.
+This runtime plugin implements dependency isolation for Module Federation. The apps pass options with the supported runtime plugin tuple form:
+
+```js
+runtimePlugins: [[require.resolve('../plugin/isolatePluginFactory.ts'), { dependencies: ['shared-lib'] }]]
+```
 
 ### `./app1`
 
@@ -43,7 +47,5 @@ Run `pnpm run start`. This will build and serve both `app1`, `app2` and `app3` o
 - [localhost:3001](http://localhost:3001/)
 - [localhost:3002](http://localhost:3002/)
 - [localhost:3003](http://localhost:3003/)
-
-# Running Cypress E2E Tests
 
 Not implemented yet

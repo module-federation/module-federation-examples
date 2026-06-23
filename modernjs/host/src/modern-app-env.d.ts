@@ -2,6 +2,5 @@
 /// <reference types='@modern-js/runtime/types' />
 /// <reference types='@modern-js/runtime/types/router' />
 declare module 'provider/Button' {
-    export default () => JSX;
-  }
-  
+  export default () => JSX;
+}

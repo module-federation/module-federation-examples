@@ -14,10 +14,14 @@
     "clean": "pnpm --filter control-sharing_app* --parallel clean",
     "legacy:start": "pnpm --filter control-sharing_app* --parallel legacy:start",
     "legacy:build": "pnpm --filter control-sharing_app* --parallel legacy:build",
-    "e2e:ci": "pnpm start & wait-on tcp:3001 && wait-on tcp:3002 && sleep 5 && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome",
-    "legacy:e2e:ci": "pnpm legacy:start & wait-on tcp:3001 && wait-on tcp:3002 && sleep 5  && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "e2e:ci": "pnpm build && CI=1 pnpm exec playwright test --reporter=list",
+    "legacy:e2e:ci": "pnpm legacy:build && USE_LEGACY=true CI=1 pnpm exec playwright test --reporter=list",
+    "test:e2e": "pnpm exec playwright test"
   },
   "devDependencies": {
-    "wait-on": "7.2.0"
+    "wait-on": "7.2.0",
+    "@module-federation/runtime": "2.5.1",
+    "@playwright/test": "1.58.2",
+    "playwright": "1.58.2"
   }
 }

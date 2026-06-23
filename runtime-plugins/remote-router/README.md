@@ -1,21 +1,23 @@
-Host Application
+# Remote Router
 
-The host application is the main application in a microfrontend architecture. It is responsible for loading and integrating remote microfrontends into a single cohesive application. The host application uses Webpack 5's Module Federation feature to dynamically load remote microfrontends at runtime.
-Remotes Monorepo
+This example uses a runtime plugin to keep remote routing and loading policy out of the compiled host. The plugin rewrites configured remote entries at runtime, provides fallback modules for failed remotes, records hook telemetry, customizes script loading, and observes preload hooks.
 
-The remotes-monorepo is a monorepo that contains multiple remote microfrontends. Each microfrontend is a separate application that can be developed, tested, and deployed independently. The remotes-monorepo uses Nx, a powerful build system, to manage the different applications in the monorepo.
-Runtime Plugin
+## Runtime Plugin Hooks
 
-The runtimePlugin.js file is a part of the host application. It is a custom plugin that provides several hooks to customize the behavior of the application at runtime.
+- `apply(instance)`: initializes plugin-level observability with the host instance name.
+- `beforeRequest(args)`: rewrites matching remote entries to their local runtime endpoints.
+- `errorLoadRemote({ id, error, from })`: returns a fallback module when a remote cannot load.
+- `createScript(args)`: creates browser script tags with a timeout and remote metadata.
+- `afterLoadEntry(args)`: records remote-entry loading results.
+- `afterLoadRemote(args)`: records remote module loading results.
+- `beforePreloadRemote(args)`: observes preload operations before the runtime executes them.
+- `generatePreloadAssets(args)`: observes preload asset generation for a remote.
 
-Here's a brief overview of what each method does:
+## Running
 
-- name: This is the name of the plugin.
+```bash
+pnpm --filter remote-router start
+pnpm --filter remote-router e2e:ci
+```
 
-- errorLoadRemote({id, error, from, origin}): This method is called when there's an error loading a remote microfrontend. It logs the error and returns a module that displays an error message.
-
-- init(args): This method is called when the plugin is initialized. It simply returns the arguments it was called with.
-
-- beforeRequest(args): This method is called before a request is made to load a remote microfrontend. It modifies the entry property of the remotes to point to the correct URLs.
-
-This plugin is a crucial part of the host application as it handles the loading of remote microfrontends and provides a way to handle errors that may occur during this process.
+`e2e:ci` builds the host so CI exercises the runtime plugin instead of passing through a placeholder script.

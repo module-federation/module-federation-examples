@@ -1,4 +1,14 @@
-**/dist
-**/build
-**/buildServer
-**/buildClient
+# Ignore all files by default
+*
+# Allow docs in complete-react-case to be checked
+!complete-react-case/**/*.md
+# Allow runtime plugin to be checked
+!runtime-plugins/remote-control/app1/pick-remote.js
+# Allow test files and config
+!test/index.spec.js
+!jest.config.cjs
+# Ignore build artifacts inside included folders
+complete-react-case/**/dist
+complete-react-case/**/build
+complete-react-case/**/buildServer
+complete-react-case/**/buildClient

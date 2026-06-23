@@ -1,3 +1,4 @@
+import '../utils/ensureNmdPolyfill';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {

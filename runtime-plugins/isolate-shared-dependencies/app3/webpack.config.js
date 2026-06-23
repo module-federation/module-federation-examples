@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 /**
  * @type {import('webpack').Configuration}
@@ -40,6 +40,7 @@ const configuration = {
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin(),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app3',
       filename: 'remoteEntry.js',
       manifest: false,
@@ -47,7 +48,7 @@ const configuration = {
       exposes: {
         '.': './src/index.ts',
       },
-      runtimePlugins: [require.resolve('./isolatePlugin.ts')],
+      runtimePlugins: [[require.resolve('../plugin/isolatePluginFactory.ts'), { dependencies: [] }]],
     }),
   ],
   optimization: {
@@ -59,7 +60,7 @@ const configuration = {
   devtool: false,
   devServer: {
     hot: false,
-  }
+  },
 };
 
 module.exports = configuration;

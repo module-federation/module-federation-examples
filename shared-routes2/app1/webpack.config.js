@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 const deps = require('./package.json').dependencies;
 const AddRuntimeRequiremetToPromiseExternalPlugin = require('./AddRuntimeRequiremetToPromiseExternal');
@@ -31,6 +31,7 @@ module.exports = {
   plugins: [
     new AddRuntimeRequiremetToPromiseExternalPlugin(),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app1',
       filename: 'remoteEntry.js',
       remotes: {

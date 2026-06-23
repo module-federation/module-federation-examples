@@ -1,5 +1,5 @@
 const path = require('path');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 module.exports = {
   mode: 'development',
@@ -15,6 +15,11 @@ module.exports = {
   cache: false,
 
   devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
     port: 3002,
     static: {
       directory: path.join(__dirname, 'dist'),
@@ -25,6 +30,7 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'node_remote',
       library: { type: 'commonjs-module' },
       filename: 'remoteEntry.js',
@@ -32,6 +38,6 @@ module.exports = {
         './test': './src/expose.js',
       },
       runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],
-    })
-  ]
+    }),
+  ],
 };

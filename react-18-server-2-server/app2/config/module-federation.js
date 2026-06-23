@@ -1,9 +1,10 @@
 const deps = require('../package.json').dependencies;
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const { UniversalFederationPlugin } = require('@module-federation/node');
 
 module.exports = {
   client: new ModuleFederationPlugin({
+    experiments: { asyncStartup: true },
     name: 'app2',
     filename: 'remoteEntry.js',
     exposes: {
@@ -25,6 +26,6 @@ module.exports = {
       },
       remotes: {},
       shared: [{ react: deps.react, 'react-dom': deps['react-dom'] }],
-    })
+    }),
   ],
 };

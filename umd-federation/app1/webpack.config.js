@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {ModuleFederationPlugin} = require('webpack').container
+const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
-const {UmdPlugin} = require("universal-module-federation-plugin")
+const { UmdPlugin } = require('universal-module-federation-plugin');
 
 module.exports = {
   entry: './src/index',
@@ -35,7 +35,7 @@ module.exports = {
       name: 'app1',
       filename: 'remoteEntry.js',
       remotes: {
-        "mf-app-01": "mfapp01@https://cdn.jsdelivr.net/npm/mf-app-01/dist/remoteEntry.js"
+        'mf-app-01': 'mfapp01@https://cdn.jsdelivr.net/npm/mf-app-01/dist/remoteEntry.js',
       },
       exposes: {
         './App': './src/App.js',
@@ -44,9 +44,10 @@ module.exports = {
     }),
     new UmdPlugin({
       remotes: {
-        app2: "app2@http://localhost:9002/main.js",
-        "@remix-run/router": "app5remixRouter@https://cdn.jsdelivr.net/npm/@remix-run/router@1.0.3/dist/router.umd.min.js",
-      }
+        app2: 'app2@http://localhost:9002/main.js',
+        '@remix-run/router':
+          'app5remixRouter@https://cdn.jsdelivr.net/npm/@remix-run/router@1.0.3/dist/router.umd.min.js',
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',

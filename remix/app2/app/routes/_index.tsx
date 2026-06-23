@@ -1,7 +1,7 @@
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData } from '@remix-run/react';
 
 export function loader() {
-  return { message: "Hello, World!" };
+  return { message: 'Hello, World!' };
 }
 
 export default function Home() {

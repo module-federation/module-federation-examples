@@ -1,8 +1,8 @@
-import React from "react";
-import { ResponsiveLine } from "@nivo/line";
-import { useTheme } from "@mui/material";
-import { tokens } from "../theme";
-import { mockLineData } from "../data/mockData";
+import React from 'react';
+import { ResponsiveLine } from '@nivo/line';
+import { useTheme } from '@mui/material';
+import { tokens } from '../theme';
+import { mockLineData } from '../data/mockData';
 
 const LineChart = ({ isDashboard = false }) => {
   const theme = useTheme();
@@ -45,13 +45,13 @@ const LineChart = ({ isDashboard = false }) => {
       }}
       curve="catmullRom"
       data={mockLineData}
-      colors={isDashboard ? { datum: "color" } : { scheme: "nivo" }}
+      colors={isDashboard ? { datum: 'color' } : { scheme: 'nivo' }}
       margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
-      xScale={{ type: "point" }}
+      xScale={{ type: 'point' }}
       yScale={{
-        type: "linear",
-        min: "auto",
-        max: "auto",
+        type: 'linear',
+        min: 'auto',
+        max: 'auto',
         stacked: true,
         reverse: false,
       }}
@@ -59,52 +59,52 @@ const LineChart = ({ isDashboard = false }) => {
       axisTop={null}
       axisRight={null}
       axisBottom={{
-        orient: "bottom",
+        orient: 'bottom',
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "transportation",
+        legend: isDashboard ? undefined : 'transportation',
         legendOffset: 36,
-        legendPosition: "middle",
+        legendPosition: 'middle',
       }}
       axisLeft={{
-        orient: "left",
+        orient: 'left',
         tickSize: 5,
         tickValues: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "count",
+        legend: isDashboard ? undefined : 'count',
         legendOffset: -40,
-        legendPosition: "middle",
+        legendPosition: 'middle',
       }}
       enableGridX={false}
       enableGridY={!isDashboard}
       pointSize={10}
-      pointColor={{ theme: "background" }}
+      pointColor={{ theme: 'background' }}
       pointBorderWidth={2}
-      pointBorderColor={{ from: "serieColor" }}
+      pointBorderColor={{ from: 'serieColor' }}
       pointLabelYOffset={-12}
       useMesh={true}
       legends={[
         {
-          anchor: "bottom-right",
-          direction: "column",
+          anchor: 'bottom-right',
+          direction: 'column',
           justify: false,
           translateX: 100,
           translateY: 0,
           itemsSpacing: 0,
-          itemDirection: "left-to-right",
+          itemDirection: 'left-to-right',
           itemWidth: 80,
           itemHeight: 20,
           itemOpacity: 0.75,
           symbolSize: 12,
-          symbolShape: "circle",
-          symbolBorderColor: "rgba(0, 0, 0, .5)",
+          symbolShape: 'circle',
+          symbolBorderColor: 'rgba(0, 0, 0, .5)',
           effects: [
             {
-              on: "hover",
+              on: 'hover',
               style: {
-                itemBackground: "rgba(0, 0, 0, .03)",
+                itemBackground: 'rgba(0, 0, 0, .03)',
                 itemOpacity: 1,
               },
             },

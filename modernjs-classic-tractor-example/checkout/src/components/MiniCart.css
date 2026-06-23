@@ -1,0 +1,70 @@
+.c_MiniCart {
+  position: relative;
+  margin-right: 1.5rem;
+}
+
+.c_MiniCart__quantity {
+  background-color: #ff5a55;
+  border-radius: 10px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  color: rgb(255, 255, 255);
+  display: grid;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  font-weight: bold;
+  height: 20px;
+  letter-spacing: normal;
+  min-width: 20px;
+  place-content: center;
+  position: absolute;
+  right: 0px;
+  text-align: center;
+  top: 0px;
+  transform: scale(1);
+  transition: all 0.3s;
+}
+
+.c_MiniCart svg {
+  --minicart-translate: -2px;
+  transform: translateY(var(--minicart-translate));
+}
+
+.c_MiniCart__quantity:empty {
+  transform: scale(0);
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(calc(var(--minicart-translate) + 0px));
+  }
+  33% {
+    transform: translateY(calc(var(--minicart-translate) + 6px));
+  }
+  100% {
+    transform: translateY(calc(var(--minicart-translate) + 0px));
+  }
+}
+
+.c_MiniCart--highlight svg {
+  animation: bounce 0.2s ease-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+  100% {
+    transform: rotate(-6deg);
+  }
+}
+
+.c_MiniCart--highlight svg g {
+  transform-origin: center 7px;
+  animation: shake 0.2s infinite ease-in-out;
+}
+.c_MiniCart {
+  padding: 1.5rem;
+}

@@ -7,16 +7,16 @@
 </template>
 
 <script>
-import Section from './components/Section.vue'
-import Button from './components/Button.vue'
+import Section from './components/Section.vue';
+import Button from './components/Button.vue';
 
 export default {
   name: 'App',
   components: {
     Section,
     Button,
-  }
-}
+  },
+};
 </script>
 
 <style>

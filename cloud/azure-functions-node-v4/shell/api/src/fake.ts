@@ -1,6 +1,6 @@
 export default function Fake() {
-	return {
-		get: () => Promise.resolve(() => {}),
-		init: () => {},
-	};
+  return {
+    get: () => Promise.resolve(() => {}),
+    init: () => {},
+  };
 }

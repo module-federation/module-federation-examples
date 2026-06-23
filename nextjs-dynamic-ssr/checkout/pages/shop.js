@@ -1,23 +1,22 @@
-import {lazy, Suspense} from 'react'
-import {loadRemote, init} from '@module-federation/runtime'
+import { lazy, Suspense } from 'react';
+import { loadRemote, init } from '@module-federation/runtime';
 
 const ShopPage = lazy(() => loadRemote('shop/shop'));
 
-const Shop = (props) => {
+const Shop = props => {
   return (
     <>
       <Suspense fallback={'loading'}>
-        <ShopPage {...props}/>
+        <ShopPage {...props} />
       </Suspense>
     </>
-  )
-}
+  );
+};
 
-Shop.getInitialProps = async (ctx) => {
-  const res = await loadRemote('shop/shop')
+Shop.getInitialProps = async ctx => {
+  const res = await loadRemote('shop/shop');
 
-
-  return res.default.getInitialProps(ctx)
-}
+  return res.default.getInitialProps(ctx);
+};
 
 export default Shop;

@@ -1,13 +1,9 @@
-import * as path from 'node:path';
-
-import {readConfig} from '@remix-run/dev/dist/config.js';
-import {EsbuildPlugin} from 'esbuild-loader';
-import {default as Enhanced} from '@module-federation/enhanced';
-import {getRoutes, routeSet} from './utils/get-routes.js';
-import {RemixAssetsManifestPlugin} from './utils/RemixAssetsManifestPlugin.js';
-import {HoistContainerReferences} from './utils/HoistContainerReferencesPlugin.js';
-
-const {ModuleFederationPlugin, AsyncBoundaryPlugin} = Enhanced;
+import { readConfig } from '@remix-run/dev/dist/config.js';
+import { EsbuildPlugin } from 'esbuild-loader';
+import { ModuleFederationPlugin } from '@module-federation/enhanced/webpack';
+import { getRoutes, routeSet } from './utils/get-routes.js';
+import { RemixAssetsManifestPlugin } from './utils/RemixAssetsManifestPlugin.js';
+import { HoistContainerReferences } from './utils/HoistContainerReferencesPlugin.js';
 
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 const remixConfig = await readConfig();
@@ -35,7 +31,7 @@ const config = {
     path: remixConfig.assetsBuildDirectory,
     publicPath: 'auto',
     module: true,
-    library: {type: 'module'},
+    library: { type: 'module' },
     chunkFormat: 'module',
     chunkLoading: 'import',
     assetModuleFilename: '_assets/[name]-[contenthash][ext]',
@@ -51,7 +47,7 @@ const config = {
           {
             loader: 'babel-loader',
             options: {
-              plugins: [['eliminator', {namedExports: ['action', 'loader']}]],
+              plugins: [['eliminator', { namedExports: ['action', 'loader'] }]],
             },
           },
           {
@@ -91,16 +87,12 @@ const config = {
       chunks: 'async',
     },
     minimize: mode === 'production',
-    minimizer: [new EsbuildPlugin({target: 'es2019'})],
+    minimizer: [new EsbuildPlugin({ target: 'es2019' })],
   },
   plugins: [
     new HoistContainerReferences(),
-    new AsyncBoundaryPlugin({
-      excludeChunk: chunk => {
-        return chunk.name === 'app1';
-      },
-    }),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       runtime: false,
       name: 'app1',
       filename: 'remoteEntry.js',

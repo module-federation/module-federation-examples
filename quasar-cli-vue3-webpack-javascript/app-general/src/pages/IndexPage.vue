@@ -8,5 +8,4 @@
   </q-page>
 </template>
 
-<script setup lang="js">
-</script>
+<script setup lang="js"></script>
