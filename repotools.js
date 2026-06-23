@@ -139,14 +139,18 @@ async function checkAndUpdatePackages(nestedDir, packageJson, results) {
     if (targetVersion === 'next') {
       targetVersion = await getLatestVersion(packageName, targetVersion);
       if (!targetVersion) continue; // Skip if failed to fetch latest version
-      updateDependencies(packageJson, packageName, targetVersion);
     }
 
-    if (currentVersion && semver.satisfies(semver.coerce(currentVersion), `<${versionToCheck}`)) {
-      if (shouldUpdate && targetVersion) {
+    const currentSemver = semver.coerce(currentVersion);
+    const targetSemver = semver.coerce(targetVersion);
+    const shouldTrack =
+      currentSemver && versionToCheck && semver.satisfies(currentSemver, `<${versionToCheck}`);
+    const shouldApplyUpdate =
+      shouldUpdate && currentSemver && targetSemver && semver.lt(currentSemver, targetSemver);
+
+    if (currentVersion && (shouldTrack || shouldApplyUpdate)) {
+      if (shouldApplyUpdate) {
         updateDependencies(packageJson, packageName, targetVersion);
-      }
-      if (shouldUpdate) {
         needsUpdate = true;
       }
       trackPackage(nestedDir, packageName, results);
@@ -220,8 +224,15 @@ async function getPackages(dir) {
   return results;
 }
 
-// Running the modified function
-(async () => {
-  const results = await getPackages('./'); // Start from the current directory
-  console.log('Package Updates:', results);
-})();
+if (require.main === module) {
+  const startDir = process.argv[2] || './';
+
+  (async () => {
+    const results = await getPackages(startDir);
+    console.log('Package Updates:', results);
+  })();
+}
+
+module.exports = {
+  getPackages,
+};

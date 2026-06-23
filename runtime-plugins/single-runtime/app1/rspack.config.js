@@ -83,6 +83,7 @@ module.exports = {
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'app1',
+      shareStrategy: 'loaded-first',
       runtime: false,
       filename: 'remoteEntry.js',
       remotes: {
@@ -105,7 +106,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      excludeChunks: ['app1', 'app1_partial'],
+      excludeChunks: ['app1'],
     }),
   ],
 };

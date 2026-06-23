@@ -29,13 +29,16 @@ test.describe('Control Sharing', () => {
 
     test('renders app cards with package information', async ({ page }) => {
       await expect(page.getByRole('heading', { level: 3, name: 'app1' })).toBeVisible();
+      await expect(page.getByRole('heading', { level: 3, name: 'app2' })).toBeVisible();
 
       for (const pkg of ['lodash', 'react-dom', 'react']) {
-        await expect(page.locator('h4', { hasText: pkg })).toBeVisible();
+        await expect(page.getByRole('heading', { level: 4, name: pkg, exact: true })).toHaveCount(
+          2,
+        );
       }
 
-      await expect(page.locator('p', { hasText: '4.17.21' })).toBeVisible();
-      await expect(page.locator('p', { hasText: '17.0.2' })).toBeVisible();
+      await expect(page.getByText('Ships With:4.17.21')).toBeVisible();
+      await expect(page.getByText('Ships With:17.0.2')).toHaveCount(2);
     });
 
     test('exposes control buttons', async ({ page }) => {
@@ -44,11 +47,15 @@ test.describe('Control Sharing', () => {
     });
 
     test('lists version override options', async ({ page }) => {
-      await expect(page.getByText('Override Version')).toBeVisible();
-
-      for (const option of ['4.17.21', '3.10.1', '17.0.2', '16.14.0']) {
-        await expect(page.locator('option', { hasText: option })).toBeVisible();
-      }
+      await expect(page.getByText('Override Version')).toHaveCount(6);
+      await expect(page.getByTestId('app1-lodash-version-select').locator('option')).toHaveText([
+        '4.17.21',
+        '3.10.1',
+      ]);
+      await expect(page.getByTestId('app1-react-version-select').locator('option')).toHaveText([
+        '17.0.2',
+        '16.14.0',
+      ]);
     });
 
     test('applies version overrides from localStorage', async ({ page }) => {

@@ -77,7 +77,11 @@ const App = () => {
         <h3>Runtime Information:</h3>
         <div style={{ background: '#f0f0f0', padding: '10px', borderRadius: '4px' }}>
           {__FEDERATION__.__INSTANCES__.map(instance => (
-            <div key={instance.name} style={{ margin: '10px 0' }}>
+            <div
+              key={instance.name}
+              data-testid={`runtime-module-${instance.name}`}
+              style={{ margin: '10px 0' }}
+            >
               <div>
                 <strong>Module: </strong>
                 {instance.name}
@@ -86,7 +90,11 @@ const App = () => {
                 <div style={{ marginLeft: '20px', fontSize: '14px' }}>
                   <strong>Remote Entries:</strong>
                   {instance.options.remotes.map((remote, idx) => (
-                    <div key={idx} style={{ marginTop: '5px', color: '#666' }}>
+                    <div
+                      key={idx}
+                      data-testid={`runtime-remote-${instance.name}-${remote.alias || remote.name}`}
+                      style={{ marginTop: '5px', color: '#666' }}
+                    >
                       • {remote.alias || remote.name}: <code>{remote.entry}</code>
                     </div>
                   ))}

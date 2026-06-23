@@ -26,7 +26,7 @@ const ControlScopeResolvePlugin = () => {
       }
 
       const originalResolver = args.resolver;
-      const { shareScopeMap, scope, pkgName, version, GlobalFederation } = args;
+      const { shareScopeMap, scope, pkgName, GlobalFederation } = args;
 
       args.resolver = function () {
         // Skip override logic if no overrides exist for current container
@@ -35,34 +35,37 @@ const ControlScopeResolvePlugin = () => {
         }
 
         const overrideVersion = overrides[runtimeStore.name][pkgName];
-        const matchingInstance = GlobalFederation.__INSTANCES__.find(
-          instance => instance.options.shared[pkgName]?.[0]?.version === overrideVersion,
-        );
+        if (!overrideVersion) {
+          return originalResolver();
+        }
 
-        if (matchingInstance) {
-          const current = shareScopeMap[scope][pkgName][version];
-          const override = matchingInstance.options.shared[pkgName][0];
+        const originalResolved = originalResolver();
+        const override = shareScopeMap[scope]?.[pkgName]?.[overrideVersion];
+
+        if (override) {
+          const current = originalResolved?.shared;
 
           // Return current if override is from same source
-          if (current.from === override.from) return current;
+          if (current?.from === override.from) return originalResolved;
 
           // Find and update original instance
-          const originInstance = GlobalFederation.__INSTANCES__.find(
-            instance => instance.options.name === current.from,
-          );
+          const originInstance =
+            current &&
+            GlobalFederation.__INSTANCES__.find(instance => instance.options.name === current.from);
 
           if (originInstance) {
             const sharedPkg = originInstance.options.shared[pkgName][0];
             sharedPkg.useIn = sharedPkg.useIn.filter(i => i !== runtimeStore.name);
           }
 
-          // Update share scope map with new instance
-          shareScopeMap[scope][pkgName][version] = override;
-          if (!shareScopeMap[scope][pkgName][version].useIn.includes(runtimeStore.name)) {
-            shareScopeMap[scope][pkgName][version].useIn.push(runtimeStore.name);
+          if (!override.useIn.includes(runtimeStore.name)) {
+            override.useIn.push(runtimeStore.name);
           }
 
-          return override;
+          return {
+            shared: override,
+            useTreesShaking: originalResolved?.useTreesShaking || false,
+          };
         } else {
           console.warn(
             `No matching instance found for package ${pkgName} with version ${overrideVersion}`,

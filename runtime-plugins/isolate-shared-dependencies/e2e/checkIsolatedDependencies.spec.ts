@@ -6,14 +6,17 @@ const appUrl = '/';
 const getAppSection = (page: Page, appNumber: number): Locator =>
   page.getByText(`App ${appNumber} loaded`).locator('..');
 
+const getInstanceLabel = (section: Locator, label: string): Locator =>
+  section.locator(':scope > span').filter({ hasText: new RegExp(`${label}: \\d+`) });
+
 const expectInstanceLabels = async (section: Locator) => {
-  await expect(section.getByText(/Lib 1 instance ID: \d+/)).toBeVisible();
-  await expect(section.getByText(/Lib 2 instance ID through lib 1: \d+/)).toBeVisible();
-  await expect(section.getByText(/Lib 2 instance ID: \d+/)).toBeVisible();
+  await expect(getInstanceLabel(section, 'Lib 1 instance ID')).toBeVisible();
+  await expect(getInstanceLabel(section, 'Lib 2 instance ID through lib 1')).toBeVisible();
+  await expect(getInstanceLabel(section, 'Lib 2 instance ID')).toBeVisible();
 };
 
 const extractInstanceId = async (section: Locator, label: string): Promise<string> => {
-  const text = await section.getByText(new RegExp(`${label}: (\\d+)`)).innerText();
+  const text = await getInstanceLabel(section, label).innerText();
   const match = text.match(/\d+/);
   expect(match, `Expected to find numeric instance ID for ${label}`).not.toBeNull();
   return match![0];
