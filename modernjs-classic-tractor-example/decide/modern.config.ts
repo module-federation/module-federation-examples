@@ -36,9 +36,7 @@ export default defineConfig({
   ],
   tools: {
     rspack: (config) => {
-      // @ts-expect-error
       config.output.publicPath = 'auto';
-      // @ts-expect-error
       config.output.uniqueName = 'decide';
       delete config.optimization?.splitChunks;
     },

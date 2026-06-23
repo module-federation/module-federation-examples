@@ -38,7 +38,6 @@ export default defineConfig({
   ],
   tools: {
     rspack: (config) => {
-      // @ts-expect-error
       config.output.publicPath = 'auto';
       delete config.optimization?.splitChunks;
     },
