@@ -1,6 +1,6 @@
 const deps = require('../package.json').dependencies;
 const { UniversalFederationPlugin } = require('@module-federation/node');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 const FederationStatsPlugin = require('webpack-federation-stats-plugin');
 
