@@ -1,5 +1,3 @@
-import { FederationRuntimePlugin } from '@module-federation/runtime/types';
-
 const runtimeStore = {
   name: '',
 };
@@ -29,7 +27,6 @@ const ControlScopeResolvePlugin = () => {
       const { shareScopeMap, scope, pkgName, GlobalFederation } = args;
 
       args.resolver = function () {
-        // Skip override logic if no overrides exist for current container
         if (!overrides[runtimeStore.name]) {
           return originalResolver();
         }
@@ -45,10 +42,8 @@ const ControlScopeResolvePlugin = () => {
         if (override) {
           const current = originalResolved?.shared;
 
-          // Return current if override is from same source
           if (current?.from === override.from) return originalResolved;
 
-          // Find and update original instance
           const originInstance =
             current &&
             GlobalFederation.__INSTANCES__.find(instance => instance.options.name === current.from);

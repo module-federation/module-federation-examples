@@ -8,7 +8,7 @@
     "build": "webpack --mode=production",
     "build:prod": "webpack --mode=production --node-env=production",
     "start": "webpack-dev-server",
-    "e2e:ci": "echo 'no tests'"
+    "e2e:ci": "pnpm build"
   },
   "dependencies": {
     "react": "18.3.1",
