@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
+const { container } = require('webpack');
 const path = require('path');
 const deps = require('./package.json').dependencies;
 
@@ -33,9 +34,22 @@ module.exports = {
     ],
   },
   plugins: [
+    new container.ContainerPlugin({
+      name: 'app1_partial',
+      filename: 'app1_partial.js',
+      library: {
+        type: 'var',
+        name: 'app1',
+      },
+      runtime: undefined,
+      exposes: {
+        './Button': './src/Button',
+      },
+    }),
     new ModuleFederationPlugin({
       experiments: { asyncStartup: true },
       name: 'app1',
+      runtime: false,
       filename: 'remoteEntry.js',
       remotes: {
         app2: 'app2@http://localhost:3002/remoteEntry.js',

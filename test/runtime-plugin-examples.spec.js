@@ -1,0 +1,126 @@
+const fs = require('fs');
+const path = require('path');
+
+const repoRoot = path.resolve(__dirname, '..');
+
+const readRuntimePlugin = relativePath =>
+  fs.readFileSync(path.join(repoRoot, relativePath), 'utf8');
+
+const expectRuntimePluginParams = (config, dependencies) => {
+  expect(config).toContain(
+    `runtimePlugins: [[require.resolve('../plugin/isolatePluginFactory.ts'), { dependencies: ${dependencies} }]]`,
+  );
+};
+
+describe('runtime plugin examples', () => {
+  test('isolate-shared-dependencies configures runtime plugin params through Module Federation tuples', () => {
+    const app1Config = readRuntimePlugin(
+      'runtime-plugins/isolate-shared-dependencies/app1/webpack.config.js',
+    );
+    const app2Config = readRuntimePlugin(
+      'runtime-plugins/isolate-shared-dependencies/app2/webpack.config.js',
+    );
+    const app3Config = readRuntimePlugin(
+      'runtime-plugins/isolate-shared-dependencies/app3/webpack.config.js',
+    );
+
+    expectRuntimePluginParams(app1Config, '[]');
+    expectRuntimePluginParams(app2Config, "['shared-lib']");
+    expectRuntimePluginParams(app3Config, '[]');
+  });
+
+  test('remote-router demonstrates policy, observability, loader, and preload runtime hooks', async () => {
+    globalThis.__REMOTE_ROUTER_EVENTS__ = [];
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
+    const previousDocument = globalThis.document;
+    const document = {
+      createElement: tagName => ({
+        async: false,
+        dataset: {},
+        tagName,
+      }),
+    };
+    globalThis.document = document;
+
+    const createRemoteRouterPlugin = require(path.join(
+      repoRoot,
+      'runtime-plugins/remote-router/host/config/runtimePlugin.cjs',
+    ));
+
+    expect(readRuntimePlugin('runtime-plugins/remote-router/host/config/runtimePlugin.js')).toContain(
+      "export default createRemoteRouterPlugin;",
+    );
+
+    try {
+      const plugin = createRemoteRouterPlugin();
+
+      expect(plugin.name).toBe('remote-router');
+      expect(typeof plugin.apply).toBe('function');
+      expect(typeof plugin.beforeRequest).toBe('function');
+      expect(typeof plugin.errorLoadRemote).toBe('function');
+      expect(typeof plugin.createScript).toBe('function');
+      expect(typeof plugin.afterLoadRemote).toBe('function');
+      expect(typeof plugin.afterLoadEntry).toBe('function');
+      expect(typeof plugin.beforePreloadRemote).toBe('function');
+      expect(typeof plugin.generatePreloadAssets).toBe('function');
+
+      plugin.apply({ name: 'host' });
+
+      const beforeRequestArgs = {
+        id: 'remote_one/HelloWorld',
+        options: {
+          remotes: [{ name: 'remote_one', entry: 'http://placeholder/remoteEntry.js' }],
+        },
+      };
+      plugin.beforeRequest(beforeRequestArgs);
+      const scriptResult = plugin.createScript({
+        url: 'http://localhost:4200/remoteEntry.js',
+        remoteInfo: { name: 'remote_one' },
+      });
+      const fallback = plugin.errorLoadRemote({
+        id: 'remote_two/Button',
+        error: new Error('offline'),
+        from: 'runtime',
+      });
+      await plugin.afterLoadRemote({ id: 'remote_one/HelloWorld', recovered: false });
+      await plugin.afterLoadEntry({
+        remoteInfo: { name: 'remote_one' },
+        recovered: false,
+      });
+      await plugin.beforePreloadRemote({ preloadOps: [{ nameOrAlias: 'remote_one' }] });
+      await plugin.generatePreloadAssets({ remoteInfo: { name: 'remote_one' } });
+
+      expect(beforeRequestArgs.options.remotes[0].entry).toBe(
+        'http://localhost:4200/remoteEntry.js',
+      );
+      expect(scriptResult).toMatchObject({
+        timeout: 8000,
+        script: {
+          async: true,
+          dataset: { remoteRouter: 'remote_one' },
+          src: 'http://localhost:4200/remoteEntry.js',
+          tagName: 'script',
+        },
+      });
+      expect(fallback).toEqual({ default: expect.any(Function) });
+      expect(consoleError).toHaveBeenCalledWith('remote_two/Button', 'offline');
+      expect(globalThis.__REMOTE_ROUTER_EVENTS__.map(event => event.type)).toEqual([
+        'apply',
+        'beforeRequest',
+        'createScript',
+        'errorLoadRemote',
+        'afterLoadRemote',
+        'afterLoadEntry',
+        'beforePreloadRemote',
+        'generatePreloadAssets',
+      ]);
+    } finally {
+      consoleError.mockRestore();
+      if (previousDocument === undefined) {
+        delete globalThis.document;
+      } else {
+        globalThis.document = previousDocument;
+      }
+    }
+  });
+});

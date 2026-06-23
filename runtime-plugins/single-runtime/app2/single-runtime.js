@@ -11,10 +11,8 @@ export default function () {
         if (!hostsRemote) return args;
 
         hostsRemote.entry = hostsRemote.entry.replace('remoteEntry', hostName + '_partial');
-
-        console.log('hostsRemote', hostsRemote);
       }
-      console.log(args);
+
       return args;
     },
   };

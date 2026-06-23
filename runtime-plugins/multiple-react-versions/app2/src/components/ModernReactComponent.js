@@ -1,10 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useMemo } from 'react';
 
 const ModernReactComponent = props => {
   const { children, input } = props;
-  useEffect(() => {
-    console.log('some effect from app2 based component');
-  }, []);
+  const renderedInput = useMemo(() => input, [input]);
 
   return (
     <div>
@@ -13,7 +11,7 @@ const ModernReactComponent = props => {
         host does not support React Hooks
       </strong>
       <br />
-      <h2>Text form legacy React app: {input}</h2>
+      <h2>Text form legacy React app: {renderedInput}</h2>
       {children}
     </div>
   );

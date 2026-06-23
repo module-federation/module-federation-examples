@@ -3,9 +3,6 @@ import React, { Component, Suspense } from 'react';
 const ModernComponent = React.lazy(() => import('app2/ModernComponent'));
 const RemoteButton = React.lazy(() => import('app2/Button'));
 
-// Hooks not supported, uncomment to verify this is a pre-hooks react version being used.
-// import HookComponent from './ComponentWithHook'
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +14,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(__webpack_share_scopes__);
     return (
       <div>
         <h1>Basic Host-Remote</h1>
@@ -35,9 +31,6 @@ class App extends Component {
             </ModernComponent>
           </Suspense>
         </div>
-
-        {/* This will Fail */}
-        {/* <HookComponent /> */}
 
         <div style={{ border: '1px red solid', padding: '10px', margin: '20px 0' }}>
           <Suspense fallback="Loading Button">

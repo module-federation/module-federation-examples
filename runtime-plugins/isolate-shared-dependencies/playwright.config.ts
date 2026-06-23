@@ -1,47 +1,10 @@
-import { defineConfig, devices } from '@playwright/test';
+import { createRuntimePluginPlaywrightConfig } from '../playwright.base';
 
-export default defineConfig({
-  testDir: './e2e',
-  timeout: 60_000,
-  expect: {
-    timeout: 15_000,
-  },
-  fullyParallel: true,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 1 : 0,
-  workers: process.env.CI ? 1 : undefined,
-  reporter: [['html', { outputFolder: 'playwright-report', open: 'never' }], ['list']],
-  use: {
-    baseURL: 'http://localhost:3001',
-    trace: 'on-first-retry',
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
-    viewport: { width: 1920, height: 1080 },
-  },
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-  ],
-  webServer: [
-    {
-      command: 'cd app1 && pnpm start',
-      port: 3001,
-      reuseExistingServer: !process.env.CI,
-      timeout: 120_000,
-    },
-    {
-      command: 'cd app2 && pnpm start',
-      port: 3002,
-      reuseExistingServer: !process.env.CI,
-      timeout: 120_000,
-    },
-    {
-      command: 'cd app3 && pnpm start',
-      port: 3003,
-      reuseExistingServer: !process.env.CI,
-      timeout: 120_000,
-    },
+export default createRuntimePluginPlaywrightConfig({
+  useLegacyCommand: false,
+  webServers: [
+    { directory: 'app1', port: 3001 },
+    { directory: 'app2', port: 3002 },
+    { directory: 'app3', port: 3003 },
   ],
 });
