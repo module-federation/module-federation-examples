@@ -1,0 +1,16 @@
+{
+  "name": "modernjs-ssr",
+  "description": "Module Federation Example for ByteDance's Modern.js Framework.",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"cd ./host && pnpm dev\" \"cd ./provider && pnpm dev\" \"cd ./dynamic-provider && pnpm dev\"",
+    "build": "concurrently \"cd ./host && pnpm build\" \"cd ./provider && pnpm build\" \"cd ./dynamic-provider && pnpm build\"",
+    "serve": "concurrently \"cd ./host && pnpm serve\" \"cd ./provider && pnpm serve\" \"cd ./dynamic-provider && pnpm serve\"",
+    "clean": "concurrently \"cd ./host && pnpm clean\" \"cd ./provider && pnpm clean\" \"cd ./dynamic-provider && pnpm clean\"",
+    "e2e:ci": "pnpm run build && echo \"No e2e tests yet\""
+  },
+  "devDependencies": {
+    "concurrently": "8.2.2"
+  }
+}

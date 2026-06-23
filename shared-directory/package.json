@@ -1,0 +1,13 @@
+{
+  "name": "module-federation-vite-react",
+  "version": "1.0.0",
+  "description": "Module Federation Vite + React is now possible",
+  "scripts": {
+    "install:deps": "pnpm --filter shared-directory-* install",
+    "postinstall:deps": "pnpm --filter shared-directory-* run build",
+    "dev": "pnpm --filter shared-directory-* dev",
+    "build": "pnpm --filter shared-directory-* build",
+    "preview": "pnpm --filter shared-directory-* preview"
+  },
+  "license": "ISC"
+}

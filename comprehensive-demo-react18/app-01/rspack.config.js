@@ -1,9 +1,14 @@
-const {
-  container: { ModuleFederationPlugin },
-  HtmlRspackPlugin,
-} = require('@rspack/core');
-const deps = require('./package.json').dependencies;
+const { HtmlRspackPlugin } = require('@rspack/core');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
+const path = require('path');
 
+const { RsdoctorRspackPlugin } = require('@rsdoctor/rspack-plugin');
+const ReactRefreshWebpackPlugin = require('@rspack/plugin-react-refresh');
+
+const deps = require('./package.json').dependencies;
+const isProd = process.env.NODE_ENV === 'production';
+const reactPath = path.dirname(require.resolve('react/package.json'));
+const reactDomPath = path.dirname(require.resolve('react-dom/package.json'));
 module.exports = {
   entry: './src/index',
 
@@ -11,13 +16,17 @@ module.exports = {
   devtool: 'source-map',
   resolve: {
     extensions: ['.jsx', '.js', '.json', '.mjs'],
+    alias: {
+      react: reactPath,
+      'react-dom': reactDomPath,
+    },
   },
   optimization: {
     minimize: false,
   },
-
   output: {
     publicPath: 'auto',
+    uniqueName: 'app1',
   },
 
   module: {
@@ -32,6 +41,12 @@ module.exports = {
                 syntax: 'ecmascript',
                 jsx: true,
               },
+              transform: {
+                react: {
+                  development: !isProd,
+                  refresh: !isProd,
+                },
+              },
             },
           },
         },
@@ -43,9 +58,19 @@ module.exports = {
       },
     ],
   },
-
+  devServer: {
+    port: 3001,
+    hot: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
+  },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      dts: false,
       name: 'app_01',
       filename: 'remoteEntry.js',
       remotes: {
@@ -58,6 +83,7 @@ module.exports = {
         './SideNav': './src/SideNav',
         './Page': './src/Page',
       },
+      shareStrategy: 'loaded-first',
       shared: {
         ...deps,
         '@material-ui/core': {
@@ -68,14 +94,20 @@ module.exports = {
         },
         'react-dom': {
           singleton: true,
+          requiredVersion: false,
+          eager: false,
         },
         react: {
           singleton: true,
+          requiredVersion: false,
+          eager: false,
         },
       },
     }),
     new HtmlRspackPlugin({
       template: './public/index.html',
     }),
-  ],
+    !isProd && new ReactRefreshWebpackPlugin(),
+    // new RsdoctorRspackPlugin()
+  ].filter(Boolean),
 };

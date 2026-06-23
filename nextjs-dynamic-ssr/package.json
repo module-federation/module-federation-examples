@@ -1,0 +1,21 @@
+{
+  "name": "nextjs-dynamic-ssr",
+  "description": "Server Side Rendering with Next.js",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "pnpm --parallel --filter nextjs-dynamic-ssr_* dev",
+    "build": "pnpm --parallel --filter nextjs-dynamic-ssr_* build",
+    "serve": "pnpm --parallel --filter nextjs-dynamic-ssr_* start",
+    "test:e2e": "npx playwright test"
+  },
+  "dependencies": {
+    "@module-federation/sdk": "2.0.1",
+    "concurrently": "^8.2.2",
+    "wait-on": "7.2.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.58.2",
+    "playwright": "1.58.2"
+  }
+}

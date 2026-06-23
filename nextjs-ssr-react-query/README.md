@@ -1,3 +1,7 @@
+# Support For Next.js is ending
+
+https://github.com/module-federation/core/issues/3153
+
 # Module Federation Next.js Data Fetching with Tanstack Query (react-query)
 
 This is an advanced example of using Module Federation with Next.js and Tanstack Query (react-query) to use Next.js data fetching strategies.

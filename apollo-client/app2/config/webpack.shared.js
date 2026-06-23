@@ -8,6 +8,7 @@ const webpackConfig = {
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
   },
+  externals: ['express'],
   module: {
     rules: [
       {

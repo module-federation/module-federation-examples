@@ -5,27 +5,29 @@
   "ignored": true,
   "scripts": {
     "build": "cross-env NODE_ENV=production rspack build --mode production",
-    "legacy:build": "cross-env NODE_ENV=production webpack --mode production",
+    "legacy:build": "cross-env NODE_ENV=production webpack --mode production --stats none",
     "start": "rspack serve",
     "legacy:start": "webpack --watch",
     "dev": "rspack serve",
-    "legacy:dev": "webpack-dev-server --content-base public",
-    "serve": "serve public -p 3005",
+    "legacy:dev": "webpack serve --port=3005",
+    "serve": "serve public -p 3005 --cors",
     "clean": "rm -rf dist"
   },
   "devDependencies": {
+    "@module-federation/enhanced": "2.0.1",
+    "@pmmmwh/react-refresh-webpack-plugin": "0.5.15",
+    "@rspack/cli": "1.7.6",
+    "@rspack/core": "1.7.6",
+    "@rspack/dev-server": "1.2.1",
     "cross-env": "7.0.3",
-    "lit-element": "2.5.1",
-    "@module-federation/enhanced": "^0.0.13",
-    "ts-loader": "5.4.5",
-    "typescript": "4.3.5",
     "html-webpack-plugin": "5.6.0",
-    "webpack": "5.89.0",
+    "lit-element": "2.5.1",
+    "react-refresh": "0.14.2",
+    "serve": "14.2.3",
+    "ts-loader": "9.5.1",
+    "typescript": "5.5.3",
+    "webpack": "5.105.3",
     "webpack-cli": "5.1.4",
-    "webpack-dev-server": "4.15.1",
-    "serve": "14.2.1",
-    "@rspack/core": "^0.5.0",
-    "@rspack/cli": "^0.5.0",
-    "@rspack/dev-server": "^0.5.0"
+    "webpack-dev-server": "5.0.4"
   }
 }

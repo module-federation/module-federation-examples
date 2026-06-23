@@ -3,7 +3,8 @@ import Page from '../Page';
 import React from 'react';
 import UiLibraryMd from '../docs/UiLibrary.md';
 
-import Button from 'app_03/Button';
+const Button = React.lazy(() => import('app_03/Button'));
+
 const UiLibraryPage = () => (
   <Page title="UI Library Demo">
     <Markdown>{UiLibraryMd}</Markdown>

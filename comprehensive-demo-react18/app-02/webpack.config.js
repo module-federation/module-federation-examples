@@ -1,6 +1,11 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const deps = require('./package.json').dependencies;
+
+const isProd = process.env.NODE_ENV === 'production';
+const isDevelopment = !isProd;
+
 module.exports = {
   entry: './src/index',
   cache: false,
@@ -12,8 +17,18 @@ module.exports = {
     minimize: false,
   },
 
+  devServer: {
+    port: 3002,
+    hot: !isProd,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
+  },
   output: {
     publicPath: 'auto',
+    uniqueName: 'app2',
   },
 
   resolve: {
@@ -31,17 +46,25 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        loader: require.resolve('babel-loader'),
         exclude: /node_modules/,
-        options: {
-          presets: [require.resolve('@babel/preset-react')],
-        },
+        use: [
+          {
+            loader: require.resolve('babel-loader'),
+            options: {
+              presets: [require.resolve('@babel/preset-react')],
+              plugins: [isDevelopment && require.resolve('react-refresh/babel')].filter(Boolean),
+            },
+          },
+        ],
       },
     ],
   },
 
   plugins: [
+    !isProd && new ReactRefreshWebpackPlugin(),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      dts: false,
       name: 'app_02',
       filename: 'remoteEntry.js',
       remotes: {
@@ -52,6 +75,7 @@ module.exports = {
         './Dialog': './src/Dialog',
         './Tabs': './src/Tabs',
       },
+      shareStrategy: 'loaded-first',
       shared: {
         ...deps,
         '@material-ui/core': {
@@ -62,9 +86,13 @@ module.exports = {
         },
         'react-dom': {
           singleton: true,
+          requiredVersion: false,
+          eager: true,
         },
         react: {
           singleton: true,
+          requiredVersion: false,
+          eager: true,
         },
       },
     }),
@@ -72,5 +100,5 @@ module.exports = {
       template: './public/index.html',
       chunks: ['main'],
     }),
-  ],
+  ].filter(Boolean),
 };

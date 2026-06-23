@@ -1,6 +1,7 @@
 const { getRemoteEntry, remotes } = require('../../expose-remotes/remotes.config');
 
 module.exports = {
+  experiments: { asyncStartup: true },
   name: 'any-combination',
   remotes: {
     expose_scss: getRemoteEntry(remotes.scss),

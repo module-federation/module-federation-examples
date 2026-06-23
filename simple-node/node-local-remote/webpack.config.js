@@ -1,5 +1,5 @@
 const path = require('path');
-const { UniversalFederationPlugin } = require('@module-federation/node');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 module.exports = {
   mode: 'development',
@@ -13,22 +13,26 @@ module.exports = {
   devtool: false,
   cache: false,
   devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
     port: 3001,
     devMiddleware: {
       writeToDisk: true,
     },
   },
   plugins: [
-    new UniversalFederationPlugin({
-      isServer: true,
+    new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'node_local_remote',
       library: { type: 'commonjs-module' },
       filename: 'remoteEntry.js',
       exposes: {
         './test': './src/expose.js',
       },
-      experiments: {
-      },
-    })
-  ]
+      runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],
+    }),
+  ],
 };

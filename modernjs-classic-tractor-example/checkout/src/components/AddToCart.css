@@ -1,0 +1,37 @@
+.c_AddToCart {
+  padding: 1rem;
+  margin: 0 -1rem;
+}
+
+.c_AddToCart__information {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.c_AddToCart__stock {
+  display: block;
+}
+
+.c_AddToCart__stock--ok {
+  color: green;
+}
+
+.c_AddToCart__stock--empty {
+  color: red;
+}
+
+.c_AddToCart__confirmed {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75ch;
+}
+
+.c_AddToCart__confirmed a {
+  color: inherit;
+}
+
+.c_AddToCart__confirmed--hidden {
+  visibility: hidden;
+}

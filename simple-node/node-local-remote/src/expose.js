@@ -1,1 +1,1 @@
-module.exports = "module from node-local-remote"
+module.exports = 'module from node-local-remote';

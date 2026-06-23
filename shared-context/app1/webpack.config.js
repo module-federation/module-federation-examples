@@ -1,11 +1,20 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
+
+const deps = require('./package.json').dependencies;
 
 module.exports = {
   entry: './src/index',
   mode: 'development',
+  target: 'web',
   devServer: {
+    client: { overlay: false },
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
     static: {
       directory: path.join(__dirname, 'dist'),
     },
@@ -13,10 +22,16 @@ module.exports = {
   },
   output: {
     publicPath: 'auto',
+    // Avoid webpack-dev-server warning overlay from MF "external script" loader code.
+    environment: { asyncFunction: true },
   },
   resolve: {
     alias: {
       'shared-context_shared-library': path.resolve(__dirname, '../shared-library'),
+      // Ensure the shared library resolves the same React instance as the host app.
+      // With a hoisted workspace install, it can otherwise pick up the repo-root React.
+      react: path.resolve(__dirname, 'node_modules/react'),
+      'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
     },
   },
   module: {
@@ -33,23 +48,30 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app1',
       remotes: {
         app2: 'app2@http://localhost:3002/remoteEntry.js',
       },
-      shared: [
-        'react',
-        'react-dom',
-        {
-          'shared-context_shared-library': {
-            import: 'shared-context_shared-library',
-            requiredVersion: require('../shared-library/package.json').version,
-          },
+      shared: {
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
         },
-      ],
+        'react-dom': {
+          singleton: true,
+          requiredVersion: deps['react-dom'],
+        },
+        'shared-context_shared-library': {
+          import: 'shared-context_shared-library',
+          requiredVersion: require('../shared-library/package.json').version,
+          singleton: true,
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
+      chunks: ['main'],
     }),
   ],
 };

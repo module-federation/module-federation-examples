@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 
 // adds all your dependencies as shared modules
@@ -41,7 +41,8 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'app3',
+      experiments: { asyncStartup: true },
+      name: 'app2',
       filename: 'remoteEntry.js',
       remotes: {
         app1: 'app1@http://localhost:3001/remoteEntry.js',

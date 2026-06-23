@@ -1,12 +1,12 @@
-const { UniversalFederationPlugin } = require('@module-federation/node');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 
 module.exports = {
   cache: false,
   devtool: false,
   entry: './src/main.js',
-  mode:'development',
-  target: false, // in order to ignore built-in modules like path, fs, etc.
+  mode: 'development',
+  target: 'async-node', // in order to ignore built-in modules like path, fs, etc.
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'server.js',
@@ -15,25 +15,32 @@ module.exports = {
     rules: [],
   },
   devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
     port: 3000,
     devMiddleware: {
       writeToDisk: true,
     },
-    onAfterSetupMiddleware: function() {
+    onAfterSetupMiddleware: function () {
       setTimeout(() => {
-        const app = require('./dist/server.js');
+        // Require the built server file to boot the Node host after dev middleware emits it.
+        require('./dist/server.js');
       }, 3000);
-    }
+    },
   },
   plugins: [
-    new UniversalFederationPlugin({
-      isServer: true,
+    new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      remoteType: 'script',
       name: 'node_host',
+      runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],
       remotes: {
-        "node_local_remote": 'commonjs ../../node-local-remote/dist/remoteEntry.js',
-        "node_remote": 'node_remote@http://localhost:3002/remoteEntry.js',
+        node_local_remote: 'commonjs ../../node-local-remote/dist/remoteEntry.js',
+        node_remote: 'node_remote@http://localhost:3002/remoteEntry.js',
       },
-      experiments: {},
-    })
-  ]
+    }),
+  ],
 };

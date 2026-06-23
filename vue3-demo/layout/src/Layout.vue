@@ -1,16 +1,12 @@
 <template>
   <div class="layout-app">
     <!-- host app HOST-->
-    <div class="app-label">
-      # Hosting App [HOST]
-    </div>
+    <div class="app-label"># Hosting App [HOST]</div>
     <img src="./logo.png" width="30" />
     <h1>Layout App 1</h1>
     <div class="remote-component">
       <!-- remote-component REMOTE -->
-      <div class="app-label">
-        #remote-component [REMOTE]
-      </div>
+      <div class="app-label">#remote-component [REMOTE]</div>
       <content-element />
       <button-element />
     </div>

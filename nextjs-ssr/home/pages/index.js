@@ -1,23 +1,22 @@
-import React, {Fragment, Suspense,lazy} from 'react';
+import React, { Fragment, Suspense, lazy } from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-typeof window !== "undefined" &&  console.log(window.checkout)
+typeof window !== 'undefined' && console.log(window.checkout);
 const RemoteTitle = lazy(() => import('checkout/title'));
 
-const Home = ({loaded}) => {
+const Home = ({ loaded }) => {
   return (
     <div>
       <Head>
         <title>Home</title>
-        <link rel="icon" href="/nextjs-ssr/home/public/favicon.ico"/>
+        <link rel="icon" href="/nextjs-ssr/home/public/favicon.ico" />
       </Head>
 
       <div className="hero">
-        <Suspense fallback={"loading remote title"}>
-          <RemoteTitle/>
+        <Suspense fallback={'loading remote title'}>
+          <RemoteTitle />
         </Suspense>
         <h1 className="title">
-
           Welcome to Next.js on Webpack 5! <code>home</code>
         </h1>
         <p className="description">

@@ -1,9 +1,10 @@
 const deps = require('../package.json').dependencies;
-const { ModuleFederationPlugin } = require('webpack').container;
-const { NodeFederationPlugin, StreamingTargetPlugin } = require('@module-federation/node');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 
 module.exports = {
   client: new ModuleFederationPlugin({
+    experiments: { asyncStartup: true },
+    dts: false,
     name: 'app1',
     filename: 'remoteEntry.js',
     remotes: {
@@ -12,7 +13,10 @@ module.exports = {
     shared: [{ react: deps.react, 'react-dom': deps['react-dom'] }],
   }),
   server: [
-    new NodeFederationPlugin({
+    new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      remoteType: 'script',
+      runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],
       name: 'app1',
       library: { type: 'commonjs-module' },
       filename: 'remoteEntry.js',
@@ -20,13 +24,6 @@ module.exports = {
         app2: 'app2@http://localhost:3001/server/remoteEntry.js',
       },
       shared: [{ react: deps.react, 'react-dom': deps['react-dom'] }],
-    }),
-    new StreamingTargetPlugin({
-      name: 'app1',
-      library: { type: 'commonjs-module' },
-      remotes: {
-        app2: 'app2@http://localhost:3001/server/remoteEntry.js',
-      },
     }),
   ],
 };

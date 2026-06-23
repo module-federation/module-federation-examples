@@ -4,10 +4,11 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
+    "start:legacy": "concurrently \"cd node-remote && pnpm start:legacy\" \"cd ./node-local-remote && pnpm start:legacy\" \"cd ./node-host && sleep 5; pnpm start:legacy\"",
     "start": "concurrently \"cd node-remote && pnpm start\" \"cd ./node-local-remote && pnpm start\" \"cd ./node-host && sleep 5; pnpm start\""
   },
   "dependencies": {
-    "express": "^4.16.4",
-    "concurrently": "8.2.1"
+    "concurrently": "8.2.2",
+    "express": "^4.22.1"
   }
 }

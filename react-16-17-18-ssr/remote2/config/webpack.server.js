@@ -12,7 +12,7 @@ const webpackConfig = {
     filename: '[name].js',
     libraryTarget: 'commonjs-module',
   },
-  target: false,
+  target: 'async-node',
   name: 'server',
   plugins: [...moduleFederationPlugin.server],
 };

@@ -7,13 +7,13 @@
 </template>
 
 <script>
-import { ref, defineAsyncComponent } from "vue";
+import { ref, defineAsyncComponent } from 'vue';
 // import Content from "./components/Content";
 // import Button from "./components/Button";
 export default {
   components: {
-    Content: defineAsyncComponent(() => import("./components/Content")),
-    Button: defineAsyncComponent(() => import("./components/Button")),
+    Content: defineAsyncComponent(() => import('./components/Content')),
+    Button: defineAsyncComponent(() => import('./components/Button')),
   },
   // components: {
   //   Content,

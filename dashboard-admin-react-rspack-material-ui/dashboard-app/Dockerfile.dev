@@ -1,0 +1,11 @@
+FROM node:22.4.0-alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+
+RUN rm -rf node_modules/ && pnpm install
+
+COPY . .
+
+CMD ["pnpm", "run", "start"]

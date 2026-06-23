@@ -1,0 +1,68 @@
+.libType {
+  width: 240px;
+  height: 110px;
+  border-radius: 4px;
+  border: 1px solid #dcdee1;
+  padding: 10px;
+  color: #252931;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: #1966ff;
+    border-color: #1966ff;
+  }
+
+  &Selected {
+    color: #1966ff;
+    border-color: #1966ff;
+    // border: 2px solid #1966ff;
+    // transition: all 0.2s ease;
+    position: relative;
+    background-color: #f5f9ff;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-top: 24px solid #1966ff;
+      border-left: 24px solid transparent;
+      z-index: 1;
+    }
+
+    &::before {
+      content: '✓';
+      color: white;
+      position: absolute;
+      top: 1px;
+      right: 2px;
+      font-size: 10px;
+      font-weight: bold;
+      z-index: 2;
+    }
+  }
+}
+
+.libTypeDisabled {
+  cursor: not-allowed;
+  // color: #999;
+  // border-color: #eee;
+  // background-color: #f5f5f5;
+
+  &:hover {
+  color: #252931;
+    border-color: #dcdee1;
+  }
+}
+
+.libTypeTitle {
+  font-weight: bold;
+}
+
+.libRow {
+  display: flex;
+  gap: 16px;
+}

@@ -1,3 +1,5 @@
+> For an example implementation of using different React versions together with Module Federation, check out the runtime plugin folder [runtime-plugins/multiple-react-versions](https://github.com/module-federation/module-federation-examples/tree/master/runtime-plugins/multiple-react-versions).
+
 # Different React Versions in Isolation
 
 This example demos host and remote applications running in isolation with two different React versions and no shared libraries
@@ -14,10 +16,4 @@ Run `pnpm run start`. This will build and serve both `app1` and `app2` on ports 
 
 <img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/BasicRemoteHost">
 
-# Running Cypress E2E Tests
-
-To run tests in interactive mode, run `npm run cypress:debug` from the root directory of the project. It will open Cypress Test Runner and allow to run tests in interactive mode. [More info about "How to run tests"](../../cypress/README.md#how-to-run-tests)
-
-To build app and run test in headless mode, run `yarn e2e:ci`. It will build app and run tests for this workspace in headless mode. If tets failed cypress will create `cypress` directory in sample root folder with screenshots and videos.
-
-["Best Practices, Rules amd more interesting information here](../../cypress/README.md)
+["Best Practices, Rules amd more interesting information here](../../playwright-e2e/README.md)

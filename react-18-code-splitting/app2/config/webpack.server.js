@@ -8,13 +8,14 @@ const moduleFederationPlugin = require('./module-federation');
  **/
 const webpackConfig = {
   name: 'server',
-  target: false,
+  target: 'async-node',
   entry: ['@babel/polyfill', path.resolve(__dirname, '../src/server/index')],
   output: {
     path: path.resolve(__dirname, '../dist/server'),
     filename: '[name].js',
     libraryTarget: 'commonjs-module',
   },
+  externals: ['express'],
   mode: 'production',
   plugins: [...moduleFederationPlugin.server],
   stats: {

@@ -1,15 +1,25 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 
 module.exports = {
   entry: './src/index',
   mode: 'development',
   devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
     static: {
       directory: path.join(__dirname, 'dist'),
     },
     port: 3001,
+    client: {
+      overlay: {
+        warnings: false,
+      },
+    },
   },
   output: {
     publicPath: 'auto',
@@ -28,11 +38,13 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app1',
       filename: 'remoteEntry.js',
       remotes: {
         app2: 'app2@http://localhost:3002/remoteEntry.js',
       },
+      shareStrategy: 'loaded-first',
       // app2 is expecting "styled-components" shared dependency
       shared: [{ react: { singleton: true }, 'react-dom': { singleton: true } }],
     }),

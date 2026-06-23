@@ -1,6 +1,6 @@
 const path = require('path');
 const dist = path.resolve(__dirname, 'dist');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 const mode = process.env.NODE_ENV || 'development';
 const prod = mode === 'production';
@@ -35,10 +35,13 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: '[name].[id].js',
     publicPath: 'auto',
+    uniqueName: 'app5',
   },
   mode,
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      dts: false,
       name: 'app_05',
       filename: 'remoteEntry.js',
       exposes: {
@@ -46,6 +49,7 @@ module.exports = {
         './AlertBox': './src/components/alert-box.ts',
         './components': './src/index.ts',
       },
+      shareStrategy: 'loaded-first',
       shared: [],
     }),
     new HtmlWebpackPlugin({

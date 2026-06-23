@@ -43,28 +43,27 @@ button + button {
   </div>
 </template>
 <script>
-import { createApi} from 'effector';
-import {useStore} from 'effector-vue/composition';
+import { createApi } from 'effector';
+import { useStore } from 'effector-vue/composition';
 
-import $counter from "store/Counter";
+import $counter from 'store/Counter';
 
-const {increment, decrement} = createApi($counter, {
+const { increment, decrement } = createApi($counter, {
   increment: state => state + 1,
   decrement: state => state - 1,
-})
+});
 
 export default {
   name: 'VueCounter',
   components: {},
   setup() {
-    const counter = useStore($counter)
+    const counter = useStore($counter);
 
     return {
       counter,
       increment,
       decrement,
-    }
+    };
   },
 };
 </script>
-

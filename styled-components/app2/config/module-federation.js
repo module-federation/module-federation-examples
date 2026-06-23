@@ -1,5 +1,5 @@
 const deps = require('../package.json').dependencies;
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const { NodeFederationPlugin, StreamingTargetPlugin } = require('@module-federation/node');
 const FederationStatsPlugin = require('webpack-federation-stats-plugin');
 
@@ -7,6 +7,7 @@ module.exports = {
   client: [
     new FederationStatsPlugin(),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app2',
       filename: 'remoteEntry.js',
       exposes: {

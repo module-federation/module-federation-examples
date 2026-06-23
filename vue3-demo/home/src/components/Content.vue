@@ -1,11 +1,11 @@
 <template>
-  <div style="color: red;">{{ title }}</div>
+  <div style="color: red">{{ title }}</div>
 </template>
 <script>
 export default {
   data() {
     return {
-      title: "Remote Component in Action..",
+      title: 'Remote Component in Action..',
     };
   },
 };

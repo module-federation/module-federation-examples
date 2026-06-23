@@ -37,7 +37,11 @@ export default function Home() {
             <p>Learn about Next.js in an interactive course with quizzes!</p>
           </a>
 
-          <a href="https://github.com/vercel/next.js/tree/canary/examples" className={styles.card} data-e2e="TEXTED_LINK_CARD">
+          <a
+            href="https://github.com/vercel/next.js/tree/canary/examples"
+            className={styles.card}
+            data-e2e="TEXTED_LINK_CARD"
+          >
             <h2>Examples &rarr;</h2>
             <p>Discover and deploy boilerplate example Next.js projects.</p>
           </a>

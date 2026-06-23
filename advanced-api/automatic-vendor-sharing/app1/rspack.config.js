@@ -1,45 +1,43 @@
-const {
-  HtmlRspackPlugin,
-  container: { ModuleFederationPlugin },
-} = require('@rspack/core');
-const path = require('path');
+const { HtmlRspackPlugin } = require('@rspack/core');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 
-// adds all your dependencies as shared modules
-// version is inferred from package.json in the dependencies
-// requiredVersion is used from your package.json
-// dependencies will automatically use the highest available package
-// in the federated app, based on version requirement in package.json
-// multiple different versions might coexist in the federated app
-// Note that this will not affect nested paths like "lodash/pluck"
-// Note that this will disable some optimization on these packages
-// with might lead the bundle size problems
+const path = require('path');
 const deps = require('./package.json').dependencies;
 
 module.exports = {
   entry: './src/index',
   mode: 'development',
+  resolve: {
+    extensions: ['.tsx', '.ts', '.jsx', '.js'],
+  },
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
+    },
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
     },
     port: 3001,
   },
   target: 'web',
   output: {
     publicPath: 'auto',
+    uniqueName: 'automatic_vendor_sharing_app1',
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         include: path.resolve(__dirname, 'src'),
         use: {
           loader: 'builtin:swc-loader',
           options: {
             jsc: {
               parser: {
-                syntax: 'ecmascript',
-                jsx: true,
+                syntax: 'typescript',
+                tsx: true,
               },
               transform: {
                 react: {
@@ -54,21 +52,31 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app1',
       filename: 'remoteEntry.js',
+      dts: false,
+      shareStrategy: 'loaded-first',
       remotes: {
         app2: 'app2@http://localhost:3002/remoteEntry.js',
       },
       exposes: {
         './Button': './src/Button',
+        './ErrorBoundary': './src/ErrorBoundary',
       },
+      runtimePlugins: [require.resolve('./src/runtimePlugin')],
       shared: {
-        ...deps,
         react: {
           singleton: true,
+          requiredVersion: deps.react,
+          import: 'react',
+          shareScope: 'default',
         },
         'react-dom': {
           singleton: true,
+          requiredVersion: deps['react-dom'],
+          import: 'react-dom',
+          shareScope: 'default',
         },
       },
     }),

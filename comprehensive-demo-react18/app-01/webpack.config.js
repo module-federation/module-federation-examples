@@ -1,10 +1,24 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
+const { RsdoctorWebpackPlugin } = require('@rsdoctor/webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+
+const isProd = process.env.NODE_ENV === 'production';
+const isDevelopment = !isProd;
+
 const deps = require('./package.json').dependencies;
 module.exports = {
   entry: './src/index',
   cache: false,
-
+  devServer: {
+    port: 3001,
+    hot: isDevelopment,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
+  },
   mode: 'development',
   devtool: 'source-map',
 
@@ -13,6 +27,7 @@ module.exports = {
   },
 
   output: {
+    uniqueName: 'app1',
     publicPath: 'auto',
   },
 
@@ -31,11 +46,16 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        loader: require.resolve('babel-loader'),
         exclude: /node_modules/,
-        options: {
-          presets: [require.resolve('@babel/preset-react')],
-        },
+        use: [
+          {
+            loader: require.resolve('babel-loader'),
+            options: {
+              presets: [require.resolve('@babel/preset-react')],
+              plugins: [isDevelopment && require.resolve('react-refresh/babel')].filter(Boolean),
+            },
+          },
+        ],
       },
       {
         test: /\.md$/,
@@ -45,7 +65,10 @@ module.exports = {
   },
 
   plugins: [
+    isDevelopment && new ReactRefreshWebpackPlugin(),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      dts: false,
       name: 'app_01',
       filename: 'remoteEntry.js',
       remotes: {
@@ -58,6 +81,7 @@ module.exports = {
         './SideNav': './src/SideNav',
         './Page': './src/Page',
       },
+      shareStrategy: 'loaded-first',
       shared: {
         ...deps,
         '@material-ui/core': {
@@ -68,14 +92,21 @@ module.exports = {
         },
         'react-dom': {
           singleton: true,
+          requiredVersion: false,
+          eager: true,
         },
         react: {
           singleton: true,
+          requiredVersion: false,
+          eager: true,
         },
       },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
-  ],
+    // new RsdoctorWebpackPlugin({
+    //   // plugin options
+    // }),
+  ].filter(Boolean),
 };
