@@ -8,7 +8,7 @@ module.exports = merge(shared, {
   name: 'server',
   target: 'node',
   entry: {
-    main: ['@babel/polyfill', path.resolve(__dirname, '../src/server/index')],
+    main: [path.resolve(__dirname, '../src/server/index')],
     serverAppEntrypoint: path.resolve(__dirname, '../src/server/serverAppEntrypoint'),
   },
   optimization: {
@@ -19,6 +19,7 @@ module.exports = merge(shared, {
     path: path.resolve(__dirname, '../dist/server'),
     filename: '[name].js',
     libraryTarget: 'commonjs-module',
+    publicPath: 'auto',
   },
   mode: 'production',
   plugins: [new LoadablePlugin({ writeToDisk: true }), ...moduleFederationPlugin.server],

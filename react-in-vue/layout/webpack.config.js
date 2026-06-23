@@ -2,7 +2,7 @@ const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const deps = require('./package.json').dependencies;
 
 module.exports = (env = {}) => ({
@@ -13,7 +13,7 @@ module.exports = (env = {}) => ({
     minimize: false,
   },
   target: 'web',
-  entry: path.resolve(__dirname, './src/bootstrap.js'),
+  entry: path.resolve(__dirname, './src/main.js'),
   output: {
     publicPath: 'auto',
   },
@@ -64,7 +64,9 @@ module.exports = (env = {}) => ({
       filename: '[name].css',
     }),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'layout',
+      shareStrategy: 'loaded-first',
       remotes: {
         home: 'home@http://localhost:3002/remoteEntry.js',
       },

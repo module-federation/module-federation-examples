@@ -1,7 +1,6 @@
-const {
-  HtmlRspackPlugin,
-  container: { ModuleFederationPlugin },
-} = require('@rspack/core');
+const { HtmlRspackPlugin } = require('@rspack/core');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
+
 const path = require('path');
 
 // adds all your dependencies as shared modules
@@ -18,7 +17,6 @@ const deps = require('./package.json').dependencies;
 module.exports = {
   entry: './src/index',
   mode: 'development',
-  watch: true,
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
@@ -81,7 +79,9 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app1',
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       remotes: {
         app2: 'app2@http://localhost:3002/remoteEntry.js',

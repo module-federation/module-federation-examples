@@ -2,6 +2,9 @@ const fs = require('fs');
 const path = require('path');
 const semver = require('semver');
 
+// Packages that should always be updated to latest regardless of scope
+const ALWAYS_UPDATE_SCOPES = ['@rspack/', '@rsbuild/'];
+
 const CONFIG = [
   {
     packageName: '@module-federation/node',
@@ -16,51 +19,39 @@ const CONFIG = [
     targetVersion: 'latest',
   },
   {
-    packageName: '@rspack/core',
+    packageName: '@module-federation/modern-js',
     shouldUpdate: true,
     versionToCheck: '3.0.13',
     targetVersion: 'latest',
   },
   {
-    packageName: '@rspack/cli',
+    packageName: '@module-federation/dts-plugin',
     shouldUpdate: true,
     versionToCheck: '3.0.13',
     targetVersion: 'latest',
   },
   {
-    packageName: '@rspack/plugin-react-refresh',
+    packageName: '@module-federation/vite',
     shouldUpdate: true,
-    versionToCheck: '3.0.13',
-    targetVersion: 'latest',
-  },
-  {
-    packageName: '@rspack/dev-server',
-    shouldUpdate: true,
-    versionToCheck: '3.0.13',
+    versionToCheck: '2.0.0',
     targetVersion: 'latest',
   },
   {
     packageName: '@module-federation/enhanced',
-    shouldUpdate: true, // Assumes no targetVersion needed
+    shouldUpdate: true,
     versionToCheck: '2.0.0',
     targetVersion: 'latest',
   },
   {
-    packageName: '@rsbuild/core',
-    shouldUpdate: true, // Assumes no targetVersion needed
-    versionToCheck: '2.0.0',
+    packageName: '@module-federation/nextjs-mf',
+    shouldUpdate: true,
+    versionToCheck: '9.2.2',
     targetVersion: 'latest',
   },
   {
-    packageName: '@rsbuild/plugin-vue',
-    shouldUpdate: true, // Assumes no targetVersion needed
-    versionToCheck: '2.0.0',
-    targetVersion: 'latest',
-  },
-  {
-    packageName: '@rsbuild/plugin-react',
-    shouldUpdate: true, // Assumes no targetVersion needed
-    versionToCheck: '2.0.0',
+    packageName: '@module-federation/runtime',
+    shouldUpdate: true,
+    versionToCheck: '9.2.2',
     targetVersion: 'latest',
   },
   {
@@ -80,39 +71,15 @@ const CONFIG = [
     shouldUpdate: false, // Assumes no targetVersion needed
   },
   {
-    packageName: '@module-federation/nextjs-mf',
+    packageName: '@playwright/test',
     shouldUpdate: true,
-    versionToCheck: '9.2.2',
+    versionToCheck: '999.0.0',
     targetVersion: 'latest',
   },
   {
-    packageName: '@module-federation/runtime',
+    packageName: 'playwright',
     shouldUpdate: true,
-    versionToCheck: '9.2.2',
-    targetVersion: 'latest',
-  },
-  {
-    packageName: '@rspack/core',
-    shouldUpdate: true,
-    versionToCheck: '9.2.2',
-    targetVersion: 'latest',
-  },
-  {
-    packageName: '@rspack/cli',
-    shouldUpdate: true,
-    versionToCheck: '9.2.2',
-    targetVersion: 'latest',
-  },
-  {
-    packageName: '@rspack/dev-server',
-    shouldUpdate: true,
-    versionToCheck: '9.2.2',
-    targetVersion: 'latest',
-  },
-  {
-    packageName: '@rspack/plugin-react-refresh',
-    shouldUpdate: true,
-    versionToCheck: '9.2.2',
+    versionToCheck: '999.0.0',
     targetVersion: 'latest',
   },
 ];
@@ -158,6 +125,7 @@ function readPackageJson(packageJsonPath) {
 async function checkAndUpdatePackages(nestedDir, packageJson, results) {
   let needsUpdate = false;
 
+  // Check packages from CONFIG
   for (const config of CONFIG) {
     const { packageName, shouldUpdate, versionToCheck } = config;
     let { targetVersion } = config;
@@ -171,24 +139,46 @@ async function checkAndUpdatePackages(nestedDir, packageJson, results) {
     if (targetVersion === 'next') {
       targetVersion = await getLatestVersion(packageName, targetVersion);
       if (!targetVersion) continue; // Skip if failed to fetch latest version
-      updateDependencies(packageJson, packageName, targetVersion);
     }
 
-    if (currentVersion && semver.satisfies(semver.coerce(currentVersion), `<${versionToCheck}`)) {
-      if (shouldUpdate && targetVersion) {
+    const currentSemver = semver.coerce(currentVersion);
+    const targetSemver = semver.coerce(targetVersion);
+    const shouldTrack =
+      currentSemver && versionToCheck && semver.satisfies(currentSemver, `<${versionToCheck}`);
+    const shouldApplyUpdate =
+      shouldUpdate && currentSemver && targetSemver && semver.lt(currentSemver, targetSemver);
+
+    if (currentVersion && (shouldTrack || shouldApplyUpdate)) {
+      if (shouldApplyUpdate) {
         updateDependencies(packageJson, packageName, targetVersion);
-      }
-      if (shouldUpdate) {
         needsUpdate = true;
       }
       trackPackage(nestedDir, packageName, results);
     }
   }
 
+  // Check packages from ALWAYS_UPDATE_SCOPES
+  const allDependencies = {
+    ...packageJson.dependencies,
+    ...packageJson.devDependencies,
+  };
+
+  for (const [packageName, currentVersion] of Object.entries(allDependencies)) {
+    if (ALWAYS_UPDATE_SCOPES.some(scope => packageName.startsWith(scope))) {
+      const latestVersion = await getLatestVersion(packageName, 'latest');
+      if (latestVersion && currentVersion !== latestVersion) {
+        updateDependencies(packageJson, packageName, latestVersion);
+        needsUpdate = true;
+        trackPackage(nestedDir, packageName, results);
+        console.log(`Updating ${packageName} from ${currentVersion} to ${latestVersion}`);
+      }
+    }
+  }
+
   if (needsUpdate) {
     fs.writeFileSync(
       path.join(nestedDir, 'package.json'),
-      JSON.stringify(packageJson, null, 2),
+      `${JSON.stringify(packageJson, null, 2)}\n`,
       'utf8',
     );
     console.log(`Updated dependencies in ${nestedDir}`);
@@ -234,8 +224,15 @@ async function getPackages(dir) {
   return results;
 }
 
-// Running the modified function
-(async () => {
-  const results = await getPackages('./'); // Start from the current directory
-  console.log('Package Updates:', results);
-})();
+if (require.main === module) {
+  const startDir = process.argv[2] || './';
+
+  (async () => {
+    const results = await getPackages(startDir);
+    console.log('Package Updates:', results);
+  })();
+}
+
+module.exports = {
+  getPackages,
+};

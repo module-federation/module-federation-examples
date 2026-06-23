@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@rspack/core').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 const path = require('path');
 const {
   remotes: { cssModule },
@@ -7,7 +7,7 @@ const {
 } = require('../remotes.config');
 
 module.exports = {
-  entry: './src/index',
+  entry: ['./src/ensureNmdPolyfill', './src/index'],
   mode: 'development',
   devServer: {
     static: {
@@ -45,14 +45,25 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              esModule: true,
+            },
+          },
+        ],
       },
     ],
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       ...mfeBaseConfig,
       name: cssModule.name,
+      shareStrategy: 'loaded-first',
       exposes: {
         // './CssModule': './src/Button.styles.module.css',
         './Component': './src/Component.js',

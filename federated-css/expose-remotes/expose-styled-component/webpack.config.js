@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 const {
   remotes: { styledComponent },
@@ -37,8 +37,10 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       ...mfeBaseConfig,
       name: styledComponent.name,
+      shareStrategy: 'loaded-first',
       exposes: {
         './Component': './src/StyledComponent.js',
       },

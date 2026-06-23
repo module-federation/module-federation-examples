@@ -1,12 +1,12 @@
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExternalTemplateRemotesPlugin = require('external-remotes-plugin');
 const path = require('path');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
   entry: './src/index',
   mode: 'development',
+  target: 'web',
   devtool: 'source-map',
   optimization: {
     minimize: false,
@@ -16,6 +16,9 @@ module.exports = {
     static: path.join(__dirname, 'dist'),
     port: 3001,
     liveReload: false,
+    client: {
+      overlay: false,
+    },
   },
   output: {
     publicPath: 'auto',
@@ -36,17 +39,18 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'remote1',
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       exposes: {
         './Button': './src/Button',
         './Heading': './src/Heading',
       },
       remotes: {
-        libs: 'libs@[libsUrl]/remoteEntry.js',
+        libs: 'libs@http://localhost:3002/remoteEntry.js',
       },
     }),
-    new ExternalTemplateRemotesPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html',
       chunks: ['main'],

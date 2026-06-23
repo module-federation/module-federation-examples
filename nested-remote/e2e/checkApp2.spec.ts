@@ -1,0 +1,44 @@
+import { test } from '@playwright/test';
+
+import { BaseMethods } from '../../playwright-e2e/common/base';
+import { baseSelectors } from '../../playwright-e2e/common/selectors';
+import { Constants } from '../../playwright-e2e/fixtures/constants';
+import { CssAttr } from '../../playwright-e2e/types/cssAttr';
+
+test.describe('Nested - App 2', () => {
+  let basePage: BaseMethods;
+
+  test.beforeEach(async ({ page }) => {
+    basePage = new BaseMethods(page);
+    await basePage.openLocalhost({ number: 3002 });
+  });
+
+  test('Check elements exist', async () => {
+    await basePage.checkElementWithTextPresence({
+      selector: baseSelectors.tags.coreElements.button,
+      text: Constants.updatedConstantsData.commonAppWithButton.app3,
+      visibilityState: 'be.visible',
+    });
+
+    await basePage.checkElementContainText({
+      selector: baseSelectors.ids.root,
+      text: Constants.elementsText.nestedApp.app2Container,
+    });
+  });
+
+  test('Check colors', async () => {
+    await basePage.checkElementHaveProperty({
+      // The "App 2 Container" background is applied on the inner container div via inline style.
+      selector: 'div[style*="background-color"]',
+      text: Constants.elementsText.nestedApp.app2Container,
+      prop: CssAttr.backgroundColor,
+      value: Constants.color.chineseSilver,
+    });
+    await basePage.checkElementHaveProperty({
+      selector: baseSelectors.tags.coreElements.button,
+      text: Constants.updatedConstantsData.commonAppWithButton.app3,
+      prop: CssAttr.background,
+      value: Constants.color.aquamarine,
+    });
+  });
+});

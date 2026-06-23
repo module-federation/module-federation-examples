@@ -15,9 +15,7 @@ const Thanks = ({ c }) => {
       <Header c={c} />
       <main className="c_Thanks">
         <h2 className="c_Thanks__title">Thanks for your order!</h2>
-        <p className="c_Thanks__text">
-          We&apos;ll notify you, when its ready for pickup.
-        </p>
+        <p className="c_Thanks__text">We&apos;ll notify you, when its ready for pickup.</p>
         <Button href="/" variant="secondary">
           Continue Shopping
         </Button>

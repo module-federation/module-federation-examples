@@ -42,7 +42,9 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app1',
+      shareStrategy: 'loaded-first',
       remotes: {
         ...remotes,
       },

@@ -8,10 +8,7 @@ module.exports = merge(shared, {
   name: 'client',
   target: 'web',
   entry: {
-    clientAppEntrypoint: [
-      '@babel/polyfill',
-      path.resolve(__dirname, '../src/client/clientAppEntrypoint'),
-    ],
+    clientAppEntrypoint: [path.resolve(__dirname, '../src/client/clientAppEntrypoint')],
   },
   mode: 'production',
   devtool: 'source-map',

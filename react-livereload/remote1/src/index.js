@@ -1,3 +1,5 @@
-window.libsUrl = 'http://localhost:3002';
+import App from './App';
+import React from 'libs/react';
+import ReactDOM from 'libs/react-dom';
 
-import('./bootstrap');
+ReactDOM.render(<App />, document.getElementById('root'));

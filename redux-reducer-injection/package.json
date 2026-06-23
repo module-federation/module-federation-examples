@@ -4,14 +4,17 @@
   "version": "0.0.0",
   "description": "Sharing a Redux store across remote apps with dynamic reducer injection; 'app1' hosts and creates the store, 'app2' injects its reducer.",
   "scripts": {
-    "start": "concurrently \"pnpm run --filter redux-reducer-injection_app* --parallel start\" \"pnpm serve\"",
+    "start": "concurrently -k \"pnpm run --filter redux-reducer-injection_app* --parallel start\" \"pnpm serve\"",
     "build": "pnpm run --filter redux-reducer-injection_app* build",
     "serve": "pnpm run --filter redux-reducer-injection_app* --parallel serve",
     "clean": "pnpm run --filter redux-reducer-injection_app* --parallel clean",
-    "e2e:ci": "pnpm start & sleep 5 && wait-on tcp:3001 && wait-on tcp:3002 && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+    "test:e2e": "pnpm exec playwright test",
+    "e2e:ci": "pnpm exec playwright test --reporter=list"
   },
   "devDependencies": {
+    "@playwright/test": "1.58.2",
     "concurrently": "8.2.2",
+    "playwright": "1.58.2",
     "wait-on": "7.2.0"
   }
 }

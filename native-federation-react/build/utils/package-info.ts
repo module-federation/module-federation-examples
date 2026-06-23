@@ -16,10 +16,7 @@ export interface PartialPackageJson {
   main: string;
 }
 
-export function getPackageInfo(
-  packageName: string,
-  workspaceRoot: string
-): PackageInfo | null {
+export function getPackageInfo(packageName: string, workspaceRoot: string): PackageInfo | null {
   const projectRoot = workspaceRoot;
   const mainPkgName = getPkgFolder(packageName);
 
@@ -60,7 +57,7 @@ export function getPackageInfo(
       entryPoint: path.join(mainPkgPath, cand),
       packageName,
       version,
-      esm
+      esm,
     };
   }
 
@@ -70,7 +67,7 @@ export function getPackageInfo(
       entryPoint: path.join(mainPkgPath, cand),
       packageName,
       version,
-      esm
+      esm,
     };
   }
 
@@ -81,7 +78,7 @@ export function getPackageInfo(
       entryPoint: path.join(mainPkgPath, cand),
       packageName,
       version,
-      esm: true
+      esm: true,
     };
   }
 
@@ -97,7 +94,7 @@ export function getPackageInfo(
       entryPoint: path.join(secondaryPgkPath, secondaryPgkJson.module),
       packageName,
       version,
-      esm: true
+      esm: true,
     };
   }
 
@@ -107,7 +104,7 @@ export function getPackageInfo(
       entryPoint: cand,
       packageName,
       version,
-      esm: true
+      esm: true,
     };
   }
 
@@ -116,7 +113,7 @@ export function getPackageInfo(
       entryPoint: path.join(secondaryPgkPath, secondaryPgkJson.main),
       packageName,
       version,
-      esm
+      esm,
     };
   }
 
@@ -126,14 +123,14 @@ export function getPackageInfo(
       entryPoint: cand,
       packageName,
       version,
-      esm
+      esm,
     };
   }
 
   // TODO: Add logger
   console.warn('No entry point found for ' + packageName);
   console.warn(
-    '  >> Did you confuse dependencies with depDependencies in your package.json or your federation config?'
+    '  >> Did you confuse dependencies with depDependencies in your package.json or your federation config?',
   );
 
   return null;

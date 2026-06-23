@@ -1,7 +1,6 @@
-const {
-  HtmlRspackPlugin,
-  container: { ModuleFederationPlugin },
-} = require('@rspack/core');
+const { HtmlRspackPlugin } = require('@rspack/core');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
+
 const mode = process.env.NODE_ENV || 'development';
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -77,6 +76,8 @@ module.exports = {
   mode,
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      dts: false,
       name: 'app_05',
       filename: 'remoteEntry.js',
       exposes: {
@@ -84,6 +85,7 @@ module.exports = {
         './AlertBox': './src/components/alert-box.ts',
         './components': './src/index.ts',
       },
+      shareStrategy: 'loaded-first',
       shared: [],
     }),
     new HtmlRspackPlugin({

@@ -1,6 +1,7 @@
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 module.exports = {
+  lintOnSave: false,
   publicPath: 'http://localhost:8080/',
   configureWebpack: {
     optimization: {
@@ -8,7 +9,9 @@ module.exports = {
     },
     plugins: [
       new ModuleFederationPlugin({
+        experiments: { asyncStartup: true },
         name: 'consumer',
+        shareStrategy: 'loaded-first',
         filename: 'remoteEntry.js',
         remotes: {
           core: 'core@http://localhost:9000/remoteEntry.js',

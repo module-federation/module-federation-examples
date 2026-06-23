@@ -1,3 +1,7 @@
+# Support For Next.js is ending
+
+https://github.com/module-federation/core/issues/3153
+
 # Next.js with Module Federation
 
 ## Getting Started
@@ -52,10 +56,4 @@ The sharing limit is due to next not having any async boundary, theres no way to
 
 I am investigating new methods that may solve the module sharing problem in next.js, however this is a complex problem to solve and requires enormus amounts of knowladge around how webpack and federation work inside the module graph.
 
-# Running Cypress E2E Tests
-
-To run tests in interactive mode, run `npm run cypress:debug` from the root directory of the project. It will open Cypress Test Runner and allow to run tests in interactive mode. [More info about "How to run tests"](../cypress/README.md#how-to-run-tests)
-
-To build app and run test in headless mode, run `yarn e2e:ci`. It will build app and run tests for this workspace in headless mode. If tets failed cypress will create `cypress` directory in sample root folder with screenshots and videos.
-
-["Best Practices, Rules amd more interesting information here](../cypress/README.md)
+["Best Practices, Rules amd more interesting information here](../playwright-e2e/README.md)

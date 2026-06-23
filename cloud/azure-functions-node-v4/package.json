@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "build": "concurrently \"rm -r ./shell/api/dist || true && cd ./shell/client && npm run build && cd ../api && npm run build\" \"cd ./remote && npm run build\"",
-    "start": "concurrently \"cd remote && npm run start\" \"cd shell/api && npm run start\""
+    "start": "concurrently \"cd remote && npm run start\" \"cd shell/api && npm run start\"",
+    "legacy:e2e:ci": "echo \"No legacy e2e tests\""
   },
   "devDependencies": {
     "concurrently": "8.2.2"

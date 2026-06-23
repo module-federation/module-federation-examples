@@ -1,7 +1,5 @@
-const {
-  container: { ModuleFederationPlugin },
-  HtmlRspackPlugin,
-} = require('@rspack/core');
+const { HtmlRspackPlugin } = require('@rspack/core');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 
 module.exports = {
   entry: './src/index',
@@ -49,12 +47,18 @@ module.exports = {
       exposes: {
         './Button': './src/Button',
       },
+      experiments: {
+        asyncStartup: true,
+      },
+      shareStrategy: 'loaded-first',
       shared: {
         'react-dom': {
           singleton: true,
+          eager: true,
         },
         react: {
           singleton: true,
+          eager: true,
         },
       },
     }),

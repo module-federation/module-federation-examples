@@ -1,9 +1,10 @@
 const deps = require('../package.json').dependencies;
-const { ModuleFederationPlugin } = require('webpack').container;
-const { NodeFederationPlugin, StreamingTargetPlugin } = require('@module-federation/node');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
+const { UniversalFederationPlugin } = require('@module-federation/node');
 
 module.exports = {
   client: new ModuleFederationPlugin({
+    experiments: { asyncStartup: true },
     name: 'expose_css',
     filename: 'remoteEntry.js',
     remotes: {},
@@ -24,7 +25,9 @@ module.exports = {
     },
   }),
   server: [
-    new NodeFederationPlugin({
+    new UniversalFederationPlugin({
+      isServer: true,
+      useRuntimePlugin: true,
       name: 'expose_css',
       filename: 'remoteEntry.js',
       library: { type: 'commonjs-module' },
@@ -35,20 +38,9 @@ module.exports = {
       },
       shared: {
         ...deps,
-        react: {
-          singleton: true,
-          requiredVersion: deps.react,
-        },
-        'react-dom': {
-          singleton: true,
-          requiredVersion: deps['react-dom'],
-        },
+        react: { singleton: true, requiredVersion: deps.react },
+        'react-dom': { singleton: true, requiredVersion: deps['react-dom'] },
       },
-    }),
-    new StreamingTargetPlugin({
-      name: 'expose_css',
-      library: { type: 'commonjs-module' },
-      remotes: {},
     }),
   ],
 };

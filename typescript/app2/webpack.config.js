@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { FederatedTypesPlugin } = require('@module-federation/typescript');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 
 const pkg = require('./package.json');
@@ -37,7 +38,31 @@ module.exports = {
     ],
   },
   plugins: [
+    new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      name: 'app2',
+      shareStrategy: 'loaded-first',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Button': './src/Button',
+      },
+      shared: [
+        {
+          react: {
+            singleton: true,
+            requiredVersion: pkg.dependencies.react,
+          },
+        },
+        {
+          'react-dom': {
+            singleton: true,
+            requiredVersion: pkg.dependencies['react-dom'],
+          },
+        },
+      ],
+    }),
     new FederatedTypesPlugin({
+      disableDownloadingRemoteTypes: true,
       federationConfig: {
         name: 'app2',
         filename: 'remoteEntry.js',

@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { merge } = require('webpack-merge');
-const { ModuleFederationPlugin } = require('@rspack/core').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 const common = require('./webpack.common.js');
 delete common.plugins;
 module.exports = merge(common, {
@@ -11,6 +11,7 @@ module.exports = merge(common, {
       template: './public/index.html',
     }),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'remoteLibrary',
       filename: 'remoteEntry.js',
       exposes: {

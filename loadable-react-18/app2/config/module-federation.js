@@ -1,6 +1,6 @@
 const deps = require('../package.json').dependencies;
 const { UniversalFederationPlugin } = require('@module-federation/node');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 const FederationStatsPlugin = require('webpack-federation-stats-plugin');
 
@@ -8,12 +8,15 @@ module.exports = {
   client: [
     new FederationStatsPlugin(),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      dts: false,
       name: 'app2',
       filename: 'remoteEntry.js',
       exposes: {
         './Content': './src/client/components/Content',
       },
       remotes: {},
+      shareStrategy: 'loaded-first',
       shared: [{ react: deps.react, 'react-dom': deps['react-dom'] }],
     }),
   ],

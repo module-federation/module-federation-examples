@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const dependencies = require('./package.json').dependencies;
 var WebpackPwaManifest = require('webpack-pwa-manifest');
 
@@ -82,7 +82,9 @@ module.exports = {
     }),
     new MiniCssExtractPlugin(),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'shell',
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       remotes: {
         Nav: 'Nav@http://localhost:3002/remoteEntry.js',

@@ -1,13 +1,13 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 /**
  * @type {import('webpack').Configuration}
  */
 const configuration = {
   mode: 'development',
-  entry: './src/bootstrap.ts',
+  entry: './src/index.ts',
   output: {
     clean: true,
     path: __dirname + '/dist',
@@ -40,14 +40,16 @@ const configuration = {
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin(),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app2',
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       manifest: false,
       shared: ['vue', 'shared-lib', 'shared-lib-2'],
       exposes: {
         '.': './src/index.ts',
       },
-      runtimePlugins: [require.resolve('./isolatePlugin.ts')],
+      runtimePlugins: [[require.resolve('../plugin/isolatePluginFactory.ts'), { dependencies: ['shared-lib'] }]],
     }),
   ],
   optimization: {

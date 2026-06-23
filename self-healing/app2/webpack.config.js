@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 
 module.exports = {
@@ -15,6 +15,11 @@ module.exports = {
       directory: path.join(__dirname, 'dist'),
     },
     port: 3002,
+    client: {
+      overlay: {
+        warnings: false,
+      },
+    },
   },
   output: {
     publicPath: 'auto',
@@ -33,6 +38,7 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app2',
       filename: 'remoteEntry.js',
       remotes: {
@@ -41,6 +47,7 @@ module.exports = {
       exposes: {
         './Button': './src/Button',
       },
+      shareStrategy: 'loaded-first',
       // app2 is expecting "styled-components" as a shared dependency
       shared: [
         'styled-components',

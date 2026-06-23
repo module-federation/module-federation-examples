@@ -1,11 +1,16 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import App from '../src/components/App';
 import Compose from '../src/ComposeProviders';
 import { ServerStyleSheet } from 'styled-components';
 import { JssProvider, SheetsRegistry } from 'react-jss';
+import { Helmet } from 'react-helmet';
 
 export default async function (req, res) {
+  const [{ default: Content1 }, { default: Content2 }] = await Promise.all([
+    import('expose_styled_component/Content'),
+    import('expose_jss/Content'),
+  ]);
+
   const sheets = new SheetsRegistry();
 
   const combinedProviders = [[JssProvider, { registry: sheets }]];
@@ -15,7 +20,13 @@ export default async function (req, res) {
   const component = renderToString(
     sheet.collectStyles(
       <Compose providers={combinedProviders}>
-        <App />
+        <div>
+          <Helmet>
+            <title>SSR MF Example</title>
+          </Helmet>
+          <Content1 />
+          <Content2 />
+        </div>
       </Compose>,
     ),
   );

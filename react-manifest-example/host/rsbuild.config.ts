@@ -11,6 +11,8 @@ export default defineConfig({
       appendPlugins([
         new ModuleFederationPlugin({
           name: 'host',
+          shareStrategy: 'loaded-first',
+          experiments: { asyncStartup: true },
           remotes: {
             remote1: 'remote1@http://localhost:3001/mf-manifest.json',
             remote2: 'remote2@http://localhost:3002/mf-manifest.json',

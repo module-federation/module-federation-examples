@@ -1,3 +1,13 @@
-import LoaderContext1 from 'expose_css_module/LoaderContext';
+let providers;
+if (typeof window !== 'undefined') {
+  // eslint-disable-next-line global-require
+  const LoaderContext1 = require('expose_css_module/LoaderContext');
+  providers = [LoaderContext1.StyleContext.Provider];
+} else {
+  // eslint-disable-next-line global-require
+  const React = require('react');
+  const Passthrough = ({ children }) => React.createElement(React.Fragment, null, children);
+  providers = [Passthrough];
+}
 
-export default [LoaderContext1.StyleContext.Provider];
+export default providers;

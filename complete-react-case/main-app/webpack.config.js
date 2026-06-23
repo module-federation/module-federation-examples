@@ -1,4 +1,4 @@
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 module.exports = {
@@ -31,7 +31,9 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'main_app',
+      shareStrategy: 'loaded-first',
       remotes: {
         'lib-app': 'lib_app@http://localhost:3000/remoteEntry.js',
         'component-app': 'component_app@http://localhost:3001/remoteEntry.js',

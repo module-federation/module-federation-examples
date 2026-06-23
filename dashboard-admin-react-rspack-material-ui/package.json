@@ -1,0 +1,12 @@
+{
+  "name": "dashboard-admin-react-rspack-material-ui",
+  "description": "React admin dashboard composed of MFEs (Webpack 5 + Rspack) with Material UI",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "pnpm --filter \"./{root,dashboard-app,sidebar,faq-app,team-app}\" --parallel start",
+    "start": "pnpm build && pnpm serve",
+    "build": "pnpm --filter \"./{root,dashboard-app,sidebar,faq-app,team-app}\" build",
+    "serve": "pnpm --filter \"./{root,dashboard-app,sidebar,faq-app,team-app}\" --parallel start"
+  }
+}

@@ -1,9 +1,10 @@
 const deps = require('../package.json').dependencies;
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const { NodeFederationPlugin, StreamingTargetPlugin } = require('@module-federation/node');
 
 module.exports = {
   client: new ModuleFederationPlugin({
+    experiments: { asyncStartup: true },
     name: 'remote2',
     filename: 'remoteEntry.js',
     remotes: {},

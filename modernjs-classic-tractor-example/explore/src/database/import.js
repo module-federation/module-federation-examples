@@ -97,15 +97,11 @@ const database = {
     {
       key: 'autonomous',
       name: 'Autonomous',
-      products: products
-        .filter(p => p.category === 'autonomous')
-        .map(toProduct),
+      products: products.filter(p => p.category === 'autonomous').map(toProduct),
     },
   ],
   recommendations: products
-    .flatMap(product =>
-      product.variants.map(variant => toRecoItem(product, variant)),
-    )
+    .flatMap(product => product.variants.map(variant => toRecoItem(product, variant)))
     .reduce((res, variant) => {
       res[variant.sku] = variant;
       return res;

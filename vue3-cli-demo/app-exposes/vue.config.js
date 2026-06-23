@@ -1,5 +1,5 @@
 const { defineConfig } = require('@vue/cli-service');
-const webpack = require('webpack');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 module.exports = defineConfig({
   pages: {
@@ -30,8 +30,10 @@ module.exports = defineConfig({
       },
     },
     plugins: [
-      new webpack.container.ModuleFederationPlugin({
+      new ModuleFederationPlugin({
+        experiments: { asyncStartup: true },
         name: 'app_exposes',
+        shareStrategy: 'loaded-first',
         filename: 'remoteEntry.js',
         exposes: {
           './HelloWorld.vue': './src/components/HelloWorld.vue',

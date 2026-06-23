@@ -41,7 +41,9 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app1',
+      shareStrategy: 'loaded-first',
       // adds react as shared module
       // version is inferred from package.json
       // there is no version check for the required version

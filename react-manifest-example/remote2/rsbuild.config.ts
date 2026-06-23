@@ -8,7 +8,10 @@ export default defineConfig({
   },
   dev: {
     // It is necessary to configure assetPrefix, and in the production environment, you need to configure output.assetPrefix
-    assetPrefix: 'http://localhost:3002',
+    assetPrefix: true,
+    client: {
+      port: 3002,
+    },
   },
   tools: {
     rspack: (config, { appendPlugins }) => {
@@ -16,6 +19,8 @@ export default defineConfig({
       appendPlugins([
         new ModuleFederationPlugin({
           name: 'remote2',
+          shareStrategy: 'loaded-first',
+          experiments: { asyncStartup: true },
           exposes: {
             './button': './src/button.tsx',
           },

@@ -1,8 +1,9 @@
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 module.exports = {
   entry: './src/index',
   mode: 'development',
+  target: 'web',
   devServer: {
     port: 3002,
   },
@@ -13,7 +14,9 @@ module.exports = {
   module: {},
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'libs',
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       exposes: {
         './react': 'react',

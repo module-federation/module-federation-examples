@@ -6,19 +6,13 @@ import './StorePicker.css';
 const StorePicker = () => {
   return (
     <div className="e_StorePicker">
-      <div
-        className="e_StorePicker_control"
-        data-boundary="explore-storepicker"
-      >
+      <div className="e_StorePicker_control" data-boundary="explore-storepicker">
         <div className="e_StorePicker_selected"></div>
         <Button className="e_StorePicker_choose" type="button">
           choose a store
         </Button>
       </div>
-      <dialog
-        className="e_StorePicker_dialog"
-        data-boundary="explore-storepicker (dialog)"
-      >
+      <dialog className="e_StorePicker_dialog" data-boundary="explore-storepicker (dialog)">
         <div className="e_StorePicker_wrapper">
           <h2>Stores</h2>
           <ul className="e_StorePicker_list">
@@ -41,11 +35,7 @@ const StorePicker = () => {
                     {s.city}
                   </p>
                 </div>
-                <Button
-                  className="e_StorePicker_select"
-                  type="button"
-                  data-id={s.id}
-                >
+                <Button className="e_StorePicker_select" type="button" data-id={s.id}>
                   select
                 </Button>
               </li>

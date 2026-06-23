@@ -3,8 +3,6 @@ const refreshPlugin = require('@rspack/plugin-react-refresh');
 const isDev = process.env.NODE_ENV === 'development';
 
 const path = require('path');
-const deps = require('./package.json').dependencies;
-console.log({ deps });
 const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 
 const name = 'app_01';
@@ -19,9 +17,6 @@ module.exports = {
   },
   resolve: {
     extensions: ['...', '.ts', '.tsx', '.jsx'],
-  },
-  optimization: {
-    minimize: false,
   },
   devServer: {
     port: 3000,
@@ -98,7 +93,9 @@ module.exports = {
       publicPath: '/',
     }),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: name,
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       remotes: {
         app_02: 'app_02@http://localhost:3001/mf-manifest.json',

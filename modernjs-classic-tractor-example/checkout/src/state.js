@@ -41,18 +41,13 @@ export function readFromCookie(c) {
  * @param {Request} c - The request object.
  */
 export function writeToCookie(items, c) {
-  const cookieStr = items
-    .map(item => `${item.sku}${QTY_SEP}${item.quantity}`)
-    .join(ITEM_SEP);
+  const cookieStr = items.map(item => `${item.sku}${QTY_SEP}${item.quantity}`).join(ITEM_SEP);
 
   if (typeof document !== 'undefined') {
     // Client-side
     document.cookie = `${COOKIE}=${cookieStr}; path=/; SameSite=Lax; Secure`;
   } else if (c && c.headers) {
     // Server-side
-    c.headers.set(
-      'Set-Cookie',
-      `${COOKIE}=${cookieStr}; path=/; SameSite=Lax; Secure`,
-    );
+    c.headers.set('Set-Cookie', `${COOKIE}=${cookieStr}; path=/; SameSite=Lax; Secure`);
   }
 }

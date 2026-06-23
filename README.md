@@ -24,6 +24,19 @@ Click here to see the detailed list of examples in this repo [Full Examples List
 | <a href="https://cb.run/WIVv" target="_blank">15 Min 1:1 consultation</a>                                        | \$30         |
 | Bespoke API modifications and hands on code                                                                      | $300-$500/hr |
 
+## Deploy with Zephyr Cloud
+
+<img alt="Zephyr Cloud Logo" src=".github/static/zephyr.svg" height="250px" width="400px">
+
+[Zephyr Cloud](https://zephyr-cloud.io) is a cloud deployment provider that integrates directly into your build with zero config.
+
+- Automatically deploys your federated applications during the build process - simply save your code and get a URL in seconds.
+- Works with Webpack, Vite, Rspack, and more.
+- Deploy using BYOC to any cloud provider.
+- Manages complex multi-artifact deployments across different release cadences, handles micro frontend dependency management automatically, and provides version rollback and roll-forward capabilities.
+
+Start for free today at [zephyr-cloud.io](https://zephyr-cloud.io).
+
 ## Notes
 
 The examples in this repository leverage [pnpm](https://pnpm.io/) and workspaces. To run from a git checkout locally, remove all of the proprietary example directories, ensure you have pnpm installed and run install `pnpm i` at the repo root.
@@ -84,6 +97,7 @@ Module federation will work with any type of file that you're able to import, th
 - Shopify
 - adidas
 - Zomato
+- SHIELD
 - PayNet (Payments Network Malaysia)
 - and many more I cant remember
 

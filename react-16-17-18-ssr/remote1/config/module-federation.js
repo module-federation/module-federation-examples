@@ -3,6 +3,7 @@ const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack')
 
 module.exports = {
   client: new ModuleFederationPlugin({
+    experiments: { asyncStartup: true },
     name: 'remote1',
     filename: 'remoteEntry.js',
     remotes: {
@@ -25,6 +26,7 @@ module.exports = {
   }),
   server: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       runtimePlugins: [require.resolve('@module-federation/node/runtimePlugin')],
       remoteType: 'script',
       name: 'remote1',

@@ -10,6 +10,14 @@
     "shared-lib-2"
   ],
   "scripts": {
-    "start": "pnpm --filter isolate-shared-dependencies_app* --parallel start"
+    "start": "pnpm --filter isolate-shared-dependencies_app* --parallel start",
+    "e2e:ci": "CI=1 pnpm exec playwright test --reporter=list",
+    "legacy:e2e:ci": "CI=1 pnpm exec playwright test --reporter=list",
+    "test:e2e": "pnpm exec playwright test"
+  },
+  "devDependencies": {
+    "wait-on": "7.2.0",
+    "@playwright/test": "1.58.2",
+    "playwright": "1.58.2"
   }
 }

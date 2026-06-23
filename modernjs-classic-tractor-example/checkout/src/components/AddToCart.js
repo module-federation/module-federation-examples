@@ -26,16 +26,10 @@ const AddToCart = ({ sku }) => {
             {variant.inventory} in stock, free shipping
           </p>
         ) : (
-          <p className="c_AddToCart__stock c_AddToCart__stock--empty">
-            out of stock
-          </p>
+          <p className="c_AddToCart__stock c_AddToCart__stock--empty">out of stock</p>
         )}
       </div>
-      <Button
-        disabled={outOfStock}
-        className="c_AddToCart__button"
-        variant="primary"
-      >
+      <Button disabled={outOfStock} className="c_AddToCart__button" variant="primary">
         add to basket
       </Button>
       <div className="c_AddToCart__confirmed c_AddToCart__confirmed--hidden">

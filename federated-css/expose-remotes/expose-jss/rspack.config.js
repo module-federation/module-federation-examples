@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@rspack/core').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 const {
   remotes: { jss },
   mfeBaseConfig,
@@ -47,8 +47,10 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       ...mfeBaseConfig,
       name: jss.name,
+      shareStrategy: 'loaded-first',
       exposes: {
         './JssStyles': './src/react-jss.styles.js',
         './Component': './src/Component.js',

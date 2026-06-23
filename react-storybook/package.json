@@ -13,9 +13,15 @@
     "start": "concurrently 'cd ./host && pnpm start' 'cd ./remote && pnpm start'",
     "build": "concurrently 'cd ./host && pnpm build' 'cd ./remote && pnpm build'",
     "serve": "concurrently 'cd ./host && pnpm serve' 'cd ./remote && pnpm serve'",
-    "clean": "concurrently 'cd ./host && pnpm clean' 'cd ./remote && pnpm clean'"
+    "clean": "concurrently 'cd ./host && pnpm clean' 'cd ./remote && pnpm clean'",
+    "test:e2e": "npx playwright test",
+    "e2e:ci": "pnpm build && pnpm exec playwright test --reporter=list",
+    "legacy:e2e:ci": "echo \"No legacy e2e tests\""
   },
   "devDependencies": {
-    "concurrently": "8.2.2"
+    "concurrently": "8.2.2",
+    "@playwright/test": "1.58.2",
+    "playwright": "1.58.2",
+    "wait-on": "7.2.0"
   }
 }

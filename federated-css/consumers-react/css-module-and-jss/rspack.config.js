@@ -1,10 +1,10 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@rspack/core').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 const path = require('path');
 const mfConfig = require('./mf-plugin.config');
 
 module.exports = {
-  entry: './src/index',
+  entry: ['./src/ensureNmdPolyfill', './src/index'],
   mode: 'development',
   devServer: {
     static: {
@@ -43,7 +43,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new ModuleFederationPlugin(mfConfig),
+    new ModuleFederationPlugin({ ...mfConfig, shareStrategy: 'loaded-first' }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),

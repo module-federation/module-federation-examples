@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin, ContainerPlugin } = require('@module-federation/enhanced/rspack');
-
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
+const { container } = require('@rspack/core');
 const path = require('path');
 
 const deps = require('./package.json').dependencies;
@@ -67,32 +67,25 @@ module.exports = {
     ],
   },
   plugins: [
-    //TODO: fix rspack federation plugin to create secondary container automatically
-    // new ModuleFederationPlugin({
-    //   name: 'app1',
-    //   filename: 'remoteEntry.js',
-    //   remotes: {
-    //     app2: 'app2@http://localhost:3002/remoteEntry.js',
-    //   },
-    //   runtimePlugins: [require.resolve('./single-runtime.js')],
-    //   exposes: {
-    //     './Button': './src/Button',
-    //   },
-    //   shared: {
-    //     ...deps,
-    //     react: {
-    //       singleton: true,
-    //     },
-    //     'react-dom': {
-    //       singleton: true,
-    //     },
-    //     lodash: {},
-    //   },
-    // }),
-    new ModuleFederationPlugin({
-      name: 'app1',
+    new container.ContainerPlugin({
+      name: 'app1_partial',
       filename: 'app1_partial.js',
+      library: {
+        type: 'var',
+        name: 'app1',
+      },
       runtime: undefined,
+      runtimePlugins: [require.resolve('./single-runtime.js')],
+      exposes: {
+        './Button': './src/Button',
+      },
+    }),
+    new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      name: 'app1',
+      shareStrategy: 'loaded-first',
+      runtime: false,
+      filename: 'remoteEntry.js',
       remotes: {
         app2: 'app2@http://localhost:3002/remoteEntry.js',
       },
@@ -113,7 +106,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      excludeChunks: ['app1', 'app1_partial'],
+      excludeChunks: ['app1'],
     }),
   ],
 };

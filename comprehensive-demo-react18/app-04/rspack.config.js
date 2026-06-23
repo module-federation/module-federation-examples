@@ -1,6 +1,5 @@
-const {
-  container: { ModuleFederationPlugin },
-} = require('@rspack/core');
+const { CssExtractRspackPlugin } = require('@rspack/core');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 const path = require('path');
 
 const mode = process.env.NODE_ENV || 'development';
@@ -43,22 +42,30 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.css$/,
+        use: [prod ? CssExtractRspackPlugin.loader : 'style-loader', 'css-loader'],
+        type: 'javascript/auto',
+      },
     ],
   },
   mode,
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      dts: false,
       name: 'app_04',
       filename: 'remoteEntry.js',
       exposes: {
         './App': './src/main.js',
         './loadApp': './src/loadApp.js',
       },
+      shareStrategy: 'loaded-first',
       shared: [],
+    }),
+    new CssExtractRspackPlugin({
+      filename: '[name].css',
     }),
   ],
   devtool: prod ? false : 'source-map',
-  experiments: {
-    css: true,
-  },
 };

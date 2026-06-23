@@ -1,5 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ModuleFederationPlugin = require('@module-federation/enhanced').ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 const mode = process.env.NODE_ENV || 'development';
 const prod = mode === 'production';
@@ -53,12 +53,15 @@ module.exports = {
   mode,
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      dts: false,
       name: 'app_04',
       filename: 'remoteEntry.js',
       exposes: {
         './App': './src/main.js',
         './loadApp': './src/loadApp.js',
       },
+      shareStrategy: 'loaded-first',
       shared: [],
     }),
     new MiniCssExtractPlugin({

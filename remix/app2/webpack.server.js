@@ -2,14 +2,13 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 
 import { readConfig } from '@remix-run/dev/dist/config.js';
-import { EsbuildPlugin } from 'esbuild-loader';
 import nodeExternals from 'webpack-node-externals';
 import { createServerBuildEntry } from './utils/server-build-entry.js';
 
 import { getManifest } from './utils/manifest.js';
-import { default as Enhanced } from '@module-federation/enhanced';
+import { ModuleFederationPlugin } from '@module-federation/enhanced/webpack';
 import { default as NFP } from '@module-federation/node';
-const { AsyncBoundaryPlugin, ModuleFederationPlugin } = Enhanced;
+
 const { UniversalFederationPlugin } = NFP;
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 const remixConfig = await readConfig();
@@ -88,6 +87,7 @@ const config = {
   plugins: [
     new UniversalFederationPlugin(
       {
+        experiments: { asyncStartup: true },
         isServer: true,
         name: 'app2',
         filename: 'remoteEntry.js',
@@ -116,11 +116,6 @@ const config = {
       },
       { ModuleFederationPlugin },
     ),
-    new AsyncBoundaryPlugin({
-      excludeChunk: chunk => {
-        return chunk.name === 'app2';
-      },
-    }),
   ],
 };
 

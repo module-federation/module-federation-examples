@@ -1,9 +1,10 @@
 const deps = require('../package.json').dependencies;
-const { ModuleFederationPlugin } = require('webpack').container;
-const { NodeFederationPlugin, StreamingTargetPlugin } = require('@module-federation/node');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
+const { UniversalFederationPlugin } = require('@module-federation/node');
 
 module.exports = {
   client: new ModuleFederationPlugin({
+    experiments: { asyncStartup: true },
     name: 'expose_tailwind_css',
     filename: 'remoteEntry.js',
     remotes: {},
@@ -27,7 +28,9 @@ module.exports = {
     },
   }),
   server: [
-    new NodeFederationPlugin({
+    new UniversalFederationPlugin({
+      isServer: true,
+      useRuntimePlugin: true,
       name: 'expose_tailwind_css',
       filename: 'remoteEntry.js',
       library: { type: 'commonjs-module' },
@@ -38,23 +41,10 @@ module.exports = {
       },
       shared: {
         ...deps,
-        react: {
-          singleton: true,
-          requiredVersion: deps.react,
-        },
-        'react-dom': {
-          singleton: true,
-          requiredVersion: deps['react-dom'],
-        },
-        'isomorphic-style-loader': {
-          singleton: true,
-        },
+        react: { singleton: true, requiredVersion: deps.react },
+        'react-dom': { singleton: true, requiredVersion: deps['react-dom'] },
+        'isomorphic-style-loader': { singleton: true },
       },
-    }),
-    new StreamingTargetPlugin({
-      name: 'expose_tailwind_css',
-      library: { type: 'commonjs-module' },
-      remotes: {},
     }),
   ],
 };

@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { FederatedTypesPlugin } = require('@module-federation/typescript');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 const dotenv = require('dotenv').config({
   path: path.join(__dirname, '../.env'),
@@ -12,7 +12,7 @@ const federationConfig = require('./federationConfig');
 
 module.exports = {
   entry: {
-    main: path.join(__dirname, '../src/index.js'),
+    main: path.join(__dirname, '../src/index.tsx'),
   },
 
   output: {

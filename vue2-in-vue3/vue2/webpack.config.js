@@ -2,7 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 module.exports = (env = {}) => ({
   mode: 'development',
   cache: false,
@@ -44,13 +44,15 @@ module.exports = (env = {}) => ({
       filename: '[name].css',
     }),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'vue2App',
       filename: 'remoteEntry.js',
       library: { type: 'var', name: 'vue2App' },
       exposes: {
-        './vue2': './node_modules/vue/dist/vue',
+        './vue2': require.resolve('vue/dist/vue.common.js'),
         './Button': './src/components/Button',
       },
+      shareStrategy: 'loaded-first',
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './index.html'),

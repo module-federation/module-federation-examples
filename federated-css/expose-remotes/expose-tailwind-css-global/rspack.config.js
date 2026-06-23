@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@rspack/core').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 const path = require('path');
 const {
   remotes: { tailwindCssGlobal },
@@ -7,7 +7,7 @@ const {
 } = require('../remotes.config');
 
 module.exports = {
-  entry: './src/index',
+  entry: ['./src/ensureNmdPolyfill', './src/index'],
   mode: 'development',
   devServer: {
     static: {
@@ -51,8 +51,10 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       ...mfeBaseConfig,
       name: tailwindCssGlobal.name,
+      shareStrategy: 'loaded-first',
       exposes: {
         './TailwindCssGlobal': './src/tailwind.global.css',
         './Component': './src/Component.js',

@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const package = require('./package.json');
@@ -41,7 +41,9 @@ module.exports = {
   //http://localhost:3002/remoteEntry.js
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'app1',
+      shareStrategy: 'loaded-first',
       remotes: {
         react_counter: `react_counter@${getRemoteEntryUrl(3002)}`,
         store: `store@${getRemoteEntryUrl(3003)}`,

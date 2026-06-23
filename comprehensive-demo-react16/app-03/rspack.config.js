@@ -1,7 +1,6 @@
-const {
-  HtmlRspackPlugin,
-  container: { ModuleFederationPlugin },
-} = require('@rspack/core');
+const { HtmlRspackPlugin } = require('@rspack/core');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const mode = process.env.NODE_ENV || 'development';
@@ -52,6 +51,8 @@ module.exports = {
   mode,
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      dts: false,
       name: 'app_03',
       filename: 'remoteEntry.js',
       remotes: {
@@ -60,12 +61,17 @@ module.exports = {
       exposes: {
         './Button': './src/Button',
       },
+      shareStrategy: 'loaded-first',
       shared: {
         'react-dom': {
           singleton: true,
+          requiredVersion: false,
+          eager: false,
         },
         react: {
           singleton: true,
+          requiredVersion: false,
+          eager: false,
         },
       },
     }),

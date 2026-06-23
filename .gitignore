@@ -130,9 +130,26 @@ buildServer
 **/cypress/screenshots/**
 **/cypress/results/**
 **/cypress/report/**
+**/allure-results/**
+
+# Playwright folders
+**/playwright-report/**
+**/test-results/**
 /federated-express-routes/host/build/
 /federated-express-routes/remote/build/
 /comprehensive-demo-react*/**/public/*.js
 /comprehensive-demo-react*/**/public/*.css
 *.map
+
+# Module Federation build outputs
+**/mf-manifest.json
+**/mf-stats.json
+**/.__mf__temp/
+
+# react-sharedworker build output
+/react-sharedworker/host/build/
+/react-sharedworker/module/build/
+
+# Server-side-render-only compiled output
+/server-side-render-only/**/public/server/
 

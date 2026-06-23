@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const path = require('path');
 const deps = require('./package.json').dependencies;
 module.exports = {
@@ -51,6 +51,8 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: 'shell',
+      shareStrategy: 'loaded-first',
+      experiments: { asyncStartup: true },
       filename: 'remoteEntry.js',
       remotes: {
         order: 'order@http://localhost:3002/remoteEntry.js',

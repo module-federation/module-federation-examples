@@ -12,9 +12,7 @@ import products from '../../../products';
  * @returns {number} - The inventory count of the variant.
  */
 function getInventory(name) {
-  const hash = name
-    .split('')
-    .reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const hash = name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
   return hash % 11;
 }
 

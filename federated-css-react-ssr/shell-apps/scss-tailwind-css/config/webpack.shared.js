@@ -1,6 +1,12 @@
+const path = require('path');
+
 module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
+    alias: {
+      react: path.dirname(require.resolve('react/package.json')),
+      'react-dom': path.dirname(require.resolve('react-dom/package.json')),
+    },
   },
   module: {
     rules: [

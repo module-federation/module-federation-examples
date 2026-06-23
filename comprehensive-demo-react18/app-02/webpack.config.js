@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const deps = require('./package.json').dependencies;
 
@@ -63,6 +63,8 @@ module.exports = {
   plugins: [
     !isProd && new ReactRefreshWebpackPlugin(),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
+      dts: false,
       name: 'app_02',
       filename: 'remoteEntry.js',
       remotes: {
@@ -73,6 +75,7 @@ module.exports = {
         './Dialog': './src/Dialog',
         './Tabs': './src/Tabs',
       },
+      shareStrategy: 'loaded-first',
       shared: {
         ...deps,
         '@material-ui/core': {
@@ -83,9 +86,13 @@ module.exports = {
         },
         'react-dom': {
           singleton: true,
+          requiredVersion: false,
+          eager: true,
         },
         react: {
           singleton: true,
+          requiredVersion: false,
+          eager: true,
         },
       },
     }),

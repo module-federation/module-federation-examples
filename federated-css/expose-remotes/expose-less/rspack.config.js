@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('@rspack/core').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 const path = require('path');
 const {
   remotes: { less },
@@ -58,8 +58,10 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       ...mfeBaseConfig,
       name: less.name,
+      shareStrategy: 'loaded-first',
       exposes: {
         // './StyleLess': './src/Button.styles.less',
         './Component': './src/Component.js',

@@ -14,11 +14,7 @@ const VariantOption = ({ sku, name, selected, color }) => {
   return (
     <li className="d_VariantOption" style={{ '--variant-color': color }}>
       <i className="d_VariantOption__color"></i>
-      {selected ? (
-        <strong>{name}</strong>
-      ) : (
-        <Link to={`?sku=${sku}`}>{name}</Link>
-      )}
+      {selected ? <strong>{name}</strong> : <Link to={`?sku=${sku}`}>{name}</Link>}
     </li>
   );
 };

@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const dependencies = require('./package.json').dependencies;
 
 module.exports = {
@@ -47,7 +47,6 @@ module.exports = {
     ],
   },
   resolve: {
-    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     extensions: ['*', '.js', '.jsx'],
   },
 
@@ -56,7 +55,9 @@ module.exports = {
       template: './public/index.html',
     }),
     new ModuleFederationPlugin({
+      experiments: { asyncStartup: true },
       name: 'Nav',
+      shareStrategy: 'loaded-first',
       filename: 'remoteEntry.js',
       remotes: {
         Dashboard: 'Dashboard@http://localhost:3001/remoteEntry.js',
