@@ -1,5 +1,3 @@
-import { FederationRuntimePlugin } from '@module-federation/runtime/types';
-
 const runtimeStore = {
   name: '',
 };
