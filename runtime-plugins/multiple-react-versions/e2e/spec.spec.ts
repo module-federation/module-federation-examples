@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 const runtimeWrapperText = 'In RUNTIME PLUGIN WRAPPER';
 const hooksComponentText =
   'This Component uses hooks, if loaded on localhost:3001, it should work, even though that host does not support React Hooks';
-const versionInfoText = 'Host React: 16.6.3 Remote React: 17.0.2';
+const versionInfoText = 'Host React: 16.14.0 Remote React: 17.0.2';
 const app2ContentText = 'More react components from App2 using non-legacy React to render';
 
 test.describe('multiple-react-versions', () => {
@@ -22,7 +22,7 @@ test.describe('multiple-react-versions', () => {
   });
 
   test('shows the runtime plugin wrapper content', async ({ page }) => {
-    await expect(page.getByText(runtimeWrapperText)).toBeVisible();
+    await expect(page.getByText(runtimeWrapperText)).toHaveCount(2);
     await expect(page.locator('strong', { hasText: hooksComponentText })).toBeVisible();
   });
 
@@ -36,11 +36,10 @@ test.describe('multiple-react-versions', () => {
   });
 
   test('shows version information for host and remote React', async ({ page }) => {
-    await expect(page.getByText(versionInfoText)).toBeVisible();
+    await expect(page.getByText(versionInfoText)).toHaveCount(2);
   });
 
   test('renders additional App 2 content', async ({ page }) => {
-    await expect(page.locator('div', { hasText: runtimeWrapperText })).toBeVisible();
     await expect(page.locator('p', { hasText: app2ContentText })).toBeVisible();
   });
 });

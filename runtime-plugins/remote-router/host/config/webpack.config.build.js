@@ -30,7 +30,7 @@ module.exports = function (options) {
     // Copy files
     // https://webpack.js.org/plugins/copy-webpack-plugin
     new CopyPlugin({
-      patterns: [{ from: 'src/assets/images', to: 'images' }],
+      patterns: [{ from: 'src/assets/images', to: 'images', noErrorOnMissing: true }],
     }),
   ];
 

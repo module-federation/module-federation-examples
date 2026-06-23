@@ -26,10 +26,10 @@ const expectRemoteEntry = async (
   remoteAlias: string,
   expectedEntry: string,
 ) => {
-  const moduleContainer = page.getByText(`Module: ${moduleName}`).locator('..');
+  const moduleContainer = page.getByTestId(`runtime-module-${moduleName}`);
   await expect(moduleContainer).toBeVisible();
 
-  const remoteRow = moduleContainer.locator('div', { hasText: `${remoteAlias}:` });
+  const remoteRow = page.getByTestId(`runtime-remote-${moduleName}-${remoteAlias}`);
   await expect(remoteRow).toBeVisible();
   await expect(remoteRow.locator('code')).toHaveText(expectedEntry);
 };
