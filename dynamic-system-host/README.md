@@ -15,6 +15,7 @@ ports `3001`, `3002`, and `3003` respectively.
 - [localhost:3001](http://localhost:3001/) (HOST)
 - [localhost:3002](http://localhost:3002/) (STANDALONE REMOTE)
 - [localhost:3003](http://localhost:3003/) (STANDALONE REMOTE)
-  <img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/DynamicSystemHost">
 
 ["Best Practices, Rules amd more interesting information here](../../playwright-e2e/README.md)
+
+<img width="0" height="0" alt="" src="https://www.google-analytics.com/g/collect?v=2&tid=G-DRPXW0EEVT&cid=ae045149-9d17-0367-bbb0-11c41d92b411&en=readme_view&ep.repository=module-federation-examples&ep.example=dynamic-system-host&ep.readme_path=dynamic-system-host%2FREADME.md&dl=https%3A%2F%2Fgithub.com%2Fmodule-federation%2Fmodule-federation-examples%2Ftree%2Fmaster%2Fdynamic-system-host&dt=ModuleFederationExamples+dynamic-system-host%2FREADME.md">

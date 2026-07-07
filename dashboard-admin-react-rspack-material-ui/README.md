@@ -23,3 +23,5 @@ Open [http://localhost:3001](http://localhost:3001) to view Webpack 5 module fed
 Open [http://localhost:3002](http://localhost:3002) to view Webpack 5 module federated Navigation App\
 Open [http://localhost:3003](http://localhost:3003) to view Webpack 5 module federated FAQ App\
 Open [http://localhost:3004](http://localhost:3004) to view Rspack module federated Team App
+
+<img width="0" height="0" alt="" src="https://www.google-analytics.com/g/collect?v=2&tid=G-DRPXW0EEVT&cid=ae045149-9d17-0367-bbb0-11c41d92b411&en=readme_view&ep.repository=module-federation-examples&ep.example=dashboard-admin-react-rspack-material-ui&ep.readme_path=dashboard-admin-react-rspack-material-ui%2FREADME.md&dl=https%3A%2F%2Fgithub.com%2Fmodule-federation%2Fmodule-federation-examples%2Ftree%2Fmaster%2Fdashboard-admin-react-rspack-material-ui&dt=ModuleFederationExamples+dashboard-admin-react-rspack-material-ui%2FREADME.md">

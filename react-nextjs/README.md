@@ -55,3 +55,5 @@ It is a middle-level app, which depends on modules exposed from remote app, for 
 - This type of module federated at folder: `nextjs-host-react-remote`
 
 ["Best Practices, Rules amd more interesting information here](../../playwright-e2e/README.md)
+
+<img width="0" height="0" alt="" src="https://www.google-analytics.com/g/collect?v=2&tid=G-DRPXW0EEVT&cid=ae045149-9d17-0367-bbb0-11c41d92b411&en=readme_view&ep.repository=module-federation-examples&ep.example=react-nextjs&ep.readme_path=react-nextjs%2FREADME.md&dl=https%3A%2F%2Fgithub.com%2Fmodule-federation%2Fmodule-federation-examples%2Ftree%2Fmaster%2Freact-nextjs&dt=ModuleFederationExamples+react-nextjs%2FREADME.md">

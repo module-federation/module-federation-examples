@@ -77,4 +77,4 @@ import type { ButtonProps } from 'app2/Button';
 />;
 ```
 
-<img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/DifferentReactVersionsTypescript">
+<img width="0" height="0" alt="" src="https://www.google-analytics.com/g/collect?v=2&tid=G-DRPXW0EEVT&cid=ae045149-9d17-0367-bbb0-11c41d92b411&en=readme_view&ep.repository=module-federation-examples&ep.example=different-react-versions-typescript&ep.readme_path=different-react-versions-typescript%2FREADME.md&dl=https%3A%2F%2Fgithub.com%2Fmodule-federation%2Fmodule-federation-examples%2Ftree%2Fmaster%2Fdifferent-react-versions-typescript&dt=ModuleFederationExamples+different-react-versions-typescript%2FREADME.md">
