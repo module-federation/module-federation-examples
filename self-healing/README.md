@@ -30,6 +30,7 @@ Run `pnpm run start`. This will build and serve both `app1` and `app2` on ports 
 - REMOTE: [localhost:3002](http://localhost:3002/)
 
 Notice that the button in both apps are the same even though the host app didn't provide `styled-components` as a dependency. If you open DevTools and checkout the "Network" tab you can see 2 requests were made to `app2`; the remote `<Button />` component and the missing `styled-components` vendor code.
-<img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/SelfHealing">
 
 ["Best Practices, Rules amd more interesting information here](../../playwright-e2e/README.md)
+
+<img width="0" height="0" alt="" src="https://www.google-analytics.com/g/collect?v=2&tid=G-DRPXW0EEVT&cid=ae045149-9d17-0367-bbb0-11c41d92b411&en=readme_view&ep.repository=module-federation-examples&ep.example=self-healing&ep.readme_path=self-healing%2FREADME.md&dl=https%3A%2F%2Fgithub.com%2Fmodule-federation%2Fmodule-federation-examples%2Ftree%2Fmaster%2Fself-healing&dt=ModuleFederationExamples+self-healing%2FREADME.md">

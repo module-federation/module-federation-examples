@@ -30,3 +30,5 @@ To give the application a spin, run `pnpm start`. This command will build and se
 - `pnpm e2e:ci` builds the applications and executes the suite in headless mode, the same flow used in CI.
 
 Playwright stores traces, screenshots, and videos for failing specs inside `playwright-report` when run in CI mode.
+
+<img width="0" height="0" alt="" src="https://www.google-analytics.com/g/collect?v=2&tid=G-DRPXW0EEVT&cid=ae045149-9d17-0367-bbb0-11c41d92b411&en=readme_view&ep.repository=module-federation-examples&ep.example=runtime-plugins&ep.readme_path=runtime-plugins%2Fremote-control%2FREADME.md&dl=https%3A%2F%2Fgithub.com%2Fmodule-federation%2Fmodule-federation-examples%2Ftree%2Fmaster%2Fruntime-plugins%2Fremote-control&dt=ModuleFederationExamples+runtime-plugins%2Fremote-control%2FREADME.md">

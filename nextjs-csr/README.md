@@ -71,3 +71,5 @@ Useful files in the SSR build.
 The async import middleware is where i keep the async boundary, this is also the only point of reference where React is import into scope.
 
 By doing so, I can ensure that webpack has time to initialize and load anything it might need before attempting to actually require, and render the application.
+
+<img width="0" height="0" alt="" src="https://www.google-analytics.com/g/collect?v=2&tid=G-DRPXW0EEVT&cid=ae045149-9d17-0367-bbb0-11c41d92b411&en=readme_view&ep.repository=module-federation-examples&ep.example=nextjs-csr&ep.readme_path=nextjs-csr%2FREADME.md&dl=https%3A%2F%2Fgithub.com%2Fmodule-federation%2Fmodule-federation-examples%2Ftree%2Fmaster%2Fnextjs-csr&dt=ModuleFederationExamples+nextjs-csr%2FREADME.md">

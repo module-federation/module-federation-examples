@@ -19,3 +19,5 @@ To run tests in interactive mode, run `npm run cypress:debug` from the root dire
 To build app and run test in headless mode, run `yarn e2e:ci`. It will build app and run tests for this workspace in headless mode. If tets failed cypress will create `cypress` directory in sample root folder with screenshots and videos.
 
 ["Best Practices, Rules amd more interesting information here](../../cypress/README.md)
+
+<img width="0" height="0" alt="" src="https://www.google-analytics.com/g/collect?v=2&tid=G-DRPXW0EEVT&cid=ae045149-9d17-0367-bbb0-11c41d92b411&en=readme_view&ep.repository=module-federation-examples&ep.example=unit-test&ep.readme_path=unit-test%2FREADME.md&dl=https%3A%2F%2Fgithub.com%2Fmodule-federation%2Fmodule-federation-examples%2Ftree%2Fmaster%2Funit-test&dt=ModuleFederationExamples+unit-test%2FREADME.md">

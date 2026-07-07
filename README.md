@@ -42,8 +42,6 @@ Start for free today at [zephyr-cloud.io](https://zephyr-cloud.io).
 The examples in this repository leverage [pnpm](https://pnpm.io/) and workspaces. To run from a git checkout locally, remove all of the proprietary example directories, ensure you have pnpm installed and run install `pnpm i` at the repo root.
 You can then run `pnpm start` from any of the non-proprietary examples. Some examples may use a different command such as "dev" or "serve".
 
-<img src="https://ssl.google-analytics.com/collect?v=1&t=event&ec=email&ea=open&t=event&tid=UA-120967034-1&z=1589682154&cid=ae045149-9d17-0367-bbb0-11c41d92b411&dt=ModuleFederationExamples&dp=/email/ModuleFederationExamplesRoot">
-
 Module federation will work with any type of file that you're able to import, that Webpack understands how to process. It is not a JS only, or React only feature. Images, CSS, JSON, WASM, and anything else can be federated.
 
 ## Companies using Module Federation
@@ -104,3 +102,5 @@ Module federation will work with any type of file that you're able to import, th
 # Contribution to this repo
 
 You decided to contribute to this project? Great, thanks a lot for pushing it!
+
+<img width="0" height="0" alt="" src="https://www.google-analytics.com/g/collect?v=2&tid=G-DRPXW0EEVT&cid=ae045149-9d17-0367-bbb0-11c41d92b411&en=readme_view&ep.repository=module-federation-examples&ep.example=root&ep.readme_path=README.md&dl=https%3A%2F%2Fgithub.com%2Fmodule-federation%2Fmodule-federation-examples%2Ftree%2Fmaster%2F&dt=ModuleFederationExamples+README.md">

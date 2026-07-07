@@ -460,3 +460,5 @@ The E2E tests verify:
 3. **Long-term**: Explore advanced micro-frontend patterns and tooling
 
 This example serves as a foundation for understanding Module Federation's dynamic capabilities while highlighting areas for production-ready improvements.
+
+<img width="0" height="0" alt="" src="https://www.google-analytics.com/g/collect?v=2&tid=G-DRPXW0EEVT&cid=ae045149-9d17-0367-bbb0-11c41d92b411&en=readme_view&ep.repository=module-federation-examples&ep.example=advanced-api&ep.readme_path=advanced-api%2Fdynamic-remotes%2FREADME.md&dl=https%3A%2F%2Fgithub.com%2Fmodule-federation%2Fmodule-federation-examples%2Ftree%2Fmaster%2Fadvanced-api%2Fdynamic-remotes&dt=ModuleFederationExamples+advanced-api%2Fdynamic-remotes%2FREADME.md">

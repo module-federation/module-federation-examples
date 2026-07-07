@@ -243,3 +243,5 @@ Shells
 - [localhost:4000](http://localhost:4003/) (SHELL JSS-STYLED-COMPONENTS-CSS-MODULE)
 - [localhost:4000](http://localhost:4004/) (SHELL LESS-SCSS)
 - [localhost:4000](http://localhost:4005/) (SHELL SCSS-TAILWIND)
+
+<img width="0" height="0" alt="" src="https://www.google-analytics.com/g/collect?v=2&tid=G-DRPXW0EEVT&cid=ae045149-9d17-0367-bbb0-11c41d92b411&en=readme_view&ep.repository=module-federation-examples&ep.example=federated-css-react-ssr&ep.readme_path=federated-css-react-ssr%2FREADME.md&dl=https%3A%2F%2Fgithub.com%2Fmodule-federation%2Fmodule-federation-examples%2Ftree%2Fmaster%2Ffederated-css-react-ssr&dt=ModuleFederationExamples+federated-css-react-ssr%2FREADME.md">
