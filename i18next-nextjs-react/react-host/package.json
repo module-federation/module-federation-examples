@@ -6,7 +6,8 @@
     "build:dev": "webpack --mode development",
     "build:start": "cd dist && PORT=3001 npx serve",
     "start": "webpack serve --open --mode development",
-    "start:live": "webpack serve --mode development --live-reload --hot"
+    "start:live": "webpack serve --mode development --live-reload --hot",
+    "prestart": "node ../../scripts/track-demo-run.js"
   },
   "license": "MIT",
   "author": {

@@ -8,7 +8,8 @@
     "build": "webpack --mode=production",
     "build:prod": "webpack --mode=production --node-env=production",
     "start": "webpack-dev-server",
-    "e2e:ci": "pnpm build"
+    "e2e:ci": "pnpm build",
+    "prestart": "node ../../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "react": "18.3.1",

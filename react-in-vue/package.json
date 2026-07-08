@@ -9,7 +9,9 @@
     "serve": "pnpm run --filter react-in-vue_* --parallel serve",
     "clean": "pnpm run --filter react-in-vue_* --parallel clean",
     "e2e:ci": "playwright test --reporter=list",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@babel/preset-react": "7.24.7",

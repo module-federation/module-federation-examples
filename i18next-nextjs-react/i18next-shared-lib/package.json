@@ -5,7 +5,8 @@
   "scripts": {
     "postinstall": "tsc",
     "build": "tsc",
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "predev": "node ../../scripts/track-demo-run.js"
   },
   "author": {
     "name": "Frédéric JAMMES"

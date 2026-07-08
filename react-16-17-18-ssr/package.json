@@ -5,6 +5,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "pnpm --parallel --filter react-16-17-18-ssr_* run start",
-    "build": "pnpm --parallel --filter react-16-17-18-ssr_* run build"
+    "build": "pnpm --parallel --filter react-16-17-18-ssr_* run build",
+    "prestart": "node ../scripts/track-demo-run.js"
   }
 }

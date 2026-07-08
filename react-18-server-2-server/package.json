@@ -8,7 +8,9 @@
     "build": "pnpm run --filter react-18-server-2-server_* build",
     "serve": "pnpm run --filter react-18-server-2-server_* --parallel serve",
     "clean": "pnpm run --filter react-18-server-2-server_* --parallel clean",
-    "e2e:ci": "pnpm exec playwright test"
+    "e2e:ci": "pnpm exec playwright test",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2"

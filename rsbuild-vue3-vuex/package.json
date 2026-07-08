@@ -5,6 +5,7 @@
   "scripts": {
     "start": "pnpm --filter rsbuild-bue_* run dev",
     "build": "pnpm --filter rsbuild-bue_* run build",
-    "preview": "pnpm --filter rsbuild-bue_* run preview"
+    "preview": "pnpm --filter rsbuild-bue_* run preview",
+    "prestart": "node ../scripts/track-demo-run.js"
   }
 }

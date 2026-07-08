@@ -10,7 +10,9 @@
   "scripts": {
     "start": "lerna run --parallel start",
     "serve": "lerna run --parallel serve",
-    "build": "lerna run build"
+    "build": "lerna run build",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "lerna": "8.1.6"

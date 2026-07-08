@@ -5,7 +5,8 @@
   "scripts": {
     "start": "rsbuild dev",
     "build": "rsbuild build",
-    "preview": "rsbuild preview"
+    "preview": "rsbuild preview",
+    "prestart": "node ../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "preact": "^10.25.1"

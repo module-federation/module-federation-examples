@@ -7,7 +7,8 @@
     "start": "rspack serve",
     "legacy:start": "webpack serve",
     "build": "rspack --mode production",
-    "legacy:build": "webpack --mode production"
+    "legacy:build": "webpack --mode production",
+    "prestart": "node ../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "dotenv": "^16.6.1",

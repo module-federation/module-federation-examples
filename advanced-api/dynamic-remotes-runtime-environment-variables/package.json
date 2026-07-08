@@ -16,7 +16,9 @@
     "docker:run": "pnpm --filter dynamic-remotes-runtime-environment-variables_* --parallel docker:run",
     "docker:rm": "pnpm --filter dynamic-remotes-runtime-environment-variables_* --parallel docker:rm",
     "e2e:ci": "npx playwright test",
-    "legacy:e2e:ci": "USE_LEGACY=1 npx playwright test"
+    "legacy:e2e:ci": "USE_LEGACY=1 npx playwright test",
+    "prestart": "node ../../scripts/track-demo-run.js",
+    "preserve": "node ../../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2",

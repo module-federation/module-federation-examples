@@ -10,7 +10,8 @@
     "e2e": "pnpm exec playwright test",
     "e2e:ci": "node scripts/kill-all-ports.cjs && pnpm exec playwright test --reporter=list",
     "legacy:e2e:ci": "echo \"No legacy e2e tests\"",
-    "e2e:headed": "playwright test --headed"
+    "e2e:headed": "playwright test --headed",
+    "prestart": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2",

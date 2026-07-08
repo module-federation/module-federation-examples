@@ -4,7 +4,9 @@
   "scripts": {
     "dev": "rm -rf .next && PORT=3000 NEXT_PRIVATE_LOCAL_WEBPACK=true next dev",
     "build": "NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
-    "start": "PORT=3000 next start"
+    "start": "PORT=3000 next start",
+    "prestart": "node ../../scripts/track-demo-run.js",
+    "predev": "node ../../scripts/track-demo-run.js"
   },
   "author": {
     "name": "Frédéric JAMMES"

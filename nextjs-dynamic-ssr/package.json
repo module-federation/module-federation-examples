@@ -7,7 +7,9 @@
     "start": "pnpm --parallel --filter nextjs-dynamic-ssr_* dev",
     "build": "pnpm --parallel --filter nextjs-dynamic-ssr_* build",
     "serve": "pnpm --parallel --filter nextjs-dynamic-ssr_* start",
-    "test:e2e": "npx playwright test"
+    "test:e2e": "npx playwright test",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "dependencies": {
     "@module-federation/sdk": "2.0.1",

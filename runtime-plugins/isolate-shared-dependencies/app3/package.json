@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "start": "webpack serve --config webpack.config.js --port 3003",
-    "watch": "webpack --config webpack.config.js --watch"
+    "watch": "webpack --config webpack.config.js --watch",
+    "prestart": "node ../../../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@module-federation/enhanced": "2.5.1",

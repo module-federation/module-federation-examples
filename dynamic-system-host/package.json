@@ -12,7 +12,9 @@
     "clean": "pnpm --filter dynamic-system-host_app* --parallel clean",
     "test:e2e": "npx playwright test",
     "e2e:ci": "pnpm build && pnpm exec playwright test --reporter=list",
-    "legacy:e2e:ci": "pnpm legacy:build && pnpm exec playwright test --reporter=list"
+    "legacy:e2e:ci": "pnpm legacy:build && pnpm exec playwright test --reporter=list",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "wait-on": "7.2.0",

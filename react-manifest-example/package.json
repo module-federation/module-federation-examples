@@ -8,7 +8,9 @@
     "build": "pnpm run --filter react-manifest-example_* build",
     "serve": "pnpm run --filter react-manifest-example_* --parallel serve",
     "clean": "pnpm run --filter react-manifest-example_* --parallel clean",
-    "legacy:e2e:ci": "echo \"No legacy e2e tests\""
+    "legacy:e2e:ci": "echo \"No legacy e2e tests\"",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@babel/preset-react": "7.24.7",

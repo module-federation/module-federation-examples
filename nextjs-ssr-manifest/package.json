@@ -9,7 +9,9 @@
     "build": "pnpm --parallel --filter nextjs-ssr-manifest_* build",
     "serve": "pnpm --parallel --filter nextjs-ssr-manifest_* start",
     "test:e2e": "npx playwright test",
-    "e2e:ci": "pnpm build && pnpm exec playwright test --reporter=list"
+    "e2e:ci": "pnpm build && pnpm exec playwright test --reporter=list",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "dependencies": {
     "concurrently": "^8.2.2",

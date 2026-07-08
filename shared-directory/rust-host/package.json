@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "rsbuild dev",
     "build": "rsbuild build",
-    "preview": "npm run build && rsbuild preview"
+    "preview": "npm run build && rsbuild preview",
+    "predev": "node ../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "@module-federation/enhanced": "2.0.1",

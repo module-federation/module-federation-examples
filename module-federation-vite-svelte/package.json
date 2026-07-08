@@ -7,7 +7,8 @@
     "postinstall:deps": "pnpm --filter module-federation-vite-svelte-* run build",
     "dev": "pnpm --filter module-federation-vite-svelte-* dev",
     "build": "pnpm --filter module-federation-vite-svelte-* build",
-    "preview": "pnpm --filter module-federation-vite-svelte-* preview"
+    "preview": "pnpm --filter module-federation-vite-svelte-* preview",
+    "predev": "node ../scripts/track-demo-run.js"
   },
   "author": {
     "name": "Giorgio Boa",

@@ -4,7 +4,9 @@
   "scripts": {
     "dev": "rm -rf .next; NEXT_PRIVATE_LOCAL_WEBPACK=true next dev -p 3002",
     "build": "NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
-    "start": "NEXT_PRIVATE_LOCAL_WEBPACK=true NODE_ENV=production next start -p 3002"
+    "start": "NEXT_PRIVATE_LOCAL_WEBPACK=true NODE_ENV=production next start -p 3002",
+    "prestart": "node ../../scripts/track-demo-run.js",
+    "predev": "node ../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "@module-federation/nextjs-mf": "8.8.56",

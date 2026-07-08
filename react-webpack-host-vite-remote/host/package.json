@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "webpack serve --mode development --open",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "prestart": "node ../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "react": "^18.3.1",

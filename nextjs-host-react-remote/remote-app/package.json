@@ -16,7 +16,9 @@
     "dev": "webpack-cli serve",
     "build": "webpack --mode production",
     "serve": "serve dist -p 3002",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "predev": "node ../../scripts/track-demo-run.js",
+    "preserve": "node ../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "@stitches/react": "^1.2.8",

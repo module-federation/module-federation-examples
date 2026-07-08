@@ -28,7 +28,10 @@
     "dev": "rspack serve",
     "legacy:dev": "webpack serve --port=3001",
     "serve": "serve dist -p 3001 --cors",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prestart": "node ../../scripts/track-demo-run.js",
+    "predev": "node ../../scripts/track-demo-run.js",
+    "preserve": "node ../../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@module-federation/enhanced": "2.0.1",

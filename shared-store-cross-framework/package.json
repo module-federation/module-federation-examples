@@ -8,7 +8,9 @@
     "build": "pnpm --filter shared-store-cross-framework_* build",
     "serve": "pnpm --filter shared-store-cross-framework_* --parallel serve",
     "clean": "pnpm --filter shared-store-cross-framework_* --parallel clean",
-    "e2e:ci": "echo 'No Playwright tests for this example'"
+    "e2e:ci": "echo 'No Playwright tests for this example'",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "wait-on": "7.2.0"

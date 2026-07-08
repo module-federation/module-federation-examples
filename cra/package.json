@@ -11,7 +11,8 @@
     "build": "pnpm --filter cra_* build",
     "preview": "pnpm run build && pnpm --filter cra_* preview",
     "test:e2e": "pnpm exec playwright test",
-    "e2e:ci": "pnpm exec playwright test --reporter=list"
+    "e2e:ci": "pnpm exec playwright test --reporter=list",
+    "prestart": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2",

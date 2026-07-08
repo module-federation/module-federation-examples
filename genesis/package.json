@@ -10,7 +10,9 @@
   "scripts": {
     "dev": "concurrently --raw \"pnpm --filter genesis_ssr-mf-about dev\" \"pnpm --filter genesis_ssr-mf-home dev\"",
     "build": "FORCE_COLOR=1 pnpm --filter genesis_ssr-mf-about build && FORCE_COLOR=1 pnpm --filter genesis_ssr-mf-home build",
-    "start": "concurrently --raw \"pnpm --filter genesis_ssr-mf-about start\" \"pnpm --filter genesis_ssr-mf-home start\""
+    "start": "concurrently --raw \"pnpm --filter genesis_ssr-mf-about start\" \"pnpm --filter genesis_ssr-mf-home start\"",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "predev": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "concurrently": "8.2.2"

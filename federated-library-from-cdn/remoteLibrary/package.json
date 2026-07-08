@@ -7,7 +7,8 @@
     "start": "rspack serve --config rspack.dev.js",
     "legacy:start": "webpack serve --config webpack.dev.js",
     "build": "rspack --config rspack.prod.js",
-    "legacy:build": "webpack --config webpack.prod.js"
+    "legacy:build": "webpack --config webpack.prod.js",
+    "prestart": "node ../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "react": "^17.0.2",

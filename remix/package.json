@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "server": "concurrently 'cd ./app1; sleep 1 && npm run server' 'cd ./app2; npm run server'",
-    "start": "pnpm --filter remix-* --parallel start"
+    "start": "pnpm --filter remix-* --parallel start",
+    "prestart": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "concurrently": "8.2.2"

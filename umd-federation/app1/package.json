@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack serve",
-    "build": "webpack --mode development"
+    "build": "webpack --mode development",
+    "prestart": "node ../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "module-federation-runtime": "1.2.4",

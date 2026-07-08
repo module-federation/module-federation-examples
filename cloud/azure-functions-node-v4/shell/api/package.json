@@ -6,7 +6,8 @@
     "build": "webpack",
     "watch": "tsc -w",
     "start": "func start",
-    "test": "echo \"No tests yet...\""
+    "test": "echo \"No tests yet...\"",
+    "prestart": "node ../../../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "@azure/functions": "^4.0.0-alpha.9",

@@ -5,7 +5,8 @@
     "serve": "vue-cli-service serve --port=8081",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "e2e:ci": "pnpm run build"
+    "e2e:ci": "pnpm run build",
+    "preserve": "node ../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "core-js": "^3.47.0",

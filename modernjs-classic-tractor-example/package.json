@@ -5,7 +5,8 @@
   "main": "products.js",
   "scripts": {
     "start": "pnpm --filter modern_classic_* --parallel dev",
-    "build": "pnpm --filter modern_classic_* --parallel build"
+    "build": "pnpm --filter modern_classic_* --parallel build",
+    "prestart": "node ../scripts/track-demo-run.js"
   },
   "author": "Zack Jackson(@ScriptedAlchemy)",
   "license": "MIT"

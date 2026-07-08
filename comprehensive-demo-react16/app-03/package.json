@@ -25,6 +25,8 @@
     "legacy:start": "webpack --watch",
     "legacy:build": "webpack --mode production",
     "serve": "serve dist -p 3003 --cors",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prestart": "node ../../scripts/track-demo-run.js",
+    "preserve": "node ../../scripts/track-demo-run.js"
   }
 }

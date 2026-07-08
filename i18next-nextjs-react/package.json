@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"pnpm --filter i18next-nextjs-react_next-host dev\" \"pnpm --filter i18next-nextjs-react_react-host start:live\" \"pnpm --filter i18next-nextjs-react_react-remote start:live\" \"pnpm --filter i18next-shared-lib dev\"",
-    "e2e:ci": "pnpm --filter i18next-shared-lib build && pnpm exec playwright test"
+    "e2e:ci": "pnpm --filter i18next-shared-lib build && pnpm exec playwright test",
+    "prestart": "node ../scripts/track-demo-run.js"
   },
   "author": "Frédéric JAMMES",
   "license": "ISC",

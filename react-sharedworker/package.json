@@ -13,7 +13,8 @@
     "dev:host": "webpack serve --config ./host/webpack.host-config.js",
     "dev:module": "node ./module/dev.js",
     "dev": "yarn dev:host & yarn dev:module",
-    "legacy:e2e:ci": "echo \"No legacy e2e tests\""
+    "legacy:e2e:ci": "echo \"No legacy e2e tests\"",
+    "predev": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@module-federation/enhanced": "2.0.1",

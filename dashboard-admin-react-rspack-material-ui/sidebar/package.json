@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "node ../../scripts/track-demo-run.js"
   },
   "keywords": [],
   "author": "",

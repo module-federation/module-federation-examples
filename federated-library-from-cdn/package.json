@@ -12,7 +12,8 @@
     "build": "pnpm --filter federated-library-from-cdn-* --parallel build",
     "legacy:build": "pnpm --filter federated-library-from-cdn-* --parallel legacy:build",
     "start": "pnpm --filter federated-library-from-cdn-* --parallel start",
-    "legacy:start": "pnpm --filter federated-library-from-cdn-* --parallel legacy:start"
+    "legacy:start": "pnpm --filter federated-library-from-cdn-* --parallel legacy:start",
+    "prestart": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "concurrently": "8.2.2"

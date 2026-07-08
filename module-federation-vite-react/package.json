@@ -7,7 +7,8 @@
     "postinstall:deps": "pnpm --filter module-federation-vite-react-* run build",
     "dev": "pnpm --filter module-federation-vite-react-* dev",
     "build": "pnpm --filter module-federation-vite-react-* build",
-    "preview": "pnpm --filter module-federation-vite-react-* preview"
+    "preview": "pnpm --filter module-federation-vite-react-* preview",
+    "predev": "node ../scripts/track-demo-run.js"
   },
   "author": {
     "name": "Giorgio Boa",

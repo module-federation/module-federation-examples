@@ -27,7 +27,10 @@
     "dev": "rspack serve",
     "legacy:dev": "webpack serve --port=3003",
     "serve": "serve dist -p 3003 --cors",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prestart": "node ../../scripts/track-demo-run.js",
+    "predev": "node ../../scripts/track-demo-run.js",
+    "preserve": "node ../../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.15",

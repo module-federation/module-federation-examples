@@ -7,7 +7,8 @@
     "postinstall:deps": "pnpm --filter shared-directory-* run build",
     "dev": "pnpm --filter shared-directory-* dev",
     "build": "pnpm --filter shared-directory-* build",
-    "preview": "pnpm --filter shared-directory-* preview"
+    "preview": "pnpm --filter shared-directory-* preview",
+    "predev": "node ../scripts/track-demo-run.js"
   },
   "license": "ISC"
 }

@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build": "pnpm --parallel --filter server-side-rendering* run build",
-    "serve": "pnpm --parallel --filter server-side-rendering* run serve"
+    "serve": "pnpm --parallel --filter server-side-rendering* run serve",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "concurrently": "8.2.2"

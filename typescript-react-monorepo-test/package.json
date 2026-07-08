@@ -5,7 +5,9 @@
   "scripts": {
     "build": "pnpm --parallel --filter typescript-react-monorepo-test_* run build",
     "serve": "wsrun --parallel serve",
-    "start": "concurrently \"wsrun --parallel start\" \"wsrun --parallel serve\""
+    "start": "concurrently \"wsrun --parallel start\" \"wsrun --parallel serve\"",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "concurrently": "8.2.2",

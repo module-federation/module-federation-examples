@@ -11,7 +11,9 @@
     "clean": "pnpm --filter rspack_webpack_app* --parallel clean",
     "test:e2e": "pnpm exec playwright test",
     "e2e:ci": "pnpm exec playwright test --reporter=list",
-    "legacy:e2e:ci": "echo \"No legacy e2e tests\""
+    "legacy:e2e:ci": "echo \"No legacy e2e tests\"",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2",

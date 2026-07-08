@@ -14,6 +14,8 @@
     "serve": "pnpm --filter different-react-versions-16-18_* --parallel serve",
     "clean": "pnpm --filter different-react-versions-16-18_* --parallel clean",
     "legacy:e2e:ci": "echo \"No legacy e2e tests\"",
-    "e2e:ci": "pnpm run build"
+    "e2e:ci": "pnpm run build",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   }
 }

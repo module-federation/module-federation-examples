@@ -8,7 +8,8 @@
   ],
   "scripts": {
     "start": "pnpm --filter rspack-remix-* --parallel start",
-    "server": "pnpm --filter rspack-remix-* --parallel server"
+    "server": "pnpm --filter rspack-remix-* --parallel server",
+    "prestart": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "concurrently": "8.2.2"

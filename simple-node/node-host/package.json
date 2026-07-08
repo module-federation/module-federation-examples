@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "start:legacy": "webpack serve --config webpack.config.js",
-    "start": "rspack serve --config rspack.config.js"
+    "start": "rspack serve --config rspack.config.js",
+    "prestart": "node ../../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@module-federation/enhanced": "2.0.1",

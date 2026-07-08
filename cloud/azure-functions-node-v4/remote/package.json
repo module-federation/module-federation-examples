@@ -8,7 +8,8 @@
     "start": "npx serve dist/ -p 8080",
     "build": "npm run build:client && npm run build:server",
     "build:client": "rimraf dist/client && webpack --mode development --config config/webpack.client.js",
-    "build:server": "rimraf dist/server && webpack --mode development --config config/webpack.server.js"
+    "build:server": "rimraf dist/server && webpack --mode development --config config/webpack.server.js",
+    "prestart": "node ../../../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@babel/core": "7.24.7",
