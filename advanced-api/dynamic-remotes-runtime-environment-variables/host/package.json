@@ -28,7 +28,9 @@
     "docker:run": "docker run -it --name csr-env-host -p 3000:80 -d -e API_URL=https://host.com/api csr-env/host:0.0.0",
     "docker:rm": "docker rm -f csr-env-host",
     "legacy:start": "chmod +x ./env.sh && cp env-config.json ./public/ && NODE_ENV=development webpack-cli serve",
-    "legacy:build": "NODE_ENV=production webpack --mode production"
+    "legacy:build": "NODE_ENV=production webpack --mode production",
+    "prestart": "node ../../../scripts/track-demo-run.js",
+    "preserve": "node ../../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "moment": "^2.30.1",

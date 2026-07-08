@@ -11,7 +11,9 @@
     "build": "pnpm --filter unit_test_* build",
     "serve": "serve ./remote/dist/server -p 3001",
     "preview": "pnpm run build && pnpm --filter unit_test_* preview",
-    "e2e:ci": "pnpm start & npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome && lsof -ti tcp:3000,3001,3002 | xargs kill"
+    "e2e:ci": "pnpm start & npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome && lsof -ti tcp:3000,3001,3002 | xargs kill",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "wait-on": "7.2.0",

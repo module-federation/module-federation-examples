@@ -20,7 +20,9 @@
     "build": "webpack --mode production",
     "clean": "rm -rf dist",
     "serve": "serve dist -p 3002",
-    "start": "webpack-cli serve"
+    "start": "webpack-cli serve",
+    "prestart": "node ../../scripts/track-demo-run.js",
+    "preserve": "node ../../scripts/track-demo-run.js"
   },
   "version": "1.0.0"
 }

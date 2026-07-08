@@ -9,7 +9,8 @@
     "startHost": "nodemon hostServer/public/server/server.js",
     "buildRemote": "webpack --config=remoteServer/webpack.config.js -w",
     "startRemote": "nodemon remoteServer/public/server/server.js",
-    "test:e2e": "pnpm exec playwright test"
+    "test:e2e": "pnpm exec playwright test",
+    "prestart": "node ../scripts/track-demo-run.js"
   },
   "license": "MIT",
   "author": {

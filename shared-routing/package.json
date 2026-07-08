@@ -9,7 +9,9 @@
     "serve": "pnpm --filter shared-routing_* --parallel serve",
     "clean": "pnpm --filter shared-routing_* --parallel clean",
     "e2e:ci": "echo 'No Playwright tests for this example'",
-    "legacy:e2e:ci": "echo \"No legacy e2e tests\""
+    "legacy:e2e:ci": "echo \"No legacy e2e tests\"",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "wait-on": "7.2.0"

@@ -22,7 +22,9 @@
     "legacy:start": "webpack serve --config webpack.config.js",
     "legacy:build": "webpack --config webpack.config.js --mode development",
     "serve": "serve dist -p 3001",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prestart": "node ../../../scripts/track-demo-run.js",
+    "preserve": "node ../../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "lodash": "^4.17.21",

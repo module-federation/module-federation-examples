@@ -6,7 +6,9 @@
     "dev": "NEXT_PRIVATE_LOCAL_WEBPACK=true next dev -p 8080",
     "build": "NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prestart": "node ../../../scripts/track-demo-run.js",
+    "predev": "node ../../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "@module-federation/nextjs-mf": "8.8.56",

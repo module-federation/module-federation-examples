@@ -5,7 +5,8 @@
   "version": "1.0.0",
   "scripts": {
     "start:legacy": "concurrently \"cd node-remote && pnpm start:legacy\" \"cd ./node-local-remote && pnpm start:legacy\" \"cd ./node-host && sleep 5; pnpm start:legacy\"",
-    "start": "concurrently \"cd node-remote && pnpm start\" \"cd ./node-local-remote && pnpm start\" \"cd ./node-host && sleep 5; pnpm start\""
+    "start": "concurrently \"cd node-remote && pnpm start\" \"cd ./node-local-remote && pnpm start\" \"cd ./node-host && sleep 5; pnpm start\"",
+    "prestart": "node ../scripts/track-demo-run.js"
   },
   "dependencies": {
     "concurrently": "8.2.2",

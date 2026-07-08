@@ -28,7 +28,9 @@
     "serve": "serve dist -p 3002 --cors",
     "clean": "rm -rf dist",
     "type-check": "tsc --noEmit",
-    "analyze": "webpack-bundle-analyzer dist/static/js/*.js"
+    "analyze": "webpack-bundle-analyzer dist/static/js/*.js",
+    "prestart": "node ../../../scripts/track-demo-run.js",
+    "preserve": "node ../../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "react": "^18.3.1",

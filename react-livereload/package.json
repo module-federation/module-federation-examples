@@ -10,7 +10,8 @@
   "scripts": {
     "start": "pnpm --filter react-hmr* --parallel run start",
     "e2e": "playwright test",
-    "e2e:ci": "playwright test --reporter=list"
+    "e2e:ci": "playwright test --reporter=list",
+    "prestart": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2",

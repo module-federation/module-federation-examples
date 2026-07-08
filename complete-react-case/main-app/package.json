@@ -8,7 +8,9 @@
     "legacy:build": "webpack --config webpack.config.js --stats=minimal",
     "serve": "serve dist -p 3002",
     "start": "concurrently \"npm run build\" \"npm run serve\"",
-    "legacy:start": "concurrently \"npm run legacy:build\" \"npm run serve\""
+    "legacy:start": "concurrently \"npm run legacy:build\" \"npm run serve\"",
+    "prestart": "node ../../scripts/track-demo-run.js",
+    "preserve": "node ../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "react": "17.0.2",

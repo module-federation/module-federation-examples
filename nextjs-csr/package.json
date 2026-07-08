@@ -13,7 +13,9 @@
     "start": "concurrently \"npm --prefix checkout run dev\" \"npm --prefix home run dev\" \"npm --prefix shop run dev\"",
     "build": "concurrently \"npm --prefix checkout run build\" \"npm --prefix home run build\" \"npm --prefix shop run build\"",
     "serve": "concurrently \"npm --prefix checkout run start\" \"npm --prefix home run start\" \"npm --prefix shop run start\"",
-    "e2e:ci": "pnpm run build"
+    "e2e:ci": "pnpm run build",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "dependencies": {
     "concurrently": "8.2.2"

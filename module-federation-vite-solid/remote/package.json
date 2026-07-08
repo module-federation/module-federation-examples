@@ -6,7 +6,9 @@
     "start": "vite",
     "dev": "vite --port 4174",
     "build": "vite build",
-    "preview": "vite preview --port 4174"
+    "preview": "vite preview --port 4174",
+    "prestart": "node ../../scripts/track-demo-run.js",
+    "predev": "node ../../scripts/track-demo-run.js"
   },
   "license": "MIT",
   "devDependencies": {

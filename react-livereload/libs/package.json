@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --mode production",
-    "start": "webpack serve"
+    "start": "webpack serve",
+    "prestart": "node ../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "react": "^17.0.2",

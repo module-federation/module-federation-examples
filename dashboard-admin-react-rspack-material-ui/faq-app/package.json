@@ -14,7 +14,8 @@
   },
   "scripts": {
     "start": "webpack serve",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "prestart": "node ../../scripts/track-demo-run.js"
   },
   "eslintConfig": {
     "extends": [

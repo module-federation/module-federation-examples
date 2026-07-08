@@ -22,7 +22,9 @@
     "build": "rspack --mode production",
     "legacy:build": "webpack --mode production",
     "serve": "serve dist -p 3002",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prestart": "node ../../../scripts/track-demo-run.js",
+    "preserve": "node ../../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "react": "17.0.2",

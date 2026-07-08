@@ -11,7 +11,8 @@
     "e2e": "ng e2e",
     "serve:federation": "serve dist -l 3000 -s",
     "build:federation": "webpack",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prestart": "node ../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "@angular/animations": "^15.2.10",

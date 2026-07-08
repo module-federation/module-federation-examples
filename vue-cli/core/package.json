@@ -7,7 +7,9 @@
     "lint": "vue-cli-service lint",
     "clean": "rm -rf dist",
     "start": "http-server -c-1 -p 9000 ./dist",
-    "e2e:ci": "pnpm --filter vue-cli run e2e:ci"
+    "e2e:ci": "pnpm --filter vue-cli run e2e:ci",
+    "prestart": "node ../../scripts/track-demo-run.js",
+    "preserve": "node ../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "core-js": "^3.47.0",

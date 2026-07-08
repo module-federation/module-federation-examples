@@ -9,7 +9,10 @@
     "serve": "modern serve",
     "new": "modern new",
     "lint": "modern lint",
-    "upgrade": "modern upgrade"
+    "upgrade": "modern upgrade",
+    "prestart": "node ../../scripts/track-demo-run.js",
+    "predev": "node ../../scripts/track-demo-run.js",
+    "preserve": "node ../../scripts/track-demo-run.js"
   },
   "engines": {
     "node": ">=16.18.1"

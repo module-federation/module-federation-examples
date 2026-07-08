@@ -15,7 +15,10 @@
     "build": "webpack --progress --config configs/webpack.prod.js",
     "serve": "webpack serve --config configs/webpack.dev.js",
     "dev": "npm-run-all --parallel start serve",
-    "tscheck": "tsc"
+    "tscheck": "tsc",
+    "prestart": "node ../../../scripts/track-demo-run.js",
+    "predev": "node ../../../scripts/track-demo-run.js",
+    "preserve": "node ../../../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@babel/core": "7.24.7",

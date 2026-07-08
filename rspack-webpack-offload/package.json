@@ -9,7 +9,8 @@
     "legacy:build": "pnpm --filter rspack_offload_* --parallel legacy:build",
     "legacy:start": "pnpm --filter rspack_offload_* --parallel legacy:start",
     "test:e2e": "pnpm exec playwright test",
-    "e2e:ci": "pnpm build && pnpm exec playwright test --reporter=list"
+    "e2e:ci": "pnpm build && pnpm exec playwright test --reporter=list",
+    "prestart": "node ../scripts/track-demo-run.js"
   },
   "keywords": [],
   "author": "",

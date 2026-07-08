@@ -9,7 +9,9 @@
     "clean": "pnpm --filter loadable-react-18_* --parallel clean",
     "pretest:e2e": "pnpm build",
     "test:e2e": "pnpm exec playwright test",
-    "e2e:ci": "pnpm build && pnpm exec playwright test --reporter=list"
+    "e2e:ci": "pnpm build && pnpm exec playwright test --reporter=list",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2",

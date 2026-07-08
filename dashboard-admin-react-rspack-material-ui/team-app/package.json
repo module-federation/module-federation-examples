@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "NODE_ENV=development rspack serve",
-    "build": "NODE_ENV=production rspack build"
+    "build": "NODE_ENV=production rspack build",
+    "prestart": "node ../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "@emotion/react": "11.11.4",

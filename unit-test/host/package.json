@@ -13,7 +13,8 @@
     "start": "rsbuild dev",
     "build": "rsbuild build",
     "preview": "rsbuild preview",
-    "test": "jest"
+    "test": "jest",
+    "prestart": "node ../../scripts/track-demo-run.js"
   },
   "eslintConfig": {},
   "browserslist": {

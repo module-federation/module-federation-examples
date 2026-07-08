@@ -4,7 +4,8 @@
   "version": "0.1.0",
   "scripts": {
     "start": "webpack serve --mode=development",
-    "test": "cargo test && wasm-pack test --headless"
+    "test": "cargo test && wasm-pack test --headless",
+    "prestart": "node ../../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@module-federation/enhanced": "2.0.1",

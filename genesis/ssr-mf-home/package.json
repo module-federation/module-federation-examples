@@ -10,7 +10,9 @@
     "build:vue": "NODE_ENV=production ts-node --project=./tsconfig.node.json genesis.build",
     "build:dts": "npx vue-tsc --declaration --emitDeclarationOnly",
     "type-check": "npx vue-tsc --noEmit",
-    "start": "NODE_ENV=production node dist/genesis.prod"
+    "start": "NODE_ENV=production node dist/genesis.prod",
+    "prestart": "node ../../scripts/track-demo-run.js",
+    "predev": "node ../../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@fmfe/genesis-compiler": "2.7.20",

@@ -6,7 +6,8 @@
     "build:browser": "webpack --mode=development --config webpack.browser.js",
     "build:server": "webpack --mode=development --config webpack.server.js",
     "start": "rm -rf ./public/build; pnpm run build:browser && pnpm run build:server && node ./build/index.js",
-    "server": "node ./build/index.js"
+    "server": "node ./build/index.js",
+    "prestart": "node ../../scripts/track-demo-run.js"
   },
   "author": "Jacob Ebey",
   "license": "ISC",

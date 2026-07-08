@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start": "nx run-many -t serve",
-    "e2e:ci": "echo 'no tests'"
+    "e2e:ci": "echo 'no tests'",
+    "prestart": "node ../../../scripts/track-demo-run.js"
   },
   "private": true,
   "devDependencies": {

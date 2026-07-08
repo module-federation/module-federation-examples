@@ -6,7 +6,9 @@
     "build:client": "webpack --mode production --config config/webpack.client.js",
     "build:server": "webpack --mode production --config config/webpack.server.js",
     "serve": "pnpm dlx serve dist -l 3007",
-    "start": "pnpm build && pnpm serve"
+    "start": "pnpm build && pnpm serve",
+    "prestart": "node ../../../scripts/track-demo-run.js",
+    "preserve": "node ../../../scripts/track-demo-run.js"
   },
   "license": "MIT",
   "devDependencies": {

@@ -10,7 +10,9 @@
     "serve": "pnpm --filter different-react-versions-isolated_app* --parallel serve",
     "clean": "pnpm --filter different-react-versions-isolated_app* --parallel clean",
     "e2e:ci": "pnpm exec playwright test --config ./playwright.config.ts --reporter=list",
-    "legacy:e2e:ci": "LEGACY_START=true pnpm exec playwright test --config ./playwright.config.ts --reporter=list"
+    "legacy:e2e:ci": "LEGACY_START=true pnpm exec playwright test --config ./playwright.config.ts --reporter=list",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2",

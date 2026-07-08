@@ -13,7 +13,8 @@
     "build:ssr": "ng build --configuration production && ng run host-app:server:production",
     "build:federation": "webpack",
     "serve:federation": "node dist/server/main.js",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prestart": "node ../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "@angular/animations": "^15.2.10",

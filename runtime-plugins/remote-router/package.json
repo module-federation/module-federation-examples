@@ -4,7 +4,8 @@
   "description": "A ingress host who can dynamically load and control all remotes",
   "scripts": {
     "start": "pnpm --filter remote-router* --parallel start",
-    "e2e:ci": "pnpm --filter remote-router_host e2e:ci"
+    "e2e:ci": "pnpm --filter remote-router_host e2e:ci",
+    "prestart": "node ../../scripts/track-demo-run.js"
   },
   "scannableFiles": [
     "./host/config/runtimePlugin.js",

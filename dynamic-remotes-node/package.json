@@ -8,7 +8,8 @@
     "clean": "rimraf host/dist && rimraf remote/dist",
     "host": "cd host && webpack build --config webpack.config.js && node dist/main.js",
     "remote": "cd remote && webpack serve --config webpack.config.js",
-    "start": "concurrently 'pnpm run remote' 'sleep 5 && pnpm run host'"
+    "start": "concurrently 'pnpm run remote' 'sleep 5 && pnpm run host'",
+    "prestart": "node ../scripts/track-demo-run.js"
   },
   "dependencies": {
     "@module-federation/dts-plugin": "2.0.1",

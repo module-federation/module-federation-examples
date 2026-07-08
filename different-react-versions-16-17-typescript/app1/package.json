@@ -9,7 +9,9 @@
     "build": "rspack --mode production",
     "legacy:build": "webpack --mode production",
     "serve": "serve dist -p 3001",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prestart": "node ../../scripts/track-demo-run.js",
+    "preserve": "node ../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "@module-federation/enhanced": "2.0.1",

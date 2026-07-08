@@ -9,7 +9,9 @@
     "serve": "pnpm --filter nested_app* --parallel serve",
     "clean": "pnpm --filter nested_app* --parallel clean",
     "test:e2e": "pnpm exec playwright test",
-    "e2e:ci": "pnpm exec playwright test --reporter=list"
+    "e2e:ci": "pnpm exec playwright test --reporter=list",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2",

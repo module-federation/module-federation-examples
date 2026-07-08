@@ -21,7 +21,10 @@
     "start": "webpack --watch",
     "dev": "webpack-dev-server --content-base public",
     "serve": "serve dist -l tcp://127.0.0.1:3001 --no-port-switching",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prestart": "node ../../scripts/track-demo-run.js",
+    "predev": "node ../../scripts/track-demo-run.js",
+    "preserve": "node ../../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "raw-loader": "4.0.2"

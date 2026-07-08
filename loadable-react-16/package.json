@@ -7,7 +7,9 @@
     "build": "pnpm --filter loadable-react-16_* --workspace-concurrency=1 build",
     "serve": "node scripts/run-servers.cjs --skip-build",
     "clean": "pnpm --filter loadable-react-16_* --parallel clean",
-    "e2e:ci": "pnpm exec playwright test"
+    "e2e:ci": "pnpm exec playwright test",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2",

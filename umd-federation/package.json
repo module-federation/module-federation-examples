@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "pnpm --filter umd-federation_app* --parallel start",
     "test:e2e": "pnpm exec playwright test",
-    "e2e:ci": "pnpm exec playwright test --reporter=list"
+    "e2e:ci": "pnpm exec playwright test --reporter=list",
+    "prestart": "node ../scripts/track-demo-run.js"
   },
   "keywords": [],
   "author": "",

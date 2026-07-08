@@ -8,7 +8,9 @@
     "build": "concurrently \"cd ./host && pnpm build\" \"cd ./provider && pnpm build\" \"cd ./dynamic-provider && pnpm build\"",
     "serve": "concurrently \"cd ./host && pnpm serve\" \"cd ./provider && pnpm serve\" \"cd ./dynamic-provider && pnpm serve\"",
     "clean": "concurrently \"cd ./host && pnpm clean\" \"cd ./provider && pnpm clean\" \"cd ./dynamic-provider && pnpm clean\"",
-    "e2e:ci": "pnpm run build && echo \"No e2e tests yet\""
+    "e2e:ci": "pnpm run build && echo \"No e2e tests yet\"",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "concurrently": "8.2.2"

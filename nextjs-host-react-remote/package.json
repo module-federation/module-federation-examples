@@ -11,7 +11,8 @@
   "scripts": {
     "start": "pnpm --parallel --filter nextjs-react_* run dev",
     "e2e:ci": "pnpm exec playwright test",
-    "e2e": "pnpm exec playwright test"
+    "e2e": "pnpm exec playwright test",
+    "prestart": "node ../scripts/track-demo-run.js"
   },
   "keywords": [],
   "author": "rahulteja-dev",

@@ -23,7 +23,9 @@
     "build": "rspack --mode production",
     "legacy:build": "webpack --mode production",
     "serve": "serve dist -p 4006",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prestart": "node ../../../scripts/track-demo-run.js",
+    "preserve": "node ../../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.19",

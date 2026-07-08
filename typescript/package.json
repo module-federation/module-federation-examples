@@ -8,7 +8,9 @@
     "build": "pnpm --filter typescript_* build",
     "serve": "pnpm --filter typescript_* --parallel serve",
     "clean": "pnpm --filter typescript_* --parallel clean",
-    "e2e:ci": "pnpm exec playwright test"
+    "e2e:ci": "pnpm exec playwright test",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2",

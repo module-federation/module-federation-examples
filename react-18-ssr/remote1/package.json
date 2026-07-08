@@ -6,7 +6,9 @@
     "serve": "npx serve dist/ -p 3001",
     "build": "pnpm build:client && pnpm build:server",
     "build:client": "rimraf dist/client && webpack --mode production --config config/webpack.client.js",
-    "build:server": "rimraf dist/server && webpack --mode production --config config/webpack.server.js"
+    "build:server": "rimraf dist/server && webpack --mode production --config config/webpack.server.js",
+    "prestart": "node ../../scripts/track-demo-run.js",
+    "preserve": "node ../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "react": "18.3.1",

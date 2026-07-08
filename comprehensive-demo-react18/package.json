@@ -13,7 +13,10 @@
     "clean": "pnpm --filter comprehensive-demo-react18_app* --parallel clean",
     "test:e2e": "npx playwright test",
     "e2e:ci": "pnpm build && pnpm exec playwright test --config ./playwright.config.ts --reporter=list",
-    "legacy:e2e:ci": "pnpm legacy:build && pnpm exec playwright test --config ./playwright.config.ts --reporter=list"
+    "legacy:e2e:ci": "pnpm legacy:build && pnpm exec playwright test --config ./playwright.config.ts --reporter=list",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "predev": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2",

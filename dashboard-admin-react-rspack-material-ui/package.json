@@ -7,6 +7,9 @@
     "dev": "pnpm --filter \"./{root,dashboard-app,sidebar,faq-app,team-app}\" --parallel start",
     "start": "pnpm build && pnpm serve",
     "build": "pnpm --filter \"./{root,dashboard-app,sidebar,faq-app,team-app}\" build",
-    "serve": "pnpm --filter \"./{root,dashboard-app,sidebar,faq-app,team-app}\" --parallel start"
+    "serve": "pnpm --filter \"./{root,dashboard-app,sidebar,faq-app,team-app}\" --parallel start",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "predev": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   }
 }

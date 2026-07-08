@@ -11,7 +11,8 @@
     "serve": "node dist/server/main.js",
     "build": "npm run build:server && npm run build:client",
     "build:client": "rimraf dist/client && webpack --progress --config config/webpack.client.js",
-    "build:server": "rimraf dist/server && webpack --progress --config config/webpack.server.js"
+    "build:server": "rimraf dist/server && webpack --progress --config config/webpack.server.js",
+    "preserve": "node ../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "express": "^4.17.1",

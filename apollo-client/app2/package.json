@@ -10,7 +10,9 @@
     "build:client:legacy": "rimraf dist/client && webpack --mode production --progress --config config/webpack.client.js",
     "build:client": "rimraf dist/client && rspack --mode production --config config/rspack.client.js",
     "build:server:legacy": "rimraf dist/server && webpack --mode production --progress --config config/webpack.server.js",
-    "build:server": "rimraf dist/server && rspack --mode production --config config/rspack.server.js"
+    "build:server": "rimraf dist/server && rspack --mode production --config config/rspack.server.js",
+    "prestart": "node ../../scripts/track-demo-run.js",
+    "preserve": "node ../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "@apollo/client": "^3.14.0",

@@ -2,5 +2,40 @@
   <head> </head>
   <body>
     <div id="root"></div>
+  <!-- Module Federation demo analytics -->
+  <script>
+    (function () {
+      var measurementId = "G-DRPXW0EEVT";
+      var cidKey = 'mf_examples_ga_cid';
+      var cid;
+      try {
+        cid = window.localStorage && window.localStorage.getItem(cidKey);
+        if (!cid) {
+          cid = String(Math.floor(Math.random() * 1000000000)) + '.' + String(Date.now());
+          window.localStorage && window.localStorage.setItem(cidKey, cid);
+        }
+      } catch (error) {
+        cid = String(Math.floor(Math.random() * 1000000000)) + '.' + String(Date.now());
+      }
+
+      var hostname = window.location.hostname;
+      var runtimeContext = /^(localhost|127\.|0\.0\.0\.0|::1)$/.test(hostname) ? 'local' : 'hosted';
+      var pageLocation = window.location.origin + window.location.pathname;
+      var params = new URLSearchParams({
+        v: '2',
+        tid: measurementId,
+        cid: cid,
+        en: 'demo_app_view',
+        'ep.repository': "module-federation-examples",
+        'ep.example': "different-react-versions-isolated",
+        'ep.demo_path': "different-react-versions-isolated/app1/public",
+        'ep.entrypoint': "different-react-versions-isolated/app1/public/index.html",
+        'ep.runtime_context': runtimeContext,
+        dl: pageLocation,
+        dt: document.title || ('ModuleFederationExamples ' + "different-react-versions-isolated/app1/public")
+      });
+      new Image().src = 'https://www.google-analytics.com/g/collect?' + params.toString();
+    })();
+  </script>
   </body>
 </html>

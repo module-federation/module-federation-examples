@@ -9,7 +9,9 @@
     "serve": "pnpm --filter apollo-client_* --parallel serve",
     "build": "pnpm --filter apollo-client_* --parallel build",
     "e2e:ci": "npx playwright test",
-    "legacy:e2e:ci": "npx playwright test"
+    "legacy:e2e:ci": "npx playwright test",
+    "prestart": "node ../scripts/track-demo-run.js",
+    "preserve": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2",

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "concurrently --kill-others-on-fail \"pnpm --dir app-exposes exec -- env BROWSER=none quasar dev\" \"pnpm --dir app-general exec -- env BROWSER=none quasar dev\"",
     "test:e2e": "pnpm exec playwright test",
-    "e2e:ci": "pnpm exec playwright test --reporter=list"
+    "e2e:ci": "pnpm exec playwright test --reporter=list",
+    "prestart": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2",

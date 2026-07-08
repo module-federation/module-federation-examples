@@ -26,7 +26,9 @@
     "legacy:start": "webpack-cli serve",
     "legacy:build": "webpack --mode production",
     "serve": "serve dist -p 3002",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prestart": "node ../../../scripts/track-demo-run.js",
+    "preserve": "node ../../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "moment": "^2.30.1",

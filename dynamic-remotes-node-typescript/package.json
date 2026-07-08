@@ -11,7 +11,8 @@
     "host:ts": "cd host && webpack build --config webpack.config.typescript.js && node dist/main.js",
     "remote:ts": "cd remote && webpack serve --config webpack.config.typescript.js",
     "start": "concurrently 'pnpm run remote' 'sleep 5 && pnpm run host'",
-    "start:ts": "concurrently 'pnpm run remote:ts' 'sleep 5 && pnpm run host:ts'"
+    "start:ts": "concurrently 'pnpm run remote:ts' 'sleep 5 && pnpm run host:ts'",
+    "prestart": "node ../scripts/track-demo-run.js"
   },
   "dependencies": {
     "@module-federation/enhanced": "2.0.1",

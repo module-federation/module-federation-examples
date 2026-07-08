@@ -10,7 +10,8 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "force-vite-restart": "node ../shared/forceViteRestart.js"
+    "force-vite-restart": "node ../shared/forceViteRestart.js",
+    "predev": "node ../../scripts/track-demo-run.js"
   },
   "dependencies": {
     "pinia": "^2.0.28",
