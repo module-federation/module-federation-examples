@@ -9,9 +9,6 @@ module.exports = {
   devServer: {
     port: 3004,
   },
-  experiments: {
-    css: true,
-  },
   module: {
     rules: [
       {
