@@ -1,7 +1,16 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
 
 const message = 'Remote loader data from the provider';
-const renderedMessage = `<h2 data-testid="remote-message">${message}</h2>`;
+
+async function readRenderedCard(page: Page, html: string) {
+  return page.evaluate(responseHtml => {
+    const document = new DOMParser().parseFromString(responseHtml, 'text/html');
+    return {
+      message: document.querySelector('[data-testid="remote-message"]')?.textContent ?? null,
+      marker: document.querySelector('[data-testid="request-marker"]')?.textContent ?? null,
+    };
+  }, html);
+}
 
 for (const path of ['/entry-one', '/entry-one/details']) {
   test(`SSR markup and hydration at ${path}`, async ({ page }) => {
@@ -17,9 +26,9 @@ for (const path of ['/entry-one', '/entry-one/details']) {
 
     const response = await page.goto(path);
     expect(response?.ok()).toBe(true);
-    const html = await response!.text();
-    expect(html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')).toContain(renderedMessage);
-    const marker = html.match(/<p data-testid="request-marker">([^<]+)<\/p>/)?.[1];
+    const rendered = await readRenderedCard(page, await response!.text());
+    expect(rendered.message).toBe(message);
+    const marker = rendered.marker;
     expect(marker).toMatch(/^[0-9a-f-]{36}$/);
     await expect(page.getByTestId('request-marker')).toHaveText(marker!);
     await page.getByRole('button', { name: 'Count: 0' }).click();
@@ -40,9 +49,8 @@ for (const entry of ['entry-one', 'entry-two']) {
       for (const path of ['/entry-two', '/entry-two/details']) {
         const response = await request.get(path);
         expect(response.ok()).toBe(true);
-        const html = await response.text();
-        expect(html).not.toContain(renderedMessage);
-        expect(html).not.toContain('data-testid="request-marker"');
+        const rendered = await readRenderedCard(page, await response.text());
+        expect(rendered).toEqual({ message: null, marker: null });
       }
     }
     await page.goto(`/${entry}`);
@@ -67,25 +75,19 @@ for (const entry of ['entry-one', 'entry-two']) {
 
 test('provider standalone uses its native route loader', async ({ page }) => {
   const response = await page.goto('http://127.0.0.1:3061/');
-  expect((await response!.text()).replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')).toContain(
-    renderedMessage,
-  );
+  expect((await readRenderedCard(page, await response!.text())).message).toBe(message);
   await expect(page.getByTestId('remote-message')).toHaveText(message);
   await page.getByRole('button', { name: 'Count: 0' }).click();
   await expect(page.getByRole('button', { name: 'Count: 1' })).toBeVisible();
 });
 
-test('SSR requests receive independent loader data', async ({ request }) => {
+test('SSR requests receive independent loader data', async ({ request, page }) => {
   const first = await request.get('/entry-one');
   const second = await request.get('/entry-one');
   expect(first.ok()).toBe(true);
   expect(second.ok()).toBe(true);
-  const firstMarker = (await first.text()).match(
-    /<p data-testid="request-marker">([^<]+)<\/p>/,
-  )?.[1];
-  const secondMarker = (await second.text()).match(
-    /<p data-testid="request-marker">([^<]+)<\/p>/,
-  )?.[1];
+  const firstMarker = (await readRenderedCard(page, await first.text())).marker;
+  const secondMarker = (await readRenderedCard(page, await second.text())).marker;
   expect(firstMarker).toMatch(/^[0-9a-f-]{36}$/);
   expect(secondMarker).toMatch(/^[0-9a-f-]{36}$/);
   expect(firstMarker).not.toBe(secondMarker);
