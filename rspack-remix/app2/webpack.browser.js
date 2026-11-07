@@ -16,10 +16,6 @@ const config = {
     ...getRoutes(remixConfig),
   },
   externalsType: 'module',
-  experiments: {
-    outputModule: true,
-    topLevelAwait: true,
-  },
   output: {
     path: remixConfig.assetsBuildDirectory,
     publicPath: 'auto',
@@ -34,45 +30,27 @@ const config = {
   },
   module: {
     rules: [
-      // {
-      //   include: (input) => routeSet.has(input),
-      //   use: [
-      //     // {
-      //     //   loader: "babel-loader",
-      //     //   options: {
-      //     //     plugins: [["eliminator", {namedExports: ["action", "loader"]}]],
-      //     //   },
-      //     // },
-      //     {
-      //       loader: 'builtin:swc-loader',
-      //       options: {
-      //         jsc: {
-      //           parser: {
-      //             syntax: 'ecmascript',
-      //             jsx: true,
-      //           },
-      //         }
-      //       },
-      //     },
-      //   ],
-      // },
-      // {
-      //   test: /\.[jt]sx?$/,
-      //   exclude: (input) => routeSet.has(input),
-      //   use: [
-      //     {
-      //       loader: 'builtin:swc-loader',
-      //       options: {
-      //         jsc: {
-      //           parser: {
-      //             syntax: 'ecmascript',
-      //             jsx: true,
-      //           },
-      //         }
-      //       },
-      //     },
-      //   ],
-      // },
+      {
+        test: /\.(ts|tsx)$/,
+        use: [
+          {
+            loader: 'builtin:swc-loader',
+            options: {
+              jsc: {
+                parser: {
+                  syntax: 'typescript',
+                  tsx: true,
+                },
+                transform: {
+                  react: {
+                    runtime: 'automatic',
+                  },
+                },
+              },
+            },
+          },
+        ],
+      },
     ],
   },
   cache: false,

@@ -23,6 +23,6 @@ module.exports = merge(common, {
     port: 3003,
     hot: true,
     compress: true,
-    watchFiles: ['src/**/*'],
+    watchFiles: ['src'],
   },
 });

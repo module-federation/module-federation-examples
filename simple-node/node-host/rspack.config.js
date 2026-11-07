@@ -19,11 +19,12 @@ module.exports = {
     devMiddleware: {
       writeToDisk: true,
     },
-    onAfterSetupMiddleware: function () {
+    setupMiddlewares: function (middlewares) {
       setTimeout(() => {
         // Require the built server file to boot the Node host after dev middleware emits it.
         require('./dist/server.js');
       }, 3000);
+      return middlewares;
     },
   },
   plugins: [

@@ -9,7 +9,11 @@ export default defineConfig({
     port: 3002,
   },
   output: {
-    targets: ['node'],
+    target: 'node',
+    // Rsbuild 2 defaults Node output to ESM; this test harness loads the
+    // emitted remoteEntry through require(), so keep the v1 CommonJS output.
+    module: false,
+    minify: true,
   },
   plugins: [pluginReact()],
   tools: {

@@ -3,7 +3,7 @@ const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack')
 const path = require('path');
 
 const deps = require('./package.json').dependencies;
-const ReactRefreshWebpackPlugin = require('@rspack/plugin-react-refresh');
+const { ReactRefreshRspackPlugin } = require('@rspack/plugin-react-refresh');
 const isProd = process.env.NODE_ENV === 'production';
 const reactPath = path.dirname(require.resolve('react/package.json'));
 const reactDomPath = path.dirname(require.resolve('react-dom/package.json'));
@@ -101,6 +101,6 @@ module.exports = {
       template: './public/index.html',
       chunks: ['main'],
     }),
-    !isProd && new ReactRefreshWebpackPlugin(),
+    !isProd && new ReactRefreshRspackPlugin(),
   ].filter(Boolean),
 };

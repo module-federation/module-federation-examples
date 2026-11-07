@@ -10,7 +10,9 @@ const webpackConfig = {
   output: {
     path: path.resolve(__dirname, '../dist/server'),
     filename: '[name].js',
-    libraryTarget: 'commonjs-module',
+    library: {
+      type: 'commonjs-module',
+    },
   },
   target: 'async-node',
   name: 'server',

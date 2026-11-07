@@ -18,10 +18,6 @@ const config = {
     ...getRoutes(remixConfig),
   },
   externalsType: 'module',
-  experiments: {
-    outputModule: true,
-    topLevelAwait: true,
-  },
   output: {
     path: remixConfig.assetsBuildDirectory,
     publicPath: 'auto',
