@@ -1,0 +1,34 @@
+{
+  "name": "modernjs-ssr-data-loader_remote",
+  "private": true,
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "dev": "modern dev",
+    "build": "modern build",
+    "serve": "cross-env MODERN_MF_AUTO_CORS=1 modern serve",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@modern-js/runtime": "3.11.1",
+    "@module-federation/modern-js-v3": "2.9.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router": "7.18.4",
+    "react-router-dom": "7.18.4"
+  },
+  "devDependencies": {
+    "@modern-js/app-tools": "3.11.1",
+    "@modern-js/tsconfig": "3.11.1",
+    "@types/node": "20.9.0",
+    "@types/react": "18.3.10",
+    "@types/react-dom": "18.3.0",
+    "cross-env": "7.0.3",
+    "ts-node": "10.9.2",
+    "tsconfig-paths": "4.2.0",
+    "typescript": "5.9.3",
+    "webpack": "5.105.3"
+  }
+}

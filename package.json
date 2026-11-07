@@ -21,6 +21,17 @@
       "webpack>enhanced-resolve": "5.18.4"
     },
     "packageExtensions": {
+      "@module-federation/bridge-react@2.9.3": {
+        "dependencies": {
+          "@module-federation/runtime": "2.9.3",
+          "@module-federation/runtime-core": "2.9.3"
+        }
+      },
+      "@module-federation/modern-js-v3@2.9.3": {
+        "peerDependencies": {
+          "@modern-js/app-tools": "3.11.1"
+        }
+      },
       "@analogjs/vite-plugin-angular": {
         "peerDependencies": {
           "@angular/compiler-cli": "^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0 || ^21.0.0",
