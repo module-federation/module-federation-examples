@@ -7,6 +7,14 @@ const { createRequire } = require('module');
 const exampleRequire = createRequire(path.resolve(__dirname, '../error-boundary/app1/package.json'));
 const webpackRequire = createRequire(require.resolve('webpack/package.json'));
 
+test('the SSR Tailwind example declares its PostCSS plugins', () => {
+  const packageJson = require('../federated-css-react-ssr/expose-apps/expose-tailwind-css/package.json');
+  const dependencies = { ...packageJson.dependencies, ...packageJson.devDependencies };
+
+  expect(dependencies['postcss-preset-env']).toBeDefined();
+  expect(dependencies.tailwindcss).toBeDefined();
+});
+
 test('all Enhanced installations resolve the compatible Webpack compiler', () => {
   const lockfile = require('js-yaml').load(
     fs.readFileSync(path.resolve(__dirname, '../pnpm-lock.yaml'), 'utf8'),
