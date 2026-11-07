@@ -17,6 +17,7 @@
       "@types/glob>@types/minimatch": "3.0.5",
       "@playwright/test": "1.58.2",
       "playwright": "1.58.2",
+      "webpack": "5.105.3",
       "webpack>enhanced-resolve": "5.18.4"
     },
     "packageExtensions": {
@@ -29,6 +30,11 @@
       "@module-federation/bridge-react@2.1.0": {
         "dependencies": {
           "@module-federation/runtime": "2.1.0"
+        }
+      },
+      "@module-federation/modern-js@2.9.3": {
+        "dependencies": {
+          "webpack": "5.105.3"
         }
       }
     },
@@ -68,7 +74,8 @@
     "mocha": "10.6.0",
     "prettier": "3.3.3",
     "pretty-quick": "4.0.0",
-    "semver": "7.6.3"
+    "semver": "7.6.3",
+    "webpack": "5.105.3"
   },
   "scripts": {
     "list:all": "pnpm list --filter \"*\" --only-projects --depth -1 --json",
