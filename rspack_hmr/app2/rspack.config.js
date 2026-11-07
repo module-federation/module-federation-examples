@@ -39,7 +39,7 @@ module.exports = {
     publicPath: 'http://localhost:3001/',
     filename: '[name].js',
   },
-  watch: true,
+  watch: isDev,
   module: {
     rules: [
       {

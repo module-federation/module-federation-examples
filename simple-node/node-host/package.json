@@ -1,6 +1,9 @@
 {
   "name": "node-host-1234",
   "version": "1.0.0",
+  "dependencies": {
+    "express": "4.19.2"
+  },
   "scripts": {
     "start:legacy": "webpack serve --config webpack.config.js",
     "start": "rspack serve --config rspack.config.js",

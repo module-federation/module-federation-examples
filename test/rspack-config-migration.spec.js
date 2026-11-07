@@ -31,7 +31,7 @@ const collectRspackConfigs = directory => {
   const configs = [];
 
   for (const entry of entries) {
-    if (entry.name === 'node_modules' || entry.name === '.git' || entry.name === 'dist') {
+    if (entry.name.startsWith('.') || ['node_modules', 'dist', 'build'].includes(entry.name)) {
       continue;
     }
 
@@ -45,7 +45,7 @@ const collectRspackConfigs = directory => {
   }
 
   return configs;
-}
+};
 
 const configs = [...new Set([...collectRspackConfigs(root), ...customRspackConfigs])];
 
@@ -80,7 +80,6 @@ test('CSS entry points declare a Rspack 2 module type', () => {
   const cssConfigs = [
     'complete-react-case/component-app/rspack.config.js',
     'css-isolation/app1/rspack.config.js',
-    'css-isolation/app2/rspack.config.js',
     'rspack-webpack-interop/app-04/rspack.config.js',
     'rspack-webpack-offload/component-app/rspack.config.js',
     'rspack_hmr/app2/rspack.config.js',
@@ -94,10 +93,28 @@ test('CSS entry points declare a Rspack 2 module type', () => {
   }
 });
 
+test('the CSS isolation remote keeps its shadow-DOM style insertion hook', () => {
+  const source = fs.readFileSync(path.join(root, 'css-isolation/app2/rspack.config.js'), 'utf8');
+  expect(source).toContain("type: 'javascript/auto'");
+  expect(source).toContain("loader: 'style-loader'");
+  expect(source).toContain("insert: require.resolve('./styleLoader.js')");
+  expect(source).toContain('lazyCompilation: false');
+});
+
 test('Rsbuild Node examples use output.target instead of removed output.targets', () => {
   for (const config of ['unit-test/host/rsbuild.config.ts', 'unit-test/remote/rsbuild.config.ts']) {
     const source = fs.readFileSync(path.join(root, config), 'utf8');
     expect(source).toContain("target: 'node'");
     expect(source).not.toMatch(/\btargets\s*:/);
+  }
+});
+
+test('HMR examples only watch in development and declare the DTS compiler', () => {
+  for (const app of ['app2', 'host', 'runhost']) {
+    const directory = path.join(root, 'rspack_hmr', app);
+    const source = fs.readFileSync(path.join(directory, 'rspack.config.js'), 'utf8');
+    const packageJson = JSON.parse(fs.readFileSync(path.join(directory, 'package.json'), 'utf8'));
+    expect(source).toContain('watch: isDev');
+    expect(packageJson.devDependencies.typescript).toBeDefined();
   }
 });
