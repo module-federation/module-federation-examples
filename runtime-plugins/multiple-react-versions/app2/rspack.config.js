@@ -8,6 +8,11 @@ const path = require('path');
 const webpackConfig = {
   entry: './src/index',
   mode: 'development',
+  // This remote's runtime plugin runs inside the host page and lazily imports
+  // its fallback. Rspack CLI enables lazy compilation for web targets by
+  // default, which would send that trigger to the host dev server instead of
+  // this remote's server. Keep real async chunks, but disable lazy compilation.
+  lazyCompilation: false,
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),

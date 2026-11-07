@@ -5,9 +5,8 @@ const path = require('path');
 module.exports = {
   entry: './src/index',
   mode: 'development',
-  experiments: {
-    css: true,
-  },
+  // Remote lazy-compilation proxies otherwise trigger the consuming host's server.
+  lazyCompilation: false,
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
@@ -24,6 +23,19 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.css$/,
+        type: 'javascript/auto',
+        use: [
+          {
+            loader: 'style-loader',
+            options: {
+              insert: require.resolve('./styleLoader.js'),
+            },
+          },
+          'css-loader',
+        ],
+      },
       {
         test: /\.(js|jsx)?$/,
         exclude: /node_modules/,

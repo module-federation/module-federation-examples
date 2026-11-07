@@ -9,9 +9,6 @@ module.exports = {
     publicPath: 'http://localhost:3000/',
     clean: true,
   },
-  experiments: {
-    css: true,
-  },
   module: {
     rules: [
       {

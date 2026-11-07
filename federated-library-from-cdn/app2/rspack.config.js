@@ -10,7 +10,7 @@ module.exports = {
     port: 3001,
     hot: true,
     compress: true,
-    watchFiles: ['src/**/*'],
+    watchFiles: ['src'],
   },
   target: 'web',
   resolve: {

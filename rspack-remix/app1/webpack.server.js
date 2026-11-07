@@ -33,7 +33,6 @@ const config = {
   entry: remixConfig.serverEntryPoint
     ? path.resolve(remixConfig.rootDirectory, remixConfig.serverEntryPoint)
     : serverBuildModule,
-  experiments: isModule ? { outputModule: true } : undefined,
   externalsType: isModule ? 'module' : undefined,
   externalsPresets: { node: true },
   externals: [
@@ -62,7 +61,31 @@ const config = {
       '@remix-run/dev/server-build.js': serverBuildModule,
     },
   },
-  module: {},
+  module: {
+    rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        use: [
+          {
+            loader: 'builtin:swc-loader',
+            options: {
+              jsc: {
+                parser: {
+                  syntax: 'typescript',
+                  tsx: true,
+                },
+                transform: {
+                  react: {
+                    runtime: 'automatic',
+                  },
+                },
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
   plugins: [],
 };
 

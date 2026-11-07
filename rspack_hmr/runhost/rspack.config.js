@@ -1,5 +1,5 @@
 const rspack = require('@rspack/core');
-const refreshPlugin = require('@rspack/plugin-react-refresh');
+const { ReactRefreshRspackPlugin } = require('@rspack/plugin-react-refresh');
 const isDev = process.env.NODE_ENV === 'development';
 
 const path = require('path');
@@ -42,9 +42,13 @@ module.exports = {
     publicPath: 'http://localhost:3003/',
     filename: '[name].js',
   },
-  watch: true,
+  watch: isDev,
   module: {
     rules: [
+      {
+        test: /\.css$/,
+        type: 'css/auto',
+      },
       {
         test: /\.svg$/,
         type: 'asset',
@@ -105,6 +109,6 @@ module.exports = {
 
       shared: ['react', 'react-dom'],
     }),
-    isDev ? new refreshPlugin() : null,
+    isDev ? new ReactRefreshRspackPlugin() : null,
   ].filter(Boolean),
 };

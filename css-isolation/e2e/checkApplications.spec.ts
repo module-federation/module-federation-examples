@@ -31,10 +31,14 @@ test.describe('CSS isolation example', () => {
 
       await expect(remoteHeading).toBeVisible();
       await expect(remoteButton).toBeVisible();
+      await expect(remoteHeading).toHaveCSS('color', 'rgb(255, 0, 0)');
 
       await expect(
         page.getByRole('heading', { level: 1, name: /Host Application - React Version/ }),
       ).toHaveCSS('font-style', 'italic');
+      await expect(
+        page.getByRole('heading', { level: 1, name: /Host Application - React Version/ }),
+      ).not.toHaveCSS('color', 'rgb(255, 0, 0)');
     });
 
     test('retains host styles after interacting with the remote', async ({ page }) => {
@@ -44,10 +48,14 @@ test.describe('CSS isolation example', () => {
       await remoteButton.click();
 
       await expect(remoteButton).toBeVisible();
+      await expect(remoteButton).toHaveCSS('background-color', 'rgb(255, 255, 0)');
       await expect(remoteMount.getByRole('heading', { level: 2, name: 'App 2' })).toBeVisible();
       await expect(
         page.getByRole('heading', { level: 1, name: /Host Application - React Version/ }),
       ).toHaveCSS('font-style', 'italic');
+      await expect(
+        page.getByRole('heading', { level: 1, name: /Host Application - React Version/ }),
+      ).not.toHaveCSS('background-color', 'rgb(255, 255, 0)');
     });
   });
 

@@ -15,7 +15,9 @@ const webpackConfig = {
     path: path.resolve(__dirname, '../dist/server'),
     filename: '[name].js',
     chunkFilename: '[name]-[contenthash].js',
-    libraryTarget: 'commonjs-module',
+    library: {
+      type: 'commonjs-module',
+    },
   },
   externals: ['express'],
   mode: 'production',

@@ -2,8 +2,7 @@ const { HtmlRspackPlugin } = require('@rspack/core');
 const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 const path = require('path');
 
-const { RsdoctorRspackPlugin } = require('@rsdoctor/rspack-plugin');
-const ReactRefreshWebpackPlugin = require('@rspack/plugin-react-refresh');
+const { ReactRefreshRspackPlugin } = require('@rspack/plugin-react-refresh');
 
 const deps = require('./package.json').dependencies;
 const isProd = process.env.NODE_ENV === 'production';
@@ -107,7 +106,7 @@ module.exports = {
     new HtmlRspackPlugin({
       template: './public/index.html',
     }),
-    !isProd && new ReactRefreshWebpackPlugin(),
+    !isProd && new ReactRefreshRspackPlugin(),
     // new RsdoctorRspackPlugin()
   ].filter(Boolean),
 };

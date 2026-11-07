@@ -1,6 +1,5 @@
 const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const mode = process.env.NODE_ENV || 'development';
 
 module.exports = {
@@ -10,11 +9,12 @@ module.exports = {
   devServer: {
     port: 3004,
   },
-  experiments: {
-    css: true,
-  },
   module: {
     rules: [
+      {
+        test: /\.css$/,
+        type: 'css/auto',
+      },
       {
         test: /\.(ts|tsx|js|jsx)$/,
         exclude: /node_modules/,

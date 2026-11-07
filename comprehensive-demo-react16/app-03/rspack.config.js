@@ -1,7 +1,6 @@
 const { HtmlRspackPlugin } = require('@rspack/core');
 const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const mode = process.env.NODE_ENV || 'development';
 
@@ -12,9 +11,6 @@ module.exports = {
   },
   resolve: {
     extensions: ['.jsx', '.js', '.json', '.mjs'],
-  },
-  experiments: {
-    css: true,
   },
   resolve: {
     extensions: ['.jsx', '.js', '.json', '.mjs'],

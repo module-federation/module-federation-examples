@@ -13,11 +13,18 @@ module.exports = {
   resolve: {
     extensions: ['.jsx', '.js', '.json', '.wasm'],
   },
-  experiments: {
-    css: true,
-  },
   module: {
     rules: [
+      {
+        test: /\.css$/,
+        type: 'css/auto',
+        parser: {
+          // The stylesheet is imported for its side effect only; keep a default
+          // export for the existing default import under Rspack 2's stricter
+          // missing-export checks.
+          namedExports: false,
+        },
+      },
       {
         test: /\.(jpg|png|gif|jpeg)$/,
         type: 'asset/resource',

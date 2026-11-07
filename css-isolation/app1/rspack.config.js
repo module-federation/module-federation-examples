@@ -5,6 +5,7 @@ const path = require('path');
 module.exports = {
   entry: './src/index',
   mode: 'development',
+  lazyCompilation: false,
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
@@ -19,11 +20,12 @@ module.exports = {
   output: {
     publicPath: 'auto',
   },
-  experiments: {
-    css: true,
-  },
   module: {
     rules: [
+      {
+        test: /\.css$/,
+        type: 'css/auto',
+      },
       {
         test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
