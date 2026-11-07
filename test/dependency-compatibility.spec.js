@@ -7,6 +7,21 @@ const { createRequire } = require('module');
 const exampleRequire = createRequire(path.resolve(__dirname, '../error-boundary/app1/package.json'));
 const webpackRequire = createRequire(require.resolve('webpack/package.json'));
 
+test('the React adapter examples declare imported TypeScript helpers', () => {
+  const baseConfig = require('../different-react-versions-16-17-typescript/tsconfig.base.json');
+  expect(baseConfig.compilerOptions.importHelpers).toBe(true);
+
+  for (const app of ['app1', 'app2']) {
+    const packageJson = JSON.parse(
+      fs.readFileSync(
+        path.resolve(__dirname, `../different-react-versions-16-17-typescript/${app}/package.json`),
+        'utf8',
+      ),
+    );
+    expect(packageJson.dependencies.tslib).toBeDefined();
+  }
+});
+
 test('the SSR Tailwind example declares its PostCSS plugins', () => {
   const packageJson = require('../federated-css-react-ssr/expose-apps/expose-tailwind-css/package.json');
   const dependencies = { ...packageJson.dependencies, ...packageJson.devDependencies };
