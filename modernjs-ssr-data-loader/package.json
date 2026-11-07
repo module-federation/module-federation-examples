@@ -6,9 +6,9 @@
     "node": ">=20.19.0"
   },
   "scripts": {
-    "start": "pnpm --parallel --filter \"modernjs-ssr-data-loader_*\" dev",
+    "start": "concurrently --kill-others \"pnpm --filter modernjs-ssr-data-loader_remote dev\" \"wait-on --timeout 120000 http-get://127.0.0.1:3061/ http-get://127.0.0.1:3061/static/mf-manifest.json && pnpm --filter modernjs-ssr-data-loader_host dev\"",
     "build": "pnpm --filter modernjs-ssr-data-loader_remote build && pnpm --filter modernjs-ssr-data-loader_host build",
-    "serve": "pnpm --parallel --filter \"modernjs-ssr-data-loader_*\" serve",
+    "serve": "concurrently --kill-others \"pnpm --filter modernjs-ssr-data-loader_remote serve\" \"wait-on --timeout 120000 http-get://127.0.0.1:3061/ http-get://127.0.0.1:3061/static/mf-manifest.json && pnpm --filter modernjs-ssr-data-loader_host serve\"",
     "typecheck": "pnpm --filter \"modernjs-ssr-data-loader_*\" typecheck",
     "test:e2e": "playwright test",
     "e2e:ci": "pnpm build && pnpm test:e2e",
@@ -16,6 +16,8 @@
     "preserve": "node ../scripts/track-demo-run.js"
   },
   "devDependencies": {
-    "@playwright/test": "1.58.2"
+    "@playwright/test": "1.58.2",
+    "concurrently": "8.2.2",
+    "wait-on": "7.2.0"
   }
 }

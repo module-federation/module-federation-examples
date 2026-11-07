@@ -12,7 +12,7 @@ export default getInstance()!.createLazyComponent({
 
 export const ClientCard = getInstance()!.createLazyComponent({
   noSSR: true,
-  loader: () => import('remote/DataCard'),
+  loader: () => import('remote/ClientDataCard'),
   loading: <p>Loading remote data...</p>,
   export: 'default',
   fallback: ({ error }) => <p role="alert">{String(error)}</p>,

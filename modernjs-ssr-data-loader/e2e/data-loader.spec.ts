@@ -91,15 +91,31 @@ test('SSR requests receive independent loader data', async ({ request }) => {
   expect(firstMarker).not.toBe(secondMarker);
 });
 
-test('client navigation between SSR and CSR cards', async ({ page }) => {
-  await page.goto('/entry-one');
-  await page.getByRole('button', { name: 'Count: 0' }).click();
-  await page.getByRole('link', { name: 'CSR entry', exact: true }).click();
-  await expect(page).toHaveURL('/entry-two');
-  await expect(page.getByTestId('remote-message')).toHaveText(message);
-  await page.getByRole('button', { name: 'Count: 0' }).click();
-  await expect(page.getByRole('button', { name: 'Count: 1' })).toBeVisible();
-  await page.getByRole('link', { name: 'SSR entry', exact: true }).click();
-  await expect(page).toHaveURL('/entry-one');
-  await expect(page.getByTestId('remote-message')).toHaveText(message);
-});
+for (const returnMethod of ['link', 'history']) {
+  test(`client navigation between SSR and CSR cards using ${returnMethod}`, async ({ page }) => {
+    await page.goto('/entry-one');
+    await expect(page.getByTestId('remote-message')).toHaveText(message);
+    await page.getByRole('button', { name: 'Count: 0' }).click();
+    await expect(page.getByRole('button', { name: 'Count: 1' })).toBeVisible();
+
+    for (let visit = 0; visit < 2; visit++) {
+      await page.getByRole('link', { name: 'CSR entry', exact: true }).click();
+      await expect(page).toHaveURL('/entry-two');
+      await expect(page.getByRole('heading', { level: 1 })).toHaveText('Client-rendered remote data');
+      await expect(page.getByTestId('remote-message')).toHaveText(message);
+      await page.getByRole('button', { name: 'Count: 0' }).click();
+      await expect(page.getByRole('button', { name: 'Count: 1' })).toBeVisible();
+
+      if (returnMethod === 'history') {
+        await page.goBack();
+      } else {
+        await page.getByRole('link', { name: 'SSR entry', exact: true }).click();
+      }
+      await expect(page).toHaveURL('/entry-one');
+      await expect(page.getByRole('heading', { level: 1 })).toHaveText('Server-rendered remote data');
+      await expect(page.getByTestId('remote-message')).toHaveText(message);
+      await page.getByRole('button', { name: 'Count: 0' }).click();
+      await expect(page.getByRole('button', { name: 'Count: 1' })).toBeVisible();
+    }
+  });
+}

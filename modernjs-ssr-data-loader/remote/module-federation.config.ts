@@ -5,7 +5,10 @@ export default createModuleFederationConfig({
   manifest: { filePath: 'static' },
   filename: 'static/remoteEntry.js',
   dts: { generateTypes: { typesFolder: 'static/@mf-types' } },
-  exposes: { './DataCard': './src/components/DataCard.tsx' },
+  exposes: {
+    './DataCard': './src/components/DataCard.tsx',
+    './ClientDataCard': './src/components/ClientDataCard.tsx',
+  },
   shared: {
     react: { singleton: true, requiredVersion: '18.3.1' },
     'react-dom': { singleton: true, requiredVersion: '18.3.1' },

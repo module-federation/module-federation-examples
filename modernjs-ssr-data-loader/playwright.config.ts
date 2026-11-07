@@ -13,18 +13,10 @@ export default defineConfig({
     trace: 'retain-on-failure',
   },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
-  webServer: [
-    {
-      command: 'pnpm --filter modernjs-ssr-data-loader_remote serve',
-      url: 'http://127.0.0.1:3061/static/mf-manifest.json',
-      timeout: 60_000,
-      reuseExistingServer: false,
-    },
-    {
-      command: 'pnpm --filter modernjs-ssr-data-loader_host serve',
-      url: 'http://127.0.0.1:3062/entry-one',
-      timeout: 60_000,
-      reuseExistingServer: false,
-    },
-  ],
+  webServer: {
+    command: 'pnpm serve',
+    url: 'http://127.0.0.1:3062/entry-one',
+    timeout: 120_000,
+    reuseExistingServer: false,
+  },
 });
