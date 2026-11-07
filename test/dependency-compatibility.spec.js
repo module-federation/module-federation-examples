@@ -7,6 +7,21 @@ const { createRequire } = require('module');
 const exampleRequire = createRequire(path.resolve(__dirname, '../error-boundary/app1/package.json'));
 const webpackRequire = createRequire(require.resolve('webpack/package.json'));
 
+test('all Enhanced installations resolve the compatible Webpack compiler', () => {
+  const lockfile = require('js-yaml').load(
+    fs.readFileSync(path.resolve(__dirname, '../pnpm-lock.yaml'), 'utf8'),
+  );
+  const installations = Object.entries(lockfile.snapshots).filter(([name]) =>
+    name.startsWith('@module-federation/enhanced@2.9.3('),
+  );
+
+  expect(installations.length).toBeGreaterThan(0);
+  for (const [, installation] of installations) {
+    const version = installation.dependencies?.webpack || installation.optionalDependencies?.webpack;
+    expect(version?.split('(')[0]).toBe(pnpm.overrides.webpack);
+  }
+});
+
 test('Webpack retains the internal APIs used by Module Federation', () => {
   const extractUrlAndGlobal = webpackRequire('./lib/util/extractUrlAndGlobal');
 
