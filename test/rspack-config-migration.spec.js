@@ -101,6 +101,15 @@ test('the CSS isolation remote keeps its shadow-DOM style insertion hook', () =>
   expect(source).toContain('lazyCompilation: false');
 });
 
+test('the cross-origin React adapter keeps its fallback as an async chunk', () => {
+  const directory = path.join(root, 'runtime-plugins/multiple-react-versions/app2');
+  const config = fs.readFileSync(path.join(directory, 'rspack.config.js'), 'utf8');
+  const plugin = fs.readFileSync(path.join(directory, 'react-adapter-runtime-plugin.ts'), 'utf8');
+
+  expect(config).toContain('lazyCompilation: false');
+  expect(plugin).toContain("import('./fallback.js')");
+});
+
 test('Rsbuild Node examples use output.target instead of removed output.targets', () => {
   for (const config of ['unit-test/host/rsbuild.config.ts', 'unit-test/remote/rsbuild.config.ts']) {
     const source = fs.readFileSync(path.join(root, config), 'utf8');
